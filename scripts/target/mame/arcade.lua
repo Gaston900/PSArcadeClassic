@@ -1108,7 +1108,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/atarigx2.cpp",
 --	MAME_DIR .. "src/mame/includes/atarigx2.h",
 	MAME_DIR .. "src/mame/video/atarigx2.cpp",
-	MAME_DIR .. "src/hbmame/drivers/atarisy1.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/atarisy1.cpp",
 --	MAME_DIR .. "src/mame/includes/atarisy1.h",
 	MAME_DIR .. "src/mame/video/atarisy1.cpp",
 	MAME_DIR .. "src/mame/drivers/atarisy2.cpp",
@@ -1541,7 +1541,7 @@ files {
 
 createMAMEProjects(_target, _subtarget, "cinemat")
 files {
-	MAME_DIR .. "src/hbmame/drivers/cinemat.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/cinemat.cpp",
 --	MAME_DIR .. "src/mame/includes/cinemat.h",
 	MAME_DIR .. "src/mame/audio/cinemat.cpp",
 	MAME_DIR .. "src/mame/video/cinemat.cpp",
@@ -2714,7 +2714,7 @@ files {
 
 createMAMEProjects(_target, _subtarget, "midway")
 files {
-	MAME_DIR .. "src/hbmame/drivers/astrocde.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/astrocde.cpp",
 --	MAME_DIR .. "src/mame/includes/astrocde.h",
 	MAME_DIR .. "src/mame/video/astrocde.cpp",
 --	MAME_DIR .. "src/mame/drivers/atlantis.cpp",

@@ -1,4 +1,4 @@
-// license:BSD-3-Clause
+// Proyecto Shadows Arcade Classic+
 // copyright-holders:Gaston90
 #include "../mame/drivers/aerofgt.cpp"
 
@@ -6,9 +6,9 @@
  Karate Blazers
 *****************/
 
-ROM_START( karatblzas01 )
+ROM_START( karatblzhack01 )
 	ROM_REGION( 0x80000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "v2_po01.u14",  0x00000, 0x40000, CRC(d3df88c4) SHA1(9a5a9d2ec96f4614fbf861a5cd62f6f5b907b2fb) ) 
+	ROM_LOAD16_WORD_SWAP( "v2_hack01.u14",  0x00000, 0x40000, CRC(d3df88c4) SHA1(9a5a9d2ec96f4614fbf861a5cd62f6f5b907b2fb) ) 
 	ROM_LOAD16_WORD_SWAP( "v1.u15",     0x40000, 0x40000, CRC(d16ee21b) SHA1(d454cdf22b72a537b9d7ae73deb8136a4f09da47) )
 
 	ROM_REGION( 0x20000, "audiocpu", 0 ) 
@@ -37,9 +37,9 @@ ROM_START( karatblzas01 )
 	ROM_LOAD( "u104", 0x000000, 0x100000, CRC(5795e884) SHA1(a4178497ad0a1e60ceb87612b218d77b36d2a11b) )
 ROM_END
 
-ROM_START( karatblzas02 )
+ROM_START( karatblzhack02 )
 	ROM_REGION( 0x80000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "v2_po02.u14",  0x00000, 0x40000, CRC(f3da2f95) SHA1(ece19ff151d1aab321e17ec20ebe6c26e6da27f6) ) 
+	ROM_LOAD16_WORD_SWAP( "v2_hack02.u14",  0x00000, 0x40000, CRC(f3da2f95) SHA1(ece19ff151d1aab321e17ec20ebe6c26e6da27f6) ) 
 	ROM_LOAD16_WORD_SWAP( "v1.u15",     0x40000, 0x40000, CRC(d16ee21b) SHA1(d454cdf22b72a537b9d7ae73deb8136a4f09da47) )
 
 	ROM_REGION( 0x20000, "audiocpu", 0 ) 
@@ -70,6 +70,5 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Karate Blazers
-GAME( 2017, karatblzas01,  karatblz, karatblz,   karatblz,  aerofgt_state, empty_init,      ROT0,   "hack",    "Karate Blazers (1V4 2017-09-30)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL )
-GAME( 2009, karatblzas02,  karatblz, karatblz,   karatblz,  aerofgt_state, empty_init,      ROT0,   "pipi899",    "Karate Blazers (Super Version V1 2009-03-11)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL )
-
+GAME( 2017, karatblzhack01,  karatblz, karatblz,   karatblz,  aerofgt_state, empty_init,      ROT0,   "hack",    "Karate Blazers (1V4 2017-09-30)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL )
+GAME( 2009, karatblzhack02,  karatblz, karatblz,   karatblz,  aerofgt_state, empty_init,      ROT0,   "pipi899", "Karate Blazers (Super Version 2009-03-11)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL )

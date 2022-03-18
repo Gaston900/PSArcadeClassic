@@ -10375,16 +10375,143 @@ tankbatl                        // (c) 1992 Microprose Games Inc.
 *******************************************************/
 
 @source:1942.cpp
-1942hacks01                     //hack
-1942hacks02                     //hack
-1942hacks03                     //hack
+1942hack01                      //hack
+1942hack02                      //hack
+1942hack03                      //hack
 
 @source:1943.cpp
 1943h                           //bootleg
-1943hacks01                     //hack
+1943hack01                      //hack
 
 @source:8080bw.cpp
 sinvrdzm                        //hack
+
+@source:aerofgt.cpp
+karatblzhack01                  //hack
+karatblzhack02                  //hack
+
+@source:arkanoid.cpp
+akblc2dx                        //hack
+akgcdx                          //hack
+aktaytdx                        //hack
+arkll32                         //hack
+
+@source:asteroid.cpp
+asteroid6                       //hack
+astdelux4                       //hack
+starslayer                      //hack
+
+@source:astrof.cpp
+astrofbl                        //hack
+
+@source:asuka.cpp
+asukac                          //hack
+jigkmgrihack01                  //hack
+
+@source:bagman.cpp
+bagturbo                        //hack
+pickinpi                        //hack
+
+@source:blktiger.cpp
+blkdrgonk                       //hack
+
+@source:bloodbro.cpp
+bloodbrohack01                  //hack
+
+@source:bombjack.cpp
+bmbjckgr                        //hack
+bombjckb                        //hack
+bombjred                        //hack
+bombjactc                       //hack
+
+@source:btime.cpp
+bnjr                            //hack
+pnc                             //hack
+stictime                        //hack
+vecbtime                        //hack
+
+@source:bublbobl.cpp
+bbaladar                        //hack
+bb2bmh                          //hack
+bbhackv1                        //hack
+bbredux1                        //hack
+bbredux2                        //hack
+bbredux3                        //hack
+sboblboblh                      //hack
+bublbobf                        //hack
+bublboblu                       //hack
+bub68705a                       //hack
+
+@source:bwidow.cpp
+spacwarp                        //hack
+
+@source:cabal.cpp
+cabalsv                         //hack
+
+@source:cave.cpp
+ddonpachhack01                  //hack
+gaiahack01                      //hack
+metmqstrhack01                  //hack
+metmqstrhack02                  //hack
+theroehack01                    //hack
+plegendshack01                  //hack
+pwrinst2hack01                  //hack
+sailormnhack01                  //hack
+sailormnhack02                  //hack
+sailormnhack03                  //hack
+sailormnhack04                  //hack
+sailormnhack05                  //hack
+sailormnhack06                  //hack
+sailormnhack07                  //hack
+sailormnhack08                  //hack
+
+@source:cball.cpp
+cballfix                        //hack
+
+@source:cclimber.cpp
+cclimbrm                        //hack
+ckonga2                         //hack
+ckonga3                         //hack
+ckongfix                        //hack
+tongypac                        //hack
+
+@source:centiped.cpp
+astropd2                        //hack
+astroped                        //hack
+cemescry                        //hack
+centipb                         //hack
+killiped                        //hack
+magworm2                        //hack
+pacipede                        //hack
+silliped                        //hack
+vectiped                        //hack
+vectrped                        //hack
+
+@source:cninja.cpp
+deathbrdhack01                  //hack
+
+@source:commando.cpp
+comdelux                        //hack
+comdlux1                        //hack
+
+@source:contra.cpp
+contrahack01                    //hack
+
+@source:cps3.cpp
+jojoan                          //No CD
+redeartn                        //No CD
+jojohack01                      //hack
+jojobahack01                    //hack
+jojobahack02                    //hack
+redeartnhack01                  //hack
+sfiiihacks01                    //hack
+sfiiihacks02                    //hack
+sfiii2hack01                    //hack
+sfiii2hack02                    //hack
+sfiii3hack01                    //hack
+sfiii3hack02                    //hack
+sfiii3hack03                    //hack
+sfiii3hack04                    //hack
 
 @source:neogeo.cpp
 msboot                          //bootleg

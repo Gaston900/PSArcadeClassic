@@ -130,4 +130,4 @@ ROM_END
 // 1943
 GAME( 1987, 1943h,         1943,       _1943,   1943, _1943_state,  init_1943,  ROT270,  "bootleg",            "1943: The Battle of Midway (bootleg set 2, hack of Japan set)", MACHINE_SUPPORTS_SAVE )
 // 1943 Kai: Midway Kaisen
-GAME( 2009, 1943hack01,   1943kai,    _1943,   1943, _1943_state,  init_1943,  ROT270,  "winux And pipi899",  "1943 Kai: Midway Kaisen(Ex Super Version 2009-02-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, 1943hack01,   1943kai,     _1943,   1943, _1943_state,  init_1943,  ROT270,  "winux And pipi899",  "1943 Kai: Midway Kaisen(Ex Super Version 2009-02-10)", MACHINE_SUPPORTS_SAVE )

@@ -939,8 +939,8 @@ function createMAMEProjects(_target, _subtarget, _name)
 		MAME_DIR .. "src/osd",
 		MAME_DIR .. "src/emu",
 		MAME_DIR .. "src/devices",
-		MAME_DIR .. "src/hbmame/includes",
-		MAME_DIR .. "src/hbmame",
+		MAME_DIR .. "src/homebrew/includes",
+		MAME_DIR .. "src/homebrew",
 		MAME_DIR .. "src/mame",
 		MAME_DIR .. "src/lib",
 		MAME_DIR .. "src/lib/util",
@@ -948,7 +948,7 @@ function createMAMEProjects(_target, _subtarget, _name)
 		MAME_DIR .. "3rdparty",
 		MAME_DIR .. "3rdparty/zlib",
 		GEN_DIR  .. "mame/layout",
-		GEN_DIR  .. "hbmame/layout",
+		GEN_DIR  .. "homebrew/layout",
 	}
 	includedirs {
 		ext_includedir("flac"),
@@ -1084,7 +1084,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/arcadecl.cpp",
 --	MAME_DIR .. "src/mame/includes/arcadecl.h",
 	MAME_DIR .. "src/mame/video/arcadecl.cpp",
-	MAME_DIR .. "src/hbmame/drivers/asteroid.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/asteroid.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/asteroid.h",
 	MAME_DIR .. "src/mame/machine/asteroid.cpp",
 	MAME_DIR .. "src/mame/audio/asteroid.cpp",
@@ -1099,7 +1099,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/atarig1.h",
 	MAME_DIR .. "src/mame/video/atarig1.cpp",
 --	MAME_DIR .. "src/mame/includes/slapstic.h",
-	MAME_DIR .. "src/hbmame/drivers/atarig42.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/atarig42.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/atarig42.h",
 	MAME_DIR .. "src/mame/video/atarig42.cpp",
 	MAME_DIR .. "src/mame/drivers/atarigt.cpp",
@@ -1147,7 +1147,7 @@ files {
 	MAME_DIR .. "src/mame/machine/bsktball.cpp",
 	MAME_DIR .. "src/mame/audio/bsktball.cpp",
 	MAME_DIR .. "src/mame/video/bsktball.cpp",
-	MAME_DIR .. "src/hbmame/drivers/bwidow.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/bwidow.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/bwidow.h",
 	MAME_DIR .. "src/mame/audio/bwidow.cpp",
 	MAME_DIR .. "src/mame/drivers/bzone.cpp",
@@ -1157,11 +1157,11 @@ files {
 --	MAME_DIR .. "src/mame/includes/canyon.h",
 	MAME_DIR .. "src/mame/audio/canyon.cpp",
 	MAME_DIR .. "src/mame/video/canyon.cpp",
-	MAME_DIR .. "src/hbmame/drivers/cball.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/cball.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/ccastles.cpp",
 --	MAME_DIR .. "src/mame/includes/ccastles.h",
 	MAME_DIR .. "src/mame/video/ccastles.cpp",
-	MAME_DIR .. "src/hbmame/drivers/centiped.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/centiped.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/centiped.h",
 	MAME_DIR .. "src/mame/video/centiped.cpp",
 	MAME_DIR .. "src/mame/drivers/cloak.cpp",
@@ -1200,7 +1200,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/foodf.cpp",
 --	MAME_DIR .. "src/mame/includes/foodf.h",
 	MAME_DIR .. "src/mame/video/foodf.cpp",
-	MAME_DIR .. "src/hbmame/drivers/gauntlet.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/gauntlet.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/gauntlet.h",
 	MAME_DIR .. "src/mame/video/gauntlet.cpp",
 	MAME_DIR .. "src/mame/drivers/harddriv.cpp",
@@ -1233,10 +1233,10 @@ files {
 	MAME_DIR .. "src/mame/drivers/metalmx.cpp",
 --	MAME_DIR .. "src/mame/includes/metalmx.h",
 	MAME_DIR .. "src/mame/drivers/mgolf.cpp",
-	MAME_DIR .. "src/hbmame/drivers/mhavoc.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/mhavoc.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/mhavoc.h",
 	MAME_DIR .. "src/mame/machine/mhavoc.cpp",
-	MAME_DIR .. "src/hbmame/drivers/missile.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/missile.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/nitedrvr.cpp",
 --	MAME_DIR .. "src/mame/includes/nitedrvr.h",
 	MAME_DIR .. "src/mame/machine/nitedrvr.cpp",
@@ -1318,7 +1318,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/tank8.h",
 	MAME_DIR .. "src/mame/audio/tank8.cpp",
 	MAME_DIR .. "src/mame/video/tank8.cpp",
-	MAME_DIR .. "src/hbmame/drivers/tempest.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/tempest.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/thunderj.cpp",
 --	MAME_DIR .. "src/mame/includes/thunderj.h",
 	MAME_DIR .. "src/mame/video/thunderj.cpp",
@@ -1453,12 +1453,12 @@ files {
 
 createMAMEProjects(_target, _subtarget, "capcom")
 files {
-	MAME_DIR .. "src/hbmame/drivers/1942.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/1942.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/1942.h",
 	MAME_DIR .. "src/mame/video/1942.cpp",
     MAME_DIR .. "src/mame/audio/nl_1942.cpp",
 --  MAME_DIR .. "src/mame/audio/nl_1942.h",
-	MAME_DIR .. "src/hbmame/drivers/1943.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/1943.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/1943.h",
 	MAME_DIR .. "src/mame/video/1943.cpp",
 --	MAME_DIR .. "src/mame/drivers/alien.cpp",
@@ -1466,22 +1466,22 @@ files {
 	MAME_DIR .. "src/mame/drivers/supduck.cpp",
 	MAME_DIR .. "src/mame/video/tigeroad_spr.cpp",
 --	MAME_DIR .. "src/mame/video/tigeroad_spr.h",
-	MAME_DIR .. "src/hbmame/drivers/blktiger.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/blktiger.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/blktiger.h",
 	MAME_DIR .. "src/mame/video/blktiger.cpp",
 --	MAME_DIR .. "src/mame/drivers/blktiger_ms.cpp",
 	MAME_DIR .. "src/mame/drivers/cbasebal.cpp",
 --	MAME_DIR .. "src/mame/includes/cbasebal.h",
 	MAME_DIR .. "src/mame/video/cbasebal.cpp",
-	MAME_DIR .. "src/hbmame/drivers/commando.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/commando.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/commando.h",
 	MAME_DIR .. "src/mame/video/commando.cpp",
-	MAME_DIR .. "src/hbmame/drivers/cps1.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/video/cps1.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/cps1.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/video/cps1.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/kenseim.cpp",
-	MAME_DIR .. "src/hbmame/drivers/cps2.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/video/cps2.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/cps3.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/cps2.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/video/cps2.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/cps3.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/cps3.h",
 	MAME_DIR .. "src/mame/audio/cps3.cpp",
 --	MAME_DIR .. "src/mame/audio/cps3.h",
@@ -1489,7 +1489,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/exedexes.cpp",
 --	MAME_DIR .. "src/mame/includes/exedexes.h",
 	MAME_DIR .. "src/mame/video/exedexes.cpp",
-	MAME_DIR .. "src/hbmame/drivers/fcrash.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/fcrash.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/gng.cpp",
 --	MAME_DIR .. "src/mame/includes/gng.h",
 	MAME_DIR .. "src/mame/video/gng.cpp",
@@ -1505,10 +1505,10 @@ files {
 	MAME_DIR .. "src/mame/drivers/lwings.cpp",
 --	MAME_DIR .. "src/mame/includes/lwings.h",
 	MAME_DIR .. "src/mame/video/lwings.cpp",
-	MAME_DIR .. "src/hbmame/drivers/mitchell.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/mitchell.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/mitchell.h",
 	MAME_DIR .. "src/mame/video/mitchell.cpp",
-	MAME_DIR .. "src/hbmame/drivers/sf.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/sf.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/sf.h",
 	MAME_DIR .. "src/mame/video/sf.cpp",
 	MAME_DIR .. "src/mame/drivers/sidearms.cpp",
@@ -1595,7 +1595,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/actfancr.cpp",
 --	MAME_DIR .. "src/mame/includes/actfancr.h",
 	MAME_DIR .. "src/mame/video/actfancr.cpp",
-	MAME_DIR .. "src/hbmame/drivers/astrof.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/astrof.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/astrof.h",
 	MAME_DIR .. "src/mame/audio/astrof.cpp",
 	MAME_DIR .. "src/mame/drivers/backfire.cpp",
@@ -1607,7 +1607,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/brkthru.cpp",
 --	MAME_DIR .. "src/mame/includes/brkthru.h",
 	MAME_DIR .. "src/mame/video/brkthru.cpp",
-	MAME_DIR .. "src/hbmame/drivers/btime.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/btime.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/btime.h",
 	MAME_DIR .. "src/mame/machine/btime.cpp",
 	MAME_DIR .. "src/mame/video/btime.cpp",
@@ -1618,7 +1618,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/cbuster.h",
 	MAME_DIR .. "src/mame/video/cbuster.cpp",
 	MAME_DIR .. "src/mame/drivers/chanbara.cpp",
-	MAME_DIR .. "src/hbmame/drivers/cninja.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/cninja.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/cninja.h",
 	MAME_DIR .. "src/mame/video/cninja.cpp",
 	MAME_DIR .. "src/mame/drivers/cntsteer.cpp",
@@ -1632,7 +1632,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/dassault.h",
 	MAME_DIR .. "src/mame/video/dassault.cpp",
 	MAME_DIR .. "src/mame/drivers/dblewing.cpp",
-	MAME_DIR .. "src/hbmame/drivers/dec0.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/dec0.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/dec0.h",
 	MAME_DIR .. "src/mame/machine/dec0.cpp",
 	MAME_DIR .. "src/mame/video/dec0.cpp",
@@ -1652,7 +1652,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/deco156.cpp",
 	MAME_DIR .. "src/mame/machine/deco156.cpp",
 --	MAME_DIR .. "src/mame/machine/deco156.h",
-	MAME_DIR .. "src/hbmame/drivers/deco32.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/deco32.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/deco32.h",
 	MAME_DIR .. "src/mame/video/deco32.cpp",
 	MAME_DIR .. "src/mame/video/dvi.cpp",
@@ -1704,20 +1704,20 @@ files {
 --	MAME_DIR .. "src/mame/includes/metlclsh.h",
 	MAME_DIR .. "src/mame/video/metlclsh.cpp",
 	MAME_DIR .. "src/mame/drivers/mirage.cpp",
-	MAME_DIR .. "src/hbmame/drivers/pcktgal.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/pcktgal.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/pcktgal.h",
 	MAME_DIR .. "src/mame/video/pcktgal.cpp",
 	MAME_DIR .. "src/mame/drivers/pktgaldx.cpp",
 --	MAME_DIR .. "src/mame/includes/pktgaldx.h",
 	MAME_DIR .. "src/mame/video/pktgaldx.cpp",
 	MAME_DIR .. "src/mame/drivers/progolf.cpp",
-	MAME_DIR .. "src/hbmame/drivers/rohga.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/rohga.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/rohga.h",
 	MAME_DIR .. "src/mame/video/rohga.cpp",
 	MAME_DIR .. "src/mame/drivers/shootout.cpp",
 --	MAME_DIR .. "src/mame/includes/shootout.h",
 	MAME_DIR .. "src/mame/video/shootout.cpp",
-	MAME_DIR .. "src/hbmame/drivers/sidepckt.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/sidepckt.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/sidepckt.h",
 	MAME_DIR .. "src/mame/video/sidepckt.cpp",
 	MAME_DIR .. "src/mame/drivers/simpl156.cpp",
@@ -1872,7 +1872,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/circus.h",
 	MAME_DIR .. "src/mame/audio/circus.cpp",
 	MAME_DIR .. "src/mame/video/circus.cpp",
-	MAME_DIR .. "src/hbmame/drivers/exidy.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/exidy.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/exidy.h",
 	MAME_DIR .. "src/mame/audio/exidy.cpp",
 --	MAME_DIR .. "src/mame/audio/exidy.h",
@@ -1930,7 +1930,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/fuukifg2.cpp",
 --	MAME_DIR .. "src/mame/includes/fuukifg2.h",
 	MAME_DIR .. "src/mame/video/fuukifg2.cpp",
-	MAME_DIR .. "src/hbmame/drivers/fuukifg3.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/fuukifg3.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/fuukifg3.h",
 	MAME_DIR .. "src/mame/video/fuukifg3.cpp",
 	MAME_DIR .. "src/mame/video/fuukifg.cpp",
@@ -2016,7 +2016,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/exterm.cpp",
 --	MAME_DIR .. "src/mame/includes/exterm.h",
 	MAME_DIR .. "src/mame/video/exterm.cpp",
-	MAME_DIR .. "src/hbmame/drivers/gottlieb.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/gottlieb.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/gottlieb.h",
 	MAME_DIR .. "src/mame/audio/gottlieb.cpp",
 --	MAME_DIR .. "src/mame/audio/gottlieb.h",
@@ -2047,7 +2047,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/jackie.cpp",
 	MAME_DIR .. "src/mame/drivers/igspoker.cpp",
 	MAME_DIR .. "src/mame/drivers/igs009.cpp",
-	MAME_DIR .. "src/hbmame/drivers/igs011.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/igs011.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/igs017.cpp",
 	MAME_DIR .. "src/mame/video/igs017_igs031.cpp",
 --	MAME_DIR .. "src/mame/video/igs017_igs031.h",
@@ -2057,10 +2057,10 @@ files {
 	MAME_DIR .. "src/mame/drivers/iqblock.cpp",
 --	MAME_DIR .. "src/mame/includes/iqblock.h",
 	MAME_DIR .. "src/mame/video/iqblock.cpp",
-	MAME_DIR .. "src/hbmame/drivers/lordgun.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/lordgun.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/lordgun.h",
 	MAME_DIR .. "src/mame/video/lordgun.cpp",
-	MAME_DIR .. "src/hbmame/drivers/pgm.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/pgm.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/pgm.h",
 	MAME_DIR .. "src/mame/video/pgm.cpp",
 	MAME_DIR .. "src/mame/machine/pgmprot_igs027a_type1.cpp",
@@ -2111,7 +2111,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/m10.h",
 	MAME_DIR .. "src/mame/video/m10.cpp",
 	MAME_DIR .. "src/mame/drivers/m14.cpp",
-	MAME_DIR .. "src/hbmame/drivers/m52.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/m52.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/m52.h",
 	MAME_DIR .. "src/mame/video/m52.cpp",
 	MAME_DIR .. "src/mame/drivers/m57.cpp",
@@ -2133,7 +2133,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/m90.cpp",
 --	MAME_DIR .. "src/mame/includes/m90.h",
 	MAME_DIR .. "src/mame/video/m90.cpp",
-	MAME_DIR .. "src/hbmame/drivers/m92.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/m92.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/m92.h",
 	MAME_DIR .. "src/mame/video/m92.cpp",
 	MAME_DIR .. "src/mame/drivers/m107.cpp",
@@ -2167,7 +2167,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/capbowl.cpp",
 --	MAME_DIR .. "src/mame/includes/capbowl.h",
 	MAME_DIR .. "src/mame/video/capbowl.cpp",
-	MAME_DIR .. "src/hbmame/drivers/itech8.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/itech8.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/itech8.h",
 	MAME_DIR .. "src/mame/machine/itech8.cpp",
 	MAME_DIR .. "src/mame/video/itech8.cpp",
@@ -2202,13 +2202,13 @@ files {
 --	MAME_DIR .. "src/mame/includes/citycon.h",
 	MAME_DIR .. "src/mame/video/citycon.cpp",
 	MAME_DIR .. "src/mame/drivers/ddayjlc.cpp",
-	MAME_DIR .. "src/hbmame/drivers/exerion.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/exerion.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/exerion.h",
 	MAME_DIR .. "src/mame/video/exerion.cpp",
 	MAME_DIR .. "src/mame/drivers/fcombat.cpp",
 --	MAME_DIR .. "src/mame/includes/fcombat.h",
 	MAME_DIR .. "src/mame/video/fcombat.cpp",
-	MAME_DIR .. "src/hbmame/drivers/ginganin.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/ginganin.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/ginganin.h",
 	MAME_DIR .. "src/mame/video/ginganin.cpp",
 	MAME_DIR .. "src/mame/drivers/homerun.cpp",
@@ -2280,7 +2280,7 @@ files {
 --	MAME_DIR .. "src/mame/video/kaneko_grap2.h",
 	MAME_DIR .. "src/mame/drivers/hvyunit.cpp",
 	MAME_DIR .. "src/mame/drivers/jchan.cpp",
-	MAME_DIR .. "src/hbmame/drivers/kaneko16.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/kaneko16.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/kaneko16.h",
 	MAME_DIR .. "src/mame/video/kaneko16.cpp",
 	MAME_DIR .. "src/mame/video/kaneko_tmap.cpp",
@@ -2348,13 +2348,13 @@ files {
 	MAME_DIR .. "src/mame/drivers/combatsc.cpp",
 --	MAME_DIR .. "src/mame/includes/combatsc.h",
 	MAME_DIR .. "src/mame/video/combatsc.cpp",
-	MAME_DIR .. "src/hbmame/drivers/contra.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/contra.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/contra.h",
 	MAME_DIR .. "src/mame/video/contra.cpp",
 	MAME_DIR .. "src/mame/drivers/crimfght.cpp",
 --	MAME_DIR .. "src/mame/includes/crimfght.h",
 	MAME_DIR .. "src/mame/video/crimfght.cpp",
-	MAME_DIR .. "src/hbmame/drivers/dbz.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/dbz.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/dbz.h",
 	MAME_DIR .. "src/mame/video/dbz.cpp",
 	MAME_DIR .. "src/mame/drivers/ddribble.cpp",
@@ -2388,7 +2388,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/gijoe.cpp",
 --	MAME_DIR .. "src/mame/includes/gijoe.h",
 	MAME_DIR .. "src/mame/video/gijoe.cpp",
-	MAME_DIR .. "src/hbmame/drivers/gradius3.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/gradius3.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/gradius3.h",
 	MAME_DIR .. "src/mame/video/gradius3.cpp",
 	MAME_DIR .. "src/mame/drivers/gticlub.cpp",
@@ -2421,7 +2421,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/junofrst.cpp",
 	MAME_DIR .. "src/mame/drivers/konamigq.cpp",
 	MAME_DIR .. "src/mame/drivers/konamigv.cpp",
-	MAME_DIR .. "src/hbmame/drivers/konamigx.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/konamigx.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/konamigx.h",
 	MAME_DIR .. "src/mame/machine/konamigx.cpp",
 	MAME_DIR .. "src/mame/video/konamigx.cpp",
@@ -2469,10 +2469,10 @@ files {
 	MAME_DIR .. "src/mame/drivers/moo.cpp",
 --	MAME_DIR .. "src/mame/includes/moo.h",
 	MAME_DIR .. "src/mame/video/moo.cpp",
-	MAME_DIR .. "src/hbmame/drivers/mystwarr.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/mystwarr.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/mystwarr.h",
 	MAME_DIR .. "src/mame/video/mystwarr.cpp",
-	MAME_DIR .. "src/hbmame/drivers/nemesis.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/nemesis.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/nemesis.h",
 	MAME_DIR .. "src/mame/video/nemesis.cpp",
 	MAME_DIR .. "src/mame/drivers/nwk-tr.cpp",
@@ -2493,7 +2493,7 @@ files {
 --	MAME_DIR .. "src/mame/drivers/plygonet.cpp",
 --	MAME_DIR .. "src/mame/includes/plygonet.h",
 --	MAME_DIR .. "src/mame/video/plygonet.cpp",
-	MAME_DIR .. "src/hbmame/drivers/pooyan.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/pooyan.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/pooyan.h",
 	MAME_DIR .. "src/mame/video/pooyan.cpp",
 	MAME_DIR .. "src/mame/drivers/pyson.cpp",
@@ -2524,7 +2524,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/scramble.h",
 	MAME_DIR .. "src/mame/machine/scramble.cpp",
 	MAME_DIR .. "src/mame/audio/scramble.cpp",
-	MAME_DIR .. "src/hbmame/drivers/shaolins.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/shaolins.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/shaolins.h",
 	MAME_DIR .. "src/mame/video/shaolins.cpp",
 	MAME_DIR .. "src/mame/drivers/simpsons.cpp",
@@ -2542,18 +2542,18 @@ files {
 	MAME_DIR .. "src/mame/drivers/thunderx.cpp",
 --	MAME_DIR .. "src/mame/includes/thunderx.h",
 	MAME_DIR .. "src/mame/video/thunderx.cpp",
-	MAME_DIR .. "src/hbmame/drivers/timeplt.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/timeplt.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/timeplt.h",
 	MAME_DIR .. "src/mame/audio/timeplt.cpp",
 --	MAME_DIR .. "src/mame/audio/timeplt.h",
 	MAME_DIR .. "src/mame/video/timeplt.cpp",
-	MAME_DIR .. "src/hbmame/drivers/tmnt.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/tmnt.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/tmnt.h",
 	MAME_DIR .. "src/mame/video/tmnt.cpp",
 	MAME_DIR .. "src/mame/drivers/tp84.cpp",
 --	MAME_DIR .. "src/mame/includes/tp84.h",
 	MAME_DIR .. "src/mame/video/tp84.cpp",
-	MAME_DIR .. "src/hbmame/drivers/trackfld.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/trackfld.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/trackfld.h",
 	MAME_DIR .. "src/mame/machine/konami1.cpp",
 --	MAME_DIR .. "src/mame/machine/konami1.h",
@@ -2584,7 +2584,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/xmen.cpp",
 --	MAME_DIR .. "src/mame/includes/xmen.h",
 	MAME_DIR .. "src/mame/video/xmen.cpp",
-	MAME_DIR .. "src/hbmame/drivers/yiear.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/yiear.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/yiear.h",
 	MAME_DIR .. "src/mame/video/yiear.cpp",
 	MAME_DIR .. "src/mame/drivers/zr107.cpp",
@@ -2683,7 +2683,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/metro.cpp",
 --	MAME_DIR .. "src/mame/includes/metro.h",
 	MAME_DIR .. "src/mame/video/metro.cpp",
-	MAME_DIR .. "src/hbmame/drivers/rabbit.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/rabbit.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/tmmjprd.cpp",
 }
 
@@ -2696,7 +2696,7 @@ files {
 
 createMAMEProjects(_target, _subtarget, "midw8080")
 files {
-	MAME_DIR .. "src/hbmame/drivers/8080bw.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/8080bw.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/8080bw.h",
 	MAME_DIR .. "src/mame/audio/8080bw.cpp",
 	MAME_DIR .. "src/mame/video/8080bw.cpp",
@@ -2726,11 +2726,11 @@ files {
 --	MAME_DIR .. "src/mame/includes/gridlee.h",
 	MAME_DIR .. "src/mame/audio/gridlee.cpp",
 	MAME_DIR .. "src/mame/video/gridlee.cpp",
-	MAME_DIR .. "src/hbmame/drivers/mcr.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/mcr.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/mcr.h",
 	MAME_DIR .. "src/mame/machine/mcr.cpp",
 	MAME_DIR .. "src/mame/video/mcr.cpp",
-	MAME_DIR .. "src/hbmame/drivers/mcr3.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/mcr3.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/mcr3.h",
 	MAME_DIR .. "src/mame/video/mcr3.cpp",
 	MAME_DIR .. "src/mame/drivers/spyhuntertec.cpp",
@@ -2740,20 +2740,20 @@ files {
 	MAME_DIR .. "src/mame/video/mcr68.cpp",
 	MAME_DIR .. "src/mame/drivers/zwackery.cpp",
 	MAME_DIR .. "src/mame/drivers/midqslvr.cpp",
-	MAME_DIR .. "src/hbmame/drivers/midtunit.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/midtunit.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/midtunit.h",
 	MAME_DIR .. "src/mame/machine/midtunit.cpp",
 	MAME_DIR .. "src/mame/video/midtunit.cpp",
 	MAME_DIR .. "src/mame/drivers/midvunit.cpp",
 --	MAME_DIR .. "src/mame/includes/midvunit.h",
 	MAME_DIR .. "src/mame/video/midvunit.cpp",
-	MAME_DIR .. "src/hbmame/drivers/midwunit.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/midwunit.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/midwunit.h",
 	MAME_DIR .. "src/mame/machine/midwunit.cpp",
 	MAME_DIR .. "src/mame/drivers/midxunit.cpp",
 --	MAME_DIR .. "src/mame/includes/midxunit.h",
 	MAME_DIR .. "src/mame/machine/midxunit.cpp",
-	MAME_DIR .. "src/hbmame/drivers/midyunit.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/midyunit.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/midyunit.h",
 	MAME_DIR .. "src/mame/machine/midyunit.cpp",
 	MAME_DIR .. "src/mame/video/midyunit.cpp",
@@ -2772,7 +2772,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/tmaster.cpp",
 	MAME_DIR .. "src/mame/drivers/vegas.cpp",
 	MAME_DIR .. "src/mame/drivers/wmg.cpp",
-	MAME_DIR .. "src/hbmame/drivers/williams.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/williams.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/williams.h",
 	MAME_DIR .. "src/mame/machine/williams.cpp",
 	MAME_DIR .. "src/mame/audio/williams.cpp",
@@ -2801,7 +2801,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/dambustr.cpp",
 	MAME_DIR .. "src/mame/drivers/dkmb.cpp",
 	MAME_DIR .. "src/mame/drivers/gal3.cpp",
-	MAME_DIR .. "src/hbmame/drivers/galaga.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/galaga.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/galaga.h",
 	MAME_DIR .. "src/mame/audio/galaga.cpp",
 	MAME_DIR .. "src/mame/video/galaga.cpp",
@@ -2812,7 +2812,7 @@ files {
 	MAME_DIR .. "src/mame/machine/xevious.cpp",
 --	MAME_DIR .. "src/mame/includes/xevious.h",
 	MAME_DIR .. "src/mame/video/xevious.cpp",
-	MAME_DIR .. "src/hbmame/drivers/galaxian.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/galaxian.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/galaxian.h",
 	MAME_DIR .. "src/mame/audio/galaxian.cpp",
 --	MAME_DIR .. "src/mame/audio/galaxian.h",
@@ -2826,13 +2826,13 @@ files {
 	MAME_DIR .. "src/mame/machine/gaplus.cpp",
 	MAME_DIR .. "src/mame/video/gaplus.cpp",
 	MAME_DIR .. "src/mame/drivers/kungfur.cpp",
-	MAME_DIR .. "src/hbmame/drivers/mappy.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/mappy.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/mappy.h",
 	MAME_DIR .. "src/mame/video/mappy.cpp",
 	MAME_DIR .. "src/mame/drivers/namcofl.cpp",
 --	MAME_DIR .. "src/mame/includes/namcofl.h",
 	MAME_DIR .. "src/mame/video/namcofl.cpp",
-	MAME_DIR .. "src/hbmame/drivers/namcona1.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/namcona1.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/namcona1.h",
 	MAME_DIR .. "src/mame/video/namcona1.cpp",
 	MAME_DIR .. "src/mame/drivers/namconb1.cpp",
@@ -2858,7 +2858,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/namcos12.cpp",
 	MAME_DIR .. "src/mame/machine/namco_settings.cpp",
 --	MAME_DIR .. "src/mame/machine/namco_settings.h",
-	MAME_DIR .. "src/hbmame/drivers/namcos2.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/namcos2.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/namcos2.h",
 	MAME_DIR .. "src/mame/machine/namcos2.cpp",
 	MAME_DIR .. "src/mame/video/namcos2.cpp",
@@ -2887,18 +2887,18 @@ files {
 --	MAME_DIR .. "src/mame/includes/namcos22.h",
 	MAME_DIR .. "src/mame/video/namcos22.cpp",
 	MAME_DIR .. "src/mame/drivers/namcos23.cpp",
-	MAME_DIR .. "src/hbmame/drivers/namcos86.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/namcos86.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/namcos86.h",
 	MAME_DIR .. "src/mame/video/namcos86.cpp",
-	MAME_DIR .. "src/hbmame/drivers/pacland.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/pacland.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/pacland.h",
 	MAME_DIR .. "src/mame/video/pacland.cpp",
-	MAME_DIR .. "src/hbmame/drivers/polepos.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/polepos.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/polepos.h",
 	MAME_DIR .. "src/mame/audio/polepos.cpp",
 --	MAME_DIR .. "src/mame/audio/polepos.h",
 	MAME_DIR .. "src/mame/video/polepos.cpp",
-	MAME_DIR .. "src/hbmame/drivers/rallyx.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/rallyx.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/rallyx.h",
 	MAME_DIR .. "src/mame/video/rallyx.cpp",
 	MAME_DIR .. "src/mame/drivers/shootaway2.cpp",
@@ -2972,47 +2972,20 @@ files {
 
 createMAMEProjects(_target, _subtarget, "neogeo")
 files {
-	MAME_DIR .. "src/hbmame/drivers/neogeo.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/neogeohb.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/neogeo1.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/kof94.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/kof95.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/kof96.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/kof97.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/kof98.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/kof99.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/kof2000.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/kof2001.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/kof2002.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/kof2003.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/mslug.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/mslug2.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/mslug3.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/mslug4.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/mslug5.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/mslugx.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/ngdoubledr.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/nggaroup.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/ngkofmisc.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/nglastblade.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/ngrbff.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/ngrotd.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/ngsamsho.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/ngsengoku.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/ngsvc.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/ngwh.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/video/neogeo.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/neogeo_noslot.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/video/neogeo_spr.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/machine/ng_memcard.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo/prot.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo/banked_cart.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/ctrl.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/joystick.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/mahjong.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/dial.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/irrmaze.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/kizuna4p.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/neogeo.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/neogeo_noslothb.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/video/neogeo.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/neogeo_noslot.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/video/neogeo_spr.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/machine/ng_memcard.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/bus/neogeo/prot.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/bus/neogeo/banked_cart.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/bus/neogeo_ctrl/ctrl.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/bus/neogeo_ctrl/joystick.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/bus/neogeo_ctrl/mahjong.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/bus/neogeo_ctrl/dial.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/bus/neogeo_ctrl/irrmaze.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/bus/neogeo_ctrl/kizuna4p.cpp", --HBMAME
 }
 
 createMAMEProjects(_target, _subtarget, "nichibut")
@@ -3020,7 +2993,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/armedf.cpp",
 --	MAME_DIR .. "src/mame/includes/armedf.h",
 	MAME_DIR .. "src/mame/video/armedf.cpp",
-	MAME_DIR .. "src/hbmame/drivers/cclimber.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/cclimber.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/cclimber.h",
 	MAME_DIR .. "src/mame/machine/cclimber.cpp",
 	MAME_DIR .. "src/mame/audio/cclimber.cpp",
@@ -3103,7 +3076,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/dkong.h",
 	MAME_DIR .. "src/mame/audio/dkong.cpp",
 	MAME_DIR .. "src/mame/video/dkong.cpp",
-	MAME_DIR .. "src/hbmame/drivers/mario.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/mario.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/mario.h",
 	MAME_DIR .. "src/mame/audio/nl_mario.cpp",
 --	MAME_DIR .. "src/mame/audio/nl_mario.h",
@@ -3119,7 +3092,7 @@ files {
 	MAME_DIR .. "src/mame/machine/snes.cpp",
 	MAME_DIR .. "src/mame/audio/snes_snd.cpp",
 --	MAME_DIR .. "src/mame/audio/snes_snd.h",
-	MAME_DIR .. "src/hbmame/drivers/playch10.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/playch10.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/playch10.h",
 	MAME_DIR .. "src/mame/machine/playch10.cpp",
 	MAME_DIR .. "src/mame/video/playch10.cpp",
@@ -3134,12 +3107,12 @@ files {
 	MAME_DIR .. "src/mame/drivers/famibox.cpp",
 	MAME_DIR .. "src/mame/drivers/sfcbox.cpp",
 	MAME_DIR .. "src/mame/drivers/snesb51.cpp",
-	MAME_DIR .. "src/hbmame/drivers/snesb.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/snesb.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/spacefb.cpp",
 --	MAME_DIR .. "src/mame/includes/spacefb.h",
 	MAME_DIR .. "src/mame/audio/spacefb.cpp",
 	MAME_DIR .. "src/mame/video/spacefb.cpp",
-	MAME_DIR .. "src/hbmame/drivers/vsnes.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/vsnes.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/vsnes.h",
 	MAME_DIR .. "src/mame/machine/vsnes.cpp",
 }
@@ -3163,7 +3136,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/macrossp.cpp",
 --	MAME_DIR .. "src/mame/includes/macrossp.h",
 	MAME_DIR .. "src/mame/video/macrossp.cpp",
-	MAME_DIR .. "src/hbmame/drivers/nmk16.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/nmk16.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/nmk16.h",
 	MAME_DIR .. "src/mame/machine/nmk004.cpp",
 --	MAME_DIR .. "src/mame/machine/nmk004.h",
@@ -3171,7 +3144,7 @@ files {
 	MAME_DIR .. "src/mame/video/nmk16spr.cpp",
 --	MAME_DIR .. "src/mame/video/nmk16spr.h",
 	MAME_DIR .. "src/mame/drivers/nmkmedal.cpp",
-	MAME_DIR .. "src/hbmame/drivers/powerins.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/powerins.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/powerins.h",
 	MAME_DIR .. "src/mame/video/powerins.cpp",
 	MAME_DIR .. "src/mame/drivers/quizdna.cpp",
@@ -3237,9 +3210,9 @@ files {
 
 createMAMEProjects(_target, _subtarget, "pacman")
 files {
-	MAME_DIR .. "src/hbmame/drivers/jrpacman.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/pacman.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/video/pacman.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/jrpacman.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/pacman.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/video/pacman.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/video/pacman.cpp",
 --	MAME_DIR .. "src/mame/machine/epos.cpp",
 --	MAME_DIR .. "src/mame/machine/epos.h",
@@ -3265,7 +3238,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/naughtyb.cpp",
 --	MAME_DIR .. "src/mame/includes/naughtyb.h",
 	MAME_DIR .. "src/mame/video/naughtyb.cpp",
-	MAME_DIR .. "src/hbmame/drivers/phoenix.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/phoenix.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/phoenix.h",
 	MAME_DIR .. "src/mame/audio/phoenix.cpp",
 --	MAME_DIR .. "src/mame/audio/phoenix.h",
@@ -3299,13 +3272,13 @@ files {
 
 createMAMEProjects(_target, _subtarget, "psikyo")
 files {
-	MAME_DIR .. "src/hbmame/drivers/psikyo.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/psikyo.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/psikyo.h",
 	MAME_DIR .. "src/mame/video/psikyo.cpp",
 	MAME_DIR .. "src/mame/drivers/psikyo4.cpp",
 --	MAME_DIR .. "src/mame/includes/psikyo4.h",
 	MAME_DIR .. "src/mame/video/psikyo4.cpp",
-	MAME_DIR .. "src/hbmame/drivers/psikyosh.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/psikyosh.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/psikyosh.h",
 	MAME_DIR .. "src/mame/video/psikyosh.cpp",
 }
@@ -3367,7 +3340,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/deniam.cpp",
 --	MAME_DIR .. "src/mame/includes/deniam.h",
 	MAME_DIR .. "src/mame/video/deniam.cpp",
-	MAME_DIR .. "src/hbmame/drivers/dotrikun.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/dotrikun.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/gpworld.cpp",
 	MAME_DIR .. "src/mame/drivers/hikaru.cpp",
 	MAME_DIR .. "src/mame/drivers/hshavoc.cpp",
@@ -3397,7 +3370,7 @@ files {
 --	MAME_DIR .. "src/mame/machine/m2comm.h",
 	MAME_DIR .. "src/mame/audio/dsbz80.cpp",
 --	MAME_DIR .. "src/mame/audio/dsbz80.h",
-	MAME_DIR .. "src/hbmame/drivers/model2.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/model2.cpp", --HBMAME
 	MAME_DIR .. "src/mame/machine/model2.cpp",
 --	MAME_DIR .. "src/mame/includes/model2.h",
 --	MAME_DIR .. "src/mame/video/model2rd.hxx",
@@ -3449,7 +3422,7 @@ files {
 --	MAME_DIR .. "src/mame/machine/jvs13551.h",
 	MAME_DIR .. "src/mame/drivers/triforce.cpp",
 	MAME_DIR .. "src/mame/drivers/puckpkmn.cpp",
-	MAME_DIR .. "src/hbmame/drivers/segac2.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/segac2.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/segae.cpp",
 	MAME_DIR .. "src/mame/drivers/sms.cpp",
 --	MAME_DIR .. "src/mame/includes/sms.h",
@@ -3457,7 +3430,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/sms_bootleg.cpp",
 	MAME_DIR .. "src/mame/drivers/shtzone.cpp",
 	MAME_DIR .. "src/mame/drivers/segacoin.cpp",
-	MAME_DIR .. "src/hbmame/drivers/segag80r.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/segag80r.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/segag80r.h",
 	MAME_DIR .. "src/mame/machine/segag80.cpp",
 --	MAME_DIR .. "src/mame/machine/segag80.h",
@@ -3473,23 +3446,23 @@ files {
 	MAME_DIR .. "src/mame/video/segahang.cpp",
 	MAME_DIR .. "src/mame/drivers/segajw.cpp",
 	MAME_DIR .. "src/mame/drivers/segald.cpp",
-	MAME_DIR .. "src/hbmame/drivers/segaorun.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/segaorun.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/segaorun.h",
 	MAME_DIR .. "src/mame/video/segaorun.cpp",
 	MAME_DIR .. "src/mame/drivers/segas16a.cpp",
 --	MAME_DIR .. "src/mame/includes/segas16a.h",
 	MAME_DIR .. "src/mame/video/segas16a.cpp",
-	MAME_DIR .. "src/hbmame/drivers/segas16b.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/segas16b.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/segas16b.h",
 	MAME_DIR .. "src/mame/video/segas16b.cpp",
 	MAME_DIR .. "src/mame/drivers/segas18.cpp",
 --	MAME_DIR .. "src/mame/includes/segas18.h",
 	MAME_DIR .. "src/mame/video/segas18.cpp",
-	MAME_DIR .. "src/hbmame/drivers/segas24.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/segas24.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/segas24.h",
 	MAME_DIR .. "src/mame/video/segas24.cpp",
 	MAME_DIR .. "src/mame/drivers/segam1.cpp",
-	MAME_DIR .. "src/hbmame/drivers/segas32.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/segas32.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/segas32.h",
 	MAME_DIR .. "src/mame/machine/segas32.cpp",
 	MAME_DIR .. "src/mame/video/segas32.cpp",
@@ -3506,7 +3479,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/stactics.cpp",
 --	MAME_DIR .. "src/mame/includes/stactics.h",
 	MAME_DIR .. "src/mame/video/stactics.cpp",
-	MAME_DIR .. "src/hbmame/drivers/stv.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/stv.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/saturn.h",
 	MAME_DIR .. "src/mame/drivers/saturn.cpp",
 	MAME_DIR .. "src/mame/machine/saturn.cpp",
@@ -3520,12 +3493,12 @@ files {
 	MAME_DIR .. "src/mame/drivers/suprloco.cpp",
 --	MAME_DIR .. "src/mame/includes/suprloco.h",
 	MAME_DIR .. "src/mame/video/suprloco.cpp",
-	MAME_DIR .. "src/hbmame/drivers/system1.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/system1.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/system1.h",
 	MAME_DIR .. "src/mame/machine/segacrp2_device.cpp",
 --	MAME_DIR .. "src/mame/machine/segacrp2_device.h",
 	MAME_DIR .. "src/mame/video/system1.cpp",
-	MAME_DIR .. "src/hbmame/drivers/system16.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/system16.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/system16.h",
 	MAME_DIR .. "src/mame/video/system16.cpp",
 	MAME_DIR .. "src/mame/drivers/timetrv.cpp",
@@ -3600,10 +3573,10 @@ files {
 createMAMEProjects(_target, _subtarget, "seibu")
 files {
 --	MAME_DIR .. "src/mame/drivers/airraid.cpp",
-	MAME_DIR .. "src/hbmame/drivers/bloodbro.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/bloodbro.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/bloodbro.h",
 	MAME_DIR .. "src/mame/video/bloodbro.cpp",
-	MAME_DIR .. "src/hbmame/drivers/cabal.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/cabal.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/cabal.h",
 	MAME_DIR .. "src/mame/video/cabal.cpp",
 	MAME_DIR .. "src/mame/drivers/darkmist.cpp",
@@ -3638,7 +3611,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/raiden.cpp",
 --	MAME_DIR .. "src/mame/includes/raiden.h",
 	MAME_DIR .. "src/mame/video/raiden.cpp",
-	MAME_DIR .. "src/hbmame/drivers/raiden2.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/raiden2.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/raiden2.h",
 	MAME_DIR .. "src/mame/video/raiden2.cpp",
 	MAME_DIR .. "src/mame/machine/r2crypt.cpp",
@@ -3647,7 +3620,7 @@ files {
 	MAME_DIR .. "src/mame/machine/seibucop/seibucop_dma.hxx",
 	MAME_DIR .. "src/mame/machine/seibucop/seibucop_cmd.hxx",
 --	MAME_DIR .. "src/mame/machine/seibucop/seibucop.h",
-	MAME_DIR .. "src/hbmame/drivers/r2dx_v33.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/r2dx_v33.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/seibuspi.cpp",
 --	MAME_DIR .. "src/mame/includes/seibuspi.h",
 	MAME_DIR .. "src/mame/video/seibuspi.cpp",
@@ -3664,7 +3637,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/toki.h",
 	MAME_DIR .. "src/mame/drivers/toki_ms.cpp",
 	MAME_DIR .. "src/mame/video/toki.cpp",
-	MAME_DIR .. "src/hbmame/drivers/wiz.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/wiz.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/wiz.h",
 	MAME_DIR .. "src/mame/video/wiz.cpp",
 	MAME_DIR .. "src/mame/machine/seicopbl.cpp",
@@ -3698,10 +3671,10 @@ files {
 	MAME_DIR .. "src/mame/video/hanaawas.cpp",
 	MAME_DIR .. "src/mame/drivers/jclub2.cpp",
 	MAME_DIR .. "src/mame/drivers/macs.cpp",
-	MAME_DIR .. "src/hbmame/drivers/seta.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/seta.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/seta.h",
 	MAME_DIR .. "src/mame/video/seta.cpp",
-	MAME_DIR .. "src/hbmame/drivers/seta2.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/seta2.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/seta2.h",
 	MAME_DIR .. "src/mame/video/seta2.cpp",
 	MAME_DIR .. "src/mame/drivers/speedatk.cpp",
@@ -3713,14 +3686,14 @@ files {
 	MAME_DIR .. "src/mame/video/srmp2.cpp",
 	MAME_DIR .. "src/mame/drivers/srmp5.cpp",
 	MAME_DIR .. "src/mame/drivers/srmp6.cpp",
-	MAME_DIR .. "src/hbmame/drivers/ssv.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/ssv.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/ssv.h",
 	MAME_DIR .. "src/mame/video/ssv.cpp",
 	MAME_DIR .. "src/mame/video/st0020.cpp",
 --	MAME_DIR .. "src/mame/video/st0020.h",
 	MAME_DIR .. "src/mame/machine/st0016.cpp",
 --	MAME_DIR .. "src/mame/machine/st0016.h",
-	MAME_DIR .. "src/hbmame/drivers/simple_st0016.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/simple_st0016.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/simple_st0016.h",
 	MAME_DIR .. "src/mame/video/seta001.cpp",
 --	MAME_DIR .. "src/mame/video/seta001.h",
@@ -3767,7 +3740,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/prehisle.cpp",
 --	MAME_DIR .. "src/mame/includes/prehisle.h",
 	MAME_DIR .. "src/mame/video/prehisle.cpp",
-	MAME_DIR .. "src/hbmame/drivers/snk6502.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/snk6502.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/snk6502.h",
 	MAME_DIR .. "src/mame/audio/snk6502.cpp",
 --	MAME_DIR .. "src/mame/audio/snk6502.h",
@@ -3786,7 +3759,7 @@ files {
 
 createMAMEProjects(_target, _subtarget, "sony")
 files {
-	MAME_DIR .. "src/hbmame/drivers/zn.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/zn.cpp", --HBMAME
 	MAME_DIR .. "src/mame/machine/znmcu.cpp",
 --	MAME_DIR .. "src/mame/machine/znmcu.h",
 	MAME_DIR .. "src/mame/machine/cat702.cpp",
@@ -3859,14 +3832,14 @@ files {
 	MAME_DIR .. "src/mame/drivers/40love.cpp",
 --	MAME_DIR .. "src/mame/includes/40love.h",
 	MAME_DIR .. "src/mame/video/40love.cpp",
-	MAME_DIR .. "src/hbmame/drivers/arkanoid.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/arkanoid.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/arkanoid.h",
 	MAME_DIR .. "src/mame/machine/arkanoid.cpp",
 	MAME_DIR .. "src/mame/video/arkanoid.cpp",
 	MAME_DIR .. "src/mame/drivers/ashnojoe.cpp",
 --	MAME_DIR .. "src/mame/includes/ashnojoe.h",
 	MAME_DIR .. "src/mame/video/ashnojoe.cpp",
-	MAME_DIR .. "src/hbmame/drivers/asuka.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/asuka.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/asuka.h",
 	MAME_DIR .. "src/mame/video/asuka.cpp",
 	MAME_DIR .. "src/mame/drivers/bigevglf.cpp",
@@ -3876,7 +3849,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/bking.cpp",
 --	MAME_DIR .. "src/mame/includes/bking.h",
 	MAME_DIR .. "src/mame/video/bking.cpp",
-	MAME_DIR .. "src/hbmame/drivers/bublbobl.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/bublbobl.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/bublbobl.h",
 	MAME_DIR .. "src/mame/machine/bublbobl.cpp",
 	MAME_DIR .. "src/mame/video/bublbobl.cpp",
@@ -3912,7 +3885,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/fgoal.cpp",
 --	MAME_DIR .. "src/mame/includes/fgoal.h",
 	MAME_DIR .. "src/mame/video/fgoal.cpp",
-	MAME_DIR .. "src/hbmame/drivers/flstory.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/flstory.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/flstory.h",
 	MAME_DIR .. "src/mame/machine/flstory.cpp",
 	MAME_DIR .. "src/mame/video/flstory.cpp",
@@ -3945,7 +3918,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/ksayakyu.h",
 	MAME_DIR .. "src/mame/video/ksayakyu.cpp",
 	MAME_DIR .. "src/mame/drivers/lgp.cpp",
-	MAME_DIR .. "src/hbmame/drivers/lkage.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/lkage.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/lkage.h",
 	MAME_DIR .. "src/mame/video/lkage.cpp",
 	MAME_DIR .. "src/mame/drivers/lsasquad.cpp",
@@ -3953,7 +3926,7 @@ files {
 	MAME_DIR .. "src/mame/machine/lsasquad.cpp",
 	MAME_DIR .. "src/mame/video/lsasquad.cpp",
 	MAME_DIR .. "src/mame/drivers/marinedt.cpp",
-	MAME_DIR .. "src/hbmame/drivers/mexico86.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/mexico86.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/mexico86.h",
 	MAME_DIR .. "src/mame/machine/mexico86.cpp",
 	MAME_DIR .. "src/mame/video/mexico86.cpp",
@@ -3985,10 +3958,10 @@ files {
 	MAME_DIR .. "src/mame/drivers/rbisland.cpp",
 --	MAME_DIR .. "src/mame/includes/rbisland.h",
 	MAME_DIR .. "src/mame/video/rbisland.cpp",
-	MAME_DIR .. "src/hbmame/drivers/rastan.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/rastan.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/rastan.h",
 	MAME_DIR .. "src/mame/video/rastan.cpp",
-	MAME_DIR .. "src/hbmame/drivers/retofinv.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/retofinv.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/retofinv.h",
 	MAME_DIR .. "src/mame/video/retofinv.cpp",
 	MAME_DIR .. "src/mame/drivers/rollrace.cpp",
@@ -4010,14 +3983,14 @@ files {
 	MAME_DIR .. "src/mame/drivers/superqix.cpp",
 --	MAME_DIR .. "src/mame/includes/superqix.h",
 	MAME_DIR .. "src/mame/video/superqix.cpp",
-	MAME_DIR .. "src/hbmame/drivers/taito_b.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/taito_b.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/taito_b.h",
 	MAME_DIR .. "src/mame/video/taito_b.cpp",
 --	MAME_DIR .. "src/mame/includes/taitoipt.h",
-	MAME_DIR .. "src/hbmame/drivers/taito_f2.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/taito_f2.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/taito_f2.h",
 	MAME_DIR .. "src/mame/video/taito_f2.cpp",
-	MAME_DIR .. "src/hbmame/drivers/taito_f3.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/taito_f3.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/taito_f3.h",
 	MAME_DIR .. "src/mame/video/taito_f3.cpp",
 	MAME_DIR .. "src/mame/audio/taito_en.cpp",
@@ -4025,7 +3998,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/taito_h.cpp",
 --	MAME_DIR .. "src/mame/includes/taito_h.h",
 	MAME_DIR .. "src/mame/video/taito_h.cpp",
-	MAME_DIR .. "src/hbmame/drivers/taito_l.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/taito_l.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/taito_l.h",
 	MAME_DIR .. "src/mame/video/taito_l.cpp",
 	MAME_DIR .. "src/mame/drivers/taito_x.cpp",
@@ -4046,7 +4019,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/taitojc.h",
 	MAME_DIR .. "src/mame/video/taitojc.cpp",
 	MAME_DIR .. "src/mame/drivers/taitopjc.cpp",
-	MAME_DIR .. "src/hbmame/drivers/taitosj.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/taitosj.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/taitosj.h",
 	MAME_DIR .. "src/mame/machine/taitosj.cpp",
 	MAME_DIR .. "src/mame/video/taitosj.cpp",
@@ -4054,7 +4027,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/taitotz.cpp",
 	MAME_DIR .. "src/mame/drivers/taitotx.cpp",
 	MAME_DIR .. "src/mame/drivers/taitowlf.cpp",
-	MAME_DIR .. "src/hbmame/drivers/tnzs.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/tnzs.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/tnzs.h",
 	MAME_DIR .. "src/mame/machine/tnzs.cpp",
 	MAME_DIR .. "src/mame/video/tnzs.cpp",
@@ -4067,10 +4040,10 @@ files {
 	MAME_DIR .. "src/mame/drivers/undrfire.cpp",
 --	MAME_DIR .. "src/mame/includes/undrfire.h",
 	MAME_DIR .. "src/mame/video/undrfire.cpp",
-	MAME_DIR .. "src/hbmame/drivers/volfied.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/volfied.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/volfied.h",
 	MAME_DIR .. "src/mame/video/volfied.cpp",
-	MAME_DIR .. "src/hbmame/drivers/warriorb.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/warriorb.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/warriorb.h",
 	MAME_DIR .. "src/mame/video/warriorb.cpp",
 	MAME_DIR .. "src/mame/drivers/wgp.cpp",
@@ -4170,7 +4143,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/bogeyman.h",
 	MAME_DIR .. "src/mame/video/bogeyman.cpp",
 	MAME_DIR .. "src/mame/drivers/chinagat.cpp",
-	MAME_DIR .. "src/hbmame/drivers/ddragon.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/ddragon.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/ddragon.h",
 	MAME_DIR .. "src/mame/video/ddragon.cpp",
 	MAME_DIR .. "src/mame/drivers/ddragon3.cpp",
@@ -4189,7 +4162,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/renegade.h",
 	MAME_DIR .. "src/mame/video/renegade.cpp",
 	MAME_DIR .. "src/mame/drivers/scregg.cpp",
-	MAME_DIR .. "src/hbmame/drivers/shadfrce.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/shadfrce.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/shadfrce.h",
 	MAME_DIR .. "src/mame/video/shadfrce.cpp",
 	MAME_DIR .. "src/mame/drivers/spdodgeb.cpp",
@@ -4218,7 +4191,7 @@ files {
 --	MAME_DIR .. "src/mame/video/tecmo_spr.h",
 	MAME_DIR .. "src/mame/video/tecmo_mix.cpp",
 --	MAME_DIR .. "src/mame/video/tecmo_mix.h",
-	MAME_DIR .. "src/hbmame/drivers/bombjack.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/bombjack.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/bombjack.h",
 	MAME_DIR .. "src/mame/video/bombjack.cpp",
 	MAME_DIR .. "src/mame/drivers/gaiden.cpp",
@@ -4234,7 +4207,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/senjyo.h",
 	MAME_DIR .. "src/mame/audio/senjyo.cpp",
 	MAME_DIR .. "src/mame/video/senjyo.cpp",
-	MAME_DIR .. "src/hbmame/drivers/solomon.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/solomon.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/solomon.h",
 	MAME_DIR .. "src/mame/video/solomon.cpp",
 	MAME_DIR .. "src/mame/drivers/spbactn.cpp",
@@ -4243,23 +4216,23 @@ files {
 	MAME_DIR .. "src/mame/drivers/tbowl.cpp",
 --	MAME_DIR .. "src/mame/includes/tbowl.h",
 	MAME_DIR .. "src/mame/video/tbowl.cpp",
-	MAME_DIR .. "src/hbmame/drivers/tecmo.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/tecmo.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/tecmo.h",
 	MAME_DIR .. "src/mame/video/tecmo.cpp",
-	MAME_DIR .. "src/hbmame/drivers/tecmo16.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/tecmo16.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/tecmo16.h",
 	MAME_DIR .. "src/mame/video/tecmo16.cpp",
-	MAME_DIR .. "src/hbmame/drivers/tecmosys.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/tecmosys.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/tecmosys.h",
 	MAME_DIR .. "src/mame/machine/tecmosys.cpp",
 	MAME_DIR .. "src/mame/video/tecmosys.cpp",
-	MAME_DIR .. "src/hbmame/drivers/tehkanwc.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/tehkanwc.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/tehkanwc.h",
 	MAME_DIR .. "src/mame/video/tehkanwc.cpp",
 	MAME_DIR .. "src/mame/drivers/wc90.cpp",
 --	MAME_DIR .. "src/mame/includes/wc90.h",
 	MAME_DIR .. "src/mame/video/wc90.cpp",
-	MAME_DIR .. "src/hbmame/drivers/wc90b.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/wc90b.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/wc90b.h",
 	MAME_DIR .. "src/mame/video/wc90b.cpp",
 }
@@ -4279,7 +4252,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/thepit.cpp",
 --	MAME_DIR .. "src/mame/includes/thepit.h",
 	MAME_DIR .. "src/mame/video/thepit.cpp",
-	MAME_DIR .. "src/hbmame/drivers/timelimt.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/timelimt.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/timelimt.h",
 	MAME_DIR .. "src/mame/video/timelimt.cpp",
 }
@@ -4291,7 +4264,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/slapfght.h",
 	MAME_DIR .. "src/mame/machine/slapfght.cpp",
 	MAME_DIR .. "src/mame/video/slapfght.cpp",
-	MAME_DIR .. "src/hbmame/drivers/snowbros.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/snowbros.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/snowbros.h",
 	MAME_DIR .. "src/mame/video/snowbros.cpp",
 	MAME_DIR .. "src/mame/video/kan_pand.cpp",
@@ -4301,12 +4274,12 @@ files {
 	MAME_DIR .. "src/mame/machine/toaplan1.cpp",
 	MAME_DIR .. "src/mame/video/toaplan1.cpp",
 --	MAME_DIR .. "src/mame/includes/toaplipt.h",
-	MAME_DIR .. "src/hbmame/drivers/toaplan2.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/toaplan2.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/toaplan2.h",
 	MAME_DIR .. "src/mame/video/toaplan2.cpp",
 	MAME_DIR .. "src/mame/video/gp9001.cpp",
 --	MAME_DIR .. "src/mame/video/gp9001.h",
-	MAME_DIR .. "src/hbmame/drivers/twincobr.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/twincobr.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/twincobr.h",
 	MAME_DIR .. "src/mame/machine/twincobr.cpp",
 	MAME_DIR .. "src/mame/video/twincobr.cpp",
@@ -4320,7 +4293,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/drgnmst.cpp",
 --	MAME_DIR .. "src/mame/includes/drgnmst.h",
 	MAME_DIR .. "src/mame/video/drgnmst.cpp",
-	MAME_DIR .. "src/hbmame/drivers/silkroad.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/silkroad.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/silkroad.h",
 	MAME_DIR .. "src/mame/video/silkroad.cpp",
 	MAME_DIR .. "src/mame/drivers/unianapc.cpp",
@@ -4341,7 +4314,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/cosmic.cpp",
 --	MAME_DIR .. "src/mame/includes/cosmic.h",
 	MAME_DIR .. "src/mame/video/cosmic.cpp",
-	MAME_DIR .. "src/hbmame/drivers/docastle.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/docastle.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/docastle.h",
 	MAME_DIR .. "src/mame/machine/docastle.cpp",
 	MAME_DIR .. "src/mame/video/docastle.cpp",
@@ -4349,7 +4322,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/ladybug.h",
 	MAME_DIR .. "src/mame/video/ladybug.cpp",
 --	MAME_DIR .. "src/mame/video/ladybug.h",
-	MAME_DIR .. "src/hbmame/drivers/mrdo.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/mrdo.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/mrdo.h",
 	MAME_DIR .. "src/mame/video/mrdo.cpp",
 	MAME_DIR .. "src/mame/drivers/redclash.cpp",
@@ -4376,7 +4349,7 @@ files {
 
 createMAMEProjects(_target, _subtarget, "valadon")
 files {
-	MAME_DIR .. "src/hbmame/drivers/bagman.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/bagman.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/bagman.h",
 	MAME_DIR .. "src/mame/machine/bagman.cpp",
 	MAME_DIR .. "src/mame/video/bagman.cpp",
@@ -4406,7 +4379,7 @@ files {
 --	MAME_DIR .. "src/mame/video/vsystem_spr.h",
 	MAME_DIR .. "src/mame/video/vsystem_spr2.cpp",
 --	MAME_DIR .. "src/mame/video/vsystem_spr2.h",
-	MAME_DIR .. "src/hbmame/drivers/aerofgt.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/aerofgt.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/aerofgt.h",
 	MAME_DIR .. "src/mame/video/aerofgt.cpp",
 	MAME_DIR .. "src/mame/drivers/crshrace.cpp",
@@ -4444,7 +4417,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/tail2nos.cpp",
 --	MAME_DIR .. "src/mame/includes/tail2nos.h",
 	MAME_DIR .. "src/mame/video/tail2nos.cpp",
-	MAME_DIR .. "src/hbmame/drivers/taotaido.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/taotaido.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/taotaido.h",
 	MAME_DIR .. "src/mame/video/taotaido.cpp",
 	MAME_DIR .. "src/mame/drivers/welltris.cpp",
@@ -4685,11 +4658,11 @@ files {
 	MAME_DIR .. "src/mame/drivers/cardline.cpp",
 	MAME_DIR .. "src/mame/drivers/carrera.cpp",
 --	MAME_DIR .. "src/mame/drivers/castle.cpp",
-	MAME_DIR .. "src/hbmame/drivers/cave.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/cave.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/cave.h",
 	MAME_DIR .. "src/mame/video/cave.cpp",
 	MAME_DIR .. "src/mame/drivers/cavepc.cpp",
-	MAME_DIR .. "src/hbmame/drivers/cv1k.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/cv1k.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/drivers/cb2001.cpp",
 	MAME_DIR .. "src/mame/drivers/cdi.cpp",
 --	MAME_DIR .. "src/mame/includes/cdi.h",
@@ -4830,7 +4803,7 @@ files {
 --	MAME_DIR .. "src/mame/drivers/kas89.cpp",
 	MAME_DIR .. "src/mame/drivers/kingpin.cpp",
 	MAME_DIR .. "src/mame/drivers/kurukuru.cpp",
-	MAME_DIR .. "src/hbmame/drivers/kyugo.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/kyugo.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/kyugo.h",
 	MAME_DIR .. "src/mame/video/kyugo.cpp",
 	MAME_DIR .. "src/mame/drivers/ladyfrog.cpp",
@@ -4856,7 +4829,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/malzak.h",
 	MAME_DIR .. "src/mame/video/malzak.cpp",
 --	MAME_DIR .. "src/mame/drivers/marywu.cpp",
-	MAME_DIR .. "src/hbmame/drivers/mcatadv.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/mcatadv.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/mcatadv.h",
 	MAME_DIR .. "src/mame/video/mcatadv.cpp",
 --	MAME_DIR .. "src/mame/drivers/mgavegas.cpp",
@@ -4999,7 +4972,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/usgames.cpp",
 --	MAME_DIR .. "src/mame/includes/usgames.h",
 	MAME_DIR .. "src/mame/video/usgames.cpp",
-	MAME_DIR .. "src/hbmame/drivers/vamphalf.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/vamphalf.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/vcombat.cpp",
 	MAME_DIR .. "src/mame/drivers/vectrex.cpp",
 --	MAME_DIR .. "src/mame/includes/vectrex.h",
@@ -5023,10 +4996,10 @@ files {
 
 createMAMEProjects(_target, _subtarget, "homebrow")
 files {
-	MAME_DIR .. "src/hbmame/drivers/schaser.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/spacmiss.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/monaco.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/hh_sm510.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/schaser.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/spacmiss.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/monaco.cpp", --HBMAME
+	MAME_DIR .. "src/homebrew/drivers/hh_sm510.cpp", --HBMAME
 	MAME_DIR .. "src/devices/video/ppu2c0x.cpp", --HBMAME
 	MAME_DIR .. "src/devices/machine/z80dma.cpp", --HBMAME
 }

@@ -2418,7 +2418,6 @@ burningf                        // 0018 (c) 1991 SNK
 burningfh                       // 0018 (c) 1991 SNK
 burningfp                       // 0018 (c) 1991 SNK (prototype)
 burningfpa                      // 0018 (c) 1991 SNK (prototype)
-crswd2bl                        // 0054 bootleg made from CD version
 crsword                         // 0037 (c) 1991 Alpha Denshi Co.
 ct2k3sa                         // bootleg of kof2001
 ct2k3sp                         // bootleg of kof2001
@@ -2710,6 +2709,64 @@ superspyd                        //Multi Game Doctor 2
 tpgolfd                          //Multi Game Doctor 2
 trallyd                          //Multi Game Doctor 2
 wh1d                             //Multi Game Doctor 2
+
+@source:neogeo.cpp
+2020bbcd                         //CD conversion
+crswd2bl                         //CD conversion
+gpilotscd                        //CD conversion
+ironcladcd                       //CD conversion
+joyjoycd                         //CD conversion
+joyjoycd1                        //CD conversion
+lbowlingcd                       //CD conversion
+pbobblencd                       //CD conversion
+pspikes2cd                       //CD conversion
+sengokucd                        //CD conversion
+ssidekicd                        //CD conversion
+strhoopcd                        //CD conversion
+superspycd                       //CD conversion
+tpgolfcd                         //CD conversion
+trallycd                         //CD conversion
+zintrkcd                         //CD conversion
+
+@source:neogeo.cpp              //HomeBrew
+abyssal                         //neogeo
+abyssal1                        //neogeo
+cabalng                         //neogeo
+cabalng1                        //neogeo
+caravan                         //neogeo
+cnbe                            //neogeo
+cnbe2018                        //neogeo
+cphd                            //neogeo
+columnsn                        //neogeo
+columnsncd                      //neogeo
+ffeast                          //neogeo
+hypernoid                       //neogeo
+lhbb                            //neogeo
+lhcdb                           //neogeo
+lhcdba                          //neogeo
+looptris                        //neogeo
+ltorb                           //neogeo
+neonopon                        //neogeo
+neopang                         //neogeo
+neopong                         //neogeo
+neoponga                        //neogeo
+neothund                        //neogeo
+neotrisd1                       //neogeo
+neotrisd2                       //neogeo
+neotrisd3                       //neogeo
+bonusstage                      //neogeo
+nblktiger                       //neogeo
+ngem2k                          //neogeo
+ngtetris                        //neogeo
+nsmb                            //neogeo
+santabll                        //neogeo
+seafight                        //neogeo
+teotb                           //neogeo
+teotd3                          //neogeo
+timesup                         //neogeo
+timesupd                        //neogeo
+totc                            //neogeo
+xeno                            //neogeo
 
 @source:nmk16.cpp
 acrobatm                        // UPL-91073 (c) 1991 UPL + Taito license
@@ -10503,6 +10560,7 @@ redeartn                        //No CD
 jojohack01                      //hack
 jojobahack01                    //hack
 jojobahack02                    //hack
+jojobahack03                    //hack
 redeartnhack01                  //hack
 sfiiihacks01                    //hack
 sfiiihacks02                    //hack
@@ -10512,8 +10570,198 @@ sfiii3hack01                    //hack
 sfiii3hack02                    //hack
 sfiii3hack03                    //hack
 sfiii3hack04                    //hack
+sfiii3hack05                    //hack
 
 @source:neogeo.cpp
+androdunhack01                  //hack
+aofhack01                       //hack
+aof2hack01                      //hack
+aof2hack02                      //hack
+aof3hack01                      //hack
+bangbeadd                       //bootleg
+ct2k3hack01                     //hack
+ct2k3sp                         //bootleg
+ct2k3spd                        //bootleg
+cthd2k3d                        //bootleg
+ct2k3ad                         //bootleg
+cthd2k3a                        //bootleg
+bjourneyhack01                  //hack
+blazstarhack01                  //hack
+breakershack01                  //hack
+breakrevhack01                  //hack
+breakrevhack02                  //hack
+breakrevhack03                  //hack
+burningfhack01                  //hack
+ctomadayhack01                  //hack
+doubledrhack01                  //hack
+doubledrhack02                  //hack
+doubledrhack03                  //hack
+doubledrhack04                  //hack
+dragons1                        //bootleg
+eightmanhack01                  //hack
+fatfursphack01                  //hack
+fatfursphack02                  //hack
+fatfury1hack01                  //hack
+fatfury2hack01                  //hack
+fatfury2hack02                  //hack
+fatfury3hack01                  //hack
+fatfury3hack02                  //hack
+fightfevhack01                  //hack
+flipshothack01                  //hack
+galaxyfghack01                  //hack
+ganryud                         //bootleg
+garouhack01                     //hack
+garouhack02                     //hack
+garoud                          //bootleg
+gowcaizrhack01                  //hack
+gowcaizrhack02                  //hack
+gpilotshack01                   //hack
+ironcladhack01                  //hack
+jockeygpd                       //bootleg
+kabukiklhack01                  //hack
+karnovrhack01                   //hack
+kizunahack01                    //hack
+kizunahack02                    //hack
+kof94hack01                     //hack
+kof94hack02                     //hack
+kof94hack03                     //hack
+kof94hack04                     //hack
+kof95hack01                     //hack
+kof95hack02                     //hack
+kof96hack01                     //hack
+kof96hack02                     //hack
+kof96hack03                     //hack
+kof96hack04                     //hack
+kof96ep                         //bootleg
+kof96cn                         //bootleg
+kof97hack01                     //hack
+kof97hack02                     //hack
+kof97hack03                     //hack
+kof97hack04                     //hack
+kof97hack05                     //hack
+kof97hack06                     //hack
+kof97hack07                     //hack
+kof97hack08                     //hack
+kof97hack09                     //hack
+kof97hack10                     //hack
+kof97hack11                     //hack
+kof97hack12                     //hack
+kof97hack13                     //hack
+kof97hack14                     //hack
+kof97hack15                     //hack
+kof97hack16                     //hack
+kof97hack17                     //hack
+kof97hack18                     //hack
+kof97hack19                     //hack
+kof97hack20                     //hack
+kof97hack21                     //hack
+kof97hack22                     //hack
+kof97hack23                     //hack
+kof97hack24                     //hack
+kof97hack25                     //hack
+kof97pla                        //bootleg
+kof98hack01                     //hack
+kof98hack02                     //hack
+kof98hack03                     //hack
+kof98hack04                     //hack
+kof98hack05                     //hack
+kof98hack06                     //hack
+kof98hack07                     //hack
+kof98hack08                     //hack
+kof98hack09                     //hack
+kof98hack10                     //hack
+kof98hack11                     //hack
+kof98hack12                     //hack
+kof99hack01                     //hack
+kof99hack02                     //hack
+kof99hack03                     //hack
+kof99hack04                     //hack
+kof99hack05                     //hack
+kof99hack06                     //hack
+kof99hack07                     //hack
+kof99hack08                     //hack
+kof99hack09                     //hack
+kof99nd                         //bootleg
+kof2000hack01                   //hack
+kof2000hack02                   //hack
+kof2000hack03                   //hack
+kof2000hack04                   //hack
+kof2000hack05                   //hack
+kof2000hack06                   //hack
+kof2000d                        //bootleg
+kof2knd                         //bootleg
+kof2001hack01                   //hack
+kof2001hack02                   //hack
+kof2001hack03                   //hack
+kof2001d                        //bootleg
+kof2001n                        //bootleg
+kof2k1pls                       //bootleg
+kof2k1pa                        //bootleg
+kof2k1nd                        //bootleg
+kof2002hack01                   //hack
+kof2002hack02                   //hack
+kof2002hack03                   //hack
+kof2002hack04                   //hack
+kof2002hack05                   //hack
+kof2002hack06                   //hack
+kof2002hack07                   //hack
+kof2002hack08                   //hack
+kof2002hack09                   //hack
+kof2002hack10                   //hack
+kof2k2pls                       //bootleg
+kof2k2pla                       //bootleg
+kof2k2plb                       //bootleg
+kof2k2plc                       //bootleg
+kof2002d                        //bootleg
+kof2003hack01                   //hack
+kof2003hack02                   //hack
+kof2003hack03                   //hack
+kof2003d                        //bootleg
+kof2003f                        //bootleg
+kof2k3d                         //bootleg
+kof2k3fd                        //bootleg
+kof2k3hd                        //bootleg
+kof2k3nd                        //bootleg
+kof2k3pcd                       //bootleg
+koghack01                       //hack
+kogd                            //bootleg
+kogplus                         //bootleg
+kogplus1                        //bootleg
+kof10thephack01                 //hack
+kof10thd                        //bootleg
+kf2k5unihack01                  //hack
+kf2k5unihack02                  //hack
+kof2k8uni                       //bootleg
+kof10thu                        //bootleg
+kof10thud                       //bootleg
+kof2k4sehack01                  //hack
+kof2k4sehack02                  //hack
+kof2k4mp                        //bootleg
+kof2k4mp2                       //bootleg
+kof2k4pls                       //bootleg
+kof2k4spl                       //bootleg
+kof2k4se1                       //bootleg
+lans2k4d                        //bootleg
+lastbladhack01                  //hack
+lastbladhack02                  //hack
+lastbladhack03                  //hack
+lastbladhack04                  //hack
+lastbladhack05                  //hack
+lastbld2hack01                  //hack
+lastbld2hack02                  //hack
+lastbld2hack03                  //hack
+lastbld2hack04                  //hack
+lresorthack01                   //hack
+magdrop3hack01                  //hack
+magdrop3hack02                  //hack
+maglordhack01                   //hack
+matrimhack01                    //hack
+matrimhack02                    //hack
+matrimd                         //bootleg
+matrima                         //bootleg
+matrimeh                        //bootleg
+matrimnd                        //bootleg
+miexchnghack01                  //hack
 msboot                          //bootleg
 mslughacks01                    //hack
 mslughacks02                    //hack
@@ -10526,8 +10774,6 @@ mslughacks08                    //hack
 mslughacks09                    //hack
 mslugla01                       //hack
 mslugrmxe0s01                   //hack
-
-@source:neogeo.cpp
 mslug2hacks01                   //hack
 mslug2hacks02                   //hack
 mslug2hacks03                   //hack
@@ -10569,8 +10815,6 @@ mslug2rmxe1s02                  //hack
 mslug2rmxe1s03                  //hack
 mslug2rmxe1s04                  //hack
 mslug2rmxe1s05                  //hack
-
-@source:neogeo.cpp
 mslug3d                         //bootleg
 mslug3nd                        //bootleg
 mslug3hacks01                   //hack
@@ -10689,8 +10933,6 @@ mslug3rmxe7s03                  //hack
 mslug3rmxe7s04                  //hack
 mslug3rmxe8s01                  //hack
 mslug3rmxe8s02                  //hack
-
-@source:neogeo.cpp
 mslug4d                         //bootleg
 mslug4nd                        //bootleg
 mslug4dd                        //bootleg
@@ -10734,8 +10976,6 @@ mslug4rmxe1s01                  //hack
 mslug4rmxe2s01                  //hack
 mslug4rmxe3s01                  //hack
 mslug4rmxe4s01                  //hack
-
-@source:neogeo.cpp
 ms5boot                         //bootleg
 ms5pcbd                         //bootleg
 mslug5nd                        //bootleg
@@ -10770,11 +11010,6 @@ mslug5hacks18                   //hack
 mslug5hacks19                   //hack
 mslug5hacks20                   //hack
 mslug5hacks21                   //hack
-mslug5hacks22                   //hack
-mslug5hacks23                   //hack
-mslug5hacks24                   //hack
-mslug5hacks25                   //hack
-mslug5hacks26                   //hack
 mslug5la01                      //hack
 mslug5lb01                      //hack
 mslug5lc01                      //hack
@@ -10784,8 +11019,6 @@ mslug5rmxe2s01                  //hack
 mslug5rmxe3s01                  //hack
 mslug5rmxe4s01                  //hack
 mslug5rmxe5s01                  //hack
-
-@source:neogeo.cpp
 mslugxhacks01                   //hack
 mslugxhacks02                   //hack
 mslugxhacks03                   //hack
@@ -10878,3 +11111,119 @@ mslugxrmxe6s03                  //hack
 mslugxrmxe7s01                  //hack
 mslugxrmxe7s02                  //hack
 mslugxrmxe7s03                  //hack
+mutnathack01                    //hack
+nam1975hack01                   //hack
+ncombathack01                   //hack
+ncommandhack01                  //hack
+neobombehack01                  //hack
+ninjamashack01                  //hack
+ninjamashack02                  //hack
+nitdhack01                      //hack
+nitdhack02                      //hack
+nitdhack03                      //hack
+nitdd                           //bootleg
+pbobblenhack01                  //hack
+pbobblenhack02                  //hack
+pbobblendx                      //bootleg
+pnyaad                          //bootleg
+pnyaadd                         //bootleg
+preisle2hack01                  //hack
+preisle2d                       //bootleg
+ragnagrdhack01                  //hack
+ragnagrdhack02                  //hack
+ragnagrdhack03                  //hack
+rbffspechack01                  //hack
+rbffspechack02                  //hack
+rbff1hack01                     //hack
+rbff2hack01                     //hack
+rbff2hack02                     //hack
+rotdhack01                      //hack
+rotdhack02                      //hack
+rotdhack03                      //hack
+rotdd                           //bootleg
+rotdnd                          //bootleg
+s1945phack01                    //hack
+s1945phack02                    //hack
+s1945pd                         //bootleg
+samshohack01                    //hack
+samshohack02                    //hack
+samshohack03                    //hack
+samsho2hack01                   //hack
+samsho2hack02                   //hack
+samsho2hack03                   //hack
+samsho2hack04                   //hack
+samsho3hack01                   //hack
+samsho3hack02                   //hack
+samsho3hack03                   //hack
+samsho3hb                       //bootleg
+samsho4hack01                   //hack
+samsho4hack02                   //hack
+samsho4hack03                   //hack
+samsho4hack04                   //hack
+samsho4hack05                   //hack
+samsho5hack01                   //hack
+samsho5hack02                   //hack
+samsho5hack03                   //hack
+samsho5hack04                   //hack
+samsho5bd                       //bootleg
+samsho5cd                       //bootleg
+samsho5d                        //bootleg
+samsho5d1                       //bootleg
+samsho5hd                       //bootleg
+samsh5sphack01                  //hack
+samsh5sphack02                  //hack
+samsh5sphack03                  //hack
+samsh5sphack04                  //hack
+samsh5sphack05                  //hack
+samsh5spn                       //bootleg
+samsh5spd                       //bootleg
+samsh5spd1                      //bootleg
+samsh5spd2                      //bootleg
+samsh5sphd                      //bootleg
+samsh5spnd                      //bootleg
+savagerehack01                  //hack
+savagerehack02                  //hack
+sdodgebhac01                    //hack
+sengoku3hack01                  //hack
+sengoku3hack02                  //hack
+sengoku3hack03                  //hack
+sengoku3hack04                  //hack
+sengoku3hack05                  //hack
+sengoku3hack06                  //hack
+sengoku3hack07                  //hack
+sengoku3hack08                  //hack
+sengoku3d                       //bootleg
+shocktr2hack01                  //hack
+shocktrohack01                  //hack
+sonicwi2hack01                  //hack
+sonicwi3hack01                  //hack
+sonicwi3hack02                  //hack
+svcsplushack01                  //hack
+svcfd                           //bootleg
+svcd                            //bootleg
+svcd1                           //bootleg
+svcnd                           //bootleg
+svcplusn                        //bootleg
+svcplusb                        //bootleg
+svcplusd                        //bootleg
+spinmasthack01                  //hack
+tophuntrhack01                  //hack
+twinsprihack01                  //hack
+viewpoinhack01                  //hack
+viewpoinhack02                  //hack
+wakuwak7hack01                  //hack
+wakuwak7hack02                  //hack
+wjammershack01                  //hack
+wjammershack02                  //hack
+whphack01                       //hack
+whphack02                       //hack
+wh1hack01                       //hack
+wh1hack02                       //hack
+wh2hack01                       //hack
+wh2hack02                       //hack
+wh2hack03                       //hack
+wh2jhack01                      //hack
+wh2jhack02                      //hack
+zintrckbhack01                  //hack
+zupapad                         //bootleg
+

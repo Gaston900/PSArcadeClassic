@@ -869,6 +869,7 @@ avspd                           //
 avsph                           // 20/05/1994 (c) 1994 (Hispanic)
 avspj                           // 20/05/1994 (c) 1994 (Japan)
 avspu                           // 20/05/1994 (c) 1994 (USA)
+avspud                          //
 batcir                          // 19/03/1997 (c) 1997 (Euro)
 batcira                         // 19/03/1997 (c) 1997 (Asia)
 batcird                         //
@@ -958,6 +959,7 @@ mpangj                          // 11/10/2000 (c) 2000 Mitchell (Japan)
 mpangr1                         // 25/09/2000 (c) 2000 Mitchell (Euro)
 mpangu                          // 10/10/2000 (c) 2000 Mitchell (USA)
 mpanga                          // 10/10/2000 (c) 2000 Mitchell (Asia)
+mpangjd                         //
 msh                             // 24/10/1995 (c) 1995 (Euro)
 msha                            // 24/10/1995 (c) 1995 (Asia)
 mshb                            // 17/11/1995 (c) 1995 (Brazil)
@@ -1035,6 +1037,7 @@ sfar1                           // 18/07/1995 (c) 1995 (Euro)
 sfar2                           // 27/06/1995 (c) 1995 (Euro)
 sfar3                           // 05/06/1995 (c) 1995 (Euro)
 sfau                            // 27/06/1995 (c) 1995 (USA)
+sfaud                           //
 sfz2a                           // 27/02/1996 (c) 1996 (Asia)
 sfz2ad                          //
 sfz2al                          // 26/08/1996 (c) 1996 (Asia)
@@ -1081,12 +1084,13 @@ spf2xjd                         //
 ssf2                            // 05/10/1993 (c) 1993 (World)
 ssf2a                           // 05/10/1993 (c) 1993 (Asia)
 ssf2ar1                         // 14/09/1993 (c) 1993 (Asia)
-ssf2h                           // 11/09/1993 (c) 1993 (Hispanic)
 ssf2j                           // 05/10/1993 (c) 1993 (Japan)
 ssf2jr1                         // 11/09/1993 (c) 1993 (Japan)
 ssf2jr2                         // 10/09/1993 (c) 1993 (Japan)
 ssf2r1                          // 11/09/1993 (c) 1993 (World)
+ssf2r1d                         //
 ssf2t                           // 23/02/1994 (c) 1994 (World)
+ssf2td                          //
 ssf2ta                          // 23/02/1994 (c) 1994 (Asia)
 ssf2tad                         //
 ssf2tb                          // 19/11/1993 (c) 1993 (World)
@@ -10554,6 +10558,71 @@ comdlux1                        //hack
 @source:contra.cpp
 contrahack01                    //hack
 
+@source:cps2.cpp
+19xxhack01                      //hack
+19xxhack02                      //hack
+1944hack01                      //hack
+avsphack01                      //hack
+avsphack02                      //hack
+avsphack03                      //hack
+armwarhack01                    //hack
+batcirhack01                    //hack
+csclubhack01                    //hack
+cybotshack01                    //hack
+ddsomhack01                     //hack
+ddsomhack02                     //hack
+ddsomhack03                     //hack
+ddsomhack04                     //hack
+ddtodhack01                     //hack
+ddtodhack02                     //hack
+vampjhack01                     //hack
+dstlkhack02                     //hack
+gigawinghack01                  //hack
+halfwayhack01                   //hack
+hsf2hack01                      //hack
+hsf2hack02                      //hack
+hsf2hack03                      //hack
+hsf2hack04                      //hack
+mshhack01                       //hack
+mshhack02                       //hack
+mshvsfhack01                    //hack
+mshvsfhack02                    //hack
+mshvsfhack03                    //hack
+mvschack01                      //hack
+mvschack02                      //hack
+mvschack03                      //hack
+sgemfhack01                     //hack
+progearhack01                   //hack
+sfahack01                       //hack
+sfa2hack01                      //hack
+sfa2hack02                      //hack
+sfa2hack03                      //hack
+sfa2hack04                      //hack
+sfa3hack01                      //hack
+sfa3hack02                      //hack
+sfa3hack03                      //hack
+sfa3hack04                      //hack
+sfa3hack05                      //hack
+sfa3hack06                      //hack
+sfa3hack07                      //hack
+sfzhack01                       //hack
+sfz2alhack01                    //hack
+sfz2alhack02                    //hack
+sfz2alhack03                    //hack
+sfz2alhack04                    //hack
+sfz2alhack05                    //hack
+sfz3hack01                      //hack
+ssf2hack01                      //hack
+ssf2hack02                      //hack
+ssf2thack01                     //hack
+ssf2thack02                     //hack
+spf2thack01                     //hack
+suicide                         //hack
+suicide2                        //hack
+xmcotahack01                    //hack
+xmcotahack02                    //hack
+xmvsfhack01                     //hack
+
 @source:cps3.cpp
 jojoan                          //No CD
 redeartn                        //No CD
@@ -10631,7 +10700,6 @@ kof95hack02                     //hack
 kof96hack01                     //hack
 kof96hack02                     //hack
 kof96hack03                     //hack
-kof96hack04                     //hack
 kof96ep                         //bootleg
 kof96cn                         //bootleg
 kof97hack01                     //hack

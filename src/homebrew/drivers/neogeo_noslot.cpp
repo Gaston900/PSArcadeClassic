@@ -3403,8 +3403,8 @@ ROM_END
 
 ROM_START( dragonsh )
 	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "EP2.bin", 0x000000, 0x080000, CRC(f25c71ad) SHA1(803fb6cd6a7ada59678ad901ff9788b1e54ddd0c) )
-	ROM_LOAD16_BYTE( "EP1.bin", 0x000001, 0x080000, CRC(f353448c) SHA1(f0f966ca15d503e01b40e901765ff0888463b65d) )
+	ROM_LOAD16_BYTE( "ep2.bin", 0x000000, 0x080000, CRC(f25c71ad) SHA1(803fb6cd6a7ada59678ad901ff9788b1e54ddd0c) )
+	ROM_LOAD16_BYTE( "ep1.bin", 0x000001, 0x080000, CRC(f353448c) SHA1(f0f966ca15d503e01b40e901765ff0888463b65d) )
 
 	NEO_SFIX_128K( "s1.s1", BAD_DUMP CRC(706477a7) SHA1(8cbee7f6832e7edd2dc792ca330420a6a984b879) ) // was a dead AXS512PC 512KB sram card, this data is handcrafted to make the set usable (hence BAD_DUMP)
 
@@ -7593,25 +7593,6 @@ ROM_START( sengoku3a ) /* Original Version - Encrypted GFX */
 	ROM_LOAD16_BYTE( "261-c4.c4", 0x1000001, 0x800000, CRC(0b45ae53) SHA1(a19fb21408ab633aee8bbf38bf43b5e26766b355) ) /* Plane 2,3 */ /* mask rom TC5364205 */
 ROM_END
 
-ROM_START( twsoc96 ) /* MVS ONLY RELEASE */
-	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "086-p1.p1", 0x000000, 0x100000, CRC(03e20ab6) SHA1(3a0a5a54649178ce7a6158980cb4445084b40fb5) ) /* mask rom TC538200 */
-
-	NEO_SFIX_128K( "086-s1.s1", CRC(6f5e2b3a) SHA1(273341489f6625d35a4a920042a60e2b86373847) ) /* mask rom TC531000 */
-
-	NEO_BIOS_AUDIO_128K( "086-m1.m1", CRC(cb82bc5d) SHA1(8e3ecabec25d89adb6e0eed0ef5f94d34a4d5fc0) ) /* mask rom TC531001 */
-
-	ROM_REGION( 0x400000, "ymsnd", 0 )
-	ROM_LOAD( "086-v1.v1", 0x000000, 0x200000, CRC(97bf1986) SHA1(b80d3a37e18d0a52f1e0092dc300989c9647efd1) ) /* mask rom TC5316200 */
-	ROM_LOAD( "086-v2.v2", 0x200000, 0x200000, CRC(b7eb05df) SHA1(ff2b55c7021c248cfdcfc9cd3658f2896bcbca38) ) /* mask rom TC5316200 */
-
-	ROM_REGION( 0xa00000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "086-c1.c1", 0x000000, 0x400000, CRC(2611bc2a) SHA1(bb5a96acd4a90fcb41c49cc8e9f760c4a06d6b84) ) /* Plane 0,1 */ /* mask rom TC5332205 */
-	ROM_LOAD16_BYTE( "086-c2.c2", 0x000001, 0x400000, CRC(6b0d6827) SHA1(3cb2bbab381a26ec69f97c3d6116ce47254286b4) ) /* Plane 2,3 */ /* mask rom TC5332205 */
-	ROM_LOAD16_BYTE( "086-c3.c3", 0x800000, 0x100000, CRC(750ddc0c) SHA1(9304a83d81afd544d88be0cd3ee47ae401d2da0e) ) /* Plane 0,1 */ /* mask rom TC538200 */
-	ROM_LOAD16_BYTE( "086-c4.c4", 0x800001, 0x100000, CRC(7a6e7d82) SHA1(b1bb82cec3d68367d5e01e63c44c11b67e577411) ) /* Plane 2,3 */ /* mask rom TC538200 */
-ROM_END
-
 ROM_START( vlinernw ) /* MVS ONLY RELEASE */
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "epr_7a.p1", 0x000000, 0x080000, CRC(052f93ed) SHA1(3a5330073d21fd068d44956680cfae7faa4f3951) ) /* AM27C400 */
@@ -11528,7 +11509,7 @@ HACK( 2004, kf2k5uni,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   kf2k5
 HACK( 2004, kof2k4se,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   kof2k4se, ROT0, "bootleg", "The King of Fighters Special Edition 2004 (The King of Fighters 2002 bootleg)", MACHINE_SUPPORTS_SAVE ) /* Hack / Bootleg of kof2002 */
 HACK( 2003, mslug5,     neogeo,   neogeo_noslot,   neogeo, neogeo_state,   mslug5,   ROT0, "SNK Playmore", "Metal Slug 5 (NGM-2680)", MACHINE_SUPPORTS_SAVE )
 HACK( 2003, mslug5h,    mslug5,   neogeo_noslot,   neogeo, neogeo_state,   mslug5,   ROT0, "SNK Playmore", "Metal Slug 5 (NGH-2680)", MACHINE_SUPPORTS_SAVE ) /* Also found in later MVS carts */
-HACK( 2003, ms5pcb,     0,        neogeo_noslot,   dualbios, neogeo_state, ms5pcb,   ROT0, "SNK Playmore", "Metal Slug 5 (JAMMA PCB)", MACHINE_SUPPORTS_SAVE )
+HACK( 2003, ms5pcb,     mslug5,   neogeo_noslot,   dualbios, neogeo_state, ms5pcb,   ROT0, "SNK Playmore", "Metal Slug 5 (JAMMA PCB)", MACHINE_SUPPORTS_SAVE )
 HACK( 2003, ms5plus,    mslug5,   neogeo_noslot,   neogeo, neogeo_state,   ms5plus,  ROT0, "bootleg", "Metal Slug 5 Plus (bootleg)", MACHINE_SUPPORTS_SAVE )
 HACK( 2003, svcpcb,     0,        neogeo_noslot,   dualbios, neogeo_state, svcpcb,   ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (JAMMA PCB, set 1)", MACHINE_SUPPORTS_SAVE ) // not a clone of neogeo because it's NOT a neogeo cart.
 HACK( 2003, svcpcba,    svcpcb,   neogeo_noslot,   dualbios, neogeo_state, svcpcb,   ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (JAMMA PCB, set 2)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code */
@@ -11709,7 +11690,6 @@ HACK( 2005, lasthope,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   neoge
 /* Update */
 HACK( 2003, samsho5a,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   samsho5,  ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (NGM-2700, set 2)", MACHINE_SUPPORTS_SAVE )
 HACK( 2001, sengoku3a,  sengoku3, neogeo_noslot,   neogeo, neogeo_state,   sengoku3, ROT0, "Noise Factory / SNK", "Sengoku 3 / Sengoku Densho 2001 (set 2)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-HACK( 1996, twsoc96,    neogeo,   neogeo_noslot,   neogeo, neogeo_state,   neogeo,   ROT0, "Tecmo", "Tecmo World Soccer '96", MACHINE_SUPPORTS_SAVE )
 HACK( 2001, vlinernw,   neogeo,   neogeo_noctrl,   vliner, neogeo_state,   vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.7a)", MACHINE_SUPPORTS_SAVE )
 HACK( 2001, vliner7e,   vliner,   neogeo_noctrl,   vliner, neogeo_state,   vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.7e)", MACHINE_SUPPORTS_SAVE )
 HACK( 2001, vliner6e,   vliner,   neogeo_noctrl,   vliner, neogeo_state,   vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.6e)", MACHINE_SUPPORTS_SAVE )

@@ -2799,9 +2799,9 @@ spec2k                          // (c) 2000 Yonatech
 spec2kh                         // (c) 2000 Yonatech
 ssmissin                        // (c) 1992 Comad
 stagger1                        // (c) 1998
-strahl                           // UPL-91074 (c) 1992 UPL (World)
-strahlj                          // UPL-91074 (c) 1992 UPL (Japan)
-strahlja                         // UPL-91074 (c) 1992 UPL (Japan)
+strahl                          // UPL-91074 (c) 1992 UPL (World)
+strahlj                         // UPL-91074 (c) 1992 UPL (Japan)
+strahlja                        // UPL-91074 (c) 1992 UPL (Japan)
 tdragon                         // (c) 1991 NMK / Tecmo
 tdragon1                        // (c) 1991 NMK / Tecmo
 tdragon2                        // UPL-93091 (c) 1993 NMK
@@ -2816,6 +2816,7 @@ vandyke                         // UPL-90064 (c) UPL
 vandykeb                        // bootleg
 vandykejal                      // UPL-90064 (c) Jaleco
 vandykejal2                     // UPL-90064 (c) Jaleco
+hotbubla                        //
 
 @source:pacland.cpp
 pacland                         // (c) 1984
@@ -7112,7 +7113,6 @@ puzzli                          // (c) 1995 Metro / Banpresto
 skyalert                        // (c) 1992
 vmetal                          // (c) 1995 Excellent System?
 vmetaln                         // (c) 1995 Excellent System?
-lastfortj                       // (c) 1994 - VG460-(A) PCB version
 
 @source:88games.cpp
 88games                         // GX861 (c) 1988
@@ -8029,9 +8029,6 @@ demoneye                        // M27 (c) 1981
 panther                         // M27 no copyright notice
 redalert                        // M27 (c) 1981 + "GDI presents"
 ww3                             // M27 (c) 1981
-
-@source:shisen.cpp
-matchit                         // (c) 1989 Tamtex
 
 @source:travrusa.cpp
 motorace                        // (c) 1983 Williams license
@@ -9109,9 +9106,6 @@ speedup                         // (c) 1996 - Ref ???
 speedup10                       // (c) 1996 - Ref ???
 surfplnt                        // (c) 1997 - Ref 971223
 surfplnt40                      // (c) 1997 - Ref 970514
-
-@source:glass.cpp
-glasskr                         // (c) 1994 - Ref 931021 shows 1994 version, Anime girls, unprotected
 
 @source:targeth.cpp
 targeth                         // (c) 1994 - Ref 940531

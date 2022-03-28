@@ -3,7 +3,6 @@
 /****************************************************
   List of all enabled drivers in the system arcade64.
 *******************************************************/
-//Delete system vsystem,wmg HB
 
 @source:1942.cpp
 1942                            // 12/1984 (c) 1984
@@ -817,6 +816,7 @@ varthj                          // 14/07/1992 (c) 1992 (Japan)
 varthjr                         // 14/07/1992 (c) 1992 (Japan)
 varthr1                         // 12/06/1992 (c) 1992 (World)
 varthu                          // 12/06/1992 (c) 1992 (USA)
+varthb2                         // bootleg
 willow                          // 6/1989 (c) 1989 (World)
 willowj                         // 6/1989 (c) 1989 (Japan)
 willowu                         // 6/1989 (c) 1989 (USA)
@@ -10144,6 +10144,251 @@ comdlux1                        //hack
 
 @source:contra.cpp
 contrahack01                    //hack
+
+@source:cps1.cpp
+3wondershack01                  //hack
+3wondrud
+3wondersha
+captcommhack01                  //hack
+captcommhack02                  //hack
+captcommhack03                  //hack
+captcommhack04                  //hack
+captcommhack05                  //hack
+captcommhack06                  //hack
+captcommhack07                  //hack
+captcommhack08                  //hack
+captcommhack09                  //hack
+captcommhack10                  //hack
+captcommhack11                  //hack
+captcommhack12                  //hack
+captcommhack13                  //hack
+captcommhack14                  //hack
+captcommhack15                  //hack
+captcommhack16                  //hack
+captcommhack17                  //hack
+captcommhack18                  //hack
+captcommhack19                  //hack
+captcoud
+daimakaib
+dinohack01                      //hack
+dinohack02                      //hack
+dinohack03                      //hack
+dinohack04                      //hack
+dinohack05                      //hack
+dinohack06                      //hack
+dinohack07                      //hack
+dinohack08                      //hack
+dinohack09                      //hack
+dinohack10                      //hack
+dinohack11                      //hack
+dinohack12                      //hack
+dinohack13                      //hack
+dinohack14                      //hack
+dinohack15                      //hack
+dinohack16                      //hack
+dinohack17                      //hack
+dinohack18                      //hack
+dinohack19                      //hack
+dinohack20                      //hack
+dinohack21                      //hack
+dinohack22                      //hack
+dinohack23                      //hack
+dinohack24                      //hack
+dinohack25                      //hack
+dinohack26                      //hack
+dinohack27                      //hack
+dinohack28                      //hack
+dinohack29                      //hack
+dinohack30                      //hack
+dinohack31                      //hack
+dinohack32                      //hack
+dinohack33                      //hack
+dinohack34                      //hack
+dinohack35                      //hack
+dinohack36                      //hack
+dinohack37                      //hack
+dinohack38                      //hack
+dinohack39                      //hack
+dinohack40                      //hack
+dinohack41                      //hack
+dinohack42                      //hack
+dinohack43                      //hack
+dinohack44                      //hack
+dinohack45                      //hack
+dinohack46                      //hack
+dinohack47                      //hack
+dinohack48                      //hack
+dinohack49                      //hack
+dinohack50                      //hack
+dinohack51                      //hack
+dinohack52                      //hack
+dinohack53                      //hack
+dinohack54                      //hack
+dinohack55                      //hack
+dinohack56                      //hack
+dinohack57                      //hack
+dinohack58                      //hack
+dinohack59                      //hack
+dinohack60                      //hack
+dinohack61                      //hack
+dinohack62                      //hack
+dinohack63                      //hack
+dinohack64                      //hack
+dinohack65                      //hack
+dinohack66                      //hack
+dinohack67                      //hack
+dinohack68                      //hack
+dinohack69                      //hack
+dinohack70                      //hack
+dinohack71                      //hack
+dinohack72                      //hack
+dinohack73                      //hack
+dinohack74                      //hack
+dinohack75                      //hack
+dinohack76                      //hack
+dinohack77                      //hack
+dinoh
+dinoha
+dinotpic
+dinohc
+ffighthack01                     //hack
+ffighthack02                     //hack
+ffighthack03                     //hack
+ffighthack04                     //hack
+ffighthack05                     //hack
+ffighthack06                     //hack
+ffighthack07                     //hack
+ffighthack08                     //hack
+ffighthack09                     //hack
+ffighthack10                     //hack
+knightshack01                    //hack
+knightshack02                    //hack
+knightshack03                    //hack
+knightshack04                    //hack
+knightshack05                    //hack
+knightshack06                    //hack
+knightshack07                    //hack
+knightshack08                    //hack
+knightshack09                    //hack
+knightshack10                    //hack
+knightshack11                    //hack
+knightshack12                    //hack
+knightshack13                    //hack
+knightshack14                    //hack
+knightshack15                    //hack
+knightshack16                    //hack
+knightshack17                    //hack
+knightshb2                       //bootleg
+knightsh                         //bootleg
+knightsha                        //bootleg
+knightsb5                        //bootleg
+knightud                         //bootleg
+kodhack01                        //hack
+kodh                             //bootleg
+mercshack01                      //hack
+mercshack02                      //hack
+punisherhack01                   //hack
+punisherhack02                   //hack
+punisherhack03                   //hack
+punisherhack04                   //hack
+punisherhack05                   //hack
+punisherhack06                   //hack
+punisherhack07                   //hack
+punisherhack08                   //hack
+punisherud1                      //hack
+punisherud2                      //hack
+sf2cehack01                      //hack
+sf2cehack02                      //hack
+sf2cehack03                      //hack
+sf2cehack04                      //hack
+sf2cehack05                      //hack
+sf2cehack06                      //hack
+sf2cehack07                      //hack
+sf2cehack08                      //hack
+sf2cehack09                      //hack
+sf2cehack10                      //hack
+sf2cehack11                      //hack
+sf2cehack12                      //hack
+sf2mega2                         //bootleg
+sf2amf5                          //bootleg
+sf2cejabl                        //bootleg
+sf2rb5                           //bootleg
+sf2hfjb                          //bootleg
+sf2rbpr                          //bootleg
+sf2amf6                          //bootleg
+sf2amf7                          //bootleg
+sf2tlona                         //bootleg
+sf2tlonb                         //bootleg
+sf2tlonc                         //bootleg
+sf2red2                          //bootleg
+sf2v0042                         //bootleg
+sf2yyc2                          //bootleg
+sf2hack01                        //hack
+sf2hack02                        //hack
+sf2hack03                        //hack
+sf2hack04                        //hack
+sf2hack05                        //hack
+sf2hack06                        //hack
+sf2c                             //bootleg
+sf2ly                            //bootleg
+slammasthack01                   //hack
+slammastud                       //bootleg
+varthhack01                      //hack
+willowhack01                     //hack
+willowhack02                     //hack
+twkhack01                        //hack
+twkhack02                        //hack
+twkhack03                        //hack
+twkhack04                        //hack
+twkhack05                        //hack
+twkhack06                        //hack
+twkhack07                        //hack
+twkhack08                        //hack
+twkhack09                        //hack
+twkhack10                        //hack
+twkhack11                        //hack
+twkhack12                        //hack
+twkhack13                        //hack
+twkhack14                        //hack
+twkhack15                        //hack
+twkhack16                        //hack
+twkhack17                        //hack
+twkhack18                        //hack
+twkhack19                        //hack
+twkhack20                        //hack
+twkhack21                        //hack
+twkhack22                        //hack
+twkhack23                        //hack
+twkhack24                        //hack
+twkhack25                        //hack
+twkhack26                        //hack
+twkhack27                        //hack
+twkhack28                        //hack
+wofh                             //bootleg
+wofha                            //bootleg
+wofah                            //bootleg
+wofaha                           //bootleg
+wofahb                           //bootleg
+wof3js                           //bootleg
+wof3jsa                          //bootleg
+wof3sj                           //bootleg
+wof3sja                          //bootleg
+wofsj                            //bootleg
+wofsja                           //bootleg
+wofsjb                           //bootleg
+wofsjc                           //bootleg
+wofchhack01                      //hack
+wofchhack02                      //hack
+wofchhack03                      //hack
+sk3hack01                        //hack
+sk3hack02                        //hack
+sk3hack03                        //hack
+sk3hack04                        //hack
+wofhack01                        //hack
+wofhack02                        //hack
+wofr1bl                          //bootleg
+wofpic                           //bootleg
+wofud                            //bootleg
 
 @source:cps2.cpp
 19xxhack01                      //hack

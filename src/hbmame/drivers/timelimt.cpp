@@ -116,4 +116,4 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Time Limit
-GAME( 2017, timelimit, timelimt, timelimit, timelimt, timelimt_hbmame, empty_init, ROT90, "Dink", "Time Limit (colour hack)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, timelimit, timelimt, timelimit, timelimt, timelimt_hbmame, empty_init, ROT90, "Dink", "Time Limit (Colour hack)", MACHINE_SUPPORTS_SAVE )

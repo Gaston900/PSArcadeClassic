@@ -3256,6 +3256,7 @@ ribbit                          // (c) 1991 Sega
 soniccar                        // (c) 1991 Sega
 sonicpop                        // (c) 1993 Sega
 sonicfgt                        // (c) 1993 Sega
+ssonicbr                        // hack
 stkclmns                        // (c) 1994 Sega
 stkclmnsj                       // (c) 1994 Sega
 tantr                           // (c) 1992 Sega
@@ -3630,6 +3631,7 @@ shadfrceu                       // TA-0032 (c) 1993 (US)
 @source:sidepckt.cpp
 sidepckt                        // (c) 1986 Data East Corporation
 sidepcktb                       // bootleg
+sidepcktb2                      // bootleg
 sidepcktj                       // (c) 1986 Data East Corporation
 
 @source:silkroad.cpp
@@ -4130,6 +4132,7 @@ rygar                           // 6002 - (c) 1986 Tecmo
 rygar2                          // 6002 - (c) 1986 Tecmo
 rygar3                          // 6002 - (c) 1986 Tecmo
 rygarj                          // 6002 - (c) 1986 Tecmo
+rygarb                          // bootleg
 silkworm                        // 6217 - (c) 1988 Tecmo
 silkwormj                       // 6217 - (c) 1988 Tecmo
 silkwormp                       // 6217 - (c) 1988 Tecmo
@@ -4143,6 +4146,7 @@ riot                            // (c) 1992 NMK
 
 @source:tecmosys.cpp
 deroon                          // (c) 1996 Tecmo
+deroona                         //
 deroon2                         // (c) 1996 Tecmo
 tkdensho                        // (c) 1996 Tecmo
 tkdenshoa                       // (c) 1996 Tecmo
@@ -4256,6 +4260,7 @@ chukataiu                       // B44 (c) 1988 Taito Corporation (US)
 drtoppel                        // B19 (c) 1987 Taito Corporation Japan (World)
 drtoppelj                       // B19 (c) 1987 Taito Corporation (Japan)
 drtoppelu                       // B19 (c) 1987 Taito Corporation (US)
+drtoppela                       //
 extrmatn                        // B06 (c) 1987 Taito Corporation Japan (World)
 extrmatnj                       // B06 (c) 1987 Taito Corporation (Japan)
 extrmatnu                       // B06 (c) 1987 World Games (US)
@@ -5806,7 +5811,9 @@ tbowlp                          // Suspected proto of Japanese version for US Ma
 
 @source:wc90b.cpp
 twcup90b1                          // bootleg
+twcup90bc                          // bootleg
 twcup90b2                          // bootleg
+twcup90b3                          // bootleg
 twcup90ba                          // bootleg
 twcup90bb                          // bootleg
 eurogael                           // bootleg
@@ -10833,36 +10840,27 @@ baddudeshack01                  //hack
 fghthisthack01                  //hack
 
 @source:dkong.cpp
-dkongbcc                        //hack
 kong2600                        //hack
 dkongpac                        //hack
-nadkong                         //hack
 dkongex                         //hack
-dkongp                          //hack
 dkong2m                         //hack
+dkchrmx                         //hack
 dkrainbow                       //hack
 dkrdemo                         //hack
-dktrainer                       //hack
-dkpace                          //hack
-dkchrmx                         //hack
 dkspkyrmx                       //hack
-dkongst                         //hack
 dkongst2                        //hack
 dkongrev                        //hack
 dkfreerun                       //hack
 dkcbarrel                       //hack
-dkongchm                        //hack
-dkongchm1                       //hack
-dkongran1                       //hack
-dkongss                         //hack
+dkongrnd                        //hack
 dkongotr                        //hack
 dkongitd                        //hack
 dkongtj                         //hack
-dkongbp                         //hack
-dkongbp1                        //hack
+dktwist                         //hack
+dkbarpal                        //hack
 dkongan                         //hack
 dkongdu                         //hack
-dkongdu1                        //hack
+dkwizard                        //hack
 
 @source:docastle.cpp
 sdreturn                        //hack
@@ -10889,20 +10887,13 @@ asurabushack01                  //hack
 galaga84                        //hack
 galaga99                        //hack
 galagab2                        //hack
-galagabl                        //hack
 galagads                        //hack
 galagaef                        //hack
-galagaf                         //hack
-galagap                         //hack
 galagix                         //hack
 galagost                        //hack
-galagosb                        //hack
 galaped                         //hack
 galgaxin                        //hack
-terror                          //hack
 vgalaga                         //hack
-vgalagam                        //hack
-vgalagaf                        //hack
 battlesh                        //hack
 gaous                           //hack
 sxvioush                        //hack
@@ -10911,7 +10902,6 @@ xevious3                        //hack
 xevious4                        //hack
 xevious5                        //hack
 xevioush                        //hack
-xeviousp1                       //hack
 xeviousp2                       //hack
 xviousah                        //hack
 
@@ -11080,7 +11070,6 @@ missilet                        //hack
 mrdigdo                         //hack
 mrdofast                        //hack
 mrpac                           //hack
-mrpacb                          //hack
 newdigdo                        //hack
 stickydo                        //hack
 
@@ -11830,6 +11819,208 @@ rastandh                        //hack
 rastand2                        //hack
 rastaneh                        //hack
 
+@source:retofinv.cpp
+retofinv4                       //hack
 
+@source:8080bw.cpp
+schasrcv                        //hack
 
+@source:segag80r.cpp
+astrob2h                        //hack
 
+@source:segaorun.cpp
+outrunm                         //hack
+outrunen                        //hack
+
+@source:segas16b.cpp
+altbeasthack01                  //hack
+altbeasthack02                  //hack
+altbeasthack03                  //hack
+
+@source:segas32.cpp
+brivalhack01                    //hack
+
+@source:seta.cpp
+blandiahack01                   //hack
+blandiahack02                   //hack
+blandiahack03                   //hack
+msgundamhack01                  //hack
+
+@source:seta2.cpp
+grdianshack01                   //hack
+grdianshack02                   //hack
+
+@source:shadfrce.cpp
+shadfrcehack01                  //hack
+
+@source:shaolins.cpp
+kfjohnny                        //hack
+
+@source:silkroad.cpp
+silkroadhack01                  //hack
+silkroadhack02                  //hack
+silkroadhack03                  //hack
+
+@source:snk6502.cpp
+vantris                         //hack
+
+@source:snowbros.cpp
+snowbroshack01                  //hack
+
+@source:solomon.cpp
+solomonhack01                   //hack
+
+@source:spacmiss.cpp
+spacmissx                       //hack
+
+@source:ssv.cpp
+survartshack01                  //hack
+
+@source:stv.cpp
+gaxeduelhack01                  //hack
+groovefhack01                   //hack
+suikoenbhack01                  //hack
+
+@source:system1.cpp
+wbmlbit                         //hack
+wbmlkb                          //hack
+
+@source:taito_b.cpp
+bubbleb                         //hack
+
+@source:taito_f2.cpp
+cameltryhack01                  //hack
+deadconxhack01                  //hack
+dinorexhack01                   //hack
+dondokodhack01                  //hack
+gunfronthack01                  //hack
+megablsthack01                  //hack
+mizubakuhack01                  //hack
+runarkhack01                    //hack
+thundfoxhack01                  //hack
+
+@source:taito_f3.cpp
+cleopatrhack01                  //hack
+cleopatrhack02                  //hack
+akkanvdrhack01                  //hack
+arabianmhack01                  //hack
+bubsymphhack01                  //hack
+dankugahack01                   //hack
+dariusghack01                   //hack
+elvactrhack01                   //hack
+gekiridnhack01                  //hack
+gseekerhack01                   //hack
+kaiserknhack01                  //hack
+landmakrhack01                  //hack
+lightbrhack01                   //hack
+pbobble2hack01                  //hack
+
+@source:taito_l.cpp
+sokoban                         //hack
+speccies                        //hack
+sqij
+evilstonhack01                  //hack
+kurikinthack01                  //hack
+plottinghack01                  //hack
+
+@source:taitosj.cpp
+alpinehack01                    //hack
+frontlinhack01                  //hack
+
+@source:taotaido.cpp
+taotaidohack01                  //hack
+
+@source:tecmo.cpp
+geminihack01                    //hack
+geminihack02                    //hack
+rygarhack01                     //hack
+rygarhack02                     //hack
+silkwormhack01                  //hack
+
+@source:tecmo16.cpp
+fstarfrchack01                  //hack
+
+@source:tecmosys.cpp
+tkdenshohack01                  //hack
+tkdenshohack02                  //hack
+tkdenshohack03                  //hack
+
+@source:tehkanwc.cpp
+ballonwc                        //hack
+tankwc                          //hack
+twc_gr                          //hack
+
+@source:tempest.cpp
+temped                          //hack
+tempall                         //hack
+temptwst                        //hack
+temptwsta                       //hack
+temptwst2                       //hack
+temptwst3                       //hack
+temptwst4                       //hack
+tempm                           //hack
+tempmg                          //hack
+vbrakout                        //hack
+aliensv                         //hack
+
+@source:timelimt.cpp
+timelimit                       //hack
+
+@source:timeplt.cpp
+timepltdiag                     //hack
+
+@source:tmnt.cpp
+ssridershack01                  //hack
+ssridershack02                  //hack
+ssridershack03                  //hack
+tmnt2hack01                     //hack
+
+@source:tnzs.cpp
+insectxhack01                   //hack
+
+@source:toaplan2.cpp
+batsugunhack01                  //hack
+bgareggahack01                  //hack
+kgpe
+mahoudaihack01                  //hack
+shippumdhack01                  //hack
+snowbro2hack01                  //hack
+truxton2hack01                  //hack
+
+@source:trackfld.cpp
+trackfldhack01                  //hack
+
+@source:twincobr.cpp
+twincobrhack01                  //hack
+
+@source:vamphalf.cpp
+aohhack01                       //hack
+
+@source:volfied.cpp
+volfiedg                        //hack
+
+@source:vsnes.cpp
+mrio2002                        //hack
+suprsktr                        //hack
+drmarios01                      //hack
+frombelow                       //hack
+
+@source:warriorb.cpp
+sagaiav2                        //hack
+
+@source:williams.cpp
+defender2                       //hack
+splatsc1                        //hack
+robotron201                     //hack
+robotronp                       //hack
+robotrontie                     //hack
+
+@source:yiear.cpp
+nacho                           //hack
+
+@source:zn.cpp
+doapphack01                     //hack
+sfexhack01                      //hack
+sfex2hack01                     //hack
+sfex2phack01                    //hack
+sfexphack01                     //hack

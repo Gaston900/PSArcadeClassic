@@ -117,14 +117,9 @@ ROM_START( robotrontie )
 	ROM_LOAD( "decoder.6",   0x0200, 0x0200, CRC(83faf25e) SHA1(30002643d08ed983a6701a7c4b5ee74a2f4a1adb) )
 ROM_END
 
-/*******************************************************
- *
- *  Game Driver
- *
- *******************************************************/
-
-GAME( 1981, defender2,   defender, williams, stargate, williams_state, init_stargate, ROT0, "Jeff Vavasour", "Defender II", MACHINE_SUPPORTS_SAVE )
-GAME( 1982, splatsc1,    splat,    williams, splat,    williams_state, init_joust,    ROT0, "Williams", "Splat! (sc1 hardware)", MACHINE_SUPPORTS_SAVE )
-GAME( 2012, robotron201, robotron, williams, robotron, williams_state, init_robotron, ROT0, "Sean Riddle", "Robotron: 2084 (Hacked Patched Blue-201)", MACHINE_SUPPORTS_SAVE )
+/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
+GAME( 1981, defender2,   defender, williams, stargate, williams_state, init_stargate, ROT0, "Jeff Vavasour",   "Defender II", MACHINE_SUPPORTS_SAVE )
+GAME( 1982, splatsc1,    splat,    williams, splat,    williams_state, init_joust,    ROT0, "Williams",        "Splat! (sc1 hardware)", MACHINE_SUPPORTS_SAVE )
+GAME( 2012, robotron201, robotron, williams, robotron, williams_state, init_robotron, ROT0, "Sean Riddle",     "Robotron: 2084 (Hacked Patched Blue-201)", MACHINE_SUPPORTS_SAVE )
 GAME( 2014, robotronp,   robotron, williams, robotron, williams_state, init_robotron, ROT0, "Christian Gingras / Sean Riddle", "Robotron: 2084 (Patched)", MACHINE_SUPPORTS_SAVE )
-GAME( 2014, robotrontie, robotron, williams, robotron, williams_state, init_robotron, ROT0, "Vid Kidz", "Robotron: 2084 (Tie Die)", MACHINE_SUPPORTS_SAVE )
+GAME( 2014, robotrontie, robotron, williams, robotron, williams_state, init_robotron, ROT0, "Vid Kidz",        "Robotron: 2084 (Tie Die)", MACHINE_SUPPORTS_SAVE )

@@ -1508,7 +1508,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/mitchell.cpp",
 --	MAME_DIR .. "src/mame/includes/mitchell.h",
 	MAME_DIR .. "src/mame/video/mitchell.cpp",
-	MAME_DIR .. "src/hbmame/drivers/sf.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/sf.cpp",
 --	MAME_DIR .. "src/mame/includes/sf.h",
 	MAME_DIR .. "src/mame/video/sf.cpp",
 	MAME_DIR .. "src/mame/drivers/sidearms.cpp",
@@ -1711,13 +1711,13 @@ files {
 --	MAME_DIR .. "src/mame/includes/pktgaldx.h",
 	MAME_DIR .. "src/mame/video/pktgaldx.cpp",
 	MAME_DIR .. "src/mame/drivers/progolf.cpp",
-	MAME_DIR .. "src/hbmame/drivers/rohga.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/rohga.cpp",
 --	MAME_DIR .. "src/mame/includes/rohga.h",
 	MAME_DIR .. "src/mame/video/rohga.cpp",
 	MAME_DIR .. "src/mame/drivers/shootout.cpp",
 --	MAME_DIR .. "src/mame/includes/shootout.h",
 	MAME_DIR .. "src/mame/video/shootout.cpp",
-	MAME_DIR .. "src/hbmame/drivers/sidepckt.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/sidepckt.cpp",
 --	MAME_DIR .. "src/mame/includes/sidepckt.h",
 	MAME_DIR .. "src/mame/video/sidepckt.cpp",
 	MAME_DIR .. "src/mame/drivers/simpl156.cpp",
@@ -3107,7 +3107,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/famibox.cpp",
 	MAME_DIR .. "src/mame/drivers/sfcbox.cpp",
 	MAME_DIR .. "src/mame/drivers/snesb51.cpp",
-	MAME_DIR .. "src/hbmame/drivers/snesb.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/snesb.cpp",
 	MAME_DIR .. "src/mame/drivers/spacefb.cpp",
 --	MAME_DIR .. "src/mame/includes/spacefb.h",
 	MAME_DIR .. "src/mame/audio/spacefb.cpp",
@@ -3422,7 +3422,7 @@ files {
 --	MAME_DIR .. "src/mame/machine/jvs13551.h",
 	MAME_DIR .. "src/mame/drivers/triforce.cpp",
 	MAME_DIR .. "src/mame/drivers/puckpkmn.cpp",
-	MAME_DIR .. "src/hbmame/drivers/segac2.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/segac2.cpp",
 	MAME_DIR .. "src/mame/drivers/segae.cpp",
 	MAME_DIR .. "src/mame/drivers/sms.cpp",
 --	MAME_DIR .. "src/mame/includes/sms.h",
@@ -3458,7 +3458,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/segas18.cpp",
 --	MAME_DIR .. "src/mame/includes/segas18.h",
 	MAME_DIR .. "src/mame/video/segas18.cpp",
-	MAME_DIR .. "src/hbmame/drivers/segas24.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/segas24.cpp",
 --	MAME_DIR .. "src/mame/includes/segas24.h",
 	MAME_DIR .. "src/mame/video/segas24.cpp",
 	MAME_DIR .. "src/mame/drivers/segam1.cpp",
@@ -3498,7 +3498,7 @@ files {
 	MAME_DIR .. "src/mame/machine/segacrp2_device.cpp",
 --	MAME_DIR .. "src/mame/machine/segacrp2_device.h",
 	MAME_DIR .. "src/mame/video/system1.cpp",
-	MAME_DIR .. "src/hbmame/drivers/system16.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/system16.cpp",
 --	MAME_DIR .. "src/mame/includes/system16.h",
 	MAME_DIR .. "src/mame/video/system16.cpp",
 	MAME_DIR .. "src/mame/drivers/timetrv.cpp",
@@ -3637,7 +3637,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/toki.h",
 	MAME_DIR .. "src/mame/drivers/toki_ms.cpp",
 	MAME_DIR .. "src/mame/video/toki.cpp",
-	MAME_DIR .. "src/hbmame/drivers/wiz.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/wiz.cpp",
 --	MAME_DIR .. "src/mame/includes/wiz.h",
 	MAME_DIR .. "src/mame/video/wiz.cpp",
 	MAME_DIR .. "src/mame/machine/seicopbl.cpp",
@@ -3693,7 +3693,7 @@ files {
 --	MAME_DIR .. "src/mame/video/st0020.h",
 	MAME_DIR .. "src/mame/machine/st0016.cpp",
 --	MAME_DIR .. "src/mame/machine/st0016.h",
-	MAME_DIR .. "src/hbmame/drivers/simple_st0016.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/simple_st0016.cpp",
 --	MAME_DIR .. "src/mame/includes/simple_st0016.h",
 	MAME_DIR .. "src/mame/video/seta001.cpp",
 --	MAME_DIR .. "src/mame/video/seta001.h",
@@ -4232,7 +4232,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/wc90.cpp",
 --	MAME_DIR .. "src/mame/includes/wc90.h",
 	MAME_DIR .. "src/mame/video/wc90.cpp",
-	MAME_DIR .. "src/hbmame/drivers/wc90b.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/wc90b.cpp",
 --	MAME_DIR .. "src/mame/includes/wc90b.h",
 	MAME_DIR .. "src/mame/video/wc90b.cpp",
 }

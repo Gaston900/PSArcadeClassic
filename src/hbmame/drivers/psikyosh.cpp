@@ -1,71 +1,15 @@
-// license:BSD-3-Clause
-// copyright-holders:Robbbert
+// Proyecto Shadows Arcade Classic+
+// copyright-holders:Gaston90
 #include "../mame/drivers/psikyosh.cpp"
-
-ROM_START( s1945iiex )
-	ROM_REGION( 0x200000, "maincpu", 0) 
-	ROM_LOAD32_WORD_SWAP( "2_prog_l.u18-ex", 0x000002, 0x080000, CRC(56276eb7) SHA1(28530132058621382697c678426967d720741853) )
-	ROM_LOAD32_WORD_SWAP( "1_prog_h.u17-ex", 0x000000, 0x080000, CRC(99658d0d) SHA1(f8b7a697819dc1e4993557d9e854aa53964eb4a3) )
-
-	ROM_REGION( 0x2000000, "gfx1", 0 ) 
-	ROM_LOAD32_WORD( "0l.u4",    0x0000000, 0x400000, CRC(bfacf98d) SHA1(19954f12881e6e95e808bd1f2c2f5a425786727f) )
-	ROM_LOAD32_WORD( "0h.u13",   0x0000002, 0x400000, CRC(1266f67c) SHA1(cf93423a827aa92aa54afbbecf8509d2590edc9b) )
-	ROM_LOAD32_WORD( "1l.u3",    0x0800000, 0x400000, CRC(2d3332c9) SHA1(f2e54100a48061bfd589e8765f59ca051176a38b) )
-	ROM_LOAD32_WORD( "1h.u12",   0x0800002, 0x400000, CRC(27b32c3e) SHA1(17a80b3c919d8a282169c019ede8a22d2079c018) )
-	ROM_LOAD32_WORD( "2l.u2",    0x1000000, 0x400000, CRC(91ba6d23) SHA1(fd016a90204b2de43bb709971f7cd891f839de1a) )
-	ROM_LOAD32_WORD( "2h.u20",   0x1000002, 0x400000, CRC(fabf4334) SHA1(f8ec43e083b674700f532575f0d067bd49c5aaf7) )
-	ROM_LOAD32_WORD( "3l.u1",    0x1800000, 0x400000, CRC(a6c3704e) SHA1(cb9881e4235cc8e4bcca4c6ccbd8d8d8634e3624) )
-	ROM_LOAD32_WORD( "3h.u19",   0x1800002, 0x400000, CRC(4cd3ca70) SHA1(5b0a6ea4fe0e821cebe6e840596f648e24dded51) )
-
-	ROM_REGION( 0x400000, "ymf", 0 ) 
-	ROM_LOAD( "sound.u32", 0x000000, 0x400000, CRC(ba680ca7) SHA1(b645896e297aad426784aa656bff738e1b33c2a2) )
-
-	ROM_REGION( 0x100, "eeprom", 0 )
-	ROM_LOAD( "eeprom-s1945ii.bin", 0x0000, 0x0100, CRC(7ac38846) SHA1(c5f4b05a94211f3c96b8c472adbe634f2e77d753) )
-ROM_END
-
-ROM_START( s1945sr3 )
-	ROM_REGION( 0x180000, "maincpu", 0)
-	ROM_LOAD32_WORD_SWAP( "2_proglsr3.u16", 0x000002, 0x080000, CRC(16b4e78e) SHA1(ac16e3d7b959e7d28f1afc6eb6c590afa96fa379) )
-	ROM_LOAD32_WORD_SWAP( "1_proghsr3.u17", 0x000000, 0x080000, CRC(6607b00e) SHA1(958d00880deb3d57c607402b8a87adaaa720914c) )
-	ROM_LOAD16_WORD_SWAP( "3_data.u1",   0x100000, 0x080000, CRC(8ff5f7d3) SHA1(420a3d7f2d5ab6a56789d36b418431f12f5f73f5) )
-
-	ROM_REGION( 0x3800000, "gfx1", 0 )
-	ROM_LOAD32_WORD( "0l.u3",  0x0000000, 0x800000, CRC(70a0d52c) SHA1(c9d9534da59123b577dc22020273b94ccdeeb67d) )
-	ROM_LOAD32_WORD( "0h.u10", 0x0000002, 0x800000, CRC(4dcd22b4) SHA1(2df7a7d08df17d2a62d574fccc8ba40aaae21a13) )
-	ROM_LOAD32_WORD( "1l.u4",  0x1000000, 0x800000, CRC(de1042ff) SHA1(468f6dfd5c1f2084c573b6851e314ff2826dc350) )
-	ROM_LOAD32_WORD( "1h.u11", 0x1000002, 0x800000, CRC(b51a4430) SHA1(b51117591b0e351e922f9a6a7930e8b50237e54e) )
-	ROM_LOAD32_WORD( "2l.u5",  0x2000000, 0x800000, CRC(23b02dca) SHA1(0249dceca02b312301a917d98fac481b6a0a9122) )
-	ROM_LOAD32_WORD( "2h.u12", 0x2000002, 0x800000, CRC(9933ab04) SHA1(710e6b20e111c1898666b4466554d039309883cc) )
-	ROM_LOAD32_WORD( "3l.u6",  0x3000000, 0x400000, CRC(f693438c) SHA1(d70e25a3f56aae6575c696d9b7b6d7a9d04f0104) )
-	ROM_LOAD32_WORD( "3h.u13", 0x3000002, 0x400000, CRC(2d0c334f) SHA1(74d94abb34484c7b79dbb989645f53124e53e3b7) )
-
-	ROM_REGION( 0x400000, "ymf", 0 )
-	ROM_LOAD( "sound.u9", 0x000000, 0x400000, CRC(c5374beb) SHA1(d13e12cbd249246d953c45bb3bfa576a0ec75595) )
-
-	ROM_REGION( 0x100, "eeprom", 0 )
-	ROM_LOAD( "eeprom-s1945iii.bin", 0x0000, 0x0100, CRC(b39f3604) SHA1(d7c66210598096fcafb20adac2f0b293755f4926) )
-ROM_END
-
-/*     YEAR  NAME      PARENT    MACHINE      INPUT    CLASS           INIT   MONITOR  COMPANY   FULLNAME                                FLAGS */
-GAME( 2009, s1945iiex, s1945ii,  psikyo3v1,   s1945ii,  psikyosh_state, init_ps3, ROT270, "Pipi899", "Strikers 1945 II (EX Super Version 2009-07-29)", MACHINE_SUPPORTS_SAVE )
-GAME( 2009, s1945sr3,  s1945iii, psikyo5,     s1945iii, psikyosh_state, init_ps5, ROT270, "Pipi899", "Strikers 1945 III (Secret Fighter 2009-07-23)", MACHINE_SUPPORTS_SAVE )
-
-
-// PSmame (c) gaston90 used with permission
-
- /****************************************************
-         Proyecto Shadows Mame Build Plus
-*****************************************************/
 
  /*************
  Daraku Tenshi
 ****************/
 
-ROM_START( darakuhc01 )
+ROM_START( darakuhack01 )
 	ROM_REGION( 0x200000, "maincpu", 0)
-	ROM_LOAD32_WORD_SWAP( "4_proghc01.u18", 0x000002, 0x080000, CRC(a599fe9f) SHA1(12680fcab83b5cc3b53b19372096a97067e58fdc) )
-	ROM_LOAD32_WORD_SWAP( "3_proghc01.u17", 0x000000, 0x080000, CRC(2033dd8b) SHA1(b787b4f94b268f8585edc2ffa75dc2ccba5ad6f8) )
+	ROM_LOAD32_WORD_SWAP( "4_prog_hack01.u18", 0x000002, 0x080000, CRC(a599fe9f) SHA1(12680fcab83b5cc3b53b19372096a97067e58fdc) )
+	ROM_LOAD32_WORD_SWAP( "3_prog_hack01.u17", 0x000000, 0x080000, CRC(2033dd8b) SHA1(b787b4f94b268f8585edc2ffa75dc2ccba5ad6f8) )
 	ROM_LOAD16_WORD_SWAP( "prog.u16",     0x100000, 0x100000, CRC(3742e990) SHA1(dd4b8777e57245151b3d520ed1bdab207530420b) )
 
 	ROM_REGION( 0x3400000, "gfx1", 0 )
@@ -95,10 +39,10 @@ ROM_END
  Gunbird 2
 ************/
 
-ROM_START( gunbird2s01 )
+ROM_START( gunbird2hack01 )
 	ROM_REGION( 0x180000, "maincpu", 0)
-	ROM_LOAD32_WORD_SWAP( "2_prog_lhc01.u16", 0x000002, 0x080000, CRC(E4d9966a) SHA1(0164ccf6a2786e2a15c6c185dcbe03db97dbe775) )
-	ROM_LOAD32_WORD_SWAP( "1_prog_hhc01.u17", 0x000000, 0x080000, CRC(1cca1f60) SHA1(9647988f4871648eefd54d4afdb5d921f496ce1c) )
+	ROM_LOAD32_WORD_SWAP( "2_prog_lh_hack01.u16", 0x000002, 0x080000, CRC(E4d9966a) SHA1(0164ccf6a2786e2a15c6c185dcbe03db97dbe775) )
+	ROM_LOAD32_WORD_SWAP( "1_prog_hh_hack01.u17", 0x000000, 0x080000, CRC(1cca1f60) SHA1(9647988f4871648eefd54d4afdb5d921f496ce1c) )
 	ROM_LOAD16_WORD_SWAP( "3_pdata.u1",   0x100000, 0x080000, CRC(a5b697e6) SHA1(947f124fa585c2cf77c6571af7559bd652897b89) )
 
 	ROM_REGION( 0x3800000, "gfx1", 0 )
@@ -119,13 +63,39 @@ ROM_START( gunbird2s01 )
 ROM_END
 
  /*****************
+ Strikers 1945 II
+********************/
+
+ROM_START( s1945iihack01 )
+	ROM_REGION( 0x200000, "maincpu", 0) 
+	ROM_LOAD32_WORD_SWAP( "2_prog_l_hack01.u18", 0x000002, 0x080000, CRC(56276eb7) SHA1(28530132058621382697c678426967d720741853) )
+	ROM_LOAD32_WORD_SWAP( "1_prog_h_hack01.u17", 0x000000, 0x080000, CRC(99658d0d) SHA1(f8b7a697819dc1e4993557d9e854aa53964eb4a3) )
+
+	ROM_REGION( 0x2000000, "gfx1", 0 ) 
+	ROM_LOAD32_WORD( "0l.u4",    0x0000000, 0x400000, CRC(bfacf98d) SHA1(19954f12881e6e95e808bd1f2c2f5a425786727f) )
+	ROM_LOAD32_WORD( "0h.u13",   0x0000002, 0x400000, CRC(1266f67c) SHA1(cf93423a827aa92aa54afbbecf8509d2590edc9b) )
+	ROM_LOAD32_WORD( "1l.u3",    0x0800000, 0x400000, CRC(2d3332c9) SHA1(f2e54100a48061bfd589e8765f59ca051176a38b) )
+	ROM_LOAD32_WORD( "1h.u12",   0x0800002, 0x400000, CRC(27b32c3e) SHA1(17a80b3c919d8a282169c019ede8a22d2079c018) )
+	ROM_LOAD32_WORD( "2l.u2",    0x1000000, 0x400000, CRC(91ba6d23) SHA1(fd016a90204b2de43bb709971f7cd891f839de1a) )
+	ROM_LOAD32_WORD( "2h.u20",   0x1000002, 0x400000, CRC(fabf4334) SHA1(f8ec43e083b674700f532575f0d067bd49c5aaf7) )
+	ROM_LOAD32_WORD( "3l.u1",    0x1800000, 0x400000, CRC(a6c3704e) SHA1(cb9881e4235cc8e4bcca4c6ccbd8d8d8634e3624) )
+	ROM_LOAD32_WORD( "3h.u19",   0x1800002, 0x400000, CRC(4cd3ca70) SHA1(5b0a6ea4fe0e821cebe6e840596f648e24dded51) )
+
+	ROM_REGION( 0x400000, "ymf", 0 ) 
+	ROM_LOAD( "sound.u32", 0x000000, 0x400000, CRC(ba680ca7) SHA1(b645896e297aad426784aa656bff738e1b33c2a2) )
+
+	ROM_REGION( 0x100, "eeprom", 0 )
+	ROM_LOAD( "eeprom-s1945ii.bin", 0x0000, 0x0100, CRC(7ac38846) SHA1(c5f4b05a94211f3c96b8c472adbe634f2e77d753) )
+ROM_END
+
+ /*****************
  Strikers 1945 III
 ********************/
 
-ROM_START( s1945iiis01 )
+ROM_START( s1945iiihack01 )
 	ROM_REGION( 0x180000, "maincpu", 0)
-	ROM_LOAD32_WORD_SWAP( "2_progls01.u16", 0x000002, 0x080000, CRC(465f06d4) SHA1(2254ca868d526e04840e53016a55684a02bd483f) )
-	ROM_LOAD32_WORD_SWAP( "1_progh.u17", 0x000000, 0x080000, CRC(1b8a5a18) SHA1(718a176bd48e16f964fcb07c568b5227cfc0515f) )
+	ROM_LOAD32_WORD_SWAP( "2_progl_hack01.u16", 0x000002, 0x080000, CRC(16b4e78e) SHA1(ac16e3d7b959e7d28f1afc6eb6c590afa96fa379) )
+	ROM_LOAD32_WORD_SWAP( "1_progh_hack01.u17", 0x000000, 0x080000, CRC(6607b00e) SHA1(958d00880deb3d57c607402b8a87adaaa720914c) )
 	ROM_LOAD16_WORD_SWAP( "3_data.u1",   0x100000, 0x080000, CRC(8ff5f7d3) SHA1(420a3d7f2d5ab6a56789d36b418431f12f5f73f5) )
 
 	ROM_REGION( 0x3800000, "gfx1", 0 )
@@ -145,10 +115,10 @@ ROM_START( s1945iiis01 )
 	ROM_LOAD( "eeprom-s1945iii.bin", 0x0000, 0x0100, CRC(b39f3604) SHA1(d7c66210598096fcafb20adac2f0b293755f4926) )
 ROM_END
 
-ROM_START( s1945iiis02 )
+ROM_START( s1945iiihack02 )
 	ROM_REGION( 0x929E90, "maincpu", 0)
-	ROM_LOAD32_WORD_SWAP( "2_progls02.u16", 0x000002, 0x454F48, CRC(0e45ff7e) SHA1(a76c4bb434168feaf1f72565f72dda8022edd10c) )
-	ROM_LOAD32_WORD_SWAP( "1_proghs02.u17", 0x000000, 0x454F48, CRC(1c12a67c) SHA1(ebf2a5e8e9cdbc2b91403fe8373ffa44833d73ec) )
+	ROM_LOAD32_WORD_SWAP( "2_progl_hack02.u16", 0x000002, 0x454F48, CRC(0e45ff7e) SHA1(a76c4bb434168feaf1f72565f72dda8022edd10c) )
+	ROM_LOAD32_WORD_SWAP( "1_progh_hack02.u17", 0x000000, 0x454F48, CRC(1c12a67c) SHA1(ebf2a5e8e9cdbc2b91403fe8373ffa44833d73ec) )
 	ROM_LOAD16_WORD_SWAP( "3_data.u1",   0x100000, 0x080000, CRC(8ff5f7d3) SHA1(420a3d7f2d5ab6a56789d36b418431f12f5f73f5) )
 
 	ROM_REGION( 0x3800000, "gfx1", 0 )
@@ -172,10 +142,10 @@ ROM_END
  Sol Divide - The Sword Of Darkness
 *************************************/
 
-ROM_START( soldivids01 )
+ROM_START( soldividhack01 )
 	ROM_REGION( 0x200000, "maincpu", 0)
-	ROM_LOAD32_WORD_SWAP( "2-prog_lhc01.u18", 0x000002, 0x080000, CRC(E25b51a6) SHA1(04a6846cd7dcdcbf7943335cd76d138466c3af6d) )
-	ROM_LOAD32_WORD_SWAP( "1-prog_hhc01.u17", 0x000000, 0x080000, CRC(16656358) SHA1(Ef2506e3d50fd0c9d92c9975662ad2d3bf57e944) )
+	ROM_LOAD32_WORD_SWAP( "2-prog_l_hack01.u18", 0x000002, 0x080000, CRC(E25b51a6) SHA1(04a6846cd7dcdcbf7943335cd76d138466c3af6d) )
+	ROM_LOAD32_WORD_SWAP( "1-prog_h_hack01.u17", 0x000000, 0x080000, CRC(16656358) SHA1(Ef2506e3d50fd0c9d92c9975662ad2d3bf57e944) )
 
 	ROM_REGION( 0x3800000, "gfx1", 0 )
 	ROM_LOAD32_WORD_SWAP( "4lhc01.u10", 0x2000000, 0x400000, CRC(218e97a0) SHA1(D9e836725303060fbac5cdc5646aaf817c379c8d) )
@@ -191,12 +161,13 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Daraku Tenshi
-GAME( 1998, darakuhc01,  daraku,    psikyo3v1,   daraku,   psikyosh_state, init_ps3, ROT0,   "yumeji", "Daraku Tenshi (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, darakuhack01,   daraku,    psikyo3v1,   daraku,   psikyosh_state, init_ps3, ROT0,   "yumeji",  "Daraku Tenshi (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 // Gunbird 2
-GAME( 2009, gunbird2s01, gunbird2,  psikyo5,     gunbird2, psikyosh_state, init_ps5, ROT270, "yzb & pipi899", "Gunbird 2 (Ex Super Version 2009-08-04)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, gunbird2hack01, gunbird2,  psikyo5,     gunbird2, psikyosh_state, init_ps5, ROT270, "yzb & pipi899", "Gunbird 2 (Ex Super Version 2009-08-04)", MACHINE_SUPPORTS_SAVE )
+// Strikers 1945 II
+GAME( 2009, s1945iihack01,  s1945ii,   psikyo3v1,   s1945ii,  psikyosh_state, init_ps3, ROT270, "Pipi899", "Strikers 1945 II (EX Super Version 2009-07-29)", MACHINE_SUPPORTS_SAVE )
 // Strikers 1945 III
-GAME( 2009, s1945iiis01, s1945iii,  psikyo5,     s1945iii, psikyosh_state, init_ps5, ROT270, "pipi899", "Strikers 1945 III (Ex Super Version 2009-07-X3)", MACHINE_SUPPORTS_SAVE )
-GAME( 2014, s1945iiis02, s1945iii,  psikyo5,     s1945iii, psikyosh_state, init_ps5, ROT270, "hack", "Strikers 1945 III (Version Enhanced 2014-04-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, s1945iiihack01, s1945iii,  psikyo5,     s1945iii, psikyosh_state, init_ps5, ROT270, "Pipi899", "Strikers 1945 III (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2014, s1945iiihack02, s1945iii,  psikyo5,     s1945iii, psikyosh_state, init_ps5, ROT270, "hack",    "Strikers 1945 III (Ex Super Version 2014-04-07)", MACHINE_SUPPORTS_SAVE )
 // Sol Divide - The Sword Of Darkness
-GAME( 2007, soldivids01, soldivid,  psikyo3v1,   soldivid, psikyosh_state, init_ps3, ROT0,   "Shyma.X", "Sol Divide - The Sword Of Darkness (French translation v1.0 08-18-2007-08-18)", MACHINE_SUPPORTS_SAVE )
-
+GAME( 2007, soldividhack01, soldivid,  psikyo3v1,   soldivid, psikyosh_state, init_ps3, ROT0,   "Shyma.X", "Sol Divide - The Sword Of Darkness (translation French 2007-08-18)", MACHINE_SUPPORTS_SAVE )

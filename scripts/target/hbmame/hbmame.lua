@@ -2,7 +2,7 @@
 -- copyright-holders:Gaston90
 
 ---------------------------------------------------------------------------
---   PSARCADE CLASSIC target makefile
+--   PSARCADE CLASSIC+ target makefile
 ---------------------------------------------------------------------------
 
 --------------------------------------------------
@@ -1505,7 +1505,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/lwings.cpp",
 --	MAME_DIR .. "src/mame/includes/lwings.h",
 	MAME_DIR .. "src/mame/video/lwings.cpp",
-	MAME_DIR .. "src/hbmame/drivers/mitchell.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/mitchell.cpp",
 --	MAME_DIR .. "src/mame/includes/mitchell.h",
 	MAME_DIR .. "src/mame/video/mitchell.cpp",
 	MAME_DIR .. "src/hbmame/drivers/sf.cpp", --HBMAME
@@ -1704,7 +1704,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/metlclsh.h",
 	MAME_DIR .. "src/mame/video/metlclsh.cpp",
 	MAME_DIR .. "src/mame/drivers/mirage.cpp",
-	MAME_DIR .. "src/hbmame/drivers/pcktgal.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/pcktgal.cpp",
 --	MAME_DIR .. "src/mame/includes/pcktgal.h",
 	MAME_DIR .. "src/mame/video/pcktgal.cpp",
 	MAME_DIR .. "src/mame/drivers/pktgaldx.cpp",
@@ -2493,7 +2493,7 @@ files {
 --	MAME_DIR .. "src/mame/drivers/plygonet.cpp",
 --	MAME_DIR .. "src/mame/includes/plygonet.h",
 --	MAME_DIR .. "src/mame/video/plygonet.cpp",
-	MAME_DIR .. "src/hbmame/drivers/pooyan.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/pooyan.cpp",
 --	MAME_DIR .. "src/mame/includes/pooyan.h",
 	MAME_DIR .. "src/mame/video/pooyan.cpp",
 	MAME_DIR .. "src/mame/drivers/pyson.cpp",
@@ -2753,7 +2753,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/midxunit.cpp",
 --	MAME_DIR .. "src/mame/includes/midxunit.h",
 	MAME_DIR .. "src/mame/machine/midxunit.cpp",
-	MAME_DIR .. "src/hbmame/drivers/midyunit.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/midyunit.cpp",
 --	MAME_DIR .. "src/mame/includes/midyunit.h",
 	MAME_DIR .. "src/mame/machine/midyunit.cpp",
 	MAME_DIR .. "src/mame/video/midyunit.cpp",
@@ -2887,7 +2887,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/namcos22.h",
 	MAME_DIR .. "src/mame/video/namcos22.cpp",
 	MAME_DIR .. "src/mame/drivers/namcos23.cpp",
-	MAME_DIR .. "src/hbmame/drivers/namcos86.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/namcos86.cpp",
 --	MAME_DIR .. "src/mame/includes/namcos86.h",
 	MAME_DIR .. "src/mame/video/namcos86.cpp",
 	MAME_DIR .. "src/hbmame/drivers/pacland.cpp", --HBMAME
@@ -3220,7 +3220,7 @@ files {
 --	MAME_DIR .. "src/mame/machine/jumpshot.h",
 --	MAME_DIR .. "src/mame/machine/pacplus.cpp",
 --	MAME_DIR .. "src/mame/machine/pacplus.h",
-	MAME_DIR .. "src/mame/drivers/pengo.cpp",
+	MAME_DIR .. "src/hbmame/drivers/pengo.cpp", --HBMAME
 }
 
 createHBMAMEProjects(_target, _subtarget, "pce")
@@ -3370,7 +3370,7 @@ files {
 --	MAME_DIR .. "src/mame/machine/m2comm.h",
 	MAME_DIR .. "src/mame/audio/dsbz80.cpp",
 --	MAME_DIR .. "src/mame/audio/dsbz80.h",
-	MAME_DIR .. "src/hbmame/drivers/model2.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/model2.cpp",
 	MAME_DIR .. "src/mame/machine/model2.cpp",
 --	MAME_DIR .. "src/mame/includes/model2.h",
 --	MAME_DIR .. "src/mame/video/model2rd.hxx",
@@ -4829,7 +4829,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/malzak.h",
 	MAME_DIR .. "src/mame/video/malzak.cpp",
 --	MAME_DIR .. "src/mame/drivers/marywu.cpp",
-	MAME_DIR .. "src/hbmame/drivers/mcatadv.cpp", --HBMAME
+	MAME_DIR .. "src/mame/drivers/mcatadv.cpp",
 --	MAME_DIR .. "src/mame/includes/mcatadv.h",
 	MAME_DIR .. "src/mame/video/mcatadv.cpp",
 --	MAME_DIR .. "src/mame/drivers/mgavegas.cpp",

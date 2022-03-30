@@ -6927,7 +6927,7 @@ HACK( 2000, pacmini2, puckman,  pacman,   pacman,   pacman_state, 0,        ROT9
 
 /* Hires hacks */
 
-HACK( 1981, hanglyx,  puckmanx, pacmanx,  pacman,   pacman_state, 0,        ROT90, "hack", "Hangly-Man (set 1) (hires hack)", MACHINE_SUPPORTS_SAVE )
+HACK( 1981, hanglyx,  puckmanx, pacmanx,  pacman,   pacman_state, 0,        ROT90, "hack", "Hangly-Man", MACHINE_SUPPORTS_SAVE )
 HACK( 1981, hangly2x, puckmanx, pacmanx,  pacman,   pacman_state, 0,        ROT90, "hack", "Hangly-Man (set 2) (hires hack)", MACHINE_SUPPORTS_SAVE )
 HACK( 1981, hangly3x, puckmanx, pacmanx,  pacman,   pacman_state, 0,        ROT90, "hack", "Hangly-Man (set 3) (hires hack)", MACHINE_SUPPORTS_SAVE )
 HACK( 1980, newpuc2x, puckmanx, pacmanx,  pacman,   pacman_state, 0,        ROT90, "hack", "Newpuc2 (hires hack)", MACHINE_SUPPORTS_SAVE )
@@ -6937,7 +6937,7 @@ HACK( 1980, pacmanx,  puckmanx, pacmanx,  pacman,   pacman_state, 0,        ROT9
 HACK( 1980, pacmanfx, puckmanx, pacmanx,  pacman0,  pacman_state, 0,        ROT90, "[Namco] (Midway license)", "Pac-Man (Midway) (hires hack) [f]", MACHINE_SUPPORTS_SAVE )
 HACK( 1981, pacmodx,  puckmanx, pacmanx,  pacman,   pacman_state, 0,        ROT90, "[Namco] (Midway license)", "Pac-Man (Midway, harder) (hires hack)", MACHINE_SUPPORTS_SAVE )
 HACK( 1982, pacplusx, puckmanx, pacmanx,  pacman,   pacman_state,  pacplus, ROT90, "[Namco] (Midway license)", "Pac-Man Plus (hires hack)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, pheartx,  puckmanx, pacmanx,  pacman,   pacman_state, 0,        ROT90, "hack", "Pac-Man (Hearts) (hires hack)", MACHINE_SUPPORTS_SAVE )
+HACK( 1981, pheartx,  puckmanx, pacmanx,  pacman,   pacman_state, 0,        ROT90, "hack", "Pac-Man (Hearts)", MACHINE_SUPPORTS_SAVE )
 HACK( 1980, puckmanx, 0,        pacmanx,  pacman,   pacman_state, 0,        ROT90, "Namco", "PuckMan (Japan set 1, Probably Bootleg) (hires hack)", MACHINE_SUPPORTS_SAVE )
 HACK( 1980, puckmnax, puckmanx, pacmanx,  pacman,   pacman_state, 0,        ROT90, "Namco", "PuckMan (Japan set 2) (hires hack)", MACHINE_SUPPORTS_SAVE )
 HACK( 1980, puckmnfx, puckmanx, pacmanx,  pacman0,  pacman_state, 0,        ROT90, "Namco", "PuckMan (Japan set 1) (hires hack) [f]", MACHINE_SUPPORTS_SAVE )
@@ -6955,12 +6955,12 @@ HACK( 2000, chtpman2, puckman,  pacman,   pacman0,  pacman_state, 0,        ROT9
 HACK( 2000, chtpop,   puckman,  pacman,   pacman0,  pacman_state, 0,        ROT90, "[Midway]", "Pac-man (Popeye) [c]", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, chtpuck,  puckman,  pacman,   pacman0,  pacman_state, 0,        ROT90, "Deluxe", "New Puck-X [c]", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, europac,  puckman,  pacman,   pacman,   pacman_state, 0,        ROT90, "Stefano Priore", "Euro Pac", MACHINE_SUPPORTS_SAVE )
-HACK( 2000, fasthang, puckman,  pacman,   pacman0,  pacman_state, 0,        ROT90, "[Nittoh]", "Hangly Man [f]", MACHINE_SUPPORTS_SAVE )
+HACK( 2000, fasthang, puckman,  pacman,   pacman0,  pacman_state, 0,        ROT90, "[Nittoh]", "Hangly Man Speed", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, fastpop,  puckman,  pacman,   pacman0,  pacman_state, 0,        ROT90, "[Midway]", "Pacman (Popeye) [f]", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, fastpuck, puckman,  pacman,   pacman0,  pacman_state, 0,        ROT90, "Deluxe", "New Puck-X [f]", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, fpnleash, puckman,  woodpek,  pacman,   pacman_state, 0,        ROT90, "Peter Storey", "Pacman Unleashed (Flat)", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, fstpman2, puckman,  pacman,   pacman0,  pacman_state, 0,        ROT90, "[Namco]", "New Puck2 [f]", MACHINE_SUPPORTS_SAVE )
-HACK( 2000, hanglyad, puckman,  pacman,   pacman,   pacman_state, 0,        ROT90, "[Nittoh]", "Hangly-Man (set 1) After Dark", MACHINE_SUPPORTS_SAVE )
+HACK( 2000, hanglyad, puckman,  pacman,   pacman,   pacman_state, 0,        ROT90, "[Nittoh]", "Hangly-Man After Dark", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, hearts,   puckman,  pacman,   pacman,   pacman_state, 0,        ROT90, "[Midway]", "Pacman (Hearts)", MACHINE_SUPPORTS_SAVE )
 HACK( 2014, hellowp,  puckman,  pacman,   pacman,   pacman_state, 0,        ROT90, "cmonkey", "Hello World (Pacman HW)", MACHINE_SUPPORTS_SAVE )
 HACK( 1981, hmhearts, puckman,  pacman,   pacman,   pacman_state, 0,        ROT90, "[Nittoh]", "Hangly-Man (Hearts)", MACHINE_SUPPORTS_SAVE )
@@ -7343,15 +7343,15 @@ ROM_START( baracuda )
 ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
-HACK( 1980, pacmanfm, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "bootleg (FAMARE S.A.)", "Pac Man (FAMARE S.A. bootleg of Puck Man)", MACHINE_SUPPORTS_SAVE )
-HACK( 1980, pacmanso, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "Namco (Sonic license)", "Pac-Man (SegaSA / Sonic)", MACHINE_SUPPORTS_SAVE ) // from SegaSA / Sonic, could be licensed, could be bootleg - it ignores the service mode credit settings despite listing them which is suspicious
+HACK( 1980, pacmanfm, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "bootleg (FAMARE S.A.)",   "Pac Man (FAMARE S.A. bootleg of Puck Man)", MACHINE_SUPPORTS_SAVE )
+HACK( 1980, pacmanso, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "Namco (Sonic license)",   "Pac-Man (SegaSA / Sonic)", MACHINE_SUPPORTS_SAVE ) // from SegaSA / Sonic, could be licensed, could be bootleg - it ignores the service mode credit settings despite listing them which is suspicious
 HACK( 1980, pacmanvg, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "bootleg (Video HACK SA)", "Pac-Man (bootleg, Video HACK SA)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, popeyeman,puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "hack", "Popeye-Man", MACHINE_SUPPORTS_SAVE )
-HACK( 1980, puckmanh, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "bootleg (Falcom?)", "Puck Man (bootleg set 2)", MACHINE_SUPPORTS_SAVE )
-HACK( 198?, bucaner,  puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "hack", "Pac-Man (Buccaneer)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, bucanera, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "hack (Video Research)", "Buccaneer (set 2)", MACHINE_SUPPORTS_SAVE )
-HACK( 1980, crockman, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "bootleg (Rene Pierre)", "Crock-Man", MACHINE_SUPPORTS_SAVE )
-HACK( 1980, crockmnf, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "bootleg (Marti Colls)", "Crock-Man (Marti Colls bootleg of Rene Pierre Crock-Man)", MACHINE_SUPPORTS_SAVE )
-HACK( 1980, pacmanug, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "bootleg (U.G.)", "Pac Man (U.G. bootleg of Puck Man)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, baracuda, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "hack (Coinex)",  "Barracuda", MACHINE_SUPPORTS_SAVE )
+HACK( 1981, popeyeman,puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "hack",                    "Popeye-Man", MACHINE_SUPPORTS_SAVE )
+HACK( 1980, puckmanh, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "bootleg (Falcom?)",       "Puck Man (bootleg set 2)", MACHINE_SUPPORTS_SAVE )
+HACK( 198?, bucaner,  puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "hack",                    "Pac-Man (Buccaneer)", MACHINE_SUPPORTS_SAVE )
+HACK( 1981, bucanera, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "hack (Video Research)",   "Buccaneer (set 2)", MACHINE_SUPPORTS_SAVE )
+HACK( 1980, crockman, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "bootleg (Rene Pierre)",   "Crock-Man", MACHINE_SUPPORTS_SAVE )
+HACK( 1980, crockmnf, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "bootleg (Marti Colls)",   "Crock-Man (Marti Colls bootleg of Rene Pierre Crock-Man)", MACHINE_SUPPORTS_SAVE )
+HACK( 1980, pacmanug, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "bootleg (U.G.)",          "Pac Man (U.G. bootleg of Puck Man)", MACHINE_SUPPORTS_SAVE )
+HACK( 1981, baracuda, puckman,  pacman,   pacman,   pacman_state,  0,    ROT90,  "hack (Coinex)",           "Barracuda", MACHINE_SUPPORTS_SAVE )
 

@@ -1,21 +1,15 @@
-// license:BSD-3-Clause
-// copyright-holders:Robbbert
+// Proyecto Shadows Arcade Classic+
+// copyright-holders:Gaston90
 #include "../mame/drivers/r2dx_v33.cpp"
-
-//PSmame (c) gaston90 used with permission
-
- /********************************************
-      Proyecto Shadows Mame Build Plus
-**********************************************/
 
 /**************
  New Zero Team
 ***************/
 
-ROM_START( nzeroteamas01 ) //nzeroteama, nzeroteamp
+ROM_START( nzeroteamhack01 ) //nzeroteama, nzeroteamp
 	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_BYTE("prg1_ps1", 0x000000, 0x80000, CRC(cc45b0c6) SHA1(3d4212512b5fa33f543e1a94f7c6b33fe9562fb3) )
-	ROM_LOAD16_BYTE("prg2_ps1", 0x000001, 0x80000, CRC(8537b97d) SHA1(5cb89ab54e9830a525bf2b68309b342fd577d2ca) )
+	ROM_LOAD16_BYTE("prg1_hack01", 0x000000, 0x80000, CRC(cc45b0c6) SHA1(3d4212512b5fa33f543e1a94f7c6b33fe9562fb3) )
+	ROM_LOAD16_BYTE("prg2_hack01", 0x000001, 0x80000, CRC(8537b97d) SHA1(5cb89ab54e9830a525bf2b68309b342fd577d2ca) )
 
 	ROM_REGION( 0x20000, "math", 0 )
 	ROM_LOAD( "copx-d3.bin", 0x00000, 0x20000, CRC(fa2cf3ad) SHA1(13eee40704d3333874b6e3da9ee7d969c6dc662a) )
@@ -47,7 +41,4 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // New Zero Team
-GAME( 2018, nzeroteamas01,   zeroteam, nzerotea, nzerotea, r2dx_v33_state, init_nzerotea,  ROT0,   "hack",  "New Zero Team (Special Forces 2018-02-19)", MACHINE_SUPPORTS_SAVE)
-
-
-
+GAME( 2018, nzeroteamhack01,   zeroteam, nzerotea, nzerotea, r2dx_v33_state, init_nzerotea,  ROT0,   "hack",  "New Zero Team (Special Forces 2018-02-19)", MACHINE_SUPPORTS_SAVE)

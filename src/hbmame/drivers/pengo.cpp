@@ -1,0 +1,107 @@
+// license:BSD-3-Clause
+// copyright-holders:Robbbert
+#include "../mame/drivers/pengo.cpp"
+
+ /*****
+ Pengo
+********/
+
+// DSW1 needs to be here, coins/credits combinations to be found out
+static INPUT_PORTS_START( pacpen )
+	PORT_INCLUDE( pengo )
+	PORT_MODIFY("DSW0")
+	PORT_DIPNAME( 0x03, 0x00, DEF_STR( Bonus_Life ) )       PORT_DIPLOCATION("SW1:1,2")
+	PORT_DIPSETTING(    0x00, "10000" )
+	PORT_DIPSETTING(    0x01, "15000" )
+	PORT_DIPSETTING(    0x02, "20000" )
+	PORT_DIPSETTING(    0x03, DEF_STR( None ) )
+	PORT_DIPNAME( 0x04, 0x00, DEF_STR( Cabinet ) )          PORT_DIPLOCATION("SW1:3")
+	PORT_DIPSETTING(    0x00, DEF_STR( Upright ) )
+	PORT_DIPSETTING(    0x04, DEF_STR( Cocktail ) )
+	PORT_DIPNAME( 0x18, 0x10, DEF_STR( Lives ) )            PORT_DIPLOCATION("SW1:4,5")
+	PORT_DIPSETTING(    0x18, "5" )
+	PORT_DIPSETTING(    0x10, "3" )
+	PORT_DIPSETTING(    0x08, "2" )
+	PORT_DIPSETTING(    0x00, "1" )
+	PORT_BIT(0xe0, IP_ACTIVE_LOW, IPT_UNUSED)               PORT_DIPLOCATION("SW1:6,7,8")
+INPUT_PORTS_END
+
+ROM_START( pacpen )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "pacpen.u8",    0x0000, 0x1000, CRC(59959af1) SHA1(c528a7895338806977f2d9c76da91f67b0f78aed) )
+	ROM_LOAD( "pacpen.u7",    0x1000, 0x1000, CRC(3ed59df1) SHA1(561725f5970954cccf938330fd9f48ad0cb1829b) )
+	ROM_LOAD( "pacpen.u15",   0x2000, 0x1000, CRC(d0c8dcc8) SHA1(3a6829d12d7ef6f09d5e1afa5e0e4ef9d0605aa1) )
+	ROM_LOAD( "pacpen.u14",   0x3000, 0x1000, CRC(39066ad9) SHA1(9789a111b94a3c5aabf910c72c146f71df59f316) )
+
+	ROM_REGION( 0x4000, "gfx1", 0 )
+	ROM_LOAD( "pacpen.u92",   0x0000, 0x1000, CRC(2f0b5176) SHA1(a6a51d4545329999a5f42ae790bfb3a894429fee) )
+	ROM_CONTINUE(             0x2000, 0x1000 )
+	ROM_LOAD( "pacpen.105",   0x1000, 0x1000, CRC(6ba0078e) SHA1(a6e14aa373ef22fe732c335fb1ad6c48fec92530) )
+	ROM_CONTINUE(             0x3000, 0x1000 )
+
+	ROM_REGION( 0x0420, "proms", 0 )
+	ROM_LOAD( "pr1633.78",    0x0000, 0x0020, CRC(3a5844ec) SHA1(680eab0e1204c9b74adc11588461651b474021bb) )
+	ROM_LOAD( "pr1634.88",    0x0020, 0x0400, CRC(766b139b) SHA1(3fcd66610fcaee814953a115bf5e04788923181f) )
+
+	ROM_REGION( 0x0200, "namco", 0 )
+	ROM_LOAD( "pr1635.51",    0x0000, 0x0100, CRC(c29dea27) SHA1(563c9770028fe39188e62630711589d6ed242a66) )
+	ROM_LOAD( "pr1636.70",    0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) )
+ROM_END
+
+ROM_START( pengopop )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "pengo.u8",     0x0000, 0x1000, CRC(3dfeb20e) SHA1(a387b72501da77bf38b58619d2099083a0463e1f) )
+	ROM_LOAD( "pengo.u7",     0x1000, 0x1000, CRC(1db341bd) SHA1(d1c66bb9cf479e6960dbcd35c820097a81eaa555) )
+	ROM_LOAD( "pengo.u15",    0x2000, 0x1000, CRC(7c2842d5) SHA1(a8a568da68babd0ccb9f2cee4182fc01c3138494) )
+	ROM_LOAD( "pengo.u14",    0x3000, 0x1000, CRC(6e3c1f2f) SHA1(2ee821b0f6e0f3cfeae7f5ff25a6e9bd977efce0) )
+	ROM_LOAD( "ep5124.21",    0x4000, 0x1000, CRC(95f354ff) SHA1(fdebc68a6d87f8ecdf52a57a34ae5ae844a13510) )
+	ROM_LOAD( "pengo.u20",    0x5000, 0x1000, CRC(0fdb04b8) SHA1(ed814d58318c1055e475ff678609d189727bf9b4) )
+	ROM_LOAD( "ep5126.32",    0x6000, 0x1000, CRC(e5920728) SHA1(0ac5ffdad7bdcb32e630b9582e1b1aaece5198c9) )
+	ROM_LOAD( "pengopc.u31",  0x7000, 0x1000, CRC(1ede8569) SHA1(0d10a0896847a06185a91eb83c0ccb88c4307b33) )
+
+	ROM_REGION( 0x4000, "gfx1", 0 )
+	ROM_LOAD( "ep1640.92",    0x0000, 0x1000, CRC(d7eec6cd) SHA1(e542bcc28f292be9a0a29d949de726e0b55e654a) )
+	ROM_CONTINUE(             0x2000, 0x1000 )
+	ROM_LOAD( "ep1695.105",   0x1000, 0x1000, CRC(5bfd26e9) SHA1(bdec535e486b43a8f5550334beff423eeace10b2) )
+	ROM_CONTINUE(             0x3000, 0x1000 )
+
+	ROM_REGION( 0x0420, "proms", 0 )
+	ROM_LOAD( "pr1633.78",    0x0000, 0x0020, CRC(3a5844ec) SHA1(680eab0e1204c9b74adc11588461651b474021bb) )
+	ROM_LOAD( "pr1634.88",    0x0020, 0x0400, CRC(766b139b) SHA1(3fcd66610fcaee814953a115bf5e04788923181f) )
+
+	ROM_REGION( 0x0200, "namco", 0 )
+	ROM_LOAD( "pr1635.51",    0x0000, 0x0100, CRC(c29dea27) SHA1(563c9770028fe39188e62630711589d6ed242a66) )
+	ROM_LOAD( "pr1636.70",    0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) )
+ROM_END
+
+ROM_START( vecpengo )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "ep1689c.8",    0x0000, 0x1000, CRC(f37066a8) SHA1(0930de17a763a527057f60783a92662b09554426) )
+	ROM_LOAD( "ep1690b.7",    0x1000, 0x1000, CRC(baf48143) SHA1(4c97529e61eeca5d94938b1dfbeac41bf8cbaf7d) )
+	ROM_LOAD( "ep1691b.15",   0x2000, 0x1000, CRC(adf0eba0) SHA1(c8949fbdbfe5023ee17a789ef60205e834a76c81) )
+	ROM_LOAD( "ep1692b.14",   0x3000, 0x1000, CRC(a086d60f) SHA1(7079769d14dfe3873ffe29623ba0a93413706c6d) )
+	ROM_LOAD( "ep1693b.21",   0x4000, 0x1000, CRC(b72084ec) SHA1(c0508951c2ad8dc31481be8b3bfee2063e3fb0d7) )
+	ROM_LOAD( "ep1694b.20",   0x5000, 0x1000, CRC(94194a89) SHA1(7b47aec61593efd758e2a031f72a854bb0ba8af1) )
+	ROM_LOAD( "ep5118b.32",   0x6000, 0x1000, CRC(af7b12c4) SHA1(207ed466546f40ca60a38031b83aef61446902e2) )
+	ROM_LOAD( "ep5119c.31",   0x7000, 0x1000, CRC(933950fe) SHA1(fec7236b3dee2ea6e39c68440a6d2d9e3f72675a) )
+
+	ROM_REGION( 0x4000, "gfx1", 0 )
+	ROM_LOAD( "vecp_ic92",    0x0000, 0x1000, CRC(57c5e53c) SHA1(4d1d4cdc352cb2fd14ebbd6678211093be73fb69) )
+	ROM_CONTINUE(             0x2000, 0x1000 )
+	ROM_LOAD( "vecp_ic105",   0x1000, 0x1000, CRC(b93588b0) SHA1(bbb779e538bdf7ebfcb0e12e11b57cabd5ddd29d) )
+	ROM_CONTINUE(             0x3000, 0x1000 )
+
+	ROM_REGION( 0x0420, "proms", 0 )
+	ROM_LOAD( "pr1633.78",    0x0000, 0x0020, CRC(3a5844ec) SHA1(680eab0e1204c9b74adc11588461651b474021bb) )
+	ROM_LOAD( "pr1634.88",    0x0020, 0x0400, CRC(766b139b) SHA1(3fcd66610fcaee814953a115bf5e04788923181f) )
+
+	ROM_REGION( 0x0200, "namco", 0 )
+	ROM_LOAD( "pr1635.51",    0x0000, 0x0100, CRC(c29dea27) SHA1(563c9770028fe39188e62630711589d6ed242a66) )
+	ROM_LOAD( "pr1636.70",    0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) )
+ROM_END
+
+/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
+// Pengo
+GAME( 2016, pacpen,   pengo,   pengou, pacpen, pengo_state, empty_init, ROT90, "Andrew Hannay",    "Pacman on Pengo Hardware", MACHINE_SUPPORTS_SAVE )
+GAME( 1997, pengopop, pengo,   pengou, pengo,  pengo_state, empty_init, ROT90, "Sega",             "Pengo (Popcorn Music)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, vecpengo, pengo,   pengoe, pengo,  pengo_state, empty_init, ROT90, "T-Bone",           "Pengo (Vector sim)", MACHINE_SUPPORTS_SAVE )

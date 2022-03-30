@@ -1,19 +1,15 @@
-// license:BSD-3-Clause
-// copyright-holders:Robbbert
+// Proyecto Shadows Arcade Classic+
+// copyright-holders:Gaston90
 #include "../mame/drivers/mystwarr.cpp"
-
- /****************************************************
-         Proyecto Shadows Mame Build Plus
-*****************************************************/
 
  /*************
  Dragoon Might
 ****************/
 
-ROM_START( mtlchamps01 )
+ROM_START( mtlchamphack01 )
 	ROM_REGION( 0x400000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "234eab01_ps01.20f", 0x000000, 0x40000, CRC(7c3bb381) SHA1(a543dfac8180946cd1f6e24548185324665996ea) )
-	ROM_LOAD16_BYTE( "234eab02_ps01.20g", 0x000001, 0x40000, CRC(1b53e493) SHA1(a88f4c257e9b2be1d997052ee6cc191e4d66cda0) )
+	ROM_LOAD16_BYTE( "234eab01_hack01.20f", 0x000000, 0x40000, CRC(7c3bb381) SHA1(a543dfac8180946cd1f6e24548185324665996ea) )
+	ROM_LOAD16_BYTE( "234eab02_hack01.20g", 0x000001, 0x40000, CRC(1b53e493) SHA1(a88f4c257e9b2be1d997052ee6cc191e4d66cda0) )
 	ROM_LOAD16_BYTE( "234_d03.19f",  0x300000, 0x80000, CRC(abb577c6) SHA1(493f11a10a4d5b62d755ff8274e77d898544944f) )
 	ROM_LOAD16_BYTE( "234_d04.19g",  0x300001, 0x80000, CRC(030a1925) SHA1(03783488950c9f27af5948e7b9f6a609c2df6e0b) )
 
@@ -46,10 +42,10 @@ ROM_END
  Monster Maulers
 ****************/
 
-ROM_START( mmaulerss01 )
+ROM_START( mmaulershack01 )
 	ROM_REGION( 0x400000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "170eaa07_ps01.24m", 0x000000, 0x80000, CRC(0a14a7de) SHA1(5d74ca1b306901201d0fbf9b65dadc5c26082cd4) )
-	ROM_LOAD16_BYTE( "170eaa09_ps01.19l", 0x000001, 0x80000, CRC(45219214) SHA1(5cef21c1556b943d3fa122e882d641e0627e946e) )
+	ROM_LOAD16_BYTE( "170eaa07_hack01.24m", 0x000000, 0x80000, CRC(0a14a7de) SHA1(5d74ca1b306901201d0fbf9b65dadc5c26082cd4) )
+	ROM_LOAD16_BYTE( "170eaa09_hack01.19l", 0x000001, 0x80000, CRC(45219214) SHA1(5cef21c1556b943d3fa122e882d641e0627e946e) )
 	ROM_LOAD16_BYTE( "170a08.21m",   0x100000, 0x40000, CRC(03c59ba2) SHA1(041473fe5f9004bfb7ca767c2004154c27f726ff) )
 	ROM_LOAD16_BYTE( "170a10.17l",   0x100001, 0x40000, CRC(8a340909) SHA1(3e2ef2642e792cdc38b3442df67377ed9e70d3ab) )
 
@@ -90,10 +86,10 @@ ROM_END
  Metamorphic Force
 *******************/
 
-ROM_START( metamrphs01 ) //metamrph
+ROM_START( metamrphhack01 ) //metamrph
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "224eaa01s01.15h", 0x000001, 0x40000, CRC(8fc188bb) SHA1(c5a2b5c50505e82e89e280c92e5a08bf4d8e76f1) )
-	ROM_LOAD16_BYTE( "224eaa02s01.15f", 0x000000, 0x40000, CRC(ec7b34a0) SHA1(cf2d9c45cff3d05079b51628dad07f4b879ffaaf) )
+	ROM_LOAD16_BYTE( "224eaa01_hack01.15h", 0x000001, 0x40000, CRC(8fc188bb) SHA1(c5a2b5c50505e82e89e280c92e5a08bf4d8e76f1) )
+	ROM_LOAD16_BYTE( "224eaa02_hack01.15f", 0x000000, 0x40000, CRC(ec7b34a0) SHA1(cf2d9c45cff3d05079b51628dad07f4b879ffaaf) )
 	ROM_LOAD16_BYTE( "224a03",       0x100001, 0x80000, CRC(a5bedb01) SHA1(5e7a0b93af654ba6a87be8d449c7080a0f0e2a43) )
 	ROM_LOAD16_BYTE( "224a04",       0x100000, 0x80000, CRC(ada53ba4) SHA1(f77bf854dff1f8f718579fe6d3730066708396e2) )
 
@@ -125,10 +121,10 @@ ROM_END
  Violent Storm
 ****************/
 
-ROM_START( viostorms01 ) //viostormab
+ROM_START( viostormhack01 ) //viostormab
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "168aab01_ps01.15h", 0x000001, 0x80000, CRC(a6e55e6e) SHA1(9068f7da102d200374106968c8939dfa874f7d08) )
-	ROM_LOAD16_BYTE( "168aab02_ps01.15f", 0x000000, 0x80000, CRC(f014f55b) SHA1(fae0a0974c46af316e49832ef70251010df025ac) )
+	ROM_LOAD16_BYTE( "168aab01_hack01.15h", 0x000001, 0x80000, CRC(a6e55e6e) SHA1(9068f7da102d200374106968c8939dfa874f7d08) )
+	ROM_LOAD16_BYTE( "168aab02_hack01.15f", 0x000000, 0x80000, CRC(f014f55b) SHA1(fae0a0974c46af316e49832ef70251010df025ac) )
 
 	ROM_REGION( 0x40000, "soundcpu", 0 )
 	ROM_LOAD("168a05.7c", 0x00000, 0x20000, CRC(507fb3eb) SHA1(a4f676e3caaafe86918c76ded08d0c202969adf6) )
@@ -154,10 +150,10 @@ ROM_START( viostorms01 ) //viostormab
 	ROM_LOAD( "viostormab.nv", 0x0000, 0x080, CRC(38ffce43) SHA1(f0666198562ae7c07c8f805088e882a10c79bcf3) )
 ROM_END
 
-ROM_START( viostorms02 ) //viostormeb
+ROM_START( viostormhack02 ) //viostormeb
 	ROM_REGION( 0x200000, "maincpu", 0)
-	ROM_LOAD16_BYTE( "168eab01_ps02.15h", 0x000001, 0x80000, CRC(49a5f912) SHA1(55929e5fd7bb7aa55ccc829f91bb29c6d6eacf54) )
-	ROM_LOAD16_BYTE( "168eab02_ps02.15f", 0x000000, 0x80000, CRC(69f3c524) SHA1(23fd0d34a35cbad2f4020c8fa0fe75f498c386ed) )
+	ROM_LOAD16_BYTE( "168eab01_hack02.15h", 0x000001, 0x80000, CRC(49a5f912) SHA1(55929e5fd7bb7aa55ccc829f91bb29c6d6eacf54) )
+	ROM_LOAD16_BYTE( "168eab02_hack02.15f", 0x000000, 0x80000, CRC(69f3c524) SHA1(23fd0d34a35cbad2f4020c8fa0fe75f498c386ed) )
 
 	ROM_REGION( 0x40000, "soundcpu", 0 )
 	ROM_LOAD("168a05.7c", 0x00000, 0x20000, CRC(507fb3eb) SHA1(a4f676e3caaafe86918c76ded08d0c202969adf6) )
@@ -183,105 +179,13 @@ ROM_START( viostorms02 ) //viostormeb
 	ROM_LOAD( "viostormeb.nv", 0x0000, 0x080, CRC(28b5fe49) SHA1(0ef51ae4b012a7d680543747fd4b6dd9dfb5f560) )
 ROM_END
 
-ROM_START( viostorms03 ) //viostormub
-	ROM_REGION( 0x200000, "maincpu", 0)
-	ROM_LOAD16_BYTE( "168uab01_ps03.15h", 0x000001, 0x80000, CRC(45126fb4) SHA1(f1a1b769d2789d54b66de08cc70f926205559409) )
-	ROM_LOAD16_BYTE( "168uab02_ps03.15f", 0x000000, 0x80000, CRC(d4a738f0) SHA1(0e4bcc5d977710f894fa6f6fbb2ad2b2c58d8985) )
-
-	ROM_REGION( 0x40000, "soundcpu", 0 )
-	ROM_LOAD("168a05.7c", 0x00000, 0x20000, CRC(507fb3eb) SHA1(a4f676e3caaafe86918c76ded08d0c202969adf6) )
-	ROM_RELOAD(           0x20000, 0x20000 )
-
-	ROM_REGION( 0x600000, "k056832", ROMREGION_ERASE00)
-	ROM_LOADTILE_WORD( "168a09.1h", 0x000000, 2*1024*1024, CRC(1b34a881) SHA1(5de20f7ee7f90d4f6dea349ca5000bfcf74253b1) )
-	ROM_LOADTILE_WORD( "168a08.1k", 0x000002, 2*1024*1024, CRC(db0ce743) SHA1(dfe24a1e3e72da188a92668928e79afd6c5d22ee) )
-
-	ROM_REGION( 0x800000, "k055673", ROMREGION_ERASE00)
-	ROM_LOAD64_WORD( "168a10.22k", 0x000000, 2*1024*1024, CRC(bd2bbdea) SHA1(54faf2ded16e66d675bbbec4ebd42b4708edfaef) )
-	ROM_LOAD64_WORD( "168a11.19k", 0x000002, 2*1024*1024, CRC(7a57c9e7) SHA1(8763c310f7b515aef52d4e007bc949e8803690f4) )
-	ROM_LOAD64_WORD( "168a12.20k", 0x000004, 2*1024*1024, CRC(b6b1c4ef) SHA1(064ab4db884c8f98ab9e631b7034996d4b92ab7b) )
-	ROM_LOAD64_WORD( "168a13.17k", 0x000006, 2*1024*1024, CRC(cdec3650) SHA1(949bc06bb38a2d5315ee4f6db19e043655b90e6e) )
-
-	ROM_REGION( 0x40000, "gfx3", ROMREGION_ERASE00)
-
-	ROM_REGION( 0x400000, "k054539", 0)
-	ROM_LOAD( "168a06.1c", 0x000000, 2*1024*1024, CRC(25404fd7) SHA1(282cf523728b38d0bf14d765dd7257aa1fb2af39) )
-	ROM_LOAD( "168a07.1e", 0x200000, 2*1024*1024, CRC(fdbbf8cc) SHA1(a8adf72a25fe2b9c4c338350d02c92deb5f8c8e9) )
-
-	ROM_REGION( 0x80, "eeprom", 0 )
-	ROM_LOAD( "viostormub.nv", 0x0000, 0x080, CRC(b6937413) SHA1(eabc2ea661201f5ed42ab541aee765480bbdd5bc) )
-ROM_END
-
-ROM_START( viostorms04 ) //viostorma
-	ROM_REGION( 0x200000, "maincpu", 0)
-	ROM_LOAD16_BYTE( "168uab01_ps04.15h", 0x000001, 0x80000, CRC(3a870170) SHA1(f6fd2e63105235574adb9ec7adfa02f9f5826cd7) )
-	ROM_LOAD16_BYTE( "168uab02_ps04.15f", 0x000000, 0x80000, CRC(d00bf154) SHA1(e95acc9ef04a31da22c685202a18cc637305fe29) )
-
-	ROM_REGION( 0x40000, "soundcpu", 0 )
-	ROM_LOAD("168a05.7c", 0x00000, 0x20000, CRC(507fb3eb) SHA1(a4f676e3caaafe86918c76ded08d0c202969adf6) )
-	ROM_RELOAD(           0x20000, 0x20000 )
-
-	ROM_REGION( 0x600000, "k056832", ROMREGION_ERASE00)
-	ROM_LOADTILE_WORD( "168a09.1h", 0x000000, 2*1024*1024, CRC(1b34a881) SHA1(5de20f7ee7f90d4f6dea349ca5000bfcf74253b1) )
-	ROM_LOADTILE_WORD( "168a08.1k", 0x000002, 2*1024*1024, CRC(db0ce743) SHA1(dfe24a1e3e72da188a92668928e79afd6c5d22ee) )
-
-	ROM_REGION( 0x800000, "k055673", ROMREGION_ERASE00)
-	ROM_LOAD64_WORD( "168a10.22k", 0x000000, 2*1024*1024, CRC(bd2bbdea) SHA1(54faf2ded16e66d675bbbec4ebd42b4708edfaef) )
-	ROM_LOAD64_WORD( "168a11.19k", 0x000002, 2*1024*1024, CRC(7a57c9e7) SHA1(8763c310f7b515aef52d4e007bc949e8803690f4) )
-	ROM_LOAD64_WORD( "168a12.20k", 0x000004, 2*1024*1024, CRC(b6b1c4ef) SHA1(064ab4db884c8f98ab9e631b7034996d4b92ab7b) )
-	ROM_LOAD64_WORD( "168a13.17k", 0x000006, 2*1024*1024, CRC(cdec3650) SHA1(949bc06bb38a2d5315ee4f6db19e043655b90e6e) )
-
-	ROM_REGION( 0x40000, "gfx3", ROMREGION_ERASE00)
-
-	ROM_REGION( 0x400000, "k054539", 0)
-	ROM_LOAD( "168a06.1c", 0x000000, 2*1024*1024, CRC(25404fd7) SHA1(282cf523728b38d0bf14d765dd7257aa1fb2af39) )
-	ROM_LOAD( "168a07.1e", 0x200000, 2*1024*1024, CRC(fdbbf8cc) SHA1(a8adf72a25fe2b9c4c338350d02c92deb5f8c8e9) )
-
-	ROM_REGION( 0x80, "eeprom", 0 )
-	ROM_LOAD( "viostorm.nv", 0x0000, 0x080, CRC(3cb1c96c) SHA1(56ed6633e7108925a13ad6bc32381bfde592f70b) )
-ROM_END
-
-ROM_START( viostorms05 ) //viostorma
-	ROM_REGION( 0x200000, "maincpu", 0)
-	ROM_LOAD16_BYTE( "168uab01_ps05.15h", 0x000001, 0x80000, CRC(f547608b) SHA1(0509b646e3b1c72dc3ba00cb8526b777b5167124) )
-	ROM_LOAD16_BYTE( "168uab02_ps05.15f", 0x000000, 0x80000, CRC(c980ffe8) SHA1(27b724454db59ddea635c30ffc8fc8d98fd8305a) )
-
-	ROM_REGION( 0x40000, "soundcpu", 0 )
-	ROM_LOAD("168a05.7c", 0x00000, 0x20000, CRC(507fb3eb) SHA1(a4f676e3caaafe86918c76ded08d0c202969adf6) )
-	ROM_RELOAD(           0x20000, 0x20000 )
-
-	ROM_REGION( 0x600000, "k056832", ROMREGION_ERASE00)
-	ROM_LOADTILE_WORD( "168a09.1h", 0x000000, 2*1024*1024, CRC(1b34a881) SHA1(5de20f7ee7f90d4f6dea349ca5000bfcf74253b1) )
-	ROM_LOADTILE_WORD( "168a08.1k", 0x000002, 2*1024*1024, CRC(db0ce743) SHA1(dfe24a1e3e72da188a92668928e79afd6c5d22ee) )
-
-	ROM_REGION( 0x800000, "k055673", ROMREGION_ERASE00)
-	ROM_LOAD64_WORD( "168a10.22k", 0x000000, 2*1024*1024, CRC(bd2bbdea) SHA1(54faf2ded16e66d675bbbec4ebd42b4708edfaef) )
-	ROM_LOAD64_WORD( "168a11.19k", 0x000002, 2*1024*1024, CRC(7a57c9e7) SHA1(8763c310f7b515aef52d4e007bc949e8803690f4) )
-	ROM_LOAD64_WORD( "168a12.20k", 0x000004, 2*1024*1024, CRC(b6b1c4ef) SHA1(064ab4db884c8f98ab9e631b7034996d4b92ab7b) )
-	ROM_LOAD64_WORD( "168a13.17k", 0x000006, 2*1024*1024, CRC(cdec3650) SHA1(949bc06bb38a2d5315ee4f6db19e043655b90e6e) )
-
-	ROM_REGION( 0x40000, "gfx3", ROMREGION_ERASE00)
-
-	ROM_REGION( 0x400000, "k054539", 0)
-	ROM_LOAD( "168a06.1c", 0x000000, 2*1024*1024, CRC(25404fd7) SHA1(282cf523728b38d0bf14d765dd7257aa1fb2af39) )
-	ROM_LOAD( "168a07.1e", 0x200000, 2*1024*1024, CRC(fdbbf8cc) SHA1(a8adf72a25fe2b9c4c338350d02c92deb5f8c8e9) )
-
-	ROM_REGION( 0x80, "eeprom", 0 )
-	ROM_LOAD( "viostorm.nv", 0x0000, 0x080, CRC(3cb1c96c) SHA1(56ed6633e7108925a13ad6bc32381bfde592f70b) )
-ROM_END
-
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Martial Champion
-GAME( 1993, mtlchamps01,   mtlchamp,        martchmp, martchmp, mystwarr_state, empty_init, ROT0,  "DDJ", "Martial Champion (Easy Move)", MACHINE_IMPERFECT_GRAPHICS )
+GAME( 1993, mtlchamphack01,   mtlchamp,        martchmp, martchmp, mystwarr_state, empty_init, ROT0,  "DDJ",  "Martial Champion (Easy Move)", MACHINE_IMPERFECT_GRAPHICS )
 // Monster Maulers
-GAME( 1993, mmaulerss01,   mmaulers,        dadandrn, dadandrn, mystwarr_state, empty_init, ROT0,  "DDJ", "Monster Maulers (Easy Move)", MACHINE_IMPERFECT_GRAPHICS )
+GAME( 1993, mmaulershack01,   mmaulers,        dadandrn, dadandrn, mystwarr_state, empty_init, ROT0,  "DDJ",  "Monster Maulers (Easy Move)", MACHINE_IMPERFECT_GRAPHICS )
 // Metamorphic Force
-GAME( 2018, metamrphs01,   metamrph,        metamrph, metamrph, mystwarr_state, empty_init, ROT0,  "hack", "Metamorphic Force (Version Enhanced 2017-07-03)", MACHINE_IMPERFECT_GRAPHICS )
+GAME( 2018, metamrphhack01,   metamrph,        metamrph, metamrph, mystwarr_state, empty_init, ROT0,  "hack", "Metamorphic Force (Ex Super Version 2017-07-03)", MACHINE_IMPERFECT_GRAPHICS )
 // Violent Storm
-GAME( 2018, viostorms01,   viostorm,        viostorm, viostorm, mystwarr_state, empty_init, ROT0,  "hack", "Violent Storm (Enhanced Edition 2018-08-14)", MACHINE_IMPERFECT_GRAPHICS )
-GAME( 2018, viostorms02,   viostorm,        viostorm, viostorm, mystwarr_state, empty_init, ROT0,  "hack", "Violent Storm (Enhanced Edition 2018-08-13)", MACHINE_IMPERFECT_GRAPHICS )
-GAME( 2018, viostorms03,   viostorm,        viostorm, viostorm, mystwarr_state, empty_init, ROT0,  "hack", "Violent Storm (Enhanced Edition 2018-05-07)", MACHINE_IMPERFECT_GRAPHICS )
-GAME( 2020, viostorms04,   viostorm,        viostorm, viostorm, mystwarr_state, empty_init, ROT0,  "hack", "Violent Storm (Enhanced Edition 2020-03-24)", MACHINE_IMPERFECT_GRAPHICS )
-GAME( 2020, viostorms05,   viostorm,        viostorm, viostorm, mystwarr_state, empty_init, ROT0,  "hack", "Violent Storm (Enhanced Edition 2020-03-25)", MACHINE_IMPERFECT_GRAPHICS )
-
-
+GAME( 2018, viostormhack01,   viostorm,        viostorm, viostorm, mystwarr_state, empty_init, ROT0,  "hack", "Violent Storm (Battered Edition 2018-08-14)", MACHINE_IMPERFECT_GRAPHICS )
+GAME( 2018, viostormhack02,   viostorm,        viostorm, viostorm, mystwarr_state, empty_init, ROT0,  "hack", "Violent Storm (Fight bloody version 2018-08-13)", MACHINE_IMPERFECT_GRAPHICS )

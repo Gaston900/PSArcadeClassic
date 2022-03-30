@@ -41,4 +41,3 @@ ROM_END
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Alien Challenge
 GAME( 2018, alienchahack01,  aliencha,        aliencha, aliencha, lordgun_state, empty_init,   ROT0, "hack", "Alien Challenge (Simplified Edition 2018-07-05)", MACHINE_SUPPORTS_SAVE )
-

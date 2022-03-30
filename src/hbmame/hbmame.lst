@@ -2106,6 +2106,7 @@ mk2r21                          // (c) 1993 Midway
 mk2r30                          // (c) 1993 Midway
 mk2r31e                         // (c) 1993 Midway
 mk2r32e                         // (c) 1993 Midway
+mk2r33                          // hack
 mk2r42                          // hack
 mk2r91                          // hack
 mkr4                            // (c) 1992 Midway
@@ -2210,6 +2211,7 @@ pangb2                          // bootleg
 pangba                          // bootleg
 pangbb                          // bootleg
 pangbold                        // bootleg
+pangbold3                       // bootleg
 pompingw                        // (c) 1989 Mitchell (Japan)
 sbbros                          // 01/10/1990 (c) 1990 Mitchell + Capcom (US) not listed on Capcom's site
 spang                           // 14/09/1990 (c) 1990 Mitchell (World)
@@ -9801,6 +9803,7 @@ tail2nos                        // [1989] V-System Co.
 //vanvank                         // (c) 1983 Karateco (bootleg?) [It does not work] 
 //woodpeca                        // (c) 1981 Amenip Nova Games Ltd. [It does not work] 
 //woodpeck                        // (c) 1981 Amenip (Palcom Queen River) [It does not work] 
+puckman                         // (c) 1980 Namco
 ctrpllrp                        // hack
 hangly                          // hack
 hangly2                         // hack
@@ -9818,23 +9821,367 @@ puckmod                         // (c) 1981 Namco
 puckmanb                        // bootleg
 puckmana                        // hack
 puckmanf                        // hack
+hmbluep                         // hack
+hmgrenp                         // hack
+hmhearts                        // hack
+hanglyad                        // hack
+homercid                        // hack
+jacman                          // hack
+pacmar                          // hack
+mazeman                         // hack
+mcpacman                        // hack
+pacmini                         // hack
+pacmini2                        // hack
+nwpuc2b                         // hack
+pac2600                         // hack
+pm7000p                         // hack
+pmbamaz                         // hack
+pmheart                         // hack
+pplusad                         // hack
+puckmano                        // hack
+puckmoti                        // hack
+puckren                         // hack
+punleash                        // hack
+roboman                         // hack
+snakeyes                        // hack
+snowpac                         // hack
+spuckman                        // hack
+sumelton                        // hack
+tbone                           // hack
+ultra2                          // hack
+vcrunchy                        // hack
+vectplus                        // hack
+vectr6m                         // hack
+vectr6tb                        // hack
+vectxens                        // hack
+vhangly                         // hack
+vpacbell                        // hack
+vpacelec                        // hack
+vpacjail                        // hack
+vpacms1                         // hack
+vpacms2                         // hack
+vpacms3                         // hack
+vpacms4                         // hack
+vpacmsa1                        // hack
+vpacmsa2                        // hack
+vpacmsa3                        // hack
+vpacmsa4                        // hack
+vpspeed                         // hack
+xensad                          // hack
+xensrev                         // hack
+pacmanfm                        // bootleg (FAMARE S.A.)
+pacmanso                        //
+pacmanvg                        // bootleg (Video Game SA)
+popeyeman                       // hack
+puckmanh                        // hack
+bucaner                         // hack
+bucanera                        // hack
+crockman                        // 1980 bootleg (RENE PIERRE)
+crockmnf                        // bootleg (Marti Colls / Falgas)
+pacmanug                        // bootleg (U.G.)
+baracuda                        // hack (Coinex)
+bevpac                          // hack
+invispac                        // hack
+pacforks                        // hack
+pacsmall                        // hack
+pmad6m                          // hack
+brakman                         // hack
+pacman25                        // hack
+pengman                         // hack
+crazypac                        // hack
+dizzy                           // hack
+eltonpac                        // hack
+pacman3d                        // hack
+pacmn6m2                        // hack
+pacmulti                        // hack
+pacweird                        // hack
+puckmanx                        // hack
+hanglyx                         // hack
+nwpuckxx                        // hack
+pacplusx                        // hack
+pheartx                         // hack
+abortman                        // hack
+bacman                          // hack
+bucaneerx                       // hack
+caterpil                        // hack
+europac                         // hack
+fpnleash                        // hack
+pacbaby                         // hack
+pacbaby2                        // hack
+pacbaby3                        // hack
+baby4                           // hack
+pacbell                         // hack
+pacelec                         // hack
+pacjail                         // hack
+pacjr1                          // hack
+pacjr2                          // hack
+pacjr3                          // hack
+pacjr4                          // hack
+pacm255                         // hack
+pacminer                        // hack
+pacms1                          // hack
+pacms2                          // hack
+pacms3                          // hack
+pacms4                          // hack
+pacmsa1                         // hack
+pacmsa2                         // hack
+pacmsa3                         // hack
+pacmsa4                         // hack
+pacplusc                        // hack
+pacrab                          // hack
+pacshuf                         // hack
+pacspeed                        // hack
+pcrunchy                        // hack
+pheartb                         // hack
+pmad                            // hack
+pmad00                          // hack
+pacman25s01                     // hack
+pacman25s05                     // hack
+pacman25s06                     // hack
+pacman25s08                     // hack
+pacman25s09                     // hack
+pacman25s12                     // hack
+pacman25s13                     // hack
+pacman25s15                     // hack
+pacman25s19                     // hack
+pacman25s21                     // hack
+pacman25s22                     // hack
+pacman25s23                     // hack
+pacman25s24                     // hack
+pacman25s25                     // hack
+pacman25s26                     // hack
+pacman25s27                     // hack
+pacman25s28                     // hack
+pacman25s30                     // hack
+pacman25s33                     // hack
+pacman25s34                     // hack
+pacman25s35                     // hack
+pacman25s36                     // hack
+pacman25s37                     // hack
+pacman25s38                     // hack
+pacman25s39                     // hack
+pacman25s40                     // hack
+pacman25s41                     // hack
+pacman25s42                     // hack
+pacman25s43                     // hack
+pacman25s44                     // hack
+pacman25s46                     // hack
+pacman25s47                     // hack
+pacman25s48                     // hack
+pacman25s49                     // hack
+pacman25s50                     // hack
+pacman25s51                     // hack
+pacman25s52                     // hack
+pacman25s54                     // hack
+pacman25s55                     // hack
+pacman25s56                     // hack
+pacman25s57                     // hack
+pacman25s58                     // hack
+pacman25s59                     // hack
+pacman25s62                     // hack
+pacman25s63                     // hack
+pacman25s64                     // hack
+pacman25s65                     // hack
+pacman25s66                     // hack
+pacman25s67                     // hack
+pacman25s68                     // hack
+pacman25s69                     // hack
+pacman25s70                     // hack
+pacman25s71                     // hack
+pacman25s72                     // hack
+pacman25s73                     // hack
+pacman25s74                     // hack
+pacman25s75                     // hack
+pacman25s77                     // hack
+pacman25s78                     // hack
+pacman25s79                     // hack
+pacman25s80                     // hack
+pacman25s81                     // hack
+pacman25s82                     // hack
+pacman25s83                     // hack
+pacman25s84                     // hack
+pacman25s85                     // hack
+pacman25s86                     // hack
+pacman25s87                     // hack
+pacman25s89                     // hack
+pacman25s90                     // hack
+pacman25s91                     // hack
+pacman25s92                     // hack
+pacman25s93                     // hack
+pacman25s94                     // hack
+pacman25s95                     // hack
+pacman25s96                     // hack
+pacman25s97                     // hack
+pacman25s98                     // hack
+pacman25s99                     // hack
+pacman25s101                    // hack
+pacman25s102                    // hack
+pacman25s103                    // hack
+pacman25s104                    // hack
+pacman25s106                    // hack
+pacman25s107                    // hack
+pacman25s108                    // hack
+pacman25s109                    // hack
+pacman25s111                    // hack
+pacman25s112                    // hack
+pacman25s113                    // hack
+pacman25s114                    // hack
+pacman25s115                    // hack
+pacman25s116                    // hack
+pacman25s117                    // hack
+pacman25s118                    // hack
+pacman25s119                    // hack
+pacman25s120                    // hack
+pacman25s121                    // hack
+pacman25s122                    // hack
+pacman25s123                    // hack
+pacman25s124                    // hack
+pacman25s126                    // hack
+pacman25s127                    // hack
 
 @source:maketrax.cpp
-piranha
-piranhah
-piranhao
-crush        //Mame Oficial
-crush2
-crush3
-crush4
-crushbl
-crushrlf
-eyes2
-eyeszac
-eyeszacb
-eyesb2
-maketrax
-maketrxb
+abscam                          // hack
+eyes                            // (c) 1982 Digitrex Techstar + "Rockola presents"
+aa                              //
+bace                            //
+dderby                          //
+kangaroh                        //
+lazybug                         //
+lazybug1                        //
+ppong                           //
+rainboh                         //
+wavybug                         //
+zap                             //
+absurd                          //
+alienres                        //
+crashh                          //
+mtturbo                         //
+eyesb                           // bootleg
+ghohunt                         //
+pactetris                       //
+deathstar                       //
+deathstar2                      //
+theglobpb                       // hack
+piranha                         // GL
+piranhah                        // hack
+piranhao                        // GL
+crush                           // (c) 1981 Kural Samno Electric Ltd
+crush2                          // (c) 1981 Kural Esco Electric Ltd - bootleg?
+crush3                          // Kural Electric Ltd
+crush4                          // Kural Electric Ltd - bootleg?
+crushbl                         // bootleg
+crushrlf                        // bootleg
+eyes2                           // (c) 1982 Techstar + "Rockola presents"
+eyeszac                         // (c) 1982 Techstar / Zaccaria
+eyeszacb                        // bootleg
+eyesb2                          // hack
+maketrax                        // (c) 1981 Williams, high score table says KRL (fur Kural)
+maketrxb                        // (c) 1981 [Kural] (Williams license)
+painter                         // hack
+
+@source:mspacman.cpp
+mspacman                        // (c) 1981 Midway  // made by General Computer
+mspacmat                        // hack
+mspacmab                        // bootleg
+mspacmbe                        // bootleg
+mspacmnf                        // hack
+mspacpls                        // hack
+pacgal                          // hack
+pacatk                          // hack
+mscrzyma                        // hack
+mscrzymp                        // hack
+msstrmaz                        // hack
+ms2600                          // hack
+msbaby                          // hack
+msmini                          // hack
+msminia                         // hack
+msnes4a                         // hack
+msnes62                         // hack                         // hack
+msnes63                         // hack
+msnes6m                         // hack
+msnes6m2                        // hack
+msnes6m3                        // hack
+msnes6m4                        // hack
+mspacnes                        // hack
+mspacren                        // hack
+mspc6mad                        // hack
+msvctr6m                        // hack
+horizpac                        // hack
+pacgent                         // hack
+ottopz                          // hack
+superp4m                        // hack
+msgrkatk                        // hack
+mrpacman                        // hack
+mspacwf                         // hack
+msrumble                        // hack
+mselton                         // hack
+msf1pac                         // hack
+msindy                          // hack
+mspacad                         // hack
+mspacat2                        // hack
+msberzk                         // hack
+mspacatx                        // hack
+mspacmbx                        // hack
+mspacmnx                        // hack
+mspacplx                        // hack
+chtmsatk                        // hack
+cookiem                         // hack
+fstmsatk                        // hack
+heartbn2                        // hack
+heartbrn                        // hack
+msatk2ad                        // hack
+msatkad                         // hack
+msdstorm                        // hack
+mshangly                        // hack
+mshearts                        // hack
+mspacj                          // hack
+mspacpbl                        // hack
+mspacrip                        // hack
+pacandroid                      // hack
+mssilad                         // hack
+msultra                         // hack
+msvectr                         // hack
+msyakman                        // hack
+pacgalu                         // hack
+petshops                        // hack
+piranha2                        // hack
+sueworld                        // hack
+vectratk                        // hack
+zolaad                          // hack
+zolaatk                         // hack
+zolamaze                        // hack
+zolavect                        // hack
+mspacmadp                       // hack
+mspacatttur                     // hack
+mspacii2                        // hack
+ms2600a                         // hack
+mspacmab2                       // bootleg
+mspacmanbcc                     // bootleg
+mspacmanbco                     // bootleg
+mspacmanbg2                     // bootleg
+mspacmanbgd                     // bootleg
+mspacmanbhe                     // bootleg
+mspacmanblt                     // bootleg
+mspacmancr                      // bootleg on Crush Roller board
+mspacmbmc                       // bootleg (Marti Colls / Falgas)
+pacgal2                         // bootleg
+mspacii3                        // bootleg
+mspacmab4                       // bootleg
+mspacmanblt2                    // bootleg
+otto1029                        // hack
+sp4n1029                        // hack
+sp4o1029                        // hack
+
+@source:multipac.cpp
+mschamp                         // hack
+mschampx                        // hack
+96in1b                          // hack
+hackypac                        // hack
+madpac                          // hack
+mspaceur                        // hack
+multi15                         // hack 
+pm4n1e                          // hack
+superabc                        // hack
 
 @source:spacefb.cpp
 spacedem                        // (c) 1980 Fortrek + made by Nintendo
@@ -10149,8 +10496,8 @@ contrahack01                    //hack
 
 @source:cps1.cpp
 3wondershack01                  //hack
-3wondrud
-3wondersha
+3wondrud                        //bootleg
+3wondersha                      //bootleg
 captcommhack01                  //hack
 captcommhack02                  //hack
 captcommhack03                  //hack
@@ -10170,8 +10517,8 @@ captcommhack16                  //hack
 captcommhack17                  //hack
 captcommhack18                  //hack
 captcommhack19                  //hack
-captcoud
-daimakaib
+captcoud                        //bootleg
+daimakaib                       //bootleg
 dinohack01                      //hack
 dinohack02                      //hack
 dinohack03                      //hack
@@ -10249,148 +10596,148 @@ dinohack74                      //hack
 dinohack75                      //hack
 dinohack76                      //hack
 dinohack77                      //hack
-dinoh
-dinoha
-dinotpic
-dinohc
-ffighthack01                     //hack
-ffighthack02                     //hack
-ffighthack03                     //hack
-ffighthack04                     //hack
-ffighthack05                     //hack
-ffighthack06                     //hack
-ffighthack07                     //hack
-ffighthack08                     //hack
-ffighthack09                     //hack
-ffighthack10                     //hack
-knightshack01                    //hack
-knightshack02                    //hack
-knightshack03                    //hack
-knightshack04                    //hack
-knightshack05                    //hack
-knightshack06                    //hack
-knightshack07                    //hack
-knightshack08                    //hack
-knightshack09                    //hack
-knightshack10                    //hack
-knightshack11                    //hack
-knightshack12                    //hack
-knightshack13                    //hack
-knightshack14                    //hack
-knightshack15                    //hack
-knightshack16                    //hack
-knightshack17                    //hack
-knightshb2                       //bootleg
-knightsh                         //bootleg
-knightsha                        //bootleg
-knightsb5                        //bootleg
-knightud                         //bootleg
-kodhack01                        //hack
-kodh                             //bootleg
-mercshack01                      //hack
-mercshack02                      //hack
-punisherhack01                   //hack
-punisherhack02                   //hack
-punisherhack03                   //hack
-punisherhack04                   //hack
-punisherhack05                   //hack
-punisherhack06                   //hack
-punisherhack07                   //hack
-punisherhack08                   //hack
-punisherud1                      //hack
-punisherud2                      //hack
-sf2cehack01                      //hack
-sf2cehack02                      //hack
-sf2cehack03                      //hack
-sf2cehack04                      //hack
-sf2cehack05                      //hack
-sf2cehack06                      //hack
-sf2cehack07                      //hack
-sf2cehack08                      //hack
-sf2cehack09                      //hack
-sf2cehack10                      //hack
-sf2cehack11                      //hack
-sf2cehack12                      //hack
-sf2mega2                         //bootleg
-sf2amf5                          //bootleg
-sf2cejabl                        //bootleg
-sf2rb5                           //bootleg
-sf2hfjb                          //bootleg
-sf2rbpr                          //bootleg
-sf2amf6                          //bootleg
-sf2amf7                          //bootleg
-sf2tlona                         //bootleg
-sf2tlonb                         //bootleg
-sf2tlonc                         //bootleg
-sf2red2                          //bootleg
-sf2v0042                         //bootleg
-sf2yyc2                          //bootleg
-sf2hack01                        //hack
-sf2hack02                        //hack
-sf2hack03                        //hack
-sf2hack04                        //hack
-sf2hack05                        //hack
-sf2hack06                        //hack
-sf2c                             //bootleg
-sf2ly                            //bootleg
-slammasthack01                   //hack
-slammastud                       //bootleg
-varthhack01                      //hack
-willowhack01                     //hack
-willowhack02                     //hack
-twkhack01                        //hack
-twkhack02                        //hack
-twkhack03                        //hack
-twkhack04                        //hack
-twkhack05                        //hack
-twkhack06                        //hack
-twkhack07                        //hack
-twkhack08                        //hack
-twkhack09                        //hack
-twkhack10                        //hack
-twkhack11                        //hack
-twkhack12                        //hack
-twkhack13                        //hack
-twkhack14                        //hack
-twkhack15                        //hack
-twkhack16                        //hack
-twkhack17                        //hack
-twkhack18                        //hack
-twkhack19                        //hack
-twkhack20                        //hack
-twkhack21                        //hack
-twkhack22                        //hack
-twkhack23                        //hack
-twkhack24                        //hack
-twkhack25                        //hack
-twkhack26                        //hack
-twkhack27                        //hack
-twkhack28                        //hack
-wofh                             //bootleg
-wofha                            //bootleg
-wofah                            //bootleg
-wofaha                           //bootleg
-wofahb                           //bootleg
-wof3js                           //bootleg
-wof3jsa                          //bootleg
-wof3sj                           //bootleg
-wof3sja                          //bootleg
-wofsj                            //bootleg
-wofsja                           //bootleg
-wofsjb                           //bootleg
-wofsjc                           //bootleg
-wofchhack01                      //hack
-wofchhack02                      //hack
-wofchhack03                      //hack
-sk3hack01                        //hack
-sk3hack02                        //hack
-sk3hack03                        //hack
-sk3hack04                        //hack
-wofhack01                        //hack
-wofhack02                        //hack
-wofr1bl                          //bootleg
-wofpic                           //bootleg
-wofud                            //bootleg
+dinoh                           //bootleg
+dinoha                          //bootleg
+dinotpic                        //bootleg
+dinohc                          //bootleg
+ffighthack01                    //hack
+ffighthack02                    //hack
+ffighthack03                    //hack
+ffighthack04                    //hack
+ffighthack05                    //hack
+ffighthack06                    //hack
+ffighthack07                    //hack
+ffighthack08                    //hack
+ffighthack09                    //hack
+ffighthack10                    //hack
+knightshack01                   //hack
+knightshack02                   //hack
+knightshack03                   //hack
+knightshack04                   //hack
+knightshack05                   //hack
+knightshack06                   //hack
+knightshack07                   //hack
+knightshack08                   //hack
+knightshack09                   //hack
+knightshack10                   //hack
+knightshack11                   //hack
+knightshack12                   //hack
+knightshack13                   //hack
+knightshack14                   //hack
+knightshack15                   //hack
+knightshack16                   //hack
+knightshack17                   //hack
+knightshb2                      //bootleg
+knightsh                        //bootleg
+knightsha                       //bootleg
+knightsb5                       //bootleg
+knightud                        //bootleg
+kodhack01                       //hack
+kodh                            //bootleg
+mercshack01                     //hack
+mercshack02                     //hack
+punisherhack01                  //hack
+punisherhack02                  //hack
+punisherhack03                  //hack
+punisherhack04                  //hack
+punisherhack05                  //hack
+punisherhack06                  //hack
+punisherhack07                  //hack
+punisherhack08                  //hack
+punisherud1                     //hack
+punisherud2                     //hack
+sf2cehack01                     //hack
+sf2cehack02                     //hack
+sf2cehack03                     //hack
+sf2cehack04                     //hack
+sf2cehack05                     //hack
+sf2cehack06                     //hack
+sf2cehack07                     //hack
+sf2cehack08                     //hack
+sf2cehack09                     //hack
+sf2cehack10                     //hack
+sf2cehack11                     //hack
+sf2cehack12                     //hack
+sf2mega2                        //bootleg
+sf2amf5                         //bootleg
+sf2cejabl                       //bootleg
+sf2rb5                          //bootleg
+sf2hfjb                         //bootleg
+sf2rbpr                         //bootleg
+sf2amf6                         //bootleg
+sf2amf7                         //bootleg
+sf2tlona                        //bootleg
+sf2tlonb                        //bootleg
+sf2tlonc                        //bootleg
+sf2red2                         //bootleg
+sf2v0042                        //bootleg
+sf2yyc2                         //bootleg
+sf2hack01                       //hack
+sf2hack02                       //hack
+sf2hack03                       //hack
+sf2hack04                       //hack
+sf2hack05                       //hack
+sf2hack06                       //hack
+sf2c                            //bootleg
+sf2ly                           //bootleg
+slammasthack01                  //hack
+slammastud                      //bootleg
+varthhack01                     //hack
+willowhack01                    //hack
+willowhack02                    //hack
+twkhack01                       //hack
+twkhack02                       //hack
+twkhack03                       //hack
+twkhack04                       //hack
+twkhack05                       //hack
+twkhack06                       //hack
+twkhack07                       //hack
+twkhack08                       //hack
+twkhack09                       //hack
+twkhack10                       //hack
+twkhack11                       //hack
+twkhack12                       //hack
+twkhack13                       //hack
+twkhack14                       //hack
+twkhack15                       //hack
+twkhack16                       //hack
+twkhack17                       //hack
+twkhack18                       //hack
+twkhack19                       //hack
+twkhack20                       //hack
+twkhack21                       //hack
+twkhack22                       //hack
+twkhack23                       //hack
+twkhack24                       //hack
+twkhack25                       //hack
+twkhack26                       //hack
+twkhack27                       //hack
+twkhack28                       //hack
+wofh                            //bootleg
+wofha                           //bootleg
+wofah                           //bootleg
+wofaha                          //bootleg
+wofahb                          //bootleg
+wof3js                          //bootleg
+wof3jsa                         //bootleg
+wof3sj                          //bootleg
+wof3sja                         //bootleg
+wofsj                           //bootleg
+wofsja                          //bootleg
+wofsjb                          //bootleg
+wofsjc                          //bootleg
+wofchhack01                     //hack
+wofchhack02                     //hack
+wofchhack03                     //hack
+sk3hack01                       //hack
+sk3hack02                       //hack
+sk3hack03                       //hack
+sk3hack04                       //hack
+wofhack01                       //hack
+wofhack02                       //hack
+wofr1bl                         //bootleg
+wofpic                          //bootleg
+wofud                           //bootleg
 
 @source:cps2.cpp
 19xxhack01                      //hack
@@ -10588,7 +10935,6 @@ vectrgal                        //hack
 mooncmst                        //hack
 mooncrs5f                       //hack
 jumpbugx                        //hack
-monstrz                         //hack
 starfgh2                        //hack
 wbeast                          //hack
 
@@ -10680,6 +11026,79 @@ nbbatmanhack03                  //hack
 nbbatmanhack04                  //hack
 nbbatmanhack05                  //hack
 uccopshack01                    //hack
+
+@source:mappy.cpp
+crackhea                        //hack
+housepty                        //hack
+marpy                           //hack
+superpc1                        //hack
+superpcn                        //hack
+superpcp                        //hack
+superpcs                        //hack
+vectrsup                        //hack
+
+@source:mario.cpp
+cenmario                        //hack
+
+@source:mcr.cpp
+handiman                        //hack
+shtron                          //hack
+stapper1                        //hack
+
+@source:mcr3.cpp
+sargex                          //hack
+
+@source:mexico86.cpp
+kikikaihack01                   //hack
+
+@source:mhavoc.cpp
+mhavocpex2                      //hack
+
+@source:midtunit.cpp
+mkhack01                        //hack
+mkhack02                        //hack
+mkhack03                        //hack
+mk2hack01                       //hack
+mk2hack02                       //hack
+mk2hack03                       //hack
+mk2hack04                       //hack
+mk2hack05                       //hack
+
+@source:midwunit.cpp
+mk3hack01                       //hack
+umk3hack01                      //hack
+umk3hack02                      //hack
+umk3hack03                      //hack
+umk3hack04                      //hack
+umk3hack05                      //hack
+umk3hack06                      //hack
+
+@source:missile.cpp
+missilet                        //hack
+
+@source:mrdo.cpp
+mrdigdo                         //hack
+mrdofast                        //hack
+mrpac                           //hack
+mrpacb                          //hack
+newdigdo                        //hack
+stickydo                        //hack
+
+@source:mystwarr.cpp
+mtlchamphack01                  //hack
+mmaulershack01                  //hack
+metamrphhack01                  //hack
+viostormhack01                  //hack
+viostormhack02                  //hack
+
+@source:namcona1.cpp
+knckheadhack01                  //hack
+
+@source:namcos2.cpp
+valkyrien                       //hack
+
+@source:nemesis.cpp
+spclone                         //hack
 
 @source:neogeo.cpp
 androdunhack01                  //hack
@@ -11334,3 +11753,83 @@ wh2jhack01                      //hack
 wh2jhack02                      //hack
 zintrckbhack01                  //hack
 zupapad                         //bootleg
+
+@source:nmk16.cpp
+tdragonp                        //hack
+tdragon2p                       //hack
+
+@source:pacland.cpp
+mariopac                        //hack
+paclandb                        //hack
+paclandd                        //hack
+
+@source:pengo.cpp
+pacpen                          //hack
+pengopop                        //hack
+vecpengo                        //hack
+
+@source:phoenix.cpp
+phoenixr                        //hack
+phoenixg                        //hack
+
+@source:playch10.cpp
+pc_ark                          //hack
+pc_bb2                          //hack
+pc_cch                          //hack
+pc_ctfrc                        //hack
+pc_digdg                        //hack
+pc_dk                           //hack
+pc_dk3                          //hack
+pc_galag                        //hack
+pc_gyrus                        //hack
+pc_krsty                        //hack
+pc_mman5                        //hack
+pc_pacm                         //hack
+pc_parsl                        //hack
+pc_skykd                        //hack
+
+@source:polepos.cpp
+mmadness                        //hack
+
+@source:powerins.cpp
+powerinshack01                  //hack
+powerinshack02                  //hack
+powerinshack03                  //hack
+
+@source:psikyo.cpp
+tengaihack01                    //hack
+
+@source:psikyosh.cpp
+darakuhack01                    //hack
+gunbird2hack01                  //hack
+s1945iihack01                   //hack
+s1945iiihack01                  //hack
+s1945iiihack02                  //hack
+soldividhack01                  //hack
+
+@source:r2dx_v33.cpp
+nzeroteamhack01                  //hack
+
+@source:rabbit.cpp
+rabbithack01                    //hack
+rabbithack02                    //hack
+rabbithack03                    //hack
+
+@source:raiden2.cpp
+zeroteamhack01                  //hack
+zeroteamhack02                  //hack
+zeroteamhack03                  //hack
+
+@source:rallyx.cpp
+rxtron                          //hack
+nrallyv                         //hack
+
+@source:rastan.cpp
+rastwack                        //hack
+rastandh                        //hack
+rastand2                        //hack
+rastaneh                        //hack
+
+
+
+

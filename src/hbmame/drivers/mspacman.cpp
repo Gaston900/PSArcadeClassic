@@ -2466,70 +2466,6 @@ ROM_START( zolavect )
 	PACMAN_PROMS
 ROM_END
 
-ROM_START( mspacmans01 )
-	ROM_REGION( 0x10000, "maincpu", 0 )	
-	ROM_LOAD( "robot.1",      0x0000, 0x1000, CRC(8c5d136a) SHA1(5356dec1026dc2beaae57152312b1b0bcaf9fa26) )
-	ROM_LOAD( "boot2",        0x1000, 0x1000, CRC(0d32de5e) SHA1(13ea0c343de072508908be885e6a2a217bbb3047) )
-	ROM_LOAD( "boot3",        0x2000, 0x1000, CRC(1821ee0b) SHA1(5ea4d907dbb2690698db72c4e0b5be4d3e9a7786) )
-	ROM_LOAD( "s01.4",        0x3000, 0x1000, CRC(0127cbb5) SHA1(920ed77f2fe0d962965c1269d4b2ec1e096e5c10) )
-	ROM_LOAD( "boot5",        0x8000, 0x1000, CRC(8c3e6de6) SHA1(fed6e9a2b210b07e7189a18574f6b8c4ec5bb49b) )
-	ROM_LOAD( "s01.6",        0x9000, 0x1000, CRC(b1ad3a59) SHA1(6153d39917f0cfa13fe5e15198d360c2dbe5914d) )
-
-	ROM_REGION( 0x2000, "gfx1" , 0 )
-	ROM_LOAD( "s01.5e",       0x0000, 0x1000, CRC(73cb7028) SHA1(44c3e7de28dd04d2b08fd21d20e91e73a4781f87) )
-	ROM_LOAD( "s01.5f",       0x1000, 0x1000, CRC(38506811) SHA1(7471bfab185141718f6e5f684538bd45c5acd3b8) )
-
-	PACMAN_PROMS
-ROM_END
-
-ROM_START( mspacmans02 )
-	ROM_REGION( 0x10000, "maincpu", 0 )	
-	ROM_LOAD( "robot.1",      0x0000, 0x1000, CRC(8c5d136a) SHA1(5356dec1026dc2beaae57152312b1b0bcaf9fa26) )
-	ROM_LOAD( "fastplus.2",   0x1000, 0x1000, CRC(a8d6c227) SHA1(b5891f911bb054ca2547e663a3c27c93897f2075) )
-	ROM_LOAD( "boot3",        0x2000, 0x1000, CRC(1821ee0b) SHA1(5ea4d907dbb2690698db72c4e0b5be4d3e9a7786) )
-	ROM_LOAD( "s01.4",        0x3000, 0x1000, CRC(0127cbb5) SHA1(920ed77f2fe0d962965c1269d4b2ec1e096e5c10) )
-	ROM_LOAD( "boot5",        0x8000, 0x1000, CRC(8c3e6de6) SHA1(fed6e9a2b210b07e7189a18574f6b8c4ec5bb49b) )
-	ROM_LOAD( "s01.6",        0x9000, 0x1000, CRC(b1ad3a59) SHA1(6153d39917f0cfa13fe5e15198d360c2dbe5914d) )
-
-	ROM_REGION( 0x2000, "gfx1" , 0 )
-	ROM_LOAD( "s01.5e",       0x0000, 0x1000, CRC(73cb7028) SHA1(44c3e7de28dd04d2b08fd21d20e91e73a4781f87) )
-	ROM_LOAD( "s01.5f",       0x1000, 0x1000, CRC(38506811) SHA1(7471bfab185141718f6e5f684538bd45c5acd3b8) )
-
-	PACMAN_PROMS
-ROM_END
-
-ROM_START( mspacmans03 )
-	ROM_REGION( 0x10000, "maincpu", 0 )	
-	ROM_LOAD( "robot.1",      0x0000, 0x1000, CRC(8c5d136a) SHA1(5356dec1026dc2beaae57152312b1b0bcaf9fa26) )
-	ROM_LOAD( "boot2",        0x1000, 0x1000, CRC(0d32de5e) SHA1(13ea0c343de072508908be885e6a2a217bbb3047) )
-	ROM_LOAD( "boot3",        0x2000, 0x1000, CRC(1821ee0b) SHA1(5ea4d907dbb2690698db72c4e0b5be4d3e9a7786) )
-	ROM_LOAD( "s03.4",        0x3000, 0x1000, CRC(3bccac4e) SHA1(065d72f46296c39732e8af2bca344ae0ff71fbb9) )
-	ROM_LOAD( "boot5",        0x8000, 0x1000, CRC(8c3e6de6) SHA1(fed6e9a2b210b07e7189a18574f6b8c4ec5bb49b) )
-	ROM_LOAD( "s01.6",        0x9000, 0x1000, CRC(b1ad3a59) SHA1(6153d39917f0cfa13fe5e15198d360c2dbe5914d) )
-
-	ROM_REGION( 0x2000, "gfx1" , 0 )
-	ROM_LOAD( "s01.5e",       0x0000, 0x1000, CRC(73cb7028) SHA1(44c3e7de28dd04d2b08fd21d20e91e73a4781f87) )
-	ROM_LOAD( "s01.5f",       0x1000, 0x1000, CRC(38506811) SHA1(7471bfab185141718f6e5f684538bd45c5acd3b8) )
-
-	PACMAN_PROMS
-ROM_END
-
-ROM_START( mspacmans04 )
-	ROM_REGION( 0x10000, "maincpu", 0 )	
-	ROM_LOAD( "robot.1",      0x0000, 0x1000, CRC(8c5d136a) SHA1(5356dec1026dc2beaae57152312b1b0bcaf9fa26) )
-	ROM_LOAD( "fastplus.2",   0x1000, 0x1000, CRC(a8d6c227) SHA1(b5891f911bb054ca2547e663a3c27c93897f2075) )
-	ROM_LOAD( "boot3",        0x2000, 0x1000, CRC(1821ee0b) SHA1(5ea4d907dbb2690698db72c4e0b5be4d3e9a7786) )
-	ROM_LOAD( "s03.4",        0x3000, 0x1000, CRC(3bccac4e) SHA1(065d72f46296c39732e8af2bca344ae0ff71fbb9) )
-	ROM_LOAD( "boot5",        0x8000, 0x1000, CRC(8c3e6de6) SHA1(fed6e9a2b210b07e7189a18574f6b8c4ec5bb49b) )
-	ROM_LOAD( "s01.6",        0x9000, 0x1000, CRC(b1ad3a59) SHA1(6153d39917f0cfa13fe5e15198d360c2dbe5914d) )
-
-	ROM_REGION( 0x2000, "gfx1" , 0 )
-	ROM_LOAD( "s01.5e",       0x0000, 0x1000, CRC(73cb7028) SHA1(44c3e7de28dd04d2b08fd21d20e91e73a4781f87) )
-	ROM_LOAD( "s01.5f",       0x1000, 0x1000, CRC(38506811) SHA1(7471bfab185141718f6e5f684538bd45c5acd3b8) )
-
-	PACMAN_PROMS
-ROM_END
-
 ROM_START( mspacmadp )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "pacmdp.1",        0x0000, 0x1000, CRC(69c02827) SHA1(12b675ab56cb9f3184a6a6bd280eafbab4ceb5b2) )
@@ -2764,10 +2700,6 @@ HACK( 2000, zolapac,  mspacman, zolapac,  mspacman, pacman_state, 0,        ROT9
 HACK( 2000, zolaslow, mspacman, zolapac,  mspacman, pacman_state, 0,        ROT90, "Tqwn Amusement", "Super Zola Pac Gal (Slow)", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, zolatunl, mspacman, zolapac,  mspacman, pacman_state, 0,        ROT90, "Tqwn Amusement", "Super Zola Pac Gal (Tunnels)", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, zolavect, mspacman, zolapac,  mspacman, pacman_state, 0,        ROT90, "Tqwn Amusement", "Vector Super Zola Pac Gal", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, mspacmans01, mspacman, zolapac,  mspacman, pacman_state, 0,        ROT90, "Mameplus", "Ms Pacman (hack s01)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, mspacmans02, mspacman, zolapac,  mspacman, pacman_state, 0,        ROT90, "Mameplus", "Ms Pacman (Fast)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, mspacmans03, mspacman, zolapac,  mspacman, pacman_state, 0,        ROT90, "Mameplus", "Ms Pacman (Brazil)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, mspacmans04, mspacman, zolapac,  mspacman, pacman_state, 0,        ROT90, "Mameplus", "Ms Pacman (Brazil Fast)", MACHINE_SUPPORTS_SAVE )
 
 /* Others Hacks */
 HACK( 2018, mspacmadp,   mspacman, woodpek,  mspacman, pacman_state, 0,        ROT90, "MamePlus", "Ms. Pacman (Pac Droid Plus)", MACHINE_SUPPORTS_SAVE )
@@ -2934,6 +2866,310 @@ void pacman_state::init_otto1029()
 
 HACK( 1981, otto1012, 0,        otto1012, mspacman, pacman_state, 0,    ROT90,  "General Computer", "Crazy Otto (prototype of 12 Oct 1981)", MACHINE_SUPPORTS_SAVE )
 HACK( 1981, otto1020, otto1012, otto1012, mspacman, pacman_state, 0,    ROT90,  "General Computer", "Crazy Otto (prototype of ~20 Oct 1981)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, otto1029, otto1012, otto1012, mspacman, pacman_state, otto1029, ROT90,  "General Computer", "Crazy Otto (prototype of 29 Oct 1981)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, sp4n1029, otto1012, otto1012, mspacman, pacman_state, otto1029, ROT90,  "General Computer", "Super Pac-Man (prototype of 29 Oct 1981 with Crazy Otto monsters)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, sp4o1029, otto1012, otto1012, mspacman, pacman_state, otto1029, ROT90,  "General Computer", "Super Pac-Man (prototype of 29 Oct 1981 with Pac-Man monsters)", MACHINE_SUPPORTS_SAVE )
+HACK( 1981, otto1029, 0,        otto1012, mspacman, pacman_state, otto1029, ROT90,  "General Computer", "Crazy Otto (prototype of 29 Oct 1981)", MACHINE_SUPPORTS_SAVE )
+HACK( 1981, sp4n1029, otto1029, otto1012, mspacman, pacman_state, otto1029, ROT90,  "General Computer", "Super Pac-Man (prototype of 29 Oct 1981 with Crazy Otto monsters)", MACHINE_SUPPORTS_SAVE )
+HACK( 1981, sp4o1029, otto1029, otto1012, mspacman, pacman_state, otto1029, ROT90,  "General Computer", "Super Pac-Man (prototype of 29 Oct 1981 with Pac-Man monsters)", MACHINE_SUPPORTS_SAVE )
+
+ROM_START( mspacmab2 )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "2764_a.a",       0x0000, 0x2000, CRC(39ae7b16) SHA1(8ed2a01877d7b32894bd932f6a292ef21a2876ab) )
+	ROM_LOAD( "2764_b.b",       0x2000, 0x2000, CRC(09d86ef8) SHA1(c373d34250f29778be45122db666c4522e44e3a6) )
+	ROM_LOAD( "2764_c.c",       0x8000, 0x2000, CRC(9921d46f) SHA1(8ed2bfdde3d1d1558532e2b9411535a5b5ff37cd) )
+
+	ROM_REGION( 0x2000, "gfx1", 0 )
+	ROM_LOAD( "2732_e.5e",      0x0000, 0x1000, CRC(5c281d01) SHA1(5e8b472b615f12efca3fe792410c23619f067845) )
+	ROM_LOAD( "2732_f.5f",      0x1000, 0x1000, CRC(615af909) SHA1(fd6a1dde780b39aea76bf1c4befa5882573c2ef4) )
+
+	ROM_REGION( 0x0120, "proms", 0 )
+	ROM_LOAD( "tbp18s030_p1.7f", 0x0000, 0x0020, CRC(2fc650bd) SHA1(8d0268dee78e47c712202b0ec4f1f51109b1f2a5) )
+	ROM_LOAD( "pac.4a",          0x0020, 0x0100, CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) )
+
+	ROM_REGION( 0x0200, "namco", 0 )    /* sound PROMs */
+	ROM_LOAD( "82s126.1m",    0x0000, 0x0100, CRC(a9cc86bf) SHA1(bbcec0570aeceb582ff8238a4bc8546a23430081) )
+	ROM_LOAD( "63s141.3m",    0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) )    /* timing - not used */
+
+	ROM_REGION( 0x0100, "plds", 0 )
+	ROM_LOAD( "82s153.d",     0x0000, 0x00eb, CRC(0294d8bc) SHA1(7b66d39c464ee2a3f7a659bf066d2ebb487605fd) )
+ROM_END
+
+ROM_START( mspacmanbcc )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "comecocos.bin",  0x0000, 0x4000, CRC(220eccae) SHA1(30183601d27e95f1e7a60983eaf2056505ab13d2) )
+	ROM_CONTINUE(0x8000,0x4000) // blocks 5+6 are repeated twice in here
+
+	ROM_REGION( 0x8000, "gfx1", 0 )
+	ROM_LOAD( "10.e5",    0x0000, 0x0800, CRC(f2c5da43) SHA1(6a6de2ecc313a11ad12d8d1712c05f923984f668) )
+	ROM_CONTINUE(0x1000,0x800)
+	ROM_CONTINUE(0x0800,0x800)
+	ROM_CONTINUE(0x1800,0x800)
+	ROM_IGNORE(0x6000) // this also contains regular pacman gfx, ignore them for now at least
+
+	ROM_REGION( 0x0120, "proms", 0 )
+	ROM_LOAD( "82s123.h7",    0x0000, 0x0020, CRC(3545e7e9) SHA1(b866b02579438afb11296e5c53a32c6425bd044d) ) // slightly different to original (verified)
+	ROM_LOAD( "82s129-3.d1",  0x0020, 0x0100, CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) ) // == 82s126.4a
+
+	ROM_REGION( 0x0200, "namco", 0 )    /* sound PROMs */
+	ROM_LOAD( "82s129-1.a9",    0x0000, 0x0100, CRC(a9cc86bf) SHA1(bbcec0570aeceb582ff8238a4bc8546a23430081) ) // == 82s126.1m
+	ROM_LOAD( "82s129-2.c9",    0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) ) /* timing - not used */ // == 82s126.3m
+ROM_END
+
+ROM_START( mspacmanbco )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "cs.11",  0x0000, 0x4000, CRC(1ba81f43) SHA1(db1407231f760a0c213d29d1126dd22dd4fcc5b9) )
+	ROM_CONTINUE(0x8000,0x4000) // blocks 5+6 are repeated twice in here
+
+	ROM_REGION( 0x8000, "gfx1", 0 )
+	ROM_LOAD( "c13.13",    0x0000, 0x0800, CRC(f2c5da43) SHA1(6a6de2ecc313a11ad12d8d1712c05f923984f668) )
+	ROM_CONTINUE(0x1000,0x800)
+	ROM_CONTINUE(0x0800,0x800)
+	ROM_CONTINUE(0x1800,0x800)
+	ROM_IGNORE(0x6000) // this also contains regular pacman gfx, ignore them for now at least
+
+	ROM_REGION( 0x0120, "proms", 0 )
+	ROM_LOAD( "82s123.h7",    0x0000, 0x0020, CRC(3545e7e9) SHA1(b866b02579438afb11296e5c53a32c6425bd044d) ) // slightly different to original (verified)
+	ROM_LOAD( "82s129-3.d1",  0x0020, 0x0100, CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) ) // == 82s126.4a
+
+	ROM_REGION( 0x0200, "namco", 0 )    /* sound PROMs */
+	ROM_LOAD( "82s129-1.a9",    0x0000, 0x0100, CRC(a9cc86bf) SHA1(bbcec0570aeceb582ff8238a4bc8546a23430081) ) // == 82s126.1m
+	ROM_LOAD( "82s129-2.c9",    0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) ) /* timing - not used */ // == 82s126.3m
+ROM_END
+
+ROM_START( mspacmanbg2 )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "11-prg.bin",  0x0000, 0x4000,  CRC(e11d4132) SHA1(9ab6b9e1ec8ad183ccdddb971e8be3eb3f59db01) )
+	ROM_CONTINUE(0x8000,0x4000) // blocks 5+6 are repeated twice in here
+
+	ROM_REGION( 0x8000, "gfx1", 0 )
+	ROM_LOAD( "13-chr.bin",    0x0000, 0x0800, CRC(8ee4a3b0) SHA1(01e3453c99f7a5d78ab083c49c650e898c0dd2ee) )
+	ROM_CONTINUE(0x1000,0x800)
+	ROM_CONTINUE(0x0800,0x800)
+	ROM_CONTINUE(0x1800,0x800)
+	ROM_IGNORE(0x2000)
+
+	ROM_REGION( 0x0120, "proms", 0 ) // not dumped for this set
+	ROM_LOAD( "82s123.h7",    0x0000, 0x0020, BAD_DUMP CRC(3545e7e9) SHA1(b866b02579438afb11296e5c53a32c6425bd044d) )
+	ROM_LOAD( "82s129-3.d1",  0x0020, 0x0100, BAD_DUMP CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) )
+
+	ROM_REGION( 0x0200, "namco", 0 )    /* sound PROMs, not dumped for this set */
+	ROM_LOAD( "82s129-1.a9",    0x0000, 0x0100, BAD_DUMP CRC(a9cc86bf) SHA1(bbcec0570aeceb582ff8238a4bc8546a23430081) )
+	ROM_LOAD( "82s129-2.c9",    0x0100, 0x0100, BAD_DUMP CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) )
+ROM_END
+
+ROM_START( mspacmanbgd )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "27256.01",  0x0000, 0x4000, CRC(5bcc195e) SHA1(9a82536f3a33c406b8cc9e076ccf21c61a009305) )
+	ROM_CONTINUE(0x8000,0x4000) // blocks 5+6 are repeated twice in here
+
+	ROM_REGION( 0x8000, "gfx1", 0 )
+	ROM_LOAD( "10.e5",    0x0000, 0x0800, CRC(f2c5da43) SHA1(6a6de2ecc313a11ad12d8d1712c05f923984f668) )
+	ROM_CONTINUE(0x1000,0x800)
+	ROM_CONTINUE(0x0800,0x800)
+	ROM_CONTINUE(0x1800,0x800)
+	ROM_IGNORE(0x6000) // this also contains regular pacman gfx, ignore them for now at least
+
+	ROM_REGION( 0x0120, "proms", 0 )
+	ROM_LOAD( "82s123.h7",    0x0000, 0x0020, CRC(3545e7e9) SHA1(b866b02579438afb11296e5c53a32c6425bd044d) ) // slightly different to original (verified)
+	ROM_LOAD( "82s129-3.d1",  0x0020, 0x0100, CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) ) // == 82s126.4a
+
+	ROM_REGION( 0x0200, "namco", 0 )    /* sound PROMs */
+	ROM_LOAD( "82s129-1.a9",    0x0000, 0x0100, CRC(a9cc86bf) SHA1(bbcec0570aeceb582ff8238a4bc8546a23430081) ) // == 82s126.1m
+	ROM_LOAD( "82s129-2.c9",    0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) ) /* timing - not used */ // == 82s126.3m
+ROM_END
+
+ROM_START( mspacmanbhe )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "11.g5",  0x0000, 0x4000,  CRC(b256540f) SHA1(2ffdb9a9af98606793e9cb8b151370070be45091) )
+	ROM_CONTINUE(0x8000,0x4000) // blocks 5+6 are repeated twice in here
+
+	ROM_REGION( 0x8000, "gfx1", 0 )
+	ROM_LOAD( "13.e5",    0x0000, 0x0800, CRC(8ee4a3b0) SHA1(01e3453c99f7a5d78ab083c49c650e898c0dd2ee) )
+	ROM_CONTINUE(0x1000,0x800)
+	ROM_CONTINUE(0x0800,0x800)
+	ROM_CONTINUE(0x1800,0x800)
+	ROM_IGNORE(0x2000)
+
+	ROM_REGION( 0x0120, "proms", 0 )
+	ROM_LOAD( "82s123.h7",    0x0000, 0x0020, CRC(3545e7e9) SHA1(b866b02579438afb11296e5c53a32c6425bd044d) ) // slightly different to original (verified)
+	ROM_LOAD( "82s129-3.d1",  0x0020, 0x0100, CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) ) // == 82s126.4a
+
+	ROM_REGION( 0x0200, "namco", 0 )    /* sound PROMs */
+	ROM_LOAD( "82s129-1.a9",    0x0000, 0x0100, CRC(a9cc86bf) SHA1(bbcec0570aeceb582ff8238a4bc8546a23430081) ) // == 82s126.1m
+	ROM_LOAD( "82s129-2.c9",    0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) ) /* timing - not used */ // == 82s126.3m
+ROM_END
+
+ROM_START( mspacmanblt )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "triunvi.1.bin",  0x0000, 0x4000, CRC(d9da2917) SHA1(d0b5705d69cc513ad546a16001dcde9dcc6175d3) )
+	ROM_CONTINUE(0x8000,0x4000)
+
+	ROM_REGION( 0x2000, "gfx1", 0 )
+	ROM_LOAD( "triunvi.2.bin",    0x0000, 0x0800, CRC(e6446f49) SHA1(572964721d48ac082d3be62a0d04491e9dddc9b8) )
+	ROM_CONTINUE(0x1000,0x800)
+	ROM_CONTINUE(0x0800,0x800)
+	ROM_CONTINUE(0x1800,0x800)
+
+	ROM_REGION( 0x0120, "proms", 0 )
+	ROM_LOAD( "82s123.h7",    0x0000, 0x0020, CRC(3545e7e9) SHA1(b866b02579438afb11296e5c53a32c6425bd044d) )
+	ROM_LOAD( "82s129-3.d1",  0x0020, 0x0100, CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) )
+
+	ROM_REGION( 0x0200, "namco", 0 )    /* sound PROMs */
+	ROM_LOAD( "82s129-1.a9",    0x0000, 0x0100, CRC(a9cc86bf) SHA1(bbcec0570aeceb582ff8238a4bc8546a23430081) )
+	ROM_LOAD( "82s129-2.c9",    0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) )
+ROM_END
+
+ROM_START( mspacmancr )  /* Bootleg on Crush Roller Board - Midway Graphics and Namco mentions are gone but Easter Egg still works */
+	ROM_REGION( 0x20000, "maincpu", 0 ) /* 64k for code+64k for decrypted code */
+	ROM_LOAD( "pacman.6e",    0x0000, 0x1000, CRC(c1e6ab10) SHA1(e87e059c5be45753f7e9f33dff851f16d6751181) ) // a.6e
+	ROM_LOAD( "pacman.6f",    0x1000, 0x1000, CRC(1a6fb2d4) SHA1(674d3a7f00d8be5e38b1fdc208ebef5a92d38329) ) // b.6f
+	ROM_LOAD( "pacman.6h",    0x2000, 0x1000, CRC(bcdd1beb) SHA1(8e47e8c2c4d6117d174cdac150392042d3e0a881) ) // c.6h
+	ROM_LOAD( "pacman.6j",    0x3000, 0x1000, CRC(817d94e3) SHA1(d4a70d56bb01d27d094d73db8667ffb00ca69cb9) ) // d.6j
+	ROM_LOAD( "u5",           0x8000, 0x0800, CRC(f45fbbcd) SHA1(b26cc1c8ee18e9b1daa97956d2159b954703a0ec) ) // 1.u5
+	ROM_LOAD( "u6",           0x9000, 0x1000, CRC(a90e7000) SHA1(e4df96f1db753533f7d770aa62ae1973349ea4cf) ) // 2.u6
+	ROM_LOAD( "3.u7",         0xb000, 0x1000, CRC(bd972c0c) SHA1(291bea78ba3cab862ab5c62488681f5848e50014) )
+
+	ROM_REGION( 0x2000, "gfx1", 0 )
+	ROM_LOAD( "5.5e",         0x0000, 0x1000, CRC(c45d4857) SHA1(06e8ceb7fcd745836b27b50495a4e9883a1ac88b) )
+	ROM_LOAD( "5f",           0x1000, 0x1000, CRC(615af909) SHA1(fd6a1dde780b39aea76bf1c4befa5882573c2ef4) ) // 6.5f
+
+	ROM_REGION( 0x0120, "proms", 0 )
+	ROM_LOAD( "mb7051.7f",    0x0000, 0x0020, CRC(ff344446) SHA1(45eb37533da8912645a089b014f3b3384702114a) )
+	ROM_LOAD( "82s126.4a",    0x0020, 0x0100, CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) ) // m82s129n.4a
+
+	ROM_REGION( 0x0200, "namco", 0 )    /* sound PROMs */
+	ROM_LOAD( "82s126.1m",    0x0000, 0x0100, CRC(a9cc86bf) SHA1(bbcec0570aeceb582ff8238a4bc8546a23430081) ) // 7052.1m
+	ROM_LOAD( "82s126.3m",    0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) ) // 7052.3m   /* timing - not used */
+ROM_END
+
+ROM_START( mspacmbmc )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "misspacmanfalgas_0.bin", 0x0000, 0x1000, CRC(d16b31b7) SHA1(bc2247ec946b639dd1f00bfc603fa157d0baaa97) )
+	ROM_LOAD( "misspacmanfalgas_1.bin", 0x1000, 0x1000, CRC(0d32de5e) SHA1(13ea0c343de072508908be885e6a2a217bbb3047) )
+	ROM_LOAD( "misspacmanfalgas_2.bin", 0x2000, 0x1000, CRC(1821ee0b) SHA1(5ea4d907dbb2690698db72c4e0b5be4d3e9a7786) )
+	ROM_LOAD( "misspacmanfalgas_3.bin", 0x3000, 0x1000, CRC(e086219d) SHA1(6802cf425be878f442716d792946a85fc13e7413) )
+	ROM_LOAD( "misspacmanfalgas_4.bin", 0x8000, 0x1000, CRC(8c3e6de6) SHA1(fed6e9a2b210b07e7189a18574f6b8c4ec5bb49b) )
+	ROM_LOAD( "misspacmanfalgas_5.bin", 0x9000, 0x1000, CRC(206a9623) SHA1(20006f945c1b7b0e3c0415eecc0b148e5a6a1dfa) )
+
+	/* Undumped on the Marti Colls PCB, taken from the parent set */
+	ROM_REGION( 0x2000, "gfx1", 0 )
+	ROM_LOAD( "5e", 0x0000, 0x1000, BAD_DUMP CRC(5c281d01) SHA1(5e8b472b615f12efca3fe792410c23619f067845) )
+	ROM_LOAD( "5f", 0x1000, 0x1000, BAD_DUMP CRC(615af909) SHA1(fd6a1dde780b39aea76bf1c4befa5882573c2ef4) )
+
+	/* Undumped on the Marti Colls PCB, taken from the parent set */
+	ROM_REGION( 0x0120, "proms", 0 )
+	ROM_LOAD( "82s123.7f", 0x0000, 0x0020, BAD_DUMP CRC(2fc650bd) SHA1(8d0268dee78e47c712202b0ec4f1f51109b1f2a5) )
+	ROM_LOAD( "82s126.4a", 0x0020, 0x0100, BAD_DUMP CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) )
+
+	/* Undumped on the Marti Colls PCB, taken from the parent set */
+	ROM_REGION( 0x0200, "namco", 0 )    /* sound PROMs */
+	ROM_LOAD( "82s126.1m", 0x0000, 0x0100, BAD_DUMP CRC(a9cc86bf) SHA1(bbcec0570aeceb582ff8238a4bc8546a23430081) )
+	ROM_LOAD( "82s126.3m", 0x0100, 0x0100, BAD_DUMP CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) )    /* timing - not used */
+ROM_END
+
+ROM_START( pacgal2 )
+	ROM_REGION( 0x20000, "maincpu", 0 ) /* 64k for code+64k for decrypted code */
+	ROM_LOAD( "pmg1.bin",    0x0000, 0x0800, CRC(8167fffc) SHA1(adc26e8baaf9b12c382b5606f2438f7ee6d2f7f5) )
+	ROM_LOAD( "pmg5.bin",    0x0800, 0x0800, CRC(618bd9b3) SHA1(b9ca52b63a49ddece768378d331deebbe34fe177) )
+	ROM_LOAD( "pmg2.bin",    0x1000, 0x0800, CRC(7d177853) SHA1(9b5ddaaa8b564654f97af193dbcc29f81f230a25) )
+	ROM_LOAD( "pmg6.bin",    0x1800, 0x0800, CRC(4f91d245) SHA1(496f3d913a0abf6fa441615aedf60180e71866e8) )
+	ROM_LOAD( "pmg3.bin",    0x2000, 0x0800, CRC(d0f20748) SHA1(7673d9744903f58d70ecc0ee817b57c3ce09dd80) )
+	ROM_LOAD( "pmg7.bin",    0x2800, 0x0800, CRC(a948ce83) SHA1(08759833f7e0690b2ccae573c929e2a48e5bde7f) )
+	ROM_LOAD( "pmg4.bin",    0x3000, 0x0800, CRC(4c842da6) SHA1(dbc84516e44412f863ffb678347929043fab852e) )
+	ROM_LOAD( "pmg8.bin",    0x3800, 0x0800, CRC(022764dc) SHA1(0ab0da0834d88f3b1808755aec5c38a3ddd8184b) )
+	ROM_LOAD( "u5.bin",           0x8000, 0x0800, CRC(f45fbbcd) SHA1(b26cc1c8ee18e9b1daa97956d2159b954703a0ec) )
+	ROM_LOAD( "u6a.bin",          0x9000, 0x1000, CRC(3fdcb271) SHA1(4d604b98c6981a469041c0038345dbd5dcf4cd1d) )
+	ROM_LOAD( "u7a.bin",          0xb000, 0x1000, CRC(5fafec7c) SHA1(1c6a85e5c348a69b8d51bcea4f8bdebb24825770) )
+
+	ROM_REGION( 0x2000, "gfx1", 0 )
+	ROM_LOAD( "pmg9.bin",    0x0000, 0x0800, CRC(93933d1d) SHA1(fa38d2cb87e872bb9a3158a4df98f38360dc85ec) )
+	ROM_LOAD( "pmg11.bin",  0x0800, 0x0800, CRC(7409fbec) SHA1(f440f08ba026ae6172666e1bdc0894ce33bba420) )
+	ROM_LOAD( "pmg10.bin",  0x1000, 0x0800, CRC(22b0188a) SHA1(a9ed9ca8b36a60081fd364abc9bc23963932cc0b) )
+	ROM_LOAD( "pmg12.bin",  0x1800, 0x0800, CRC(50c7477d) SHA1(c04ec282a8cb528df5e38ad750d12ee71612695d) )
+
+	ROM_REGION( 0x0120, "proms", 0 )
+	ROM_LOAD( "82s123.7f",    0x0000, 0x0020, CRC(2fc650bd) SHA1(8d0268dee78e47c712202b0ec4f1f51109b1f2a5) )
+	ROM_LOAD( "82s126.4a",    0x0020, 0x0100, CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) )    /* 7611p4.4a */
+
+	ROM_REGION( 0x0200, "namco", 0 )    /* sound PROMs */
+	ROM_LOAD( "82s126.1m",    0x0000, 0x0100, CRC(a9cc86bf) SHA1(bbcec0570aeceb582ff8238a4bc8546a23430081) )
+	ROM_LOAD( "82s126.3m",    0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) )    /* timing - not used */
+ROM_END
+
+ROM_START( mspacii3 )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "p3.6e",        0x0000, 0x1000, CRC(df673b57) SHA1(93ee4e8f9751db5f7d3c35988fcb8ae8037464ed) )
+	ROM_LOAD( "p4.6f",        0x1000, 0x1000, CRC(7591f606) SHA1(0aead0ac5af602269df8732c5763147cdb543b8d) )
+	ROM_LOAD( "p5.6h",        0x2000, 0x1000, CRC(c8ef1a7f) SHA1(0c9a28bbe63d7d44511a13316937a21b8846543e) )
+	ROM_LOAD( "p6.6j",        0x3000, 0x1000, CRC(d498f435) SHA1(c041841b1349d8d5c2d560aed54c4aeb8adfddb8) )
+	ROM_LOAD( "p7.s1",        0x8000, 0x1000, CRC(fbbc3d2e) SHA1(dc4337d7f0961e048a433021f670da6d314bd663) )
+	ROM_LOAD( "p8.s2",        0x9000, 0x1000, CRC(aba3096d) SHA1(661e28785931fa329c2ebdc95d78072a42c512ff) )
+
+	ROM_REGION( 0x2000, "gfx1", 0 )
+	ROM_LOAD( "p1.5e",        0x0000, 0x1000, CRC(04333722) SHA1(bb179d5302b26b815b5d7eff14865e7b4f8a6880) )
+	ROM_LOAD( "p2.5f",        0x1000, 0x1000, CRC(615af909) SHA1(fd6a1dde780b39aea76bf1c4befa5882573c2ef4) )
+
+	ROM_REGION( 0x0120, "proms", 0 )
+	ROM_LOAD( "82s123.7f",    0x0000, 0x0020, CRC(2fc650bd) SHA1(8d0268dee78e47c712202b0ec4f1f51109b1f2a5) )
+	ROM_LOAD( "82s126.4a",    0x0020, 0x0100, CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) )
+
+	ROM_REGION( 0x0200, "namco", 0 )    /* sound PROMs */
+	ROM_LOAD( "82s126.1m",    0x0000, 0x0100, CRC(a9cc86bf) SHA1(bbcec0570aeceb582ff8238a4bc8546a23430081) )
+	ROM_LOAD( "82s126.3m",    0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) )    /* timing - not used */
+ROM_END
+
+ROM_START( mspacmab4 )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "sub1.bin", 0x0000, 0x2000, CRC(3ed9d3ca) SHA1(2091224bbe0bab79df9e26e97581df6784171d81) )
+	ROM_LOAD( "sub2.bin", 0x2000, 0x2000, CRC(988db4af) SHA1(9258e199a96f811f281d196ede369c144834c589) )
+	ROM_LOAD( "sub3.bin", 0x8000, 0x2000, CRC(9921d46f) SHA1(8ed2bfdde3d1d1558532e2b9411535a5b5ff37cd) )
+
+	ROM_REGION( 0x2000, "gfx1", 0 )
+	ROM_LOAD( "5e", 0x0000, 0x1000, CRC(5c281d01) SHA1(5e8b472b615f12efca3fe792410c23619f067845) )
+	ROM_LOAD( "5f", 0x1000, 0x1000, CRC(615af909) SHA1(fd6a1dde780b39aea76bf1c4befa5882573c2ef4) )
+
+	ROM_REGION( 0x120, "proms", 0 )
+	ROM_LOAD( "82s123.7f", 0x000, 0x020, CRC(2fc650bd) SHA1(8d0268dee78e47c712202b0ec4f1f51109b1f2a5) )
+	ROM_LOAD( "82s126.4a", 0x020, 0x100, CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) )
+
+	ROM_REGION( 0x200, "namco", 0 ) // sound PROMs
+	ROM_LOAD( "82s126.1m", 0x000, 0x100, CRC(a9cc86bf) SHA1(bbcec0570aeceb582ff8238a4bc8546a23430081) )
+	ROM_LOAD( "82s126.3m", 0x100, 0x100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) ) // timing - not used
+
+	ROM_REGION( 0x104, "plds", 0 )
+	ROM_LOAD( "subpal16l8d.bin", 0x000, 0x104, CRC(5f852ffa) SHA1(244a28261b4004264cc20851062c7f3e659862c9) )
+ROM_END
+
+ROM_START( mspacmanblt2 ) // very small differences to the above
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "11.bin", 0x0000, 0x4000, CRC(763c2abb) SHA1(d9428ca04fc7b26f83cee4629be021c1c806e001) )
+	ROM_CONTINUE(       0x8000, 0x4000 )
+
+	ROM_REGION( 0x8000, "gfx1", 0 ) // first 0x2000 are identical to mspacmanblt
+	ROM_LOAD( "13.bin", 0x0000, 0x800, CRC(f2c5da43) SHA1(6a6de2ecc313a11ad12d8d1712c05f923984f668) )
+	ROM_CONTINUE(       0x1000, 0x800 )
+	ROM_CONTINUE(       0x0800, 0x800 )
+	ROM_CONTINUE(       0x1800, 0x800 )
+	ROM_IGNORE(         0x6000 )
+
+	ROM_REGION( 0x0120, "proms", 0 ) // not dumped for this set
+	ROM_LOAD( "82s123.h7",   0x0000, 0x0020, BAD_DUMP CRC(3545e7e9) SHA1(b866b02579438afb11296e5c53a32c6425bd044d) )
+	ROM_LOAD( "82s129-3.d1", 0x0020, 0x0100, BAD_DUMP CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) )
+
+	ROM_REGION( 0x0200, "namco", 0 ) // sound PROMs, not dumped for this set
+	ROM_LOAD( "82s129-1.a9", 0x0000, 0x0100, BAD_DUMP CRC(a9cc86bf) SHA1(bbcec0570aeceb582ff8238a4bc8546a23430081) )
+	ROM_LOAD( "82s129-2.c9", 0x0100, 0x0100, BAD_DUMP CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) )
+ROM_END
+
+/* Update */
+HACK( 1981, mspacmab2,    mspacman,woodpek,  mspacman, pacman_state,  0,    ROT90,  "bootleg",            "Ms. Pac-Man (bootleg, set 2)", MACHINE_SUPPORTS_SAVE )
+HACK( 1991, mspacmanbcc,  mspacman,woodpek,  mspacman, pacman_state,  0,    ROT90,  "bootleg (Tecnausa)", "Come-Cocos (Ms. Pac-Man) ('Made in Greece' Tecnausa bootleg)", MACHINE_SUPPORTS_SAVE )
+HACK( 1992, mspacmanbco,  mspacman,woodpek,  mspacman, pacman_state,  0,    ROT90,  "bootleg (Cocamatic)","Come-Cocos (Ms. Pac-Man) (Cocamatic bootleg)", MACHINE_IMPERFECT_COLORS | MACHINE_SUPPORTS_SAVE )
+HACK( 1997, mspacmanbg2,  mspacman,woodpek,  mspacman, pacman_state,  0,    ROT90,  "bootleg",            "Ms. Pac-Man ('Made in Greece' bootleg, set 2)", MACHINE_SUPPORTS_SAVE )
+HACK( 1992, mspacmanbgd,  mspacman,woodpek,  mspacman, pacman_state,  0,    ROT90,  "bootleg (Datamat)",  "Miss Pukman ('Made in Greece' Datamat bootleg)", MACHINE_SUPPORTS_SAVE )
+HACK( 1991, mspacmanbhe,  mspacman,woodpek,  mspacman, pacman_state,  0,    ROT90,  "bootleg (Herle SA)", "Come-Cocos (Ms. Pac-Man) ('Made in Greece' Herle SA bootleg)", MACHINE_SUPPORTS_SAVE )
+HACK( 1992, mspacmanblt,  mspacman,woodpek,  mspacman, pacman_state,  0,    ROT90,  "bootleg (Triunvi)",  "Come-Cocos (Ms. Pac-Man) ('Made in Greece' Triunvi bootleg)", MACHINE_SUPPORTS_SAVE )
+HACK( 1981, mspacmancr,   mspacman,mspacman, mspacman, pacman_state,  mspacman, ROT90,  "bootleg",        "Ms. Pac-Man (bootleg on Crush Roller Hardware)", MACHINE_SUPPORTS_SAVE )
+HACK( 1982, mspacmbmc,    mspacman,woodpek,  mspacman, pacman_state,  0,    ROT90,  "bootleg (Marti Colls)", "Ms. Pac-Man (Marti Colls bootleg)", MACHINE_SUPPORTS_SAVE )
+HACK( 1981, pacgal2,      mspacman,mspacman, mspacman, pacman_state,  mspacman, ROT90,  "bootleg",        "Pac-Gal (set 2)", MACHINE_SUPPORTS_SAVE )
+HACK( 1981, mspacii3,     mspacman,woodpek,  mspacman, pacman_state,  0,    ROT90,  "bootleg (Orca)",     "Ms. Pac-Man II (Orca bootleg set 1)", MACHINE_SUPPORTS_SAVE )
+HACK( 1981, mspacmab4,    mspacman,woodpek,  mspacman, pacman_state,  0,    ROT90,  "bootleg",            "Ms. Pac-Man (bootleg, set 4)", MACHINE_SUPPORTS_SAVE )
+HACK( 1992, mspacmanblt2, mspacman, woodpek, mspacman, pacman_state,  0,    ROT90,  "bootleg (Triunvi)",  "Come-Cocos (Ms. Pac-Man) ('Made in Greece' Triunvi bootleg, set 2)", MACHINE_SUPPORTS_SAVE )

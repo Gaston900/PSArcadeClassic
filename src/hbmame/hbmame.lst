@@ -10665,6 +10665,7 @@ sf2cehack09                     //hack
 sf2cehack10                     //hack
 sf2cehack11                     //hack
 sf2cehack12                     //hack
+sf2cehack13                     //hack
 sf2mega2                        //bootleg
 sf2amf5                         //bootleg
 sf2cejabl                       //bootleg
@@ -10800,6 +10801,7 @@ sfz2alhack03                    //hack
 sfz2alhack04                    //hack
 sfz2alhack05                    //hack
 sfz3hack01                      //hack
+sfz3hack02                      //hack
 ssf2hack01                      //hack
 ssf2hack02                      //hack
 ssf2thack01                     //hack
@@ -10861,6 +10863,9 @@ dkbarpal                        //hack
 dkongan                         //hack
 dkongdu                         //hack
 dkwizard                        //hack
+dkongce                         //hack
+dkpace                          //hack
+dkongss                         //hack
 
 @source:docastle.cpp
 sdreturn                        //hack
@@ -10896,14 +10901,10 @@ galgaxin                        //hack
 vgalaga                         //hack
 battlesh                        //hack
 gaous                           //hack
-sxvioush                        //hack
 xeviblk                         //hack
-xevious3                        //hack
-xevious4                        //hack
 xevious5                        //hack
 xevioush                        //hack
 xeviousp2                       //hack
-xviousah                        //hack
 
 @source:galaxian.cpp
 kazzy                           //hack
@@ -10914,11 +10915,9 @@ offender                        //hack
 superdog                        //hack
 andromd                         //hack
 buglaxn                         //hack
-galaxiabh                       //hack
-galaxkyo                        //hack
-galaxni                         //hack
-galinvad                        //hack
 galnamco                        //hack
+galaxiabh                       //hack
+galinvad                        //hack
 gaylaxn                         //hack
 mrdonm                          //hack
 vectrgal                        //hack

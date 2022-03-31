@@ -10889,44 +10889,22 @@ ROM_START( seafight )
 	ROM_LOAD16_BYTE( "444.c2", 0x000001, 0x100000, CRC(1f43c1f4) SHA1(aa0cd4eebb02225b939f57cee4347c0a43654d31) )
 ROM_END
 
-ROM_START( teotb ) // Beta, 2022-01-05
+ROM_START( teotb ) // Beta 3, 2022-03-12
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "323b.p1", 0x000000, 0x100000, CRC(603fac98) SHA1(b5d4caf9162cac28d153fe33169cfc8acb679f84) )
-	ROM_LOAD16_WORD_SWAP( "323b.p2", 0x100000, 0x800000, CRC(5f557ad5) SHA1(9983d3b913f0d3bb315b696cd77f2ad7d04fbcd3) )
+	ROM_LOAD16_WORD_SWAP( "323f.p1", 0x000000, 0x100000, CRC(2af068c0) SHA1(82f5885fbfdef47c0e9416cf9bd9accf8e5a739d) )
+	ROM_LOAD16_WORD_SWAP( "323f.p2", 0x100000, 0x800000, CRC(3ddc321d) SHA1(496573202a417d40894f69c2044ef408d3a0f01b) )
 
-	NEO_SFIX_128K( "323b.s1", CRC(aba8f74c) SHA1(c8d12f535099ce0232bb637e04ac7b79569e15fe) )
+	NEO_SFIX_128K( "323e.s1", CRC(52895190) SHA1(d11385c51591b685c533a9f27c4fd3aa62927bef) )
 
-	NEO_BIOS_AUDIO_64K( "323b.m1", CRC(dc29f33b) SHA1(cb1f45e93b19b00b901c5992a2646db652755d6e) )
+	NEO_BIOS_AUDIO_64K( "323f.m1", CRC(5edaa24d) SHA1(90209de31a87da4118600be64869b36067d76c4b) )
 
 	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "323b.v1",   0x000000, 0x800000, CRC(91b3deed) SHA1(6408ad38bcbe2712a11e30efecb47b027cabd49a) )
-	ROM_LOAD( "323b.v2",   0x800000, 0x800000, CRC(985e6f6b) SHA1(b3e92d6ab08ad42347b622dbb72a7589a7dbe885) )
+	ROM_LOAD( "323f.v1",   0x000000, 0x800000, CRC(70042574) SHA1(368e85d38a94238b61969ee564f94bef143b808d) )
+	ROM_LOAD( "323f.v2",   0x800000, 0x800000, CRC(d84d05b2) SHA1(7ad3914b5e95572d3fc9dadc6ad0e23463983118) )
 
-	ROM_REGION( 0x4000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "323b.c1",   0x0000000, 0x1000000, CRC(7919ea09) SHA1(bb8e058346ebc02b7e20f324411c6455271a837b) )
-	ROM_LOAD16_BYTE( "323b.c2",   0x0000001, 0x1000000, CRC(62aa59a8) SHA1(dc4b7dc87d43b2c61bea799d2de5344d1c1999b9) )
-	ROM_LOAD16_BYTE( "323b.c3",   0x2000000, 0x1000000, CRC(7919ea09) SHA1(bb8e058346ebc02b7e20f324411c6455271a837b) )
-	ROM_LOAD16_BYTE( "323b.c4",   0x2000001, 0x1000000, CRC(62aa59a8) SHA1(dc4b7dc87d43b2c61bea799d2de5344d1c1999b9) )
-ROM_END
-
-ROM_START( teotd3 ) // Alpha5 demo, 2021-05-16  (can crash sometimes)
-	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "323d3.p1", 0x000000, 0x100000, CRC(9038ff78) SHA1(33f0ce3874e24c366177c89824c4b0cd1d30dfce) )
-	ROM_LOAD16_WORD_SWAP( "323d3.p2", 0x100000, 0x800000, CRC(fe363160) SHA1(e503dd9cefa2b7d69ea2aaff60c63c00b83c158d) )
-
-	NEO_SFIX_128K( "419.s1", CRC(a545b593) SHA1(09077b63595eebb7dddd55e041e7786164df0ead) )
-
-	NEO_BIOS_AUDIO_64K( "323d3.m1", CRC(31b05f06) SHA1(da1f984af58bcc7d4d496382bcb938fa7aff5ab1) )
-
-	ROM_REGION( 0x1000000, "ymsnd", 0 )
-	ROM_LOAD( "323d3.v1",   0x000000, 0x800000, CRC(299d84cf) SHA1(da0bb20b8faeaf0d78f987afc775abaadcc59dfa) )
-	ROM_LOAD( "323d3.v2",   0x800000, 0x800000, CRC(aced6c72) SHA1(8dc481445dbcc717c6dccb27dff446c5f05080f0) )
-
-	ROM_REGION( 0x4000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "323d3.c1",   0x0000000, 0x1000000, CRC(28872e1f) SHA1(420d68ed2d417e1edfbd351619ff144fb7eacd9b) )
-	ROM_LOAD16_BYTE( "323d3.c2",   0x0000001, 0x1000000, CRC(fe31d1fc) SHA1(947d4cc47905308d03423640d863e60007b2309a) )
-	ROM_LOAD16_BYTE( "323d3.c3",   0x2000000, 0x1000000, CRC(28872e1f) SHA1(420d68ed2d417e1edfbd351619ff144fb7eacd9b) )
-	ROM_LOAD16_BYTE( "323d3.c4",   0x2000001, 0x1000000, CRC(fe31d1fc) SHA1(947d4cc47905308d03423640d863e60007b2309a) )
+	ROM_REGION( 0x2000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "323f.c1",   0x0000000, 0x1000000, CRC(360e5362) SHA1(a86a5eea49218669c5e00a6b286a7d2d6f02ab3c) )
+	ROM_LOAD16_BYTE( "323f.c2",   0x0000001, 0x1000000, CRC(1fdff0ce) SHA1(4ef77f3e01d58612e9b730426adb81d87ccb5572) )
 ROM_END
 
 // 422 : Time's UP! by NGF
@@ -11827,8 +11805,7 @@ HACK( 2008, ngtetris,     neogeo,   neogeo_noslot,   neogeo,  neogeo_state, neog
 HACK( 2020, nsmb,         neogeo,   neogeo_noslot,   neogeo,  neogeo_state, neogeo,   ROT0, "OzzyOuzo", "New! Super Mario Bros.", MACHINE_SUPPORTS_SAVE )
 HACK( 2012, santabll,     neogeo,   neogeo_noslot,   neogeo,  neogeo_state, neogeo,   ROT0, "M.Priewe", "Santaball", MACHINE_SUPPORTS_SAVE )
 HACK( 2018, seafight,     neogeo,   neogeo_noslot,   neogeo,  neogeo_state, neogeo,   ROT0, "kl3mousse", "Sea Fighter 0.01.009", MACHINE_SUPPORTS_SAVE )
-HACK( 2022, teotb,        neogeo,   neogeo_noslot,   neogeo,  neogeo_state, neogeo,   ROT0, "OzzyOuzo", "The Eye of Typhoon (Tsunami Edition, beta)(2022-01-05)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, teotd3,       neogeo,   neogeo_noslot,   neogeo,  neogeo_state, neogeo,   ROT0, "OzzyOuzo", "The Eye of Typhoon (Tsunami Edition, alpha 5)", MACHINE_SUPPORTS_SAVE )
+HACK( 2022, teotb,        neogeo,   neogeo_noslot,   neogeo,  neogeo_state, neogeo,   ROT0, "OzzyOuzo", "The Eye of Typhoon (Tsunami Edition, beta 3, 2022-03-12)", MACHINE_SUPPORTS_SAVE )
 HACK( 2012, timesup,      neogeo,   neogeo_noslot,   neogeo,  neogeo_state, neogeo,   ROT0, "NGF Dev. Inc", "Time's Up!", MACHINE_SUPPORTS_SAVE )
 HACK( 2012, timesupd,     neogeo,   neogeo_noslot,   neogeo,  neogeo_state, neogeo,   ROT0, "NGF Dev. Inc", "Time's Up! (Demo)", MACHINE_SUPPORTS_SAVE )
 HACK( 2011, totc,         neogeo,   neogeo_noslot,   neogeo,  neogeo_state, neogeo,   ROT0, "FACE Corporation / N.C.I - Le Cortex", "Treasure of the Caribbean", MACHINE_SUPPORTS_SAVE )

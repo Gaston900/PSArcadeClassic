@@ -2742,7 +2742,6 @@ nsmb                            //neogeo
 santabll                        //neogeo
 seafight                        //neogeo
 teotb                           //neogeo
-teotd3                          //neogeo
 timesup                         //neogeo
 timesupd                        //neogeo
 totc                            //neogeo
@@ -2868,6 +2867,7 @@ ddpdoja                         //
 ddpdojb                         //
 ddpdojblk                       //
 ddpdojblka                      //
+ddpdojblkb                      //
 ddpdojblkbl                     //
 dmnfrnt                         // (c) 2002 Demon Front
 dmnfrnta                        //
@@ -2875,6 +2875,7 @@ dmnfrntb                        //
 drgw2                           // (c) 1997 Dragon World 2
 drgw2c                          //
 drgw2j                          //
+drgw2101c
 drgw3                           // (c) 1998 Dragon World 3
 drgw3100                        //
 drgw3103                        //
@@ -2885,9 +2886,6 @@ dwex                            // (c) 2000 Dragon World 3 EX V100
 dwex101cn                       // (c) 2001 Dragon World 3 EX V101CN
 espgal                          // (c) 2003 Espgaluda
 espgalbl                        //
-happy6                          // (c) 2004 Happy 6
-happy6101                       //
-happy6100hk                     //
 ket                             // (c) 2002 Ketsui
 ket1                            //
 keta                            //
@@ -2903,6 +2901,7 @@ ketbl                           //
 killbld                         // (c) 1998 The Killing Blade
 killbld104                      //
 killbld106                      //
+killbld100                      //
 killbldp                        // (c) 2004 Killing Blade Plus
 kov                             // (c) 1999 Knights of Valor
 kov100                          //
@@ -2918,6 +2917,7 @@ kov2106                         //
 kov2p                           // (c) 2000 Knights of Valor 2 Nine Dragons
 kov2p200                        //
 kov2p202                        //
+kov2p203                        //
 kov2p204                        //
 kovplus                         // (c) 1999 Knights of Valor Plus (aka 10 Character version)
 kovplusa                        //
@@ -2925,6 +2925,8 @@ kovqhsgs                        // bootleg
 kovsgqyz                        // bootleg
 kovsgqyza                       // bootleg
 kovsgqyzb                       // bootleg
+kovsgqyzc                       // bootleg
+kovsgqyzd                       // bootleg
 kovsh                           // (c) 1999 Knights of Valor Superheroes
 kovsh100                        //
 kovsh101                        //
@@ -2934,6 +2936,9 @@ kovshp                          // (c) 2004 Knights of Valor Superheroes PLUS
 kovshpa                         //
 kovshxas                        // bootleg
 kovytzy                         // (c) 1999 Knights of Valour: Yi Tong Zhong Yuan
+kovlsyxqszl                     // bootleg
+kovlsyxqxzl                     // bootleg
+kovlsyxqxzlp                    // bootleg
 martmast                        // (c) 2001 Martial Masters
 martmastc                       //
 martmastc103                    //
@@ -2943,7 +2948,9 @@ olds100                         //
 olds100a                        //
 olds103t                        //
 oldsplus                        // (c) 2004 Oriental Legend Super Plus
+oldsplus203                     //
 orlegend                        // (c) 1997 Oriental Legend
+orlegend105t                    //
 orlegend105k                    //
 orlegend111c                    //
 orlegend111k                    //
@@ -2957,15 +2964,18 @@ photoy2k102                     //
 photoy2k103j                    // (c) 1999 Photo Y2k
 photoy2k104                     //
 puzlstar                        // (c) 1999 Puzzle Star
+puzlstara                       //
 puzzli2                         // (c) 1999 Puzzli 2
 puzzli2s                        // (c) 2001 Puzzli 2 Super
 svg                             // (c) 2003 Spectral vs Generation
+svghk                           //
 svgpcb                          //
 svgtw                           //
 theglad                         // (c) 2003 The Gladiator
 theglad100                      //
 theglad101                      //
 thegladpcb                      //
+thegladpcba                     //
 
 @source:phoenix.cpp
 avefenix                        // bootleg (Video Game)
@@ -10175,9 +10185,6 @@ pacgal2                         // bootleg
 mspacii3                        // bootleg
 mspacmab4                       // bootleg
 mspacmanblt2                    // bootleg
-otto1029                        // hack
-sp4n1029                        // hack
-sp4o1029                        // hack
 
 @source:multipac.cpp
 mschamp                         // hack
@@ -10524,6 +10531,8 @@ captcommhack16                  //hack
 captcommhack17                  //hack
 captcommhack18                  //hack
 captcommhack19                  //hack
+captcommhack20                  //hack
+captcommhack21                  //hack
 captcoud                        //bootleg
 daimakaib                       //bootleg
 dinohack01                      //hack
@@ -10603,6 +10612,11 @@ dinohack74                      //hack
 dinohack75                      //hack
 dinohack76                      //hack
 dinohack77                      //hack
+dinohack78                      //hack
+dinohack79                      //hack
+dinohack80                      //hack
+dinohack81                      //hack
+dinohack82                      //hack
 dinoh                           //bootleg
 dinoha                          //bootleg
 dinotpic                        //bootleg
@@ -11009,6 +11023,9 @@ hookhack01                      //hack
 hookhack02                      //hack
 hookhack03                      //hack
 hookhack04                      //hack
+hookhack05                      //hack
+hookhack06                      //hack
+hookhack07                      //hack
 nbbatmanhack01                  //hack
 nbbatmanhack02                  //hack
 nbbatmanhack03                  //hack
@@ -11760,6 +11777,206 @@ vecpengo                        //hack
 phoenixr                        //hack
 phoenixg                        //hack
 
+@source:pgm.cpp
+killbldhack01                   //hack
+killbldhack02                   //hack
+killbldhack03                   //hack
+killbldhack04                   //hack
+killbldphack01                  //hack
+killbldphack02                  //hack
+kovhack01                       //hack
+kov2phack01                     //hack
+kov2phack02                     //hack
+kov2phack03                     //hack
+kov2phack04                     //hack
+kov2phack05                     //hack
+kov2phack06                     //hack
+kov2phack07                     //hack
+kov2phack08                     //hack
+kov2phack09                     //hack
+kov2phack10                     //hack
+kov2phack11                     //hack
+kov2phack12                     //hack
+kov2phack13                     //hack
+kov2phack14                     //hack
+kov2hack01                      //hack
+kov2hack02                      //hack
+kov2hack03                      //hack
+kov2hack04                      //hack
+kov2hack05                      //hack
+kov2hack06                      //hack
+kov2hack07                      //hack
+kov2hack08                      //hack
+kov2hack09                      //hack
+kov2hack10                      //hack
+kov2hack11                      //hack
+kovplushack01                   //hack
+kovplushack02                   //hack
+kovplushack03                   //hack
+kovplushack04                   //hack
+kovplushack05                   //hack
+kovplushack06                   //hack
+kovplushack07                   //hack
+kovplushack08                   //hack
+kovplushack09                   //hack
+kovplushack10                   //hack
+kovplushack11                   //hack
+kovplushack12                   //hack
+kovplushack13                   //hack
+kovplushack14                   //hack
+kovplushack15                   //hack
+kovplushack16                   //hack
+kovplushack17                   //hack
+kovplushack18                   //hack
+kovplushack19                   //hack
+kovplushack20                   //hack
+kovplushack21                   //hack
+kovplushack22                   //hack
+kovplushack23                   //hack
+kovplushack24                   //hack
+kovplushack25                   //hack
+kovplushack26                   //hack
+kovplushack27                   //hack
+kovplushack28                   //hack
+kovplushack29                   //hack
+kovplushack30                   //hack
+kovplushack31                   //hack
+kovplushack32                   //hack
+kovplushack33                   //hack
+kovplushack34                   //hack
+kovplushack35                   //hack
+kovplushack36                   //hack
+kovplushack37                   //hack
+kovplushack38                   //hack
+kovplushack39                   //hack
+kovplushack40                   //hack
+kovplushack41                   //hack
+kovplushack42                   //hack
+kovplushack43                   //hack
+kovplushack44                   //hack
+kovplushack45                   //hack
+kovplushack46                   //hack
+kovplushack47                   //hack
+kovplushack48                   //hack
+kovplushack49                   //hack
+kovplushack50                   //hack
+kovshhack01                     //hack
+kovshhack02                     //hack
+kovshhack03                     //hack
+kovshhack04                     //hack
+kovshhack05                     //hack
+kovshhack06                     //hack
+kovshhack07                     //hack
+kovshhack08                     //hack
+kovshhack09                     //hack
+kovshhack10                     //hack
+kovshhack11                     //hack
+kovshhack12                     //hack
+kovshhack13                     //hack
+kovshhack14                     //hack
+kovshhack15                     //hack
+kovshhack16                     //hack
+kovshhack17                     //hack
+kovshhack18                     //hack
+kovshhack19                     //hack
+kovshhack20                     //hack
+kovshhack21                     //hack
+kovshhack22                     //hack
+kovqhsghack01                   //hack
+kovshphack01                    //hack
+kovshphack02                    //hack
+kovshphack03                    //hack
+kovshphack04                    //hack
+kovshphack05                    //hack
+kovshphack06                    //hack
+kovshphack07                    //hack
+kovshphack08                    //hack
+kovshphack09                    //hack
+kovshphack10                    //hack
+kovshphack11                    //hack
+kovshphack12                    //hack
+kovshphack13                    //hack
+kovshphack14                    //hack
+kovshphack15                    //hack
+kovshphack16                    //hack
+kovshphack17                    //hack
+kovshphack18                    //hack
+kovshphack19                    //hack
+kovshphack20                    //hack
+kovshphack21                    //hack
+kovshphack22                    //hack
+kovshphack23                    //hack
+kovshphack24                    //hack
+kovshphack25                    //hack
+kovshphack26                    //hack
+kovshphack27                    //hack
+kovshphack28                    //hack
+kovshphack29                    //hack
+kovshphack30                    //hack
+kovshphack31                    //hack
+kovshphack32                    //hack
+kovshphack33                    //hack
+martmasthack01                  //hack
+martmasthack02                  //hack
+martmasthack03                  //hack
+oldshack01                      //hack
+oldshack02                      //hack
+oldshack03                      //hack
+oldshack04                      //hack
+oldshack05                      //hack
+oldshack06                      //hack
+oldshack07                      //hack
+oldshack08                      //hack
+oldshack09                      //hack
+oldshack10                      //hack
+oldshack11                      //hack
+oldshack12                      //hack
+oldshack13                      //hack
+oldshack14                      //hack
+oldshack15                      //hack
+oldshack16                      //hack
+oldshack17                      //hack
+oldshack18                      //hack
+oldshack19                      //hack
+oldshack20                      //hack
+oldshack21                      //hack
+oldshack22                      //hack
+oldshack23                      //hack
+oldshack24                      //hack
+oldshack25                      //hack
+oldshack26                      //hack
+oldshack27                      //hack
+oldshack28                      //hack
+oldshack29                      //hack
+oldshack30                      //hack
+oldshack31                      //hack
+oldsplushack01                  //hack
+oldsplushack02                  //hack
+oldsplushack03                  //hack
+oldsplushack04                  //hack
+oldsplushack05                  //hack
+oldsplushack06                  //hack
+orlegendhack01                  //hack
+orlegendhack02                  //hack
+orlegendhack03                  //hack
+orlegendhack04                  //hack
+orlegendhack05                  //hack
+orlegendhack06                  //hack
+orlegendhack07                  //hack
+orlegendhack08                  //hack
+orlegendhack09                  //hack
+orlegendhack10                  //hack
+orlegendhack11                  //hack
+orlegendhack12                  //hack
+orlegendhack13                  //hack
+orlegendhack14                  //hack
+orlegendhack15                  //hack
+orlegendhack16                  //hack
+orlegendhack17                  //hack
+orlegendhack18                  //hack
+thegladhack01                   //hack
+thegladhack02                   //hack
+
 @source:playch10.cpp
 pc_ark                          //hack
 pc_bb2                          //hack
@@ -11848,6 +12065,12 @@ msgundamhack01                  //hack
 @source:seta2.cpp
 grdianshack01                   //hack
 grdianshack02                   //hack
+grdianshack03                   //hack
+grdianshack04                   //hack
+grdianshack05                   //hack
+grdianshack06                   //hack
+grdianshack07                   //hack
+grdianshack08                   //hack
 
 @source:shadfrce.cpp
 shadfrcehack01                  //hack
@@ -11982,7 +12205,6 @@ batsugunhack01                  //hack
 bgareggahack01                  //hack
 kgpe
 mahoudaihack01                  //hack
-shippumdhack01                  //hack
 snowbro2hack01                  //hack
 truxton2hack01                  //hack
 

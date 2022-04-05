@@ -3101,7 +3101,7 @@ HACK( 1992, sf2m9,     sf2ce,    sf2m1,     sf2,      cps_state, dinopic,  ROT0,
 
 HACK( 1993, slampic,   slammast, slampic,   slammast, cps_state, dinopic,  ROT0,   "bootleg", "Saturday Night Slam Masters (bootleg with PIC16c57)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE ) // 930713 ETC
 
-HACK( 1999, sgyxz,     wof,      sgyxz,     sgyxz,    cps_state, cps1,     ROT0,   "bootleg (All-In Electronic)", "Warriors of Fate ('sgyxz' bootleg)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )   // 921005 - Sangokushi 2
+HACK( 1999, sgyxz,     wof,      sgyxz,     sgyxz,    cps_state, cps1,     ROT0,   "bootleg", "Sangokushi II: Sanguo Yingxiong Zhuan (Chinese bootleg set 3, 921005 Asia)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )   // 921005 - Sangokushi 2
 
 // HBMAME **********************************************/
 
@@ -3446,6 +3446,38 @@ ROM_START( sf2ceb5 ) // sf2ceba in FBNeo, it`s a mix between sf2ceb and sf2mdt
 	ROM_REGION( 0x30000, "audiocpu", 0 ) // Sound program + samples
 	ROM_LOAD( "5.ic26", 0x00000, 0x20000, CRC(17d5ba8a) SHA1(6ff3b8860d7e1fdee3561846f645eb4d3a8965ec) )
 	ROM_RELOAD(         0x10000, 0x20000 )
+ROM_END
+
+ROM_START( wofpic )
+	ROM_REGION( CODE_SIZE, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "1.4m", 0x000001, 0x80000, CRC(d2ae67a8) SHA1(cb1a9f8e6999598b9a1a7c449f147a0c5773b154) )
+	ROM_LOAD16_BYTE( "2.4m", 0x000000, 0x80000, CRC(61fd0a01) SHA1(a7b5bdddd7b31645e33314c1d3649e1506cecfea) )
+	ROM_LOAD16_BYTE( "3.1m", 0x100001, 0x20000, CRC(739379be) SHA1(897f61527213902fda04bc28339f1f4278bf5ae9) ) // 1xxxxxxxxxxxxxxxx = 0xFF
+	ROM_LOAD16_BYTE( "4.1m", 0x100000, 0x20000, CRC(fe5eee87) SHA1(be1230f64c1e59ae3ff3e58593070613966ac79d) ) // 11xxxxxxxxxxxxxxx = 0x00
+
+	ROM_REGION( 0x400000, "gfx", 0 )
+	ROM_LOAD64_BYTE( "m12073-2", 0x000000, 0x40000, CRC(c8dcaa95) SHA1(bcaeaefd40ffa1b32e80457cffcc1ceab461af1d) )
+	ROM_CONTINUE(                0x000004, 0x40000)
+	ROM_LOAD64_BYTE( "m12223-2", 0x000001, 0x40000, CRC(1ab0000c) SHA1(0d0004cc1725c38d140ecb8dc9666361b2d3e607) )
+	ROM_CONTINUE(                0x000005, 0x40000)
+	ROM_LOAD64_BYTE( "m12223-1", 0x000002, 0x40000, CRC(8425ff6b) SHA1(9a051089c2a492b8c63484582f95c578704b6820) )
+	ROM_CONTINUE(                0x000006, 0x40000)
+	ROM_LOAD64_BYTE( "m12073-1", 0x000003, 0x40000, CRC(24ce197b) SHA1(0ccdbd6f6a30e6d1479f8702c3e8561b16303550) )
+	ROM_CONTINUE(                0x000007, 0x40000)
+	ROM_LOAD64_BYTE( "m12073-6", 0x200000, 0x40000, CRC(9d20ef9b) SHA1(cbf3cb6bd7a73312e5061082554f2e17aae08621) )
+	ROM_CONTINUE(                0x200004, 0x40000)
+	ROM_LOAD64_BYTE( "m12073-5", 0x200001, 0x40000, CRC(90c93dd2) SHA1(d3d2b0bcbcbb21a41f986eb752ab114697eb9402) )
+	ROM_CONTINUE(                0x200005, 0x40000)
+	ROM_LOAD64_BYTE( "m12073-4", 0x200002, 0x40000, CRC(219fd7e2) SHA1(af765eb7b275ed541c08e243b22b5c9f54c1a8ec) )
+	ROM_CONTINUE(                0x200006, 0x40000)
+	ROM_LOAD64_BYTE( "m12073-3", 0x200003, 0x40000, CRC(efc17c9a) SHA1(26429a9039bb249e17945508c16645c82f7f412a) )
+	ROM_CONTINUE(                0x200007, 0x40000)
+
+	ROM_REGION( 0x2000, "audiocpu", 0 ) // NO DUMP  -  protected PIC
+	ROM_LOAD( "pic.bin", 0x0000, 0x1007, NO_DUMP )
+
+	ROM_REGION( 0x080000, "oki", 0 )
+	ROM_LOAD( "ma12073.4mm", 0x00000, 0x80000, CRC(ac421276) SHA1(56786c23b0d96e1a2540e7269aa20fd390f98b5b) )
 ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */

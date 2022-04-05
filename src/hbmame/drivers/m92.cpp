@@ -114,6 +114,87 @@ ROM_START( hookhack04 ) //hookuxr
 	ROM_LOAD( "hook-da.rom", 0x000000, 0x080000, CRC(88cd0212) SHA1(789532f5544b5d024d8af60eb8a5c133ae0d19d4) )
 ROM_END
 
+ROM_START( hookhack05 ) //hookjls
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "h-h0-d_hack05.3h", 0x000001, 0x040000, CRC(dc6e06b9) SHA1(1a95f0407dbaaee2db38c7557d023402e99b4758) )
+	ROM_LOAD16_BYTE( "h-l0-d_hack05.3h", 0x000000, 0x040000, CRC(8a4eed85) SHA1(d803fa0a1790d7b88068258416a48a5b096490e4) )
+	ROM_LOAD16_BYTE( "h-h1.rom",  0x080001, 0x020000, CRC(264ba1f0) SHA1(49ecf9b3e5375629607fb747abe264406065580b) )
+	ROM_LOAD16_BYTE( "h-l1.rom",  0x080000, 0x020000, CRC(f9913731) SHA1(be7871d6843e76f66fae6b501c5ee83ccc366463) )
+
+	ROM_REGION( 0x20000, "soundcpu", 0 )
+	ROM_LOAD16_BYTE( "h-sh0-a.3l", 0x00001, 0x10000, CRC(bd3d1f61) SHA1(0c884a0b5519f9c0823128872baf7b0c4078e5c4) )
+	ROM_LOAD16_BYTE( "h-sl0-a.3n", 0x00000, 0x10000, CRC(76371def) SHA1(b7a86fd4eecdd8a538c32e08cd920c27bd50924b) )
+
+	ROM_REGION( 0x100000, "gfx1", 0 )
+	ROM_LOAD( "hook-c0.rom", 0x000000, 0x040000, CRC(dec63dcf) SHA1(e9869110f832d782c460b123928b042c65fdf8bd) )
+	ROM_LOAD( "hook-c1.rom", 0x040000, 0x040000, CRC(e4eb0b92) SHA1(159da3ec973490a153c69c96c1373cf4e0290736) )
+	ROM_LOAD( "hook-c2.rom", 0x080000, 0x040000, CRC(a52b320b) SHA1(1522562239bb3b93ef552c47445daa4ee021495c) )
+	ROM_LOAD( "hook-c3.rom", 0x0c0000, 0x040000, CRC(7ef67731) SHA1(af0b0ee6e1c06af04c609af7e077d4a7d76d8817) )
+
+	ROM_REGION( 0x400000, "gfx2", 0 )
+	ROM_LOAD( "hook-000.rom", 0x000000, 0x100000, CRC(ccceac30) SHA1(16e2b4393840344debe869034135feead7450184) )
+	ROM_LOAD( "hook-010.rom", 0x100000, 0x100000, CRC(8ac8da67) SHA1(a9b962cb0bc0d8bc3bda8a0ed1ce06641d666b41) )
+	ROM_LOAD( "hook-020.rom", 0x200000, 0x100000, CRC(8847af9a) SHA1(f82cdbd640fac373136219422172ca9fbf5d1830) )
+	ROM_LOAD( "hook-030.rom", 0x300000, 0x100000, CRC(239e877e) SHA1(445e1096619c4e3a2d5b50a645fd45bd7c501590) )
+
+	ROM_REGION( 0x80000, "irem", 0 )
+	ROM_LOAD( "hook-da.rom", 0x000000, 0x080000, CRC(88cd0212) SHA1(789532f5544b5d024d8af60eb8a5c133ae0d19d4) )
+ROM_END
+
+ROM_START( hookhack06 ) //hookswan
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "h-h0-d_hack06.3h", 0x000001, 0x040000, CRC(50acf650) SHA1(b55f130e6aab8b238d957ca53914bae19b134739) )
+	ROM_LOAD16_BYTE( "h-l0-d_hack06.3h", 0x000000, 0x040000, CRC(56446fb8) SHA1(1435bd0581a54f50299447b7f7c369d5dcabd1a0) )
+	ROM_LOAD16_BYTE( "h-h1.rom",  0x080001, 0x020000, CRC(264ba1f0) SHA1(49ecf9b3e5375629607fb747abe264406065580b) )
+	ROM_LOAD16_BYTE( "h-l1.rom",  0x080000, 0x020000, CRC(f9913731) SHA1(be7871d6843e76f66fae6b501c5ee83ccc366463) )
+
+	ROM_REGION( 0x20000, "soundcpu", 0 )
+	ROM_LOAD16_BYTE( "h-sh0-a.3l", 0x00001, 0x10000, CRC(bd3d1f61) SHA1(0c884a0b5519f9c0823128872baf7b0c4078e5c4) )
+	ROM_LOAD16_BYTE( "h-sl0-a.3n", 0x00000, 0x10000, CRC(76371def) SHA1(b7a86fd4eecdd8a538c32e08cd920c27bd50924b) )
+
+	ROM_REGION( 0x100000, "gfx1", 0 )
+	ROM_LOAD( "hook-c0.rom", 0x000000, 0x040000, CRC(dec63dcf) SHA1(e9869110f832d782c460b123928b042c65fdf8bd) )
+	ROM_LOAD( "hook-c1.rom", 0x040000, 0x040000, CRC(e4eb0b92) SHA1(159da3ec973490a153c69c96c1373cf4e0290736) )
+	ROM_LOAD( "hook-c2.rom", 0x080000, 0x040000, CRC(a52b320b) SHA1(1522562239bb3b93ef552c47445daa4ee021495c) )
+	ROM_LOAD( "hook-c3.rom", 0x0c0000, 0x040000, CRC(7ef67731) SHA1(af0b0ee6e1c06af04c609af7e077d4a7d76d8817) )
+
+	ROM_REGION( 0x400000, "gfx2", 0 )
+	ROM_LOAD( "hook-000.rom", 0x000000, 0x100000, CRC(ccceac30) SHA1(16e2b4393840344debe869034135feead7450184) )
+	ROM_LOAD( "hook-010.rom", 0x100000, 0x100000, CRC(8ac8da67) SHA1(a9b962cb0bc0d8bc3bda8a0ed1ce06641d666b41) )
+	ROM_LOAD( "hook-020.rom", 0x200000, 0x100000, CRC(8847af9a) SHA1(f82cdbd640fac373136219422172ca9fbf5d1830) )
+	ROM_LOAD( "hook-030.rom", 0x300000, 0x100000, CRC(239e877e) SHA1(445e1096619c4e3a2d5b50a645fd45bd7c501590) )
+
+	ROM_REGION( 0x80000, "irem", 0 )
+	ROM_LOAD( "hook-da.rom", 0x000000, 0x080000, CRC(88cd0212) SHA1(789532f5544b5d024d8af60eb8a5c133ae0d19d4) )
+ROM_END
+
+ROM_START( hookhack07 ) //hookxx
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "h-h0-d_hack07.3h", 0x000001, 0x040000, CRC(a0e0b42e) SHA1(2aae5fa582b0e94cd000af53a34fc54409af6e2c) )
+	ROM_LOAD16_BYTE( "h-l0-d_hack07.3h", 0x000000, 0x040000, CRC(4081226e) SHA1(42caa91342d6eb3bf6e56fa148a9bb9965f8aa42) )
+	ROM_LOAD16_BYTE( "h-h1.rom",  0x080001, 0x020000, CRC(264ba1f0) SHA1(49ecf9b3e5375629607fb747abe264406065580b) )
+	ROM_LOAD16_BYTE( "h-l1.rom",  0x080000, 0x020000, CRC(f9913731) SHA1(be7871d6843e76f66fae6b501c5ee83ccc366463) )
+
+	ROM_REGION( 0x20000, "soundcpu", 0 )
+	ROM_LOAD16_BYTE( "h-sh0-a.3l", 0x00001, 0x10000, CRC(bd3d1f61) SHA1(0c884a0b5519f9c0823128872baf7b0c4078e5c4) )
+	ROM_LOAD16_BYTE( "h-sl0-a.3n", 0x00000, 0x10000, CRC(76371def) SHA1(b7a86fd4eecdd8a538c32e08cd920c27bd50924b) )
+
+	ROM_REGION( 0x100000, "gfx1", 0 )
+	ROM_LOAD( "hook-c0.rom", 0x000000, 0x040000, CRC(dec63dcf) SHA1(e9869110f832d782c460b123928b042c65fdf8bd) )
+	ROM_LOAD( "hook-c1.rom", 0x040000, 0x040000, CRC(e4eb0b92) SHA1(159da3ec973490a153c69c96c1373cf4e0290736) )
+	ROM_LOAD( "hook-c2.rom", 0x080000, 0x040000, CRC(a52b320b) SHA1(1522562239bb3b93ef552c47445daa4ee021495c) )
+	ROM_LOAD( "hook-c3.rom", 0x0c0000, 0x040000, CRC(7ef67731) SHA1(af0b0ee6e1c06af04c609af7e077d4a7d76d8817) )
+
+	ROM_REGION( 0x400000, "gfx2", 0 )
+	ROM_LOAD( "hook-000.rom", 0x000000, 0x100000, CRC(ccceac30) SHA1(16e2b4393840344debe869034135feead7450184) )
+	ROM_LOAD( "hook-010.rom", 0x100000, 0x100000, CRC(8ac8da67) SHA1(a9b962cb0bc0d8bc3bda8a0ed1ce06641d666b41) )
+	ROM_LOAD( "hook-020.rom", 0x200000, 0x100000, CRC(8847af9a) SHA1(f82cdbd640fac373136219422172ca9fbf5d1830) )
+	ROM_LOAD( "hook-030.rom", 0x300000, 0x100000, CRC(239e877e) SHA1(445e1096619c4e3a2d5b50a645fd45bd7c501590) )
+
+	ROM_REGION( 0x80000, "irem", 0 )
+	ROM_LOAD( "hook-da.rom", 0x000000, 0x080000, CRC(88cd0212) SHA1(789532f5544b5d024d8af60eb8a5c133ae0d19d4) )
+ROM_END
+
  /**********************
  Ninja Baseball Bat Man
 *************************/
@@ -288,8 +369,11 @@ ROM_END
 // Guardians
 GAME( 2016, hookhack01,     hook,        hook,          hook,      m92_state, empty_init,    ROT0,   "hack",         "Hook (1V4 2016-06-25)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL)
 GAME( 2018, hookhack02,     hook,        hook,          hook,      m92_state, empty_init,    ROT0,   "hack",         "Hook (X2 Edition 2018-05-05)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL)
-GAME( 2016, hookhack03,     hook,        hook,          hook,      m92_state, empty_init,    ROT0,   "RockyWall",    "Hook (Unrivalled Version 2016-08-18)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL)
+GAME( 2016, hookhack03,     hook,        hook,          hook,      m92_state, empty_init,    ROT0,   "hack",         "Hook (Unrivalled Version 2016-08-18)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL)
 GAME( 2018, hookhack04,     hook,        hook,          hook,      m92_state, empty_init,    ROT0,   "hack",         "Hook (Zinc Children's Edition Update 2018-09-14)",MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL)
+GAME( 2021, hookhack05,     hook,        hook,          hook,      m92_state, empty_init,    ROT0,   "hack",         "Hook (Luanshi Quanhuang Version 2021-11-13)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL)
+GAME( 2022, hookhack06,     hook,        hook,          hook,      m92_state, empty_init,    ROT0,   "hack",         "Hook (Bee Storm Version 2022-01-10)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL)
+GAME( 2022, hookhack07,     hook,        hook,          hook,      m92_state, empty_init,    ROT0,   "hack",         "Hook (Kizuna Jigoku Tachi Version 2022-01-13)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL)
 // Ninja Baseball Bat Man 
 GAME( 2020, nbbatmanhack01, nbbatman,    nbbatman,      nbbatman,  m92_state, init_bank,     ROT0,   "hack",         "Ninja Baseball Bat Man (1V8 2020-01-08)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL )
 GAME( 2017, nbbatmanhack02, nbbatman,    nbbatman,      nbbatman,  m92_state, init_bank,     ROT0,   "hack",         "Ninja Baseball Bat Man (1V4 2017-03-15)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL )

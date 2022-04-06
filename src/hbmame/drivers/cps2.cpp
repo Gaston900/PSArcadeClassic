@@ -11097,6 +11097,34 @@ ROM_START( 1944d )
 	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
+ROM_START( 1944da )
+	ROM_REGION( CODE_SIZE, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "nffu_da.03", 0x000000, 0x80000, CRC(78188e42) SHA1(add31daba3e6916a1facfaf32feeaba228e9a6ab) )
+	ROM_LOAD16_WORD_SWAP( "nff.04",     0x080000, 0x80000, CRC(dba1c66e) SHA1(4764e77d4da5d19d9acded27df1e1bcba06b0fcf) )
+	ROM_LOAD16_WORD_SWAP( "nffu.05",    0x100000, 0x80000, CRC(ea813eb7) SHA1(34e0175a5f22d08c3538369b4bfd077a7427a128) )
+
+	ROM_REGION( 0x2000000, "gfx", 0 )
+	ROMX_LOAD( "nff.13m",   0x0000000, 0x400000, CRC(c9fca741) SHA1(1781d4fc18b6d6f79b7b39d9bcace750fb61a5cf) , ROM_GROUPWORD | ROM_SKIP(6) )
+	ROMX_LOAD( "nff.15m",   0x0000002, 0x400000, CRC(f809d898) SHA1(a0b6af49e1780678d808c317b875161cedddb314) , ROM_GROUPWORD | ROM_SKIP(6) )
+	ROMX_LOAD( "nff.17m",   0x0000004, 0x400000, CRC(15ba4507) SHA1(bed6a82bf1dc1aa501d4c2d098115a15e18d446a) , ROM_GROUPWORD | ROM_SKIP(6) )
+	ROMX_LOAD( "nff.19m",   0x0000006, 0x400000, CRC(3dd41b8c) SHA1(676078baad789e25f6e5a79de29672587be7ff00) , ROM_GROUPWORD | ROM_SKIP(6) )
+	ROMX_LOAD( "nff.14m",   0x1000000, 0x100000, CRC(3fe3a54b) SHA1(0a8e5cae141d24fd8b3cb11796c44728b0acd69e) , ROM_GROUPWORD | ROM_SKIP(6) )
+	ROMX_LOAD( "nff.16m",   0x1000002, 0x100000, CRC(565cd231) SHA1(0aecd433fb4ca2de1aca9fbb1e314fb1f6979321) , ROM_GROUPWORD | ROM_SKIP(6) )
+	ROMX_LOAD( "nff.18m",   0x1000004, 0x100000, CRC(63ca5988) SHA1(30137fa77573c84bcc24570bccb7dba61ddb413c) , ROM_GROUPWORD | ROM_SKIP(6) )
+	ROMX_LOAD( "nff.20m",   0x1000006, 0x100000, CRC(21eb8f3b) SHA1(efa69f19a958047dd91a294c88857ed3133fcbef) , ROM_GROUPWORD | ROM_SKIP(6) )
+
+	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 )
+	ROM_LOAD( "nff.01",   0x00000, 0x08000, CRC(d2e44318) SHA1(33e45f6fe9fed098a4c072b8c39406aef1a949b2) )
+	ROM_CONTINUE(         0x10000, 0x18000 )
+
+	ROM_REGION( 0x800000, "qsound", 0 )
+	ROM_LOAD16_WORD_SWAP( "nff.11m",   0x000000, 0x400000, CRC(243e4e05) SHA1(83281f7290ac105a3f9a7507cbc11317d45ba706) )
+	ROM_LOAD16_WORD_SWAP( "nff.12m",   0x400000, 0x400000, CRC(4fcf1600) SHA1(36f18c5d92b79433bdf7088b29a244708929d48e) )
+
+	ROM_REGION( 0x20, "key", 0 )
+	ROM_LOAD( "phoenix.key",  0x00, 0x14, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
+ROM_END
+
 ROM_START( 19xxd )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_WORD_SWAP( "19xud.03", 0x000000, 0x80000, CRC(f81b60e5) SHA1(6f246ed7779a3a75e7ad7fa8c913c901ea423828) )
@@ -13123,6 +13151,7 @@ HACK( 1998, sfz3jr2d, sfa3,     dead_cps2, cps2_2p6b, cps2_state, cps2,    ROT0,
 HACK( 1999, gigawingd, gigawing,dead_cps2, cps2_2p2b, cps2_state, cps2,    ROT0,   "bootleg", "Giga Wing (USA 990222 Phoenix Edition) (bootleg)", MACHINE_SUPPORTS_SAVE )
 HACK( 1999, gigawingjd,gigawing,dead_cps2, cps2_2p2b, cps2_state, cps2,    ROT0,   "bootleg", "Giga Wing (Japan 990223 Phoenix Edition) (bootleg)", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, 1944d,    1944,     dead_cps2, cps2_2p2b, cps2_state, cps2,    ROT0,   "bootleg", "1944: The Loop Master (USA 000620 Phoenix Edition) (bootleg)", MACHINE_SUPPORTS_SAVE )
+HACK( 2000, 1944da,   1944,     dead_cps2, cps2_2p3b, cps2_state, cps2,    ROT0,   "bootleg", "1944: The Loop Master (USA 000620 Phoenix Edition, alt) (bootleg)", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, dimahoud, dimahoo,  dead_cps2, cps2_2p3b, cps2_state, cps2,    ROT270, "bootleg", "Dimahoo (USA 000121 Phoenix Edition) (bootleg)", MACHINE_SUPPORTS_SAVE )
 HACK( 2000, mmatrixd, mmatrix,  dead_cps2, cps2_2p1b, cps2_state, cps2,    ROT0,   "bootleg", "Mars Matrix: Hyper Solid Shooting (USA 000412 Phoenix Edition) (bootleg)", MACHINE_SUPPORTS_SAVE )
 HACK( 2001, progearud, progear, dead_cps2, cps2_2p3b, cps2_state, cps2,    ROT0,   "bootleg", "Progear (USA 010117 Phoenix Edition) (bootleg)", MACHINE_SUPPORTS_SAVE )

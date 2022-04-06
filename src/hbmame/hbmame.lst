@@ -833,6 +833,7 @@ wonder3                         // 20/05/1991 (c) 1991 (Japan)
 @source:cps2.cpp
 1944                            // 20/06/2000 (c) 2000 Eighting/Raizing (USA)
 1944d                           //
+1944da                          //
 1944j                           // 20/06/2000 (c) 2000 Eighting/Raizing (Japan)
 19xx                            // 04/01/1996 (c) 1996 (Euro)
 19xxa                           // 04/01/1996 (c) 1996 (Asia)
@@ -1159,12 +1160,16 @@ cps3booto2                      // bootleg
 cps3bs32                        //
 cps3bs32a                       //
 jojo                            // 28/01/1999 (c) 1998 (USA)
+jojou                           //
+jojoa                           //
 jojoba                          // 27/09/1999 (c) 1999 (Japan)
+jojobaj                         //
 jojoban                         // 27/09/1999 (c) 1999 (Japan)
 jojobane                        // 27/09/1999 (c) 1999 (Euro)
 jojobaner1                      // 13/09/1999 (c) 1999 (Euro)
 jojobanr1                       // 13/09/1999 (c) 1999 (Japan)
 jojobar1                        // 13/09/1999 (c) 1999 (Japan)
+jojobajr1                       //
 jojoj                           // 28/01/1999 (c) 1998 (Japan)
 jojojr1                         // 08/01/1999 (c) 1998 (Japan)
 jojojr2                         // 02/12/1998 (c) 1998 (Japan)
@@ -1172,7 +1177,11 @@ jojon                           // 28/01/1999 (c) 1998 (Asia)
 jojonr1                         // 08/01/1999 (c) 1998 (Asia)
 jojonr2                         // 02/12/1998 (c) 1998 (Asia)
 jojor1                          // 08/01/1999 (c) 1998 (USA)
+jojour1                         //
+jojoar1                         //
 jojor2                          // 02/12/1998 (c) 1998 (USA)
+jojour2                         //
+jojoar2                         //
 redearth                        // 21/11/1996 (c) 1996 (Euro)
 redearthr1                      // 23/10/1996 (c) 1996 (Euro)
 sfiii                           // 04/02/1997 (c) 1997 (Euro)
@@ -1474,6 +1483,7 @@ exeriont                        // (c) 1983 Jaleco + Taito America license
 irion                           //
 
 @source:fcrash.cpp
+captcommb2                      // bootleg
 cawingb2                        // bootleg
 cawingbl                        // bootleg
 dinopic                         // bootleg
@@ -2444,6 +2454,7 @@ joyjoy                          // 0021 (c) 1990 SNK
 kabukikl                        // 0092 (c) 1995 Hudson
 karnovr                         // 0066 (c) 1994 Data East Corporation
 kf10thep                        // bootleg of kof2002
+kf2k3pcb                        //
 kf2k2mp                         // bootleg
 kf2k2mp2                        // bootleg
 kf2k2pla                        // bootleg
@@ -2511,6 +2522,7 @@ matrimbl                        // bootleg
 miexchng                        // 0231 (c) 1997 Face
 ms4plus                         // bootleg
 ms5plus                         // bootleg
+ms5pcb                          //
 mslug                           // 0201 (c) 1996 Nazca
 mslug2                          // 0241 (c) 1998 SNK
 mslug3                          // 0256 (c) 2000 SNK
@@ -3544,6 +3556,7 @@ titlefu                         // 1993.04 Title Fight (US)
 
 @source:seta.cpp
 arbalest                        // UK   (c) 1989 + Jordan, Romstar or Taito license (DSW)
+blandia                         //
 blockcar                        // (c) 1992 Visco
 blockcarb                       // bootleg
 calibr50                        // UH   (c) 1989 + Romstar or Taito license (DSW)
@@ -10056,7 +10069,7 @@ pacman25s124                    // hack
 pacman25s126                    // hack
 pacman25s127                    // hack
 
-@source:maketrax.cpp
+@source:pacman.cpp
 abscam                          // hack
 eyes                            // (c) 1982 Digitrex Techstar + "Rockola presents"
 aa                              //
@@ -10096,7 +10109,7 @@ maketrax                        // (c) 1981 Williams, high score table says KRL 
 maketrxb                        // (c) 1981 [Kural] (Williams license)
 painter                         // hack
 
-@source:mspacman.cpp
+@source:pacman.cpp
 mspacman                        // (c) 1981 Midway  // made by General Computer
 mspacmat                        // hack
 mspacmab                        // bootleg
@@ -10186,7 +10199,7 @@ mspacii3                        // bootleg
 mspacmab4                       // bootleg
 mspacmanblt2                    // bootleg
 
-@source:multipac.cpp
+@source:pacman.cpp
 mschamp                         // hack
 mschampx                        // hack
 96in1b                          // hack
@@ -10391,7 +10404,7 @@ tankbatl                        // (c) 1992 Microprose Games Inc.
 1942hack03                      //hack
 
 @source:1943.cpp
-1943h                           //bootleg
+1943b2                          //bootleg
 1943hack01                      //hack
 
 @source:8080bw.cpp
@@ -10617,6 +10630,8 @@ dinohack79                      //hack
 dinohack80                      //hack
 dinohack81                      //hack
 dinohack82                      //hack
+dinohack83                      //hack
+dinohack84                      //hack
 dinoh                           //bootleg
 dinoha                          //bootleg
 dinotpic                        //bootleg
@@ -10694,6 +10709,8 @@ sf2tlonc                        //bootleg
 sf2red2                         //bootleg
 sf2v0042                        //bootleg
 sf2yyc2                         //bootleg
+sf2ceeabl                       //bootleg
+sf2cejab2                       //bootleg
 sf2hack01                       //hack
 sf2hack02                       //hack
 sf2hack03                       //hack
@@ -10814,6 +10831,7 @@ sfz2alhack02                    //hack
 sfz2alhack03                    //hack
 sfz2alhack04                    //hack
 sfz2alhack05                    //hack
+sfz2alhack06                    //hack
 sfz3hack01                      //hack
 sfz3hack02                      //hack
 ssf2hack01                      //hack
@@ -11112,6 +11130,7 @@ aof2hack01                      //hack
 aof2hack02                      //hack
 aof3hack01                      //hack
 bangbeadd                       //bootleg
+bangbeadp                       //
 ct2k3hack01                     //hack
 ct2k3sp                         //bootleg
 ct2k3spd                        //bootleg
@@ -11279,6 +11298,7 @@ lastbladhack02                  //hack
 lastbladhack03                  //hack
 lastbladhack04                  //hack
 lastbladhack05                  //hack
+lba                             //bootleg
 lastbld2hack01                  //hack
 lastbld2hack02                  //hack
 lastbld2hack03                  //hack
@@ -11697,6 +11717,7 @@ samsho5hack01                   //hack
 samsho5hack02                   //hack
 samsho5hack03                   //hack
 samsho5hack04                   //hack
+samsho5hack05                   //hack
 samsho5bd                       //bootleg
 samsho5cd                       //bootleg
 samsho5d                        //bootleg
@@ -11724,6 +11745,7 @@ sengoku3hack05                  //hack
 sengoku3hack06                  //hack
 sengoku3hack07                  //hack
 sengoku3hack08                  //hack
+sengoku3hack09                  //hack
 sengoku3d                       //bootleg
 shocktr2hack01                  //hack
 shocktrohack01                  //hack

@@ -862,6 +862,27 @@ ROM_START( bangbeadd )
 	ROM_LOAD16_BYTE( "259d.c2", 0x0000001, 0x800000, CRC(820ab36e) SHA1(acad44f815989d5908585cfeff5658fe85a50ad8) )
 ROM_END
 
+ROM_START( bangbeadp )
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "259.p1", 0x100000, 0x100000, CRC(88a37f8b) SHA1(566db84850fad5e8fe822e8bba910a33e083b550) )
+	ROM_CONTINUE( 0x000000, 0x100000 )
+
+	NEO_SFIX_128K( "259p.s1", CRC(bb50fb2d) SHA1(7372939f328fb5e7d09c16985e09ae8c34702b0c) )
+
+	NEO_BIOS_AUDIO_128K( "259.m1", CRC(85668ee9) SHA1(7d3f51710cf90c097cd3faaeeef10ceb85cbb3e8) )
+
+	ROM_REGION( 0x500000, "ymsnd", 0 )
+	ROM_LOAD( "259p.v1",     0x000000, 0x200000, CRC(e97b9385) SHA1(d213cae6cf5732b8ab1f8a8cf04afee5dfd9a260) )
+	ROM_LOAD( "259p.v2",     0x200000, 0x200000, CRC(b0cbd70a) SHA1(fc7c8183f8ff9800e8aae7c8d44d962300058cfb) )
+	ROM_LOAD( "259.v2",   0x400000, 0x100000, CRC(97528fe9) SHA1(8f5eddbb3a9a225492479d1a44801f3916c8e791) )
+
+	ROM_REGION( 0x600000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "259p.c1", 0x000000, 0x200000, CRC(e3919e44) SHA1(54c722414b5a7ad311dc8ddf6fdda88535e829d1) )
+	ROM_LOAD16_BYTE( "259p.c2", 0x000001, 0x200000, CRC(baf5a320) SHA1(ead3d81d9b4aeb45af4f9cb5c38157f2236b506c) )
+	ROM_LOAD16_BYTE( "259p.c3", 0x400000, 0x100000, CRC(c8e52157) SHA1(f10f58e905c4cbaf182b20e63abe5364462133c5) )
+	ROM_LOAD16_BYTE( "259p.c4", 0x400001, 0x100000, CRC(69fa8e60) SHA1(29c1fbdb79dedf1470683202e2cb3435732d9275) )
+ROM_END
+
  /*****************************
  Crouching Tiger Hidden Dragon
 ********************************/
@@ -4182,7 +4203,7 @@ ROM_START( kof2002hack06 ) //kof2k2plus
 
 	NEO_SFIX_128K( "265_hack06.s1", CRC(96bdd036) SHA1(62baba893e10dbed5c5099040b07432c0737be42) )
 
-	//NEO_BIOS_AUDIO_ENCRYPTED_128K( "265.m1", CRC(85aaa632) SHA1(744fba4ca3bc3a5873838af886efb97a8a316104) )
+	NEO_BIOS_AUDIO_ENCRYPTED_128K( "265.m1", CRC(85aaa632) SHA1(744fba4ca3bc3a5873838af886efb97a8a316104) )
 
 	//ROM_REGION( 0x1000000, "ymsnd", 0 )
 	//ROM_LOAD( "265.v1", 0x000000, 0x800000, CRC(15e8f3f5) SHA1(7c9e6426b9fa6db0158baa17a6485ffce057d889) )
@@ -5383,6 +5404,36 @@ ROM_START( lastbladhack05 )
 	ROM_LOAD( "234.v2", 0x400000, 0x400000, CRC(a0e7f6e2) SHA1(753ff74fa9294f695aae511ae01ead119b114a57) )
 	ROM_LOAD( "234.v3", 0x800000, 0x400000, CRC(a506e1e2) SHA1(b3e04ba1a5cb50b77c6fbe9fe353b9b64b6f3f74) )
 	ROM_LOAD( "234.v4", 0xc00000, 0x400000, CRC(0e34157f) SHA1(20a1f4833e5e29ba0073c1712d7a17ab7a2a035c) )
+
+	ROM_REGION( 0x2800000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "234.c1", 0x0000000, 0x800000, CRC(9f7e2bd3) SHA1(2828aca0c0f5802110f10453c1cf640f69736554) )
+	ROM_LOAD16_BYTE( "234.c2", 0x0000001, 0x800000, CRC(80623d3c) SHA1(ad460615115ec8fb25206f012da59ecfc8059b64) )
+	ROM_LOAD16_BYTE( "234.c3", 0x1000000, 0x800000, CRC(91ab1a30) SHA1(e3cf9133784bef2c8f1bfe45f277ccf82cc6f6a1) )
+	ROM_LOAD16_BYTE( "234.c4", 0x1000001, 0x800000, CRC(3d60b037) SHA1(78a50233bcd19e92c7b6f7ee1a53417d9db21f6a) )
+	ROM_LOAD16_BYTE( "234.c5", 0x2000000, 0x400000, CRC(1ba80cee) SHA1(0c59057183b5279b747e73213b4cd3c6d7ad9eb1) )
+	ROM_LOAD16_BYTE( "234.c6", 0x2000001, 0x400000, CRC(beafd091) SHA1(55df9cc128eb0f00856de3996c946e3efe8f09a5) )
+ROM_END
+
+ /*******
+ bootleg
+**********/
+
+ROM_START( lba )
+	ROM_REGION( 0x500000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "234a.p1", 0x000000, 0x080000, CRC(3893d38b) SHA1(204d3f61dbeb82b1c942cda7089f24f997925adb) )
+	ROM_LOAD16_WORD_SWAP( "234a.p2", 0x080000, 0x080000, CRC(9470c788) SHA1(41671491cef3020b895e42935208e92abec09ed9) )
+	ROM_LOAD16_WORD_SWAP( "234a.p3", 0x100000, 0x200000, CRC(b45e631c) SHA1(5c88e6f6c1e343df24f2acf8bb4aed77954f7b36) )
+	ROM_LOAD16_WORD_SWAP( "234a.p4", 0x300000, 0x200000, CRC(aa34e149) SHA1(113930343f8efa603823a619964e90f1b06df2ab) )
+
+	NEO_SFIX_128K( "234.s1", CRC(95561412) SHA1(995de272f572fd08d909d3d0af4251b9957b3640) )
+
+	NEO_BIOS_AUDIO_128K( "234.m1", CRC(087628ea) SHA1(48dcf739bb16699af4ab8ed632b7dcb25e470e06) )
+
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "234.v1", 0x000000, 0x400000, CRC(ed66b76f) SHA1(8a05ff06d9b6f01c6c16b3026282eaabb0e25b44) )
+	ROM_LOAD( "234.v2", 0x400000, 0x400000, CRC(a0e7f6e2) SHA1(753ff74fa9294f695aae511ae01ead119b114a57) )
+	ROM_LOAD( "234.v3", 0x800000, 0x400000, CRC(a506e1e2) SHA1(b3e04ba1a5cb50b77c6fbe9fe353b9b64b6f3f74) )
+	ROM_LOAD( "234.v4", 0xc00000, 0x400000, CRC(0e34157f) SHA1(20A1F4833E5E29BA0073C1712D7A17AB7A2A035C) )
 
 	ROM_REGION( 0x2800000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "234.c1", 0x0000000, 0x800000, CRC(9f7e2bd3) SHA1(2828aca0c0f5802110f10453c1cf640f69736554) )
@@ -16791,6 +16842,29 @@ ROM_START( samsho5hack04 )
 	ROM_LOAD16_BYTE( "270_hack04.c8", 0x3000001, 0x800000, CRC(2b6b690d) SHA1(75bd30b3a1e105d799225838188f34c16388c1d7) )
 ROM_END
 
+ROM_START( samsho5hack05 )
+	ROM_REGION( 0x800000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "270_hack05.p1", 0x000000, 0x800000, CRC(16983af9) SHA1(8b1ab272200bede14ad66d7e98474ac3fb7564d3) )
+
+	NEO_SFIX_128K( "270cd.s1", CRC(2ad6048b) SHA1(173c8561f0633e0d6e4a9750e632f2e46766e674) )
+
+	NEO_BIOS_AUDIO_512K( "270_hack05.m1", CRC(5218a10a) SHA1(da4968e55d4a56249d85d6742a6acffcff4ad65d) )
+
+	ROM_REGION( 0x1000000, "ymsnd", 0 )
+	ROM_LOAD( "270cd.v1", 0x000000, 0x800000, CRC(809c7617) SHA1(b6b542eb4c1078016fcd78d050433dc8e3029329) )
+	ROM_LOAD( "270cd.v2", 0x800000, 0x800000, CRC(42671607) SHA1(4fa64b5a9349e9c3d5d60806c9da4a2b6beff18a) )
+
+	ROM_REGION( 0x4000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "270_hack05.c1", 0x0000000, 0x800000, CRC(25272e50) SHA1(cc2aa5e5de2483539398f27f317ab2dda7b5c49e) )
+	ROM_LOAD16_BYTE( "270_hack05.c2", 0x0000001, 0x800000, CRC(ba68f2e7) SHA1(77b9b5ddc3b313df0dd328c75eac0e8bdfcebad8) )
+	ROM_LOAD16_BYTE( "270_hack05.c3", 0x1000000, 0x800000, CRC(75883cde) SHA1(2f9d72a07f8f14b52150cfb70bbc33d171a3d515) )
+	ROM_LOAD16_BYTE( "270_hack05.c4", 0x1000001, 0x800000, CRC(348540e6) SHA1(4c6eec8948fbb67ae57eaa4a98525deed6cd2859) )
+	ROM_LOAD16_BYTE( "270_hack05.c5", 0x2000000, 0x800000, CRC(1fee8dc8) SHA1(c7f1016ad711ec248218627c92dd5af68cba0206) )
+	ROM_LOAD16_BYTE( "270_hack05.c6", 0x2000001, 0x800000, CRC(c300b50d) SHA1(8c8fbb81dbc6c283b55380d577944c6b9cdd6cf4) )
+	ROM_LOAD16_BYTE( "270_hack05.c7", 0x3000000, 0x800000, CRC(5e722b0b) SHA1(7015dac7cc234473949912216a1b82ca640b52b6) )
+	ROM_LOAD16_BYTE( "270_hack05.c8", 0x3000001, 0x800000, CRC(e2a2c546) SHA1(c870acb090606ae185fa9d7b4932949abacb0705) )
+ROM_END
+
  /*******
  bootleg
 **********/
@@ -17397,7 +17471,7 @@ ROM_START( sengoku3hack04 ) //sengoku3sf
 
 	NEO_BIOS_AUDIO_512K( "261.m1", CRC(7d501c39) SHA1(8e6bcc428f5ac7532d9c9be7e07ad0821461a080) )
 
-	ROM_REGION( 0xE00000, "ymsnd", 0 )
+	ROM_REGION( 0x0e00000, "ymsnd", 0 )
 	ROM_LOAD( "261.v1", 0x000000, 0x400000, CRC(64c30081) SHA1(f9ebd20cf59b72e864b7274c1bdb6d99ecaf4595) )
 	ROM_LOAD( "261.v2", 0x400000, 0x400000, CRC(392a9c47) SHA1(7ab90a54089236ca6c3ef1af8e566a8025d38159) )
 	ROM_LOAD( "261.v3", 0x800000, 0x400000, CRC(c1a7ebe3) SHA1(1d7bb481451f5ee0457e954bb5210300182c3c9c) )
@@ -17498,6 +17572,27 @@ ROM_START( sengoku3hack08 )
 	ROM_LOAD16_BYTE( "261.c2", 0x0000001, 0x800000, CRC(b8eb4348) SHA1(619d24312549932959481fa58f43f11c048e1ca5) )
 	ROM_LOAD16_BYTE( "261.c3", 0x1000000, 0x800000, CRC(84e2034a) SHA1(38ec4ae4b86933a25c9a03799b8cade4b1346401) )
 	ROM_LOAD16_BYTE( "261.c4", 0x1000001, 0x800000, CRC(0b45ae53) SHA1(a19fb21408ab633aee8bbf38bf43b5e26766b355) )
+ROM_END
+
+ROM_START( sengoku3hack09 )
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "261_hack09.p1", 0x000000, 0x200000, CRC(5a1b5e85) SHA1(239617385b40ae6a86f737195ec6017171157bef) )
+
+	NEO_SFIX_128K( "261s.s1", CRC(c1e27cc7) SHA1(7d38319f517059f60287a8ce393a4901719db8a9) )
+
+	NEO_BIOS_AUDIO_128K( "261d.m1", CRC(36ed9cdd) SHA1(78a7d755e9e9f52255ac6228d9d402fd6a02c126) )
+
+	ROM_REGION( 0x0e00000, "ymsnd", 0 )
+	ROM_LOAD( "261.v1", 0x000000, 0x400000, CRC(64c30081) SHA1(f9ebd20cf59b72e864b7274c1bdb6d99ecaf4595) )
+	ROM_LOAD( "261.v2", 0x400000, 0x400000, CRC(392a9c47) SHA1(7ab90a54089236ca6c3ef1af8e566a8025d38159) )
+	ROM_LOAD( "261.v3", 0x800000, 0x400000, CRC(c1a7ebe3) SHA1(1d7bb481451f5ee0457e954bb5210300182c3c9c) )
+	ROM_LOAD( "261.v4", 0xc00000, 0x200000, CRC(9000d085) SHA1(11157b355ab4eb6627e9f322ed875332d3d77349) )
+
+	ROM_REGION( 0x2000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "261d.c1", 0x0000000, 0x800000, CRC(9af7cbca) SHA1(cf2fe3e5265861369f2878140ef33a6715b031aa) )
+	ROM_LOAD16_BYTE( "261d.c2", 0x0000001, 0x800000, CRC(2a1f874d) SHA1(26923ec0bedba56f25e6222aa107b45ccb3def7b) )
+	ROM_LOAD16_BYTE( "261d.c3", 0x1000000, 0x800000, CRC(5403adb5) SHA1(5614ee892e810dc49758f5985b3dc4f227e01b56) )
+	ROM_LOAD16_BYTE( "261d.c4", 0x1000001, 0x800000, CRC(18926df6) SHA1(a4859c9166ef7abec1f3e6af3292051a63a81f93) )
 ROM_END
 
  /*******
@@ -18351,6 +18446,7 @@ HACK( 2018, aof2hack02,        aof2,     neogeo_noslot, neogeo, neogeo_state,   
 HACK( 1996, aof3hack01,        aof3,     neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "Yumeji",         "Art of Fighting 3 (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 // Bang Bead
 HACK( 2000, bangbeadd,         bangbead, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "bootleg",        "Bang Bead (decrypted)", MACHINE_SUPPORTS_SAVE )
+HACK( 2000, bangbeadp,         bangbead, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "Visco",          "Bang Bead (prototype)", MACHINE_SUPPORTS_SAVE )
 // Crouching Tiger Hidden Dragon
 HACK( 2016, ct2k3hack01,       kof2001,  neogeo_noslot, neogeo, neogeo_state,     cthd2003,  ROT0, "hack",           "Crouching Tiger Hidden Dragon 2003 (Simplified 2016-03-15)", MACHINE_SUPPORTS_SAVE )
 // bootleg
@@ -18569,16 +18665,18 @@ HACK( 2004, kof2k4se1,         kof2k4se, neogeo_noslot, neogeo, neogeo_state,   
 // Lansquenet 2004
 HACK( 2004, lans2k4d,          shocktr2, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "bootleg",        "Lansquenet 2004 (Shock Troopers - 2nd Squad Bootleg / fully decrypted)", MACHINE_SUPPORTS_SAVE )
 // Last Blade
-HACK( 1997, lastbladhack01,    lastblad, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "Creamymami",     "Last Blade (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-HACK( 1997, lastbladhack02,    lastblad, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "DDJ",            "Last Blade (Always Have Super Move)", MACHINE_SUPPORTS_SAVE )
-HACK( 1997, lastbladhack03,    lastblad, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "DDJ",            "Last Blade (Easy Move)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, lastbladhack04,    lastblad, gsc,           neogeo, neogeo_state,     neogeo,    ROT0, "GSC2007",        "Last Blade (Special v1.1)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, lastbladhack05,    lastblad, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "hack",           "Last Blade (Ex Super Version 2018-03-20)", MACHINE_SUPPORTS_SAVE )
+HACK( 1997, lastbladhack01,    lastblad, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "Creamymami",     "The Last Blade (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+HACK( 1997, lastbladhack02,    lastblad, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "DDJ",            "The Last Blade (Always Have Super Move)", MACHINE_SUPPORTS_SAVE )
+HACK( 1997, lastbladhack03,    lastblad, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "DDJ",            "The Last Blade (Easy Move)", MACHINE_SUPPORTS_SAVE )
+HACK( 2017, lastbladhack04,    lastblad, gsc,           neogeo, neogeo_state,     neogeo,    ROT0, "GSC2007",        "The Last Blade (Special v1.1)", MACHINE_SUPPORTS_SAVE )
+HACK( 2017, lastbladhack05,    lastblad, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "hack",           "The Last Blade (Ex Super Version 2018-03-20)", MACHINE_SUPPORTS_SAVE )
+// bootleg
+HACK( 1997, lba,               lastblad, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "SNK",            "The Last Blade / Bakumatsu Roman - Gekka no Kenshi (NGM-2340, alternate board)", MACHINE_SUPPORTS_SAVE )
 // The Last Blade 2
-HACK( 1998, lastbld2hack01,    lastbld2, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "Eddids[FCHT]",   "Last Blade 2 (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-HACK( 1998, lastbld2hack02,    lastbld2, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "DDJ",            "Last Blade 2 (Always Have Super Move)", MACHINE_SUPPORTS_SAVE )
-HACK( 1998, lastbld2hack03,    lastbld2, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "DDJ",            "Last Blade 2 (Easy Move)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, lastbld2hack04,    lastbld2, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "GCS2007",        "Last Blade 2 (Team Edition Ver 1.1 2018-05-09)", MACHINE_SUPPORTS_SAVE )
+HACK( 1998, lastbld2hack01,    lastbld2, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "Eddids[FCHT]",   "The Last Blade 2 (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+HACK( 1998, lastbld2hack02,    lastbld2, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "DDJ",            "The Last Blade 2 (Always Have Super Move)", MACHINE_SUPPORTS_SAVE )
+HACK( 1998, lastbld2hack03,    lastbld2, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "DDJ",            "The Last Blade 2 (Easy Move)", MACHINE_SUPPORTS_SAVE )
+HACK( 2018, lastbld2hack04,    lastbld2, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "GCS2007",        "The Last Blade 2 (Team Edition Ver 1.1 2018-05-09)", MACHINE_SUPPORTS_SAVE )
 // Last Resort
 HACK( 1992, lresorthack01,     lresort,  neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "Xyahzhs",        "Last Resort (Plus Max)", MACHINE_SUPPORTS_SAVE )
 // Magical Drop III
@@ -19050,6 +19148,7 @@ HACK( 2003, samsho5hack01,     samsho5,  neogeo_noslot, neogeo, neogeo_state,   
 HACK( 2003, samsho5hack02,     samsho5,  neogeo_noslot, neogeo, neogeo_state,     samsho5,   ROT0, "DDJ",            "Samurai Shodown V (Always Have Super Move)", MACHINE_SUPPORTS_SAVE )
 HACK( 2003, samsho5hack03,     samsho5,  neogeo_noslot, neogeo, neogeo_state,     samsho5,   ROT0, "DDJ",            "Samurai Shodown V (Easy Move)", MACHINE_SUPPORTS_SAVE )
 HACK( 2018, samsho5hack04,     samsho5,  neogeo_noslot, neogeo, neogeo_state,     samsho5,   ROT0, "hack",           "Samurai Shodown V (Boss With Simple Attack Edition 2018-11-13)", MACHINE_SUPPORTS_SAVE )
+HACK( 2003, samsho5hack05,     samsho5,  neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "hack",           "Samurai Shodown V (XBOX version)", MACHINE_SUPPORTS_SAVE )
 //bootleg
 HACK( 2003, samsho5bd,         samsho5,  neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "bootleg",        "Samurai Shodown V (Fully decrypted)", MACHINE_SUPPORTS_SAVE )
 HACK( 2003, samsho5cd,         samsho5,  neogeo_noslot, neogeo, neogeo_state,     sam5hb,    ROT0, "bootleg",        "Samurai Shodown V (Custom Decrypted)", MACHINE_SUPPORTS_SAVE )
@@ -19083,6 +19182,7 @@ HACK( 2020, sengoku3hack05,    sengoku3, neogeo_noslot, neogeo, neogeo_state,   
 HACK( 2014, sengoku3hack06,    sengoku3, neogeo_noslot, neogeo, neogeo_state,     sengoku3,  ROT0, "hack",           "Sengoku 3 (Green version 2014-01-11)", MACHINE_SUPPORTS_SAVE )
 HACK( 2001, sengoku3hack07,    sengoku3, neogeo_noslot, neogeo, neogeo_state,     sengoku3,  ROT0, "DDJ",            "Sengoku 3 (Always Have Super Move)" , MACHINE_SUPPORTS_SAVE )
 HACK( 2001, sengoku3hack08,    sengoku3, neogeo_noslot, neogeo, neogeo_state,     sengoku3,  ROT0, "DDJ",            "Sengoku 3 (Easy Move)" , MACHINE_SUPPORTS_SAVE )
+HACK( 2001, sengoku3hack09,    sengoku3, neogeo_noslot, neogeo, neogeo_state,     neogeo,    ROT0, "hack",           "Sengoku 3 (Evolution v1.0)", MACHINE_SUPPORTS_SAVE )
 // bootleg
 HACK( 2001, sengoku3d,         sengoku3, neogeo_noslot, neogeo, neogeo_state,     cmc42sfix, ROT0, "bootleg",        "Sengoku 3 (decrypted C)", MACHINE_SUPPORTS_SAVE )
 // Shock Troopers - 2nd Squad

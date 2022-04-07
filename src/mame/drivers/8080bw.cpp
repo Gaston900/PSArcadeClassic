@@ -3967,6 +3967,24 @@ ROM_START( invadpt2 )
 	ROM_LOAD( "pv07.2",   0x0400, 0x0400, CRC(2c5b91cb) SHA1(7fa4d4aef85473b1b4f18734230c164e72be44e7) )
 ROM_END
 
+ROM_START( invadpt2a ) // Comes from original TAITO PCBs. Same as invadpt2 but with half sized ROMs
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "uv01.36",     0x0000, 0x0400, CRC(82dbf2c7) SHA1(c767d8b866db4a5059bd79f962a90ce3a962e1e6) )
+	ROM_LOAD( "uv02.35",     0x0400, 0x0400, CRC(c867f5b4) SHA1(686318fda6edde297aecaf33f480bfa075fa6eca) )
+	ROM_LOAD( "uv03.34",     0x0800, 0x0400, CRC(cb23ccc1) SHA1(86be2d14d52b3404e1a25c573bd25b97729d82a1) )
+	ROM_LOAD( "uv04.33",     0x0c00, 0x0400, CRC(9a11abe2) SHA1(f5337183c7f279d75ddeeab24f4f132aa2ee103b) )
+	ROM_LOAD( "uv05.32",     0x1000, 0x0400, CRC(787821dd) SHA1(ae6e7297fccf8ae9aced8cb8b58fda1a616fa43b) )
+	ROM_LOAD( "uv06.31",     0x1400, 0x0400, CRC(f5e8114f) SHA1(dd5f5b00ee662ac2c7234f1e278441879fc7d394) )
+	ROM_LOAD( "uv07.42",     0x1800, 0x0400, CRC(07839f04) SHA1(989f77219b578b1b14a18e0fd6bf9079e3b1e155) )
+	ROM_LOAD( "uv08.41",     0x1c00, 0x0400, CRC(a7e1c6ef) SHA1(2b96617a1631d74068f51e911c74fe554a448776) )
+	ROM_LOAD( "uv09.40",     0x4000, 0x0400, CRC(261a39ae) SHA1(6554b33d9a44632a5856eb45aaafbdeed8244ce4) )
+	ROM_LOAD( "uv10.39",     0x4400, 0x0400, CRC(b2cbcc8b) SHA1(f11961445e81efeeb636bc430e372f79c10efd8c) )
+
+	ROM_REGION( 0x0800, "proms", 0 )        // color maps player 1/player 2
+	ROM_LOAD( "pv06",        0x0000, 0x0400, CRC(a732810b) SHA1(a5fabffa73ca740909e23b9530936f9274dff356) )
+	ROM_LOAD( "pv07",        0x0400, 0x0400, CRC(2c5b91cb) SHA1(7fa4d4aef85473b1b4f18734230c164e72be44e7) )
+ROM_END
+
 ROM_START( invadpt2br )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "pv01",        0x0000, 0x0800, CRC(7288a511) SHA1(ff617872784c28ed03591aefa9f0519e5651701f) )
@@ -4407,6 +4425,19 @@ ROM_START( escmars )
 	ROM_LOAD( "2716_em.t5",        0x4800, 0x0800, CRC(bfb0f65d) SHA1(ea0943d764a16094b6e2289f62ef117c9f838c98) )
 
 	/* No proms, only colour overlay */
+ROM_END
+
+ROM_START( resclunar )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "1-2716.h1",    0x0000, 0x0800, CRC(6234e240) SHA1(1af042907b1497229aa3b8426a43167435d1ec1c) )
+	ROM_LOAD( "2-2516.g1",    0x0800, 0x0800, CRC(67ab3599) SHA1(0241f17089fb99934011ef0bfbc583555a1a8b79) )
+	ROM_LOAD( "3-2716.f1",    0x1000, 0x0800, CRC(337b6266) SHA1(bc646cf52e1a9e716b345166a1292f02ae14e39a) )
+	ROM_LOAD( "4-2716.e1",    0x1800, 0x0800, CRC(dd90ad9a) SHA1(671fd92cd572529d2c59f94b975be95111f21e19) )
+	ROM_LOAD( "5-2716.d1",    0x4000, 0x0800, CRC(741212d4) SHA1(5555fdac8cb8f52406c53447fae8db013fd00002) )
+	ROM_LOAD( "6-8516.c1",    0x4800, 0x0800, CRC(c8994fc7) SHA1(788dc56a873e925ff839df48042dab1fc7be3262) )
+	ROM_LOAD( "7-2516.b1",    0x5000, 0x0800, CRC(1adff5d7) SHA1(99d2c0b9d664cc7d8ec9f247cee993e2173a4b79) )
+
+	// No PROMs, only colour overlay
 ROM_END
 
 ROM_START( lrescuem )
@@ -4862,6 +4893,21 @@ ROM_START( polarisa )
 	ROM_LOAD( "ps07.2c", 0x0000, 0x0100, CRC(2953253b) SHA1(2fb851bc9652ca4e51d473b484ede6dab05f1b51) ) /* MB7052 or compatible BPROM (82S129) */
 ROM_END
 
+ROM_START( polarisb )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "ps01.ic71",    0x0000, 0x0800, CRC(c04ce5a9) SHA1(62cc9b3b682ebecfb7600393862c65e26ff5263f) )
+	ROM_LOAD( "ps02-9.ic70",  0x0800, 0x0800, CRC(9a5c8cb2) SHA1(7a8c5d74f8b431072d9476d3ef65a3fe1d639813) ) // was PS09, an alternate label designation?
+	ROM_LOAD( "ps03.ic69",    0x1000, 0x0800, CRC(8680d7ea) SHA1(7fd4b8a415666c36842fed80d2798b48f8b29d0d) )
+	ROM_LOAD( "ps04.ic62",    0x1800, 0x0800, CRC(65694948) SHA1(de92a7f3e3ef732b573254baa60df60f8e068a5d) )
+	ROM_LOAD( "ps05.ic61",    0x4000, 0x0800, CRC(772e31f3) SHA1(fa0b866b6df1a9217e286ca880b3bb3fb0644bf3) )
+	ROM_LOAD( "ps06-10.ic60", 0x4800, 0x0800, CRC(3df77bac) SHA1(b3275c34b8d42df83df2c404c5b7d220aae651fa) ) // was PS10, an alternate label designation?
+
+	ROM_REGION( 0x0400, "proms", 0 )        /* background color map */
+	ROM_LOAD( "ps08.1b", 0x0000, 0x0400, CRC(164aa05d) SHA1(41c699ce45c76a60c71294f25d8df6c6e6c1280a) ) /* NEC B406 or compatible BPROM (82S137) */
+
+	ROM_REGION( 0x0100, "user1", 0 )        /* cloud graphics */
+	ROM_LOAD( "ps07.2c", 0x0000, 0x0100, CRC(2953253b) SHA1(2fb851bc9652ca4e51d473b484ede6dab05f1b51) ) /* MB7052 or compatible BPROM (82S129) */
+ROM_END
 
 ROM_START( polariso )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -5230,6 +5276,7 @@ GAMEL(19??, tst_invd,    invaders, invaders,  sicv,      mw8080bw_state, empty_i
 
 // other Taito
 GAME( 1979, invadpt2,    0,        invadpt2,  invadpt2,  _8080bw_state,  empty_init,    ROT270, "Taito", "Space Invaders Part II (Taito)", MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND )
+GAME( 1979, invadpt2a,   invadpt2, invadpt2,  invadpt2,  _8080bw_state,  empty_init,    ROT270, "Taito", "Space Invaders Part II (Taito, smaller ROMs)", MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND )
 GAME( 1979, invadpt2br,  invadpt2, invadpt2,  invadpt2,  _8080bw_state,  empty_init,    ROT270, "Taito do Brasil", "Space Invaders Part II (Brazil)", MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND )
 GAME( 1980, invaddlx,    invadpt2, invaders,  invadpt2,  mw8080bw_state, empty_init,    ROT270, "Taito (Midway license)", "Space Invaders Deluxe", MACHINE_SUPPORTS_SAVE )
 GAME( 1979, moonbase,    invadpt2, invadpt2,  invadpt2,  _8080bw_state,  empty_init,    ROT270, "Taito / Nichibutsu", "Moon Base Zeta (set 1)", MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND ) // this has a 'Taito Corp' string hidden away in the rom - to display it, press P1 Right+P1 Fire+2P Start then P1 Left+P1 Fire+P1 Start at the attract gameplay sequence
@@ -5247,6 +5294,7 @@ GAME( 1979, lrescuem,    lrescue,  lrescue,   lrescue,   _8080bw_state,  empty_i
 GAME( 1979, lrescuem2,   lrescue,  lrescue,   lrescue,   _8080bw_state,  empty_init,    ROT270, "bootleg (Model Racing)", "Lunar Rescue (Model Racing bootleg, set 2)", MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND )
 GAME( 1979, desterth,    lrescue,  lrescue,   lrescue,   _8080bw_state,  empty_init,    ROT270, "bootleg", "Destination Earth (bootleg of Lunar Rescue)", MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND )
 GAMEL(1980, escmars,     lrescue,  escmars,   lrescue,   _8080bw_state,  empty_init,    ROT270, "bootleg", "Escape from Mars (bootleg of Lunar Rescue)", MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND, layout_escmars )
+GAMEL(1980, resclunar,   lrescue,  escmars,   lrescue,   _8080bw_state,  empty_init,    ROT270, "bootleg (Niemer S.A.)", "Rescate Lunar (Spanish bootleg of Lunar Rescue)", MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND, layout_escmars )
 
 GAME( 1979, schaser,     0,        schaser,   schaser,   _8080bw_state,  empty_init,    ROT270, "Taito", "Space Chaser (set 1)", MACHINE_SUPPORTS_SAVE )
 GAME( 1979, schasera,    schaser,  schaser,   schaser,   _8080bw_state,  empty_init,    ROT270, "Taito", "Space Chaser (set 2)", MACHINE_SUPPORTS_SAVE )
@@ -5262,7 +5310,8 @@ GAME( 1980, lupin3,      0,        lupin3,    lupin3,    _8080bw_state,  empty_i
 GAME( 1980, lupin3a,     lupin3,   lupin3a,   lupin3a,   _8080bw_state,  empty_init,    ROT270, "Taito", "Lupin III (set 2)", MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND )
 
 GAME( 1980, polaris,     0,        polaris,   polaris,   _8080bw_state,  empty_init,    ROT270, "Taito", "Polaris (Latest version)", MACHINE_SUPPORTS_SAVE )
-GAME( 1980, polarisa,    polaris,  polaris,   polaris,   _8080bw_state,  empty_init,    ROT270, "Taito", "Polaris (First revision)", MACHINE_SUPPORTS_SAVE )
+GAME( 1980, polarisa,    polaris,  polaris,   polaris,   _8080bw_state,  empty_init,    ROT270, "Taito", "Polaris (Second revision)", MACHINE_SUPPORTS_SAVE )
+GAME( 1980, polarisb,    polaris,  polaris,   polaris,   _8080bw_state,  empty_init,    ROT270, "Taito", "Polaris (First revision)", MACHINE_SUPPORTS_SAVE )
 GAME( 1980, polariso,    polaris,  polaris,   polaris,   _8080bw_state,  empty_init,    ROT270, "Taito", "Polaris (Original version)", MACHINE_SUPPORTS_SAVE )
 GAME( 1981, polarisbr,   polaris,  polaris,   polaris,   _8080bw_state,  empty_init,    ROT270, "Taito do Brasil", "Polaris (Brazil)", MACHINE_SUPPORTS_SAVE )
 

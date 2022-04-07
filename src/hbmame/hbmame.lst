@@ -57,6 +57,7 @@ invaderl                        // bootleg
 invadernc                       // bootleg (Nas Corp)
 invadersem                      // Electromar
 invadpt2                        // 852 [1980] Taito
+invadpt2a                       //
 invadpt2br                      // Taito do Brasil
 invadrmr                        // (c) 1978 Model Racing
 invasion                        // Sidam
@@ -96,6 +97,7 @@ ozmawars2                       // Shin Nihon Kikaku (SNK)
 ozmawarsmr                      // bootleg (Model Racing)
 polaris                         // PS  (c) 1980 Taito
 polarisa                        // PS  (c) 1980 Taito
+polarisb                        // PS  (c) 1980 Taito
 polarisbr                       // PS  (c) 1981 Taito do Brasil
 polariso                        // PS  (c) 1980 Taito
 rollingc                        // Nichibutsu
@@ -169,6 +171,7 @@ spikes91                        // bootleg
 spikes91b                       // bootleg
 spinlbrk                        // (c) 1990 V-System Co. (World)
 spinlbrkj                       // (c) 1990 V-System Co. (Japan)
+spinlbrkup                      //
 spinlbrku                       // (c) 1990 V-System Co. (US)
 svolly91                        // (c) 1991 Video System Co. (Japan)
 turbofrc                        // (c) 1991 Video System Co.
@@ -214,12 +217,14 @@ asteroid                        // 035127-035145    (c) 1979
 asteroid1                       // 035127-035145    no copyright notice
 asteroid2                       // 035127-035145    (c) 1979
 asteroidb                       // (bootleg)
+asteroidb2                      // (bootleg)
 hyperspc                        // Rumiano bootleg  (c) 1979
 llander                         // 0345xx           no copyright notice
 llander1                        // 0345xx           no copyright notice
 meteorho                        // Hoei? bootleg    (c) 1980
 meteorite                       // Proel bootleg    (c) 1979
 meteorts                        // VCC bootleg      (c) 1979
+meteorbl                        //
 spcrocks                        // J.Estevez        (c) 1981
 
 @source:astrocde.cpp
@@ -242,9 +247,12 @@ acombat3                        // bootleg
 acombat4                        // bootleg
 acombato                        // bootleg
 afire                           // Rene Pierre
+asterion                        //
 astrof                          // (c) [1980?]
 astrof2                         // (c) [1980?]
 astrof3                         // (c) [1980?]
+astroff                         //
+astroff2                        //
 spfghmk2                        // (c) [1979] Data East Corporation
 spfghmk22                       // (c) [1979] Data East Corporation
 sstarbtl                        // bootleg
@@ -255,6 +263,7 @@ tomahawk1                       // (c) 1980 Data East, Inc.
 @source:asuka.cpp
 asuka                           // B68 (c) 1988 Taito Corporation (World)
 asukaj                          // B68 (c) 1988 Taito Corporation (Japan)
+asukaja                         //
 bonzeadv                        // B41 (c) 1988 Taito Corporation Japan (World)
 bonzeadvo                       // B41 (c) 1988 Taito Corporation Japan (World)
 bonzeadvp                       //
@@ -262,6 +271,7 @@ bonzeadvu                       // B41 (c) 1988 Taito America Corporation (US)
 cadash                          // C21 (c) 1989 Taito Corporation Japan
 cadashf                         // C21 (c) 1989 Taito Corporation Japan
 cadashg                         // C21 (c) 1989 Taito Corporation Japan
+cadashgo                        //
 cadashi                         // C21 (c) 1989 Taito Corporation Japan
 cadashj                         // C21 (c) 1989 Taito Corporation
 cadashj1                        // C21 (c) 1989 Taito Corporation
@@ -269,8 +279,10 @@ cadashjo                        // C21 (c) 1989 Taito Corporation
 cadashp                         // prototype
 cadashs                         // C21 (c) 1989 Taito Corporation
 cadashu                         // C21 (c) 1989 Taito America Corporation
+cadashu1                        //
 earthjkr                        // (c) 1993 Visco (Japan)
 earthjkra                       //
+earthjkrb                       //
 earthjkrp                       //
 eto                             // (c) 1994 Visco (Japan)
 galmedes                        // (c) 1992 Visco (Japan)
@@ -2613,6 +2625,8 @@ stakwin                         // 0088 (c) 1995 Saurus
 stakwin2                        // 0227 (c) 1996 Saurus
 strhoop                         // 0079 (c) 1994 Data East Corporation
 superspy                        // 0011 (c) 1990 SNK
+svcpcb                          //
+svcpcba                         //
 svc                             // 0269 (c) 2003 Playmore / Capcom
 svcboot                         // bootleg
 svcplus                         // bootleg
@@ -6981,6 +6995,7 @@ gmissile                        // 623 [1977]
 gunfight                        // 597 [1975]
 gunfighto                       // 597 [1975]
 invad2ct                        // 851 (c) 1980 Midway
+invaders                        // 739 [1979]
 lagunar                         // 622 [1977]
 m4                              // 626 [1977]
 maze                            // 611 [1976]
@@ -9778,61 +9793,6 @@ sformulaa                       // [1989] V-System Co. (Japan)
 tail2nos                        // [1989] V-System Co.
 
 @source:pacman.cpp
-//8bpm                            // (c) 1985 Seatongrove Ltd (Magic Eletronics USA license) [It does not work] 
-//acitya                          // (c) 1983 Epos Corporation [It does not work] 
-//alibaba                         // (c) 1982 Sega [It does not work] 
-//alibabab                        // Mustafa" and 40 Thieves (Ali Baba bootleg) [It does not work] 
-//beastfp                         // (c) 1984 Epos Corporation [It does not work] 
-//bigbucks                        // (c) 1986 Dynasoft Inc. [It does not work] 
-//birdiy                          // (c) 1983 Mama Top [It does not work] 
-//bwcasino                        // (c) 1983 Epos Corporation [It does not work] 
-//candory                         // graphics hack of Ponpoko [It does not work] 
-//cannonbp                        // hack [It does not work] 
-//clubpacm                        // Miky SRL [It does not work] 
-//clubpacma                       // Miky SRL [It does not work] 
-//clubpacmb                       // Miky SRL [It does not work] 
-//crush5                          // Kural TWT [It does not work] 
-//crushbl2                        // bootleg [It does not work] 
-//crushbl3                        // bootleg [It does not work] 
-//crushs                          // 1981 bootleg [It does not work] 
-//dremshpr                        // (c) 1982 Sanritsu [It does not work] 
-//drivfrcp                        // (c) 1984 Shinkai Inc. (Magic Eletronics Inc. license) [It does not work] 
-//eeekk                           // (c) 1984 Epos Corporation [It does not work] 
-//eggor                           // (c) 1983 Telko [It does not work] 
-//gorkans                         // (c) 1984 Techstar [It does not work] 
-//jumpshot                        // (c) 1985 Bally Midway [It does not work] 
-//jumpshotp                       // (c) 1985 Bally Midway [It does not work] 
-//korosuke                        // (c) 1981 Kural Electric [It does not work] 
-//lizwiz                          // (c) 1985 Techstar + "Sunn presents" [It does not work] 
-//mbrush                          // 1981 bootleg [It does not work] 
-//mrtnt                           // (c) 1983 Telko [It does not work] 
-//mschamp                         // hack by RAYGLO MFG "Zola-Puc" (c) 1992/1993 [It does not work] 
-//nmouse                          // (c) 1981 Amenip (Palcom Queen River) [It does not work] 
-//nmouseb                         // (c) 1981 Amenip Nova Games Ltd. [It does not work] 
-//numcrash                        // (c) 1983 Hanshin Goraku / "Peni" [It does not work] 
-//pacmanpe                        // [It does not work] 
-//pacmansp                        // hack (Video Game SA) [It does not work] 
-//pacuman                         // bootleg [It does not work] 
-//paintrlr                        // 1981 bootleg [It does not work] 
-//pengojpm                        // bootleg [It does not work] 
-//pengomc1                        // bootleg (Marti Colls) [It does not work] 
-//pengomc2                        // bootleg (Marti Colls) [It does not work] 
-//pengopac                        // bootleg [It does not work] 
-//pinguinos                       // bootleg [It does not work] 
-//ponpoko                         // (c) 1982 Sigma Ent. Inc. [It does not work] 
-//ponpokov                        // (c) 1982 Sigma Ent. Inc. + Venture Line license [It does not work] 
-//porky                           // (c) 1985 Shinkai Inc. (Magic Eletronics Inc. license) [It does not work] 
-//rocktrv2                        // (c) 1986 Triumph Software Inc [It does not work] 
-//sprglbpg                        // German bootleg [It does not work] 
-//sprglobp                        // (c) 1983 Epos Corporation [It does not work] 
-//theglobme                       // (c) 1983 Magic Electronics [It does not work] 
-//theglobp                        // (c) 1983 Epos Corporation [It does not work] 
-//titanpac                        // hack [It does not work] 
-//vanvan                          // (c) 1983 Sanritsu [It does not work] 
-//vanvanb                         // (c) 1983 Karateco (bootleg?) [It does not work] 
-//vanvank                         // (c) 1983 Karateco (bootleg?) [It does not work] 
-//woodpeca                        // (c) 1981 Amenip Nova Games Ltd. [It does not work] 
-//woodpeck                        // (c) 1981 Amenip (Palcom Queen River) [It does not work] 
 puckman                         // (c) 1980 Namco
 ctrpllrp                        // hack
 hangly                          // hack

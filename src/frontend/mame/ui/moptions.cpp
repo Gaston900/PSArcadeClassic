@@ -46,7 +46,7 @@ const options_entry ui_options::s_option_entries[] =
 	{ nullptr,                              nullptr,    OPTION_HEADER,      "UI MISC OPTIONS" },
 	{ OPTION_REMEMBER_LAST,                 "1",        OPTION_BOOLEAN,     "reselect in main menu last played game" },
 	{ OPTION_ENLARGE_SNAPS,                 "1",        OPTION_BOOLEAN,     "enlarge arts (snapshot, title, etc...) in right panel (keeping aspect ratio)" },
-	{ OPTION_FORCED4X3,                     "1",        OPTION_BOOLEAN,     "force the appearance of the snapshot in the list software to 4:3" },
+	{ OPTION_FORCED4X3,                     "0",        OPTION_BOOLEAN,     "force the appearance of the snapshot in the list software to 4:3" },
 	{ OPTION_USE_BACKGROUND,                "1",        OPTION_BOOLEAN,     "enable background image in main view" },
 	{ OPTION_SKIP_BIOS_MENU,                "1",        OPTION_BOOLEAN,     "skip bios submenu, start with configured or default" },
 	{ OPTION_SKIP_PARTS_MENU,               "0",        OPTION_BOOLEAN,     "skip parts submenu, start with first part" },

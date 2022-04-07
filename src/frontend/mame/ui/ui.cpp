@@ -30,9 +30,8 @@
 #include "ui/state.h"
 #include "ui/viewgfx.h"
 #include "imagedev/cassette.h"
-#include <time.h>
-#include "../osd/modules/lib/osdobj_common.h"
 #include "config.h"
+#include "../osd/modules/lib/osdobj_common.h"
 
 
 /***************************************************************************
@@ -168,7 +167,6 @@ mame_ui_manager::mame_ui_manager(running_machine &machine)
 	, m_mouse_bitmap(32, 32)
 	, m_mouse_arrow_texture(nullptr)
 	, m_mouse_show(false)
-	, m_show_time(false)	// MAMEFX
 	, m_target_font_height(0) {}
 
 mame_ui_manager::~mame_ui_manager()
@@ -187,7 +185,7 @@ void mame_ui_manager::init()
 	// update font row info from setting
 	update_target_font_height();
 
-	// more initialization
+	// more initialisation
 	using namespace std::placeholders;
 	set_handler(ui_callback_type::GENERAL, std::bind(&mame_ui_manager::handler_messagebox, this, _1));
 	m_non_char_keys_down = std::make_unique<uint8_t[]>((ARRAY_LENGTH(non_char_keys) + 7) / 8);
@@ -195,7 +193,6 @@ void mame_ui_manager::init()
 
 	// request a callback upon exiting
 	machine().add_notifier(MACHINE_NOTIFY_EXIT, machine_notify_delegate(&mame_ui_manager::exit, this));
-
 	// register callbacks
 	machine().configuration().config_register("sliders", config_load_delegate(&mame_ui_manager::config_load, this), config_save_delegate(&mame_ui_manager::config_save, this));
 
@@ -447,7 +444,8 @@ void mame_ui_manager::update_and_render(render_container &container)
 		m_popup_text_end = 0;
 
 	// display the internal mouse cursor
-	if (m_mouse_show || (is_menu_active() && machine().options().ui_mouse()))
+	if (machine().options().ui_mouse() && (m_mouse_show || is_menu_active())) //MESSUI - (NEWUI) system pointer always on; MAME pointer always off
+//	if (m_mouse_show || (is_menu_active() && machine().options().ui_mouse()))
 	{
 		int32_t mouse_target_x, mouse_target_y;
 		bool mouse_button;
@@ -459,7 +457,7 @@ void mame_ui_manager::update_and_render(render_container &container)
 			if (mouse_target->map_point_container(mouse_target_x, mouse_target_y, container, mouse_x, mouse_y))
 			{
 				const float cursor_size = 0.6 * get_line_height();
-				container.add_quad(mouse_x, mouse_y, mouse_x + cursor_size * container.manager().ui_aspect(&container), mouse_y + cursor_size, rgb_t::white(), m_mouse_arrow_texture, PRIMFLAG_ANTIALIAS(1) | PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
+				container.add_quad(mouse_x, mouse_y, mouse_x + cursor_size * container.manager().ui_aspect(&container), mouse_y + cursor_size, colors().text_color(), m_mouse_arrow_texture, PRIMFLAG_ANTIALIAS(1) | PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
 			}
 		}
 	}
@@ -1056,22 +1054,6 @@ uint32_t mame_ui_manager::handler_ingame(render_container &container)
 	if (show_profiler())
 		draw_profiler(container);
 
-	// MAMEFX start
-	if (show_time())
-	{
-		char buf[20];
-		time_t ltime;
-		struct tm *today;
-		float line_height = get_line_height();
-
-		time(&ltime);
-		today = localtime(&ltime);
-
-		snprintf(buf, ARRAY_LENGTH(buf), "%02d:%02d:%02d", today->tm_hour, today->tm_min, today->tm_sec);
-		draw_text_full(container, buf, 0.0f, 1.0f - line_height, 1.0f, ui::text_layout::RIGHT, ui::text_layout::WORD, OPAQUE_, rgb_t::white(), rgb_t::black(), nullptr, nullptr);
-	}
-	// MAMEFX end
-
 	// if we're single-stepping, pause now
 	if (single_step())
 	{
@@ -1259,7 +1241,7 @@ uint32_t mame_ui_manager::handler_ingame(render_container &container)
 	// toggle autofire
 	if (machine().ui_input().pressed(IPT_UI_TOGGLE_AUTOFIRE))
 	{
-//		if (!machine().options().cheat())
+//		if (!machine().options().cheat()) //HBMAME
 //		{
 //			machine().popmessage(_("Autofire can't be enabled"));
 //		}
@@ -1270,11 +1252,6 @@ uint32_t mame_ui_manager::handler_ingame(render_container &container)
 			machine().popmessage("Autofire %s", autofire_toggle ? _("Enabled") : _("Disabled"));
 		}
 	}
-
-	// MAMEFX start
-	if (machine().ui_input().pressed(IPT_UI_SHOW_TIME))
-		set_show_time(!show_time());
-	// MAMEFX end
 
 	// check for fast forward
 	if (machine().ioport().type_pressed(IPT_UI_FAST_FORWARD))
@@ -1325,7 +1302,7 @@ uint32_t mame_ui_manager::handler_confirm_quit(render_container &container)
 			ui_select_text,
 			ui_cancel_text);
 
-	draw_text_box(container, quit_message.c_str(), ui::text_layout::CENTER, 0.5f, 0.5f, colors().background_color());
+	draw_text_box(container, quit_message.c_str(), ui::text_layout::CENTER, 0.5f, 0.5f, UI_RED_COLOR);
 	machine().pause();
 
 	// if the user press ENTER, quit the game
@@ -1419,13 +1396,13 @@ std::vector<ui::menu_item> mame_ui_manager::slider_init(running_machine &machine
 
 	// add CPU overclocking (cheat only)
 	slider_index = 0;
-//	if (machine.options().cheat())
+//	if (machine.options().cheat()) // HBMAME
 	{
 		for (device_execute_interface &exec : execute_interface_iterator(machine.root_device()))
 		{
 			void *param = (void *)&exec.device();
 			std::string str = string_format(_("Overclock CPU %1$s"), exec.device().tag());
-			m_sliders.push_back(slider_alloc(SLIDER_ID_OVERCLOCK + slider_index++, str.c_str(), 10, 1000, 4000, 10, param)); // MAMEFX
+			m_sliders.push_back(slider_alloc(SLIDER_ID_OVERCLOCK + slider_index++, str.c_str(), 10, 1000, 2000, 1, param));
 		}
 		for (device_sound_interface &snd : sound_interface_iterator(machine.root_device()))
 		{
@@ -1452,7 +1429,7 @@ std::vector<ui::menu_item> mame_ui_manager::slider_init(running_machine &machine
 		std::string screen_desc = machine_info().get_screen_desc(screen);
 
 		// add refresh rate tweaker
-//		if (machine.options().cheat())
+//		if (machine.options().cheat()) // HBMAME
 		{
 			std::string str = string_format(_("%1$s Refresh Rate"), screen_desc);
 			m_sliders.push_back(slider_alloc(SLIDER_ID_REFRESH + slider_index, str.c_str(), -10000, 0, 10000, 1000, param));
@@ -1536,7 +1513,6 @@ std::vector<ui::menu_item> mame_ui_manager::slider_init(running_machine &machine
 		}
 	}
 #endif
-
 	config_apply();
 
 	std::vector<ui::menu_item> items;
@@ -2223,31 +2199,10 @@ void mame_ui_manager::menu_reset()
 	ui::menu::stack_reset(machine());
 }
 
-void ui_colors::refresh(const ui_options &options)
-{
-	m_border_color = options.border_color();
-	m_background_color = options.background_color();
-	m_gfxviewer_bg_color = options.gfxviewer_bg_color();
-	m_unavailable_color = options.unavailable_color();
-	m_text_color = options.text_color();
-	m_text_bg_color = options.text_bg_color();
-	m_subitem_color = options.subitem_color();
-	m_clone_color = options.clone_color();
-	m_selected_color = options.selected_color();
-	m_selected_bg_color = options.selected_bg_color();
-	m_mouseover_color = options.mouseover_color();
-	m_mouseover_bg_color = options.mouseover_bg_color();
-	m_mousedown_color = options.mousedown_color();
-	m_mousedown_bg_color = options.mousedown_bg_color();
-	m_dipsw_color = options.dipsw_color();
-	m_slider_color = options.slider_color();
-}
-
-
 
 //-------------------------------------------------
-//  config_load - read data from the
-//  configuration file
+// config_load - read data from the
+// configuration file
 //-------------------------------------------------
 
 void mame_ui_manager::config_load(config_type cfg_type, util::xml::data_node const *parentnode)
@@ -2273,10 +2228,10 @@ void mame_ui_manager::config_load(config_type cfg_type, util::xml::data_node con
 
 
 //-------------------------------------------------
-//  config_appy - apply data from the conf. file
-//  This currently needs to be done on a separate
-//  step because sliders are not created yet when
-//  configuration file is loaded
+// config_appy - apply data from the conf. file
+// This currently needs to be done on a separate
+// step because sliders are not created yet when
+// configuration file is loaded
 //-------------------------------------------------
 
 void mame_ui_manager::config_apply(void)
@@ -2291,7 +2246,6 @@ void mame_ui_manager::config_apply(void)
 				std::string tempstring;
 				slider->update(machine(), slider->arg, slider->id, &tempstring, slider_saved->defval);
 				break;
-
 			}
 		}
 	}
@@ -2299,8 +2253,8 @@ void mame_ui_manager::config_apply(void)
 
 
 //-------------------------------------------------
-//  config_save - save data to the configuration
-//  file
+// config_save - save data to the configuration
+// file
 //-------------------------------------------------
 
 void mame_ui_manager::config_save(config_type cfg_type, util::xml::data_node *parentnode)
@@ -2316,12 +2270,28 @@ void mame_ui_manager::config_save(config_type cfg_type, util::xml::data_node *pa
 	for (auto &slider : m_sliders)
 	{
 		int32_t curval = slider->update(machine(), slider->arg, slider->id, &tempstring, SLIDER_NOCHANGE);
-		if (curval != slider->defval)
-		{
-			slider_node = parentnode->add_child("slider", nullptr);
-			slider_node->set_attribute("desc", slider->description.c_str());
-			slider_node->set_attribute_int("value", curval);
-		}
+		slider_node = parentnode->add_child("slider", nullptr);
+		slider_node->set_attribute("desc", slider->description.c_str());
+		slider_node->set_attribute_int("value", curval);
 	}
 }
 
+void ui_colors::refresh(const ui_options &options)
+{
+	m_border_color = options.border_color();
+	m_background_color = options.background_color();
+	m_gfxviewer_bg_color = options.gfxviewer_bg_color();
+	m_unavailable_color = options.unavailable_color();
+	m_text_color = options.text_color();
+	m_text_bg_color = options.text_bg_color();
+	m_subitem_color = options.subitem_color();
+	m_clone_color = options.clone_color();
+	m_selected_color = options.selected_color();
+	m_selected_bg_color = options.selected_bg_color();
+	m_mouseover_color = options.mouseover_color();
+	m_mouseover_bg_color = options.mouseover_bg_color();
+	m_mousedown_color = options.mousedown_color();
+	m_mousedown_bg_color = options.mousedown_bg_color();
+	m_dipsw_color = options.dipsw_color();
+	m_slider_color = options.slider_color();
+}

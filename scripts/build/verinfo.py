@@ -85,7 +85,7 @@ if dstfile is not None:
 else:
     fp = sys.stdout
 
-legal_copyright = "Gaston90"
+legal_copyright = "Copyright Nicola Salmoria and the MAME team"
 
 if build == "mess":
     # MESS
@@ -110,14 +110,14 @@ elif build == "hbmame":
     bundle_identifier = "org.mamedev.PSArcade Classic+"
 else:
     # MAME
-    author = "Gaston90"
-    comments = "Proyecto Shadow Arcade Classic+"
+    author = "Nicola Salmoria and the MAME Team"
+    comments = "Multi-purpose emulation framework"
     company_name = "MAME Team"
-    file_description = "PSArcade Classic+"
-    internal_name = "PSArcade Classic+"
-    original_filename = "PSArcade Classic+"
-    product_name = "PSArcade Classic+"
-    bundle_identifier = "org.mamedev.Arcade Classic+"
+    file_description = "MAME"
+    internal_name = "MAME" if build == "mame" else build
+    original_filename = "MAME" if build == "mame" else build
+    product_name = "MAME" if build == "mame" else build
+    bundle_identifier = "org.mamedev." + build
 
 if outfmt == 'rc':
     fp.write('VS_VERSION_INFO VERSIONINFO\n')

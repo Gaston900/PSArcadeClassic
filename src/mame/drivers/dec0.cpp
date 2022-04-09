@@ -3716,6 +3716,56 @@ ROM_START( secretab )
 	ROM_LOAD( "sa_17.ic179",     0x70000, 0x10000,CRC(f61972c8) SHA1(fa9ddca3473091b4879171d8f3b302e8f2b45149) )
 ROM_END
 
+ROM_START( mastbond ) // same as secretab, but for the charset ROMs. Just a hack to change the title to Master Bond. PCB marked 19 89 N. All ROMs are 27C512.
+	ROM_REGION( 0x60000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "5.ic84",   0x00000, 0x10000, CRC(54869474) SHA1(88c1894d1b6d8dd3d37e97d566aafef9c9409d6e) )
+	ROM_LOAD16_BYTE( "3.ic67",   0x00001, 0x10000, CRC(36ab1874) SHA1(baa47c466ab13ac792761531f77ee8e639d19203) )
+	ROM_LOAD16_BYTE( "6.ic83",   0x20000, 0x10000, CRC(8e691f23) SHA1(eb08c9539b699af124fcf87be07a33d2d5a71ada) )
+	ROM_LOAD16_BYTE( "4.ic66",   0x20001, 0x10000, CRC(c838b205) SHA1(8c7a453ec7a00d4f5bbf9fadba6d551909647ed8) )
+
+	ROM_REGION( 0x20000, "audiocpu", 0 )
+	ROM_LOAD( "1.ic41",     0x00000, 0x10000, CRC(9fdc503b) SHA1(7b258e0734ca88a7d3f574d75116f0fe3b628898) )
+	ROM_LOAD( "2.ic40",     0x10000, 0x10000, CRC(439eb5a9) SHA1(8d6baad8a1e89279ef0a378941d3d9b49a606864) ) // both halves identical
+
+	ROM_REGION( 0x40000, "charset", 0 )
+	ROM_LOAD( "8.ic105",  0x00000, 0x10000, CRC(3cfc2960) SHA1(495aad53d00cf569094a5d8084a829d0647ba9dd) )
+	ROM_LOAD( "12.ic156", 0x10000, 0x10000, CRC(62476ba2) SHA1(5a025d11502f35896a40e33d7a487ed4c933135b) )
+	ROM_LOAD( "10.ic138", 0x20000, 0x10000, CRC(16df8be2) SHA1(3d5e63933dc151caca56536dce67407a8bacb761) )
+	ROM_LOAD( "14.ic188", 0x30000, 0x10000, CRC(f1803c03) SHA1(d6504db6d98d838025b6ba68d5b5b5e3999b1c13) )
+
+	ROM_REGION( 0x20000, "gfx1", ROMREGION_INVERT ) // chars
+	ROM_COPY( "charset", 0x00000, 0x00000, 0x8000 )
+	ROM_COPY( "charset", 0x10000, 0x08000, 0x8000 )
+	ROM_COPY( "charset", 0x20000, 0x10000, 0x8000 )
+	ROM_COPY( "charset", 0x30000, 0x18000, 0x8000 )
+
+	ROM_REGION( 0x20000, "gfx2", ROMREGION_INVERT ) // tiles
+	ROM_COPY( "charset", 0x08000, 0x00000, 0x8000 )
+	ROM_COPY( "charset", 0x18000, 0x08000, 0x8000 )
+	ROM_COPY( "charset", 0x28000, 0x10000, 0x8000 )
+	ROM_COPY( "charset", 0x38000, 0x18000, 0x8000 )
+
+	ROM_REGION( 0x40000, "gfx3", ROMREGION_INVERT ) // tiles
+	ROM_LOAD( "9.ic139",     0x00000, 0x10000, CRC(9e412267) SHA1(482cd6e772fa21f15db66c27acf85e8f97f7c5a5) )
+	ROM_LOAD( "11.ic157",    0x10000, 0x10000, CRC(e87650db) SHA1(381352428b12fd4a8cd13270009ff7602aa41a0b) )
+	ROM_LOAD( "7.ic106",     0x20000, 0x10000, CRC(6ad2e575) SHA1(b6b159cb36e222fe62fc10271602226f027440e4) )
+	ROM_LOAD( "13.ic189",    0x30000, 0x10000, CRC(e8601057) SHA1(fd73a36fb84049154248d250ffea68b1ee39a43f) )
+
+	ROM_REGION( 0x80000, "gfx4", 0 ) // sprites
+	ROM_LOAD( "20.ic176",     0x00000, 0x10000, CRC(447e4f0b) SHA1(97db103e505a6e11eb9bdb3622e4aa3b796a9714) )
+	ROM_LOAD( "19.ic177",     0x10000, 0x10000, CRC(d29bc22e) SHA1(ce0935d09f7e94fa32247c86e14a74b73514b29e) )
+	ROM_LOAD( "16.ic180",     0x20000, 0x10000, CRC(ff72b838) SHA1(fdc48ecdd2225fc69472313f34973f6add8fb558) )
+	ROM_LOAD( "15.ic181",     0x30000, 0x10000, CRC(54fcbc39) SHA1(293a6799193b01424c3eac86cf90cc023aa771db) )
+	ROM_LOAD( "22.ic174",     0x40000, 0x10000, CRC(d234cae5) SHA1(0cd07bf087a4da19a5da29785385de9eee52d0fb) )
+	ROM_LOAD( "21.ic175",     0x50000, 0x10000, CRC(dc6a38df) SHA1(9043df911389d3f085299f2f2202cab356473a32) )
+	ROM_LOAD( "18.ic178",     0x60000, 0x10000, CRC(4f989f00) SHA1(ae7ae6e62e6a516ae3c8ebbeb5e39887c1961add) )
+	ROM_LOAD( "17.ic179",     0x70000, 0x10000, CRC(f61972c8) SHA1(fa9ddca3473091b4879171d8f3b302e8f2b45149) )
+
+	ROM_REGION( 0x0600, "plds", 0 )
+	ROM_LOAD( "gal16v8.ic43",  0x0000, 0x0117, CRC(01cdc0bf) SHA1(df47ba4b3d0cf1b3acef2c4a7ba3bd1433aa9bf3) ) // brute-forced
+	ROM_LOAD( "gal16v8.ic48",  0x0200, 0x0117, CRC(cfb99386) SHA1(62f6befd34de85bbc76f3f115593ec72c7474303) ) // brute-forced
+	ROM_LOAD( "gal16v8.ic141", 0x0400, 0x0117, NO_DUMP ) // registered
+ROM_END
 
 ROM_START( midres )
 	ROM_REGION( 0x80000, "maincpu", 0 ) /* 68000 code */
@@ -4133,3 +4183,4 @@ GAME( 1988, drgninjab2, baddudes, drgninjab,  drgninja,   dec0_state, init_drgni
 // these are different to the above but quite similar to each other
 GAME( 1988, automat,    robocop,  automat,    robocop,    dec0_automat_state, empty_init,   ROT0,   "bootleg", "Automat (bootleg of Robocop)", MACHINE_NOT_WORKING | MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE ) // sound rom / music from section z with mods for ADPCM?
 GAME( 1989, secretab,   secretag, secretab,   slyspy,     dec0_automat_state, empty_init,   ROT0,   "bootleg", "Secret Agent (bootleg)", MACHINE_NOT_WORKING | MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 1989, mastbond,   secretag, secretab,   slyspy,     dec0_automat_state, empty_init,   ROT0,   "bootleg", "Master Bond (bootleg of Secret Agent)", MACHINE_NOT_WORKING | MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )

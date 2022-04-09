@@ -2253,7 +2253,7 @@ GAME( 1987, ddragonua,    ddragon,  ddragon,     ddragon,  ddragon_state,  init_
 GAME( 1987, ddragonub,    ddragon,  ddragon,     ddragon,  ddragon_state,  init_ddragon,     ROT0, "Technos Japan (Taito America license)", "Double Dragon (US set 3)",                    MACHINE_SUPPORTS_SAVE )
 GAME( 1987, ddragonb2,    ddragon,  ddragon,     ddragon,  ddragon_state,  init_ddragon,     ROT0, "bootleg",                               "Double Dragon (bootleg)",                     MACHINE_SUPPORTS_SAVE )
 GAME( 1987, ddragonb,     ddragon,  ddragonb,    ddragon,  ddragon_state,  init_ddragon,     ROT0, "bootleg",                               "Double Dragon (bootleg with HD6309)",         MACHINE_SUPPORTS_SAVE ) // according to dump notes
-GAME( 1987, ddragonba,    ddragon,  ddragonba,   ddragon,  ddragon_state,  init_ddragon,     ROT0, "bootleg",                               "Double Dragon (bootleg with M6803)",          MACHINE_SUPPORTS_SAVE )
+GAME( 1987, ddragonba,    ddragon,  ddragonba,   ddragon,  ddragon_state,  init_ddragon,     ROT0, "bootleg",                               "Double Dragon (bootleg with MC6803)",          MACHINE_SUPPORTS_SAVE )
 GAME( 1987, ddragon6809,  ddragon,  ddragon6809, ddragon,  ddragon_state,  init_ddragon6809, ROT0, "bootleg",                               "Double Dragon (bootleg with 3xM6809, set 1)", MACHINE_NOT_WORKING )
 GAME( 1987, ddragon6809a, ddragon,  ddragon6809, ddragon,  ddragon_state,  init_ddragon6809, ROT0, "bootleg",                               "Double Dragon (bootleg with 3xM6809, set 2)", MACHINE_NOT_WORKING )
 

@@ -333,11 +333,13 @@ bagmans2                        // (c) 1982 + Stern license
 bagnard                         // (c) 1982
 bagnarda                        // (c) 1982
 bagnardi                        // (c) 1982 + Itisa license
+bagnardio                       //
 botanic                         // (c) 1983
 botanic2                        // (c) 1983
 botanicf                        // (c) 1984
 pickin                          // (c) 1983
 sbagman                         // (c) 1984
+sbagman2                        //
 sbagmani                        // (c) 1984 + Itisa license
 sbagmans                        // (c) 1984 + Stern license
 squaitsa                        // (c) 1985
@@ -356,6 +358,7 @@ bloodbro                        // (c) 1990 Tad
 bloodbroj                       // (c) 1990 Tad
 bloodbroja                      // (c) 1990 Tad
 bloodbrou                       // (c) 1990 Tad + Fabtek license
+bloodbrok                       //
 skysmash                        // (c) 1990 Nihon System Inc.
 weststry                        // bootleg
 weststrya                       // bootleg
@@ -380,6 +383,8 @@ disco                           // (c) 1982
 discof                          // (c) 1982
 lnc                             // (c) 1981
 mmonkey                         // (c) 1982 Technos Japan + Roller Tron
+mmonkeyj                        //
+protenn                         //
 protennb                        // bootleg
 sdtennis                        // (c) 1983
 wtennis                         // bootleg 1982
@@ -454,6 +459,7 @@ dfeveron                        // (c) 1998 Cave + Nihon System license
 donpachi                        // (c) 1995 Atlus/Cave
 donpachihk                      // (c) 1995 Atlus/Cave
 donpachij                       // (c) 1995 Atlus/Cave
+donpachijs                      //
 donpachikr                      // (c) 1995 Atlus/Cave
 esprade                         // (c) 1998 Atlus/Cave
 espradej                        // (c) 1998 Atlus/Cave (Japan)
@@ -525,6 +531,7 @@ ckongpt2b                       // bootleg
 ckongpt2b2                      // bootleg
 ckongpt2j                       // (c) 1981 Falcon
 ckongpt2jeu                     // bootleg (Jeutel)
+ckongpt2ss                      // bootleg
 dking                           // Crazy Kong Bootleg
 guzzler                         // (c) 1983 Tehkan
 guzzlers                        // (c) 1983 Tehkan (Swimmer Conversion)
@@ -1226,6 +1233,7 @@ deathsml                        // (c) 2007 Cave (AMI license) - 2007/10/09 MAST
 dfkbl                           // (c) 2010 Cave (AMI license) - 2010/1/18 BLACK LABEL
 dsmbl                           // (c) 2008 Cave (AMI license) - 2008/10/06 MEGABLACK LABEL VER
 espgal2                         // (c) 2005 Cave (AMI license) - 2005/11/14 MASTER VER
+espgal2a                        //
 futari10                        // (c) 2006 Cave (AMI license) - 2006/10/23 MASTER VER.
 futari15                        // (c) 2006 Cave (AMI license) - 2006/12/8.MASTER VER. 1.54.
 futari15a                       // (c) 2006 Cave (AMI license) - 2006/12/8 MASTER VER 1.54
@@ -1429,6 +1437,7 @@ jrking                          // bootleg
 maguila                         // bootleg
 pestplce                        // bootleg on donkey kong hw
 radarscp                        // (c) 1980 Nintendo
+radarscpc                       // (c) 1980 Nintendo
 radarscp1                       // (c) 1980 Nintendo
 sbdk                            // (c) 1984 Century
 shootgal                        // (c) 1984 Seatongrove Ltd (Zaccaria license)
@@ -1438,7 +1447,6 @@ strtheat                        // (c) 1985 Epos Corporation
 strtheata                       // (c) 1985 Epos Corporation
 
 @source:docastle.cpp
-asoccer                         // 8461 (c) 1987
 docastle                        // 8302 (c) 1983
 docastle2                       // 8302 (c) 1983
 docastleo                       // 8302 (c) 1983
@@ -1449,7 +1457,6 @@ dorunrunca                      // ???? (c) 1984
 douni                           // 8302 (c) 1983
 dowild                          // ???? (c) 1984
 idsoccer                        // ???? (c) 1985
-idsoccera                       // ???? (c) 1985
 jjack                           // ???? (c) 1984
 kickridr                        // ???? (c) 1984
 spiero                          // ???? (c) 1987
@@ -1465,9 +1472,10 @@ poizone                         // (c) 1990 Sisteme
 @source:exidy.cpp
 hardhat                         // (c) 1982
 mtrap                           // (c) 1981
-mtrap2                          // (c) 1981
+mtrap4
+mtrap4g                         // (c) 1981
 mtrap3                          // (c) 1981
-mtrap4                          // (c) 1981
+mtrap2                          // (c) 1981
 mtrapb                          // bootleg
 mtrapb2                         // bootleg
 panzer                          // (c) 1980 Proel (bootleg)
@@ -1492,6 +1500,8 @@ venture4                        // (c) 1981
 @source:exerion.cpp
 exerion                         // (c) 1983 Jaleco
 exerionb                        // bootleg
+exerionb2                       // bootleg
+exerionba                       // bootleg
 exeriont                        // (c) 1983 Jaleco + Taito America license
 irion                           //
 
@@ -1503,12 +1513,11 @@ dinopic                         // bootleg
 dinopic2                        // bootleg
 dinopic3                        // bootleg
 jurassic99                      // bootleg
-fcrash                          // bootleg of Final Fight
+fcrash                          // bootleg
 ffightbl                        // bootleg
 ffightbla                       // bootleg
 knightsb                        // bootleg
 kodb                            // bootleg
-//mtwinsb                       // bootleg [It does not work] 
 punipic                         // bootleg
 punipic2                        // bootleg
 punipic3                        // bootleg
@@ -1524,10 +1533,8 @@ sf2m9                           // bootleg
 sf2mdt                          // bootleg
 sf2mdta                         // bootleg
 sf2mdtb                         // bootleg
-sgyxz                           // bootleg (All-In Electronics)
+sgyxz                           // bootleg
 slampic                         // bootleg
-//varthb                        // bootleg [It does not work] 
-//wofabl                        // bootleg [It does not work] 
 
 @source:flstory.cpp
 flstory                         // A45 (c) 1985 Taito Corporation

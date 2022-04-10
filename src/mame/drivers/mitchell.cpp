@@ -757,6 +757,36 @@ static INPUT_PORTS_START( pang )
 	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_4WAY PORT_PLAYER(2)
 INPUT_PORTS_END
 
+static INPUT_PORTS_START( pangdsw )
+	PORT_INCLUDE( pang )
+
+// the settings are shown if entering test mode. The game always respects the dip setting, changing the values in test mode has no effect
+// it appears the bootleggers didn't care to add dips for flipscreen, free play and extend values (or at least they haven't been found yet)
+	PORT_START("DSW1")
+	PORT_DIPNAME( 0x07, 0x00, DEF_STR( Coinage ) ) PORT_DIPLOCATION("DSW1:6,7,8")
+	PORT_DIPSETTING(    0x07, DEF_STR( 5C_1C ) )
+	PORT_DIPSETTING(    0x06, DEF_STR( 4C_1C ) )
+	PORT_DIPSETTING(    0x05, DEF_STR( 3C_1C ) )
+	PORT_DIPSETTING(    0x04, DEF_STR( 2C_1C ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( 1C_1C ) )
+	PORT_DIPSETTING(    0x01, DEF_STR( 1C_2C ) )
+	PORT_DIPSETTING(    0x02, DEF_STR( 1C_3C ) )
+	PORT_DIPSETTING(    0x03, DEF_STR( 1C_4C ) )
+	PORT_DIPNAME( 0x18, 0x18, DEF_STR( Lives ) ) PORT_DIPLOCATION("DSW1:4,5")
+	PORT_DIPSETTING(    0x00, "1" )
+	PORT_DIPSETTING(    0x18, "2" )
+	PORT_DIPSETTING(    0x08, "3" )
+	PORT_DIPSETTING(    0x10, "4" )
+	PORT_DIPNAME( 0x60, 0x20, DEF_STR( Difficulty ) ) PORT_DIPLOCATION("DSW1:2,3")
+	PORT_DIPSETTING(    0x00, DEF_STR( Easy ) )
+	PORT_DIPSETTING(    0x20, DEF_STR( Normal ) )
+	PORT_DIPSETTING(    0x40, DEF_STR( Difficult ) )
+	PORT_DIPSETTING(    0x60, DEF_STR( Very_Difficult ) )
+	PORT_DIPNAME( 0x80, 0x80, DEF_STR( Unknown ) ) PORT_DIPLOCATION("DSW1:1")
+	PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+INPUT_PORTS_END
+
 static INPUT_PORTS_START( spangbl )
 	PORT_INCLUDE( pang )
 
@@ -1659,6 +1689,28 @@ ROM_START( dokaben )
 	ROM_LOAD( "db01.1d",      0x00000, 0x20000, CRC(62fa6b81) SHA1(0168b40df583f11cb28718aa8ab8be7cc08bf561) )
 ROM_END
 
+ROM_START( dokaben2 )
+	ROM_REGION( 0x50000, "maincpu", 0 )
+	ROM_LOAD( "d2_06.11h",    0x00000, 0x08000, CRC(9adcc38c) SHA1(0cacc58a14d63dfb1565ff517cc45f3d8fc9b77c) )
+	ROM_LOAD( "d2_07.13h",    0x10000, 0x20000, CRC(43076e32) SHA1(fca84da82d427b3dca28ed2ec1e811eeddcee666) )
+	ROM_LOAD( "d2_08.14h",    0x30000, 0x20000, CRC(cb9deb7a) SHA1(a3e359e991a64190e25cf1c589c82008af2cb9b5) )
+
+	ROM_REGION( 0x100000, "gfx1", ROMREGION_ERASEFF )
+	ROM_LOAD( "d2_02.1e",     0x000000, 0x20000, CRC(5dd7b941) SHA1(b0e93e733b9bbabe68896c92af34b90daf8dcd7c) ) /* chars */
+	ROM_LOAD( "d2_03.2e",     0x020000, 0x20000, CRC(b615e696) SHA1(f1ec11202fce23af4af15682b158795f7ff4234f) )
+	/* 40000-7ffff empty */
+	ROM_LOAD( "d2_04.1g",     0x080000, 0x20000, CRC(56b35605) SHA1(c065b03b5cb00ac75b8b439a4f35d9b04a886626) )
+	ROM_LOAD( "d2_05.2g",     0x0a0000, 0x20000, CRC(ce98ff74) SHA1(ddae2e035369886ab03074e947405ef916cc425a) )
+	/* c0000-fffff empty */
+
+	ROM_REGION( 0x040000, "gfx2", 0 )
+	ROM_LOAD( "d2_10.2k",     0x000000, 0x20000, CRC(9b9bfb5f) SHA1(5969861e1fe900a3076785c7d1e304c10aa56435) ) /* sprites */
+	ROM_LOAD( "d2_09.1k",     0x020000, 0x20000, CRC(84de2e1d) SHA1(692304332b37ca3b26dc96bcad797ee81ab8b819) )
+
+	ROM_REGION( 0x80000, "oki", 0 ) /* OKIM */
+	ROM_LOAD( "db_01.1d",     0x00000, 0x20000, CRC(62fa6b81) SHA1(0168b40df583f11cb28718aa8ab8be7cc08bf561) )
+ROM_END
+
 ROM_START( pang )
 	ROM_REGION( 0x50000, "maincpu", 0 )
 	ROM_LOAD( "pwe_06.11h", 0x00000, 0x08000, CRC(68be52cd) SHA1(67b9ac15f4cbd3959c417f979beae36ae17334c1) )
@@ -1828,27 +1880,43 @@ ROM_START( pangbp )
 	ROM_LOAD( "pangbp_p_z-pal16l8anc.bin", 0x03ae, 0x0104, NO_DUMP )
 ROM_END
 
-ROM_START( pangbold3 )
+// Sound: Z80 (GoldStar Z8400A PS) + OKI M5205 + YM2413 + Xtal 10.000MHz
+ROM_START( pangbc )
 	ROM_REGION( 2*0x50000, "maincpu", 0 )
-	ROM_LOAD( "4d.6l",  0x50000, 0x08000, CRC(f5e6e2fa) SHA1(7ec78f8e99d2fd90ad626ef5b1c36ef667842827) )
-	ROM_CONTINUE(      0x00000, 0x08000 )
-	ROM_LOAD( "2.3l",  0x60000, 0x20000, CRC(3f15bb61) SHA1(4f74ee25f32a201482840158b4d4c7aca1cda684) )
-	ROM_LOAD( "3.5l",  0x10000, 0x20000, CRC(ce6375e4) SHA1(fdd40d82553fcd4d2762ecfd898d0e3112dfde79) )
+	ROM_LOAD( "27c512-1.bin", 0x50000, 0x08000, CRC(f5e4a6c3) SHA1(2679d67877769389e726d601294c986e4bafabe6) )
+	ROM_CONTINUE( 0x00000, 0x08000 )
+	ROM_LOAD( "27c010.bin",   0x60000, 0x04000, CRC(a128522f) SHA1(476adab8a5a4fae2c5022f89f36598ce275a070d) )
+	ROM_CONTINUE( 0x10000, 0x04000 )
+	ROM_CONTINUE( 0x64000, 0x04000 )
+	ROM_CONTINUE( 0x14000, 0x04000 )
+	ROM_CONTINUE( 0x68000, 0x04000 )
+	ROM_CONTINUE( 0x18000, 0x04000 )
+	ROM_CONTINUE( 0x6c000, 0x04000 )
+	ROM_CONTINUE( 0x1c000, 0x04000 )
+	ROM_LOAD( "27c512.bin",   0x70000, 0x04000, CRC(48d0e236) SHA1(d459bf1c500d5110c300212552449cbdae2a9dfd) )
+	ROM_CONTINUE( 0x20000, 0x04000 )
+	ROM_CONTINUE( 0x74000, 0x04000 )
+	ROM_CONTINUE( 0x24000, 0x04000 )
 
-	ROM_REGION( 0x100000, "gfx1", ROMREGION_ERASEFF )
-	ROM_LOAD( "pwe_02.1e", 0x000000, 0x20000, CRC(3a5883f5) SHA1(a8a33071e10f5992e80afdb782c334829f9ae27f) )
-	ROM_LOAD( "pw_03.2e",  0x020000, 0x20000, CRC(79a8ed08) SHA1(c1e43889e29b80c7fe2c09b11eecde24450a1ff5) )
-	ROM_LOAD( "pwe_04.1g", 0x080000, 0x20000, CRC(166a16ae) SHA1(7f907c78b7ac8c99e3d79761a6ae689c77e3a1f5) )
-	ROM_LOAD( "pw_05.2g",  0x0a0000, 0x20000, CRC(2fb3db6c) SHA1(328814d28569fec763975a8ae4c2767517a680af) )
+	ROM_REGION( 0x20000, "audiocpu", 0 ) // Sound Z80 + M5205 samples
+	ROM_LOAD( "27c512-2.bin", 0x00000, 0x10000, CRC(09c43210) SHA1(79b5aed2c5d6d9110129885e8979c1f13b7b8aac) )
 
-	ROM_REGION( 0x040000, "gfx2", 0 )
-	ROM_LOAD( "8.7o",     0x000000, 0x10000, CRC(f3188aa1) SHA1(f59da8986c0c7d74185211eae1d1cc3f59a54f82) )
-	ROM_LOAD( "7.5o",     0x010000, 0x10000, CRC(011da14b) SHA1(3af9c5ca263b3df98b4f4c88d5428a115ddebef8) )
-	ROM_LOAD( "6.3o",     0x020000, 0x10000, CRC(0e25e797) SHA1(88c99e544923142256c93ed2b71f06489f6a90a8) )
-	ROM_LOAD( "5.1o",     0x030000, 0x10000, CRC(6daa4e27) SHA1(23411928de911b6303efa3a229646001459e4c70) )
+	ROM_REGION( 0x100000, "gfx1", ROMREGION_INVERT | ROMREGION_ERASEFF )
+	ROM_LOAD16_BYTE( "pang.14", 0x000001, 0x10000, CRC(c90095ee) SHA1(bf380f289eb42030a9f911aa5f697ba76f5723db) )
+	ROM_LOAD16_BYTE( "7.bin",   0x000000, 0x10000, CRC(0725d6ad) SHA1(de2efab47b4958d24c065ce52dcf4fab3c8d4274) )
+	ROM_LOAD16_BYTE( "pang.13", 0x020001, 0x10000, CRC(a49e98ec) SHA1(8a3d13bd755b58b0bc1d1497363409a1eeade129) )
+	ROM_LOAD16_BYTE( "pang.5",  0x020000, 0x10000, CRC(5804ae3e) SHA1(33de9aea7aa201aa650b0b6c5347713bf10cc13d) )
 
-	ROM_REGION( 0x80000, "oki", 0 )
-	ROM_LOAD( "1.1a",      0x00000, 0x10000, CRC(b6463907) SHA1(b79e0dca10c639b7f0ea9cbc49300b80708d46fa) )
+	ROM_LOAD16_BYTE( "pang.16", 0x080001, 0x10000, CRC(bc508935) SHA1(1a11144b563befc11015d75e3867c07329ee6f32) )
+	ROM_LOAD16_BYTE( "pang.8",  0x080000, 0x10000, CRC(53a99bb6) SHA1(ffb75c5541d7c1478f05717b2cfa4bfe9b4654cd) )
+	ROM_LOAD16_BYTE( "pang.15", 0x0a0001, 0x10000, CRC(bf5c09b9) SHA1(f66a901292b190aa39dc2460363307e94c358d4d) )
+	ROM_LOAD16_BYTE( "pang.7",  0x0a0000, 0x10000, CRC(8b718670) SHA1(c22005a665a9e0bcfc3ddbc22ca4a2a261224ce1) )
+
+	ROM_REGION( 0x040000, "gfx2", ROMREGION_INVERT )
+	ROM_LOAD( "pang.11", 0x020000, 0x10000, CRC(07191732) SHA1(7de03ddb07b2afad311b9ed5c84e04bef62d0050) )
+	ROM_LOAD( "pang.9",  0x030000, 0x10000, CRC(6496be82) SHA1(9c7ef4c6c3a0361f3118339a0c63b0923045d6c3) )
+	ROM_LOAD( "pang.12", 0x000000, 0x10000, CRC(fa247a04) SHA1(b5cab5f65eb3af3deeea6afba955056ca51f39af) )
+	ROM_LOAD( "pang.10", 0x010000, 0x10000, CRC(082151ee) SHA1(0857b9f7430e0fc6217eafbaf008ff9da8e7a493) )
 ROM_END
 
 /* this bootleg has different sound hardware, the sound program is the same as 'rebus' by microhard
@@ -2601,6 +2669,7 @@ GAME( 1989, pkladiesla,  pkladies, marukin,    pkladies, mitchell_state, init_pk
 GAME( 1989, pkladiesbl,  pkladies, pkladiesbl, pkladies, mitchell_state, init_pkladiesbl, ROT0,   "bootleg",                   "Poker Ladies (Censored bootleg, set 1)", MACHINE_NOT_WORKING ) // by Playmark? need to figure out CPU 'decryption' / ordering
 GAME( 1989, pkladiesbl2, pkladies, pkladiesbl, pkladies, mitchell_state, init_pkladiesbl, ROT0,   "bootleg",                   "Poker Ladies (Censored bootleg, set 2)", MACHINE_NOT_WORKING ) // by Playmark? gets further than the above
 GAME( 1989, dokaben,     0,        pang,       pang,     mitchell_state, init_dokaben,    ROT0,   "Capcom",                    "Dokaben (Japan)", MACHINE_SUPPORTS_SAVE )
+GAME( 1989, dokaben2,    0,        pang,       pang,     mitchell_state, init_dokaben,    ROT0,   "Capcom",                    "Dokaben 2 (Japan)", MACHINE_SUPPORTS_SAVE )
 GAME( 1989, pang,        0,        pang,       pang,     mitchell_state, init_pang,       ROT0,   "Mitchell",                  "Pang (World)", MACHINE_SUPPORTS_SAVE )
 GAME( 1989, bbros,       pang,     pang,       pang,     mitchell_state, init_pang,       ROT0,   "Mitchell (Capcom license)", "Buster Bros. (USA)", MACHINE_SUPPORTS_SAVE )
 GAME( 1989, pompingw,    pang,     pang,       pang,     mitchell_state, init_pang,       ROT0,   "Mitchell",                  "Pomping World (Japan)", MACHINE_SUPPORTS_SAVE )
@@ -2610,7 +2679,7 @@ GAME( 1989, pangba,      pang,     pangba,     pang,     mitchell_state, init_pa
 GAME( 1989, pangb2,      pang,     pang,       pang,     mitchell_state, init_pangb,      ROT0,   "bootleg",                   "Pang (bootleg, set 4)", MACHINE_SUPPORTS_SAVE )
 GAME( 1989, pangbb,      pang,     spangbl,    pang,     mitchell_state, init_pangb,      ROT0,   "bootleg",                   "Pang (bootleg, set 5)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1989, pangbp,      pang,     pang,       pang,     mitchell_state, init_pangb,      ROT0,   "bootleg",                   "Pang (bootleg, set 6)", MACHINE_NOT_WORKING ) // Missing the contents of a battery backed RAM
-GAME( 1989, pangbold3,   pang,     pang,       pang,     mitchell_state, init_pangb,      ROT0,   "bootleg",                   "Pang (bootleg, set 7)", MACHINE_SUPPORTS_SAVE )
+GAME( 1989, pangbc,      pang,     spangbl,    pangdsw,  mitchell_state, init_pangb,      ROT0,   "bootleg",                   "Pang (bootleg, set 7)", MACHINE_SUPPORTS_SAVE )
 GAME( 1989, cworld,      0,        pang,       qtono1,   mitchell_state, init_cworld,     ROT0,   "Capcom",                    "Capcom World (Japan)", MACHINE_SUPPORTS_SAVE )
 GAME( 1990, hatena,      0,        pang,       qtono1,   mitchell_state, init_hatena,     ROT0,   "Capcom",                    "Adventure Quiz 2 - Hatena? no Daibouken (Japan 900228)", MACHINE_SUPPORTS_SAVE )
 GAME( 1990, spang,       0,        pangnv,     pang,     mitchell_state, init_spang,      ROT0,   "Mitchell",                  "Super Pang (World 900914)", MACHINE_SUPPORTS_SAVE )

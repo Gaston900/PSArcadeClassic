@@ -6640,8 +6640,37 @@ ROM_START( gunnail )
 ROM_END
 
 // bootleg board labeled 'GT ELEKTRONIK 16.04.93' with only 1 OKI and no NMK custom chips. Only sprites and bgtile ROMs are identical to the original.
+ROM_START( gunnailp )
+	ROM_REGION( 0x80000, "maincpu", 0 )     // 68000 code
+	ROM_LOAD16_WORD_SWAP( "3.u132",  0x00000, 0x80000, CRC(93570f03) SHA1(54fb203b5bfceb0ac86627bff3e67863f460fe73) )
+
+	ROM_REGION( 0x10000, "audiocpu", 0 )     // Code for NMK004 CPU
+	ROM_LOAD( "92077_2.u101",      0x00000, 0x10000, CRC(cd4e55f8) SHA1(92182767ca0ec37ec4949bd1a88c2efdcdcb60ed) )
+
+	ROM_REGION( 0x020000, "fgtile", 0 )
+	ROM_LOAD( "1.u21",    0x000000, 0x020000, CRC(bdf427e4) SHA1(e9cd178d1d9e2ed72f0fb013385d935f334b8fe3) )    // 8x8 tiles
+
+	ROM_REGION( 0x100000, "bgtile", 0 )
+	ROM_LOAD( "92077-4.u19", 0x000000, 0x100000, CRC(a9ea2804) SHA1(14dbdb3c7986db5e44dc7c5be6fcf39f3d1e50b0) ) // 16x16 tiles
+
+	ROM_REGION( 0x200000, "sprites", 0 )
+	ROM_LOAD16_WORD_SWAP( "92077-7.u134", 0x000000, 0x200000, CRC(d49169b3) SHA1(565ff7725dd6ace79b55706114132d8d867e81a9) ) // Sprites
+
+	ROM_REGION( 0x080000, "oki1", 0 )   // OKIM6295 samples
+	ROM_LOAD( "92077-5.u56", 0x00000, 0x80000, CRC(feb83c73) SHA1(b44e9d20b4af02e218c4bc875d66a7d6b8551cae) ) // 0x20000 - 0x80000 banked
+
+	ROM_REGION( 0x080000, "oki2", 0 )   // OKIM6295 samples
+	ROM_LOAD( "92077-6.u57", 0x00000, 0x80000, CRC(6d133f0d) SHA1(8a5e6e27a297196f20e4de0d060f1188115809bb) ) // 0x20000 - 0x80000 banked
+
+	ROM_REGION( 0x0220, "proms", 0 )
+	ROM_LOAD( "8_82s129.u35",   0x0000, 0x0100, CRC(4299776e) SHA1(683d14d2ace14965f0fcfe0f0540c1b77d2cece5) )  // unknown
+	ROM_LOAD( "9_82s135.u72",   0x0100, 0x0100, CRC(633ab1c9) SHA1(acd99fcca41eaab7948ca84988352f1d7d519c61) )  // unknown
+	ROM_LOAD( "10_82s123.u96",  0x0200, 0x0020, CRC(c60103c8) SHA1(dfb05b704bb5e1f75f5aaa4fa36e8ddcc905f8b6) )  // unknown
+ROM_END
+
+// bootleg board labeled 'GT ELEKTRONIK 16.04.93' with only 1 OKI and no NMK custom chips. Only sprites and bgtile ROMs are identical to the original.
 ROM_START( gunnailb )
-	ROM_REGION( 0x80000, "maincpu", 0 )     /* 68000 code */
+	ROM_REGION( 0x80000, "maincpu", 0 )     // 68000 code
 	ROM_LOAD16_BYTE( "27c020.6d",  0x00000, 0x40000, CRC(b9566c46) SHA1(dcecec0d401cdf8054b4b7a5dedee62332d92002) )
 	ROM_LOAD16_BYTE( "27c020.6e",  0x00001, 0x40000, CRC(6ba7c54d) SHA1(3932b96d2f1f541f8679524de3bb8867aded9f83) )
 
@@ -6649,15 +6678,15 @@ ROM_START( gunnailb )
 	ROM_LOAD( "27c010.3b",      0x00000, 0x20000, CRC(6e0a5df0) SHA1(616b7c7aaf52a9a55b63c60717c1866940635cd4) ) // matches the one for Kaneko's Air Buster
 
 	ROM_REGION( 0x020000, "fgtile", 0 )
-	ROM_LOAD( "27c010.5g",    0x000000, 0x020000, CRC(6d2ca620) SHA1(6ed3b9987d1740f36235e33bdd66867c24f93f7e) )    /* 8x8 tiles */
+	ROM_LOAD( "27c010.5g",    0x000000, 0x020000, CRC(6d2ca620) SHA1(6ed3b9987d1740f36235e33bdd66867c24f93f7e) )    // 8x8 tiles
 
 	ROM_REGION( 0x200000, "bgtile", 0 )
-	ROM_LOAD( "27c160.k10", 0x000000, 0x200000, CRC(062100a9) SHA1(c7e81656b8112c161d3e9be3edf001da97721727) ) /* 16x16 tiles, 1st and 2nd half identical */
+	ROM_LOAD( "27c160.k10", 0x000000, 0x200000, CRC(062100a9) SHA1(c7e81656b8112c161d3e9be3edf001da97721727) ) // 16x16 tiles, 1st and 2nd half identical
 
 	ROM_REGION( 0x200000, "sprites", 0 )
-	ROM_LOAD16_WORD_SWAP( "27c160.a9", 0x000000, 0x200000, CRC(d49169b3) SHA1(565ff7725dd6ace79b55706114132d8d867e81a9) ) /* Sprites */
+	ROM_LOAD16_WORD_SWAP( "27c160.a9", 0x000000, 0x200000, CRC(d49169b3) SHA1(565ff7725dd6ace79b55706114132d8d867e81a9) ) // Sprites
 
-	ROM_REGION( 0x040000, "oki1", 0 )   /* OKIM6295 samples */
+	ROM_REGION( 0x040000, "oki1", 0 )   // OKIM6295 samples
 	ROM_LOAD( "27c020.1c", 0x00000, 0x40000, CRC(c5f7c0d9) SHA1(dea090ee535edb4e9167078f6e6e5fe4e544625a) )
 ROM_END
 
@@ -7458,6 +7487,36 @@ void afega_state::init_redhawkg()
 {
 	decryptcode( machine(), 23, 22, 21, 20, 19, 18, 15, 14, 16, 17, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 );
 }
+
+ROM_START( redhawks )
+	ROM_REGION( 0x80000, "maincpu", 0 )     // 68000 code
+	ROM_LOAD16_BYTE( "2.bin", 0x000000, 0x020000, CRC(8b427ef8) SHA1(ba615b1a5ed9c1a97bb0b6d121a0d752d138adee) )
+	ROM_LOAD16_BYTE( "3.bin", 0x000001, 0x020000, CRC(117e3813) SHA1(415b115a96f139094b5927637c5ec8438cc9bd44) )
+
+	ROM_REGION( 0x10000, "audiocpu", 0 )        // Z80 code
+	ROM_LOAD( "1.bin", 0x00000, 0x10000, CRC(5d8cf28e) SHA1(2a440bf5136f95af137b6688e566a14e65be94b1) )
+
+	ROM_REGION( 0x100000, "sprites", 0 )   // Sprites, 16x16x4
+	ROM_LOAD16_BYTE( "6.bin", 0x000001, 0x080000, CRC(aa6564e6) SHA1(f8335cddc0bb0674e86ccaca079ca828ed7a6790) )
+	ROM_LOAD16_BYTE( "7.bin", 0x000000, 0x080000, CRC(5c5b5fa1) SHA1(41946d763f9d72a6322a2f7e3c54a9f6114afe01) )
+
+	ROM_REGION( 0x080000, "bgtile", 0 )   // Layer 0, 16x16x8
+	ROM_LOAD( "4.bin", 0x000000, 0x080000, CRC(03a8d952) SHA1(44252f90e21d6f3841bcdcdac0aba318f94e33b0) )
+
+	ROM_REGION( 0x00100, "fgtile", ROMREGION_ERASEFF )    // Layer 1, 8x8x4
+	// Unused
+
+	ROM_REGION( 0x40000, "oki1", 0 )    // Samples
+	ROM_LOAD( "5.bin", 0x00000, 0x40000, CRC(e911ce33) SHA1(a29c4dea98a22235122303325c63c15fadd3431d) )
+
+	ROM_REGION( 0x300, "proms", 0 )    // Bipolar PROMs, not dumped
+	ROM_LOAD( "n82s147an.bin", 0x000, 0x200, NO_DUMP )
+	ROM_LOAD( "n82s129n.bin",  0x200, 0x100, NO_DUMP )
+
+	ROM_REGION( 0x26e, "plds", 0 )    // PLDs, not dumped
+	ROM_LOAD( "gal16v8d.bin", 0x000, 0x117, NO_DUMP )
+	ROM_LOAD( "gal20v8b.bin", 0x117, 0x157, NO_DUMP )
+ROM_END
 
 ROM_START( redhawkg ) // original Afega PCB with Delta Coin sticker
 	ROM_REGION( 0x80000, "maincpu", 0 )     /* 68000 Code */
@@ -8419,7 +8478,7 @@ GAME( 1991, hachamfp,   hachamf,  hachamf,      hachamfp,     nmk16_state, empty
 GAME( 1992, macross,    0,        macross,      macross,      nmk16_state, init_nmk,             ROT270, "Banpresto",                    "Super Spacefortress Macross / Chou-Jikuu Yousai Macross", 0 )
 
 GAME( 1993, gunnail,    0,        gunnail,      gunnail,      nmk16_state, init_nmk,             ROT270, "NMK / Tecmo",                  "GunNail (28th May. 1992)", 0 ) // Tecmo is displayed only when set to Japan
-GAME( 1992, gunnailb,   gunnail,  gunnailb,     gunnail,      nmk16_state, init_gunnailb,        ROT270, "bootleg",                      "GunNail (bootleg)", MACHINE_NO_SOUND ) // different sound hardware not hooked up
+GAME( 1992, gunnailp,   gunnail,  gunnail,      gunnail,      nmk16_state, init_nmk,             ROT270, "NMK",                          "GunNail (location test)", MACHINE_NO_SOUND ) // different sound hardware not hooked up
 // a 1992 version of Gunnail exists, see https://www.youtube.com/watch?v=tf15Wz0zUiA  3:10; is this bootleg version 'gunnailb'?
 
 GAME( 1993, macross2,   0,        macross2,     macross2,     nmk16_state, init_banked_audiocpu, ROT0,   "Banpresto",                    "Super Spacefortress Macross II / Chou-Jikuu Yousai Macross II", MACHINE_NO_COCKTAIL )
@@ -8461,6 +8520,9 @@ GAME( 1990, mustangb,   mustang,  mustangb,     mustang,      nmk16_state, empty
 GAME( 1990, mustangb2,  mustang,  mustangb,     mustang,      nmk16_state, empty_init,           ROT0,   "bootleg (TAB Austria)",         "US AAF Mustang (TAB Austria bootleg)", 0 ) // PCB and ROMs have TAB Austria stickers
 GAME( 1991, tdragonb,   tdragon,  tdragonb,     tdragonb,     nmk16_state, init_tdragonb,        ROT270, "bootleg",                       "Thunder Dragon (bootleg)", 0 )
 
+// bootleg with cloned airbustr sound hardware
+GAME( 1992, gunnailb,   gunnail,  gunnailb,     gunnail,      nmk16_state, init_gunnailb,        ROT270, "bootleg",                      "GunNail (bootleg)", MACHINE_IMPERFECT_SOUND ) // crappy sound, unknown how much of it is incomplete emulation and how much bootleg quality
+
 // these are from Comad, based on the Thunder Dragon code?
 GAME( 1992, ssmissin,   0,        ssmissin,     ssmissin,     nmk16_state, init_ssmissin,        ROT270, "Comad",                         "S.S. Mission", MACHINE_NO_COCKTAIL )
 
@@ -8474,7 +8536,8 @@ GAME( 1995, dolmen,     0,        twinactn,     dolmen,       nmk16_state, init_
 
 GAME( 1998, stagger1,   0,        stagger1,     stagger1,     afega_state, empty_init,           ROT270,             "Afega",                             "Stagger I (Japan)", 0 )
 GAME( 1997, redhawk,    stagger1, stagger1,     stagger1,     afega_state, init_redhawk,         ROT270,             "Afega (New Vision Ent. license)",   "Red Hawk (USA, Canada & South America)", 0 )
-GAME( 1997, redhawki,   stagger1, redhawki,     stagger1,     afega_state, init_redhawki,        ROT0,               "Afega (Hea Dong Corp license)",     "Red Hawk (horizontal, Italy)", 0 ) // bootleg? strange scroll regs
+GAME( 1997, redhawki,   stagger1, redhawki,     stagger1,     afega_state, init_redhawki,        ROT0,               "Afega (Hae Dong Corp license)",     "Red Hawk (horizontal, Italy)", 0 ) // bootleg? strange scroll regs
+GAME( 1997, redhawks,   stagger1, redhawki,     stagger1,     afega_state, empty_init,           ROT0,               "Afega (Hae Dong Corp license)",     "Red Hawk (horizontal, Spain)", 0 )
 GAME( 1997, redhawkg,   stagger1, redhawki,     stagger1,     afega_state, init_redhawkg,        ROT0,               "Afega",                             "Red Hawk (horizontal, Greece)", 0 )
 GAME( 1997, redhawke,   stagger1, stagger1,     stagger1,     afega_state, empty_init,           ROT270,             "Afega (Excellent Co. license)",     "Red Hawk (Excellent Co., Ltd)", 0 ) // earlier revision? different afega logo and score and credit number fonts compared to other sets
 GAME( 1997, redhawkk,   stagger1, stagger1,     stagger1,     afega_state, empty_init,           ROT270,             "Afega",                             "Red Hawk (Korea)", 0 )

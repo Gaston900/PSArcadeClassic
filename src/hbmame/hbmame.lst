@@ -1547,6 +1547,8 @@ victnine                        // A16 (c) 1985 Taito Corporation (Japan)
 @source:fuukifg3.cpp
 asurabld                        // (c) 1998 (Japan)
 asurabus                        // (c) 2000 (Japan)
+asurabusj                       //
+asurabusja                      //
 asurabusa                       // review build
 
 @source:galaga.cpp
@@ -1779,6 +1781,30 @@ zerotimed                       // hack (Datamat)
 zerotimemc                      // hack (Marti Colls)
 zigzagb                         // (c) 1982 LAX (bootleg)
 zigzagb2                        // (c) 1982 LAX (bootleg)
+spcmission                      //
+spctrek                         //
+olmandingc                      //
+olmandingo                      //
+mandingaeg                      //
+olibug                          //
+floritasm                       //
+floritas                        //
+ataqandr                        //
+sirio2                          //
+mouncrst                        //
+meteora                         //
+mooncrstuu                      //
+komemokos                       //
+pacmanblci                      //
+pacmanblc                       //
+galaxyx                         //
+galaxianrp                      //
+galaxianem                      //
+galaxianbl3                     //
+galaxcirsa                      //
+zerotimeu                       //
+galkamika                       //
+galaktron                       //
 
 @source:gauntlet.cpp
 gaunt2                          // 136043           (c) 1986
@@ -1856,8 +1882,10 @@ vbowlj                          // (c) 1996
 
 @source:itech8.cpp
 arlingtn                        // (c) 1991 Strata/Incredible Technologies
+arlingtna                       //
 dynobop                         // (c) 1990 Grand Products/Incredible Technologies
 gpgolf                          // (c) 1992 Strata/Incredible Technologies
+gpgolfa                         //
 grmatch                         // (c) 1989 Yankee Game Technology
 gtg                             // (c) 1990 Strata/Incredible Technologies
 gtg2                            // (c) 1992 Strata/Incredible Technologies
@@ -1914,6 +1942,7 @@ mgcrystl                        // (c) 1991 Kaneko (World)
 mgcrystlj                       // (c) 1991 Kaneko + distributed by Atlus (Japan)
 mgcrystlo                       // (c) 1991 Kaneko (World)
 oedfight                        // (c) 1994 Kaneko
+oedfighta                       //
 packbang                        // (c) 1994 Kaneko (prototype)
 shogwarr                        // (c) 1992 Kaneko
 shogwarrk                       // (c) 1992 Kaneko
@@ -1946,6 +1975,7 @@ soccerssj                       // 1994.12 GX427 (Japan)
 soccerssja                      // 1994.12 GX427 (Japan)
 soccerssu                       // 1995.04 GX427 (US)
 tbyahhoo                        // 1995.04 GX424 (Japan)
+mtwinbee                        //
 tkmmpzdm                        // 1995.12 GX515 (Japan)
 tokkae                          // 1996.10 GX615 (Japan)
 vsnetscr                        // 1996.?? GX627 (Europe)
@@ -1954,6 +1984,7 @@ vsnetscreb                      // 1996.?? GX627 (Europe)
 vsnetscrj                       // 1996.12 GX627 (Japan)
 vsnetscru                       // 1996.?? GX627 (US)
 winspike                        // 1997.?? GX705 (Europe)
+winspikea                       //
 winspikej                       // 1997.07 GX705 (Japan)
 
 @source:kyugo.cpp
@@ -1985,6 +2016,7 @@ lkage                           // A54 (c) 1984 Taito Corporation
 lkageb                          // bootleg
 lkageb2                         // bootleg
 lkageb3                         // bootleg
+lkageb4                         // bootleg
 lkageo                          // A54 (c) 1984 Taito Corporation
 lkageoo                         // A54 (c) 1984 Taito Corporation
 
@@ -2034,8 +2066,9 @@ skingame2                       // (c) 1992 Irem America (US)
 ssoldier                        // (c) 1993 Irem America (US)
 thndblst                        // (c) 1991 Irem (Japan)
 uccops                          // (c) 1992 Irem (World)
-uccopsar                        // (c) 1992 Irem (World)
 uccopsj                         // (c) 1992 Irem (Japan)
+uccopsar                        // (c) 1992 Irem (World)
+uccopsaru
 uccopsu                         // (c) 1992 Irem (US)
 
 @source:mappy.cpp
@@ -2091,6 +2124,7 @@ tron                            // (c) 1982
 tron2                           // (c) 1982
 tron3                           // (c) 1982
 tron4                           // (c) 1982
+tron5                           // (c) 1982
 tronger                         // (c) 1982
 twotiger                        // (c) 1984
 twotigerc                       // (c) 1984
@@ -2147,7 +2181,10 @@ nbajamr2                        // (c) 1993 Midway
 nbajamte                        // (c) 1994 Midway
 nbajamte1                       // (c) 1994 Midway
 nbajamte2                       // (c) 1994 Midway
+nbajamte2a                      // (c) 1994 Midway
 nbajamte3                       // (c) 1994 Midway
+nbajamte3a                      // (c) 1994 Midway
+nbajamte4                       // (c) 1994 Midway
 nbajamten                       // (c) 1995 Midway
 
 @source:midwunit.cpp
@@ -2156,8 +2193,15 @@ mk3p40                          // (c) 1994 Midway
 mk3r10                          // (c) 1994 Midway
 mk3r20                          // (c) 1994 Midway
 nbahangt                        // (c) 1996 Midway
+nbahangtm13                     //
+nbahangtl12                     //
+nbahangtm12                     //
+nbahangtl11                     //
+nbahangtm11                     //
 nbamht                          // (c) 1996 Midway
-nbamht1                         // (c) 1996 Midway
+nbamhtp                         //
+nbamhtl10                       //
+nbamhtm10                       // (c) 1996 Midway
 openice                         // (c) 1995 Midway
 openicea                        // (c) 1995 Midway
 rmpgwt                          // (c) 1997 Midway
@@ -2193,8 +2237,11 @@ mkyawdim4                       // bootleg
 mkyturbo                        // hack
 mkyturboe                       // hack
 narc                            // (c) 1988 Williams
+narc1                           // 
 narc2                           // (c) 1988 Williams
 narc3                           // (c) 1988 Williams
+narc4                           //
+narc6                           //
 shimpact                        // (c) 1991 Midway
 shimpactp4                      // (c) 1991 Midway
 shimpactp5                      // (c) 1991 Midway
@@ -2215,8 +2262,11 @@ totcarn                         // (c) 1992 Midway
 totcarnp                        // (c) 1992 Midway
 trog                            // (c) 1990 Midway
 trog3                           // (c) 1990 Midway
+trog3a                          //
 trog4                           // (c) 1990 Midway
+trogpa5                         //
 trogpa4                         // (c) 1990 Midway
+mazebl                          //
 trogpa6                         // (c) 1990 Midway
 
 @source:missile.cpp
@@ -2240,8 +2290,8 @@ pangb                           // bootleg
 pangb2                          // bootleg
 pangba                          // bootleg
 pangbb                          // bootleg
+pangbc                          // bootleg
 pangbold                        // bootleg
-pangbold3                       // bootleg
 pompingw                        // (c) 1989 Mitchell (Japan)
 sbbros                          // 01/10/1990 (c) 1990 Mitchell + Capcom (US) not listed on Capcom's site
 spang                           // 14/09/1990 (c) 1990 Mitchell (World)
@@ -2254,6 +2304,8 @@ mrdofix                         // 8201 (c) 1982 + Taito license
 mrdot                           // 8201 (c) 1982 + Taito license
 mrdoy                           // 8201 (c) 1982
 mrdu                            // bootleg
+mrdofabr                        //
+mrdobl                          //
 mrlo                            // bootleg
 yankeedo                        // bootleg
 
@@ -2346,6 +2398,7 @@ marvlandj                       // (c) 1989 (Japan)
 metlhawk                        // (c) 1988
 metlhawkj                       // (c) 1988
 mirninja                        // (c) 1988 (Japan)
+mirninjaa                       //
 ordyne                          // (c) 1988
 ordynej                         // (c) 1988
 ordyneje                        // (c) 1988
@@ -2803,6 +2856,7 @@ grdnstrmk                       // (c) 1998 (Korea)
 grdnstrmv                       // (c) 1998 Apples Industries license
 gunnail                         // (c) 1993 NMK / Tecmo
 gunnailb                        // bootleg
+gunnailp                        //
 hachamf                         // (c) 1991 NMK
 hachamfa                        // (c) 1991 NMK
 hachamfb                        // bootleg
@@ -2826,6 +2880,7 @@ redhawkb                        // (c) 1997
 redhawke                        // (c) 1997 Excellent Co., Ltd license
 redhawkg                        // (c) 1997
 redhawki                        // (c) 1997 Haedong Corp. license
+redhawks                        //
 redhawkk                        // (c) 1997
 sabotenb                        // (c) 1992 NMK / Tecmo
 sabotenba                       // (c) 1992 NMK / Tecmo
@@ -2873,6 +2928,7 @@ pengo2u                         // 834-0386 (c) 1982 Sega
 pengo3u                         // 834-0386 (c) 1982 Sega
 pengo4                          // 834-0386 (c) 1982 Sega
 pengo5                          // 834-0386 (c) 1982 Sega
+pengo6
 pengob                          // bootleg
 penta                           // bootleg
 
@@ -3046,7 +3102,8 @@ pleiads                         // (c) 1981 Tehkan
 pleiadsb2                       // bootleg
 pleiadsi                        // bootleg?
 pleiadsn                        // Niemer S.A.
-pleiadss                        // bootleg
+pleiadss                        // 
+cityatta                        // bootleg
 survival                        // (c) 1982 Rock-ola
 vautour                         // bootleg (Jeutel)
 vautourz                        // bootleg

@@ -3240,15 +3240,19 @@ zerotm2k                        // (c) 2000 Seibu Kaihatsu
 
 @source:rabbit.cpp
 rabbit                          // (c) 1997 Electronic Arts
+rabbita                         //
+rabbitj                         //
 rabbitjt                        // (c) 1996 Electronic Arts
 
 @source:raiden2.cpp
 raiden2                         // (c) 1993 Seibu Kaihatsu + Fabtek license
 raiden2dx                       // (c) 1993 Seibu Kaihatsu
 raiden2e                        // (c) 1993 Seibu Kaihatsu
+raiden2eub                      //
 raiden2ea                       // (c) 1993 Seibu Kaihatsu
 raiden2eg                       // (c) 1993 Seibu Kaihatsu + Tuning license
 raiden2eu                       // (c) 1993 Seibu Kaihatsu + Fabtek license
+raiden2eup                      // 
 raiden2eua                      // (c) 1993 Seibu Kaihatsu + Fabtek license
 raiden2f                        // (c) 1993 Seibu Kaihatsu
 raiden2g                        // (c) 1993 Seibu Kaihatsu + Tuning license
@@ -3257,6 +3261,7 @@ raiden2i                        // (c) 1993 Seibu Kaihatsu
 raiden2j                        // (c) 1993 Seibu Kaihatsu
 raiden2k                        // (c) 1993 Seibu Kaihatsu
 raiden2nl                       // (c) 1993 Seibu Kaihatsu
+raiden2es                       //
 raiden2sw                       // (c) 1993 Seibu Kaihats
 raiden2u                        // (c) 1993 Seibu Kaihatsu + Fabtek license
 raidendx                        // (c) 1994 Seibu Kaihatsu
@@ -3286,6 +3291,7 @@ gutangtn                        // GX359 (c) 1982 Konami + Sega license
 jackler                         // 1 9 8 2 (Jungler Bootleg)
 jungler                         // GX327 (c) 1981 Konami
 junglers                        // GX327 (c) 1981 Stern
+junglero                        //
 locoboot                        // bootleg
 locomotn                        // GX359 (c) 1982 Konami + Centuri license
 nrallyx                         // (c) 1981 Namco
@@ -3307,6 +3313,7 @@ rastanua                        // B04 (c) 1987 Taito America Corporation (US)
 rastanub                        // B04 (c) 1987 Taito America Corporation (US)
 rastsaga                        // B04 (c) 1987 Taito Corporation (Japan)
 rastsagaa                       // B04 (c) 1987 Taito Corporation (Japan)
+rastsagaabl
 rastsagab                       // B04 (c) 1987 Taito Corporation (Japan)
 
 @source:retofinv.cpp
@@ -3321,6 +3328,7 @@ darkseal2                       // MAS (c) 1992 Data East Corporation (Japan)
 gunball                         // MAV (c) 1992 Data East Corporation (Japan)
 nitrobal                        // MAV (c) 1992 Data East Corporation (World)
 nitrobala                       // MAV (c) 1992 Data East Corporation (World)
+nitrobalb                       //
 rohga                           // MAM (c) 1991 Data East Corporation (Asia/Euro)
 rohga1                          // MAM (c) 1991 Data East Corporation (Asia/Euro)
 rohga2                          // MAM (c) 1991 Data East Corporation (Asia/Euro)
@@ -3371,6 +3379,12 @@ tfrceacj                        // (c) 1990 Sega / Technosoft
 twinsqua                        // (c) 1991 Sega
 wwmarine                        // (c) 1992 Sega
 zunkyou                         // (c) 1994 Sega
+headonch                        //
+ichirbl                         //
+tantrbl4                        //
+ooparts                         //
+ribbitj                         //
+borenchj                        //
 
 @source:segaorun.cpp
 outrun                          // Revision B
@@ -3378,8 +3392,10 @@ outrunb                         // 1986 (protected beta bootleg)
 outrundx                        // Deluxe version
 outrundxa                       // Deluxe version (ealier??)
 outrundxeh                      // hack
+outrundxeha                     // 
 outrundxj                       // 1986.09 Deluxe version (Japan, FD1089A)
 outruneh                        // hack
+outruneha                       //
 outrunra                        // Revision A (added support for Standard and Mini cabinets)
 shangon                         // 1987 (unprotected)
 shangon1                        // 1987 (FD1089B)
@@ -3497,6 +3513,7 @@ goldnaxejd                      //
 goldnaxeu                       // (c) 1989 (FD1094)
 goldnaxeud                      //
 hwchamp                         // (c) 1987 (Unprotected)
+hwchampa                        //
 hwchampj                        // (c) 1987 (FD1094)
 hwchampjd                       //
 isgsm                           //
@@ -3642,6 +3659,7 @@ calibr50                        // UH   (c) 1989 + Romstar or Taito license (DSW
 crazyfgt                        // (c) 1998 Subsino
 daioh                           // (C) 1993 Athena
 daioha                          // (C) 1993 Athena
+daiohp2                         //
 daiohc                          // (C) 1993 Athena (93111A PCB conversion)
 daiohp                          // (C) 1993 Athena (prototype)
 downtown                        // UD-2 (c) 1989 + Romstar or Taito license (DSW)
@@ -3720,7 +3738,8 @@ wschampb                        // (c) 2001 Sammy USA Corporation
 sf                              // 8/1987 (c) 1987 (US)
 sfan                            // 8/1987 (c) 1987 (World)
 sfj                             // 8/1987 (c) 1987 (Japan)
-sfjan
+sfjan                           //
+sfjbl                           //
 sfp                             // 8/1987 (c) 1987
 sfua                            // 8/1987 (c) 1987 (US)
 sfw                             // 8/1987 (c) 1987 (World)
@@ -3768,6 +3787,7 @@ satansata                       // (c) 1981 SNK
 satansatind                     // bootleg
 vanguard                        // (c) 1981 SNK
 vanguardc                       // (c) 1981 SNK + Centuri
+vanguardg                       //
 vanguardj                       // (c) 1981 SNK
 zarzon                          // (c) 1981 Taito, gameplay says SNK
 
@@ -3776,10 +3796,13 @@ nratechu                        // (c) 1996 Seta
 
 @source:snowbros.cpp
 3in1semi                        // (c) 1998 SemiCom
+3in1semia                       //
 4in1boot                        // (c) 2002 KISoft (includes hacks of Semicom games + Snowbros)
 ballboy                         // bootleg
+ballboy3p                       //
 cookbib2                        // (c) 1996 SemiCom
-cookbib2a
+cookbib2a                       //
+cookbib2b                       //
 cookbib3                        // (c) 1997 SemiCom
 finalttr                        // (c) 1993 Jeil Computer System
 hyperpac                        // (c) 1995 SemiCom
@@ -3789,6 +3812,7 @@ moremore                        // (c) 1999 SemiCom + Exit
 moremorp                        // (c) 1999 SemiCom + Exit
 multi96                         // (c) 1996 Barko Corp
 pzlbreak                        // (c) 1997 SemiCom
+pzlbreaka                       //
 snowbro3                        // (c) 2002 Syrmex
 snowbros                        // MIN16-02 (c) 1990 Toaplan + Romstar license
 snowbrosa                       // MIN16-02 (c) 1990 Toaplan + Romstar license
@@ -3802,6 +3826,7 @@ toto                            //
 twinadv                         // (c) 1995 Barko Corp
 twinadvk                        // (c) 1995 Barko Corp
 twinkle                         // (c) 1997 SemiCom
+twinklea                        //
 wintbob                         // bootleg
 yutnori                         // (c) 199? yutnori
 
@@ -3865,6 +3890,7 @@ pitfall2                        // 834-5627 [1985?] reprogrammed, (c) 1984 Activ
 pitfall2a                       // 834-5627 [1985?] reprogrammed, (c) 1984 Activision (S1)
 pitfall2u                       // 834-5627 [1985?] reprogrammed, (c) 1984 Activision (S1)
 raflesia                        // 834-5753 (c) 1985 Coreland / Sega (S1)
+raflesiau                       //
 regulus                         // 834-5328?(c) 1983 (S1)
 reguluso                        // 834-5328?(c) 1983 (S1)
 regulusu                        // 834-5328?(c) 1983 (S1)
@@ -3928,6 +3954,7 @@ mwalkbl                         // BOOTLEG
 shdancbl                        // BOOTLEG
 shinobld                        // (c) 1987 (but bootleg)
 shinoblda                       //
+shinobldb                       //
 tetrisbl                        // (c) 1988 (but bootleg)
 tturfbl                         // (c) 1989 (Datsu bootleg)
 wb3bbl                          // bootleg
@@ -4023,6 +4050,7 @@ masterwu                        // B72 (c) 1989 Taito America Corporation (US)
 nastar                          // B81 (c) 1988 Taito Corporation Japan (World)
 nastarw                         // B81 (c) 1988 Taito America Corporation (US)
 pbobble                         // ??? (c) 1994 Taito Corporation (Japan)
+bublbust                        //
 rambo3                          // B93 (c) 1989 Taito Europe Corporation (Europe)
 rambo3p                         // B93 (c) 1989 Taito Europe Corporation (Europe) Proto or bootleg???
 rambo3u                         // B93 (c) 1989 Taito America Corporation (US)
@@ -4060,6 +4088,7 @@ dondokod                        // 1989.?? B95 (c) 1989 Taito Corporation Japan 
 dondokodj                       // 1989.07 B95 (c) 1989 Taito Corporation (Japan)
 dondokodu                       // 1989.?? B95 (c) 1989 Taito America Corporation (US)
 driftout                        // 1991.10 (c) 1991 Visco (Europe)
+driftoutct
 driftoutj                       // 1991.10 (c) 1991 Visco (Japan)
 driveout                        // bootleg
 euroch92                        // 1991.??     (c) 1992 Taito Corporation Japan (World)
@@ -4079,6 +4108,7 @@ liquidk                         // 1990.?? C49 (c) 1990 Taito Corporation Japan 
 liquidku                        // 1990.?? C49 (c) 1990 Taito America Corporation (US)
 majest12j                       // 1990.11 C64 (c) 1990 Taito Corporation (Japan)
 majest12u                       // 1990.11 C64 (c) 1990 Taito America Corporation (US)
+majest12ua                      // 
 megablst                        // 1989.?? C11 (c) 1989 Taito Corporation Japan (World)
 megablstj                       // 1989.11 C11 (c) 1989 Taito Corporation (Japan)
 megablstu                       // 1989.?? C11 (c) 1989 Taito America Corporation (US)
@@ -4095,6 +4125,7 @@ runark                          // 1991.02 C74 (c) 1990 Taito Corporation (Japan
 solfigtr                        // 1991.?? C91 (c) 1991 Taito Corporation Japan (World)
 ssi                             // 1990.?? C64 (c) 1990 Taito Corporation Japan (World)
 ssia                            // 1990.?? C64 (c) 1990 Taito Corporation Japan (World)
+ssib                            //
 thundfox                        // 1990.?? C28 (c) 1990 Taito Corporation Japan (World)
 thundfoxj                       // 1990.07 C28 (c) 1990 Taito Corporation (Japan)
 thundfoxu                       // 1990.06 C28 (c) 1990 Taito America Corporation (US)

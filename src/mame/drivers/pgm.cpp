@@ -5617,7 +5617,6 @@ GAME( 2000, py2k2100,     py2k2,     pgm_arm_type1_sim,      py2k2,     pgm_arm_
 GAME( 2004, pgm3in1,      pgm,       pgm_arm_type1_sim,      pgm3in1,   pgm_arm_type1_state,  init_pgm3in1,  ROT0,   "IGS", "Shan Liang San He Yi (Flash 3-in-1) (V100 07/13/04 12:09:20)", MACHINE_NOT_WORKING )  /* need internal rom of IGS027A */
 GAME( 2004, pgm3in1c100,  pgm3in1,   pgm_arm_type1_sim,      pgm3in1,   pgm_arm_type1_state,  init_pgm3in1,  ROT0,   "IGS", "Shan Liang San He Yi (Flash 3-in-1) (V100 07/13/04 12:09:20)", MACHINE_NOT_WORKING )  /* need internal rom of IGS027A */
 
-
 /* Games below this point are known to have an 'execute only' internal ROM area covering an area at the start of the internal ROM.  This can't be read when running code from either internal or external ROM space. */
 
 //西游释厄传群魔乱舞/Xīyóu shì è chuán Qúnmóluànwǔ (China, Japan; Simplified Chinese)

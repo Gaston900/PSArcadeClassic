@@ -1109,6 +1109,40 @@ static INPUT_PORTS_START( ribbit )
 	//"SW2:8" unused
 INPUT_PORTS_END
 
+static INPUT_PORTS_START( ribbitj )
+	PORT_INCLUDE( systemc_generic )
+
+	PORT_MODIFY("P1")
+	PORT_BIT( 0x01, IP_ACTIVE_LOW, IPT_UNUSED )     /* Button 1 Unused */
+	PORT_BIT( 0x02, IP_ACTIVE_LOW, IPT_UNUSED )     /* Button 2 Unused */
+	PORT_BIT( 0x04, IP_ACTIVE_LOW, IPT_UNUSED )     /* Button 3 Unused */
+
+	PORT_MODIFY("P2")
+	PORT_BIT( 0x01, IP_ACTIVE_LOW, IPT_UNUSED )     /* Button 1 Unused */
+	PORT_BIT( 0x02, IP_ACTIVE_LOW, IPT_UNUSED )     /* Button 2 Unused */
+	PORT_BIT( 0x04, IP_ACTIVE_LOW, IPT_UNUSED )     /* Button 3 Unused */
+
+	PORT_MODIFY("DSW")
+	PORT_DIPNAME( 0x01, 0x01, "Credits to Start" ) PORT_DIPLOCATION("SW2:1")
+	PORT_DIPSETTING(    0x01, "1" )
+	PORT_DIPSETTING(    0x00, "2" )
+	PORT_DIPNAME( 0x02, 0x00, DEF_STR( Demo_Sounds ) ) PORT_DIPLOCATION("SW2:2")
+	PORT_DIPSETTING(    0x02, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x0c, 0x0c, DEF_STR( Lives ) ) PORT_DIPLOCATION("SW2:3,4") /* Lives are different */
+	PORT_DIPSETTING(    0x04, "1" )
+	PORT_DIPSETTING(    0x08, "2" )
+	PORT_DIPSETTING(    0x0c, "3" )
+	PORT_DIPSETTING(    0x00, "5" )
+	PORT_DIPNAME( 0x30, 0x30, DEF_STR( Difficulty ) ) PORT_DIPLOCATION("SW2:5,6")
+	PORT_DIPSETTING(    0x20, DEF_STR( Easy ) )
+	PORT_DIPSETTING(    0x30, DEF_STR( Normal ) )
+	PORT_DIPSETTING(    0x10, DEF_STR( Hard ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( Hardest ) )
+	//"SW2:7" unused
+	//"SW2:8" unused
+INPUT_PORTS_END
+
 
 static INPUT_PORTS_START( puyo )
 	PORT_INCLUDE( systemc_generic )
@@ -1265,6 +1299,40 @@ static INPUT_PORTS_START( ichir )
 	//"SW2:8" unused
 INPUT_PORTS_END
 
+static INPUT_PORTS_START( ooparts ) // testmode expects controls similar to twinsqua
+	PORT_INCLUDE( systemc_generic )
+
+	PORT_MODIFY("P1")
+	PORT_BIT( 0x04, IP_ACTIVE_LOW, IPT_UNUSED )     /* Button 3 Unused */
+
+	PORT_MODIFY("P2")
+	PORT_BIT( 0x04, IP_ACTIVE_LOW, IPT_UNUSED )     /* Button 3 Unused */
+
+	PORT_MODIFY("SERVICE") // "shot" button in testmode (needed for sound test)
+	PORT_BIT( 0x40, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(1)
+	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2)
+
+	PORT_MODIFY("DSW")
+	PORT_DIPNAME( 0x01, 0x00, DEF_STR( Demo_Sounds ) ) PORT_DIPLOCATION("SW2:1")
+	PORT_DIPSETTING(    0x01, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x06, 0x06, DEF_STR( Lives ) ) PORT_DIPLOCATION("SW2:2,3")
+	PORT_DIPSETTING(    0x04, "2" )
+	PORT_DIPSETTING(    0x06, "3" )
+	PORT_DIPSETTING(    0x02, "4" )
+	PORT_DIPSETTING(    0x00, "5" )
+	PORT_DIPNAME( 0x18, 0x18, DEF_STR( Difficulty ) ) PORT_DIPLOCATION("SW2:4,5")
+	PORT_DIPSETTING(    0x10, DEF_STR( Easy ) )
+	PORT_DIPSETTING(    0x18, DEF_STR( Medium ) )
+	PORT_DIPSETTING(    0x08, DEF_STR( Hard ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( Hardest ) )
+	PORT_DIPNAME( 0x60, 0x60, "Region" ) PORT_DIPLOCATION("SW2:6,7") // undocumented
+	PORT_DIPSETTING(    0x60, DEF_STR( Japan ) )
+	PORT_DIPSETTING(    0x40, DEF_STR( USA ) )
+	PORT_DIPSETTING(    0x20, "Export" )
+	PORT_DIPSETTING(    0x00, "Export" )
+	//"SW2:8" unused
+INPUT_PORTS_END
 
 static INPUT_PORTS_START( bloxeedc )
 	PORT_INCLUDE( systemc_generic )
@@ -1426,6 +1494,36 @@ static INPUT_PORTS_START( pclubjv2 )
 	PORT_DIPSETTING(    0x20, DEF_STR( On ) )
 	PORT_DIPUNUSED_DIPLOC( 0x40, IP_ACTIVE_LOW, "SW5:7" )
 	PORT_DIPUNUSED_DIPLOC( 0x80, IP_ACTIVE_LOW, "SW5:8" )
+INPUT_PORTS_END
+
+static INPUT_PORTS_START( headonch )
+	PORT_INCLUDE( systemc_generic )
+
+	PORT_MODIFY("P1")
+	PORT_BIT( 0x02, IP_ACTIVE_LOW, IPT_UNUSED )     /* Button 2 Unused */
+	PORT_BIT( 0x04, IP_ACTIVE_LOW, IPT_UNUSED )     /* Button 3 Unused */
+
+	PORT_MODIFY("P2")
+	PORT_BIT( 0x02, IP_ACTIVE_LOW, IPT_UNUSED )     /* Button 2 Unused */
+	PORT_BIT( 0x04, IP_ACTIVE_LOW, IPT_UNUSED )     /* Button 3 Unused */
+
+	PORT_MODIFY("DSW")
+	PORT_DIPNAME( 0x01, 0x00, DEF_STR( Demo_Sounds ) ) PORT_DIPLOCATION("SW2:1")
+	PORT_DIPSETTING(    0x01, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x06, 0x06, DEF_STR( Difficulty ) ) PORT_DIPLOCATION("SW2:2,3")
+	PORT_DIPSETTING(    0x04, DEF_STR( Easy ) )
+	PORT_DIPSETTING(    0x06, DEF_STR( Medium ) )
+	PORT_DIPSETTING(    0x02, DEF_STR( Hard ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( Hardest ) )
+	PORT_DIPNAME( 0x18, 0x18, DEF_STR( Lives ) ) PORT_DIPLOCATION("SW2:4,5")
+	PORT_DIPSETTING(    0x10, "2" )
+	PORT_DIPSETTING(    0x18, "3" )
+	PORT_DIPSETTING(    0x08, "4" )
+	PORT_DIPSETTING(    0x00, "5" )
+	//"SW2:6" unused
+	//"SW2:7" unused
+	//"SW2:8" unused
 INPUT_PORTS_END
 
 static INPUT_PORTS_START( ssonicbr )
@@ -1756,6 +1854,14 @@ ROM_START( borencha ) /* Borench  (c)1990 Sega */
 	ROM_LOAD( "13587.ic4", 0x000000, 0x020000, CRC(62b85e56) SHA1(822ab733c87938bb70a9e32cc5dd36bbf6f21d11) )
 ROM_END
 
+ROM_START( borenchj ) /* Borench  (c)1990 Sega */
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "epr-13586.ic32", 0x000000, 0x040000, CRC(62d7f8e8) SHA1(a2b11584c79ead70e6b8cab0b076df9bbf114803) )
+	ROM_LOAD16_BYTE( "epr-13585.ic31", 0x000001, 0x040000, CRC(087b9704) SHA1(1e974d1e40ea28e8f5e721ccf78a2ffc76f4d17d) )
+
+	ROM_REGION( 0x020000, "upd", 0 )
+	ROM_LOAD( "epr-13587.ic4", 0x000000, 0x020000, CRC(62b85e56) SHA1(822ab733c87938bb70a9e32cc5dd36bbf6f21d11) )
+ROM_END
 
 ROM_START( tfrceac ) /* Thunder Force AC  (c)1990 Technosoft / Sega - 834-7745-02 THUNDER FORCE AC (EMP5032 labeled 317-0172) */
 	ROM_REGION( 0x200000, "maincpu", 0 )
@@ -1873,6 +1979,17 @@ ROM_START( ribbit ) /* Ribbit  (c)1991 Sega */
 	ROM_LOAD( "epr-13834.ic4", 0x000000, 0x020000, CRC(ab0c1833) SHA1(f864e12ecf6c0524da20fc66747a4fa4280e67e9) )
 ROM_END
 
+ROM_START( ribbitj ) /* Ribbit  (c)1991 Sega */
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "epr-13836.ic32", 0x000000, 0x040000, CRC(21f222e2) SHA1(1e4b640833d3ec428bd50d89dc93a670a17a4451) )
+	ROM_LOAD16_BYTE( "epr-13835.ic31", 0x000001, 0x040000, CRC(1c4b291a) SHA1(61b2e7721aefb97bbd38b3ca9275d7f345f3d0a6) )
+	ROM_COPY( "maincpu", 0x000000, 0x080000, 0x080000 )
+	ROM_LOAD16_BYTE( "epr-13838.ic34", 0x100000, 0x080000, CRC(a5d62ac3) SHA1(8d83a7bc4017e125ef4231278f766b2368d5fc1f) )
+	ROM_LOAD16_BYTE( "epr-13837.ic33", 0x100001, 0x080000, CRC(434de159) SHA1(cf2973131cabf2bc0ebb2bfe9f804ad3d7d0a733) )
+
+	ROM_REGION( 0x080000, "upd", 0 )
+	ROM_LOAD( "epr-13834.ic4", 0x000000, 0x020000, CRC(ab0c1833) SHA1(f864e12ecf6c0524da20fc66747a4fa4280e67e9) )
+ROM_END
 
 ROM_START( tantr ) /* Tant-R (Puzzle & Action)  (c)1992 Sega - 834-9664 TANT-R (EMP5032 labeled 317-0211) */
 	ROM_REGION( 0x200000, "maincpu", 0 )
@@ -1911,6 +2028,28 @@ ROM_START( tantrbl ) /* Tant-R (Puzzle & Action) (Bootleg)  (c)1992 Sega */
 	ROM_LOAD( "pa_e02.bin", 0x020000, 0x020000, CRC(4e85b2a3) SHA1(3f92fb931d315c5a2d6c54b3204718574928cb7b) )
 ROM_END
 
+ROM_START( tantrbl4 ) // extremely similar to tantrbl, but in this one the card dispenser related text hasn't been removed
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "a.bin", 0x000000, 0x080000, CRC(25cafec2) SHA1(872ce10c080c8bddc2eaf1a48be7b43eeae32f28) )
+	ROM_LOAD16_BYTE( "b.bin", 0x000001, 0x080000, CRC(8cf5ffd5) SHA1(21bcde46d3e075a93725292a344c3d9784ae5178) )
+	ROM_LOAD16_BYTE( "d.bin", 0x100000, 0x080000, CRC(17b80202) SHA1(f47bf2aa0c5972647438619b8453c7dede5c422f) )
+	ROM_LOAD16_BYTE( "c.bin", 0x100001, 0x080000, CRC(36a88bd4) SHA1(cc7f6a947d1b79bb86957c43035b53d6d2bcfa28) )
+
+	ROM_REGION( 0x040000, "upd", 0 )
+	ROM_LOAD( "2.bin", 0x000000, 0x020000, CRC(72918c58) SHA1(cb42363b163727a887a0b762519c72dcdf0a6460) )
+	ROM_LOAD( "1.bin", 0x020000, 0x020000, CRC(4e85b2a3) SHA1(3f92fb931d315c5a2d6c54b3204718574928cb7b) )
+ROM_END
+
+ROM_START( ooparts ) // hack: modified to be playable with digital joystick
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "ooparts.ic32", 0x000000, 0x080000, CRC(8dcf2940) SHA1(f72630e8a26e7f2089da56878a1599268c355246) )
+	ROM_LOAD16_BYTE( "ooparts.ic31", 0x000001, 0x080000, CRC(35381899) SHA1(524f6e1b1292542079589275e20f45c2eb68605c) )
+	ROM_LOAD16_BYTE( "ooparts.ic34", 0x100000, 0x080000, CRC(7192ac29) SHA1(d3028a9bbb7faa733285cf7e47fd840ec0d0bf69) )
+	ROM_LOAD16_BYTE( "ooparts.ic33", 0x100001, 0x080000, CRC(42755dc2) SHA1(cd0aa79418b922266c5d41bf24b9136f9f105dc5) )
+
+	ROM_REGION( 0x040000, "upd", 0 )
+	ROM_LOAD( "epr-13655.ic4", 0x000000, 0x040000, CRC(e09961f6) SHA1(e109b5f41502b765d191f22e3bbcff97d6defaa1) )
+ROM_END
 
 ROM_START( puyo ) /* Puyo Puyo  (c)1992 Sega / Compile */
 	ROM_REGION( 0x200000, "maincpu", 0 )
@@ -1987,6 +2126,16 @@ ROM_START( ichir ) /* Ichidant-R (Puzzle & Action 2)  (c)1994 Sega (World) */
 	ROM_LOAD( "pa2_02.bin", 0x000000, 0x080000, CRC(fc7b0da5) SHA1(46770aa7e19b4f8a183be3f433c48ad677b552b1) )
 ROM_END
 
+ROM_START( ichirbl ) // bootleg of the World version, only difference is the protection checks are NOPed out
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "2.f11", 0x000000, 0x080000, CRC(b8201c2e) SHA1(95ac035ffd5948745324d855ecffdb7d2ff9f0fb) )
+	ROM_LOAD16_BYTE( "1.f10", 0x000001, 0x080000, CRC(af0dd811) SHA1(75b1f51ad93f99933037ffff4106c92f9c2393e6) )
+	ROM_LOAD16_BYTE( "4.f8",  0x100000, 0x080000, CRC(85d73722) SHA1(7ebe81b4d6c89f87f60200a3a8cddb07d581adef) )
+	ROM_LOAD16_BYTE( "3.f9",  0x100001, 0x080000, CRC(bc3bbf25) SHA1(e760ad400bc183b38e9787d88c8ac084fbe2ae21) )
+
+	ROM_REGION( 0x080000, "upd", 0 )
+	ROM_LOAD( "2.e3", 0x000000, 0x080000, CRC(fc7b0da5) SHA1(46770aa7e19b4f8a183be3f433c48ad677b552b1) )
+ROM_END
 
 ROM_START( ichirk ) /* Ichidant-R (Puzzle & Action 2)  (c)1994 Sega (Korea) */
 	ROM_REGION( 0x200000, "maincpu", 0 )
@@ -2068,6 +2217,16 @@ ROM_START( zunkyou ) /* Zunzunkyou no Yabou  (c)1994 Sega - 834-9029 (EMP5032 la
 	ROM_LOAD( "epr-16810.ic4", 0x000000, 0x080000, CRC(d542f0fe) SHA1(23ea50110dfe1cd9f286a535d15e0c3bcba73b00) )
 ROM_END
 
+ROM_START( headonch ) // hack: protection routine was removed
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "headonch.ic32", 0x000000, 0x080000, CRC(091cf538) SHA1(04673678f543743b395edea39ad4ee6177436dc0) )
+	ROM_LOAD16_BYTE( "headonch.ic31", 0x000001, 0x080000, CRC(91f3b5f1) SHA1(15cbe7a172dde7de7b73f0c9eeddfee41e8d1f80) )
+	ROM_LOAD16_BYTE( "headonch.ic34", 0x100000, 0x080000, CRC(d8dc6323) SHA1(e7e891324764641691dcb63e5222f2ed9207fb96) )
+	ROM_LOAD16_BYTE( "headonch.ic33", 0x100001, 0x080000, CRC(3268e38b) SHA1(10ded2be01465014ca9e6c64ffab1190ec985359) )
+
+	ROM_REGION( 0x040000, "upd", 0 )
+	ROM_LOAD( "headonch.ic4", 0x000000, 0x040000, CRC(90af7301) SHA1(227227cb5d0df6612bac7b4c94b99e2287686ccd) )
+ROM_END
 
 ROM_START( pclubj ) /* Print Club (c)1995 Atlus */
 	ROM_REGION( 0x200000, "maincpu", 0 )
@@ -2581,12 +2740,18 @@ GAME( 1990, tfrceacb,  tfrceac,  segac2, tfrceac,         segac2_state,    init_
 
 GAME( 1990, borench,   0,        segac2, borench,         segac2_state,    init_borench,  ROT0,   "Sega", "Borench (set 1)", 0 )
 GAME( 1990, borencha,  borench,  segac2, borench,         segac2_state,    init_borench,  ROT0,   "Sega", "Borench (set 2)", 0 )
+GAME( 1990, borenchj,  borench,  segac2, borench,         segac2_state,    init_borench,  ROT0,   "Sega", "Borench (Japan)", 0 )
 
 GAME( 1991, ribbit,    0,        segac2, ribbit,          segac2_state,    init_ribbit,   ROT0,   "Sega", "Ribbit!", 0 )
+GAME( 1991, ribbitj,   ribbit,   segac2, ribbitj,         segac2_state,    init_ribbit,   ROT0,   "Sega", "Ribbit! (Japan)", 0 )
 
 GAME( 1991, twinsqua,  0,        segac2, twinsqua,        segac2_state,    init_twinsqua, ROT0,   "Sega", "Twin Squash", 0 )
 
-GAME( 1991, soniccar,   0,       segac2, soniccar,        segac2_state,    init_bloxeedc, ROT0,   "Sega", "Waku Waku Sonic Patrol Car", 0 )
+GAME( 1991, soniccar,  0,        segac2, soniccar,        segac2_state,    init_bloxeedc, ROT0,   "Sega", "Waku Waku Sonic Patrol Car", 0 )
+
+GAME( 1992, ssonicbr,  0,        segac2, ssonicbr,        segac2_state,    init_bloxeedc, ROT0,   "hack", "SegaSonic Bros. (prototype, hack)", MACHINE_SUPPORTS_SAVE )
+
+GAME( 1992, ooparts,   0,        segac2, ooparts,         segac2_state,    init_bloxeedc, ROT270, "hack", "OOPArts (prototype, joystick hack)", 0 )
 
 GAME( 1992, puyo,      0,        segac2, puyo,            segac2_state,    init_puyo,     ROT0,   "Compile / Sega", "Puyo Puyo (World)", 0 )
 GAME( 1992, puyobl,    puyo,     segac2, puyo,            segac2_state,    init_puyo,     ROT0,   "bootleg", "Puyo Puyo (World, bootleg)", 0 )
@@ -2596,6 +2761,7 @@ GAME( 1992, puyoja,    puyo,     segac2, puyo,            segac2_state,    init_
 GAME( 1992, tantr,     0,        segac2, ichir,           segac2_state,    init_tantr,    ROT0,   "Sega", "Puzzle & Action: Tant-R (Japan)", 0 )
 GAME( 1993, tantrkor,  tantr,    segac2, ichir,           segac2_state,    init_tantrkor, ROT0,   "Sega", "Puzzle & Action: Tant-R (Korea)", 0 )
 GAME( 1992, tantrbl,   tantr,    segac2, ichir,           segac2_state,    init_c2boot,   ROT0,   "bootleg", "Puzzle & Action: Tant-R (Japan) (bootleg set 1)", 0 )
+GAME( 1992, tantrbl4,  tantr,    segac2, ichir,           segac2_state,    init_bloxeedc, ROT0,   "bootleg", "Puzzle & Action: Tant-R (Japan) (bootleg set 4)", 0 )
 GAME( 1994, tantrbl2,  tantr,    segac,  ichir,           segac2_state,    init_tantr,    ROT0,   "bootleg", "Puzzle & Action: Tant-R (Japan) (bootleg set 2)", 0 ) // Common bootleg in Europe, C board, no samples
 GAME( 1994, tantrbl3,  tantr,    segac,  ichir,           segac2_state,    init_tantr,    ROT0,   "bootleg", "Puzzle & Action: Tant-R (Japan) (bootleg set 3)", 0 ) // Common bootleg in Europe, C board, no samples
 
@@ -2613,13 +2779,16 @@ GAME( 1994, stkclmns,  0,        segac2, stkclmns,        segac2_state,    init_
 GAME( 1994, stkclmnsj, stkclmns, segac2, stkclmns,        segac2_state,    init_stkclmnj, ROT0,   "Sega", "Stack Columns (Japan)", 0 )
 
 GAME( 1994, ichir,     0,        segac2, ichir,           segac2_state,    init_ichir,    ROT0,   "Sega", "Puzzle & Action: Ichidant-R (World)", 0 )
+GAME( 1994, ichirbl,   ichir,    segac2, ichir,           segac2_state,    init_bloxeedc, ROT0,   "Sega", "Puzzle & Action: Ichidant-R (World) (bootleg)", 0 )
 GAME( 1994, ichirk,    ichir,    segac2, ichir,           segac2_state,    init_ichirk,   ROT0,   "Sega", "Puzzle & Action: Ichidant-R (Korea)", 0 )
 GAME( 1994, ichirj,    ichir,    segac2, ichir,           segac2_state,    init_ichirj,   ROT0,   "Sega", "Puzzle & Action: Ichidant-R (Japan)", 0 )
 GAME( 1994, ichirjbl,  ichir,    segac,  ichir,           segac2_state,    init_ichirjbl, ROT0,   "bootleg", "Puzzle & Action: Ichidant-R (Japan) (bootleg)", 0 ) // C board, no samples
 
-GAME( 1994, puyopuy2,  0,        segac2, puyopuy2,        segac2_state,    init_puyopuy2, ROT0, "Compile (Sega license)", "Puyo Puyo 2 (Japan)", 0 )
+GAME( 1994, puyopuy2,  0,        segac2, puyopuy2,        segac2_state,    init_puyopuy2, ROT0,   "Compile (Sega license)", "Puyo Puyo 2 (Japan)", 0 )
 
-GAME( 1994, zunkyou,   0,        segac2, zunkyou,         segac2_state,    init_zunkyou,  ROT0, "Sega", "Zunzunkyou no Yabou (Japan)", 0 )
+GAME( 1994, zunkyou,   0,        segac2, zunkyou,         segac2_state,    init_zunkyou,  ROT0,   "Sega", "Zunzunkyou no Yabou (Japan)", 0 )
+
+GAME( 1994, headonch,   0,       segac2, headonch,        segac2_state,    init_bloxeedc, ROT0,   "hack", "Monita to Rimoko no Head On Channel (prototype, hack)", 0 )
 
 /* Atlus Print Club 'Games' (C-2 Hardware) requires printer and camera emulation */
 GAME( 1995, pclubj,    0,        segac2, pclub,           segac2_pc_state, init_pclubj,   ROT0, "Atlus", "Print Club (Japan Vol.1)", MACHINE_NOT_WORKING )
@@ -2630,5 +2799,3 @@ GAME( 1995, pclub,     pclubjv2, segac2, pclubjv2,        segac2_pc_state, init_
 GAME( 1996, pclubjv4,  0,        segac2, pclubjv2,        segac2_pc_state, init_pclubjv4, ROT0, "Atlus", "Print Club (Japan Vol.4)", MACHINE_NOT_WORKING )
 
 GAME( 1996, pclubjv5,  0,        segac2, pclubjv2,        segac2_pc_state, init_pclubjv5, ROT0, "Atlus", "Print Club (Japan Vol.5)", MACHINE_NOT_WORKING )
-
-GAME( 1992, ssonicbr,  0,        segac2, ssonicbr,        segac2_state,    init_bloxeedc, ROT0, "hack", "SegaSonic Bros. (prototype, hack)", MACHINE_SUPPORTS_SAVE )

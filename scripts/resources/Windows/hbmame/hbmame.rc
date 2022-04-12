@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Gaston90 and Robbbert
+// copyright-holders:Robbbert
 //============================================================
 //
 //	mame.rc - Minimal resource file for Win32 MAME
@@ -7,7 +7,7 @@
 //============================================================
 
 #include <windows.h>
-//#include "mamevers.rc"
+#include "hbmamevers.rc"
 
 1                       24      MOVEABLE PURE   "psarcadeclassic.man"
 

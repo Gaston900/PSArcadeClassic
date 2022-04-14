@@ -4622,7 +4622,7 @@ ROM_START( altbeastj )
 	ROM_LOAD( "opr-11673.a12", 0x30000, 0x20000, CRC(400c4a36) SHA1(de4bdfa91734410e0a7f6a16bf8336db172f458a) )
 
 	ROM_REGION( 0x1000, "mcu", 0 )  // Intel i8751 protection MCU
-	ROM_LOAD( "317-0077.c2", 0x00000, 0x1000, NO_DUMP )
+	ROM_LOAD( "317-0077.c2", 0x00000, 0x1000, CRC(eef80d68) SHA1(a932129a4e7ba9f813f0f46253940c90fac98d50) )
 ROM_END
 
 //*************************************************************************************************************************
@@ -9673,7 +9673,7 @@ GAME( 1990, atomicp,    0,        atomicp,               atomicp,  segas16b_stat
 GAME( 1990, snapper,    0,        atomicp,               snapper,  segas16b_state, init_snapper,            ROT0,   "Philko", "Snapper (Korea)", 0) // korean clone board..
 // board marked 'System 4' and has Philko custom chip - various hw changes (4bpp tiles for example)
 GAME( 1991, lockonph,   0,        lockonph,              lockonph, segas16b_state, init_lockonph,           ROT0,   "Philko", "Lock On (Philko)", MACHINE_IMPERFECT_SOUND ) // Copyright not shown in game, but has 'PHILKO' in the startup warning and tiles / PCB.  1991 is the name entry for the lowest high score.  Clipping issues on left edge in attract look like original game bugs.
-GAME( 199?, dfjail,   0,          dfjail,                dfjail,   segas16b_state, init_generic_korean,     ROT0,   "Philko", "The Destroyer From Jail (Korea)", MACHINE_IMPERFECT_SOUND | MACHINE_NO_COCKTAIL ) // dips, check sound, not extensively tested
+GAME( 1991, dfjail,   0,          dfjail,                dfjail,   segas16b_state, init_generic_korean,     ROT0,   "Philko", "The Destroyer From Jail (Korea)", MACHINE_IMPERFECT_SOUND | MACHINE_NO_COCKTAIL ) // dips, check sound, not extensively tested
 
 // decrypted bootleg / 'suicide repair' sets
 

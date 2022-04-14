@@ -7166,28 +7166,28 @@ ROM_END
 
 
 ROM_START( bjtwinp )
-	ROM_REGION( 0x80000, "maincpu", 0 )  /* 68000 code */
+	ROM_REGION( 0x80000, "maincpu", 0 )  // 68000 code
 	ROM_LOAD16_BYTE( "ic76",  0x00000, 0x20000, CRC(c2847f0d) SHA1(2659e642586fcd199928d3f10ec300a1f13f2e3b) )
 	ROM_LOAD16_BYTE( "ic75",  0x00001, 0x20000, CRC(dd8fdfce) SHA1(8b2da3b97acd07783b68ee270ae678dab6e538ec) )
 
 	ROM_REGION( 0x010000, "fgtile", 0 )
-	ROM_LOAD( "ic35",  0x000000, 0x010000, CRC(45d67683) SHA1(004a85ecf34e97fad40195e7e20a11bf8cafe41e) ) /* 8x8 tiles */
+	ROM_LOAD( "ic35",  0x000000, 0x010000, CRC(45d67683) SHA1(004a85ecf34e97fad40195e7e20a11bf8cafe41e) ) // 8x8 tiles
 
 	ROM_REGION( 0x200000, "bgtile", 0 )
 	ROM_LOAD( "u1.ic32", 0x000000, 0x080000, CRC(b4960ba0) SHA1(4194bcd55fe48da08d5e951dc78daa457b1d76af) )
 	ROM_LOAD( "u2.ic32", 0x080000, 0x080000, CRC(99ee571d) SHA1(85db0c9c3bdf5367dd4868daf9de40bdeeda9426) )
-	ROM_LOAD( "u3.ic32", 0x100000, 0x080000, CRC(25720ffb) SHA1(361961e06467c7f4126e774a179087fe424160f5) ) /* Contains Gun Dealer + Dooyong logos + lots of adult pics! - these are used after the bonus game in this set.. */
+	ROM_LOAD( "u3.ic32", 0x100000, 0x080000, CRC(25720ffb) SHA1(361961e06467c7f4126e774a179087fe424160f5) ) // Contains Gun Dealer + Dooyong logos + lots of adult pics! - these are used after the bonus game in this set...
 
 	ROM_REGION( 0x100000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "u4.ic100", 0x000000, 0x080000, CRC(6501b1fb) SHA1(1c0832c3bb33aac1e5cd8845d77bc09222548ef8) )
 	ROM_LOAD16_BYTE( "u5.ic100", 0x000001, 0x080000, CRC(8394e2ba) SHA1(bb921ccf1f5221611449ed3537d60395d8a1c1e9) )
 
-	ROM_REGION( 0x140000, "oki1", 0 ) /* OKIM6295 samples */
-	ROM_LOAD( "bottom.ic30",    0x040000, 0x80000, CRC(b5ef197f) SHA1(89d675f921dead585c2fef44105a7aea2f1f399c) ) /* all banked */
+	ROM_REGION( 0x140000, "oki1", 0 ) // OKIM6295 samples
+	ROM_LOAD( "bottom.ic30",    0x040000, 0x80000, CRC(b5ef197f) SHA1(89d675f921dead585c2fef44105a7aea2f1f399c) ) // all banked
 	ROM_LOAD( "top.ic30",       0x0c0000, 0x80000, CRC(ab50531d) SHA1(918987f01a8b1b007721d2b365e2b2fc536bd676) )
 
-	ROM_REGION( 0x140000, "oki2", 0 ) /* OKIM6295 samples */
-	ROM_LOAD( "top.ic27",       0x040000, 0x80000, CRC(adb2f256) SHA1(ab7bb6683799203d0f46705f2fd241c6de914e77) ) /* all banked */
+	ROM_REGION( 0x140000, "oki2", 0 ) // OKIM6295 samples
+	ROM_LOAD( "top.ic27",       0x040000, 0x80000, CRC(adb2f256) SHA1(ab7bb6683799203d0f46705f2fd241c6de914e77) ) // all banked
 	ROM_LOAD( "bottom.ic27",    0x0c0000, 0x80000, CRC(6ebeb9e4) SHA1(b547b2fbcc0a35d6183dd4f19684b04839690a2b) )
 ROM_END
 

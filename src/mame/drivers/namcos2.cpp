@@ -3897,7 +3897,7 @@ ROM_START( marvland )
 ROM_END
 
 /* MARVEL LAND (JAPAN) */
-ROM_START( marvlandj )
+ROM_START( marvlandup )
 	ROM_REGION( 0x040000, "maincpu", 0 ) /* Master CPU */
 	ROM_LOAD16_BYTE( "mv1-mpr0.bin",  0x000000, 0x010000, CRC(8369120f) SHA1(58cf481bf97f74a91ecc5ff77696528441b41b04) )
 	ROM_LOAD16_BYTE( "mv1-mpr1.bin",  0x000001, 0x010000, CRC(6d5442cc) SHA1(8cdaf6e1ec735740ace78393df2d867a213a4725) )
@@ -5701,6 +5701,20 @@ void namcos2_state::init_finalap3()
 	m_gametype = NAMCOS2_FINAL_LAP_3;
 }
 
+READ16_MEMBER(namcos2_state::finalap3bl_prot_r)
+{
+	// code at 0x3f22 expects this to be 0x4d00 or it sets a value in NVRAM which prevents booting
+	// address 0x180020 (0x10 in NVRAM) must also be 0x6b (machine ID code first byte) or the same will occur
+	// for the 2nd issue we use a default NVRAM with this set
+	return 0x4d00;
+}
+
+void namcos2_state::init_finalap3bl()
+{
+	init_finalap3();
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x3ffff0, 0x3ffff1, read16_delegate(FUNC(namcos2_state::finalap3bl_prot_r),this));
+}
+
 void namcos2_state::init_finehour()
 {
 	m_gametype = NAMCOS2_FINEST_HOUR;
@@ -5906,7 +5920,7 @@ GAME(  1989, burnforc,   0,        base3,    base,     namcos2_state, init_burnf
 GAME(  1989, burnforco,  burnforc, base3,    base,     namcos2_state, init_burnforc, ROT0,   "Namco", "Burning Force (Japan, old version)", 0 )
 
 GAME(  1989, marvland,   0,        base,     base,     namcos2_state, init_marvland, ROT0,   "Namco", "Marvel Land (US, prototype?)", MACHINE_IMPERFECT_SOUND )
-GAME(  1989, marvlandj,  marvland, base,     base,     namcos2_state, init_marvlanj, ROT0,   "Namco", "Marvel Land (Japan)", 0 )
+GAME(  1989, marvlandup,  marvland, base,     base,     namcos2_state, init_marvlanj, ROT0,   "Namco", "Marvel Land (Japan)", 0 )
 
 GAME(  1990, kyukaidk,   0,        base,     kyukaidk, namcos2_state, init_kyukaidk, ROT0,   "Namco", "Kyuukai Douchuuki (Japan, new version (Rev B))", 0 )
 GAME(  1990, kyukaidko,  kyukaidk, base,     kyukaidk, namcos2_state, init_kyukaidk, ROT0,   "Namco", "Kyuukai Douchuuki (Japan, old version)", 0 )
@@ -5941,7 +5955,7 @@ GAMEL( 1992, finalap3,   0,        finalap3, finalap3, namcos2_state, init_final
 GAMEL( 1992, finalap3a,  finalap3, finalap3, finalap3, namcos2_state, init_finalap3, ROT0,   "Namco", "Final Lap 3 (World, set 2)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND | MACHINE_NODEVICE_LAN, layout_finallap )
 GAMEL( 1992, finalap3j,  finalap3, finalap3, finalap3, namcos2_state, init_finalap3, ROT0,   "Namco", "Final Lap 3 (Japan)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND | MACHINE_NODEVICE_LAN, layout_finallap )
 GAMEL( 1992, finalap3jc, finalap3, finalap3, finalap3, namcos2_state, init_finalap3, ROT0,   "Namco", "Final Lap 3 (Japan, Rev C)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND | MACHINE_NODEVICE_LAN, layout_finallap )
-GAMEL( 1992, finalap3bl, finalap3, finalap3, finalap3, namcos2_state, init_finalap3, ROT0,   "Namco", "Final Lap 3 (bootleg)", MACHINE_NOT_WORKING | MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND | MACHINE_NODEVICE_LAN, layout_finallap )
+GAMEL( 1992, finalap3bl, finalap3, finalap3, finalap3, namcos2_state, init_finalap3bl, ROT0,   "Namco", "Final Lap 3 (bootleg)", MACHINE_NOT_WORKING | MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND | MACHINE_NODEVICE_LAN, layout_finallap )
 
 GAME(  1992, luckywld,   0,        luckywld, luckywld, namcos2_state, init_luckywld, ROT0,   "Namco", "Lucky & Wild", 0 )
 GAME(  1992, luckywldj,  luckywld, luckywld, luckywld, namcos2_state, init_luckywld, ROT0,   "Namco", "Lucky & Wild (Japan)", 0 )

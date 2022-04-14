@@ -673,7 +673,7 @@ ROM_START( bagnard )
 	ROM_LOAD( "j1_b04.bin",   0x1000, 0x1000, CRC(c680ef04) SHA1(79406bc786374abfcd9f548268c445b5c8d8858d) )
 
 	ROM_REGION( 0x2000, "gfx2", 0 )
-	ROM_LOAD( "bagnard.001",  0x0000, 0x1000, CRC(060b044c) SHA1(3121f07adb661663a2303085eea1b662968f8f98) )
+	ROM_LOAD( "lebag_itisa_1.c1",  0x0000, 0x1000, CRC(14ac1735) SHA1(a0a5d492d9690333cabf2cb21e121934216fc194) )
 	ROM_LOAD( "bagnard.003",  0x1000, 0x1000, CRC(8043bc1a) SHA1(bd2f3dfe26cf8d987d9ecaa41eac4bdc4e16a692) )
 
 	ROM_REGION( 0x0040, "proms", 0 )
@@ -719,19 +719,19 @@ ROM_END
 
 ROM_START( bagnardi ) // based on bagnard set with mods for license text
 	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "bagnardi_05.e9",   0x0000, 0x1000, CRC(e0156191) SHA1(bb5f16d49fbe48f3bac118acd1fea51ec4bc5355) ) // == e9_b05.bin
-	ROM_LOAD( "bagnardi_06.f9",   0x1000, 0x1000, CRC(2e98c072) SHA1(d1f2341fc0c04f48615cb21a44736c83b7ded3ee) )
-	ROM_LOAD( "bagnardi_07.j9",   0x2000, 0x1000, CRC(698f17b3) SHA1(619498e9e06fcde0a1db67f4347e06c4fc669e6c) )
-	ROM_LOAD( "bagnardi_08.k9",   0x3000, 0x1000, CRC(f212e287) SHA1(8ed4b8e555239862eec2a2e7496054a9eda341ad) )
-	ROM_LOAD( "bagnardi_09.m9",   0x4000, 0x1000, CRC(4f0088ab) SHA1(a8009f5b8517ba4d84fbc483b199f2514f24eae8) ) // == bagnard.009
-	ROM_LOAD( "bagnardi_10.n9",   0x5000, 0x1000, CRC(423c54be) SHA1(f3ad41142441eb73bd17ea7cbdb7070f02c18cb8) )
+	ROM_LOAD( "lebag_itisa_5.e9",      0x0000, 0x1000, CRC(e0156191) SHA1(bb5f16d49fbe48f3bac118acd1fea51ec4bc5355) )
+	ROM_LOAD( "lebag_itisa_6.f9",      0x1000, 0x1000, CRC(edf765e4) SHA1(8fb03297b4e854f8b051cb3b105257ccece6dcff) )
+	ROM_LOAD( "lebag_itisa_7.j9",      0x2000, 0x1000, CRC(ca2e2845) SHA1(1751c091cd00d0b559174d68ba23bf810d792852) )
+	ROM_LOAD( "lebag_itisa_8.k9",      0x3000, 0x1000, CRC(f212e287) SHA1(8ed4b8e555239862eec2a2e7496054a9eda341ad) )
+	ROM_LOAD( "lebag_itisa_9.m9",      0x4000, 0x1000, CRC(5daf3426) SHA1(14f5eaa01353b418a6f90cc07f6e52f910a169c3) )
+	ROM_LOAD( "lebag_itisa_10.n9",     0x5000, 0x1000, CRC(423c54be) SHA1(f3ad41142441eb73bd17ea7cbdb7070f02c18cb8) )
 
 	ROM_REGION( 0x2000, "gfx1", 0 )
 	ROM_LOAD( "bagnardi_02.e1",   0x0000, 0x1000, CRC(4a0a6b55) SHA1(955f8bd4bd9b0fc3c6c359c25ba543ba26c04cbd) ) // == e1_b02.bin
 	ROM_LOAD( "bagnardi_04.j1",   0x1000, 0x1000, CRC(c680ef04) SHA1(79406bc786374abfcd9f548268c445b5c8d8858d) ) // == j1_b04.bin
 
 	ROM_REGION( 0x2000, "gfx2", 0 )
-	ROM_LOAD( "bagnardi_01.c1",  0x0000, 0x1000, CRC(060b044c) SHA1(3121f07adb661663a2303085eea1b662968f8f98) ) // == bagnard.001
+	ROM_LOAD( "bagnardi_01.c1",  0x0000, 0x1000, CRC(14ac1735) SHA1(a0a5d492d9690333cabf2cb21e121934216fc194) )
 	ROM_LOAD( "bagnardi_03.f1",  0x1000, 0x1000, CRC(8043bc1a) SHA1(bd2f3dfe26cf8d987d9ecaa41eac4bdc4e16a692) ) // == bagnard.003
 
 	ROM_REGION( 0x0040, "proms", 0 )
@@ -744,6 +744,9 @@ ROM_START( bagnardi ) // based on bagnard set with mods for license text
 	ROM_REGION( 0x2000, "tmsprom", 0 ) /* data for the TMS5110 speech chip */
 	ROM_LOAD( "bagnardi_11.r9",   0x0000, 0x1000, CRC(2e0057ff) SHA1(33e3ffa6418f86864eb81e5e9bda4bf540c143a6) ) // == r9_b11.bin
 	ROM_LOAD( "bagnardi_12.t9",   0x1000, 0x1000, CRC(b2120edd) SHA1(52b89dbcc749b084331fa82b13d0876e911fce52) ) // == t9_b12.bin
+
+	ROM_REGION (0x104, "plds", 0)
+	ROM_LOAD( "lebag_itisa_pal16r6cn.p6", 0x000, 0x104, CRC(13f14bbf) SHA1(b8c4ddf61609465f3a3699dd42796f15a7b17979) )
 ROM_END
 
 ROM_START( bagnardio ) // 1982, based on bagnard set with mods for license text
@@ -794,8 +797,8 @@ ROM_START( bagmans )
 
 	// according to MT #02508 Stern/Seeburg logos should have different colors.
 	ROM_REGION( 0x0040, "proms", 0 )
-	ROM_LOAD( "p3.bin",       0x0000, 0x0020, BAD_DUMP CRC(2a855523) SHA1(91e032233fee397c90b7c1662934aca9e0671482) )
-	ROM_LOAD( "r3.bin",       0x0020, 0x0020, BAD_DUMP CRC(ae6f1019) SHA1(fd711882b670380cb4bd909c840ba06277b8fbe3) )
+	ROM_LOAD( "r3a.bin",      0x0000, 0x0020, CRC(47504204) SHA1(7524ed766cc6d9a158327717d2cf53346ace2392) ) // MMI 6331 BPROM
+	ROM_LOAD( "r3.bin",       0x0020, 0x0020, CRC(ae6f1019) SHA1(fd711882b670380cb4bd909c840ba06277b8fbe3) ) // MMI 6331 BPROM
 
 	ROM_REGION( 0x0020, "5110ctrl", 0)
 	ROM_LOAD( "r6.bin",       0x0000, 0x0020, CRC(c58a4f6a) SHA1(35ef244b3e94032df2610aa594ea5670b91e1449) ) /*state machine driving TMS5110*/
@@ -805,7 +808,7 @@ ROM_START( bagmans )
 	ROM_LOAD( "t9_b12.bin",   0x1000, 0x1000, CRC(b2120edd) SHA1(52b89dbcc749b084331fa82b13d0876e911fce52) )
 ROM_END
 
-ROM_START( bagmans2 )
+ROM_START( bagmans4 )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "a4_9e.bin",    0x0000, 0x1000, CRC(5fb0a1a3) SHA1(849cd60b58de9585a78a1c4c1747f666a4a4fcc3) )
 	ROM_LOAD( "a4_9f.bin",    0x1000, 0x1000, CRC(7871206e) SHA1(14d9b7a0779d59a870e0d4b911797dff5435a16c) )
@@ -824,8 +827,8 @@ ROM_START( bagmans2 )
 
 	// according to MT #02508 Stern/Seeburg logos should have different colors.
 	ROM_REGION( 0x0040, "proms", 0 )
-	ROM_LOAD( "p3.bin",       0x0000, 0x0020, BAD_DUMP CRC(2a855523) SHA1(91e032233fee397c90b7c1662934aca9e0671482) )
-	ROM_LOAD( "r3.bin",       0x0020, 0x0020, BAD_DUMP CRC(ae6f1019) SHA1(fd711882b670380cb4bd909c840ba06277b8fbe3) )
+	ROM_LOAD( "p3.bin",       0x0000, 0x0020, CRC(47504204) SHA1(7524ed766cc6d9a158327717d2cf53346ace2392) ) // MMI 6331 BPROM
+	ROM_LOAD( "r3.bin",       0x0020, 0x0020, CRC(ae6f1019) SHA1(fd711882b670380cb4bd909c840ba06277b8fbe3) ) // MMI 6331 BPROM
 
 	ROM_REGION( 0x0020, "5110ctrl", 0)
 	ROM_LOAD( "r6.bin",       0x0000, 0x0020, CRC(c58a4f6a) SHA1(35ef244b3e94032df2610aa594ea5670b91e1449) ) /*state machine driving TMS5110*/
@@ -833,6 +836,35 @@ ROM_START( bagmans2 )
 	ROM_REGION( 0x2000, "tmsprom", 0 ) /* data for the TMS5110 speech chip */
 	ROM_LOAD( "r9_b11.bin",   0x0000, 0x1000, CRC(2e0057ff) SHA1(33e3ffa6418f86864eb81e5e9bda4bf540c143a6) )
 	ROM_LOAD( "t9_b12.bin",   0x1000, 0x1000, CRC(b2120edd) SHA1(52b89dbcc749b084331fa82b13d0876e911fce52) )
+ROM_END
+
+ROM_START( bagmans3 ) // not compatible with the PAL16R6 emulator in ../mame/machine/bagman.cpp??
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "bagman_a2_9e.9e", 0x0000, 0x1000, CRC(5f04d805) SHA1(84bcdfd25634879438429d2b41c491e092388add) )
+	ROM_LOAD( "bagman_a3_9f.9f", 0x1000, 0x1000, CRC(136a78aa) SHA1(14e6a556e00b6ebe718f2fe119b372dc7bfa78d9) )
+	ROM_LOAD( "bagman_a2_9j.9j", 0x2000, 0x1000, CRC(f94f5626) SHA1(0ec41c4957833e84e9e498fb4269dfd701a2e5b3) )
+	ROM_LOAD( "bagman_a2_9k.9k", 0x3000, 0x1000, CRC(31788fc1) SHA1(959af99490b96c390a43c76dc4e09b35ebda3a24) )
+	ROM_LOAD( "bagman_a2_9m.9m", 0x4000, 0x1000, CRC(b8e75eb6) SHA1(433fd736512f10bc0879b15821eb55cc41d58d33) )
+	ROM_LOAD( "bagman_a3_9n.9n", 0x5000, 0x1000, CRC(ab66d4c1) SHA1(b90ffc7a8e16abcb88bb5d4705622cfafdf08c81) )
+
+	ROM_REGION( 0x2000, "gfx1", 0 )
+	ROM_LOAD( "bagman_a2_1e.1e", 0x0000, 0x1000, CRC(f217ac09) SHA1(a9716674401dff27344a01df8121b6b648688680) )
+	ROM_LOAD( "bagman_a2_1j.1j", 0x1000, 0x1000, CRC(c680ef04) SHA1(79406bc786374abfcd9f548268c445b5c8d8858d) )
+
+	ROM_REGION( 0x2000, "gfx2", 0 )
+	ROM_LOAD( "bagman_a2_1c.1c", 0x0000, 0x1000, CRC(f3e11bd7) SHA1(43ee00ff777008c89f619eb183e7c5e63f6c7694) )
+	ROM_LOAD( "bagman_a2_1f.1f", 0x1000, 0x1000, CRC(d0f7105b) SHA1(fb382703850a4ded567706e02ebb7f3e22531b7c) )
+
+	ROM_REGION( 0x0040, "proms", 0 )
+	ROM_LOAD( "bagman_color_3pa2.3p", 0x0000, 0x0020, CRC(47504204) SHA1(7524ed766cc6d9a158327717d2cf53346ace2392) ) // MMI 6331 BPROM
+	ROM_LOAD( "bagman_color_3ra1.3r", 0x0020, 0x0020, CRC(ae6f1019) SHA1(fd711882b670380cb4bd909c840ba06277b8fbe3) ) // MMI 6331 BPROM
+
+	ROM_REGION( 0x0020, "5110ctrl", 0)
+	ROM_LOAD( "bagman_sound_6ra2.6r", 0x0000, 0x0020, CRC(c58a4f6a) SHA1(35ef244b3e94032df2610aa594ea5670b91e1449) ) // State machine driving TMS5110 - MMI 6331 BPROM
+
+	ROM_REGION( 0x2000, "tmsprom", 0 ) // Data for the TMS5110 speech chip
+	ROM_LOAD( "bagman_a1_9r.9r", 0x0000, 0x1000, CRC(2e0057ff) SHA1(33e3ffa6418f86864eb81e5e9bda4bf540c143a6) )
+	ROM_LOAD( "bagman_a1_9t.9t", 0x1000, 0x1000, CRC(b2120edd) SHA1(52b89dbcc749b084331fa82b13d0876e911fce52) )
 ROM_END
 
 ROM_START( bagmanj )
@@ -1186,7 +1218,8 @@ GAME( 1982, bagnarda,  bagman,  bagman,   bagman,    bagman_state,   empty_init,
 GAME( 1982, bagnardi,  bagman,  bagman,   bagman,    bagman_state,   empty_init, ROT90,  "Valadon Automation (Itisa license)", "Le Bagnard (Itisa, Spain)", MACHINE_SUPPORTS_SAVE )
 GAME( 1982, bagnardio, bagman,  bagman,   bagman,    bagman_state,   empty_init, ROT90,  "Valadon Automation (Itisa license)", "Le Bagnard (Itisa, Spain, older)", MACHINE_SUPPORTS_SAVE )
 GAME( 1982, bagmans,   bagman,  bagman,   bagmans,   bagman_state,   empty_init, ROT270, "Valadon Automation (Stern Electronics license)", "Bagman (Stern Electronics, revision A5)", MACHINE_SUPPORTS_SAVE )
-GAME( 1982, bagmans2,  bagman,  bagman,   bagman,    bagman_state,   empty_init, ROT270, "Valadon Automation (Stern Electronics license)", "Bagman (Stern Electronics, revision A4)", MACHINE_SUPPORTS_SAVE )
+GAME( 1982, bagmans4,  bagman,  bagman,   bagman,    bagman_state,   empty_init, ROT270, "Valadon Automation (Stern Electronics license)", "Bagman (Stern Electronics, revision A4)", MACHINE_SUPPORTS_SAVE )
+//GAME( 1982, bagmans3,  bagman,  bagman,   bagman,    bagman_state,   init_bagmans3, ROT270, "Valadon Automation (Stern Electronics license)", "Bagman (Stern Electronics, revision A3)", MACHINE_UNEMULATED_PROTECTION | MACHINE_SUPPORTS_SAVE ) // see init_bagmans3(). Not sure it's actually protection
 GAME( 1982, bagmanj,   bagman,  bagman,   bagman,    bagman_state,   empty_init, ROT270, "Valadon Automation (Taito license)", "Bagman (Taito)", MACHINE_SUPPORTS_SAVE ) // title screen actually doesn't mention Valadon, only Stern and Taito
 
 GAME( 1984, sbagman,   0,       sbagman,  sbagman,   bagman_state,   empty_init, ROT270, "Valadon Automation", "Super Bagman (version 5)", MACHINE_SUPPORTS_SAVE )

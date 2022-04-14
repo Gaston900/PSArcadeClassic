@@ -1012,7 +1012,7 @@ ROM_START( drgw2101c )
 	PGM_AUDIO_BIOS
 ROM_END
 
-ROM_START( drgw2c )
+ROM_START( drgw2100c )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code  */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "v-100c.u2",    0x100000, 0x080000, CRC(67467981) SHA1(58af01a3871b6179fe42ff471cc39a2161940043) )
@@ -1031,7 +1031,7 @@ ROM_START( drgw2c )
 	PGM_AUDIO_BIOS
 ROM_END
 
-ROM_START( drgw2j )
+ROM_START( drgw2100j )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code  */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "v-100j.u2",    0x100000, 0x080000, CRC(f8f8393e) SHA1(ef0db668b4e4f661d4c1e95d57afe881bcdf13cc) )
@@ -1050,7 +1050,7 @@ ROM_START( drgw2j )
 	PGM_AUDIO_BIOS
 ROM_END
 
-ROM_START( drgw2hk ) // the IGS025 has a "DRAGON-II 0004-1" sticker, the IGS012 has no per-game marking
+ROM_START( drgw2100hk ) // the IGS025 has a "DRAGON-II 0004-1" sticker, the IGS012 has no per-game marking
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code  */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "dragon_ii_v-100-h.u2",    0x100000, 0x080000, CRC(c6e2e6ec) SHA1(84145dfb26857ea20efb233363f175bc9bb25b0c) )
@@ -3814,13 +3814,13 @@ ROM_END
 ROM_START( dmnfrntpcb )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
 	ROM_LOAD16_WORD_SWAP( "pgm_p02s.u42",    0x00000, 0x020000, CRC(78c15fa2) SHA1(885a6558e022602cc6f482ac9667ba9f61e75092) ) /* IGS PGM P02S 1A3708A1A0 S002838  (uses standard PGM v2 bios) */
-	ROM_LOAD16_WORD_SWAP( "demonfront_v107-u43.bin",    0x100000, 0x200000,  CRC(671d8a31) SHA1(a0c2af67d7c56b4b355883892a47640fc72408a1) )
+	ROM_LOAD16_WORD_SWAP( "demon_front_v107kr_u43.u43",    0x100000, 0x200000,  CRC(671d8a31) SHA1(a0c2af67d7c56b4b355883892a47640fc72408a1) )
 
 	ROM_REGION( 0x4000, "prot", 0 ) /* ARM protection ASIC - internal rom */
 	ROM_LOAD( "dmnfrnt_igs027a.bin", 0x000000, 0x04000, NO_DUMP )
 
 	ROM_REGION( 0x800000, "user1", 0 ) /* Protection Data (encrypted external ARM data, internal missing) */
-	ROM_LOAD( "demonfront_v107-u62.bin",     0x000000, 0x400000, CRC(cb94772e) SHA1(4213600be41fd9ea295dd308920b1d89b635724f) )
+	ROM_LOAD( "demon_front_v107kr_u62.u62",     0x000000, 0x400000, CRC(cb94772e) SHA1(4213600be41fd9ea295dd308920b1d89b635724f) )
 
 	ROM_REGION( 0xa00000, "tiles", 0 ) /* 8x8 Text Tiles + 32x32 BG Tiles */
 	PGM_VIDEO_BIOS
@@ -5367,10 +5367,10 @@ GAME( 1997, orlegend105k, orlegend,  pgm_asic3,              orlegendk, pgm_asic
 //東方之珠II/Dung1Fong1 Zi1 Zyu1 II (Hong Kong)/dongbang jiju II (Korea(undumped))
 GAME( 1997, drgw2,        pgm,       pgm_012_025_drgw2,      pgm,       pgm_012_025_state, init_drgw2,    ROT0,   "IGS", "Dragon World II (ver. 110X, Export)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1997, dw2v100x,     drgw2,     pgm_012_025_drgw2,      pgm,       pgm_012_025_state, init_dw2v100x, ROT0,   "IGS", "Dragon World II (ver. 100X, Export)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 1997, drgw2j,       drgw2,     pgm_012_025_drgw2,      pgm,       pgm_012_025_state, init_drgw2j,   ROT0,   "IGS (Alta license)", "Chuugokuryuu II (ver. 100J, Japan)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 1997, drgw2100j,    drgw2,     pgm_012_025_drgw2,      pgm,       pgm_012_025_state, init_drgw2j,   ROT0,   "IGS (Alta license)", "Chuugokuryuu II (ver. 100J, Japan)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1997, drgw2101c,    drgw2,     pgm_012_025_drgw2,      pgm,       pgm_012_025_state, init_drgw2c101,ROT0,   "IGS", "Zhongguo Long II (ver. 101C, China)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 1997, drgw2c,       drgw2,     pgm_012_025_drgw2,      pgm,       pgm_012_025_state, init_drgw2c,   ROT0,   "IGS", "Zhongguo Long II (ver. 100C, China)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 1997, drgw2hk,      drgw2,     pgm_012_025_drgw2,      pgm,       pgm_012_025_state, init_drgw2hk,  ROT0,   "IGS", "Dungfong Zi Zyu II (ver. 100H, Hong Kong)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE | MACHINE_NOT_WORKING ) // (region is shown as Hokg Kong, Dragon World 3 is the same)
+GAME( 1997, drgw2100c,    drgw2,     pgm_012_025_drgw2,      pgm,       pgm_012_025_state, init_drgw2c,   ROT0,   "IGS", "Zhongguo Long II (ver. 100C, China)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 1997, drgw2100hk,   drgw2,     pgm_012_025_drgw2,      pgm,       pgm_012_025_state, init_drgw2hk,  ROT0,   "IGS", "Dungfong Zi Zyu II (ver. 100H, Hong Kong)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE | MACHINE_NOT_WORKING ) // (region is shown as Hokg Kong, Dragon World 3 is the same)
 
 //The Killing Blade
 //傲剑狂刀/Ào jiàn kuáng dāo (China, Hong Kong; Simplified Chinese)

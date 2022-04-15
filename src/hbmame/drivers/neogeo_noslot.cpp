@@ -5382,10 +5382,10 @@ ROM_START( kof99e ) /* Original Version - Encrypted Code & GFX */
 	ROM_LOAD16_BYTE( "251.c8", 0x3000001, 0x800000, CRC(8d921c68) SHA1(42acf1d27d52a8e3b6262eb7df50693c0b135565) )
 ROM_END
 
-ROM_START( kof99k ) /* Original Version - Encrypted GFX */ /* KOREAN VERSION */
+ROM_START( kof99ka ) /* Original Version - Encrypted GFX */ /* KOREAN VERSION */
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "152.p1",  0x000000, 0x100000, CRC(f2c7ddfa) SHA1(d592eecc53d442c55c2f26a6a721fdf2924d2a5b) )
-	ROM_LOAD16_WORD_SWAP( "152.p2", 0x100000, 0x400000, CRC(274ef47a) SHA1(98654b68cc85c19d4a90b46f3110f551fa2e5357) )
+	ROM_LOAD16_WORD_SWAP( "152.p2",  0x100000, 0x400000, CRC(274ef47a) SHA1(98654b68cc85c19d4a90b46f3110f551fa2e5357) )
 
 	NEO_SFIX_MT_128K
 
@@ -6034,7 +6034,7 @@ ROM_END
 
 ROM_START( pnyaa ) /* Encrypted Set */ /* MVS ONLY RELEASE */
 	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "267.p1", 0x000000, 0x100000, CRC(112fe2c0) SHA1(01420e051f0bdbd4f68ce306a3738161b96f8ba8) )
+	ROM_LOAD16_WORD_SWAP( "pn202.p1", 0x000000, 0x100000, CRC(bf34e71c) SHA1(cfa7a2c7c41601a758414faf34e59583d7537363) )
 
 	NEO_SFIX_MT_128K
 
@@ -7795,9 +7795,9 @@ ROM_START( rotdh ) /* Encrypted Set */ /* AES VERSION */
 	ROM_LOAD16_BYTE( "264-c8.c8", 0x3000001, 0x800000, CRC(c5edb5c4) SHA1(253378c8739daa5da4edb15eff7050820b2b3755) ) /* Plane 2,3 */ /* mask rom TC5364205 */
 ROM_END
 
-ROM_START( kof99knv ) /* Original Version - Encrypted Code & GFX */ /* KOREAN VERSION */
+ROM_START( kof99k ) /* Original Version - Encrypted Code & GFX */ /* KOREAN VERSION */
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "kb.neo-sma", 0x0c0000, 0x040000, CRC(9fccc688) SHA1(1a24d0fe7cabe7b346f538e099f1357bbf77bc89) ) /* stored in the custom chip */
+	ROM_LOAD16_WORD_SWAP( "kb.neo-sma",   0x0c0000, 0x040000, CRC(9fccc688) SHA1(1a24d0fe7cabe7b346f538e099f1357bbf77bc89) ) /* stored in the custom chip */
 	ROM_LOAD16_WORD_SWAP( "151-pg1k.p1",  0x100000, 0x400000, CRC(ef259292) SHA1(e02f2d0c71eac74424507e4845991fbc12821045) ) /* mask rom TC5332205 */
 	ROM_LOAD16_WORD_SWAP( "151-pg2k.p2",  0x500000, 0x400000, CRC(f3898ec2) SHA1(c7fd230fbb97a9b171aeae8ff1a5cd39ba7fa9eb) ) /* mask rom TC5332205 */
 
@@ -11678,7 +11678,7 @@ HACK( 1995, rbff1k,     rbff1,    neogeo_noslot,   neogeo, neogeo_state,   neoge
 HACK( 1995, rbff1ka,    rbff1,    neogeo_noslot,   neogeo, neogeo_state,   neogeo,   ROT0, "SNK", "Real Bout Fatal Fury / Real Bout Garou Densetsu (Korean release, bug fix revision)", MACHINE_SUPPORTS_SAVE )
 HACK( 1991, roboarma,   roboarmy, neogeo_noslot,   neogeo, neogeo_state,   neogeo,   ROT0, "SNK", "Robo Army (NGM-032 ~ NGH-032)", MACHINE_SUPPORTS_SAVE )
 HACK( 2002, rotdh,      rotd,     neogeo_noslot,   neogeo, neogeo_state,   rotd,     ROT0, "Evoga / Playmore", "Rage of the Dragons (NGH-2640?)", MACHINE_SUPPORTS_SAVE )
-HACK( 1999, kof99knv,   kof99,    neogeo_noslot,   neogeo, neogeo_state,   kof99,    ROT0, "SNK", "The King of Fighters '99 - Millennium Battle (Korean release)(Ver.new)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
+HACK( 1999, kof99ka,    kof99,    neogeo_noslot,   neogeo, neogeo_state,   kof99,    ROT0, "SNK", "The King of Fighters '99 - Millennium Battle (Korean release, non-encrypted program)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 HACK( 1992, kotm2a,     kotm2,    neogeo_noslot,   neogeo, neogeo_state,   neogeo,   ROT0, "SNK", "King of the Monsters 2 - The Next Thing (older)", MACHINE_SUPPORTS_SAVE )
 HACK( 1990, bjourneyh,  bjourney, neogeo_noslot,   neogeo, neogeo_state,   neogeo,   ROT0, "Alpha Denshi Co.", "Blue's Journey / Raguy (ALH-001)", MACHINE_SUPPORTS_SAVE )
 HACK( 1991, burningfpa, burningf, neogeo_noslot,   neogeo, neogeo_state,   neogeo,   ROT0, "SNK", "Burning Fight (prototype, ver 23.3, 910326)", MACHINE_SUPPORTS_SAVE )

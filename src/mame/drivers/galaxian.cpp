@@ -12153,16 +12153,16 @@ ROM_START( offensiv )
 	ROM_LOAD( "2716-9j.bin",    0x2000, 0x0800, CRC(fa4f1a70) SHA1(9d797eaab0f19a2ed003f782716719c9d752bd56) )
 	ROM_LOAD( "2716-9l.bin",    0x2800, 0x0800, CRC(9fd96374) SHA1(c8456dd8a012353a023a2d3fa5d508e49c36ace8) )
 	ROM_LOAD( "2716-9m.bin",    0x3000, 0x0800, CRC(88ac07a0) SHA1(c57061db5984b472039356bf84a050b5b66e3813) )
-	ROM_LOAD( "2716-9p.bin",    0x3800, 0x0800, CRC(fe2866f5) SHA1(e62f88691971243138d7022f32d6970e62c01c73) )
+	ROM_LOAD( "2716-9p.bin",    0x3800, 0x0800, CRC(015e580f) SHA1(b9cf3f30ce153b7c97fd6be68aa3e82cf8d17a3e) )
 
 	ROM_REGION( 0x10000, "audiocpu", 0 )
 	ROM_LOAD( "2716-5c.bin",    0x0000, 0x0800, CRC(be037cf6) SHA1(f28e5ead496e70beaada24775aa58bd5d75f2d25) )
 	ROM_LOAD( "2716-5d.bin",    0x0800, 0x0800, CRC(de7912da) SHA1(8558b4eff5d7e63029b325edef9914feda5834c3) )
-	ROM_LOAD( "2716-5e.bin",       0x1000, 0x0800, CRC(ad833f7e) SHA1(f2d600b38bdc973294baee1775ddf7354b89a9ce) )
+	ROM_LOAD( "2716-5e.bin",    0x1000, 0x0800, CRC(ba2fa933) SHA1(1f976d8595706730e29f93027e7ab4620075c078) )
 
 	ROM_REGION( 0x1000, "gfx1", 0 )
-	ROM_LOAD( "2716-6f.bin",        0x0000, 0x0800, CRC(4708845b) SHA1(a8b1ad19a95a9d35050a2ab7194cc96fc5afcdc9) )
-	ROM_LOAD( "2716-6h.bin",        0x0800, 0x0800, CRC(11fd2887) SHA1(69844e48bb4d372cac7ae83c953df573c7ecbb7f) )
+	ROM_LOAD( "2716-6f.bin",    0x0000, 0x0800, CRC(4708845b) SHA1(a8b1ad19a95a9d35050a2ab7194cc96fc5afcdc9) )
+	ROM_LOAD( "2716-6h.bin",    0x0800, 0x0800, CRC(11fd2887) SHA1(69844e48bb4d372cac7ae83c953df573c7ecbb7f) )
 
 	ROM_REGION( 0x0020, "proms", 0 )
 	ROM_LOAD( "82s123-nmi6331-1j-5e.bin",      0x0000, 0x0020, CRC(4e3caeab) SHA1(a25083c3e36d28afdefe4af6e6d4f3155e303625) )
@@ -13639,4 +13639,3 @@ GAME( 1982, losttombh,   losttomb, scobra,     losttomb,   galaxian_state, init_
 GAME( 1984, spdcoin,     0,        scobra,     spdcoin,    galaxian_state, init_scobra,     ROT90,  "Stern Electronics", "Speed Coin (prototype)", MACHINE_SUPPORTS_SAVE )
 
 GAME( 1985, superbon,    0,        scobra,     superbon,   galaxian_state, init_superbon,   ROT90,  "Signatron USA", "Agent Super Bond (Super Cobra conversion)", MACHINE_WRONG_COLORS | MACHINE_SUPPORTS_SAVE )
-

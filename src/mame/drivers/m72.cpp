@@ -2748,28 +2748,28 @@ ROM_START( imgfight )
 	ROM_LOAD16_BYTE( "if-c-l3.ic34",   0x40000, 0x20000, CRC(c66ae348) SHA1(eca5096ebd5bffc6e68f3fc9969cda9679bd921f) )
 	ROM_RELOAD(                        0xc0000, 0x20000 )
 
-	ROM_REGION( 0x10000, "mcu", 0 )  /* i8751 microcontroller */
-	ROM_LOAD( "if_c-pr-a.ic1",  0x00000, 0x01000, NO_DUMP )
+	ROM_REGION( 0x10000, "mcu", 0 )  // i8751 microcontroller
+	ROM_LOAD( "if_c-pr-a.ic1",  0x00000, 0x01000, CRC(55f10458) SHA1(d520ec2b075c94d76d97e0105644ff96384b378c) ) // i8751 MCU labeled  IF C-PR-A
 
 	ROM_REGION( 0x080000, "sprites", 0 )
-	ROM_LOAD( "if-c-00.ic53", 0x00000, 0x20000, CRC(745e6638) SHA1(43fb1f9da4190fea67eee3aee8caf4219becc21b) )  /* sprites */
+	ROM_LOAD( "if-c-00.ic53", 0x00000, 0x20000, CRC(745e6638) SHA1(43fb1f9da4190fea67eee3aee8caf4219becc21b) )  // sprites
 	ROM_LOAD( "if-c-10.ic51", 0x20000, 0x20000, CRC(b7108449) SHA1(1f41ebe7164fab86958caaf6749b99425e682657) )
 	ROM_LOAD( "if-c-20.ic49", 0x40000, 0x20000, CRC(aef33cba) SHA1(2d8a8458207d0c790c81b1285366463c8540d190) )
 	ROM_LOAD( "if-c-30.ic47", 0x60000, 0x20000, CRC(1f98e695) SHA1(5fddcfb17523f8e96f4b85f0cb15d837b81f2bd4) )
 
 	ROM_REGION( 0x040000, "gfx2", 0 )
-	ROM_LOAD( "if-a-a0.ic21", 0x00000, 0x10000, CRC(34ee2d77) SHA1(38826e0318aa8da893fa4c93f217288c015df606) )  /* tiles #1 */
+	ROM_LOAD( "if-a-a0.ic21", 0x00000, 0x10000, CRC(34ee2d77) SHA1(38826e0318aa8da893fa4c93f217288c015df606) )  // tiles #1
 	ROM_LOAD( "if-a-a1.ic22", 0x10000, 0x10000, CRC(6bd2845b) SHA1(149cf14f919590da88b9a8e254690da010709862) )
 	ROM_LOAD( "if-a-a2.ic20", 0x20000, 0x10000, CRC(090d50e5) SHA1(4f2a7c76320b3f8dafae90a246187e034fe7562b) )
 	ROM_LOAD( "if-a-a3.ic23", 0x30000, 0x10000, CRC(3a8e3083) SHA1(8a75d556790b6bea41ead1a5f95589dd293bdf4e) )
 
 	ROM_REGION( 0x040000, "gfx3", 0 )
-	ROM_LOAD( "if-a-b0.ic26", 0x00000, 0x10000, CRC(b425c829) SHA1(0ccd487dba00bb7cb0ff5d1c67f8fee3e68df5d8) )  /* tiles #2 */
+	ROM_LOAD( "if-a-b0.ic26", 0x00000, 0x10000, CRC(b425c829) SHA1(0ccd487dba00bb7cb0ff5d1c67f8fee3e68df5d8) )  // tiles #2
 	ROM_LOAD( "if-a-b1.ic27", 0x10000, 0x10000, CRC(e9bfe23e) SHA1(f97a68dbdce7e06d07faab19acf7625cdc8eeaa8) )
 	ROM_LOAD( "if-a-b2.ic25", 0x20000, 0x10000, CRC(256e50f2) SHA1(9e9fda4f1f1449548942c0da4478f61fe0d263d1) )
 	ROM_LOAD( "if-a-b3.ic24", 0x30000, 0x10000, CRC(4c682785) SHA1(f61f1227e0ad629fdfca106306b17a9f6a9959e3) )
 
-	ROM_REGION( 0x20000, "samples", 0 ) /* samples */
+	ROM_REGION( 0x20000, "samples", 0 ) // samples
 	ROM_LOAD( "if-c-v0.ic44", 0x00000, 0x10000, CRC(cb64a194) SHA1(940fad6b9147bccc8290e112f5973f8ea062b52f) )
 	ROM_LOAD( "if-c-v1.ic45", 0x10000, 0x10000, CRC(45b68bf5) SHA1(2fb28793019ca85b3b6d7c4c31eedff1d71f2d83) )
 ROM_END
@@ -2783,28 +2783,28 @@ ROM_START( imgfightj )
 	ROM_LOAD16_BYTE( "if-c-l3.ic34", 0x40000, 0x20000, CRC(c66ae348) SHA1(eca5096ebd5bffc6e68f3fc9969cda9679bd921f) )
 	ROM_RELOAD(                      0xc0000, 0x20000 )
 
-	ROM_REGION( 0x10000, "mcu", 0 )    /* i8751 microcontroller */
-	ROM_LOAD( "if_c-pr-.ic1", 0x00000, 0x01000, CRC(ef0d5098) SHA1(068b73937588e16a318a094dfe2fb1293b1a1711) ) /* i8751 MCU labeled  IF C-PR- */
+	ROM_REGION( 0x10000, "mcu", 0 )  // i8751 microcontroller
+	ROM_LOAD( "if_c-pr-.ic1", 0x00000, 0x01000, CRC(ef0d5098) SHA1(068b73937588e16a318a094dfe2fb1293b1a1711) ) // i8751 MCU labeled  IF C-PR-
 
 	ROM_REGION( 0x080000, "sprites", 0 )
-	ROM_LOAD( "if-c-00.ic53", 0x00000, 0x20000, CRC(745e6638) SHA1(43fb1f9da4190fea67eee3aee8caf4219becc21b) )  /* sprites */
+	ROM_LOAD( "if-c-00.ic53", 0x00000, 0x20000, CRC(745e6638) SHA1(43fb1f9da4190fea67eee3aee8caf4219becc21b) )  // sprites
 	ROM_LOAD( "if-c-10.ic51", 0x20000, 0x20000, CRC(b7108449) SHA1(1f41ebe7164fab86958caaf6749b99425e682657) )
 	ROM_LOAD( "if-c-20.ic49", 0x40000, 0x20000, CRC(aef33cba) SHA1(2d8a8458207d0c790c81b1285366463c8540d190) )
 	ROM_LOAD( "if-c-30.ic47", 0x60000, 0x20000, CRC(1f98e695) SHA1(5fddcfb17523f8e96f4b85f0cb15d837b81f2bd4) )
 
 	ROM_REGION( 0x040000, "gfx2", 0 )
-	ROM_LOAD( "if-a-a0.ic21", 0x00000, 0x10000, CRC(34ee2d77) SHA1(38826e0318aa8da893fa4c93f217288c015df606) )  /* tiles #1 */
+	ROM_LOAD( "if-a-a0.ic21", 0x00000, 0x10000, CRC(34ee2d77) SHA1(38826e0318aa8da893fa4c93f217288c015df606) )  // tiles #1
 	ROM_LOAD( "if-a-a1.ic22", 0x10000, 0x10000, CRC(6bd2845b) SHA1(149cf14f919590da88b9a8e254690da010709862) )
 	ROM_LOAD( "if-a-a2.ic20", 0x20000, 0x10000, CRC(090d50e5) SHA1(4f2a7c76320b3f8dafae90a246187e034fe7562b) )
 	ROM_LOAD( "if-a-a3.ic23", 0x30000, 0x10000, CRC(3a8e3083) SHA1(8a75d556790b6bea41ead1a5f95589dd293bdf4e) )
 
 	ROM_REGION( 0x040000, "gfx3", 0 )
-	ROM_LOAD( "if-a-b0.ic26", 0x00000, 0x10000, CRC(b425c829) SHA1(0ccd487dba00bb7cb0ff5d1c67f8fee3e68df5d8) )  /* tiles #2 */
+	ROM_LOAD( "if-a-b0.ic26", 0x00000, 0x10000, CRC(b425c829) SHA1(0ccd487dba00bb7cb0ff5d1c67f8fee3e68df5d8) )  // tiles #2
 	ROM_LOAD( "if-a-b1.ic27", 0x10000, 0x10000, CRC(e9bfe23e) SHA1(f97a68dbdce7e06d07faab19acf7625cdc8eeaa8) )
 	ROM_LOAD( "if-a-b2.ic25", 0x20000, 0x10000, CRC(256e50f2) SHA1(9e9fda4f1f1449548942c0da4478f61fe0d263d1) )
 	ROM_LOAD( "if-a-b3.ic24", 0x30000, 0x10000, CRC(4c682785) SHA1(f61f1227e0ad629fdfca106306b17a9f6a9959e3) )
 
-	ROM_REGION( 0x20000, "samples", 0 ) /* samples */
+	ROM_REGION( 0x20000, "samples", 0 ) // samples
 	ROM_LOAD( "if-c-v0.ic44", 0x00000, 0x10000, CRC(cb64a194) SHA1(940fad6b9147bccc8290e112f5973f8ea062b52f) )
 	ROM_LOAD( "if-c-v1.ic45", 0x10000, 0x10000, CRC(45b68bf5) SHA1(2fb28793019ca85b3b6d7c4c31eedff1d71f2d83) )
 ROM_END
@@ -3474,7 +3474,7 @@ ROM_START( dbreedm72 )
 	ROM_LOAD( "db_c-v0.ic44",  0x00000, 0x20000, CRC(312f7282) SHA1(742d56980b4618180e9a0e02051c5aec4d5cdae4) )
 ROM_END
 
-ROM_START( dbreedm72j )
+ROM_START( dbreedjm72 )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "db_c-h3.ic43",  0x00001, 0x20000, CRC(43425d67) SHA1(a87339bf299f7e84b9a181f3827278f64a6a29ea) )
 	ROM_LOAD16_BYTE( "db_c-l3.ic34",  0x00000, 0x20000, CRC(9c1abc85) SHA1(6c73fbec12a7795e327381d886a87bca09a7dff0) )
@@ -4444,7 +4444,7 @@ GAME( 1997, lohtb3,      loht,     m72_8751,     loht,         m72_state, init_m
 GAME( 1989, xmultiplm72, xmultipl, m72_xmultipl, xmultipl,     m72_state, init_m72_8751,   ROT0,   "Irem", "X Multiply (Japan, M72 PCB version)", MACHINE_NO_COCKTAIL | MACHINE_SUPPORTS_SAVE )
 
 GAME( 1989, dbreedm72,   dbreed,   m72_dbreedw,  dbreed,       m72_state, init_dbreedm72,  ROT0,   "Irem", "Dragon Breed (M72 PCB version)", MACHINE_NO_COCKTAIL | MACHINE_SUPPORTS_SAVE ) // fails rom check as "ROM NG  1  2" if used with japanese mcu rom (World version?)
-GAME( 1989, dbreedm72j,  dbreed,   m72_dbreed,   dbreed,       m72_state, init_m72_8751,   ROT0,   "Irem", "Dragon Breed (Japan, M72 PCB version)", MACHINE_NO_COCKTAIL | MACHINE_SUPPORTS_SAVE )
+GAME( 1989, dbreedjm72,  dbreed,   m72_dbreed,   dbreed,       m72_state, init_m72_8751,   ROT0,   "Irem", "Dragon Breed (Japan, M72 PCB version)", MACHINE_NO_COCKTAIL | MACHINE_SUPPORTS_SAVE )
 
 GAME( 1991, gallop,      cosmccop, m72,          gallop,       m72_state, init_gallop,     ROT0,   "Irem", "Gallop - Armed Police Unit (Japan, M72 PCB version)", MACHINE_NO_COCKTAIL | MACHINE_SUPPORTS_SAVE )
 

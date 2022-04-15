@@ -3587,7 +3587,7 @@ GAME( 1999, worldadv,   0,        worldadv,  common,   vamphalf_state,      init
 GAME( 1999, suplup,     0,        suplup,    common,   vamphalf_state,      init_suplup,    ROT0,   "Omega System",                  "Super Lup Lup Puzzle / Zhuan Zhuan Puzzle (version 4.0 / 990518)" , MACHINE_SUPPORTS_SAVE )
 GAME( 1999, luplup,     suplup,   suplup,    common,   vamphalf_state,      init_luplup,    ROT0,   "Omega System",                  "Lup Lup Puzzle / Zhuan Zhuan Puzzle (version 3.0 / 990128)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, luplup29,   suplup,   suplup,    common,   vamphalf_state,      init_luplup29,  ROT0,   "Omega System",                  "Lup Lup Puzzle / Zhuan Zhuan Puzzle (version 2.9 / 990108)", MACHINE_SUPPORTS_SAVE )
-GAME( 1999, luplup10,   suplup,   suplup,    common,   vamphalf_state,      init_luplup10,  ROT0,   "Omega System (Adko license)",   "Lup Lup Puzzle / Zhuan Zhuan Puzzle (version 1.05 / 981214)", MACHINE_SUPPORTS_SAVE )
+GAME( 1999, luplup10,   0,        suplup,    common,   vamphalf_state,      init_luplup10,  ROT0,   "Omega System (Adko license)",   "Lup Lup Puzzle / Zhuan Zhuan Puzzle (version 1.05 / 981214)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, puzlbang,   suplup,   suplup,    common,   vamphalf_state,      init_puzlbang,  ROT0,   "Omega System",                  "Puzzle Bang Bang (Korea, version 2.9 / 990108)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, puzlbanga,  suplup,   suplup,    common,   vamphalf_state,      init_puzlbang,  ROT0,   "Omega System",                  "Puzzle Bang Bang (Korea, version 2.8 / 990106)", MACHINE_SUPPORTS_SAVE )
 
@@ -3619,4 +3619,4 @@ GAME( 2001, aoh,        0,        aoh,       aoh,      vamphalf_state,      init
 
 GAME( 2001, boonggab,   0,        boonggab,  boonggab, vamphalf_state,      init_boonggab,  ROT270, "Taff System",                   "Boong-Ga Boong-Ga (Spank'em!)", MACHINE_SUPPORTS_SAVE )
 
-GAME( 199?, yorijori,   0,        yorijori,  common,   vamphalf_qdsp_state, init_yorijori,  ROT0,   "Golden Bell Entertainment",     "Yori Jori Kuk Kuk", MACHINE_NOT_WORKING | MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 2002, yorijori,   0,        yorijori,  common,   vamphalf_qdsp_state, init_yorijori,  ROT0,   "Golden Bell Entertainment",     "Yori Jori Kuk Kuk", MACHINE_NOT_WORKING | MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )

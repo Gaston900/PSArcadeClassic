@@ -1418,7 +1418,7 @@ static INPUT_PORTS_START( sgyxz )
 	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_START3 )
 
 	PORT_START( "EEPROMIN" )
-	PORT_BIT( 0x01, IP_ACTIVE_HIGH, IPT_SPECIAL ) PORT_READ_LINE_DEVICE_MEMBER("eeprom", eeprom_serial_93cxx_device, do_read)
+	PORT_BIT( 0x01, IP_ACTIVE_HIGH, IPT_CUSTOM ) PORT_READ_LINE_DEVICE_MEMBER("eeprom", eeprom_serial_93cxx_device, do_read)
 
 	PORT_START( "EEPROMOUT" )
 	PORT_BIT( 0x01, IP_ACTIVE_HIGH, IPT_OUTPUT ) PORT_WRITE_LINE_DEVICE_MEMBER("eeprom", eeprom_serial_93cxx_device, di_write)
@@ -3084,7 +3084,7 @@ HACK( 1990, ffightbl,  ffight,   fcrash,    fcrash,   cps_state, cps1,     ROT0,
 HACK( 1990, ffightbla, ffight,   fcrash,    fcrash,   cps_state, cps1,     ROT0,   "bootleg", "Final Fight (bootleg on Final Crash PCB)", MACHINE_SUPPORTS_SAVE ) // same as Final Crash without the modified gfx
 
 HACK( 1991, kodb,      kod,      kodb,      kodb,     cps_state, kodb,     ROT0,   "bootleg (Playmark)", "The King of Dragons (bootleg)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE ) // 910731  "ETC"
-HACK( 1991, knightsb,  knights,  knightsb,  knights,  cps_state, dinopic,  ROT0,   "bootleg", "Knights of the Round (bootleg)", MACHINE_SUPPORTS_SAVE )    // 911127 - based on World version
+HACK( 1991, knightsb,  knights,  knightsb,  knights,  cps_state, dinopic,  ROT0,   "bootleg", "Knights of the Round (bootleg with 2xMSM5205, set 1)", MACHINE_SUPPORTS_SAVE )    // 911127 - based on World version
 
 HACK( 1993, punipic,   punisher, punipic,   punisher, cps_state, punipic,  ROT0,   "bootleg", "The Punisher (bootleg with PIC16c57, set 1)", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE ) // 930422 ETC
 HACK( 1993, punipic2,  punisher, punipic,   punisher, cps_state, punipic,  ROT0,   "bootleg", "The Punisher (bootleg with PIC16c57, set 2)", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE ) // 930422 ETC
@@ -3206,7 +3206,7 @@ ROM_START( captcommb2 )
 ROM_END
 
 
-HACK( 1991, captcommb2,captcomm, captcommb2,captcomm, cps_state, cps1,     ROT0,   "bootleg", "Captain Commando (bootleg set 2)(bootleg with YM2151 + 2xMSM5205)", MACHINE_SUPPORTS_SAVE )
+HACK( 1991, captcommb2,captcomm, captcommb2,captcomm, cps_state, cps1,     ROT0,   "bootleg", "Captain Commando (bootleg with 2xMSM5205)", MACHINE_SUPPORTS_SAVE )
 
 ROM_START( dinopic3 )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 ) // = dinopic but arranged differently
@@ -3485,7 +3485,7 @@ GAME( 1993, dinopic3,   dino,     dinopic,   dino,     cps_state, init_dinopic, 
 GAME( 1993, jurassic99, dino,     dinopic,   dino,     cps_state, init_dinopic,  ROT0,   "bootleg",             "Jurassic 99 (Cadillacs and Dinosaurs bootleg with EM78P447AP)",  MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )     // 930201 ?
 GAME( 1991, knightsb3,  knights,  knightsb,  knights,  cps_state, init_dinopic,  ROT0,   "bootleg",             "Knights of the Round (bootleg with 2xMSM5205, set 2)",  MACHINE_SUPPORTS_SAVE )  // 911127 ETC
 GAME( 1992, sf2b2,      sf2,      sf2b,      sf2mdt,   cps_state, init_sf2b,     ROT0,   "bootleg",             "Street Fighter II: The World Warrior (bootleg, set 2)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE ) //910204 - based on World version
-GAME( 1992, sf2ceb,     sf2ce,    sf2mdt,    sf2mdt,   cps_state, init_sf2mdta,  ROT0,   "bootleg (Playmark)",  "Street Fighter II': Champion Edition (Playmark bootleg)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )   // 920313 - based on World version
+GAME( 1992, sf2ceb,     sf2ce,    sf2mdt,    sf2mdt,   cps_state, init_sf2mdta,  ROT0,   "bootleg (Playmark)",  "Street Fighter II': Champion Edition (Playmark bootleg, set 1)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )   // 920313 - based on World version
 GAME( 1992, sf2ceb2,    sf2ce,    sf2mdt,    sf2mdt,   cps_state, init_sf2mdtb,  ROT0,   "bootleg",             "Street Fighter II': Champion Edition (bootleg, set 1)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )  // 920313 ETC
 GAME( 1992, sf2ceb3,    sf2ce,    sf2mdt,    sf2mdt,   cps_state, init_sf2mdtb,  ROT0,   "bootleg",             "Street Fighter II': Champion Edition (bootleg, set 2)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )  // 920313 ETC
 GAME( 1992, sf2ceb4,    sf2ce,    sf2mdt,    sf2mdt,   cps_state, init_sf2mdtb,  ROT0,   "bootleg (Playmark)",  "Street Fighter II': Champion Edition (Playmark bootleg, set 2)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )  // 920313 ETC

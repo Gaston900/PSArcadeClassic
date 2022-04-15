@@ -2503,7 +2503,7 @@ ROM_START( joust )
 	ROM_LOAD( "decoder.6",   0x0200, 0x0200, CRC(83faf25e) SHA1(30002643d08ed983a6701a7c4b5ee74a2f4a1adb) )
 ROM_END
 
-ROM_START( joustwr )
+ROM_START( jousty )
 	ROM_REGION( 0x19000, "maincpu", 0 )
 	ROM_LOAD( "joust.wra",   0x0d000, 0x1000, CRC(2039014a) SHA1(b9a76ecf01404585f833f76c54aa5a88a0215715) )
 	ROM_LOAD( "joust.wgb",   0x0e000, 0x1000, CRC(ea48b359) SHA1(6d38003d56bebeb1f5b4d2287d587342847aa195) )
@@ -2670,7 +2670,7 @@ ROM_START( sinistar )
 	ROM_LOAD( "decoder.6",   0x0200, 0x0200, CRC(83faf25e) SHA1(30002643d08ed983a6701a7c4b5ee74a2f4a1adb) )
 ROM_END
 
-ROM_START( sinistar1 )
+ROM_START( sinistarp )
 	ROM_REGION( 0x19000, "maincpu", 0 )
 	ROM_LOAD( "sinrev1.10",   0x0e000, 0x1000, CRC(ea87a53f) SHA1(4e4bad5315a8f5740c926ee5681879919a5be37f) )
 	ROM_LOAD( "sinrev1.11",   0x0f000, 0x1000, CRC(88d36e80) SHA1(bb9adaf5b73f9874e52dc2f5fd35e22f8b4fc258) )
@@ -3412,7 +3412,7 @@ GAME( 2015, robotrontd, robotron, williams,       robotron, williams_state, init
 
 GAME( 1982, joust,      0,        williams_muxed, joust,    williams_state, init_joust,    ROT0,   "Williams", "Joust (Green label)", MACHINE_SUPPORTS_SAVE )
 GAME( 1982, joustr,     joust,    williams_muxed, joust,    williams_state, init_joust,    ROT0,   "Williams", "Joust (Red label)", MACHINE_SUPPORTS_SAVE )
-GAME( 1982, joustwr,    joust,    williams_muxed, joust,    williams_state, init_joust,    ROT0,   "Williams", "Joust (Yellow label)", MACHINE_SUPPORTS_SAVE )
+GAME( 1982, jousty,     joust,    williams_muxed, joust,    williams_state, init_joust,    ROT0,   "Williams", "Joust (Yellow label)", MACHINE_SUPPORTS_SAVE )
 
 GAME( 1982, bubbles,    0,        williams,       bubbles,  williams_state, init_bubbles,  ROT0,   "Williams", "Bubbles", MACHINE_SUPPORTS_SAVE )
 GAME( 1982, bubblesr,   bubbles,  williams,       bubbles,  williams_state, init_bubbles,  ROT0,   "Williams", "Bubbles (Solid Red label)", MACHINE_SUPPORTS_SAVE )
@@ -3421,8 +3421,8 @@ GAME( 1982, bubblesp,   bubbles,  williams,       bubbles,  williams_state, init
 GAME( 1982, splat,      0,        williams_muxed, splat,    williams_state, init_splat,    ROT0,   "Williams", "Splat!", MACHINE_SUPPORTS_SAVE )
 
 GAME( 1982, sinistar,   0,        sinistar,       sinistar, williams_state, init_sinistar, ROT270, "Williams", "Sinistar (revision 3)", MACHINE_SUPPORTS_SAVE )
-GAME( 1982, sinistar1,  sinistar, sinistar,       sinistar, williams_state, init_sinistar, ROT270, "Williams", "Sinistar (AMOA-82 prototype)", MACHINE_SUPPORTS_SAVE )
 GAME( 1982, sinistar2,  sinistar, sinistar,       sinistar, williams_state, init_sinistar, ROT270, "Williams", "Sinistar (revision 2)", MACHINE_SUPPORTS_SAVE )
+GAME( 1982, sinistarp,  sinistar, sinistar,       sinistar, williams_state, init_sinistar, ROT270, "Williams", "Sinistar (AMOA-82 prototype)", MACHINE_SUPPORTS_SAVE )
 
 GAME( 1983, playball,   0,        playball,       playball, williams_state, init_playball, ROT270, "Williams", "PlayBall! (prototype)", MACHINE_SUPPORTS_SAVE )
 
@@ -3436,7 +3436,6 @@ GAME( 1985, alienar,    0,        williams_muxed, alienar,  williams_state, init
 GAME( 1985, alienaru,   alienar,  williams_muxed, alienar,  williams_state, init_alienaru, ROT0,   "Duncan Brown", "Alien Arena (Stargate upgrade)", MACHINE_SUPPORTS_SAVE )
 
 GAME( 1987, lottofun,   0,        lottofun,       lottofun, williams_state, init_lottofun, ROT0,   "H.A.R. Management", "Lotto Fun", MACHINE_SUPPORTS_SAVE )
-
 
 
 /* 2nd Generation Williams hardware with tilemaps */

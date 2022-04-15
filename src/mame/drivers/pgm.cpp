@@ -1860,25 +1860,21 @@ ROM_START( photoy2k )
 
 	ROM_REGION( 0x280000, "tiles", 0 ) /* 8x8 Text Tiles + 32x32 BG Tiles */
 	PGM_VIDEO_BIOS
-	ROM_LOAD( "t0700.rom",    0x180000, 0x080000, CRC(93943b4d) SHA1(3b439903853727d45d62c781af6073024eb3c5a3) )
+	ROM_LOAD( "t0700.u11",   0x180000, 0x080000, CRC(93943b4d) SHA1(3b439903853727d45d62c781af6073024eb3c5a3) )
 
 	ROM_REGION( 0x2000000, "sprcol", 0 ) /* Sprite Colour Data */
-	ROM_LOAD( "a0700.l",    0x0000000, 0x0400000, CRC(26a9ae9c) SHA1(c977c89db6fdf47ee260ff687b80375caeab975c) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "a0700.h",    0x0400000, 0x0400000, CRC(79bc1fc1) SHA1(a09472a9b75704c1d31ab828f92c2a5007b2b4ed) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "a0701.l",    0x0800000, 0x0400000, CRC(23607f81) SHA1(8b6dbcdce9b131370693847ed9771aa04b62711c) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "a0701.h",    0x0c00000, 0x0400000, CRC(5f2efd37) SHA1(9a5bd9751691bc085b0751b9fa8ede9eb97b1248) )
-	ROM_LOAD( "a0702.rom",  0x1000000, 0x0080000, CRC(42239e1b) SHA1(2b6d20958abf8a67ce525d5c8964b6d225ccaeda) )
+	ROM_LOAD( "a0700.u2",    0x0000000, 0x0800000, CRC(503c855b) SHA1(aa910cc33a23ac8f1c91f88da388ed92e49fa1b8) )
+	ROM_LOAD( "a0701.u4",    0x0800000, 0x0800000, CRC(845e11a8) SHA1(9e35d0e6620acd023eba83f86d970e9895204767) )
+	ROM_LOAD( "a0702.u3",    0x1000000, 0x0080000, CRC(42239e1b) SHA1(2b6d20958abf8a67ce525d5c8964b6d225ccaeda) )
 
 	ROM_REGION( 0x1000000, "sprmask", 0 ) /* Sprite Masks + Colour Indexes */
-	ROM_LOAD( "b0700.l",    0x0000000, 0x0400000, CRC(af096904) SHA1(8e86b36cc44720ece68022e409279bf9144341ba) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "b0700.h",    0x0400000, 0x0400000, CRC(6d53de26) SHA1(f3f93fd2f87adb815834ba0242b94073fbb5e333) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "cgv101.rom", 0x0800000, 0x0020000, CRC(da02ec3e) SHA1(7ee21d748c9b932f53e790a9040167f904fecefc) )
+	ROM_LOAD( "pgm_b0700.u7",            0x0000000, 0x0800000, CRC(8cd027f6) SHA1(e377c64facbf657f58b8567d8b483ca067967fc0) )
+	ROM_LOAD( "photo_y2k_cg_v101_u6.u6", 0x0800000, 0x0020000, CRC(da02ec3e) SHA1(7ee21d748c9b932f53e790a9040167f904fecefc) )
 
 	ROM_REGION( 0x480000, "ics", 0 ) /* Samples - (8 bit mono 11025Hz) - */
 	PGM_AUDIO_BIOS
-	ROM_LOAD( "m0700.rom",    0x400000, 0x080000, CRC(acc7afce) SHA1(ac2d344ebac336f0f363bb045dd8ea4e83d1fb50) )
+	ROM_LOAD( "m0700.u5",    0x400000, 0x080000, CRC(acc7afce) SHA1(ac2d344ebac336f0f363bb045dd8ea4e83d1fb50) )
 ROM_END
-
 
 ROM_START( photoy2k104 )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
@@ -1890,23 +1886,20 @@ ROM_START( photoy2k104 )
 
 	ROM_REGION( 0x280000, "tiles", 0 ) /* 8x8 Text Tiles + 32x32 BG Tiles */
 	PGM_VIDEO_BIOS
-	ROM_LOAD( "t0700.rom",    0x180000, 0x080000, CRC(93943b4d) SHA1(3b439903853727d45d62c781af6073024eb3c5a3) )
+	ROM_LOAD( "t0700.u11",   0x180000, 0x080000, CRC(93943b4d) SHA1(3b439903853727d45d62c781af6073024eb3c5a3) )
 
 	ROM_REGION( 0x2000000, "sprcol", 0 ) /* Sprite Colour Data */
-	ROM_LOAD( "a0700.l",    0x0000000, 0x0400000, CRC(26a9ae9c) SHA1(c977c89db6fdf47ee260ff687b80375caeab975c) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "a0700.h",    0x0400000, 0x0400000, CRC(79bc1fc1) SHA1(a09472a9b75704c1d31ab828f92c2a5007b2b4ed) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "a0701.l",    0x0800000, 0x0400000, CRC(23607f81) SHA1(8b6dbcdce9b131370693847ed9771aa04b62711c) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "a0701.h",    0x0c00000, 0x0400000, CRC(5f2efd37) SHA1(9a5bd9751691bc085b0751b9fa8ede9eb97b1248) )
-	ROM_LOAD( "a0702.rom",  0x1000000, 0x0080000, CRC(42239e1b) SHA1(2b6d20958abf8a67ce525d5c8964b6d225ccaeda) )
+	ROM_LOAD( "a0700.u2",    0x0000000, 0x0800000, CRC(503c855b) SHA1(aa910cc33a23ac8f1c91f88da388ed92e49fa1b8) )
+	ROM_LOAD( "a0701.u4",    0x0800000, 0x0800000, CRC(845e11a8) SHA1(9e35d0e6620acd023eba83f86d970e9895204767) )
+	ROM_LOAD( "a0702.u3",    0x1000000, 0x0080000, CRC(42239e1b) SHA1(2b6d20958abf8a67ce525d5c8964b6d225ccaeda) )
 
 	ROM_REGION( 0x1000000, "sprmask", 0 ) /* Sprite Masks + Colour Indexes */
-	ROM_LOAD( "b0700.l",    0x0000000, 0x0400000, CRC(af096904) SHA1(8e86b36cc44720ece68022e409279bf9144341ba) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "b0700.h",    0x0400000, 0x0400000, CRC(6d53de26) SHA1(f3f93fd2f87adb815834ba0242b94073fbb5e333) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "cgv101.rom", 0x0800000, 0x0020000, CRC(da02ec3e) SHA1(7ee21d748c9b932f53e790a9040167f904fecefc) )
+	ROM_LOAD( "b0700.u7",            0x0000000, 0x0800000, CRC(8cd027f6) SHA1(e377c64facbf657f58b8567d8b483ca067967fc0) )
+	ROM_LOAD( "photo_y2k_cg_v101_u6.u6", 0x0800000, 0x0020000, CRC(da02ec3e) SHA1(7ee21d748c9b932f53e790a9040167f904fecefc) )
 
 	ROM_REGION( 0x480000, "ics", 0 ) /* Samples - (8 bit mono 11025Hz) - */
 	PGM_AUDIO_BIOS
-	ROM_LOAD( "m0700.rom",    0x400000, 0x080000, CRC(acc7afce) SHA1(ac2d344ebac336f0f363bb045dd8ea4e83d1fb50) )
+	ROM_LOAD( "m0700.u5",    0x400000, 0x080000, CRC(acc7afce) SHA1(ac2d344ebac336f0f363bb045dd8ea4e83d1fb50) )
 ROM_END
 
 
@@ -1973,36 +1966,33 @@ CG_V101.U6
 
 */
 
-ROM_START( photoy2k102 )
+ROM_START( photoy2k102j )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
 	PGM_68K_BIOS
-	ROM_LOAD16_BYTE( "v102.u4",     0x100001, 0x080000, CRC(a65eda9f) SHA1(6307cacf4a262e781753eff14700a0455837780c) ) // 05/03/99 16:06:33
-	ROM_LOAD16_BYTE( "v102.u6",     0x100000, 0x080000, CRC(b9ca5504) SHA1(058cf01316f233236ca9861349f515935283b75e) )
-	ROM_LOAD16_BYTE( "v102.u5",     0x200001, 0x080000, CRC(9201621b) SHA1(1ca3ebe7eec40614bfa8b911657fa2b51f2c51a4) )
-	ROM_LOAD16_BYTE( "v102.u8",     0x200000, 0x080000, CRC(3be22b8f) SHA1(03634fbd6a8a8369c6cb1fd6694a3784dac5bf59) )
+	ROM_LOAD16_BYTE( "photo_y2k_v102_u4.u4",     0x100001, 0x080000, CRC(a65eda9f) SHA1(6307cacf4a262e781753eff14700a0455837780c) ) // 05/03/99 16:06:33
+	ROM_LOAD16_BYTE( "photo_y2k_v102_u6.u6",     0x100000, 0x080000, CRC(b9ca5504) SHA1(058cf01316f233236ca9861349f515935283b75e) )
+	ROM_LOAD16_BYTE( "photo_y2k_v102_u5.u5",     0x200001, 0x080000, CRC(9201621b) SHA1(1ca3ebe7eec40614bfa8b911657fa2b51f2c51a4) )
+	ROM_LOAD16_BYTE( "photo_y2k_v102_u8.u8",     0x200000, 0x080000, CRC(3be22b8f) SHA1(03634fbd6a8a8369c6cb1fd6694a3784dac5bf59) )
 
 	ROM_REGION( 0x4000, "prot", 0 ) /* ARM protection ASIC - internal rom */
 	ROM_LOAD( "igs027a_photoy2k_v100_china_alt.asic", 0x000000, 0x04000,  CRC(6dd7f257) SHA1(1984f98a282d8b3264674f231c3b7def1757cf72) )
 
 	ROM_REGION( 0x280000, "tiles", 0 ) /* 8x8 Text Tiles + 32x32 BG Tiles */
 	PGM_VIDEO_BIOS
-	ROM_LOAD( "t0700.rom",    0x180000, 0x080000, CRC(93943b4d) SHA1(3b439903853727d45d62c781af6073024eb3c5a3) )
+	ROM_LOAD( "t0700.u11",   0x180000, 0x080000, CRC(93943b4d) SHA1(3b439903853727d45d62c781af6073024eb3c5a3) )
 
 	ROM_REGION( 0x2000000, "sprcol", 0 ) /* Sprite Colour Data */
-	ROM_LOAD( "a0700.l",    0x0000000, 0x0400000, CRC(26a9ae9c) SHA1(c977c89db6fdf47ee260ff687b80375caeab975c) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "a0700.h",    0x0400000, 0x0400000, CRC(79bc1fc1) SHA1(a09472a9b75704c1d31ab828f92c2a5007b2b4ed) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "a0701.l",    0x0800000, 0x0400000, CRC(23607f81) SHA1(8b6dbcdce9b131370693847ed9771aa04b62711c) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "a0701.h",    0x0c00000, 0x0400000, CRC(5f2efd37) SHA1(9a5bd9751691bc085b0751b9fa8ede9eb97b1248) )
-	ROM_LOAD( "a0702.rom",  0x1000000, 0x0080000, CRC(42239e1b) SHA1(2b6d20958abf8a67ce525d5c8964b6d225ccaeda) )
+	ROM_LOAD( "a0700.u2",    0x0000000, 0x0800000, CRC(503c855b) SHA1(aa910cc33a23ac8f1c91f88da388ed92e49fa1b8) )
+	ROM_LOAD( "a0701.u4",    0x0800000, 0x0800000, CRC(845e11a8) SHA1(9e35d0e6620acd023eba83f86d970e9895204767) )
+	ROM_LOAD( "a0702.u3",    0x1000000, 0x0080000, CRC(42239e1b) SHA1(2b6d20958abf8a67ce525d5c8964b6d225ccaeda) )
 
 	ROM_REGION( 0x1000000, "sprmask", 0 ) /* Sprite Masks + Colour Indexes */
-	ROM_LOAD( "b0700.l",    0x0000000, 0x0400000, CRC(af096904) SHA1(8e86b36cc44720ece68022e409279bf9144341ba) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "b0700.h",    0x0400000, 0x0400000, CRC(6d53de26) SHA1(f3f93fd2f87adb815834ba0242b94073fbb5e333) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
-	ROM_LOAD( "cgv101.rom", 0x0800000, 0x0020000, CRC(da02ec3e) SHA1(7ee21d748c9b932f53e790a9040167f904fecefc) )
+	ROM_LOAD( "b0700.u7",            0x0000000, 0x0800000, CRC(8cd027f6) SHA1(e377c64facbf657f58b8567d8b483ca067967fc0) )
+	ROM_LOAD( "photo_y2k_cg_v101_u6.u6", 0x0800000, 0x0020000, CRC(da02ec3e) SHA1(7ee21d748c9b932f53e790a9040167f904fecefc) )
 
 	ROM_REGION( 0x480000, "ics", 0 ) /* Samples - (8 bit mono 11025Hz) - */
 	PGM_AUDIO_BIOS
-	ROM_LOAD( "m0700.rom",    0x400000, 0x080000, CRC(acc7afce) SHA1(ac2d344ebac336f0f363bb045dd8ea4e83d1fb50) )
+	ROM_LOAD( "photo_y2k_sp_v102_u5.u5", 0x400000, 0x080000, CRC(acc7afce) SHA1(ac2d344ebac336f0f363bb045dd8ea4e83d1fb50) )
 ROM_END
 
 
@@ -3538,7 +3528,7 @@ ROM_START( martmast )
 	ROM_LOAD( "m1001.u7",    0xc00000, 0x400000, CRC(662d2d48) SHA1(2fcc3099d9c04456cae3b13035fb28eaf709e7d8) )
 ROM_END
 
-ROM_START( martmastc )
+ROM_START( martmast104c )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "v104_32m.u9",    0x100000, 0x400000, CRC(cfd9dff4) SHA1(328eaf6ac49a73265ee4e0f992b1b1312f49877b) )
@@ -3570,7 +3560,7 @@ ROM_START( martmastc )
 	ROM_LOAD( "m1001.u7",    0xc00000, 0x400000, CRC(662d2d48) SHA1(2fcc3099d9c04456cae3b13035fb28eaf709e7d8) )
 ROM_END
 
-ROM_START( martmastc103 )
+ROM_START( martmast103c )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "v103_32m.u9",    0x100000, 0x400000, CRC(df5ffbe9) SHA1(cd37900b3741707f81077ca07565997031409131) )
@@ -3602,7 +3592,7 @@ ROM_START( martmastc103 )
 	ROM_LOAD( "m1001.u7",    0xc00000, 0x400000, CRC(662d2d48) SHA1(2fcc3099d9c04456cae3b13035fb28eaf709e7d8) )
 ROM_END
 
-ROM_START( martmastc102 )
+ROM_START( martmast102c )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "martmast_u9-v102.322",    0x100000, 0x400000, CRC(bb24b92a) SHA1(442cb9e3f51727be82f71c078c5c3e49dc1a23f0) )
@@ -3611,7 +3601,7 @@ ROM_START( martmastc102 )
 	ROM_LOAD( "martial_masters_v101_cn.asic", 0x000000, 0x04000, CRC(b3e25b7d) SHA1(6147d7ee2e11636521df1bb96ed5da8ad21b2a57) ) // not verified, could be bad
 
 	ROM_REGION32_LE( 0x400000, "user1", 0 ) /* Protection Data (encrypted external ARM data) */
-	ROM_LOAD( "martmast_u10-v101.160", 0x000000, 0x200000,   CRC(d5d93294) SHA1(58d0a99749f7dc05814892b508ce21b160410947) )
+	ROM_LOAD( "mm_v101_u10.u10", 0x000000, 0x400000,   CRC(41b9497c) SHA1(a941abbb938fb769112eaad374cc513a71aaa556) ) // double size wrt to other sets
 
 	ROM_REGION( 0xa00000, "tiles", 0 ) /* 8x8 Text Tiles + 32x32 BG Tiles */
 	PGM_VIDEO_BIOS
@@ -5400,7 +5390,7 @@ GAME( 2001, dwex101cn,    dwex,      pgm_022_025_dw3,        dw3,       pgm_022_
 GAME( 1999, photoy2k,     pgm,       pgm_arm_type1,          photoy2k,  pgm_arm_type1_state, init_photoy2k, ROT0,   "IGS", "Photo Y2K / Chaoji Bi Yi Bi / Dajia Lai Zhao Cha / Real and Fake (ver. 105)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) /* region provided by protection device */
 GAME( 1999, photoy2k104,  photoy2k,  pgm_arm_type1,          photoy2k,  pgm_arm_type1_state, init_photoy2k, ROT0,   "IGS", "Photo Y2K / Chaoji Bi Yi Bi / Dajia Lai Zhao Cha / Real and Fake (ver. 104)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) /* region provided by protection device */
 GAME( 1999, photoy2k103j, photoy2k,  pgm_arm_type1,          photoy2kj, pgm_arm_type1_state, init_photoy2k, ROT0,   "IGS", "Photo Y2K / Chaoji Bi Yi Bi / Dajia Lai Zhao Cha / Real and Fake (ver. 103, Japanese Board)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) /* region provided by protection device */
-GAME( 1999, photoy2k102,  photoy2k,  pgm_arm_type1,          photoy2k,  pgm_arm_type1_state, init_photoy2k, ROT0,   "IGS", "Photo Y2K / Chaoji Bi Yi Bi / Dajia Lai Zhao Cha / Real and Fake (ver. 102, Japanese Board)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) /* region provided by protection device */
+GAME( 1999, photoy2k102j, photoy2k,  pgm_arm_type1,          photoy2k,  pgm_arm_type1_state, init_photoy2k, ROT0,   "IGS", "Photo Y2K / Chaoji Bi Yi Bi / Dajia Lai Zhao Cha / Real and Fake (ver. 102, Japanese Board)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) /* region provided by protection device */
 
 //三国战纪风云再起/Sānguó zhàn jì Fēngyún zàiqǐ (China, Hong Kong; Simplified Chinese)
 //三國戰紀風雲再起/Sānguó zhàn jì Fēngyún zàiqǐ (Taiwan; Traditional Chinese)
@@ -5439,9 +5429,9 @@ GAME( 2001, kov2p200,     kov2p,     pgm_arm_type2,          kov2,      pgm_arm_
 //形意拳/Xíng yì quán/Sin ī ken(Japanese label)
 // region provided by internal ARM rom
 GAME( 2001, martmast,     pgm,       pgm_arm_type2_22m,      martmast,  pgm_arm_type2_state, init_martmast,   ROT0,   "IGS", "Martial Masters / Xing Yi Quan (ver. 104, 102, 102US)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // 68k V104, Ext Arm 102, Int Arm 102US
-GAME( 2001, martmastc,    martmast,  pgm_arm_type2_22m,      martmast,  pgm_arm_type2_state, init_martmast,   ROT0,   "IGS", "Martial Masters / Xing Yi Quan (ver. 104, 102, 101CN)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // 68k V104, Ext Arm 102, Int Arm 101CN
-GAME( 2001, martmastc103, martmast,  pgm_arm_type2_22m,      martmast,  pgm_arm_type2_state, init_martmast,   ROT0,   "IGS", "Martial Masters / Xing Yi Quan (ver. 103, 102, 101CN)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // 68k V103, Ext Arm 102, Int Arm 101CN (actually 102 CN on the PCB, needs to be dumped)
-GAME( 2001, martmastc102, martmast,  pgm_arm_type2_22m,      martmast,  pgm_arm_type2_state, init_martmast,   ROT0,   "IGS", "Martial Masters / Xing Yi Quan (ver. 102, 101, 101CN)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // 68k V102, Ext Arm 101, Int Arm 101CN
+GAME( 2001, martmast104c, martmast,  pgm_arm_type2_22m,      martmast,  pgm_arm_type2_state, init_martmast,   ROT0,   "IGS", "Martial Masters / Xing Yi Quan (ver. 104, 102, 101CN)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // 68k V104, Ext Arm 102, Int Arm 101CN
+GAME( 2001, martmast103c, martmast,  pgm_arm_type2_22m,      martmast,  pgm_arm_type2_state, init_martmast,   ROT0,   "IGS", "Martial Masters / Xing Yi Quan (ver. 103, 102, 101CN)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // 68k V103, Ext Arm 102, Int Arm 101CN (actually 102 CN on the PCB, needs to be dumped)
+GAME( 2001, martmast102c, martmast,  pgm_arm_type2_22m,      martmast,  pgm_arm_type2_state, init_martmast,   ROT0,   "IGS", "Martial Masters / Xing Yi Quan (ver. 102, 101, 101CN)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // 68k V102, Ext Arm 101, Int Arm 101CN
 GAME( 2001, martmasttw,   martmast,  pgm_arm_type2_22m,      martmast,  pgm_arm_type2_state, init_martmast,   ROT0,   "IGS", "Martial Masters / Xing Yi Quan (ver. 102, 101, 101TW)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE | MACHINE_NOT_WORKING ) // 68k V102, Ext Arm 101, Int Arm 101TW
 
 //蜂暴/Fēng bào (Chinese, Title call excepting Japan)/Fung1 Bou6 (Hong Kong, Jyutping)

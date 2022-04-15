@@ -4229,6 +4229,10 @@ ROM_START( ssi )
 	ROM_LOAD( "c64-02.2",     0x00000, 0x20000, CRC(3cb0b907) SHA1(7cbe437fe584575a2f26a582095fd49665c7003e) )
 
 	/* no Delta-T samples */
+
+	ROM_REGION( 0x400, "plds", 0 ) // originals are protected PAL16L8s, these are brute-forced and reversed for GAL16V8s
+	ROM_LOAD( "c64-10.ic42", 0x000, 0x117, CRC(08e8c3d6) SHA1(9e1f0c8a70af7355d82c2bac249363415c2293e2) )
+	ROM_LOAD( "c64-11.ic43", 0x200, 0x117, CRC(f116413e) SHA1(696a8c404ef3d6d832e0fcf530452344f96dd0b2) )
 ROM_END
 
 ROM_START( ssia )
@@ -4249,6 +4253,10 @@ ROM_START( ssia )
 	ROM_LOAD( "c64-02.2",     0x00000, 0x20000, CRC(3cb0b907) SHA1(7cbe437fe584575a2f26a582095fd49665c7003e) )
 
 	/* no Delta-T samples */
+
+	ROM_REGION( 0x400, "plds", 0 ) // originals are protected PAL16L8s, these are brute-forced and reversed for GAL16V8s
+	ROM_LOAD( "c64-10.ic42", 0x000, 0x117, CRC(08e8c3d6) SHA1(9e1f0c8a70af7355d82c2bac249363415c2293e2) )
+	ROM_LOAD( "c64-11.ic43", 0x200, 0x117, CRC(f116413e) SHA1(696a8c404ef3d6d832e0fcf530452344f96dd0b2) )
 ROM_END
 
 ROM_START( ssib )
@@ -4277,8 +4285,8 @@ ROM_END
 
 ROM_START( majest12u )
 	ROM_REGION( 0x80000, "maincpu", 0 )     /* 512k for 68000 code */
-	ROM_LOAD16_BYTE( "c64_12.ic9", 0x00000, 0x40000, CRC(d5716d7e) SHA1(3a18d8ef1d16380946714910245b00bbcec39e3d) )
-	ROM_LOAD16_BYTE( "c64_14.ic8", 0x00001, 0x40000, CRC(eee4ed8a) SHA1(ad50dc12ede0d327ef9ded5ffd9dbd6e865ebcfc) )
+	ROM_LOAD16_BYTE( "c64_15.ic9", 0x00000, 0x40000, CRC(3a6d591b) SHA1(cc08aa89046e774046d1e47afb7d124c9a6b0b88) )
+	ROM_LOAD16_BYTE( "c64_17.ic8", 0x00001, 0x40000, CRC(fd514ad9) SHA1(14646ed90dad208b5874191a329396f35f3c0a0d) )
 
 	ROM_REGION( 0x100000, "tc0100scn_1", ROMREGION_ERASEFF )
 	/* empty! */
@@ -4293,6 +4301,10 @@ ROM_START( majest12u )
 	ROM_LOAD( "c64-02.2",     0x00000, 0x20000, CRC(3cb0b907) SHA1(7cbe437fe584575a2f26a582095fd49665c7003e) )
 
 	/* no Delta-T samples */
+
+	ROM_REGION( 0x400, "plds", 0 ) // originals are protected PAL16L8s, these are brute-forced and reversed for GAL16V8s
+	ROM_LOAD( "c64-10.ic42", 0x000, 0x117, CRC(08e8c3d6) SHA1(9e1f0c8a70af7355d82c2bac249363415c2293e2) )
+	ROM_LOAD( "c64-11.ic43", 0x200, 0x117, CRC(f116413e) SHA1(696a8c404ef3d6d832e0fcf530452344f96dd0b2) )
 ROM_END
 
 ROM_START( majest12ua )
@@ -4339,6 +4351,10 @@ ROM_START( majest12j )
 	ROM_LOAD( "c64-02.2",     0x00000, 0x20000, CRC(3cb0b907) SHA1(7cbe437fe584575a2f26a582095fd49665c7003e) )
 
 	/* no Delta-T samples */
+
+	ROM_REGION( 0x400, "plds", 0 ) // originals are protected PAL16L8s, these are brute-forced and reversed for GAL16V8s
+	ROM_LOAD( "c64-10.ic42", 0x000, 0x117, CRC(08e8c3d6) SHA1(9e1f0c8a70af7355d82c2bac249363415c2293e2) )
+	ROM_LOAD( "c64-11.ic43", 0x200, 0x117, CRC(f116413e) SHA1(696a8c404ef3d6d832e0fcf530452344f96dd0b2) )
 ROM_END
 
 

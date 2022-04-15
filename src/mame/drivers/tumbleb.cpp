@@ -3074,7 +3074,7 @@ ROM_START( htchctch )
 	ROM_LOAD( "p02.b5", 0x00000, 0x10000 , CRC(c5a03186) SHA1(42561ab36e6d7a43828d3094e64bd1229ab893ba) )
 
 	ROM_REGION( 0x10000, "cpu2", 0 ) /* Intel 87C52 MCU Code */
-	ROM_LOAD( "87c52.mcu", 0x00000, 0x2000, NO_DUMP ) /* can't be dumped */
+	ROM_LOAD( "87c51fa.bin", 0x00000, 0x2000, CRC(a30312f3) SHA1(e61a89b4ed9555252fc1a64c50d345085f7674c7) ) // decapped
 
 	ROM_REGION16_BE( 0x200, "user1", 0 ) /* Data from Shared RAM */
 	/* this is not a real rom but instead the data extracted from shared ram, the MCU puts it there */

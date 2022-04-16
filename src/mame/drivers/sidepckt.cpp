@@ -463,10 +463,10 @@ ROM_START( sidepcktj )
 	ROM_LOAD( "dh00.3c", 0x00000, 0x10000, CRC(a66bc28d) SHA1(cd62ce1dce6fe42d9745eec50d11e86b076d28e1) )
 
 	ROM_REGION( 0x10000, "audiocpu", 0 )
-	ROM_LOAD( "dh04.3h", 0x08000, 0x8000, CRC(d076e62e) SHA1(720ff1a6a58697b4a9c7c4f31c24a2cf8a04900a) )
+	ROM_LOAD( "dh04_6-19.3h", 0x08000, 0x8000, CRC(053ff83a) SHA1(e6e3ce15a86172bdc6094b4999e52d1aafc0ae10) ) // handwritten 6-19 on label
 
 	ROM_REGION( 0x1000, "mcu", 0 )  /* i8751 microcontroller */
-	ROM_LOAD( "dh.6d", 0x00000, 0x1000, NO_DUMP )
+	ROM_LOAD( "dh.6d", 0x0000, 0x1000, CRC(f7e099b6) SHA1(8e718384489a589acebc19ca361e0aa8a4c6b63b) )
 
 	ROM_REGION( 0x18000, "gfx1", 0 )
 	ROM_LOAD( "dh07.13k", 0x00000, 0x8000, CRC(7d0ce858) SHA1(3a158f218a762e6841d2611f41ace67a1afefb35) ) /* characters */

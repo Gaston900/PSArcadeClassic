@@ -11893,6 +11893,27 @@ ROM_START( theends ) /* The Stern Electronics license */
 	ROM_LOAD( "6331-1j.86",   0x0000, 0x0020, CRC(24652bc4) SHA1(d89575f3749c75dc963317fe451ffeffd9856e4d) ) /* no label for this chip */
 ROM_END
 
+ROM_START( theendss ) // The End (SegaSA / Sonic)
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "the_end_ss_2.bin", 0x0000, 0x0800, CRC(326e1f69) SHA1(b77d7b8f4835bc1a80586936398dea23ae164d3e) )
+	ROM_LOAD( "the_end_ss.ic14",  0x0800, 0x0800, CRC(950f0a07) SHA1(bde9f3c6cf060dc6f5b7652287b94e04bed7bcf7) )
+	ROM_LOAD( "the_end_ss_1.bin", 0x1000, 0x0800, CRC(93b47650) SHA1(6f65faef1d9aca1dbd3fe3088ae8b1c6bc373a21) )
+	ROM_LOAD( "the_end_ss.ic16",  0x1800, 0x0800, CRC(380a0017) SHA1(3354eb328a32537f722fe8a0949ddcab6cf21eb8) )
+	ROM_LOAD( "the_end_ss.ic17",  0x2000, 0x0800, CRC(af067b7f) SHA1(855c6ddf29fbfea004c7143fe29064abf53801ad) )
+	ROM_LOAD( "the_end_ss.ic18",  0x2800, 0x0800, CRC(a0411b93) SHA1(d644968758a1b73d13e09b24d24bfec82276e8f4) )
+
+	ROM_REGION( 0x10000, "audiocpu", 0 )
+	ROM_LOAD( "the_end_ss.ic56",  0x0000, 0x0800, CRC(7a141f29) SHA1(ca483943971c8fc7f5775a8a7cc6ddd331d48170) )
+	ROM_LOAD( "the_end_ss.ic55",  0x0800, 0x0800, CRC(218497c1) SHA1(3e080621f2e83909a6f304a2d960a080bccbbdc2) )
+
+	ROM_REGION( 0x1000, "gfx1", 0 )
+	ROM_LOAD( "the_end_ss.ic30",  0x0000, 0x0800, CRC(527fd384) SHA1(92a384899d5acd2c689f637da16a0e2d11a9d9c6) )
+	ROM_LOAD( "the_end_ss.ic31",  0x0800, 0x0800, CRC(af6d09b6) SHA1(f3ad51dc88aa58fd39195ead978b039e0b0b585c) )
+
+	ROM_REGION( 0x0020, "proms", 0 )
+	ROM_LOAD( "6331-1j.86",       0x0000, 0x0020, BAD_DUMP CRC(24652bc4) SHA1(d89575f3749c75dc963317fe451ffeffd9856e4d) ) // Not dumped on this set
+ROM_END
+
 ROM_START( takeoff )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "0p.t.o.10l",   0x0000, 0x1000, CRC(46712d43) SHA1(e1b84494b530dd96d8a51a3f8bd7d7d3ba7560a9) )
@@ -13547,6 +13568,7 @@ GAME( 1982, olmandingc,  amidar,   mandingarf, olmandingo, galaxian_state, init_
 /* The End/Scramble based hardware */
 GAME( 1980, theend,      0,        theend,     theend,     galaxian_state, init_theend,     ROT90,  "Konami", "The End", MACHINE_SUPPORTS_SAVE )
 GAME( 1980, theends,     theend,   theend,     theend,     galaxian_state, init_theend,     ROT90,  "Konami (Stern Electronics license)", "The End (Stern Electronics)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, theendss,    theend,   theend,     theend,     galaxian_state, init_theend,     ROT90,  "bootleg (Sonic)", "The End (SegaSA / Sonic)", MACHINE_SUPPORTS_SAVE )
 GAME( 1981, takeoff,     theend,   takeoff,    explorer,   galaxian_state, init_explorer,   ROT90,  "bootleg (Sidam)", "Take Off (bootleg of The End)", MACHINE_WRONG_COLORS | MACHINE_SUPPORTS_SAVE ) // colors likely need bitswap<8> somewhere; needs different sound timer. reference: https://www.youtube.com/watch?v=iPYX3yJORTE
 
 GAME( 1981, scramble,    0,        scramble,   scramble,   galaxian_state, init_scramble,   ROT90,  "Konami",                             "Scramble",                                               MACHINE_SUPPORTS_SAVE )

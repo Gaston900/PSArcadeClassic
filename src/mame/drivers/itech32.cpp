@@ -2532,7 +2532,7 @@ ROM_END
 
 ROM_START( wcbowl130 )  /* Version 1.30 Tournament (PCB P/N 1083 Rev 2) */
 	ROM_REGION32_BE( CODE_SIZE, "user1", 0 )
-	ROM_LOAD32_BYTE( "wcb_prom0_v1.30t.prom0", 0x00000, 0x20000, NO_DUMP ) /* found as 3 loose chips missing WCB PROM0 V1.30T ROM */
+	ROM_LOAD32_BYTE( "wcb_prom0_v1.30t.prom0", 0x00000, 0x20000, CRC(fbcde4e0) SHA1(8174c045686305c398f0414e2dea666ee4f9d668) ) /* Does NOT contain the Flash Bowling variation game */
 	ROM_LOAD32_BYTE( "wcb_prom1_v1.30t.prom1", 0x00001, 0x20000, CRC(f4b8e7c3) SHA1(29471a464e783e820d7cde356b49d26b9394f513) )
 	ROM_LOAD32_BYTE( "wcb_prom2_v1.30t.prom2", 0x00002, 0x20000, CRC(f441afae) SHA1(31d619e63f951cfb08481474f08d278aeaa15c46) )
 	ROM_LOAD32_BYTE( "wcb_prom3_v1.30t.prom3", 0x00003, 0x20000, CRC(47e26d4b) SHA1(44459daef1ffe19640b26adcf122dfcd4a327a68) )
@@ -2577,6 +2577,9 @@ ROM_START( wcbowl ) /* Version 1.66 (PCB P/N 1083 Rev 2) */
 	ROM_LOAD( "wcbsnd_u88_4.01.u88", 0x10000, 0x18000, CRC(e97a6d28) SHA1(96d7b7856918abcc460083f2a46582ba2a689288) ) /* actually labeled as "WCBSND(U88)4.01" but may be labeled v4.0 */
 	ROM_CONTINUE(                    0x08000, 0x08000 )
 
+	ROM_REGION( 0x2000, "pic", 0 ) // PIC16C54
+	ROM_LOAD( "itbwl-3 1997 it,inc.1996", 0x0000, 0x1fff, CRC(1461cbe0) SHA1(97cc1f985d9c8bbe3fd829681883b6c4ae15c5bd) ) // not hooked up
+	
 	ROM_REGION( 0x880000, "gfx1", 0 )
 	ROM_LOAD32_BYTE( "wcb_grom0_0_s.grm0_0", 0x000000, 0x080000, CRC(6fcb4246) SHA1(91fb5d18ea9494b08251d1e611c80414df3aad66) )
 	ROM_LOAD32_BYTE( "wcb_grom0_1_s.grm0_1", 0x000001, 0x080000, CRC(2ae31f45) SHA1(85218aa9a7ca7c6870427ffbd08b78255813ff90) )
@@ -2609,6 +2612,9 @@ ROM_START( wcbowl165 )  /* Version 1.65 (PCB P/N 1083 Rev 2) */
 	ROM_LOAD( "wcbsnd_u88_4.01.u88", 0x10000, 0x18000, CRC(e97a6d28) SHA1(96d7b7856918abcc460083f2a46582ba2a689288) ) /* actually labeled as "WCBSND(U88)4.01" but may be labeled v4.0 */
 	ROM_CONTINUE(                    0x08000, 0x08000 )
 
+	ROM_REGION( 0x2000, "pic", 0 ) // PIC16C54
+	ROM_LOAD( "itbwl-3 1997 it,inc.1996", 0x0000, 0x1fff, CRC(1461cbe0) SHA1(97cc1f985d9c8bbe3fd829681883b6c4ae15c5bd) ) // not hooked up
+	
 	ROM_REGION( 0x880000, "gfx1", 0 )
 	ROM_LOAD32_BYTE( "wcb_grom0_0_s.grm0_0", 0x000000, 0x080000, CRC(6fcb4246) SHA1(91fb5d18ea9494b08251d1e611c80414df3aad66) )
 	ROM_LOAD32_BYTE( "wcb_grom0_1_s.grm0_1", 0x000001, 0x080000, CRC(2ae31f45) SHA1(85218aa9a7ca7c6870427ffbd08b78255813ff90) )
@@ -2641,6 +2647,9 @@ ROM_START( wcbowl161 )  /* Version 1.61 (PCB P/N 1083 Rev 2) */
 	ROM_LOAD( "wcbsnd_u88_v4.0.u88", 0x10000, 0x18000, CRC(194a51d7) SHA1(c67b042008ff2a2713562d3789e5bc3a312fae17) ) /* Version 4.0, may be labeled "WCBSND U88 V4.0T" */
 	ROM_CONTINUE(                    0x08000, 0x08000 )
 
+	ROM_REGION( 0x2000, "pic", 0 ) // PIC16C54
+	ROM_LOAD( "itbwl-3 1997 it,inc.1996", 0x0000, 0x1fff, CRC(1461cbe0) SHA1(97cc1f985d9c8bbe3fd829681883b6c4ae15c5bd) ) // not hooked up
+	
 	ROM_REGION( 0x880000, "gfx1", 0 )
 	ROM_LOAD32_BYTE( "wcb_grom0_0_s.grm0_0", 0x000000, 0x080000, CRC(6fcb4246) SHA1(91fb5d18ea9494b08251d1e611c80414df3aad66) )
 	ROM_LOAD32_BYTE( "wcb_grom0_1_s.grm0_1", 0x000001, 0x080000, CRC(2ae31f45) SHA1(85218aa9a7ca7c6870427ffbd08b78255813ff90) )
@@ -2673,6 +2682,9 @@ ROM_START( wcbowl16 )   /* Version 1.6 (PCB P/N 1083 Rev 2), This is the first s
 	ROM_LOAD( "wcbsnd_u88_v3.0n.u88", 0x10000, 0x18000, CRC(45c4f659) SHA1(cfd140b9947654f677409a0fb4fa0c7b65992f95) ) /* Version 3.0N */
 	ROM_CONTINUE(                     0x08000, 0x08000 )
 
+	ROM_REGION( 0x2000, "pic", 0 ) // PIC16C54
+	ROM_LOAD( "itbwl-3 1997 it,inc.1996", 0x0000, 0x1fff, CRC(1461cbe0) SHA1(97cc1f985d9c8bbe3fd829681883b6c4ae15c5bd) ) // not hooked up
+	
 	ROM_REGION( 0x880000, "gfx1", 0 )
 	ROM_LOAD32_BYTE( "wcb_grom0_0_s.grm0_0", 0x000000, 0x080000, CRC(6fcb4246) SHA1(91fb5d18ea9494b08251d1e611c80414df3aad66) )
 	ROM_LOAD32_BYTE( "wcb_grom0_1_s.grm0_1", 0x000001, 0x080000, CRC(2ae31f45) SHA1(85218aa9a7ca7c6870427ffbd08b78255813ff90) )
@@ -3298,6 +3310,39 @@ ROM_START( shufshot137 )   /* Version 1.37 (PCB P/N 1083 Rev 2) */
 	ROM_LOAD16_BYTE( "shf_srom1.srom1", 0x200000, 0x80000, CRC(8c89948a) SHA1(1054eca5de352c17f34f31ef16297ba6177a37ba) )
 ROM_END
 
+ROM_START( shufshot135 )   /* Version 1.35 (PCB P/N 1083 Rev 2) - Not offically released? - found on dev CD  */
+	ROM_REGION32_BE( CODE_SIZE, "user1", 0 )
+	ROM_LOAD32_BYTE( "shot_prom0_v1.35.prom0", 0x00000, 0x20000, CRC(1a1d510c) SHA1(b1919beee499fb4e213a987ad796742dbfbd540b) )
+	ROM_LOAD32_BYTE( "shot_prom1_v1.35.prom1", 0x00001, 0x20000, CRC(5d7d5017) SHA1(8330339bd45c30066650a2a6cc7e12f365c91608) )
+	ROM_LOAD32_BYTE( "shot_prom2_v1.35.prom2", 0x00002, 0x20000, CRC(6f27b111) SHA1(9f9a95948662003edee2aeb2230b64e6401b4e49) )
+	ROM_LOAD32_BYTE( "shot_prom3_v1.35.prom3", 0x00003, 0x20000, CRC(bf6fabbb) SHA1(3f52791b974a6170fad492c0270270f5712c8506) )
+
+	ROM_REGION( 0x28000, "soundcpu", 0 )
+	ROM_LOAD( "shotsnd_u88_v1.1.u88", 0x10000, 0x18000, CRC(e37d599d) SHA1(105f91e968ecf553d910a97726ddc536289bbb2b) ) /* labeled SHOTSND U88 V1.1, also known to be labeled SHOTSND U88 */
+	ROM_CONTINUE(                     0x08000, 0x08000 )
+
+	ROM_REGION( 0x800000, "gfx1", 0 )
+	ROM_LOAD32_BYTE( "shf_grom0_0.grm0_0", 0x000000, 0x80000, CRC(832a3d6a) SHA1(443328fa61b79c93ec6c9d24893b2ec38358a905) )
+	ROM_LOAD32_BYTE( "shf_grom0_1.grm0_1", 0x000001, 0x80000, CRC(155e48a2) SHA1(187d65423ff9a3d6b6c34c885a1b2397fa5371cf) )
+	ROM_LOAD32_BYTE( "shf_grom0_2.grm0_2", 0x000002, 0x80000, CRC(9f2b470d) SHA1(012e917856042cbe00d476e3220a7f9c841bd199) )
+	ROM_LOAD32_BYTE( "shf_grom0_3.grm0_3", 0x000003, 0x80000, CRC(3855a16a) SHA1(f8c03efab87ddcb6940f657ad1f0138ceaa2118e) )
+	ROM_LOAD32_BYTE( "shf_grom1_0.grm1_0", 0x200000, 0x80000, CRC(ed140389) SHA1(f438a887b44a277f81e954bef73ac478eaff58c8) )
+	ROM_LOAD32_BYTE( "shf_grom1_1.grm1_1", 0x200001, 0x80000, CRC(bd2ffbca) SHA1(667692ce61a4896ceecf2a2bb37f742f175a6152) )
+	ROM_LOAD32_BYTE( "shf_grom1_2.grm1_2", 0x200002, 0x80000, CRC(c6de4187) SHA1(4854604330bb14f862abe22d755e08b54e0b1a04) )
+	ROM_LOAD32_BYTE( "shf_grom1_3.grm1_3", 0x200003, 0x80000, CRC(0c707aa2) SHA1(1da83523e04eeae4dbc8748a31a074331bf975d1) )
+	ROM_LOAD32_BYTE( "shf_grom2_0.grm2_0", 0x400000, 0x80000, CRC(529b4259) SHA1(4f98f28c83c3f8f822ea45d31be526af4a504cbc) )
+	ROM_LOAD32_BYTE( "shf_grom2_1.grm2_1", 0x400001, 0x80000, CRC(4b52ab1a) SHA1(5c438df7f2edea8f4d8734408fd94acf9d340755) )
+	ROM_LOAD32_BYTE( "shf_grom2_2.grm2_2", 0x400002, 0x80000, CRC(f45fad03) SHA1(3ff062928ef5bcdce8748ddd972c5da67207227a) )
+	ROM_LOAD32_BYTE( "shf_grom2_3.grm2_3", 0x400003, 0x80000, CRC(1bcb26c8) SHA1(49e730c56c4a3171a2962fa65f3b16481590c636) )
+	ROM_LOAD32_BYTE( "shf_grom3_0.grm3_0", 0x600000, 0x80000, CRC(a29763db) SHA1(e2154fb3e400aba300f1a23d53504588426dfbfe) )
+	ROM_LOAD32_BYTE( "shf_grom3_1.grm3_1", 0x600001, 0x80000, CRC(c757084c) SHA1(6f78ee13c68afd635aa3871cddf7207a19d4039b) )
+	ROM_LOAD32_BYTE( "shf_grom3_2.grm3_2", 0x600002, 0x80000, CRC(2971cb25) SHA1(5f0508ebff1bf66ee0f78addfa09a43f8fff9a36) )
+	ROM_LOAD32_BYTE( "shf_grom3_3.grm3_3", 0x600003, 0x80000, CRC(4fcbee51) SHA1(4e2ec4475986c3916c4566b2bc007f41a8c13609) )
+
+	ROM_REGION16_BE( 0x400000, "ensoniq.0", ROMREGION_ERASE00 )
+	ROM_LOAD16_BYTE( "shf_srom0.srom0", 0x000000, 0x80000, CRC(9a3cb6c9) SHA1(2af3ce3b1cd7688199195a66cf01bb83775d42fa) )
+	ROM_LOAD16_BYTE( "shf_srom1.srom1", 0x200000, 0x80000, CRC(8c89948a) SHA1(1054eca5de352c17f34f31ef16297ba6177a37ba) )
+ROM_END
 
 ROM_START( gt3d )   /* Version 1.93N for the single large type PCB P/N 1083 Rev 2 */
 	ROM_REGION32_BE( CODE_SIZE, "user1", 0 )
@@ -4982,6 +5027,7 @@ GAME( 1997, shufshot,     0,        sftm,     shufshot, itech32_state,  init_shu
 GAME( 1997, shufshot139,  shufshot, sftm,     shufshot, itech32_state,  init_shufshot, ROT0, "Strata/Incredible Technologies",   "Shuffleshot (v1.39)" , MACHINE_SUPPORTS_SAVE ) /* PIC 16C54 labeled as ITSHF-1 */
 GAME( 1997, shufshot138,  shufshot, sftm,     shufshto, itech32_state,  init_shufshot, ROT0, "Strata/Incredible Technologies",   "Shuffleshot (v1.38)" , MACHINE_SUPPORTS_SAVE ) /* PIC 16C54 labeled as ITSHF-1 */
 GAME( 1997, shufshot137,  shufshot, sftm,     shufshto, itech32_state,  init_shufshot, ROT0, "Strata/Incredible Technologies",   "Shuffleshot (v1.37)" , MACHINE_SUPPORTS_SAVE ) /* PIC 16C54 labeled as ITSHF-1 */
+GAME( 1997, shufshot135,  shufshot, sftm,     shufshot, itech32_state,  init_shufshot, ROT0, "Strata/Incredible Technologies",   "Shuffleshot (v1.35)" , MACHINE_SUPPORTS_SAVE ) /* PIC 16C54 labeled as ITSHF-1 */
 GAME( 1997, wcbowl130,    wcbowldx, tourny,   wcbowldx, itech32_state,  init_wcbowlt,  ROT0, "Incredible Technologies",          "World Class Bowling Tournament (v1.30)" , MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) /* PIC 16C54 labeled as ITBWL-3 *** missing program ROM PROM0 */
 GAME( 1997, wcbowl140,    wcbowldx, tourny,   wcbowldx, itech32_state,  init_wcbowlt,  ROT0, "Incredible Technologies",          "World Class Bowling Tournament (v1.40)" , MACHINE_SUPPORTS_SAVE ) /* PIC 16C54 labeled as ITBWL-3 */
 GAME( 1999, wcbowldx,     0,        sftm,     wcbowldx, itech32_state,  init_shufshot, ROT0, "Incredible Technologies",          "World Class Bowling Deluxe (v2.00)" , MACHINE_SUPPORTS_SAVE ) /* PIC 16C54 labeled as ITBWL-4 */

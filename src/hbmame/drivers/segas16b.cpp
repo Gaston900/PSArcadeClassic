@@ -33,6 +33,9 @@ ROM_START( altbeasthack01 )
 
 	ROM_REGION( 0x1000, "mcu", 0 )
 	ROM_LOAD( "317-0078.c2", 0x00000, 0x1000, CRC(8101925f) SHA1(a45d772ebe2fd1a577a6ccac8c6c76bb622258bb) )
+
+	ROM_REGION( 0x0100, "plds", 0 )
+	ROM_LOAD( "315-5298.b9",  0x0000, 0x00eb, CRC(39b47212) SHA1(432b47aee5ecbf08a8a6dc2f8379c816feb86328) ) // PLS153
 ROM_END
 
 ROM_START( altbeasthack02 )
@@ -62,6 +65,9 @@ ROM_START( altbeasthack02 )
 
 	ROM_REGION( 0x1000, "mcu", 0 )
 	ROM_LOAD( "317-0078.c2", 0x00000, 0x1000, CRC(8101925f) SHA1(a45d772ebe2fd1a577a6ccac8c6c76bb622258bb) )
+
+	ROM_REGION( 0x0100, "plds", 0 )
+	ROM_LOAD( "315-5298.b9",  0x0000, 0x00eb, CRC(39b47212) SHA1(432b47aee5ecbf08a8a6dc2f8379c816feb86328) ) // PLS153
 ROM_END
 
 ROM_START( altbeasthack03 )
@@ -91,6 +97,9 @@ ROM_START( altbeasthack03 )
 
 	ROM_REGION( 0x1000, "mcu", 0 )
 	ROM_LOAD( "317-0078.c2", 0x00000, 0x1000, CRC(8101925f) SHA1(a45d772ebe2fd1a577a6ccac8c6c76bb622258bb) )
+
+	ROM_REGION( 0x0100, "plds", 0 )
+	ROM_LOAD( "315-5298.b9",  0x0000, 0x00eb, CRC(39b47212) SHA1(432b47aee5ecbf08a8a6dc2f8379c816feb86328) ) // PLS153
 ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */

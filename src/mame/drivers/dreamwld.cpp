@@ -822,7 +822,7 @@ ROM_START( baryon ) // this set had original SemiCom labels
 	ROM_LOAD32_BYTE( "3_semicom", 0x000003, 0x040000, CRC(0ae6d86e) SHA1(410ad161688ec8516fe5ac7160a4a228dbb01936) )
 
 	ROM_REGION( 0x02000, "mcu", 0 ) /* 87C52 MCU Code */
-	ROM_LOAD( "mcu.bin", 0x00000, 0x02000, BAD_DUMP CRC(1ee7896c) SHA1(f1e8500b7b6aa4e6ae939e228ffd11462f10ba33) ) // handcrafted from Dream World MCU using correct protection data for this game
+	ROM_LOAD( "87c52.mcu", 0x00000, 0x02000 , NO_DUMP ) /* can't be dumped. */
 
 	ROM_REGION( 0x6bd, "prot", 0 ) /* Protection data - from baryona set, assumed to be the same */
 	ROM_LOAD( "protdata.bin", 0x000, 0x6bd, CRC(117f32a8) SHA1(837bea09d3e59ab9e13bd1103b1fc988edb361c0) ) /* extracted */
@@ -923,7 +923,10 @@ ROM_START( cutefght )
 	ROM_LOAD32_BYTE( "4_semicom", 0x000003, 0x080000, CRC(476a3bf5) SHA1(5be1c70bbf4fcfc534b7f20bfceaa8da2e961330) )
 
 	ROM_REGION( 0x02000, "mcu", 0 ) /* 87C52 MCU Code */
-	ROM_LOAD( "mcu.bin", 0x00000, 0x02000, BAD_DUMP CRC(7d9acd7d) SHA1(12059143ac9e10f3a21402d2879ff0b5097d6de0) ) // handcrafted from Dream World MCU using correct protection data for this game
+	ROM_LOAD( "87c52.mcu", 0x00000, 0x02000 , NO_DUMP ) /* can't be dumped. */
+
+	ROM_REGION( 0x1000, "prot", ROMREGION_ERASEFF ) /* Protection data  */
+	ROM_LOAD( "protdata.bin", 0x000, 0x701 , CRC(764c3c0e) SHA1(ae044d016850b730b2d97ccb7845b6b438c1e074) )
 
 	ROM_REGION( 0x80000, "oki1", 0 ) /* OKI Samples - 1st chip */
 	ROM_LOAD( "2_semicom", 0x000000, 0x80000, CRC(694ddaf9) SHA1(f9138e7e1d8f771c4e69c17f27fb2b70fbee076a) )
@@ -1108,7 +1111,7 @@ ROM_START( dreamwld )
 	ROM_LOAD32_BYTE( "2.bin", 0x000003, 0x040000, CRC(5409e7fc) SHA1(2f94a6a8e4c94b36b43f0b94d58525f594339a9d) )
 
 	ROM_REGION( 0x02000, "mcu", 0 ) /* 87C52 MCU Code */
-	ROM_LOAD( "87c51rap.bin", 0x00000, 0x02000 , CRC(987bbfe8) SHA1(7717ed5cf97bc11c104356f6ff1d893d1606bcf0) )
+	ROM_LOAD( "87c52.mcu", 0x00000, 0x02000 , NO_DUMP ) /* can't be dumped. */
 
 	ROM_REGION( 0x6c9, "prot", 0 ) /* Protection data  */
 	/* The MCU supplies this data.
@@ -1195,7 +1198,7 @@ ROM_START( gaialast )
 	ROM_LOAD32_BYTE( "3", 0x000003, 0x040000, CRC(a8e845d8) SHA1(f8c7e702bd747a22e76c861effec4cd3cd2f3fc9) )
 
 	ROM_REGION( 0x02000, "mcu", 0 ) /* 87C52 MCU Code */
-	ROM_LOAD( "mcu.bin", 0x00000, 0x02000, BAD_DUMP CRC(fb3db92b) SHA1(3ae3649debf79a4345b05c2f4ae9674c13a66ed1) ) // handcrafted from Dream World MCU using correct protection data for this game
+	ROM_LOAD( "87c52.mcu", 0x00000, 0x02000 , NO_DUMP ) /* can't be dumped. */
 
 	ROM_REGION( 0x6c9, "prot", ROMREGION_ERASEFF ) /* Protection data  */
 	ROM_LOAD( "protdata.bin", 0x000, 0x6c9 , CRC(d3403b7b) SHA1(712a7f27fc41b632d584237f7641e8ae20035111) )

@@ -3070,6 +3070,54 @@ ROM_START( slampic )
 	ROM_LOAD( "6_palce16v8.bin", 0xa00, 0x117, CRC(12516583) SHA1(990225b1a8fecb2b95011f25d7d3cc35840103f3) )
 ROM_END
 
+ROM_START( slampic2 )
+	ROM_REGION( CODE_SIZE, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "4.bin", 0x000000, 0x80000, CRC(105cfefd) SHA1(83a34bc83782ae04be1665a91b44625d24f99466) )
+	ROM_LOAD16_BYTE( "2.bin", 0x000001, 0x80000, CRC(6026c95e) SHA1(8503587941ad14a757ad337dc36591fedcddaa41) )
+	ROM_LOAD16_BYTE( "3.bin", 0x100000, 0x80000, CRC(0effa84a) SHA1(03342bd4cb1de8652bab874c11cb1ecb69a339c7) )
+	ROM_LOAD16_BYTE( "1.bin", 0x100001, 0x80000, CRC(8fcb683a) SHA1(4648656bed010a0c27748df4a78c73c5cae07442) )
+
+	ROM_REGION( 0x600000, "gfx", 0 )  // overall just 2 bytes diff vs official set (slammast)
+	ROM_LOAD64_BYTE( "rom7.bin",  0x000000, 0x40000, CRC(b5669ad3) SHA1(ceb3d2a6d6c1443a40d37c8f2ba5f3cf03315908) )  // ~ slampic 9.bin  [1/2] 99.914551% [2/2] IDENTICAL
+	ROM_CONTINUE(                 0x000004, 0x40000)
+	ROM_LOAD64_BYTE( "rom8.bin",  0x000001, 0x40000, CRC(f07a6085) SHA1(68795a0f5151a45f053059bc2fe4a622d5e10d8a) )  // ~ slampic 8.bin  [1/2] 99.999237% [2/2] IDENTICAL  2 bytes diff
+	ROM_CONTINUE(                 0x000005, 0x40000)
+	ROM_LOAD64_BYTE( "rom5.bin",  0x000002, 0x40000, CRC(5321f759) SHA1(7538a6587cf1077921b938070185e0a0ce5ca922) )  // = slampic 7.bin
+	ROM_CONTINUE(                 0x000006, 0x40000)
+	ROM_LOAD64_BYTE( "rom6.bin",  0x000003, 0x40000, CRC(c8eb5f76) SHA1(a361d2d2dfe71789736666b744ae5f1e4bf7e1b2) )  // = slampic 6.bin
+	ROM_CONTINUE(                 0x000007, 0x40000)
+	ROM_LOAD64_BYTE( "rom11.bin", 0x200000, 0x40000, CRC(21652214) SHA1(039335251f6553c4f36e2d33e8b43fb5726e833e) )  // = slampic 17.bin
+	ROM_CONTINUE(                 0x200004, 0x40000)
+	ROM_LOAD64_BYTE( "rom12.bin", 0x200001, 0x40000, CRC(d49d2eb0) SHA1(1af01575340730166975be93bae438e2b0492f98) )  // = slampic 16.bin
+	ROM_CONTINUE(                 0x200005, 0x40000)
+	ROM_LOAD64_BYTE( "rom9.bin",  0x200002, 0x40000, CRC(0d98bfd6) SHA1(c11fbf555880a933a4cbf6faa517f59f8443304f) )  // = slampic 15.bin
+	ROM_CONTINUE(                 0x200006, 0x40000)
+	ROM_LOAD64_BYTE( "rom10.bin", 0x200003, 0x40000, CRC(807284f1) SHA1(c747c3eaade31c2633fb0a0682dbea900bf2b092) )  // = slampic 14.bin
+	ROM_CONTINUE(                 0x200007, 0x40000)
+	ROM_LOAD64_BYTE( "rom15.bin", 0x400000, 0x40000, CRC(293579c5) SHA1(9adafe29664b20834365b339f7ae379cdb9ee138) )  // = slampic 13.bin
+	ROM_CONTINUE(                 0x400004, 0x40000)
+	ROM_LOAD64_BYTE( "rom16.bin", 0x400001, 0x40000, CRC(c3727ce7) SHA1(c4abc2c59152c59a45f85393e9525505bc2c9e6e) )  // = slampic 12.bin
+	ROM_CONTINUE(                 0x400005, 0x40000)
+	ROM_LOAD64_BYTE( "rom13.bin", 0x400002, 0x40000, CRC(2919883b) SHA1(44ad979daae673c77b3157d2b352797d4ad0ec24) )  // = slampic 11.bin
+	ROM_CONTINUE(                 0x400006, 0x40000)
+	ROM_LOAD64_BYTE( "rom14.bin", 0x400003, 0x40000, CRC(f538e620) SHA1(354cd0548b067dfc8782bbe13b0a9c2083dbd290) )  // = slampic 10.bin
+	ROM_CONTINUE(                 0x400007, 0x40000)
+
+	ROM_REGION( 0x2000, "audiocpu", 0 ) // NO DUMP  -  protected PIC
+	ROM_LOAD( "pic_u33.bin", 0x0000, 0x1007, BAD_DUMP CRC(6dba4094) SHA1(ca3362de83205fc6563d16a59b8e6e4bb7ebf4a6) )
+
+	ROM_REGION( 0x140000, "oki", 0 )
+	ROM_LOAD( "v1.bin", 0x000000, 0x40000, CRC(8962b469) SHA1(91dc12610a0b780ee2b314cd346182d97279c175) )  // 27c020 w/ sticker "7"
+	ROM_LOAD( "v2.bin", 0x040000, 0x80000, CRC(6687df38) SHA1(d1015ae089fab5c5b4d1ab51b20f3aa6b77ed348) )  // 27c4000
+	ROM_LOAD( "v3.bin", 0x0c0000, 0x80000, CRC(5782baee) SHA1(c01f8cd08d0c7b78c010ce3f1567383b7435de9f) )  // 27c4000
+
+	ROM_REGION( 0x10000, "user1", 0 )
+	ROM_LOAD( "24.bin", 0x00000, 0x10000, CRC(13ea1c44) SHA1(5b05fe4c3920e33d94fac5f59e09ff14b3e427fe) )  // = various sf2 bootlegs (sf2ebbl etc.) "unknown (bootleg priority?)"
+
+	ROM_REGION( 0x0200, "pld", 0 )  // sound
+	ROM_LOAD( "2_gal16v8.p1", 0x0000, 0x0117, CRC(a944ff96) SHA1(2871a1c70b91fcd8628e63497afa1275f3a27f93) )
+ROM_END
+
 // ************************************************************************* DRIVER MACROS
 
 HACK( 1990, cawingbl,  cawing,   cawingbl,  cawingbl, cps_state, cawingbl, ROT0,   "bootleg", "Carrier Air Wing (bootleg with 2xYM2203 + 2xMSM205 set 1)", MACHINE_SUPPORTS_SAVE ) // 901012 ETC
@@ -3099,7 +3147,8 @@ HACK( 1992, sf2b,      sf2,      sf2b,      sf2mdt,   cps_state, sf2b,     ROT0,
 
 HACK( 1992, sf2m9,     sf2ce,    sf2m1,     sf2,      cps_state, dinopic,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (M9, bootleg)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE ) // 920313 ETC
 
-HACK( 1993, slampic,   slammast, slampic,   slammast, cps_state, dinopic,  ROT0,   "bootleg", "Saturday Night Slam Masters (bootleg with PIC16c57)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE ) // 930713 ETC
+HACK( 1993, slampic,   slammast, slampic,   slammast, cps_state, dinopic,  ROT0,   "bootleg", "Saturday Night Slam Masters (bootleg with PIC16c57, set 1)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE ) // 930713 ETC
+HACK( 1993, slampic2,  slammast, slampic,   slammast, cps_state, dinopic,  ROT0,   "bootleg", "Saturday Night Slam Masters (bootleg with PIC16C57, set 2)",  MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )  // 930713 ETC
 
 HACK( 1999, sgyxz,     wof,      sgyxz,     sgyxz,    cps_state, cps1,     ROT0,   "bootleg", "Sangokushi II: Sanguo Yingxiong Zhuan (Chinese bootleg set 3, 921005 Asia)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )   // 921005 - Sangokushi 2
 

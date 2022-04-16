@@ -956,7 +956,7 @@ ROM_START( karnova )
 	ROM_LOAD( "dn05-5.f3", 0x8000, 0x8000, CRC(fa1a31a8) SHA1(5007a625be03c546d2a78444d72c28761b10cdb0) )
 
 	ROM_REGION( 0x1000, "mcu", 0 )  /* i8751 microcontroller */
-	ROM_LOAD( "karnov_i8751.k13", 0x0000, 0x1000, NO_DUMP )
+	ROM_LOAD( "dn-5.k14", 0x0000, 0x1000, CRC(d056de4e) SHA1(621587ed949ff46e5ccb0d0603612655a38b69a3) )
 
 	ROM_REGION( 0x08000, "gfx1", 0 )
 	ROM_LOAD( "dn00-.c5", 0x00000, 0x08000, CRC(0ed77c6d) SHA1(4ec86ac56c01c158a580dc13dea3e5cbdf90d0e9) )  /* Characters */
@@ -1079,7 +1079,7 @@ ROM_START( wndrplnt )
 	ROM_LOAD( "ea05.f3",     0x8000, 0x8000, CRC(8dbb6231) SHA1(342faa020448ce916e820b3df18d44191983f7a6) )
 
 	ROM_REGION( 0x1000, "mcu", 0 )  /* i8751 microcontroller */
-	ROM_LOAD( "wndrplnt_i8751.k13", 0x0000, 0x1000, NO_DUMP )
+	ROM_LOAD( "ea.k14", 0x0000, 0x1000, CRC(b481f6a9) SHA1(e2c4376662fc7b209cd6a2f4e9a85807c8af2548) )
 
 	ROM_REGION( 0x08000, "gfx1", 0 )
 	ROM_LOAD( "ea00.c5",    0x00000, 0x08000, CRC(9f3cac4c) SHA1(af8a275ff531029dbada3c820c9f660fef383100) )   /* Characters */
@@ -1241,7 +1241,8 @@ ROM_START( chelnovjbl ) // code is the same as the regular chelnovj set
 	ROM_LOAD( "5.bin",    0x38000, 0x08000, CRC(99cee6cd) SHA1(b2cd0a1aef04fd63ad27ac8a61d17a6bb4c8b600) )
 
 	ROM_REGION( 0x40000, "gfx3", 0 ) /* Sprites */
-	ROM_LOAD( "17.bin",       0x00000, 0x10000, CRC(47c857f8) SHA1(59f50365cee266c0e4075c989dc7fde50e43667a) ) // probably bad (1st half is 99.996948% match)
+//  ROM_LOAD( "17.bin",       0x00000, 0x10000, CRC(47c857f8) SHA1(59f50365cee266c0e4075c989dc7fde50e43667a) ) // probably bad (1st half is 99.996948% match)
+	ROM_LOAD( "ee12-.f8",     0x00000, 0x10000, CRC(9b1c53a5) SHA1(b0fdc89dc7fd0931fa4bca3bbc20fc88f637ec74) )
 	ROM_LOAD( "ee13-.f9",     0x10000, 0x10000, CRC(72b8ae3e) SHA1(535dfd70e6d13296342d96917a57d46bdb28a59e) )
 	ROM_LOAD( "ee14-.f13",    0x20000, 0x10000, CRC(d8f4bbde) SHA1(1f2d336dd97c9cc39e124c18cae634afb0ef3316) )
 	ROM_LOAD( "ee15-.f15",    0x30000, 0x10000, CRC(81e3e68b) SHA1(1059c70b8bfe09c212a19767cfe23efa22afc196) )

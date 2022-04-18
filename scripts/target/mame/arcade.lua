@@ -3370,7 +3370,7 @@ files {
 --	MAME_DIR .. "src/mame/machine/m2comm.h",
 	MAME_DIR .. "src/mame/audio/dsbz80.cpp",
 --	MAME_DIR .. "src/mame/audio/dsbz80.h",
-	MAME_DIR .. "src/mame/drivers/model2.cpp",
+	MAME_DIR .. "src/hbmame/drivers/model2.cpp", --HBMAME
 	MAME_DIR .. "src/mame/machine/model2.cpp",
 --	MAME_DIR .. "src/mame/includes/model2.h",
 --	MAME_DIR .. "src/mame/video/model2rd.hxx",
@@ -4486,7 +4486,7 @@ files {
 --	MAME_DIR .. "src/mame/drivers/by35.cpp",
 --	MAME_DIR .. "src/mame/drivers/by6803.cpp",
 --	MAME_DIR .. "src/mame/drivers/by68701.cpp",
---	MAME_DIR .. "src/mame/drivers/byvid.cpp",
+	MAME_DIR .. "src/mame/drivers/byvid.cpp",
 --	MAME_DIR .. "src/mame/drivers/capcom.cpp",
 --	MAME_DIR .. "src/mame/drivers/de_2.cpp",
 --	MAME_DIR .. "src/mame/drivers/de_3.cpp",

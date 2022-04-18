@@ -1111,7 +1111,7 @@ J1 is an 2 pin connector, unknown purpose
 
 ***************************************************************************/
 
-ROM_START( zoo )
+ROM_START( zulu )
 	ROM_REGION( 0x20000, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "zoo_zo.02.d.u25", 0x00000, 0x10000, CRC(8566aa21) SHA1(319192e2074f3bdda6001d8e9a4b97e98826d7ce) )
 	ROM_LOAD16_BYTE( "zoo_zo.02.d.u26", 0x00001, 0x10000, CRC(1a3be45a) SHA1(877be4c9e8d5e7c4644e7bcb9a6729443ed772a4) )
@@ -1372,5 +1372,5 @@ GAME( 2004?, astoneag,  0,        skilldrp, skilldrp, astrocorp_state, init_asto
 GAME( 2005?, winbingo,  0,        skilldrp, skilldrp, astrocorp_state, empty_init,    ROT0, "Astro Corp.",        "Win Win Bingo (set 1)",            MACHINE_NOT_WORKING )
 GAME( 2005?, winbingoa, winbingo, skilldrp, skilldrp, astrocorp_state, empty_init,    ROT0, "Astro Corp.",        "Win Win Bingo (set 2)",            MACHINE_NOT_WORKING )
 GAME( 2005?, hacher,    winbingo, skilldrp, skilldrp, astrocorp_state, empty_init,    ROT0, "bootleg (Gametron)", "Hacher (hack of Win Win Bingo)",   MACHINE_NOT_WORKING )
-GAME( 2005?, zoo,       0,        showhand, showhand, astrocorp_state, empty_init,    ROT0, "Astro Corp.",        "Zoo (Ver. ZO.02.D)",               MACHINE_NOT_WORKING )
+GAME( 2005?, zulu,       0,        showhand, showhand, astrocorp_state, empty_init,    ROT0, "Astro Corp.",       "Zulu (Ver. ZO.02.D)",              MACHINE_NOT_WORKING )
 GAME( 2007?, westvent,  0,        skilldrp, skilldrp, astrocorp_state, empty_init,    ROT0, "Astro Corp.",        "Western Venture (Ver. AA.02.D)",   MACHINE_NOT_WORKING )

@@ -1029,6 +1029,11 @@ ROM_START( targc )
 	ROM_REGION( 0x0400, "gfx1", 0 )
 	ROM_LOAD( "hrl11d-1", 0x0000, 0x0400, CRC(9f03513e) SHA1(aa4763e49df65e5686a96431543580b8d8285893) )
 
+	ROM_REGION( 0x0140, "proms", 0 )
+	ROM_LOAD( "hrl_5c-1.5c",   0x0000, 0x0100, CRC(a24290d0) SHA1(5f2888d168de874021b51c5d19a62fb8165e4454) ) // IM5623CJE (N82S129 compatible) BPROM - address decoder
+	ROM_LOAD( "stl_6d-1.6d",   0x0100, 0x0020, CRC(e26f9053) SHA1(eec35b6aa2c2d305418306bf4a1754a0583f109f) ) // IM5610CPE (N82S123 compatible) BPROM - video RAM control
+	ROM_LOAD( "hrl_14h-1.14h", 0x0120, 0x0020, CRC(f76b4fcf) SHA1(197e0cc508ffeb5cefa4046bdfb158939d598225) ) // IM5610CPE (N82S123 compatible) BPROM - sprite control
+
 	ROM_REGION( 0x0020, "targ", 0 )
 	ROM_LOAD( "hra2b-1",  0x0000, 0x0020, CRC(38e8024b) SHA1(adf1c1770695f7614c95eceb803f662c5b096a76) )    /* unknown */
 ROM_END
@@ -1410,7 +1415,6 @@ ROM_START( venture )
 	ROM_LOAD( "7a-ac",   0x7800, 0x0800, CRC(466addc7) SHA1(0230b5365d6aeee3ca47666a9eadee4141de125b) )
 
 	ROM_REGION( 0x0800, "gfx1", 0 )
-	ROM_LOAD( "11d-cpu", 0x0000, 0x0800, CRC(b4bb2503) SHA1(67303603b7c5e6301e976ef19f81c7519648b179) )
 	ROM_LOAD( "vel_11d-2.11d", 0x0000, 0x0800, CRC(ea6fd981) SHA1(46b1658e1607423d5a073f14097c2a48d59057c0) )
 
 	ROM_REGION( 0x140, "proms", 0 )
@@ -1420,7 +1424,7 @@ ROM_START( venture )
 ROM_END
 
 
-ROM_START( venture2 )
+ROM_START( venture5a )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "vent_a13.cpu", 0x8000, 0x1000, CRC(4c833f99) SHA1(1ff4eafe48b9f0ab8a123659d78c3dfa0bf56d7d) )
 	ROM_LOAD( "vent_a12.cpu", 0x9000, 0x1000, CRC(8163cefc) SHA1(7061819dd1105e8368c045dad2effae62d124539) )
@@ -1439,7 +1443,7 @@ ROM_START( venture2 )
 	ROM_LOAD( "7a-ac",        0x7800, 0x0800, CRC(466addc7) SHA1(0230b5365d6aeee3ca47666a9eadee4141de125b) )
 
 	ROM_REGION( 0x0800, "gfx1", 0 )
-	ROM_LOAD( "11d-cpu",      0x0000, 0x0800, CRC(b4bb2503) SHA1(67303603b7c5e6301e976ef19f81c7519648b179) )
+	ROM_LOAD( "vel_11d-2.11d", 0x0000, 0x0800, CRC(ea6fd981) SHA1(46b1658e1607423d5a073f14097c2a48d59057c0) )
 
 	ROM_REGION( 0x140, "proms", 0 )
 	ROM_LOAD( "hrl14h 1.h14", 0x0000, 0x0020, CRC(f76b4fcf) SHA1(197e0cc508ffeb5cefa4046bdfb158939d598225) )
@@ -1467,7 +1471,7 @@ ROM_START( venture4 )
 	ROM_LOAD( "7a-ac",    0x7800, 0x0800, CRC(466addc7) SHA1(0230b5365d6aeee3ca47666a9eadee4141de125b) )
 
 	ROM_REGION( 0x0800, "gfx1", 0 )
-	ROM_LOAD( "vel11d-2", 0x0000, 0x0800, CRC(ea6fd981) SHA1(46b1658e1607423d5a073f14097c2a48d59057c0) )
+	ROM_LOAD( "vel_11d-2.11d", 0x0000, 0x0800, CRC(ea6fd981) SHA1(46b1658e1607423d5a073f14097c2a48d59057c0) )
 
 	ROM_REGION( 0x140, "proms", 0 )
 	ROM_LOAD( "hrl14h 1.h14", 0x0000, 0x0020, CRC(f76b4fcf) SHA1(197e0cc508ffeb5cefa4046bdfb158939d598225) )
@@ -1476,7 +1480,7 @@ ROM_START( venture4 )
 ROM_END
 
 
-ROM_START( venture2b )
+ROM_START( venture5b )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "d2732.2s", 0x8000, 0x1000, CRC(87d69fe9) SHA1(d5ccf71af478873f32e23530a62515327f39f672) ) // only unique program ROM
 	ROM_LOAD( "d2732.2r", 0x9000, 0x1000, CRC(8163cefc) SHA1(7061819dd1105e8368c045dad2effae62d124539) )
@@ -1832,9 +1836,9 @@ GAME( 1981, mtrapb,    mtrap,   mtrap,    mtrap,     exidy_state, init_mtrap,   
 GAME( 1981, mtrapb2,   mtrap,   mtrap,    mtrap,     exidy_state, init_mtrap,    ROT0, "bootleg", "Mouse Trap (version 4, bootleg)", MACHINE_SUPPORTS_SAVE )
 
 GAME( 1981, venture,   0,       venture,  venture,   exidy_state, init_venture,  ROT0, "Exidy",   "Venture (version 5 set 1)", MACHINE_SUPPORTS_SAVE )
-GAME( 1981, venture2,  venture, venture,  venture,   exidy_state, init_venture,  ROT0, "Exidy",   "Venture (version 5 set 2)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, venture5a, venture, venture,  venture,   exidy_state, init_venture,  ROT0, "Exidy",   "Venture (version 5 set 2)", MACHINE_SUPPORTS_SAVE )
 GAME( 1981, venture4,  venture, venture,  venture,   exidy_state, init_venture,  ROT0, "Exidy",   "Venture (version 4)", MACHINE_SUPPORTS_SAVE )
-GAME( 1981, venture2b, venture, venture,  venture,   exidy_state, init_venture,  ROT0, "bootleg", "Venture (version 5 set 2, bootleg)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, venture5b, venture, venture,  venture,   exidy_state, init_venture,  ROT0, "bootleg", "Venture (version 5 set 2, bootleg)", MACHINE_SUPPORTS_SAVE )
 
 GAME( 1982, teetert,   0,       teetert,  teetert,   exidy_state, init_teetert,  ROT0, "Exidy",   "Teeter Torture (prototype)", MACHINE_SUPPORTS_SAVE )
 

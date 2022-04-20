@@ -673,7 +673,7 @@ ROM_START( bagnard )
 	ROM_LOAD( "j1_b04.bin",   0x1000, 0x1000, CRC(c680ef04) SHA1(79406bc786374abfcd9f548268c445b5c8d8858d) )
 
 	ROM_REGION( 0x2000, "gfx2", 0 )
-	ROM_LOAD( "lebag_itisa_1.c1",  0x0000, 0x1000, CRC(14ac1735) SHA1(a0a5d492d9690333cabf2cb21e121934216fc194) )
+	ROM_LOAD( "bagnard.001",  0x0000, 0x1000, CRC(060b044c) SHA1(3121f07adb661663a2303085eea1b662968f8f98) )
 	ROM_LOAD( "bagnard.003",  0x1000, 0x1000, CRC(8043bc1a) SHA1(bd2f3dfe26cf8d987d9ecaa41eac4bdc4e16a692) )
 
 	ROM_REGION( 0x0040, "proms", 0 )
@@ -914,7 +914,7 @@ ROM_START( botanic2 ) // PCB has Valadon logo with 'bajo licencia Itisa (Palamos
 	ROM_LOAD( "3.1f",    0x1000, 0x1000, CRC(70be5565) SHA1(a7eab667a82d3e7321f393073f29c6e5e865ec6b) )
 
 	ROM_REGION( 0x0040, "proms", 0 ) // strangely uses one PROM from bagman and one from botanic
-	ROM_LOAD( "82s123.6r",       0x0000, 0x0020, CRC(2a855523) SHA1(91e032233fee397c90b7c1662934aca9e0671482) )
+	ROM_LOAD( "bota_3p.3p",      0x0000, 0x0020, BAD_DUMP CRC(a8a2ddd2) SHA1(fc2da863d13e92f7682f393a08bc9357841ae7ea) )
 	ROM_LOAD( "b-tbp18s030.3r",  0x0020, 0x0020, CRC(edf88f34) SHA1(b9c342d51303d552f87df2543a34e38c30acd07c) )
 
 	ROM_REGION( 0x0020, "5110ctrl", 0)
@@ -1034,7 +1034,7 @@ ROM_START( sbagmans )
 	ROM_LOAD( "sbag_1f.bin",  0x1000, 0x1000, CRC(350ed0fb) SHA1(c7804e9618ebc88a1e3684a92a98d9a181441a1f) )
 
 	ROM_REGION( 0x0040, "proms", 0 )
-	ROM_LOAD( "p3.bin",       0x0000, 0x0020, CRC(2a855523) SHA1(91e032233fee397c90b7c1662934aca9e0671482) )
+	ROM_LOAD( "bagman_color_3pa2.3p", 0x0000, 0x0020, CRC(47504204) SHA1(7524ed766cc6d9a158327717d2cf53346ace2392) ) // MMI 6331 BPROM
 	ROM_LOAD( "r3.bin",       0x0020, 0x0020, CRC(ae6f1019) SHA1(fd711882b670380cb4bd909c840ba06277b8fbe3) )
 
 	ROM_REGION( 0x0020, "5110ctrl", 0)

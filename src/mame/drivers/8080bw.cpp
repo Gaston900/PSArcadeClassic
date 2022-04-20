@@ -3381,6 +3381,26 @@ void _8080bw_state::attackfc_io_map(address_map &map)
 	map(0x07, 0x07).w(m_mb14241, FUNC(mb14241_device::shift_count_w));
 }
 
+void _8080bw_state::attackfcu_io_map(address_map &map)
+{
+	attackfc_io_map(map);
+
+	map(0x00, 0x00).unmapr();
+	map(0x01, 0x01).portr("IN0");
+}
+
+
+static INPUT_PORTS_START( attackfcu )
+	PORT_START("IN0")
+	PORT_BIT( 0x01, IP_ACTIVE_LOW, IPT_COIN1 )
+	PORT_BIT( 0x02, IP_ACTIVE_HIGH, IPT_UNKNOWN )
+	PORT_BIT( 0x04, IP_ACTIVE_HIGH, IPT_UNKNOWN )
+	PORT_BIT( 0x08, IP_ACTIVE_HIGH, IPT_UNKNOWN )
+	PORT_BIT( 0x10, IP_ACTIVE_HIGH, IPT_BUTTON1 )
+	PORT_BIT( 0x20, IP_ACTIVE_HIGH, IPT_JOYSTICK_LEFT ) PORT_2WAY
+	PORT_BIT( 0x40, IP_ACTIVE_HIGH, IPT_JOYSTICK_RIGHT ) PORT_2WAY
+	PORT_BIT( 0x80, IP_ACTIVE_HIGH, IPT_UNKNOWN )
+INPUT_PORTS_END
 
 static INPUT_PORTS_START( attackfc )
 	PORT_START("IN0")
@@ -3409,6 +3429,13 @@ void _8080bw_state::attackfc(machine_config &config)
 	// TODO: custom discrete
 }
 
+void _8080bw_state::attackfcu(machine_config &config)
+{
+	attackfc(config);
+
+	/* basic machine hardware */
+	m_maincpu->set_addrmap(AS_IO, &_8080bw_state::attackfcu_io_map);
+}
 
 void _8080bw_state::init_attackfc()
 {
@@ -5222,6 +5249,16 @@ ROM_START( attackfc )
 	ROM_LOAD( "39a.bin",       0x1c00, 0x0400, CRC(f538cf08) SHA1(4a375a41ab5d9f0d9f9a2ebef4c448038c139204) )
 ROM_END
 
+ROM_START( attackfcu ) // unencrypted, possibly bootleg, has code differences
+	ROM_REGION( 0x10000, "maincpu", ROMREGION_ERASE00 )
+	ROM_LOAD( "egs0.bin", 0x0000, 0x0400, CRC(653bbb40) SHA1(8627b8e06e42d61ae41fc70654e530974dd2c5d0) )
+	ROM_LOAD( "egs1.bin", 0x0400, 0x0400, CRC(56024445) SHA1(5cf6270977509c4ea1655e9dd4ec1b6a52ba280e) )
+	ROM_LOAD( "egs2.bin", 0x0800, 0x0400, CRC(0a5fbe34) SHA1(f8276e215889a9282b15290774708d4dd9bfc3ed) )
+	ROM_LOAD( "egs3.bin", 0x0c00, 0x0400, CRC(50f7cd22) SHA1(39d5023c5f5e71b5f353960a4b6e848e55f3277f) )
+	ROM_LOAD( "egs4.bin", 0x1000, 0x0400, CRC(f59bac9e) SHA1(eaa807aade1b6a25c41d017e62f229bf1c7e1d0e) )
+	ROM_LOAD( "egs6.bin", 0x1800, 0x0400, CRC(a9eb4699) SHA1(0c170fc6f533b03a0ac626e1074d7ebd27ce216a) )
+	ROM_LOAD( "egs7.bin", 0x1c00, 0x0400, CRC(7e705388) SHA1(22a567059fd28a88cc4b815dfa7c5824a9d3fdc8) )
+ROM_END
 
 //    year  rom          parent    machine    inp        class           init           monitor ...
 
@@ -5366,6 +5403,7 @@ GAMEL(1980, gunchamp,    0,        claybust,  gunchamp,  _8080bw_state,  empty_i
 GAME( 1980?,astropal,    0,        astropal,  astropal,  _8080bw_state,  empty_init,    ROT0,   "Sidam?", "Astropal", MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND )
 
 GAMEL(1979?,attackfc,    0,        attackfc,  attackfc,  _8080bw_state,  init_attackfc, ROT0,   "Electronic Games Systems", "Attack Force", MACHINE_SUPPORTS_SAVE | MACHINE_NO_SOUND, layout_attackfc )
+GAMEL(1979?,attackfcu,   attackfc, attackfcu, attackfcu, _8080bw_state,  empty_init,    ROT0,   "bootleg?", "Attack Force (unencrypted)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_SOUND, layout_attackfc )
 
 GAME( 2002, invmulti,    0,        invmulti,  invmulti,  _8080bw_state,  init_invmulti, ROT270, "hack (Braze Technologies)", "Space Invaders Multigame (M8.03D)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 2002, invmultim3a, invmulti, invmulti,  invmulti,  _8080bw_state,  init_invmulti, ROT270, "hack (Braze Technologies)", "Space Invaders Multigame (M8.03A)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )

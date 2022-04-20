@@ -147,6 +147,7 @@ ultrainv                        //
 vortex                          // 852 [1980] Zilec Electronics Ltd.
 yosakdon                        // (c) 1979 Yosaku To Donbei
 yosakdona                       // (c) 1979 Yosaku To Donbei
+attackfcu                       //
 
 @source:aerofgt.cpp
 aerfboo2                        // bootleg
@@ -1556,7 +1557,7 @@ asurabld                        // (c) 1998 (Japan)
 asurabus                        // (c) 2000 (Japan)
 asurabusj                       //
 asurabusja                      //
-asurabusa                       // review build
+asurabusjr                      // review build
 
 @source:galaga.cpp
 battles                         // bootleg
@@ -1813,6 +1814,11 @@ galaxcirsa                      //
 zerotimeu                       //
 galkamika                       //
 galaktron                       //
+bongo                           //
+froggert                        //
+mandinka                        //
+ozon1                           //
+astroamb                        //
 
 @source:gauntlet.cpp
 gaunt2                          // 136043           (c) 1986
@@ -5714,6 +5720,7 @@ gunpey                          // (c) 2000 Banpresto
 
 @source:headonb.cpp
 foolrace                         // bootleg, headonb.cpp
+blackhol
 
 @source:homedata.cpp
 lastapos                        //
@@ -6470,6 +6477,7 @@ spacegunu                       // C57 (c) 1990 Taito America Corporation (US)
 
 @source:taitoair.cpp
 ainferno                        // C45 (c) 1990 Taito America Corporation (US)
+ainfernou                       //
 ainfernoj                       // C45 (c) 1990 Taito Corporation (Japan)
 topland                         // B62 (c) 1988 Taito Corporation Japan (World)
 toplandj                        // B62 (c) 1988 Taito Corporation (Japan)
@@ -6672,7 +6680,7 @@ shangha2                        // (c) 1989 Sunsoft (Sun Electronics)
 shangha2a                       // (c) 1989 Sunsoft (Sun Electronics)
 shanghai                        // (c) 1988 Sunsoft (Sun Electronics)
 shanghaij                       // (c) 1988 Sunsoft (Sun Electronics)
-
+blktch2
 
 @source:aleck64.cpp
 11beat                          // (c) 1998 Hudson
@@ -7286,6 +7294,7 @@ tornbase                        // 605 [1976]
 archrivl                        // (c) 1989
 archrivla                       // (c) 1989
 archrivlb                       // bootleg
+basketbal
 blasted                         // (c) 1988
 intlaser                        // (c) 1987
 pigskin                         // (c) 1990
@@ -7400,6 +7409,7 @@ sfrushrk                        // (c) 1996 Atari Games
 vaportrx                        // (c) 1998 Atari Games
 vaportrxp                       // (c) 1998 Atari Games
 wg3dh                           // (c) 1996 Atari Games
+wg3dhfe                         //
 
 @source:sspeedr.cpp
 sspeedr                         // 1979 Midway
@@ -7708,11 +7718,22 @@ fbaitmcu                        // 1999 - Fisherman's Bait - Marlin Challenge (G
 fbait2bc                        // 1998 - Fisherman's Bait 2 - A Bass Challenge (GE865 VER. UAB)
 bassang2                        // 1998 - Bass Angler 2 (GE865 VER. JAA)
 gchgchmp                        // 1999 - Gachaga Champ (GE877 VER. JAB)
-gtrfrks                         // 1999 - Guitar Freaks (GQ886 VER. EAC)
-gtrfrksa                        // 1999 - Guitar Freaks (GQ886 VER. AAC)
-gtrfrksj                        // 1999 - Guitar Freaks (GQ886 VER. JAC)
-gtrfrksu                        // 1999 - Guitar Freaks (GQ886 VER. UAC)
+gtrfrks                         //
+gtrfrksu                        //
+gtrfrksj                        //
+gtrfrksa                        //
+gtrfrksc                        // 1999 - Guitar Freaks (GQ886 VER. EAC)
+gtrfrksac                       // 1999 - Guitar Freaks (GQ886 VER. AAC)
+gtrfrksjc                       // 1999 - Guitar Freaks (GQ886 VER. JAC)
+gtrfrksuc                       // 1999 - Guitar Freaks (GQ886 VER. UAC)
 gtrfrk2m                        // 1999 - Guitar Freaks 2nd Mix Ver 1.01 (GQ883 VER. JAD)
+gtrfrk2ma                       //
+gtrfrk2mua                      //
+gtrfrk2mja                      //
+gtrfrk2mka                      //
+gtrfrk2maa                      //
+gtrfrk2ml1                      //
+gtrfrk2ml2                      //
 hypbbc2p                        // 1999 - Hyper Bishi Bashi Champ - 2 Player (GX908 1999/08/24 VER. JAA)
 hypbbc2pk                       // 1999 - Hyper Bishi Bashi Champ - 2 Player (GX908 1999/08/24 VER. KAA)
 hyperbbc                        // 1998 - Hyper Bishi Bashi (GQ876 VER. EAA)
@@ -7727,7 +7748,7 @@ konam80u                        // 1998 - Konami 80's AC Special (GC826 VER. UAA
 konam80j                        // 1998 - Konami 80's Gallery (GC826 VER. JAA)
 salarymc                        // 2000 - Salary Man Champ (G*A18 VER. JAA)
 strgchmp                        // 1997 - Steering Champ (GQ710 VER. UAA)
-hndlchmp                        // 1997 - Handle Champ (GQ710 VER. JAB)
+hndlchmpj                       // 1997 - Handle Champ (GQ710 VER. JAB)
 stepchmp                        // 1999 - Step Champ (GE930 VER. JA)
 sys573                          //
 
@@ -8054,6 +8075,7 @@ f1gpstar2                       // (c) 1991 Jaleco
 f1gpstr2                        // (c) 1993 Jaleco
 scudhamm                        // (c) 1994 Jaleco
 wildplt                         // (c) 1992 Jaleco
+bigrunu                         //
 
 @source:citycon.cpp
 citycon                         // (c) 1985 Jaleco
@@ -8573,6 +8595,7 @@ srdarwin                        // (c) 1987 Data East Corporation (World)
 srdarwinj                       // (c) 1987 Data East Corporation (Japan)
 
 @source:deco_mlc.cpp
+acchi                           //
 avengrgs                        // MCG (c) 1995 Data East Corporation (World)
 avengrgsj                       // MCG (c) 1995 Data East Corporation (Japan)
 ddream95                        // MCE (c) 1996 Data East Corporation
@@ -8908,6 +8931,7 @@ atetrisb3                       // (bootleg)
 atetb3482                       // (bootleg, with UM3482)
 atetrisc                        // 136066           (c) 1989
 atetrisc2                       // 136066           (c) 1989
+atetrisb4
 
 @source:avalnche.cpp
 avalnche                        // 030574           1978/04 [6502]
@@ -9896,6 +9920,7 @@ cyclwarr                        // (c) 1991 Tatsumi
 cyclwarra                       // (c) 1991 Tatsumi
 roundup5                        // (c) 1989 Tatsumi
 cyclwarrb                       // (c) 1991 Tatsumi
+bigfightj                       //
 
 @source:tx1.cpp
 buggyboy                        // (c) 1985 Tatsumi
@@ -10759,6 +10784,7 @@ vf2o
 zerogun
 zeroguna
 zerogunaj
+airwlkrs //
 
 @source:model3.cpp
 swtrilgy
@@ -12671,6 +12697,9 @@ srallyp                         //hack
 /****************************************************
   List of all drivers disabled on the system arcade64.
 *******************************************************/
+@source:8080bw.cpp
+//orbite
+//cane
 
 @source:namcos2.cpp
 //finalap3bl
@@ -12679,271 +12708,131 @@ srallyp                         //hack
 //metabee
 //poittoc
 
-@source:nycaptor.cpp
-//cyclshtg
-
-@source:dreamwld.cpp
-//cutefght
-
-@source:tumbleb.cpp
-//chokchok              
-//pangpang
-
 @source:bagman.cpp
 //bagmans3
 
-@source:cps1.cpp
-//ffightj4
-//sf2amf
-//sf2stt
-//sf2rk
-//qad
-//qadjr
-//qtono2j
-
-@source:cps2.cpp
-//qndream
-
-@source:neogeo.cpp
-//quizdai2
-//quizdais
-//quizdaisk
-//quizkof
-//quizkofk
-//vliner 
-//vliner7e
-//vliner6e
-//vliner54
-//vliner53
-
 @source:itech32.cpp
 //pubball
-//pairs               
-//pairsa
-//hotmemry
-//hotmemry11
-//timekill100         
-
-@source:himesiki.cpp
-//himesiki
-
-@source:trackfld.cpp.cpp
-//hipoly
-//wizzquiz
-//wizzquiza
-
-@source:psikyo4.cpp
-//hotdebut
-
-@source:meijinsn.cpp
-//meijinsn                      
-//meijinsna                      
-
-@source:missb2.cpp
-//bublpong                        
-//missb2                         
-
-@source:taito_f2.cpp
-//mjnquest 
-//mjnquestb     
-//qcrayon
-//qcrayon2
-//qjinsei
-//qtorimon
-//quizhq
-//qzchikyu
-//qzquest
-//yesnoj
-//yuyugogo
-
-@source:taito_f3.cpp
-//qtheater
-//quizhuhu
-
-@source:seta.cpp
-//qzkklgy2
-//qzkklogy
-
-@source:seta2.cpp
-//myangel  
-//myangel2
-
-@source:namcos11.cpp
-//myangel3
-
-@source:nmk16.cpp
-//nouryoku
-//nouryokup
-//popspops
-//hotbubl
-
-@source:pcktgal.cpp
-//pcktgal2
-//pcktgal2j
-//pcktgalb
-
-@source:eolith.cpp
-//penfan
-//penfana
-
-@source:pgm.cpp
-//pgm3in1
-//pgm3in1c100
-//py2k2
-//py2k2100
-
-@source:ettrivia.cpp
-//promutrv
-//promutrva
-//promutrvb
-//promutrvc
-//strvmstr
-
-@source:tigeroad.cpp
-//pushman
-//pushmana
-//pushmant
-
-@source:taito_l.cpp
-//puzznic
-//puzznicb
-//puzznicba
-//puzznici
-//puzznicj
-//puzznicu
-
-@source:shisen.cpp
-//shisen
-//sichuan2
-//sichuan2a
+//timekill100            
 
 @source:galaxian.cpp
+//ckongg
+//ckongmc2
+//ckonggx
+//ckongcv
+//ckongis
+//ckongs
+//mimonkey
+//mimons
+//mimonscr
+//mimonscra
 //namenayo
-//tdpgal
-
-@source:pktgaldx.cpp
-//pktgaldx
-//pktgaldxa
-//pktgaldxb
-//pktgaldxj
+//sbhoei
+//sbhoeia
+//porter
+//portera
+//monsterza
 
 @source:snk68.cpp
 //powb
 
-@source:powerins.cpp
-//powerinsc
-
-@source:fcrash.cpp
-//mtwinsb
-
-@source:gberet.cpp
-//gberetb
-
-@source:williams.cpp
-//lottofun
-
-@source:tmnt.cpp
-//qgakumon
-
-@source:segas24.cpp
-//qgh
-//qrouka
-//qsww
-//quizmeku
-
-@source:mitchell.cpp
-//qsangoku
-//qtono1
-
-@source:m90.cpp
-//quizf1
-
-@source:macrossp.cpp
-//quizmoon
-
-@source:quizo.cpp
-//quizo   
-//quizoa
-
-@source:namcona1.cpp
-//quiztou
-//xday2
-
-@source:taito_b.cpp
-//qzshowby
-
-@source:suprnova.cpp
-//ryouran
-//ryourano
-
-@source:segas16b.cpp
-//sjryuko
-
-@source:segas16a.cpp
-//sjryuko1
-
-@source:limenko.cpp
-//spotty
-
-@source:eolith.cpp
-//stealsee
-
-@source:ettrivia.cpp
-//strvmstr
-
-@source:jack.cpp
-//sucasino
-
-@source:suna16.cpp
-//sunaq
-
-@source:ssv.cpp
-//meosism
-//sxyreac2
-//sxyreact
-//ryorioh
-
-@source:route16.cpp
-//route16a        
-//ttmahjng
-
-@source:toaplan2.cpp
-//whoopee
-
-@source:nmg5.cpp
-//wondstcka
-
-@source:zerozone.cpp
-//zerozone
-
-@source:route16.cpp
-//vscompmj
-
-@source:epos.cpp
-//revenger
-
 @source:segac2.cpp
 //tfrceacjpb
 
-@source:toki_ms.cpp
-//tokims
-
 @source:arachnid.cpp
-//arac6000
 //arac6spa
-
-@source:avt.cpp
-//avtbingo
-//avtnfl
-//avtsym14
-//avtsym25
-
-@source:laserbat.cpp
-//catnmousa
-
-@source:fcrash.cpp
-//slampic2
 
 @source:nemesis.cpp
 //twinbeeb
 
+@source:39in1.cpp
+//48in1c
+//rodent
+
+@source:pacman.cpp
+//8bpm
+//acitya
+//alibaba
+//alibabab
+//beastfp
+//bigbucks
+//birdiy
+//bwcasino
+//candory
+//cannonbp
+//clubpacm
+//clubpacma        
+//clubpacmb
+//crush5
+//crushbl2
+//crushbl3
+//crushs
+//dremshpr
+//drivfrcp
+//eeekk
+//eeekkp
+//eggor
+//gorkans
+//jumpshot
+//jumpshotp
+//korosuke
+//lizwiz
+//mbrush
+//mrtnt
+//mschamp
+//mspactwin
+//mspacmbn
+//nmouse
+//nmouseb
+//numcrash
+//pacmanpe
+//pacmansp
+//pacuman
+//paintrlr
+//pengojpm
+//pengomc1
+//pengomc2 
+//pengopac
+//pinguinos
+//ponpoko
+//ponpokov
+//porky
+//rocktrv2
+//sprglbpg
+//sprglobp
+//shootbul
+//theglobme
+//theglobp
+//titanpac
+//vanvan
+//vanvanb
+//vanvank
+//woodpeca
+//woodpeck
+
+@source:neogeo.cpp
+//mslug3a
+//mslug5b
+//mvstemp
+
+@source:fcrash.cpp
+//ffightblb
+//mtwinsb
+//varthb
+//slampic2
+//wofabl
+//wofr1bl
+
+@source:ksys573.cpp
+//animechmp
+//kicknkick
+//gbbchmp
+
+@source:atetris.cpp
+//atetrisb5
+//atetrisbp
+
+@source:namcona1.cpp
+//zelos
+//zelost
+//bbbingo

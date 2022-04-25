@@ -6,7 +6,7 @@
 
 #define FILTERTEXT_LEN  256
 #define NUM_EXCLUSIONS  10
-#define NUMHISTORYTAB   WINUI_ARRAY_LENGTH(g_ComboBoxHistoryTab)
+#define NUMHISTORYTAB   std::size(g_ComboBoxHistoryTab)
 
 const char * GetFilterText(void);
 intptr_t CALLBACK ResetDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);

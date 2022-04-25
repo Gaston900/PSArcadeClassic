@@ -32,4 +32,4 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Final Star Force
-GAME( 1992, fstarfrchack01, fstarfrc, fstarfrc, fstarfrc, tecmo16_state, empty_init, ROT90, "hack", "Final Star Force (Translation Chinese)", 0 )
+GAME( 1992, fstarfrchack01, fstarfrc, base, fstarfrc, tecmo16_state, empty_init, ROT90, "hack", "Final Star Force (Translation Chinese)", MACHINE_SUPPORTS_SAVE )

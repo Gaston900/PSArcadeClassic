@@ -7,36 +7,36 @@
 Issues:
 
 - knightsh
-	the title screen is garbage.
+    the title screen is garbage.
 
 - kodh
-	title, problem with placement of the letters.
+    title, problem with placement of the letters.
 
 - sk2h1, sk2h2, sk2h3, sk2h22, sk2h31, sk2h32, sk2h33, sk2h34
-	setup screen is blank.
-	map doesn't show first time around prior to demo 1, and never before demo 3.
+    setup screen is blank.
+    map doesn't show first time around prior to demo 1, and never before demo 3.
 
 - sk2h22, sk2h31, sk2h32, sk2h33, sk2h34, sk2h35
-	coin 3, start 3, 3rd player not working.
+    coin 3, start 3, 3rd player not working.
 
 - wofjcn
-	chinese language rom isn't working. Whatever is tried breaks stuff.
+    chinese language rom isn't working. Whatever is tried breaks stuff.
 
 
 *******************************************************************************************************************/
 
-WRITE16_MEMBER( cps_state::dinoh_sound_command_w )
+void cps_state::dinoh_sound_command_w(u16 data)
 {
 	/* Pass the Sound Code to the Q-Sound Shared Ram */
 	m_qsound_sharedram1[1] = data;
 }
 
-WRITE16_MEMBER( cps_state::daimakb_palctrl_w )
+void cps_state::daimakb_palctrl_w(u16 data)
 {
 	m_cps_b_regs[0x30 / 2] = data;
 }
 
-WRITE16_MEMBER(cps_state::daimakb_layer_w)
+void cps_state::daimakb_layer_w(offs_t offset, u16 data)
 {
 	if (offset == 0x00)
 		m_cps_a_regs[0x0e / 2] = data; /* scroll 1y */
@@ -87,7 +87,7 @@ WRITE16_MEMBER(cps_state::daimakb_layer_w)
 
 /**************************************************************************
 
-	Address Maps
+    Address Maps
 
 ***************************************************************************/
 
@@ -228,7 +228,7 @@ void cps_state::wofsf2_map(address_map &map) {
 
 /********************************************************************
 
-	Inputs and dips
+    Inputs and dips
 
 *********************************************************************/
 
@@ -260,7 +260,7 @@ static INPUT_PORTS_START( dinohz )
 	PORT_BIT( 0x08, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_8WAY PORT_PLAYER(3)
 	PORT_BIT( 0x10, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(3)
 	PORT_BIT( 0x20, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(3)
-//	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(3)
+//  PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(3)
 	PORT_BIT( 0x40, IP_ACTIVE_LOW, IPT_COIN3 )
 	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_START3 )
 INPUT_PORTS_END
@@ -293,7 +293,7 @@ static INPUT_PORTS_START( knightsh )
 	PORT_BIT( 0x08, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_8WAY PORT_PLAYER(3)
 	PORT_BIT( 0x10, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(3)
 	PORT_BIT( 0x20, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(3)
-//	PORT_BIT( 0x40, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(3)
+//  PORT_BIT( 0x40, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(3)
 	PORT_BIT( 0x40, IP_ACTIVE_LOW, IPT_COIN3 )
 	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_START3 )
 INPUT_PORTS_END
@@ -436,7 +436,7 @@ static INPUT_PORTS_START( sk2h21 )
 	PORT_BIT( 0x08, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_8WAY PORT_PLAYER(3)
 	PORT_BIT( 0x10, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(3)
 	PORT_BIT( 0x20, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(3)
-//	PORT_BIT( 0x40, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(3)
+//  PORT_BIT( 0x40, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(3)
 	PORT_BIT( 0x40, IP_ACTIVE_LOW, IPT_COIN3 )
 	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_START3 )
 INPUT_PORTS_END
@@ -554,7 +554,7 @@ static INPUT_PORTS_START( sk2h31 )
 	PORT_SERVICE_NO_TOGGLE( 0x40, IP_ACTIVE_LOW )
 	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_UNKNOWN )
 
-	PORT_START ("DSWA")	/* there are lots of other combinations, but this covers the useful ones */
+	PORT_START ("DSWA") /* there are lots of other combinations, but this covers the useful ones */
 	PORT_DIPNAME( 0xff, 0xff, DEF_STR( Coinage ) )
 	PORT_DIPSETTING(    0xde, DEF_STR( 2C_1C ) )
 	PORT_DIPSETTING(    0xff, DEF_STR( 1C_1C ) )
@@ -618,6 +618,7 @@ INPUT_PORTS_START( sf2mix )
 	PORT_DIPSETTING(    0x08, DEF_STR( Off ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
 INPUT_PORTS_END
+
 /********************************************************************
 *
 *  Machine Driver macro
@@ -731,7 +732,7 @@ void cps_state::sk2h31q(machine_config &config)
 
 void cps_state::init_dinoeh()
 {
-	m_maincpu->space(AS_PROGRAM).install_write_handler(0x800180, 0x800181, write16_delegate(FUNC(cps_state::dinoh_sound_command_w),this));
+	m_maincpu->space(AS_PROGRAM).install_write_handler(0x800180, 0x800181, write16smo_delegate(*this, FUNC(cps_state::dinoh_sound_command_w)));
 	kabuki_setup(dino_decode);
 	init_cps1();
 }
@@ -739,14 +740,14 @@ void cps_state::init_dinoeh()
 void cps_state::init_dinoh()
 {
 	/* Patch out Q-Sound test */
-	uint16_t *rom = (uint16_t *)memregion("maincpu")->base();
+	u16 *rom = (u16 *)memregion("maincpu")->base();
 	rom[0xaacf4/2] = 0x4e71;
 	init_dinoeh();
 }
 
 void cps_state::init_dinoz()
 {
-	uint16_t *rom = (uint16_t *)memregion("maincpu")->base();
+	u16 *rom = (u16 *)memregion("maincpu")->base();
 	rom[0xaaa82/2] = 0x4e71; // Patch out Q-Sound test
 	rom[0x1cfb4/2] = 0x4e71; // patch out invalid instruction
 	init_dinoeh();
@@ -754,10 +755,10 @@ void cps_state::init_dinoz()
 
 void cps_state::init_dinohb()
 {
-	uint8_t *mem8 = memregion("maincpu")->base();
+	u8 *mem8 = memregion("maincpu")->base();
 	// Fix draw scroll
-//	mem8[0x006c2] = 0xC0;
-//	mem8[0x006c3] = 0xFF;
+//  mem8[0x006c2] = 0xC0;
+//  mem8[0x006c3] = 0xFF;
 	// Fix gfx
 	mem8[0x472] = 0xFC;
 	mem8[0x473] = 0x33;
@@ -837,7 +838,7 @@ void cps_state::init_dinohb()
 void cps_state::init_punisherb()
 {
 	// note: bytes are swapped around compared to rom_fill.
-	uint8_t *mem8 = memregion("maincpu")->base();
+	u8 *mem8 = memregion("maincpu")->base();
 	// Use standard ports
 	mem8[0xAB3] = 0x33;
 	mem8[0xAB4] = 0x30;
@@ -1049,14 +1050,14 @@ void cps_state::init_punisherb()
 void cps_state::init_sf2h9()
 {
 	/* Patch out protection check */
-	uint16_t *rom = (uint16_t *)memregion("maincpu")->base();
+	u16 *rom = (u16 *)memregion("maincpu")->base();
 	rom[0xc0670/2] = 0x4e71;
 	init_cps1();
 }
 
 void cps_state::init_sf2h13()
 {
-	uint16_t *rom = (uint16_t *)memregion("maincpu")->base();
+	u16 *rom = (u16 *)memregion("maincpu")->base();
 
 	// Fix scroll
 	rom[0x1d22a/2] = 0x0120;
@@ -1085,7 +1086,7 @@ void cps_state::init_sf2h13()
 
 void cps_state::init_wofb()
 {
-	uint8_t *mem8 = memregion("maincpu")->base();
+	u8 *mem8 = memregion("maincpu")->base();
 	// Fix gfx
 	mem8[0x506] = 0xE7;
 	mem8[0x507] = 0x48;
@@ -1111,7 +1112,7 @@ void cps_state::init_wofb()
 
 void cps_state::init_sk2h35()
 {
-	uint8_t *mem8 = memregion("maincpu")->base();
+	u8 *mem8 = memregion("maincpu")->base();
 	// Patch Q sound protection? check
 	mem8[0x5A1A] = 0x00;
 	mem8[0x5A1B] = 0x67;
@@ -1181,7 +1182,7 @@ void cps_state::init_sk2h35()
 
 void cps_state::init_sk2h1q()
 {
-	uint8_t *mem8 = memregion("maincpu")->base();
+	u8 *mem8 = memregion("maincpu")->base();
 	// Stage Order
 	mem8[0x72a6] = 0x00;
 	// Disable Sprite Recoding
@@ -1306,7 +1307,7 @@ void cps_state::init_sk2h1q()
 
 void cps_state::init_sk2h1()
 {
-	uint8_t *mem8 = memregion("maincpu")->base();
+	u8 *mem8 = memregion("maincpu")->base();
 	// Stage Order
 	mem8[0x72a6] = 0x00;
 	// Disable Sprite Recoding
@@ -1338,7 +1339,7 @@ void cps_state::init_sk2h1()
 
 void cps_state::init_sk2h3()
 {
-	uint8_t *mem8 = memregion("maincpu")->base();
+	u8 *mem8 = memregion("maincpu")->base();
 	// Disable Sprite Recoding
 	mem8[0x5d858] = 0x00;
 	mem8[0x5d859] = 0x61;
@@ -1372,7 +1373,7 @@ void cps_state::init_sk2h3()
 
 void cps_state::init_sk2h21()
 {
-	uint8_t *mem8 = memregion("maincpu")->base();
+	u8 *mem8 = memregion("maincpu")->base();
 	// Patch Q sound protection? check
 	mem8[0x0554] = 0xb4;
 	mem8[0x0555] = 0x54;
@@ -1393,7 +1394,7 @@ void cps_state::init_sk2h21()
 
 void cps_state::init_sk2h22()
 {
-	uint8_t *mem8 = memregion("maincpu")->base();
+	u8 *mem8 = memregion("maincpu")->base();
 	// Protection
 	mem8[0xE7AD0] = 0x71;
 	mem8[0xE7AD1] = 0x4E;
@@ -1418,7 +1419,7 @@ void cps_state::init_sk2h22()
 
 void cps_state::init_sk2h31()
 {
-	uint8_t *mem8 = memregion("maincpu")->base();
+	u8 *mem8 = memregion("maincpu")->base();
 	// Disable Sprite Recoding
 	mem8[0x5de96] = 0x00;
 	mem8[0x5de97] = 0x61;
@@ -1588,8 +1589,6 @@ static INPUT_PORTS_START( ffightae )
 	PORT_DIPSETTING(    0x00, DEF_STR( Test ) )
 INPUT_PORTS_END
 
-
-
 ROM_START( cps1frog )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "frog30-36.bin",  0x00000, 0x20000, CRC(8eb8ddbe) SHA1(298c72b3eb6f2721f204cf80ec4a7c52dc8b23fd) )
@@ -1681,9 +1680,9 @@ ROM_START( sk2h103 ) // same as MAME sgyxz - here until it gets fixed
 	ROM_LOAD( "sk2h101.key",     0x00, 0x80, CRC(679300a3) SHA1(f3e8197955f6b2b54493a449386b804b0d5e15ed) ) // OK
 ROM_END
 
-HACK( 2006, cps1frog,    0,        cps1frog,   cps1frog, cps_state, cps1,     ROT0,   "Rastersoft", "Frog Feast (CPS1)", MACHINE_SUPPORTS_SAVE )
-HACK( 1994, pnicku,      pnickj,   cps1_10MHz, pnicku,   cps_state, cps1,     ROT0,   "Creamymami[EGCG]", "Pnickies (This Edition Is Just A Regional USA Version)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sk2h103,     wof,      sk2h3,      sk2h3,    cps_state, sk2h3,    ROT0,   "All-In Co Ltd", "Sangokushi II (set H3)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, cps1frog,    0,        cps1frog,   cps1frog, cps_state, init_cps1,     ROT0,   "Rastersoft", "Frog Feast (CPS1)", MACHINE_SUPPORTS_SAVE )
+GAME( 1994, pnicku,      pnickj,   cps1_10MHz, pnicku,   cps_state, init_cps1,     ROT0,   "Creamymami[EGCG]", "Pnickies (This Edition Is Just A Regional USA Version)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sk2h103,     wof,      sk2h3,      sk2h3,    cps_state, init_sk2h3,    ROT0,   "All-In Co Ltd", "Sangokushi II (set H3)", MACHINE_SUPPORTS_SAVE )
 
 /**************
  Three Wonders
@@ -9568,286 +9567,286 @@ ROM_END
 
 /*    YEAR  NAME           PARENT    MACHINE     INPUT     INIT            MONITOR COMPANY         FULLNAME FLAGS */
 // Three Wonders
-HACK( 2019, 3wondershack01,  3wonders, cps1_10MHz, 3wonders, cps_state, cps1,     ROT0,   "huangxu", "Three Wonders (Ex Super Version 2019-04-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, 3wondershack01,  3wonders, cps1_10MHz, 3wonders, cps_state, init_cps1,     ROT0,   "huangxu", "Three Wonders (Ex Super Version 2019-04-19)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-HACK( 1991, 3wondrud,        3wonders, cps1_10MHz, 3wonders, cps_state, cps1,     ROT0,   "bootleg", "Three Wonders (US 910520 Phoenix Edition)", MACHINE_SUPPORTS_SAVE )
-HACK( 1991, 3wondersha,      3wonders, cps1_10MHz, 3wonders, cps_state, cps1,     ROT0,   "bootleg", "Three Wonders (bootleg set 3, wonder 3 910520 etc)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, 3wondrud,        3wonders, cps1_10MHz, 3wonders, cps_state, init_cps1,     ROT0,   "bootleg", "Three Wonders (US 910520 Phoenix Edition)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, 3wondersha,      3wonders, cps1_10MHz, 3wonders, cps_state, init_cps1,     ROT0,   "bootleg", "Three Wonders (bootleg set 3, wonder 3 910520 etc)", MACHINE_SUPPORTS_SAVE )
 // Captain Commando
-HACK( 1991, captcommhack01,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
-HACK( 2008, captcommhack02,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "Shinwa",  "Captain Commando (Ex Super version)" , MACHINE_SUPPORTS_SAVE )
-HACK( 1991, captcommhack03,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Extreme Mode)", MACHINE_SUPPORTS_SAVE )
-HACK( 1991, captcommhack04,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "DDJ",     "Captain Commando (Change Weapon)", MACHINE_SUPPORTS_SAVE )
-HACK( 1991, captcommhack05,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "DDJ",     "Captain Commando (Stage Select)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, captcommhack06,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "DDJ",     "Captain Commando (Hit Anywhere 2018-08-09)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, captcommhack07,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Shape Shifting Version 2019-05-05)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2019, captcommhack08,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Summon Mount Edition 2019-08-02)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2019, captcommhack09,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (1V4 Edition 2019-09-16)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2020, captcommhack10,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (God Of War Edition 2020-12-17)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2019, captcommhack11,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Warriors Edition 2019-10-21)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2020, captcommhack12,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (99 Fighter Edition 2020-12-12)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, captcommhack13,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Unlimited Bullet 020-02-19)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, captcommhack14,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Journey Version 2020-08-12)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2020, captcommhack15,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Master Second Edition 2020-08-12)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, captcommhack16,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Elite Edition 2020-08-12)", MACHINE_SUPPORTS_SAVE )
-HACK( 2022, captcommhack17,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Nightmare Edition 2022-01-01)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, captcommhack18,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Warlord Version 2020-08-12)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, captcommhack19,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Masters Competition Edition 2020-12-17)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, captcommhack20,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Di Yu Wu Shuang Version 2020-12-11)", MACHINE_SUPPORTS_SAVE )
-HACK( 2022, captcommhack21,  captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (Tu Fu Zhi Nu Version 2022-01-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, captcommhack01,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
+GAME( 2008, captcommhack02,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "Shinwa",  "Captain Commando (Ex Super version)" , MACHINE_SUPPORTS_SAVE )
+GAME( 1991, captcommhack03,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Extreme Mode)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, captcommhack04,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "DDJ",     "Captain Commando (Change Weapon)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, captcommhack05,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "DDJ",     "Captain Commando (Stage Select)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, captcommhack06,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "DDJ",     "Captain Commando (Hit Anywhere 2018-08-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, captcommhack07,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Shape Shifting Version 2019-05-05)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2019, captcommhack08,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Summon Mount Edition 2019-08-02)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2019, captcommhack09,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (1V4 Edition 2019-09-16)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2020, captcommhack10,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (God Of War Edition 2020-12-17)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2019, captcommhack11,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Warriors Edition 2019-10-21)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2020, captcommhack12,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (99 Fighter Edition 2020-12-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, captcommhack13,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Unlimited Bullet 020-02-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, captcommhack14,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Journey Version 2020-08-12)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2020, captcommhack15,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Master Second Edition 2020-08-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, captcommhack16,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Elite Edition 2020-08-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, captcommhack17,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Nightmare Edition 2022-01-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, captcommhack18,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Warlord Version 2020-08-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, captcommhack19,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Masters Competition Edition 2020-12-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, captcommhack20,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Di Yu Wu Shuang Version 2020-12-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, captcommhack21,  captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (Tu Fu Zhi Nu Version 2022-01-19)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-HACK( 1991, captcoud,        captcomm, cps1_10MHz, captcomm, cps_state, cps1,     ROT0,   "hack",    "Captain Commando (US 910928 Phoenix Edition)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, captcoud,        captcomm, cps1_10MHz, captcomm, cps_state, init_cps1,     ROT0,   "hack",    "Captain Commando (US 910928 Phoenix Edition)", MACHINE_SUPPORTS_SAVE )
 // Dai Makai-Mura
-HACK( 1988, daimakaib,       ghouls,   daimakb,    daimakai, cps_state, cps1,     ROT0,   "bootleg", "Dai Makai-Mura (bootleg, Japan)" , MACHINE_SUPPORTS_SAVE )
+GAME( 1988, daimakaib,       ghouls,   daimakb,    daimakai, cps_state, init_cps1,     ROT0,   "bootleg", "Dai Makai-Mura (bootleg, Japan)" , MACHINE_SUPPORTS_SAVE )
 // Cadillacs And Dinosaurs
-HACK( 2008, dinohack01,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "Pipi899", "Cadillacs and Dinosaurs (Enhanced Revision 2008 set 3 v2.0f 2008-10-17)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack02,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "DDJ",     "Cadillacs and Dinosaurs (Hit Anywhere)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack03,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "DDJ",     "Cadillacs and Dinosaurs (Call Out Weapon)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack04,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "DDJ",     "Cadillacs and Dinosaurs (Stage Select)" , MACHINE_SUPPORTS_SAVE )
-HACK( 1993, dinohack05,      dino,     qsound,     dinohz,   cps_state, dinoh,    ROT0,   "hack",    "Cadillacs and Dinosaurs (99 Jurassic)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack06,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Phantom Musou Updated version 2017 2017-11-29)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack07,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Yong Chuang Tian Ya 2017-12-27)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack08,      dino,     qsound,     dinohz,   cps_state, dinoh,    ROT0,   "hack",    "Cadillacs and Dinosaurs (Second Generation Extreme Edition 1 2017-12-16)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack09,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Second Generation Extreme Edition 2 2017-12-17)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack10,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "Ngs",     "Cadillacs and Dinosaurs (Tu Fu Zhi Nu 2017-11-23)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack11,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Di Yu Wu Shuang 2017-12-24)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack12,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (99 Jurassic Plus 2017-11-13)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack13,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (E Gun De Fu Chou 2017-12-31)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack14,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Qi Sha Edition 2018-02-25)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack15,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Dewar Edition 2018-01-18)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack16,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Boss Phantom Edition 2018-04-08)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack17,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Super Musou 2017 2017-11-03)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack18,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (2017 Super Warriors Brawl 2017-11-12)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack19,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Zeng Xing X5 2017-11-08)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack20,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (2011 Musou 2018 2017-12-14)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack21,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Second Generation Warriors 2017 2017-11-19)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack22,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Dinosaur Hunter (Burst Edition 2017-12-14)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack23,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Second Generation Knight Edition 2017-11-19)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack24,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Dinosaur Hunter (Challenge Edition 2017-11-16)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack25,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (2018 Warrior Summoning Edition 2018-01-18)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack26,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Battered Edition 2017 2017-04-18)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack27,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (2015 Matchless 2017-09-09)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack28,      dino,     qsound,     dinohz,   cps_state, dinoh,    ROT0,   "hack",    "Cadillacs and Dinosaurs (Second Generation Extreme Edition)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack29,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Iron Dragon 2018-07-31)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack30,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Fast Fight Blood Battle Version 2018 Tour Version 2018-06-11)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack31,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Multi Boss 2017-04-06)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack32,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (2017 Musou Combo Edition 2017-10-24)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack33,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Quickly Increased Edition X3 2017-10-30)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack34,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Warriors Bloody Edition 2017 2017-10-25)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack35,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Speed Enhanced Version 2017 2017-10-16)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack36,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (The 2017 Unparalleled Chaos 2017-11-10)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack37,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Second Generation Warriors 2017 2017-11-12)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack38,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Snow Version 2018-01-23)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack39,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Ghost Crying Godless Peerless Version 2018-01-18)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack40,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Chaos unparalleled 2018-08-16)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack41,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Ji 2011 2017-05-21)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack42,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Fight bloody version 2018-09-19)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack43,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Heaven And Earth Unparalleled 2018-12-21)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2019, dinohack44,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "Li Xili", "Cadillacs and Dinosaurs (Unrivalled Version 2019 2019-01-07)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, dinohack45,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (God of War Edition 2019-04-15)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, dinohack46,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Devil dance 2019-05-30)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, dinohack47,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Group Demon Dance Edition 2019-05-30)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, dinohack48,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Purgatory 2019-04-21)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, dinohack49,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (1V3 Enhanced Edition 2019 2019-08-02)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, dinohack50,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "NanGongSheng", "Cadillacs and Dinosaurs (Fighting God Version 2021-10-06)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, dinohack51,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "BinDi", "Cadillacs and Dinosaurs (Arena Version 2019-02-27)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, dinohack52,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "NanGongSheng", "Cadillacs and Dinosaurs (Sky King 2021-10-28)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, dinohack53,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Increase Enemy 5X 2017-11-02)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack54,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (The Warriors Edition 2020 2020-01-25)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, dinohack55,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Ruan Bu Wu Shuang 2018-07-29)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack56,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (The Beatless Hit Cool Version 2020-04-10)" , MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack57,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Ares Edition 2020-05-15)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack58,      dino,     qsound,     dino,     cps_state, dinohb,   ROT0,   "hack",    "Cadillacs and Dinosaurs (99 Jurassic Boss Edition 2020-06-17)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack59,      dino,     qsound,     dino,     cps_state, dinohb,   ROT0,   "hack",    "Cadillacs and Dinosaurs (99 Jurassic 2020-06-04)", MACHINE_SUPPORTS_SAVE )
-HACK( 2022, dinohack60,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (JD Versión 2020-06-07)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack61,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Military Commander Edition 2020-05-28)", MACHINE_SUPPORTS_SAVE )
-HACK( 2022, dinohack62,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Triassic Edition 2022-01-12)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack63,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Quick Warrior Edition 2020-06-07)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack64,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Three Forbidden Version 2020-06-21)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack65,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Tianjiang Edition 2020-06-29)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack66,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Uranus Edition 2020-06-29)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack67,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Xia Hou Dun Edition 2020-07-05)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack68,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Falling Dragon Edition 2020 2020-08-06)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack69,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Li Dianda Edition 2020-08-06)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack70,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Multi-Mode Enhanced Edition 2020-08-11)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack71,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Wushuang Jianglong Edition 2020-08-11)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack72,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Shinseiki Edition 2020-08-09)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack73,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Demon God Dance 2020-08-23)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack74,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Doushen 2020-10-18)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack75,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (The Warriors Edition 2020-10-18)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, dinohack76,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Commemorative Edition 2020-11-09)", MACHINE_SUPPORTS_SAVE )
-HACK( 2014, dinohack77,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Boss Improved Version 2014-10-04)", MACHINE_SUPPORTS_SAVE )
-HACK( 2022, dinohack78,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (28th Anniversary Edition 2022-01-05)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, dinohack79,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Kizuna Jigoku Tachi Version 2021-09-13)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, dinohack80,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Bee Storm Version 2021-09-23)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, dinohack81,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Random Edition 2021-09-23)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, dinohack82,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Luanshi Quanhuang Version 2021-12-24)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, dinohack83,      dino,     qsound,     dino,     cps_state, dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Plus Edition 2021-12-26)", MACHINE_SUPPORTS_SAVE )
-HACK( 1993, dinohack84,      dino,     qsound,     dinohz,   cps_state, dinoeh,   ROT0,   "Ydmis",   "Cadillacs and Dinosaurs (Select Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2008, dinohack01,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "Pipi899", "Cadillacs and Dinosaurs (Enhanced Revision 2008 set 3 v2.0f 2008-10-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack02,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "DDJ",     "Cadillacs and Dinosaurs (Hit Anywhere)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack03,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "DDJ",     "Cadillacs and Dinosaurs (Call Out Weapon)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack04,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "DDJ",     "Cadillacs and Dinosaurs (Stage Select)" , MACHINE_SUPPORTS_SAVE )
+GAME( 1993, dinohack05,      dino,     qsound,     dinohz,   cps_state, init_dinoh,    ROT0,   "hack",    "Cadillacs and Dinosaurs (99 Jurassic)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack06,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Phantom Musou Updated version 2017 2017-11-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack07,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Yong Chuang Tian Ya 2017-12-27)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack08,      dino,     qsound,     dinohz,   cps_state, init_dinoh,    ROT0,   "hack",    "Cadillacs and Dinosaurs (Second Generation Extreme Edition 1 2017-12-16)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack09,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Second Generation Extreme Edition 2 2017-12-17)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack10,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "Ngs",     "Cadillacs and Dinosaurs (Tu Fu Zhi Nu 2017-11-23)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack11,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Di Yu Wu Shuang 2017-12-24)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack12,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (99 Jurassic Plus 2017-11-13)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack13,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (E Gun De Fu Chou 2017-12-31)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack14,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Qi Sha Edition 2018-02-25)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack15,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Dewar Edition 2018-01-18)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack16,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Boss Phantom Edition 2018-04-08)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack17,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Super Musou 2017 2017-11-03)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack18,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (2017 Super Warriors Brawl 2017-11-12)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack19,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Zeng Xing X5 2017-11-08)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack20,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (2011 Musou 2018 2017-12-14)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack21,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Second Generation Warriors 2017 2017-11-19)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack22,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Dinosaur Hunter (Burst Edition 2017-12-14)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack23,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Second Generation Knight Edition 2017-11-19)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack24,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Dinosaur Hunter (Challenge Edition 2017-11-16)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack25,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (2018 Warrior Summoning Edition 2018-01-18)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack26,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Battered Edition 2017 2017-04-18)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack27,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (2015 Matchless 2017-09-09)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack28,      dino,     qsound,     dinohz,   cps_state, init_dinoh,    ROT0,   "hack",    "Cadillacs and Dinosaurs (Second Generation Extreme Edition)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack29,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Iron Dragon 2018-07-31)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack30,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Fast Fight Blood Battle Version 2018 Tour Version 2018-06-11)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack31,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Multi Boss 2017-04-06)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack32,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (2017 Musou Combo Edition 2017-10-24)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack33,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Quickly Increased Edition X3 2017-10-30)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack34,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Warriors Bloody Edition 2017 2017-10-25)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack35,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Speed Enhanced Version 2017 2017-10-16)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack36,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (The 2017 Unparalleled Chaos 2017-11-10)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack37,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Second Generation Warriors 2017 2017-11-12)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack38,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Snow Version 2018-01-23)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack39,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Ghost Crying Godless Peerless Version 2018-01-18)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack40,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Chaos unparalleled 2018-08-16)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack41,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Ji 2011 2017-05-21)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack42,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Fight bloody version 2018-09-19)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack43,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Heaven And Earth Unparalleled 2018-12-21)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2019, dinohack44,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "Li Xili", "Cadillacs and Dinosaurs (Unrivalled Version 2019 2019-01-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, dinohack45,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (God of War Edition 2019-04-15)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, dinohack46,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Devil dance 2019-05-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, dinohack47,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Group Demon Dance Edition 2019-05-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, dinohack48,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Purgatory 2019-04-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, dinohack49,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (1V3 Enhanced Edition 2019 2019-08-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, dinohack50,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Fighting God Version 2021-10-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, dinohack51,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Arena Version 2019-02-27)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, dinohack52,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Sky King 2021-10-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, dinohack53,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Increase Enemy 5X 2017-11-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack54,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (The Warriors Edition 2020 2020-01-25)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, dinohack55,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Ruan Bu Wu Shuang 2018-07-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack56,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (The Beatless Hit Cool Version 2020-04-10)" , MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack57,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Ares Edition 2020-05-15)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack58,      dino,     qsound,     dino,     cps_state, init_dinohb,   ROT0,   "hack",    "Cadillacs and Dinosaurs (99 Jurassic Boss Edition 2020-06-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack59,      dino,     qsound,     dino,     cps_state, init_dinohb,   ROT0,   "hack",    "Cadillacs and Dinosaurs (99 Jurassic 2020-06-04)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, dinohack60,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (JD Versión 2020-06-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack61,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Military Commander Edition 2020-05-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, dinohack62,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Triassic Edition 2022-01-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack63,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Quick Warrior Edition 2020-06-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack64,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Three Forbidden Version 2020-06-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack65,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Tianjiang Edition 2020-06-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack66,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Uranus Edition 2020-06-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack67,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Xia Hou Dun Edition 2020-07-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack68,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Falling Dragon Edition 2020 2020-08-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack69,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Li Dianda Edition 2020-08-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack70,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Multi-Mode Enhanced Edition 2020-08-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack71,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Wushuang Jianglong Edition 2020-08-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack72,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Shinseiki Edition 2020-08-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack73,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Demon God Dance 2020-08-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack74,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Doushen 2020-10-18)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack75,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (The Warriors Edition 2020-10-18)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, dinohack76,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Commemorative Edition 2020-11-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2014, dinohack77,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Boss Improved Version 2014-10-04)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, dinohack78,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (28th Anniversary Edition 2022-01-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, dinohack79,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Kizuna Jigoku Tachi Version 2021-09-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, dinohack80,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Bee Storm Version 2021-09-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, dinohack81,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Random Edition 2021-09-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, dinohack82,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Luanshi Quanhuang Version 2021-12-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, dinohack83,      dino,     qsound,     dino,     cps_state, init_dino,     ROT0,   "hack",    "Cadillacs and Dinosaurs (Plus Edition 2021-12-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 1993, dinohack84,      dino,     qsound,     dinohz,   cps_state, init_dinoeh,   ROT0,   "Ydmis",   "Cadillacs and Dinosaurs (Select Characters)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-HACK( 1993, dinoh,           dino,     qsound,     dinohz,   cps_state, dinoh,    ROT0,   "bootleg", "Cadillacs and Dinosaurs (bootleg set 3, 930223 Asia TW)" , MACHINE_SUPPORTS_SAVE )
-HACK( 1993, dinoha,          dino,     qsound,     dinohz,   cps_state, dinoh,    ROT0,   "bootleg", "Cadillacs and Dinosaurs (bootleg set 1, 930223 Asia TW)", MACHINE_SUPPORTS_SAVE )
-HACK( 1993, dinotpic,        dino,     qsound,     dinohz,   cps_state, dinohb,   ROT0,   "bootleg", "Cadillacs and Dinosaurs (bootleg set 2 (with PIC16c57), 930201 etc)", MACHINE_SUPPORTS_SAVE )
-HACK( 1993, dinohc,          dino,     qsound,     dinohz,   cps_state, dino,     ROT0,   "bootleg", "Cadillacs and Dinosaurs (Chinese bootleg, 930223 Asia TW)", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 1993, dinoh,           dino,     qsound,     dinohz,   cps_state, init_dinoh,    ROT0,   "bootleg", "Cadillacs and Dinosaurs (bootleg set 3, 930223 Asia TW)" , MACHINE_SUPPORTS_SAVE )
+GAME( 1993, dinoha,          dino,     qsound,     dinohz,   cps_state, init_dinoh,    ROT0,   "bootleg", "Cadillacs and Dinosaurs (bootleg set 1, 930223 Asia TW)", MACHINE_SUPPORTS_SAVE )
+GAME( 1993, dinotpic,        dino,     qsound,     dinohz,   cps_state, init_dinohb,   ROT0,   "bootleg", "Cadillacs and Dinosaurs (bootleg set 2 (with PIC16c57), 930201 etc)", MACHINE_SUPPORTS_SAVE )
+GAME( 1993, dinohc,          dino,     qsound,     dinohz,   cps_state, init_dino,     ROT0,   "bootleg", "Cadillacs and Dinosaurs (Chinese bootleg, 930223 Asia TW)", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
 // Final Fight
-HACK( 1990, ffighthack01,    ffight,   cps1_10MHz, ffight,   cps_state, cps1,     ROT0,   "Whirlwind (Piracy)", "Final Fight (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, ffighthack02,    ffight,   cps1_10MHz, ffight,   cps_state, cps1,     ROT0,   "hack",     "Final Fight (Yong Chuang Tian Ya Version 2016-08-17)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, ffighthack03,    ffight,   cps1_10MHz, ffight,   cps_state, cps1,     ROT0,   "hack",     "Final Fight (Ming Yun Wu Shuang Edition 2016 2016-10-24 )", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, ffighthack04,    ffight,   cps1_10MHz, ffight,   cps_state, cps1,     ROT0,   "hack",     "Final Fight (Paced Whirlwind 2016-08-17)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, ffighthack05,    ffight,   cps1_10MHz, ffight,   cps_state, cps1,     ROT0,   "hack",     "Final Fight (Musou Edition 2020-06-08)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, ffighthack06,    ffight,   cps1_10MHz, ffight,   cps_state, cps1,     ROT0,   "hack",     "Final Fight (1V2 Enhanced Version 2017-11-26)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, ffighthack07,    ffight,   cps1_12MHz, ffightae, cps_state, cps1,     ROT0,   "Grego & Rotwang", "Final Fight 30th Anniversary Edition (2019-12-03)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, ffighthack08,    ffight,   cps1_12MHz, ffightae, cps_state, cps1,     ROT0,   "Zombie Master",   "Final Fight 30th Anniversary Edition Brutal Version (2021-05-28)", MACHINE_SUPPORTS_SAVE )
-HACK( 2022, ffighthack09,    ffight,   cps1_12MHz, ffightae, cps_state, cps1,     ROT0,   "Zombie Master",   "Final Fight 30th Anniversary Edition Fair Challenge (2022-01-18)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, ffighthack10,    ffight,   cps1_12MHz, ffightae, cps_state, cps1,     ROT0,   "Zombie Master",   "Final Fight 30th Anniversary Edition Real Threat (2021-11-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 1990, ffighthack01,    ffight,   cps1_10MHz, ffight,   cps_state, init_cps1,     ROT0,   "Whirlwind (Piracy)", "Final Fight (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, ffighthack02,    ffight,   cps1_10MHz, ffight,   cps_state, init_cps1,     ROT0,   "hack",            "Final Fight (Yong Chuang Tian Ya Version 2016-08-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, ffighthack03,    ffight,   cps1_10MHz, ffight,   cps_state, init_cps1,     ROT0,   "hack",            "Final Fight (Ming Yun Wu Shuang Edition 2016 2016-10-24 )", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, ffighthack04,    ffight,   cps1_10MHz, ffight,   cps_state, init_cps1,     ROT0,   "hack",            "Final Fight (Paced Whirlwind 2016-08-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, ffighthack05,    ffight,   cps1_10MHz, ffight,   cps_state, init_cps1,     ROT0,   "hack",            "Final Fight (Musou Edition 2020-06-08)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, ffighthack06,    ffight,   cps1_10MHz, ffight,   cps_state, init_cps1,     ROT0,   "hack",            "Final Fight (1V2 Enhanced Version 2017-11-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, ffighthack07,    ffight,   cps1_12MHz, ffightae, cps_state, init_cps1,     ROT0,   "Grego & Rotwang", "Final Fight 30th Anniversary Edition (2019-12-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, ffighthack08,    ffight,   cps1_12MHz, ffightae, cps_state, init_cps1,     ROT0,   "Zombie Master",   "Final Fight 30th Anniversary Edition Brutal Version (2021-05-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, ffighthack09,    ffight,   cps1_12MHz, ffightae, cps_state, init_cps1,     ROT0,   "Zombie Master",   "Final Fight 30th Anniversary Edition Fair Challenge (2022-01-18)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, ffighthack10,    ffight,   cps1_12MHz, ffightae, cps_state, init_cps1,     ROT0,   "Zombie Master",   "Final Fight 30th Anniversary Edition Real Threat (2021-11-01)", MACHINE_SUPPORTS_SAVE )
 // Knights of the Round
-HACK( 2021, knightshack01,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "Sebastian Mihai", "Knights of the Round (Death's Thread)", MACHINE_SUPPORTS_SAVE )
-HACK( 2015, knightshack02,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "Sebastian Mihai", "Knights of the Round (Translation Romanian)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, knightshack03,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "Sebastian Mihai", "Knights of the Round (Squire's Aid)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, knightshack04,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "Sebastian Mihai", "Knights of the Round (Warlock's Tower)", MACHINE_SUPPORTS_SAVE )
-HACK( 1991, knightshack05,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "hack",     "Knights of the Round (Extreme Mode Edition)", MACHINE_SUPPORTS_SAVE )
-HACK( 1991, knightshack06,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "Mr.L",     "Knights of the Round (Random Characters, Items, Chaos Into Version V6-3)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, knightshack07,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "doubledr", "Knights of the Round (1V3 Unparalleled Edition 2016-02-17)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, knightshack08,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "hack",     "Knights of the Round (Super Plus 2016-08-26)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, knightshack09,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "hack",     "Knights of the Round (Tie Jia Ying Hao 1 Vs 3 Edition 2018-03-03)", MACHINE_SUPPORTS_SAVE )
-HACK( 2014, knightshack10,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "hack",     "Knights of the Round (Tie Jia Ying Hao 2 2018-03-14)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, knightshack11,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "hack",     "Knights of the Round (Enhanced Edition 2016-07-14)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, knightshack12,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "hack",     "Knights of the Round (Full Screen Attack 2018-02-26)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, knightshack13,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "hack",     "Knights of the Round (1V3 Edition 2018-06-07)", MACHINE_SUPPORTS_SAVE )
-HACK( 2012, knightshack14,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "hack",     "Knights of the Round (Enemy Random 2011-12-20)", MACHINE_SUPPORTS_SAVE ) //Name of the unknown roms
-HACK( 2020, knightshack15,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "hack",     "Knights of the Round (The Warriors Enhanced Edition 2020 2020-08-02)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, knightshack16,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "hack",     "Knights of the Round (The Falling Dragon Edition 2020 2020-08-02)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, knightshack17,   knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "hack",     "Knights of the Round (Wushuang Jianglong Edition 2020-08-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, knightshack01,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "Sebastian Mihai", "Knights of the Round (Death's Thread)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, knightshack02,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "Sebastian Mihai", "Knights of the Round (Translation Romanian)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, knightshack03,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "Sebastian Mihai", "Knights of the Round (Squire's Aid)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, knightshack04,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "Sebastian Mihai", "Knights of the Round (Warlock's Tower)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, knightshack05,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "hack",     "Knights of the Round (Extreme Mode Edition)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, knightshack06,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "Mr.L",     "Knights of the Round (Random Characters, Items, Chaos Into Version V6-3)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, knightshack07,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "doubledr", "Knights of the Round (1V3 Unparalleled Edition 2016-02-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, knightshack08,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "hack",     "Knights of the Round (Super Plus 2016-08-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, knightshack09,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "hack",     "Knights of the Round (Tie Jia Ying Hao 1 Vs 3 Edition 2018-03-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2014, knightshack10,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "hack",     "Knights of the Round (Tie Jia Ying Hao 2 2018-03-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, knightshack11,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "hack",     "Knights of the Round (Enhanced Edition 2016-07-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, knightshack12,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "hack",     "Knights of the Round (Full Screen Attack 2018-02-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, knightshack13,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "hack",     "Knights of the Round (1V3 Edition 2018-06-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2012, knightshack14,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "hack",     "Knights of the Round (Enemy Random 2011-12-20)", MACHINE_SUPPORTS_SAVE ) //Name of the unknown roms
+GAME( 2020, knightshack15,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "hack",     "Knights of the Round (The Warriors Enhanced Edition 2020 2020-08-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, knightshack16,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "hack",     "Knights of the Round (The Falling Dragon Edition 2020 2020-08-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, knightshack17,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "hack",     "Knights of the Round (Wushuang Jianglong Edition 2020-08-02)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-HACK( 1991, knightshb2,      knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "bootleg",  "Knights of the Round (bootleg set 2, 911127 etc)", MACHINE_SUPPORTS_SAVE )
-HACK( 1991, knightsh,        knights,  cps1_10MHz, knightsh, cps_state, cps1,     ROT0,   "hack",     "Knights of the Round (hack set 1)" , MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
-HACK( 1991, knightsha,       knights,  cps1_10MHz, knightsh, cps_state, cps1,     ROT0,   "Hack",     "Knights of the Round (hack set 2, 911127 etc)", MACHINE_SUPPORTS_SAVE )
-HACK( 1991, knightsb5,       knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "bootleg",  "Knights of the Round (bootleg set 5, 911127 Japan)", MACHINE_SUPPORTS_SAVE )
-HACK( 1991, knightud,        knights,  cps1_10MHz, knights,  cps_state, cps1,     ROT0,   "bootleg",  "Knights of the Round (US 911127 Phoenix Edition)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, knightshb2,      knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "bootleg",  "Knights of the Round (bootleg set 2, 911127 etc)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, knightsh,        knights,  cps1_10MHz, knightsh, cps_state, init_cps1,     ROT0,   "hack",     "Knights of the Round (hack set 1)" , MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
+GAME( 1991, knightsha,       knights,  cps1_10MHz, knightsh, cps_state, init_cps1,     ROT0,   "Hack",     "Knights of the Round (hack set 2, 911127 etc)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, knightsb5,       knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "bootleg",  "Knights of the Round (bootleg set 5, 911127 Japan)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, knightud,        knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "bootleg",  "Knights of the Round (US 911127 Phoenix Edition)", MACHINE_SUPPORTS_SAVE )
 // The King of Dragons
-HACK( 2015, kodhack01,       kod,      cps1_10MHz, kod,      cps_state, cps1,     ROT0,   "hack",     "The King of Dragons (Boss Battle Edition 2015-05-25)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, kodhack01,       kod,      cps1_10MHz, kod,      cps_state, init_cps1,     ROT0,   "hack",     "The King of Dragons (Boss Battle Edition 2015-05-25)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-HACK( 2002, kodh,            kod,      cps1_10MHz, kodh,     cps_state, cps1,     ROT0,   "hack",     "The King of Dragons (hack)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
+GAME( 2002, kodh,            kod,      cps1_10MHz, kodh,     cps_state, init_cps1,     ROT0,   "hack",     "The King of Dragons (hack)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
 // Mercs
-HACK( 1990, mercshack01,     mercs,    cps1_10MHz, mercs,    cps_state, cps1,     ROT270, "LB70",     "Mercs (Crazy Fire Version)", MACHINE_SUPPORTS_SAVE )
-HACK( 1990, mercshack02,     mercs,    cps1_10MHz, mercs,    cps_state, cps1,     ROT270, "hack",     "Senjou no Ookami II (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
+GAME( 1990, mercshack01,     mercs,    cps1_10MHz, mercs,    cps_state, init_cps1,     ROT270, "LB70",     "Mercs (Crazy Fire Version)", MACHINE_SUPPORTS_SAVE )
+GAME( 1990, mercshack02,     mercs,    cps1_10MHz, mercs,    cps_state, init_cps1,     ROT270, "hack",     "Senjou no Ookami II (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
 // The Punisher
-HACK( 2018, punisherhack01,  punisher, qsound,     punisher, cps_state, punisher, ROT0,   "hack",     "The Punisher (1 Vs 2 Perfect 2018-03-30)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, punisherhack02,  punisher, qsound,     punisher, cps_state, punisher, ROT0,   "hack",     "The Punisher (Tie Jia Ying Hao 2018-04-11)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, punisherhack03,  punisher, qsound,     punisher, cps_state, punisher, ROT0,   "hack",     "The Punisher (Enemy Reset 2018-03-26)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, punisherhack04,  punisher, qsound,     punisher, cps_state, punisher, ROT0,   "hack",     "The Punisher (Warriors Fast Fighting 2017-12-13)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, punisherhack05,  punisher, qsound,     punisher, cps_state, punisher, ROT0,   "hack",     "The Punisher (Multi-Mode Enhancement 2020-06-14)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, punisherhack06,  punisher, qsound,     punisher, cps_state, punisher, ROT0,   "hack",     "The Punisher (Warriors Edition 2017-11-02)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, punisherhack07,  punisher, qsound,     punisher, cps_state, punisher, ROT0,   "hack",     "The Punisher (The Falling Dragon Edition 2019-05-30)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, punisherhack08,  punisher, qsound,     punisher, cps_state, punisher, ROT0,   "hack",     "The Punisher (Quick Warrior Competition Edition 2018-09-20)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, punisherhack01,  punisher, qsound,     punisher, cps_state, init_punisher, ROT0,   "hack",     "The Punisher (1 Vs 2 Perfect 2018-03-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, punisherhack02,  punisher, qsound,     punisher, cps_state, init_punisher, ROT0,   "hack",     "The Punisher (Tie Jia Ying Hao 2018-04-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, punisherhack03,  punisher, qsound,     punisher, cps_state, init_punisher, ROT0,   "hack",     "The Punisher (Enemy Reset 2018-03-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, punisherhack04,  punisher, qsound,     punisher, cps_state, init_punisher, ROT0,   "hack",     "The Punisher (Warriors Fast Fighting 2017-12-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, punisherhack05,  punisher, qsound,     punisher, cps_state, init_punisher, ROT0,   "hack",     "The Punisher (Multi-Mode Enhancement 2020-06-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, punisherhack06,  punisher, qsound,     punisher, cps_state, init_punisher, ROT0,   "hack",     "The Punisher (Warriors Edition 2017-11-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, punisherhack07,  punisher, qsound,     punisher, cps_state, init_punisher, ROT0,   "hack",     "The Punisher (The Falling Dragon Edition 2019-05-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, punisherhack08,  punisher, qsound,     punisher, cps_state, init_punisher, ROT0,   "hack",     "The Punisher (Quick Warrior Competition Edition 2018-09-20)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-HACK( 1993, punisherud1,     punisher, qsound,     punisher, cps_state, punisher, ROT0,   "bootleg",  "The Punisher (US 930422 Phoenix Edition (8b/32p))", MACHINE_SUPPORTS_SAVE )
-HACK( 1993, punisherud2,     punisher, qsound,     punisher, cps_state, punisher, ROT0,   "bootleg",  "The Punisher (US 930422 Phoenix Edition (16b/40p))", MACHINE_SUPPORTS_SAVE )
+GAME( 1993, punisherud1,     punisher, qsound,     punisher, cps_state, init_punisher, ROT0,   "bootleg",  "The Punisher (US 930422 Phoenix Edition (8b/32p))", MACHINE_SUPPORTS_SAVE )
+GAME( 1993, punisherud2,     punisher, qsound,     punisher, cps_state, init_punisher, ROT0,   "bootleg",  "The Punisher (US 930422 Phoenix Edition (16b/40p))", MACHINE_SUPPORTS_SAVE )
 // Street Fighter II': Champion Edition
-HACK( 2016, sf2cehack01,     sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "DDJ",      "Street Fighter II': Champion Edition (Easy Move)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, sf2cehack02,     sf2ce,    cps1_12MHz, sf2,      cps_state, sf2rb,    ROT0,   "DDJ",      "Street Fighter II': Champion Edition (Easy Move / Rainbow, bootleg,)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, sf2cehack03,     sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (3 Questions Edition 2019-10-21)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, sf2cehack04,     sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (3 Questions Edition Simplify The Move 2019-10-21)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, sf2cehack05,     sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (Question Mark Edition 2019-10-21)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, sf2cehack06,     sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (Question Mark Edition Simplify The Move 2019-10-21)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, sf2cehack07,     sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (Chinese Voice Version Simplified 2020-06-30)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, sf2cehack08,     sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (Lowtax is a Wifebeater parody)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, sf2cehack09,     sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (Lowtax is a Wifebeater parody Simplified 2020-08-03)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, sf2cehack10,     sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "Drakon",   "Street Fighter II': Champion Edition (Punishment Edition Simplified 2018-06-26)", MACHINE_SUPPORTS_SAVE )
-HACK( 2012, sf2cehack11,     sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "Drakon",   "Street Fighter II': Champion Edition (Sheng Long Hack v7.3a)", MACHINE_SUPPORTS_SAVE )
-HACK( 2022, sf2cehack12,     sf2ce,    cps1_12MHz, sf2mix,   cps_state, cps1,     ROT0,   "Zero800",  "Street Fighter II': Champion Edition (Mix 1.2)", MACHINE_SUPPORTS_SAVE )
-HACK( 2022, sf2cehack13,     sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "Rotwang",  "Street Fighter II': Hyper Fighting (Ukraine version)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, sf2cehack01,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "DDJ",      "Street Fighter II': Champion Edition (Easy Move)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, sf2cehack02,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_sf2rb,    ROT0,   "DDJ",      "Street Fighter II': Champion Edition (Easy Move / Rainbow, bootleg,)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, sf2cehack03,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (3 Questions Edition 2019-10-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, sf2cehack04,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (3 Questions Edition Simplify The Move 2019-10-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, sf2cehack05,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (Question Mark Edition 2019-10-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, sf2cehack06,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (Question Mark Edition Simplify The Move 2019-10-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, sf2cehack07,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (Chinese Voice Version Simplified 2020-06-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, sf2cehack08,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (Lowtax is a Wifebeater parody)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, sf2cehack09,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "hack",     "Street Fighter II': Champion Edition (Lowtax is a Wifebeater parody Simplified 2020-08-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, sf2cehack10,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "Drakon",   "Street Fighter II': Champion Edition (Punishment Edition Simplified 2018-06-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2012, sf2cehack11,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "Drakon",   "Street Fighter II': Champion Edition (Sheng Long Hack v7.3a)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, sf2cehack12,     sf2ce,    cps1_12MHz, sf2mix,   cps_state, init_cps1,     ROT0,   "Zero800",  "Street Fighter II': Champion Edition (Mix 1.2)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, sf2cehack13,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "Rotwang",  "Street Fighter II': Hyper Fighting (Ukraine version)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-HACK( 1992, sf2mega2,        sf2ce,    cps1_12MHz, sf2,      cps_state, sf2h9,    ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Mega Co bootleg set 2, 920313 etc)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2amf5,         sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Alpha Magic-F bootleg set 3, 920313 etc)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2cejabl,       sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (920322 Japan bootleg set 1)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2rb5,          sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Rainbow bootleg set 5, 920322 Japan)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2hfjb,         sf2ce,    cps1_12MHz, sf2j,     cps_state, sf2h13,   ROT0,   "bootleg",  "Street Fighter II' Turbo: Hyper Fighting (bootleg set 1, 921209 Japan)", MACHINE_SUPPORTS_SAVE ) // bad tile for Blanka on player select screen
-HACK( 2021, sf2rbpr,         sf2ce,    cps1_12MHz, sf2rb,    cps_state, cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Rainbow, bootleg, set 1, protection removed)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2amf6,         sf2ce,    cps1_12MHz, sf2hack,  cps_state, sf2hack,  ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Alpha Magic-F bootleg set 4, 920313 etc)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2amf7,         sf2ce,    cps1_12MHz, sf2hack,  cps_state, sf2hack,  ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Alpha Magic-F bootleg set 5, 920313 etc)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2tlona,        sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Tu Long bootleg set 1, 811102 001)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2tlonb,        sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Tu Long bootleg set 2, 811102 001)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2tlonc,        sf2ce,    cps1_12MHz, sf2hack,  cps_state, sf2hack,  ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Tu Long bootleg set 3, 811102 001)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2red2,         sf2ce,    cps1_12MHz, sf2hack,  cps_state, sf2hack,  ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Red Wave bootleg set 2, 920313 etc)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2v0042,        sf2ce,    cps1_12MHz, sf2hack,  cps_state, sf2hack,  ROT0,   "bootleg",  "Street Fighter II': Champion Edition (V004 bootleg set 2, 920313 etc)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2yyc2,         sf2ce,    cps1_12MHz, sf2hack,  cps_state, sf2hack,  ROT0,   "bootleg",  "Street Fighter II': Champion Edition (YYC bootleg set 2, 920313 etc)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2ceeabl,       sf2ce,    sf2m1,      sf2,      cps_state, sf2m1,    ROT0,   "bootleg",  "Street Fighter II': Champion Edition (920313 etc bootleg set 1)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2cejab2,       sf2ce,    cps1_12MHz, sf2,      cps_state, cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (920322 Japan bootleg set 2)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2mega2,        sf2ce,    cps1_12MHz, sf2,      cps_state, init_sf2h9,    ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Mega Co bootleg set 2, 920313 etc)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2amf5,         sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Alpha Magic-F bootleg set 3, 920313 etc)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2cejabl,       sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (920322 Japan bootleg set 1)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2rb5,          sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Rainbow bootleg set 5, 920322 Japan)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2hfjb,         sf2ce,    cps1_12MHz, sf2j,     cps_state, init_sf2h13,   ROT0,   "bootleg",  "Street Fighter II' Turbo: Hyper Fighting (bootleg set 1, 921209 Japan)", MACHINE_SUPPORTS_SAVE ) // bad tile for Blanka on player select screen
+GAME( 2021, sf2rbpr,         sf2ce,    cps1_12MHz, sf2rb,    cps_state, init_cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Rainbow, bootleg, set 1, protection removed)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2amf6,         sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Alpha Magic-F bootleg set 4, 920313 etc)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2amf7,         sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Alpha Magic-F bootleg set 5, 920313 etc)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2tlona,        sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Tu Long bootleg set 1, 811102 001)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2tlonb,        sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Tu Long bootleg set 2, 811102 001)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2tlonc,        sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Tu Long bootleg set 3, 811102 001)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2red2,         sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg",  "Street Fighter II': Champion Edition (Red Wave bootleg set 2, 920313 etc)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2v0042,        sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg",  "Street Fighter II': Champion Edition (V004 bootleg set 2, 920313 etc)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2yyc2,         sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg",  "Street Fighter II': Champion Edition (YYC bootleg set 2, 920313 etc)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2ceeabl,       sf2ce,    sf2m1,      sf2,      cps_state, init_sf2m1,    ROT0,   "bootleg",  "Street Fighter II': Champion Edition (920313 etc bootleg set 1)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2cejab2,       sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg",  "Street Fighter II': Champion Edition (920322 Japan bootleg set 2)", MACHINE_SUPPORTS_SAVE )
 // Street Fighter II: The World Warrior
-HACK( 2016, sf2hack01,       sf2,      cps1_10MHz, sf2j,     cps_state, cps1,     ROT0,   "hack",     "Street Fighter II: The World Warrior (12 Person Version 2016-01-01)", MACHINE_SUPPORTS_SAVE )
-HACK( 2014, sf2hack02,       sf2,      cps1_10MHz, sf2j,     cps_state, cps1,     ROT0,   "hack",     "Street Fighter II: The World Warrior (Version Simplified 2014-03-24)", MACHINE_SUPPORTS_SAVE )
-HACK( 1991, sf2hack03,       sf2,      cps1_10MHz, sf2,      cps_state, cps1,     ROT0,   "DDJ",      "Street Fighter II: The World Warrior (Easy Move)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, sf2hack04,       sf2,      cps1_10MHz, sf2,      cps_state, cps1,     ROT0,   "DDJ",      "Street Fighter II: The World Warrior (Hit Any Where 2018-08-22)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, sf2hack05,       sf2,      cps1_10MHz, sf2,      cps_state, cps1,     ROT0,   "DDJ",      "Street Fighter II: The World Warrior (Magic Throw 2018-08-22)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, sf2hack06,       sf2,      cps1_10MHz, sf2j,     cps_state, cps1,     ROT0,   "hack",     "Street Fighter II: The World Warrior (Chinese Voice Version Simplified 2020-06-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, sf2hack01,       sf2,      cps1_10MHz, sf2j,     cps_state, init_cps1,     ROT0,   "hack",     "Street Fighter II: The World Warrior (12 Person Version 2016-01-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2014, sf2hack02,       sf2,      cps1_10MHz, sf2j,     cps_state, init_cps1,     ROT0,   "hack",     "Street Fighter II: The World Warrior (Version Simplified 2014-03-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, sf2hack03,       sf2,      cps1_10MHz, sf2,      cps_state, init_cps1,     ROT0,   "DDJ",      "Street Fighter II: The World Warrior (Easy Move)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, sf2hack04,       sf2,      cps1_10MHz, sf2,      cps_state, init_cps1,     ROT0,   "DDJ",      "Street Fighter II: The World Warrior (Hit Any Where 2018-08-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, sf2hack05,       sf2,      cps1_10MHz, sf2,      cps_state, init_cps1,     ROT0,   "DDJ",      "Street Fighter II: The World Warrior (Magic Throw 2018-08-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, sf2hack06,       sf2,      cps1_10MHz, sf2j,     cps_state, init_cps1,     ROT0,   "hack",     "Street Fighter II: The World Warrior (Chinese Voice Version Simplified 2020-06-30)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-HACK( 1991, sf2c,            sf2,      cps1_10MHz, sf2j,     cps_state, cps1,     ROT0,   "bootleg",  "Street Fighter II: The World Warrior (Chinese 911210)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, sf2ly,           sf2,      cps1_10MHz, sf2j,     cps_state, cps1,     ROT0,   "bootleg",  "Street Fighter II': The World Warrior (with bosses like Champion Edition, 910522 Japan, CPS-B-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, sf2c,            sf2,      cps1_10MHz, sf2j,     cps_state, init_cps1,     ROT0,   "bootleg",  "Street Fighter II: The World Warrior (Chinese 911210)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2ly,           sf2,      cps1_10MHz, sf2j,     cps_state, init_cps1,     ROT0,   "bootleg",  "Street Fighter II': The World Warrior (with bosses like Champion Edition, 910522 Japan, CPS-B-11)", MACHINE_SUPPORTS_SAVE )
 // Saturday Night Slam Masters
-HACK( 1993, slammasthack01,  slammast, qsound,     slammast, cps_state, slammast, ROT0,   "ckc7213",  "Saturday Night Slam Masters (Easy Move)", MACHINE_SUPPORTS_SAVE )
+GAME( 1993, slammasthack01,  slammast, qsound,     slammast, cps_state, init_slammast, ROT0,   "ckc7213",  "Saturday Night Slam Masters (Easy Move)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-HACK( 1994, slammastud,      slammast, qsound,     slammast, cps_state, slammast, ROT0,   "hack",     "Saturday Night Slam Masters (USA 930713 Phoenix Edition)", MACHINE_SUPPORTS_SAVE )
+GAME( 1994, slammastud,      slammast, qsound,     slammast, cps_state, init_slammast, ROT0,   "hack",     "Saturday Night Slam Masters (USA 930713 Phoenix Edition)", MACHINE_SUPPORTS_SAVE )
 // Varth: Operation Thunderstorm
-HACK( 1992, varthhack01,     varth,    cps1_12MHz, varth,    cps_state, cps1,     ROT270, "HOOOOOOK", "Varth: Operation Thunderstorm (Ex Super Version)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, varthhack01,     varth,    cps1_12MHz, varth,    cps_state, init_cps1,     ROT270, "HOOOOOOK", "Varth: Operation Thunderstorm (Ex Super Version)", MACHINE_SUPPORTS_SAVE )
 // Willow
-HACK( 1989, willowhack01,    willow,   cps1_10MHz, willow,   cps_state, cps1,     ROT0,   "LB70",     "Willow (Ex Super Version)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, willowhack02,    willow,   cps1_10MHz, willow,   cps_state, cps1,     ROT0,   "Antigeno", "Willow (Translation Portuguese)", MACHINE_SUPPORTS_SAVE )
+GAME( 1989, willowhack01,    willow,   cps1_10MHz, willow,   cps_state, init_cps1,     ROT0,   "LB70",     "Willow (Ex Super Version)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, willowhack02,    willow,   cps1_10MHz, willow,   cps_state, init_cps1,     ROT0,   "Antigeno", "Willow (Translation Portuguese)", MACHINE_SUPPORTS_SAVE )
 // Tenchi wo Kurau II
-HACK( 1992, twkhack01,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "xyz555",   "Tenchi wo Kurau II (New Start Boss)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, twkhack02,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Boss Cho Unparalleled Edition 2016-02-28)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, twkhack03,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "Katana",   "Tenchi wo Kurau II (Warriors Version 2)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, twkhack04,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "wuzu2001", "Tenchi wo Kurau II (The First Pass In The World)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, twkhack05,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "wuzu2001", "Tenchi wo Kurau II (Portor (Kan-U)'s Horseback Energy Attack With Flaming Arrow Effect)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, twkhack06,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Wolf Edition 2017-12-23)", MACHINE_SUPPORTS_SAVE )
-HACK( 2014, twkhack07,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Lidian)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, twkhack08,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Boss Cho Unparalleled Edition 2016-02-26)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, twkhack09,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Boss Cho Unparalleled Edition 2016-02-25)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, twkhack10,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Zhao Wei Edition 2017-01-27)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, twkhack11,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Warriors of Fate Plus 2 2018)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, twkhack12,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (San Mei Wu Shuang 2018)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, twkhack13,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "Bindi",    "Tenchi wo Kurau II (Da Ren Edition)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, twkhack14,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "wuzu2001", "Tenchi wo Kurau II (Beauty Stage)(Ordinary Roms)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, twkhack15,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Ma Zhan Wu Shuang 2018-06-03)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, twkhack16,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Xia Hou Dun Plus)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, twkhack17,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Three Boss Edition 2017-11-03)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, twkhack18,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Iron Needle Edition 2016-09-13)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, twkhack19,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Li Dian Da Ren Edition 2018-06-02)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, twkhack20,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Full Attack Enhanced Version 2016-11-04)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, twkhack21,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Full Screen Attack Sanmei Wushuang version 2017-03-02)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, twkhack22,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (San Jian Sheng Super Edition 2018-02-02)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, twkhack23,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Xu Chu Wushuang Edition 2019-08-14)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, twkhack24,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Z Lu Bu 2019-08-24)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, twkhack25,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Master Fighting Edition 2019-09-16)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, twkhack26,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Li Dianda Random Edition 2019-07-27)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, twkhack27,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Dared Evil Boss Edition 2020-04-23)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, twkhack28,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "Bindi",    "Tenchi wo Kurau II (Master Edition 2021-02-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, twkhack01,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "xyz555",   "Tenchi wo Kurau II (New Start Boss)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, twkhack02,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Boss Cho Unparalleled Edition 2016-02-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, twkhack03,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "Katana",   "Tenchi wo Kurau II (Warriors Version 2)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, twkhack04,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "wuzu2001", "Tenchi wo Kurau II (The First Pass In The World)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, twkhack05,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "wuzu2001", "Tenchi wo Kurau II (Portor (Kan-U)'s Horseback Energy Attack With Flaming Arrow Effect)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, twkhack06,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Wolf Edition 2017-12-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2014, twkhack07,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Lidian)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, twkhack08,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Boss Cho Unparalleled Edition 2016-02-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, twkhack09,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Boss Cho Unparalleled Edition 2016-02-25)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, twkhack10,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Zhao Wei Edition 2017-01-27)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, twkhack11,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Warriors of Fate Plus 2 2018)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, twkhack12,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (San Mei Wu Shuang 2018)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, twkhack13,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Da Ren Edition)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, twkhack14,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Beauty Stage)(Ordinary Roms)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, twkhack15,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Ma Zhan Wu Shuang 2018-06-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, twkhack16,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Xia Hou Dun Plus)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, twkhack17,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Three Boss Edition 2017-11-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, twkhack18,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Iron Needle Edition 2016-09-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, twkhack19,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Li Dian Da Ren Edition 2018-06-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, twkhack20,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Full Attack Enhanced Version 2016-11-04)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, twkhack21,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Full Screen Attack Sanmei Wushuang version 2017-03-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, twkhack22,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (San Jian Sheng Super Edition 2018-02-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, twkhack23,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Xu Chu Wushuang Edition 2019-08-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, twkhack24,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Z Lu Bu 2019-08-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, twkhack25,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Master Fighting Edition 2019-09-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, twkhack26,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Li Dianda Random Edition 2019-07-27)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, twkhack27,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Dared Evil Boss Edition 2020-04-23)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, twkhack28,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Master Edition 2021-02-24)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-HACK( 1992, wofh,        wof,      sk2h3,      sk2h1,    cps_state, sk2h1,    ROT0,   "bootleg", "Sangokushi II: Sanguo Yingxiong Zhuan (Chinese bootleg set 1, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wofha,       wof,      sk2h3,      sk2h1,    cps_state, sk2h1,    ROT0,   "bootleg", "Sangokushi II: Sanguo Yingxiong Zhuan (Chinese bootleg set 2, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wofah,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "bootleg", "Sangokushi II (hack set 1, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wofaha,      wof,      qsound,     wof,      cps_state, wof,      ROT0,   "bootleg", "Sangokushi II (hack set 2, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wofahb,      wof,      qsound,     wof,      cps_state, wof,      ROT0,   "bootleg", "Sangokushi II (hack set 3, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wof3js,      wof,      qsound,     sk2h21,   cps_state, sk2h21,   ROT0,   "bootleg", "Sangokushi II: San Jian Sheng (Chinese bootleg set 1, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wof3jsa,     wof,      sk2h3,      sk2h21,   cps_state, sk2h22,   ROT0,   "bootleg", "Sangokushi II: San Jian Sheng (Chinese bootleg set 2, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wof3sj,      wof,      sk2h31,     sk2h31,   cps_state, sk2h22,   ROT0,   "bootleg", "Sangokushi II: San Sheng Jian (Chinese bootleg set 1, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wof3sja,     wof,      sk2h31,     sk2h31,   cps_state, sk2h22,   ROT0,   "bootleg", "Sangokushi II: San Sheng Jian (Chinese bootleg set 2, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wofsj,       wof,      sk2h31,     sk2h31,   cps_state, sk2h22,   ROT0,   "bootleg", "Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 1, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wofsja,      wof,      sk2h31,     sk2h31,   cps_state, sk2h22,   ROT0,   "bootleg", "Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 2, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wofsjb,      wof,      sk2h35,     wof,      cps_state, sk2h35,   ROT0,   "bootleg", "Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 3, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wofsjc,      wof,      sk2h31,     sk2h31,   cps_state, sk2h22,   ROT0,   "bootleg", "Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 4, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wofh,            wof,      sk2h3,      sk2h1,    cps_state, init_sk2h1,    ROT0,   "bootleg",  "Sangokushi II: Sanguo Yingxiong Zhuan (Chinese bootleg set 1, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wofha,           wof,      sk2h3,      sk2h1,    cps_state, init_sk2h1,    ROT0,   "bootleg",  "Sangokushi II: Sanguo Yingxiong Zhuan (Chinese bootleg set 2, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wofah,           wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "bootleg",  "Sangokushi II (hack set 1, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wofaha,          wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "bootleg",  "Sangokushi II (hack set 2, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wofahb,          wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "bootleg",  "Sangokushi II (hack set 3, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wof3js,          wof,      qsound,     sk2h21,   cps_state, init_sk2h21,   ROT0,   "bootleg",  "Sangokushi II: San Jian Sheng (Chinese bootleg set 1, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wof3jsa,         wof,      sk2h3,      sk2h21,   cps_state, init_sk2h22,   ROT0,   "bootleg",  "Sangokushi II: San Jian Sheng (Chinese bootleg set 2, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wof3sj,          wof,      sk2h31,     sk2h31,   cps_state, init_sk2h22,   ROT0,   "bootleg",  "Sangokushi II: San Sheng Jian (Chinese bootleg set 1, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wof3sja,         wof,      sk2h31,     sk2h31,   cps_state, init_sk2h22,   ROT0,   "bootleg",  "Sangokushi II: San Sheng Jian (Chinese bootleg set 2, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wofsj,           wof,      sk2h31,     sk2h31,   cps_state, init_sk2h22,   ROT0,   "bootleg",  "Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 1, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wofsja,          wof,      sk2h31,     sk2h31,   cps_state, init_sk2h22,   ROT0,   "bootleg",  "Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 2, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wofsjb,          wof,      sk2h35,     wof,      cps_state, init_sk2h35,   ROT0,   "bootleg",  "Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 3, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wofsjc,          wof,      sk2h31,     sk2h31,   cps_state, init_sk2h22,   ROT0,   "bootleg",  "Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 4, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
 // Tenchi wo Kurau II (wofch)
-HACK( 1994, wofchhack01, wofch,    qsound,     wofch,    cps_state, wof,      ROT0,   "Katana", "Tenchi wo Kurau II (True Purgatory Edition 2016-02-28)", MACHINE_SUPPORTS_SAVE )
-HACK( 1994, wofchhack02, wofch,    qsound,     wofch,    cps_state, wof,      ROT0,   "Katana", "Tenchi wo Kurau II (Sangokushi III Gaiden: Kakou-on's Revenge)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, wofchhack03, wofch,    qsound,     wofch,    cps_state, wof,      ROT0,   "hack",   "Tenchi wo Kurau II (Many Boss Extreme 2018-06-14)", MACHINE_SUPPORTS_SAVE )
+GAME( 1994, wofchhack01,     wofch,    qsound,     wofch,    cps_state, init_wof,      ROT0,   "Katana",   "Tenchi wo Kurau II (True Purgatory Edition 2016-02-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 1994, wofchhack02,     wofch,    qsound,     wofch,    cps_state, init_wof,      ROT0,   "Katana",   "Tenchi wo Kurau II (Sangokushi III Gaiden: Kakou-on's Revenge)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, wofchhack03,     wofch,    qsound,     wofch,    cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Many Boss Extreme 2018-06-14)", MACHINE_SUPPORTS_SAVE )
 // Sangokushi 3 Gaiden Kakou-On S Revence Dx
-HACK( 2016, sk3hack01,   wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack", "Sangokushi 3 Gaiden Kakou_On S Revenge Prologue 1 2016-02-28)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, sk3hack02,   wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack", "Sangokushi 3 Gaiden Kakou-On S Revenge Prologue 2 2016-03-08)", MACHINE_SUPPORTS_SAVE )
-HACK( 2010, sk3hack03,   wofch,    qsound,     wofch,    cps_state, wof,      ROT0,   "hack", "Sangokushi 3 Gaiden Kakou-On S Revence Dx 2010", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, sk3hack04,   wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack", "Sangokushi 3 (Xia Houen's revenge 2017 full attack 2017-04-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, sk3hack01,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Sangokushi 3 Gaiden Kakou_On S Revenge Prologue 1 2016-02-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, sk3hack02,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Sangokushi 3 Gaiden Kakou-On S Revenge Prologue 2 2016-03-08)", MACHINE_SUPPORTS_SAVE )
+GAME( 2010, sk3hack03,       wofch,    qsound,     wofch,    cps_state, init_wof,      ROT0,   "hack",     "Sangokushi 3 Gaiden Kakou-On S Revence Dx 2010", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, sk3hack04,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Sangokushi 3 (Xia Houen's revenge 2017 full attack 2017-04-03)", MACHINE_SUPPORTS_SAVE )
 // Warriors of Fate
-HACK( 2013, wofhack01,   wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",    "Warriors of Fate (1VS3 2013-04-05)", MACHINE_SUPPORTS_SAVE )
-HACK( 2003, wofhack02,   wof,      qsound,     wof,      cps_state, wof,      ROT0,   "Shyma.X", "Warriors of Fate (Translation French 2003-07-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2013, wofhack01,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Warriors of Fate (1VS3 2013-04-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, wofhack02,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "Shyma.X",  "Warriors of Fate (Translation French 2003-07-28)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-HACK( 1992, wofr1bl,     wof,      qsound,     wof,      cps_state, wofb,     ROT0,   "bootleg", "Warriors of Fate (bootleg, 921002 etc)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wofpic,      wof,      qsound,     wof,      cps_state, wofb,     ROT0,   "bootleg", "Warriors of Fate (bootleg with PIC16C57, 921002 etc)", MACHINE_SUPPORTS_SAVE )
-HACK( 1992, wofud,       wof,      qsound,     wof,      cps_state, wof,      ROT0,   "hack",    "Warriors of Fate (USA 921031 Phoenix Edition)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wofr1bl,         wof,      qsound,     wof,      cps_state, init_wofb,     ROT0,   "bootleg",  "Warriors of Fate (bootleg, 921002 etc)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wofpic,          wof,      qsound,     wof,      cps_state, init_wofb,     ROT0,   "bootleg",  "Warriors of Fate (bootleg with PIC16C57, 921002 etc)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wofud,           wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Warriors of Fate (USA 921031 Phoenix Edition)", MACHINE_SUPPORTS_SAVE )

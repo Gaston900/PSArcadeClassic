@@ -580,8 +580,8 @@ static int CALLBACK Picker_CompareProc(LPARAM index1, LPARAM index2, LPARAM nPar
 		else
 		{
 			// no default sort proc, just get the string and compare them
-			const wchar_t *s1 = Picker_CallGetItemString(pcpp->hWndPicker, index1, pcpp->nSortColumn, szBuffer1, WINUI_ARRAY_LENGTH(szBuffer1));
-			const wchar_t *s2 = Picker_CallGetItemString(pcpp->hWndPicker, index2, pcpp->nSortColumn, szBuffer2, WINUI_ARRAY_LENGTH(szBuffer2));
+			const wchar_t *s1 = Picker_CallGetItemString(pcpp->hWndPicker, index1, pcpp->nSortColumn, szBuffer1, std::size(szBuffer1));
+			const wchar_t *s2 = Picker_CallGetItemString(pcpp->hWndPicker, index2, pcpp->nSortColumn, szBuffer2, std::size(szBuffer2));
 			nResult = _tcsicmp(s1, s2);
 		}
 

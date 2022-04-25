@@ -104,6 +104,6 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Altered Beast
-HACK( 1988, altbeasthack01,  altbeast, system16b_i8751, altbeast, segas16b_state, generic_5521, ROT0, "S.Arkames", "Altered Beast (Language Translation French)", 0 )
-HACK( 2018, altbeasthack02,  altbeast, system16b_i8751, altbeast, segas16b_state, generic_5521, ROT0, "hack",      "Altered Beast (Language Translation Portugues)", 0 )
-HACK( 2018, altbeasthack03,  altbeast, system16b_i8751, altbeast, segas16b_state, generic_5521, ROT0, "hack",      "Altered Beast (Language Translation Español)", 0 )
+GAME( 1988, altbeasthack01,  altbeast, system16b_i8751, altbeast, segas16b_state, init_generic_5521, ROT0, "S.Arkames", "Altered Beast (Language Translation French)", 0 )
+GAME( 2018, altbeasthack02,  altbeast, system16b_i8751, altbeast, segas16b_state, init_generic_5521, ROT0, "hack",      "Altered Beast (Language Translation Portugues)", 0 )
+GAME( 2018, altbeasthack03,  altbeast, system16b_i8751, altbeast, segas16b_state, init_generic_5521, ROT0, "hack",      "Altered Beast (Language Translation Español)", 0 )

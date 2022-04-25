@@ -72,7 +72,7 @@ extern const FOLDERDATA g_folderData[] =
 	{"All Games",       "allgames",          FOLDER_ALLGAMES,     IDI_FOLDER_ALLGAMES,      0,             0,            0, NULL,                       NULL,                    true },
 	{"Available",       "available",         FOLDER_AVAILABLE,    IDI_FOLDER_AVAILABLE,     F_AVAILABLE,   0,            0, NULL,                       FilterAvailable,         true },
 	{"BIOS",            "bios",              FOLDER_BIOS,         IDI_FOLDER_BIOS,          0,             0,            1, CreateBIOSFolders,          DriverIsBios,            true },
-	{"CHD",             "harddisk",          FOLDER_HARDDISK,     IDI_HARDDISK,             0,             0,            0, NULL,                       DriverIsHarddisk,        true },
+	{"CHD",             "harddisk",          FOLDER_HARDDISK,     IDI_FOLDER_HARDDISK,      0,             0,            0, NULL,                       DriverIsHarddisk,        true },
 	{"Clones",          "clones",            FOLDER_CLONES,       IDI_FOLDER_CLONES,        F_CLONES,      F_ORIGINALS,  0, NULL,                       DriverIsClone,           true },
 	{"CPU",             "cpu",               FOLDER_CPU,          IDI_FOLDER_CPU,           0,             0,            1, CreateCPUFolders },
 	{"Dumping Status",  "dumping",           FOLDER_DUMPING,      IDI_FOLDER_DUMP,          0,             0,            1, CreateDumpingFolders },
@@ -80,9 +80,9 @@ extern const FOLDERDATA g_folderData[] =
 	{"Imperfect",       "imperfect",         FOLDER_DEFICIENCY,   IDI_FOLDER_IMPERFECT,     0,             0,            0, CreateDeficiencyFolders },
 	{"Lightgun",        "lightgun",          FOLDER_LIGHTGUN,     IDI_FOLDER_LIGHTGUN,      0,             0,            0, NULL,                       DriverUsesLightGun,      true },
 	{"Manufacturer",    "manufacturer",      FOLDER_MANUFACTURER, IDI_FOLDER_MANUFACTURER,  0,             0,            0, CreateManufacturerFolders },
-	{"Mechanical",      "mechanical",        FOLDER_MECHANICAL,   IDI_MECHANICAL,           0,             0,            0, NULL,                       DriverIsMechanical,      true },
+	{"Mechanical",      "mechanical",        FOLDER_MECHANICAL,   IDI_FOLDER_MECHANICAL,    0,             0,            0, NULL,                       DriverIsMechanical,      true },
 	//{"Non Mechanical",  "nonmechanical",     FOLDER_NONMECHANICAL,IDI_FOLDER,               0,             0,            0, NULL,                       DriverIsMechanical,      FALSE },
-	{"Not Working",     "nonworking",        FOLDER_NONWORKING,   IDI_NONWORKING,           F_NONWORKING,  F_WORKING,    0, NULL,                       DriverIsBroken,          true },
+	{"Not Working",     "nonworking",        FOLDER_NONWORKING,   IDI_FOLDER_NONWORKING,    F_NONWORKING,  F_WORKING,    0, NULL,                       DriverIsBroken,          true },
 	{"Parents",         "originals",         FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
 	{"Raster",          "raster",            FOLDER_RASTER,       IDI_FOLDER_RASTER,        F_RASTER,      F_VECTOR,     0, NULL,                       DriverIsVector,          false },
 	{"Refresh",         "refresh",           FOLDER_FPS,          IDI_FOLDER_FPS,           0,             0,            1, CreateFPSFolders },
@@ -97,7 +97,7 @@ extern const FOLDERDATA g_folderData[] =
 	{"Unavailable",     "unavailable",       FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
 	{"Vector",          "vector",            FOLDER_VECTOR,       IDI_FOLDER_VECTOR,        F_VECTOR,      F_RASTER,     0, NULL,                       DriverIsVector,          true },
 	{"Vertical",        "vertical",          FOLDER_VERTICAL,     IDI_FOLDER_VERTICAL,      F_VERTICAL,    F_HORIZONTAL, 0, NULL,                       DriverIsVertical,        true },
-	{"Working",         "working",           FOLDER_WORKING,      IDI_WORKING,              F_WORKING,     F_NONWORKING, 0, NULL,                       DriverIsBroken,          false },
+	{"Working",         "working",           FOLDER_WORKING,      IDI_FOLDER_WORKING,       F_WORKING,     F_NONWORKING, 0, NULL,                       DriverIsBroken,          false },
 	{"Year",            "year",              FOLDER_YEAR,         IDI_FOLDER_YEAR,          0,             0,            0, CreateYearFolders },
 	{ NULL }
 };
@@ -120,42 +120,42 @@ extern const FILTER_ITEM g_filterList[] =
 
 static const TREEICON treeIconNames[] =
 {
-	{ IDI_FOLDER_OPEN,         	"foldopen" },
-	{ IDI_FOLDER,              	"folder" },
-	{ IDI_FOLDER_AVAILABLE,    	"foldavail" },
-	{ IDI_FOLDER_MANUFACTURER, 	"foldmanu" },
-	{ IDI_FOLDER_UNAVAILABLE,  	"foldunav" },
-	{ IDI_FOLDER_YEAR,         	"foldyear" },
-	{ IDI_FOLDER_SOURCE,       	"foldsrc" },
-	{ IDI_FOLDER_HORIZONTAL,   	"horz" },
-	{ IDI_FOLDER_VERTICAL,     	"vert" },
-	{ IDI_MANUFACTURER,        	"manufact" },
-	{ IDI_WORKING,             	"working" },
-	{ IDI_NONWORKING,          	"nonwork" },
-	{ IDI_YEAR,                	"year" },
-	{ IDI_CHIP,                	"chip" },
-	{ IDI_BIOS,                	"bios" },
-	{ IDI_HARDDISK,            	"harddisk" },
-	{ IDI_MECHANICAL,           "mechanical" },
-	{ IDI_SOURCE,              	"source" },
-	{ IDI_MONITOR,             	"monitor" },
-	{ IDI_FOLDER_IMPERFECT,    	"foldimp" },
-	{ IDI_FOLDER_CPU,          	"foldcsb" },
-	{ IDI_FOLDER_SOUND,        	"foldcsb" },
-	{ IDI_FOLDER_BIOS,         	"foldcsb" },
-	{ IDI_FOLDER_ALLGAMES,     	"allgames" },
-	{ IDI_FOLDER_CLONES,       	"foldclone" },
-	{ IDI_FOLDER_ORIGINALS,    	"foldorig" },
-	{ IDI_FOLDER_RASTER,       	"foldrast" },
-	{ IDI_FOLDER_VECTOR,       	"foldvect" },
-	{ IDI_FOLDER_MONITOR,      	"multimon" },
-	{ IDI_FOLDER_FPS,      	   	"foldfps" },
-	{ IDI_FOLDER_RESOL,        	"foldres" },
-	{ IDI_FOLDER_LIGHTGUN,      "foldgun" },
-	{ IDI_FOLDER_TRACKBALL,     "foldball" },
-	{ IDI_FOLDER_SAVESTATE,     "savestate" },
-	{ IDI_FOLDER_DUMP,     		"foldcsb" },
-	{ IDI_FOLDER_SAMPLES,      	"foldsamp" }
+//	{ IDI_FOLDER_OPEN,         "foldopen" },
+	{ IDI_FOLDER,              "folder" },
+	{ IDI_FOLDER_ALLGAMES,     "allgames" },
+	{ IDI_FOLDER_AVAILABLE,    "foldavail" },
+	{ IDI_FOLDER_BIOS,         "foldcsb" },
+	{ IDI_FOLDER_CLONES,       "foldclone" },
+	{ IDI_FOLDER_CPU,          "foldcsb" },
+	{ IDI_FOLDER_DUMP,         "foldcsb" },
+	{ IDI_FOLDER_FPS,      	   "foldfps" },
+	{ IDI_FOLDER_HARDDISK,     "harddisk" },
+	{ IDI_FOLDER_HORIZONTAL,   "horz" },
+	{ IDI_FOLDER_IMPERFECT,    "foldimp" },
+	{ IDI_FOLDER_LIGHTGUN,     "foldgun" },
+	{ IDI_FOLDER_MANUFACTURER, "foldmanu" },
+	{ IDI_FOLDER_MECHANICAL,   "mechanical" },
+	{ IDI_FOLDER_MONITOR,      "multimon" },
+	{ IDI_FOLDER_NONWORKING,   "nonwork" },
+	{ IDI_FOLDER_ORIGINALS,    "foldorig" },
+	{ IDI_FOLDER_RASTER,       "foldrast" },
+	{ IDI_FOLDER_RESOL,        "foldres" },
+	{ IDI_FOLDER_SAMPLES,      "foldsamp" },
+	{ IDI_FOLDER_SAVESTATE,    "savestate" },
+	{ IDI_FOLDER_SOUND,        "foldcsb" },
+	{ IDI_FOLDER_SOURCE,       "foldsrc" },
+	{ IDI_SOURCE,              "source" },
+	{ IDI_FOLDER_TRACKBALL,    "foldball" },
+	{ IDI_FOLDER_UNAVAILABLE,  "foldunav" },
+	{ IDI_FOLDER_VECTOR,       "foldvect" },
+	{ IDI_FOLDER_VERTICAL,     "vert" },
+	{ IDI_FOLDER_WORKING,      "working" },
+	{ IDI_FOLDER_YEAR,         "foldyear" },
+	{ IDI_BIOS,                "bios" },
+	{ IDI_CHIP,                "chip" },
+	{ IDI_MANUFACTURER,        "manufact" },
+	{ IDI_MONITOR,             "monitor" },
+	{ IDI_YEAR,                "year" },
 };
 
 /***************************************************************************
@@ -611,7 +611,7 @@ static void CreateScreenFoldersIni(int parent_index)
 	for (int jj = 0; jj < driver_list::total(); jj++)
 	{
 		char screen[4];
-		snprintf(screen, WINUI_ARRAY_LENGTH(screen), "%d", DriverNumScreens(jj));
+		snprintf(screen, std::size(screen), "%d", DriverNumScreens(jj));
 
 		// look for an existant screen treefolder for this game
 		// (likely to be the previous one, so start at the end)
@@ -649,7 +649,7 @@ static void CreateCPUFoldersIni(int parent_index)
 		machine_config config(driver_list::driver(jj), MameUIGlobal());
 
 		// enumerate through all devices
-		for (device_execute_interface &device : execute_interface_iterator(config.root_device()))
+		for (device_execute_interface &device : execute_interface_enumerator(config.root_device()))
 		{
 			// get the name
 			const char *cpu = device.device().name();
@@ -691,7 +691,7 @@ static void CreateSoundFoldersIni(int parent_index)
 		machine_config config(driver_list::driver(jj), MameUIGlobal());
 
 		// enumerate through all devices
-		for (device_sound_interface &device : sound_interface_iterator(config.root_device()))
+		for (device_sound_interface &device : sound_interface_enumerator(config.root_device()))
 		{
 			// get the name
 			const char *sound = device.device().name();
@@ -776,7 +776,7 @@ static void CreateResolutionFoldersIni(int parent_index)
 			}
 		}
 
-		const screen_device *screen = screen_device_iterator(config.root_device()).first();
+		const screen_device *screen = screen_device_enumerator(config.root_device()).first();
 
 		if (screen == nullptr)
 		{
@@ -787,9 +787,9 @@ static void CreateResolutionFoldersIni(int parent_index)
 		const rectangle &visarea = screen->visible_area();
 
 		if (DriverIsVertical(jj))
-			snprintf(res, WINUI_ARRAY_LENGTH(res), "%d x %d (V)", visarea.width(), visarea.height());
+			snprintf(res, std::size(res), "%d x %d (V)", visarea.width(), visarea.height());
 		else
-			snprintf(res, WINUI_ARRAY_LENGTH(res), "%d x %d (H)", visarea.width(), visarea.height());
+			snprintf(res, std::size(res), "%d x %d (H)", visarea.width(), visarea.height());
 
 		// look for an existant resolution treefolder for this game
 		// (likely to be the previous one, so start at the end)
@@ -838,7 +838,7 @@ static void CreateFPSFoldersIni(int parent_index)
 			continue;
 		}
 
-		const screen_device *screen = screen_device_iterator(config.root_device()).first();
+		const screen_device *screen = screen_device_enumerator(config.root_device()).first();
 
 		if (screen == nullptr)
 		{
@@ -846,7 +846,7 @@ static void CreateFPSFoldersIni(int parent_index)
 			continue;
 		}
 
-		snprintf(fps, WINUI_ARRAY_LENGTH(fps), "%f Hz", ATTOSECONDS_TO_HZ(screen->refresh_attoseconds()));
+		snprintf(fps, std::size(fps), "%f Hz", ATTOSECONDS_TO_HZ(screen->refresh_attoseconds()));
 
 		// look for an existant refresh treefolder for this game
 		// (likely to be the previous one, so start at the end)
@@ -893,7 +893,7 @@ void CreateDumpingFoldersIni(int parent_index)
 		if (!DriverUsesRoms(jj))
 			continue;
 
-		for (device_t &device : device_iterator(config.root_device()))
+		for (device_t &device : device_enumerator(config.root_device()))
 		{
 			for (const rom_entry *region = rom_first_region(device); region != nullptr; region = rom_next_region(region))
 			{
@@ -901,7 +901,7 @@ void CreateDumpingFoldersIni(int parent_index)
 				{
 					if (ROMREGION_ISROMDATA(region) || ROMREGION_ISDISKDATA(region))
 					{
-						util::hash_collection hashes(ROM_GETHASHDATA(rom));
+						util::hash_collection hashes(rom->hashdata());
 						
 						if (hashes.flag(util::hash_collection::FLAG_NO_DUMP))
 							bNoDump = true;
@@ -1028,7 +1028,7 @@ static void LoadExternalFolders(int parent_index, const char *fname, int id)
 	LPTREEFOLDER lpFolder = treeFolders[parent_index];
 
 	int current_id = lpFolder->m_nFolderId;
-	snprintf(filename, WINUI_ARRAY_LENGTH(filename), "%s\\%s", GetGuiDir(), fname);
+	snprintf(filename, std::size(filename), "%s\\%s", GetGuiDir(), fname);
 	FILE *f = fopen(filename, "r");
  
 	if (f == NULL)
@@ -1094,7 +1094,7 @@ static void SaveExternalFolders(int parent_index, const char *fname)
 	LPTREEFOLDER lpFolder = treeFolders[parent_index];
 	TREEFOLDER *folder_data;
 
-	snprintf(filename, WINUI_ARRAY_LENGTH(filename), "%s\\%s", GetGuiDir(), fname);
+	snprintf(filename, std::size(filename), "%s\\%s", GetGuiDir(), fname);
 	wchar_t *temp = win_wstring_from_utf8(GetGuiDir());
 	CreateDirectory(temp, NULL);
 	free(temp);
@@ -1575,7 +1575,7 @@ static int InitExtraFolders(void)
 	if (osd::directory::open(dir) == nullptr)
 		return 0;
 
-	snprintf(path, WINUI_ARRAY_LENGTH(path), "%s\\*.*", dir);
+	snprintf(path, std::size(path), "%s\\*.*", dir);
 	HANDLE hFind = winui_find_first_file_utf8(path, &FindFileData);
 
 	for (int i = 0; i < MAX_EXTRA_FOLDERS; i++)
@@ -1593,7 +1593,7 @@ static int InitExtraFolders(void)
 			char inifile[MAX_PATH];
 
 			memset(&inifile, 0, sizeof(inifile));
-			snprintf(inifile, WINUI_ARRAY_LENGTH(inifile), "%s\\%s", dir, file);
+			snprintf(inifile, std::size(inifile), "%s\\%s", dir, file);
 			FILE *readfile = fopen(inifile, "r");
 
 			if (readfile != NULL)
@@ -1720,7 +1720,7 @@ bool TryAddExtraFolderAndChildren(int parent_index)
 
 	int current_id = lpFolder->m_nFolderId;
 	int id = lpFolder->m_nFolderId - MAX_FOLDERS;
-	snprintf(fname, WINUI_ARRAY_LENGTH(fname), "%s\\%s.ini", GetFolderDir(), ExtraFolderData[id]->m_szTitle);
+	snprintf(fname, std::size(fname), "%s\\%s.ini", GetFolderDir(), ExtraFolderData[id]->m_szTitle);
 	FILE *f = fopen(fname, "r");
  
 	if (f == NULL)
@@ -1821,20 +1821,20 @@ static bool TryRenameCustomFolderIni(LPTREEFOLDER lpFolder, const char *old_name
 
 		if(lpParent)
 		{
-			snprintf(filename, WINUI_ARRAY_LENGTH(filename), "%s\\%s\\%s.ini", GetIniDir(), lpParent->m_lpTitle, old_name);
-			snprintf(new_filename, WINUI_ARRAY_LENGTH(new_filename), "%s\\%s\\%s.ini", GetIniDir(), lpParent->m_lpTitle, new_name);
+			snprintf(filename, std::size(filename), "%s\\%s\\%s.ini", GetIniDir(), lpParent->m_lpTitle, old_name);
+			snprintf(new_filename, std::size(new_filename), "%s\\%s\\%s.ini", GetIniDir(), lpParent->m_lpTitle, new_name);
 			winui_move_file_utf8(filename, new_filename);
 		}
 	}
 	else
 	{
 		//Rename the File, if it exists
-		snprintf(filename, WINUI_ARRAY_LENGTH(filename), "%s\\%s.ini", GetIniDir(), old_name);
-		snprintf(new_filename, WINUI_ARRAY_LENGTH(new_filename), "%s\\%s.ini", GetIniDir(), new_name);
+		snprintf(filename, std::size(filename), "%s\\%s.ini", GetIniDir(), old_name);
+		snprintf(new_filename, std::size(new_filename), "%s\\%s.ini", GetIniDir(), new_name);
 		winui_move_file_utf8(filename, new_filename);
 		//Rename the Directory, if it exists
-		snprintf(filename, WINUI_ARRAY_LENGTH(filename), "%s\\%s", GetIniDir(), old_name);
-		snprintf(new_filename, WINUI_ARRAY_LENGTH(new_filename), "%s\\%s", GetIniDir(), new_name);
+		snprintf(filename, std::size(filename), "%s\\%s", GetIniDir(), old_name);
+		snprintf(new_filename, std::size(new_filename), "%s\\%s", GetIniDir(), new_name);
 		winui_move_file_utf8(filename, new_filename);
 	}
 
@@ -1871,8 +1871,8 @@ bool TryRenameCustomFolder(LPTREEFOLDER lpFolder, const char *new_name)
 	}
 
 	// a parent extra folder was renamed, so rename the file
-	snprintf(new_filename, WINUI_ARRAY_LENGTH(new_filename), "%s\\%s.ini", GetFolderDir(), new_name);
-	snprintf(filename, WINUI_ARRAY_LENGTH(filename), "%s\\%s.ini", GetFolderDir(), lpFolder->m_lpTitle);
+	snprintf(new_filename, std::size(new_filename), "%s\\%s.ini", GetFolderDir(), new_name);
+	snprintf(filename, std::size(filename), "%s\\%s.ini", GetFolderDir(), lpFolder->m_lpTitle);
 	bool retval = winui_move_file_utf8(filename, new_filename);
 
 	if (retval)
@@ -1952,7 +1952,7 @@ bool TrySaveExtraFolder(LPTREEFOLDER lpFolder)
 		return false;
 	}
 
-	snprintf(fname, WINUI_ARRAY_LENGTH(fname), "%s\\%s.ini", GetFolderDir(), extra_folder->m_szTitle);
+	snprintf(fname, std::size(fname), "%s\\%s.ini", GetFolderDir(), extra_folder->m_szTitle);
 	wchar_t *temp = win_wstring_from_utf8(GetFolderDir());
 	CreateDirectory(temp, NULL);
 	free(temp);  	
@@ -2020,7 +2020,7 @@ int GetTreeViewIconIndex(int icon_id)
 	if (icon_id < 0)
 		return -icon_id;
 
-	for (int i = 0; i < WINUI_ARRAY_LENGTH(treeIconNames); i++)
+	for (int i = 0; i < std::size(treeIconNames); i++)
 	{
 		if (icon_id == treeIconNames[i].nResourceID)
 			return i;

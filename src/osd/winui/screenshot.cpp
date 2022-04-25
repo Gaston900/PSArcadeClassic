@@ -16,7 +16,7 @@ typedef struct _mybitmapinfo
 	int bmColors;
 } MYBITMAPINFO, *LPMYBITMAPINFO;
 
-static bool AllocatePNG(png_info *p, HGLOBAL *phDIB, HPALETTE* pPal);
+static bool AllocatePNG(util::png_info *p, HGLOBAL *phDIB, HPALETTE* pPal);
 static bool png_read_bitmap_gui(util::core_file &mfile, HGLOBAL *phDIB, HPALETTE *pPAL);
 static bool jpeg_read_bitmap_gui(util::core_file &mfile, HGLOBAL *phDIB, HPALETTE *pPAL);
 static bool LoadDIB(const char *filename, HGLOBAL *phDIB, HPALETTE *pPal, int pic_type);
@@ -450,7 +450,7 @@ static void store_pixels(uint8_t *buf, int len)
 	}
 }
 
-bool AllocatePNG(png_info *p, HGLOBAL *phDIB, HPALETTE *pPal)
+bool AllocatePNG(util::png_info *p, HGLOBAL *phDIB, HPALETTE *pPal)
 {
 	BITMAPINFOHEADER bi;
 	int nColors = 0;
@@ -513,8 +513,8 @@ bool AllocatePNG(png_info *p, HGLOBAL *phDIB, HPALETTE *pPal)
 		UINT nSize = sizeof(LOGPALETTE) + (sizeof(PALETTEENTRY) * nColors);
 		LOGPALETTE *pLP = (LOGPALETTE *)malloc(nSize);
 
-		pLP->palVersion 	= 0x300;
-		pLP->palNumEntries	= nColors;
+		pLP->palVersion = 0x300;
+		pLP->palNumEntries = nColors;
 
 		for (int i = 0; i < nColors; i++)
 		{
@@ -537,10 +537,10 @@ bool AllocatePNG(png_info *p, HGLOBAL *phDIB, HPALETTE *pPal)
 /* Copied and modified from png.c */
 static bool png_read_bitmap_gui(util::core_file &mfile, HGLOBAL *phDIB, HPALETTE *pPAL)
 {
-	png_info p;
+	util::png_info p;
 	UINT i = 0;
 
-	if (p.read_file(mfile) != PNGERR_NONE)
+	if (p.read_file(mfile) != util::png_error::NONE)
 		return false;
 
 	if (p.color_type != 3 && p.color_type != 2)

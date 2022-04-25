@@ -6,7 +6,7 @@
  *
  *************************************/
 
-WRITE8_MEMBER(pacman_state::maketrax_protection_w)
+void puckman_state::maketrax_protection_w(u8 data)
 {
 	if (data == 0) // disable protection / reset?
 	{
@@ -32,9 +32,9 @@ WRITE8_MEMBER(pacman_state::maketrax_protection_w)
 	}
 }
 
-READ8_MEMBER(pacman_state::maketrax_special_port2_r)
+u8 puckman_state::maketrax_special_port2_r(offs_t offset)
 {
-	uint8_t data = ioport("DSW1")->read() & 0x3f;
+	u8 data = ioport("DSW1")->read() & 0x3f;
 
 	if (m_maketrax_disable_protection == 0)
 		return m_p_maincpu[0xebe + m_maketrax_offset*2] | data;
@@ -53,7 +53,7 @@ READ8_MEMBER(pacman_state::maketrax_special_port2_r)
 	return data;
 }
 
-READ8_MEMBER(pacman_state::maketrax_special_port3_r)
+u8 puckman_state::maketrax_special_port3_r(offs_t offset)
 {
 
 	if (m_maketrax_disable_protection == 0)
@@ -72,7 +72,7 @@ READ8_MEMBER(pacman_state::maketrax_special_port3_r)
 	}
 }
 
-WRITE8_MEMBER(pacman_state::piranha_interrupt_vector_w)
+void puckman_state::piranha_interrupt_vector_w(u8 data)
 {
 	if (data == 0xfa)
 		data = 0x78;
@@ -94,9 +94,9 @@ WRITE8_MEMBER(pacman_state::piranha_interrupt_vector_w)
  *
  *************************************/
 
-void pacman_state::piranha_writeport(address_map &map) {
+void puckman_state::piranha_writeport(address_map &map) {
 	map.global_mask(0xff);
-	map(0x00,0x00).w(FUNC(pacman_state::piranha_interrupt_vector_w));
+	map(0x00,0x00).w(FUNC(puckman_state::piranha_interrupt_vector_w));
 }
 
 
@@ -214,16 +214,16 @@ INPUT_PORTS_END
  *
  *************************************/
 
-void pacman_state::maketrax(machine_config &config)
+void puckman_state::maketrax(machine_config &config)
 {
 	pacman(config);
-	MCFG_MACHINE_RESET_OVERRIDE(pacman_state,maketrax)
+	MCFG_MACHINE_RESET_OVERRIDE(puckman_state,maketrax)
 }
 
-void pacman_state::piranha(machine_config &config)
+void puckman_state::piranha(machine_config &config)
 {
 	pacman(config);
-	m_maincpu->set_addrmap(AS_IO, &pacman_state::piranha_writeport);
+	m_maincpu->set_addrmap(AS_IO, &puckman_state::piranha_writeport);
 }
 
 
@@ -233,19 +233,19 @@ void pacman_state::piranha(machine_config &config)
  *
  *************************************/
 
-MACHINE_RESET_MEMBER(pacman_state,maketrax)
+MACHINE_RESET_MEMBER(puckman_state,maketrax)
 {
 	m_maketrax_counter = 0;
 	m_maketrax_offset = 0;
 	m_maketrax_disable_protection = 0;
 }
 
-void pacman_state::init_maketrax()
+void puckman_state::init_maketrax()
 {
 	/* set up protection handlers */
-	m_maincpu->space(AS_PROGRAM).install_write_handler(0x5004, 0x5004, write8_delegate(FUNC(pacman_state::maketrax_protection_w),this));
-	m_maincpu->space(AS_PROGRAM).install_read_handler(0x5080, 0x50bf, read8_delegate(FUNC(pacman_state::maketrax_special_port2_r),this));
-	m_maincpu->space(AS_PROGRAM).install_read_handler(0x50c0, 0x50ff, read8_delegate(FUNC(pacman_state::maketrax_special_port3_r),this));
+	m_maincpu->space(AS_PROGRAM).install_write_handler(0x5004, 0x5004, write8smo_delegate(*this, FUNC(puckman_state::maketrax_protection_w)));
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x5080, 0x50bf, read8sm_delegate(*this, FUNC(puckman_state::maketrax_special_port2_r)));
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x50c0, 0x50ff, read8sm_delegate(*this, FUNC(puckman_state::maketrax_special_port3_r)));
 
 	save_item(NAME(m_maketrax_disable_protection));
 	save_item(NAME(m_maketrax_offset));
@@ -363,26 +363,26 @@ ROM_END
 
 ROM_START( alpaca7 )
 	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "alpaca7.6e",    0x0000, 0x1000, CRC(AF4AFCBF) SHA1(F11E2FE309818B41CB2A28408B06D18419879C09) )
+	ROM_LOAD( "alpaca7.6e",   0x0000, 0x1000, CRC(AF4AFCBF) SHA1(F11E2FE309818B41CB2A28408B06D18419879C09) )
 
 	ROM_REGION( 0x2000, "gfx1", 0 )
-	ROM_LOAD( "alpaca.5e",     0x0000, 0x1000, CRC(3E879F02) SHA1(0B084DD449E57476231E59F15F85A209A919959C) )
-	ROM_LOAD( "alpaca7.5f",    0x1000, 0x1000, CRC(A6103847) SHA1(4376996FF8C19AFD65F1757CE159B70071A4BD3B) )
+	ROM_LOAD( "alpaca.5e",    0x0000, 0x1000, CRC(3E879F02) SHA1(0b084DD449E57476231E59F15F85A209A919959C) )
+	ROM_LOAD( "alpaca7.5f",   0x1000, 0x1000, CRC(A6103847) SHA1(4376996FF8C19AFD65F1757CE159B70071A4BD3B) )
 
 	PACMAN_PROMS
 ROM_END
 
 ROM_START( alpaca8 )
 	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "alpaca8.6e",    0x0000, 0x1000, CRC(86027944) SHA1(C47FC62522A3BAE0D49F4B68C218F73C43ED19B5) )
+	ROM_LOAD( "alpaca8.6e",   0x0000, 0x1000, CRC(86027944) SHA1(C47FC62522A3BAE0D49F4B68C218F73C43ED19B5) )
 
 	ROM_REGION( 0x2000, "gfx1", 0 )
-	ROM_LOAD( "alpaca.5e",     0x0000, 0x1000, CRC(3E879F02) SHA1(0B084DD449E57476231E59F15F85A209A919959C) )
-	ROM_LOAD( "alpaca8.5f",    0x1000, 0x1000, CRC(856E53AE) SHA1(95460212107B3371600569DBD4DA482EC631ABDB) )
+	ROM_LOAD( "alpaca.5e",    0x0000, 0x1000, CRC(3E879F02) SHA1(0b084DD449E57476231E59F15F85A209A919959C) )
+	ROM_LOAD( "alpaca8.5f",   0x1000, 0x1000, CRC(856E53AE) SHA1(95460212107B3371600569DBD4DA482EC631ABDB) )
 
 	ROM_REGION( 0x0120, "proms", 0 )
-	ROM_LOAD( "82s123.7f",     0x0000, 0x0020, CRC(2FC650BD) SHA1(8D0268DEE78E47C712202B0EC4F1F51109B1F2A5) )
-	ROM_LOAD( "crush.4a",      0x0020, 0x0100, CRC(2BC5D339) SHA1(446E234DF94D9EF34C3191877BB33DD775ACFDF5) )
+	ROM_LOAD( "82s123.7f",    0x0000, 0x0020, CRC(2FC650BD) SHA1(8D0268DEE78E47C712202B0EC4F1F51109B1F2A5) )
+	ROM_LOAD( "crush.4a",     0x0020, 0x0100, CRC(2BC5D339) SHA1(446E234DF94D9EF34C3191877BB33DD775ACFDF5) )
 
 	PACMAN_SOUND_PROMS
 ROM_END
@@ -423,14 +423,14 @@ ROM_END
 
 ROM_START( dderby )
 	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "dderby.6e",     0x0000, 0x1000, CRC(6f373bd4) SHA1(e2c4f9def801c5664cf2b9684a36f762e97d12d6) )
-	ROM_LOAD( "dderby.6f",     0x1000, 0x1000, CRC(2fbf16bf) SHA1(9f3714ecc40707cfa4ff1942d5fe87a03888f548) )
-	ROM_LOAD( "dderby.6h",     0x2000, 0x1000, CRC(6e16cd16) SHA1(7f13a2b181e4a62d7d71294cac8fe09fd9ac64a9) )
-	ROM_LOAD( "dderby.6j",     0x3000, 0x1000, CRC(f7e09874) SHA1(7080aaa47e0bc893cd8bd038de7af769ef4eddf6) )
+	ROM_LOAD( "dderby.6e",    0x0000, 0x1000, CRC(6f373bd4) SHA1(e2c4f9def801c5664cf2b9684a36f762e97d12d6) )
+	ROM_LOAD( "dderby.6f",    0x1000, 0x1000, CRC(2fbf16bf) SHA1(9f3714ecc40707cfa4ff1942d5fe87a03888f548) )
+	ROM_LOAD( "dderby.6h",    0x2000, 0x1000, CRC(6e16cd16) SHA1(7f13a2b181e4a62d7d71294cac8fe09fd9ac64a9) )
+	ROM_LOAD( "dderby.6j",    0x3000, 0x1000, CRC(f7e09874) SHA1(7080aaa47e0bc893cd8bd038de7af769ef4eddf6) )
 
 	ROM_REGION( 0x2000, "gfx1", 0 )
-	ROM_LOAD( "dderby.5e",     0x0000, 0x1000, CRC(7e2c0a53) SHA1(c3c62b32927ac3c5948faeff28d4c2148fe18d0b) )
-	ROM_LOAD( "dderby.5f",     0x1000, 0x1000, CRC(cb2dd072) SHA1(e5813cc4247b9799e9513ff1a624fabc066582e3) )
+	ROM_LOAD( "dderby.5e",    0x0000, 0x1000, CRC(7e2c0a53) SHA1(c3c62b32927ac3c5948faeff28d4c2148fe18d0b) )
+	ROM_LOAD( "dderby.5f",    0x1000, 0x1000, CRC(cb2dd072) SHA1(e5813cc4247b9799e9513ff1a624fabc066582e3) )
 
 	PACMAN_PROMS
 ROM_END
@@ -528,48 +528,48 @@ ROM_END
 
 ROM_START( ladybugh )
 	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "lazybug.1",   0x0000, 0x1000, CRC(8cee62ee) SHA1(f33b114f3c133cb62f962ca1b2586314b73c8270) )
-	ROM_LOAD( "lazybug.2",   0x1000, 0x1000, CRC(c17a5571) SHA1(24bae96cf95f009825fd06916eeae8a06e2e35ae) )
-	ROM_LOAD( "lazybug.3",   0x2000, 0x1000, CRC(ac53ee82) SHA1(a69a71ee936ae73d5a27025528ff2c666893866d) )
-	ROM_LOAD( "ladybugh.4",  0x3000, 0x1000, CRC(4ac90450) SHA1(7777777777777777777777777777777777777777) ) /* unavailable */
-	ROM_LOAD( "lazybug.5",   0x8000, 0x1000, CRC(ba11a997) SHA1(8dde84e9071bfa3e60d522a02ae5bf4464e730cf) )
-	ROM_LOAD( "lazybug.6",   0x9000, 0x1000, CRC(c8b79a5b) SHA1(abaa9c585da1ee62d4b79968bedb429a5bbb739b) )
+	ROM_LOAD( "lazybug.1",    0x0000, 0x1000, CRC(8cee62ee) SHA1(f33b114f3c133cb62f962ca1b2586314b73c8270) )
+	ROM_LOAD( "lazybug.2",    0x1000, 0x1000, CRC(c17a5571) SHA1(24bae96cf95f009825fd06916eeae8a06e2e35ae) )
+	ROM_LOAD( "lazybug.3",    0x2000, 0x1000, CRC(ac53ee82) SHA1(a69a71ee936ae73d5a27025528ff2c666893866d) )
+	ROM_LOAD( "ladybugh.4",   0x3000, 0x1000, CRC(4ac90450) SHA1(7777777777777777777777777777777777777777) ) /* unavailable */
+	ROM_LOAD( "lazybug.5",    0x8000, 0x1000, CRC(ba11a997) SHA1(8dde84e9071bfa3e60d522a02ae5bf4464e730cf) )
+	ROM_LOAD( "lazybug.6",    0x9000, 0x1000, CRC(c8b79a5b) SHA1(abaa9c585da1ee62d4b79968bedb429a5bbb739b) )
 
 	ROM_REGION( 0x2000, "gfx1", 0 )
-	ROM_LOAD( "lazybug.5e",  0x0000, 0x1000, CRC(4e72e4f5) SHA1(05188aa854034e5cd9779d4b7034ec0658ccc805) )
-	ROM_LOAD( "lazybug.5f",  0x1000, 0x1000, CRC(35eaf3a5) SHA1(6a0e5a5289003b0d8ccb9dd585a1e12a4486977c) )
+	ROM_LOAD( "lazybug.5e",   0x0000, 0x1000, CRC(4e72e4f5) SHA1(05188aa854034e5cd9779d4b7034ec0658ccc805) )
+	ROM_LOAD( "lazybug.5f",   0x1000, 0x1000, CRC(35eaf3a5) SHA1(6a0e5a5289003b0d8ccb9dd585a1e12a4486977c) )
 
 	PACMAN_PROMS
 ROM_END
 
 ROM_START( lazybug )
 	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "lazybug.1",   0x0000, 0x1000, CRC(8cee62ee) SHA1(f33b114f3c133cb62f962ca1b2586314b73c8270) )
-	ROM_LOAD( "lazybug.2",   0x1000, 0x1000, CRC(c17a5571) SHA1(24bae96cf95f009825fd06916eeae8a06e2e35ae) )
-	ROM_LOAD( "lazybug.3",   0x2000, 0x1000, CRC(ac53ee82) SHA1(a69a71ee936ae73d5a27025528ff2c666893866d) )
-	ROM_LOAD( "lazybug.4",   0x3000, 0x1000, CRC(22a4e136) SHA1(e41e4d3cc0b3ca29ae8cb9591bf36e009c76f2b2) )
-	ROM_LOAD( "lazybug.5",   0x8000, 0x1000, CRC(ba11a997) SHA1(8dde84e9071bfa3e60d522a02ae5bf4464e730cf) )
-	ROM_LOAD( "lazybug.6",   0x9000, 0x1000, CRC(c8b79a5b) SHA1(abaa9c585da1ee62d4b79968bedb429a5bbb739b) )
+	ROM_LOAD( "lazybug.1",    0x0000, 0x1000, CRC(8cee62ee) SHA1(f33b114f3c133cb62f962ca1b2586314b73c8270) )
+	ROM_LOAD( "lazybug.2",    0x1000, 0x1000, CRC(c17a5571) SHA1(24bae96cf95f009825fd06916eeae8a06e2e35ae) )
+	ROM_LOAD( "lazybug.3",    0x2000, 0x1000, CRC(ac53ee82) SHA1(a69a71ee936ae73d5a27025528ff2c666893866d) )
+	ROM_LOAD( "lazybug.4",    0x3000, 0x1000, CRC(22a4e136) SHA1(e41e4d3cc0b3ca29ae8cb9591bf36e009c76f2b2) )
+	ROM_LOAD( "lazybug.5",    0x8000, 0x1000, CRC(ba11a997) SHA1(8dde84e9071bfa3e60d522a02ae5bf4464e730cf) )
+	ROM_LOAD( "lazybug.6",    0x9000, 0x1000, CRC(c8b79a5b) SHA1(abaa9c585da1ee62d4b79968bedb429a5bbb739b) )
 
 	ROM_REGION( 0x2000, "gfx1", 0 )
-	ROM_LOAD( "lazybug.5e",  0x0000, 0x1000, CRC(4e72e4f5) SHA1(05188aa854034e5cd9779d4b7034ec0658ccc805) )
-	ROM_LOAD( "lazybug.5f",  0x1000, 0x1000, CRC(35eaf3a5) SHA1(6a0e5a5289003b0d8ccb9dd585a1e12a4486977c) )
+	ROM_LOAD( "lazybug.5e",   0x0000, 0x1000, CRC(4e72e4f5) SHA1(05188aa854034e5cd9779d4b7034ec0658ccc805) )
+	ROM_LOAD( "lazybug.5f",   0x1000, 0x1000, CRC(35eaf3a5) SHA1(6a0e5a5289003b0d8ccb9dd585a1e12a4486977c) )
 
 	PACMAN_PROMS
 ROM_END
 
 ROM_START( lazybug1 )
 	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "lazybug.1",   0x0000, 0x1000, CRC(8cee62ee) SHA1(f33b114f3c133cb62f962ca1b2586314b73c8270) )
-	ROM_LOAD( "lazyalt.2",   0x1000, 0x1000, CRC(3df8767b) SHA1(67ee2c2357a9a6e1f4d6ab95427d0c44dc3ebc1f) )
-	ROM_LOAD( "lazybug.3",   0x2000, 0x1000, CRC(ac53ee82) SHA1(a69a71ee936ae73d5a27025528ff2c666893866d) )
-	ROM_LOAD( "lazybug.4",   0x3000, 0x1000, CRC(22a4e136) SHA1(e41e4d3cc0b3ca29ae8cb9591bf36e009c76f2b2) )
-	ROM_LOAD( "lazybug.5",   0x8000, 0x1000, CRC(ba11a997) SHA1(8dde84e9071bfa3e60d522a02ae5bf4464e730cf) )
-	ROM_LOAD( "lazybug.6",   0x9000, 0x1000, CRC(c8b79a5b) SHA1(abaa9c585da1ee62d4b79968bedb429a5bbb739b) )
+	ROM_LOAD( "lazybug.1",    0x0000, 0x1000, CRC(8cee62ee) SHA1(f33b114f3c133cb62f962ca1b2586314b73c8270) )
+	ROM_LOAD( "lazyalt.2",    0x1000, 0x1000, CRC(3df8767b) SHA1(67ee2c2357a9a6e1f4d6ab95427d0c44dc3ebc1f) )
+	ROM_LOAD( "lazybug.3",    0x2000, 0x1000, CRC(ac53ee82) SHA1(a69a71ee936ae73d5a27025528ff2c666893866d) )
+	ROM_LOAD( "lazybug.4",    0x3000, 0x1000, CRC(22a4e136) SHA1(e41e4d3cc0b3ca29ae8cb9591bf36e009c76f2b2) )
+	ROM_LOAD( "lazybug.5",    0x8000, 0x1000, CRC(ba11a997) SHA1(8dde84e9071bfa3e60d522a02ae5bf4464e730cf) )
+	ROM_LOAD( "lazybug.6",    0x9000, 0x1000, CRC(c8b79a5b) SHA1(abaa9c585da1ee62d4b79968bedb429a5bbb739b) )
 
 	ROM_REGION( 0x2000, "gfx1", 0 )
-	ROM_LOAD( "lazybug.5e",  0x0000, 0x1000, CRC(4e72e4f5) SHA1(05188aa854034e5cd9779d4b7034ec0658ccc805) )
-	ROM_LOAD( "lazybug.5f",  0x1000, 0x1000, CRC(35eaf3a5) SHA1(6a0e5a5289003b0d8ccb9dd585a1e12a4486977c) )
+	ROM_LOAD( "lazybug.5e",   0x0000, 0x1000, CRC(4e72e4f5) SHA1(05188aa854034e5cd9779d4b7034ec0658ccc805) )
+	ROM_LOAD( "lazybug.5f",   0x1000, 0x1000, CRC(35eaf3a5) SHA1(6a0e5a5289003b0d8ccb9dd585a1e12a4486977c) )
 
 	PACMAN_PROMS
 ROM_END
@@ -869,6 +869,7 @@ ROM_START( zap )
 	PACMAN_SOUND_PROMS
 ROM_END
 
+
 /*************************************
  *
  *  Game drivers
@@ -878,56 +879,56 @@ ROM_END
 /* Official MAME */
 
 /*          rom        parent    machine   inp       init */
-HACK( 1981, abscam,    0,        piranha,  mspacman, pacman_state,  eyes,     ROT90,  "GL (US Billiards License)", "Abscam", MACHINE_SUPPORTS_SAVE )
-HACK( 1982, eyes,      0,        pacman,   eyes,     pacman_state,  eyes,     ROT90,  "Digitrex Techstar (Rock-ola license)", "Eyes (Digitrex Techstar)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, piranha,   0,        piranha,  mspacman, pacman_state,  eyes,     ROT90,  "GL (US Billiards License)", "Piranha", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, piranhah,  piranha,  pacman,   mspacman, pacman_state,  0,        ROT90,  "hack", "Piranha (hack)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, piranhao,  piranha,  piranha,  mspacman, pacman_state,  eyes,     ROT90,  "GL (US Billiards License)", "Piranha (older)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, abscam,    puckman,  piranha,  mspacman, puckman_state, init_eyes,       ROT90,  "GL (US Billiards License)", "Abscam", MACHINE_SUPPORTS_SAVE )
+GAME( 1982, eyes,      0,        pacman,   eyes,     puckman_state, init_eyes,       ROT90,  "Digitrex Techstar (Rock-ola license)", "Eyes (Digitrex Techstar)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, piranha,   puckman,  piranha,  mspacman, puckman_state, init_eyes,       ROT90,  "GL (US Billiards License)", "Piranha", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, piranhah,  puckman,  pacman,   mspacman, puckman_state, empty_init,      ROT90,  "hack", "Piranha (hack)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, piranhao,  puckman,  piranha,  mspacman, puckman_state, init_eyes,       ROT90,  "GL (US Billiards License)", "Piranha (older)", MACHINE_SUPPORTS_SAVE )
 
 
 /* Dave Widel's Games - http://www.widel.com */
 
-HACK( 2003, aa,        0,        widel,    mspacpls, pacman_state,  0,        ROT90,  "David Widel", "Alien Armada", MACHINE_SUPPORTS_SAVE )
-HACK( 2003, bace,      0,        widel,    mspacpls, pacman_state,  0,        ROT90,  "David Widel", "Balloon Ace", MACHINE_SUPPORTS_SAVE )
-HACK( 2003, dderby,    0,        widel,    mspacpls, pacman_state,  0,        ROT90,  "David Widel", "Death Derby", MACHINE_SUPPORTS_SAVE )
-HACK( 2003, kangaroh,  0,        woodpek,  mspacpls, pacman_state,  0,        ROT90,  "David Widel", "Kagaroo (Qbertish) (incomplete)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
-HACK( 2003, ladybugh,  lazybug,  woodpek,  mspacpls, pacman_state,  0,        ROT90,  "David Widel", "Ladybug on Pacman Hardware", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, lazybug,   0,        woodpek,  mspacpls, pacman_state,  0,        ROT90,  "David Widel", "Lazy Bug", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, lazybug1,  lazybug,  woodpek,  mspacpls, pacman_state,  0,        ROT90,  "David Widel", "Lazy Bug (Slower)", MACHINE_SUPPORTS_SAVE )
-HACK( 19??, pactest,   0,        woodpek,  mspacpls, pacman_state,  0,        ROT90,  "David Widel", "Test - Pacman board test", MACHINE_SUPPORTS_SAVE )
-HACK( 2003, ppong,     0,        woodpek,  mspacpls, pacman_state,  0,        ROT90,  "David Widel", "Ping Pong demo (Pacman Hardware)", MACHINE_SUPPORTS_SAVE )
-HACK( 2003, ppong2,    ppong,    woodpek,  mspacpls, pacman_state,  0,        ROT90,  "David Widel", "Ping Pong demo (Pacman Hardware) v2", MACHINE_SUPPORTS_SAVE )
-HACK( 2003, rainboh,   0,        pacman,   mspacpls, pacman_state,  0,        ROT90,  "David Widel", "Rainbow (Incomplete)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
-HACK( 1981, wavybug,   lazybug,  woodpek,  mspacpls, pacman_state,  0,        ROT90,  "David Widel", "Wavy Bug", MACHINE_SUPPORTS_SAVE )
-HACK( 2003, zap,       0,        woodpek,  mspacpls, pacman_state,  0,        ROT90,  "David Widel", "Space Zap Tribute", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, aa,        0,        widel,    mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Alien Armada", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, bace,      0,        widel,    mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Balloon Ace", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, dderby,    0,        widel,    mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Death Derby", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, kangaroh,  0,        woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Kagaroo (Qbertish) (incomplete)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
+GAME( 2003, ladybugh,  lazybug,  woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Ladybug on Pacman Hardware", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, lazybug,   0,        woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Lazy Bug", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, lazybug1,  lazybug,  woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Lazy Bug (Slower)", MACHINE_SUPPORTS_SAVE )
+GAME( 19??, pactest,   0,        woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Test - Pacman board test", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, ppong,     0,        woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Ping Pong demo (Pacman Hardware)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, ppong2,    ppong,    woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Ping Pong demo (Pacman Hardware) v2", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, rainboh,   0,        pacman,   mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Rainbow (Incomplete)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
+GAME( 1981, wavybug,   lazybug,  woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Wavy Bug", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, zap,       0,        woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Space Zap Tribute", MACHINE_SUPPORTS_SAVE )
 
 /* Jerronimo's Progs - www.umlautllama.com */
 
-HACK( 2006, absurd,    0,        pacman,   mspacman, pacman_state,  0,        ROT90,  "Scott Lawrence", "Absurd!/QuadBlok (non-working alpha ver 3)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
-HACK( 2003, alpaca7,   alpaca8,  pacman,   pacman0,  pacman_state,  0,        ROT90,  "Scott Lawrence", "Alpaca v0.7 (Pacman Hardware)", MACHINE_SUPPORTS_SAVE )
-HACK( 2003, alpaca8,   0,        pacman,   pacman0,  pacman_state,  0,        ROT90,  "Scott Lawrence", "Alpaca v0.8 (Pacman Hardware)", MACHINE_SUPPORTS_SAVE )
-HACK( 2001, pachello,  0,        pachack,  pacman0,  pacman_state,  0,        ROT90,  "Scott Lawrence", "Hello, World!", MACHINE_SUPPORTS_SAVE )
-HACK( 2001, pacmatri,  0,        pachack,  pacman0,  pacman_state,  0,        ROT90,  "Scott Lawrence", "Matrix Effect", MACHINE_SUPPORTS_SAVE )
-HACK( 2003, seq1,      0,        pachack,  pacman0,  pacman_state,  0,        ROT90,  "Scott Lawrence", "16 Step Simple Sequencer", MACHINE_SUPPORTS_SAVE )
-HACK( 2003, seq2,      seq1,     pachack,  pacman0,  pacman_state,  0,        ROT90,  "Scott Lawrence", "Sequencer and Music Player", MACHINE_SUPPORTS_SAVE )
-HACK( 2012, tinyworld, 0,        pacman,   mspacman, pacman_state,  0,        ROT90,  "Scott Lawrence", "Tiny World 82 (demo)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
+GAME( 2006, absurd,    0,        pacman,   mspacman, puckman_state, empty_init,          ROT90,  "Scott Lawrence", "Absurd!/QuadBlok (non-working alpha ver 3)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
+GAME( 2003, alpaca7,   alpaca8,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Scott Lawrence", "Alpaca v0.7 (Pacman Hardware)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, alpaca8,   0,        pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Scott Lawrence", "Alpaca v0.8 (Pacman Hardware)", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, pachello,  0,        pachack,  pacman0,  puckman_state, empty_init,          ROT90,  "Scott Lawrence", "Hello, World!", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, pacmatri,  0,        pachack,  pacman0,  puckman_state, empty_init,          ROT90,  "Scott Lawrence", "Matrix Effect", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, seq1,      0,        pachack,  pacman0,  puckman_state, empty_init,          ROT90,  "Scott Lawrence", "16 Step Simple Sequencer", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, seq2,      seq1,     pachack,  pacman0,  puckman_state, empty_init,          ROT90,  "Scott Lawrence", "Sequencer and Music Player", MACHINE_SUPPORTS_SAVE )
+GAME( 2012, tinyworld, 0,        pacman,   mspacman, puckman_state, empty_init,          ROT90,  "Scott Lawrence", "Tiny World 82 (demo)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
 
 /* Other Misc Hacks */
 
-HACK( 2002, alienres,  0,        pacman,   pacman,   pacman_state,  0,        ROT90,  "MonstersGoBoom", "Alien Rescue", MACHINE_SUPPORTS_SAVE )
-HACK( 2002, alienresp, alienres, pacman,   pacman,   pacman_state,  0,        ROT90,  "MonstersGoBoom", "Alien Rescue (non-working prototype)", MACHINE_SUPPORTS_SAVE )
-HACK( 2002, crashh,    0,        woodpek,  mspacpls, pacman_state,  0,        ROT90,  "hack", "Crash (Pac-Man)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, mtturbo,   0,        maketrax, maketrax, pacman_state,  maketrax, ROT270, "Tim Arcadecollecting", "Make Trax (Turbo Hack)", MACHINE_SUPPORTS_SAVE ) // http://www.arcadecollecting.com/hacks/maketrax
-HACK( 1999, tst_pacm,  0,        pacman,   mspacpls, pacman_state,  0,        ROT90,  "David Caldwell", "Test - Pacman Hardware", MACHINE_SUPPORTS_SAVE ) // http://www.porkrind.org/arcade/
-HACK( 1982, eyesb,     eyes,     pacman,   eyes,     pacman_state,  eyes,     ROT90,  "bootleg", "Eyes (unknown bootleg)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, ghohunt,   0,        pacman,   pacman0,  pacman_state,  0,        ROT90,  "Hurray Banana", "Ghost Hunt", MACHINE_SUPPORTS_SAVE )
-HACK( 2012, pactetris, 0,        pacman,   pacman0,  pacman_state,  0,        ROT90,  "Ben Leperchey", "Tetris on Pacman hardware (incomplete)", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, deathstar, 0,        pacman,   pacman0,  pacman_state,  0,        ROT90,  "Stefano Bodrato", "Death Star", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, deathstar2,deathstar, pacman,   pacman0,  pacman_state,  0,        ROT90,  "Stefano Bodrato", "Death Star v2", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, scroller,  0,        pacman,   pacman0,  pacman_state,  0,        ROT90,  "Hurray Banana", "Scroller", MACHINE_SUPPORTS_SAVE )
-HACK( 2017, snakes,    0,        pacman,   pacman0,  pacman_state,  0,        ROT90,  "Stefano Bodrato", "Snakes", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, snakes2,   snakes,   pacman,   pacman0,  pacman_state,  0,        ROT90,  "Stefano Bodrato", "Snakes v2", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, 100doors,  0,        pacman,   pacman0,  pacman_state,  0,        ROT90,  "Hurray Banana", "100 doors", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, alienres,  0,        pacman,   pacman,   puckman_state, empty_init,          ROT90,  "MonstersGoBoom", "Alien Rescue", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, alienresp, alienres, pacman,   pacman,   puckman_state, empty_init,          ROT90,  "MonstersGoBoom", "Alien Rescue (non-working prototype)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, crashh,    0,        woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "hack", "Crash (Pac-Man)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, mtturbo,   0,        maketrax, maketrax, puckman_state, init_maketrax,       ROT270, "Tim Arcadecollecting", "Make Trax (Turbo Hack)", MACHINE_SUPPORTS_SAVE ) // http://www.arcadecollecting.com/hacks/maketrax
+GAME( 1999, tst_pacm,  0,        pacman,   mspacpls, puckman_state, empty_init,          ROT90,  "David Caldwell", "Test - Pacman Hardware", MACHINE_SUPPORTS_SAVE ) // http://www.porkrind.org/arcade/
+GAME( 1982, eyesb,     eyes,     pacman,   eyes,     puckman_state, init_eyes,           ROT90,  "bootleg", "Eyes (unknown bootleg)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, ghohunt,   puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Hurray Banana", "Ghost Hunt", MACHINE_SUPPORTS_SAVE )
+GAME( 2012, pactetris, puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Ben Leperchey", "Tetris on Pacman hardware (incomplete)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, deathstar, puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Stefano Bodrato", "Death Star", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, deathstar2,puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Stefano Bodrato", "Death Star v2", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, scroller,  puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Hurray Banana", "Scroller", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, snakes,    puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Stefano Bodrato", "Snakes", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, snakes2,   puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Stefano Bodrato", "Snakes v2", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, 100doors,  puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Hurray Banana", "100 doors", MACHINE_SUPPORTS_SAVE )
 
 
 /*************************************************************************************************************************/
@@ -1014,7 +1015,7 @@ ROM_START( theglobpb )
 	PACMAN_SOUND_PROMS
 ROM_END
 
-HACK( 1999, theglobpb, 0, pacman,  theglobp, pacman_state,  0,    ROT90,  "chaneman", "Super Glob (English conversion of sprglbpg)", MACHINE_SUPPORTS_SAVE )
+GAME( 1999, theglobpb, 0, pacman, theglobp, puckman_state,  empty_init,    ROT90,  "chaneman", "Super Glob (English conversion of sprglbpg)", MACHINE_SUPPORTS_SAVE )
 
 static INPUT_PORTS_START( paintrlr )
 	PORT_START("IN0")
@@ -1367,16 +1368,16 @@ ROM_START( painter )
 ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
-HACK( 1981, crush,    0,        maketrax, maketrax, pacman_state,  maketrax, ROT90,  "Alpha Denshi Co. / Kural Samno Electric, Ltd.", "Crush Roller (set 1)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, crush2,   crush,    pacman,   maketrax, pacman_state,  0,        ROT90,  "Alpha Denshi Co. / Kural Esco Electric, Ltd.", "Crush Roller (set 2)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, crush3,   crush,    maketrax, maketrax, pacman_state,  maketrax, ROT90,  "Alpha Denshi Co. / Kural Electric, Ltd.", "Crush Roller (set 3)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, crush4,   crush,    pacman,   maketrax, pacman_state,  eyes,     ROT90,  "Alpha Denshi Co. / Kural Electric, Ltd.", "Crush Roller (set 4)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, crushbl,  crush,    pacman,   maketrax, pacman_state,  0,        ROT90,  "bootleg", "Crush Roller (bootleg set 1)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, crushrlf, crush,    pacman,   maketrax, pacman_state,  0,        ROT90,  "bootleg", "Crush Roller (Famare SA PCB)", MACHINE_SUPPORTS_SAVE )
-HACK( 1982, eyes2,    eyes,     pacman,   eyes,     pacman_state,  eyes,     ROT90,  "Techstar (Rock-Ola license)", "Eyes (US set 2)", MACHINE_SUPPORTS_SAVE )
-HACK( 1982, eyeszac,  eyes,     pacman,   eyes,     pacman_state,  eyes,     ROT90,  "Techstar (Zaccaria license)", "Eyes (Italy)", MACHINE_SUPPORTS_SAVE )
-HACK( 1982, eyeszacb, eyes,     pacman,   eyes,     pacman_state,  0,        ROT90,  "bootleg", "Eyes (bootleg set 2, decrypted)", MACHINE_SUPPORTS_SAVE )
-HACK( 1982, eyesb2,   eyes,     pacman,   eyes,     pacman_state,  eyes,     ROT90,  "bootleg", "Eyes (bootleg set 1)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, maketrax, crush,    maketrax, maketrax, pacman_state,  maketrax, ROT270, "Alpha Denshi Co. / Kural (Williams license)", "Make Trax (US set 1)", MACHINE_SUPPORTS_SAVE )
-HACK( 1981, maketrxb, crush,    maketrax, maketrax, pacman_state,  maketrax, ROT270, "Alpha Denshi Co. / Kural (Williams license)", "Make Trax (US set 2)", MACHINE_SUPPORTS_SAVE )
-HACK( 1984, painter,  crush,    pacman,   paintrlr, pacman_state,  0,        ROT90,  "hack (Monshine Ent. Co.)",                      "Painter (hack of Crush Roller)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE ) // currently shows Paintei due to bad sprite ROM
+GAME( 1981, crush,    0,        maketrax, maketrax, puckman_state,  init_maketrax, ROT90,  "Alpha Denshi Co. / Kural Samno Electric, Ltd.", "Crush Roller (set 1)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, crush2,   crush,    pacman,   maketrax, puckman_state,  empty_init,    ROT90,  "Alpha Denshi Co. / Kural Esco Electric, Ltd.", "Crush Roller (set 2)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, crush3,   crush,    maketrax, maketrax, puckman_state,  init_maketrax, ROT90,  "Alpha Denshi Co. / Kural Electric, Ltd.", "Crush Roller (set 3)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, crush4,   crush,    pacman,   maketrax, puckman_state,  init_eyes,     ROT90,  "Alpha Denshi Co. / Kural Electric, Ltd.", "Crush Roller (set 4)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, crushbl,  crush,    pacman,   maketrax, puckman_state,  empty_init,    ROT90,  "bootleg", "Crush Roller (bootleg set 1)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, crushrlf, crush,    pacman,   maketrax, puckman_state,  empty_init,    ROT90,  "bootleg", "Crush Roller (Famare SA PCB)", MACHINE_SUPPORTS_SAVE )
+GAME( 1982, eyes2,    eyes,     pacman,   eyes,     puckman_state,  init_eyes,     ROT90,  "Techstar (Rock-Ola license)", "Eyes (US set 2)", MACHINE_SUPPORTS_SAVE )
+GAME( 1982, eyeszac,  eyes,     pacman,   eyes,     puckman_state,  init_eyes,     ROT90,  "Techstar (Zaccaria license)", "Eyes (Italy)", MACHINE_SUPPORTS_SAVE )
+GAME( 1982, eyeszacb, eyes,     pacman,   eyes,     puckman_state,  empty_init,    ROT90,  "bootleg", "Eyes (bootleg set 2, decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 1982, eyesb2,   eyes,     pacman,   eyes,     puckman_state,  init_eyes,     ROT90,  "bootleg", "Eyes (bootleg set 1)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, maketrax, crush,    maketrax, maketrax, puckman_state,  init_maketrax, ROT270, "Alpha Denshi Co. / Kural (Williams license)", "Make Trax (US set 1)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, maketrxb, crush,    maketrax, maketrax, puckman_state,  init_maketrax, ROT270, "Alpha Denshi Co. / Kural (Williams license)", "Make Trax (US set 2)", MACHINE_SUPPORTS_SAVE )
+GAME( 1984, painter,  crush,    pacman,   paintrlr, puckman_state,  empty_init,    ROT90,  "hack (Monshine Ent. Co.)", "Painter (hack of Crush Roller)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )

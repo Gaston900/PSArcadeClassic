@@ -2202,97 +2202,97 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // 19XX The War Against Destiny
-HACK( 1996, 19xxhack01,     19xx,    cps2,      cps2_2p2b, cps2_state, cps2, ROT270, "DDJ",      "19XX: The War Against Destiny (Ex Super Version)", MACHINE_SUPPORTS_SAVE )
-HACK( 1996, 19xxhack02,     19xx,    cps2,      cps2_2p2b, cps2_state, cps2, ROT270, "hack",     "19XX: The War Against Destiny (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, 19xxhack01,     19xx,    cps2,      cps2_2p2b, cps2_state, init_cps2, ROT270, "DDJ",      "19XX: The War Against Destiny (Ex Super Version)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, 19xxhack02,     19xx,    cps2,      cps2_2p2b, cps2_state, init_cps2, ROT270, "hack",     "19XX: The War Against Destiny (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
 // 1944 The Loop Master
-HACK( 2012, 1944hack01,     1944,    cps2,      cps2_2p2b, cps2_state, cps2, ROT0,   "Qxs8",     "1944: The Loop Master (Fire Power Plus 2011-12-31)", MACHINE_SUPPORTS_SAVE )
+GAME( 2012, 1944hack01,     1944,    cps2,      cps2_2p2b, cps2_state, init_cps2, ROT0,   "Qxs8",     "1944: The Loop Master (Fire Power Plus 2011-12-31)", MACHINE_SUPPORTS_SAVE )
 //Alien vs. Predator
-HACK( 2017, avsphack01,     avsp,    cps2,      cps2_3p3b, cps2_state, cps2, ROT0,   "hack",     "Alien vs. Predator (1 Vs 3 Plus 2017-12-30)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, avsphack02,     avsp,    cps2,      cps2_3p3b, cps2_state, cps2, ROT0,   "hack",     "Alien vs. Predator (Ultimate Evolution Edition 2020-09-01)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
-HACK( 2020, avsphack03,     avsp,    cps2,      cps2_3p3b, cps2_state, cps2, ROT0,   "hack",     "Alien vs. Predator (Ex Super Version 2020-08-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, avsphack01,     avsp,    cps2,      cps2_3p3b, cps2_state, init_cps2, ROT0,   "hack",     "Alien vs. Predator (1 Vs 3 Plus 2017-12-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, avsphack02,     avsp,    cps2,      cps2_3p3b, cps2_state, init_cps2, ROT0,   "hack",     "Alien vs. Predator (Ultimate Evolution Edition 2020-09-01)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
+GAME( 2020, avsphack03,     avsp,    cps2,      cps2_3p3b, cps2_state, init_cps2, ROT0,   "hack",     "Alien vs. Predator (Ex Super Version 2020-08-30)", MACHINE_SUPPORTS_SAVE )
 //Armored Warriors
-HACK( 2020, armwarhack01,   armwar,  dead_cps2, cps2_3p3b, cps2_state, cps2, ROT0,   "hack",     "Armored Warriors (Full Attack Edition 2020-08-30)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
+GAME( 2020, armwarhack01,   armwar,  dead_cps2, cps2_3p3b, cps2_state, init_cps2, ROT0,   "hack",     "Armored Warriors (Full Attack Edition 2020-08-30)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
 //Battle Circuit
-HACK( 2019, batcirhack01,   batcir,  dead_cps2, cps2_4p2b, cps2_state, cps2, ROT0,   "hack",     "Battle Circuit (Evolution 2019-10-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, batcirhack01,   batcir,  dead_cps2, cps2_4p2b, cps2_state, init_cps2, ROT0,   "hack",     "Battle Circuit (Evolution 2019-10-21)", MACHINE_SUPPORTS_SAVE )
 // Capcom Sports Club
-HACK( 1997, csclubhack01,   csclub,  cps2,      cps2_2p3b, cps2_state, cps2, ROT0,   "Hooooook", "Capcom Sports Club (Time Increases)", MACHINE_SUPPORTS_SAVE )
+GAME( 1997, csclubhack01,   csclub,  cps2,      cps2_2p3b, cps2_state, init_cps2, ROT0,   "Hooooook", "Capcom Sports Club (Time Increases)", MACHINE_SUPPORTS_SAVE )
 // Cyberbots Fullmetal Madness
-HACK( 1995, cybotshack01,   cybots,  cps2,      cybots,    cps2_state, cps2, ROT0,   "pipi899",  "Cyberbots: Fullmetal Madness (Ex Super Version)", MACHINE_SUPPORTS_SAVE )
+GAME( 1995, cybotshack01,   cybots,  cps2,      cybots,    cps2_state, init_cps2, ROT0,   "pipi899",  "Cyberbots: Fullmetal Madness (Ex Super Version)", MACHINE_SUPPORTS_SAVE )
 // Dungeons & Dragons Shadow over Mystara
-HACK( 2017, ddsomhack01,    ddsom,   cps2,      cps2_4p4b, cps2_state, cps2, ROT0,   "Mushroom Chick", "Dungeons & Dragons: Shadow over Mystara (Translation Chinese 2017-04-26)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, ddsomhack02,    ddsom,   cps2,      cps2_4p4b, cps2_state, cps2, ROT0,   "hack",     "Dungeons & Dragons: Shadow over Mystara (Full Attack Edition 2020-08-31)", MACHINE_SUPPORTS_SAVE )
-HACK( 2009, ddsomhack03,    ddsom,   cps2,      cps2_4p4b, cps2_state, cps2, ROT0,   "Pipi899",  "Dungeons & Dragons: Shadow over Mystara (1v4 Players 2009-06-29)", MACHINE_SUPPORTS_SAVE )
-HACK( 2018, ddsomhack04,    ddsom,   dead_cps2, cps2_4p4b, cps2_state, cps2, ROT0,   "hack",     "Dungeons & Dragons: Shadow over Mystara (Plus 2016-08-25)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, ddsomhack01,    ddsom,   cps2,      cps2_4p4b, cps2_state, init_cps2, ROT0,   "Mushroom Chick", "Dungeons & Dragons: Shadow over Mystara (Translation Chinese 2017-04-26)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, ddsomhack02,    ddsom,   cps2,      cps2_4p4b, cps2_state, init_cps2, ROT0,   "hack",     "Dungeons & Dragons: Shadow over Mystara (Full Attack Edition 2020-08-31)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, ddsomhack03,    ddsom,   cps2,      cps2_4p4b, cps2_state, init_cps2, ROT0,   "Pipi899",  "Dungeons & Dragons: Shadow over Mystara (1v4 Players 2009-06-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, ddsomhack04,    ddsom,   dead_cps2, cps2_4p4b, cps2_state, init_cps2, ROT0,   "hack",     "Dungeons & Dragons: Shadow over Mystara (Plus 2016-08-25)", MACHINE_SUPPORTS_SAVE )
 //Dungeons & Dragons: Tower of Doom
-HACK( 2018, ddtodhack01,    ddtod,   dead_cps2, cps2_4p4b, cps2_state, cps2, ROT0,   "hack",     "Dungeons & Dragons: Tower of Doom (Plus)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, ddtodhack02,    ddtod,   cps2,      cps2_4p4b, cps2_state, cps2, ROT0,   "hack",     "Dungeons & Dragons: Tower of Doom (Full Attack Edition 2020-08-31)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, ddtodhack01,    ddtod,   dead_cps2, cps2_4p4b, cps2_state, init_cps2, ROT0,   "hack",     "Dungeons & Dragons: Tower of Doom (Plus)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, ddtodhack02,    ddtod,   cps2,      cps2_4p4b, cps2_state, init_cps2, ROT0,   "hack",     "Dungeons & Dragons: Tower of Doom (Full Attack Edition 2020-08-31)", MACHINE_SUPPORTS_SAVE )
 // Darkstalkers: The Night Warriors
-HACK( 2006, vampjhack01,    dstlk,   cps2,      cps2_2p6b, cps2_state, cps2, ROT0,   "Yumeji",   "Vampire: The Night Warriors (Enable hidden characters)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, dstlkhack02,    dstlk,   cps2,      cps2_2p6b, cps2_state, cps2, ROT0,   "hack",     "Darkstalkers: The Night Warriors (Simplify Edition 2016-12-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, vampjhack01,    dstlk,   cps2,      cps2_2p6b, cps2_state, init_cps2, ROT0,   "Yumeji",   "Vampire: The Night Warriors (Enable hidden characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, dstlkhack02,    dstlk,   cps2,      cps2_2p6b, cps2_state, init_cps2, ROT0,   "hack",     "Darkstalkers: The Night Warriors (Simplify Edition 2016-12-06)", MACHINE_SUPPORTS_SAVE )
 // Giga Wing
-HACK( 1999, gigawinghack01, gigawing, cps2,     cps2_2p2b, cps2_state, cps2, ROT0,   "LB70",     "Giga Wing (Ex Super Version)", MACHINE_SUPPORTS_SAVE )
+GAME( 1999, gigawinghack01, gigawing, cps2,     cps2_2p2b, cps2_state, init_cps2, ROT0,   "LB70",     "Giga Wing (Ex Super Version)", MACHINE_SUPPORTS_SAVE )
 // Halfway to Hell - Progear Red Label
-HACK( 2016, halfwayhack01,  progear,  dead_cps2, cps2_2p3b, cps2_state, cps2, ROT0,  "Halfway House", "Halfway to Hell - Progear Red Label (Edition 2016-01-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, halfwayhack01,  progear,  dead_cps2,cps2_2p3b, cps2_state, init_cps2, ROT0,  "Halfway House", "Halfway to Hell - Progear Red Label (Edition 2016-01-17)", MACHINE_SUPPORTS_SAVE )
 // Hyper Street Fighter II
-HACK( 2004, hsf2hack01,     hsf2,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "yumeji",   "Hyper Street Fighter II: The Anniversary Edition (Enabled Hidden Characters In Normal Mode)", MACHINE_SUPPORTS_SAVE )
-HACK( 2004, hsf2hack02,     hsf2,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "DDJ",      "Hyper Street Fighter II: The Anniversary Edition (Always Have Super Move)", MACHINE_SUPPORTS_SAVE )
-HACK( 2004, hsf2hack03,     hsf2,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "DDJ",      "Hyper Street Fighter II: The Anniversary Edition (Easy Move)", MACHINE_SUPPORTS_SAVE )
-HACK( 2004, hsf2hack04,     hsf2,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "DDJ",      "Hyper Street Fighter II: The Anniversary Edition (Hit Anywhere)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, hsf2hack01,     hsf2,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "yumeji",   "Hyper Street Fighter II: The Anniversary Edition (Enabled Hidden Characters In Normal Mode)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, hsf2hack02,     hsf2,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "DDJ",      "Hyper Street Fighter II: The Anniversary Edition (Always Have Super Move)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, hsf2hack03,     hsf2,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "DDJ",      "Hyper Street Fighter II: The Anniversary Edition (Easy Move)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, hsf2hack04,     hsf2,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "DDJ",      "Hyper Street Fighter II: The Anniversary Edition (Hit Anywhere)", MACHINE_SUPPORTS_SAVE )
 // Marvel Super Heroes
-HACK( 1995, mshhack01,      msh,      cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "Yumeji",   "Marvel Super Heroes (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-HACK( 2015, mshhack02,      msh,      cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "hack",     "Marvel Super Heroes (Boss With Simple Attack Edition 2015-12-04)", MACHINE_SUPPORTS_SAVE )
+GAME( 1995, mshhack01,      msh,      cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "Yumeji",   "Marvel Super Heroes (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mshhack02,      msh,      cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "hack",     "Marvel Super Heroes (Boss With Simple Attack Edition 2015-12-04)", MACHINE_SUPPORTS_SAVE )
 // Marvel Super Heroes Vs. Street Fighter
-HACK( 1997, mshvsfhack01,   mshvsf,   cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "Yumeji",   "Marvel Super Heroes Vs. Street Fighter (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-HACK( 2009, mshvsfhack02,   mshvsf,   cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "Blackheart", "Marvel Super Heroes Vs. Street Fighter (Easy Moves)", MACHINE_SUPPORTS_SAVE )
-HACK( 2015, mshvsfhack03,   mshvsf,   cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "hack",     "Marvel Super Heroes Vs. Street Fighter (Boss With Simple Attack Edition 2015-12-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 1997, mshvsfhack01,   mshvsf,   cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "Yumeji",   "Marvel Super Heroes Vs. Street Fighter (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, mshvsfhack02,   mshvsf,   cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "Blackheart", "Marvel Super Heroes Vs. Street Fighter (Easy Moves)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mshvsfhack03,   mshvsf,   cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "hack",     "Marvel Super Heroes Vs. Street Fighter (Boss With Simple Attack Edition 2015-12-05)", MACHINE_SUPPORTS_SAVE )
 // Marvel Vs. Capcom Clash of Super Heroes
-HACK( 1998, mvschack01,     mvsc,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "0 DAY-S",  "Marvel Vs. Capcom: Clash of Super Heroes (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-HACK( 2015, mvschack02,     mvsc,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "hack",     "Marvel Vs. Capcom: Clash of Super Heroes (Ex Super Version 2013-10-08)", MACHINE_SUPPORTS_SAVE )
-HACK( 2009, mvschack03,     mvsc,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "Blackheart", "Marvel Vs. Capcom: Clash of Super Heroes (Easy Moves)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, mvschack01,     mvsc,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "0 DAY-S",  "Marvel Vs. Capcom: Clash of Super Heroes (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, mvschack02,     mvsc,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "hack",     "Marvel Vs. Capcom: Clash of Super Heroes (Ex Super Version 2013-10-08)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, mvschack03,     mvsc,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "Blackheart", "Marvel Vs. Capcom: Clash of Super Heroes (Easy Moves)", MACHINE_SUPPORTS_SAVE )
 // Pocket Fighter
-HACK( 2014, sgemfhack01,    sgemf,    cps2,     cps2_2p3b, cps2_state, cps2, ROT0,   "Blackheart","Pocket Fighter (Resurgence Lite 2014-12-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2014, sgemfhack01,    sgemf,    cps2,     cps2_2p3b, cps2_state, init_cps2, ROT0,   "Blackheart","Pocket Fighter (Resurgence Lite 2014-12-17)", MACHINE_SUPPORTS_SAVE )
 // Progear No Arashi
-HACK( 2001, progearhack01,  progear,  dead_cps2,cps2_2p3b, cps2_state, cps2, ROT0,   "lb70",     "Progear no Arashi (Crazy Fire Version)", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, progearhack01,  progear,  dead_cps2,cps2_2p3b, cps2_state, init_cps2, ROT0,   "lb70",     "Progear no Arashi (Crazy Fire Version)", MACHINE_SUPPORTS_SAVE )
 // Street Fighter Alpha
-HACK( 2017, sfahack01,      sfa,      cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "DDJ",      "Street Fighter Alpha: Warriors' Dreams (Easy Move)", MACHINE_SUPPORTS_SAVE )
+GAME( 2017, sfahack01,      sfa,      cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "DDJ",      "Street Fighter Alpha: Warriors' Dreams (Easy Move)", MACHINE_SUPPORTS_SAVE )
 // Street Fighter Alpha 2
-HACK( 1996, sfa2hack01,     sfa2,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "Pipi899",  "Street Fighter Alpha 2 (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, sfa2hack02,     sfa2,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "hack",     "Street Fighter Alpha 2 (Crazy Edition 2019-04-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2019, sfa2hack03,     sfa2,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "DDJ",      "Street Fighter Alpha 2 (Changed Character)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, sfa2hack04,     sfa2,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "DDJ",      "Street Fighter Alpha 2 (Easy Move)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, sfa2hack01,     sfa2,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "Pipi899",  "Street Fighter Alpha 2 (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, sfa2hack02,     sfa2,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "hack",     "Street Fighter Alpha 2 (Crazy Edition 2019-04-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, sfa2hack03,     sfa2,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "DDJ",      "Street Fighter Alpha 2 (Changed Character)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, sfa2hack04,     sfa2,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "DDJ",      "Street Fighter Alpha 2 (Easy Move)", MACHINE_SUPPORTS_SAVE )
 // Street Fighter Alpha 3
-HACK( 2009, sfa3hack01,     sfa3,     cps2,     cps2_2p6bt,cps2_state, cps2, ROT0,   "Pipi899",  "Street Fighter Alpha 3 (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-HACK( 2005, sfa3hack02,     sfa3,     cps2,     cps2_2p6bt,cps2_state, cps2, ROT0,   "BisonSAS & Alan Yagami", "Street Fighter Alpha 3 (Brasil translation)", MACHINE_SUPPORTS_SAVE )
-HACK( 2021, sfa3hack03,     sfa3,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "Grego and Gnawtor",      "Street Fighter Alpha 3 Challenger's Edition", MACHINE_SUPPORTS_SAVE )
-HACK( 2009, sfa3hack04,     sfa3,     cps2,     cps2_2p6bt,cps2_state, cps2, ROT0,   "Pipi899",  "Street Fighter Alpha 3 (Xiang Long Edition 2009-05-10)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, sfa3hack05,     sfa3,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "hack",     "Street Fighter Alpha 3 (Dragon Drop 2020-04-09)", MACHINE_SUPPORTS_SAVE )
-HACK( 2020, sfa3hack06,     sfa3,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "hack",     "Street Fighter Alpha 3 (Dragon Drop Simplified 2020-04-09)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, sfa3hack07,     sfa3,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "DDJ",      "Street Fighter Alpha 3 (Easy Move)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, sfa3hack01,     sfa3,     cps2,     cps2_2p6bt,cps2_state, init_cps2, ROT0,   "Pipi899",  "Street Fighter Alpha 3 (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2005, sfa3hack02,     sfa3,     cps2,     cps2_2p6bt,cps2_state, init_cps2, ROT0,   "BisonSAS & Alan Yagami", "Street Fighter Alpha 3 (Brasil translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, sfa3hack03,     sfa3,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "Grego and Gnawtor",      "Street Fighter Alpha 3 Challenger's Edition", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, sfa3hack04,     sfa3,     cps2,     cps2_2p6bt,cps2_state, init_cps2, ROT0,   "Pipi899",  "Street Fighter Alpha 3 (Xiang Long Edition 2009-05-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, sfa3hack05,     sfa3,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "hack",     "Street Fighter Alpha 3 (Dragon Drop 2020-04-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, sfa3hack06,     sfa3,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "hack",     "Street Fighter Alpha 3 (Dragon Drop Simplified 2020-04-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, sfa3hack07,     sfa3,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "DDJ",      "Street Fighter Alpha 3 (Easy Move)", MACHINE_SUPPORTS_SAVE )
 // Street Fighter Zero
-HACK( 1995, sfzhack01,      sfa,      cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "Yumeji",   "Street Fighter Zero (Enable hidden characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 1995, sfzhack01,      sfa,      cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "Yumeji",   "Street Fighter Zero (Enable hidden characters)", MACHINE_SUPPORTS_SAVE )
 // Street Fighter Zero 2 
-HACK( 1996, sfz2alhack01,   sfz2al,   cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "yumeji",   "Street Fighter Zero 2 Alpha (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-HACK( 2014, sfz2alhack02,   sfz2al,   cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "hack",     "Street Fighter Zero 2 Alpha (Dragon Fighter Edition 2014-11-19)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, sfz2alhack03,   sfz2al,   cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "hack",     "Street Fighter Zero 2 Alpha (Dragon Drop Simplified 2016-10-31)", MACHINE_SUPPORTS_SAVE )
-HACK( 1996, sfz2alhack04,   sfa2,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "BisonSAS", "Street Fighter Zero 2 Alpha (Brasil translation)", MACHINE_SUPPORTS_SAVE )
-HACK( 2016, sfz2alhack05,   sfz2al,   cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "DDJ",      "Street Fighter Zero 2 Alpha (Easy Move)", MACHINE_SUPPORTS_SAVE )
-HACK( 2009, sfz2alhack06,   sfz2al,   cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "Pipi899",  "Street Fighter Zero 2 Alpha (Dragon Edition v2.0 2009-04-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, sfz2alhack01,   sfz2al,   cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "yumeji",   "Street Fighter Zero 2 Alpha (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2014, sfz2alhack02,   sfz2al,   cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "hack",     "Street Fighter Zero 2 Alpha (Dragon Fighter Edition 2014-11-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, sfz2alhack03,   sfz2al,   cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "hack",     "Street Fighter Zero 2 Alpha (Dragon Drop Simplified 2016-10-31)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, sfz2alhack04,   sfa2,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "BisonSAS", "Street Fighter Zero 2 Alpha (Brasil translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, sfz2alhack05,   sfz2al,   cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "DDJ",      "Street Fighter Zero 2 Alpha (Easy Move)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, sfz2alhack06,   sfz2al,   cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "Pipi899",  "Street Fighter Zero 2 Alpha (Dragon Edition v2.0 2009-04-24)", MACHINE_SUPPORTS_SAVE )
 // Street Fighter Zero 3
-HACK( 2020, sfz3hack01,     sfa3,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "0xZERO3",  "Street Fighter Zero 3 (Training Edition v1.1)", MACHINE_SUPPORTS_SAVE )
-HACK( 2022, sfz3hack02,     sfa3,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "Zero800",  "Street Fighter Zero 3 (Mix 0.08)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, sfz3hack01,     sfa3,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "0xZERO3",  "Street Fighter Zero 3 (Training Edition v1.1)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, sfz3hack02,     sfa3,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "Zero800",  "Street Fighter Zero 3 (Mix 0.08)", MACHINE_SUPPORTS_SAVE )
 // Super Street Fighter II X Grand Master Challenge
-HACK( 1994, ssf2hack01,     ssf2t,    cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "Yumeji",   "Super Street Fighter II X: Grand Master Challenge (Enable hidden characters)", MACHINE_SUPPORTS_SAVE )
-HACK( 1993, ssf2hack02,     ssf2,     cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "DDJ",      "Super Street Fighter II X: The New Challengers (Easy Move)", MACHINE_SUPPORTS_SAVE )
+GAME( 1994, ssf2hack01,     ssf2t,    cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "Yumeji",   "Super Street Fighter II X: Grand Master Challenge (Enable hidden characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 1993, ssf2hack02,     ssf2,     cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "DDJ",      "Super Street Fighter II X: The New Challengers (Easy Move)", MACHINE_SUPPORTS_SAVE )
 // Super Street Fighter II Turbo
-HACK( 2005, ssf2thack01,    ssf2t,    cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "Shyma.X",  "Super Street Fighter II Turbo (Translation French)", MACHINE_SUPPORTS_SAVE )
-HACK( 2022, ssf2thack02,    ssf2t,    cps2,     cps2_2p6b, cps2_state, cps2, ROT0,   "Born2SPD", "Super Street Fighter II Turbo (New Legacy v0.6 beta 2022-02-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2005, ssf2thack01,    ssf2t,    cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "Shyma.X",  "Super Street Fighter II Turbo (Translation French)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, ssf2thack02,    ssf2t,    cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,   "Born2SPD", "Super Street Fighter II Turbo (New Legacy v0.6 beta 2022-02-07)", MACHINE_SUPPORTS_SAVE )
 // Super Puzzle Fighter II Turbo
-HACK( 1996, spf2thack01,    spf2t,    cps2,     cps2_2p2b, cps2_state, cps2, ROT0,   "hack",     "Super Puzzle Fighter II Turbo (Enable hidden characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, spf2thack01,    spf2t,    cps2,     cps2_2p2b, cps2_state, init_cps2, ROT0,   "hack",     "Super Puzzle Fighter II Turbo (Enable hidden characters)", MACHINE_SUPPORTS_SAVE )
 // Suicide Test
-HACK( 2015, suicide,        0,        dead_cps2,cps2_2p2b, cps2_state, cps2, ROT0,   "Razoola",  "Suicide Test", MACHINE_SUPPORTS_SAVE )
-HACK( 2015, suicide2,       suicide,  dead_cps2,cps2_2p2b, cps2_state, cps2, ROT0,   "Razoola",  "Suicide Test v2", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, suicide,        0,        dead_cps2,cps2_2p2b, cps2_state, init_cps2, ROT0,   "Razoola",  "Suicide Test", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, suicide2,       suicide,  dead_cps2,cps2_2p2b, cps2_state, init_cps2, ROT0,   "Razoola",  "Suicide Test v2", MACHINE_SUPPORTS_SAVE )
 // X-Men Children of the Atom
-HACK( 1994, xmcotahack01,   xmcota,   cps2,     cps2_2p6b, cps2_state, cps2, ROT0,    "yumeji",  "X-Men: Children of the Atom (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-HACK( 2013, xmcotahack02,   xmcota,   cps2,     cps2_2p6b, cps2_state, cps2, ROT0,    "hack",    "X-Men: Children of the Atom (Boss With Simple Attack Edition 2013-01-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 1994, xmcotahack01,   xmcota,   cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,    "yumeji",  "X-Men: Children of the Atom (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2013, xmcotahack02,   xmcota,   cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,    "hack",    "X-Men: Children of the Atom (Boss With Simple Attack Edition 2013-01-09)", MACHINE_SUPPORTS_SAVE )
 // X-Men Vs. Street Fighter
-HACK( 2015, xmvsfhack01,    xmvsf,    cps2,     cps2_2p6b, cps2_state, cps2, ROT0,    "DDJ",     "X-Men Vs. Street Fighter (Easy Move)", MACHINE_SUPPORTS_SAVE )
+GAME( 2015, xmvsfhack01,    xmvsf,    cps2,     cps2_2p6b, cps2_state, init_cps2, ROT0,    "DDJ",     "X-Men Vs. Street Fighter (Easy Move)", MACHINE_SUPPORTS_SAVE )

@@ -40,4 +40,4 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Space War
-GAME( 1999, spacwarp, 0, spacduel, spacduel, bwidow_state, empty_init, ROT0, "Jeff Hendrix", "Space War (Proto on Space Duel HW)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
+GAME( 1999, spacwarp, 0, spacduel, spacduel, bwidow_state, empty_init, ROT0, "Jeff Hendricks", "Space War (Proto on Space Duel HW)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )

@@ -30,7 +30,7 @@ static int DoExchangeItem(HWND hFrom, HWND hTo, int nMinItem)
 	lvi.iSubItem = 0;
 	lvi.mask = LVIF_PARAM | LVIF_TEXT;
 	lvi.pszText = buf;
-	lvi.cchTextMax = WINUI_ARRAY_LENGTH(buf);
+	lvi.cchTextMax = std::size(buf);
 
 	if (ListView_GetItem(hFrom, &lvi))
 	{
@@ -66,7 +66,7 @@ static void DoMoveItem( HWND hWnd, bool bDown)
 	lvi.iSubItem = 0;
 	lvi.mask = LVIF_PARAM | LVIF_TEXT;
 	lvi.pszText = buf;
-	lvi.cchTextMax = WINUI_ARRAY_LENGTH(buf);
+	lvi.cchTextMax = std::size(buf);
 
 	if (ListView_GetItem(hWnd, &lvi))
 	{

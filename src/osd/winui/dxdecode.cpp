@@ -51,7 +51,7 @@ const char * DirectXDecodeError(HRESULT errorval)
 {
 	static char tmp[64];
 
-	for (int i = 0; i < WINUI_ARRAY_LENGTH(g_ErrorCode); i++)
+	for (int i = 0; i < std::size(g_ErrorCode); i++)
 	{
 		if (g_ErrorCode[i].hr == errorval)
 		{
@@ -59,6 +59,6 @@ const char * DirectXDecodeError(HRESULT errorval)
 		}
 	}
 
-	snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "UNKNOWN: 0x%x", (unsigned int)errorval);
+	snprintf(tmp, std::size(tmp), "UNKNOWN: 0x%x", (unsigned int)errorval);
 	return tmp;
 }

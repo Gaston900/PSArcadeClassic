@@ -66,7 +66,7 @@ ROM_START( frontlinhack01 )
 	ROM_LOAD( "fl8_po01.u8",       0x7000, 0x1000, CRC(7f3e197a) SHA1(87863cef9bb381f3bd644d49f4f551716d09c7af) )
 
 	ROM_REGION( 0x0100, "proms", 0 )  
-	ROM_LOAD( "eb16.ic22",      0x0000, 0x0100, CRC(b833b5ea) SHA1(d233f1bf8a3e6cd876853ffd721b9b64c61c9047) )
+	ROM_LOAD( "eb16.22",      0x0000, 0x0100, CRC(b833b5ea) SHA1(d233f1bf8a3e6cd876853ffd721b9b64c61c9047) )
 ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */

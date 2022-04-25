@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Rene Single, Mamesick
+// copyright-holders:Chris Kirmse, Mike Haaland, René Single, Mamesick
 
 #define ID_TOOLBAR_EDIT                 92
 #define IDD_MAIN                        101
@@ -26,12 +26,12 @@
 #define IDI_FOLDER_YEAR                 129
 #define IDI_FOLDER_SOURCE               130
 #define IDI_MANUFACTURER                131
-#define IDI_FOLDER_WORKING              132
-#define IDI_FOLDER_NONWORKING           133
+#define IDI_WORKING                     132
+#define IDI_NONWORKING                  133
 #define IDI_YEAR                        134
 #define IDI_SOUND                       135
 #define IDI_CHIP                        136
-#define IDI_FOLDER_HARDDISK             137
+#define IDI_HARDDISK                    137
 #define IDI_SOURCE                      138
 #define IDI_FOLDER_HORIZONTAL           139
 #define IDI_FOLDER_VERTICAL             140
@@ -48,6 +48,7 @@
 #define IDI_KEYBOARD                    161
 #define IDI_JOYSTICK                    162
 #define IDI_DISPLAY                     163
+#define IDI_AUDIT_PASS                  164
 #define IDC_CURSOR_HSPLIT               165
 #define IDB_TOOLBAR                     166
 #define IDR_CONTEXT_TREE                168
@@ -62,7 +63,6 @@
 #define IDI_FOLDER_DUMP                 179
 #define IDI_BIOS                        180
 #define IDR_CONTEXT_SCREENSHOT          181
-#define IDI_AUDIT_PASS                  184
 #define IDD_PROP_CONTROLLER             185
 #define IDD_PROP_SHADER                 186
 #define IDD_PROP_SCREEN                 187
@@ -83,7 +83,7 @@
 #define IDD_PROP_OPENGL                 202
 #define IDI_DEBUG                       203
 #define IDI_MONITOR                     204
-#define IDI_FOLDER_MECHANICAL           205
+#define IDI_MECHANICAL                  205
 #define IDI_FOLDER_ALLGAMES             206
 #define IDI_FOLDER_CLONES               207
 #define IDI_FOLDER_ORIGINALS            208
@@ -368,7 +368,6 @@
 #define IDC_FILTER_MECHANICAL           1254
 #define IDC_AUDIT_ICON                  1255
 #define IDC_SSBORDER                    1256
-#define IDC_LOWLATENCY                  1257
 #define IDC_BORDER                      1259
 #define IDC_ROM_DETAILS                 1261
 #define IDC_SICKFX                      1262
@@ -466,7 +465,6 @@
 #define IDC_NVRAM_SAVE                  1401
 #define IDC_REWIND                      1402
 #define IDC_DRC_CORE                    1403
-#define IDC_BGFX_BACKEND                1407
 #define ID_CONTEXT_SHOW_FOLDER_START    39000
 #define ID_CONTEXT_SHOW_FOLDER_END      39499
 #define ID_SHOW_FOLDER_START            39500
@@ -585,5 +583,4 @@
 #define ID_TOGGLE_TAB_CONTROL_PANEL     40154
 #define ID_TOGGLE_TAB_PCB               40155
 #define ID_TOGGLE_TAB_HISTORY           40156
-#define ID_RC_CLEAN                     40157
 #define IDC_STATIC                      1

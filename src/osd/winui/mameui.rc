@@ -131,28 +131,27 @@ IDR_CONTEXT_MENU MENU
 BEGIN
     POPUP "Context Menu"
     BEGIN
-        MENUITEM "Play\tAlt+O",                           ID_FILE_PLAY
+        MENUITEM "Play\tAlt+O",                         ID_FILE_PLAY
         MENUITEM SEPARATOR
-        MENUITEM "Record INP playback\tCtrl+F1",          ID_FILE_PLAY_RECORD
-        MENUITEM "Load savestate\tAlt+F7",                ID_FILE_LOADSTATE
+        MENUITEM "Record INP playback\tCtrl+F1",           ID_FILE_PLAY_RECORD
+        MENUITEM "Load savestate\tAlt+F7",              ID_FILE_LOADSTATE
         MENUITEM SEPARATOR
-        MENUITEM "Add to custom folder\tAlt+W",           ID_CONTEXT_ADD_CUSTOM
-        MENUITEM "Remove from this folder\tAlt+X",        ID_CONTEXT_REMOVE_CUSTOM
+        MENUITEM "Add to custom folder\tAlt+W",         ID_CONTEXT_ADD_CUSTOM
+        MENUITEM "Remove from this folder\tAlt+X",      ID_CONTEXT_REMOVE_CUSTOM
         MENUITEM SEPARATOR
-        MENUITEM "Information\tAlt+I",                    ID_GAME_INFO
-        MENUITEM "Audit\tAlt+A",                          ID_GAME_AUDIT
+        MENUITEM "Information\tAlt+I",                  ID_GAME_INFO
+        MENUITEM "Audit\tAlt+A",                        ID_GAME_AUDIT
         MENUITEM SEPARATOR
         MENUITEM "Reset played counts\tAlt+V",            ID_CONTEXT_RESET_PLAYCOUNT
-        MENUITEM "Reset played time\tAlt+Y",              ID_CONTEXT_RESET_PLAYTIME
+        MENUITEM "Reset played time\tAlt+Y",            ID_CONTEXT_RESET_PLAYTIME
         MENUITEM SEPARATOR
-        MENUITEM "Play ProgettoSnaps MP4 movie\tCtrl+M",  ID_VIDEO_SNAP
-        MENUITEM "Read the PDF Manual",                   ID_MANUAL
-        MENUITEM "Open Info in Notepad",                  ID_NOTEPAD
-//        MENUITEM "Delete game settings",                  ID_RC_CLEAN
-        MENUITEM "Listen to music with M1FX\tAlt+M",      ID_PLAY_M1
+        MENUITEM "Play ProgettoSnaps MP4 movie\tCtrl+M",ID_VIDEO_SNAP
+        MENUITEM "Read the PDF Manual",                 ID_MANUAL
+        MENUITEM "Open Info in Notepad",                ID_NOTEPAD
+        MENUITEM "Listen to music with M1FX\tAlt+M",    ID_PLAY_M1
         MENUITEM SEPARATOR
-        MENUITEM "Properties\tAlt+G",                     ID_GAME_PROPERTIES
-        MENUITEM "Properties for driver\tAlt+D",          ID_FOLDER_SOURCEPROPERTIES
+        MENUITEM "Properties\tAlt+G",                   ID_GAME_PROPERTIES
+        MENUITEM "Properties for driver\tAlt+D",        ID_FOLDER_SOURCEPROPERTIES
         MENUITEM SEPARATOR
         MENUITEM "View ZIP file content\tAlt+Z",          ID_VIEW_ZIP
     END
@@ -242,13 +241,13 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_MAMEUI_ICON         ICON                    "res\\mameui.ico"
+IDI_MAMEUI_ICON         ICON                    "res\\psarcadeclassic.ico"
 IDI_WIN_ROMS            ICON                    "res\\win_roms.ico"
 IDI_WIN_NOROMS          ICON                    "res\\win_noro.ico"
 IDI_WIN_UNKNOWN         ICON                    "res\\win_unkn.ico"
 IDI_WIN_CLONE           ICON                    "res\\win_clone.ico"
 IDI_WIN_REDX            ICON                    "res\\win_redx.ico"
-IDI_WIN_IMPERFECT       ICON                    "res\\win_imp.ico"
+IDI_WIN_IMPERFECT       ICON                     "res\\win_imp.ico"
 IDI_FOLDER_AVAILABLE    ICON                    "res\\foldavail.ico"
 IDI_FOLDER              ICON                    "res\\folder.ico"
 IDI_FOLDER_MANUFACTURER ICON                    "res\\foldmanu.ico"
@@ -259,8 +258,8 @@ IDI_FOLDER_VERTICAL     ICON                    "res\\vert.ico"
 IDI_MANUFACTURER        ICON                    "res\\manufact.ico"
 IDI_FOLDER_YEAR         ICON                    "res\\foldyear.ico"
 IDI_FOLDER_SOURCE       ICON                    "res\\foldsrc.ico"
-IDI_FOLDER_WORKING      ICON                    "res\\working.ico"
-IDI_FOLDER_NONWORKING   ICON                    "res\\nonwork.ico"
+IDI_WORKING             ICON                    "res\\working.ico"
+IDI_NONWORKING          ICON                    "res\\nonwork.ico"
 IDI_YEAR                ICON                    "res\\year.ico"
 IDI_KEYBOARD            ICON                    "res\\keyboard.ico"
 IDI_JOYSTICK            ICON                    "res\\joystick.ico"
@@ -268,50 +267,50 @@ IDI_CHIP                ICON                    "res\\chip.ico"
 IDI_BIOS                ICON                    "res\\bios.ico"
 IDI_SOUND               ICON                    "res\\sound.ico"
 IDI_SOURCE              ICON                    "res\\source.ico"
-IDI_FOLDER_HARDDISK     ICON                    "res\\harddisk.ico"
+IDI_HARDDISK            ICON                    "res\\harddisk.ico"
 IDI_DISPLAY             ICON                    "res\\display.ico"
 IDI_AUDIT_PASS          ICON                    "res\\audit_pass.ico"
-IDI_MISC                ICON                    "res\\misc.ico"
-IDI_VECTOR              ICON                    "res\\vector.ico"
-IDI_SCREEN              ICON                    "res\\screen.ico"
-IDI_ADVANCED            ICON                    "res\\advanced.ico"
-IDI_AUDIT_FAIL          ICON                    "res\\audit_fail.ico"
-IDI_FOLDER_IMPERFECT    ICON                    "res\\foldimp.ico"
-IDI_FOLDER_CPU          ICON                    "res\\foldcsb.ico"
-IDI_FOLDER_SOUND        ICON                    "res\\foldcsb.ico"
-IDI_FOLDER_BIOS         ICON                    "res\\foldbios.ico"
-IDI_FOLDER_DUMP         ICON                    "res\\foldcsb.ico"
-IDI_SYSTRAY             ICON                    "res\\mameui.ico"
-IDI_DEBUG               ICON                    "res\\debug.ico"
-IDI_MONITOR             ICON                    "res\\monitor.ico"
-IDI_FOLDER_MECHANICAL   ICON                    "res\\mechanical.ico"
-IDI_FOLDER_ALLGAMES     ICON                    "res\\allgames.ico"
-IDI_FOLDER_CLONES       ICON                    "res\\foldclone.ico"
-IDI_FOLDER_ORIGINALS    ICON                    "res\\foldorig.ico"
-IDI_FOLDER_RASTER       ICON                    "res\\foldrast.ico"
-IDI_FOLDER_VECTOR       ICON                    "res\\foldvec.ico"
-IDI_FOLDER_SAMPLES      ICON                    "res\\foldsamp.ico"
-IDI_FOLDER_MONITOR      ICON                    "res\\multimon.ico"
-IDI_FOLDER_FPS          ICON                    "res\\foldfps.ico"
-IDI_FOLDER_RESOL        ICON                    "res\\foldres.ico"
-IDI_FOLDER_LIGHTGUN     ICON                    "res\\foldgun.ico"
-IDI_FOLDER_TRACKBALL    ICON                    "res\\foldball.ico"
-IDI_FOLDER_SAVESTATE    ICON                    "res\\savestate.ico"
-IDI_OPENGL              ICON                    "res\\opengl.ico"
-IDI_SHADER              ICON                    "res\\shader.ico"
+IDI_MISC                ICON                     "res\\misc.ico"
+IDI_VECTOR              ICON                     "res\\vector.ico"
+IDI_SCREEN              ICON                     "res\\screen.ico"
+IDI_ADVANCED            ICON                     "res\\advanced.ico"
+IDI_AUDIT_FAIL            ICON                      "res\\audit_fail.ico"
+IDI_FOLDER_IMPERFECT    ICON                     "res\\foldimp.ico"
+IDI_FOLDER_CPU          ICON                     "res\\foldcsb.ico"
+IDI_FOLDER_SOUND        ICON                     "res\\foldcsb.ico"
+IDI_FOLDER_BIOS         ICON                     "res\\foldbios.ico"
+IDI_FOLDER_DUMP         ICON                     "res\\foldcsb.ico"
+IDI_SYSTRAY             ICON                    "res\\psarcadeclassic.ico"
+IDI_DEBUG                ICON                    "res\\debug.ico"
+IDI_MONITOR                ICON                     "res\\monitor.ico"
+IDI_MECHANICAL            ICON                     "res\\mechanical.ico"
+IDI_FOLDER_ALLGAMES        ICON                     "res\\allgames.ico"
+IDI_FOLDER_CLONES       ICON                     "res\\foldclone.ico"
+IDI_FOLDER_ORIGINALS    ICON                     "res\\foldorig.ico"
+IDI_FOLDER_RASTER        ICON                     "res\\foldrast.ico"
+IDI_FOLDER_VECTOR        ICON                     "res\\foldvec.ico"
+IDI_FOLDER_SAMPLES        ICON                     "res\\foldsamp.ico"
+IDI_FOLDER_MONITOR        ICON                     "res\\multimon.ico"
+IDI_FOLDER_FPS            ICON                     "res\\foldfps.ico"
+IDI_FOLDER_RESOL        ICON                     "res\\foldres.ico"
+IDI_FOLDER_LIGHTGUN        ICON                     "res\\foldgun.ico"
+IDI_FOLDER_TRACKBALL    ICON                     "res\\foldball.ico"
+IDI_FOLDER_SAVESTATE    ICON                     "res\\savestate.ico"
+IDI_OPENGL                ICON                    "res\\opengl.ico"
+IDI_SHADER                ICON                    "res\\shader.ico"
 IDI_SNAPSHOT            ICON                    "res\\snapshot.ico"
 IDI_DISPLAYSHEET        ICON                    "res\\display.ico"
-IDI_ADVANCEDSHEET       ICON                    "res\\advanced.ico"
-IDI_SCREENSHEET         ICON                    "res\\screen.ico"
-IDI_OPENGLSHEET         ICON                    "res\\opengl.ico"
-IDI_SHADERSHEET         ICON                    "res\\shader.ico"
-IDI_VECTORSHEET         ICON                    "res\\vector.ico"
-IDI_SOUNDSHEET          ICON                    "res\\sound.ico"
-IDI_INPUTSHEET          ICON                    "res\\keyboard.ico"
+IDI_ADVANCEDSHEET        ICON                    "res\\advanced.ico"
+IDI_SCREENSHEET            ICON                    "res\\screen.ico"
+IDI_OPENGLSHEET            ICON                    "res\\opengl.ico"
+IDI_SHADERSHEET            ICON                    "res\\shader.ico"
+IDI_VECTORSHEET            ICON                    "res\\vector.ico"
+IDI_SOUNDSHEET            ICON                    "res\\sound.ico"
+IDI_INPUTSHEET            ICON                    "res\\keyboard.ico"
 IDI_CONTROLSHEET        ICON                    "res\\joystick.ico"
-IDI_MISCSHEET           ICON                    "res\\misc.ico"
-IDI_MISC2SHEET          ICON                    "res\\debug.ico"
-IDI_SNAPSHEET           ICON                    "res\\snapshot.ico"
+IDI_MISCSHEET            ICON                    "res\\misc.ico"
+IDI_MISC2SHEET            ICON                    "res\\debug.ico"
+IDI_SNAPSHEET            ICON                    "res\\snapshot.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -353,7 +352,7 @@ BEGIN
     RTEXT            "",IDC_BUILD,6,4,308,10
     LTEXT            "",IDC_BUILDVER,6,4,120,10
     CONTROL         "",IDC_ABOUT,WC_STATIC,SS_BITMAP,6,16,56,17
-    CTEXT           "MAME Copyright (C) 1997-2020 The MAME Team",IDC_TEXT1,6,106,310,10
+    CTEXT           "PSARCADE CLASSIC Copyright (C) 2022 Gaston90",IDC_TEXT1,6,106,310,10
     CTEXT           "MAMEUI version by Christopher Kirmse and The MAMEUI Team",IDC_TEXT2,6,118,310,10
     CTEXT           "Additional MAMEUI code by Mike Haaland, Andrew Kirmse,",IDC_TEXT3,6,130,310,10
     CTEXT           "Jeff Miller, John Hardy IV and Michael Soderstrom",IDC_TEXT4,6,142,310,10
@@ -568,14 +567,11 @@ BEGIN
     CONTROL         "Enable VBO",IDC_GLSLVBO,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,120,144,10,0
     CONTROL         "Enable PBO",IDC_GLSLPBO,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,132,144,10,0
     CONTROL         "Force synchrony between CPU and GPU (at your own risk)",IDC_GLSLSYNC,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,144,204,10,0
-    GROUPBOX        "BGFX settings",IDC_STATIC,4,162,212,93
-    GROUPBOX        "Screen Chains",IDC_STATIC,10,172,200,48
-    EDITTEXT        IDC_BGFX_CHAINS,16,182,188,14,ES_LEFT | WS_BORDER
-    PUSHBUTTON      "Select chain",IDC_SELECT_BGFX,16,200,60,14,0,0
-    PUSHBUTTON      "Reset chain",IDC_RESET_BGFX,144,200,60,14,0,0
-    GROUPBOX        "Backend",IDC_STATIC,10,220,200,28
-    COMBOBOX        IDC_BGFX_BACKEND,16,230,78,62,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP,0
-    PUSHBUTTON      "Reset",IDC_PROP_RESET,4,282,98,14,0,0
+    GROUPBOX        "BGFX screen chains",IDC_STATIC,4,162,212,48
+    EDITTEXT         IDC_BGFX_CHAINS,10,172,200,14,ES_LEFT | WS_BORDER
+    PUSHBUTTON      "Select chain",IDC_SELECT_BGFX,10,190,60,14,0,0
+    PUSHBUTTON      "Reset chain",IDC_RESET_BGFX,150,190,60,14,0,0
+	PUSHBUTTON      "Reset",IDC_PROP_RESET,4,282,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,282,98,14,0,0
 END
 
@@ -760,7 +756,6 @@ BEGIN
     GROUPBOX        "Refresh",IDC_STATIC,120,114,90,28,WS_GROUP
     COMBOBOX        IDC_REFRESH,126,124,78,62,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP,0
     CONTROL         "Switch resolutions to fit",IDC_SWITCHRES,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,120,154,94,10,0
-    CONTROL         "Low Latency",IDC_LOWLATENCY,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,120,166,94,10,0
     PUSHBUTTON      "Reset",IDC_PROP_RESET,4,282,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,282,98,14,0,0
 END
@@ -785,10 +780,10 @@ BEGIN
     RTEXT           "Real-Time",IDC_STATIC,65,134,32,8
     GROUPBOX        "BIOS selection",IDC_STATIC,4,152,212,28
     COMBOBOX        IDC_BIOS,10,162,200,62,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP,0
-//    GROUPBOX        "Cheat file",IDC_STATIC,4,184,212,48
-//    EDITTEXT        IDC_CHEATFILE,10,194,200,14,ES_LEFT | WS_BORDER
-//    PUSHBUTTON      "Select cheat file",IDC_SELECT_CHEATFILE,10,212,70,14,0,0
-//    PUSHBUTTON      "Reset cheat file",IDC_RESET_CHEATFILE,140,212,70,14,0,0
+    GROUPBOX        "Cheat file",IDC_STATIC,4,184,212,48
+    EDITTEXT        IDC_CHEATFILE,10,194,200,14,ES_LEFT | WS_BORDER
+    PUSHBUTTON      "Select cheat file",IDC_SELECT_CHEATFILE,10,212,70,14,0,0
+    PUSHBUTTON      "Reset cheat file",IDC_RESET_CHEATFILE,140,212,70,14,0,0
     CONTROL         "Skip game informations screen at startup",IDC_SKIP_GAME_INFO,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,238,200,10,0
     CONTROL         "Quit game confirmation screen on exit",IDC_CONFIRM_QUIT,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,250,200,10,0
     CONTROL         "Display mouse cursor in internal interface",IDC_ENABLE_MOUSE_UI,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,262,200,10,0
@@ -1004,8 +999,8 @@ END
 //
 
 IDB_TOOLBAR             BITMAP                  "res\\toolbar.bmp"
-IDB_SNAPSHOT            BITMAP                  "res\\snapshot.bmp"
-IDB_SPLASH                BITMAP                  "res\\splash.bmp"
+IDB_SNAPSHOT            BITMAP                  "res\\snapshotps.bmp"
+IDB_SPLASH                BITMAP                  "res\\splashps.bmp"
 IDB_ABOUTMENU            BITMAP                    "res\\aboutmenu.bmp"
 IDB_CUSTOM                BITMAP                    "res\\custom.bmp"
 IDB_DIRECTORIES            BITMAP                    "res\\directories.bmp"
@@ -1075,4 +1070,4 @@ IDC_CURSOR_HSPLIT       CURSOR                  "res\\splith.cur"
 //
 
 1                       RT_MANIFEST             "res\\mameui.manifest"
-2                       ICON                     "res\\mameui.ico"
+2                       ICON                     "res\\psarcadeclassic.ico"

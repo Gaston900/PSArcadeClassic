@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Rene Single, Mamesick
+// copyright-holders:Chris Kirmse, Mike Haaland, René Single, Mamesick
 
 #include "winui.h"
 #include <fstream>
@@ -346,27 +346,27 @@ static int *icon_index = NULL; 	/* for custom per-game icons */
 
 static const TBBUTTON tbb[] =
 {
-	{0, ID_VIEW_FOLDERS,        TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 0},
-	{1, ID_VIEW_PICTURE_AREA,   TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 1},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{2, ID_VIEW_ICONS_LARGE,    TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 2},
-	{3, ID_VIEW_ICONS_SMALL,    TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 3},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{4, ID_ENABLE_INDENT,       TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 12},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{6, ID_UPDATE_GAMELIST,     TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 4},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{7, ID_OPTIONS_INTERFACE,   TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 5},
-	{8, ID_OPTIONS_DEFAULTS,    TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 6},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{9, ID_VIDEO_SNAP,          TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 7},
-	{10,ID_PLAY_M1,             TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 8},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{11,ID_HELP_ABOUT,          TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 9},
-	{12,ID_HELP_CONTENTS,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 10},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{13,ID_MAME_HOMEPAGE,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 11},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0}
+	{0, ID_VIEW_FOLDERS,    	TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 0},
+	{1, ID_VIEW_PICTURE_AREA,	TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 1},
+	{0, 0,                  	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{2, ID_VIEW_ICONS_LARGE,  	TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 2},
+	{3, ID_VIEW_ICONS_SMALL, 	TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 3},
+	{0, 0,                  	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{4, ID_ENABLE_INDENT,  		TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 12},
+	{0, 0,                  	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{6, ID_UPDATE_GAMELIST,  	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 4},
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{7, ID_OPTIONS_INTERFACE,	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 5},
+	{8, ID_OPTIONS_DEFAULTS, 	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 6},
+	{0, 0,                   	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{9, ID_VIDEO_SNAP,			TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 7},
+	{10,ID_PLAY_M1,   			TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 8},
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{11,ID_HELP_ABOUT,      	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 9},
+	{12,ID_HELP_CONTENTS,   	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 10},
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{13,ID_MAME_HOMEPAGE,     	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 11},
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0}
 };
 
 static const wchar_t szTbStrings[NUM_TOOLTIPS][30] =
@@ -484,11 +484,11 @@ public:
 		const char* buffer = s.c_str();
 		if (channel == OSD_OUTPUT_CHANNEL_VERBOSE)
 		{
-//			FILE *pFile;
-//			pFile = fopen("verbose.log", "a");
-//			fputs(buffer, pFile);
-//			fflush(pFile);
-//			fclose (pFile);
+			FILE *pFile;
+			pFile = fopen("verbose.log", "a");
+			fputs(buffer, pFile);
+			fflush(pFile);
+			fclose (pFile);
 			return;
 		}
 
@@ -548,7 +548,7 @@ static void RunMAME(int nGameIndex, const play_options *playopts)
 	// prepare MAMEUIFX to run the game
 	ShowWindow(hMain, SW_HIDE);
 
-	for (int i = 0; i < std::size(s_nPickers); i++)
+	for (int i = 0; i < WINUI_ARRAY_LENGTH(s_nPickers); i++)
 		Picker_ClearIdle(GetDlgItem(hMain, s_nPickers[i]));
 
 	// Time the game run.
@@ -597,7 +597,7 @@ static void RunMAME(int nGameIndex, const play_options *playopts)
 	// end played time
 	time(&end);
 	// free the structure
-	delete manager;
+	global_free(manager);
 	osd_output::pop(&winerror);
 	// Calc the duration
 	double elapsedtime = end - start;
@@ -605,7 +605,7 @@ static void RunMAME(int nGameIndex, const play_options *playopts)
 	IncrementPlayTime(nGameIndex, elapsedtime);
 
 	// the emulation is complete; continue
-	for (int i = 0; i < std::size(s_nPickers); i++)
+	for (int i = 0; i < WINUI_ARRAY_LENGTH(s_nPickers); i++)
 		Picker_ResetIdle(GetDlgItem(hMain, s_nPickers[i]));
 }
 
@@ -806,21 +806,37 @@ HICON LoadIconFromFile(const char *iconname)
 	PBYTE bufferPtr;
 	util::archive_file::ptr zip;
 
-	const std::string t = GetIconsDir();
-	char s[t.length()+1];
-	strcpy(s, t.c_str());
-	char* s1 = strtok(s, ";");
-	while (s1 && !hIcon)
+	std::string tmpStr = std::string(GetIconsDir()).append(PATH_SEPARATOR).append(iconname).append(".ico");
+	HANDLE hFind = winui_find_first_file_utf8(tmpStr.c_str(), &FindFileData);
+
+	if (hFind == INVALID_HANDLE_VALUE || (hIcon = winui_extract_icon_utf8(hInst, tmpStr.c_str(), 0)) == 0)
 	{
-		std::string tmpStr = std::string(s1).append(PATH_SEPARATOR).append(iconname).append(".ico");
-		HANDLE hFind = winui_find_first_file_utf8(tmpStr.c_str(), &FindFileData);
+		tmpStr = std::string(GetIconsDir()).append(PATH_SEPARATOR).append("icons.zip");
+		std::string tmpIcoName = std::string(iconname).append(".ico");
 
-		if (hFind == INVALID_HANDLE_VALUE || (hIcon = winui_extract_icon_utf8(hInst, tmpStr.c_str(), 0)) == 0)
+		if (util::archive_file::open_zip(tmpStr, zip) == util::archive_file::error::NONE)
 		{
-			tmpStr = std::string(s1).append(PATH_SEPARATOR).append("icons.zip");
-			std::string tmpIcoName = std::string(iconname).append(".ico");
+			if (zip->search(tmpIcoName, false) >= 0)
+			{
+				bufferPtr = (PBYTE)malloc(zip->current_uncompressed_length());
 
-			if (util::archive_file::open_zip(tmpStr, zip) == util::archive_file::error::NONE)
+				if (bufferPtr)
+				{
+					if (zip->decompress(bufferPtr, zip->current_uncompressed_length()) == util::archive_file::error::NONE)
+						hIcon = FormatICOInMemoryToHICON(bufferPtr, zip->current_uncompressed_length());
+
+					free(bufferPtr);
+				}
+			}
+
+			zip.reset();
+		}
+		else
+		{
+			tmpStr = std::string(GetIconsDir()).append(PATH_SEPARATOR).append("icons.7z");
+			tmpIcoName = std::string(iconname).append(".ico");
+
+			if (util::archive_file::open_7z(tmpStr, zip) == util::archive_file::error::NONE)
 			{
 				if (zip->search(tmpIcoName, false) >= 0)
 				{
@@ -837,32 +853,9 @@ HICON LoadIconFromFile(const char *iconname)
 
 				zip.reset();
 			}
-			else
-			{
-				tmpStr = std::string(s1).append(PATH_SEPARATOR).append("icons.7z");
-				tmpIcoName = std::string(iconname).append(".ico");
-
-				if (util::archive_file::open_7z(tmpStr, zip) == util::archive_file::error::NONE)
-				{
-					if (zip->search(tmpIcoName, false) >= 0)
-					{
-						bufferPtr = (PBYTE)malloc(zip->current_uncompressed_length());
-
-						if (bufferPtr)
-						{
-							if (zip->decompress(bufferPtr, zip->current_uncompressed_length()) == util::archive_file::error::NONE)
-								hIcon = FormatICOInMemoryToHICON(bufferPtr, zip->current_uncompressed_length());
-
-							free(bufferPtr);
-						}
-					}
-
-					zip.reset();
-				}
-			}
 		}
-		s1 = strtok(NULL, ";");
 	}
+
 	return hIcon;
 }
 
@@ -1133,7 +1126,7 @@ static void SetMainTitle(void)
 {
 	char buffer[256];
 
-	snprintf(buffer, std::size(buffer), "%s %s", MAMEUINAME, GetVersionString());
+	snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%s %s", MAMEUINAME, GetVersionString());
 	winui_set_window_text_utf8(hMain, buffer);
 }
 
@@ -1505,7 +1498,7 @@ static LRESULT CALLBACK MameWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPAR
 				if (lpNmHdr->hwndFrom == hTreeView)
 					return TreeViewNotify(lpNmHdr);
 
-				GetClassName(lpNmHdr->hwndFrom, szClass, std::size(szClass));
+				GetClassName(lpNmHdr->hwndFrom, szClass, WINUI_ARRAY_LENGTH(szClass));
 
 				if (!_tcscmp(szClass, WC_LISTVIEW))
 					return Picker_HandleNotify(lpNmHdr);
@@ -2116,7 +2109,7 @@ static char *GameInfoScreen(int driver_index)
 	}
 	else
 	{
-		const screen_device *screen = screen_device_enumerator(config.root_device()).first();
+		const screen_device *screen = screen_device_iterator(config.root_device()).first();
 
 		if (screen == nullptr)
 			strcpy(scrtxt, "Screenless");
@@ -2126,9 +2119,9 @@ static char *GameInfoScreen(int driver_index)
 			char tmpbuf[256];
 
 			if (DriverIsVertical(driver_index))
-				snprintf(tmpbuf, std::size(tmpbuf), "%d x %d (V) %f Hz", visarea.width(), visarea.height(), ATTOSECONDS_TO_HZ(screen->refresh_attoseconds()));
+				snprintf(tmpbuf, WINUI_ARRAY_LENGTH(tmpbuf), "%d x %d (V) %f Hz", visarea.width(), visarea.height(), ATTOSECONDS_TO_HZ(screen->refresh_attoseconds()));
 			else
-				snprintf(tmpbuf, std::size(tmpbuf), "%d x %d (H) %f Hz", visarea.width(), visarea.height(), ATTOSECONDS_TO_HZ(screen->refresh_attoseconds()));
+				snprintf(tmpbuf, WINUI_ARRAY_LENGTH(tmpbuf), "%d x %d (H) %f Hz", visarea.width(), visarea.height(), ATTOSECONDS_TO_HZ(screen->refresh_attoseconds()));
 
 			strcat(scrtxt, tmpbuf);
 		}
@@ -2307,7 +2300,7 @@ static void EnableSelection(int nGame)
 	if( !t_description )
 		return;
 
-	_sntprintf(buf, std::size(buf), g_szPlayGameString, t_description);
+	_sntprintf(buf, WINUI_ARRAY_LENGTH(buf), g_szPlayGameString, t_description);
 
 	mmi.cbSize = sizeof(mmi);
 	mmi.fMask = MIIM_TYPE;
@@ -2994,7 +2987,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 		case ID_TOOLBAR_EDIT:
 		{
 			char buf[256];
-			winui_get_window_text_utf8(hWndCtl, buf, std::size(buf));
+			winui_get_window_text_utf8(hWndCtl, buf, WINUI_ARRAY_LENGTH(buf));
 
 			switch (codeNotify)
 			{
@@ -3330,7 +3323,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 				char* dir_one = strtok(path, ";");
 				while (dir_one && !found)
 				{
-					snprintf(viewzip, std::size(viewzip), "%s\\%s.zip", dir_one, GetDriverGameName(nGame));
+					snprintf(viewzip, WINUI_ARRAY_LENGTH(viewzip), "%s\\%s.zip", dir_one, GetDriverGameName(nGame));
 					t_s = win_wstring_from_utf8(viewzip);
 					if (t_s)
 					{
@@ -3359,7 +3352,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			if (nGame >= 0)
 			{
 				char path[MAX_PATH];
-				snprintf(path, std::size(path), "%s\\%s.mp4", GetVideoDir(), GetDriverGameName(nGame));
+				snprintf(path, WINUI_ARRAY_LENGTH(path), "%s\\%s.mp4", GetVideoDir(), GetDriverGameName(nGame));
 				ShellExecuteCommon(hMain, path);
 			}
 			SetFocus(hWndList);
@@ -3372,72 +3365,14 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			if (nGame >= 0)
 			{
 				char path[MAX_PATH];
-				snprintf(path, std::size(path), "%s\\%s.pdf", GetManualsDir(), GetDriverGameName(nGame));
+				snprintf(path, WINUI_ARRAY_LENGTH(path), "%s\\%s.pdf", GetManualsDir(), GetDriverGameName(nGame));
 				ShellExecuteCommon(hMain, path);
 			}
 			SetFocus(hWndList);
 			return true;
 		}
-#if 0
-		case ID_RC_CLEAN:   // ARCADE64 not ready yet
-		{
-			int nGame = Picker_GetSelectedItem(hwndList);
-			if (nGame >= 0)
-			{
-				// INI
-				string t = dir_get_value(7);
-				char buf7[t.size()+1];
-				strcpy(buf7, t.c_str());
-				char * t_dir = strtok(buf7, ";");
-				while (t_dir)
-				{
-					string t_path = string(t_dir) + PATH_SEPARATOR + driver_list::driver(nGame).name + ".ini";
-					printf("Deleting %s\n",t_path.c_str());
-					remove(t_path.c_str());
-					t_dir = strtok(NULL, ";");
-				}
-				// CFG
-				t = dir_get_value(14);
-				char buf14[t.size()+1];
-				strcpy(buf14, t.c_str());
-				t_dir = strtok(buf14, ";");
-				while (t_dir)
-				{
-					string t_path = string(t_dir) + PATH_SEPARATOR + driver_list::driver(nGame).name + ".cfg";
-					printf("Deleting %s\n",t_path.c_str());
-					remove(t_path.c_str());
-					t_dir = strtok(NULL, ";");
-				}
-				// NVRAM
-				t = dir_get_value(15);
-				char buf15[t.size()+1];
-				strcpy(buf15, t.c_str());
-				t_dir = strtok(buf15, ";");
-				while (t_dir)
-				{
-					string t_path = string("rd /s /q ") + string(t_dir) + PATH_SEPARATOR + driver_list::driver(nGame).name;
-					printf("Deleting %s\n",t_path.c_str());
-					system(t_path.c_str());
-					t_dir = strtok(NULL, ";");
-				}
-				// Save states
-				t = dir_get_value(17);
-				char buf17[t.size()+1];
-				strcpy(buf17, t.c_str());
-				t_dir = strtok(buf17, ";");
-				while (t_dir)
-				{
-					string t_path = string("rd /s /q ") + string(t_dir) + PATH_SEPARATOR + driver_list::driver(nGame).name;
-					printf("Deleting %s\n",t_path.c_str());
-					system(t_path.c_str());
-					t_dir = strtok(NULL, ";");
-				}
-			}
-			SetFocus(hwndList);
-		}
-		break;
-#endif
-		case ID_NOTEPAD:
+
+	case ID_NOTEPAD:
 		{
 			int nGame = Picker_GetSelectedItem(hWndList);
 			if (nGame >= 0)
@@ -3472,7 +3407,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 						char command[MAX_PATH];
 						const char *game = GetDriverGameName(nGame);
 						int audit_result = GetRomAuditResults(nGame);
-						snprintf(command, std::size(command), "m1fx.exe %s", game);
+						snprintf(command, WINUI_ARRAY_LENGTH(command), "m1fx.exe %s", game);
 
 						if (IsAuditResultYes(audit_result))
 						{
@@ -3682,7 +3617,7 @@ const wchar_t *GamePicker_GetItemString(HWND hwndPicker, int nItem, int nColumn,
 
 		case COLUMN_PLAYED:
 			/* played count */
-			snprintf(playcount_buf, std::size(playcount_buf), "%d",  GetPlayCount(nItem));
+			snprintf(playcount_buf, WINUI_ARRAY_LENGTH(playcount_buf), "%d",  GetPlayCount(nItem));
 			utf8_s = playcount_buf;
 			break;
 
@@ -4000,7 +3935,7 @@ bool CommonFileDialog(common_file_dialog_proc cfd, char *filename, int filetype,
 
 	if (t_filename != NULL)
 	{
-		_sntprintf(t_filename_buffer, std::size(t_filename_buffer), TEXT("%s"), t_filename);
+		_sntprintf(t_filename_buffer, WINUI_ARRAY_LENGTH(t_filename_buffer), TEXT("%s"), t_filename);
 		free(t_filename);
 	}
 
@@ -4014,7 +3949,7 @@ bool CommonFileDialog(common_file_dialog_proc cfd, char *filename, int filetype,
 	of.nMaxCustFilter = 0;
 	of.nFilterIndex = 1;
 	of.lpstrFile = t_filename_buffer;
-	of.nMaxFile = std::size(t_filename_buffer);
+	of.nMaxFile = WINUI_ARRAY_LENGTH(t_filename_buffer);
 	of.lpstrFileTitle = NULL;
 	of.nMaxFileTitle = 0;
 	of.Flags  = OFN_EXPLORER | OFN_PATHMUSTEXIST | OFN_HIDEREADONLY | OFN_ENABLEHOOK;
@@ -4087,20 +4022,15 @@ bool CommonFileDialog(common_file_dialog_proc cfd, char *filename, int filetype,
 			break;
 
 		case FILETYPE_EFFECT_FILES :
-		{
 			path = GetArtDir();
-			char t[strlen(path)+1];
-			strcpy(t, path);
-			strtok(t, ";");
-			of.lpstrInitialDir = win_wstring_from_utf8(t);
+			of.lpstrInitialDir = win_wstring_from_utf8(path);
 			of.lpstrFilter = TEXT("effects (*.png)\0*.png;\0");
 			of.lpstrDefExt = TEXT("png");
 			of.lpstrTitle  = TEXT("Select an overlay PNG effect file");
 			break;
-		}
 
 		case FILETYPE_SHADER_FILES :
-			path = GetHLSLDir();   // GLSL shaders are kept in HLSL folder
+			path = GetGLSLDir();
 			of.lpstrInitialDir = win_wstring_from_utf8(path);
 			of.lpstrFilter = TEXT("shaders (*.vsh)\0*.vsh;\0");
 			of.lpstrDefExt = TEXT("vsh");
@@ -4108,21 +4038,15 @@ bool CommonFileDialog(common_file_dialog_proc cfd, char *filename, int filetype,
 			break;
 
 		case FILETYPE_CHEAT_FILES :
-		{
-			path = GetCheatDir();
-			char t[strlen(path)+1];
-			strcpy(t, path);
-			strtok(t, ";");
-			of.lpstrInitialDir = win_wstring_from_utf8(t);
+			of.lpstrInitialDir = last_directory;
 			of.lpstrFilter = TEXT("cheats (*.7z,*.zip)\0*.7z;*.zip;\0");
 			of.lpstrDefExt = TEXT("7z");
 			of.lpstrTitle  = TEXT("Select a cheats archive file");
 			break;
-		}
 
 		case FILETYPE_BGFX_FILES :
 			char temp[MAX_PATH];
-			snprintf(temp, std::size(temp), "%s\\chains", GetBGFXDir());
+			snprintf(temp, WINUI_ARRAY_LENGTH(temp), "%s\\chains", GetBGFXDir());
 			of.lpstrInitialDir = win_wstring_from_utf8(temp);
 			of.lpstrFilter = TEXT("chains (*.json)\0*.json;\0");
 			of.lpstrDefExt = TEXT("json");
@@ -4175,7 +4099,7 @@ void SetStatusBarTextF(int part_index, const char *fmt, ...)
 	va_list va;
 
 	va_start(va, fmt);
-	vsnprintf(buf, std::size(buf), fmt, va);
+	vsnprintf(buf, WINUI_ARRAY_LENGTH(buf), fmt, va);
 	va_end(va);
 	SetStatusBarText(part_index, buf);
 }
@@ -4419,6 +4343,7 @@ static void ToggleScreenShot(void)
 static void AdjustMetrics(void)
 {
 	TEXTMETRIC tm;
+	AREA area;
 
 	/* WM_SETTINGCHANGE also */
 	int xtraX = GetSystemMetrics(SM_CXFIXEDFRAME); 	/* Dialog frame width */
@@ -4440,7 +4365,7 @@ static void AdjustMetrics(void)
 	{
 		wchar_t szClass[128];
 
-		if (GetClassName(hWnd, szClass, std::size(szClass)))
+		if (GetClassName(hWnd, szClass, WINUI_ARRAY_LENGTH(szClass)))
 		{
 			if (!_tcscmp(szClass, WC_LISTVIEW))
 			{
@@ -4457,21 +4382,21 @@ static void AdjustMetrics(void)
 		hWnd = GetWindow(hWnd, GW_HWNDNEXT);
 	}
 
-	AREA area;
-	GetWindowArea(&area); // read window size from ini
+	GetWindowArea(&area);
+	int offX = area.x + area.width;
+	int offY = area.y + area.height;
 
-	// Reposition the window so that the top or left side is in view.
-	// The width and height never change, even if they stretch off the screen.
-	if (area.x < 0)
-		area.x = 0;
-	if (area.y < 0)
-		area.y = 0;
+	if (offX > maxX)
+	{
+		offX = maxX;
+		area.x = (offX - area.width > 0) ? (offX - area.width) : 0;
+	}
 
-	// If the width or height is too small, or bigger than the screen, default them to the max screen size.
-	if ((area.width < 200) || (area.width > maxX))
-		area.width = maxX;
-	if ((area.height < 100) || (area.height > maxY))
-		area.height = maxY;
+	if (offY > maxY)
+	{
+		offY = maxY;
+		area.y = (offY - area.height > 0) ? (offY - area.height) : 0;
+	}
 
 	SetWindowArea(&area);
 	SetWindowPos(hMain, HWND_TOP, area.x, area.y, area.width, area.height, 0);
@@ -4647,7 +4572,7 @@ static void UpdateMenu(HMENU hMenu)
 		if( !t_description )
 			return;
 
-		_sntprintf(buf, std::size(buf), g_szPlayGameString, t_description);
+		_sntprintf(buf, WINUI_ARRAY_LENGTH(buf), g_szPlayGameString, t_description);
 		memset(&mItem, 0, sizeof(MENUITEMINFO));
 		mItem.cbSize = sizeof(MENUITEMINFO);
 		mItem.fMask = MIIM_TYPE;
@@ -4905,7 +4830,7 @@ void InitBodyContextMenu(HMENU hBodyContextMenu)
 		return;
 
 	LPTREEFOLDER lpFolder = GetFolderByName(FOLDER_SOURCE, GetDriverFileName(Picker_GetSelectedItem(hWndList)));
-	_sntprintf(tmp, std::size(tmp), TEXT("Properties for %s\tAlt+D"), lpFolder->m_lptTitle);
+	_sntprintf(tmp, WINUI_ARRAY_LENGTH(tmp), TEXT("Properties for %s\tAlt+D"), lpFolder->m_lptTitle);
 
 	mii.fMask = MIIM_TYPE | MIIM_ID;
 	mii.fType = MFT_STRING;
@@ -5641,16 +5566,4 @@ static HBITMAP CreateBitmapTransparent(HBITMAP hSource)
 	DeleteDC(hDst);
 	DeleteDC(hSrc);
 	return hNew;
-}
-
-char *core_strdup(const char *str)
-{
-	char *cpy = nullptr;
-	if (str != nullptr)
-	{
-		cpy = (char*) malloc(strlen(str)+1);
-		if (cpy != nullptr)
-			strcpy(cpy, str);
-	}
-	return cpy;
 }

@@ -43,7 +43,6 @@
 #include "ui/moptions.h"
 #include "ui/info.h"
 #include "romload.h"
-#include "corestr.h"
 
 // special Windows headers, after MAME ones
 #include <dinput.h>
@@ -79,16 +78,19 @@
 #endif
 
 #ifdef PTR64
-#define MAMEUINAME			"ARCADE64"
+#define MAMEUINAME			"PSArcade Classic+ 64X"
 #else
-#define MAMEUINAME			"ARCADE32"
+#define MAMEUINAME			"PSArcade Classic+ 32X"
 #endif
-#define MAMENAME			"MAME"
+#define MAMENAME			"PSArcade Classic+"
 
-#define MAME_VERSION		"0.232"
+#define MAME_VERSION		"1.0"
 #define MAMEUIFX_VERSION	MAME_VERSION " (" __DATE__")"
 
 #define SEARCH_PROMPT		"<search here>"
+
+/* Highly useful macro for compile-time knowledge of an array size */
+#define WINUI_ARRAY_LENGTH(x)		(sizeof(x) / sizeof(x[0]))
 
 /* For future use? though here is the best place to define them */
 #define COLOR_WINXP			RGB(236, 233, 216)
@@ -135,7 +137,7 @@
 #define SPLITTER_WIDTH		4
 #define MIN_VIEW_WIDTH		10
 
-#define NUM_TOOLBUTTONS     std::size(tbb)
+#define NUM_TOOLBUTTONS     WINUI_ARRAY_LENGTH(tbb)
 #define NUM_TOOLTIPS 		(13)
 
 enum
@@ -201,6 +203,17 @@ void SetStatusBarTextF(int part_index, const char *fmt, ...);
 const char * GetSearchText(void);
 
 
-char *core_strdup(const char *str);
+char *core_strdup(const char *str)
+{
+	char *cpy = nullptr;
+	if (str != nullptr)
+	{
+		cpy = (char*) malloc(strlen(str)+1);
+		if (cpy != nullptr)
+			strcpy(cpy, str);
+	}
+	return cpy;
+}
+
 
 #endif

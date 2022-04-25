@@ -28,4 +28,4 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Vantris 98
-GAME( 1998, vantris, 0, vanguard, vanguard, vanguard_state, empty_init, ROT90, "Norbert Kehrer", "Vantris 98", MACHINE_SUPPORTS_SAVE ) // http://web.utanet.at/nkehrer/vantris.html
+GAME( 1998, vantris, 0, vanguard, vanguard, snk6502_state, empty_init, ROT90, "Norbert Kehrer", "Vantris 98", MACHINE_SUPPORTS_SAVE ) // http://web.utanet.at/nkehrer/vantris.html

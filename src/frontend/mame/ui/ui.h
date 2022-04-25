@@ -21,23 +21,13 @@
 #include "ui/slider.h"
 #include "ui/text.h"
 
-#include <ctime>
 #include <functional>
-#include <set>
-#include <string_view>
-#include <utility>
 #include <vector>
 
-
 namespace ui {
-
 class menu_item;
 class machine_info;
-
 } // namespace ui
-
-class laserdisc_device;
-
 
 /***************************************************************************
     CONSTANTS
@@ -55,6 +45,60 @@ class laserdisc_device;
 
 /* cancel return value for a UI handler */
 #define UI_HANDLER_CANCEL       ((uint32_t)~0)
+
+#define SLIDER_DEVICE_SPACING   0x0ff
+#define SLIDER_SCREEN_SPACING   0x0f
+#define SLIDER_INPUT_SPACING    0x0f
+
+enum
+{
+	SLIDER_ID_VOLUME                = 0,
+	SLIDER_ID_MIXERVOL,
+	SLIDER_ID_MIXERVOL_LAST         = SLIDER_ID_MIXERVOL + SLIDER_DEVICE_SPACING,
+	SLIDER_ID_ADJUSTER,
+	SLIDER_ID_ADJUSTER_LAST         = SLIDER_ID_ADJUSTER + SLIDER_DEVICE_SPACING,
+	SLIDER_ID_OVERCLOCK,
+	SLIDER_ID_OVERCLOCK_LAST        = SLIDER_ID_OVERCLOCK + SLIDER_DEVICE_SPACING,
+	SLIDER_ID_REFRESH,
+	SLIDER_ID_REFRESH_LAST          = SLIDER_ID_REFRESH + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_BRIGHTNESS,
+	SLIDER_ID_BRIGHTNESS_LAST       = SLIDER_ID_BRIGHTNESS + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_CONTRAST,
+	SLIDER_ID_CONTRAST_LAST         = SLIDER_ID_CONTRAST + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_GAMMA,
+	SLIDER_ID_GAMMA_LAST            = SLIDER_ID_GAMMA + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_XSCALE,
+	SLIDER_ID_XSCALE_LAST           = SLIDER_ID_XSCALE + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_YSCALE,
+	SLIDER_ID_YSCALE_LAST           = SLIDER_ID_YSCALE + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_XOFFSET,
+	SLIDER_ID_XOFFSET_LAST          = SLIDER_ID_XOFFSET + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_YOFFSET,
+	SLIDER_ID_YOFFSET_LAST          = SLIDER_ID_YOFFSET + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_OVERLAY_XSCALE,
+	SLIDER_ID_OVERLAY_XSCALE_LAST   = SLIDER_ID_OVERLAY_XSCALE + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_OVERLAY_YSCALE,
+	SLIDER_ID_OVERLAY_YSCALE_LAST   = SLIDER_ID_OVERLAY_YSCALE + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_OVERLAY_XOFFSET,
+	SLIDER_ID_OVERLAY_XOFFSET_LAST  = SLIDER_ID_OVERLAY_XOFFSET + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_OVERLAY_YOFFSET,
+	SLIDER_ID_OVERLAY_YOFFSET_LAST  = SLIDER_ID_OVERLAY_YOFFSET + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_FLICKER,
+	SLIDER_ID_FLICKER_LAST          = SLIDER_ID_FLICKER + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_BEAM_WIDTH_MIN,
+	SLIDER_ID_BEAM_WIDTH_MIN_LAST   = SLIDER_ID_BEAM_WIDTH_MIN + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_BEAM_WIDTH_MAX,
+	SLIDER_ID_BEAM_WIDTH_MAX_LAST   = SLIDER_ID_BEAM_WIDTH_MAX + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_BEAM_INTENSITY,
+	SLIDER_ID_BEAM_INTENSITY_LAST   = SLIDER_ID_BEAM_INTENSITY + SLIDER_SCREEN_SPACING,
+	SLIDER_ID_CROSSHAIR_SCALE,
+	SLIDER_ID_CROSSHAIR_SCALE_LAST  = SLIDER_ID_CROSSHAIR_SCALE + SLIDER_INPUT_SPACING,
+	SLIDER_ID_CROSSHAIR_OFFSET,
+	SLIDER_ID_CROSSHAIR_OFFSET_LAST = SLIDER_ID_CROSSHAIR_OFFSET + SLIDER_INPUT_SPACING,
+
+	SLIDER_ID_CORE_LAST         = SLIDER_ID_CROSSHAIR_OFFSET,
+	SLIDER_ID_CORE_COUNT
+};
 
 /***************************************************************************
     TYPE DEFINITIONS
@@ -116,7 +160,7 @@ private:
 
 // ======================> mame_ui_manager
 
-class mame_ui_manager : public ui_manager
+class mame_ui_manager : public ui_manager, public slider_changed_notifier
 {
 public:
 	enum draw_mode
@@ -154,14 +198,14 @@ public:
 	render_font *get_font();
 	float get_line_height();
 	float get_char_width(char32_t ch);
-	float get_string_width(std::string_view s, float text_size = 1.0f);
+	float get_string_width(const char *s, float text_size = 1.0f);
 	void draw_outlined_box(render_container &container, float x0, float y0, float x1, float y1, rgb_t backcolor);
 	void draw_outlined_box(render_container &container, float x0, float y0, float x1, float y1, rgb_t fgcolor, rgb_t bgcolor);
-	void draw_text(render_container &container, std::string_view buf, float x, float y);
-	void draw_text_full(render_container &container, std::string_view origs, float x, float y, float origwrapwidth, ui::text_layout::text_justify justify, ui::text_layout::word_wrapping wrap, draw_mode draw, rgb_t fgcolor, rgb_t bgcolor, float *totalwidth = nullptr, float *totalheight = nullptr, float text_size = 1.0f);
-	void draw_text_box(render_container &container, std::string_view text, ui::text_layout::text_justify justify, float xpos, float ypos, rgb_t backcolor);
+	void draw_text(render_container &container, const char *buf, float x, float y);
+	void draw_text_full(render_container &container, const char *origs, float x, float y, float origwrapwidth, ui::text_layout::text_justify justify, ui::text_layout::word_wrapping wrap, draw_mode draw, rgb_t fgcolor, rgb_t bgcolor, float *totalwidth = nullptr, float *totalheight = nullptr, float text_size = 1.0f);
+	void draw_text_box(render_container &container, const char *text, ui::text_layout::text_justify justify, float xpos, float ypos, rgb_t backcolor);
 	void draw_text_box(render_container &container, ui::text_layout &layout, float xpos, float ypos, rgb_t backcolor);
-	void draw_message_window(render_container &container, std::string_view text);
+	void draw_message_window(render_container &container, const char *text);
 
 	// load/save options to file
 	void load_ui_options();
@@ -181,7 +225,6 @@ public:
 	void show_mouse(bool status);
 	virtual bool is_menu_active() override;
 	bool can_paste();
-	bool found_machine_warnings() const { return m_has_warnings; }
 	void image_handler_ingame();
 	void increase_frameskip();
 	void decrease_frameskip();
@@ -194,8 +237,8 @@ public:
 	void start_load_state();
 
 	// config callbacks
-	void config_load_s(config_type cfg_type, util::xml::data_node const *parentnode);
-	void config_save_s(config_type cfg_type, util::xml::data_node *parentnode);
+	void config_load(config_type cfg_type, util::xml::data_node const *parentnode);
+	void config_save(config_type cfg_type, util::xml::data_node *parentnode);
 	void config_apply(void);
 
 	// slider controls
@@ -212,7 +255,7 @@ public:
 	ui::text_layout create_layout(render_container &container, float width = 1.0, ui::text_layout::text_justify justify = ui::text_layout::LEFT, ui::text_layout::word_wrapping wrap = ui::text_layout::WORD);
 
 	// word wrap
-	int wrap_text(render_container &container, std::string_view origs, float x, float y, float origwrapwidth, std::vector<int> &xstart, std::vector<int> &xend, float text_size = 1.0f);
+	int wrap_text(render_container &container, const char *origs, float x, float y, float origwrapwidth, std::vector<int> &xstart, std::vector<int> &xend, float text_size = 1.0f);
 
 	// draw an outlined box with given line color and filled with a texture
 	void draw_textured_box(render_container &container, float x0, float y0, float x1, float y1, rgb_t backcolor, rgb_t linecolor, render_texture *texture = nullptr, uint32_t flags = PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
@@ -221,20 +264,17 @@ public:
 	virtual void menu_reset() override;
 
 private:
-	using handler_callback_func = std::function<uint32_t (render_container &)>;
-	using device_feature_set = std::set<std::pair<std::string, std::string> >;
-
 	// instance variables
-	std::unique_ptr<render_font> m_font;
-	handler_callback_func   m_handler_callback;
+	render_font *           m_font;
+	std::function<uint32_t (render_container &)> m_handler_callback;
 	ui_callback_type        m_handler_callback_type;
-	uint32_t                m_handler_param;
+	uint32_t                  m_handler_param;
 	bool                    m_single_step;
 	bool                    m_showfps;
 	osd_ticks_t             m_showfps_end;
 	bool                    m_show_profiler;
 	osd_ticks_t             m_popup_text_end;
-	std::unique_ptr<uint8_t []> m_non_char_keys_down;
+	std::unique_ptr<uint8_t[]> m_non_char_keys_down;
 	bitmap_argb32           m_mouse_bitmap;
 	render_texture *        m_mouse_arrow_texture;
 	bool                    m_mouse_show;
@@ -242,59 +282,55 @@ private:
 	ui_options              m_ui_options;
 	ui_colors               m_ui_colors;
 	float                   m_target_font_height;
-	bool                    m_has_warnings;
-	bool                    m_unthrottle_mute;
 
 	std::unique_ptr<ui::machine_info> m_machine_info;
-	device_feature_set      m_unemulated_features;
-	device_feature_set      m_imperfect_features;
-	std::time_t             m_last_launch_time;
-	std::time_t             m_last_warning_time;
 
 	// static variables
 	static std::string      messagebox_text;
 	static std::string      messagebox_poptext;
+	static rgb_t            messagebox_backcolor;
 
 	static std::vector<ui::menu_item> slider_list;
 	static slider_state     *slider_current;
 
 	// UI handlers
+	uint32_t handler_messagebox(render_container &container);
+	uint32_t handler_messagebox_anykey(render_container &container);
 	uint32_t handler_ingame(render_container &container);
 	uint32_t handler_load_save(render_container &container, uint32_t state);
 	uint32_t handler_confirm_quit(render_container &container);
 
 	// private methods
 	void exit();
-	void config_load(config_type cfg_type, util::xml::data_node const *parentnode);
-	void config_save(config_type cfg_type, util::xml::data_node *parentnode);
-	template <typename... Params> void slider_alloc(Params &&...args) { m_sliders.push_back(std::make_unique<slider_state>(std::forward<Params>(args)...)); }
+	std::unique_ptr<slider_state> slider_alloc(int id, const char *title, int32_t minval, int32_t defval, int32_t maxval, int32_t incval, void *arg);
 
 	// slider controls
-	int32_t slider_volume(std::string *str, int32_t newval);
-	int32_t slider_mixervol(int item, std::string *str, int32_t newval);
-	int32_t slider_adjuster(ioport_field &field, std::string *str, int32_t newval);
-	int32_t slider_overclock(device_t &device, std::string *str, int32_t newval);
-	int32_t slider_refresh(screen_device &screen, std::string *str, int32_t newval);
-	int32_t slider_brightness(screen_device &screen, std::string *str, int32_t newval);
-	int32_t slider_contrast(screen_device &screen, std::string *str, int32_t newval);
-	int32_t slider_gamma(screen_device &screen, std::string *str, int32_t newval);
-	int32_t slider_xscale(screen_device &screen, std::string *str, int32_t newval);
-	int32_t slider_yscale(screen_device &screen, std::string *str, int32_t newval);
-	int32_t slider_xoffset(screen_device &screen, std::string *str, int32_t newval);
-	int32_t slider_yoffset(screen_device &screen, std::string *str, int32_t newval);
-	int32_t slider_overxscale(laserdisc_device &laserdisc, std::string *str, int32_t newval);
-	int32_t slider_overyscale(laserdisc_device &laserdisc, std::string *str, int32_t newval);
-	int32_t slider_overxoffset(laserdisc_device &laserdisc, std::string *str, int32_t newval);
-	int32_t slider_overyoffset(laserdisc_device &laserdisc, std::string *str, int32_t newval);
-	int32_t slider_flicker(screen_device &screen, std::string *str, int32_t newval);
-	int32_t slider_beam_width_min(screen_device &screen, std::string *str, int32_t newval);
-	int32_t slider_beam_width_max(screen_device &screen, std::string *str, int32_t newval);
-	int32_t slider_beam_dot_size(screen_device &screen, std::string *str, int32_t newval);
-	int32_t slider_beam_intensity_weight(screen_device &screen, std::string *str, int32_t newval);
+	virtual int32_t slider_changed(running_machine &machine, void *arg, int id, std::string *str, int32_t newval) override;
+
+	int32_t slider_volume(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_mixervol(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_adjuster(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_overclock(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_refresh(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_brightness(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_contrast(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_gamma(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_xscale(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_yscale(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_xoffset(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_yoffset(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_overxscale(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_overyscale(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_overxoffset(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_overyoffset(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_flicker(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_beam_width_min(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_beam_width_max(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_beam_intensity_weight(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
 	std::string slider_get_screen_desc(screen_device &screen);
 	#ifdef MAME_DEBUG
-	int32_t slider_crossscale(ioport_field &field, std::string *str, int32_t newval);
-	int32_t slider_crossoffset(ioport_field &field, std::string *str, int32_t newval);
+	int32_t slider_crossscale(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
+	int32_t slider_crossoffset(running_machine &machine, void *arg, int id, std::string *str, int32_t newval);
 	#endif
 
 	std::vector<std::unique_ptr<slider_state>> m_sliders;

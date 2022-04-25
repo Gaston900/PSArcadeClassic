@@ -49,4 +49,4 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Airwolf
-GAME( 2007, airwolfhack01, airwolf, srdmissn, airwolf, kyugo_state, empty_init, ROT0, "S.Arkames", "Airwolf (French Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 2007, airwolfhack01, airwolf, srdmissn, airwolf, kyugo_state, init_srdmissn, ROT0, "S.Arkames", "Airwolf (French Translation)", MACHINE_SUPPORTS_SAVE )

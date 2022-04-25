@@ -11,7 +11,7 @@ ROM_START( powerinshack01 )
 	ROM_LOAD16_WORD_SWAP( "93095-3a_hack01.u108", 0x00000, 0x80000, CRC(432453c5) SHA1(38111f755737ea852ca3dd364103383697420158) )
 	ROM_LOAD16_WORD_SWAP( "93095-4.u109",  0x80000, 0x80000, CRC(d3d7a782) SHA1(7846de0ebb09bd9b2534cd451ff9aa5175e60647) )
 
-	ROM_REGION( 0x20000, "audiocpu", 0 )
+	ROM_REGION( 0x20000, "soundcpu", 0 )
 	ROM_LOAD( "93095-2.u90",  0x00000, 0x20000, CRC(4b123cc6) SHA1(ed61d3a2ab20c86b91fd7bafa717be3ce26159be) )
 
 	ROM_REGION( 0x280000, "gfx1", 0 )
@@ -51,7 +51,7 @@ ROM_START( powerinshack02 )
 	ROM_LOAD16_WORD_SWAP( "93095-3_hack02.u108", 0x00000, 0x80000, CRC(522e776a) SHA1(4b3965a3388fdbb438d5cdbff7194cc3344a51e7) )
 	ROM_LOAD16_WORD_SWAP( "93095-4.u109",  0x80000, 0x80000, CRC(d3d7a782) SHA1(7846de0ebb09bd9b2534cd451ff9aa5175e60647) )
 
-	ROM_REGION( 0x20000, "audiocpu", 0 )
+	ROM_REGION( 0x20000, "soundcpu", 0 )
 	ROM_LOAD( "93095-2.u90",  0x00000, 0x20000, CRC(4b123cc6) SHA1(ed61d3a2ab20c86b91fd7bafa717be3ce26159be) )
 
 	ROM_REGION( 0x280000, "gfx1", 0 )
@@ -91,7 +91,7 @@ ROM_START( powerinshack03 ) //powerinsl
 	ROM_LOAD16_WORD_SWAP( "93095-3_hack03.u108", 0x00000, 0x80000, CRC(1686cae2) SHA1(6eb4b42d2f0f9a5ab2a98998b0416f5d88f98cef) )
 	ROM_LOAD16_WORD_SWAP( "93095-4.u109",  0x80000, 0x80000, CRC(d3d7a782) SHA1(7846de0ebb09bd9b2534cd451ff9aa5175e60647) )
 
-	ROM_REGION( 0x20000, "audiocpu", 0 )
+	ROM_REGION( 0x20000, "soundcpu", 0 )
 	ROM_LOAD( "93095-2.u90",  0x00000, 0x20000, CRC(4b123cc6) SHA1(ed61d3a2ab20c86b91fd7bafa717be3ce26159be) )
 
 	ROM_REGION( 0x280000, "gfx1", 0 )
@@ -128,6 +128,6 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY         FULLNAME FLAGS */
 //Power Instinct
-GAME( 2006, powerinshack01,   powerins, powerins,      powerins,   powerins_state,   empty_init,  ROT0,  "0 DAY-S",             "Power Instinct (Enable Hidden Character)", MACHINE_SUPPORTS_SAVE )
-GAME( 2006, powerinshack02,   powerins, powerins,      powerins,   powerins_state,   empty_init,  ROT0,  "devilfox & BisonSAS", "Power Instinct (translation Brazilian)", MACHINE_SUPPORTS_SAVE )
-GAME( 2018, powerinshack03,   powerins, powerins,      powerins,   powerins_state,   empty_init,  ROT0,  "hack",                "Power Instinct (Simplify Edition 2018-06-04)", MACHINE_SUPPORTS_SAVE )
+HACK( 2006, powerinshack01,   powerins, powerins,      powerins,   powerins_state,   0,  ROT0,  "0 DAY-S",             "Power Instinct (Enable Hidden Character)", MACHINE_SUPPORTS_SAVE )
+HACK( 2006, powerinshack02,   powerins, powerins,      powerins,   powerins_state,   0,  ROT0,  "devilfox & BisonSAS", "Power Instinct (translation Brazilian)", MACHINE_SUPPORTS_SAVE )
+HACK( 2018, powerinshack03,   powerins, powerins,      powerins,   powerins_state,   0,  ROT0,  "hack",                "Power Instinct (Simplify Edition 2018-06-04)", MACHINE_SUPPORTS_SAVE )

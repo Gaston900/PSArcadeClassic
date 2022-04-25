@@ -247,7 +247,7 @@ intptr_t CALLBACK GameAuditDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARA
 			SetWindowFont(GetDlgItem(hAudit, IDC_AUDIT_DETAILS_PROP), hFont, true);
 			SetWindowTheme(GetDlgItem(hAudit, IDC_AUDIT_DETAILS_PROP), L" ", L" ");
 			SetWindowTheme(GetDlgItem(hAudit, IDC_ROM_DETAILS), L" ", L" ");
-			snprintf(tmp, std::size(tmp), "Audit results for \"%s\"", GetDriverGameName(rom_index));
+			snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "Audit results for \"%s\"", GetDriverGameName(rom_index));
 			winui_set_window_text_utf8(hAudit, tmp);
 			int iStatus = MameUIVerifyRomSetFull(rom_index);
 
@@ -285,7 +285,7 @@ intptr_t CALLBACK GameAuditDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARA
 			strcat(buffer, "--------------------------------------\n");
 			strcat(details, buffer);
 
-			for (device_t &device : device_enumerator(config.root_device()))
+			for (device_t &device : device_iterator(config.root_device()))
 			{
 				for (const rom_entry *region = rom_first_region(device); region != nullptr; region = rom_next_region(region))
 				{
@@ -293,12 +293,12 @@ intptr_t CALLBACK GameAuditDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARA
 					{
 						uint32_t crc = 0;
 
-						if (util::hash_collection(rom->hashdata()).crc(crc))
+						if (util::hash_collection(ROM_GETHASHDATA(rom)).crc(crc))
 							crctext = crc;
 						else
 							crctext = 0;
 
-						snprintf(buffer, std::size(buffer), "%-18s  %09d %08x\n", ROM_GETNAME(rom), ROM_GETLENGTH(rom), crctext);
+						snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%-18s  %09d %08x\n", ROM_GETNAME(rom), ROM_GETLENGTH(rom), crctext);
 						strcat(details, buffer);
 					}
 				}
@@ -388,28 +388,28 @@ static void ProcessNextRom(void)
 
 	switch (retval)
 	{
-		case media_auditor::BEST_AVAILABLE: /* correct, incorrect or separate count? */
+		case media_auditor::BEST_AVAILABLE: 	/* correct, incorrect or separate count? */
 		case media_auditor::CORRECT:
 		case media_auditor::NONE_NEEDED:
 			roms_correct++;
-			snprintf(buffer, std::size(buffer), "%d", roms_correct);
+			snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%d", roms_correct);
 			winui_set_window_text_utf8(GetDlgItem(hAudit, IDC_ROMS_CORRECT), buffer);
 			break;
 
 		case media_auditor::NOTFOUND:
 			roms_notfound++;
-			snprintf(buffer, std::size(buffer), "%d", roms_notfound);
+			snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%d", roms_notfound);
 			winui_set_window_text_utf8(GetDlgItem(hAudit, IDC_ROMS_NOTFOUND), buffer);
 			break;
 
 		case media_auditor::INCORRECT:
 			roms_incorrect++;
-			snprintf(buffer, std::size(buffer), "%d", roms_incorrect);
+			snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%d", roms_incorrect);
 			winui_set_window_text_utf8(GetDlgItem(hAudit, IDC_ROMS_INCORRECT), buffer);
 			break;
 	}
 
-	snprintf(buffer, std::size(buffer), "%d", roms_correct + roms_incorrect + roms_notfound);
+	snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%d", roms_correct + roms_incorrect + roms_notfound);
 	winui_set_window_text_utf8(GetDlgItem(hAudit, IDC_ROMS_TOTAL), buffer);
 	rom_index++;
 	SendMessage(GetDlgItem(hAudit, IDC_ROMS_PROGRESS), PBM_SETPOS, rom_index, 0);
@@ -443,7 +443,7 @@ static void DetailsPrintf(const char *fmt, ...)
 		return;
 
 	va_start(marker, fmt);
-	vsnprintf(buffer, std::size(buffer), fmt, marker);
+	vsnprintf(buffer, WINUI_ARRAY_LENGTH(buffer), fmt, marker);
 	va_end(marker);
 	wchar_t *t_s = win_wstring_from_utf8(ConvertToWindowsNewlines(buffer));
 
@@ -520,13 +520,13 @@ static bool RomSetFound(int index)
 		FILE *f = NULL;
 
 		// try to search a standard zip romset first
-		snprintf(filename, std::size(filename), "%s\\%s.zip", rom_path[i], gamename);
+		snprintf(filename, WINUI_ARRAY_LENGTH(filename), "%s\\%s.zip", rom_path[i], gamename);
 		f = fopen(filename, "r");
 
 		// if it fails, try with 7zip extension if enabled by the user
 		if (f == NULL && GetEnableSevenZip())
 		{
-			snprintf(filename, std::size(filename), "%s\\%s.7z", rom_path[i], gamename);
+			snprintf(filename, WINUI_ARRAY_LENGTH(filename), "%s\\%s.7z", rom_path[i], gamename);
 			f = fopen(filename, "r");
 		}
 
@@ -548,12 +548,12 @@ static bool RomSetFound(int index)
 			else // re-check if parent exists
 			{
 				const char *parentname = GetDriverGameName(parent);
-				snprintf(filename, std::size(filename), "%s\\%s.zip", rom_path[i], parentname);
+				snprintf(filename, WINUI_ARRAY_LENGTH(filename), "%s\\%s.zip", rom_path[i], parentname);
 				f = fopen(filename, "r");
 
 				if (f == NULL && GetEnableSevenZip())
 				{
-					snprintf(filename, std::size(filename), "%s\\%s.7z", rom_path[i], parentname);
+					snprintf(filename, WINUI_ARRAY_LENGTH(filename), "%s\\%s.7z", rom_path[i], parentname);
 					f = fopen(filename, "r");
 				}
 
@@ -569,14 +569,14 @@ static bool RomSetFound(int index)
 		// maybe is a game with chd and no romset (e.g. taito g-net games)
 		if (f == NULL && DriverIsHarddisk(index))
 		{
-			snprintf(filename, std::size(filename), "%s\\%s\\%s.chd", rom_path[i], gamename, chdname);
+			snprintf(filename, WINUI_ARRAY_LENGTH(filename), "%s\\%s\\%s.chd", rom_path[i], gamename, chdname);
 			f = fopen(filename, "r");
 		}
 
 		// let's try the last attempt in the root folder
 		if (f == NULL && DriverIsHarddisk(index))
 		{
-			snprintf(filename, std::size(filename), "%s\\%s.chd", rom_path[i], chdname);
+			snprintf(filename, WINUI_ARRAY_LENGTH(filename), "%s\\%s.chd", rom_path[i], chdname);
 			f = fopen(filename, "r");
 		}
 
@@ -624,7 +624,7 @@ static const char * RetrieveCHDName(int romset)
 	const game_driver *game = &driver_list::driver(romset);
 	machine_config config(*game, MameUIGlobal());
 
-	for (device_t &device : device_enumerator(config.root_device()))
+	for (device_t &device : device_iterator(config.root_device()))
 	{
 		for (const rom_entry *region = rom_first_region(device); region != nullptr; region = rom_next_region(region))
 		{

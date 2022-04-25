@@ -50,7 +50,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ nullptr,								nullptr,    	OPTION_HEADER, "APPLICATION VERSION" },
 
 	{ nullptr,								nullptr,    	OPTION_HEADER, "DISPLAY STATE OPTIONS" },
-	{ MUIOPTION_DEFAULT_GAME,				"puckman",  	OPTION_STRING, nullptr },
+	{ MUIOPTION_DEFAULT_GAME,				"mslugxat10",  	OPTION_STRING, nullptr },
 	{ MUIOPTION_DEFAULT_FOLDER_ID,			"0",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SHOW_IMAGE_SECTION,			"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_CURRENT_TAB,				"0",        	OPTION_STRING, nullptr },
@@ -68,21 +68,21 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_WINDOW_WIDTH,				"1150",     	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_WINDOW_HEIGHT,				"639",      	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_WINDOW_STATE,				"1",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_LIST_COLOR,					"0,0,0",    	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_HISTORY_COLOR,				"0,0,0",    	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_TREE_COLOR,					"0,0,0",    	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_TREEBG_COLOR,				"255,255,255", 	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_LISTBG_COLOR,				"255,255,255", 	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_HISTORYBG_COLOR,			"255,255,255", 	OPTION_INTEGER, nullptr },
+	{ MUIOPTION_LIST_COLOR,					"255,255,255",  OPTION_INTEGER, nullptr },
+	{ MUIOPTION_HISTORY_COLOR,				"255,255,255",  OPTION_INTEGER, nullptr },
+	{ MUIOPTION_TREE_COLOR,					"255,255,255",  OPTION_INTEGER, nullptr },
+	{ MUIOPTION_TREEBG_COLOR,				"0,0,0", 	OPTION_INTEGER, nullptr },
+	{ MUIOPTION_LISTBG_COLOR,				"0,0,0", 	OPTION_INTEGER, nullptr },
+	{ MUIOPTION_HISTORYBG_COLOR,			"0,0,0", 	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_CUSTOM_COLOR,				"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0", OPTION_STRING, nullptr },
-	{ MUIOPTION_LIST_MODE,					"0",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_SPLITTERS,					"150,498",  	OPTION_STRING, nullptr },
+	{ MUIOPTION_LIST_MODE,					"1",        	OPTION_INTEGER, nullptr },
+	{ MUIOPTION_SPLITTERS,					"150,599",  	OPTION_STRING, nullptr },
 	{ MUIOPTION_GUI_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
 	{ MUIOPTION_LIST_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
 	{ MUIOPTION_HISTORY_FONT,				"-11,0,0,0,400,0,0,0,0,3,2,1,34,Verdana", OPTION_STRING, nullptr },
 	{ MUIOPTION_TREE_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
 	{ MUIOPTION_COLUMN_WIDTHS,				"320,80,110,140,50,160,60,70", OPTION_STRING, nullptr },
-	{ MUIOPTION_COLUMN_ORDER,				"0,3,4,6,7,5,1,2", OPTION_STRING, nullptr },
+	{ MUIOPTION_COLUMN_ORDER,				"0,1,2,5,4,3,6,7", OPTION_STRING, nullptr },
 	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,1,1", OPTION_STRING, nullptr },
 
 	{ nullptr,								nullptr,     	OPTION_HEADER, "INTERFACE OPTIONS" },
@@ -92,13 +92,13 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_JOYSTICK_IN_INTERFACE,		"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_INHERIT_FILTER,				"0",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_USE_BROKEN_ICON,			"0",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_ENABLE_INDENT,				"0",        	OPTION_BOOLEAN, nullptr },
+	{ MUIOPTION_ENABLE_INDENT,				"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_ENABLE_FASTAUDIT,			"0",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_ENABLE_SEVENZIP,			"0",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_STRETCH_SCREENSHOT_LARGER,	"0",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_CYCLE_SCREENSHOT,			"0",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_SCREENSHOT_BORDER_SIZE,		"0",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_SCREENSHOT_BORDER_COLOR,	"-1",       	OPTION_INTEGER, nullptr },
+	{ MUIOPTION_SCREENSHOT_BORDER_SIZE,		"1",        	OPTION_INTEGER, nullptr },
+	{ MUIOPTION_SCREENSHOT_BORDER_COLOR,	"187,0,0",       	OPTION_INTEGER, nullptr },
 
 	{ nullptr,								nullptr,       	OPTION_HEADER, "SEARCH PATH OPTIONS" },
 	{ MUIOPTION_ARTWORK_DIRECTORY,			"artpreview", 	OPTION_STRING, nullptr },
@@ -215,14 +215,14 @@ void OptionsInit(void)
 const char * GetImageTabLongName(int tab_index)
 {
 	assert(tab_index >= 0);
-	assert(tab_index < std::size(image_tabs_long_name));
+	assert(tab_index < WINUI_ARRAY_LENGTH(image_tabs_long_name));
 	return image_tabs_long_name[tab_index];
 }
 
 const char * GetImageTabShortName(int tab_index)
 {
 	assert(tab_index >= 0);
-	assert(tab_index < std::size(image_tabs_short_name));
+	assert(tab_index < WINUI_ARRAY_LENGTH(image_tabs_short_name));
 	return image_tabs_short_name[tab_index];
 }
 
@@ -251,9 +251,9 @@ static void options_set_color(winui_options &opts, const char *name, COLORREF va
 	char value_str[32];
 
 	if (value == (COLORREF) - 1)
-		snprintf(value_str, std::size(value_str), "%d", (int)value);
+		snprintf(value_str, WINUI_ARRAY_LENGTH(value_str), "%d", (int)value);
 	else
-		snprintf(value_str, std::size(value_str), "%d,%d,%d", (((int)value) >>  0) & 0xff,
+		snprintf(value_str, WINUI_ARRAY_LENGTH(value_str), "%d,%d,%d", (((int)value) >>  0) & 0xff,
 			(((int)value) >>  8) & 0xff, (((int)value) >> 16) & 0xff);
 
 	opts.set_value(name, value_str, OPTION_PRIORITY_CMDLINE);
@@ -456,7 +456,7 @@ static void GetsShowFolderFlags(LPBITS bits)
 	char s[1024];
 	extern const FOLDERDATA g_folderData[];
 
-	snprintf(s, std::size(s), "%s", winui_opts.value(MUIOPTION_HIDE_FOLDERS));
+	snprintf(s, WINUI_ARRAY_LENGTH(s), "%s", winui_opts.value(MUIOPTION_HIDE_FOLDERS));
 	SetAllBits(bits, true);
 	char *token = strtok(s,", \t");
 
@@ -953,15 +953,15 @@ void SetCfgDir(const char* path)
 	core_opts.set_value(OPTION_CFG_DIRECTORY, path, OPTION_PRIORITY_CMDLINE);
 }
 
-//const char* GetGLSLDir(void)
-//{
-//	return core_opts.value(OSDOPTION_GLSLPATH);
-//}
+const char* GetGLSLDir(void)
+{
+	return core_opts.value(OSDOPTION_GLSLPATH);
+}
 
-//void SetGLSLDir(const char* path)
-//{
-//	core_opts.set_value(OSDOPTION_GLSLPATH, path, OPTION_PRIORITY_CMDLINE);
-//}
+void SetGLSLDir(const char* path)
+{
+	core_opts.set_value(OSDOPTION_GLSLPATH, path, OPTION_PRIORITY_CMDLINE);
+}
 
 const char* GetBGFXDir(void)
 {
@@ -1031,16 +1031,6 @@ const char* GetArtDir(void)
 void SetArtDir(const char* path)
 {
 	core_opts.set_value(OPTION_ARTPATH, path, OPTION_PRIORITY_CMDLINE);
-}
-
-const char* GetCheatDir(void)
-{
-	return core_opts.value(OPTION_CHEATPATH);
-}
-
-void SetCheatDir(const char* path)
-{
-	core_opts.set_value(OPTION_CHEATPATH, path, OPTION_PRIORITY_CMDLINE);
 }
 
 const char* GetFontDir(void)
@@ -1365,7 +1355,7 @@ void GetTextPlayTime(int driver_index, char *buf)
 	temp = temp - 3600 * hour;
 	int minute = temp / 60;
 	int second = temp - 60 * minute;
-	snprintf(tmp, std::size(tmp), "%d:%02d:%02d", hour, minute, second);
+	snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "%d:%02d:%02d", hour, minute, second);
 	strcpy(buf, tmp);
 }
 
@@ -1380,7 +1370,7 @@ static int GetUIJoy(const char *option_name, int joycodeIndex)
 	int joycodes[4];
 
 	assert(0 <= joycodeIndex && joycodeIndex < 4);
-	ColumnDecodeStringWithCount(joycodes_string, joycodes, std::size(joycodes));
+	ColumnDecodeStringWithCount(joycodes_string, joycodes, WINUI_ARRAY_LENGTH(joycodes));
 	return joycodes[joycodeIndex];
 }
 
@@ -1391,9 +1381,9 @@ static void SetUIJoy(const char *option_name, int joycodeIndex, int val)
 	char buffer[1024];
 
 	assert(0 <= joycodeIndex && joycodeIndex < 4);
-	ColumnDecodeStringWithCount(joycodes_string, joycodes, std::size(joycodes));
+	ColumnDecodeStringWithCount(joycodes_string, joycodes, WINUI_ARRAY_LENGTH(joycodes));
 	joycodes[joycodeIndex] = val;
-	ColumnEncodeStringWithCount(joycodes, buffer, std::size(joycodes));
+	ColumnEncodeStringWithCount(joycodes, buffer, WINUI_ARRAY_LENGTH(joycodes));
 	winui_opts.set_value(option_name, buffer, OPTION_PRIORITY_CMDLINE);
 }
 
@@ -1525,12 +1515,12 @@ static void CusColorEncodeString(const COLORREF *value, char* str)
 {
 	char tmpStr[256];
 
-	snprintf(tmpStr, std::size(tmpStr), "%d", (int)value[0]);
+	snprintf(tmpStr, WINUI_ARRAY_LENGTH(tmpStr), "%d", (int)value[0]);
 	strcpy(str, tmpStr);
 
 	for (int i = 1; i < 16; i++)
 	{
-		snprintf(tmpStr, std::size(tmpStr), ",%d", (int)value[i]);
+		snprintf(tmpStr, WINUI_ARRAY_LENGTH(tmpStr), ",%d", (int)value[i]);
 		strcat(str, tmpStr);
 	}
 }
@@ -1560,12 +1550,12 @@ void ColumnEncodeStringWithCount(const int *value, char *str, int count)
 {
 	char buffer[256];
 
-	snprintf(buffer, std::size(buffer),"%d", value[0]);
+	snprintf(buffer, WINUI_ARRAY_LENGTH(buffer),"%d", value[0]);
 	strcpy(str, buffer);
 
     for (int i = 1; i < count; i++)
 	{
-		snprintf(buffer, std::size(buffer), ",%d", value[i]);
+		snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), ",%d", value[i]);
 		strcat(str, buffer);
 	}
 }
@@ -1595,12 +1585,12 @@ static void SplitterEncodeString(const int *value, char* str)
 {
 	char tmpStr[256];
 
-	snprintf(tmpStr, std::size(tmpStr), "%d", value[0]);
+	snprintf(tmpStr, WINUI_ARRAY_LENGTH(tmpStr), "%d", value[0]);
 	strcpy(str, tmpStr);
 
 	for (int i = 1; i < GetSplitterCount(); i++)
 	{
-		snprintf(tmpStr, std::size(tmpStr), ",%d", value[i]);
+		snprintf(tmpStr, WINUI_ARRAY_LENGTH(tmpStr), ",%d", value[i]);
 		strcat(str, tmpStr);
 	}
 }
@@ -1666,7 +1656,7 @@ static void FontEncodeString(const LOGFONT *f, char *str)
 	if(!utf8_FaceName)
 		return;
 
-	snprintf(tmp, std::size(tmp), "%li,%li,%li,%li,%li,%i,%i,%i,%i,%i,%i,%i,%i,%s",
+	snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "%li,%li,%li,%li,%li,%i,%i,%i,%i,%i,%i,%i,%i,%s",
 		f->lfHeight,
 		f->lfWidth,
 		f->lfEscapement,
@@ -1710,7 +1700,7 @@ static void TabFlagsDecodeString(const char *str, int *data)
 {
 	char s[256];
 
-	snprintf(s, std::size(s), "%s", str);
+	snprintf(s, WINUI_ARRAY_LENGTH(s), "%s", str);
 	// simple way to set all tab bits "on"
 	*data = (1 << MAX_TAB_TYPES) - 1;
 	char *token = strtok(s,", \t");
@@ -1893,11 +1883,8 @@ static void LoadOptionsAndInterface(void)
 	// parse INTERFACE.INI
 	std::string intername = std::string(GetGuiDir()).append(PATH_SEPARATOR).append(INTERFACE_INI_FILENAME).append(".ini");
 	LoadInterfaceFile(winui_opts, intername);
-	// if .\mame.ini not exist, create a default one
-	std::string filename = std::string(DEFAULT_INI_FILENAME).append(".ini");
-	LoadOptionsStartup(core_opts, filename);
-	// parse the real MAME.INI, create it if it doesn't exist
-	filename = std::string(GetIniDir()).append(PATH_SEPARATOR).append(DEFAULT_INI_FILENAME).append(".ini");
+	// parse MAME.INI
+	std::string filename = std::string(GetIniDir()).append(PATH_SEPARATOR).append(DEFAULT_INI_FILENAME).append(".ini");
 	LoadOptionsStartup(core_opts, filename);
 	// parse UI.INI
 	std::string uiname = std::string(GetIniDir()).append(PATH_SEPARATOR).append(INTERNAL_UI_INI_FILENAME).append(".ini");
@@ -1923,7 +1910,7 @@ void SetDirectories(windows_options &opts)
 	opts.set_value(WINOPTION_HLSLPATH, GetHLSLDir(), OPTION_PRIORITY_CMDLINE);
 	opts.set_value(OPTION_DIFF_DIRECTORY, GetDiffDir(), OPTION_PRIORITY_CMDLINE);
 	opts.set_value(OPTION_VIDEO_DIRECTORY, GetVideoDir(), OPTION_PRIORITY_CMDLINE);
-//	opts.set_value(OSDOPTION_GLSLPATH, GetGLSLDir(), OPTION_PRIORITY_CMDLINE);
+	opts.set_value(OSDOPTION_GLSLPATH, GetGLSLDir(), OPTION_PRIORITY_CMDLINE);
 	opts.set_value(OSDOPTION_BGFX_PATH, GetBGFXDir(), OPTION_PRIORITY_CMDLINE);
 	opts.set_value(OPTION_PLUGINSPATH, GetPluginsDir(), OPTION_PRIORITY_CMDLINE);
 	opts.set_value(OPTION_LANGUAGEPATH, GetLanguageDir(), OPTION_PRIORITY_CMDLINE);
@@ -2283,7 +2270,7 @@ void LoadOptions(windows_options &opts, OPTIONS_TYPE opt_type, int game_num)
 			return;
 
 		// then parse "<sourcefile>.ini"
-		std::string basename = std::string(core_filename_extract_base(driver->type.source(), true));
+		std::string basename = core_filename_extract_base(driver->type.source(), true);
 		std::string srcname = std::string("source").append(PATH_SEPARATOR).append(basename.c_str());
 		ParseIniFile(opts, srcname.c_str());
 
@@ -2337,7 +2324,7 @@ void SaveOptions(OPTIONS_TYPE opt_type, windows_options &opts, int game_num)
 		if (opt_type == OPTIONS_SOURCE)
 		{
 			// determine the <sourcefile>
-			std::string basename = std::string(core_filename_extract_base(driver->type.source(), true));
+			std::string basename = core_filename_extract_base(driver->type.source(), true);
 			std::string srcname = std::string("source").append(PATH_SEPARATOR).append(basename.c_str());
 			filename.assign(srcname.c_str());
 		}

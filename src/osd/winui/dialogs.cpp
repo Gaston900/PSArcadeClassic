@@ -166,7 +166,7 @@ intptr_t CALLBACK ResetDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lP
 							break;
 					}
 				}
-				[[fallthrough]];
+		
 				// Nothing was selected but OK, just fall through
 				case IDCANCEL:
 					DeleteObject(hBrush);
@@ -240,7 +240,7 @@ intptr_t CALLBACK InterfaceDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARA
 			SendMessage(GetDlgItem(hDlg, IDC_CYCLETIMESEC), TBM_SETTICFREQ, 5, 0);
 			value = GetCycleScreenshot();
 			SendMessage(GetDlgItem(hDlg, IDC_CYCLETIMESEC), TBM_SETPOS, true, value);
-			snprintf(buffer, std::size(buffer), "%d", value);
+			snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%d", value);
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_CYCLETIMESECTXT), buffer);
 
 			for (int i = 0; i < NUMHISTORYTAB; i++)
@@ -258,7 +258,7 @@ intptr_t CALLBACK InterfaceDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARA
 			SendMessage(GetDlgItem(hDlg, IDC_SCREENSHOT_BORDERSIZE), TBM_SETTICFREQ, 5, 0);
 			value = GetScreenshotBorderSize();
 			SendMessage(GetDlgItem(hDlg, IDC_SCREENSHOT_BORDERSIZE), TBM_SETPOS, true, value);
-			snprintf(buffer, std::size(buffer), "%d", value);
+			snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%d", value);
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_SCREENSHOT_BORDERSIZETXT), buffer);
 			EnableWindow(GetDlgItem(hDlg, IDC_ENABLE_SEVENZIP), GetEnableFastAudit() ? true : false);
 			break;
@@ -443,7 +443,7 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 				// Mask out non filter flags
 				dwFilters = folder->m_dwFlags & F_MASK;
 				// Display current folder name in dialog titlebar
-				snprintf(tmp, std::size(tmp), "Filters for %s folder", folder->m_lpTitle);
+				snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "Filters for %s folder", folder->m_lpTitle);
 				winui_set_window_text_utf8(hDlg, tmp);
 
 				if (GetFilterInherit())
@@ -655,7 +655,7 @@ intptr_t CALLBACK AboutDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lP
 			SetWindowFont(GetDlgItem(hDlg, IDC_TEXT4), hFont, true);
 			SetWindowFont(GetDlgItem(hDlg, IDC_SICKFX), hFontFX, true);
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_BUILD), "Build time: " __DATE__" - " __TIME__"");
-			snprintf(tmp, std::size(tmp), "Version: %s", MAME_VERSION);
+			snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "Version: %s", MAME_VERSION);
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_BUILDVER), tmp);
 			return true;
 		}
@@ -905,13 +905,13 @@ static void OnHScroll(HWND hWnd, HWND hWndCtl, UINT code, int pos)
 	if (hWndCtl == GetDlgItem(hWnd, IDC_CYCLETIMESEC))
 	{
 		value = SendMessage(GetDlgItem(hWnd, IDC_CYCLETIMESEC), TBM_GETPOS, 0, 0);
-		snprintf(tmp, std::size(tmp), "%d", value);
+		snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "%d", value);
 		winui_set_window_text_utf8(GetDlgItem(hWnd, IDC_CYCLETIMESECTXT), tmp);
 	}
 	else if (hWndCtl == GetDlgItem(hWnd, IDC_SCREENSHOT_BORDERSIZE))
 	{
 		value = SendMessage(GetDlgItem(hWnd, IDC_SCREENSHOT_BORDERSIZE), TBM_GETPOS, 0, 0);
-		snprintf(tmp, std::size(tmp), "%d", value);
+		snprintf(tmp, WINUI_ARRAY_LENGTH(tmp), "%d", value);
 		winui_set_window_text_utf8(GetDlgItem(hWnd, IDC_SCREENSHOT_BORDERSIZETXT), tmp);
 	}
 }

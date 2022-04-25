@@ -136,12 +136,12 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Dead Or Alive ++
-GAME( 1998, doapphack01,     doapp,  coh1002m,    zn,       tecmo_zn_state, empty_init, ROT0, "yumeji",  "Dead Or Alive ++ (Enable Hidden Characters)", 0 )
+GAME( 1998, doapphack01,     doapp,  coh1002m,    zn,       zn_state, empty_init, ROT0, "yumeji",  "Dead Or Alive ++ (Enable Hidden Characters)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND )
 // Street Fighter EX
-GAME( 1996, sfexhack01,      sfex,   coh1002c,    zn6b,     zn1_state, empty_init, ROT0, "yumeji",  "Street Fighter EX (Enable Hidden Characters)", 0 )
+GAME( 1996, sfexhack01,      sfex,   coh1002c,    zn6b,     zn_state, empty_init, ROT0, "yumeji",  "Street Fighter EX (Enable Hidden Characters)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND )
 // Street Fighter EX2
-GAME( 1998, sfex2hack01,     sfex2,  coh3002c,    zn6b,     zn2_state, empty_init, ROT0, "yumeji",  "Street Fighter EX2 (Enable Hidden Characters)", 0 )
+GAME( 1998, sfex2hack01,     sfex2,  coh3002c,    zn6b,     zn_state, empty_init, ROT0, "yumeji",  "Street Fighter EX2 (Enable Hidden Characters)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND )
 // Street Fighter EX2 Plus
-GAME( 1999, sfex2phack01,    sfex2p, coh3002c,    zn6b,     zn2_state, empty_init, ROT0, "yumeji",  "Street Fighter EX2 Plus (Enable Hidden Characters)", 0 )
+GAME( 1999, sfex2phack01,    sfex2p, coh3002c,    zn6b,     zn_state, empty_init, ROT0, "yumeji",  "Street Fighter EX2 Plus (Enable Hidden Characters)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND )
 // Street Fighter EX Plus
-GAME( 1997, sfexphack01,     sfexp,  coh1002c,    zn6b,     zn1_state, empty_init, ROT0, "yumeji",  "Street Fighter EX Plus (Enable Hidden Characters)", 0 )
+GAME( 1997, sfexphack01,     sfexp,  coh1002c,    zn6b,     zn_state, empty_init, ROT0, "yumeji",  "Street Fighter EX Plus (Enable Hidden Characters)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND )

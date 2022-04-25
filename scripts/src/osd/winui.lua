@@ -23,14 +23,14 @@ function maintargetosdoptions(_target,_subtarget)
 		linkoptions {
 			"-municode",
 			"-lmingw32",
-			"-Wl,--allow-multiple-definition",
+			"-Wl,--allow-multiple-definition",		
 		}
 		links {
 			"mingw32",
 		}
 
 	configuration { "x64", "Release" }
-		targetname "arcade64"
+		targetname "arcade"
 
 	configuration { "x32", "Release" }
 		targetname "arcade32"
@@ -240,7 +240,7 @@ project ("osd_" .. _OPTIONS["osd"])
 		MAME_DIR .. "src/osd/winui/directories.cpp",
 		MAME_DIR .. "src/osd/winui/directories.h",
 		MAME_DIR .. "src/osd/winui/dxdecode.cpp",
---		MAME_DIR .. "src/osd/winui/emu_opts.cpp",
+		MAME_DIR .. "src/osd/winui/dxdecode.h",
 		MAME_DIR .. "src/osd/winui/picker.cpp",
 		MAME_DIR .. "src/osd/winui/picker.h",
 		MAME_DIR .. "src/osd/winui/properties.cpp",
@@ -290,6 +290,7 @@ project ("ocore_" .. _OPTIONS["osd"])
 
 	includedirs {
 		MAME_DIR .. "src/osd/windows",
+		MAME_DIR .. "src/lib/winpcap",
 	}
 
 	files {

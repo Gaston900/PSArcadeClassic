@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Gaston e Maurizio Petrarota
+// copyright-holders:Maurizio Petrarota
 /***************************************************************************
 
     ui/moptions.cpp
@@ -22,7 +22,7 @@ const options_entry ui_options::s_option_entries[] =
 	// search path options
 	{ nullptr,                              nullptr,                       OPTION_HEADER,  "UI SEARCH PATH OPTIONS" },
 	{ OPTION_HISTORY_PATH,                  "history;dats;.",              OPTION_STRING,  "path to history files" },
-	{ OPTION_CATEGORYINI_PATH,              "folders",                     OPTION_STRING,  "path to catagory ini files" },
+	{ OPTION_CATEGORYINI_PATH,              "folders",                     OPTION_STRING,  "path to category ini files" },
 	{ OPTION_CABINETS_PATH,                 "cabinets;cabdevs",            OPTION_STRING,  "path to cabinets / devices image" },
 	{ OPTION_CPANELS_PATH,                  "cpanel",                      OPTION_STRING,  "path to control panel image" },
 	{ OPTION_PCBS_PATH,                     "pcb",                         OPTION_STRING,  "path to pcbs image" },
@@ -44,8 +44,9 @@ const options_entry ui_options::s_option_entries[] =
 
 	// misc options
 	{ nullptr,                              nullptr,    OPTION_HEADER,      "UI MISC OPTIONS" },
-	{ OPTION_REMEMBER_LAST,                 "1",        OPTION_BOOLEAN,     "reselect in main menu last played game" },
-	{ OPTION_ENLARGE_SNAPS,                 "1",        OPTION_BOOLEAN,     "enlarge arts (snapshot, title, etc...) in right panel (keeping aspect ratio)" },
+	{ OPTION_SKIP_WARNINGS,                 "0",        OPTION_BOOLEAN,     "display fewer repeated warnings about imperfect emulation" },
+	{ OPTION_REMEMBER_LAST,                 "1",        OPTION_BOOLEAN,     "initially select last used system in main menu" },
+	{ OPTION_ENLARGE_SNAPS,                 "1",        OPTION_BOOLEAN,     "enlarge artwork (snapshot, title, etc.) in right panel (keeping aspect ratio)" },
 	{ OPTION_FORCED4X3,                     "0",        OPTION_BOOLEAN,     "force the appearance of the snapshot in the list software to 4:3" },
 	{ OPTION_USE_BACKGROUND,                "1",        OPTION_BOOLEAN,     "enable background image in main view" },
 	{ OPTION_SKIP_BIOS_MENU,                "1",        OPTION_BOOLEAN,     "skip bios submenu, start with configured or default" },
@@ -55,6 +56,7 @@ const options_entry ui_options::s_option_entries[] =
 	{ OPTION_LAST_USED_MACHINE,             "",         OPTION_STRING,      "latest used machine" },
 	{ OPTION_INFO_AUTO_AUDIT,               "0",        OPTION_BOOLEAN,     "enable auto audit in the general info panel" },
 	{ OPTION_HIDE_ROMLESS,                  "1",        OPTION_BOOLEAN,     "hide romless machine from available list" },
+	{ OPTION_UNTHROTTLE_MUTE ";utm",        "0",        OPTION_BOOLEAN,     "mute audio when running unthrottled" },
 
 	// UI options
 	{ nullptr,                              nullptr,        OPTION_HEADER,      "UI OPTIONS" },
@@ -96,7 +98,7 @@ ui_options::ui_options() : core_options()
 rgb_t ui_options::rgb_value(const char *option) const
 {
 	// find the entry
-	core_options::entry::shared_ptr entry = get_entry(option);
+	core_options::entry::shared_const_ptr entry = get_entry(option);
 
 	// look up the value, and sanity check the result
 	const char *value = entry->value();

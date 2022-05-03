@@ -123,7 +123,7 @@ void TabView_SetCurrentTab(HWND hWndTabView, int nTab)
 		pszName = pTabViewInfo->pCallbacks->pfnGetTabShortName(nTab);
 	else
 	{
-		snprintf(szBuffer, WINUI_ARRAY_LENGTH(szBuffer), "%d", nTab);
+		snprintf(szBuffer, std::size(szBuffer), "%d", nTab);
 		pszName = szBuffer;
 	}
 

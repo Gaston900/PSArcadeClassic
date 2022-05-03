@@ -10,9 +10,9 @@
 
 #pragma once
 
-#include "includes/slapstic.h"
 #include "cpu/mcs48/mcs48.h"
 #include "machine/gen_latch.h"
+#include "machine/slapstic.h"
 #include "sound/sn76496.h"
 #include "screen.h"
 #include "tilemap.h"
@@ -26,14 +26,17 @@ public:
 		m_gfxdecode(*this, "gfxdecode"),
 		m_screen(*this, "screen"),
 		m_slapstic(*this, "slapstic"),
+		m_slapstic_bank(*this, "slapstic_bank"),
+		m_slapstic_region(*this, "maincpu"),
 		m_videoram(*this, "videoram")
 	{
 	}
 
 	void atetris_base(machine_config &config);
+	void atetris_pokey(machine_config &config);
 	void atetris(machine_config &config);
 	void atetrisb2(machine_config &config);
-//	void atetrisbp(machine_config &config);
+	void atetrisb5(machine_config &config);
 
 	void init_atetris();
 
@@ -46,30 +49,28 @@ protected:
 	required_device<gfxdecode_device> m_gfxdecode;
 	required_device<screen_device> m_screen;
 	optional_device<atari_slapstic_device> m_slapstic;
+	optional_memory_bank m_slapstic_bank;
+	required_region_ptr<uint8_t> m_slapstic_region;
 
 	required_shared_ptr<uint8_t> m_videoram;
 
-	uint8_t *m_slapstic_source;
-	uint8_t *m_slapstic_base;
-	uint8_t m_current_bank;
 	emu_timer *m_interrupt_timer;
 	tilemap_t *m_bg_tilemap;
 
-	DECLARE_WRITE8_MEMBER(irq_ack_w);
-	DECLARE_READ8_MEMBER(slapstic_r);
-	DECLARE_WRITE8_MEMBER(coincount_w);
-	DECLARE_WRITE8_MEMBER(videoram_w);
+	void irq_ack_w(uint8_t data);
+	void coincount_w(uint8_t data);
+	void videoram_w(offs_t offset, uint8_t data);
 	TILE_GET_INFO_MEMBER(get_tile_info);
 	uint32_t screen_update(screen_device &screen, bitmap_ind16 &bitmap, const rectangle &cliprect);
 	TIMER_CALLBACK_MEMBER(interrupt_gen);
 	void reset_bank();
 
 	void atetrisb2_map(address_map &map);
+	void atetrisb5_map(address_map &map);
 	void main_map(address_map &map);
-//	void atetrisbp_map(address_map &map);
 };
 
-/*class atetris_bartop_state : public atetris_state
+class atetris_bartop_state : public atetris_state
 {
 public:
 	atetris_bartop_state(const machine_config &mconfig, device_type type, const char *tag) :
@@ -77,8 +78,14 @@ public:
 	{
 	}
 
-	void atetrisbp(machine_config &config);*/
-	
+	void atetrisbp(machine_config &config);
+
+private:
+	void output_w(uint8_t data);
+
+	void atetrisbp_map(address_map &map);
+};
+
 class atetris_mcu_state : public atetris_state
 {
 public:
@@ -93,9 +100,9 @@ public:
 	void atetrisb3(machine_config &config);
 
 private:
-	DECLARE_READ8_MEMBER(mcu_bus_r);
-	DECLARE_WRITE8_MEMBER(mcu_p2_w);
-	DECLARE_WRITE8_MEMBER(mcu_reg_w);
+	uint8_t mcu_bus_r();
+	void mcu_p2_w(uint8_t data);
+	void mcu_reg_w(offs_t offset, uint8_t data);
 
 	void atetrisb3_map(address_map &map);
 

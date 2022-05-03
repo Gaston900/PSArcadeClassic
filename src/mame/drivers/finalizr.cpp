@@ -22,7 +22,6 @@
 #include "machine/watchdog.h"
 #include "sound/dac.h"
 #include "sound/sn76496.h"
-#include "sound/volt_reg.h"
 
 #include "screen.h"
 #include "speaker.h"
@@ -39,20 +38,20 @@ TIMER_DEVICE_CALLBACK_MEMBER(finalizr_state::finalizr_scanline)
 }
 
 
-WRITE8_MEMBER(finalizr_state::finalizr_videoctrl_w)
+void finalizr_state::finalizr_videoctrl_w(uint8_t data)
 {
 	m_charbank = data & 3;
 	m_spriterambank = data & 8;
 	/* other bits unknown */
 }
 
-WRITE8_MEMBER(finalizr_state::finalizr_coin_w)
+void finalizr_state::finalizr_coin_w(uint8_t data)
 {
 	machine().bookkeeping().coin_counter_w(0, data & 0x01);
 	machine().bookkeeping().coin_counter_w(1, data & 0x02);
 }
 
-WRITE8_MEMBER(finalizr_state::finalizr_flipscreen_w)
+void finalizr_state::finalizr_flipscreen_w(uint8_t data)
 {
 	m_nmi_enable = data & 0x01;
 	m_irq_enable = data & 0x02;
@@ -60,12 +59,12 @@ WRITE8_MEMBER(finalizr_state::finalizr_flipscreen_w)
 	flip_screen_set(~data & 0x08);
 }
 
-WRITE8_MEMBER(finalizr_state::finalizr_i8039_irq_w)
+void finalizr_state::finalizr_i8039_irq_w(uint8_t data)
 {
 	m_audiocpu->set_input_line(0, ASSERT_LINE);
 }
 
-WRITE8_MEMBER(finalizr_state::i8039_irqen_w)
+void finalizr_state::i8039_irqen_w(uint8_t data)
 {
 	/*  bit 0x80 goes active low, indicating that the
 	    external IRQ being serviced is complete
@@ -93,7 +92,7 @@ READ_LINE_MEMBER(finalizr_state::i8039_t1_r)
 	return (!(m_T1_line % 3) && (m_T1_line > 0));
 }
 
-WRITE8_MEMBER(finalizr_state::i8039_t0_w)
+void finalizr_state::i8039_t0_w(uint8_t data)
 {
 	/*  This becomes a clock output at a frequency of 3.072MHz (derived
 	    by internally dividing the main xtal clock input by a factor of 3).
@@ -299,9 +298,6 @@ void finalizr_state::finalizr(machine_config &config)
 	SN76489A(config, "snsnd", XTAL(18'432'000)/12).add_route(ALL_OUTPUTS, "speaker", 0.75);
 
 	DAC_8BIT_R2R(config, "dac", 0).add_route(ALL_OUTPUTS, "speaker", 0.325); // unknown DAC
-	voltage_regulator_device &vref(VOLTAGE_REGULATOR(config, "vref"));
-	vref.add_route(0, "dac", 1.0, DAC_VREF_POS_INPUT);
-	vref.add_route(0, "dac", -1.0, DAC_VREF_NEG_INPUT);
 }
 
 
@@ -318,7 +314,7 @@ ROM_START( finalizr )
 	ROM_LOAD( "523k02.12c",   0x8000, 0x4000, CRC(1bccc696) SHA1(3c29f4a030e76660b5a25347e042e344b0653343) )
 	ROM_LOAD( "523k03.13c",   0xc000, 0x4000, CRC(c48927c6) SHA1(9cf6b285034670370ba0246c33e1fe0a057457e7) )
 
-	ROM_REGION( 0x1000, "audiocpu", 0 ) /* 8039 */
+	ROM_REGION( 0x1000, "audiocpu", 0 ) // Konami custom
 	ROM_LOAD( "snd01_715-057p.8a", 0x0000, 0x0800, CRC(5459ab95) SHA1(3537b1b3ff0196493a6a03a1578cb2878b1c52bd) )
 
 	ROM_REGION( 0x20000, "gfx1", 0 )
@@ -343,8 +339,8 @@ ROM_START( finalizra )
 	ROM_LOAD( "2.12c",   0x8000, 0x4000, CRC(383dc94e) SHA1(f192e16e83ae34cc97af07072a4dc68e7c4c362c) )
 	ROM_LOAD( "3.13c",   0xc000, 0x4000, CRC(ce177f6e) SHA1(034cbe0c1e2baf9577741b3c222a8b4a8ac8c919) )
 
-	ROM_REGION( 0x1000, "audiocpu", 0 ) /* 8039 */
-	ROM_LOAD( "d8749hd.bin",  0x0000, 0x0800, BAD_DUMP CRC(978dfc33) SHA1(13d24ce577b88bf6ec2e970d36dc67a7ec691c55) )   /* this comes from the bootleg, the original has a custom IC */
+	ROM_REGION( 0x1000, "audiocpu", 0 ) // Konami custom
+	ROM_LOAD( "snd01_715-057p.8a", 0x0000, 0x0800, CRC(5459ab95) SHA1(3537b1b3ff0196493a6a03a1578cb2878b1c52bd) )
 
 	ROM_REGION( 0x20000, "gfx1", 0 )
 	ROM_LOAD16_BYTE( "523h04.5e",    0x00000, 0x4000, CRC(c056d710) SHA1(3fe0ab7ef3bce7298c2a073d0985c33f9dc40062) )

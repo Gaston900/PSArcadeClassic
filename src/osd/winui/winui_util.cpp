@@ -46,7 +46,7 @@ void ErrorMessageBox(const char *fmt, ...)
 	va_list ptr;
 
 	va_start(ptr, fmt);
-	vsnprintf(buf, WINUI_ARRAY_LENGTH(buf), fmt, ptr);
+	vsnprintf(buf, std::size(buf), fmt, ptr);
 	winui_message_box_utf8(GetMainWindow(), buf, MAMEUINAME, MB_ICONERROR | MB_OK);
 	va_end(ptr);
 }
@@ -57,7 +57,7 @@ void dprintf(const char *fmt, ...)
 	char buf[1024];
 	va_list ptr;
 	va_start(ptr, fmt);
-	vsnprintf(buf, WINUI_ARRAY_LENGTH(buf), fmt, ptr);
+	vsnprintf(buf, std::size(buf), fmt, ptr);
 	winui_output_debug_string_utf8(buf);
 	va_end(ptr);
 }
@@ -184,9 +184,9 @@ const char * GetDriverGameYear(int nIndex)
 
 const char * GetDriverFileName(int nIndex)
 {
-	static char tmp[40];
+	static char tmp[64];
 
-	std::string driver = core_filename_extract_base(driver_list::driver(nIndex).type.source(), false);
+	std::string driver = std::string(core_filename_extract_base(driver_list::driver(nIndex).type.source(), false));
 	strcpy(tmp, driver.c_str());
 	return tmp;
 }
@@ -198,13 +198,13 @@ int GetGameNameIndex(const char *name)
 
 static int NumberOfScreens(const machine_config &config)
 {
-	screen_device_iterator scriter(config.root_device());
+	screen_device_enumerator scriter(config.root_device());
 	return scriter.count();
 }
 
 static bool isDriverVector(const machine_config &config)
 {
-	const screen_device *screen = screen_device_iterator(config.root_device()).first();
+	const screen_device *screen = screen_device_enumerator(config.root_device()).first();
 
 	if (screen != nullptr) 
 	{
@@ -284,7 +284,7 @@ static void InitDriversInfo(void)
 		gameinfo->usesTrackball = false;
 		gameinfo->usesLightGun = false;
 
-		for (device_t &device : device_iterator(config.root_device()))
+		for (device_t &device : device_enumerator(config.root_device()))
 		{
 			for (const rom_entry *region = rom_first_region(device); region; region = rom_next_region(region))
 			{
@@ -309,7 +309,7 @@ static void InitDriversInfo(void)
 			}
 		}
 
-		samples_device_iterator sampiter(config.root_device());
+		samples_device_enumerator sampiter(config.root_device());
 		gameinfo->usesSamples = sampiter.first() ? true : false;
 
 		if (gamedrv->ipt)
@@ -317,7 +317,7 @@ static void InitDriversInfo(void)
 			ioport_list portlist;
 			std::string errors;
 
-			for (device_t &cfg : device_iterator(config.root_device()))
+			for (device_t &cfg : device_enumerator(config.root_device()))
 				if (cfg.input_ports())
 					portlist.append(cfg, errors);
 
@@ -570,7 +570,7 @@ int winui_get_window_text_utf8(HWND hWnd, char *buffer, size_t buffer_size)
 
 	t_buffer[0] = '\0';
 	// invoke the core Win32 API
-	GetWindowText(hWnd, t_buffer, ARRAY_LENGTH(t_buffer));
+	GetWindowText(hWnd, t_buffer, std::size(t_buffer));
 	char *utf8_buffer = win_utf8_from_wstring(t_buffer);
 
 	if (!utf8_buffer)

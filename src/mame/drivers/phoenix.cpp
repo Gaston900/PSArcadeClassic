@@ -447,18 +447,11 @@ static GFXDECODE_START( gfx_pleiads )
 GFXDECODE_END
 
 
-MACHINE_RESET_MEMBER(phoenix_state,phoenix)
-{
-}
-
-
 void phoenix_state::phoenix(machine_config &config)
 {
 	/* basic machine hardware */
 	I8085A(config, m_maincpu, CPU_CLOCK);  /* 2.75 MHz */
 	m_maincpu->set_addrmap(AS_PROGRAM, &phoenix_state::phoenix_memory_map);
-
-	MCFG_MACHINE_RESET_OVERRIDE(phoenix_state,phoenix)
 
 	/* video hardware */
 	screen_device &screen(SCREEN(config, "screen", SCREEN_TYPE_RASTER));
@@ -468,8 +461,6 @@ void phoenix_state::phoenix(machine_config &config)
 
 	GFXDECODE(config, m_gfxdecode, m_palette, gfx_phoenix);
 	PALETTE(config, m_palette, FUNC(phoenix_state::phoenix_palette), 256);
-
-	MCFG_VIDEO_START_OVERRIDE(phoenix_state,phoenix)
 
 	/* sound hardware */
 	SPEAKER(config, "mono").front_center();
@@ -522,8 +513,6 @@ void phoenix_state::survival(machine_config &config)
 	maincpu.in_sid_func().set(FUNC(phoenix_state::survival_sid_callback));
 	maincpu.set_addrmap(AS_PROGRAM, &phoenix_state::survival_memory_map);
 
-	MCFG_MACHINE_RESET_OVERRIDE(phoenix_state,phoenix)
-
 	/* video hardware */
 
 	/* schematics fairly identical to phoenix, however the interesting
@@ -536,8 +525,6 @@ void phoenix_state::survival(machine_config &config)
 
 	GFXDECODE(config, m_gfxdecode, m_palette, gfx_phoenix);
 	PALETTE(config, m_palette, FUNC(phoenix_state::survival_palette), 256);
-
-	MCFG_VIDEO_START_OVERRIDE(phoenix_state,phoenix)
 
 	/* sound hardware */
 	SPEAKER(config, "mono").front_center();
@@ -1313,6 +1300,8 @@ ROM_START( nextfase )
 	ROM_LOAD( "nf07.bin",   0x3000, 0x0800, CRC(2eab35b4) SHA1(849bf8273317cc869bdd67e50c68399ee8ece81d) )
 	ROM_LOAD( "nf08.bin",   0x3800, 0x0800, CRC(04c2323f) SHA1(4d820464f57e4f59acc46ea3264dba3cb9c501a1) )
 
+	ROM_REGION( 0x800, "melody", 0 ) // Epson 7910CG Multi-Melody IC
+	ROM_LOAD( "7910cg", 0x000, 0x800, NO_DUMP ) // actual size unknown, needs decapping
 	ROM_REGION( 0x1000, "bgtiles", 0 )
 	ROM_LOAD( "nf11.bin",      0x0000, 0x0800, CRC(3c7e623f) SHA1(e7ff5fc371664af44785c079e92eeb2d8530187b) )
 	ROM_LOAD( "nf12.bin",      0x0800, 0x0800, CRC(59916d3b) SHA1(71aec70a8e096ed1f0c2297b3ae7dca1b8ecc38d) )
@@ -1397,6 +1386,8 @@ ROM_START( pleiads )
 	ROM_LOAD( "ic39.bin",     0x0000, 0x0800, CRC(85866607) SHA1(cd240bd056f761b2f9e2142049434f02cae3e315) ) /* IC 27 on real board */
 	ROM_LOAD( "ic40.bin",     0x0800, 0x0800, CRC(a841d511) SHA1(8349008ab1d8ef08775b54170c37deb1d391fffc) ) /* IC 26 on real board */
 
+	ROM_REGION( 0x800, "melody", 0 ) // Epson 7910E Multi-Melody IC (according to Centuri version manual)
+	ROM_LOAD( "7910e", 0x000, 0x800, NO_DUMP ) // actual size unknown, needs decapping
 	ROM_REGION( 0x0200, "proms", 0 )
 	ROM_LOAD( "7611-5.33",    0x0000, 0x0100, CRC(e38eeb83) SHA1(252880d80425b2e697146e76efdc6cb9f3ba0378) )   /* palette low bits */
 	ROM_LOAD( "7611-5.26",    0x0100, 0x0100, CRC(7a1bcb1e) SHA1(bdfab316ea26e2063879e7aa78b6ae2b55eb95c8) )   /* palette high bits */
@@ -1469,6 +1460,9 @@ ROM_START( pleiadce )
 	ROM_LOAD( "ic39.bin",     0x0000, 0x0800, CRC(85866607) SHA1(cd240bd056f761b2f9e2142049434f02cae3e315) )
 	ROM_LOAD( "ic40.bin",     0x0800, 0x0800, CRC(a841d511) SHA1(8349008ab1d8ef08775b54170c37deb1d391fffc) )
 
+	ROM_REGION( 0x800, "melody", 0 )  // Epson 7910E Multi-Melody IC (according to manual)
+	ROM_LOAD( "7910e", 0x000, 0x800, NO_DUMP ) // actual size unknown, needs decapping
+
 	ROM_REGION( 0x0200, "proms", 0 )
 	ROM_LOAD( "7611-5.33",    0x0000, 0x0100, CRC(e38eeb83) SHA1(252880d80425b2e697146e76efdc6cb9f3ba0378) )   /* palette low bits */
 	ROM_LOAD( "7611-5.26",    0x0100, 0x0100, CRC(7a1bcb1e) SHA1(bdfab316ea26e2063879e7aa78b6ae2b55eb95c8) )   /* palette high bits */
@@ -1522,7 +1516,6 @@ ROM_START( pleiadsn )
 	ROM_LOAD( "mb7052.ic41",  0x0100, 0x0100, BAD_DUMP CRC(7a1bcb1e) SHA1(bdfab316ea26e2063879e7aa78b6ae2b55eb95c8) )   /* palette high bits */
 ROM_END
 
-// Famaresa "580" PCB set (580-001 and 580-002).
 ROM_START( pleiadss )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "pl45.bin",     0x0000, 0x0800, CRC(e2528599) SHA1(4647c62a2c6047238ad2855cf71b9e079ac4b4c7) )
@@ -1696,8 +1689,8 @@ GAME( 1981, pleiadbl,   pleiads, pleiads,  pleiadbl, phoenix_state, empty_init, 
 GAME( 1981, pleiadce,   pleiads, pleiads,  pleiadce, phoenix_state, empty_init,      ROT90, "Tehkan (Centuri license)",          "Pleiads (Centuri)", MACHINE_IMPERFECT_COLORS | MACHINE_SUPPORTS_SAVE )
 GAME( 1981, pleiadsi,   pleiads, pleiads,  pleiadce, phoenix_state, empty_init,      ROT90, "bootleg? (Irecsa)",                 "Pleiads (Irecsa)", MACHINE_IMPERFECT_COLORS | MACHINE_SUPPORTS_SAVE ) // possibly licensed, but some of the roms match the bootlegs
 GAME( 1981, pleiadsn,   pleiads, phoenix,  pleiadce, phoenix_state, empty_init,      ROT90, "Niemer S.A.",                       "Pleiads (Niemer S.A.)", MACHINE_IMPERFECT_COLORS | MACHINE_SUPPORTS_SAVE ) // possibly licensed, but some of the roms match the bootlegs
-GAME( 1981, pleiadss,   pleiads, phoenix,  pleiadce, phoenix_state, empty_init,      ROT90, "bootleg (Famaresa)",                "Pleiads (Famaresa, Spanish bootleg)",                        MACHINE_SUPPORTS_SAVE ) // colours match PCB (but are ugly)
-GAME( 1981, cityatta,   pleiads, pleiads,  cityatta, phoenix_state, empty_init,      ROT90, "bootleg (Petaco S.A.)",             "City Attack (Petaco S.A., bootleg of Pleiads)", MACHINE_SUPPORTS_SAVE ) // colours match PCB (but are ugly)
+GAME( 1981, pleiadss,   pleiads, phoenix,  pleiadce, phoenix_state, empty_init,           ROT90, "bootleg (Famaresa)",                     "Pleiads (Famaresa, Spanish bootleg)",                        MACHINE_SUPPORTS_SAVE ) // colours match PCB (but are ugly)
+GAME( 1981, cityatta,   pleiads, phoenix,  cityatta, phoenix_state, empty_init,      ROT90, "bootleg",                           "Pleiads (Spanish bootleg)", MACHINE_SUPPORTS_SAVE ) // colours match PCB (but are ugly)
 GAME( 1981, capitol,    pleiads, phoenix,  capitol,  phoenix_state, empty_init,      ROT90, "bootleg? (Universal Video Spiel)",  "Capitol", MACHINE_IMPERFECT_COLORS | MACHINE_SUPPORTS_SAVE )
 
   /*** Others ***/

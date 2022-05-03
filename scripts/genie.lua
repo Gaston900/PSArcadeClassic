@@ -14,7 +14,7 @@ newoption {
 premake.check_paths = true
 premake.make.override = { "TARGET" }
 
-premake.xcode.parameters = { 'CLANG_CXX_LANGUAGE_STANDARD = "c++14"', 'CLANG_CXX_LIBRARY = "libc++"' }
+premake.xcode.parameters = { 'CLANG_CXX_LANGUAGE_STANDARD = "c++17"', 'CLANG_CXX_LIBRARY = "libc++"' }
 
 MAME_DIR = (path.getabsolute("..") .. "/")
 --MAME_DIR = string.gsub(MAME_DIR, "(%s)", "\\%1")
@@ -93,17 +93,19 @@ end
 function addprojectflags()
 	local version = str_to_version(_OPTIONS["gcc_version"])
 	if _OPTIONS["gcc"]~=nil and string.find(_OPTIONS["gcc"], "gcc") then
-		if version >= 50100 then
-			buildoptions_cpp {
-				"-Wsuggest-override",
-			}
-		end
-		if version >= 60000 then
-			buildoptions_cpp {
-				"-flifetime-dse=1",
-			}
-		end
+		buildoptions_cpp {
+			"-Wsuggest-override",
+			"-flifetime-dse=1",
+		}
 	end
+end
+
+function opt_tool(hash, entry)
+   if _OPTIONS["with-tools"] then
+	  hash[entry] = true
+	  return true
+   end
+   return hash[entry]
 end
 
 CPUS = {}
@@ -198,6 +200,11 @@ newoption {
 newoption {
 	trigger = "LD",
 	description = "LD replacement",
+}
+
+newoption {
+	trigger = "AR",
+	description = "AR replacement",
 }
 
 newoption {
@@ -344,15 +351,6 @@ newoption {
 }
 
 newoption {
-	trigger = "FASTDEBUG",
-	description = "Fast DEBUG.",
-	allowed = {
-		{ "0",   "Disabled"     },
-		{ "1",   "Enabled"      },
-	}
-}
-
-newoption {
 	trigger = "SEPARATE_BIN",
 	description = "Use separate bin folders.",
 	allowed = {
@@ -492,6 +490,7 @@ language "C++"
 
 flags {
 	"StaticRuntime",
+	"Cpp17",
 }
 
 configuration { "vs20*" }
@@ -520,6 +519,11 @@ configuration { "Release", "vs20*" }
 		"NoEditAndContinue",
 		"NoIncrementalLink",
 	}
+	if _OPTIONS["SYMBOLS"] then
+		flags {
+			"Symbols",
+		}
+	end
 
 configuration { "vsllvm" }
 	buildoptions {
@@ -626,13 +630,6 @@ configuration { "Debug" }
 --      "BGFX_CONFIG_DEBUG=1",
 	}
 
-if _OPTIONS["FASTDEBUG"]=="1" then
-	defines {
-		"MAME_DEBUG_FAST",
-		"NDEBUG",
-	}
-end
-
 configuration { }
 
 if _OPTIONS["PROFILER"]=="1" then
@@ -695,14 +692,21 @@ else
 		"LSB_FIRST",
 	}
 	if _OPTIONS["targetos"]=="macosx" then
-		configuration { "x64" }
+		configuration { "arm64" }
+			buildoptions {
+				"-arch arm64",
+			}
+			linkoptions {
+				"-arch arm64",
+			}
+		configuration { "x64", "not arm64" }
 			buildoptions {
 				"-arch x86_64",
 			}
 			linkoptions {
 				"-arch x86_64",
 			}
-		configuration { "x32" }
+		configuration { "x32", "not arm64" }
 			buildoptions {
 				"-arch i386",
 			}
@@ -770,23 +774,13 @@ end
 	}
 
 local version = str_to_version(_OPTIONS["gcc_version"])
-if string.find(_OPTIONS["gcc"], "clang") and ((version < 30500) or (_OPTIONS["targetos"]=="macosx" and (version <= 60000))) then
 	buildoptions_cpp {
-		"-std=c++1y",
+		"-std=c++17",
 	}
 
 	buildoptions_objcpp {
-		"-std=c++1y",
+		"-std=c++17",
 	}
-else
-	buildoptions_cpp {
-		"-std=c++14",
-	}
-
-	buildoptions_objcpp {
-		"-std=c++14",
-	}
-end
 -- this speeds it up a bit by piping between the preprocessor/compiler/assembler
 	if not ("pnacl" == _OPTIONS["gcc"]) then
 		buildoptions {
@@ -1013,11 +1007,11 @@ end
 	buildoptions {
 		"-Wall",
 		"-Wcast-align",
-		"-Wundef",
 		"-Wformat-security",
+		"-Wundef",
 		"-Wwrite-strings",
-		"-Wno-sign-compare",
 		"-Wno-conversion",
+		"-Wno-sign-compare",
 		"-Wno-error=deprecated-declarations",
 	}
 -- warnings only applicable to C compiles
@@ -1079,40 +1073,49 @@ end
 
 		local version = str_to_version(_OPTIONS["gcc_version"])
 		if string.find(_OPTIONS["gcc"], "clang") or string.find(_OPTIONS["gcc"], "pnacl") or string.find(_OPTIONS["gcc"], "asmjs") or string.find(_OPTIONS["gcc"], "android") then
-			if (version < 30400) then
-				print("Clang version 3.4 or later needed")
+			if (version < 60000) then
+				print("Clang version 6.0 or later needed")
 				os.exit(-1)
 			end
 			buildoptions {
-				"-Wno-cast-align",
-				"-Wno-tautological-compare",
-				"-Wno-unused-value",
-				"-Wno-constant-logical-operand",
-				"-Wno-missing-braces", -- clang is not as permissive as GCC about std::array initialization
 				"-fdiagnostics-show-note-include-stack",
+				"-Wno-cast-align",
+				"-Wno-constant-logical-operand",
+				"-Wno-extern-c-compat",
+				"-Wno-ignored-qualifiers",
+				"-Wno-pragma-pack", -- clang 6.0 complains when the packing change lifetime is not contained within a header file.
+				"-Wno-tautological-compare",
+				"-Wno-unknown-attributes",
+				"-Wno-unknown-warning-option",
+				"-Wno-unused-value",
 			}
-			if (version >= 30500) then
-				buildoptions {
-					"-Wno-unknown-warning-option",
-					"-Wno-extern-c-compat",
-					"-Wno-unknown-attributes",
-					"-Wno-ignored-qualifiers"
+			if (version < 70000) or ((version < 100001) and (_OPTIONS["targetos"] == 'macosx')) then
+				buildoptions { -- clang 6.0 complains that [[maybe_unused]] is ignored for static data members
+					"-Wno-error=ignored-attributes",
+					"-Wno-error=unused-const-variable",
 				}
 			end
-			if (version >= 60000) then
+			if ((version >= 100000) and (_OPTIONS["targetos"] ~= 'macosx')) or (version >= 120000) then
 				buildoptions {
-					"-Wno-pragma-pack" -- clang 6.0 complains when the packing change lifetime is not contained within a header file.
+					"-Wno-xor-used-as-pow", -- clang 10.0 complains that expressions like 10 ^ 7 look like exponention
 				}
 			end
 		else
-			if (version < 50000) then
-				print("GCC version 5.0 or later needed")
+			if (version < 70000) then
+				print("GCC version 7.0 or later needed")
 				os.exit(-1)
 			end
+				buildoptions_cpp {
+					"-Wimplicit-fallthrough",
+				}
+				buildoptions_objcpp {
+					"-Wimplicit-fallthrough",
+				}
 				buildoptions {
 					"-Wno-unused-result", -- needed for fgets,fread on linux
 					-- array bounds checking seems to be buggy in 4.8.1 (try it on video/stvvdp1.c and video/model1.c without -Wno-array-bounds)
 					"-Wno-array-bounds",
+					"-Wno-error=attributes", -- GCC fails to recognize some uses of [[maybe_unused]]
 				}
 			if (version >= 80000) then
 				buildoptions {
@@ -1122,6 +1125,19 @@ end
 				}
 				buildoptions_cpp {
 					"-Wno-class-memaccess", -- many instances in ImGui and BGFX
+				}
+			end
+			if (version >= 100000) then
+				buildoptions {
+					"-Wno-return-local-addr", -- sqlite3.c in GCC 10
+				}
+			end
+			if (version >= 110000) then
+				buildoptions {
+					"-Wno-nonnull",                 -- luaengine.cpp lambdas do not need "this" captured but GCC 11.1 erroneously insists
+					"-Wno-stringop-overread",       -- machine/bbc.cpp in GCC 11.1
+					"-Wno-misleading-indentation",  -- sqlite3.c in GCC 11.1
+					"-Wno-maybe-uninitialized"      -- expat in GCC 11.1
 				}
 			end
 		end
@@ -1178,10 +1194,13 @@ configuration { "asmjs" }
 		"-s USE_SDL_TTF=2",
 	}
 	buildoptions_cpp {
-		"-std=c++14",
+		"-std=c++17",
+		"-s DISABLE_EXCEPTION_CATCHING=2",
+		"-s EXCEPTION_CATCHING_WHITELIST=\"['_ZN15running_machine17start_all_devicesEv','_ZN12cli_frontend7executeEiPPc','_ZN8chd_file11open_commonEb','_ZN8chd_file13read_metadataEjjRNSt3__212basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE','_ZN8chd_file13read_metadataEjjRNSt3__26vectorIhNS0_9allocatorIhEEEE','_ZNK19netlist_mame_device19base_validity_checkER16validity_checker']\"",
 	}
 	linkoptions {
 		"-Wl,--start-group",
+		"-r",
 	}
 	archivesplit_size "20"
 
@@ -1193,7 +1212,7 @@ configuration { "android*" }
 		"-Wno-incompatible-ms-struct",
 	}
 	buildoptions_cpp {
-		"-std=c++14",
+		"-std=c++17",
 		"-Wno-extern-c-compat",
 		"-Wno-tautological-constant-out-of-range-compare",
 		"-Wno-tautological-pointer-compare",
@@ -1211,7 +1230,7 @@ configuration { "pnacl" }
 		"-Wno-inline-new-delete",
 	}
 	buildoptions_cpp {
-		"-std=c++14",
+		"-std=c++17",
 	}
 	archivesplit_size "20"
 
@@ -1270,15 +1289,18 @@ configuration { "osx* or xcode4" }
 		}
 
 configuration { "mingw*" }
-		if _OPTIONS["osd"]~="sdl"
-		then
+		if _OPTIONS["osd"]=="sdl" then
+			linkoptions {
+				"-Wl,--start-group",
+			}
+		else
 			linkoptions {
 				"-static",
 			}
+			flags {
+				"LinkSupportCircularDependencies",
+			}
 		end
-		linkoptions {
-			"-Wl,--start-group",
-		}
 		links {
 			"user32",
 			"winmm",
@@ -1291,14 +1313,6 @@ configuration { "mingw*" }
 			"shell32",
 			"userenv",
 		}
-
-configuration { "mingw-clang" }
-	local version = str_to_version(_OPTIONS["gcc_version"])
-	if _OPTIONS["gcc"]~=nil and string.find(_OPTIONS["gcc"], "clang") and ((version < 30900)) then
-		linkoptions {
-			"-pthread",
-		}
-	end
 
 configuration { "vsllvm" }
 	defines {
@@ -1341,68 +1355,39 @@ end
 
 		buildoptions {
 			"/WX",     -- Treats all compiler warnings as errors.
-			"/wd4025", -- warning C4025: 'number' : based pointer passed to function with variable arguments: parameter number
+			"/w45038", -- warning C5038: data member 'member1' will be initialized after data member 'member2'
+		}
+
+		buildoptions {
 			"/wd4003", -- warning C4003: not enough actual parameters for macro 'xxx'
-			"/wd4018", -- warning C4018: 'x' : signed/unsigned mismatch
-			"/wd4061", -- warning C4061: enumerator 'xxx' in switch of enum 'xxx' is not explicitly handled by a case label
-			"/wd4100", -- warning C4100: 'xxx' : unreferenced formal parameter
-			"/wd4127", -- warning C4127: conditional expression is constant
-			"/wd4131", -- warning C4131: 'xxx' : uses old-style declarator
-			"/wd4141", -- warning C4141: 'xxx' : used more than once
-			"/wd4146", -- warning C4146: unary minus operator applied to unsigned type, result still unsigned
-			"/wd4150", -- warning C4150: deletion of pointer to incomplete type 'xxx'; no destructor called
-			"/wd4189", -- warning C4189: 'xxx' : local variable is initialized but not referenced
-			"/wd4191", -- warning C4191: 'type cast' : unsafe conversion from 'xxx' to 'xxx' // 64-bit only
-			"/wd4201", -- warning C4201: nonstandard extension used : nameless struct/union
-			"/wd4232", -- warning C4232: nonstandard extension used : 'xxx' : address of dllimport 'xxx' is not static, identity not guaranteed
-			"/wd4242", -- warning C4242: 'x' : conversion from 'xxx' to 'xxx', possible loss of data
-			"/wd4244", -- warning C4244: 'argument' : conversion from 'xxx' to 'xxx', possible loss of data
-			"/wd4250", -- warning C4250: 'xxx' : inherits 'xxx' via dominance
-			"/wd4255", -- warning C4255: 'xxx' : no function prototype given: converting '()' to '(void)'
-			"/wd4296", -- warning C4296: 'x' : expression is always false
-			"/wd4306", -- warning C4306: 'xxx': conversion from 'type1' to 'type2' of greater size // 64-bit only
-			"/wd4310", -- warning C4310: cast truncates constant value
-			"/wd4312", -- warning C4312: 'type cast' : conversion from 'xxx' to 'xxx' of greater size
-			"/wd4324", -- warning C4324: 'xxx' : structure was padded due to __declspec(align())
-			"/wd4347", -- warning C4347: behavior change: 'xxx' is called instead of 'xxx' // obsolete VS2005 - VS2010 only
-			"/wd4435", -- warning C4435: 'xxx' : Object layout under /vd2 will change due to virtual base 'xxx'
-			"/wd4510", -- warning C4510: 'xxx' : default constructor could not be generated
-			"/wd4512", -- warning C4512: 'xxx' : assignment operator could not be generated
-			"/wd4514", -- warning C4514: 'xxx' : unreferenced inline function has been removed
-			"/wd4521", -- warning C4521: 'xxx' : multiple copy constructors specified
-			"/wd4571", -- warning C4611: interaction between '_setjmp' and C++ object destruction is non-portable
-			"/wd4610", -- warning C4619: #pragma warning : there is no warning number 'xxx'
-			"/wd4611", -- warning C4571: Informational: catch(...) semantics changed since Visual C++ 7.1; structured exceptions (SEH) are no longer caught
-			"/wd4619", -- warning C4610: struct 'xxx' can never be instantiated - user defined constructor required
-			"/wd4625", -- warning C4625: 'xxx' : copy constructor could not be generated because a base class copy constructor is inaccessible or deleted
-			"/wd4626", -- warning C4626: 'xxx' : assignment operator could not be generated because a base class assignment operator is inaccessible or deleted
-			"/wd4640", -- warning C4640: 'xxx' : construction of local static object is not thread-safe
-			"/wd4668", -- warning C4668: 'xxx' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif'
-			"/wd4702", -- warning C4702: unreachable code
-			"/wd4706", -- warning C4706: assignment within conditional expression
-			"/wd4710", -- warning C4710: 'xxx' : function not inlined
-			"/wd4711", -- warning C4711: function 'xxx' selected for automatic inline expansion // optimized only
-			"/wd4805", -- warning C4805: 'x' : unsafe mix of type 'xxx' and type 'xxx' in operation
-			"/wd4820", -- warning C4820: 'xxx' : 'x' bytes padding added after data member 'xxx'
-			"/wd4826", -- warning C4826: Conversion from 'type1 ' to 'type_2' is sign-extended. This may cause unexpected runtime behavior. // 32-bit only
-			"/wd4365", -- warning C4365: 'action' : conversion from 'type_1' to 'type_2', signed/unsigned mismatch
-			"/wd4389", -- warning C4389: 'operator' : signed/unsigned mismatch
-			"/wd4245", -- warning C4245: 'conversion' : conversion from 'type1' to 'type2', signed/unsigned mismatch
-			"/wd4388", -- warning C4388: signed/unsigned mismatch
-			"/wd4267", -- warning C4267: 'var' : conversion from 'size_t' to 'type', possible loss of data
 			"/wd4005", -- warning C4005: The macro identifier is defined twice. The compiler uses the second macro definition
-			"/wd4350", -- warning C4350: behavior change: 'member1' called instead of 'member2'
-			"/wd4996", -- warning C4996: 'function': was declared deprecated
-			"/wd4191", -- warning C4191: 'operator/operation' : unsafe conversion from 'type of expression' to 'type required'
+			"/wd4018", -- warning C4018: 'x' : signed/unsigned mismatch
 			"/wd4060", -- warning C4060: switch statement contains no 'case' or 'default' labels
 			"/wd4065", -- warning C4065: switch statement contains 'default' but no 'case' labels
-			"/wd4640", -- warning C4640: 'instance' : construction of local static object is not thread-safe
-			"/wd4290", -- warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
-			"/wd4355", -- warning C4355: 'this' : used in base member initializer list
-			"/wd4800", -- warning C4800: 'type' : forcing value to bool 'true' or 'false' (performance warning)
-			"/wd4371", -- warning C4371: layout of class may have changed from a previous version of the compiler due to better packing of member 'member'
-			"/wd4548", -- warning C4548: expression before comma has no effect; expected expression with side-effect
+			"/wd4100", -- warning C4100: 'xxx' : unreferenced formal parameter
+			"/wd4127", -- warning C4127: conditional expression is constant
+			"/wd4146", -- warning C4146: unary minus operator applied to unsigned type, result still unsigned
+			"/wd4201", -- warning C4201: nonstandard extension used : nameless struct/union
+			"/wd4244", -- warning C4244: 'argument' : conversion from 'xxx' to 'xxx', possible loss of data
+			"/wd4245", -- warning C4245: 'conversion' : conversion from 'type1' to 'type2', signed/unsigned mismatch
+			"/wd4250", -- warning C4250: 'xxx' : inherits 'xxx' via dominance
+			"/wd4267", -- warning C4267: 'var' : conversion from 'size_t' to 'type', possible loss of data
+			"/wd4310", -- warning C4310: cast truncates constant value
+			"/wd4319", -- warning C4319: 'operator' : zero extending 'type' to 'type' of greater size
+			"/wd4324", -- warning C4324: 'xxx' : structure was padded due to __declspec(align())
+			"/wd4334", -- warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+			"/wd4389", -- warning C4389: 'operator' : signed/unsigned mismatch
+			"/wd4456", -- warning C4456: declaration of 'xxx' hides previous local declaration
+			"/wd4457", -- warning C4457: declaration of 'xxx' hides function parameter
+			"/wd4458", -- warning C4458: declaration of 'xxx' hides class member
+			"/wd4459", -- warning C4459: declaration of 'xxx' hides global declaration
+			"/wd4702", -- warning C4702: unreachable code
+			"/wd4706", -- warning C4706: assignment within conditional expression
+			"/wd4804", -- warning C4804: '>>': unsafe use of type 'bool' in operation
+			"/wd4805", -- warning C4805: 'x' : unsafe mix of type 'xxx' and type 'xxx' in operation
+			"/wd4996", -- warning C4996: 'function': was declared deprecated
 		}
+
 if _OPTIONS["vs"]=="intel-15" then
 		buildoptions {
 			"/Qwd9",                -- remark #9: nested comment is not allowed
@@ -1460,6 +1445,8 @@ if _OPTIONS["vs"]=="clangcl" then
 			"-Wno-unused-local-typedef",
 			"-Wno-unused-private-field",
 			"-Wno-unused-variable",
+			"-Wno-xor-used-as-pow",
+			"-Wno-microsoft-cast",
 		}
 end
 
@@ -1468,20 +1455,6 @@ end
 		}
 		includedirs {
 			MAME_DIR .. "3rdparty/dxsdk/Include"
-		}
-configuration { "vs201*" }
-		buildoptions {
-			"/wd4334", -- warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
-			"/wd4456", -- warning C4456: declaration of 'xxx' hides previous local declaration
-			"/wd4457", -- warning C4457: declaration of 'xxx' hides function parameter
-			"/wd4458", -- warning C4458: declaration of 'xxx' hides class member
-			"/wd4459", -- warning C4459: declaration of 'xxx' hides global declaration
-			"/wd4838", -- warning C4838: conversion from 'xxx' to 'yyy' requires a narrowing conversion
-			"/wd4091", -- warning C4091: 'typedef ': ignored on left of '' when no variable is declared
-			"/wd4463", -- warning C4463: overflow; assigning 1 to bit-field that can only hold values from -1 to 0
-			"/wd4297", -- warning C4297: 'xxx::~xxx': function assumed not to throw an exception but does
-			"/wd4319", -- warning C4319: 'operator' : zero extending 'type' to 'type' of greater size
-			"/wd4592", -- warning C4592: symbol will be dynamically initialized (implementation limitation)
 		}
 configuration { "winphone8* or winstore8*" }
 	linkoptions {
@@ -1541,8 +1514,8 @@ if (not os.isfile(path.join("src", "osd",  _OPTIONS["osd"] .. ".lua"))) then
 end
 dofile(path.join("src", "osd", _OPTIONS["osd"] .. ".lua"))
 dofile(path.join("src", "lib.lua"))
-if (MACHINES["NETLIST"]~=null or _OPTIONS["with-tools"]) then
-dofile(path.join("src", "netlist.lua"))
+if opt_tool(MACHINES, "NETLIST") then
+   dofile(path.join("src", "netlist.lua"))
 end
 --if (STANDALONE~=true) then
 dofile(path.join("src", "formats.lua"))
@@ -1602,3 +1575,28 @@ if _OPTIONS["with-benchmarks"] then
 	group "benchmarks"
 	dofile(path.join("src", "benchmarks.lua"))
 end
+
+function generate_has_header(hashname, hash)
+   fname = GEN_DIR .. "has_" .. hashname:lower() .. ".h"
+   file = io.open(fname, "w")
+   file:write("// Generated file, edition is futile\n")
+   file:write("\n")
+   file:write(string.format("#ifndef GENERATED_HAS_%s_H\n", hashname))
+   file:write(string.format("#define GENERATED_HAS_%s_H\n", hashname))
+   file:write("\n")
+   for k, v in pairs(hash) do
+	  if v then
+		 file:write(string.format("#define HAS_%s_%s\n", hashname, k))
+	  end
+   end
+   file:write("\n")
+   file:write("#endif\n")
+   file:close()
+end
+
+generate_has_header("CPUS", CPUS)
+generate_has_header("SOUNDS", SOUNDS)
+generate_has_header("MACHINES", MACHINES)
+generate_has_header("VIDEOS", VIDEOS)
+generate_has_header("BUSES", BUSES)
+generate_has_header("FORMATS", FORMATS)

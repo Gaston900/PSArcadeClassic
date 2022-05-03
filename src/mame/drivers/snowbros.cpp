@@ -81,19 +81,19 @@ a joystick.  This is not an emulation bug.
 #include "cpu/mcs51/mcs51.h" // for semicom mcu
 #include "cpu/z80/z80.h"
 #include "machine/watchdog.h"
-#include "sound/ym2151.h"
-#include "sound/3812intf.h"
+#include "sound/ymopm.h"
+#include "sound/ymopl.h"
 
 #include "speaker.h"
 
 
-WRITE8_MEMBER(snowbros_state::snowbros_flipscreen_w)
+void snowbros_state::snowbros_flipscreen_w(uint8_t data)
 {
 	m_pandora->flip_screen_set(!BIT(data, 7));
 }
 
 
-WRITE8_MEMBER(snowbros_state::bootleg_flipscreen_w)
+void snowbros_state::bootleg_flipscreen_w(uint8_t data)
 {
 	flip_screen_set(~data & 0x80);
 }
@@ -119,17 +119,17 @@ WRITE_LINE_MEMBER(snowbros_state::screen_vblank_snowbros)
 
 
 
-WRITE16_MEMBER(snowbros_state::snowbros_irq4_ack_w)
+void snowbros_state::snowbros_irq4_ack_w(uint16_t data)
 {
 	m_maincpu->set_input_line(4, CLEAR_LINE);
 }
 
-WRITE16_MEMBER(snowbros_state::snowbros_irq3_ack_w)
+void snowbros_state::snowbros_irq3_ack_w(uint16_t data)
 {
 	m_maincpu->set_input_line(3, CLEAR_LINE);
 }
 
-WRITE16_MEMBER(snowbros_state::snowbros_irq2_ack_w)
+void snowbros_state::snowbros_irq2_ack_w(uint16_t data)
 {
 	m_maincpu->set_input_line(2, CLEAR_LINE);
 }
@@ -181,7 +181,7 @@ TIMER_DEVICE_CALLBACK_MEMBER(snowbros_state::snowbros3_irq)
 
 }
 
-READ16_MEMBER(snowbros_state::toto_read)
+uint16_t snowbros_state::toto_read(offs_t offset, uint16_t mem_mask)
 {
 	int pc = m_maincpu->pc();
 	if ((pc!= 0x3f010) && (pc!= 0x38008)) printf("toto prot %08x %04x\n", pc, mem_mask);
@@ -226,22 +226,22 @@ void snowbros_state::sound_io_map(address_map &map)
 /* Semicom AT89C52 MCU */
 
 // probably not endian safe
-WRITE8_MEMBER(snowbros_state::prot_p0_w)
+void snowbros_state::prot_p0_w(uint8_t data)
 {
-	uint16_t word = m_hyperpac_ram[(0xe000/2)+m_semicom_prot_offset];
+	uint16_t word = m_hyperpac_ram[m_semicom_prot_base + m_semicom_prot_offset];
 	word = (word & 0xff00) | (data << 0);
-	m_hyperpac_ram[(0xe000/2)+m_semicom_prot_offset] = word;
+	m_hyperpac_ram[m_semicom_prot_base + m_semicom_prot_offset] = word;
 }
 
 // probably not endian safe
-WRITE8_MEMBER(snowbros_state::prot_p1_w)
+void snowbros_state::prot_p1_w(uint8_t data)
 {
-	uint16_t word = m_hyperpac_ram[(0xe000/2)+m_semicom_prot_offset];
+	uint16_t word = m_hyperpac_ram[m_semicom_prot_base + m_semicom_prot_offset];
 	word = (word & 0x00ff) | (data << 8);
-	m_hyperpac_ram[(0xe000/2)+m_semicom_prot_offset] = word;
+	m_hyperpac_ram[m_semicom_prot_base + m_semicom_prot_offset] = word;
 }
 
-WRITE8_MEMBER(snowbros_state::prot_p2_w)
+void snowbros_state::prot_p2_w(uint8_t data)
 {
 	// offset
 	m_semicom_prot_offset = data;
@@ -322,7 +322,7 @@ void snowbros_state::twinadv_map(address_map &map)
 	map(0xa00000, 0xa00001).w(FUNC(snowbros_state::snowbros_irq2_ack_w));  /* IRQ 2 acknowledge */
 }
 
-WRITE8_MEMBER(snowbros_state::twinadv_oki_bank_w)
+void snowbros_state::twinadv_oki_bank_w(uint8_t data)
 {
 	int bank = (data &0x02)>>1;
 
@@ -376,7 +376,7 @@ void snowbros_state::hyperpac_sound_map(address_map &map)
 
 /* Same volume used for all samples at the Moment, could be right, we have no
    way of knowing .. */
-READ16_MEMBER(snowbros_state::sb3_sound_r)
+uint16_t snowbros_state::sb3_sound_r()
 {
 	return 0x0003;
 }
@@ -445,7 +445,7 @@ void snowbros_state::sb3_play_sound (int data)
 
 }
 
-WRITE16_MEMBER(snowbros_state::sb3_sound_w)
+void snowbros_state::sb3_sound_w(uint16_t data)
 {
 	if (data == 0x00fe)
 	{
@@ -524,7 +524,7 @@ void snowbros_state::finalttr_map(address_map &map)
 // The sequence MEN is sent to the protection device, followed by the code request (4 bytes in all).
 // After each byte, a number of NOPs are executed to give the device time to catch up.
 // After the 4th byte, the code reads the device to get its response.
-READ16_MEMBER(snowbros_state::yutnori_prot_r)
+uint16_t snowbros_state::yutnori_prot_r()
 {
 	switch(m_yutnori_prot_val) // the 4th byte
 	{
@@ -539,7 +539,7 @@ READ16_MEMBER(snowbros_state::yutnori_prot_r)
 	return 0;
 }
 
-WRITE16_MEMBER(snowbros_state::yutnori_prot_w)
+void snowbros_state::yutnori_prot_w(uint16_t data)
 {
 	m_yutnori_prot_val = data;
 }
@@ -2344,8 +2344,8 @@ ROM_START( hyperpac )
 	ROM_REGION( 0x10000, "soundcpu", 0 ) /* Z80 Code */
 	ROM_LOAD( "hyperpac.u1", 0x00000, 0x10000 , CRC(03faf88e) SHA1(a8da883d4b765b809452bbffca37ff224edbe86d) )
 
-	ROM_REGION( 0x10000, "protection", 0 ) /* Intel 87C52 MCU Code */
-	ROM_LOAD( "at89c52.bin", 0x00000, 0x2000 , CRC(291f9326) SHA1(e440ce7d92188faa86e02e7f9db4ec6bce21efd3) ) /* decapped */
+	ROM_REGION( 0x2000, "protection", 0 ) /* Intel 87C52 MCU Code */
+	ROM_LOAD( "at89c52.bin", 0x0000, 0x2000 , CRC(291f9326) SHA1(e440ce7d92188faa86e02e7f9db4ec6bce21efd3) ) /* decapped */
 
 	ROM_REGION( 0x040000, "oki", 0 ) /* Samples */
 	ROM_LOAD( "hyperpac.j15", 0x00000, 0x40000, CRC(fb9f468d) SHA1(52857b1a04c64ac853340ebb8e92d98eabea8bc1) )
@@ -2464,6 +2464,7 @@ ROM_START( pzlbreaka )
 	ROM_LOAD( "ua4", 0x000000, 0x80000, CRC(d211705a) SHA1(b3a7f8198dc8c034b17b843b2ab0298426de3f55) )
 	ROM_LOAD( "ua5", 0x080000, 0x80000, CRC(eb3044bc) SHA1(c00e7b112b82c8eeb59c2a96168ea5156347f05e) ) // some differences compared to the parent
 ROM_END
+
 
 ROM_START( toppyrap )
 	ROM_REGION( 0x100000, "maincpu", 0 ) /* 68000 Code */
@@ -2641,29 +2642,36 @@ ROM_START( mcheonru ) /* SemiCom Ser-4331-4 PCB */
 	ROM_LOAD( "u78", 0x180000, 0x80000, CRC(f1b74978) SHA1(d1ac1bc212050d4f1a861045ab612115c73d3fd0) )
 ROM_END
 
+/*
+
+Cookie & Bibi 2
+SemiCom (c) 1996
+
+  CPU: MC68000P10, Z8400B Z80
+Sound: OKIM6295, YM2151+YM3012 (rebadged as AD-65, KA51+K-662)
+Video: Lattice pLSI 1032-60LJ (square 84 pin socketed)
+  OSC: 16MHz, 12MHz
+*/
+
 ROM_START( cookbib2 )
 	ROM_REGION( 0x100000, "maincpu", 0 ) /* 68000 Code */
-	ROM_LOAD16_BYTE( "cookbib2.02",  0x00001, 0x40000, CRC(b2909460) SHA1(2438638af870cfc105631d2b5e5a27a64ab5394d) )
-	ROM_LOAD16_BYTE( "cookbib2.01",  0x00000, 0x40000, CRC(65aafde2) SHA1(01f9f261527c35182f0445d641d987aa86ad750f) )
+	ROM_LOAD16_BYTE( "unico_02.uh12",  0x00001, 0x40000, CRC(b2909460) SHA1(2438638af870cfc105631d2b5e5a27a64ab5394d) ) // 27C020
+	ROM_LOAD16_BYTE( "unico_01.ui12",  0x00000, 0x40000, CRC(65aafde2) SHA1(01f9f261527c35182f0445d641d987aa86ad750f) ) // 27C020
 
 	ROM_REGION( 0x10000, "soundcpu", 0 ) /* Z80 Code */
-	ROM_LOAD( "cookbib2.07", 0x00000, 0x10000 , CRC(f59f1c9a) SHA1(2830261fd55249e015514fcb4cf8392e83b7fd0d) )
+	ROM_LOAD( "unico_07.u1", 0x00000, 0x10000 , CRC(f59f1c9a) SHA1(2830261fd55249e015514fcb4cf8392e83b7fd0d) ) // 27C512
 
-	ROM_REGION( 0x10000, "cpu2", 0 ) /* Intel 87C52 MCU Code */
-	ROM_LOAD( "87c52.mcu", 0x00000, 0x10000 , NO_DUMP ) /* can't be dumped */
-
-	ROM_REGION( 0x200, "user1", 0 ) /* Data from Shared RAM */
-	/* this is not a real rom but instead the data extracted from
-	   shared ram, the MCU puts it there */
-	ROM_LOAD16_WORD_SWAP( "protdata.bin", 0x00000, 0x200 , CRC(ae6d8ed5) SHA1(410cdacb9b90ea345c0e4be85e60a138f45a51f1) )
+	ROM_REGION( 0x2000, "protection", 0 ) /* P87C52EBPN (XSC6407A) Code (8052) */
+	ROM_LOAD( "p87c52ebpn.bin", 0x0000, 0x2000 , CRC(ef042cef) SHA1(3089d5a3cb5ed663a8d89d59e427a06cffcd6219) ) /* dumped via laser glitching */
 
 	ROM_REGION( 0x040000, "oki", 0 ) /* Samples */
-	ROM_LOAD( "cookbib2.06", 0x00000, 0x20000, CRC(5e6f76b8) SHA1(725800143dfeaa6093ed5fcc5b9f15678ae9e547) )
+	ROM_LOAD( "unico_06.uj15", 0x00000, 0x20000, CRC(5e6f76b8) SHA1(725800143dfeaa6093ed5fcc5b9f15678ae9e547) ) // 27C010
 
 	ROM_REGION( 0x140000, "gfx1", 0 ) /* Sprites */
-	ROM_LOAD( "cookbib2.05", 0x000000, 0x80000, CRC(89fb38ce) SHA1(1b39dd9c2743916b8d8af590bd92fe4819c2454b) )
-	ROM_LOAD( "cookbib2.04", 0x080000, 0x80000, CRC(f240111f) SHA1(b2c3b6e3d916fc68e1fd258b1279b6c39e1f0108) )
-	ROM_LOAD( "cookbib2.03", 0x100000, 0x40000, CRC(e1604821) SHA1(bede6bdd8331128b9f2b229d718133470bf407c9) )
+	ROM_LOAD( "unico_05.ua4", 0x000000, 0x80000, CRC(89fb38ce) SHA1(1b39dd9c2743916b8d8af590bd92fe4819c2454b) ) // 27C040
+	ROM_LOAD( "unico_04.ua5", 0x080000, 0x80000, CRC(f240111f) SHA1(b2c3b6e3d916fc68e1fd258b1279b6c39e1f0108) ) // 27C040
+	ROM_LOAD( "unico_03.ua6", 0x100000, 0x40000, CRC(e1604821) SHA1(bede6bdd8331128b9f2b229d718133470bf407c9) ) // 27C020
+	/* UA7 is unpopulated */
 ROM_END
 
 ROM_START( cookbib2a )
@@ -2800,7 +2808,8 @@ ROM_START( ballboy )
 	ROM_CONTINUE(0x80000,0x60000)
 ROM_END
 
-ROM_START( ballboy3p ) //PCB etched JOYCUS1B and 2001927
+
+ROM_START( ballboy3p ) //PCB etched JOYCUS10 (or JOYCU510) 2081627 (0, 6 and 8 aren't clearly readable)
 	ROM_REGION( 0x40000, "maincpu", 0 ) // 68000 code
 	ROM_LOAD16_BYTE( "ur4",  0x00000, 0x20000, CRC(32153d8f) SHA1(1fa698b93507fb775dfff6da8701ab65c986cac5) )
 	ROM_LOAD16_BYTE( "ur3",  0x00001, 0x20000, CRC(4d462a75) SHA1(30a84a618bea5c64201329d02847382c2d0c84ba) )
@@ -2819,6 +2828,7 @@ ROM_START( ballboy3p ) //PCB etched JOYCUS1B and 2001927
 	ROM_LOAD( "us5",     0x00000, 0x20000, CRC(7c6368ef) SHA1(53393c570c605f7582b61c630980041e2ed32e2d) ) // only ROM identical to the 2 player version
 	ROM_CONTINUE(0x80000,0x60000)
 ROM_END
+
 
 /*
 
@@ -2910,10 +2920,13 @@ ROM_END
 
 void snowbros_state::init_cookbib2()
 {
+	save_item(NAME(m_semicom_prot_offset));
+
+	m_semicom_prot_base = 0xf000 / 2;
 }
 
 
-READ16_MEMBER(snowbros_state::_4in1_02_read)
+uint16_t snowbros_state::_4in1_02_read()
 {
 	return 0x0202;
 }
@@ -2943,7 +2956,7 @@ void snowbros_state::init_4in1boot()
 			buffer[i] = src[i^0x4000];
 		memcpy(src,&buffer[0],len);
 	}
-	m_maincpu->space(AS_PROGRAM).install_read_handler(0x200000, 0x200001, read16_delegate(FUNC(snowbros_state::_4in1_02_read),this));
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x200000, 0x200001, read16smo_delegate(*this, FUNC(snowbros_state::_4in1_02_read)));
 }
 
 void snowbros_state::init_snowbro3()
@@ -2970,25 +2983,25 @@ void snowbros_state::init_ballboy3p()
 	m_maincpu->space(AS_PROGRAM).unmap_write(0x400000, 0x400001); // unmap flipscreen as the DSW has been removed in favor of the controls for the 3rd player
 }
 
-READ16_MEMBER(snowbros_state::_3in1_read)
+uint16_t snowbros_state::_3in1_read()
 {
 	return 0x000a;
 }
 
 void snowbros_state::init_3in1semi()
 {
-	m_maincpu->space(AS_PROGRAM).install_read_handler(0x200000, 0x200001, read16_delegate(FUNC(snowbros_state::_3in1_read),this));
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x200000, 0x200001, read16smo_delegate(*this, FUNC(snowbros_state::_3in1_read)));
 }
 
 
-READ16_MEMBER(snowbros_state::cookbib3_read)
+uint16_t snowbros_state::cookbib3_read()
 {
 	return 0x2a2a;
 }
 
 void snowbros_state::init_cookbib3()
 {
-	m_maincpu->space(AS_PROGRAM).install_read_handler(0x200000, 0x200001, read16_delegate(FUNC(snowbros_state::cookbib3_read),this));
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x200000, 0x200001, read16smo_delegate(*this, FUNC(snowbros_state::cookbib3_read)));
 }
 
 void snowbros_state::init_pzlbreak()
@@ -3026,12 +3039,13 @@ void snowbros_state::init_toto()
 	}
 
 	// protection? (just return 0x07)
-	m_maincpu->space(AS_PROGRAM).install_read_handler(0x500006, 0x500007, read16_delegate(FUNC(snowbros_state::toto_read),this));
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x500006, 0x500007, read16s_delegate(*this, FUNC(snowbros_state::toto_read)));
 }
 
 void snowbros_state::init_hyperpac()
 {
 	save_item(NAME(m_semicom_prot_offset));
+	m_semicom_prot_base = 0xe000 / 2;
 }
 
 
@@ -3059,8 +3073,8 @@ GAME( 1996, toto,       0,        snowbros,    snowbros, snowbros_state, init_to
 GAME( 1993, finalttr,   0,        finalttr,    finalttr, snowbros_state, empty_init,    ROT0, "Jeil Computer System", "Final Tetris", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, hyperpac,   0,        semicom_mcu, hyperpac, snowbros_state, init_hyperpac, ROT0, "SemiCom",              "Hyper Pacman", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, hyperpacb,  hyperpac, semicom,     hyperpac, snowbros_state, empty_init,    ROT0, "bootleg",              "Hyper Pacman (bootleg)", MACHINE_SUPPORTS_SAVE )
-GAME( 1996, cookbib2,   0,        semiprot,    cookbib2, snowbros_state, init_cookbib2, ROT0, "SemiCom",              "Cookie & Bibi 2 (set 1)", MACHINE_SUPPORTS_SAVE )
-GAME( 1996, cookbib2a,  cookbib2, semiprot,    cookbib2, snowbros_state, init_cookbib2, ROT0, "SemiCom",              "Cookie & Bibi 2 (set 2)", MACHINE_SUPPORTS_SAVE ) // older? test mode looks even worse on this, but neither shows the correct dip info anyway
+GAME( 1996, cookbib2,   0,        semicom_mcu, cookbib2, snowbros_state, init_cookbib2, ROT0, "SemiCom",              "Cookie & Bibi 2 (set 1)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, cookbib2a,  cookbib2, semicom_mcu, cookbib2, snowbros_state, init_cookbib2, ROT0, "SemiCom",              "Cookie & Bibi 2 (set 2)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, cookbib2b,  cookbib2, semiprot,    cookbib2, snowbros_state, init_cookbib2, ROT0, "SemiCom",              "Cookie & Bibi 2 (set 3)", MACHINE_SUPPORTS_SAVE ) // older? test mode looks even worse on this, but neither shows the correct dip info anyway
 GAME( 1996, toppyrap,   0,        semiprot,    toppyrap, snowbros_state, empty_init,    ROT0, "SemiCom",              "Toppy & Rappy", MACHINE_SUPPORTS_SAVE )
 GAME( 1997, cookbib3,   0,        semiprot,    cookbib3, snowbros_state, init_cookbib3, ROT0, "SemiCom",              "Cookie & Bibi 3", MACHINE_SUPPORTS_SAVE )
@@ -3086,10 +3100,9 @@ GAME( 1996, multi96,    twinadv,  twinadv,     twinadv,  snowbros_state, empty_i
 // The Korean games database shows an earlier version of this called Ball Boy with a different title screen to the version of Ball Boy we have
 // http://mamedev.emulab.it/undumped/images/Ballboy.jpg
 // it is possible this 'ball boy' is the original bootleg, with snwobro3 being a hack of that, and the ballboy set we have a further hack of that
-// there is also a later 2004 version with 3 player support
 // these use an MCU to drive the sound
-GAME( 2002, snowbro3,   0,        snowbro3,    snowbroj,  snowbros_state, init_snowbro3, ROT0, "Syrmex",  "Snow Brothers 3 - Magical Adventure", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // hacked from SnowBros code but released as an original game
-GAME( 2003, ballboy,    snowbro3, snowbro3,    snowbroj,  snowbros_state, init_snowbro3, ROT0, "bootleg", "Ball Boy", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 2002, snowbro3,   0,        snowbro3,    snowbroj,  snowbros_state, init_snowbro3,  ROT0, "Syrmex",  "Snow Brothers 3 - Magical Adventure", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // hacked from SnowBros code but released as an original game
+GAME( 2003, ballboy,    snowbro3, snowbro3,    snowbroj,  snowbros_state, init_snowbro3,  ROT0, "bootleg", "Ball Boy (2 players)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 2004, ballboy3p,  snowbro3, snowbro3,    ballboy3p, snowbros_state, init_ballboy3p, ROT0, "bootleg", "Ball Boy (3 players)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 // protection appears to handle the sound, should check if it's just a block of code that is conditionally executed like some of the Semicom titles.
-GAME( 1999, yutnori,    0,        yutnori,     yutnori,  snowbros_state, init_yutnori,  ROT0, "Nunal",   "Puzzle Yutnori (Korea)", MACHINE_UNEMULATED_PROTECTION | MACHINE_NO_SOUND ) // Nunal is apparently Korean slang for Eyeball, hence the logo.  Some places report 'JCC Soft' as the manufacturer
+GAME( 1999, yutnori,    0,        yutnori,     yutnori,   snowbros_state, init_yutnori,   ROT0, "Nunal",   "Puzzle Yutnori (Korea)", MACHINE_UNEMULATED_PROTECTION | MACHINE_NO_SOUND ) // Nunal is apparently Korean slang for Eyeball, hence the logo.  Some places report 'JCC Soft' as the manufacturer

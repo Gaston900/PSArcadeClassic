@@ -2,6 +2,8 @@
 // copyright-holders:Bryan McPhail
 /***************************************************************************
 
+  All game use a DE-0372-0 PCB (see below for layout)
+
   Funky Jet                               (c) 1992 Data East / Mitchell Corporation
   Sotsugyo Shousho                        (c) 1995 Mitchell Corporation
 
@@ -95,15 +97,14 @@ Notes:
 #include "cpu/m68000/m68000.h"
 #include "machine/decocrpt.h"
 #include "machine/gen_latch.h"
-#include "sound/ym2151.h"
 #include "sound/okim6295.h"
+#include "sound/ymopm.h"
 #include "emupal.h"
-#include "screen.h"
 #include "speaker.h"
 
 /******************************************************************************/
 
-READ16_MEMBER( funkyjet_state::funkyjet_protection_region_0_146_r )
+uint16_t funkyjet_state::funkyjet_protection_region_0_146_r(offs_t offset)
 {
 //  uint16_t realdat = deco16_146_funkyjet_prot_r(space,offset&0x3ff,mem_mask);
 
@@ -118,7 +119,7 @@ READ16_MEMBER( funkyjet_state::funkyjet_protection_region_0_146_r )
 	return data;
 }
 
-WRITE16_MEMBER( funkyjet_state::funkyjet_protection_region_0_146_w )
+void funkyjet_state::funkyjet_protection_region_0_146_w(offs_t offset, uint16_t data, uint16_t mem_mask)
 {
 //  deco16_146_funkyjet_prot_w(space,offset&0x3ff,data,mem_mask);
 
@@ -316,7 +317,7 @@ GFXDECODE_END
 void funkyjet_state::funkyjet(machine_config &config)
 {
 	/* basic machine hardware */
-	M68000(config, m_maincpu, XTAL(28'000'000)/2); /* 28 MHz crystal */
+	M68000(config, m_maincpu, XTAL(28'322'000)/2); /* 28 MHz crystal - 28.322000 on funkyjeta2 PCB at least*/
 	m_maincpu->set_addrmap(AS_PROGRAM, &funkyjet_state::funkyjet_map);
 	m_maincpu->set_vblank_int("screen", FUNC(funkyjet_state::irq6_line_hold));
 
@@ -326,13 +327,13 @@ void funkyjet_state::funkyjet(machine_config &config)
 	m_audiocpu->add_route(ALL_OUTPUTS, "rspeaker", 0);
 
 	/* video hardware */
-	screen_device &screen(SCREEN(config, "screen", SCREEN_TYPE_RASTER));
-	screen.set_refresh_hz(58);
-	screen.set_vblank_time(ATTOSECONDS_IN_USEC(529));
-	screen.set_size(40*8, 32*8);
-	screen.set_visarea(0*8, 40*8-1, 1*8, 31*8-1);
-	screen.set_screen_update(FUNC(funkyjet_state::screen_update));
-	screen.set_palette("palette");
+	SCREEN(config, m_screen, SCREEN_TYPE_RASTER);
+	m_screen->set_refresh_hz(58);
+	m_screen->set_vblank_time(ATTOSECONDS_IN_USEC(529));
+	m_screen->set_size(40*8, 32*8);
+	m_screen->set_visarea(0*8, 40*8-1, 1*8, 31*8-1);
+	m_screen->set_screen_update(FUNC(funkyjet_state::screen_update));
+	m_screen->set_palette("palette");
 
 	DECO146PROT(config, m_deco146, 0);
 	m_deco146->port_a_cb().set_ioport("INPUTS");
@@ -347,8 +348,6 @@ void funkyjet_state::funkyjet(machine_config &config)
 	DECO16IC(config, m_deco_tilegen, 0);
 	m_deco_tilegen->set_pf1_size(DECO_64x32);
 	m_deco_tilegen->set_pf2_size(DECO_64x32);
-	m_deco_tilegen->set_pf1_trans_mask(0x0f);
-	m_deco_tilegen->set_pf2_trans_mask(0x0f);
 	m_deco_tilegen->set_pf1_col_bank(0x00);
 	m_deco_tilegen->set_pf2_col_bank(0x10);
 	m_deco_tilegen->set_pf1_col_mask(0x0f);
@@ -393,7 +392,9 @@ ROM_START( funkyjet )
 	ROM_LOAD( "mat00", 0x080000, 0x80000, CRC(fbda0228) SHA1(815d49898d02e699393e370209181f2ca8301949) )
 
 	ROM_REGION( 0x40000, "oki", 0 ) /* ADPCM samples */
-	ROM_LOAD( "jk03.15h",    0x00000, 0x20000, CRC(69a0eaf7) SHA1(05038e82ee03106625f05082fe9912e16be181ee) )
+	// needs verifying, looks like a bad dump compared to the ROM in funkyjeta2
+	// 0x20 bytes at 0x79e0 are blanked out and 0x20 bytes at 0xa6a0 are replaced with different (bad?) data
+	ROM_LOAD( "jk03.15h",    0x00000, 0x20000, BAD_DUMP CRC(69a0eaf7) SHA1(05038e82ee03106625f05082fe9912e16be181ee) )
 ROM_END
 
 ROM_START( funkyjeta )
@@ -412,25 +413,26 @@ ROM_START( funkyjeta )
 	ROM_LOAD( "mat00", 0x080000, 0x80000, CRC(fbda0228) SHA1(815d49898d02e699393e370209181f2ca8301949) )
 
 	ROM_REGION( 0x40000, "oki", 0 ) /* ADPCM samples */
-	ROM_LOAD( "jk03.15h",    0x00000, 0x20000, CRC(69a0eaf7) SHA1(05038e82ee03106625f05082fe9912e16be181ee) )
+	// see comment in funkyjet set
+	ROM_LOAD( "jk03.15h",    0x00000, 0x20000, BAD_DUMP CRC(69a0eaf7) SHA1(05038e82ee03106625f05082fe9912e16be181ee) )
 ROM_END
 
 ROM_START( funkyjeta2 )
-	ROM_REGION( 0x80000, "maincpu", 0 ) // 68000 code
+	ROM_REGION( 0x80000, "maincpu", 0 ) /* 68000 code */
 	ROM_LOAD16_BYTE( "12f", 0x00000, 0x40000, CRC(a18de697) SHA1(063f7f4c31c80b8fd807699e0412abb9271ddc59) ) // labels were blank
 	ROM_LOAD16_BYTE( "13f", 0x00001, 0x40000, CRC(695a27cd) SHA1(79b4e61e7c6bdab439d70993c296443f97339351) )
 
-	ROM_REGION( 0x10000, "audiocpu", 0 )
+	ROM_REGION( 0x10000, "audiocpu", 0 )    /* Sound CPU */
 	ROM_LOAD( "16f",    0x00000, 0x10000, CRC(748c0bd8) SHA1(35910e6a4c4f198fb76bde0f5b053e2c66cfa0ff) )
 
 	ROM_REGION( 0x080000, "gfx1", 0 )
-	ROM_LOAD( "mat02", 0x000000, 0x80000, CRC(e4b94c7e) SHA1(7b6ddd0bd388c8d32277fce4b3abb102724bc7d1) ) // encrypted
+	ROM_LOAD( "mat02", 0x000000, 0x80000, CRC(e4b94c7e) SHA1(7b6ddd0bd388c8d32277fce4b3abb102724bc7d1) ) /* Encrypted chars */
 
 	ROM_REGION( 0x100000, "gfx2", 0 )
-	ROM_LOAD( "mat01", 0x000000, 0x80000, CRC(24093a8d) SHA1(71f76ddd8a4b6e05ceb2fff4e20b6edb5e011e79) ) // sprites
+	ROM_LOAD( "mat01", 0x000000, 0x80000, CRC(24093a8d) SHA1(71f76ddd8a4b6e05ceb2fff4e20b6edb5e011e79) ) /* sprites */
 	ROM_LOAD( "mat00", 0x080000, 0x80000, CRC(fbda0228) SHA1(815d49898d02e699393e370209181f2ca8301949) )
 
-	ROM_REGION( 0x40000, "oki", 0 ) // ADPCM samples
+	ROM_REGION( 0x40000, "oki", 0 ) /* ADPCM samples */
 	ROM_LOAD( "15h",    0x00000, 0x20000, CRC(d7c0f0fe) SHA1(7a4a21bbf0da27767de099fba66011732b2c835a) )
 ROM_END
 
@@ -450,7 +452,8 @@ ROM_START( funkyjetj )
 	ROM_LOAD( "mat00", 0x080000, 0x80000, CRC(fbda0228) SHA1(815d49898d02e699393e370209181f2ca8301949) )
 
 	ROM_REGION( 0x40000, "oki", 0 ) /* ADPCM samples */
-	ROM_LOAD( "jh03.15h",    0x00000, 0x20000, CRC(69a0eaf7) SHA1(05038e82ee03106625f05082fe9912e16be181ee) ) /* same as jk03.15h from world set */
+	// see comment in funkyjet set, was this verified as label is different?
+	ROM_LOAD( "jh03.15h",    0x00000, 0x20000, BAD_DUMP CRC(69a0eaf7) SHA1(05038e82ee03106625f05082fe9912e16be181ee) ) /* same as jk03.15h from world set */
 ROM_END
 
 ROM_START( sotsugyo )
@@ -500,7 +503,10 @@ void funkyjet_state::init_funkyjet()
 
 GAME( 1992, funkyjet,  0,        funkyjet, funkyjet,  funkyjet_state, init_funkyjet, ROT0, "Mitchell", "Funky Jet (World, rev 1)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, funkyjeta, funkyjet, funkyjet, funkyjet,  funkyjet_state, init_funkyjet, ROT0, "Mitchell", "Funky Jet (World)", MACHINE_SUPPORTS_SAVE )
+// This set, from a Korean PCB, has numerous changes, including a different 'how to play' demo, modified stage layouts
+// It also has you collecting smiley faces rather than fuel cells to charge your super
 GAME( 1992, funkyjeta2,funkyjet, funkyjet, funkyjeta2,funkyjet_state, init_funkyjet, ROT0, "Mitchell", "Funky Jet (Korea, prototype?)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, funkyjetj, funkyjet, funkyjet, funkyjetj, funkyjet_state, init_funkyjet, ROT0, "Mitchell (Data East Corporation license)", "Funky Jet (Japan, rev 2)", MACHINE_SUPPORTS_SAVE )
-GAME( 1995, sotsugyo,  0,        funkyjet, sotsugyo,  funkyjet_state, init_funkyjet, ROT0, "Mitchell (Atlus license)", "Sotsugyo Shousho (Japan)", MACHINE_SUPPORTS_SAVE )
+
+GAME( 1995, sotsugyo,  0,        funkyjet, sotsugyo,  funkyjet_state, init_funkyjet, ROT0, "Mitchell (Atlus license)", "Sotsugyo Shousho", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, sotsugyok, sotsugyo, funkyjet, sotsugyo,  funkyjet_state, init_funkyjet, ROT0, "Mitchell", "Jor-eop Jeungmyeongseo (Korea)", MACHINE_SUPPORTS_SAVE )

@@ -115,14 +115,14 @@ TIMER_DEVICE_CALLBACK_MEMBER(gberet_state::gberet_interrupt_tick)
  *
  *************************************/
 
-WRITE8_MEMBER(gberet_state::gberet_coin_counter_w)
+void gberet_state::gberet_coin_counter_w(uint8_t data)
 {
 	/* bits 0/1 = coin counters */
 	machine().bookkeeping().coin_counter_w(0, data & 1);
 	machine().bookkeeping().coin_counter_w(1, data & 2);
 }
 
-WRITE8_MEMBER(gberet_state::mrgoemon_coin_counter_w)
+void gberet_state::mrgoemon_coin_counter_w(uint8_t data)
 {
 	/* bits 0/1 = coin counters */
 	machine().bookkeeping().coin_counter_w(0, data & 1);
@@ -132,7 +132,7 @@ WRITE8_MEMBER(gberet_state::mrgoemon_coin_counter_w)
 	membank("bank1")->set_entry(((data & 0xe0) >> 5));
 }
 
-WRITE8_MEMBER(gberet_state::gberet_flipscreen_w)
+void gberet_state::gberet_flipscreen_w(uint8_t data)
 {
 	/* bits 0/1/2 = interrupt enable */
 	uint8_t ack_mask = ~data & m_interrupt_mask; // 1->0
@@ -149,7 +149,7 @@ WRITE8_MEMBER(gberet_state::gberet_flipscreen_w)
 	flip_screen_set(data & 8);
 }
 
-WRITE8_MEMBER(gberet_state::gberet_sound_w)
+void gberet_state::gberet_sound_w(uint8_t data)
 {
 	m_sn->write(*m_soundlatch);
 }
@@ -198,18 +198,18 @@ void gberet_state::mrgoemon_map(address_map &map)
 }
 
 
-WRITE8_MEMBER(gberet_state::gberetb_flipscreen_w)
+void gberet_state::gberetb_flipscreen_w(uint8_t data)
 {
 	flip_screen_set(data & 8);
 }
 
-READ8_MEMBER(gberet_state::gberetb_irq_ack_r)
+uint8_t gberet_state::gberetb_irq_ack_r()
 {
 	m_maincpu->set_input_line(0, CLEAR_LINE);
 	return 0xff;
 }
 
-WRITE8_MEMBER(gberet_state::gberetb_nmi_ack_w)
+void gberet_state::gberetb_nmi_ack_w(uint8_t data)
 {
 	m_maincpu->set_input_line(INPUT_LINE_NMI, CLEAR_LINE);
 }
@@ -394,14 +394,14 @@ GFXDECODE_END
  *
  *************************************/
 
-MACHINE_START_MEMBER(gberet_state,gberet)
+void gberet_state::machine_start()
 {
 	save_item(NAME(m_interrupt_mask));
 	save_item(NAME(m_interrupt_ticks));
 	save_item(NAME(m_spritebank));
 }
 
-MACHINE_RESET_MEMBER(gberet_state,gberet)
+void gberet_state::machine_reset()
 {
 	m_interrupt_mask = 0;
 	m_interrupt_ticks = 0;
@@ -416,9 +416,6 @@ void gberet_state::gberet(machine_config &config)
 	TIMER(config, "scantimer").configure_scanline(FUNC(gberet_state::gberet_interrupt_tick), "screen", 0, 16);
 	WATCHDOG_TIMER(config, "watchdog");
 
-	MCFG_MACHINE_START_OVERRIDE(gberet_state,gberet)
-	MCFG_MACHINE_RESET_OVERRIDE(gberet_state,gberet)
-
 	/* video hardware */
 	screen_device &screen(SCREEN(config, "screen", SCREEN_TYPE_RASTER));
 	screen.set_refresh_hz(60.60);
@@ -430,7 +427,6 @@ void gberet_state::gberet(machine_config &config)
 
 	GFXDECODE(config, m_gfxdecode, m_palette, gfx_gberet);
 	PALETTE(config, m_palette, FUNC(gberet_state::gberet_palette), 2*16*16, 32);
-	MCFG_VIDEO_START_OVERRIDE(gberet_state,gberet)
 
 	/* sound hardware */
 	SPEAKER(config, "mono").front_center();
@@ -454,9 +450,6 @@ void gberet_state::gberetb(machine_config &config)
 	m_maincpu->set_vblank_int("screen", FUNC(gberet_state::irq0_line_assert));
 	m_maincpu->set_periodic_int(FUNC(gberet_state::nmi_line_assert), attotime::from_hz(XTAL(20'000'000)/0x8000)); // divider guessed
 
-	MCFG_MACHINE_START_OVERRIDE(gberet_state,gberet)
-	MCFG_MACHINE_RESET_OVERRIDE(gberet_state,gberet)
-
 	/* video hardware */
 	screen_device &screen(SCREEN(config, "screen", SCREEN_TYPE_RASTER));
 	screen.set_refresh_hz(60);
@@ -468,7 +461,6 @@ void gberet_state::gberetb(machine_config &config)
 
 	GFXDECODE(config, m_gfxdecode, m_palette, gfx_gberetb);
 	PALETTE(config, m_palette, FUNC(gberet_state::gberet_palette), 2*16*16, 32);
-	MCFG_VIDEO_START_OVERRIDE(gberet_state,gberet)
 
 	/* sound hardware */
 	SPEAKER(config, "mono").front_center();
@@ -539,13 +531,11 @@ ROM_START( gberetb )
 	ROM_LOAD( "5-ic10.2d",    0x08000, 0x4000, CRC(6a7b3881) SHA1(795bfb1fbc11ceac687b15e98574feb650e2f674) )
 	ROM_LOAD( "4-ic11.2e",    0x0c000, 0x4000, CRC(3fb186c9) SHA1(40ce0447014af3f5b5b88648ab7e43a955bd1274) )
 
-	ROM_REGION( 0x0420, "proms", 0 )
-	ROM_LOAD( "82s123-ic100.13b", 0x0000, 0x0020, CRC(1bef8c7b) SHA1(f8f0ff6f674c8d28b3ac3daaad8e46328659a480) ) // palette
-	ROM_LOAD( "82s129-ic26.4g",   0x0020, 0x0100, CRC(2d3ad74b) SHA1(92152fd717901b5532097a7c88916c89c054d135) )
-	ROM_LOAD( "82s129-ic34.5g",   0x0120, 0x0100, CRC(a895c3e5) SHA1(e485489ec88bc058ebd8c5645cc951ef08aa778c) )
-	ROM_LOAD( "82s129-ic75.9j",   0x0220, 0x0100, CRC(85e757b6) SHA1(6ec7573e14e3418ac1dcaa72326b34e3d3163ea3) )
-	ROM_LOAD( "82s129-ic90.12a",  0x0320, 0x0100, CRC(dffe6b15) SHA1(fc83ef5d6b4885194a5fe00521d10aea9213e2c8) )
-
+	ROM_REGION( 0x0220, "proms", 0 )
+	ROM_LOAD( "577h09",       0x0000, 0x0020, CRC(c15e7c80) SHA1(c0e8a01e63ed8cf20b33456b68890313b387ad23) ) // palette
+	ROM_LOAD( "577h11.6f",    0x0020, 0x0100, CRC(2a1a992b) SHA1(77cff7c9c8433f999a87776021935864cf9dccb4) ) // characters
+	ROM_LOAD( "577h10.5f",    0x0120, 0x0100, CRC(e9de1e53) SHA1(406b8dfe54e6176082005cc5545e79c098672547) ) // sprites
+	
 	ROM_REGION( 0x0200, "plds", 0 )
 	ROM_LOAD( "pal16r6_ic35.5h", 0x0000, 0x0104, CRC(bd76fb53) SHA1(2d0634e8edb3289a103719466465e9777606086e) )
 ROM_END

@@ -163,7 +163,7 @@ Note: The 'rastsagaa' set's rom numbers were named as RSxx_37 through RSxx_42
 #include "cpu/z80/z80.h"
 #include "machine/watchdog.h"
 #include "sound/msm5205.h"
-#include "sound/ym2151.h"
+#include "sound/ymopm.h"
 #include "emupal.h"
 #include "screen.h"
 #include "speaker.h"
@@ -349,7 +349,7 @@ void rastan_state::rastan(machine_config &config)
 	Z80(config, m_audiocpu, XTAL(16'000'000)/4);    /* verified on pcb */
 	m_audiocpu->set_addrmap(AS_PROGRAM, &rastan_state::sound_map);
 
-	config.m_minimum_quantum = attotime::from_hz(600);  /* 10 CPU slices per frame - enough for the sound CPU to read all commands */
+	config.set_maximum_quantum(attotime::from_hz(600));  /* 10 CPU slices per frame - enough for the sound CPU to read all commands */
 
 	WATCHDOG_TIMER(config, "watchdog");
 
@@ -370,7 +370,7 @@ void rastan_state::rastan(machine_config &config)
 
 	PC090OJ(config, m_pc090oj, 0);
 	m_pc090oj->set_palette("palette");
-	m_pc090oj->set_colpri_callback(FUNC(rastan_state::rastan_colpri_cb), this);
+	m_pc090oj->set_colpri_callback(FUNC(rastan_state::rastan_colpri_cb));
 
 	/* sound hardware */
 	SPEAKER(config, "mono").front_center();
@@ -728,5 +728,5 @@ GAME( 1987, rastsaga,  rastan, rastan, rastsaga, rastan_state, empty_init, ROT0,
 GAME( 1987, rastanb,   rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "Taito Corporation Japan",   "Rastan (World, Earlier code base)",            MACHINE_SUPPORTS_SAVE )
 GAME( 1987, rastanub,  rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "Taito America Corporation", "Rastan (US, Earlier code base)",               MACHINE_SUPPORTS_SAVE )
 GAME( 1987, rastsagaa, rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "Taito Corporation",         "Rastan Saga (Japan Rev 1, Earlier code base)", MACHINE_SUPPORTS_SAVE )
-GAME( 1987, rastsagaabl, rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "Taito Corporation",         "Rastan Saga (bootleg, Japan Rev 1, earlier code base)", MACHINE_SUPPORTS_SAVE )
+GAME( 1987, rastsagaabl, rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "Taito Corporation",       "Rastan Saga (bootleg, Japan Rev 1, earlier code base)", MACHINE_SUPPORTS_SAVE )
 GAME( 1987, rastsagab, rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "Taito Corporation",         "Rastan Saga (Japan, Earlier code base)",       MACHINE_SUPPORTS_SAVE )

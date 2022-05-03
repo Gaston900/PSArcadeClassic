@@ -363,7 +363,7 @@ static int CALLBACK DIJoystick_EnumDeviceProc(LPDIDEVICEINSTANCE pdidi, LPVOID p
 	wchar_t buffer[5000];
 
 	This.joysticks[This.num_joysticks].guidDevice = pdidi->guidInstance;
-	_sntprintf(buffer, WINUI_ARRAY_LENGTH(buffer), TEXT("%s (%s)"), pdidi->tszProductName, pdidi->tszInstanceName);
+	_sntprintf(buffer, std::size(buffer), TEXT("%s (%s)"), pdidi->tszProductName, pdidi->tszInstanceName);
 	This.joysticks[This.num_joysticks].name = (wchar_t *)malloc((_tcslen(buffer) + 1) * sizeof(wchar_t));
 	_tcscpy(This.joysticks[This.num_joysticks].name, buffer);
 	This.num_joysticks++;

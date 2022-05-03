@@ -3,7 +3,7 @@
 #include "../mame/drivers/galaga.cpp"
 
 // Produce pacman death sound in galagost
-WRITE8_MEMBER( galaga_hbmame::galaga_sample_w )
+void galaga_hbmame::galaga_sample_w(offs_t offset, u8 data)
 {
 	switch ( data )
 	{
@@ -12,7 +12,7 @@ WRITE8_MEMBER( galaga_hbmame::galaga_sample_w )
 		case 0x10: /* soft bang */
 			break;
 		default:
-			m_06xx->data_w ( space, offset, data );
+			m_06xx->data_w ( offset, data );
 	}
 }
 
@@ -242,7 +242,7 @@ ROM_START( galagaf )
 ROM_END
 
 /* This set has the fix proposed by Don Hodges at the page:
-	http://donhodges.com/galaga_stage_256_fix.htm */
+    http://donhodges.com/galaga_stage_256_fix.htm */
 ROM_START( galagap )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "gg1_1b.3p",    0x0000, 0x1000, CRC(ab036c9f) SHA1(ca7f5da42d4e76fd89bb0b35198a23c01462fbfe) )
@@ -325,7 +325,7 @@ ROM_START( galagost )
 	ROM_REGION( 0x2000, "gfx2", 0 )
 	ROM_LOAD( "gost_07e_g10.bin",  0x0000, 0x1000, CRC(0758b90f) SHA1(89cc8db9457fa5f56b49930590f32aba1bc55323) )
 	ROM_LOAD( "gost_07h_g09.bin",  0x1000, 0x1000, CRC(53f1332b) SHA1(04136e52008c4ad4813529d633fd9b8c71e6ccc0) )
-	
+
 	ROM_REGION( 0x0320, "proms", 0 )
 	ROM_LOAD( "prom-5.5n",    0x0000, 0x0020, CRC(54603c6b) SHA1(1a6dea13b4af155d9cb5b999a75d4f1eb9c71346) )
 	ROM_LOAD( "2n.bin",       0x0020, 0x0100, CRC(a547d33b) SHA1(7323084320bb61ae1530d916f5edd8835d4d2461) )
@@ -355,7 +355,7 @@ ROM_START( galagosb )
 	ROM_REGION( 0x2000, "gfx2", 0 )
 	ROM_LOAD( "gost_07e_g10.bin",  0x0000, 0x1000, CRC(0758b90f) SHA1(89cc8db9457fa5f56b49930590f32aba1bc55323) )
 	ROM_LOAD( "gosb_07h_g09.bin",  0x1000, 0x1000, CRC(0339291c) SHA1(4958a78b6afb9f2b4f46d3c0f654843c077686a9) )
-	
+
 	ROM_REGION( 0x0320, "proms", 0 )
 	ROM_LOAD( "prom-5.5n",    0x0000, 0x0020, CRC(54603c6b) SHA1(1a6dea13b4af155d9cb5b999a75d4f1eb9c71346) )
 	ROM_LOAD( "2n.bin",       0x0020, 0x0100, CRC(a547d33b) SHA1(7323084320bb61ae1530d916f5edd8835d4d2461) )
@@ -375,7 +375,7 @@ ROM_START( galaped )
 
 	ROM_REGION( 0x10000, "sub", 0 )
 	ROM_LOAD( "3600fast.bin", 0x0000, 0x1000, CRC(23d586e5) SHA1(43346c69385e9091e64cff6c027ac2689cafcbb9) )
-	
+
 	ROM_REGION( 0x10000, "sub2", 0 )
 	ROM_LOAD( "3700g.bin",    0x0000, 0x1000, CRC(b07f0aa4) SHA1(7528644a8480d0be2d0d37069515ed319e94778f) )
 

@@ -226,7 +226,7 @@ int vicdual_state::is_cabinet_color()
  *************************************/
 
 
-WRITE8_MEMBER(vicdual_state::videoram_w)
+void vicdual_state::videoram_w(offs_t offset, uint8_t data)
 {
 //  m_screen->update_now();
 	m_screen->update_partial(m_screen->vpos());
@@ -234,7 +234,7 @@ WRITE8_MEMBER(vicdual_state::videoram_w)
 }
 
 
-WRITE8_MEMBER(vicdual_state::characterram_w)
+void vicdual_state::characterram_w(offs_t offset, uint8_t data)
 {
 //  m_screen->update_now();
 	m_screen->update_partial(m_screen->vpos());
@@ -273,6 +273,27 @@ void carnival_state::machine_start()
 	save_item(NAME(m_musicBus));
 }
 
+void carnivalh_state::machine_start()
+{
+	carnival_state::machine_start();
+
+	m_previousaddress = 0;
+	m_previousvalue = 0;
+
+	save_item(NAME(m_previousaddress));
+	save_item(NAME(m_previousvalue));
+}
+
+
+void tranqgun_state::machine_start()
+{
+	vicdual_state::machine_start();
+
+	m_tranqgun_prot_return = 0;
+
+	save_item(NAME(m_tranqgun_prot_return));
+}
+
 
 void vicdual_state::vicdual_root(machine_config &config)
 {
@@ -294,7 +315,7 @@ void vicdual_state::vicdual_root(machine_config &config)
  *
  *************************************/
 
-READ8_MEMBER(vicdual_state::depthch_io_r)
+uint8_t vicdual_state::depthch_io_r(offs_t offset)
 {
 	uint8_t ret = 0;
 
@@ -305,10 +326,10 @@ READ8_MEMBER(vicdual_state::depthch_io_r)
 }
 
 
-WRITE8_MEMBER(vicdual_state::depthch_io_w)
+void vicdual_state::depthch_io_w(offs_t offset, uint8_t data)
 {
 	if (offset & 0x01)  assert_coin_status();
-	if (offset & 0x04)  depthch_audio_w(space, 0, data);
+	if (offset & 0x04)  depthch_audio_w(data);
 }
 
 
@@ -378,7 +399,7 @@ void vicdual_state::depthch(machine_config &config)
  *
  *************************************/
 
-READ8_MEMBER(vicdual_state::safari_io_r)
+uint8_t vicdual_state::safari_io_r(offs_t offset)
 {
 	uint8_t ret = 0;
 
@@ -389,7 +410,7 @@ READ8_MEMBER(vicdual_state::safari_io_r)
 }
 
 
-WRITE8_MEMBER(vicdual_state::safari_io_w)
+void vicdual_state::safari_io_w(offs_t offset, uint8_t data)
 {
 	if (offset & 0x01)  assert_coin_status();
 	if (offset & 0x02) { /* safari_audio_w(0, data) */ }
@@ -463,7 +484,7 @@ void vicdual_state::safari(machine_config &config)
  *
  *************************************/
 
-READ8_MEMBER(vicdual_state::frogs_io_r)
+uint8_t vicdual_state::frogs_io_r(offs_t offset)
 {
 	uint8_t ret = 0;
 
@@ -474,10 +495,10 @@ READ8_MEMBER(vicdual_state::frogs_io_r)
 }
 
 
-WRITE8_MEMBER(vicdual_state::frogs_io_w)
+void vicdual_state::frogs_io_w(offs_t offset, uint8_t data)
 {
 	if (offset & 0x01)  assert_coin_status();
-	if (offset & 0x02)  frogs_audio_w(space, 0, data);
+	if (offset & 0x02)  m_vicdual_sound->write(data);
 }
 
 
@@ -557,14 +578,12 @@ void vicdual_state::frogs(machine_config &config)
 	m_maincpu->set_addrmap(AS_PROGRAM, &vicdual_state::frogs_map);
 	m_maincpu->set_addrmap(AS_IO, &vicdual_state::frogs_io_map);
 
-	MCFG_MACHINE_START_OVERRIDE(vicdual_state,frogs_audio)
-
 	/* video hardware */
 	m_screen->set_screen_update(FUNC(vicdual_state::screen_update_bw));
 
 	/* audio hardware */
 	SPEAKER(config, "mono").front_center();
-	frogs_audio(config);
+	FROGS_AUDIO(config, m_vicdual_sound, 0).add_route(ALL_OUTPUTS, "mono", 1.0);
 }
 
 
@@ -576,7 +595,7 @@ void vicdual_state::frogs(machine_config &config)
  *
  *************************************/
 
-READ8_MEMBER(vicdual_state::headon_io_r)
+uint8_t vicdual_state::headon_io_r(offs_t offset)
 {
 	uint8_t ret = 0;
 
@@ -587,7 +606,7 @@ READ8_MEMBER(vicdual_state::headon_io_r)
 }
 
 
-READ8_MEMBER(vicdual_state::sspaceat_io_r)
+uint8_t vicdual_state::sspaceat_io_r(offs_t offset)
 {
 	uint8_t ret = 0;
 
@@ -599,11 +618,11 @@ READ8_MEMBER(vicdual_state::sspaceat_io_r)
 }
 
 
-WRITE8_MEMBER(vicdual_state::headon_io_w)
+void vicdual_state::headon_io_w(offs_t offset, uint8_t data)
 {
 	if (offset & 0x01)  assert_coin_status();
-	if (offset & 0x02)  headon_audio_w(space, 0, data);
-	if (offset & 0x04) { /* palette_bank_w(0, data)  */ }    /* not written to */
+	if (offset & 0x02)  headon_audio_w(data);
+	if (offset & 0x04) { /* palette_bank_w(data)  */ }    /* not written to */
 }
 
 
@@ -697,6 +716,17 @@ static INPUT_PORTS_START( headons )
 	PORT_BIT( 0x01, IP_ACTIVE_LOW, IPT_UNUSED ) /* no color/bw option */
 INPUT_PORTS_END
 
+static INPUT_PORTS_START( hocrash )
+	PORT_INCLUDE( headons )
+
+	PORT_MODIFY("IN0")
+	PORT_DIPNAME( 0x03, 0x00, DEF_STR( Lives ) )
+	PORT_DIPSETTING(    0x00, "1" )
+	PORT_DIPSETTING(    0x01, "2" )
+	PORT_DIPSETTING(    0x02, "3" )
+	PORT_DIPSETTING(    0x03, "4" )
+INPUT_PORTS_END
+
 // e7f1: coin counter
 static INPUT_PORTS_START( headonsa )
 	PORT_INCLUDE( headons )
@@ -757,7 +787,7 @@ INPUT_PORTS_END
 static INPUT_PORTS_START( carnivalh )
 	PORT_START("IN0")
 	PORT_BIT( 0x01, IP_ACTIVE_LOW, IPT_START1 )
-	PORT_BIT( 0x02, IP_ACTIVE_LOW, IPT_UNKNOWN ) // IPT_START2, but not implemented in game? - it goes game-over after player 1's turn
+	PORT_BIT( 0x02, IP_ACTIVE_LOW, IPT_START2 )
 	PORT_BIT( 0x04, IP_ACTIVE_LOW, IPT_UNKNOWN )
 	PORT_BIT( 0x08, IP_ACTIVE_LOW, IPT_BUTTON1 )
 	PORT_BIT( 0x10, IP_ACTIVE_LOW, IPT_JOYSTICK_RIGHT ) PORT_2WAY
@@ -866,7 +896,7 @@ void vicdual_state::sspaceat(machine_config &config)
  *
  *************************************/
 
-READ8_MEMBER( vicdual_state::headon2_io_r )
+uint8_t vicdual_state::headon2_io_r(offs_t offset)
 {
 	uint8_t data = 0xff;
 
@@ -878,20 +908,20 @@ READ8_MEMBER( vicdual_state::headon2_io_r )
 	return data;
 }
 
-WRITE8_MEMBER(vicdual_state::headon2_io_w)
+void vicdual_state::headon2_io_w(offs_t offset, uint8_t data)
 {
 	if (offset & 0x01) assert_coin_status();
-	if (offset & 0x02) headon_audio_w(space, 0, data);
+	if (offset & 0x02) headon_audio_w(data);
 }
 
 
-WRITE8_MEMBER(vicdual_state::digger_io_w)
+void vicdual_state::digger_io_w(offs_t offset, uint8_t data)
 {
 	if (offset & 0x01)  assert_coin_status();
 	if (offset & 0x02) { /* digger_audio_1_w(0, data) */ }
 	if (offset & 0x04)
 	{
-		palette_bank_w(space, 0, data & 0x03);
+		palette_bank_w(data & 0x03);
 		/* digger_audio_2_w(0, data & 0xfc); */
 	}
 
@@ -1105,89 +1135,85 @@ void vicdual_state::digger(machine_config &config)
  *
  *************************************/
 
-WRITE8_MEMBER(vicdual_state::invho2_io_w)
+void vicdual_state::invho2_io_w(offs_t offset, uint8_t data)
 {
-	if (offset & 0x01)  invho2_audio_w(space, 0, data);
-	if (offset & 0x02)  invinco_audio_w(space, 0, data);
+	if (offset & 0x01)  invho2_audio_w(data);
+	if (offset & 0x02)  invinco_audio_w(data);
 	if (offset & 0x08)  assert_coin_status();
-	if (offset & 0x40)  palette_bank_w(space, 0, data);
+	if (offset & 0x40)  palette_bank_w(data);
 }
 
 
-WRITE8_MEMBER(vicdual_state::invds_io_w)
+void vicdual_state::invds_io_w(offs_t offset, uint8_t data)
 {
-	if (offset & 0x01)  invinco_audio_w(space, 0, data);
+	if (offset & 0x01)  invinco_audio_w(data);
 	if (offset & 0x02) { /* deepscan_audio_w(0, data) */ }
 	if (offset & 0x08)  assert_coin_status();
-	if (offset & 0x40)  palette_bank_w(space, 0, data);
+	if (offset & 0x40)  palette_bank_w(data);
 }
 
-WRITE8_MEMBER(vicdual_state::carhntds_io_w)
+void vicdual_state::carhntds_io_w(offs_t offset, uint8_t data)
 {
-	if (offset & 0x01) { /* invinco_audio_w(space, 0, data); */ }
+	if (offset & 0x01) { /* invinco_audio_w(data); */ }
 	if (offset & 0x02) { /* deepscan_audio_w(0, data) */ }
 	if (offset & 0x08)  assert_coin_status();
-	if (offset & 0x40)  palette_bank_w(space, 0, data);
+	if (offset & 0x40)  palette_bank_w(data);
 }
 
 
-WRITE8_MEMBER(vicdual_state::sspacaho_io_w)
+void vicdual_state::sspacaho_io_w(offs_t offset, uint8_t data)
 {
-	if (offset & 0x01)  invho2_audio_w(space, 0, data);
-	if (offset & 0x02) { /* sspaceatt_audio_w(space, 0, data) */ }
+	if (offset & 0x01)  invho2_audio_w(data);
+	if (offset & 0x02) { /* sspaceatt_audio_w(data) */ }
 	if (offset & 0x08)  assert_coin_status();
-	if (offset & 0x40)  palette_bank_w(space, 0, data);
+	if (offset & 0x40)  palette_bank_w(data);
 }
 
 
-WRITE8_MEMBER(vicdual_state::tranqgun_io_w)
+void tranqgun_state::tranqgun_io_w(offs_t offset, uint8_t data)
 {
-	if (offset & 0x01)  tranqgun_audio_w(space, 0, data);
-	if (offset & 0x02)  palette_bank_w(space, 0, data);
-	if (offset & 0x08)  assert_coin_status();
-}
-
-
-WRITE8_MEMBER(vicdual_state::spacetrk_io_w)
-{
-	if (offset & 0x01) { /* spacetrk_audio_w(space, 0, data) */ }
-	if (offset & 0x02) { /* spacetrk_audio_w(space, 0, data) */ }
-	if (offset & 0x08)  assert_coin_status();
-	if (offset & 0x40)  palette_bank_w(space, 0, data);
-}
-
-
-WRITE8_MEMBER(carnival_state::carnival_io_w)
-{
-	if (offset & 0x01)  carnival_audio_1_w(space, 0, data);
-	if (offset & 0x02)  carnival_audio_2_w(space, 0, data);
-	if (offset & 0x08)  assert_coin_status();
-	if (offset & 0x40)  palette_bank_w(space, 0, data);
-}
-
-
-WRITE8_MEMBER(vicdual_state::brdrline_io_w)
-{
-	if (offset & 0x01)  brdrline_audio_w(space, 0, data);
-	if (offset & 0x02)
-	{
-		palette_bank_w(space, 0, data);
-		brdrline_audio_aux_w(space,0, data);
-	}
+	if (offset & 0x01)  m_vicdual_sound->write(data);
+	if (offset & 0x02)  palette_bank_w(data);
 	if (offset & 0x08)  assert_coin_status();
 }
 
 
-WRITE8_MEMBER(vicdual_state::pulsar_io_w)
+void vicdual_state::spacetrk_io_w(offs_t offset, uint8_t data)
 {
-	if (offset & 0x01)  pulsar_audio_1_w(space, 0, data);
-	if (offset & 0x02)  pulsar_audio_2_w(space, 0, data);
+	if (offset & 0x01) { /* spacetrk_audio_w(data) */ }
+	if (offset & 0x02) { /* spacetrk_audio_w(data) */ }
 	if (offset & 0x08)  assert_coin_status();
-	if (offset & 0x40)  palette_bank_w(space, 0, data);
+	if (offset & 0x40)  palette_bank_w(data);
 }
 
 
-WRITE8_MEMBER(vicdual_state::heiankyo_io_w)
+void carnival_state::carnival_io_w(offs_t offset, uint8_t data)
+{
+	if (offset & 0x01)  carnival_audio_1_w(data);
+	if (offset & 0x02)  carnival_audio_2_w(data);
+	if (offset & 0x08)  assert_coin_status();
+	if (offset & 0x40)  palette_bank_w(data);
+}
+
+
+void vicdual_state::brdrline_io_w(offs_t offset, uint8_t data)
+{
+	if (offset & 0x01)  m_vicdual_sound->write(data);
+	if (offset & 0x02)  palette_bank_w(data);
+	if (offset & 0x08)  assert_coin_status();
+}
+
+
+void vicdual_state::pulsar_io_w(offs_t offset, uint8_t data)
+{
+	if (offset & 0x01)  pulsar_audio_1_w(data);
+	if (offset & 0x02)  pulsar_audio_2_w(data);
+	if (offset & 0x08)  assert_coin_status();
+	if (offset & 0x40)  palette_bank_w(data);
+}
+
+
+void vicdual_state::heiankyo_io_w(offs_t offset, uint8_t data)
 {
 	if (offset & 0x01) { /* heiankyo_audio_1_w(0, data) */ }
 	if (offset & 0x02) { /* heiankyo_audio_2_w(0, data) */ }
@@ -1195,25 +1221,25 @@ WRITE8_MEMBER(vicdual_state::heiankyo_io_w)
 }
 
 
-WRITE8_MEMBER(vicdual_state::alphaho_io_w)
+void vicdual_state::alphaho_io_w(offs_t offset, uint8_t data)
 {
 	if (offset & 0x01) { /* headon_audio_w(0, data) */ }
 	if (offset & 0x02) { /* alphaf_audio_w(0, data) */ }
 	if (offset & 0x08)  assert_coin_status();
-	if (offset & 0x40)  palette_bank_w(space, 0, data);
+	if (offset & 0x40)  palette_bank_w(data);
 }
 
 
-WRITE8_MEMBER(vicdual_state::headonn_io_w)
+void vicdual_state::headonn_io_w(offs_t offset, uint8_t data)
 {
-	if (offset & 0x01) invho2_audio_w(space, 0, data);
+	if (offset & 0x01) invho2_audio_w(data);
 	if (offset & 0x02)
 	{
 		// 7654----  unused?
 		// ----32--  always 1
 		// ------10  palette bank (bit 0 inverted)
 
-		palette_bank_w(space, 0, (data & 3) ^ 1);
+		palette_bank_w((data & 3) ^ 1);
 	}
 	if (offset & 0x08) assert_coin_status();
 }
@@ -1225,6 +1251,81 @@ void vicdual_state::vicdual_dualgame_map(address_map &map)
 	map(0x8000, 0x83ff).mirror(0x7000).ram().w(FUNC(vicdual_state::videoram_w)).share("videoram");
 	map(0x8400, 0x87ff).mirror(0x7000).ram();
 	map(0x8800, 0x8fff).mirror(0x7000).ram().w(FUNC(vicdual_state::characterram_w)).share("characterram");
+}
+
+// see code at 0x3f04 (game over) and 0x3eba (passing level 3) in ROM
+// both functions make the same 3 checks, assume we never want the 'fail' result
+uint8_t tranqgun_state::tranqgun_prot_r(offs_t offset)
+{
+	logerror("%s: tranqgun_prot_r %04x\n", machine().describe_context(), offset);
+
+	if (offset == 0x3800)
+		return m_tranqgun_prot_return;
+
+	return 0x00;
+}
+
+void tranqgun_state::tranqgun_prot_w(offs_t offset, uint8_t data)
+{
+	logerror("%s: tranqgun_prot_w %04x %02x\n", machine().describe_context(), offset, data);
+
+	if (offset == 0x0000)
+	{
+		if (data == 0xd8)
+			m_tranqgun_prot_return = 0x02;
+		else if (data == 0x3a)
+			m_tranqgun_prot_return = 0x01;
+		else if (data == 0x6a)
+			m_tranqgun_prot_return = 0x06;
+	}
+}
+
+
+void tranqgun_state::tranqgun_dualgame_map(address_map &map)
+{
+	vicdual_dualgame_map(map);
+	map(0x4000, 0x7fff).rw(FUNC(tranqgun_state::tranqgun_prot_r), FUNC(tranqgun_state::tranqgun_prot_w));
+}
+
+uint8_t carnivalh_state::carnivalh_prot_r(offs_t offset)
+{
+	// There appear to be 2 protection functions in the code
+	// The first one is called if a duck gets to the bottom of the screen, or if Player 1 Game Over condition is reached and Player 2 needs to start
+	// The second one is called when you complete a bonus round
+
+	uint8_t retdat = 0;
+
+	if (/*((m_previousaddress == 0xe3d4) || (m_previousaddress == 0xe76b))*/ true && (m_previousvalue == 0x24))
+		retdat = 0x02;
+	else if (/*((m_previousaddress == 0xe3d4) || (m_previousaddress == 0xe76d))*/ true && (m_previousvalue == 0x66))
+		retdat = 0x07;
+	else if (/*((m_previousaddress == 0xe3d4) || (m_previousaddress == 0xe76f))*/ true && (m_previousvalue == 0x48))
+		retdat = 0x03;
+	else
+		popmessage("%s: carnivalh_prot_r %04x %04x %02x\n", machine().describe_context(), offset, m_previousaddress, m_previousvalue);
+
+	return retdat;
+}
+
+void carnivalh_state::carnivalh_prot_w(offs_t offset, uint8_t data)
+{
+	// the protection writes appear to overlay regular RAM areas?
+	// protection writes are to 0xe76b, 0xe76d, 0xe76f for one function and 0xe3d4 for the other (see code at 0x26AF & 0x2892)
+
+	m_previousaddress = offset+0xe000;
+	m_previousvalue = data;
+
+	// fall through to usual accesses (write to the non-mirror address so we're not recursive)
+	address_space& spc = m_maincpu->space(AS_PROGRAM);
+	spc.write_byte(0x8000+offset, data);
+}
+
+
+void carnivalh_state::carnivalh_dualgame_map(address_map &map)
+{
+	vicdual_dualgame_map(map);
+	map(0x4000, 0x7fff).r(FUNC(carnivalh_state::carnivalh_prot_r));
+	map(0xe000, 0xefff).w(FUNC(carnivalh_state::carnivalh_prot_w));
 }
 
 void vicdual_state::carhntds_dualgame_map(address_map &map)
@@ -1293,7 +1394,7 @@ void vicdual_state::sspacaho_io_map(address_map &map)
 }
 
 
-void vicdual_state::tranqgun_io_map(address_map &map)
+void tranqgun_state::tranqgun_io_map(address_map &map)
 {
 	map.global_mask(0x0f);
 
@@ -1304,7 +1405,7 @@ void vicdual_state::tranqgun_io_map(address_map &map)
 
 	/* no decoder, just logic gates, so in theory the
 	   game can write to multiple locations at once */
-	map(0x00, 0x0f).w(FUNC(vicdual_state::tranqgun_io_w));
+	map(0x00, 0x0f).w(FUNC(tranqgun_state::tranqgun_io_w));
 }
 
 
@@ -2109,6 +2210,32 @@ static INPUT_PORTS_START( alphaho )
 	PORT_DIPSETTING(    0x00, "6" )
 INPUT_PORTS_END
 
+static INPUT_PORTS_START( alphahob )
+	PORT_INCLUDE( alphaho )
+
+	PORT_MODIFY("IN0")
+	PORT_DIPNAME( 0x08, 0x00, "Circuit Lives" )           PORT_DIPLOCATION("SW1:5") // SW1 @ C1, 6-pos (is #6 unconnected?)
+	PORT_DIPSETTING(    0x00, "3" )
+	PORT_DIPSETTING(    0x08, "4" )
+
+	PORT_MODIFY("IN2")
+	PORT_DIPNAME( 0x04, 0x00, "Missile Bonus Life" )      PORT_DIPLOCATION("SW1:3")
+	PORT_DIPSETTING(    0x00, "10k" )
+	PORT_DIPSETTING(    0x04, "15k" )
+
+	PORT_MODIFY("IN3")
+	PORT_DIPNAME( 0x04, 0x00, "Missile Final UFO Bonus" ) PORT_DIPLOCATION("SW1:4")
+	PORT_DIPSETTING(    0x04, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+
+	PORT_MODIFY("FAKE_LIVES.0")
+	PORT_DIPNAME( 0x03, 0x03, "Missile Lives" )           PORT_DIPLOCATION("SW1:1,2")
+	PORT_DIPSETTING(    0x03, "3" )
+	PORT_DIPSETTING(    0x02, "4" )
+	PORT_DIPSETTING(    0x01, "5" )
+	PORT_DIPSETTING(    0x00, "6" )
+INPUT_PORTS_END
+
 
 // there is a dip switch with 8 switches on the board, but only switch a is used
 static INPUT_PORTS_START( headonn )
@@ -2233,7 +2360,7 @@ void carnival_state::carnival(machine_config &config)
 	/* basic machine hardware */
 	m_maincpu->set_addrmap(AS_IO, &carnival_state::carnival_io_map);
 
-	config.m_perfect_cpu_quantum = subtag("maincpu");
+	config.set_perfect_quantum(m_maincpu);
 
 	/* audio hardware */
 	SPEAKER(config, "mono").front_center();
@@ -2248,25 +2375,27 @@ void carnival_state::carnivalb(machine_config &config)
 	carnivalb_audio(config);
 }
 
-void carnival_state::carnivalh(machine_config &config)
+void carnivalh_state::carnivalh(machine_config &config)
 {
 	carnival(config);
 
 	/* basic machine hardware */
-	m_maincpu->set_addrmap(AS_IO, &carnival_state::headon_io_map);
+	m_maincpu->set_addrmap(AS_PROGRAM, &carnivalh_state::carnivalh_dualgame_map);
+	m_maincpu->set_addrmap(AS_IO, &carnivalh_state::headon_io_map);
 }
 
 
-void vicdual_state::tranqgun(machine_config &config)
+void tranqgun_state::tranqgun(machine_config &config)
 {
 	vicdual_dualgame_root(config);
 
 	/* basic machine hardware */
-	m_maincpu->set_addrmap(AS_IO, &vicdual_state::tranqgun_io_map);
+	m_maincpu->set_addrmap(AS_IO, &tranqgun_state::tranqgun_io_map);
+	m_maincpu->set_addrmap(AS_PROGRAM, &tranqgun_state::tranqgun_dualgame_map);
 
 	/* audio hardware */
 	SPEAKER(config, "mono").front_center();
-	tranqgun_audio(config);
+	BORDERLINE_AUDIO(config, m_vicdual_sound, 0).add_route(ALL_OUTPUTS, "mono", 1.0);
 }
 
 
@@ -2279,7 +2408,7 @@ void vicdual_state::brdrline(machine_config &config)
 
 	/* audio hardware */
 	SPEAKER(config, "mono").front_center();
-	brdrline_audio(config);
+	BORDERLINE_AUDIO(config, m_vicdual_sound, 0).add_route(ALL_OUTPUTS, "mono", 1.0);
 }
 
 
@@ -2333,7 +2462,7 @@ void vicdual_state::headonn(machine_config &config)
  *
  *************************************/
 
-WRITE8_MEMBER(vicdual_state::samurai_protection_w)
+void vicdual_state::samurai_protection_w(uint8_t data)
 {
 	m_samurai_protection_data = data;
 }
@@ -2353,11 +2482,11 @@ READ_LINE_MEMBER(vicdual_state::samurai_protection_r)
 }
 
 
-WRITE8_MEMBER(vicdual_state::samurai_io_w)
+void vicdual_state::samurai_io_w(offs_t offset, uint8_t data)
 {
 	if (offset & 0x02) { /* samurai_audio_w(0, data) */ }
 	if (offset & 0x08)  assert_coin_status();
-	if (offset & 0x40)  palette_bank_w(space, 0, data);
+	if (offset & 0x40)  palette_bank_w(data);
 }
 
 
@@ -2467,7 +2596,7 @@ void vicdual_state::samurai(machine_config &config)
  *
  *************************************/
 
-READ8_MEMBER(nsub_state::nsub_io_r)
+uint8_t nsub_state::nsub_io_r(offs_t offset)
 {
 	uint8_t ret = 0;
 
@@ -2478,7 +2607,7 @@ READ8_MEMBER(nsub_state::nsub_io_r)
 }
 
 
-WRITE8_MEMBER(nsub_state::nsub_io_w)
+void nsub_state::nsub_io_w(offs_t offset, uint8_t data)
 {
 	if (offset & 0x01)  assert_coin_status();
 	if (offset & 0x02)
@@ -2487,7 +2616,7 @@ WRITE8_MEMBER(nsub_state::nsub_io_w)
 	}
 	if (offset & 0x04)
 	{
-		palette_bank_w(space, 0, data);
+		palette_bank_w(data);
 		m_s97269pb->palette_bank_w(data);
 	}
 }
@@ -2664,7 +2793,7 @@ void nsub_state::nsub(machine_config &config)
  *
  *************************************/
 
-READ8_MEMBER(vicdual_state::invinco_io_r)
+uint8_t vicdual_state::invinco_io_r(offs_t offset)
 {
 	uint8_t ret = 0;
 
@@ -2676,11 +2805,11 @@ READ8_MEMBER(vicdual_state::invinco_io_r)
 }
 
 
-WRITE8_MEMBER(vicdual_state::invinco_io_w)
+void vicdual_state::invinco_io_w(offs_t offset, uint8_t data)
 {
 	if (offset & 0x01)  assert_coin_status();
-	if (offset & 0x02)  invinco_audio_w(space, 0, data);
-	if (offset & 0x04)  palette_bank_w(space, 0, data);
+	if (offset & 0x02)  invinco_audio_w(data);
+	if (offset & 0x04)  palette_bank_w(data);
 }
 
 
@@ -3319,8 +3448,8 @@ ROM_START( invho2a ) // found on a Gremlin 'EXTENDED ROM VIDEO LOGIC ASSY NO 800
 	ROM_LOAD( "pr-16.u49", 0x0000, 0x0020, CRC(733eac6f) SHA1(3cf488155992977875a76f8aa0ce73c1faf8a1a4) ) // TODO: multiple dump attempts give consistent results, but with this Head On 2 is completely black, while Invinco shows unexpected colors
 
 	ROM_REGION( 0x0040, "user1", 0 )    // timing PROMs
-	ROM_LOAD( "pr-34.u14", 0x0000, 0x0020, CRC(e60a7960) SHA1(b8b8716e859c57c35310efc4594262afedb84823) ) // == 316-0043 - control PROM
-	ROM_LOAD( "pr-33.u15", 0x0020, 0x0020, CRC(a1506b9d) SHA1(037c3db2ea40eca459e8acba9d1506dd28d72d10) ) // == 316-0042 - sequence PROM
+	ROM_LOAD( "pr-34.u14", 0x0000, 0x0020, CRC(e60a7960) SHA1(b8b8716e859c57c35310efc4594262afedb84823) )
+	ROM_LOAD( "7603.u15",  0x0020, 0x0020, CRC(a1506b9d) SHA1(037c3db2ea40eca459e8acba9d1506dd28d72d10) ) // label was peeled off (guess: pr-33)
 ROM_END
 
 ROM_START( sspacaho )
@@ -3720,10 +3849,10 @@ ROM_START( verbena )
 	ROM_LOAD( "1v.u1",     0x3c00, 0x0400, CRC(6e10c057) SHA1(743a28bb6f4f395fd3db36d5e40acc3475f55f5d) ) // handwritten label
 
 	ROM_REGION( 0x0020, "proms", 0 )
-	ROM_LOAD( "mmi6331.u4",       0x0000, 0x0020, CRC(f0084d80) SHA1(95ec912ac2c64cd58a50c68afc0993746841a531) ) // == 316-0633 / pr-62.u44
+	ROM_LOAD( "mmi6331.u4",       0x0000, 0x0020, CRC(f0084d80) SHA1(95ec912ac2c64cd58a50c68afc0993746841a531) )
 
 	ROM_REGION( 0x0400, "audiocpu", 0 ) /* sound ROM */
-	ROM_LOAD( "sound.u25",    0x0000, 0x0400, CRC(0dbaa2b0) SHA1(eae7fc362a0ff8f908c42e093c7dbb603659373c) ) // == epr-412.u5 - 2708
+	ROM_LOAD( "sound.u25",    0x0000, 0x0400, CRC(0dbaa2b0) SHA1(eae7fc362a0ff8f908c42e093c7dbb603659373c) ) // 2708
 
 	ROM_REGION( 0x0020, "user1", 0 )    /* timing PROM */
 	ROM_LOAD( "mmi6331.u14",  0x0000, 0x0020, CRC(9617d796) SHA1(7cff2741866095ff42eadd8022bea349ec8d2f39) )    /* control PROM */
@@ -4038,7 +4167,7 @@ ROM_START( alphaho )
 	ROM_LOAD( "cf.bin",       0x3c00, 0x0400, CRC(d03c5a09) SHA1(eebc1d2302bd2bae28c25187bb099ae618c5cd05) )
 
 	ROM_REGION( 0x0020, "proms", 0 )
-	ROM_LOAD( "alphaho.col",  0x0000, 0x0020, NO_DUMP )
+	ROM_LOAD( "alphaho.col", 0x0000, 0x0020, BAD_DUMP CRC(67104ea9) SHA1(26b6bd2a1973b83bb9af4e3385d8cb14cb3f62f2) ) // wasn't dumped for this set, use the one from sspacaho (the game Data East cloned and modified) for now
 ROM_END
 
 ROM_START( alphahob ) // PCB marked NNS
@@ -4123,7 +4252,7 @@ GAME( 1979, headons,    headon,   headons,   headons,   vicdual_state,  empty_in
 GAME( 1979, headonsa,   headon,   headons,   headonsa,  headonsa_state, empty_init, ROT0,   "bootleg (Sidam)", "Head On (Sidam bootleg, set 2)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1979, headonmz,   headon,   headon,    headonmz,  vicdual_state,  empty_init, ROT0,   "bootleg", "Head On (bootleg, alt maze)", MACHINE_SUPPORTS_SAVE )
 GAME( 1979, supcrash,   headon,   headons,   supcrash,  vicdual_state,  empty_init, ROT0,   "bootleg (VGG)", "Super Crash (bootleg of Head On)", MACHINE_NO_SOUND  | MACHINE_SUPPORTS_SAVE )
-GAME( 1979, hocrash,    headon,   headons,   headons,   vicdual_state,  empty_init, ROT0,   "bootleg (Fraber)", "Crash (bootleg of Head On)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 1979, hocrash,    headon,   headons,   hocrash,   vicdual_state,  empty_init, ROT0,   "bootleg (Fraber)", "Crash (bootleg of Head On)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1979, headon2,    0,        headon2,   headon2,   vicdual_state,  empty_init, ROT0,   "Sega", "Head On 2",  MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1979, headon2s,   headon2,  headon2bw, headon2s,  headonsa_state, empty_init, ROT0,   "bootleg (Sidam)", "Head On 2 (Sidam bootleg)",  MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1979, car2,       headon2,  headon2bw, car2,      vicdual_state,  empty_init, ROT0,   "bootleg (RZ Bologna)", "Car 2 (bootleg of Head On 2)",  MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // title still says 'HeadOn 2'
@@ -4132,28 +4261,28 @@ GAME( 1979, invho2a,    invho2,   invho2,    invho2,    vicdual_state,  empty_in
 GAME( 1980, nsub,       0,        nsub,      nsub,      nsub_state,     empty_init, ROT270, "Sega", "N-Sub (upright)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // this is the upright set. cocktail set still needs to be dumped
 GAME( 1980, samurai,    0,        samurai,   samurai,   vicdual_state,  empty_init, ROT270, "Sega", "Samurai", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1979, invinco,    0,        invinco,   invinco,   vicdual_state,  empty_init, ROT270, "Sega", "Invinco", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 1979, invcarht,   0,        carhntds,  carhntds,  vicdual_state,  empty_init, ROT270, "Sega", "Invinco / Car Hunt (Germany)", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 1979, invcarht,   0,        carhntds,  carhntds,  vicdual_state,  empty_init, ROT270, "Sega",                    "Invinco / Car Hunt (Germany)", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1979, invds,      0,        invds,     invds,     vicdual_state,  empty_init, ROT270, "Sega", "Invinco / Deep Scan", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1979, carhntds,   0,        carhntds,  carhntds,  vicdual_state,  empty_init, ROT270, "Sega", "Car Hunt / Deep Scan (France)", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 1980, tranqgun,   0,        tranqgun,  tranqgun,  vicdual_state,  empty_init, ROT270, "Sega", "Tranquillizer Gun", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 1980, tranqgun,   0,        tranqgun,  tranqgun,  tranqgun_state, empty_init, ROT270, "Sega", "Tranquillizer Gun", MACHINE_SUPPORTS_SAVE )
 GAME( 1980, spacetrk,   0,        spacetrk,  spacetrk,  vicdual_state,  empty_init, ROT270, "Sega", "Space Trek (upright)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1980, spacetrkc,  spacetrk, spacetrk,  spacetrkc, vicdual_state,  empty_init, ROT270, "Sega", "Space Trek (cocktail)", MACHINE_IMPERFECT_GRAPHICS |MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1980, carnival,   0,        carnival,  carnival,  carnival_state, empty_init, ROT270, "Sega", "Carnival (upright, AY8912 music)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1980, carnivalb,  carnival, carnivalb, carnival,  carnival_state, empty_init, ROT270, "Sega", "Carnival (upright, PIT8253 music)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1980, carnivalc,  carnival, carnival,  carnivalc, carnival_state, empty_init, ROT270, "Sega", "Carnival (cocktail)",  MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 1980, carnivalca, carnival, carnival,  carnivalc, carnival_state, empty_init, ROT270, "Sega", "Carnival (cocktail, earlier)",  MACHINE_NOT_WORKING | MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // one missing ROM
-GAME( 1980, carnivalh,  carnival, carnivalh, carnivalh, carnival_state, empty_init, ROT270, "Sega", "Carnival (Head On hardware, set 1)",  MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 1980, carnivalha, carnival, carnivalh, carnivalh, carnival_state, empty_init, ROT270, "Sega", "Carnival (Head On hardware, set 2)",  MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 1980, carnivalca, carnival, carnival,  carnivalc, carnival_state,  empty_init, ROT270, "Sega",                    "Carnival (cocktail, earlier)",  MACHINE_NOT_WORKING | MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // one missing ROM																																											   
+GAME( 1980, carnivalh,  carnival, carnivalh, carnivalh, carnivalh_state, empty_init, ROT270, "Sega", "Carnival (Head On hardware, set 1)",  MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 1980, carnivalha, carnival, carnivalh, carnivalh, carnivalh_state, empty_init, ROT270, "Sega", "Carnival (Head On hardware, set 2)",  MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1980, verbena,    carnival, carnival,  carnival,  carnival_state, empty_init, ROT270, "bootleg (Cocamatic)", "Verbena (bootleg of Carnival)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 1981, brdrline,   0,        brdrline,  brdrline,  vicdual_state,  empty_init, ROT270, "Sega", "Borderline", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 1981, starrkr,    brdrline, brdrline,  starrkr,   vicdual_state,  empty_init, ROT270, "Sega", "Star Raker", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 1981, brdrlins,   brdrline, brdrline,  brdrline,  vicdual_state,  empty_init, ROT270, "bootleg (Sidam)", "Borderline (Sidam bootleg)", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 1981, brdrlinb,   brdrline, brdrline,  brdrline,  vicdual_state,  empty_init, ROT270, "bootleg (Karateco)", "Borderline (Karateco bootleg)", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 1981, brdrlinet,  brdrline, tranqgun,  tranqgun,  vicdual_state,  empty_init, ROT270, "Sega", "Borderline (Tranquillizer Gun conversion)", MACHINE_NOT_WORKING | MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // official factory conversion
+GAME( 1981, brdrline,   0,        brdrline,  brdrline,  vicdual_state,  empty_init, ROT270, "Sega", "Borderline", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, starrkr,    brdrline, brdrline,  starrkr,   vicdual_state,  empty_init, ROT270, "Sega", "Star Raker", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 1981, brdrlins,   brdrline, brdrline,  brdrline,  vicdual_state,  empty_init, ROT270, "bootleg (Sidam)", "Borderline (Sidam bootleg)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, brdrlinb,   brdrline, brdrline,  brdrline,  vicdual_state,  empty_init, ROT270, "bootleg (Karateco)", "Borderline (Karateco bootleg)", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, brdrlinet,  brdrline, tranqgun,  tranqgun,  tranqgun_state, empty_init, ROT270, "Sega", "Borderline (Tranquillizer Gun conversion)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) // official factory conversion
 GAME( 198?, startrks,   0,        headons,   headons,   vicdual_state,  empty_init, ROT0,   "bootleg (Sidam)", "Star Trek (Head On hardware)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1980, digger,     0,        digger,    digger,    vicdual_state,  empty_init, ROT270, "Sega", "Digger", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1981, pulsar,     0,        pulsar,    pulsar,    vicdual_state,  empty_init, ROT270, "Sega", "Pulsar", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1979, heiankyo,   0,        heiankyo,  heiankyo,  vicdual_state,  empty_init, ROT270, "Denki Onkyo", "Heiankyo Alien", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 19??, alphaho,    0,        alphaho,   alphaho,   vicdual_state,  empty_init, ROT270, "Data East Corporation", "Alpha Fighter / Head On", MACHINE_WRONG_COLORS | MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 19??, alphahob,   alphaho,  alphaho,   alphaho,   vicdual_state,  empty_init, ROT270, "bootleg", "Missile / Circuit (bootleg of Alpha Fighter / Head On)", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 1982, wantsega,     0,      carhntds,  wantsega,  vicdual_state,  empty_init, ROT270, "Sega", "Wanted (Sega)", MACHINE_NO_SOUND | MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 19??, alphahob,   alphaho,  alphaho,   alphahob,  vicdual_state,  empty_init, ROT270, "bootleg", "Missile / Circuit (bootleg of Alpha Fighter / Head On)", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )																																											
+GAME( 1982, wantsega,   0,        carhntds,  wantsega,  vicdual_state,  empty_init, ROT270, "Sega", "Wanted (Sega)", MACHINE_NO_SOUND | MACHINE_IMPERFECT_CONTROLS | MACHINE_SUPPORTS_SAVE )

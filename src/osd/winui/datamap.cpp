@@ -103,7 +103,7 @@ void datamap_free(datamap *map)
 void datamap_add(datamap *map, int dlgitem, datamap_entry_type type, const char *option_name)
 {
 	// sanity check for too many entries
-	assert(map->entry_count < WINUI_ARRAY_LENGTH(map->entries));
+	assert(map->entry_count < std::size(map->entries));
 
 	// add entry to the datamap
 	memset(&map->entries[map->entry_count], 0, sizeof(map->entries[map->entry_count]));
@@ -262,7 +262,7 @@ static control_type get_control_type(HWND control)
 	control_type type;
 	wchar_t class_name[256];
 
-	GetClassName(control, class_name, WINUI_ARRAY_LENGTH(class_name));
+	GetClassName(control, class_name, std::size(class_name));
 
 	if (!_tcscmp(class_name, WC_BUTTON))
 		type = CT_BUTTON;
@@ -356,7 +356,7 @@ static int control_operation(datamap *map, HWND dialog, windows_options &opts, d
 			if (entry->get_option_name != NULL)
 			{
 				option_name_buffer[0] = '\0';
-				entry->get_option_name(map, dialog, control, option_name_buffer, WINUI_ARRAY_LENGTH(option_name_buffer));
+				entry->get_option_name(map, dialog, control, option_name_buffer, std::size(option_name_buffer));
 				option_name = option_name_buffer;
 			}
 			else
@@ -364,7 +364,7 @@ static int control_operation(datamap *map, HWND dialog, windows_options &opts, d
 
 			// if reading, get the option value, solely for the purposes of comparison
 			if ((callback_type == DCT_READ_CONTROL) && (option_name != NULL))
-				snprintf(option_value, WINUI_ARRAY_LENGTH(option_value), "%s", opts.value(option_name));
+				snprintf(option_value, std::size(option_value), "%s", opts.value(option_name));
 
 			if (entry->callbacks[callback_type] != NULL)
 				// use custom callback
@@ -551,9 +551,9 @@ static void populate_control(datamap *map, HWND control, windows_options &opts, 
 					int_value = opts.int_value(option_name);
 
 					if (entry->int_format != NULL)
-						snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), entry->int_format, int_value);
+						snprintf(buffer, std::size(buffer), entry->int_format, int_value);
 					else
-						snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%d", int_value);
+						snprintf(buffer, std::size(buffer), "%d", int_value);
 
 					string_value = buffer;
 					break;
@@ -562,9 +562,9 @@ static void populate_control(datamap *map, HWND control, windows_options &opts, 
 					float_value = opts.float_value(option_name);
 
 					if (entry->float_format != NULL)
-						snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), entry->float_format, float_value);
+						snprintf(buffer, std::size(buffer), entry->float_format, float_value);
 					else
-						snprintf(buffer, WINUI_ARRAY_LENGTH(buffer), "%f", float_value);
+						snprintf(buffer, std::size(buffer), "%f", float_value);
 
 					string_value = buffer;
 					break;
@@ -670,7 +670,7 @@ static char *tztrim(float float_value)
 	char float_string[20];
 	int i = 0;
 
-	snprintf(float_string, WINUI_ARRAY_LENGTH(float_string), "%f", float_value);
+	snprintf(float_string, std::size(float_string), "%f", float_value);
 	char *ptr = float_string;
 
 	// Copy before the '.'
@@ -711,7 +711,7 @@ const char *datamap_get_control_option_name(datamap *map, HWND dialog, HWND cont
 			if (map->entries[i].get_option_name)
 			{
 				option_name_buffer[0] = '\0';
-				map->entries[i].get_option_name(map, dialog, control, option_name_buffer, WINUI_ARRAY_LENGTH(option_name_buffer));
+				map->entries[i].get_option_name(map, dialog, control, option_name_buffer, std::size(option_name_buffer));
 				return option_name_buffer;
 			}
 

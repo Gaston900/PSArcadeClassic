@@ -33,17 +33,17 @@ Stephh's notes (based on the game M68000 code and some tests) :
 #include "speaker.h"
 
 
-WRITE16_MEMBER(magmax_state::cpu_irq_ack_w)
+void magmax_state::cpu_irq_ack_w(uint16_t data)
 {
 	m_maincpu->set_input_line(M68K_IRQ_1, CLEAR_LINE);
 }
 
-READ8_MEMBER(magmax_state::sound_r)
+uint8_t magmax_state::sound_r()
 {
 	return (m_soundlatch->read() << 1) | m_LS74_q;
 }
 
-WRITE8_MEMBER(magmax_state::ay8910_portB_0_w)
+void magmax_state::ay8910_portB_0_w(uint8_t data)
 {
 	/*bit 0 is input to CLR line of the LS74*/
 	m_LS74_clr = data & 1;
@@ -93,7 +93,7 @@ void magmax_state::machine_reset()
 
 
 
-WRITE8_MEMBER(magmax_state::ay8910_portA_0_w)
+void magmax_state::ay8910_portA_0_w(uint8_t data)
 {
 /*There are three AY8910 chips and four(!) separate amplifiers on the board
 * Each of AY channels is hardware mapped in following way:
@@ -169,7 +169,7 @@ bit3 - SOUND Chan#8 name=AY-3-8910 #2 Ch C
 	m_ay[2]->set_output_gain(2, percent);
 }
 
-WRITE16_MEMBER(magmax_state::vreg_w)
+void magmax_state::vreg_w(offs_t offset, uint16_t data, uint16_t mem_mask)
 {
 	/* VRAM CONTROL REGISTER */
 	/* bit0 - coin counter 1    */
@@ -336,7 +336,7 @@ void magmax_state::magmax(machine_config &config)
 	m_audiocpu->set_addrmap(AS_PROGRAM, &magmax_state::sound_map);
 	m_audiocpu->set_addrmap(AS_IO, &magmax_state::sound_io_map);
 
-	config.m_minimum_quantum = attotime::from_hz(600);
+	config.set_maximum_quantum(attotime::from_hz(600));
 
 
 	/* video hardware */
@@ -464,6 +464,7 @@ ROM_START( magmaxa )
 	ROM_LOAD( "mag_g.2e",   0x0300, 0x0100, CRC(830be358) SHA1(f412587718040a783c4e6453619930c90daf385e) ) // sprites color lookup table
 	ROM_LOAD( "mag_f.13b",  0x0400, 0x0100, CRC(4a6f9a6d) SHA1(65f1e0bfacd1f354ece1b18598a551044c27c4d1) ) // state machine data used for video signals generation (not used in emulation)
 ROM_END
+
 
 GAME( 1985, magmax,  0,      magmax, magmax, magmax_state, empty_init, ROT0, "Nichibutsu", "Mag Max (set 1)", MACHINE_SUPPORTS_SAVE )
 GAME( 1985, magmaxa, magmax, magmax, magmax, magmax_state, empty_init, ROT0, "Nichibutsu", "Mag Max (set 2)", MACHINE_SUPPORTS_SAVE )

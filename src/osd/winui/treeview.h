@@ -6,7 +6,7 @@
 
 #define MAX_EXTRA_FOLDERS 			256
 #define MAX_EXTRA_SUBFOLDERS 		256
-#define ICON_MAX 		WINUI_ARRAY_LENGTH(treeIconNames)
+#define ICON_MAX 		std::size(treeIconNames)
 
 /***************************************************************************
     Folder And Filter Definitions

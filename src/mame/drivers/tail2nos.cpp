@@ -19,18 +19,18 @@
 
 #include "cpu/m68000/m68000.h"
 #include "cpu/z80/z80.h"
-#include "sound/2608intf.h"
+#include "sound/ymopn.h"
 #include "video/vsystem_gga.h"
 #include "screen.h"
 #include "speaker.h"
 
 
-READ8_MEMBER(tail2nos_state::sound_semaphore_r)
+uint8_t tail2nos_state::sound_semaphore_r()
 {
 	return m_soundlatch->pending_r();
 }
 
-WRITE8_MEMBER(tail2nos_state::sound_bankswitch_w)
+void tail2nos_state::sound_bankswitch_w(uint8_t data)
 {
 	membank("bank3")->set_entry(data & 0x01);
 }
@@ -266,7 +266,7 @@ void tail2nos_state::tail2nos(machine_config &config)
 	m_k051316->set_bpp(-4);
 	m_k051316->set_offsets(-89, -14);
 	m_k051316->set_wrap(1);
-	m_k051316->set_zoom_callback(FUNC(tail2nos_state::zoom_callback), this);
+	m_k051316->set_zoom_callback(FUNC(tail2nos_state::zoom_callback));
 
 	VSYSTEM_GGA(config, "gga", XTAL(14'318'181) / 2); // divider not verified
 
@@ -287,35 +287,38 @@ void tail2nos_state::tail2nos(machine_config &config)
 	ymsnd.add_route(2, "rspeaker", 1.0);
 }
 
+
+
 ROM_START( tail2nos )
 	ROM_REGION( 0x40000, "maincpu", 0 ) // 68000 code
 	ROM_LOAD16_BYTE( "s2-h.ic129", 0x00000, 0x10000, CRC(567a55a4) SHA1(5cb5cce7199faf13423d7ff749774c428b56d2ec) )
 	ROM_LOAD16_BYTE( "s2-l.ic130", 0x00001, 0x10000, CRC(c630f875) SHA1(1cebe3758212e1f6178fe07dea2b626c9efb86da) )
-	ROM_LOAD16_BYTE( "v3.ic141",   0x20000, 0x10000, CRC(e2e0abad) SHA1(1a1054bada9654484fe81fe4b4b32af5ab7b53f0) )
-	ROM_LOAD16_BYTE( "v6.ic142",   0x20001, 0x10000, CRC(069817a7) SHA1(cca382fe2a49c8c3c84b879a1c30dffff84ef406) )
+	ROM_LOAD16_BYTE( "v3",           0x20000, 0x10000, CRC(e2e0abad) SHA1(1a1054bada9654484fe81fe4b4b32af5ab7b53f0) )
+	ROM_LOAD16_BYTE( "v6",           0x20001, 0x10000, CRC(069817a7) SHA1(cca382fe2a49c8c3c84b879a1c30dffff84ef406) )
 
-	ROM_REGION16_BE( 0x80000, "user1", 0 ) // extra ROM mapped at 200000
-	ROM_LOAD16_WORD_SWAP( "a23.ic96", 0x00000, 0x80000, CRC(d851cf04) SHA1(ac5b366b686c5a037b127d223dc6fe90985eb160) )
-	/* unpopulated 4M mask ROM socket at IC105 */
+	ROM_REGION16_BE( 0x80000, "user1", 0 )
+	/* extra ROM mapped at 200000 */
+	ROM_LOAD16_WORD_SWAP( "a23",     0x00000, 0x80000, CRC(d851cf04) SHA1(ac5b366b686c5a037b127d223dc6fe90985eb160) )
 
-	ROM_REGION16_BE( 0x20000, "user2", 0 ) // extra ROM mapped at 2c0000
-	ROM_LOAD16_BYTE( "v5.ic119", 0x00000, 0x10000, CRC(a9fe15a1) SHA1(d90bf40c610ea7daaa338f83f82cdffbae7da08e) )
-	ROM_LOAD16_BYTE( "v8.ic120", 0x00001, 0x10000, CRC(4fb6a43e) SHA1(5cddda0029b3b141c88b0c128655d35bb12fa34d) )
+	ROM_REGION16_BE( 0x20000, "user2", 0 )
+	/* extra ROM mapped at 2c0000 */
+	ROM_LOAD16_BYTE( "v5",           0x00000, 0x10000, CRC(a9fe15a1) SHA1(d90bf40c610ea7daaa338f83f82cdffbae7da08e) )
+	ROM_LOAD16_BYTE( "v8",           0x00001, 0x10000, CRC(4fb6a43e) SHA1(5cddda0029b3b141c88b0c128655d35bb12fa34d) )
 
-	ROM_REGION( 0x20000, "audiocpu", 0 ) // 64k for the audio CPU + banks
-	ROM_LOAD( "v2.ic125", 0x00000, 0x08000, CRC(920d8920) SHA1(b8d30903248fee6f985af7fafbe534cfc8c6e829) )
-	ROM_LOAD( "v1.ic137", 0x10000, 0x10000, CRC(bf35c1a4) SHA1(a838740e023dc3344dc528324a8dbc48bb98b574) )
+	ROM_REGION( 0x20000, "audiocpu", 0 )    /* 64k for the audio CPU + banks */
+	ROM_LOAD( "v2",           0x00000, 0x08000, CRC(920d8920) SHA1(b8d30903248fee6f985af7fafbe534cfc8c6e829) )
+	ROM_LOAD( "v1",           0x10000, 0x10000, CRC(bf35c1a4) SHA1(a838740e023dc3344dc528324a8dbc48bb98b574) )
 
 	ROM_REGION( 0x100000, "gfx1", 0 )
-	ROM_LOAD( "a24.ic34", 0x00000, 0x80000, CRC(b1e9de43) SHA1(0144252dd9ed561fbebd4994cccf11f6c87e1825) )
-	ROM_LOAD( "o1s.ic18", 0x80000, 0x40000, CRC(e27a8eb4) SHA1(4fcadabf42a1c3deeb6d74d75cdbee802cf16db5) )
+	ROM_LOAD( "a24",          0x00000, 0x80000, CRC(b1e9de43) SHA1(0144252dd9ed561fbebd4994cccf11f6c87e1825) )
+	ROM_LOAD( "o1s",          0x80000, 0x40000, CRC(e27a8eb4) SHA1(4fcadabf42a1c3deeb6d74d75cdbee802cf16db5) )
 
 	ROM_REGION( 0x080000, "gfx2", 0 )
-	ROM_LOAD( "oj1.ic93", 0x000000, 0x40000, CRC(39c36b35) SHA1(a97480696bf6d81bf415737e03cc5324d439ab84) )
-	ROM_LOAD( "oj2.ic79", 0x040000, 0x40000, CRC(77ccaea2) SHA1(e38175859c75c6d0f2f01752fad6e167608c4662) )
+	ROM_LOAD( "oj1",          0x000000, 0x40000, CRC(39c36b35) SHA1(a97480696bf6d81bf415737e03cc5324d439ab84) )
+	ROM_LOAD( "oj2",          0x040000, 0x40000, CRC(77ccaea2) SHA1(e38175859c75c6d0f2f01752fad6e167608c4662) )
 
-	ROM_REGION( 0x20000, "ymsnd", 0 ) // sound samples
-	ROM_LOAD( "osb.ic127", 0x00000, 0x20000, CRC(d49ab2f5) SHA1(92f7f6c8f35ac39910879dd88d2cfb6db7c848c9) )
+	ROM_REGION( 0x20000, "ymsnd", 0 ) /* sound samples */
+	ROM_LOAD( "osb",          0x00000, 0x20000, CRC(d49ab2f5) SHA1(92f7f6c8f35ac39910879dd88d2cfb6db7c848c9) )
 ROM_END
 
 ROM_START( tail2nosa )
@@ -327,7 +330,7 @@ ROM_START( tail2nosa )
 
 	ROM_REGION16_BE( 0x80000, "user1", 0 ) // extra ROM mapped at 200000
 	ROM_LOAD16_WORD_SWAP( "a23.ic96", 0x00000, 0x80000, CRC(d851cf04) SHA1(ac5b366b686c5a037b127d223dc6fe90985eb160) )
-	/* unpopulated 4M mask ROM socket at IC105 */
+	// unpopulated 4M mask ROM socket at IC105
 
 	ROM_REGION16_BE( 0x20000, "user2", 0 ) // extra ROM mapped at 2c0000
 	ROM_LOAD16_BYTE( "v5.ic119", 0x00000, 0x10000, CRC(a9fe15a1) SHA1(d90bf40c610ea7daaa338f83f82cdffbae7da08e) )
@@ -345,7 +348,7 @@ ROM_START( tail2nosa )
 	ROM_LOAD( "oj1.ic93", 0x000000, 0x40000, CRC(39c36b35) SHA1(a97480696bf6d81bf415737e03cc5324d439ab84) )
 	ROM_LOAD( "oj2.ic79", 0x040000, 0x40000, CRC(77ccaea2) SHA1(e38175859c75c6d0f2f01752fad6e167608c4662) )
 
-	ROM_REGION( 0x20000, "ymsnd", 0 ) // sound samples
+	ROM_REGION( 0x20000, "ymsnd", 0 )
 	ROM_LOAD( "osb.ic127", 0x00000, 0x20000, CRC(d49ab2f5) SHA1(92f7f6c8f35ac39910879dd88d2cfb6db7c848c9) )
 ROM_END
 

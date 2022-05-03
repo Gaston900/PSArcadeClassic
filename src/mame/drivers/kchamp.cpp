@@ -69,7 +69,6 @@ IO ports and memory map changes. Dip switches differ too.
 
 #include "cpu/z80/z80.h"
 #include "machine/74259.h"
-#include "sound/volt_reg.h"
 #include "screen.h"
 #include "speaker.h"
 
@@ -150,14 +149,14 @@ void kchamp_state::kchampvs_sound_io_map(address_map &map)
 /********************
 * 1 Player Version  *
 ********************/
-READ8_MEMBER(kchamp_state::sound_reset_r)
+uint8_t kchamp_state::sound_reset_r()
 {
 	if (!machine().side_effects_disabled())
 		m_audiocpu->pulse_input_line(INPUT_LINE_RESET, attotime::zero);
 	return 0;
 }
 
-WRITE8_MEMBER(kchamp_state::kc_sound_control_w)
+void kchamp_state::kc_sound_control_w(offs_t offset, uint8_t data)
 {
 	if (offset == 0)
 	{
@@ -503,9 +502,6 @@ void kchamp_state::kchamp(machine_config &config)
 	AY8910(config, m_ay[1], XTAL(12'000'000)/12).add_route(ALL_OUTPUTS, "speaker", 0.3); /* Guess based on actual pcb recordings of karatedo */
 
 	DAC08(config, m_dac, 0).add_route(ALL_OUTPUTS, "speaker", 0.3); // IC11
-	voltage_regulator_device &vref(VOLTAGE_REGULATOR(config, "vref", 0));
-	vref.add_route(0, "dac", 1.0, DAC_VREF_POS_INPUT);
-	vref.add_route(0, "dac", -1.0, DAC_VREF_NEG_INPUT);
 }
 
 void kchamp_state::kchamp_arfyc(machine_config &config)
@@ -516,6 +512,7 @@ void kchamp_state::kchamp_arfyc(machine_config &config)
 	m_ay[0]->set_clock(XTAL(8'867'238)/8);    // 8.867238 MHz xtal / 8, measured on real PCB
 	m_ay[1]->set_clock(XTAL(8'867'238)/8);    // 8.867238 MHz xtal / 8, measured on real PCB
 }
+
 
 /***************************************************************************
 
@@ -954,13 +951,12 @@ void kchamp_state::init_kchampvs2()
 }
 
 
-
-GAME( 1984, kchamp,    0,      kchamp,   kchamp,   kchamp_state,  empty_init,     ROT90, "Data East USA",         "Karate Champ (US)", MACHINE_SUPPORTS_SAVE )
-GAME( 1984, karatedo,  kchamp, kchamp,   kchamp,   kchamp_state,  empty_init,     ROT90, "Data East Corporation", "Karate Dou (Japan)", MACHINE_SUPPORTS_SAVE )
-GAME( 1984, kchamptec, kchamp, kchamp,   kchamp,   kchamp_state,  empty_init,     ROT90, "bootleg (Tecfri)",      "Karate Champ (Tecfri bootleg)",        MACHINE_SUPPORTS_SAVE )
+GAME( 1984, kchamp,    0,      kchamp,       kchamp,   kchamp_state,  empty_init,     ROT90, "Data East USA",         "Karate Champ (US)",                    MACHINE_SUPPORTS_SAVE )
+GAME( 1984, karatedo,  kchamp, kchamp,       kchamp,   kchamp_state,  empty_init,     ROT90, "Data East Corporation", "Karate Dou (Japan)",                   MACHINE_SUPPORTS_SAVE )
+GAME( 1984, kchamptec, kchamp, kchamp,       kchamp,   kchamp_state,  empty_init,     ROT90, "bootleg (Tecfri)",      "Karate Champ (Tecfri bootleg)",        MACHINE_SUPPORTS_SAVE )
 GAME( 1984, karateda,  kchamp, kchamp_arfyc, kchamp,   kchamp_state,  empty_init,     ROT90, "bootleg (Arfyc)",       "Karate Dou (Arfyc bootleg)",           MACHINE_SUPPORTS_SAVE )
-GAME( 1984, kchampvs,  kchamp, kchampvs, kchampvs, kchamp_state,  init_kchampvs,  ROT90, "Data East USA",         "Karate Champ (US VS version, set 1)", MACHINE_SUPPORTS_SAVE )
-GAME( 1984, kchampvs2, kchamp, kchampvs, kchampvs, kchamp_state,  init_kchampvs2, ROT90, "Data East USA",         "Karate Champ (US VS version, set 2)", MACHINE_SUPPORTS_SAVE )
-GAME( 1984, kchampvs3, kchamp, kchampvs, kchampvs, kchamp_state,  init_kchampvs,  ROT90, "Data East USA",         "Karate Champ (US VS version, set 3)", MACHINE_SUPPORTS_SAVE )
-GAME( 1984, kchampvs4, kchamp, kchampvs, kchampvs, kchamp_state,  init_kchampvs,  ROT90, "Data East USA",         "Karate Champ (US VS version, set 4)", MACHINE_SUPPORTS_SAVE )
-GAME( 1984, karatevs,  kchamp, kchampvs, kchampvs, kchamp_state,  init_kchampvs,  ROT90, "Data East Corporation", "Taisen Karate Dou (Japan VS version)", MACHINE_SUPPORTS_SAVE )
+GAME( 1984, kchampvs,  kchamp, kchampvs,     kchampvs, kchamp_state,  init_kchampvs,  ROT90, "Data East USA",         "Karate Champ (US VS version, set 1)",  MACHINE_SUPPORTS_SAVE )
+GAME( 1984, kchampvs2, kchamp, kchampvs,     kchampvs, kchamp_state,  init_kchampvs2, ROT90, "Data East USA",         "Karate Champ (US VS version, set 2)",  MACHINE_SUPPORTS_SAVE )
+GAME( 1984, kchampvs3, kchamp, kchampvs,     kchampvs, kchamp_state,  init_kchampvs,  ROT90, "Data East USA",         "Karate Champ (US VS version, set 3)",  MACHINE_SUPPORTS_SAVE )
+GAME( 1984, kchampvs4, kchamp, kchampvs,     kchampvs, kchamp_state,  init_kchampvs,  ROT90, "Data East USA",         "Karate Champ (US VS version, set 4)",  MACHINE_SUPPORTS_SAVE )
+GAME( 1984, karatevs,  kchamp, kchampvs,     kchampvs, kchamp_state,  init_kchampvs,  ROT90, "Data East Corporation", "Taisen Karate Dou (Japan VS version)", MACHINE_SUPPORTS_SAVE )

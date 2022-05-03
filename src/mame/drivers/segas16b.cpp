@@ -157,10 +157,10 @@ Notes:
       Z80      - Zilog Z80B CPU, running at 5.000MHz [10/2]
       YM2151   - Yamaha YM2151 8-channel 4-operator FM sound chip, running at 4.000MHz [8/2]
       D7759    - NEC uPD7759C ADPCM Speech Synthesizer LSI, clock input of 640kHz (DIP40)
-      65256    - Hitachi HM65256 32K x8 SRAM (DIP28)
-      TC5565   - Toshiba TC5565 8K x8 SRAM (DIP28)
-      2015     - Toshiba TMM2015 2K x8 SRAM (DIP24)
-      2018     - Toshiba TMM2018 2K x8 SRAM (DIP24)
+      65256    - Hitachi HM65256 or NEC uPD42832C-12L or Toshiba TC51832-P-85 32K x8 PSRAM (DIP28)
+      TC5565   - Toshiba TC5565 or Sony CXK5864PS-15L or Fujitsu MB8464-12L 8K x8 SRAM (DIP28)
+      2015     - Toshiba TMM2015 or TMM2115BP-10 or UMC UM6116K-2 2K x8 SRAM (DIP24)
+      2018     - Toshiba TMM2018D-45 or TMM2018AP-35 2K x8 SRAM (DIP24)
       D8751H   - Intel D8751H Microcontroller, running at 8.000MHz. Used on some versions of some games.
       315-5213 - National Semiconductor PAL16R6 stamped '315-5213' (DIP20)
       315-5214 - Signetics CK2605 stamped '315-5214' (DIP20)
@@ -876,6 +876,13 @@ S11 S13 S15 S17  |EPR12194 -        -        -        EPR12195 -        -       
 #include "sound/okim6295.h"
 #include "speaker.h"
 
+#define USE_NL (1)
+
+#if USE_NL
+#include "machine/netlist.h"
+#include "netlist/nl_setup.h"
+#include "audio/nl_segas16b.h"
+#endif
 
 //**************************************************************************
 //  CONSTANTS
@@ -905,30 +912,30 @@ void segas16b_state::memory_mapper(sega_315_5195_mapper_device &mapper, uint8_t 
 			break;
 
 		case 6: // 4k of paletteram
-			mapper.map_as_ram(0x00000, 0x01000, 0xfff000, "paletteram", write16_delegate(FUNC(segas16b_state::paletteram_w), this));
+			mapper.map_as_ram(0x00000, 0x01000, 0xfff000, "paletteram", write16_delegate(*this, FUNC(segas16b_state::paletteram_w)));
 			break;
 
 		case 5: // 64k of tileram + 4k of textram
-			mapper.map_as_ram(0x00000, 0x10000, 0xfe0000, "tileram", write16_delegate(FUNC(segas16b_state::tileram_w), this));
-			mapper.map_as_ram(0x10000, 0x01000, 0xfef000, "textram", write16_delegate(FUNC(segas16b_state::textram_w), this));
+			mapper.map_as_ram(0x00000, 0x10000, 0xfe0000, "tileram", write16_delegate(*this, FUNC(segas16b_state::tileram_w)));
+			mapper.map_as_ram(0x10000, 0x01000, 0xfef000, "textram", write16_delegate(*this, FUNC(segas16b_state::textram_w)));
 			break;
 
 		case 4: // 2k of spriteram
-			mapper.map_as_ram(0x00000, 0x00800, 0xfff800, "sprites", write16_delegate());
+			mapper.map_as_ram(0x00000, 0x00800, 0xfff800, "sprites", write16_delegate(*this));
 			break;
 
 		case 3: // 16k or 256k of work RAM
-			mapper.map_as_ram(0x00000, m_workram.bytes(), ~(m_workram.bytes() - 1), "workram", write16_delegate());
+			mapper.map_as_ram(0x00000, m_workram.bytes(), ~(m_workram.bytes() - 1), "workram", write16_delegate(*this));
 			break;
 
 		case 2: // 3rd ROM base, or board-specific banking
 			switch (m_romboard)
 			{
-				case ROM_BOARD_171_5358_SMALL:  mapper.map_as_rom(0x00000, 0x20000, 0xfe0000, "rom2base", "decrypted_rom2base", 0x20000, write16_delegate()); break;
-				case ROM_BOARD_171_5358:        mapper.map_as_rom(0x00000, 0x20000, 0xfe0000, "rom2base", "decrypted_rom2base", 0x40000, write16_delegate()); break;
+				case ROM_BOARD_171_5358_SMALL:  mapper.map_as_rom(0x00000, 0x20000, 0xfe0000, "rom2base", "decrypted_rom2base", 0x20000, write16_delegate(*this)); break;
+				case ROM_BOARD_171_5358:        mapper.map_as_rom(0x00000, 0x20000, 0xfe0000, "rom2base", "decrypted_rom2base", 0x40000, write16_delegate(*this)); break;
 				case ROM_BOARD_171_5521:
-				case ROM_BOARD_171_5704:        mapper.map_as_handler(0x00000, 0x10000, 0xff0000, read16_delegate(), write16_delegate(FUNC(segas16b_state::rom_5704_bank_w), this)); break;
-				case ROM_BOARD_171_5797:        mapper.map_as_handler(0x00000, 0x10000, 0xff0000, read16_delegate(FUNC(segas16b_state::unknown_rgn2_r), this), write16_delegate(FUNC(segas16b_state::unknown_rgn2_w), this)); break;
+				case ROM_BOARD_171_5704:        mapper.map_as_handler(0x00000, 0x10000, 0xff0000, read16_delegate(*this), write16_delegate(*this, FUNC(segas16b_state::rom_5704_bank_w))); break;
+				case ROM_BOARD_171_5797:        mapper.map_as_handler(0x00000, 0x10000, 0xff0000, read16_delegate(*this, FUNC(segas16b_state::unknown_rgn2_r)), write16_delegate(*this, FUNC(segas16b_state::unknown_rgn2_w))); break;
 				case ROM_BOARD_KOREAN:          break;
 				default:                        assert(false);
 			}
@@ -937,12 +944,12 @@ void segas16b_state::memory_mapper(sega_315_5195_mapper_device &mapper, uint8_t 
 		case 1: // 2nd ROM base, banking & math, or sound for Korean games
 			switch (m_romboard)
 			{
-				case ROM_BOARD_171_5358_SMALL:  mapper.map_as_rom(0x00000, 0x20000, 0xfe0000, "rom1base", "decrypted_rom1base", 0x10000, write16_delegate()); break;
-				case ROM_BOARD_171_5358:        mapper.map_as_rom(0x00000, 0x20000, 0xfe0000, "rom1base", "decrypted_rom1base", 0x20000, write16_delegate()); break;
+				case ROM_BOARD_171_5358_SMALL:  mapper.map_as_rom(0x00000, 0x20000, 0xfe0000, "rom1base", "decrypted_rom1base", 0x10000, write16_delegate(*this)); break;
+				case ROM_BOARD_171_5358:        mapper.map_as_rom(0x00000, 0x20000, 0xfe0000, "rom1base", "decrypted_rom1base", 0x20000, write16_delegate(*this)); break;
 				case ROM_BOARD_171_5521:
-				case ROM_BOARD_171_5704:        mapper.map_as_rom(0x00000, 0x40000, 0xfc0000, "rom1base", "decrypted_rom1base", 0x40000, write16_delegate()); break;
-				case ROM_BOARD_KOREAN:          mapper.map_as_handler(0x00000, 0x10000, 0xff0000, read16_delegate(), write16_delegate(FUNC(segas16b_state::atomicp_sound_w), this)); break;
-				case ROM_BOARD_171_5797:        mapper.map_as_handler(0x00000, 0x04000, 0xffc000, read16_delegate(FUNC(segas16b_state::rom_5797_bank_math_r), this), write16_delegate(FUNC(segas16b_state::rom_5797_bank_math_w), this)); break;
+				case ROM_BOARD_171_5704:        mapper.map_as_rom(0x00000, 0x40000, 0xfc0000, "rom1base", "decrypted_rom1base", 0x40000, write16_delegate(*this)); break;
+				case ROM_BOARD_KOREAN:          mapper.map_as_handler(0x00000, 0x10000, 0xff0000, read16_delegate(*this), write16_delegate(*this, FUNC(segas16b_state::atomicp_sound_w))); break;
+				case ROM_BOARD_171_5797:        mapper.map_as_handler(0x00000, 0x04000, 0xffc000, read16_delegate(*this, FUNC(segas16b_state::rom_5797_bank_math_r)), write16_delegate(*this, FUNC(segas16b_state::rom_5797_bank_math_w))); break;
 				default:                        assert(false);
 			}
 			break;
@@ -950,12 +957,12 @@ void segas16b_state::memory_mapper(sega_315_5195_mapper_device &mapper, uint8_t 
 		case 0: // 1st ROM base
 			switch (m_romboard)
 			{
-				case ROM_BOARD_171_5358_SMALL:  mapper.map_as_rom(0x00000, 0x20000, 0xfe0000, "rom0base", "decrypted_rom0base", 0x00000, write16_delegate()); break;
-				case ROM_BOARD_171_5358:        mapper.map_as_rom(0x00000, 0x20000, 0xfe0000, "rom0base", "decrypted_rom0base", 0x00000, write16_delegate()); break;
+				case ROM_BOARD_171_5358_SMALL:  mapper.map_as_rom(0x00000, 0x20000, 0xfe0000, "rom0base", "decrypted_rom0base", 0x00000, write16_delegate(*this)); break;
+				case ROM_BOARD_171_5358:        mapper.map_as_rom(0x00000, 0x20000, 0xfe0000, "rom0base", "decrypted_rom0base", 0x00000, write16_delegate(*this)); break;
 				case ROM_BOARD_171_5521:
-				case ROM_BOARD_171_5704:        mapper.map_as_rom(0x00000, 0x40000, 0xfc0000, "rom0base", "decrypted_rom0base", 0000000, write16_delegate()); break;
-				case ROM_BOARD_KOREAN:          mapper.map_as_rom(0x00000, 0x40000, 0xfc0000, "rom0base", "decrypted_rom0base", 0000000, write16_delegate()); break;
-				case ROM_BOARD_171_5797:        mapper.map_as_rom(0x00000, 0x80000, 0xf80000, "rom0base", "decrypted_rom0base", 0000000, write16_delegate()); break;
+				case ROM_BOARD_171_5704:        mapper.map_as_rom(0x00000, 0x40000, 0xfc0000, "rom0base", "decrypted_rom0base", 0x00000, write16_delegate(*this)); break;
+				case ROM_BOARD_KOREAN:          mapper.map_as_rom(0x00000, 0x40000, 0xfc0000, "rom0base", "decrypted_rom0base", 0x00000, write16_delegate(*this)); break;
+				case ROM_BOARD_171_5797:        mapper.map_as_rom(0x00000, 0x80000, 0xf80000, "rom0base", "decrypted_rom0base", 0x00000, write16_delegate(*this)); break;
 				default:                        assert(false);
 			}
 			break;
@@ -963,7 +970,7 @@ void segas16b_state::memory_mapper(sega_315_5195_mapper_device &mapper, uint8_t 
 }
 
 
-WRITE16_MEMBER( segas16b_state::sound_w16 )
+void segas16b_state::sound_w16(uint16_t data)
 {
 	if (m_soundlatch != nullptr)
 		m_soundlatch->write(data & 0xff);
@@ -980,7 +987,7 @@ WRITE16_MEMBER( segas16b_state::sound_w16 )
 //  selection
 //-------------------------------------------------
 
-WRITE16_MEMBER( segas16b_state::rom_5704_bank_w )
+void segas16b_state::rom_5704_bank_w(address_space &space, offs_t offset, uint16_t data, uint16_t mem_mask)
 {
 	if (ACCESSING_BITS_0_7)
 		m_segaic16vid->tilemap_set_bank(0, offset & 1, data & 7);
@@ -992,7 +999,7 @@ WRITE16_MEMBER( segas16b_state::rom_5704_bank_w )
 //  math chip reads
 //-------------------------------------------------
 
-READ16_MEMBER( segas16b_state::rom_5797_bank_math_r )
+uint16_t segas16b_state::rom_5797_bank_math_r(address_space &space, offs_t offset, uint16_t mem_mask)
 {
 	offset &= 0x1fff;
 	switch (offset & (0x3000/2))
@@ -1014,7 +1021,7 @@ READ16_MEMBER( segas16b_state::rom_5797_bank_math_r )
 //  math chip writes, plus tile bank selection
 //-------------------------------------------------
 
-WRITE16_MEMBER( segas16b_state::rom_5797_bank_math_w )
+void segas16b_state::rom_5797_bank_math_w(address_space &space, offs_t offset, uint16_t data, uint16_t mem_mask)
 {
 	offset &= 0x1fff;
 	switch (offset & (0x3000/2))
@@ -1042,7 +1049,7 @@ WRITE16_MEMBER( segas16b_state::rom_5797_bank_math_w )
 //  for now treat as a second compare/timer chip
 //-------------------------------------------------
 
-READ16_MEMBER( segas16b_state::unknown_rgn2_r )
+uint16_t segas16b_state::unknown_rgn2_r(address_space &space, offs_t offset, uint16_t mem_mask)
 {
 	logerror("Region 2: read from %04X\n", offset * 2);
 	return m_cmptimer_2->read(offset);
@@ -1054,7 +1061,7 @@ READ16_MEMBER( segas16b_state::unknown_rgn2_r )
 //  for now treat as a second compare/timer chip
 //-------------------------------------------------
 
-WRITE16_MEMBER( segas16b_state::unknown_rgn2_w )
+void segas16b_state::unknown_rgn2_w(address_space &space, offs_t offset, uint16_t data, uint16_t mem_mask)
 {
 	logerror("Region 2: write to %04X = %04X & %04X\n", offset * 2, data, mem_mask);
 	m_cmptimer_2->write(offset, data, mem_mask);
@@ -1065,7 +1072,7 @@ WRITE16_MEMBER( segas16b_state::unknown_rgn2_w )
 //  standard_io_r - default I/O handler for reads
 //-------------------------------------------------
 
-READ16_MEMBER( segas16b_state::standard_io_r )
+uint16_t segas16b_state::standard_io_r(address_space &space, offs_t offset, uint16_t mem_mask)
 {
 	offset &= 0x1fff;
 	switch (offset & (0x3000/2))
@@ -1088,7 +1095,7 @@ READ16_MEMBER( segas16b_state::standard_io_r )
 //  standard_io_w - default I/O handler for writes
 //-------------------------------------------------
 
-WRITE16_MEMBER( segas16b_state::standard_io_w )
+void segas16b_state::standard_io_w(address_space &space, offs_t offset, uint16_t data, uint16_t mem_mask)
 {
 	offset &= 0x1fff;
 	switch (offset & (0x3000/2))
@@ -1124,7 +1131,7 @@ WRITE16_MEMBER( segas16b_state::standard_io_w )
 //  YM2413 directly from the main CPU
 //-------------------------------------------------
 
-WRITE16_MEMBER( segas16b_state::atomicp_sound_w )
+void segas16b_state::atomicp_sound_w(address_space &space, offs_t offset, uint16_t data, uint16_t mem_mask)
 {
 	m_ym2413->write(offset, data >> 8);
 }
@@ -1140,7 +1147,7 @@ WRITE16_MEMBER( segas16b_state::atomicp_sound_w )
 //  uPD7759 control register
 //-------------------------------------------------
 
-WRITE8_MEMBER( segas16b_state::upd7759_control_w )
+void segas16b_state::upd7759_control_w(uint8_t data)
 {
 	int size = memregion("soundcpu")->bytes() - 0x10000;
 	if (size > 0)
@@ -1214,7 +1221,7 @@ WRITE8_MEMBER( segas16b_state::upd7759_control_w )
 //  bit in the top bit
 //-------------------------------------------------
 
-READ8_MEMBER( segas16b_state::upd7759_status_r )
+uint8_t segas16b_state::upd7759_status_r()
 {
 	return m_upd7759->busy_r() << 7;
 }
@@ -1261,6 +1268,10 @@ INTERRUPT_GEN_MEMBER( segas16b_state::i8751_main_cpu_vblank )
 
 void segas16b_state::machine_reset()
 {
+	m_atomicp_sound_count = 0;
+	m_hwc_input_value = 0;
+	m_mj_input_num = 0;
+	m_mj_last_val = 0;
 	// if we have a hard-coded mapping configuration, set it now
 	if (m_i8751_initial_config != nullptr)
 		m_mapper->configure_explicit(m_i8751_initial_config);
@@ -1280,6 +1291,10 @@ void segas16b_state::machine_reset()
 		for (int banknum = 0; banknum < 16; banknum++)
 			m_sprites->set_bank(banknum, banklist[banknum]);
 	}
+
+	// ensure the sound bank points somewhere sane
+	if (membank("soundbank"))
+		membank("soundbank")->set_base(memregion("soundcpu")->base() + 0x10000);
 }
 
 
@@ -1340,7 +1355,7 @@ void segas16b_state::altbeast_common_i8751_sim(offs_t soundoffs, offs_t inputoff
 	uint16_t temp = m_workram[soundoffs];
 	if ((temp & 0xff00) != 0x0000)
 	{
-		m_mapper->write(space, 0x03, temp >> 8);
+		m_mapper->write(0x03, temp >> 8);
 		m_workram[soundoffs] = temp & 0x00ff;
 	}
 
@@ -1370,8 +1385,7 @@ void segas16b_state::tturf_i8751_sim()
 	temp = m_workram[0x01d0/2];
 	if ((temp & 0xff00) != 0x0000)
 	{
-		address_space &space = m_maincpu->space(AS_PROGRAM);
-		m_mapper->write(space, 0x03, temp);
+		m_mapper->write(0x03, temp);
 		m_workram[0x01d0/2] = temp & 0x00ff;
 	}
 
@@ -1396,8 +1410,7 @@ void segas16b_state::wb3_i8751_sim()
 	uint16_t temp = m_workram[0x0008/2];
 	if ((temp & 0x00ff) != 0x0000)
 	{
-		address_space &space = m_maincpu->space(AS_PROGRAM);
-		m_mapper->write(space, 0x03, temp >> 8);
+		m_mapper->write(0x03, temp >> 8);
 		m_workram[0x0008/2] = temp & 0xff00;
 	}
 }
@@ -1413,7 +1426,7 @@ void segas16b_state::wb3_i8751_sim()
 //  for Ace Attacker
 //-------------------------------------------------
 
-READ16_MEMBER( segas16b_state::aceattac_custom_io_r )
+uint16_t segas16b_state::aceattac_custom_io_r(address_space &space, offs_t offset, uint16_t mem_mask)
 {
 	switch (offset & (0x3000/2))
 	{
@@ -1435,7 +1448,7 @@ READ16_MEMBER( segas16b_state::aceattac_custom_io_r )
 
 		case 0x3000/2:
 			if (BIT(offset, 4))
-				return m_cxdio->read(space, offset & 0x0f);
+				return m_cxdio->read(offset & 0x0f);
 			else // TODO: use uPD4701A device
 			switch (offset & 0x1b)
 			{
@@ -1455,14 +1468,14 @@ READ16_MEMBER( segas16b_state::aceattac_custom_io_r )
 	return standard_io_r(space, offset, mem_mask);
 }
 
-WRITE16_MEMBER( segas16b_state::aceattac_custom_io_w )
+void segas16b_state::aceattac_custom_io_w(address_space &space, offs_t offset, uint16_t data, uint16_t mem_mask)
 {
 	switch (offset & (0x3000/2))
 	{
 		case 0x3000/2:
 			if (BIT(offset, 4))
 			{
-				m_cxdio->write(space, offset & 0x0f, data);
+				m_cxdio->write(offset & 0x0f, data);
 				return;
 			}
 			break;
@@ -1476,7 +1489,7 @@ WRITE16_MEMBER( segas16b_state::aceattac_custom_io_w )
 //  for Dunk Shot
 //-------------------------------------------------
 
-READ16_MEMBER( segas16b_state::dunkshot_custom_io_r )
+uint16_t segas16b_state::dunkshot_custom_io_r(address_space &space, offs_t offset, uint16_t mem_mask)
 {
 	switch (offset & (0x3000/2))
 	{
@@ -1503,7 +1516,7 @@ READ16_MEMBER( segas16b_state::dunkshot_custom_io_r )
 //  handlers for Heavyweight Champ
 //-------------------------------------------------
 
-READ16_MEMBER( segas16b_state::hwchamp_custom_io_r )
+uint16_t segas16b_state::hwchamp_custom_io_r(address_space &space, offs_t offset, uint16_t mem_mask)
 {
 	uint16_t result;
 
@@ -1514,7 +1527,35 @@ READ16_MEMBER( segas16b_state::hwchamp_custom_io_r )
 			{
 				case 0x20/2:
 					result = (m_hwc_input_value & 0x80) >> 7;
-					m_hwc_input_value <<= 1;
+					if (!machine().side_effects_disabled())
+						m_hwc_input_value <<= 1;
+					return result;
+				case 0x30/2: // c43035
+					/*
+					    Signals, affects blocking and stance (both fists down, both fists up, up/down or down/up)
+					    According to service mode:
+					    ---- --00 no status for right trigger
+					    ---- --01 down
+					    ---- --10 up
+					    ---- --11 both (signals) in red, mustn't occur most likely
+					    ---- xx-- same applied to left trigger
+					    According to the flyer, cabinet has two sticks that can be moved up/down and/or towards the cabinet,
+					    simulating punch motions.
+					*/
+					u8 left = m_hwc_left_limit->read();
+					u8 right = m_hwc_right_limit->read();
+					result = 0xf0;
+
+					// TODO: these limits are arbitrary.
+					if (left < 0x40)
+						result |= 1 << 3;
+					if (left > 0xc0)
+						result |= 1 << 2;
+					if (right < 0x40)
+						result |= 1 << 1;
+					if (right > 0xc0)
+						result |= 1 << 0;
+
 					return result;
 			}
 			break;
@@ -1522,7 +1563,7 @@ READ16_MEMBER( segas16b_state::hwchamp_custom_io_r )
 	return standard_io_r(space, offset, mem_mask);
 }
 
-WRITE16_MEMBER( segas16b_state::hwchamp_custom_io_w )
+void segas16b_state::hwchamp_custom_io_w(address_space &space, offs_t offset, uint16_t data, uint16_t mem_mask)
 {
 	switch (offset & (0x3000/2))
 	{
@@ -1536,12 +1577,13 @@ WRITE16_MEMBER( segas16b_state::hwchamp_custom_io_w )
 							m_hwc_input_value = m_hwc_monitor->read();
 							break;
 
+						// TODO: order of these two flipped when returning a status of 0xf0 instead of open bus in r 0x30?
 						case 1:
-							m_hwc_input_value = m_hwc_left->read();
+							m_hwc_input_value = m_hwc_right->read();
 							break;
 
 						case 2:
-							m_hwc_input_value = m_hwc_right->read();
+							m_hwc_input_value = m_hwc_left->read();
 							break;
 
 						default:
@@ -1570,7 +1612,7 @@ WRITE16_MEMBER( segas16b_state::hwchamp_custom_io_w )
 //  for Passing Shot
 //-------------------------------------------------
 
-READ16_MEMBER( segas16b_state::passshtj_custom_io_r )
+uint16_t segas16b_state::passshtj_custom_io_r(address_space &space, offs_t offset, uint16_t mem_mask)
 {
 	switch (offset & (0x3000/2))
 	{
@@ -1593,7 +1635,7 @@ READ16_MEMBER( segas16b_state::passshtj_custom_io_r )
 //  for SDI
 //-------------------------------------------------
 
-READ16_MEMBER( segas16b_state::sdi_custom_io_r )
+uint16_t segas16b_state::sdi_custom_io_r(address_space &space, offs_t offset, uint16_t mem_mask)
 {
 	switch (offset & (0x3000/2))
 	{
@@ -1616,7 +1658,7 @@ READ16_MEMBER( segas16b_state::sdi_custom_io_r )
 //  handlers for Sukeban Jansi Ryuko
 //-------------------------------------------------
 
-READ16_MEMBER( segas16b_state::sjryuko_custom_io_r )
+uint16_t segas16b_state::sjryuko_custom_io_r(address_space &space, offs_t offset, uint16_t mem_mask)
 {
 	switch (offset & (0x3000/2))
 	{
@@ -1636,7 +1678,7 @@ READ16_MEMBER( segas16b_state::sjryuko_custom_io_r )
 	return standard_io_r(space, offset, mem_mask);
 }
 
-WRITE16_MEMBER( segas16b_state::sjryuko_custom_io_w )
+void segas16b_state::sjryuko_custom_io_w(address_space &space, offs_t offset, uint16_t data, uint16_t mem_mask)
 {
 	switch (offset & (0x3000/2))
 	{
@@ -1703,11 +1745,11 @@ void segas16b_state::system16b_bootleg_map(address_map &map)
 	map(0xffc000, 0xffffff).ram().share("workram");
 }
 
-void segas16b_state::dfjail_map(address_map &map)
+void dfjail_state::dfjail_map(address_map &map)
 {
 	system16b_bootleg_map(map);
 	map(0x000000, 0x07ffff).rom();
-	map(0x840000, 0x840fff).ram().w(FUNC(segas16b_state::philko_paletteram_w)).share("paletteram");
+	map(0x840000, 0x840fff).ram().w(FUNC(dfjail_state::philko_paletteram_w)).share("paletteram");
 
 	map(0xc40000, 0xc43fff).unmaprw();
 
@@ -1812,14 +1854,14 @@ void segas16b_state::fpointbl_sound_map(address_map &map)
 }
 
 
-READ16_MEMBER(segas16b_state::bootleg_custom_io_r)
+uint16_t segas16b_state::bootleg_custom_io_r(address_space &space, offs_t offset, uint16_t mem_mask)
 {
 	return m_custom_io_r(space, offset, mem_mask);
 }
 
-WRITE16_MEMBER(segas16b_state::bootleg_custom_io_w)
+void segas16b_state::bootleg_custom_io_w(address_space &space, offs_t offset, uint16_t data, uint16_t mem_mask)
 {
-	m_custom_io_w(space, offset, data,mem_mask);
+	m_custom_io_w(space, offset, data, mem_mask);
 }
 
 
@@ -1872,14 +1914,14 @@ void segas16b_state::bootleg_sound_portmap(address_map &map)
 	map(0xc0, 0xc0).mirror(0x3f).r(m_soundlatch, FUNC(generic_latch_8_device::read));
 }
 
-WRITE8_MEMBER(segas16b_state::dfjail_sound_control_w)
+void dfjail_state::sound_control_w(uint8_t data)
 {
 	int size = memregion("soundcpu")->bytes() - 0x10000;
 
 	// NMI and presumably DAC output clear
 	// TODO: identify which is which
-	m_dfjail_nmi_enable = ((data & 0xc0) == 0);
-	if (m_dfjail_nmi_enable == false)
+	m_nmi_enable = ((data & 0xc0) == 0);
+	if (m_nmi_enable == false)
 		m_dac->write(0);
 	//m_upd7759->start_w(BIT(data, 7));
 	//m_upd7759->reset_w(BIT(data, 6));
@@ -1892,36 +1934,36 @@ WRITE8_MEMBER(segas16b_state::dfjail_sound_control_w)
 	membank("soundbank")->set_base(memregion("soundcpu")->base() + 0x10000 + (bankoffs % size));
 }
 
-WRITE8_MEMBER(segas16b_state::dfjail_dac_data_w)
+void dfjail_state::dac_data_w(uint8_t data)
 {
 	// TODO: understand how this is hooked up
 	#if 0
 	switch(offset)
 	{
 		case 0:
-			m_dfjail_dac_data = (data & 0xf) << 0;
+			m_dac_data = (data & 0xf) << 0;
 			break;
 		case 1:
-			m_dfjail_dac_data |= (data & 0xf) << 4;
+			m_dac_data |= (data & 0xf) << 4;
 			break;
 		case 2:
-			m_dfjail_dac_data |= (data & 0xf) << 8;
+			m_dac_data |= (data & 0xf) << 8;
 			break;
 		case 3:
-			m_dfjail_dac_data |= (data & 0xf) << 12;
-			m_dac->write(m_dfjail_dac_data);
+			m_dac_data |= (data & 0xf) << 12;
+			m_dac->write(m_dac_data);
 			break;
 	}
 	#endif
 }
 
-void segas16b_state::dfjail_sound_iomap(address_map &map)
+void dfjail_state::dfjail_sound_iomap(address_map &map)
 {
 	map.unmap_value_high();
 	map.global_mask(0xff);
 	map(0x00, 0x01).mirror(0x3e).rw(m_ym2151, FUNC(ym2151_device::read), FUNC(ym2151_device::write));
-	map(0x40, 0x40).mirror(0x3f).w(FUNC(segas16b_state::dfjail_sound_control_w));
-	map(0x80, 0x83).w(FUNC(segas16b_state::dfjail_dac_data_w));
+	map(0x40, 0x40).mirror(0x3f).w(FUNC(dfjail_state::sound_control_w));
+	map(0x80, 0x83).w(FUNC(dfjail_state::dac_data_w));
 	map(0xc0, 0xc0).mirror(0x3f).r(m_soundlatch, FUNC(generic_latch_8_device::read));
 }
 
@@ -1946,7 +1988,7 @@ void segas16b_state::lockonph_sound_iomap(address_map &map)
 //  I8751 MCU ADDRESS MAPS
 //**************************************************************************
 
-WRITE8_MEMBER(segas16b_state::spin_68k_w)
+void segas16b_state::spin_68k_w(uint8_t data)
 {
 	// this is probably a hack but otherwise the 68k and i8751 end up fighting
 	// on 'goldnaxe' causing hangs in various places.  maybe the interrupts
@@ -2792,6 +2834,9 @@ INPUT_PORTS_END
 static INPUT_PORTS_START( hwchamp )
 	PORT_INCLUDE( system16b_generic )
 
+	PORT_MODIFY("SERVICE")
+	PORT_BIT( 0x20, IP_ACTIVE_LOW, IPT_UNUSED )
+
 	PORT_MODIFY("P1")
 	PORT_BIT( 0xff, IP_ACTIVE_LOW, IPT_UNUSED )
 
@@ -2821,13 +2866,19 @@ static INPUT_PORTS_START( hwchamp )
 	PORT_DIPSETTING(    0x00, DEF_STR( Hardest ) )
 
 	PORT_START("MONITOR")   // monitor
-	PORT_BIT( 0xff, 0x80, IPT_PADDLE ) PORT_SENSITIVITY(70) PORT_KEYDELTA(32)
+	PORT_BIT( 0xff, 0x80, IPT_AD_STICK_X ) PORT_SENSITIVITY(70) PORT_KEYDELTA(32) PORT_NAME("Monitor X")
 
 	PORT_START("RIGHT")     // right handle
-	PORT_BIT( 0xff, 0x00, IPT_PEDAL ) PORT_SENSITIVITY(70) PORT_KEYDELTA(32)
+	PORT_BIT( 0xff, 0x20, IPT_AD_STICK_Z ) PORT_MINMAX(0x00, 0xff) PORT_SENSITIVITY(70) PORT_KEYDELTA(32) PORT_PLAYER(2) PORT_REVERSE PORT_NAME("Right Handle")
 
 	PORT_START("LEFT")      // left handle
-	PORT_BIT( 0xff, 0x00, IPT_PEDAL2 ) PORT_SENSITIVITY(70) PORT_KEYDELTA(32)
+	PORT_BIT( 0xff, 0x20, IPT_AD_STICK_Z ) PORT_MINMAX(0x00, 0xff) PORT_SENSITIVITY(70) PORT_KEYDELTA(32) PORT_PLAYER(1) PORT_REVERSE PORT_NAME("Left Handle")
+
+	PORT_START("RIGHT_LIMIT")
+	PORT_BIT( 0xff, 0x80, IPT_AD_STICK_Y ) PORT_SENSITIVITY(70) PORT_KEYDELTA(32) PORT_PLAYER(2) PORT_NAME("Right Y Limit")
+
+	PORT_START("LEFT_LIMIT")
+	PORT_BIT( 0xff, 0x80, IPT_AD_STICK_Y ) PORT_SENSITIVITY(70) PORT_KEYDELTA(32) PORT_PLAYER(1) PORT_NAME("Left Y Limit")
 INPUT_PORTS_END
 
 
@@ -3404,6 +3455,8 @@ static INPUT_PORTS_START( tturf )
 	PORT_DIPSETTING(    0x0c, DEF_STR( Normal ) )
 	PORT_DIPSETTING(    0x04, DEF_STR( Hard ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( Hardest ) )
+	// note: neither Starting nor Bonus Energy dips really works for both tturf and tturfu,
+	// former does on tturfbl, is it based on a later rev we don't have?
 	PORT_DIPNAME( 0x30, 0x20, "Starting Energy" ) PORT_DIPLOCATION("SW2:5,6")
 	PORT_DIPSETTING(    0x00, "3" )
 	PORT_DIPSETTING(    0x10, "4" )
@@ -3910,7 +3963,7 @@ void segas16b_state::system16b(machine_config &config)
 	NVRAM(config, "nvram", nvram_device::DEFAULT_ALL_0);
 
 	SEGA_315_5195_MEM_MAPPER(config, m_mapper, MASTER_CLOCK_10MHz, m_maincpu);
-	m_mapper->set_mapper(FUNC(segas16b_state::memory_mapper), this);
+	m_mapper->set_mapper(FUNC(segas16b_state::memory_mapper));
 	m_mapper->pbf().set_inputline(m_soundcpu, 0);
 
 	// video hardware
@@ -3921,6 +3974,8 @@ void segas16b_state::system16b(machine_config &config)
 	m_screen->set_raw(MASTER_CLOCK_25MHz/4, 400, 0, 320, 262, 0, 224);
 	m_screen->set_screen_update(FUNC(segas16b_state::screen_update));
 	m_screen->set_palette(m_palette);
+	// see note in segas16a.cpp, also used here for consistency
+	m_screen->set_video_attributes(VIDEO_UPDATE_AFTER_VBLANK);
 
 	SEGA_SYS16B_SPRITES(config, m_sprites, 0);
 	SEGAIC16VID(config, m_segaic16vid, 0, m_gfxdecode);
@@ -3928,12 +3983,37 @@ void segas16b_state::system16b(machine_config &config)
 	// sound hardware
 	SPEAKER(config, "mono").front_center();
 
+#if USE_NL
+	YM2151(config, m_ym2151, MASTER_CLOCK_8MHz/2)
+		.add_route(0, "netlist", 1.0, 0)
+		.add_route(1, "netlist", 1.0, 1);
+	UPD7759(config, m_upd7759);
+	m_upd7759->md_w(0);
+	m_upd7759->drq().set(FUNC(segas16b_state::upd7759_generate_nmi));
+	m_upd7759->add_route(0, "netlist", 1.0, 2);
+
+	NETLIST_SOUND(config, "netlist", 48000)
+		.set_source(netlist_segas16b_audio)
+		.add_route(ALL_OUTPUTS, "mono", 1.0);
+
+	// please refer to the netlist code for details about
+	// the multipliers and offsets.
+	NETLIST_STREAM_INPUT(config, "netlist:cin0", 0, "CH1.IN")
+		.set_mult_offset(0.5, 2.5);
+	NETLIST_STREAM_INPUT(config, "netlist:cin1", 1, "CH2.IN")
+		.set_mult_offset(0.5, 2.5);
+	NETLIST_STREAM_INPUT(config, "netlist:cin2", 2, "SPEECH.I")
+		.set_mult_offset(0.001020/2.0, 0.001020/2.0);
+
+	NETLIST_STREAM_OUTPUT(config, "netlist:cout0", 0, "OUT").set_mult_offset(1.0 / 0.2, 0.0);
+#else
 	YM2151(config, m_ym2151, MASTER_CLOCK_8MHz/2).add_route(ALL_OUTPUTS, "mono", 0.43);
 
 	UPD7759(config, m_upd7759);
 	m_upd7759->md_w(0);
 	m_upd7759->drq().set(FUNC(segas16b_state::upd7759_generate_nmi));
 	m_upd7759->add_route(ALL_OUTPUTS, "mono", 0.48);
+#endif
 }
 
 void segas16b_state::system16b_mc8123(machine_config &config)
@@ -3992,7 +4072,7 @@ void segas16b_state::system16b_i8751(machine_config &config)
 	m_mcu->port_in_cb<1>().set_ioport("SERVICE");
 	m_mcu->port_out_cb<1>().set(FUNC(segas16b_state::spin_68k_w));
 
-	config.m_minimum_quantum = attotime::from_hz(6000);
+	config.set_maximum_quantum(attotime::from_hz(6000));
 
 	m_screen->screen_vblank().set_inputline(m_mcu, INPUT_LINE_IRQ0);
 }
@@ -4084,7 +4164,7 @@ void segas16b_state::fpointbl(machine_config &config)
 	m_sprites->set_local_originx(75); // these align the pieces with the playfield
 	m_sprites->set_local_originy(-2); // some other gfx don't have identical alignment to original tho (flickey character over 'good luck')
 
-	m_segaic16vid->set_pagelatch_cb(FUNC(segas16b_state::tilemap_16b_fpointbl_fill_latch), this);
+	m_segaic16vid->set_pagelatch_cb(FUNC(segas16b_state::tilemap_16b_fpointbl_fill_latch));
 }
 
 void segas16b_state::fpointbla(machine_config &config)
@@ -4120,6 +4200,8 @@ void segas16b_state::lockonph(machine_config &config)
 	m_screen->set_raw(MASTER_CLOCK_25MHz/4, 400, 0, 320, 262, 0, 224); // wrong, other XTAL seems to be 17Mhz?
 	m_screen->set_screen_update(FUNC(segas16b_state::screen_update));
 	m_screen->set_palette(m_palette);
+	// see note in segas16a.cpp, also used here for consistency
+	m_screen->set_video_attributes(VIDEO_UPDATE_AFTER_VBLANK);
 
 	SEGA_SYS16B_SPRITES(config, m_sprites, 0);
 	SEGAIC16VID(config, m_segaic16vid, 0, m_gfxdecode);
@@ -4163,34 +4245,45 @@ void segas16b_state::atomicp(machine_config &config) // 10MHz CPU Clock verified
 	config.device_remove("upd");
 }
 
-INTERRUPT_GEN_MEMBER(segas16b_state::dfjail_soundirq_cb)
+INTERRUPT_GEN_MEMBER(dfjail_state::soundirq_cb)
 {
-	if (m_dfjail_nmi_enable == true)
+	if (m_nmi_enable == true)
 	{
 		m_soundcpu->pulse_input_line(INPUT_LINE_NMI, attotime::zero);
 	}
 }
 
-void segas16b_state::dfjail(machine_config &config)
+void dfjail_state::machine_start()
+{
+	segas16b_state::machine_start();
+	save_item(NAME(m_nmi_enable));
+	save_item(NAME(m_dac_data));
+}
+
+void dfjail_state::machine_reset()
+{
+	m_nmi_enable = false;
+	m_dac_data = 0;
+	segas16b_state::machine_reset();
+}
+
+void dfjail_state::dfjail(machine_config &config)
 {
 	system16b_split(config);
 	M68000(config.replace(), m_maincpu, XTAL(16'000'000)/2); // ?
-	m_maincpu->set_addrmap(AS_PROGRAM, &segas16b_state::dfjail_map);
-	m_maincpu->set_vblank_int("screen", FUNC(segas16b_state::irq4_line_hold));
+	m_maincpu->set_addrmap(AS_PROGRAM, &dfjail_state::dfjail_map);
+	m_maincpu->set_vblank_int("screen", FUNC(dfjail_state::irq4_line_hold));
 
 	Z80(config.replace(), m_soundcpu, XTAL(16'000'000)/4); // ?
-	m_soundcpu->set_addrmap(AS_PROGRAM, &segas16b_state::bootleg_sound_map);
-	m_soundcpu->set_addrmap(AS_IO, &segas16b_state::dfjail_sound_iomap);
+	m_soundcpu->set_addrmap(AS_PROGRAM, &dfjail_state::bootleg_sound_map);
+	m_soundcpu->set_addrmap(AS_IO, &dfjail_state::dfjail_sound_iomap);
 	// connected to a 74ls74 clock source
-	m_soundcpu->set_periodic_int(FUNC(segas16b_state::dfjail_soundirq_cb), attotime::from_hz(4*60)); // TODO: timing
+	m_soundcpu->set_periodic_int(FUNC(dfjail_state::soundirq_cb), attotime::from_hz(4*60)); // TODO: timing
 
 	//config.device_remove("ym2151");
 	config.device_remove("upd");
 
 	AD7533(config, m_dac, 0).add_route(ALL_OUTPUTS, "mono", 0.25); // AD7533KN
-	voltage_regulator_device &vref(VOLTAGE_REGULATOR(config, "vref"));
-	vref.add_route(0, "dac", 1.0, DAC_VREF_POS_INPUT);
-	vref.add_route(0, "dac", -1.0, DAC_VREF_NEG_INPUT);
 }
 
 
@@ -4580,6 +4673,7 @@ ROM_START( altbeast )
 
 	ROM_REGION( 0x1000, "mcu", 0 )  // Intel i8751 protection MCU
 	ROM_LOAD( "317-0078.c2", 0x00000, 0x1000, CRC(8101925f) SHA1(a45d772ebe2fd1a577a6ccac8c6c76bb622258bb) )
+
 	ROM_REGION( 0x0100, "plds", 0 )
 	ROM_LOAD( "315-5298.b9",  0x0000, 0x00eb, CRC(39b47212) SHA1(432b47aee5ecbf08a8a6dc2f8379c816feb86328) ) // PLS153
 ROM_END
@@ -4588,9 +4682,6 @@ ROM_END
 //  Jyuohki (Altered Beast), Sega System 16B
 //  CPU: 68000 + i8751 (317-0077)
 //  ROM Board type: 171-5521
-//  Sega game ID: 833-6660-09 JYUOHKI
-//    Main board: 837-6662-06
-//     ROM board: 834-6661-09
 //
 ROM_START( altbeastj )
 	ROM_REGION( 0x40000, "maincpu", 0 ) // 68000 code
@@ -4632,7 +4723,6 @@ ROM_START( altbeastj )
 	ROM_REGION( 0x0100, "plds", 0 )
 	ROM_LOAD( "315-5298.b9",  0x0000, 0x00eb, CRC(39b47212) SHA1(432b47aee5ecbf08a8a6dc2f8379c816feb86328) ) // PLS153
 ROM_END
-
 
 //*************************************************************************************************************************
 //  Altered Beast, Sega System 16B
@@ -5080,8 +5170,8 @@ ROM_START( dfjail )
 
 	ROM_REGION( 0x50000, "soundcpu", 0 ) // z80
 	ROM_LOAD( "29.f3",        0x000000, 0x008000, CRC(7f3ebb6a) SHA1(f265c6215ef457202686b31c9b503a0a371a1139) )
-	ROM_LOAD( "28.g3",        0x030000, 0x020000, CRC(ed96d6b9) SHA1(3ad096e466150d0ca36fec8dd649554e7fb9f654) )
-	ROM_LOAD( "27.g1",        0x010000, 0x020000, CRC(7a88e1c1) SHA1(b238b451522819a5a8c1a9e82058b86d33ac2272) )
+	ROM_LOAD( "28.g3",        0x010000, 0x020000, CRC(ed96d6b9) SHA1(3ad096e466150d0ca36fec8dd649554e7fb9f654) )
+	ROM_LOAD( "27.g1",        0x030000, 0x020000, CRC(7a88e1c1) SHA1(b238b451522819a5a8c1a9e82058b86d33ac2272) )
 
 	ROM_REGION( 0xc0000, "gfx1", 0 ) // tiles
 	ROM_LOAD( "9.f16",        0x000000, 0x020000, CRC(b2a49d12) SHA1(052b96109abc18c562c09042664738bac68f66b4) )
@@ -7329,7 +7419,7 @@ ROM_START( hwchamp )
 	ROM_LOAD( "mpr-11245.a12", 0x30000, 0x20000, CRC(a4d53f7b) SHA1(71123a8ecfa093897c6f2bb7312e6c755be14521) ) // 28 pin Fujitsu MB831000 mask ROM
 
 	ROM_REGION( 0x0100, "plds", 0 )
-	ROM_LOAD( "pls153.bin",  0x0000, 0x00eb, CRC(39b47212) SHA1(432b47aee5ecbf08a8a6dc2f8379c816feb86328) )
+	ROM_LOAD( "315-5298.b9",  0x0000, 0x00eb, CRC(39b47212) SHA1(432b47aee5ecbf08a8a6dc2f8379c816feb86328) ) // PLS153
 ROM_END
 
 //*************************************************************************************************************************
@@ -7427,7 +7517,7 @@ ROM_START( hwchampj )
 	ROM_LOAD( "epr-11201.a12", 0x30000, 0x20000, CRC(9a993120) SHA1(0c1ad7568b727e86926b3442e24840de81864dff) )
 
 	ROM_REGION( 0x0100, "plds", 0 )
-	ROM_LOAD( "pls153.bin",  0x0000, 0x00eb, CRC(39b47212) SHA1(432b47aee5ecbf08a8a6dc2f8379c816feb86328) )
+	ROM_LOAD( "315-5298.b9",  0x0000, 0x00eb, CRC(39b47212) SHA1(432b47aee5ecbf08a8a6dc2f8379c816feb86328) ) // PLS153
 ROM_END
 
 ROM_START( hwchampjd )
@@ -7467,7 +7557,7 @@ ROM_START( hwchampjd )
 	ROM_LOAD( "epr-11201.a12", 0x30000, 0x20000, CRC(9a993120) SHA1(0c1ad7568b727e86926b3442e24840de81864dff) )
 
 	ROM_REGION( 0x0100, "plds", 0 )
-	ROM_LOAD( "pls153.bin",  0x0000, 0x00eb, CRC(39b47212) SHA1(432b47aee5ecbf08a8a6dc2f8379c816feb86328) )
+	ROM_LOAD( "315-5298.b9",  0x0000, 0x00eb, CRC(39b47212) SHA1(432b47aee5ecbf08a8a6dc2f8379c816feb86328) ) // PLS153
 ROM_END
 
 
@@ -9589,8 +9679,8 @@ void segas16b_state::init_generic(segas16b_rom_board rom_board)
 	m_nvram->set_base(m_workram, m_workram.bytes());
 
 	// create default read/write handlers
-	m_custom_io_r = read16_delegate(FUNC(segas16b_state::standard_io_r), this);
-	m_custom_io_w = write16_delegate(FUNC(segas16b_state::standard_io_w), this);
+	m_custom_io_r = read16_delegate(*this, FUNC(segas16b_state::standard_io_r));
+	m_custom_io_w = write16_delegate(*this, FUNC(segas16b_state::standard_io_w));
 
 	// save state
 	save_item(NAME(m_atomicp_sound_count));
@@ -9649,8 +9739,8 @@ void segas16b_state::init_generic_bootleg()
 void segas16b_state::init_aceattac_5358()
 {
 	init_generic_5358();
-	m_custom_io_r = read16_delegate(FUNC(segas16b_state::aceattac_custom_io_r), this);
-	m_custom_io_w = write16_delegate(FUNC(segas16b_state::aceattac_custom_io_w), this);
+	m_custom_io_r = read16_delegate(*this, FUNC(segas16b_state::aceattac_custom_io_r));
+	m_custom_io_w = write16_delegate(*this, FUNC(segas16b_state::aceattac_custom_io_w));
 }
 
 void segas16b_state::init_aliensyn7_5358_small()
@@ -9674,27 +9764,27 @@ void segas16b_state::init_altbeas4_5521()
 void segas16b_state::init_dunkshot_5358_small()
 {
 	init_generic_5358_small();
-	m_custom_io_r = read16_delegate(FUNC(segas16b_state::dunkshot_custom_io_r), this);
+	m_custom_io_r = read16_delegate(*this, FUNC(segas16b_state::dunkshot_custom_io_r));
 	m_tilemap_type = segaic16_video_device::TILEMAP_16B_ALT;
 }
 
 void segas16b_state::init_exctleag_5358()
 {
 	init_generic_5358();
-	m_custom_io_r = read16_delegate(FUNC(segas16b_state::sdi_custom_io_r), this);
+	m_custom_io_r = read16_delegate(*this, FUNC(segas16b_state::sdi_custom_io_r));
 }
 
 void segas16b_state::init_hwchamp_5521()
 {
 	init_generic_5521();
-	m_custom_io_r = read16_delegate(FUNC(segas16b_state::hwchamp_custom_io_r), this);
-	m_custom_io_w = write16_delegate(FUNC(segas16b_state::hwchamp_custom_io_w), this);
+	m_custom_io_r = read16_delegate(*this, FUNC(segas16b_state::hwchamp_custom_io_r));
+	m_custom_io_w = write16_delegate(*this, FUNC(segas16b_state::hwchamp_custom_io_w));
 }
 
 void segas16b_state::init_passshtj_5358()
 {
 	init_generic_5358();
-	m_custom_io_r = read16_delegate(FUNC(segas16b_state::passshtj_custom_io_r), this);
+	m_custom_io_r = read16_delegate(*this, FUNC(segas16b_state::passshtj_custom_io_r));
 }
 
 void segas16b_state::init_cencourt_5358()
@@ -9706,7 +9796,7 @@ void segas16b_state::init_cencourt_5358()
 void segas16b_state::init_sdi_5358_small()
 {
 	init_generic_5358_small();
-	m_custom_io_r = read16_delegate(FUNC(segas16b_state::sdi_custom_io_r), this);
+	m_custom_io_r = read16_delegate(*this, FUNC(segas16b_state::sdi_custom_io_r));
 
 	if (memregion("maincpux") != nullptr)
 	{
@@ -9730,7 +9820,7 @@ void segas16b_state::init_fpointbla()
 void segas16b_state::init_defense_5358_small()
 {
 	init_generic_5358_small();
-	m_custom_io_r = read16_delegate(FUNC(segas16b_state::sdi_custom_io_r), this);
+	m_custom_io_r = read16_delegate(*this, FUNC(segas16b_state::sdi_custom_io_r));
 }
 
 void segas16b_state::init_shinobi4_5521()
@@ -9748,8 +9838,8 @@ void segas16b_state::init_shinobi3_5358()
 void segas16b_state::init_sjryuko_5358_small()
 {
 	init_generic_5358_small();
-	m_custom_io_r = read16_delegate(FUNC(segas16b_state::sjryuko_custom_io_r), this);
-	m_custom_io_w = write16_delegate(FUNC(segas16b_state::sjryuko_custom_io_w), this);
+	m_custom_io_r = read16_delegate(*this, FUNC(segas16b_state::sjryuko_custom_io_r));
+	m_custom_io_w = write16_delegate(*this, FUNC(segas16b_state::sjryuko_custom_io_w));
 	m_tilemap_type = segaic16_video_device::TILEMAP_16B_ALT;
 }
 
@@ -9811,7 +9901,7 @@ GAME( 1990, aurailj,    aurail,   system16b_fd1089a,     aurail,   segas16b_stat
 
 GAME( 1989, bayroute,   0,        system16b_fd1094,      bayroute, segas16b_state, init_generic_5704,       ROT0,   "Sunsoft / Sega", "Bay Route (set 3, World) (FD1094 317-0116)", 0 )
 GAME( 1989, bayroutej,  bayroute, system16b_fd1094,      bayroute, segas16b_state, init_generic_5704,       ROT0,   "Sunsoft / Sega", "Bay Route (set 2, Japan) (FD1094 317-0115)", 0 )
-GAME( 1989, bayroute1,  bayroute, system16b,             bayroute, segas16b_state, init_generic_5358,       ROT0,   "Sunsoft / Sega", "Bay Route (set 1, US) (unprotected)", 0 )
+GAME( 1989, bayroute1,  bayroute, system16b,             bayroute, segas16b_state, init_generic_5358,       ROT0,   "Sunsoft / Sega", "Bay Route (set 1, US) (unprotected)", MACHINE_NO_SOUND )
 
 GAME( 1987, bullet,     0,        system16b_fd1094,      bullet,   segas16b_state, init_generic_5358_small, ROT0,   "Sega", "Bullet (FD1094 317-0041)", 0 )
 
@@ -9913,7 +10003,7 @@ GAME( 1990, atomicp,    0,        atomicp,               atomicp,  segas16b_stat
 GAME( 1990, snapper,    0,        atomicp,               snapper,  segas16b_state, init_snapper,            ROT0,   "Philko", "Snapper (Korea)", 0) // korean clone board..
 // board marked 'System 4' and has Philko custom chip - various hw changes (4bpp tiles for example)
 GAME( 1991, lockonph,   0,        lockonph,              lockonph, segas16b_state, init_lockonph,           ROT0,   "Philko", "Lock On (Philko)", MACHINE_IMPERFECT_SOUND ) // Copyright not shown in game, but has 'PHILKO' in the startup warning and tiles / PCB.  1991 is the name entry for the lowest high score.  Clipping issues on left edge in attract look like original game bugs.
-GAME( 1991, dfjail,   0,          dfjail,                dfjail,   segas16b_state, init_generic_korean,     ROT0,   "Philko", "The Destroyer From Jail (Korea)", MACHINE_IMPERFECT_SOUND | MACHINE_NO_COCKTAIL ) // dips, check sound, not extensively tested
+GAME( 1991, dfjail,   0,          dfjail,                dfjail,   dfjail_state,   init_generic_korean,     ROT0,   "Philko", "The Destroyer From Jail (Korea)", MACHINE_IMPERFECT_SOUND | MACHINE_NO_COCKTAIL ) // dips, check sound, not extensively tested
 
 // decrypted bootleg / 'suicide repair' sets
 
@@ -10022,26 +10112,26 @@ removed.
 
 
 
-WRITE16_MEMBER( isgsm_state::cart_addr_high_w )
+void isgsm_state::cart_addr_high_w(uint16_t data)
 {
 	m_cart_addrlatch = data;
 }
 
-WRITE16_MEMBER( isgsm_state::cart_addr_low_w )
+void isgsm_state::cart_addr_low_w(uint16_t data)
 {
 	m_cart_addr = data | (m_cart_addrlatch << 16);
 }
 
 // the cart can be read here 8-bits at a time.
 // when reading from this port the data is xored by a fixed value depending on the cart
-READ16_MEMBER( isgsm_state::cart_data_r )
+uint16_t isgsm_state::cart_data_r()
 {
 	int size = memregion("gamecart_rgn")->bytes();
 	uint8_t *rgn = memregion("gamecart_rgn")->base();
 	return rgn[(++m_cart_addr & (size - 1)) ^ 1] ^ m_read_xor;
 }
 
-WRITE16_MEMBER( isgsm_state::data_w )
+void isgsm_state::data_w(uint16_t data)
 {
 	uint8_t *dest = nullptr;
 
@@ -10184,19 +10274,19 @@ WRITE16_MEMBER( isgsm_state::data_w )
 }
 
 
-WRITE16_MEMBER( isgsm_state::datatype_w )
+void isgsm_state::datatype_w(offs_t offset, uint16_t data, uint16_t mem_mask)
 {
 	//printf("type set to %04x %04x\n", data, mem_mask);
 	m_data_type = data;
 }
 
-WRITE16_MEMBER( isgsm_state::addr_high_w )
+void isgsm_state::addr_high_w(uint16_t data)
 {
 	// this is latched, doesn't get applied until low part is written.
 	m_addr_latch = data;
 }
 
-WRITE16_MEMBER( isgsm_state::addr_low_w )
+void isgsm_state::addr_low_w(uint16_t data)
 {
 	// update the address and mode
 	m_data_mode = (m_addr_latch & 0xf000) >> 12;
@@ -10208,7 +10298,7 @@ WRITE16_MEMBER( isgsm_state::addr_low_w )
 	m_rle_latched = false;
 }
 
-WRITE16_MEMBER( isgsm_state::cart_security_high_w )
+void isgsm_state::cart_security_high_w(uint16_t data)
 {
 	// this is latched, doesn't get applied until low part is written.
 	m_security_latch = data;
@@ -10227,7 +10317,7 @@ uint32_t isgsm_state::tetrbx_security(uint32_t input)
 
 
 
-WRITE16_MEMBER( isgsm_state::cart_security_low_w )
+void isgsm_state::cart_security_low_w(uint16_t data)
 {
 	m_security_value = data | m_security_latch << 16;
 	// come up with security answer
@@ -10235,17 +10325,17 @@ WRITE16_MEMBER( isgsm_state::cart_security_low_w )
 	m_security_value = m_security_callback(m_security_value);
 }
 
-READ16_MEMBER( isgsm_state::cart_security_low_r )
+uint16_t isgsm_state::cart_security_low_r()
 {
 	return m_security_value & 0xffff;
 }
 
-READ16_MEMBER( isgsm_state::cart_security_high_r )
+uint16_t isgsm_state::cart_security_high_r()
 {
 	return (m_security_value >> 16) & 0xffff;
 }
 
-WRITE16_MEMBER( isgsm_state::sound_reset_w )
+void isgsm_state::sound_reset_w(uint16_t data)
 {
 	if (data == 0)
 	{
@@ -10259,7 +10349,7 @@ WRITE16_MEMBER( isgsm_state::sound_reset_w )
 	}
 }
 
-WRITE16_MEMBER( isgsm_state::main_bank_change_w )
+void isgsm_state::main_bank_change_w(uint16_t data)
 {
 	// other values on real hw have strange results, change memory mapping etc??
 	if (data !=0 )
@@ -10269,7 +10359,7 @@ WRITE16_MEMBER( isgsm_state::main_bank_change_w )
 void isgsm_state::isgsm_map(address_map &map)
 {
 
-	map(0x000000, 0x0fffff).bankr(ISGSM_MAIN_BANK).region("bios", 0); // this area is ALWAYS read-only, even when the game is banked in
+	map(0x000000, 0x0fffff).bankr(ISGSM_MAIN_BANK); // this area is ALWAYS read-only, even when the game is banked in
 	map(0x200000, 0x23ffff).ram(); // used during startup for decompression
 	map(0x3f0000, 0x3fffff).w(FUNC(isgsm_state::rom_5704_bank_w));
 	map(0x400000, 0x40ffff).rw(m_segaic16vid, FUNC(segaic16_video_device::tileram_r), FUNC(segaic16_video_device::tileram_w)).share("tileram");
@@ -10409,6 +10499,19 @@ INPUT_PORTS_END
 
 void isgsm_state::machine_reset()
 {
+	m_cart_addrlatch = 0;
+	m_cart_addr = 0;
+	m_data_type = 0;
+	m_data_addr = 0;
+	m_data_mode = 0;
+	m_addr_latch = 0;
+	m_security_value = 0;
+	m_security_latch = 0;
+	m_rle_control_position = 0;
+	m_rle_control_byte = 0;
+	m_rle_latched = 0;
+	m_rle_byte = 0;
+
 	m_segaic16vid->tilemap_reset(*m_screen);
 
 	// configure sprite banks
@@ -10417,6 +10520,23 @@ void isgsm_state::machine_reset()
 			m_sprites->set_bank(i, i);
 
 	membank(ISGSM_MAIN_BANK)->set_base(memregion("bios")->base());
+}
+
+void isgsm_state::machine_start()
+{
+	segas16b_state::machine_start();
+	save_item(NAME(m_cart_addrlatch));
+	save_item(NAME(m_cart_addr));
+	save_item(NAME(m_data_type));
+	save_item(NAME(m_data_addr));
+	save_item(NAME(m_data_mode));
+	save_item(NAME(m_addr_latch));
+	save_item(NAME(m_security_value));
+	save_item(NAME(m_security_latch));
+	save_item(NAME(m_rle_control_position));
+	save_item(NAME(m_rle_control_byte));
+	save_item(NAME(m_rle_latched));
+	save_item(NAME(m_rle_byte));
 }
 
 

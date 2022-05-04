@@ -3075,7 +3075,6 @@ kovsgqyzb                       // bootleg
 kovsgqyzc                       // bootleg
 kovsgqyzd                       // bootleg
 kovsh                           // (c) 1999 Knights of Valor Superheroes
-kovshb
 kovsh100                        //
 kovsh101                        //
 kovsh102                        //
@@ -6376,7 +6375,6 @@ ninjawu                         // B31 (c) 1987 Taito America Corporation (US)
 @source:nycaptor.cpp
 bronx                           // bootleg
 colt                            // bootleg
-cyclshtg
 nycaptor                        // A50 (c) 1985 Taito Corporation
 
 @source:opwolf.cpp
@@ -10611,7 +10609,7 @@ msbaby                          // hack
 msmini                          // hack
 msminia                         // hack
 msnes4a                         // hack
-msnes62                         // hack                         // hack
+msnes62                         // hack
 msnes63                         // hack
 msnes6m                         // hack
 msnes6m2                        // hack
@@ -12042,6 +12040,7 @@ mslug3hacks30                   //hack
 mslug3hacks31                   //hack
 mslug3hacks32                   //hack
 mslug3hacks33                   //hack
+mslug3hacks34
 mslug6hacks01                   //hack
 mslug6hacks02                   //hack
 mslug6hacks03                   //hack
@@ -12914,23 +12913,26 @@ sfexphack01                     //hack
 @source:model2.cpp
 srallyp                         //hack
 
+@source:cv1k.cpp
+deathsmlhack01                  //hack
+ddpsdoj                         //hack
+ddpsdojo                        //hack
+sdojak                          //hack
+sdoja                           //hack
+sdojb                           //hack
+
 /****************************************************
   List of all drivers disabled on the system arcade64.
 *******************************************************/
-@source:8080bw.cpp
-//orbite
-//cane
 
 @source:metro.cpp
 //metabee
-//poittoc
 
 @source:bagman.cpp
 //bagmans3
 
 @source:itech32.cpp
-//pubball
-//timekill100            
+//pubball          
 
 @source:galaxian.cpp
 //sbhoei

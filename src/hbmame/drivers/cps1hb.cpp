@@ -4603,11 +4603,12 @@ ROM_START( dinohack72 ) //dinozsj
 	ROM_LOAD ( "dino.key", 0x00, 0x80, CRC(230b6eb0) SHA1(240fdda90aecd62ce1f218e430b7ee6a464b8de8) )
 ROM_END
 
-ROM_START( dinohack73 ) //dinowjb2
+ROM_START( dinohack73 ) //dinowjb2, dinodeold
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "cde_23a_hack73.8f", 0x000000, 0x80000, CRC(bda42e9c) SHA1(4c6f0125a8a659d6ca31be223072ea3ae0f30eac) )
-	ROM_LOAD16_WORD_SWAP( "cde_22a_hack73.7f", 0x080000, 0x80000, CRC(74f32a30) SHA1(b50172c8fc68ee460dc08528f249e377d2987246) )
-	ROM_LOAD16_WORD_SWAP( "cde_21a_hack73.6f", 0x100000, 0x80000, CRC(df41f884) SHA1(527ae190df3d17c86dac14ea8a64dfb24e400920) )
+	ROM_LOAD16_WORD_SWAP( "cde_23a_hack73.8f",  0x000000, 0x80000, CRC(3c080b74) SHA1(30f8a5e83f4d2e6fa730993ff872919e3d7c655d) )
+	ROM_LOAD16_WORD_SWAP( "cde_22a_hack73.7f",  0x080000, 0x80000, CRC(878035c7) SHA1(ef478136e5fa497302060a668fa52e4bad8cc775) )
+	ROM_LOAD16_WORD_SWAP( "cde_21a_hack73.6f",  0x100000, 0x80000, CRC(b5483110) SHA1(bee2c90f2913fe475ce7353b9db7ff2760b360bf) )
+	ROM_LOAD16_WORD_SWAP( "cde_20a_hack75.5f",  0x180000, 0x80000, CRC(75660aac) SHA1(6a521e1d2a632c26e53b83d2cc4b0edecfc1e68c) )
 
 	ROM_REGION( 0x400000, "gfx", 0 )
 	ROMX_LOAD( "cd-1m.3a",  0x000000, 0x80000, CRC(8da4f917) SHA1(4f7b2304b7d9b545d6707d7ec921d3e28200699d) , ROM_GROUPWORD | ROM_SKIP(6) )
@@ -9829,7 +9830,7 @@ GAME( 2017, twkhack10,       wof,      qsound,     wof,      cps_state, init_wof
 GAME( 2018, twkhack11,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Warriors of Fate Plus 2 2018)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, twkhack12,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (San Mei Wu Shuang 2018)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, twkhack13,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Da Ren Edition)", MACHINE_SUPPORTS_SAVE )
-GAME( 1992, twkhack14,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Beauty Stage)(Ordinary Roms)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, twkhack14,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Beauty Stage Ordinary Roms)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, twkhack15,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Ma Zhan Wu Shuang 2018-06-03)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, twkhack16,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Xia Hou Dun Plus)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, twkhack17,       wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "hack",     "Tenchi wo Kurau II (Three Boss Edition 2017-11-03)", MACHINE_SUPPORTS_SAVE )

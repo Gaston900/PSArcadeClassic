@@ -1542,7 +1542,7 @@ files {
 	MAME_DIR .. "src/hbmame/drivers/blktiger.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/blktiger.h",
 	MAME_DIR .. "src/mame/video/blktiger.cpp",
---	MAME_DIR .. "src/mame/drivers/blktiger_ms.cpp",
+	MAME_DIR .. "src/mame/drivers/blktiger_ms.cpp",
 	MAME_DIR .. "src/mame/drivers/cbasebal.cpp",
 --	MAME_DIR .. "src/mame/includes/cbasebal.h",
 	MAME_DIR .. "src/mame/video/cbasebal.cpp",

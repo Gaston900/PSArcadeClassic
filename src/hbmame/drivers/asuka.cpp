@@ -26,6 +26,10 @@ ROM_START( asukac )
 
 	ROM_REGION( 0x10000, "msm", 0 )
 	ROM_LOAD( "b68-10.ic24", 0x00000, 0x10000, CRC(387aaf40) SHA1(47c583564ef1d49ece15f97221b2e073e8fb0544) )
+
+	ROM_REGION( 0x144, "pals", 0 )
+	ROM_LOAD( "b68-04.ic32", 0x00000, 0x144, CRC(9be618d1) SHA1(61ee33c3db448a05ff8f455e77fe17d51106baec) )
+	ROM_LOAD( "b68-05.ic43", 0x00000, 0x104, CRC(d6524ccc) SHA1(f3b56253692aebb63278d47832fc27b8b212b59c) )
 ROM_END
 
 /*************
@@ -58,6 +62,6 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Asuka & Asuka
-GAME( 1988, asukac,          asuka,    asuka,    asuka,    asuka_state, empty_init,  ROT270, "Taito Corporation",   "Asuka & Asuka (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
+GAME( 1988, asukac,          asuka,    asuka,    asuka,    asuka_state, empty_init,  ROT270, "Taito Corporation",   "Asuka & Asuka (Translation Chinese)", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )
 // Jigoku Meguri
 GAME( 1988, jigkmgrihack01,  bonzeadv, bonzeadv, jigkmgri, asuka_state, empty_init,  ROT0,   "Taito Corporation",   "Jigoku Meguri (Japan, hack?)", MACHINE_SUPPORTS_SAVE )

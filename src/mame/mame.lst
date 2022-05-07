@@ -2641,11 +2641,13 @@ ms5pcb                          //
 mslug                           // 0201 (c) 1996 Nazca
 mslug2                          // 0241 (c) 1998 SNK
 mslug3                          // 0256 (c) 2000 SNK
+mslug3a                         //
 mslug3b6                        // bootleg
 mslug3h                         // 0256 (c) 2000 SNK
 mslug4                          // 0263 (c) 2002 Mega Enterprise
 mslug4h                         // 0263 (c) 2002 Mega Enterprise
 mslug5                          // 0268 (c) 2003 Playmore
+mslug5b                         //
 mslug5h                         // 0268 (c) 2003 Playmore
 mslugx                          // 0250 (c) 1999 SNK
 mutnat                          // 0014 (c) 1992 SNK
@@ -3338,7 +3340,6 @@ zeroteamb                       // (c) 1993 Seibu Kaihatsu
 zeroteamc                       // (c) 1993 Seibu Kaihatsu + Liang Hwa license
 zeroteamd                       // (c) 1993 Seibu Kaihatsu + Dreamsoft license
 zeroteams                       // (c) 1993 Seibu Kaihatsu
-zeroteamsr                      // (c) 1993 Seibu Kaihatsu
 
 @source:rallyx.cpp
 commsega                        // (c) 1983 Sega
@@ -11221,7 +11222,7 @@ dinohack24                      //hack
 dinohack25                      //hack
 dinohack26                      //hack
 dinohack27                      //hack
-dinohack28                      //hack
+//dinohack28                      //hack
 dinohack29                      //hack
 dinohack30                      //hack
 dinohack31                      //hack
@@ -11272,7 +11273,7 @@ dinohack75                      //hack
 dinohack76                      //hack
 dinohack77                      //hack
 dinohack78                      //hack
-dinohack79                      //hack
+//dinohack79                      //hack
 dinohack80                      //hack
 dinohack81                      //hack
 dinohack82                      //hack
@@ -11282,10 +11283,11 @@ dinoh                           //bootleg
 dinoha                          //bootleg
 dinotpic                        //bootleg
 dinohc                          //bootleg
-ffighthack01                    //hack
+dinopic4                        //bootleg
+//ffighthack01                    //hack
 ffighthack02                    //hack
-ffighthack03                    //hack
-ffighthack04                    //hack
+//ffighthack03                    //hack
+//ffighthack04                    //hack
 ffighthack05                    //hack
 ffighthack06                    //hack
 ffighthack07                    //hack
@@ -11296,19 +11298,19 @@ ffighthack11                    //hack
 knightshack01                   //hack
 knightshack02                   //hack
 knightshack03                   //hack
-knightshack04                   //hack
+//knightshack04                   //hack
 knightshack05                   //hack
 knightshack06                   //hack
 knightshack07                   //hack
 knightshack08                   //hack
-knightshack09                   //hack
+//knightshack09                   //hack
 knightshack10                   //hack
 knightshack11                   //hack
 knightshack12                   //hack
 knightshack13                   //hack
 knightshack14                   //hack
 knightshack15                   //hack
-knightshack16                   //hack
+//knightshack16                   //hack
 knightshack17                   //hack
 knightshb2                      //bootleg
 knightsh                        //bootleg
@@ -11372,20 +11374,27 @@ varthhack01                     //hack
 willowhack01                    //hack
 willowhack02                    //hack
 twkhack01                       //hack
+//twkhack02                       //hack
 twkhack03                       //hack
 twkhack04                       //hack
 twkhack05                       //hack
 twkhack06                       //hack
 twkhack07                       //hack
-twkhack08                       //hack
+//twkhack08                       //hack
 twkhack09                       //hack
 twkhack10                       //hack
+//twkhack11                       //hack
 twkhack12                       //hack
+//twkhack13                       //hack
+//twkhack14                       //hack
 twkhack15                       //hack
 twkhack16                       //hack
 twkhack17                       //hack
 twkhack18                       //hack
 twkhack19                       //hack
+//twkhack20                       //hack
+//twkhack21                       //hack
+//twkhack22                       //hack
 twkhack23                       //hack
 twkhack24                       //hack
 twkhack25                       //hack
@@ -11410,8 +11419,8 @@ wofchhack02                     //hack
 wofchhack03                     //hack
 sk3hack01                       //hack
 sk3hack02                       //hack
-sk3hack03                       //hack
-sk3hack04                       //hack
+//sk3hack03                       //hack
+//sk3hack04                       //hack
 wofhack01                       //hack
 wofhack02                       //hack
 wofr1bl                         //bootleg
@@ -11423,18 +11432,18 @@ wofud                           //bootleg
 19xxhack02                      //hack
 1944hack01                      //hack
 avsphack01                      //hack
-avsphack02                      //hack
+//avsphack02                      //hack
 avsphack03                      //hack
-armwarhack01                    //hack
+//armwarhack01                    //hack
 batcirhack01                    //hack
 csclubhack01                    //hack
 cybotshack01                    //hack
 ddsomhack01                     //hack
-ddsomhack02                     //hack
+//ddsomhack02                     //hack
 ddsomhack03                     //hack
 ddsomhack04                     //hack
 ddtodhack01                     //hack
-ddtodhack02                     //hack
+//ddtodhack02                     //hack
 vampjhack01                     //hack
 dstlkhack02                     //hack
 gigawinghack01                  //hack
@@ -11442,7 +11451,7 @@ halfwayhack01                   //hack
 hsf2hack01                      //hack
 hsf2hack02                      //hack
 hsf2hack03                      //hack
-hsf2hack04                      //hack
+//hsf2hack04                      //hack
 mshhack01                       //hack
 mshhack02                       //hack
 mshvsfhack01                    //hack
@@ -11869,7 +11878,7 @@ kof99hack05                     //hack
 kof99hack06                     //hack
 kof99hack07                     //hack
 kof99hack08                     //hack
-kof99hack09                     //hack
+//kof99hack09                     //hack
 kof99nd                         //bootleg
 kof2000hack01                   //hack
 kof2000hack02                   //hack
@@ -12040,7 +12049,7 @@ mslug3hacks30                   //hack
 mslug3hacks31                   //hack
 mslug3hacks32                   //hack
 mslug3hacks33                   //hack
-mslug3hacks34
+mslug3hacks34                   //homebrew
 mslug6hacks01                   //hack
 mslug6hacks02                   //hack
 mslug6hacks03                   //hack
@@ -12172,7 +12181,6 @@ ms5pcbd                         //bootleg
 mslug5nd                        //bootleg
 mslug5d                         //bootleg
 mslug5d1                        //bootleg
-mslug5b                         //bootleg
 ms5plusd                        //bootleg
 mslug5n                         //bootleg
 mslug5ba                        //bootleg
@@ -12380,7 +12388,7 @@ sengoku3hack01                  //hack
 sengoku3hack02                  //hack
 sengoku3hack03                  //hack
 sengoku3hack04                  //hack
-sengoku3hack05                  //hack
+//sengoku3hack05                  //hack
 sengoku3hack06                  //hack
 sengoku3hack07                  //hack
 sengoku3hack08                  //hack

@@ -503,7 +503,7 @@ void neogeo_state::init_mslug5hb()
 	}
 }
 
-void neogeo_state::init_mslug5b()
+void neogeo_state::init_mslug5b1()
 {
 	init_mslug5hb();
 	m_pvc_prot->install_pvc_protection(m_maincpu, m_banked_cart);
@@ -4207,36 +4207,10 @@ ROM_START( kof2002hack06 ) //kof2k2plus
 
 	NEO_BIOS_AUDIO_ENCRYPTED_128K( "265.m1", CRC(85aaa632) SHA1(744fba4ca3bc3a5873838af886efb97a8a316104) )
 
-	//ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
-	//ROM_LOAD( "265.v1", 0x000000, 0x800000, CRC(15e8f3f5) SHA1(7c9e6426b9fa6db0158baa17a6485ffce057d889) )
-	//ROM_LOAD( "265.v2", 0x800000, 0x800000, CRC(da41d6f9) SHA1(a43021f1e58947dcbe3c8ca5283b20b649f0409d) )
-	
-	ROM_REGION( 0x30000, "audiocpu_m2", 0 )
-	ROM_LOAD( "214-m1.m1", 0x00000, 0x20000, CRC(dabc427c) SHA1(b76722ed142ee7addceb4757424870dbd003e8b3) )
-	ROM_RELOAD(     0x10000, 0x20000 )
-
-	ROM_REGION( 0x50000, "audiocpu_m3", 0 )
-	ROM_LOAD( "262-m1d.m1", 0x00000, 0x40000, CRC(4BCC537B) SHA1(9FCF1342BCD53D5EEC12C46EE41A51BF543256C2) )
-	ROM_RELOAD(     0x10000, 0x40000 )
-
-	ROM_REGION( 0x90000, "audiocpu_m4", 0 )
-	ROM_LOAD( "269-m1d.m1", 0x00000, 0x80000, CRC(7B7BF462) SHA1(7466A6962DE5242F71B9C52D7BD21A9832115E11) )
-	ROM_RELOAD(     0x10000, 0x80000 )
-
 	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
-	ROM_LOAD( "kf10-v1.bin", 0x000000, 0x800000, CRC(0FC9A58D) SHA1(9D79EF00E2C2ABD9F29AF5521C2FBE5798BF336F) )
-	ROM_LOAD( "kf10-v2.bin", 0x800000, 0x800000, CRC(B8C475A4) SHA1(10CAF9C69927A223445D2C4B147864C02CE520A8) )
-	ROM_REGION( 0x1000000, "ymsnd_m2", 0 )
-	ROM_LOAD( "214-v1.v1", 0x000000, 0x400000, CRC(63f7b045) SHA1(1353715f1a8476dca6f8031d9e7a401eacab8159) )
-	ROM_LOAD( "214-v2.v2", 0x400000, 0x400000, CRC(25929059) SHA1(6a721c4cb8f8dc772774023877d4a9f50d5a9e31) )
-	ROM_LOAD( "214-v3.v3", 0x800000, 0x200000, CRC(92a2257d) SHA1(5064aec78fa0d104e5dd5869b95382aa170214ee) )
-	ROM_REGION( 0x1000000, "ymsnd_m3", 0 )
-	ROM_LOAD( "262-v1d.v1", 0x000000, 0x800000, CRC(AC2913BF) SHA1(1721EC3D19684AF702F6C93DA25BB787A5D9DBFF) )
-	ROM_LOAD( "262-v2d.v2", 0x800000, 0x800000, CRC(15042F30) SHA1(F92E49110BDE007104590BE1A0FDC8064C216C37) )
-	ROM_REGION( 0x1000000, "ymsnd_m4", 0 )
-	ROM_LOAD( "269-v1d.v1", 0x000000, 0x800000, CRC(FF64CD56) SHA1(E2754C554ED5CA14C2020C5D931021D5AC82660C) )
-	ROM_LOAD( "269-v2d.v2", 0x800000, 0x800000, CRC(A8DD6446) SHA1(8972AAB271C33F8AF344BFFE6359D9DDC4B8AF2E) )
-	
+	ROM_LOAD( "265.v1", 0x000000, 0x800000, CRC(15e8f3f5) SHA1(7c9e6426b9fa6db0158baa17a6485ffce057d889) )
+	ROM_LOAD( "265.v2", 0x800000, 0x800000, CRC(da41d6f9) SHA1(a43021f1e58947dcbe3c8ca5283b20b649f0409d) )
+
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "265_hack06.c1", 0x0000000, 0x800000, CRC(93cf6345) SHA1(1e4194556082ed29bab45a5ccf42022c9c9515b0) )
 	ROM_LOAD16_BYTE( "265_hack06.c2", 0x0000001, 0x800000, CRC(d7373d66) SHA1(ed1040e2433480c89ffbae4dc854984cc734e15d) )
@@ -18601,7 +18575,7 @@ GAME( 2019, kof98hack10,       kof98,    neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2020, kof98hack11,       kof98,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof'98 (BC Combo Version Simplified 2020-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kof98hack12,       kof98,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof'98 (C Dragon Edition Simplified 2020-03-16)", MACHINE_SUPPORTS_SAVE )
 // The King of Fighters '99
-GAME( 1999, kof99hack01,       kof99,    neogeo_noslot, neogeo, neogeo_state,     init_kof99,     ROT0, "Dodowang",       "Kof'99 (Enable Hidden Characters V3)", MACHINE_SUPPORTS_SAVE )
+GAME( 1999, kof99hack01,       kof99,    neogeo_noslot, neogeo, neogeo_state,     init_kof99,     ROT0, "Dodowang",       "Kof'99 (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, kof99hack02,       kof99,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "Yashional",      "Kof'99 (Evolution Ultra Remix 2016-01-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, kof99hack03,       kof99,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "FCHT",           "Kof'99 (Remix Pro Final)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kof99hack04,       kof99,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof'99 (Remix Pro Simplified 2020-03-15)", MACHINE_SUPPORTS_SAVE )
@@ -18638,7 +18612,7 @@ GAME( 2012, kof2002hack02,     kof2002,  neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2018, kof2002hack03,     kof2002,  gsc,           neogeo, neogeo_state,     init_neogeo,     ROT0, "EGCG",          "Kof2002 (PlayStation 2 Hack Ver.1.0 2018-12-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, kof2002hack04,     kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,     ROT0, "hack",          "Kof2002 (PlayStation 2 Original 2018-04-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kof2002hack05,     kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,     ROT0, "hack",          "Kof2002 (PlayStation 2 Simplified 2020-08-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, kof2002hack06,     kof2002,  gsc,           neogeo, neogeo_state,     init_neogeo,     ROT0, "hack",          "Kof2002 (Come Back 2017 2020-10-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, kof2002hack06,     kof2002,  gsc,           neogeo, neogeo_state,     init_kof2k2pl17, ROT0, "hack",          "Kof2002 (Come Back 2017 2020-10-22)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kof2002hack07,     kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,     ROT0, "hack",          "Kof2002 (Third Edition of the Kingdom of Gods 2020-06-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, kof2002hack08,     kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,     ROT0, "Jason / FCHT",  "Kof2002 (Remix Ultra v3.5)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, kof2002hack09,     kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,     ROT0, "hack",          "Kof2002 (All Mix Version 2018-04-22)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
@@ -18988,10 +18962,10 @@ GAME( 2003, ms5pcbd,           mslug5,   neogeo_noslot, dualbios, neogeo_state, 
 GAME( 2003, mslug5nd,          mslug5,   neogeo_noslot, neogeo, neogeo_state,     init_mslug5hb,  ROT0, "bootleg",         "Metal Slug 5 (Decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5d,           mslug5,   neogeo_noslot, neogeo, neogeo_state,     init_mslug5hb,  ROT0, "bootleg",         "Metal Slug 5 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5d1,          mslug5,   neogeo_noslot, neogeo, neogeo_state,     init_mslug5hb,  ROT0, "bootleg",         "Metal Slug 5 (Not Encrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, mslug5b,           mslug5,   neogeo_noslot, neogeo, neogeo_state,     init_mslug5b,   ROT0, "bootleg",         "Metal Slug 5 (Bootleg)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug5b,           mslug5,   neogeo_noslot, neogeo, neogeo_state,     init_mslug5b1,  ROT0, "bootleg",         "Metal Slug 5 (Bootleg)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ms5plusd,          mslug5,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "bootleg",         "Metal Slug 5 Plus (Bootleg, Fully decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5n,           mslug5,   neogeo_noslot, neogeo, neogeo_state,     init_mslug5hb,  ROT0, "bootleg",         "Metal Slug 5 (Decrypted P & C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, mslug5ba,          mslug5,   neogeo_noslot, neogeo, neogeo_state,     init_mslug5b,   ROT0, "bootleg",         "Metal Slug 5 (Bootleg, Set 3)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, mslug5ba,          mslug5,   neogeo_noslot, neogeo, neogeo_state,     init_mslug5b1,  ROT0, "bootleg",         "Metal Slug 5 (Bootleg, Set 3)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5n2,          mslug5,   neogeo_noslot, neogeo, neogeo_state,     init_mslug5hb,  ROT0, "bootleg",         "Metal Slug 5 (Decrypted P & D)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5hd,          mslug5,   neogeo_noslot, neogeo, neogeo_state,     init_mslug5hb,  ROT0, "bootleg",         "Metal Slug 5 (NGH-2680)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5b2,          mslug5,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "bootleg",         "Metal Slug 5 (Bootleg, Set 4)", MACHINE_SUPPORTS_SAVE )

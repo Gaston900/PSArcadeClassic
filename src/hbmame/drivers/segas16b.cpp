@@ -5,7 +5,7 @@
 /**************
  Altered Beast
  ***************/
- 
+
 ROM_START( altbeasthack01 )
 	ROM_REGION( 0x040000, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "epr-11907_hack01.a7", 0x000000, 0x20000, CRC(309d3a0a) SHA1(646dcafe7ac2831e241eb0643a06f8c32bdba77a) )

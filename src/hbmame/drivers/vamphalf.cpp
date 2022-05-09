@@ -3,7 +3,7 @@
 #include "../mame/drivers/vamphalf.cpp"
  
  /*************
- Age Of Heroes 
+ Age Of Heroes
 ****************/
 
 ROM_START( aohhack01 )

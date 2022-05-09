@@ -1,10 +1,17 @@
 ﻿What's new in PSARCADE CLASSIC+
 ===============================
 
+2022-05-10 2.0
+---------------
+
+
+
+
 2022-04-06 1.0
 ---------------
 
 - First release
-- Updated all current Roms Hacks Metal Slug by PSMame Plus Forever. 
-- Playch10, Neogeo, Megaplay System bios has been updated.
-- The codes have been updated and the new games of the PGM + CPS3 systems of the current version of MAME have been added.
+- Version used as base system 0.215, it has started updating roms from the latest version 0.242 published 
+  [It is still in a state of development]
+- All current PSMame Plus Forever Metal Slug Roms Hacks have been used. 
+- Bios like Playch10, Neogeo, Megaplay and the rest of the system have been updated.

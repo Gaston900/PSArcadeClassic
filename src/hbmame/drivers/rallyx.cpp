@@ -59,10 +59,10 @@ ROM_START( rxtron ) // roms from rallyx except where marked
 	ROM_LOAD( "rxtron.1e",    0x1000, 0x1000, CRC(8d5b88e5) SHA1(95a8bde287325f88cfc7ce12ad900647831b861e) )
 	ROM_LOAD( "rxtron.1h",    0x2000, 0x1000, CRC(1ecfddc0) SHA1(e800a3bb0e2d35dbfba49c7724689d29ab1912fd) )
 	ROM_LOAD( "rxtron.1k",    0x3000, 0x1000, CRC(2729e00a) SHA1(1f3d17e8342d8a7db57d64fd890b70e64315752a) )
-	
+
 	ROM_REGION( 0x1000, "gfx1", 0 )
 	ROM_LOAD( "rxtron.8e",    0x0000, 0x1000, CRC(91538868) SHA1(4ba04a56a6255895214bca1e0249e365b95f566d) )
-	
+
 	ROM_REGION( 0x0100, "gfx2", 0 )
 	ROM_LOAD( "rx1-6.8m",     0x0000, 0x0100, CRC(3c16f62c) SHA1(7a3800be410e306cf85753b9953ffc5575afbcd6) )
 
@@ -97,6 +97,7 @@ ROM_START( nrallyv )
 	ROM_LOAD( "rx1-4.2m",     0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) )
 ROM_END
 
+/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Rally-X
 GAME( 1998, rxtron,  rallyx, rallyx, rallyx,  rallyx_state, empty_init, ROT0,  "Jerky and Sil", "Rally-X Tron", MACHINE_SUPPORTS_SAVE )
 GAME( 1981, nrallyv, rallyx, rallyx, nrallyv, rallyx_state, empty_init, ROT90, "hack",          "New Rally X (Vertical Screen)", MACHINE_SUPPORTS_SAVE )

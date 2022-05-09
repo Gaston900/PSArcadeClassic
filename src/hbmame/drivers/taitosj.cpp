@@ -52,10 +52,10 @@ ROM_START( frontlinhack01 )
 	ROM_LOAD( "fl70.u70",     0x0000, 0x1000, CRC(15f4ed8c) SHA1(ec096234e4e594100180eb99c8c57eb97b9f57e2) )
 	ROM_LOAD( "fl71.u71",     0x1000, 0x1000, CRC(c3eb38e7) SHA1(427e5deb6a6e22d8c34923209a818f79d50e59d4) )
 
-	ROM_REGION( 0x0800, "bmcu:mcu", 0 )   
+	ROM_REGION( 0x0800, "bmcu:mcu", 0 )
 	ROM_LOAD( "aa1.13",       0x0000, 0x0800, CRC(7e78bdd3) SHA1(9eeb0e969fd013b9db074a15b0463216453e9364) )
 
-	ROM_REGION( 0x8000, "gfx1", 0 )     
+	ROM_REGION( 0x8000, "gfx1", 0 )
 	ROM_LOAD( "fl1.u1",       0x0000, 0x1000, CRC(e82c9f46) SHA1(eaab468bb5e46e9c714e6f84e65f954331fdbc56) )
 	ROM_LOAD( "fl2.u2",       0x1000, 0x1000, CRC(123055d3) SHA1(6aaddd8ebb418c7c8584eb74ad13cd5accd5a196) )
 	ROM_LOAD( "fl3.u3",       0x2000, 0x1000, CRC(7ea46347) SHA1(b924a614abe01f7ca6a31463864d6cc55a47946e) )
@@ -65,7 +65,7 @@ ROM_START( frontlinhack01 )
 	ROM_LOAD( "fl7.u7",       0x6000, 0x1000, CRC(613682a3) SHA1(b681f3a4e70f207ce140adfac1388900d5013317) )
 	ROM_LOAD( "fl8_po01.u8",       0x7000, 0x1000, CRC(7f3e197a) SHA1(87863cef9bb381f3bd644d49f4f551716d09c7af) )
 
-	ROM_REGION( 0x0100, "proms", 0 )  
+	ROM_REGION( 0x0100, "proms", 0 )
 	ROM_LOAD( "eb16.ic22",      0x0000, 0x0100, CRC(b833b5ea) SHA1(d233f1bf8a3e6cd876853ffd721b9b64c61c9047) )
 ROM_END
 

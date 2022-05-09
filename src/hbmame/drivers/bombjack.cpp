@@ -103,7 +103,7 @@ ROM_START( bombjactc )
 	ROM_LOAD( "12_n01btc.bin",  0x6000, 0x2000, CRC(ff6627cd) SHA1(918aa40ef0d9b01cd1714c751f69edf6cb0415de) )
 	ROM_LOAD( "13.1rtc.",        0xc000, 0x2000, CRC(e8d84fa1) SHA1(c14e91c7e82fca2fb81d03d531f33a399dc34282) )
 
-	ROM_REGION( 0x10000, "audiocpu", 0 )   
+	ROM_REGION( 0x10000, "audiocpu", 0 )
 	ROM_LOAD( "01_h03t.bin",  0x0000, 0x2000, CRC(8407917d) SHA1(318face9f7a7ab6c7eeac773995040425e780aaf) )
 
 	ROM_REGION( 0x3000, "chars", 0 )

@@ -12,7 +12,7 @@ ROM_START( snowbroshack01 ) //snowbrosa
 	ROM_LOAD16_BYTE( "sn6_hack01.bin",  0x00000, 0x20000, CRC(090800df) SHA1(02cdb6a07a9043ef26f4abb6769928be8324db85) )
 	ROM_LOAD16_BYTE( "sn5_hack01.bin",  0x00001, 0x20000, CRC(b7ebd161) SHA1(66cb4baf3eb341dddb9381b6b4e1873f5678a916) )
 
-	ROM_REGION( 0x10000, "soundcpu", 0 ) 
+	ROM_REGION( 0x10000, "soundcpu", 0 )
 	ROM_LOAD( "sbros-4.29",   0x0000, 0x8000, CRC(e6eab4e4) SHA1(d08187d03b21192e188784cb840a37a7bdb5ad32) )
 
 	ROM_REGION( 0x80000, "gfx1", 0 )

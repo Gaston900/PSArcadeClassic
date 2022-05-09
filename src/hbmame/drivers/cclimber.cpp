@@ -164,7 +164,7 @@ ROM_START( tongypac )
 	ROM_LOAD( "tpac5.bin",    0x1000, 0x1000, CRC(2bbc69e7) SHA1(5741aa6944e9b936289368d533c2b19d34320260) )
 	ROM_LOAD( "tpac4.bin",    0x2000, 0x1000, CRC(8d5890b6) SHA1(92d48d75084df2e2a3fa9d92a3c6c059f0781d81) )
 	ROM_LOAD( "tpac3.bin",    0x3000, 0x1000, CRC(6b16145b) SHA1(ef17fad07b81c9dae5c6e16a86afc4a8f6a7ff8c) )
-	
+
 	ROM_REGION( 0x1000, "gfx2", 0 )
 	ROM_LOAD( "falcon2",      0x0000, 0x0800, CRC(f67c80f1) SHA1(d1fbcce1b6242f810e106ff50812636e3168ebc1) )
 	ROM_LOAD( "falcon1",      0x0800, 0x0800, CRC(80eb517d) SHA1(fef4111f656c58b28e7eac5aa5b5cc7e07ccb2fd) )

@@ -21,23 +21,23 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICK_DOWN,       "P1 Down",                input_seq(KEYCODE_DOWN, input_seq::or_code, JOYCODE_Y_DOWN_SWITCH_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICK_LEFT,       "P1 Left",                input_seq(KEYCODE_LEFT, input_seq::or_code, JOYCODE_X_LEFT_SWITCH_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICK_RIGHT,      "P1 Right",               input_seq(KEYCODE_RIGHT, input_seq::or_code, JOYCODE_X_RIGHT_SWITCH_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_UP,    "P1 Right Stick/Up",      input_seq(KEYCODE_I, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_DOWN,  "P1 Right Stick/Down",    input_seq(KEYCODE_K, input_seq::or_code, JOYCODE_BUTTON3_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_LEFT,  "P1 Right Stick/Left",    input_seq(KEYCODE_J, input_seq::or_code, JOYCODE_BUTTON1_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_RIGHT, "P1 Right Stick/Right",   input_seq(KEYCODE_L, input_seq::or_code, JOYCODE_BUTTON4_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_UP,     "P1 Left Stick/Up",       input_seq(KEYCODE_E, input_seq::or_code, JOYCODE_Y_UP_SWITCH_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_DOWN,   "P1 Left Stick/Down",     input_seq(KEYCODE_LSHIFT, input_seq::or_code, JOYCODE_Y_DOWN_SWITCH_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_LEFT,   "P1 Left Stick/Left",     input_seq(KEYCODE_SPACE,  input_seq::or_code, JOYCODE_X_LEFT_SWITCH_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_RIGHT,  "P1 Left Stick/Right",    input_seq(KEYCODE_F, input_seq::or_code, JOYCODE_X_RIGHT_SWITCH_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_UP,    "P1 Right Stick/Up",      input_seq(KEYCODE_UP, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_DOWN,  "P1 Right Stick/Down",    input_seq(KEYCODE_DOWN, input_seq::or_code, JOYCODE_BUTTON3_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_LEFT,  "P1 Right Stick/Left",    input_seq(KEYCODE_LEFT, input_seq::or_code, JOYCODE_BUTTON1_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKRIGHT_RIGHT, "P1 Right Stick/Right",   input_seq(KEYCODE_RIGHT, input_seq::or_code, JOYCODE_BUTTON4_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_UP,     "P1 Left Stick/Up",       input_seq(KEYCODE_UP, input_seq::or_code, JOYCODE_Y_UP_SWITCH_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_DOWN,   "P1 Left Stick/Down",     input_seq(KEYCODE_DOWN, input_seq::or_code, JOYCODE_Y_DOWN_SWITCH_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_LEFT,   "P1 Left Stick/Left",     input_seq(KEYCODE_LEFT,  input_seq::or_code, JOYCODE_X_LEFT_SWITCH_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_RIGHT,  "P1 Left Stick/Right",    input_seq(KEYCODE_RIGHT, input_seq::or_code, JOYCODE_X_RIGHT_SWITCH_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON1,             "P1 Button 1",            input_seq(KEYCODE_A, input_seq::or_code, JOYCODE_BUTTON1_INDEXED(0), input_seq::or_code, MOUSECODE_BUTTON1_INDEXED(0), input_seq::or_code, GUNCODE_BUTTON1_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON2,             "P1 Button 2",            input_seq(KEYCODE_S, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(0), input_seq::or_code, MOUSECODE_BUTTON3_INDEXED(0), input_seq::or_code, GUNCODE_BUTTON2_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON3,             "P1 Button 3",            input_seq(KEYCODE_D, input_seq::or_code, JOYCODE_BUTTON3_INDEXED(0), input_seq::or_code, MOUSECODE_BUTTON2_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON4,             "P1 Button 4",            input_seq(KEYCODE_Z, input_seq::or_code, JOYCODE_BUTTON4_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON5,             "P1 Button 5",            input_seq(KEYCODE_X, input_seq::or_code, JOYCODE_BUTTON5_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON6,             "P1 Button 6",            input_seq(KEYCODE_C, input_seq::or_code, JOYCODE_BUTTON6_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON7,             "P1 Button 7",            input_seq(KEYCODE_LCONTROL, input_seq::or_code, JOYCODE_BUTTON7_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON8,             "P1 Button 8",            input_seq(KEYCODE_V, input_seq::or_code, JOYCODE_BUTTON8_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON9,             "P1 Button 9",            input_seq(KEYCODE_B, input_seq::or_code, JOYCODE_BUTTON9_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON5,             "P1 Button 5",            input_seq(KEYCODE_C, input_seq::or_code, JOYCODE_BUTTON5_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON6,             "P1 Button 6",            input_seq(KEYCODE_X, input_seq::or_code, JOYCODE_BUTTON6_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON7,             "P1 Button 7",            input_seq(KEYCODE_Q, input_seq::or_code, JOYCODE_BUTTON7_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON8,             "P1 Button 8",            input_seq(KEYCODE_W, input_seq::or_code, JOYCODE_BUTTON8_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON9,             "P1 Button 9",            input_seq(KEYCODE_E, input_seq::or_code, JOYCODE_BUTTON9_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON10,            "P1 Button 10",           input_seq(KEYCODE_N, input_seq::or_code, JOYCODE_BUTTON10_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON11,            "P1 Button 11",           input_seq(KEYCODE_M, input_seq::or_code, JOYCODE_BUTTON11_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON12,            "P1 Button 12",           input_seq(KEYCODE_COMMA, input_seq::or_code, JOYCODE_BUTTON12_INDEXED(0)) ) \
@@ -156,8 +156,8 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON2,             "P2 Button 2",            input_seq(KEYCODE_S, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(1), input_seq::or_code, MOUSECODE_BUTTON3_INDEXED(1), input_seq::or_code, GUNCODE_BUTTON2_INDEXED(1)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON3,             "P2 Button 3",            input_seq(KEYCODE_D, input_seq::or_code, JOYCODE_BUTTON3_INDEXED(1), input_seq::or_code, MOUSECODE_BUTTON2_INDEXED(1)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON4,             "P2 Button 4",            input_seq(KEYCODE_Z, input_seq::or_code, JOYCODE_BUTTON4_INDEXED(1)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON5,             "P2 Button 5",            input_seq(KEYCODE_X, input_seq::or_code, JOYCODE_BUTTON5_INDEXED(1)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON6,             "P2 Button 6",            input_seq(KEYCODE_C, input_seq::or_code, JOYCODE_BUTTON6_INDEXED(1)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON5,             "P2 Button 5",            input_seq(KEYCODE_C, input_seq::or_code, JOYCODE_BUTTON5_INDEXED(1)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON6,             "P2 Button 6",            input_seq(KEYCODE_X, input_seq::or_code, JOYCODE_BUTTON6_INDEXED(1)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON7,             "P2 Button 7",            input_seq(JOYCODE_BUTTON7_INDEXED(1)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON8,             "P2 Button 8",            input_seq(JOYCODE_BUTTON8_INDEXED(1)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON9,             "P2 Button 9",            input_seq(JOYCODE_BUTTON9_INDEXED(1)) ) \
@@ -242,8 +242,8 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON2,             "P3 Button 2",            input_seq(KEYCODE_S, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(2), input_seq::or_code, GUNCODE_BUTTON2_INDEXED(2)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON3,             "P3 Button 3",            input_seq(KEYCODE_D, input_seq::or_code, JOYCODE_BUTTON3_INDEXED(2)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON4,             "P3 Button 4",            input_seq(KEYCODE_Z, input_seq::or_code, JOYCODE_BUTTON4_INDEXED(2)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON5,             "P3 Button 5",            input_seq(KEYCODE_X, input_seq::or_code, JOYCODE_BUTTON5_INDEXED(2)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON6,             "P3 Button 6",            input_seq(KEYCODE_C, input_seq::or_code, JOYCODE_BUTTON6_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON5,             "P3 Button 5",            input_seq(KEYCODE_C, input_seq::or_code, JOYCODE_BUTTON5_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON6,             "P3 Button 6",            input_seq(KEYCODE_X, input_seq::or_code, JOYCODE_BUTTON6_INDEXED(2)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON7,             "P3 Button 7",            input_seq(JOYCODE_BUTTON7_INDEXED(2)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON8,             "P3 Button 8",            input_seq(JOYCODE_BUTTON8_INDEXED(2)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON9,             "P3 Button 9",            input_seq(JOYCODE_BUTTON9_INDEXED(2)) ) \
@@ -281,8 +281,8 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON2,             "P4 Button 2",            input_seq(KEYCODE_S, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(3)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON3,             "P4 Button 3",            input_seq(KEYCODE_D, input_seq::or_code, JOYCODE_BUTTON3_INDEXED(3)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON4,             "P4 Button 4",            input_seq(KEYCODE_Z, input_seq::or_code, JOYCODE_BUTTON4_INDEXED(3)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON5,             "P4 Button 5",            input_seq(KEYCODE_X, input_seq::or_code, JOYCODE_BUTTON5_INDEXED(3)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON6,             "P4 Button 6",            input_seq(KEYCODE_C, input_seq::or_code, JOYCODE_BUTTON6_INDEXED(3)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON5,             "P4 Button 5",            input_seq(KEYCODE_C, input_seq::or_code, JOYCODE_BUTTON5_INDEXED(3)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON6,             "P4 Button 6",            input_seq(KEYCODE_X, input_seq::or_code, JOYCODE_BUTTON6_INDEXED(3)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON7,             "P4 Button 7",            input_seq(JOYCODE_BUTTON7_INDEXED(3)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON8,             "P4 Button 8",            input_seq(JOYCODE_BUTTON8_INDEXED(3)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 4, PLAYER4, BUTTON9,             "P4 Button 9",            input_seq(JOYCODE_BUTTON9_INDEXED(3)) ) \

@@ -6540,6 +6540,7 @@ shikigama                       // 2001.09 Shikigami no Shiro (V1.02J)
 spuzbobl                        // 1999.?? Super Puzzle Bobble (V2.05O)
 xiistag                         // 2002.07 XII Stag (V2.01J)
 zooo                            // 2004.05 Zooo
+soutenry                        // 2001.02 Soutenryu (V2.07J)
 
 @source:taitojc.cpp
 landgear                        // 1996.?? E17 (c) 1995 Taito Corporation Japan (World) - Ver 4.2 O
@@ -7741,7 +7742,8 @@ hndlchmp                        //
 hndlchmpj                       // 1997 - Handle Champ (GQ710 VER. JAB)
 stepchmp                        // 1999 - Step Champ (GE930 VER. JA)
 gbbchmp                         //
-gchgchmp
+gchgchmp                        //
+hypbbc2p                        //
 sys573                          //
 
 @source:labyrunr.cpp
@@ -12467,6 +12469,94 @@ pc_mman5                        //hack
 pc_pacm                         //hack
 pc_parsl                        //hack
 pc_skykd                        //hack
+pc_smb_hb01                     //hack
+pc_smb_hb02                     //hack
+pc_smb_hb03                     //hack
+pc_smb_hb04                     //hack
+pc_smb_hb05                     //hack
+pc_smb_hb06                     //hack
+pc_smb_hb07                     //hack
+pc_smb_hb08                     //hack
+pc_smb_hb09                     //hack
+pc_smb_hb10                     //hack
+pc_smb_hb11                     //hack
+pc_smb_hb12                     //hack
+pc_smb_hb13                     //hack
+pc_smb_hb14                     //hack
+pc_smb_hb15                     //hack
+pc_smb_hb16                     //hack
+pc_smb_hb17                     //hack
+pc_smb_hb18                     //hack
+pc_smb_hb19                     //hack
+pc_smb_hb20                     //hack
+pc_smb_hb21                     //hack
+pc_smb_hb22                     //hack
+pc_smb_hb23                     //hack
+pc_smb_hb24                     //hack
+pc_smb_hb25                     //hack
+pc_smb_hb26                     //hack
+pc_smb_hb27                     //hack
+pc_smb_hb28                     //hack
+pc_smb_hb29                     //hack
+pc_smb_hb30                     //hack
+pc_smb_hb31                     //hack
+pc_smb_hb32                     //hack
+pc_smb_hb33                     //hack
+pc_smb_hb34                     //hack
+pc_smb_hb35                     //hack
+pc_smb_hb36                     //hack
+pc_smb_hb37                     //hack
+pc_smb_hb38                     //hack
+pc_smb_hb39                     //hack
+pc_smb_hb40                     //hack
+pc_smb_hb41                     //hack
+pc_smb_hb42                     //hack
+pc_smb_hb43                     //hack
+pc_smb_hb44                     //hack
+pc_smb_hb45                     //hack
+pc_smb_hb46                     //hack
+pc_smb_hb47                     //hack
+pc_smb_hb48                     //hack
+pc_smb_hb49                     //hack
+pc_smb_hb50                     //hack
+pc_smb_hb51                     //hack
+pc_smb_hb52                     //hack
+pc_smb_hb53                     //hack
+pc_smb_hb54                     //hack
+pc_smb_hb55                     //hack
+pc_smb_hb56                     //hack
+pc_smb_hb57                     //hack
+pc_smb_hb58                     //hack
+pc_smb_hb59                     //hack
+pc_smb_hb60                     //hack
+pc_smb_hb61                     //hack
+pc_smb_hb62                     //hack
+pc_smb_hb63                     //hack
+pc_smb_hb64                     //hack
+pc_smb_hb65                     //hack
+pc_smb_hb66                     //hack
+pc_smb_hb67                     //hack
+pc_smb_hb68                     //hack
+pc_smb_hb69                     //hack
+pc_smb_hb70                     //hack
+pc_smb_hb71                     //hack
+pc_smb_hb72                     //hack
+pc_smb_hb73                     //hack
+pc_smb_hb74                     //hack
+pc_smb2_hb01                    //hack
+pc_smb2_hb02                    //hack
+pc_smb2_hb03                    //hack
+pc_smb2_hb04                    //hack
+pc_smb2_hb05                    //hack
+pc_smb2_hb06                    //hack
+pc_smb2_hb07                    //hack
+pc_smb2_hb08                    //hack
+pc_smb3_hb01                    //hack
+pc_smb3_hb02                    //hack
+pc_smb3_hb03                    //hack
+pc_smb3_hb04                    //hack
+pc_smb3_hb05                    //hack
+pc_smb3_hb06                    //hack
 
 @source:polepos.cpp
 mmadness                        //hack

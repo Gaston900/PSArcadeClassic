@@ -11992,7 +11992,7 @@ mslug5n                         //bootleg
 mslug5ba                        //bootleg
 mslug5n2                        //bootleg
 mslug5hd                        //bootleg
-mslug5b2                        //bootleg
+mslug5b1                        //bootleg
 ms5plusc                        //bootleg
 mslug5hacks01                   //hack
 mslug5hacks02                   //hack
@@ -12916,11 +12916,6 @@ sdojb                           //hack
 //woodpeck
 //mspacmab3
 //superabco
-
-@source:neogeo.cpp
-//mslug3a
-//mslug5b
-//mvstemp
 
 @source:fcrash.cpp
 //ffightblb

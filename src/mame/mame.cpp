@@ -10,7 +10,7 @@
 
 #include "emu.h"
 
-#define APPNAME                 "PSARCADE CLASSIC+"
+#define APPNAME                 "PSArcade Classic+"
 #define APPNAME_LOWER           "PSArcade Classic+"
 #define CONFIGNAME              "mame"
 #define COPYRIGHT               "Copyright Nicola Salmoria\nand the MAME team\nhttp://mamedev.org"

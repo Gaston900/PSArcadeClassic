@@ -362,11 +362,11 @@ static const TBBUTTON tbb[] =
 	{9, ID_VIDEO_SNAP,          TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 7},
 	{10,ID_PLAY_M1,             TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 8},
 	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{11,ID_HELP_ABOUT,          TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 9},
-	{12,ID_HELP_CONTENTS,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 10},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{13,ID_MAME_HOMEPAGE,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 11},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0}
+//	{11,ID_HELP_ABOUT,          TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 9},
+//	{12,ID_HELP_CONTENTS,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 10},
+//	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+//	{13,ID_MAME_HOMEPAGE,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 11},
+//	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0}
 };
 
 static const wchar_t szTbStrings[NUM_TOOLTIPS][30] =
@@ -3463,7 +3463,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			int nGame = Picker_GetSelectedItem(hWndList);
 			if (nGame >= 0)
 			{
-				char m1exe [MAX_PATH] = "m1fx.exe";
+				char m1exe [MAX_PATH] = "config/m1fx.exe";
 				TCHAR *t_s = win_wstring_from_utf8(m1exe);
 				if (t_s)
 				{
@@ -3617,12 +3617,12 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			return true;
 
 		case ID_HELP_TROUBLE:
-			ShellExecuteCommon(hMain, "https://www.1emulation.com/forums/forum/127-arcade/");
+			ShellExecuteCommon(hMain, "https://psarcadeplus.blogspot.com/2019/10/psarcade-plus-proyecto-shadow-arcade.html");
 			SetFocus(hWndList);
 			return true;
 
 		case ID_HELP_WHATS_NEW :
-			ShellExecuteCommon(hMain, ".\\docs\\whatsnew.txt");
+			ShellExecuteCommon(hMain, ".\\config/docs\\whatsnew.txt");
 			SetFocus(hWndList);
 			return true;
 

@@ -26,7 +26,9 @@ Does not include mahjong games.
 
 Does not include poker games.
 
-Does not include fruit game sets.
+Does not include skeleton drivers.
+
+Does not include fruit games.
 
 Does not include slot games or gambling.
 

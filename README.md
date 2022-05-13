@@ -65,7 +65,7 @@ And we will apply this command to start the compilation, this command is for Win
 make PTR64=1 TARGET=mame OSD=winui NOWERROR=1 STRIP_SYMBOLS=1
 --------------------------------------------------------------
 
-I recommend downloading the compilation tool, whether it is the version msys64-32 or msys64 that is from the year 2019-03-25, since this version is much more comfortable to compile for this version.
+I recommend downloading the compilation tool, whether it is the version msys64-32 that is from the year 2019-03-25, since this version is much more comfortable to compile for this version.
 
 The build tools will be located on the MAMEDEV github website:
 https://github.com/mamedev/buildtools/releases

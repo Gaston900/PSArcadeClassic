@@ -1,11 +1,11 @@
 # PSArcadeClassic+
 What is PSARCADECLASSIC+?
 
-It's called Project Shadow Arcade Classic+, it's a project that started at the beginning of this year 2022, a version 0.232 [ARCADE64] is being used as a base system, but it really started with a version 0.215 [The PSMame project was used as the base system Plus Metal Slug Forever Special Edition], but it was decided to abandon this version due to various situations that became more complicated as I progressed adding new games because I had to downgrade the modern codes and convert the codes to be compatible with the version 0.215, these codes are still preserved since many have been advanced and have been left in a 2.0 prototype state, it will be located in docs/Old Code Version/PSArcade Classic+ 2.0.7z.
-
-This project is focused on merging the Arcade64 + HBMame system, a base system of a version 0.232 was used to update until version 0.243, it will be the only version that will be published, since it is a collectible edition.
-
-The main thing of all has started a total cleaning in the roms sets eliminating hundreds of useless and unnecessary roms or .chd, so that we can leave roms sets much lighter for our hard drive.
+It's called Project Shadow Arcade Classic+, it's a project that started at the beginning of this year 2022, a version 0.232 [ARCADE64] is being used as a base system, but in reality it started with a version 0.215 [The project was used as a base system PSMame Plus Metal Slug Forever Special Edition], but it was decided to drop this version due to several various problem situations that became more complicated as it progressed adding new roms to the system, because modern codes had to be downgraded and in order to be able to convert them so that were compatible with the version. 0.215, these source codes are still being preserved as a lot of progress has been made and will locate it in docs/Old Code Version/PSArcade Classic+ 2.0.7z, it can be compiled for the Windows XP operating system.
+ 
+This project is focused on merging the Arcade64 + HBMame system, The main thing has started by updating the Roms Sets from version 0.232 - 0.243, then it continued with a total cleaning of the roms thus eliminating hundreds of useless roms or .chd and unnecessary and thus to be able to generate a collectible edition and in this way a single version will be published. So that we can leave the roms system much lighter for our hard drive.
+ 
+This way you will be able to enjoy all the arcade systems in a single version, including all the hacks that currently exist.
 
 Games that have not been included:
 ----------------------------------
@@ -55,7 +55,7 @@ The Arcade64 “GUI” was modernized with new icons, a custom default configura
 
 It is already pre-configured, enforce aspect ratio is disabled, full screen mode and tricks are already enabled by default.
 
-Two new folder sections called “config” and “support” were added that independently group the configurations + extra content, so that everything is kept in order in a single folder.
+Two new folder sections called “config” and “support” were added that independently group the configurations and extra content, so that everything is kept in order in a single folder.
 
 In the Config folders it is incorporated by:
 

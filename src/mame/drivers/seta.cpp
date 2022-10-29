@@ -10448,6 +10448,9 @@ ROM_START( thunderl )
 	ROM_REGION( 0x100000, "x1snd", 0 )  /* Samples */
 	ROM_LOAD( "r28", 0x000000, 0x080000, CRC(a043615d) SHA1(e483fa9fd8e922578a9d7b6ced0750643089ca78) )
 	ROM_LOAD( "r27", 0x080000, 0x080000, CRC(cb8425a3) SHA1(655afa295fbe99acc79c4004f03ed832560cff5b) )
+
+	ROM_REGION(0x200, "plds", 0)        /* Protection, bruteforced and recreated for GAL16V8 */
+	ROM_LOAD("tl-9", 0x000000, 0x117, BAD_DUMP CRC(3b62882d) SHA1(a590648cb013f20d837f18ddb2e839a89bac5fcb))
 ROM_END
 
 ROM_START( thunderlbl )

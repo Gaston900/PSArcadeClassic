@@ -795,6 +795,17 @@ ROM_START(unkpacgc)
 	ROM_LOAD( "3",   0x0000, 0x2000, CRC(f7cd9de0) SHA1(e0a6b316811ef7c3d3aeb853a9c50f9fdf1f2ff2) )
 ROM_END
 
+ROM_START(unkpacgd)
+	ROM_REGION(0x10000, "maincpu", 0) // only the first program ROM differs from unkpacgc and only slightly
+	ROM_LOAD( "2.bin",   0x0000, 0x2000, CRC(4a545bf6) SHA1(1f71ad1c24e1a9ae6379e3136692fa01509ad5a0) )
+	ROM_LOAD( "1.bin",   0x8000, 0x2000, CRC(b107ad7e) SHA1(33ab0a63f8a57dd7efd5c5efae7c6e8bda1a65cc) )
+
+	ROM_REGION( 0x6000, "gfx1", 0 ) // these are different: they change the characters from pacman related to car racing related
+	ROM_LOAD( "3.bin",   0x0000, 0x2000, CRC(ce47a9da) SHA1(12314760d09644a85aef9b1c7b9aa8a965cc9d63) )
+	ROM_LOAD( "4.bin",   0x2000, 0x2000, CRC(9a404e8c) SHA1(e7e80f5771250f54d7eaca78f97bb086f9604fd0) )
+	ROM_LOAD( "5.bin",   0x4000, 0x2000, CRC(32d8d105) SHA1(d793801a9b761b1713ea8bba747130c31e8571fd) )
+ROM_END
+
 /*
   Unknown 'Space Invaders' gambling game.
   All roms are 0x8000 but only the last 0x2000 of each is used.
@@ -864,6 +875,23 @@ ROM_START( unksiga )
 	ROM_IGNORE(                0x4000) // dupe
 ROM_END
 
+ROM_START( unksigb ) // this set has been found with GFX ROMs of different sizes, but same relevant data. Program ROM isn't encrypted and has further differences to the two other sets.
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "u144",  0x8000, 0x2000, CRC(8f19f1d3) SHA1(6c7364cdb68974ac600c75d4b8c7646a7f218e27) )
+	ROM_CONTINUE(      0x0000, 0x2000 )
+	ROM_IGNORE(                0x4000 ) // 1ST AND 2ND HALF IDENTICAL
+
+	ROM_REGION( 0x6000, "gfx1", 0 )
+	ROM_LOAD( "u172", 0x0000, 0x2000, CRC(f8a358fe) SHA1(5c4051de156014a5c2400f4934e2136b38bfed8c) )
+	ROM_CONTINUE(     0x0000, 0x2000)
+	ROM_CONTINUE(     0x0000, 0x2000)
+	ROM_CONTINUE(     0x0000, 0x2000) // only data here matters
+	ROM_LOAD( "u171", 0x2000, 0x2000, CRC(56ac5874) SHA1(7ae63f930b07cb1b4989c8328fcc3627d8ff68f8) )
+	ROM_CONTINUE(     0x2000, 0x2000)
+	ROM_CONTINUE(     0x2000, 0x2000)
+	ROM_CONTINUE(     0x2000, 0x2000) // only data here matters
+	ROM_LOAD( "u170", 0x4000, 0x2000, CRC(f9c686fc) SHA1(b34412be047e04fc6aca218adf61bbe233908bd7) )
+ROM_END
 
 /***********************************
 *          Driver Init             *
@@ -892,10 +920,12 @@ GAME( 1992?, tourpgum, 0,       tourpgum, tourpgum, unk_gambl_state, empty_init,
 GAME( 1992?, chicgum,  0,       chicgum,  tourpgum, unk_gambl_state, empty_init, ROT0, "<unknown>", "Chic Gum Video", MACHINE_SUPPORTS_SAVE )
 GAME( 1992?, strker,   0,       chicgum,  tourpgum, unk_gambl_state, empty_init, ROT0, "<unknown>", "Striker", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) // 'RAM NO GOOD', if bypassed it resets after coining up
 
-GAME( 199?, unkpacg,   0,       unkpacg,  unkpacg,  unk_gambl_enc_state, empty_init, ROT0, "<unknown>", "unknown 'Pac-Man' gambling game (set 1)", MACHINE_SUPPORTS_SAVE )
-GAME( 199?, unkpacgb,  unkpacg, unkpacg,  unkpacg,  unk_gambl_enc_state, empty_init, ROT0, "<unknown>", "unknown 'Pac-Man' gambling game (set 2)", MACHINE_SUPPORTS_SAVE )
-GAME( 1988, unkpacgc,  unkpacg, unkpacg,  unkpacg,  unk_gambl_state,     empty_init, ROT0, "<unknown>", "Coco Louco",                              MACHINE_SUPPORTS_SAVE )
-GAME( 199?, unkpacga,  unkpacg, unkpacga, unkpacg,  unk_gambl_enc_state, empty_init, ROT0, "IDI SRL",   "Pucman",                                  MACHINE_SUPPORTS_SAVE )
+GAME( 199?, unkpacg,   0,       unkpacg,  unkpacg,  unk_gambl_enc_state, empty_init, ROT0, "<unknown>", "unknown 'Pac-Man' gambling game (set 1)",  MACHINE_SUPPORTS_SAVE )
+GAME( 199?, unkpacgb,  unkpacg, unkpacg,  unkpacg,  unk_gambl_enc_state, empty_init, ROT0, "<unknown>", "unknown 'Pac-Man' gambling game (set 2)",  MACHINE_SUPPORTS_SAVE )
+GAME( 1988, unkpacgc,  unkpacg, unkpacg,  unkpacg,  unk_gambl_state,     empty_init, ROT0, "<unknown>", "Coco Louco",                               MACHINE_SUPPORTS_SAVE )
+GAME( 1988, unkpacgd,  unkpacg, unkpacg,  unkpacg,  unk_gambl_state,     empty_init, ROT0, "<unknown>", "unknown 'Pac Man with cars' gambling game", MACHINE_SUPPORTS_SAVE )
+GAME( 199?, unkpacga,  unkpacg, unkpacga, unkpacg,  unk_gambl_enc_state, empty_init, ROT0, "IDI SRL",   "Pucman",                                   MACHINE_SUPPORTS_SAVE )
 
-GAME( 199?, unksig,    0,       unkpacg,  unkfr,    unk_gambl_enc_state, empty_init, ROT0, "<unknown>", "unknown 'Space Invaders' gambling game (set 1)", MACHINE_SUPPORTS_SAVE )
-GAME( 199?, unksiga,   unksig,  unkpacg,  unkfr,    unk_gambl_enc_state, empty_init, ROT0, "<unknown>", "unknown 'Space Invaders' gambling game (set 2)", MACHINE_SUPPORTS_SAVE )
+GAME( 199?, unksig,    0,       unkpacg,  unkfr,    unk_gambl_enc_state, empty_init, ROT0, "<unknown>", "unknown 'Space Invaders' gambling game (encrypted, set 1)", MACHINE_SUPPORTS_SAVE )
+GAME( 199?, unksiga,   unksig,  unkpacg,  unkfr,    unk_gambl_enc_state, empty_init, ROT0, "<unknown>", "unknown 'Space Invaders' gambling game (encrypted, set 2)", MACHINE_SUPPORTS_SAVE )
+GAME( 199?, unksigb,   unksig,  unkpacg,  unkfr,    unk_gambl_state,     empty_init, ROT0, "<unknown>", "unknown 'Space Invaders' gambling game (unencrypted)",      MACHINE_SUPPORTS_SAVE )

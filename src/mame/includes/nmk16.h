@@ -52,6 +52,7 @@ public:
 	void tdragon(machine_config &config);
 	void tdragonb(machine_config &config);
 	void tdragonb2(machine_config &config);
+	void tdragonb3(machine_config &config);
 	void gunnail(machine_config &config);
 	void gunnailb(machine_config &config);
 	void hachamf(machine_config &config);
@@ -216,6 +217,7 @@ protected:
 	void mustang_map(address_map &map);
 	void mustangb_map(address_map &map);
 	void mustangb3_map(address_map &map);
+	void mustangb3_sound_map(address_map &map);
 	void oki1_map(address_map &map);
 	void oki2_map(address_map &map);
 	void raphero_map(address_map &map);
@@ -230,6 +232,7 @@ protected:
 	void tdragon_map(address_map &map);
 	void tdragonb_map(address_map &map);
 	void tdragonb2_map(address_map &map);
+	void tdragonb3_map(address_map &map);
 	void tharrier_map(address_map &map);
 	void tharrier_sound_io_map(address_map &map);
 	void tharrier_sound_map(address_map &map);

@@ -989,6 +989,8 @@ ROM_END
 ROM_START( joyjoy ) /* MVS AND AES VERSION */
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "021.p1", 0x000000, 0x080000, CRC(39c3478f) SHA1(06ebe54c9c4e14c5c31e770013d58b7162359ecc) )
+	ROM_FILL(0x70b2,1,0x60) // force on story mode
+	ROM_FILL(0x75bc,1,0x60) // force on demo mode
 
 	NEO_SFIX_128K( "021.s1", CRC(6956d778) SHA1(e3757776d60dc07d8e07c9ca61b223b14732f860) )
 
@@ -3458,6 +3460,8 @@ ROM_START( dragonsh )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "ep2.bin", 0x000000, 0x080000, CRC(f25c71ad) SHA1(803fb6cd6a7ada59678ad901ff9788b1e54ddd0c) )
 	ROM_LOAD16_BYTE( "ep1.bin", 0x000001, 0x080000, CRC(f353448c) SHA1(f0f966ca15d503e01b40e901765ff0888463b65d) )
+	ROM_FILL(0x38,1,0x18)
+	ROM_FILL(0x39,1,0xfe) // stop error.log filling up
 
 	NEO_SFIX_128K( "s1.s1", BAD_DUMP CRC(706477a7) SHA1(8cbee7f6832e7edd2dc792ca330420a6a984b879) ) // was a dead AXS512PC 512KB sram card, this data is handcrafted to make the set usable (hence BAD_DUMP)
 

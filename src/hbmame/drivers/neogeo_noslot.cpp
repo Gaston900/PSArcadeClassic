@@ -10180,25 +10180,6 @@ ROM_START( joyjoycd )
 	ROM_LOAD16_BYTE( "021.c2", 0x000001, 0x080000, CRC(09ed5258) SHA1(6bf50cd10236e29146b49e714a0e0ebcfe30a682) )
 ROM_END
 
-ROM_START( joyjoycd1 )
-	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "021cd.p1", 0x000000, 0x080000, CRC(a483fde0) SHA1(c42a04f5fec60678cbe20bc77675e0128aadf31c) )
-
-	NEO_SFIX_128K( "021.s1", CRC(6956d778) SHA1(e3757776d60dc07d8e07c9ca61b223b14732f860) )
-
-	NEO_BIOS_AUDIO_64K( "021cd1.m1", CRC(72072960) SHA1(83c70714fc458e78f39836b3a86a9b07a553bcdd) )
-
-	ROM_REGION( 0x080000, "ymsnd:adpcma", 0 )
-	ROM_LOAD( "021cd1.v11", 0x000000, 0x080000, CRC(4fb2fbcc) SHA1(b1defbfd68eb824468c352c91e98d2fc4fba539d) )
-
-	ROM_REGION( 0x080000, "ymsnd:adpcmb", 0 )
-	ROM_LOAD( "021.v21", 0x000000, 0x080000, CRC(8ed20a86) SHA1(d15cba5eac19ea56fdd4877541f1bb3eb755ebba) )
-
-	ROM_REGION( 0x100000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "021.c1", 0x000000, 0x080000, CRC(509250ec) SHA1(d6ddb16d8222088f153a85a905bcb99541a5f2cf) )
-	ROM_LOAD16_BYTE( "021.c2", 0x000001, 0x080000, CRC(09ed5258) SHA1(6bf50cd10236e29146b49e714a0e0ebcfe30a682) )
-ROM_END
-
 ROM_START( lbowlingcd )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "019cd.p1", 0x000000, 0x040000, CRC(c17fd30f) SHA1(908b045542bb575ac05f208a6595ab49c5ca5c0f) )
@@ -11015,22 +10996,22 @@ ROM_START( seafight )
 	ROM_LOAD16_BYTE( "444.c2", 0x000001, 0x100000, CRC(1f43c1f4) SHA1(aa0cd4eebb02225b939f57cee4347c0a43654d31) )
 ROM_END
 
-ROM_START( teotb ) // Beta 3, 2022-03-12
+ROM_START( teot ) // Beta 7, 2022-07-31
 	ROM_REGION( 0x900000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "323f.p1", 0x000000, 0x100000, CRC(2af068c0) SHA1(82f5885fbfdef47c0e9416cf9bd9accf8e5a739d) )
-	ROM_LOAD16_WORD_SWAP( "323f.p2", 0x100000, 0x800000, CRC(3ddc321d) SHA1(496573202a417d40894f69c2044ef408d3a0f01b) )
+	ROM_LOAD16_WORD_SWAP( "323j.p1", 0x000000, 0x100000, CRC(c0ae0a56) SHA1(d5817755641c5b105c1191b3a1f0dbca64060878) )
+	ROM_LOAD16_WORD_SWAP( "323h.p2", 0x100000, 0x800000, CRC(68dc7463) SHA1(e304187c3343d6a3f4dcad05ab68a1e73434079c) )
 
-	NEO_SFIX_128K( "323e.s1", CRC(52895190) SHA1(d11385c51591b685c533a9f27c4fd3aa62927bef) )
+	NEO_SFIX_128K( "323g.s1", CRC(6d05f74b) SHA1(1643bcf32249d3d90c230ccac09c8026dbd62960) )
 
-	NEO_BIOS_AUDIO_64K( "323f.m1", CRC(5edaa24d) SHA1(90209de31a87da4118600be64869b36067d76c4b) )
+	NEO_BIOS_AUDIO_64K( "323j.m1", CRC(0c17ccac) SHA1(39b33f6e6dc96012161cdb452a162495355dd73c) )
 
 	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
-	ROM_LOAD( "323f.v1",   0x000000, 0x800000, CRC(70042574) SHA1(368e85d38a94238b61969ee564f94bef143b808d) )
-	ROM_LOAD( "323f.v2",   0x800000, 0x800000, CRC(d84d05b2) SHA1(7ad3914b5e95572d3fc9dadc6ad0e23463983118) )
+	ROM_LOAD( "323g.v1",   0x000000, 0x800000, CRC(d2911e9c) SHA1(ca53ebda1ae2a339dfceda509c334bc4be24d7a2) )
+	ROM_LOAD( "323g.v2",   0x800000, 0x800000, CRC(49e3afe6) SHA1(0c37f171035baa4392b28df5de3261f084727a47) )
 
 	ROM_REGION( 0x2000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "323f.c1",   0x0000000, 0x1000000, CRC(360e5362) SHA1(a86a5eea49218669c5e00a6b286a7d2d6f02ab3c) )
-	ROM_LOAD16_BYTE( "323f.c2",   0x0000001, 0x1000000, CRC(1fdff0ce) SHA1(4ef77f3e01d58612e9b730426adb81d87ccb5572) )
+	ROM_LOAD16_BYTE( "323h.c1",   0x0000000, 0x1000000, CRC(2fdbfbef) SHA1(3bc2f207538893f71a7f14800dc9f11f1788c5bf) )
+	ROM_LOAD16_BYTE( "323h.c2",   0x0000001, 0x1000000, CRC(4b953a79) SHA1(4851352e7f499f3cef20415072a0df7dc0c53bed) )
 ROM_END
 
 // 422 : Time's UP! by NGF
@@ -11612,7 +11593,7 @@ GAME( 2002, kf2k2mp2,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 2002, kof10th,    kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kof10th,  ROT0, "bootleg", "The King of Fighters 10th Anniversary (The King of Fighters 2002 bootleg)", MACHINE_SUPPORTS_SAVE ) // fake SNK copyright
 GAME( 2005, kf10thep,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf10thep, ROT0, "bootleg", "The King of Fighters 10th Anniversary Extra Plus (The King of Fighters 2002 bootleg)", MACHINE_SUPPORTS_SAVE ) // fake SNK copyright
 GAME( 2004, kf2k5uni,   kof2002,  neogeo_noslot,   neogeo, neogeo_state,   init_kf2k5uni, ROT0, "bootleg", "The King of Fighters 10th Anniversary 2005 Unique (The King of Fighters 2002 bootleg)", MACHINE_SUPPORTS_SAVE ) // fake SNK copyright
-GAME( 2004, kof2k4se,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_kof2k4se, ROT0, "bootleg", "The King of Fighters Special Edition 2004 (The King of Fighters 2002 bootleg)", MACHINE_SUPPORTS_SAVE ) /* Hack / Bootleg of kof2002 */
+GAME( 2004, kof2k4se,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_kof2k4se, ROT0, "bootleg", "The King of Fighters Special Edition 2004 (The King of Fighters 2002 bootleg Set 1)", MACHINE_SUPPORTS_SAVE ) /* Hack / Bootleg of kof2002 */
 GAME( 2003, mslug5,     neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_mslug5,   ROT0, "SNK Playmore", "Metal Slug 5 (NGM-2680)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, mslug5h,    mslug5,   neogeo_noslot,   neogeo, neogeo_state,   init_mslug5,   ROT0, "SNK Playmore", "Metal Slug 5 (NGH-2680)", MACHINE_SUPPORTS_SAVE ) /* Also found in later MVS carts */
 GAME( 2003, ms5pcb,     mslug5,   neogeo_noslot,   dualbios, neogeo_state, init_ms5pcb,   ROT0, "SNK Playmore", "Metal Slug 5 (JAMMA PCB)", MACHINE_SUPPORTS_SAVE )
@@ -11884,22 +11865,21 @@ GAME( 1991, trallyd,   trally,   neogeo_noslot,   neogeo,   neogeo_state, init_n
 GAME( 1992, wh1d,      wh1,      neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "Alpha Denshi Co.", "World Heroes (Multi Game Doctor 2)", MACHINE_SUPPORTS_SAVE )
 
 /* CD conversion */
-GAME( 1991, 2020bbcd,          2020bb,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "2020 Super Baseball (CD conversion)", MACHINE_SUPPORTS_SAVE )
-GAME( 1996, crswd2bl,          neogeo,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Crossed Swords 2 (CD conversion)", MACHINE_SUPPORTS_SAVE )
-GAME( 1991, gpilotscd,         gpilots,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Ghost Pilots (CD conversion)", MACHINE_SUPPORTS_SAVE )
-GAME( 1996, ironcladcd,        ironclad, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Ironclad (CD conversion)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2007, joyjoycd,          joyjoy,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Puzzled (CD conversion)", MACHINE_SUPPORTS_SAVE )
-GAME( 1990, joyjoycd1,         joyjoy,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Puzzled (CD conversion)(Set 2)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, 2020bbcd,          2020bb,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "2020 Super Baseball (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, crswd2bl,          neogeo,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Crossed Swords 2 (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, gpilotscd,         gpilots,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Ghost Pilots (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, ironcladcd,        ironclad, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Ironclad (CD to MVS Conversion)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2007, joyjoycd,          joyjoy,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Puzzled (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
 GAME( 1990, lbowlingcd,        lbowling, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "League Bowling (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
-GAME( 1994, pbobblencd,        pbobblen, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Puzzle Bobble (CD conversion)", MACHINE_SUPPORTS_SAVE )
-GAME( 1994, pspikes2cd,        pspikes2, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Power Spikes II (CD conversion)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
-GAME( 2007, sengokucd,         sengoku,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Sengoku (CD conversion)", MACHINE_SUPPORTS_SAVE )
-GAME( 1992, ssidekicd,         ssideki,  neogeo_noslot, neogeo, neogeo_state,     init_fatfury2,  ROT0, "CD_conv",        "Super Sidekicks (CD conversion)", MACHINE_SUPPORTS_SAVE )
-GAME( 1994, strhoopcd,         strhoop,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Street Hoop (CD conversion)", MACHINE_SUPPORTS_SAVE )
-GAME( 1990, superspycd,        superspy, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "The Super Spy (CD conversion)", MACHINE_SUPPORTS_SAVE )
-GAME( 2007, tpgolfcd,          tpgolf,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Top Player's Golf (CD conversion)", MACHINE_SUPPORTS_SAVE )
-GAME( 1991, trallycd,          trally,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Thrash Rally (CD conversion)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
-GAME( 1996, zintrkcd,          zintrckb, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "ZinTricK (CD conversion)", MACHINE_SUPPORTS_SAVE )
+GAME( 1994, pbobblencd,        pbobblen, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Puzzle Bobble (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
+GAME( 1994, pspikes2cd,        pspikes2, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Power Spikes II (CD to MVS Conversion)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
+GAME( 2007, sengokucd,         sengoku,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Sengoku (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, ssidekicd,         ssideki,  neogeo_noslot, neogeo, neogeo_state,     init_fatfury2,  ROT0, "CD_conv",        "Super Sidekicks (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
+GAME( 1994, strhoopcd,         strhoop,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Street Hoop (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
+GAME( 1990, superspycd,        superspy, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "The Super Spy (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
+GAME( 2007, tpgolfcd,          tpgolf,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Top Player's Golf (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, trallycd,          trally,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "Thrash Rally (CD to MVS Conversion)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
+GAME( 1996, zintrkcd,          zintrckb, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "CD_conv",        "ZinTricK (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
 
 /* HomeBrew */
 GAME( 2021, abyssal,      neogeo,   neogeo_noslot,   neogeo,  neogeo_state, init_neogeo,   ROT0, "Kako Eimon", "Abyssal Infants", MACHINE_SUPPORTS_SAVE )
@@ -11934,7 +11914,7 @@ GAME( 2008, ngtetris,     neogeo,   neogeo_noslot,   neogeo,  neogeo_state, init
 GAME( 2020, nsmb,         neogeo,   neogeo_noslot,   neogeo,  neogeo_state, init_neogeo,   ROT0, "OzzyOuzo", "New! Super Mario Bros.", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, santabll,     neogeo,   neogeo_noslot,   neogeo,  neogeo_state, init_neogeo,   ROT0, "M.Priewe", "Santaball", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, seafight,     neogeo,   neogeo_noslot,   neogeo,  neogeo_state, init_neogeo,   ROT0, "kl3mousse", "Sea Fighter 0.01.009", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, teotb,        neogeo,   neogeo_noslot,   neogeo,  neogeo_state, init_neogeo,   ROT0, "OzzyOuzo", "The Eye of Typhoon (Tsunami Edition, beta 3, 2022-03-12)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, teot,         neogeo,   neogeo_noslot,   neogeo,  neogeo_state, init_neogeo,   ROT0, "OzzyOuzo", "The Eye of Typhoon (Tsunami Edition, beta 7, 2022-07-31)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, timesup,      neogeo,   neogeo_noslot,   neogeo,  neogeo_state, init_neogeo,   ROT0, "NGF Dev. Inc", "Time's Up!", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, timesupd,     neogeo,   neogeo_noslot,   neogeo,  neogeo_state, init_neogeo,   ROT0, "NGF Dev. Inc", "Time's Up! (Demo)", MACHINE_SUPPORTS_SAVE )
 GAME( 2011, totc,         neogeo,   neogeo_noslot,   neogeo,  neogeo_state, init_neogeo,   ROT0, "FACE Corporation / N.C.I - Le Cortex", "Treasure of the Caribbean", MACHINE_SUPPORTS_SAVE )

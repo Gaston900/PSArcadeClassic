@@ -85,7 +85,7 @@
 #endif
 #define MAMENAME			"PSArcade Classic+"
 
-#define MAME_VERSION		"2.0"
+#define MAME_VERSION		"2.1"
 #define MAMEUIFX_VERSION	MAME_VERSION " (" __DATE__")"
 
 #define SEARCH_PROMPT		"<search here>"

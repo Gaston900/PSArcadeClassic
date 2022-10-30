@@ -492,6 +492,118 @@ DRIVER_INIT_MEMBER(pgm_arm_type1_state,kovboot)
 }
 #endif
 
+ /*********************
+ DoDonPachi Dai-Ou-Jou
+************************/
+
+ROM_START( ddp3blkd )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "ddp3_bios.u37",   0x00000, 0x080000, CRC(b3cc5c8f) SHA1(02d9511cf71e4a0d6ca8fd9a1ef2c79b0d001824) ) // uses a standard PGM bios with the startup logos hacked out
+	ROM_LOAD16_WORD_SWAP( "ddp3blk_v101.u36",  0x100000, 0x200000, CRC(14e4e732) SHA1(37ca29ddb103e7aa7b0a6eefa20376c834415434) ) // yes this one was actually marked v101 which goes against the standard Cave marking system
+
+	ROM_REGION( 0x4000, "prot", 0 )
+	ROM_LOAD( "ddp3_igs027a.bin", 0x000000, 0x04000, NO_DUMP )
+
+	ROM_REGION( 0xa00000, "tiles", 0 )
+	ROM_LOAD( "pgm_t01s.rom", 0x000000, 0x200000, CRC(1a7123a0) SHA1(cc567f577bfbf45427b54d6695b11b74f2578af3) ) // same as standard PGM bios
+	ROM_LOAD( "cave_t04401w064.u19", 0x180000, 0x800000, CRC(3a95f19c) SHA1(fd3c47cf0b8b1e20c6bec4be68a089fc8bbf4dbe) ) //text-1
+
+	ROM_REGION16_LE( 0x2000000, "sprcol", 0 )
+	ROM_LOAD( "cave_a04401w064.u7",  0x0000000, 0x0800000, CRC(ed229794) SHA1(1cf1863495a18c7c7d277a9be43ec116b00960b0) ) //image-1
+	ROM_LOAD( "cave_a04402w064.u8",  0x0800000, 0x0800000, CRC(752167b0) SHA1(c33c3398dd8e479c9d5bd348924958a6aecbf0fc) ) //image-2
+
+	ROM_REGION16_LE( 0x1000000, "sprmask", 0 )
+	ROM_LOAD( "cave_b04401w064.u1",  0x0000000, 0x0800000, CRC(17731c9d) SHA1(0e0aa0ec01035323985ac8e08228a0fd6edf6689) ) //bitmap-1
+
+	ROM_REGION( 0x1000000, "ics", 0 )
+	ROM_LOAD( "pgm_m01s.rom", 0x000000, 0x200000, CRC(45ae7159) SHA1(d3ed3ff3464557fd0df6b069b2e431528b0ebfa8) ) // same as standard PGM bios
+	ROM_LOAD( "cave_m04401b032.u17", 0x400000, 0x400000, CRC(5a0dbd76) SHA1(06ab202f6bd5ebfb35b9d8cc7a8fb83ec8840659) ) //music-1
+
+	ROM_REGION( 0x20000, "sram", 0 )
+	ROM_LOAD( "ddp3blk_defaults.nv",  0x0000000, 0x020000, CRC(a1651904) SHA1(5b80d3c4c764895c40953a66161d4dd84f742604) )
+ROM_END
+
+ROM_START( ddp3d )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "ddp3_bios.u37",   0x00000, 0x080000, CRC(b3cc5c8f) SHA1(02d9511cf71e4a0d6ca8fd9a1ef2c79b0d001824) ) // uses a standard PGM bios with the startup logos hacked out
+	ROM_LOAD16_WORD_SWAP( "ddp3d_v101.u36",  0x100000, 0x200000, CRC(6d851386) SHA1(d3f3a2db2ec0bec6cdd80af6640968703c18ad31) ) // yes this one was actually marked v101 which goes against the standard Cave marking system
+
+	ROM_REGION( 0x4000, "prot", 0 )
+	ROM_LOAD( "ddp3_igs027a.bin", 0x000000, 0x04000, NO_DUMP )
+
+	ROM_REGION( 0xa00000, "tiles", 0 )
+	ROM_LOAD( "pgm_t01s.rom", 0x000000, 0x200000, CRC(1a7123a0) SHA1(cc567f577bfbf45427b54d6695b11b74f2578af3) ) // same as standard PGM bios
+	ROM_LOAD( "cave_t04401w064.u19", 0x180000, 0x800000, CRC(3a95f19c) SHA1(fd3c47cf0b8b1e20c6bec4be68a089fc8bbf4dbe) ) //text-1
+
+	ROM_REGION16_LE( 0x2000000, "sprcol", 0 )
+	ROM_LOAD( "cave_a04401w064.u7",  0x0000000, 0x0800000, CRC(ed229794) SHA1(1cf1863495a18c7c7d277a9be43ec116b00960b0) ) //image-1
+	ROM_LOAD( "cave_a04402w064.u8",  0x0800000, 0x0800000, CRC(752167b0) SHA1(c33c3398dd8e479c9d5bd348924958a6aecbf0fc) ) //image-2
+
+	ROM_REGION16_LE( 0x1000000, "sprmask", 0 )
+	ROM_LOAD( "cave_b04401w064.u1",  0x0000000, 0x0800000, CRC(17731c9d) SHA1(0e0aa0ec01035323985ac8e08228a0fd6edf6689) ) //bitmap-1
+
+	ROM_REGION( 0x1000000, "ics", 0 )
+	ROM_LOAD( "pgm_m01s.rom", 0x000000, 0x200000, CRC(45ae7159) SHA1(d3ed3ff3464557fd0df6b069b2e431528b0ebfa8) ) // same as standard PGM bios
+	ROM_LOAD( "cave_m04401b032.u17", 0x400000, 0x400000, CRC(5a0dbd76) SHA1(06ab202f6bd5ebfb35b9d8cc7a8fb83ec8840659) ) //music-1
+
+	ROM_REGION( 0x20000, "sram", 0 )
+	ROM_LOAD( "ddp3_defaults.nv",  0x0000000, 0x020000, CRC(571e96c0) SHA1(348940c77ca348213331b85b9b1d3aabb96a528a) )
+ROM_END
+
+ /***************************
+ Ketsui: Kizuna Jigoku Tachi
+******************************/
+
+ROM_START( ketd )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "ketsuid_v100.u38", 0x000000, 0x200000, CRC(037f6cfa) SHA1(15a4099a75a5a1013411764d84688f86fc5ca390) )
+
+	ROM_REGION( 0x4000, "prot", 0 )
+	ROM_LOAD( "ket_igs027a.bin", 0x000000, 0x04000, NO_DUMP )
+
+	ROM_REGION( 0xa00000, "tiles", 0 )
+	ROM_LOAD( "pgm_t01s.rom", 0x000000, 0x200000, CRC(1a7123a0) SHA1(cc567f577bfbf45427b54d6695b11b74f2578af3) ) 
+	ROM_LOAD( "cave_t04701w064.u19",   0x180000, 0x800000, CRC(2665b041) SHA1(fb1107778b66f2af0de77ac82e1ee2902f53a959) )
+
+	ROM_REGION16_LE( 0x1000000, "sprcol", 0 )
+	ROM_LOAD( "cave_a04701w064.u7",    0x0000000, 0x0800000, CRC(5ef1b94b) SHA1(f10dfa46e0a4d297c3a856aea5b49d648f98935c) )
+	ROM_LOAD( "cave_a04702w064.u8",    0x0800000, 0x0800000, CRC(26d6da7f) SHA1(f20e07a7994f41b5ed917f8b0119dc5542f3541c) )
+
+	ROM_REGION16_LE( 0x0800000, "sprmask", 0 )
+	ROM_LOAD( "cave_b04701w064.u1",    0x0000000, 0x0800000, CRC(1bec008d) SHA1(07d117dc2eebb35727fb18a7c563acbaf25a8d36) )
+
+	ROM_REGION( 0x800000, "ics", ROMREGION_ERASE00 )
+	ROM_LOAD( "cave_m04701b032.u17",   0x400000, 0x400000, CRC(b46e22d1) SHA1(670853dc485942fb96380568494bdf3235f446ee) )
+
+	ROM_REGION( 0x20000, "sram", 0 )
+	ROM_LOAD( "ket_defaults.nv",  0x0000000, 0x020000, CRC(3ca892d8) SHA1(67430df5217e453ae8140c5653deeadfad8fa684) )
+ROM_END
+
+ROM_START( ketck )
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "ketsuick_v100.u38", 0x000000, 0x200000, CRC(ec7a4f92) SHA1(6351fb386586956fbdb5f0730c481fb539cc267a) )
+
+	ROM_REGION( 0x4000, "prot", 0 )
+	ROM_LOAD( "ket_igs027a.bin", 0x000000, 0x04000, NO_DUMP )
+
+	ROM_REGION( 0xa00000, "tiles", 0 )
+	ROM_LOAD( "pgm_t01s.rom", 0x000000, 0x200000, CRC(1a7123a0) SHA1(cc567f577bfbf45427b54d6695b11b74f2578af3) ) 
+	ROM_LOAD( "cave_t04701w064.u19",   0x180000, 0x800000, CRC(2665b041) SHA1(fb1107778b66f2af0de77ac82e1ee2902f53a959) )
+
+	ROM_REGION16_LE( 0x1000000, "sprcol", 0 )
+	ROM_LOAD( "cave_a04701w064.u7",    0x0000000, 0x0800000, CRC(5ef1b94b) SHA1(f10dfa46e0a4d297c3a856aea5b49d648f98935c) )
+	ROM_LOAD( "cave_a04702w064.u8",    0x0800000, 0x0800000, CRC(26d6da7f) SHA1(f20e07a7994f41b5ed917f8b0119dc5542f3541c) )
+
+	ROM_REGION16_LE( 0x0800000, "sprmask", 0 )
+	ROM_LOAD( "cave_b04701w064.u1",    0x0000000, 0x0800000, CRC(1bec008d) SHA1(07d117dc2eebb35727fb18a7c563acbaf25a8d36) )
+
+	ROM_REGION( 0x800000, "ics", ROMREGION_ERASE00 )
+	ROM_LOAD( "cave_m04701b032.u17",   0x400000, 0x400000, CRC(b46e22d1) SHA1(670853dc485942fb96380568494bdf3235f446ee) )
+
+	ROM_REGION( 0x20000, "sram", 0 )
+	ROM_LOAD( "ket_defaults.nv",  0x0000000, 0x020000, CRC(3ca892d8) SHA1(67430df5217e453ae8140c5653deeadfad8fa684) )
+ROM_END
+
  /*****************
  The Killing Blade
 ********************/
@@ -6456,6 +6568,12 @@ ROM_START( thegladhack02 )
 ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
+// DoDonPachi Dai-Ou-Jou
+GAME( 2002, ddp3blkd,       ddp3,      pgm_arm_type1_cave, ddp3,     pgm_arm_type1_state, init_ddp3,       ROT270, "Cave (AMI license)", "DoDonPachi Dai-Ou-Jou (Black Label, Fully Decrypted)",  MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 2002, ddp3d,          ddp3,      pgm_arm_type1_cave, ddp3,     pgm_arm_type1_state, init_ddp3,       ROT270, "Cave (AMI license)", "DoDonPachi Dai-Ou-Jou (Fully Decrypted)",  MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+// Ketsui: Kizuna Jigoku Tachi
+GAME( 2002, ketd,           ket,       pgm_arm_type1_cave, ddp3,     pgm_arm_type1_state, init_ket,        ROT270, "Cave (AMI license)", "Ketsui: Kizuna Jigoku Tachi (Fully Decrypted)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 2002, ketck,          ket,       pgm_arm_type1_cave, ddp3,     pgm_arm_type1_state, init_ket,        ROT270, "Cave (AMI license)", "Ketsui: Kizuna Jigoku Tachi (Back Version v1.0 2012/06/29)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 // The Killing Blade
 GAME( 1998, killbldhack01,  killbld,   pgm_022_025_killbld,killbld,  pgm_022_025_state,   init_killbld,    ROT0,   "DDJ",  "The Killing Blade (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, killbldhack02,  killbld,   pgm_022_025_killbld,killbld,  pgm_022_025_state,   init_killbld,    ROT0,   "DDJ",  "The Killing Blade (Always Have Super Move)", MACHINE_SUPPORTS_SAVE )

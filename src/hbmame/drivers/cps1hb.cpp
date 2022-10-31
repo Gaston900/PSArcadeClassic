@@ -9473,7 +9473,7 @@ ROM_START( wofjd )
 	ROM_LOAD( "tk2-q4.4k",     0x180000, 0x80000, CRC(36642e88) SHA1(8ab25b19e2b67215a5cb1f3aa81b9d26009cfeb8) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD ( "wof.key", 0x00, 0x80, CRC(ef8848dd) SHA1(e500a89ddb16abb31c7cb45f8dbea922d01fccc1) )
+	ROM_LOAD( "wofch.key", 0x00, 0x80, CRC(23f2d0bb) SHA1(48ba9300bc2136e9583754a51d5ab2532eca85c6) )
 ROM_END
 
 /********************
@@ -10268,7 +10268,7 @@ GAME( 1992, wofsj,           wof,      sk2h31,     sk2h31,   cps_state, init_sk2
 GAME( 1992, wofsja,          wof,      sk2h31,     sk2h31,   cps_state, init_sk2h22,   ROT0,   "bootleg",  "Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 2, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, wofsjb,          wof,      sk2h35,     wof,      cps_state, init_sk2h35,   ROT0,   "bootleg",  "Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 3, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, wofsjc,          wof,      sk2h31,     sk2h31,   cps_state, init_sk2h22,   ROT0,   "bootleg",  "Sangokushi II: Sheng Jian Sanguo (Chinese bootleg set 4, 921005 Asia)", MACHINE_SUPPORTS_SAVE )
-GAME( 1992, wofjd,           wof,      sk2h31,     sk2h31,   cps_state, init_sk2h22,   ROT0,   "bootleg",  "Tenchi wo Kurau II (Japan 921031 Phoenix Edition)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, wofjd,           wof,      qsound,     wof,      cps_state, init_wof,      ROT0,   "bootleg",  "Tenchi wo Kurau II (Japan 921031 Phoenix Edition)", MACHINE_SUPPORTS_SAVE )
 // Tenchi wo Kurau II (wofch)
 GAME( 1994, wofchhack01,     wofch,    qsound,     wofch,    cps_state, init_wof,      ROT0,   "Katana",   "Tenchi wo Kurau II (True Purgatory Edition 2016-02-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, wofchhack02,     wofch,    qsound,     wofch,    cps_state, init_wof,      ROT0,   "Katana",   "Tenchi wo Kurau II (Sangokushi III Gaiden: Kakou-on's Revenge)", MACHINE_SUPPORTS_SAVE )

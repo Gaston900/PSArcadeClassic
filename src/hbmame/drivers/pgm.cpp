@@ -6573,7 +6573,7 @@ GAME( 2002, ddp3blkd,       ddp3,      pgm_arm_type1_cave, ddp3,     pgm_arm_typ
 GAME( 2002, ddp3d,          ddp3,      pgm_arm_type1_cave, ddp3,     pgm_arm_type1_state, init_ddp3,       ROT270, "Cave (AMI license)", "DoDonPachi Dai-Ou-Jou (Fully Decrypted)",  MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 // Ketsui: Kizuna Jigoku Tachi
 GAME( 2002, ketd,           ket,       pgm_arm_type1_cave, ddp3,     pgm_arm_type1_state, init_ket,        ROT270, "Cave (AMI license)", "Ketsui: Kizuna Jigoku Tachi (Fully Decrypted)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME( 2002, ketck,          ket,       pgm_arm_type1_cave, ddp3,     pgm_arm_type1_state, init_ket,        ROT270, "Cave (AMI license)", "Ketsui: Kizuna Jigoku Tachi (Back Version v1.0 2012/06/29)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 2002, ketck,          ket,       pgm_arm_type1_cave, ddp3,     pgm_arm_type1_state, init_ket,        ROT270, "Cave (AMI license)", "Ketsui: Kizuna Jigoku Tachi (2012/04/17 BACK. VER)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 // The Killing Blade
 GAME( 1998, killbldhack01,  killbld,   pgm_022_025_killbld,killbld,  pgm_022_025_state,   init_killbld,    ROT0,   "DDJ",  "The Killing Blade (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, killbldhack02,  killbld,   pgm_022_025_killbld,killbld,  pgm_022_025_state,   init_killbld,    ROT0,   "DDJ",  "The Killing Blade (Always Have Super Move)", MACHINE_SUPPORTS_SAVE )

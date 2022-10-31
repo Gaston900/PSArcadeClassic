@@ -4729,7 +4729,6 @@ vstennisa                       // (c) 1984 Nintendo Co., Ltd. / Nintendo of Ame
 vstennisb                       // (c) 1984 Nintendo Co., Ltd. / Nintendo of America
 vstetris                        // (c) 1988 Atari
 wrecking                        // (c) 1984 Nintendo
-vsurban
 
 @source:tmaster.cpp
 tm                              // (c) 1996 Midway Games
@@ -11649,7 +11648,6 @@ ganryud                         //bootleg
 garouhack01                     //hack
 garouhack02                     //hack
 garoud                          //bootleg
-garouhd                         //bootleg
 gowcaizrhack01                  //hack
 gowcaizrhack02                  //hack
 gpilotshack01                   //hack
@@ -11739,7 +11737,6 @@ kf2k1pls                        //bootleg
 kf2k1pla                        //bootleg
 kof2k1nd                        //bootleg
 kof2k1hd                        //bootleg
-kof2k1fd                        //bootleg
 kof2002hack01                   //hack
 kof2002hack02                   //hack
 kof2002hack03                   //hack
@@ -11753,7 +11750,6 @@ kof2002hack10                   //hack
 kf2k2pla                        //bootleg
 kf2k2plb                        //bootleg
 kf2k2plc                        //bootleg
-kof2k2nd                        //bootleg
 kof2002d                        //bootleg
 kof2k2fd                        //bootleg
 kof2003hack01                   //hack
@@ -11768,7 +11764,7 @@ kof2k3nd                        //bootleg
 kf2k3pcd                        //bootleg
 kof2k3pd                        //bootleg
 kf2k3upd                        //bootleg
-kof2k3bl2                       //bootleg
+kf2k3bl2                        //bootleg
 kf2k3fd                         //bootleg
 koghack01                       //hack
 kogd                            //bootleg
@@ -11778,7 +11774,7 @@ kof10thd                        //bootleg
 kf2k5unihack01                  //hack
 kf2k5unihack02                  //hack
 kof2k8uni                       //bootleg
-kof10thu                        //bootleg
+kf2k5unh                        //bootleg
 kof10thud                       //bootleg
 kof2k4sehack01                  //hack
 kof2k4sehack02                  //hack
@@ -12341,9 +12337,9 @@ phoenixr                        //hack
 phoenixg                        //hack
 
 @source:pgm.cpp
-ddp3blkd                        //bootleg
-ddp3d                           //bootleg
-ketd                            //bootleg
+//ddp3blkd                        //bootleg
+//ddp3d                           //bootleg
+//ketd                            //bootleg
 ketck                           //hack
 //killbldhack01                   //hack
 //killbldhack02                   //hack

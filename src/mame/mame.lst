@@ -11613,7 +11613,7 @@ aof2hack01                      //hack
 aof2hack02                      //hack
 aof3hack01                      //hack
 bangbedd                        //bootleg
-bangbeadp                       //
+bangbeadp                       //prototype
 ct2k3hack01                     //hack
 ct2k3sp                         //bootleg
 ct2k3spd                        //bootleg
@@ -11632,7 +11632,7 @@ doubledrhack01                  //hack
 doubledrhack02                  //hack
 doubledrhack03                  //hack
 doubledrhack04                  //hack
-dragons1                        //bootleg
+dragons1                        //Face
 eightmanhack01                  //hack
 fatfursphack01                  //hack
 fatfursphack02                  //hack
@@ -11644,15 +11644,15 @@ fatfury3hack02                  //hack
 fightfevhack01                  //hack
 flipshothack01                  //hack
 galaxyfghack01                  //hack
-ganryud                         //bootleg
+ganryud                         //Visco
 garouhack01                     //hack
 garouhack02                     //hack
-garoud                          //bootleg
+garoud                          //SNK
 gowcaizrhack01                  //hack
 gowcaizrhack02                  //hack
 gpilotshack01                   //hack
 ironcladhack01                  //hack
-jckeygpd                        //bootleg
+jckeygpd                        //Sun Amusement / BrezzaSoft
 kabukiklhack01                  //hack
 karnovrhack01                   //hack
 kizunahack01                    //hack
@@ -11669,7 +11669,7 @@ kof96hack03                     //hack
 kof96ep                         //bootleg
 kof96ep2                        //bootleg
 kof96ep3                        //bootleg
-kof96cn                         //bootleg
+kof96cn                         //SNK
 kof97hack01                     //hack
 kof97hack02                     //hack
 kof97hack03                     //hack
@@ -11717,26 +11717,26 @@ kof99hack06                     //hack
 kof99hack07                     //hack
 kof99hack08                     //hack
 //kof99hack09                     //hack
-kof99d                          //bootleg
-kof99fd                         //bootleg
+kof99d                          //SNK
+kof99fd                         //SNK
 kof2000hack01                   //hack
 kof2000hack02                   //hack
 kof2000hack03                   //hack
 kof2000hack04                   //hack
 kof2000hack05                   //hack
 kof2000hack06                   //hack
-kof2000d                        //bootleg
-kof2knd                         //bootleg
-kof2kfd                         //bootleg
+kof2000d                        //SNK
+kof2knd                         //SNK
+kof2kfd                         //SNK
 kof2001hack01                   //hack
 kof2001hack02                   //hack
 kof2001hack03                   //hack
-kof2001d                        //bootleg
-kof2001n                        //bootleg
+kof2001d                        //Eolith / SNK
+kof2001n                        //Eolith / SNK
 kf2k1pls                        //bootleg
 kf2k1pla                        //bootleg
-kof2k1nd                        //bootleg
-kof2k1hd                        //bootleg
+kof2k1nd                        //Eolith / SNK
+kof2k1hd                        //Eolith / SNK
 kof2002hack01                   //hack
 kof2002hack02                   //hack
 kof2002hack03                   //hack
@@ -11750,22 +11750,22 @@ kof2002hack10                   //hack
 kf2k2pla                        //bootleg
 kf2k2plb                        //bootleg
 kf2k2plc                        //bootleg
-kof2002d                        //bootleg
-kof2k2fd                        //bootleg
+kof2002d                        //Eolith / Playmore
+kof2k2fd                        //Eolith / Playmore
 kof2003hack01                   //hack
 kof2003hack02                   //hack
 kof2003hack03                   //hack
-kof2003d                        //bootleg
-kof2003f                        //bootleg
-kof2k3d                         //bootleg
+kof2003d                        //SNK Playmore
+kof2003f                        //SNK Playmore
+kof2k3d                         //SNK Playmore
 kf2k3bd                         //bootleg
-kof2k3hd                        //bootleg
-kof2k3nd                        //bootleg
-kf2k3pcd                        //bootleg
-kof2k3pd                        //bootleg
-kf2k3upd                        //bootleg
+kof2k3hd                        //SNK Playmore
+kof2k3nd                        //SNK Playmore
+kf2k3pcd                        //SNK Playmore
+kof2k3pd                        //SNK Playmore
+kf2k3upd                        //SNK Playmore
 kf2k3bl2                        //bootleg
-kf2k3fd                         //bootleg
+kf2k3fd                         //SNK Playmore
 koghack01                       //hack
 kogd                            //bootleg
 kogplus                         //bootleg
@@ -11789,7 +11789,7 @@ lastbladhack02                  //hack
 lastbladhack03                  //hack
 lastbladhack04                  //hack
 lastbladhack05                  //hack
-lba                             //bootleg
+lba                             //SNK
 lastbld2hack01                  //hack
 lastbld2hack02                  //hack
 lastbld2hack03                  //hack
@@ -11865,8 +11865,8 @@ mslug2rmxe1s02                  //Hack
 mslug2rmxe1s03                  //Hack
 mslug2rmxe1s04                  //Hack
 mslug2rmxe1s05                  //Hack
-mslug3hd                        //Bootleg
-mslug3nd                        //Bootleg
+mslug3hd                        //SNK
+mslug3nd                        //SNK
 mslug3hacks01                   //Hack
 mslug3hacks02                   //Hack
 mslug3hacks03                   //Hack
@@ -11992,10 +11992,10 @@ mslug3rmxe7s04                  //Hack
 mslug3rmxe8s01                  //Hack
 mslug3rmxe8s02                  //Hack
 ms4boot                         //Bootleg
-mslug4d                         //Bootleg
-mslug4hd                        //Bootleg
-mslug4nd                        //Bootleg
-mslug4dd                        //Bootleg
+mslug4d                         //Mega / Playmore
+mslug4hd                        //Mega / Playmore
+mslug4nd                        //Mega / Playmore
+mslug4dd                        //Mega / Playmore
 mslug4hacks01                   //Hack
 mslug4hacks02                   //Hack
 mslug4hacks03                   //Hack
@@ -12042,17 +12042,17 @@ mslug4rmxe2s01                  //Hack
 mslug4rmxe3s01                  //Hack
 mslug4rmxe4s01                  //Hack
 ms5boot                         //Bootleg
-ms5pcbd                         //Bootleg
-mslug5nd                        //Bootleg
-mslug5d                         //Bootleg
+ms5pcbd                         //SNK Playmore
+mslug5nd                        //SNK Playmore
+mslug5d                         //SNK Playmore
 mslug5b1                        //Bootleg
 ms5plusd                        //Bootleg
-mslug5n                         //Bootleg
+mslug5n                         //SNK Playmore
 mslug5b3                        //Bootleg
-mslug5n2                        //Bootleg
-mslug5hd                        //Bootleg
+mslug5n2                        //SNK Playmore
+mslug5hd                        //SNK Playmore
 ms5plusc                        //Bootleg
-mslug5fd                        //Bootleg
+mslug5fd                        //SNK Playmore
 mslug5hacks01                   //Hack
 mslug5hacks02                   //Hack
 mslug5hacks03                   //Hack
@@ -12203,14 +12203,14 @@ ninjamashack02                  //hack
 nitdhack01                      //hack
 nitdhack02                      //hack
 nitdhack03                      //hack
-nitdd                           //bootleg
+nitdd                           //Eleven / Gavaking
 pbobblenhack01                  //hack
 pbobblenhack02                  //hack
 pbobblendx                      //bootleg
-pnyaad                          //bootleg
-pnyaadd                         //bootleg
+pnyaad                          //Aiky
+pnyaadd                         //Aiky
 preisle2hack01                  //hack
-preisl2d                        //bootleg
+preisl2d                        //Yumekobo
 ragnagrdhack01                  //hack
 ragnagrdhack02                  //hack
 ragnagrdhack03                  //hack
@@ -12222,11 +12222,11 @@ rbff2hack02                     //hack
 rotdhack01                      //hack
 rotdhack02                      //hack
 rotdhack03                      //hack
-rotdd                           //bootleg
-rotdnd                          //bootleg
+rotdd                           //Evoga / Playmore
+rotdnd                          //Evoga / Playmore
 s1945phack01                    //hack
 s1945phack02                    //hack
-s1945pd                         //bootleg
+s1945pd                         //Psikyo
 samshohack01                    //hack
 samshohack02                    //hack
 samshohack03                    //hack
@@ -12249,21 +12249,21 @@ samsho5hack03                   //hack
 samsho5hack04                   //hack
 samsho5hack05                   //hack
 samsh5bd                        //bootleg
-samsh5cd                        //bootleg
-samsho5d                        //bootleg
-samsh5hd                        //bootleg
-samsh5nd                        //bootleg
+samsh5cd                        //Yuki Enterprise / SNK Playmore
+samsho5d                        //Yuki Enterprise / SNK Playmore
+samsh5hd                        //Yuki Enterprise / SNK Playmore
+samsh5nd                        //Yuki Enterprise / SNK Playmore
 samsh5sphack01                  //hack
 samsh5sphack02                  //hack
 samsh5sphack03                  //hack
 samsh5sphack04                  //hack
 samsh5sphack05                  //hack
-ssh5spnd                        //bootleg
-ssh5spn                         //bootleg
-sams5spd                        //bootleg
-samsh5spd2                      //bootleg
-sams5sod                        //bootleg
-sams5shd                        //bootleg
+ssh5spnd                        //Yuki Enterprise / SNK Playmore
+ssh5spn                         //Yuki Enterprise / SNK Playmore
+sams5spd                        //Yuki Enterprise / SNK Playmore
+samsh5spd2                      //Yuki Enterprise / SNK Playmore
+sams5sod                        //Yuki Enterprise / SNK Playmore
+sams5shd                        //Yuki Enterprise / SNK Playmore
 savagerehack01                  //hack
 savagerehack02                  //hack
 sdodgebhac01                    //hack
@@ -12276,16 +12276,16 @@ sengoku3hack06                  //hack
 sengoku3hack07                  //hack
 sengoku3hack08                  //hack
 sengoku3hack09                  //hack
-sengok3d                        //bootleg
+sengok3d                        //Noise Factory / SNK
 shocktr2hack01                  //hack
 shocktrohack01                  //hack
 sonicwi2hack01                  //hack
 sonicwi3hack01                  //hack
 sonicwi3hack02                  //hack
 svcsplushack01                  //hack
-svcda                           //bootleg
-svcd                            //bootleg
-svcnd                           //bootleg
+svcda                           //SNK Playmore
+svcd                            //SNK Playmore
+svcnd                           //SNK Playmore
 svcplusn                        //bootleg
 svcplusb                        //bootleg
 svcplusd                        //bootleg
@@ -12308,8 +12308,8 @@ wh2hack03                       //hack
 wh2jhack01                      //hack
 wh2jhack02                      //hack
 zintrckbhack01                  //hack
-zupapad                         //bootleg
-zupapand                        //bootleg
+zupapad                         //SNK
+zupapand                        //SNK
 cndi                            //Intro
 dti                             //Intro
 dwi                             //Intro

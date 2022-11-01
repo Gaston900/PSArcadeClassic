@@ -16585,7 +16585,7 @@ GAME( 1998, flipshothack01,    flipshot, neogeo_noslot, neogeo, neogeo_state,   
 // Galaxy Fight
 GAME( 2014, galaxyfghack01,    galaxyfg, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "Yumeji",         "Galaxy Fight (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 // Ganryu
-GAME( 1999, ganryud,           ganryu,   neogeo_noslot, neogeo, neogeo_state,     init_cmc42sfix, ROT0, "bootleg",        "Ganryu (Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 1999, ganryud,           ganryu,   neogeo_noslot, neogeo, neogeo_state,     init_cmc42sfix, ROT0, "Visco",          "Ganryu (Decrypted C)", MACHINE_SUPPORTS_SAVE )
 // Garou
 GAME( 1999, garouhack01,       garou,    neogeo_noslot, neogeo, neogeo_state,     init_garou,     ROT0, "Ydmis",          "Garou - Mark of the Wolves (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, garouhack02,       garou,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Garou - Mark of the Wolves (Resurgence Lite 2015-03-10)", MACHINE_SUPPORTS_SAVE )
@@ -16599,7 +16599,7 @@ GAME( 2014, gpilotshack01,     gpilots,  neogeo_noslot, neogeo, neogeo_state,   
 // Ironclad
 GAME( 1996, ironcladhack01,    ironclad, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "Saurus",         "Ironclad (Conversion from Wii)", MACHINE_SUPPORTS_SAVE )
 //Jockey Grand Prix
-GAME( 2001, jckeygpd,          jockeygp, neogeo_noslot, jockeygp, neogeo_state,   init_jckeygpd,  ROT0, "bootleg",        "Jockey Grand Prix (decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, jckeygpd,          jockeygp, neogeo_noslot, jockeygp, neogeo_state,   init_jckeygpd,  ROT0, "Sun Amusement / BrezzaSoft",        "Jockey Grand Prix (decrypted C)", MACHINE_SUPPORTS_SAVE )
 // Far East of Eden
 GAME( 1995, kabukiklhack01,    kabukikl, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "Ydmis",          "Far East of Eden (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE ) 
 // Karnov's Revenge
@@ -16622,9 +16622,9 @@ GAME( 2020, kof96hack03,       kof96,    neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2020, kof96hack04,       kof96,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof'96 (Remix Plus 2008SP 2020-02-09)", MACHINE_SUPPORTS_SAVE )
 // bootleg
 GAME( 1996, kof96ep,           kof96,    neogeo_noslot, neogeo, neogeo_state,     init_kof96ep,   ROT0, "bootleg",        "Kof'96 (Bootleg / Hack Set 1)", MACHINE_SUPPORTS_SAVE )
-GAME( 1996, kof96ep2,          kof96,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof'96 (Bootleg / Hack Set.2)", MACHINE_SUPPORTS_SAVE )
-GAME( 1996, kof96ep3,          kof96,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof'96 (Bootleg / Hack Set.3)", MACHINE_SUPPORTS_SAVE )
-GAME( 1996, kof96cn,           kof96,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "bootleg",        "Kof'96 (Chinese Edition)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, kof96ep2,          kof96,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "bootleg",        "Kof'96 (Bootleg / Hack Set.2)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, kof96ep3,          kof96,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "bootleg",        "Kof'96 (Bootleg / Hack Set.3)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, kof96cn,           kof96,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "SNK",            "Kof'96 (Chinese Edition)", MACHINE_SUPPORTS_SAVE )
 // The King of Fighters '97
 GAME( 1997, kof97hack01,       kof97,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "kof1996",        "Kof'97 (Hidden Characters Enable)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kof97hack02,       kof97,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof'97 (Optimized Modified Version 2020 2020-06-26)", MACHINE_SUPPORTS_SAVE )
@@ -16677,8 +16677,8 @@ GAME( 2020, kof99hack07,       kof99,    neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2020, kof99hack08,       kof99,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof'99 (Imitation PS Enhanced Edition Simplified 2020-08-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kof99hack09,       kof99,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof'99 (Evolution Ultimate Edition 2020-03-03)", MACHINE_SUPPORTS_SAVE )
 //bootleg
-GAME( 1999, kof99d,            kof99,    neogeo_noslot, neogeo, neogeo_state,     init_kof99,     ROT0, "bootleg",        "Kof'99 (decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, kof99fd,           kof99,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "bootleg",        "Kof'99 (Fully decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 1999, kof99d,            kof99,    neogeo_noslot, neogeo, neogeo_state,     init_kof99,     ROT0, "SNK",            "Kof'99 (decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, kof99fd,           kof99,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "SNK",            "Kof'99 (Fully decrypted)", MACHINE_SUPPORTS_SAVE )
 // The King of Fighters '2000
 GAME( 2000, kof2000hack01,     kof2000,  neogeo_noslot, neogeo, neogeo_state,     init_kof2000,   ROT0, "0 Day-S",        "Kof2000 (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kof2000hack02,     kof2000,  neogeo_noslot, neogeo, neogeo_state,     init_kof2000,   ROT0, "hack",           "Kof2000 (OTC Original 2020-06-17)", MACHINE_SUPPORTS_SAVE )
@@ -16687,20 +16687,20 @@ GAME( 2000, kof2000hack04,     kof2000,  neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2020, kof2000hack05,     kof2000,  neogeo_noslot, neogeo, neogeo_state,     init_kof2000,   ROT0, "hack",           "Kof2000 (Resurgence Simplify 2020-07-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, kof2000hack06,     kof2000,  neogeo_noslot, neogeo, neogeo_state,     init_kof2000,   ROT0, "hack",           "Kof2000 (Special Edition Final Version 2021)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-GAME( 2000, kof2000d,          kof2000,  neogeo_noslot, neogeo, neogeo_state,     init_kof2000,   ROT0, "bootleg",        "Kof2000 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, kof2knd,           kof2000,  neogeo_noslot, neogeo, neogeo_state,     init_kof2000,   ROT0, "bootleg",        "Kof2000 (Non encrypted P,decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, kof2kfd,           kof2000,  neogeo_noslot, neogeo, neogeo_state,     init_kof2000,   ROT0, "bootleg",        "Kof2000 (Fully decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, kof2000d,          kof2000,  neogeo_noslot, neogeo, neogeo_state,     init_kof2000,   ROT0, "SNK",            "Kof2000 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, kof2knd,           kof2000,  neogeo_noslot, neogeo, neogeo_state,     init_kof2000,   ROT0, "SNK",            "Kof2000 (Non encrypted P,decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, kof2kfd,           kof2000,  neogeo_noslot, neogeo, neogeo_state,     init_kof2000,   ROT0, "SNK",            "Kof2000 (Fully decrypted)", MACHINE_SUPPORTS_SAVE )
 // The King of Fighters '2001
 GAME( 2001, kof2001hack01,     kof2001,  neogeo_noslot, neogeo, neogeo_state,     init_kof2001,   ROT0, "hack",           "Kof2001 (Enable Hidden Characters)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2019, kof2001hack02,     kof2001,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof2001 (PS2 Krizalid Edition 2019-12-12)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kof2001hack03,     kof2001,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof2001 (Plus Blue Simplified Edition 2020-02-26)", MACHINE_SUPPORTS_SAVE )
 //bootleg
-GAME( 2001, kof2001d,          kof2001,  neogeo_noslot, neogeo, neogeo_state,     init_kof2001,    ROT0, "bootleg",       "Kof2001 (NGM-262)(decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2001, kof2001n,          kof2001,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,     ROT0, "bootleg",       "Kof2001 (Fully decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, kof2001d,          kof2001,  neogeo_noslot, neogeo, neogeo_state,     init_kof2001,    ROT0, "Eolith / SNK",  "Kof2001 (NGM-262)(decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, kof2001n,          kof2001,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,     ROT0, "Eolith / SNK",  "Kof2001 (Fully decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, kf2k1pls,          kof2001,  neogeo_noslot, neogeo, neogeo_state,     init_kof2001,    ROT0, "bootleg",       "Kof2001 Plus (Set 1, bootleg / hack)", MACHINE_SUPPORTS_SAVE ) //Plus Plus + Resurgence plus 3 Simplified BOSS
 GAME( 2003, kf2k1pla,          kof2001,  neogeo_noslot, neogeo, neogeo_state,     init_kf2k1pa,    ROT0, "bootleg",       "Kof2001 Plus (set 2, bootleg / hack)", MACHINE_SUPPORTS_SAVE ) //Plus Plus + Resurgence plus 3 Simplified BOSS
-GAME( 2016, kof2k1nd,          kof2001,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,     ROT0, "bootleg",       "Kof2001 (decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2001, kof2k1hd,          kof2001,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,     ROT0, "bootleg",       "Kof2001 (NGH-2621)(decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2016, kof2k1nd,          kof2001,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,     ROT0, "Eolith / SNK",  "Kof2001 (decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, kof2k1hd,          kof2001,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,     ROT0, "Eolith / SNK",  "Kof2001 (NGH-2621)(decrypted C)", MACHINE_SUPPORTS_SAVE )
 // The King of Fighters '2002
 GAME( 2005, kof2002hack01,     kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_kof2002,    ROT0, "Eddids",        "Kof2002 (Enable Hidden Characters)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2012, kof2002hack02,     kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,     ROT0, "KOF-ON Team",   "Kof2002 (Omega v0.9)", MACHINE_SUPPORTS_SAVE )
@@ -16716,24 +16716,24 @@ GAME( 2017, kof2002hack10,     kof2002,  gsc,           neogeo, neogeo_state,   
 GAME( 2002, kf2k2pla,          kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_kof2002,    ROT0, "bootleg",       "Kof2002 Plus (Set 1 bootleg)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, kf2k2plb,          kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_kof2002,    ROT0, "bootleg",       "Kof2002 Plus (set 2 bootleg)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2002, kf2k2plc,          kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_kof2002s20, ROT0, "bootleg",       "Kof2002 Plus (Set 3 bootleg)" , MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
-GAME( 2002, kof2002d,          kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_kof2002,    ROT0, "bootleg",       "Kof2002 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, kof2k2fd,          kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_kof2002,    ROT0, "bootleg",       "Kof2002 (Fully Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, kof2002d,          kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_kof2002,    ROT0, "Eolith / Playmore",       "Kof2002 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, kof2k2fd,          kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_kof2002,    ROT0, "Eolith / Playmore",       "Kof2002 (Fully Decrypted C)", MACHINE_SUPPORTS_SAVE )
 // The King of Fighters '2003
 GAME( 2003, kof2003hack01,     kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_kof2003,   ROT0, "Neogeo BR team", "Kof2003 (Portuguese Brazilian)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, kof2003hack02,     kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_kof2003,   ROT0, "hack",           "Kof2003 (PS2 Full Character Edition Simplified 2019-09-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kof2003hack03,     kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof2004 EX Ultra Plus (Fengyun Plus Simplified 2020-02-29)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-GAME( 2003, kof2003d,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_kof2003,   ROT0, "hack",           "Kof2003 (Decrypted P&C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, kof2003f,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof2003 (Fully Decrypted - Fixed)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, kof2k3d,           kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_kof2003,   ROT0, "hack",           "Kof2003 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, kf2k3bd,           kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof2003 (Bootleg, fully Decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, kof2k3hd,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_kof2k3hd,  ROT0, "hack",           "Kof2003 (NGH-2710)(decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, kof2k3nd,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof2003 (Fully decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, kf2k3pcd,          kf2k3pcb, neogeo_noslot, neogeo, neogeo_state,     init_kof2k3pcd, ROT0, "hack",           "Kof2003 (Japan, JAMMA PCB / decrypted C&Bios)", MACHINE_SUPPORTS_SAVE )
-GAME( 2004, kof2k3pd,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof2004 EX Ultra Plus / Hero (The King of Fighters 2003 bootleg, fully decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, kf2k3upd,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof2004 EX Ultra Plus (The King of Fighters 2003 bootleg, fully decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, kf2k3bl2,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_kof2003b,  ROT0, "hack",           "Kof2003 (Bootleg Boss hack)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, kf2k3fd,           kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof2003 (Fully Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, kof2003d,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_kof2003,   ROT0, "SNK Playmore",   "Kof2003 (Decrypted P&C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, kof2003f,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "SNK Playmore",   "Kof2003 (Fully Decrypted - Fixed)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, kof2k3d,           kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_kof2003,   ROT0, "SNK Playmore",   "Kof2003 (Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, kf2k3bd,           kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "bootleg",        "Kof2003 (Bootleg, fully Decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, kof2k3hd,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_kof2k3hd,  ROT0, "SNK Playmore",   "Kof2003 (NGH-2710)(decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, kof2k3nd,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "SNK Playmore",   "Kof2003 (Fully decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, kf2k3pcd,          kf2k3pcb, neogeo_noslot, neogeo, neogeo_state,     init_kof2k3pcd, ROT0, "SNK Playmore",   "Kof2003 (Japan, JAMMA PCB / decrypted C&Bios)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, kof2k3pd,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "SNK Playmore",   "Kof2004 EX Ultra Plus / Hero (The King of Fighters 2003 bootleg, fully decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, kf2k3upd,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "SNK Playmore",   "Kof2004 EX Ultra Plus (The King of Fighters 2003 bootleg, fully decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, kf2k3bl2,          kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_kof2003b,  ROT0, "bootleg",        "Kof2003 (Bootleg Boss hack)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, kf2k3fd,           kof2003,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "SNK Playmore",   "Kof2003 (Fully Decrypted C)", MACHINE_SUPPORTS_SAVE )
 // King of Gladiator
 GAME( 2020, koghack01,         kof97,    neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "King of Gladiator (Resurgence Plus Dog Slaughter Edition 2020-01-23)", MACHINE_SUPPORTS_SAVE )
 // bootleg
@@ -16742,7 +16742,7 @@ GAME( 1997, kogplus,           kof97,    hbmame_kog,    neogeo, neogeo_state,   
 // 10th Anniversary
 GAME( 2015, kof10thephack01,   kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_kf10thep,  ROT0, "hack",           "Kof 10th Anniversary Extra Plus (Simplify Edition)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-GAME( 2005, kof10thd,          kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof 10th Anniversary (The King of Fighters 2002 bootleg / fully decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2005, kof10thd,          kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "bootleg",        "Kof 10th Anniversary (The King of Fighters 2002 bootleg / fully decrypted)", MACHINE_SUPPORTS_SAVE )
 // Kof 10th Anniversary 2005 Uniques
 GAME( 2020, kf2k5unihack01,    kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof 10th Anniversary 2005 Unique (Edition Optimized Simplify 2019 2020-11-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kf2k5unihack02,    kof2002,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Kof 10th Anniversary 2005 Unique (Omega Edition Simplified 2020-02-27)", MACHINE_SUPPORTS_SAVE )
@@ -17229,7 +17229,7 @@ GAME( 2000, nitdhack01,        nitd,     neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2000, nitdhack02,        nitd,     neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "Meganiuz",       "Nightmare in the Dark (Translation Spanish)", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, nitdhack03,        nitd,     neogeo_noslot, neogeo, neogeo_state,     init_nitd,      ROT0, "Xyahzhs",        "Nightmare in the Dark (Plus Max)", MACHINE_SUPPORTS_SAVE )
 //bootleg
-GAME( 2000, nitdd,             nitd,     neogeo_noslot, neogeo, neogeo_state,     init_cmc42sfix, ROT0, "bootleg",        "Nightmare in the Dark (Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, nitdd,             nitd,     neogeo_noslot, neogeo, neogeo_state,     init_cmc42sfix, ROT0, "Eleven / Gavaking",        "Nightmare in the Dark (Decrypted C)", MACHINE_SUPPORTS_SAVE )
 // Puzzle Bobble
 GAME( 2009, pbobblenhack01,    pbobblen, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "Elrayzeur",      "Puzzle Bobble (Crazy beta 2 2009-07-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, pbobblenhack02,    pbobblen, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "Elrayzeur",      "Puzzle Crazy", MACHINE_SUPPORTS_SAVE )
@@ -17242,7 +17242,7 @@ GAME( 2003, pnyaadd,           pnyaa,    neogeo_noslot, neogeo, neogeo_state,   
 // Prehistoric Isle 2
 GAME( 1999, preisle2hack01,    preisle2, neogeo_noslot, neogeo, neogeo_state,     init_cmc42sfix, ROT0, "Xyahzhs",        "Prehistoric Isle 2 (Plus Max)", MACHINE_SUPPORTS_SAVE )
 //bootleg
-GAME( 1999, preisl2d,         preisle2, neogeo_noslot, neogeo, neogeo_state,     init_cmc42sfix, ROT0, "Yumekobo",       "Prehistoric Isle 2 (decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 1999, preisl2d,          preisle2, neogeo_noslot, neogeo, neogeo_state,     init_cmc42sfix, ROT0, "Yumekobo",       "Prehistoric Isle 2 (decrypted C)", MACHINE_SUPPORTS_SAVE )
 // Ragnagard
 GAME( 1996, ragnagrdhack01,    ragnagrd, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "Yumeji",         "Operation Ragnagard (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, ragnagrdhack02,    ragnagrd, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "invgod",         "Operation Ragnagard (Moves Easy)", MACHINE_SUPPORTS_SAVE )
@@ -17260,8 +17260,8 @@ GAME( 2002, rotdhack01,        rotd,     neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2002, rotdhack02,        rotd,     neogeo_noslot, neogeo, neogeo_state,     init_rotdb,     ROT0, "BisonSAS",       "Rage of the Dragons (Portuguese)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, rotdhack03,        rotd,     neogeo_noslot, neogeo, neogeo_state,     init_rotd,      ROT0, "DDJ",            "Rage of the Dragons (Easy Move)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-GAME( 2002, rotdd,             rotd,     neogeo_noslot, neogeo, neogeo_state,     init_rotdd,     ROT0, "bootleg",        "Rage of the Dragons (decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, rotdnd,            rotd,     neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "bootleg",        "Rage of the Dragons (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, rotdd,             rotd,     neogeo_noslot, neogeo, neogeo_state,     init_rotdd,     ROT0, "Evoga / Playmore",        "Rage of the Dragons (decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, rotdnd,            rotd,     neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "Evoga / Playmore",        "Rage of the Dragons (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
 // Strikers 1945 Plus
 GAME( 1999, s1945phack01,      s1945p,   neogeo_noslot, neogeo, neogeo_state,     init_s1945p,    ROT0, "Yumeji",         "Strikers 1945 Plus (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, s1945phack02,      s1945p,   neogeo_noslot, neogeo, neogeo_state,     init_s1945p,    ROT0, "wesker[FGCH]",   "Strikers 1945 Plus (Ex Super version 2015-01-27)", MACHINE_SUPPORTS_SAVE )
@@ -17296,10 +17296,10 @@ GAME( 2018, samsho5hack04,     samsho5,  neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2003, samsho5hack05,     samsho5,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Samurai Shodown V (XBOX version)", MACHINE_SUPPORTS_SAVE )
 //bootleg
 GAME( 2003, samsh5bd,          samsho5,  neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "bootleg",        "Samurai Shodown V (bootleg, fully decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, samsh5cd,          samsho5,  neogeo_noslot, neogeo, neogeo_state,     init_sam5hb,    ROT0, "bootleg",        "Samurai Shodown V (Custom Decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, samsho5d,          samsho5,  neogeo_noslot, neogeo, neogeo_state,     init_sam5hb,    ROT0, "bootleg",        "Samurai Shodown V (NGM-2720)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, samsh5hd,          samsho5,  neogeo_noslot, neogeo, neogeo_state,     init_sam5hb,    ROT0, "bootleg",        "Samurai Shodown V (NGM-2700)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, samsh5nd,          samsho5,  neogeo_noslot, neogeo, neogeo_state,     init_sam5hb,    ROT0, "bootleg",        "Samurai Shodown V (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, samsh5cd,          samsho5,  neogeo_noslot, neogeo, neogeo_state,     init_sam5hb,    ROT0, "Yuki Enterprise / SNK Playmore",        "Samurai Shodown V (Custom Decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, samsho5d,          samsho5,  neogeo_noslot, neogeo, neogeo_state,     init_sam5hb,    ROT0, "Yuki Enterprise / SNK Playmore",        "Samurai Shodown V (NGM-2720)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, samsh5hd,          samsho5,  neogeo_noslot, neogeo, neogeo_state,     init_sam5hb,    ROT0, "Yuki Enterprise / SNK Playmore",        "Samurai Shodown V (NGM-2700)(Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, samsh5nd,          samsho5,  neogeo_noslot, neogeo, neogeo_state,     init_sam5hb,    ROT0, "Yuki Enterprise / SNK Playmore",        "Samurai Shodown V (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
 // Samurai Shodown V Special
 GAME( 2004, samsh5sphack01,    samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_sam5sphb,  ROT0, "DDJ",            "Samurai Shodown V Special (Always Have Super Move)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, samsh5sphack02,    samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_sam5sphb,  ROT0, "DDJ",            "Samurai Shodown V Special (Easy Move)", MACHINE_SUPPORTS_SAVE )
@@ -17307,12 +17307,12 @@ GAME( 2018, samsh5sphack03,    samsh5sp, neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2020, samsh5sphack04,    samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Samurai Shodown V Special (Edition Final, location test 2020-06-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, samsh5sphack05,    samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Samurai Shodown V Special (Perfect Edition 2020)", MACHINE_SUPPORTS_SAVE )
 //bootleg
-GAME( 2004, ssh5spnd,          samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "bootleg",        "Samurai Shodown V Special (fully decrypted Set 1)", MACHINE_SUPPORTS_SAVE )
-GAME( 2004, ssh5spn,           samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "bootleg",        "Samurai Shodown V Special (fully decrypted Set 2)", MACHINE_SUPPORTS_SAVE )
-GAME( 2004, sams5spd,          samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_sam5sphb,  ROT0, "bootleg",        "Samurai Shodown V Special (Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2004, samsh5spd2,        samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_sam5sphb,  ROT0, "bootleg",        "Samurai Shodown V Special (no encrypted P)", MACHINE_SUPPORTS_SAVE )
-GAME( 2004, sams5sod,          samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_sam5sphb,  ROT0, "bootleg",        "Samurai Shodown V Special (1st release, censored)(decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2004, sams5shd,          samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_sam5sphb,  ROT0, "bootleg",        "Samurai Shodown V Special (2nd release, less censored)(decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, ssh5spnd,          samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "Yuki Enterprise / SNK Playmore",        "Samurai Shodown V Special (fully decrypted Set 1)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, ssh5spn,           samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "Yuki Enterprise / SNK Playmore",        "Samurai Shodown V Special (fully decrypted Set 2)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, sams5spd,          samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_sam5sphb,  ROT0, "Yuki Enterprise / SNK Playmore",        "Samurai Shodown V Special (Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, samsh5spd2,        samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_sam5sphb,  ROT0, "Yuki Enterprise / SNK Playmore",        "Samurai Shodown V Special (no encrypted P)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, sams5sod,          samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_sam5sphb,  ROT0, "Yuki Enterprise / SNK Playmore",        "Samurai Shodown V Special (1st release, censored)(decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, sams5shd,          samsh5sp, neogeo_noslot, neogeo, neogeo_state,     init_sam5sphb,  ROT0, "Yuki Enterprise / SNK Playmore",        "Samurai Shodown V Special (2nd release, less censored)(decrypted C)", MACHINE_SUPPORTS_SAVE )
 // Savage Reign
 GAME( 1995, savagerehack01,    savagere, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "yumeji",         "Savage Reign (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, savagerehack02,    savagere, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Savage Reign (Simplify Edition 2018-06-04)", MACHINE_SUPPORTS_SAVE )
@@ -17329,7 +17329,7 @@ GAME( 2001, sengoku3hack07,    sengoku3, neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2001, sengoku3hack08,    sengoku3, neogeo_noslot, neogeo, neogeo_state,     init_sengoku3,  ROT0, "DDJ",            "Sengoku 3 (Easy Move)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2001, sengoku3hack09,    sengoku3, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "hack",           "Sengoku 3 (Evolution v1.0)", MACHINE_SUPPORTS_SAVE )
 // bootleg
-GAME( 2001, sengok3d,          sengoku3, neogeo_noslot, neogeo, neogeo_state,     init_cmc42sfix, ROT0, "bootleg",        "Sengoku 3 (decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, sengok3d,          sengoku3, neogeo_noslot, neogeo, neogeo_state,     init_cmc42sfix, ROT0, "Noise Factory / SNK", "Sengoku 3 (decrypted C)", MACHINE_SUPPORTS_SAVE )
 // Shock Troopers - 2nd Squad
 GAME( 1998, shocktr2hack01,    shocktr2, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "Xyahzhs",        "Shock Troopers - 2nd Squad (Plus Max)", MACHINE_SUPPORTS_SAVE )
 // Shock Troopers
@@ -17342,9 +17342,9 @@ GAME( 1995, sonicwi3hack02,    sonicwi3, neogeo_noslot, neogeo, neogeo_state,   
 // SNK vs. Capcom
 GAME( 2016, svcsplushack01,    svc,      neogeo_noslot, neogeo, neogeo_state,     init_svcsplus,  ROT0,  "hack",          "SvC Chaos Super Plus (Edition Simplified 2016 2016-03-15)", MACHINE_SUPPORTS_SAVE )
 //bootleg
-GAME( 2003, svcda,             svc,      neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0,  "bootleg",       "SvC Chaos (MVS / Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, svcd,              svc,      neogeo_noslot, neogeo, neogeo_state,     init_svchb,     ROT0,  "hack",          "SvC Chaos (MVS / Decrypted C)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, svcnd,             svc,      neogeo_noslot, neogeo, neogeo_state,     init_svchb,     ROT0,  "hack",          "SvC Chaos (Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, svcda,             svc,      neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0,  "SNK Playmore",  "SvC Chaos (MVS / Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, svcd,              svc,      neogeo_noslot, neogeo, neogeo_state,     init_svchb,     ROT0,  "SNK Playmore",  "SvC Chaos (MVS / Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, svcnd,             svc,      neogeo_noslot, neogeo, neogeo_state,     init_svchb,     ROT0,  "SNK Playmore",  "SvC Chaos (Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, svcplusb,          svc,      neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0,  "bootleg",       "SvC Chaos (Bootleg, set 3)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, svcplusn,          svc,      neogeo_noslot, neogeo, neogeo_state,     init_svchb,     ROT0,  "bootleg",       "SvC Chaos Plus (Bootleg, set 1)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, svcplusd,          svc,      neogeo_noslot, neogeo, neogeo_state,     init_svchb,     ROT0,  "bootleg",       "SvC Chaos Plus (bootleg, fully decrypted)", MACHINE_SUPPORTS_SAVE )
@@ -17380,8 +17380,8 @@ GAME( 1994, wh2jhack02,        wh2j,     neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2009, zintrckbhack01,    zintrckb, neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0,  "Yumeji",        "ZinTricK (Enable hidden characters)", MACHINE_SUPPORTS_SAVE )
 // Zupapa!
 //bootleg
-GAME( 2001, zupapad,           zupapa,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0,  "bootleg",       "Zupapa! (Custom decrypted C, Set 1)", MACHINE_SUPPORTS_SAVE )
-GAME( 2001, zupapand,          zupapa,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0,  "bootleg",       "Zupapa! (Custom decrypted C, Set 2)", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, zupapad,           zupapa,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0,  "SNK",           "Zupapa! (Custom decrypted C, Set 1)", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, zupapand,          zupapa,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0,  "SNK",           "Zupapa! (Custom decrypted C, Set 2)", MACHINE_SUPPORTS_SAVE )
 // Intro Demo
 GAME( 2009, cndi,              neogeo,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "[Raregame]",     "Chip n Dale (Intro demo)", MACHINE_SUPPORTS_SAVE )
 GAME( 2009, dti,               neogeo,   neogeo_noslot, neogeo, neogeo_state,     init_neogeo,    ROT0, "[Raregame]",     "Duck Tales (Intro demo)", MACHINE_SUPPORTS_SAVE )

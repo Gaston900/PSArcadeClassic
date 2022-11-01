@@ -1,10 +1,15 @@
 ﻿What's new in PSARCADE CLASSIC+
 ===============================
 - This project is focused on merging the Arcade64 + HBMame system, a base system of a version 0.232 was used to update until 
-  version 0.243, it will be the only version that will be published, since it is a collectible edition.
+  version 0.245, it will be the only version that will be published, since it is a collectible edition.
 
   The main thing of all has started a total cleaning in the roms sets eliminating hundreds of useless and unnecessary roms or 
   .chd, so that we can leave roms sets much lighter for our hard drive.
+
+2022-10-31 2.1
+
+- A huge thank you to user Remikare for his cooperation in sharing the source code that made it possible to fix the Neogeo system command.
+
 
 
 2022-05-13 2.0

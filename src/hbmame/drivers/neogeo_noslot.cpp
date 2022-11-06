@@ -2527,36 +2527,6 @@ ROM_START( samsho2k ) /* KOREAN VERSION */
 	ROM_LOAD16_BYTE( "063-c8.c8", 0xc00001, 0x200000, CRC(1ffc6dfa) SHA1(acea18aca76c072e0bac2a364fc96d49cfc86e77) ) /* Plane 2,3 */ /* TC5316200 */
 ROM_END
 
-ROM_START( samsho2ka ) /* KOREAN VERSION */
-	// This has corrupt text if used with the Japan bios due to the replacement of the s1 rom to contain the new logo
-	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "063k.p1", 0x100000, 0x100000, CRC(147cc6d7) SHA1(8e22305f41a0688786ff55437c25948e6c8fda58) )
-	ROM_CONTINUE( 0x000000, 0x100000 )
-	// the roms below apply as patch over the main program (I haven't checked what they change, the game boots as the Korean version even with just the above program)
-	ROM_LOAD16_WORD_SWAP( "063k.p2", 0x000000, 0x080000, CRC(fa32e2d8) SHA1(94f56759ec04ab3a1e557bc2dc51b92176b3c147) )
-	ROM_LOAD16_WORD_SWAP( "063k.p3", 0x080000, 0x080000, CRC(70b1a4d9) SHA1(387737e87a68d0ea4fd13693f1f30d3227a17c82) ) // this is exactly the same data anyway!
-
-	NEO_SFIX_128K( "063k.s1", CRC(ff08f80b) SHA1(240c6a1c52edebb49cc99ea08484c6a2d61ebf84) )
-
-	NEO_BIOS_AUDIO_128K( "063.m1", CRC(56675098) SHA1(90429fc40d056d480d0e2bbefbc691d9fa260fc4) )
-
-	ROM_REGION( 0x700000, "ymsnd:adpcma", 0 )
-	ROM_LOAD( "063.v1", 0x000000, 0x200000, CRC(37703f91) SHA1(a373ebef4c33ba1d8340e826981a58769aada238) )
-	ROM_LOAD( "063.v2", 0x200000, 0x200000, CRC(0142bde8) SHA1(0be6c53acac44802bf70b6925452f70289a139d9) )
-	ROM_LOAD( "063.v3", 0x400000, 0x200000, CRC(d07fa5ca) SHA1(1da7f081f8b8fc86a91feacf900f573218d82676) )
-	ROM_LOAD( "063.v4", 0x600000, 0x100000, CRC(24aab4bb) SHA1(10ee4c5b3579865b93dcc1e4079963276aa700a6) )
-
-	ROM_REGION( 0x1000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "063.c1", 0x000000, 0x200000, CRC(86cd307c) SHA1(0d04336f7c436d74638d8c1cd8651faf436a6bec) )
-	ROM_LOAD16_BYTE( "063.c2", 0x000001, 0x200000, CRC(cdfcc4ca) SHA1(179dc81432424d68cefedd20cc1c4b2a95deb891) )
-	ROM_LOAD16_BYTE( "063.c3", 0x400000, 0x200000, CRC(7a63ccc7) SHA1(49d97c543bc2860d493a353ab0d059088c6fbd21) )
-	ROM_LOAD16_BYTE( "063.c4", 0x400001, 0x200000, CRC(751025ce) SHA1(e1bbaa7cd67fd04e4aab7f7ea77f63ae1cbc90d0) )
-	ROM_LOAD16_BYTE( "063.c5", 0x800000, 0x200000, CRC(20d3a475) SHA1(28da44a136bd14c73c62c147c3f6e6bcfa1066de) )
-	ROM_LOAD16_BYTE( "063.c6", 0x800001, 0x200000, CRC(ae4c0a88) SHA1(cc8a7d11daa3821f83a6fd0942534706f939e576) )
-	ROM_LOAD16_BYTE( "063.c7", 0xc00000, 0x200000, CRC(2df3cbcf) SHA1(e54f9022359963711451c2025825b862d36c6975) )
-	ROM_LOAD16_BYTE( "063.c8", 0xc00001, 0x200000, CRC(1ffc6dfa) SHA1(acea18aca76c072e0bac2a364fc96d49cfc86e77) )
-ROM_END
-
 /****************************************
  ID-0064
  . ADM-007
@@ -3783,7 +3753,7 @@ ROM_END
  . ADH-010
 ****************************************/
 
-ROM_START( mosyougi )
+ROM_START( moshougi )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "203.p1", 0x000000, 0x100000, CRC(7ba70e2d) SHA1(945f472cc3e7706f613c52df18de35c986d166e7) )
 
@@ -7927,7 +7897,7 @@ ROM_START( rbff1ka ) /* KOREAN VERSION */
 	ROM_LOAD16_BYTE( "095-c8.c8", 0x1800001, 0x200000, CRC(4e6beb6c) SHA1(c0ac7cfc832ace6ad52c58f5da3a8101baead749) ) /* Plane 2,3 */ /* TC5316200 */
 ROM_END
 
-ROM_START( roboarma ) /* MVS AND AES VERSION*/
+ROM_START( roboarmya ) /* MVS AND AES VERSION*/
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "032-epr.p1", 0x000000, 0x080000, CRC(27c773cb) SHA1(597ca73f142b1129cc7780540bb9cfacd47bc6ce) ) /* D27C4000 */
 	/* Found on legitimate Robo Army MVS and AES Carts. Debug code button which check control a sound test has been patched out because in a multislot situation that code could have been enabled
@@ -8168,9 +8138,9 @@ ROM_START( gpilotsp ) /* prototype - different revisions of the 68k and z80 prog
 	ROM_LOAD32_BYTE( "c18", 0x200003, 0x80000, CRC(75569e35) SHA1(fac74ec97c6612bffdfd1239c115d6247eb7fabc) ) /* Plane 3 */
 ROM_END
 
-ROM_START( pnyaanv ) /* Encrypted Set */ /* MVS ONLY RELEASE */
+ROM_START( pnyaaa ) /* Encrypted Set */ /* MVS ONLY RELEASE */
 	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "pn202.p1", 0x000000, 0x100000, CRC(bf34e71c) SHA1(cfa7a2c7c41601a758414faf34e59583d7537363) )
+	ROM_LOAD16_WORD_SWAP( "pn202.p1", 0x000000, 0x100000, CRC(112fe2c0) SHA1(01420e051f0bdbd4f68ce306a3738161b96f8ba8) )
 
 	ROM_Y_ZOOM
 
@@ -11692,7 +11662,7 @@ GAME( 1993, wh2,        neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 1994, wh2j,       neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "World Heroes 2 Jet (ADM-007)(ADH-007)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, aodk,       neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "Aggressors of Dark Kombat / Tsuukai GANGAN Koushinkyoku (ADM-008)(ADH-008)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, whp,        neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "World Heroes Perfect", MACHINE_SUPPORTS_SAVE )
-GAME( 1995, mosyougi,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "Syougi No Tatsujin - Master of Syougi", MACHINE_SUPPORTS_SAVE )
+GAME( 1995, moshougi,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "Syougi No Tatsujin - Master of Syougi", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, overtop,    neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK",              "Over Top", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, ninjamas,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "Ninja Master's - haoh-ninpo-cho", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, twinspri,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "Twinkle Star Sprites", MACHINE_SUPPORTS_SAVE )
@@ -11842,7 +11812,7 @@ GAME( 2001, vliner53,   vliner,   neogeo_noctrl,   vliner, neogeo_state,   init_
 GAME( 1993, wh2h,       wh2,      neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK",              "World Heroes 2 (ALH-006)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, rbff1k,     rbff1,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Real Bout Fatal Fury / Real Bout Garou Densetsu (Korean release)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, rbff1ka,    rbff1,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Real Bout Fatal Fury / Real Bout Garou Densetsu (Korean release, bug fix revision)", MACHINE_SUPPORTS_SAVE )
-GAME( 1991, roboarma,   roboarmy, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Robo Army (NGM-032 ~ NGH-032)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, roboarmya,  roboarmy, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Robo Army (NGM-032 ~ NGH-032)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, rotdh,      rotd,     neogeo_noslot,   neogeo, neogeo_state,   init_rotd,     ROT0, "Evoga / Playmore", "Rage of the Dragons (NGH-2640?)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, kof99ka,    kof99,    neogeo_noslot,   neogeo, neogeo_state,   init_kof99,    ROT0, "SNK", "The King of Fighters '99 - Millennium Battle (Korean release, non-encrypted program)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 1992, kotm2a,     kotm2,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "King of the Monsters 2 - The Next Thing (older)", MACHINE_SUPPORTS_SAVE )
@@ -11851,7 +11821,7 @@ GAME( 1991, burningfpa, burningf, neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 1991, burningfpb, burningf, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Burning Fight (prototype, newer, V07)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, garouha,    garou,    neogeo_noslot,   neogeo, neogeo_state,   init_garou,    ROT0, "SNK", "Garou - Mark of the Wolves (NGH-2530)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted Code & GFX */
 GAME( 1991, gpilotsp,   gpilots,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Ghost Pilots (prototype)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, pnyaanv,    pnyaa,    neogeo_noslot,   neogeo, neogeo_state,   init_pnyaa,    ROT0, "Aiky / Taito", "Pochi and Nyaa (Ver 2.02)", MACHINE_SUPPORTS_SAVE ) // this version does not show the web address on the title screen
+GAME( 2003, pnyaaa,     pnyaa,    neogeo_noslot,   neogeo, neogeo_state,   init_pnyaa,    ROT0, "Aiky / Taito", "Pochi and Nyaa (Ver 2.02)", MACHINE_SUPPORTS_SAVE ) // this version does not show the web address on the title screen
 GAME( 1992, viewpoinp,  viewpoin, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Sammy / Aicom", "Viewpoint (prototype)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, stakwindev, neogeo,   no_watchdog,     neogeo, neogeo_state,   init_neogeo,   ROT0, "Saurus", "Stakes Winner (early development board)", MACHINE_SUPPORTS_SAVE | MACHINE_NOT_WORKING | MACHINE_IS_INCOMPLETE )
 GAME( 1995, froman2b,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "Idol Mahjong Final Romance 2 (Neo-Geo, bootleg of CD version)", MACHINE_SUPPORTS_SAVE )

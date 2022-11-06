@@ -522,7 +522,7 @@ public:
 //			chain_output(channel, msg, args);   // goes down the black hole
 		// LOG all messages
 		FILE *pFile;
-		pFile = fopen("winui.log", "a");
+		pFile = fopen("config/winui.log", "a");
 		fputs(buffer, pFile);
 		fflush(pFile);
 		fclose (pFile);
@@ -612,8 +612,8 @@ static void RunMAME(int nGameIndex, const play_options *playopts)
 int MameUIMain(HINSTANCE hInstance, LPWSTR lpCmdLine)
 {
 	// delete old log file, ignore any error
-	unlink("winui.log");
-	unlink("verbose.log");
+	unlink("config/winui.log");
+	unlink("config/verbose.log");
 
 	if (__argc != 1)
 	{

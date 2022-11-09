@@ -3177,7 +3177,7 @@ ROM_END
  NEO-MVS PROGBK1 / NEO-MVS CHA256B
 ****************************************/
 
-ROM_START( tws96 ) /* MVS ONLY RELEASE */
+ROM_START( twsoc96 ) /* MVS ONLY RELEASE */
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "086.p1", 0x000000, 0x100000, CRC(03e20ab6) SHA1(3a0a5a54649178ce7a6158980cb4445084b40fb5) )
 
@@ -4198,6 +4198,7 @@ ROM_START( ironclad ) /* Prototype - crcs should match the ones of the unrelease
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "proto_220.p1", 0x100000, 0x100000, CRC(62a942c6) SHA1(12aaa7d9bd84328d1bf4610e056b5c57d0252537) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
+	ROM_FILL(0x5EA,1,0x13) // Default to English
 
 	NEO_SFIX_128K( "proto_220.s1", CRC(372fe217) SHA1(493433e682f519bf647e1481c8bdd3a980830ffb) )
 
@@ -6146,7 +6147,13 @@ ROM_START( pnyaa ) /* Encrypted Set */ /* MVS ONLY RELEASE */
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "pn202.p1", 0x000000, 0x100000, CRC(bf34e71c) SHA1(cfa7a2c7c41601a758414faf34e59583d7537363) )
 
-	NEO_SFIX_MT_128K
+	ROM_Y_ZOOM
+
+	/* The Encrypted Boards do not have an s1 rom, data for it comes from the Cx ROMs */
+	ROM_REGION( 0x20000, "fixed", 0 )
+	ROM_FILL( 0x000000, 0x20000, 0x000000 )
+	ROM_REGION( 0x20000, "fixedbios", 0 )
+	ROM_LOAD( "sfix.sfix", 0x000000, 0x20000, CRC(c2ea0cfd) SHA1(fd4a618cdcdbf849374f0a50dd8efe9dbab706c3) )
 
 	NEO_BIOS_AUDIO_ENCRYPTED_512K( "267.m1", CRC(c7853ccd) SHA1(1b7a4c5093cf0fe3861ce44fd1d3b30c71ad0abe) )
 
@@ -6487,43 +6494,6 @@ ROM_START( jockeygpa ) /* MVS ONLY RELEASE */
 	ROM_LOAD16_BYTE( "008.c1", 0x0000000, 0x800000, CRC(a9acbf18) SHA1(d55122c70cbe78c2679598dc07863e1d1d1a31df) )
 	ROM_LOAD16_BYTE( "008.c2", 0x0000001, 0x800000, CRC(6289eef9) SHA1(a2ede77bb2468a2e1486d74745a22a5451026039) )
 ROM_END
-
-/****************************************
- B-V-01
- . ???-????
- MVS PROGV (2000.11.17) / MVS CHAV (2000.10.26)
-****************************************/
-
-ROM_START( vliner ) /* MVS ONLY RELEASE */
-	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "epr.p1", 0x000000, 0x080000, CRC(72a2c043) SHA1(b34bcc10ff33e4465126a6865fe8bf6b6a3d6cee) )
-
-	NEO_SFIX_128K( "s-1.s1", CRC(972d8c31) SHA1(41f09ef28a3791668ea304c74b8b06c117a50e9a) )
-
-	NEO_BIOS_AUDIO_64K( "m-1.m1", CRC(9b92b7d1) SHA1(2c9b777feb9a8e43fa1bd942aba5afe3b5427d94) )
-
-	ROM_REGION( 0x200000, "ymsnd:adpcma", ROMREGION_ERASE00 )
-
-	ROM_REGION( 0x400000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "c-1.c1", 0x000000, 0x80000, CRC(5118f7c0) SHA1(b6fb6e9cbb660580d98e00780ebf248c0995145a) )
-	ROM_LOAD16_BYTE( "c-2.c2", 0x000001, 0x80000, CRC(efe9b33e) SHA1(910c651aadce9bf59e51c338ceef62287756d2e8) )
-ROM_END
-
-ROM_START( vlinero ) /* MVS ONLY RELEASE */
-	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "epr_54.p1", 0x000000, 0x080000, CRC(172efc18) SHA1(8ca739f8780a9e6fa19ac2c3e931d75871603f58) )
-
-	NEO_SFIX_128K( "s-1.s1", CRC(972d8c31) SHA1(41f09ef28a3791668ea304c74b8b06c117a50e9a) )
-
-	NEO_BIOS_AUDIO_64K( "m-1.m1", CRC(9b92b7d1) SHA1(2c9b777feb9a8e43fa1bd942aba5afe3b5427d94) )
-
-	ROM_REGION( 0x200000, "ymsnd:adpcma", ROMREGION_ERASE00 )
-
-	ROM_REGION( 0x400000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "c-1.c1", 0x000000, 0x80000, CRC(5118f7c0) SHA1(b6fb6e9cbb660580d98e00780ebf248c0995145a) )
-	ROM_LOAD16_BYTE( "c-2.c2", 0x000001, 0x80000, CRC(efe9b33e) SHA1(910c651aadce9bf59e51c338ceef62287756d2e8) )
-ROM_END
-
 
 /*************************************
  *
@@ -7745,7 +7715,7 @@ ROM_START( sengoku3a ) /* Original Version - Encrypted GFX */
 	ROM_LOAD16_BYTE( "261-c4.c4", 0x1000001, 0x800000, CRC(0b45ae53) SHA1(a19fb21408ab633aee8bbf38bf43b5e26766b355) ) /* Plane 2,3 */ /* mask rom TC5364205 */
 ROM_END
 
-ROM_START( vlinernw ) /* MVS ONLY RELEASE */
+ROM_START( vliner ) /* MVS ONLY RELEASE */
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "epr_7a.p1", 0x000000, 0x080000, CRC(052f93ed) SHA1(3a5330073d21fd068d44956680cfae7faa4f3951) ) /* AM27C400 */
 
@@ -8140,7 +8110,7 @@ ROM_END
 
 ROM_START( pnyaaa ) /* Encrypted Set */ /* MVS ONLY RELEASE */
 	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "pn202.p1", 0x000000, 0x100000, CRC(112fe2c0) SHA1(01420e051f0bdbd4f68ce306a3738161b96f8ba8) )
+	ROM_LOAD16_WORD_SWAP( "pn201.p1", 0x000000, 0x100000, CRC(112fe2c0) SHA1(01420e051f0bdbd4f68ce306a3738161b96f8ba8) )
 
 	ROM_Y_ZOOM
 
@@ -11745,7 +11715,7 @@ GAME( 1995, gowcaizr,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_
 GAME( 1996, sdodgeb,    neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Technos Japan", "Super Dodge Ball / Kunio no Nekketsu Toukyuu Densetsu", MACHINE_SUPPORTS_SAVE )
 
 /* Tecmo */
-GAME( 1996, tws96,      neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Tecmo", "Tecmo World Soccer '96", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, twsoc96,     neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Tecmo", "Tecmo World Soccer '96", MACHINE_SUPPORTS_SAVE )
 
 /* Viccom */
 GAME( 1994, fightfev,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Viccom", "Fight Fever (set 1)", MACHINE_SUPPORTS_SAVE )
@@ -11789,8 +11759,6 @@ GAME( 2002, matrimbl,   matrim,   neogeo_noslot,   neogeo, neogeo_state,   init_
 /* BrezzaSoft */
 GAME( 2001, jockeygp,   neogeo,   neogeo_noslot,   jockeygp, neogeo_state, init_jockeygp, ROT0, "Sun Amusement / BrezzaSoft", "Jockey Grand Prix (set 1)", MACHINE_SUPPORTS_SAVE )
 GAME( 2001, jockeygpa,  jockeygp, neogeo_noslot,   jockeygp, neogeo_state, init_jockeygp, ROT0, "Sun Amusement / BrezzaSoft", "Jockey Grand Prix (set 2)", MACHINE_SUPPORTS_SAVE )
-GAME( 2001, vliner,     neogeo,   neogeo_noctrl,   vliner, neogeo_state,   init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (set 1)", MACHINE_SUPPORTS_SAVE )
-GAME( 2001, vlinero,    vliner,   neogeo_noctrl,   vliner, neogeo_state,   init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (set 2)", MACHINE_SUPPORTS_SAVE )
 
 /* Kyle Hodgetts */
 GAME( 2000, diggerma,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Kyle Hodgetts", "Digger Man (prototype)", MACHINE_SUPPORTS_SAVE )
@@ -11804,7 +11772,7 @@ GAME( 2005, lasthope,   neogeo,   neogeo_noslot,   neogeo, neogeo_state,   init_
 /* Update */
 GAME( 2003, samsho5a,   samsho5,  neogeo_noslot,   neogeo, neogeo_state,   init_samsho5,  ROT0, "Yuki Enterprise / SNK Playmore", "Samurai Shodown V / Samurai Spirits Zero (NGM-2700, set 2)", MACHINE_SUPPORTS_SAVE )
 GAME( 2001, sengoku3a,  sengoku3, neogeo_noslot,   neogeo, neogeo_state,   init_sengoku3, ROT0, "Noise Factory / SNK", "Sengoku 3 / Sengoku Densho 2001 (set 2)" , MACHINE_SUPPORTS_SAVE ) /* Encrypted GFX */
-GAME( 2001, vlinernw,   neogeo,   neogeo_noctrl,   vliner, neogeo_state,   init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.7a)", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, vliner,     neogeo,   neogeo_noctrl,   vliner, neogeo_state,   init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.7a)", MACHINE_SUPPORTS_SAVE )
 GAME( 2001, vliner7e,   vliner,   neogeo_noctrl,   vliner, neogeo_state,   init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.7e)", MACHINE_SUPPORTS_SAVE )
 GAME( 2001, vliner6e,   vliner,   neogeo_noctrl,   vliner, neogeo_state,   init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.6e)", MACHINE_SUPPORTS_SAVE )
 GAME( 2001, vliner54,   vliner,   neogeo_noctrl,   vliner, neogeo_state,   init_vliner,   ROT0, "Dyna / BrezzaSoft", "V-Liner (v0.54)", MACHINE_SUPPORTS_SAVE )
@@ -11851,7 +11819,7 @@ GAME( 1995, sonicw3e,    sonicwi3, neogeo_noslot,   neogeo, neogeo_state,   init
 GAME( 1996, ssidek4e,    ssideki4, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "The Ultimate 11 - The SNK Football Championship / Tokuten Ou - Honoo no Libero (Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, turfmste,    turfmast, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Nazca", "Neo Turf Masters / Big Tournament Golf (Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, twinspre,    twinspri, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "Twinkle Star Sprites (Earlier)", MACHINE_SUPPORTS_SAVE )
-GAME( 1996, tws96e,      tws96,    neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Tecmo", "Tecmo World Soccer '96 (Earlier)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, tws96e,      twsoc96,  neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Tecmo", "Tecmo World Soccer '96 (Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, wakuwk7e,    wakuwak7, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Sunsoft", "Waku Waku 7 (Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, whpe,        whp,      neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK / SNK",        "World Heroes Perfect (Earlier)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, wjammere,    wjammers, neogeo_noslot,   neogeo, neogeo_state,   init_neogeo,   ROT0, "Data East Corporation", "Windjammers / Flying Power Disc (Earlier)", MACHINE_SUPPORTS_SAVE )

@@ -5,9 +5,20 @@
 
   The main thing of all has started a total cleaning in the roms sets eliminating hundreds of useless and unnecessary roms or 
   .chd, so that we can leave roms sets much lighter for our hard drive.
+===============================================================================================================================
+
+2022-11-10 2.2
+---------------
+- Cps1, Cps2 And Fcrash drivers have been updated, added two new drivers: Cps1bl_pic And cps1bl_5205.
+- Updated Roms Metal Slug X (Survival Edition 2022-10-31)
+- Updated Roms Mortal Kombat II (SP4 2021-08-05)
+- Updated Roms Mortal Kombat 3 (SP4 2021-08-05)
+- Updated Roms Ultimate Mortal Kombat 3 (Ultimate Cup Edition 2022-11-09)
+
+
 
 2022-10-31 2.1
-
+---------------
 - A huge thank you to user Remikare for his cooperation in sharing the source code that made it possible to fix the Neogeo system command.
 
 

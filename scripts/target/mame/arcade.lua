@@ -1551,6 +1551,8 @@ files {
 	MAME_DIR .. "src/mame/video/commando.cpp",
 	MAME_DIR .. "src/hbmame/drivers/cps1.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/video/cps1.cpp", --HBMAME
+	MAME_DIR .. "src/hbmame/drivers/cps1bl_5205.cpp", --HBMAME
+	MAME_DIR .. "src/hbmame/drivers/cps1bl_pic.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/kenseim.cpp",
 	MAME_DIR .. "src/hbmame/drivers/cps2.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/video/cps2.cpp", --HBMAME

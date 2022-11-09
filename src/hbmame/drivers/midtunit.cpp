@@ -265,8 +265,8 @@ ROM_START( mk2hack05 ) //mk2k
 	ROM_RELOAD(                0xb00000, 0x80000 )
 
 	ROM_REGION16_LE( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "uj12_hack05.131", 0x00000, 0x80000, CRC(405c6fe7) SHA1(cef91088226aff2722927c8a1fd1a7de53abfef4) )
-	ROM_LOAD16_BYTE( "ug12_hack05.131", 0x00001, 0x80000, CRC(36ba2f17) SHA1(81a4ac08c641c8012ae0637849871001e09fd871) )
+	ROM_LOAD16_BYTE( "uj12_hack05.131", 0x00000, 0x80000, CRC(a755a400) SHA1(0c5ca8885369897f08a81f0b9e49f05919e3efcf) )
+	ROM_LOAD16_BYTE( "ug12_hack05.131", 0x00001, 0x80000, CRC(d1fef398) SHA1(10aa6bf25f89327207697b968d9f57d2c6127328) )
 
 	ROM_REGION( 0xc00000, "gfxrom", 0 )
 	ROM_LOAD32_BYTE( "l1_mortal_kombat_ii_game_rom_ug14.ug14", 0x000000, 0x100000, CRC(01e73af6) SHA1(6598cfd704cc92a7f358a0e1f1c973ab79dcc493) )
@@ -295,4 +295,4 @@ GAME( 2007, mk2hack01,  mk2, tunit_dcs,   mk2, midtunit_state, init_mk2,     ROT
 GAME( 2018, mk2hack02,  mk2, tunit_dcs,   mk2, midtunit_state, init_mk2,     ROT0, "mortalkombatplus",     "Mortal Kombat II (Edition 2.8.5 Plus beta II 2018-12-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mk2hack03,  mk2, tunit_dcs,   mk2, midtunit_state, init_mk2,     ROT0, "SK",                   "Ultimate Mortal Kombat II (Tournament Edition r5.0.053)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mk2hack04,  mk2, tunit_dcs,   mk2, midtunit_state, init_mk2,     ROT0, "mortalkombatplus",     "Mortal Kombat II (Edition Plus 2.8.0 Plus Beta 1 2017-09-24)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mk2hack05,  mk2, tunit_dcs,   mk2, midtunit_state, init_mk2,     ROT0, "TEAM UMK 3",           "Mortal Kombat II (SP4 2020-12-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, mk2hack05,  mk2, tunit_dcs,   mk2, midtunit_state, init_mk2,     ROT0, "TEAM UMK 3",           "Mortal Kombat II (SP4 2021-08-05)", MACHINE_SUPPORTS_SAVE )

@@ -39,6 +39,8 @@ Notes
   by the D-Board; the SOU1 PAL is missing as well, while PRG1 is replaced by
   PRG2. The other PALs are the same.
 
+- The BPRG1 PAL found on later B-boards allows the use of a larger program ROM space.
+
 - The B-board usually has two PALs (later revisions have three). The first PAL
   is used to map tile codes to the graphics ROMs, and changes from game to game.
   The other doesn't change from game to game and there are only two versions,
@@ -370,7 +372,7 @@ void cps_state::cpu_space_map(address_map &map)
 
 u16 cps_state::qsound_rom_r(offs_t offset)
 {
-	if (memregion("user1") != nullptr)
+	if (memregion("user1"))
 	{
 		u8 *rom = memregion("user1")->base();
 		return rom[offset] | 0xff00;
@@ -406,7 +408,7 @@ void cps_state::qsound_sharedram2_w(offs_t offset, u16 data, u16 mem_mask)
 
 void cps_state::qsound_banksw_w(u8 data)
 {
-	/* Z80 bank register for music note data. It's odd that it isn't encrypted though. */
+	// Z80 bank register for music note data.
 	int bank = data & 0x0f;
 	if ((0x10000 + (bank * 0x4000)) >= memregion("audiocpu")->bytes())
 	{
@@ -416,7 +418,6 @@ void cps_state::qsound_banksw_w(u8 data)
 
 	membank("bank1")->set_entry(bank);
 }
-
 
 
 /********************************************************************
@@ -429,114 +430,8 @@ void cps_state::qsound_banksw_w(u8 data)
 *
 ********************************************************************/
 
-/*
-PAL PRG1 (16P8B @ 12H):
-
-I0 = AS
-I1 = /BGACKB
-I2 = A23
-I3 = A22
-I4 = A21
-I5 = A20
-I6 = A19
-I7 = A18
-I8 = A17
-I9 = A16
-
-n.c.      = pin19 =   ( !I0 &  I1 )
-n.c.      = pin18 =   ( !I0 &  I1 )
-n.c.      = pin17 = ! (  I0 &  I1 & (!I2 | !I3 | !I4 | !I5 | !I6 | !I7) )
-n.c.      = pin16 = ! (  I2 &  I3 &  I4 &  I5 &  I6 &  I7 )
-/IOCS     = pin15 = ! (  I0 &  I1 &  I2 & !I3 & !I4 & !I5 )
-/ONE WAIT = pin14 = ! (  I0 &  I1 & ( I2 | !I3) )
-/databus  = pin13 = ! (  I0 &  I1 & (!I2 | !I3 | !I4 | !I5 | !I6 | !I7) )
-/workram  = pin12 = ! (  I0 &  I1 &  I2 &  I3 &  I4 &  I5 &  I6 &  I7 )
-
-
-In Q-Sound games, PRG1 is replaced by PRG2:
-
-/IOCS     = pin 15 = ! (  I0 &  I1 &  I2 & !I3 & !I4 & !I5 )
-/ONE WAIT = pin 14 = ! (  I0 &  I1 & (!I2 | !I3 | !I4 | !I5 | ( I6 &  I7 &  I8 &  I9)) )
-/databus  = pin 13 = ! (  I0 &  I1 & (!I2 | !I3 | !I4 | !I5 | (!I6 & !I7 & !I8)) )
-/workram  = pin 12 = ! (  I0 &  I1 &  I2 &  I3 &  I4 &  I5 &  I6 &  I7 &  I8 &  I9 )
-
-
-
-
-
-PAL IOA1 (16P8B @ 12F):
-
-I0 = /IOCS
-I1 = /RDB
-I2 = /UDSWR
-I3 = /LDSWR
-I4 = AB8
-I5 = AB7
-I6 = AB6
-I7 = AB5
-I8 = AB4
-I9 = AB3
-
-player input      = pin19 = ! ( !I0 & !I1 & !I4 & !I5 & !I6 & !I7 & !I8 & !I9 )
-system input/dips = pin18 = ! ( !I0 & !I1 & !I4 & !I5 & !I6 & !I7 &  I8 &  I9 )
-outputs           = pin17 = ! ( !I0 & !I2 & !I4 & !I5 & !I6 &  I7 &  I8 & !I9 )
-sound 1B          = pin16 = ! ( !I0 & !I3 &  I4 &  I5 & !I6 & !I7 & !I8 &  I9 )
-sound 0B          = pin15 = ! ( !I0 & !I3 &  I4 &  I5 & !I6 & !I7 & !I8 & !I9 )
-n.c.              = pin14 =   ( !I1 & !I2 )
-/PPU1             = pin13 = ! ( !I0 &  I4 & !I5 & !I6 )
-n.c.              = pin12 =   ( !I1 & !I2 )
-
-
-PAL BUF1 (16P8B @ 16H):
-
-I0 = A23 (all address lines can come both from 68000 and CPS-A custom)
-I1 = A22
-I2 = A21
-I3 = A20
-I4 = A19
-I5 = A18
-I6 = A17
-I7 = A16
-I8 = ASB
-
-BUF0 = pin19 = ! ( I0 & !I1 & !I2 &  I3 & !I4 & !I5 & !I6 & !I7 )
-BUF1 = pin18 = ! ( I0 & !I1 & !I2 &  I3 & !I4 & !I5 & !I6 &  I7 )
-BUF2 = pin17 = ! ( I0 & !I1 & !I2 &  I3 & !I4 & !I5 &  I6 & !I7 )
-BUF3 = pin16 = ! ( I0 & !I1 & !I2 &  I3 & !I4 & !I5 &  I6 &  I7 )
-BUF4 = pin15 = ! ( I0 & !I1 & !I2 &  I3 & !I4 &  I5 & !I6 & !I7 )
-BUF5 = pin14 = ! ( I0 & !I1 & !I2 &  I3 & !I4 &  I5 & !I6 &  I7 )
-BUF6 = pin13 = ! ( I0 & !I1 & !I2 &  I3 & !I4 &  I5 &  I6 & !I7 )
-/RDB = pin12 =   ( I0 & !I1 & !I2 &  I3 & !I8 )
-
-BUF0-BUF2 are gfxram on A-board. BUF3-BUF6 go to B-board (provision for expansion, never used)
-
-
-PAL ROM1 (16P8B @ 15H):
-
-I0 = A23 (all address lines can come both from 68000 and CPS-A custom)
-I1 = A22
-I2 = A21
-I3 = A20
-I4 = A19
-I5 = A18
-I6 = A17
-I7 = A16
-I8 = ASB
-
-PRG0 = pin17 = ! ( !I8 & !I0 & !I1 & !I2 & !I3 & !I4 & !I5 )
-PRG1 = pin16 = ! ( !I8 & !I0 & !I1 & !I2 & !I3 & !I4 &  I5 )
-PRG2 = pin15 = ! ( !I8 & !I0 & !I1 & !I2 & !I3 &  I4 & !I5 )
-PRG3 = pin14 = ! ( !I8 & !I0 & !I1 & !I2 & !I3 &  I4 &  I5 )
-PRG4 = pin19 = ! ( !I8 & !I0 & !I1 & !I2 &  I3 & !I4 )
-PRG5 = pin18 = ! ( !I8 & !I0 & !I1 & !I2 &  I3 &  I4 )
-PRG6 = pin13 = ! ( !I8 & !I0 & !I1 &  I2 & !I3 & !I4 )
-/RDB = pin12 =   ( !I8 & !I0 & !I1 )
-
-All PRGx go to B-board. Provision for up to 4MB of ROM space, which was never used in full.
-
-*/
-
-void cps_state::main_map(address_map &map) {
+void cps_state::main_map(address_map &map)
+{
 	map(0x000000,0x3fffff).rom();
 	map(0x800000,0x800007).portr("IN1");  /* Player input ports */
 	/* forgottn, willow, cawing, nemo, varth read from 800010. Probably debug input leftover from development */
@@ -558,7 +453,8 @@ void cps_state::main_map(address_map &map) {
 /* Forgotten Worlds has a NEC uPD4701AC on the B-board handling dial inputs from the CN-MOWS connector. */
 /* The memory mapping is handled by PAL LWIO */
 
-void cps_state::forgottn_map(address_map &map) {
+void cps_state::forgottn_map(address_map &map)
+{
 	main_map(map);
 	map(0x800040,0x800041).w("upd4701",FUNC(upd4701_device::reset_x_w)).umask16(0x00ff);
 	map(0x800048,0x800049).w("upd4701",FUNC(upd4701_device::reset_y_w)).umask16(0x00ff);
@@ -566,30 +462,8 @@ void cps_state::forgottn_map(address_map &map) {
 	map(0x80005a,0x80005d).r("upd4701",FUNC(upd4701_device::read_y)).umask16(0x00ff);
 }
 
-/*
-PAL SOU1 (16P8 @ 13E):
-
-I0 = /MREQ
-I1 = A15
-I2 = A14
-I3 = A13
-I4 = A12
-I5 = bank latch
-I6 = /RD
-I7 = /WR
-I8 = /BANK
-
-bank latch = pin19 = ! ( !I0 & !I7 & !I8 )
-/SWR       = pin18 = ! ( !I0 & !I7 )
-/SRD       = pin17 = ! ( !I0 & !I6 )
-ls138      = pin16 = ! ( !I0 &  I1 &  I2 &  I3 &  I4 )
-workram    = pin15 = ! ( !I0 &  I1 &  I2 & !I3 &  I4 )
-SOUNDA14   = pin14 = ! ( !I0 & ((!I1 & !I2) | ( I1 & !I2 & !I5)) )
-SOUNDA15   = pin13 =   (  I1 )
-/SOUNDCE   = pin12 = ! ( !I0 & (!I1 | ( I1 & !I2)) )
-*/
-
-void cps_state::sub_map(address_map &map) {
+void cps_state::sub_map(address_map &map)
+{
 	map(0x0000,0x7fff).rom();
 	map(0x8000,0xbfff).bankr("bank1");
 	map(0xd000,0xd7ff).ram();
@@ -601,7 +475,8 @@ void cps_state::sub_map(address_map &map) {
 	map(0xf00a,0xf00a).r("soundlatch2",FUNC(generic_latch_8_device::read));  /* Sound timer fade */
 }
 
-void cps_state::qsound_main_map(address_map &map) {
+void cps_state::qsound_main_map(address_map &map)
+{
 	map(0x000000,0x3fffff).rom();  // HBMAME for dinoz
 	map(0x800000,0x800007).portr("IN1");  /* Player input ports */
 	map(0x800018,0x80001f).r(FUNC(cps_state::cps1_dsw_r));  /* System input ports / Dip Switches */
@@ -621,7 +496,8 @@ void cps_state::qsound_main_map(address_map &map) {
 	map(0xff0000,0xffffff).ram().share("mainram");
 }
 
-void cps_state::qsound_sub_map(address_map &map) {   // used by cps2.c too
+void cps_state::qsound_sub_map(address_map &map)
+{   // used by cps2.c too
 	map(0x0000,0x7fff).rom();
 	map(0x8000,0xbfff).bankr("bank1");  /* banked (contains music data) */
 	map(0xc000,0xcfff).ram().share("qsound_ram1");
@@ -631,11 +507,13 @@ void cps_state::qsound_sub_map(address_map &map) {   // used by cps2.c too
 	map(0xf000,0xffff).ram().share("qsound_ram2");
 }
 
-void cps_state::qsound_decrypted_opcodes_map(address_map &map) {
+void cps_state::qsound_decrypted_opcodes_map(address_map &map)
+{
 	map(0x0000,0x7fff).bankr("decrypted");
 }
 
-void cps_state::sf2m3_map(address_map &map) {
+void cps_state::sf2m3_map(address_map &map)
+{
 	map(0x000000,0x3fffff).rom();
 	map(0x800010,0x800011).portr("IN1");  /* Player input ports */
 	map(0x800028,0x80002f).r(FUNC(cps_state::cps1_hack_dsw_r));  /* System input ports / Dip Switches */
@@ -657,7 +535,8 @@ void cps_state::sf2cems6_map(address_map &map)
 	map(0x8001ee, 0x8001ef).nopw(); // writes 0xFFFF
 }
 
-void cps_state::sf2m10_map(address_map &map) {
+void cps_state::sf2m10_map(address_map &map)
+{
 	map(0x000000,0x3fffff).rom();
 	map(0x800000,0x800007).portr("IN1");
 	map(0x800018,0x80001f).r(FUNC(cps_state::cps1_hack_dsw_r));
@@ -674,6 +553,34 @@ void cps_state::sf2m10_map(address_map &map) {
 	map(0xf1c000,0xf1c001).r(FUNC(cps_state::cps1_in2_r));
 	map(0xfeff00,0xfeffff).ram();  // fix stack crash at start
 	map(0xff0000,0xffffff).ram().share("mainram");
+}
+
+void cps_state::varthb2_map(address_map &map)
+{
+	map(0x000000, 0x3fffff).rom();
+	map(0x800000, 0x800007).portr("IN1");            /* Player input ports */
+	map(0x800018, 0x80001f).r(FUNC(cps_state::cps1_hack_dsw_r));            /* System input ports / Dip Switches */
+	map(0x800030, 0x800037).w(FUNC(cps_state::cps1_coinctrl_w));
+	map(0x800100, 0x80013f).w(FUNC(cps_state::varthb2_cps_a_w)).share("cps_a_regs");  /* CPS-A custom */
+	map(0x800140, 0x80017f).rw(FUNC(cps_state::cps1_cps_b_r), FUNC(cps_state::cps1_cps_b_w)).share("cps_b_regs");
+	map(0x800180, 0x800187).w(FUNC(cps_state::cps1_soundlatch_w));    /* Sound command */
+	map(0x800188, 0x80018f).w(FUNC(cps_state::cps1_soundlatch2_w));   /* Sound timer fade */
+	map(0x900000, 0x92ffff).ram().w(FUNC(cps_state::cps1_gfxram_w)).share("gfxram");
+	map(0xff0000, 0xffffff).ram().share("mainram");
+}
+
+void cps_state::varthb3_map(address_map &map) // TODO: check everything
+{
+	map(0x000000, 0x3fffff).rom();
+	map(0x880000, 0x880007).portr("IN1");            /* Player input ports */
+	map(0x880008, 0x88000f).r(FUNC(cps_state::cps1_hack_dsw_r));            /* System input ports / Dip Switches */
+	map(0x800030, 0x800037).w(FUNC(cps_state::cps1_coinctrl_w));
+	map(0x800100, 0x80013f).w(FUNC(cps_state::cps1_cps_a_w)).share("cps_a_regs");  /* CPS-A custom */
+	map(0x800140, 0x80017f).rw(FUNC(cps_state::cps1_cps_b_r), FUNC(cps_state::cps1_cps_b_w)).share("cps_b_regs");
+	map(0x800180, 0x800187).w(FUNC(cps_state::cps1_soundlatch_w));    /* Sound command */
+	map(0x800188, 0x80018f).w(FUNC(cps_state::cps1_soundlatch2_w));   /* Sound timer fade */
+	map(0x900000, 0x92ffff).ram().w(FUNC(cps_state::cps1_gfxram_w)).share("gfxram");
+	map(0xff0000, 0xffffff).ram().share("mainram");
 }
 
 /***********************************************************
@@ -988,12 +895,10 @@ static INPUT_PORTS_START( forgottnj ) // Where's the Demo Sound????
 	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
 
 	PORT_START("DIAL0")
-	PORT_BIT( 0x0fff, 0x0000, IPT_DIAL ) PORT_SENSITIVITY(100) PORT_KEYDELTA(20) PORT_RESET PORT_CODE_DEC(KEYCODE_Z) PORT_CODE_INC(KEYCODE_X) PORT_PLAYER(1)
-//  PORT_BIT( 0x0fff, 0x0000, IPT_DIAL ) PORT_SENSITIVITY(100) PORT_KEYDELTA(20) PORT_CODE_DEC(KEYCODE_Z) PORT_CODE_INC(KEYCODE_X) PORT_PLAYER(1)
+	PORT_BIT( 0x0fff, 0x0000, IPT_DIAL ) PORT_SENSITIVITY(100) PORT_KEYDELTA(20) PORT_CODE_DEC(KEYCODE_Z) PORT_CODE_INC(KEYCODE_X) PORT_PLAYER(1)
 
 	PORT_START("DIAL1")
-    PORT_BIT( 0x0fff, 0x0000, IPT_DIAL ) PORT_SENSITIVITY(100) PORT_KEYDELTA(20) PORT_RESET PORT_CODE_DEC(KEYCODE_N) PORT_CODE_INC(KEYCODE_M) PORT_PLAYER(2)
-//  PORT_BIT( 0x0fff, 0x0000, IPT_DIAL ) PORT_SENSITIVITY(100) PORT_KEYDELTA(20) PORT_CODE_DEC(KEYCODE_N) PORT_CODE_INC(KEYCODE_M) PORT_PLAYER(2)
+	PORT_BIT( 0x0fff, 0x0000, IPT_DIAL ) PORT_SENSITIVITY(100) PORT_KEYDELTA(20) PORT_CODE_DEC(KEYCODE_N) PORT_CODE_INC(KEYCODE_M) PORT_PLAYER(2)
 INPUT_PORTS_END
 
 static INPUT_PORTS_START( ghouls )
@@ -1152,152 +1057,6 @@ static INPUT_PORTS_START( ghoulsu )
 	PORT_DIPSETTING(    0x80, "Upright 2 Players" )
 //  PORT_DIPSETTING(    0x40, DEF_STR( Cocktail ) )             // Manual says these are both valid settings
 	PORT_DIPSETTING(    0x00, DEF_STR( Cocktail ) )             // for 2-player cocktail cabinet
-INPUT_PORTS_END
-
-/* The bootleggers hacked main code (@ 0x300 and 0xe0000) to use dip switches instead of the usual pang3 93C46 serial EPROM */
-static INPUT_PORTS_START( pang3b4 )
-  // Though service mode shows diagonal inputs, the flyer and manual both specify 4-way joysticks
-  PORT_INCLUDE( cps1_2b_4way )
-
-  PORT_MODIFY("IN0")
-  PORT_SERVICE_NO_TOGGLE( 0x40, IP_ACTIVE_LOW )
-
-  // As manual states, "Push 2 is not used," and is not even shown in service mode
-  PORT_MODIFY("IN1")
-  PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(1) PORT_NAME("P1 Shot")
-  PORT_BIT( 0x0020, IP_ACTIVE_LOW, IPT_UNKNOWN )
-  PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(2) PORT_NAME("P2 Shot")
-  PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_UNKNOWN )
-
-  PORT_START("DSWA")
-  CPS1_COINAGE_2( "DIP-A" )
-  PORT_DIPUNUSED_DIPLOC( 0x08, 0x08, "DIP-A:4" )
-  PORT_DIPUNUSED_DIPLOC( 0x10, 0x10, "DIP-A:5" )
-  PORT_DIPUNUSED_DIPLOC( 0x20, 0x20, "DIP-A:6" )
-  PORT_DIPUNUSED_DIPLOC( 0x40, 0x40, "DIP-A:7" )
-  PORT_DIPUNUSED_DIPLOC( 0x80, 0x80, "DIP-A:8" )
-
-  PORT_START("DSWB")
-  PORT_DIPNAME( 0x07, 0x04, "Game level" )                      PORT_DIPLOCATION("DIP-B:1,2,3")
-  PORT_DIPSETTING(    0x07, "Easy 3" )
-  PORT_DIPSETTING(    0x06, "Easy 2" )
-  PORT_DIPSETTING(    0x05, "Easy 1" )
-  PORT_DIPSETTING(    0x04, "Normal" )
-  PORT_DIPSETTING(    0x03, "Hard 1" )
-  PORT_DIPSETTING(    0x02, "Hard 2" )
-  PORT_DIPSETTING(    0x01, "Hard 3" )
-  PORT_DIPSETTING(    0x00, "Hard 4" )
-  PORT_DIPNAME( 0x18, 0x18, "Player" )                          PORT_DIPLOCATION("DIP-B:4,5")
-  PORT_DIPSETTING(    0x08, "1" )
-  PORT_DIPSETTING(    0x10, "2" )
-  PORT_DIPSETTING(    0x18, "3" )
-  PORT_DIPSETTING(    0x00, "4" )
-  PORT_DIPNAME( 0x60, 0x20, "Extend" )                          PORT_DIPLOCATION("DIP-B:6,7")
-  PORT_DIPSETTING(    0x00, "30K, 250K, 1M, 3M, 7M" )
-  PORT_DIPSETTING(    0x20, "80K, 500k, 2M, 5M, 10M" )
-  PORT_DIPSETTING(    0x40, "250K, 1M, 3M, 7M, 15M" )
-  PORT_DIPSETTING(    0x60, "Not extend" )
-  PORT_DIPNAME( 0x80, 0x80, "Free play" )                         PORT_DIPLOCATION("DIP-B:8")
-  PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
-  PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-
-  PORT_START("DSWC")
-  PORT_DIPUNUSED_DIPLOC( 0x01, 0x01, "DIP-C:1" )
-  PORT_DIPUNUSED_DIPLOC( 0x02, 0x02, "DIP-C:2" )
-  PORT_DIPUNUSED_DIPLOC( 0x04, 0x04, "DIP-C:3" )
-  PORT_DIPUNUSED_DIPLOC( 0x08, 0x08, "DIP-C:4" )                  // Missing freeze code @ 0x020B74
-  PORT_DIPNAME( 0x10, 0x10, DEF_STR( Flip_Screen ) )              PORT_DIPLOCATION("DIP-C:5")
-  PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
-  PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-  PORT_DIPNAME( 0x20, 0x20, DEF_STR( Demo_Sounds ) )              PORT_DIPLOCATION("DIP-C:6")
-  PORT_DIPSETTING(    0x20, DEF_STR( Off ) )
-  PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-  PORT_DIPNAME( 0x40, 0x00, DEF_STR( Allow_Continue ) )           PORT_DIPLOCATION("DIP-C:7")
-  PORT_DIPSETTING(    0x40, DEF_STR( No ) )
-  PORT_DIPSETTING(    0x00, DEF_STR( Yes ) )
-  PORT_DIPUNUSED_DIPLOC( 0x80, 0x80, "DIP-C:8" )
-INPUT_PORTS_END
-
-static INPUT_PORTS_START( gulunpa )
-	PORT_INCLUDE( cps1_2b )
-
-	PORT_START("DSWA")
-	PORT_DIPNAME( 0x07, 0x07, DEF_STR( Coinage ) )  PORT_DIPLOCATION("SW(A):1,2,3")
-	PORT_DIPSETTING(    0x00, DEF_STR( 4C_1C ) )
-	PORT_DIPSETTING(    0x01, DEF_STR( 3C_1C ) )
-	PORT_DIPSETTING(    0x02, DEF_STR( 2C_1C ) )
-	PORT_DIPSETTING(    0x07, DEF_STR( 1C_1C ) )
-	PORT_DIPSETTING(    0x06, DEF_STR( 1C_2C ) )
-	PORT_DIPSETTING(    0x05, DEF_STR( 1C_3C ) )
-	PORT_DIPSETTING(    0x04, DEF_STR( 1C_4C ) )
-	PORT_DIPSETTING(    0x03, DEF_STR( 1C_6C ) )
-	PORT_DIPNAME( 0x18, 0x18, "Coin slots" ) PORT_DIPLOCATION("SW(A):4,5")
-	PORT_DIPSETTING(    0x18, "1, Common" )
-	PORT_DIPSETTING(    0x00, "2, Common" )
-	PORT_DIPSETTING(    0x10, "2, Common (duplicate 1)" )
-	PORT_DIPSETTING(    0x08, "2, Common (duplicate 2)" )
-	PORT_DIPNAME( 0x20, 0x20, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(A):6")
-	PORT_DIPSETTING(    0x20, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_DIPNAME( 0x40, 0x40, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(A):7")
-	PORT_DIPSETTING(    0x40, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_DIPNAME( 0x80, 0x80, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(A):8")
-	PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-
-	PORT_START("DSWB")
-	PORT_DIPNAME( 0x07, 0x07, DEF_STR( Difficulty ) )  PORT_DIPLOCATION("SW(B):1,2,3")
-	PORT_DIPSETTING(    0x07, "1 Easiest" )
-	PORT_DIPSETTING(    0x06, "2 Very Easy" )
-	PORT_DIPSETTING(    0x05, "3 Easy" )
-	PORT_DIPSETTING(    0x04, "4 Medium" )
-	PORT_DIPSETTING(    0x03, "5 Medium Hard" )
-	PORT_DIPSETTING(    0x02, "6 Hard" )
-	PORT_DIPSETTING(    0x01, "7 Very Hard" )
-	PORT_DIPSETTING(    0x00, "8 Hardest" )
-	PORT_DIPNAME( 0x08, 0x08, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(B):4")
-	PORT_DIPSETTING(    0x08, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_DIPNAME( 0x10, 0x10, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(B):5")
-	PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	// flipping this on any screen causes scroll1 layer left edge to be filled with tile 0x0014
-	PORT_DIPNAME( 0x20, 0x20, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(B):6")
-	PORT_DIPSETTING(    0x20, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_DIPNAME( 0x40, 0x40, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(B):7")
-	PORT_DIPSETTING(    0x40, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_DIPNAME( 0x80, 0x80, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(B):8")
-	PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-
-	PORT_START("DSWC")
-	PORT_DIPNAME( 0x01, 0x01, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(C):1")
-	PORT_DIPSETTING(    0x01, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_DIPNAME( 0x02, 0x02, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(C):2")
-	PORT_DIPSETTING(    0x02, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_DIPNAME( 0x04, 0x04, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(C):3")
-	PORT_DIPSETTING(    0x04, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_DIPNAME( 0x08, 0x08, "Freeze" ) PORT_DIPLOCATION("SW(C):4")
-	PORT_DIPSETTING(    0x08, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_DIPNAME( 0x10, 0x10, DEF_STR( Flip_Screen ) ) PORT_DIPLOCATION("SW(C):5")
-	PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_DIPNAME( 0x20, 0x00, DEF_STR( Demo_Sounds ) ) PORT_DIPLOCATION("SW(C):6")
-	PORT_DIPSETTING(    0x20, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_DIPNAME( 0x40, 0x40, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(C):7")
-	PORT_DIPSETTING(    0x40, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_DIPNAME( 0x80, 0x80, "Game Mode")  PORT_DIPLOCATION("SW(C):8")
-	PORT_DIPSETTING(    0x80, "Game" )
-	PORT_DIPSETTING(    0x00, DEF_STR( Test ) )
 INPUT_PORTS_END
 
 /* Same as 'ghouls' but additional "Freeze" Dip Switch */
@@ -1810,7 +1569,7 @@ INPUT_PORTS_END
      - 0xff14ab.w : energy (player 1)
      - 0xff156b.w : energy (player 2)
 */
-static INPUT_PORTS_START( mtwins )
+INPUT_PORTS_START( mtwins )
 	PORT_INCLUDE( cps1_3b )
 
 	PORT_MODIFY("IN0")
@@ -1863,7 +1622,6 @@ INPUT_PORTS_END
      - code at 0x019b62 ('msword' and 'mswordr1'), 0x019bde ('mswordu') or 0x019c26 ('mswordj') : unknown effect
      - code at 0x01c322 ('msword' and 'mswordr1'), 0x01c39e ('mswordu') or 0x01c3e0 ('mswordj') : unknown effect
    These features are not available because of the 'bra' instruction after the test of bit 7. */
-
 static INPUT_PORTS_START( msword )
 	PORT_INCLUDE( cps1_3b )
 
@@ -2088,6 +1846,7 @@ static INPUT_PORTS_START( sf2j )
 	PORT_DIPSETTING(    0x00, "2 Credits/Winner Continue" ) //Winner stays, loser pays, in other words.
 INPUT_PORTS_END
 
+/* Same as sf2j but options are inverted. Default position here is 2 Credits for versus play */
 static INPUT_PORTS_START( sf2cej )
 	PORT_INCLUDE( sf2 )
 
@@ -2125,6 +1884,21 @@ static INPUT_PORTS_START( sf2rb )
 	PORT_DIPSETTING(    0x00, "Zigzag" )
 INPUT_PORTS_END
 
+static INPUT_PORTS_START( sf2hack )
+	PORT_INCLUDE( sf2 )
+
+	PORT_MODIFY("IN2")      /* Extra buttons */
+	PORT_BIT( 0x00ff, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("P1 Short Kick") PORT_PLAYER(1)
+	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_BUTTON5 ) PORT_NAME("P1 Forward Kick") PORT_PLAYER(1)
+	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("P1 Roundhouse Kick") PORT_PLAYER(1)
+	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("P2 Short Kick") PORT_PLAYER(2)
+	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON5 ) PORT_NAME("P2 Forward Kick") PORT_PLAYER(2)
+	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("P2 Roundhouse Kick") PORT_PLAYER(2)
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_UNKNOWN )
+INPUT_PORTS_END
+
 static INPUT_PORTS_START( sf2level )
 	PORT_INCLUDE( sf2 )
 
@@ -2146,21 +1920,6 @@ static INPUT_PORTS_START( sf2level )
 	PORT_DIPSETTING(    0x20, "13" )
 	PORT_DIPSETTING(    0x10, "14" )
 	PORT_DIPSETTING(    0x00, "15" )
-INPUT_PORTS_END
-
-static INPUT_PORTS_START( sf2hack )
-	PORT_INCLUDE( sf2 )
-
-	PORT_MODIFY("IN2")      /* Extra buttons */
-	PORT_BIT( 0x00ff, IP_ACTIVE_LOW, IPT_UNKNOWN )
-	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("P1 Short Kick") PORT_PLAYER(1)
-	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_BUTTON5 ) PORT_NAME("P1 Forward Kick") PORT_PLAYER(1)
-	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("P1 Roundhouse Kick") PORT_PLAYER(1)
-	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_UNKNOWN )
-	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_NAME("P2 Short Kick") PORT_PLAYER(2)
-	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON5 ) PORT_NAME("P2 Forward Kick") PORT_PLAYER(2)
-	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON6 ) PORT_NAME("P2 Roundhouse Kick") PORT_PLAYER(2)
-	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_UNKNOWN )
 INPUT_PORTS_END
 
 static INPUT_PORTS_START( sf2m2 )
@@ -2197,6 +1956,7 @@ static INPUT_PORTS_START( sf2amf )
 	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
 INPUT_PORTS_END
 
+/* SWB.6 enables turbo mode, SWB.4 and SWB.5 sets the speed */
 static INPUT_PORTS_START( sf2amfx )
 	PORT_INCLUDE( sf2hack )
 
@@ -2642,7 +2402,7 @@ static INPUT_PORTS_START( cworld2j )
 INPUT_PORTS_END
 
 /* Needs further checking */
-static INPUT_PORTS_START( wof )
+INPUT_PORTS_START( wof )
 	PORT_INCLUDE( cps1_3players )
 
 	PORT_MODIFY("IN0")
@@ -3197,6 +2957,153 @@ static INPUT_PORTS_START( pang3b )
 	PORT_DIPUNUSED( 0x80, 0x80 )
 INPUT_PORTS_END
 
+/* The bootleggers hacked main code (@ 0x300 and 0xe0000) to use dip switches instead of the usual pang3 93C46 serial EPROM */
+static INPUT_PORTS_START( pang3b4 )
+	// Though service mode shows diagonal inputs, the flyer and manual both specify 4-way joysticks
+	PORT_INCLUDE( cps1_2b_4way )
+
+	PORT_MODIFY("IN0")
+	PORT_SERVICE_NO_TOGGLE( 0x40, IP_ACTIVE_LOW )
+
+	// As manual states, "Push 2 is not used," and is not even shown in service mode
+	PORT_MODIFY("IN1")
+	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(1) PORT_NAME("P1 Shot")
+	PORT_BIT( 0x0020, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(2) PORT_NAME("P2 Shot")
+	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_UNKNOWN )
+
+	PORT_START("DSWA")
+	CPS1_COINAGE_2( "DIP-A" )
+	PORT_DIPUNUSED_DIPLOC( 0x08, 0x08, "DIP-A:4" )
+	PORT_DIPUNUSED_DIPLOC( 0x10, 0x10, "DIP-A:5" )
+	PORT_DIPUNUSED_DIPLOC( 0x20, 0x20, "DIP-A:6" )
+	PORT_DIPUNUSED_DIPLOC( 0x40, 0x40, "DIP-A:7" )
+	PORT_DIPUNUSED_DIPLOC( 0x80, 0x80, "DIP-A:8" )
+
+	PORT_START("DSWB")
+	PORT_DIPNAME( 0x07, 0x04, "Game level" )                      PORT_DIPLOCATION("DIP-B:1,2,3")
+	PORT_DIPSETTING(    0x07, "Easy 3" )
+	PORT_DIPSETTING(    0x06, "Easy 2" )
+	PORT_DIPSETTING(    0x05, "Easy 1" )
+	PORT_DIPSETTING(    0x04, "Normal" )
+	PORT_DIPSETTING(    0x03, "Hard 1" )
+	PORT_DIPSETTING(    0x02, "Hard 2" )
+	PORT_DIPSETTING(    0x01, "Hard 3" )
+	PORT_DIPSETTING(    0x00, "Hard 4" )
+	PORT_DIPNAME( 0x18, 0x18, "Player" )                          PORT_DIPLOCATION("DIP-B:4,5")
+	PORT_DIPSETTING(    0x08, "1" )
+	PORT_DIPSETTING(    0x10, "2" )
+	PORT_DIPSETTING(    0x18, "3" )
+	PORT_DIPSETTING(    0x00, "4" )
+	PORT_DIPNAME( 0x60, 0x20, "Extend" )                          PORT_DIPLOCATION("DIP-B:6,7")
+	PORT_DIPSETTING(    0x00, "30K, 250K, 1M, 3M, 7M" )
+	PORT_DIPSETTING(    0x20, "80K, 500k, 2M, 5M, 10M" )
+	PORT_DIPSETTING(    0x40, "250K, 1M, 3M, 7M, 15M" )
+	PORT_DIPSETTING(    0x60, "Not extend" )
+	PORT_DIPNAME( 0x80, 0x80, "Free play" )                         PORT_DIPLOCATION("DIP-B:8")
+	PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+
+	PORT_START("DSWC")
+	PORT_DIPUNUSED_DIPLOC( 0x01, 0x01, "DIP-C:1" )
+	PORT_DIPUNUSED_DIPLOC( 0x02, 0x02, "DIP-C:2" )
+	PORT_DIPUNUSED_DIPLOC( 0x04, 0x04, "DIP-C:3" )
+	PORT_DIPUNUSED_DIPLOC( 0x08, 0x08, "DIP-C:4" )                  // Missing freeze code @ 0x020B74
+	PORT_DIPNAME( 0x10, 0x10, DEF_STR( Flip_Screen ) )              PORT_DIPLOCATION("DIP-C:5")
+	PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x20, 0x20, DEF_STR( Demo_Sounds ) )              PORT_DIPLOCATION("DIP-C:6")
+	PORT_DIPSETTING(    0x20, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x40, 0x00, DEF_STR( Allow_Continue ) )           PORT_DIPLOCATION("DIP-C:7")
+	PORT_DIPSETTING(    0x40, DEF_STR( No ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( Yes ) )
+	PORT_DIPUNUSED_DIPLOC( 0x80, 0x80, "DIP-C:8" )
+INPUT_PORTS_END
+
+// Note: if you have service mode stuck then start button doesn't get recognized on title screen.
+static INPUT_PORTS_START( gulunpa )
+	PORT_INCLUDE( cps1_2b )
+
+	PORT_START("DSWA")
+	PORT_DIPNAME( 0x07, 0x07, DEF_STR( Coinage ) )  PORT_DIPLOCATION("SW(A):1,2,3")
+	PORT_DIPSETTING(    0x00, DEF_STR( 4C_1C ) )
+	PORT_DIPSETTING(    0x01, DEF_STR( 3C_1C ) )
+	PORT_DIPSETTING(    0x02, DEF_STR( 2C_1C ) )
+	PORT_DIPSETTING(    0x07, DEF_STR( 1C_1C ) )
+	PORT_DIPSETTING(    0x06, DEF_STR( 1C_2C ) )
+	PORT_DIPSETTING(    0x05, DEF_STR( 1C_3C ) )
+	PORT_DIPSETTING(    0x04, DEF_STR( 1C_4C ) )
+	PORT_DIPSETTING(    0x03, DEF_STR( 1C_6C ) )
+	PORT_DIPNAME( 0x18, 0x18, "Coin slots" ) PORT_DIPLOCATION("SW(A):4,5")
+	PORT_DIPSETTING(    0x18, "1, Common" )
+	PORT_DIPSETTING(    0x00, "2, Common" )
+	PORT_DIPSETTING(    0x10, "2, Common (duplicate 1)" )
+	PORT_DIPSETTING(    0x08, "2, Common (duplicate 2)" )
+	PORT_DIPNAME( 0x20, 0x20, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(A):6")
+	PORT_DIPSETTING(    0x20, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x40, 0x40, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(A):7")
+	PORT_DIPSETTING(    0x40, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x80, 0x80, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(A):8")
+	PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+
+	PORT_START("DSWB")
+	PORT_DIPNAME( 0x07, 0x07, DEF_STR( Difficulty ) )  PORT_DIPLOCATION("SW(B):1,2,3")
+	PORT_DIPSETTING(    0x07, "1 Easiest" )
+	PORT_DIPSETTING(    0x06, "2 Very Easy" )
+	PORT_DIPSETTING(    0x05, "3 Easy" )
+	PORT_DIPSETTING(    0x04, "4 Medium" )
+	PORT_DIPSETTING(    0x03, "5 Medium Hard" )
+	PORT_DIPSETTING(    0x02, "6 Hard" )
+	PORT_DIPSETTING(    0x01, "7 Very Hard" )
+	PORT_DIPSETTING(    0x00, "8 Hardest" )
+	PORT_DIPNAME( 0x08, 0x08, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(B):4")
+	PORT_DIPSETTING(    0x08, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x10, 0x10, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(B):5")
+	PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	// flipping this on any screen causes scroll1 layer left edge to be filled with tile 0x0014
+	PORT_DIPNAME( 0x20, 0x20, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(B):6")
+	PORT_DIPSETTING(    0x20, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x40, 0x40, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(B):7")
+	PORT_DIPSETTING(    0x40, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x80, 0x80, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(B):8")
+	PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+
+	PORT_START("DSWC")
+	PORT_DIPNAME( 0x01, 0x01, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(C):1")
+	PORT_DIPSETTING(    0x01, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x02, 0x02, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(C):2")
+	PORT_DIPSETTING(    0x02, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x04, 0x04, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(C):3")
+	PORT_DIPSETTING(    0x04, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x08, 0x08, "Freeze" ) PORT_DIPLOCATION("SW(C):4")
+	PORT_DIPSETTING(    0x08, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x10, 0x10, DEF_STR( Flip_Screen ) ) PORT_DIPLOCATION("SW(C):5")
+	PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x20, 0x00, DEF_STR( Demo_Sounds ) ) PORT_DIPLOCATION("SW(C):6")
+	PORT_DIPSETTING(    0x20, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x40, 0x40, DEF_STR( Unknown ) ) PORT_DIPLOCATION("SW(C):7")
+	PORT_DIPSETTING(    0x40, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x80, 0x80, "Game Mode")  PORT_DIPLOCATION("SW(C):8")
+	PORT_DIPSETTING(    0x80, "Game" )
+	PORT_DIPSETTING(    0x00, DEF_STR( Test ) )
+INPUT_PORTS_END
+
 /* Needs further checking */
 static INPUT_PORTS_START( megaman )
 	PORT_INCLUDE( cps1_3b )
@@ -3745,8 +3652,6 @@ void cps_state::qsound(machine_config &config)
 	SPEAKER(config, "lspeaker").front_left();
 	SPEAKER(config, "rspeaker").front_right();
 
-	//config.device_remove("soundlatch");     HBMAME
-	//config.device_remove("soundlatch2");    HBMAME
 	config.device_remove("2151");
 	config.device_remove("oki");
 
@@ -3769,17 +3674,30 @@ void cps_state::sf2m3(machine_config &config)
 	m_maincpu->set_addrmap(AS_PROGRAM, &cps_state::sf2m3_map);
 }
 
+void cps_state::sf2cems6(machine_config &config)
+{
+	cps1_10MHz(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &cps_state::sf2cems6_map);
+}
+
 void cps_state::sf2m10(machine_config &config)
 {
 	cps1_12MHz(config);
 	m_maincpu->set_addrmap(AS_PROGRAM, &cps_state::sf2m10_map);
 }
 
-void cps_state::sf2cems6(machine_config &config)
+void cps_state::varthb2(machine_config &config)
 {
-	cps1_10MHz(config);
-	m_maincpu->set_addrmap(AS_PROGRAM, &cps_state::sf2cems6_map);
+	cps1_12MHz(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &cps_state::varthb2_map);
 }
+
+void cps_state::varthb3(machine_config &config)
+{
+	cps1_12MHz(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &cps_state::varthb3_map);
+}
+
 
 /***************************************************************************
 
@@ -3788,7 +3706,6 @@ void cps_state::sf2cems6(machine_config &config)
 ***************************************************************************/
 
 #define CODE_SIZE 0x400000
-
 /* B-Board 88621B-2 */
 /*
    There are 4 surface mounted ROMs each on it's own small 88621B-sub satellite board, type HN62404FP-18 package is QFP44.
@@ -3805,7 +3722,6 @@ void cps_state::sf2cems6(machine_config &config)
    NEC D4701AC
 */
 /* Note that ROMs are labeled left to right, top to bottom, instead of top to bottom, left to right as usual. */
-
 ROM_START( forgottn )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "lw40.12f",       0x00000, 0x20000, CRC(73e920b7) SHA1(2df12fc1a66f488d06b0927db909da81466d7d07) ) /* Higher program numbers indicates a later revision */
@@ -11762,6 +11678,28 @@ ROM_START( varthb2 )
 	ROM_LOAD( "va_19.12c", 0x20000, 0x20000, CRC(0610a4ac) SHA1(3da02ea6a7a56c85de898806d2a1cf6bc526c1b3) )
 ROM_END
 
+ROM_START( varthb3 )
+	ROM_REGION( CODE_SIZE, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "pd1.bin", 0x000000, 0x80000, CRC(8208c0d7) SHA1(335cbc183abac9a79d7a84ef9c713217ccbf27bb) )
+	ROM_LOAD16_BYTE( "c6.bin",  0x000001, 0x80000, CRC(7f654421) SHA1(05e87540bfe32a286c663782a788c5d573616dc1) )
+	ROM_LOAD16_BYTE( "pd2.bin", 0x100000, 0x20000, CRC(d8325c94) SHA1(59c09948ad48e434782b97cfb1eefee0b23dc3da) )
+	ROM_LOAD16_BYTE( "c5.bin",  0x100001, 0x20000, CRC(6152277d) SHA1(e93ae5c74cfe8d8c4bf6f3cd802f0e30192ffa2c) )
+
+	ROM_REGION( 0x600000, "gfx", ROMREGION_ERASE00 )
+	ROM_LOAD32_BYTE( "rom1.bin", 0x000000, 0x80000, CRC(473961b3) SHA1(e969ead42629607cecd8f38005d65085a9dd5ee9) )
+	ROM_LOAD32_BYTE( "rom3.bin", 0x000001, 0x80000, CRC(9b50384f) SHA1(a06efe61a4b74e3240807140d7704f7bffeb5f81) )
+	ROM_LOAD32_BYTE( "rom5.bin", 0x000002, 0x80000, CRC(516a4eea) SHA1(2e9b2d32344db926df2a980f1b0a8b34eda70126) )
+	ROM_LOAD32_BYTE( "rom7.bin", 0x000003, 0x80000, CRC(81023052) SHA1(a96dd88483807b6f7520fb42dbc0cdd7bfa105c9) )
+
+	ROM_REGION( 0x18000, "audiocpu", 0 )
+	ROM_LOAD( "j4.bin", 0x00000, 0x08000, CRC(7a99446e) SHA1(ca027f41e3e58be5abc33ad7380746658cb5380a) )
+	ROM_CONTINUE(       0x10000, 0x08000 )
+
+	ROM_REGION( 0x40000, "oki", 0 )
+	ROM_LOAD( "j1.bin", 0x00000, 0x40000, CRC(1547e595) SHA1(27f47b1afd9700afd9e8167d7e4e2888be34a9e5) )
+ROM_END
+
+
 /* B-Board 89625B-1 */
 ROM_START( qad )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
@@ -13177,47 +13115,6 @@ ROM_START( pang3r1 )
 	ROM_LOAD( "c632.ic1",     0x0000, 0x0117, CRC(0fbd9270) SHA1(d7e737b20c44d41e29ca94be56114b31934dde81) )
 ROM_END
 
-ROM_START( pang3r1a )
-    ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
-    ROM_LOAD16_WORD_SWAP( "pa3e_17.11l", 0x00000, 0x80000, CRC(d7041d32) SHA1(b021f3defe7fc58030ba907125c713f987724187) )
-    ROM_LOAD16_WORD_SWAP( "pa3e_16.10l", 0x80000, 0x80000, CRC(1be9a483) SHA1(6cff1dd15ca163237bc82fb4a3e1d469d35e7be8) )
-
-    ROM_REGION( 0x400000, "gfx", 0 )
-    ROM_LOAD64_WORD( "1.2c",  0x000000, 0x80000, CRC(22c934c4) SHA1(93a3c3cfdbfd1321b785f08d1da30d9b1445e14b) )
-    ROM_LOAD64_WORD( "7.2f",  0x000002, 0x80000, CRC(51031180) SHA1(a38a77da2ca452843a3b0cb02baaaf7df2e3d9a4) )
-    ROM_LOAD64_WORD( "3.4c",  0x000004, 0x80000, CRC(ac119a46) SHA1(e8a07349b6106f712a7543ab52e9d5ced756fdbd) )
-    ROM_LOAD64_WORD( "9.4f",  0x000006, 0x80000, CRC(2e1d35f2) SHA1(1b4a9cf9ed91fed532d44582c598982dae06253c) )
-    ROM_LOAD64_WORD( "2.3c",  0x200000, 0x80000, CRC(07c85e9b) SHA1(5b9bc1f5708d03c2458a1dbb781084c2af8f91ee) )
-    ROM_LOAD64_WORD( "mx27c4100.3f",  0x200002, 0x80000, CRC(e9cd657a) SHA1(98738158992e813c6a9c3806fed0a7e02b859ad3) )
-    ROM_LOAD64_WORD( "4.5c",  0x200004, 0x80000, CRC(4ad13297) SHA1(59565f9819e1cdd405103d5e3621c747116f653c) )
-    ROM_LOAD64_WORD( "10.5f", 0x200006, 0x80000, CRC(026d0cd2) SHA1(44f7718851e0b1f43682afafcbd844e6b1ce3430) )
-
-
-    ROM_REGION( 0x18000, "audiocpu", 0 ) /* 64k for the audio CPU (+banks) */
-    ROM_LOAD( "pa3_11.11f",  0x00000, 0x08000, CRC(cb1423a2) SHA1(3191bf5d340168647881738cb2aed09b1d86146e) )  // == 11.11f has the same content of pa3w_16.10l from pang3 romset
-    ROM_IGNORE( 0x18000 )
-
-    ROM_REGION( 0x40000, "oki", 0 ) /* Samples */
-    ROM_LOAD( "pa3_05.10d",  0x00000, 0x20000, CRC(73a10d5d) SHA1(999465e4fbc35a34746d2db61ad49f61403d5af7) ) // 5.10c has the same content of pa3_05.10d from pang3 romset
-    ROM_LOAD( "pa3_06.11d",  0x20000, 0x20000, CRC(affa4f82) SHA1(27b9292bbc121cf585f53297a79fe8f0d0a729ae) ) // 6.11c has the same content of pa3_06.11d from pang3 romset
-
-    ROM_REGION( 0x0200, "aboardplds", 0 )
-    ROM_LOAD( "buf1",         0x0000, 0x0117, CRC(eb122de7) SHA1(b26b5bfe258e3e184f069719f9fd008d6b8f6b9b) )
-    ROM_LOAD( "ioa1",         0x0000, 0x0117, CRC(59c7ee3b) SHA1(fbb887c5b4f5cb8df77cec710eaac2985bc482a6) )
-    ROM_LOAD( "prg1",         0x0000, 0x0117, CRC(f1129744) SHA1(a5300f301c1a08a7da768f0773fa0fe3f683b237) )
-    ROM_LOAD( "rom1",         0x0000, 0x0117, CRC(41dc73b9) SHA1(7d4c9f1693c821fbf84e32dd6ef62ddf14967845) )
-    ROM_LOAD( "sou1",         0x0000, 0x0117, CRC(84f4b2fe) SHA1(dcc9e86cc36316fe42eace02d6df75d08bc8bb6d) )
-
-	ROM_REGION( 0x0200, "bboardplds", 0 )
-	ROM_LOAD( "cp1b1f.1f",    0x0000, 0x0117, CRC(3979b8e3) SHA1(07c9819d68b4d93bc37b96bd15d689ce54fe034e) )
-	ROM_LOAD( "cp1b8k.8k",    0x0000, 0x0117, CRC(8a52ea7a) SHA1(47a59abc54a83292cfd6faa2d293c8f948c7ea03) )
-	ROM_LOAD( "cp1b9k.9k",    0x0000, 0x0117, CRC(a754bdc3) SHA1(9267b24cbddee4858b219468cc92f9df8f5fd0ef) )
-
-	ROM_REGION( 0x0200, "cboardplds", 0 )
-	ROM_LOAD( "ioc1.ic7",     0x0000, 0x0104, CRC(a399772d) SHA1(55471189db573dd61e3087d12c55564291672c77) )
-	ROM_LOAD( "c632.ic1",     0x0000, 0x0117, CRC(0fbd9270) SHA1(d7e737b20c44d41e29ca94be56114b31934dde81) )
-ROM_END
-
 /* B-Board 94916-10 */
 ROM_START( pang3j )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
@@ -13925,6 +13822,7 @@ ROM_START( sfzbch )
 	ROM_LOAD( "sfz_19.12c",  0x20000, 0x20000, CRC(3b5886d5) SHA1(7e1b7d40ef77b5df628dd663d45a9a13c742cf58) )
 ROM_END
 
+
 u16 cps_state::sf2rb_prot_r(offs_t offset)
 {
 	switch (offset)
@@ -13998,12 +13896,12 @@ void cps_state::init_sf2rk()
 {
 	init_sf2hack();
 
-	u8 *gfx = memregion("gfx")->base();
+	uint8_t *gfx = memregion("gfx")->base();
 
 	// descramble the GFX ROMs
 	for (int i = 0; i < 0x400000; i++)
 	{
-		u8 x = gfx[i];
+		uint8_t x = gfx[i];
 		gfx[i] = bitswap(x, 0, 6 ,5, 4, 3, 2, 1, 7);
 	}
 
@@ -14015,7 +13913,6 @@ void cps_state::init_sf2rk()
 		gfx[i] = bitswap(x, 0, 6 ,5, 4, 3, 2, 1, 7);
 	}
 }
-
 
 u16 cps_state::sf2dongb_prot_r(offs_t offset)
 {
@@ -14180,18 +14077,18 @@ Pang 3b4 - code accesso to $5762b0 and $57a2b0 (PIC)
 ; unused code [END]
 000360: jmp     $e0000.l         ; jmp $E0000
 */
-u16 cps_state::pang3b4_prot_r()
+uint16_t cps_state::pang3b4_prot_r()
 {
-	if ((pang3b4_prot & 0xff) >=0 && (pang3b4_prot & 0xff) <=7)
-	      return (pang3b4_prot & 0xff) + 0x20;  // Game level + extend
-	if (pang3b4_prot == 0x17)
-	      return 0x7321;                      // Guessed from code @0x314
+	if ((m_pang3b4_prot & 0xff) <=7)
+		  return (m_pang3b4_prot & 0xff) + 0x20;  // Game level + extend
+	if (m_pang3b4_prot == 0x17)
+		  return 0x7321;                      // Guessed from code @0x314
 	return 0xffff;
 }
 
-void cps_state::pang3b4_prot_w(u16 data)
+void cps_state::pang3b4_prot_w(uint16_t data)
 {
-	pang3b4_prot = data;
+	m_pang3b4_prot = data;
 }
 
 
@@ -14207,6 +14104,7 @@ void cps_state::init_pang3b4()
 
 	init_cps1();
 }
+
 
 u16 cps_state::ganbare_ram_r(offs_t offset, u16 mem_mask)
 {
@@ -14257,6 +14155,39 @@ void cps_state::init_dinohunt()
 void cps_state::sf2m3_layer_w(offs_t offset, u16 data)
 {
 	cps1_cps_b_w(0x0a,data);
+}
+
+void cps_state::varthb2_cps_a_w(offs_t offset, uint16_t data)
+{
+	// cps-a regs are updated as normal by original code,
+	// but bootleg code ignores them and uses these regions instead:
+	if (offset == 0x00 / 2)
+	{
+		m_cps_a_regs[offset] = 0x9100;
+		return;
+	}
+	if (offset == 0x02 / 2)
+	{
+		m_cps_a_regs[offset] = 0x90c0;
+		return;
+	}
+	if (offset == 0x04 / 2)
+	{
+		m_cps_a_regs[offset] = 0x9040;
+		return;
+	}
+	if (offset == 0x06 / 2)
+	{
+		m_cps_a_regs[offset] = 0x9080;
+		return;
+	}
+	if (offset == 0x0a / 2)
+	{
+		m_cps_a_regs[offset] = 0x9000;
+		return;
+	}
+
+	m_cps_a_regs[offset] = data;
 }
 
 
@@ -14440,6 +14371,7 @@ GAME( 1992, varthu,      varth,    cps1_12MHz, varth,    cps_state, init_cps1,  
 GAME( 1992, varthj,      varth,    cps1_12MHz, varth,    cps_state, init_cps1,     ROT270, "Capcom", "Varth: Operation Thunderstorm (Japan 920714)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, varthjr,     varth,    cps1_12MHz, varth,    cps_state, init_cps1,     ROT270, "Capcom", "Varth: Operation Thunderstorm (Japan Resale Ver. 920714)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, varthb2,     varth,    varthb2,    varth,    cps_state, init_cps1,     ROT270, "bootleg", "Varth: Operation Thunderstorm (bootleg, set 2)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )  // World 920612
+GAME( 1992, varthb3,     varth,    varthb3,    varth,    cps_state, init_cps1,     ROT270, "bootleg", "Varth: Operation Thunderstorm (bootleg, set 3)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )  // USA 920612, different 'mapper'?
 GAME( 1992, qad,         0,        cps1_12MHz, qad,      cps_state, init_cps1,     ROT0,   "Capcom", "Quiz & Dragons: Capcom Quiz Game (USA 920701)", MACHINE_SUPPORTS_SAVE ) // 12MHz verified
 GAME( 1994, qadjr,       qad,      cps1_12MHz, qadjr,    cps_state, init_cps1,     ROT0,   "Capcom", "Quiz & Dragons: Capcom Quiz Game (Japan Resale Ver. 940921)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, wof,         0,        qsound,     wof,      cps_state, init_wof,      ROT0,   "Capcom", "Warriors of Fate (World 921031)", MACHINE_SUPPORTS_SAVE )   // "ETC"
@@ -14479,7 +14411,6 @@ GAME( 1994, pokonyan,    0,        cps1_10MHz, pokonyan, cps_state, init_cps1,  
 
 GAME( 1995, pang3,       0,        pang3,      pang3,    cps_state,   init_pang3,    ROT0,   "Mitchell", "Pang! 3 (Euro 950601)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, pang3r1,     pang3,    pang3,      pang3,    cps_state,   init_pang3,    ROT0,   "Mitchell", "Pang! 3 (Euro 950511)", MACHINE_SUPPORTS_SAVE )
-GAME( 1995, pang3r1a,    pang3,    pang3,      pang3,    cps_state,   init_pang3,    ROT0,   "Mitchell", "Pang! 3 (Euro 950511, alt)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, pang3j,      pang3,    pang3,      pang3,    cps_state,   init_pang3,    ROT0,   "Mitchell", "Pang! 3: Kaitou Tachi no Karei na Gogo (Japan 950511)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, pang3b,      pang3,    pang3,      pang3b,   cps_state,   init_pang3b,   ROT0,   "bootleg",  "Pang! 3 (bootleg, set 1)", MACHINE_SUPPORTS_SAVE )    // 950511 - based on Euro version
 GAME( 1995, pang3b2,     pang3,    pang3,      pang3,    cps_state,   init_pang3,    ROT0,   "bootleg",  "Pang! 3 (bootleg, set 2)", MACHINE_SUPPORTS_SAVE )    // 950601 - based on Euro version
@@ -14489,66 +14420,12 @@ GAME( 1995, pang3b5,     pang3,    pang3,      pang3,    cps_state,   init_pang3
 
 /* Home 'CPS Changer' Unit */
 
-GAME( 1994, wofch,       0,        qsound,     wofch,    cps_state,   init_wof,      ROT0,   "Capcom", "Tenchi wo Kurau II: Sekiheki no Tatakai (CPS Changer, Japan 921031)", MACHINE_SUPPORTS_SAVE )
-GAME( 1995, sfzch,       0,        cps1_12MHz, sfzch,    cps_state,   init_cps1,     ROT0,   "Capcom", "Street Fighter Zero (CPS Changer, Japan 951020)", MACHINE_SUPPORTS_SAVE )
+CONS( 1994, wofch,  0,     0, qsound,     wofch, cps_state, init_wof,  "Capcom", "Tenchi wo Kurau II: Sekiheki no Tatakai (CPS Changer, Japan 921031)", MACHINE_SUPPORTS_SAVE )
+CONS( 1995, sfzch,  0,     0, cps1_12MHz, sfzch, cps_state, init_cps1, "Capcom", "Street Fighter Zero (CPS Changer, Japan 951020)", MACHINE_SUPPORTS_SAVE )
 // are these 2 legit sets, or did somebody region hack it?
-GAME( 1995, sfach,       sfzch,    cps1_12MHz, sfzch,    cps_state,   init_cps1,     ROT0,   "Capcom", "Street Fighter Alpha: Warriors' Dreams (CPS Changer, Publicity USA 950727)", MACHINE_SUPPORTS_SAVE )
-GAME( 1995, sfzbch,      sfzch,    cps1_12MHz, sfzch,    cps_state,   init_cps1,     ROT0,   "Capcom", "Street Fighter Zero (CPS Changer, Brazil 950727)", MACHINE_SUPPORTS_SAVE )
+CONS( 1995, sfach,  sfzch, 0, cps1_12MHz, sfzch, cps_state, init_cps1, "Capcom", "Street Fighter Alpha: Warriors' Dreams (CPS Changer, Publicity USA 950727)", MACHINE_SUPPORTS_SAVE )
+CONS( 1995, sfzbch, sfzch, 0, cps1_12MHz, sfzch, cps_state, init_cps1, "Capcom", "Street Fighter Zero (CPS Changer, Brazil 950727)", MACHINE_SUPPORTS_SAVE )
 
 // Ken Sei Mogura: Street Fighter II - see kenseim.c
-
-// homebrew
+// HBMAME
 #include "cps1hb.cpp"
-
-void cps_state::varthb2_map(address_map &map)
-{
-	map(0x000000, 0x3fffff).rom();
-	map(0x800000, 0x800007).portr("IN1");            /* Player input ports */
-	map(0x800018, 0x80001f).r(FUNC(cps_state::cps1_hack_dsw_r));            /* System input ports / Dip Switches */
-	map(0x800030, 0x800037).w(FUNC(cps_state::cps1_coinctrl_w));
-	map(0x800100, 0x80013f).w(FUNC(cps_state::varthb2_cps_a_w)).share("cps_a_regs");  /* CPS-A custom */
-	map(0x800140, 0x80017f).rw(FUNC(cps_state::cps1_cps_b_r), FUNC(cps_state::cps1_cps_b_w)).share("cps_b_regs");
-	map(0x800180, 0x800187).w(FUNC(cps_state::cps1_soundlatch_w));    /* Sound command */
-	map(0x800188, 0x80018f).w(FUNC(cps_state::cps1_soundlatch2_w));   /* Sound timer fade */
-	map(0x900000, 0x92ffff).ram().w(FUNC(cps_state::cps1_gfxram_w)).share("gfxram");
-	map(0xff0000, 0xffffff).ram().share("mainram");
-}
-
-void cps_state::varthb2(machine_config &config)
-{
-	cps1_12MHz(config);
-	m_maincpu->set_addrmap(AS_PROGRAM, &cps_state::varthb2_map);
-}
-
-void cps_state::varthb2_cps_a_w(offs_t offset, u16 data)
-{
-	// cps-a regs are updated as normal by original code,
-	// but bootleg code ignores them and uses these regions instead:
-	if (offset == 0x00 / 2)
-	{
-		m_cps_a_regs[offset] = 0x9100;
-		return;
-	}
-	if (offset == 0x02 / 2)
-	{
-		m_cps_a_regs[offset] = 0x90c0;
-		return;
-	}
-	if (offset == 0x04 / 2)
-	{
-		m_cps_a_regs[offset] = 0x9040;
-		return;
-	}
-	if (offset == 0x06 / 2)
-	{
-		m_cps_a_regs[offset] = 0x9080;
-		return;
-	}
-	if (offset == 0x0a / 2)
-	{
-		m_cps_a_regs[offset] = 0x9000;
-		return;
-	}
-
-	m_cps_a_regs[offset] = data;
-}

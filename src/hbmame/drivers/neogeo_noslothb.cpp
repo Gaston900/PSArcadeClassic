@@ -1275,8 +1275,16 @@ void neogeo_state::init_rotdnd()
 	ROM_LOAD16_BYTE( "250.c2", 0x0000001, 0x800000, CRC(31679821) SHA1(554f600a3aa09c16c13c625299b087a79d0d15c5) )\
 	ROM_LOAD16_BYTE( "250.c3", 0x1000000, 0x800000, CRC(fd602019) SHA1(c56646c62387bc1439d46610258c755beb8d7dd8) )\
 	ROM_LOAD16_BYTE( "250.c4", 0x1000001, 0x800000, CRC(31354513) SHA1(31be8ea2498001f68ce4b06b8b90acbf2dcab6af) )\
-	ROM_LOAD16_BYTE( "250_hacks31.c5", 0x2000000, 0x800000, CRC(25c32d86) SHA1(4185717b88fbdf563edf6eca142c0664bae79729) )\
-	ROM_LOAD16_BYTE( "250_hacks31.c6", 0x2000001, 0x800000, CRC(52ec6db8) SHA1(b2499dccfa47ee88af8ba84d7f6496478b30ffa2) )
+	ROM_LOAD16_BYTE( "250_hacks31.c5", 0x2000000, 0x800000, CRC(9a9422e4) SHA1(453b897a98574c7be881123398642cf5ec143896) )\
+	ROM_LOAD16_BYTE( "250_hacks31.c6", 0x2000001, 0x800000, CRC(ef116b50) SHA1(de725caad51cc787fba5d21a709844fa96362488) )
+
+#define MSLUGXSCU_SPRITES \
+	ROM_LOAD16_BYTE( "250.c1", 0x0000000, 0x800000, CRC(09a52c6f) SHA1(c3e8a8ccdac0f8bddc4c3413277626532405fae2) )\
+	ROM_LOAD16_BYTE( "250.c2", 0x0000001, 0x800000, CRC(31679821) SHA1(554f600a3aa09c16c13c625299b087a79d0d15c5) )\
+	ROM_LOAD16_BYTE( "250.c3", 0x1000000, 0x800000, CRC(fd602019) SHA1(c56646c62387bc1439d46610258c755beb8d7dd8) )\
+	ROM_LOAD16_BYTE( "250.c4", 0x1000001, 0x800000, CRC(31354513) SHA1(31be8ea2498001f68ce4b06b8b90acbf2dcab6af) )\
+	ROM_LOAD16_BYTE( "250_hacks31u.c5", 0x2000000, 0x800000, CRC(8dd6a022) SHA1(49756e51461a9b7a0a30c9700ba790567018adce) )\
+	ROM_LOAD16_BYTE( "250_hacks31u.c6", 0x2000001, 0x800000, CRC(f8de0291) SHA1(506f73a3e68b3d1e437445c934e36d4195f04e54) )
 
  /***********
  Andro Dunos
@@ -12012,8 +12020,8 @@ ROM_END
 
 ROM_START( mslugxhacks31 ) //mslugxsc
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "250_hacks31.p1", 0x000000, 0x100000, CRC(86aa5509) SHA1(f1c13be70196d144bdbfb509bad7cc0db0707159) )
-	ROM_LOAD16_WORD_SWAP( "250_hacks31.p2", 0x100000, 0x400000, CRC(72be5d30) SHA1(90e9be210fb648020017248d515a697d230532b1) )
+	ROM_LOAD16_WORD_SWAP( "250_hacks31.p1", 0x000000, 0x100000, CRC(d2913eee) SHA1(0c5a3d2c01683f3f1bd8ab3974294d4ca17efd18) )
+	ROM_LOAD16_WORD_SWAP( "250_hacks31.p2", 0x100000, 0x400000, CRC(01f48336) SHA1(a5c42ca203427bfd978df8119aa4f0306d074d47) )
     ROM_DEFAULT_BIOS("euro")
     MSLUGX_MAINCPU
 
@@ -12025,7 +12033,7 @@ ROM_START( mslugxhacks31 ) //mslugxsc
 	MSLUGX_YMSND
 
 	ROM_REGION( 0x3000000, "sprites", 0 )
-	MSLUGXSC_SPRITES
+	MSLUGXSCU_SPRITES
 ROM_END
 
 ROM_START( mslugxhacks32 )
@@ -17129,7 +17137,7 @@ GAME( 2020, mslugxhacks27,     mslugx,   neogeo_noslot, neogeo, neogeo_state,   
 GAME( 2020, mslugxhacks28,     mslugx,   neogeo_noslot, neogeo, neogeo_state,     init_mslugx,    ROT0, "GOTVG",             "Metal Slug X (Unlimited Firepower 2020-10-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhacks29,     mslugx,   neogeo_noslot, neogeo, neogeo_state,     init_mslugx,    ROT0, "GOTVG",             "Metal Slug X (Infinite Fire Edition 2021-03-20 )", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mslugxhacks30,     mslugx,   neogeo_noslot, neogeo, neogeo_state,     init_mslugx,    ROT0, "GOTVG",             "Metal Slug X (Generation SV 2020-11-04)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslugxhacks31,     mslugx,   neogeo_noslot, neogeo, neogeo_state,     init_mslugx,    ROT0, "GOTVG",             "Metal Slug X (Survival Edition 2022-10-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslugxhacks31,     mslugx,   neogeo_noslot, neogeo, neogeo_state,     init_mslugx,    ROT0, "GOTVG",             "Metal Slug X (Survival Edition 2022-10-31)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslugxhacks32,     mslugx,   neogeo_noslot, neogeo, neogeo_state,     init_mslugx,    ROT0, "hack",              "Metal Slug X (Easy Mode 2018-11-26)", MACHINE_SUPPORTS_SAVE )
 //Version Remastering
 GAME( 2022, mslugxer01,        mslugx,   neogeo_noslot, neogeo, neogeo_state,     init_mslugx,    ROT0, "Team Remix (Gaston90, Wang Hua)",                                  "Metal Slug X (Unlimited Firepower 2R Survival Remastering Edition 2022-10-12)", MACHINE_SUPPORTS_SAVE )

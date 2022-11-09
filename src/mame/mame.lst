@@ -686,7 +686,7 @@ ffightj                         // 12/1989 (c) 1989 (Japan)
 ffightj1                        // 12/01/1990 (c) 1989 (Japan)
 ffightj2                        // 05/03/1990 (c) 1989 (Japan)
 ffightj3                        // 05/04/1990 (c) 1989 (Japan)
-ffightj4
+ffightj4                        // 13/06/1990 (c) 1989 (Japan)
 ffightjh                        // hack
 ffightu                         // 12/1989 (c) 1989 (USA)
 ffightu1                        // 12/1989 (c) 1989 (USA)
@@ -704,6 +704,7 @@ forgottnuaa                     // 7/1988 (c) 1988 (USA)
 ganbare                         // 11/04/2000 (c) 2000 (Japan)
 ghouls                          // 12/1988 (c) 1988 (World)
 ghoulsu                         // 12/1988 (c) 1988 (USA)
+gulunpa                         //
 knights                         // 27/11/1991 (c) 1991 (World)
 knightsb2                       // bootleg
 knightsj                        // 27/11/1991 (c) 1991 (Japan)
@@ -720,7 +721,6 @@ lostwrldo                       // 7/1988 (c) 1988 (Japan)
 mbomberj                        // 13/07/1993 (c) 1993 (Japan) (CPS1 + QSound)
 mbombrd                         // 06/12/1993 (c) 1993 (World) (CPS1 + QSound)
 mbombrdj                        // 06/12/1993 (c) 1993 (Japan) (CPS1 + QSound)
-gulunpa                         //
 megaman                         // 06/10/1995 (c) 1995 (USA)
 megamana                        // 06/10/1995 (c) 1995 (Asia)
 mercs                           // 02/03/1990 (c) 1990 (World)
@@ -740,10 +740,9 @@ pang3b                          // bootleg
 pang3b2                         // bootleg
 pang3b3                         // bootleg
 pang3j                          // 11/05/1995 (c) 1995 Mitchell (Japan) not listed on Capcom's site
+pang3r1                         // 11/05/1995 (c) 1995 Mitchell (Euro) not listed on Capcom's site
 pang3b4                         // bootleg
 pang3b5                         // bootleg
-pang3r1                         // 11/05/1995 (c) 1995 Mitchell (Euro) not listed on Capcom's site
-pang3r1a                        //
 pnickj                          // 08/06/1994 (c) 1994 Compile + Capcom license (Japan) not listed on Capcom's site
 punisher                        // 22/04/1993 (c) 1993 (World) (CPS1 + QSound)
 punisherbz                      // bootleg
@@ -757,6 +756,7 @@ sf2acc                          // hack
 sf2acca                         // hack
 sf2accp2                        // hack
 sf2amf2                         // bootleg
+sf2amf3                         // bootleg
 sf2bhh                          // hack
 sf2ce                           // 13/05/1992 (c) 1992 (World)
 sf2ceblp                        // hack
@@ -803,7 +803,6 @@ sf2m6                           // hack
 sf2m7                           // hack
 sf2m8                           // bootleg
 sf2mkot                         // hack
-sf2rk                           //
 sf2qp1                          // hack
 sf2qp2                          // hack
 sf2rb                           // hack
@@ -812,8 +811,9 @@ sf2rb3                          // hack
 sf2re                           // bootleg
 sf2red                          // hack
 sf2redp2                        // hack
-sf2um                           // 12/03/1992 (c) 1991 (USA)
+sf2rk                           // bootleg
 sf2rules                        // bootleg
+//sf2stt                          // bootleg
 sf2thndr                        // hack
 sf2thndr2                       // bootleg
 sf2ua                           // 06/02/1991 (c) 1991 (USA)
@@ -826,6 +826,7 @@ sf2ug                           // 22/05/1991 (c) 1991 (USA, Rev. G)
 sf2uh                           // 22/05/1991 (c) 1991 (USA, Rev. H)
 sf2ui                           // 22/05/1991 (c) 1991 (USA, Rev. I)
 sf2uk                           // 01/11/1991 (c) 1991 (USA)
+sf2um                           // 12/03/1992 (c) 1991 (USA)
 sf2v004                         // hack
 sf2yyc                          // hack
 sf2ceds6                        // bootleg
@@ -844,11 +845,11 @@ striderua                       // 3/1989 (c) 1989 (not explicitly stated but sh
 strideruc                       // conversion
 unsquad                         // 8/1989 (c) 1989 (USA)
 varth                           // 14/07/1992 (c) 1992 (World)
+varthb2                         // bootleg
 varthj                          // 14/07/1992 (c) 1992 (Japan)
 varthjr                         // 14/07/1992 (c) 1992 (Japan)
 varthr1                         // 12/06/1992 (c) 1992 (World)
 varthu                          // 12/06/1992 (c) 1992 (USA)
-varthb2                         // bootleg
 willow                          // 6/1989 (c) 1989 (World)
 willowj                         // 6/1989 (c) 1989 (Japan)
 willowu                         // 6/1989 (c) 1989 (USA)
@@ -862,12 +863,40 @@ wofr1                           // 02/10/1992 (c) 1992 (World) (CPS1 + QSound)
 wofu                            // 31/10/1992 (c) 1992 (USA) (CPS1 + QSound)
 wonder3                         // 20/05/1991 (c) 1991 (Japan)
 
+@source:cps1bl_5205.cpp
+captcommb2                      // bootleg
+knightsb                        // bootleg
+knightsb3                       // bootleg
+sf2b                            // bootleg
+sf2b2                           // bootleg
+sf2ceb                          // bootleg
+sf2ceb2                         // bootleg
+sf2ceb3                         // bootleg
+sf2ceb4                         // bootleg
+sf2ceb5                         // bootleg
+sf2mdt                          // bootleg
+sf2mdta                         // bootleg
+sf2mdtb                         // bootleg
+
+@source:cps1bl_pic.cpp
+dinopic                         // bootleg
+dinopic2                        // bootleg
+dinopic3                        // bootleg
+jurassic99                      // bootleg
+punipic                         // bootleg
+punipic2                        // bootleg
+punipic3                        // bootleg
+slampic                         // bootleg
+slampic2                        // bootleg
+wofpic                          // bootleg
+
 @source:cps2.cpp
 1944                            // 20/06/2000 (c) 2000 Eighting/Raizing (USA)
 1944d                           //
-1944da                          //
 1944j                           // 20/06/2000 (c) 2000 Eighting/Raizing (Japan)
+1944u                           // 20/06/2000 (c) 2000 Eighting/Raizing (USA)
 19xx                            // 04/01/1996 (c) 1996 (Euro)
+19xxu                           // 07/12/1995 (c) 1996 (USA)
 19xxa                           // 04/01/1996 (c) 1996 (Asia)
 19xxar1                         // 07/12/1995 (c) 1996 (Asia)
 19xxb                           // 18/12/1995 (c) 1996 (Brazil)
@@ -1103,6 +1132,7 @@ spf2xjd                         //
 ssf2                            // 05/10/1993 (c) 1993 (World)
 ssf2a                           // 05/10/1993 (c) 1993 (Asia)
 ssf2ar1                         // 14/09/1993 (c) 1993 (Asia)
+ssf2h                           // 11/09/1993 (c) 1993 (Hispanic)
 ssf2j                           // 05/10/1993 (c) 1993 (Japan)
 ssf2jr1                         // 11/09/1993 (c) 1993 (Japan)
 ssf2jr2                         // 10/09/1993 (c) 1993 (Japan)
@@ -1133,7 +1163,6 @@ ssf2xjr1d                       //
 ssf2xjr1r                       // 23/02/1994 (c) 1994 (Japan)
 uecology                        // 03/12/1993 (c) 1994 (Japan)
 vampj                           // 05/07/1994 (c) 1994 (Japan)
-vampja                          // 05/07/1994 (c) 1994 (Japan)
 vampjr1                         // 30/06/1994 (c) 1994 (Japan)
 vhunt2                          // 29/09/1997 (c) 1997 (Japan)
 vhunt2d                         //
@@ -1522,37 +1551,20 @@ exeriont                        // (c) 1983 Jaleco + Taito America license
 irion                           //
 
 @source:fcrash.cpp
-captcommb2                      // bootleg
 cawingb2                        // bootleg
 cawingbl                        // bootleg
-dinopic                         // bootleg
-dinopic2                        // bootleg
-dinopic3                        // bootleg
-jurassic99                      // bootleg
-fcrash                          // bootleg
+fcrash                          // bootleg of Final Fight
 ffightbl                        // bootleg
 ffightbla                       // bootleg
-knightsb                        // bootleg
-knightsb3                       // bootleg
+ffightblb                       // bootleg
 kodb                            // bootleg
-punipic                         // bootleg
-punipic2                        // bootleg
-punipic3                        // bootleg
-sf2b                            // bootleg
-sf2b2                           // bootleg
-sf2ceb                          // bootleg
-sf2ceb2                         // bootleg
-sf2ceb3                         // bootleg
-sf2ceb4                         // bootleg
-sf2ceb5                         // bootleg
+mtwinsb                         // bootleg
 sf2m1                           // hack
 sf2m9                           // bootleg
-sf2mdt                          // bootleg
-sf2mdta                         // bootleg
-sf2mdtb                         // bootleg
-sgyxz                           // bootleg
-slampic                         // bootleg
+sgyxz                           // bootleg (All-In Electronics)
+varthb                          // bootleg
 wofabl                          // bootleg
+wofr1bl                         // bootleg
 
 @source:flstory.cpp
 flstory                         // A45 (c) 1985 Taito Corporation
@@ -2631,7 +2643,6 @@ maglordh                        // 0005 (c) 1990 Alpha Denshi Co.
 matrim                          // 0266 (c) 2002 Atlus
 matrimbl                        // bootleg
 miexchng                        // 0231 (c) 1997 Face
-moshougi                        // 0203 (c) 1995 ADK / SNK
 ms4plus                         // bootleg
 ms5plus                         // bootleg
 ms5pcb                          //
@@ -2742,8 +2753,9 @@ tpgolf                          // 0003 (c) 1990 SNK
 trally                          // 0038 (c) 1991 Alpha Denshi Co.
 turfmast                        // 0200 (c) 1996 Nazca
 twinspri                        // 0224 (c) 1996 ADK
-tws96                           // 0086 (c) 1996 Tecmo
+twsoc96                         // 0086 (c) 1996 Tecmo
 viewpoin                        // 0051 (c) 1992 Sammy
+pnyaaa                          //
 viewpoinp                       //
 wakuwak7                        // 0225 (c) 1996 Sunsoft
 wh1                             // 0053 (c) 1992 Alpha Denshi Co.
@@ -11187,7 +11199,7 @@ sf2tlonc                        //bootleg
 sf2yyc3d5                       //bootleg
 sf2yyc3g                        //bootleg
 sf2yyc6                         //bootleg
-sf2ceeabl                       //bootleg
+//sf2ceeabl                       //bootleg
 sf2cejab2                       //bootleg
 sf2cebr                         //bootleg
 sf2h11                          //bootleg
@@ -11256,8 +11268,8 @@ sk3hack02                       //hack
 //sk3hack04                       //hack
 wofhack01                       //hack
 wofhack02                       //hack
-wofr1bl                         //bootleg
-wofpic                          //bootleg
+//wofr1bl                         //bootleg
+//wofpic                          //bootleg
 wofud                           //bootleg
 dinosf2                         //
 ghoulsf2                        //
@@ -13005,12 +13017,6 @@ sdojb                           //hack
 //woodpeck
 //mspacmab3
 //superabco
-
-@source:fcrash.cpp
-//ffightblb
-//mtwinsb
-//varthb
-//slampic2
 
 @source:ksys573.cpp
 //kicknkick

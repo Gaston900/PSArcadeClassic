@@ -47,6 +47,8 @@ The command of all the game systems was optimized, now it is much more practical
 
 Added custom buttons and auto fire
 
+Removed the black border on NeoGeo systems, now has full screen.
+
 Removed warning screen.
 
 Removed Startups, Loading, Decryption screen texts.

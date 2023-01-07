@@ -30,7 +30,7 @@ ROM_START( suprsktr )
 	PALETTE_2C04_0004("ppu1:palette")
 ROM_END
 
-ROM_START( drmarios01 )
+ROM_START( drmarioch )
 	ROM_REGION( 0x20000, "maincpu", 0 )
 	ROM_LOAD( "dmhc01-uiprg",                  0x10000, 0x10000, CRC(a0c56a2a) SHA1(0aeb5ff1f8c6308f723e88003ea6282914d22121) )
 
@@ -85,6 +85,6 @@ ROM_END
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 GAME( 2002, mrio2002,    suprmrio, vsnes, suprmrio, vsnes_state, init_vsnormal, ROT0, "Nintendo",  "Vs. Super Mario Bros. 2002", 0 )
 GAME( 1986, suprsktr,    suprmrio, vsnes, suprmrio, vsnes_state, init_vsnormal, ROT0, "Nintendo",  "Vs. Super Skater Bros.", 0 )
-GAME( 2002, drmarios01,  drmario,  vsnes, drmario,  vsnes_state, init_drmario,  ROT0, "liujunusa", "Vs. Dr. Mario (Translation Chinese)", 0 )
+GAME( 2002, drmarioch,   drmario,  vsnes, drmario,  vsnes_state, init_drmario,  ROT0, "liujunusa", "Vs. Dr. Mario (Translation Chinese)", 0 )
 GAME( 2020, frombelow,   suprmrio, vsnes, frombelow,vsnes_state, init_vsnormal, ROT0, "Matt Hughson", "Vs. From Below (beta 0.8.0 2020-12-21)", 0 )
 

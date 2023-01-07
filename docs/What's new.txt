@@ -7,6 +7,27 @@
   .chd, so that we can leave roms sets much lighter for our hard drive.
 ===============================================================================================================================
 
+2023-01-07 2.3
+---------------
+
+- Added Cps1 System .key Missing Display Settings.
+- Added Missing Roms To Fix Bike Graphics In Chun-Li Stage.
+- Removed the black border on NeoGeo systems, now has full screen.
+- Updated Roms Metal Slug 5 (Stone Tortoise Edition 2022-11-15)
+- Updated Roms Metal Slug 5 (The Longest Battle 2022-12-15)
+- Updated Roms Metal Slug X (Survival Edition 2022-12-31)
+- Updated Roms The Punisher (Framework Version 2020 Multi-Mode Enhancement 2022-08-22)
+
+New Games
+---------------------------------
+- [mslug3hc34]             Metal Slug 3 (Legendary Edition 2022-12-10)
+- [mslug5hc05]             Metal Slug 5 (Ultimate Simplified Edition 2021-01-13)
+- [mslugxhc21]             Metal Slug X (Unlimited Firepower SV Edition 2021-03-20)
+- [kodhc02]                The King of Dragons (X2 Boss Battle Edition 2015-05-24)
+- [kodhc03]                The King of Dragons (Warrior Spike Edition Difficult Edition 2021-06-22)
+- [ffighthc09]             Final Fight (Frame Edition 2020 multi-mode enhancement 2022-01-25)
+
+
 2022-11-10 2.2
 ---------------
 - Cps1, Cps2 And Fcrash drivers have been updated, added two new drivers: Cps1bl_pic And cps1bl_5205.

@@ -1317,7 +1317,7 @@ static const struct gfx_range mapper_demo_table[] =
 static const struct CPS1config cps1_config_table[]=
 {
 	/* name         CPSB          gfx mapper   in2  in3  out2   kludge */
-
+#if 0
 	{"forgottn",    CPS_B_01,     mapper_LW621 },
 	{"forgottna",   CPS_B_01,     mapper_LW621 },
 	{"forgottnu",   CPS_B_01,     mapper_LW621 },
@@ -1574,7 +1574,7 @@ static const struct CPS1config cps1_config_table[]=
 	{"sfzbch",      CPS_B_21_DEF, mapper_sfzch },   // wrong, this set uses an unknown PAL, still not dumped
 	{"sfzch",       CPS_B_21_DEF, mapper_sfzch },   // wrong, this set uses an unknown PAL, still not dumped
 	{"wofch",       CPS_B_21_DEF, mapper_TK263B },
-
+#endif
 	{"varthb",      CPS_B_04,     mapper_VA63B, 0, 0, 0, 0x0F },
 
 	/* CPS2 games */

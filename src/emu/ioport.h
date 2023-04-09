@@ -882,6 +882,8 @@ private:
 	u8                          m_current;                                      // current value
 	u8                          m_current4way;                                  // current 4-way value
 	u8                          m_previous;                                     // previous value
+	u8						    m_previous_LEFT_or_RIGHT;					    // original previous LEFT_or_RIGHT value/*GSC2007*/
+	u8			  			    m_previous_UP_or_DOWN;					        // original previous UP_or_DOWN value/*GSC2007*/
 };
 DECLARE_ENUM_INCDEC_OPERATORS(digital_joystick::direction_t)
 

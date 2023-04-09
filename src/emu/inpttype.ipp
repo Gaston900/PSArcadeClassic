@@ -29,9 +29,9 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_DOWN,   "P1 Left Stick/Down",     input_seq(KEYCODE_DOWN, input_seq::or_code, JOYCODE_Y_DOWN_SWITCH_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_LEFT,   "P1 Left Stick/Left",     input_seq(KEYCODE_LEFT,  input_seq::or_code, JOYCODE_X_LEFT_SWITCH_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, JOYSTICKLEFT_RIGHT,  "P1 Left Stick/Right",    input_seq(KEYCODE_RIGHT, input_seq::or_code, JOYCODE_X_RIGHT_SWITCH_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON1,             "P1 Button 1",            input_seq(KEYCODE_A, input_seq::or_code, JOYCODE_BUTTON1_INDEXED(0), input_seq::or_code, MOUSECODE_BUTTON1_INDEXED(0), input_seq::or_code, GUNCODE_BUTTON1_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON2,             "P1 Button 2",            input_seq(KEYCODE_S, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(0), input_seq::or_code, MOUSECODE_BUTTON3_INDEXED(0), input_seq::or_code, GUNCODE_BUTTON2_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON3,             "P1 Button 3",            input_seq(KEYCODE_D, input_seq::or_code, JOYCODE_BUTTON3_INDEXED(0), input_seq::or_code, MOUSECODE_BUTTON2_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON1,             "P1 Button 1",            input_seq(KEYCODE_A, input_seq::or_code, JOYCODE_BUTTON1_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON2,             "P1 Button 2",            input_seq(KEYCODE_S, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON3,             "P1 Button 3",            input_seq(KEYCODE_D, input_seq::or_code, JOYCODE_BUTTON3_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON4,             "P1 Button 4",            input_seq(KEYCODE_Z, input_seq::or_code, JOYCODE_BUTTON4_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON5,             "P1 Button 5",            input_seq(KEYCODE_C, input_seq::or_code, JOYCODE_BUTTON5_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON6,             "P1 Button 6",            input_seq(KEYCODE_X, input_seq::or_code, JOYCODE_BUTTON6_INDEXED(0)) ) \
@@ -40,10 +40,10 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON9,             "P1 Button 9",            input_seq(KEYCODE_E, input_seq::or_code, JOYCODE_BUTTON9_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON10,            "P1 Button 10",           input_seq(KEYCODE_N, input_seq::or_code, JOYCODE_BUTTON10_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON11,            "P1 Button 11",           input_seq(KEYCODE_M, input_seq::or_code, JOYCODE_BUTTON11_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON12,            "P1 Button 12",           input_seq(KEYCODE_COMMA, input_seq::or_code, JOYCODE_BUTTON12_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON13,            "P1 Button 13",           input_seq(KEYCODE_STOP, input_seq::or_code, JOYCODE_BUTTON13_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON14,            "P1 Button 14",           input_seq(KEYCODE_SLASH, input_seq::or_code, JOYCODE_BUTTON14_INDEXED(0)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON15,            "P1 Button 15",           input_seq(KEYCODE_RSHIFT, input_seq::or_code, JOYCODE_BUTTON15_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON12,            "P1 Button 12",           input_seq(JOYCODE_BUTTON12_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON13,            "P1 Button 13",           input_seq(JOYCODE_BUTTON13_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON14,            "P1 Button 14",           input_seq(JOYCODE_BUTTON14_INDEXED(0)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON15,            "P1 Button 15",           input_seq(JOYCODE_BUTTON15_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, BUTTON16,            "P1 Button 16",           input_seq(JOYCODE_BUTTON16_INDEXED(0)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, TOGGLE_AUTOFIRE,     "P1 Toggle Autofire",     input_seq() ) \
 		INPUT_PORT_DIGITAL_TYPE( 1, PLAYER1, CUSTOM1,             "P1 Custom 1",            input_seq() ) \
@@ -152,9 +152,9 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKLEFT_DOWN,   "P2 Left Stick/Down",     input_seq() ) \
 		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKLEFT_LEFT,   "P2 Left Stick/Left",     input_seq() ) \
 		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, JOYSTICKLEFT_RIGHT,  "P2 Left Stick/Right",    input_seq() ) \
-		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON1,             "P2 Button 1",            input_seq(KEYCODE_A, input_seq::or_code, JOYCODE_BUTTON1_INDEXED(1), input_seq::or_code, MOUSECODE_BUTTON1_INDEXED(1), input_seq::or_code, GUNCODE_BUTTON1_INDEXED(1)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON2,             "P2 Button 2",            input_seq(KEYCODE_S, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(1), input_seq::or_code, MOUSECODE_BUTTON3_INDEXED(1), input_seq::or_code, GUNCODE_BUTTON2_INDEXED(1)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON3,             "P2 Button 3",            input_seq(KEYCODE_D, input_seq::or_code, JOYCODE_BUTTON3_INDEXED(1), input_seq::or_code, MOUSECODE_BUTTON2_INDEXED(1)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON1,             "P2 Button 1",            input_seq(KEYCODE_A, input_seq::or_code, JOYCODE_BUTTON1_INDEXED(1)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON2,             "P2 Button 2",            input_seq(KEYCODE_S, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(1)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON3,             "P2 Button 3",            input_seq(KEYCODE_D, input_seq::or_code, JOYCODE_BUTTON3_INDEXED(1)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON4,             "P2 Button 4",            input_seq(KEYCODE_Z, input_seq::or_code, JOYCODE_BUTTON4_INDEXED(1)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON5,             "P2 Button 5",            input_seq(KEYCODE_C, input_seq::or_code, JOYCODE_BUTTON5_INDEXED(1)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 2, PLAYER2, BUTTON6,             "P2 Button 6",            input_seq(KEYCODE_X, input_seq::or_code, JOYCODE_BUTTON6_INDEXED(1)) ) \
@@ -238,8 +238,8 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, JOYSTICKLEFT_DOWN,   "P3 Left Stick/Down",     input_seq() ) \
 		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, JOYSTICKLEFT_LEFT,   "P3 Left Stick/Left",     input_seq() ) \
 		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, JOYSTICKLEFT_RIGHT,  "P3 Left Stick/Right",    input_seq() ) \
-		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON1,             "P3 Button 1",            input_seq(KEYCODE_A, input_seq::or_code, JOYCODE_BUTTON1_INDEXED(2), input_seq::or_code, GUNCODE_BUTTON1_INDEXED(2)) ) \
-		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON2,             "P3 Button 2",            input_seq(KEYCODE_S, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(2), input_seq::or_code, GUNCODE_BUTTON2_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON1,             "P3 Button 1",            input_seq(KEYCODE_A, input_seq::or_code, JOYCODE_BUTTON1_INDEXED(2)) ) \
+		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON2,             "P3 Button 2",            input_seq(KEYCODE_S, input_seq::or_code, JOYCODE_BUTTON2_INDEXED(2)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON3,             "P3 Button 3",            input_seq(KEYCODE_D, input_seq::or_code, JOYCODE_BUTTON3_INDEXED(2)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON4,             "P3 Button 4",            input_seq(KEYCODE_Z, input_seq::or_code, JOYCODE_BUTTON4_INDEXED(2)) ) \
 		INPUT_PORT_DIGITAL_TYPE( 3, PLAYER3, BUTTON5,             "P3 Button 5",            input_seq(KEYCODE_C, input_seq::or_code, JOYCODE_BUTTON5_INDEXED(2)) ) \
@@ -562,15 +562,15 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN10,              "Coin 10",                input_seq() ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN11,              "Coin 11",                input_seq() ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   COIN12,              "Coin 12",                input_seq() ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   BILL1,               "Bill 1",                 input_seq(KEYCODE_BACKSPACE) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   BILL1,               "Bill 1",                 input_seq() ) \
 		CORE_INPUT_TYPES_END()
 
 #define CORE_INPUT_TYPES_SERVICE \
 		CORE_INPUT_TYPES_BEGIN(service) \
-		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE1,            "Service 1",              input_seq(KEYCODE_9) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE2,            "Service 2",              input_seq(KEYCODE_0) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE3,            "Service 3",              input_seq(KEYCODE_MINUS) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE4,            "Service 4",              input_seq(KEYCODE_EQUALS) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE1,            "Service 1",              input_seq() ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE2,            "Service 2",              input_seq() ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE3,            "Service 3",              input_seq() ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE4,            "Service 4",              input_seq() ) \
 		CORE_INPUT_TYPES_END()
 
 #define CORE_INPUT_TYPES_TILT \
@@ -585,7 +585,7 @@ namespace {
 		CORE_INPUT_TYPES_BEGIN(other) \
 		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   POWER_ON,            "Power On",               input_seq(KEYCODE_F1) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   POWER_OFF,           "Power Off",              input_seq(KEYCODE_F2) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE,             "Service",                input_seq(KEYCODE_F2) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   SERVICE,             "Service",                input_seq(KEYCODE_0) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   TILT,                "Tilt",                   input_seq(KEYCODE_T) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   INTERLOCK,           "Door Interlock",         input_seq() ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, OTHER,   MEMORY_RESET,        "Memory Reset",           input_seq(KEYCODE_F1) ) \
@@ -860,12 +860,12 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_PAUSE_SINGLE,     "Pause - Single Step",    input_seq(KEYCODE_P, KEYCODE_LSHIFT, input_seq::or_code, KEYCODE_P, KEYCODE_RSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_REWIND_SINGLE,    "Rewind - Single Step",   input_seq(KEYCODE_TILDE, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_RESET_MACHINE,    "Reset Machine",          input_seq(KEYCODE_F3, KEYCODE_LSHIFT, input_seq::or_code, KEYCODE_F3, KEYCODE_RSHIFT) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SOFT_RESET,       "Soft Reset",             input_seq(KEYCODE_F3, input_seq::not_code, KEYCODE_LSHIFT, input_seq::not_code, KEYCODE_RSHIFT) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SOFT_RESET,       "Soft Reset",             input_seq(KEYCODE_9) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SHOW_GFX,         "Show Gfx",               input_seq(KEYCODE_F4) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_FRAMESKIP_DEC,    "Frameskip Dec",          input_seq(KEYCODE_F8) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_FRAMESKIP_INC,    "Frameskip Inc",          input_seq(KEYCODE_F9) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_THROTTLE,         "Throttle",               input_seq(KEYCODE_F10) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_FAST_FORWARD,     "Fast Forward",           input_seq(KEYCODE_INSERT) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_THROTTLE,         "Throttle",               input_seq(KEYCODE_I) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_FAST_FORWARD,     "Fast Forward",           input_seq(KEYCODE_BACKSPACE) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SHOW_FPS,         "Show FPS",               input_seq(KEYCODE_F11, input_seq::not_code, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SNAPSHOT,         "Save Snapshot",          input_seq(KEYCODE_F12, input_seq::not_code, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_TIMECODE,         "Write current timecode", input_seq(KEYCODE_F12, input_seq::not_code, KEYCODE_LSHIFT) ) \
@@ -896,8 +896,8 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_RELEASE_POINTER,  "UI Release Pointer",     input_seq(KEYCODE_RCONTROL, KEYCODE_RALT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_PASTE,            "UI Paste Text",          input_seq(KEYCODE_SCRLOCK, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_TOGGLE_DEBUG,     "Toggle Debugger",        input_seq(KEYCODE_F5) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SAVE_STATE,       "Save State",             input_seq(KEYCODE_F7, KEYCODE_LSHIFT) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_LOAD_STATE,       "Load State",             input_seq(KEYCODE_F7, input_seq::not_code, KEYCODE_LSHIFT) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SAVE_STATE,       "Save State",             input_seq(KEYCODE_K) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_LOAD_STATE,       "Load State",             input_seq(KEYCODE_L) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_TAPE_START,       "UI (First) Tape Start",  input_seq(KEYCODE_F2, input_seq::not_code, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_TAPE_STOP,        "UI (First) Tape Stop",   input_seq(KEYCODE_F2, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_DATS,             "UI External DAT View",   input_seq(KEYCODE_LALT, KEYCODE_D) ) \
@@ -905,7 +905,7 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_EXPORT,           "UI Export list",         input_seq(KEYCODE_LALT, KEYCODE_E) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_AUDIT_FAST,       "UI Audit Unavailable",   input_seq(KEYCODE_F1, input_seq::not_code, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_AUDIT_ALL,        "UI Audit All",           input_seq(KEYCODE_F1, KEYCODE_LSHIFT) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SHOW_TIME,        "Show Current Time",      input_seq(KEYCODE_G, KEYCODE_LSHIFT) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,      UI_SHOW_TIME,        "Show Current Time",      input_seq(KEYCODE_O) ) \
 		CORE_INPUT_TYPES_END()
 		// Show Current Time - MAMEFX
 

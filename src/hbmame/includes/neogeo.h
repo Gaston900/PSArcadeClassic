@@ -158,11 +158,11 @@ public:
 	void init_mslug3();
 	void init_mslug3a();
 	void init_mslug3b6();
-	void init_mslug3d();
-	void init_mslug3fr();
+	void init_mslug3b6d();
 	void init_mslug3h();
-	void init_mslug3n();
+	void init_mslug3hb();
 	void init_mslug4();
+	void init_mslug4e();
 	void init_mslug4hb();
 	void init_mslug5();
 	void init_mslug5b();
@@ -170,10 +170,10 @@ public:
 	void init_mslug5hb();
 	void init_mslugx();
 	void init_ms4plus();
+	void init_ms4plushb();
 	void init_ms5pcb();
-	void init_ms5pcbd();
 	void init_ms5plus();
-	void init_mslug3n6p();
+	void init_ms5plushb();
 	void init_mp2s39();
 	void init_neogeo();
 	void init_nitd();
@@ -509,7 +509,13 @@ INPUT_PORTS_EXTERN(dualbios);
 	ROM_LOAD( name, 0x00000, 0x80000, hash ) \
 	ROM_RELOAD(     0x10000, 0x80000 )
 
-
+#define NEO_BIOS_AUDIO_ENCRYPTED_64K(name, hash) \
+	NEOGEO_BIOS \
+	ROM_REGION( 0x20000, "audiobios", 0 ) \
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
+	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF ) \
+	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
+	ROM_LOAD( name, 0x00000, 0x10000, hash )
 #define NEO_BIOS_AUDIO_ENCRYPTED_128K(name, hash) \
 	NEOGEO_BIOS \
 	ROM_REGION( 0x20000, "audiobios", 0 ) \

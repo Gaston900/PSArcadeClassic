@@ -2846,10 +2846,12 @@ trallycd                         //CD conversion
 zintrkcd                         //CD conversion
 
 @source:neogeo.cpp              //HomeBrew
+19yy                            //neogeo
 abyssal                         //neogeo
 abyssal1                        //neogeo
 cabalng                         //neogeo
 cabalng1                        //neogeo
+cakefght                        //neogeo
 caravan                         //neogeo
 cnbe                            //neogeo
 cnbe2018                        //neogeo
@@ -2864,6 +2866,7 @@ lhcdba                          //neogeo
 looptris                        //neogeo
 ltorb                           //neogeo
 neonopon                        //neogeo
+neopang                         //neogeo
 neopong                         //neogeo
 neoponga                        //neogeo
 neothund                        //neogeo
@@ -2871,9 +2874,9 @@ neotrisd1                       //neogeo
 neotrisd2                       //neogeo
 neotrisd3                       //neogeo
 bonusstage                      //neogeo
-nblktiger                       //neogeo
 ngem2k                          //neogeo
 ngtetris                        //neogeo
+nsmbd                           //neogeo
 nsmb                            //neogeo
 santabll                        //neogeo
 seafight                        //neogeo
@@ -11576,333 +11579,1273 @@ valkyrien                       // hack
 spclone                         // hack
 
 @source:neogeo.cpp
-bangbedd                        // bootleg
-bangbeadp                       // Visco
-ct2k3sp                         // bootleg
-ct2k3spd                        // bootleg
-cthd2k3d                        // bootleg
-ct2k3ad                         // bootleg
-cthd2k3a                        // bootleg
-dragons1                        // Face
-ganryud                         // Visco
-garoud                          // SNK
-jckeygpd                        // Sun Amusement / BrezzaSoft
-kof96ep                         // bootleg
-kof96ep2                        // bootleg
-kof96ep3                        // bootleg
-kof96cn                         // SNK
-kof97pla                        // bootleg
-kof99d                          // SNK
-kof99fd                         // SNK
-kof2000d                        // SNK
-kof2knd                         // SNK
-kof2kfd                         // SNK
-kof2001d                        // Eolith / SNK
-kof2001n                        // Eolith / SNK
-kf2k1pls                        // bootleg
-kf2k1pla                        // bootleg
-kof2k1nd                        // Eolith / SNK
-kof2k1hd                        // Eolith / SNK
-kof2k1fd                        // Eolith / SNK
-kf2k2pla                        // bootleg
-kf2k2plb                        // bootleg
-kf2k2plc                        // bootleg
-kof2002d                        // Eolith / Playmore
-kof2k2fd                        // Eolith / Playmore
-kof2003d                        // SNK Playmore
-kof2003f                        // SNK Playmore
-kof2k3d                         // SNK Playmore
-kf2k3bd                         // bootleg
-kof2k3hd                        // SNK Playmore
-kof2k3nd                        // SNK Playmore
-kf2k3pcd                        // SNK Playmore
-kof2k3pd                        // SNK Playmore
-kf2k3upd                        // SNK Playmore
-kf2k3bl2                        // bootleg
-kf2k3fd                         // SNK Playmore
-kogd                            // bootleg
-kogplus                         // bootleg
-kof10thd                        // bootleg
-kof2k8uni                       // bootleg
-kf2k5unh                        // bootleg
-kof10thud                       // bootleg
-kof2k4mp                        // bootleg
-kof2k4mp2                       // bootleg
-kf2k4pls                        // bootleg
-kof2k4spl                       // bootleg
-kofse2k4                        // bootleg
-lans2k4d                        // bootleg
-lba                             // SNK
-matrimd                         // bootleg
-matrima                         // bootleg
-matrimeh                        // bootleg
-matrimnd                        // bootleg
-nitdd                           // Eleven / Gavaking
-pbobblendx                      // bootleg
-pnyaad                          // Aiky
-pnyaadd                         // Aiky
-preisl2d                        // Yumekobo
-rotdd                           // Evoga / Playmore
-rotdnd                          // Evoga / Playmore
-s1945pd                         // Psikyo
-samsho3bh                       // bootleg
-samsh5bd                        // bootleg
-samsh5cd                        // Yuki Enterprise / SNK Playmore
-samsho5d                        // Yuki Enterprise / SNK Playmore
-samsh5hd                        // Yuki Enterprise / SNK Playmore
-samsh5nd                        // Yuki Enterprise / SNK Playmore
-ssh5spnd                        // Yuki Enterprise / SNK Playmore
-ssh5spn                         // Yuki Enterprise / SNK Playmore
-sams5spd                        // Yuki Enterprise / SNK Playmore
-samsh5spd2                      // Yuki Enterprise / SNK Playmore
-sams5sod                        // Yuki Enterprise / SNK Playmore
-sams5shd                        // Yuki Enterprise / SNK Playmore
-sengok3d                        // Noise Factory / SNK
-svcda                           // SNK Playmore
-svcd                            // SNK Playmore
-svcnd                           // SNK Playmore
-svcplusb                        // bootleg
-svcplusn                        // bootleg
-svcplusd                        // bootleg
-zupapad                         // SNK
-zupapand                        // SNK
+bangbedd                        // Decrypted / Bootleg
+ct2k3sp                         // Decrypted / Bootleg
+ct2k3spd                        // Decrypted / Bootleg
+cthd2k3d                        // Decrypted / Bootleg
+ct2k3ad                         // Decrypted / Bootleg
+cthd2k3a                        // Decrypted / Bootleg
+ganryud                         // Decrypted / Bootleg
+garoud                          // Decrypted / Bootleg
+garouhd                         // Decrypted / Bootleg
+jckeygpd                        // Decrypted / Bootleg
+kof96ep                         // Decrypted / Bootleg
+kof96ep2                        // Decrypted / Bootleg
+kof96ep3                        // Decrypted / Bootleg
+kof97pla                        // Decrypted / Bootleg
+kof99d                          // Decrypted / Bootleg
+kof99kd                         // Decrypted / Bootleg
+kof2kd                          // Decrypted / Bootleg
+kof2knd                         // Decrypted / Bootleg
+kof2k1d                         // Decrypted / Bootleg
+kof2k1hd                        // Decrypted / Bootleg
+kof2k1nd                        // Decrypted / Bootleg
+kof2k1e                         // Decrypted / Bootleg
+kof2k1pls                       // Decrypted / Bootleg
+kof2k1pa                        // Decrypted / Bootleg
+kof2k2d                         // Decrypted / Bootleg
+kof2k2nd                        // Decrypted / Bootleg
+kf2k2plad                       // Decrypted / Bootleg
+kf2k2plb                        // Decrypted / Bootleg
+kf2k2plc                        // Decrypted / Bootleg
+kof2003d                        // Decrypted / Bootleg
+kof2003f                        // Decrypted / Bootleg
+kof2k3d                         // Decrypted / Bootleg
+kof2k3bd                        // Decrypted / Bootleg
+kof2k3hd                        // Decrypted / Bootleg
+kof2k3nd                        // Decrypted / Bootleg
+kf2k3pcd                        // Decrypted / Bootleg
+kof2k3pd                        // Decrypted / Bootleg
+kf2k3upd                        // Decrypted / Bootleg
+kf2k3bl2                        // Decrypted / Bootleg
+kogd                            // Decrypted / Bootleg
+kogplus                         // Decrypted / Bootleg
+kof10thd                        // Decrypted / Bootleg
+kof2k8uni                       // Decrypted / Bootleg
+kof10thu                        // Decrypted / Bootleg
+kof10thud                       // Decrypted / Bootleg
+kof2k4mp                        // Decrypted / Bootleg
+kof2k4mp2                       // Decrypted / Bootleg
+kf2k4pls                        // Decrypted / Bootleg
+kof2k4spl                       // Decrypted / Bootleg
+kofse2k4                        // Decrypted / Bootleg
+lans2k4d                        // Decrypted / Bootleg
+matrimd                         // Decrypted / Bootleg
+matrima                         // Decrypted / Bootleg
+matrimeh                        // Decrypted / Bootleg
+matrimnd                        // Decrypted / Bootleg
+nitdd                           // Decrypted / Bootleg
+pbobblendx                      // Decrypted / Bootleg
+pnyaad                          // Decrypted / Bootleg
+pnyaadd                         // Decrypted / Bootleg
+pnyaan                          // Decrypted / Bootleg
+preisl2d                        // Decrypted / Bootleg
+rotdd                           // Decrypted / Bootleg
+rotdnd                          // Decrypted / Bootleg
+rotdndd                         // Decrypted / Bootleg
+s1945pd                         // Decrypted / Bootleg
+samsh3bh                        // Decrypted / Bootleg
+samsh5bd                        // Decrypted / Bootleg
+samsh5cd                        // Decrypted / Bootleg
+samsh5d                         // Decrypted / Bootleg
+samsh5hd                        // Decrypted / Bootleg
+samsh5nd                        // Decrypted / Bootleg
+ssh5spnd                        // Decrypted / Bootleg
+ssh5spn                         // Decrypted / Bootleg
+sams5spd                        // Decrypted / Bootleg
+samsh5spd                       // Decrypted / Bootleg
+samsh5spd2                      // Decrypted / Bootleg
+sams5sod                        // Decrypted / Bootleg
+sams5shd                        // Decrypted / Bootleg
+sengok3d                        // Decrypted / Bootleg
+svcda                           // Decrypted / Bootleg
+svcd                            // Decrypted / Bootleg
+svcnd                           // Decrypted / Bootleg
+svcplusb                        // Decrypted / Bootleg
+svcplusn                        // Decrypted / Bootleg
+svcplusd                        // Decrypted / Bootleg
+svcpcbd                         // Decrypted / Bootleg
+zupapad                         // Decrypted / Bootleg
+zupapand                        // Decrypted / Bootleg
 
 @source:neogeo.cpp
-androdunhc01                    // hack
-aofhc01                         // hack
-aof2hc01                        // hack
-aof2hc02                        // hack
-aof3hc01                        // hack
-ct2k3hc01                       // hack
-bjourneyhc01                    // hack
-blazstarhc01                    // hack
-breakershc01                    // hack
-breakrevhc01                    // hack
-breakrevhc02                    // hack
-breakrevhc03                    // hack
-burningfhc01                    // hack
-ctomadayhc01                    // hack
-doubledrhc01                    // hack
-doubledrhc02                    // hack
-doubledrhc03                    // hack
-doubledrhc04                    // hack
-eightmanhc01                    // hack
-fatfursphc01                    // hack
-fatfursphc02                    // hack
-fatfury1hc01                    // hack
-fatfury2hc01                    // hack
-fatfury2hc02                    // hack
-fatfury3hc01                    // hack
-fatfury3hc02                    // hack
-fightfevhc01                    // hack
-flipshothc01                    // hack
-galaxyfghc01                    // hack
-garouhc01                       // hack
-garouhc02                       // hack
-gowcaizrhc01                    // hack
-gowcaizrhc02                    // hack
-gpilotshc01                     // hack
-ironcladhc01                    // hack
-kabukiklhc01                    // hack
-karnovrhc01                     // hack
-kizunahc01                      // hack
-kizunahc02                      // hack
-kof94hc01                       // hack
-kof94hc02                       // hack
-kof94hc03                       // hack
-kof94hc04                       // hack
-kof95hc01                       // hack
-kof95hc02                       // hack
-kof96hc01                       // hack
-kof96hc02                       // hack
-kof96hc03                       // hack
-kof96hc04                       // hack
-kof97hc01                       // hack
-kof97hc02                       // hack
-kof97hc03                       // hack
-kof97hc04                       // hack
-kof97hc05                       // hack
-kof97hc06                       // hack
-kof97hc07                       // hack
-kof97hc08                       // hack
-kof97hc09                       // hack
-kof97hc10                       // hack
-kof97hc11                       // hack
-kof97hc12                       // hack
-kof97hc13                       // hack
-kof97hc14                       // hack
-kof97hc15                       // hack
-kof97hc16                       // hack
-kof97hc17                       // hack
-kof97hc18                       // hack
-kof97hc19                       // hack
-kof97hc20                       // hack
-kof97hc21                       // hack
-kof97hc22                       // hack
-kof97hc23                       // hack
-kof97hc24                       // hack
-kof97hc25                       // hack
-kof98hc01                       // hack
-kof98hc02                       // hack
-kof98hc03                       // hack
-kof98hc04                       // hack
-kof98hc05                       // hack
-kof98hc06                       // hack
-kof98hc07                       // hack
-kof98hc08                       // hack
-kof98hc09                       // hack
-kof98hc10                       // hack
-kof98hc11                       // hack
-kof98hc12                       // hack
-kof99hc01                       // hack
-kof99hc02                       // hack
-kof99hc03                       // hack
-kof99hc04                       // hack
-kof99hc05                       // hack
-kof99hc06                       // hack
-kof99hc07                       // hack
-kof99hc08                       // hack
-kof99hc09                       // hack
-kof2000hc01                     // hack
-kof2000hc02                     // hack
-kof2000hc03                     // hack
-kof2000hc04                     // hack
-kof2000hc05                     // hack
-kof2000hc06                     // hack
-kof2001hc01                     // hack
-kof2001hc02                     // hack
-kof2001hc03                     // hack
-kof2002hc01                     // hack
-kof2002hc02                     // hack
-kof2002hc03                     // hack
-kof2002hc04                     // hack
-kof2002hc05                     // hack
-kof2002hc06                     // hack
-kof2002hc07                     // hack
-kof2002hc08                     // hack
-kof2002hc09                     // hack
-kof2002hc10                     // hack
-kof2003hc01                     // hack
-kof2003hc02                     // hack
-kof2003hc03                     // hack
-koghc01                         // hack
-kof10thephc01                   // hack
-kf2k5unihc01                    // hack
-kf2k5unihc02                    // hack
-kof2k4sehc01                    // hack
-kof2k4sehc02                    // hack
-lastbladhc01                    // hack
-lastbladhc02                    // hack
-lastbladhc03                    // hack
-lastbladhc04                    // hack
-lastbladhc05                    // hack
-lastbld2hc01                    // hack
-lastbld2hc02                    // hack
-lastbld2hc03                    // hack
-lastbld2hc04                    // hack
-lresorthc01                     // hack
-magdrop3hc01                    // hack
-magdrop3hc02                    // hack
-magdrop3hc03                    // hack
-maglordhc01                     // hack
-matrimhc01                      // hack
-matrimhc02                      // hack
-miexchnghc01                    // hack
-mutnathc01                      // hack
-nam1975hc01                     // hack
-ncombathc01                     // hack
-ncommandhc01                    // hack
-neobombehc01                    // hack
-ninjamashc01                    // hack
-ninjamashc02                    // hack
-nitdhc01                        // hack
-nitdhc02                        // hack
-nitdhc03                        // hack
-pbobblenhc01                    // hack
-pbobblenhc02                    // hack
-preisle2hc01                    // hack
-ragnagrdhc01                    // hack
-ragnagrdhc02                    // hack
-ragnagrdhc03                    // hack
-rbffspechc01                    // hack
-rbffspechc02                    // hack
-rbff1hc01                       // hack
-rbff2hc01                       // hack
-rbff2hc02                       // hack
-rotdhc01                        // hack
-rotdhc02                        // hack
-rotdhc03                        // hack
-s1945phc01                      // hack
-s1945phc02                      // hack
-samshohc01                      // hack
-samshohc02                      // hack
-samshohc03                      // hack
-samsho2hc01                     // hack
-samsho2hc02                     // hack
-samsho2hc03                     // hack
-samsho2hc04                     // hack
-samsho3hc01                     // hack
-samsho3hc02                     // hack
-samsho3hc03                     // hack
-samsho4hc01                     // hack
-samsho4hc02                     // hack
-samsho4hc03                     // hack
-samsho4hc04                     // hack
-samsho4hc05                     // hack
-samsho5hc01                     // hack
-samsho5hc02                     // hack
-samsho5hc03                     // hack
-samsho5hc04                     // hack
-samsho5hc05                     // hack
-samsh5sphc01                    // hack
-samsh5sphc02                    // hack
-samsh5sphc03                    // hack
-samsh5sphc04                    // hack
-samsh5sphc05                    // hack
-savagerehc01                    // hack
-savagerehc02                    // hack
-sdodgebhc01                     // hack
-sengoku3hc01                    // hack
-sengoku3hc02                    // hack
-sengoku3hc03                    // hack
-sengoku3hc04                    // hack
-sengoku3hc05                    // hack
-sengoku3hc06                    // hack
-sengoku3hc07                    // hack
-sengoku3hc08                    // hack
-sengoku3hc09                    // hack
-shocktr2hc01                    // hack
-shocktrohc01                    // hack
-sonicwi2hc01                    // hack
-sonicwi3hc01                    // hack
-sonicwi3hc02                    // hack
-svcsplushc01                    // hack
-spinmasthc01                    // hack
-tophuntrhc01                    // hack
-twinsprihc01                    // hack
-viewpoinhc01                    // hack
-viewpoinhc02                    // hack
-wakuwak7hc01                    // hack
-wakuwak7hc02                    // hack
-wjammershc01                    // hack
-wjammershc02                    // hack
-whphc01                         // hack
-whphc02                         // hack
-wh1hc01                         // hack
-wh1hc02                         // hack
-wh2hc01                         // hack
-wh2hc02                         // hack
-wh2hc03                         // hack
-wh2jhc01                        // hack
-wh2jhc02                        // hack
-zintrckbhc01                    // hack
-cndi                            // Intro
-dti                             // Intro
-dwi                             // Intro
-gbi                             // Intro
-rci                             // Intro
-smi                             // Intro
-tmnti                           // Intro
+androdunhc01                    // Hack
+aofhc01                         // Hack
+aof2hc01                        // Hack
+aof2hc02                        // Hack
+aof3hc01                        // Hack
+burningfhc01                    // Hack
+bjourneyhc01                    // Hack
+blazstarhc01                    // Hack
+breakershc01                    // Hack
+breakrevhc01                    // Hack
+breakrevhc02                    // Hack
+breakrevhc03                    // Hack
+breakrevhc04                    // Hack
+cthd2k3bhc01                    // Hack
+cthd2k3bhc02                    // Hack
+ctomadayhc01                    // Hack
+cyberliphc01                    // Hack
+doubledrhc01                    // Hack
+doubledrhc02                    // Hack
+doubledrhc03                    // Hack
+doubledrhc04                    // Hack
+doubledrhc05                    // Hack
+doubledrhc06                    // Hack
+eightmanhc01                    // Hack
+fatfursphc01                    // Hack
+fatfursphc02                    // Hack
+fatfury1hc01                    // Hack
+fatfury2hc01                    // Hack
+fatfury2hc02                    // Hack
+fatfury2hc03                    // Hack
+fatfury3hc01                    // Hack
+fatfury3hc02                    // Hack
+fatfury3hc03                    // Hack
+fightfevhc01                    // Hack
+flipshothc01                    // Hack
+galaxyfghc01                    // Hack
+garouhc01                       // Hack
+garouhc02                       // Hack
+garouhc03                       // Hack
+ganryuhc01                      // Hack
+gowcaizrhc01                    // Hack
+gowcaizrhc02                    // Hack
+gpilotshc01                     // Hack
+hypernoid                       // HomeBrow
+kabukiklhc01                    // Hack
+karnovrhc01                     // Hack 
+kizunahc01                      // Hack 
+kizunahc02                      // Hack 
+kizunahc03                      // Hack 
+kof2k4sehc01                    // Hack
+kof2k4sehc02                    // Hack
+kof2k4sehc03                    // Hack
+kof2k4sehc04                    // Hack
+kof2k4sehc05                    // Hack
+kof2k4sehc06                    // Hack
+kof2k4sehc07                    // Hack
+kof2k4sehc08                    // Hack
+kof10thhc01                     // Hack
+kof10thhc02                     // Hack
+kof10thhc03                     // Hack
+kof10thhc04                     // Hack
+kof10thhc05                     // Hack
+kof10thhc06                     // Hack
+kof10thhc07                     // Hack
+kof10thhc08                     // Hack
+kof10thhc09                     // Hack
+kof10thhc10                     // Hack
+kof10thhc11                     // Hack
+kof10thhc12                     // Hack
+kof10thhc13                     // Hack
+kof10thhc14                     // Hack
+kof94hc01                       // Hack
+kof94hc02                       // Hack
+kof94hc03                       // Hack
+kof94hc04                       // Hack
+kof94hc05                       // Hack
+kof94hc06                       // Hack
+kof94hc07                       // Hack
+kof94hc08                       // Hack
+kof94hc09                       // Hack
+kof95hc01                       // Hack
+kof95hc02                       // Hack
+kof95hc03                       // Hack
+kof95hc04                       // Hack
+kof96hc01                       // Hack
+//kof96hc02                       // Hack [It does not work]
+kof96hc03                       // Hack
+kof96hc04                       // Hack
+kof96hc05                       // Hack
+//kof96hc06                       // Hack
+//kof96hc07                       // Hack
+kof96hc08                       // Hack
+kof96hc09                       // Hack
+kof96hc10                       // Hack
+kof96hc11                       // Hack
+kof96hc12                       // Hack
+kof96hc13                       // Hack
+kof96hc14                       // Hack
+kof96hc15                       // Hack
+kof96hc16                       // Hack
+kof96hc17                       // Hack
+kof96hc18                       // Hack
+kof96hc19                       // Hack
+kof96hc20                       // Hack
+kof97hc01                       // Hack
+kof97hc02                       // Hack
+kof97hc03                       // Hack
+kof97hc04                       // Hack
+kof97hc05                       // Hack
+kof97hc06                       // Hack
+kof97hc07                       // Hack
+kof97hc08                       // Hack
+kof97hc09                       // Hack
+kof97hc10                       // Hack
+kof97hc11                       // Hack
+kof97hc12                       // Hack
+kof97hc13                       // Hack
+kof97hc14                       // Hack
+kof97hc15                       // Hack
+kof97hc16                       // Hack
+kof97hc17                       // Hack
+kof97hc18                       // Hack
+kof97hc19                       // Hack
+kof97hc20                       // Hack
+kof97hc21                       // Hack
+kof97hc22                       // Hack
+kof97hc23                       // Hack
+kof97hc24                       // Hack
+kof97hc25                       // Hack
+//kof97hc26                       // Hack [It does not work]
+kof97hc27                       // Hack
+kof97hc28                       // Hack
+kof97hc29                       // Hack
+kof97hc30                       // Hack
+kof97hc31                       // Hack
+kof97hc32                       // Hack
+kof97hc33                       // Hack
+kof97hc34                       // Hack
+kof97hc35                       // Hack
+kof97hc36                       // Hack
+kof97hc37                       // Hack
+kof97hc38                       // Hack
+kof97hc39                       // Hack
+kof97hc40                       // Hack
+kof97hc41                       // Hack
+kof97hc42                       // Hack
+kof97hc43                       // Hack
+kof97hc44                       // Hack
+kof97hc45                       // Hack
+kof97hc46                       // Hack
+kof97hc47                       // Hack
+kof97hc48                       // Hack
+kof97hc49                       // Hack
+kof97hc50                       // Hack
+kof97hc51                       // Hack
+kof97hc52                       // Hack
+kof97hc53                       // Hack
+kof97hc54                       // Hack
+kof97hc55                       // Hack
+kof97hc56                       // Hack
+kof97hc57                       // Hack
+kof97hc58                       // Hack
+kof97hc59                       // Hack
+kof97hc60                       // Hack
+kof97hc61                       // Hack
+kof97hc62                       // Hack
+kof97hc63                       // Hack
+kof97hc64                       // Hack
+kof97hc65                       // Hack
+kof97hc66                       // Hack
+kof97hc67                       // Hack
+kof97hc68                       // Hack
+kof97hc69                       // Hack
+kof97hc70                       // Hack
+kof97hc71                       // Hack
+kof97hc72                       // Hack
+kof97hc73                       // Hack
+kof97hc74                       // Hack
+kof97hc75                       // Hack
+kof97hc76                       // Hack
+kof97hc77                       // Hack
+kof97hc78                       // Hack
+kof97hc79                       // Hack
+kof97hc80                       // Hack
+kof97hc81                       // Hack
+kof97hc82                       // Hack
+kof97hc83                       // Hack
+kof97hc84                       // Hack
+kof97hc85                       // Hack
+kof97hc86                       // Hack
+kof97hc87                       // Hack
+kof97hc88                       // Hack
+kof97hc89                       // Hack
+kof97hc90                       // Hack
+kof97hc91                       // Hack
+kof97hc92                       // Hack
+kof97hc93                       // Hack
+kof97hc94                       // Hack
+kof97hc95                       // Hack
+kof97hc96                       // Hack
+kof97hc97                       // Hack
+kof97hc98                       // Hack
+kof97hc99                       // Hack
+kof97hc100                      // Hack
+kof97hc101                      // Hack
+kof97hc102                      // Hack
+kof97hc103                      // Hack
+kof97hc104                      // Hack
+kof97hc105                      // Hack
+kof97hc106                      // Hack
+kof97hc107                      // Hack
+kof97hc108                      // Hack
+kof97hc109                      // Hack
+//kof97hc110                      // Hack
+//kof97hc111                      // Hack
+//kof97hc112                      // Hack
+//kof97hc113                      // Hack
+//kof97hc114                      // Hack
+//kof97hc115                      // Hack
+//kof97hc116                      // Hack
+//kof97hc117                      // Hack
+//kof97hc118                      // Hack
+//kof97hc119                      // Hack
+//kof97hc120                      // Hack
+//kof97hc121                      // Hack
+//kof97hc122                      // Hack
+//kof97hc123                      // Hack
+//kof97hc124                      // Hack
+//kof97hc125                      // Hack
+//kof97hc126                      // Hack
+//kof97hc127                      // Hack
+//kof97hc128                      // Hack
+//kof97hc129                      // Hack
+//kof97hc130                      // Hack
+//kof97hc131                      // Hack
+//kof97hc132                      // Hack
+kof97hc133                      // Hack
+kof97hc134                      // Hack
+kof97hc135                      // Hack
+kof97hc136                      // Hack
+kof97hc137                      // Hack
+kof97hc138                      // Hack
+kof97hc139                      // Hack
+kof97hc140                      // Hack
+kof97hc141                      // Hack
+kof97hc142                      // Hack
+kof97hc143                      // Hack
+kof97hc144                      // Hack
+kof97hc145                      // Hack
+kof97hc146                      // Hack
+kof97hc147                      // Hack
+kof97hc148                      // Hack
+kof97hc149                      // Hack
+kof97hc150                      // Hack
+kof97hc151                      // Hack
+kof97hc152                      // Hack
+kof97hc153                      // Hack
+kof97hc154                      // Hack
+kof97hc155                      // Hack
+kof97hc156                      // Hack
+//kof97hc157                      // Hack
+kof97hc158                      // Hack
+kof97hc159                      // Hack
+kof97hc160                      // Hack
+kof97hc161                      // Hack
+kof97hc162                      // Hack
+kof97hc163                      // Hack
+kof97hc164                      // Hack
+kof97hc165                      // Hack
+kof97hc166                      // Hack
+kof97hc167                      // Hack
+kof97hc168                      // Hack
+kof97hc169                      // Hack
+kof97hc170                      // Hack
+kof97hc171                      // Hack
+kof97hc172                      // Hack
+kof97hc173                      // Hack
+kof97hc174                      // Hack
+kof97hc175                      // Hack
+kof97hc176                      // Hack
+kof97hc177                      // Hack
+kof97hc178                      // Hack
+kof97hc179                      // Hack
+kof97hc180                      // Hack
+kof97hc181                      // Hack
+kof97hc182                      // Hack
+kof97hc183                      // Hack
+kof97hc184                      // Hack
+kof97hc185                      // Hack
+kof97hc186                      // Hack
+kof97hc187                      // Hack
+kof97hc188                      // Hack
+kof97hc189                      // Hack
+kof97hc190                      // Hack
+kof97hc191                      // Hack
+kof97hc192                      // Hack
+kof97hc193                      // Hack
+kof97hc194                      // Hack
+kof97hc195                      // Hack
+kof97hc196                      // Hack
+kof97hc197                      // Hack
+kof97hc198                      // Hack
+kof97hc199                      // Hack
+kof97hc200                      // Hack
+kof97hc201                      // Hack
+kof97hc202                      // Hack
+kof97hc203                      // Hack
+kof97hc204                      // Hack
+kof97hc205                      // Hack
+kof97hc206                      // Hack
+kof97hc207                      // Hack
+kof97hc208                      // Hack
+kof97hc209                      // Hack
+kof97hc210                      // Hack
+kof97hc211                      // Hack
+kof97hc212                      // Hack
+kof97hc213                      // Hack
+kof97hc214                      // Hack
+kof97hc215                      // Hack
+kof97hc216                      // Hack
+kof97hc217                      // Hack
+kof97hc218                      // Hack
+kof97hc219                      // Hack
+kof97hc220                      // Hack
+kof97hc221                      // Hack
+kof97hc222                      // Hack
+kof97hc223                      // Hack
+kof97hc224                      // Hack
+kof97hc225                      // Hack
+kof97hc226                      // Hack
+kof97hc227                      // Hack
+kof97hc228                      // Hack
+kof97hc229                      // Hack
+kof97hc230                      // Hack
+kof97hc231                      // Hack
+kof97hc232                      // Hack
+kof97hc233                      // Hack
+kof97hc234                      // Hack
+kof97hc235                      // Hack
+kof97hc236                      // Hack
+kof97hc237                      // Hack
+kof97hc238                      // Hack
+kof97hc239                      // Hack
+kof97hc240                      // Hack
+kof97hc241                      // Hack
+kof97hc242                      // Hack
+kof97hc243                      // Hack
+kof97hc244                      // Hack
+kof97hc245                      // Hack
+kof97hc246                      // Hack
+kof97hc247                      // Hack
+kof97hc248                      // Hack
+kof97hc249                      // Hack
+kof97hc250                      // Hack
+kof97hc251                      // Hack
+kof97hc252                      // Hack
+kof97hc253                      // Hack
+kof97hc254                      // Hack
+//kof97hc255                      // Hack
+//kof97hc256                      // Hack
+//kof97hc257                      // Hack
+kof97hc258                      // Hack
+kof97hc259                      // Hack
+kof97hc260                      // Hack
+kof97hc260                      // Hack
+kof97hc261                      // Hack
+kof97hc262                      // Hack
+kof97hc263                      // Hack
+kof97hc264                      // Hack
+kof97hc265                      // Hack
+kof97hc266                      // Hack
+//kof97hc267                      // Hack [It does not work]
+kof97hc268                      // Hack
+kof97hc269                      // Hack
+kof97hc270                      // Hack
+kof97hc271                      // Hack
+kof97hc272                      // Hack
+kof97hc273                      // Hack
+kof97hc274                      // Hack
+kof97hc275                      // Hack
+kof97hc276                      // Hack
+kof97hc277                      // Hack
+kof98hc01                       // Hack
+kof98hc02                       // Hack
+kof98hc03                       // Hack
+kof98hc04                       // Hack
+kof98hc05                       // Hack
+kof98hc06                       // Hack
+kof98hc07                       // Hack
+kof98hc08                       // Hack
+kof98hc09                       // Hack
+kof98hc10                       // Hack
+kof98hc11                       // Hack
+kof98hc12                       // Hack
+kof98hc13                       // Hack
+kof98hc14                       // Hack
+kof98hc15                       // Hack
+kof98hc16                       // Hack
+kof98hc17                       // Hack
+kof98hc18                       // Hack
+kof98hc19                       // Hack
+kof98hc20                       // Hack
+kof98hc21                       // Hack
+kof98hc22                       // Hack
+kof98hc23                       // Hack
+kof98hc24                       // Hack
+kof98hc25                       // Hack
+//kof98hc26                       // Hack [It does not work]
+kof98hc27                       // Hack
+kof98hc28                       // Hack
+kof98hc29                       // Hack
+kof98hc30                       // Hack
+kof98hc31                       // Hack
+kof98hc32                       // Hack
+kof98hc33                       // Hack
+kof98hc34                       // Hack
+kof98hc35                       // Hack
+kof98hc36                       // Hack
+kof98hc37                       // Hack
+kof98hc38                       // Hack
+kof98hc39                       // Hack
+kof98hc40                       // Hack
+kof98hc41                       // Hack
+kof98hc42                       // Hack
+kof98hc43                       // Hack
+kof98hc44                       // Hack
+kof98hc45                       // Hack
+kof98hc46                       // Hack
+kof98hc47                       // Hack
+kof98hc48                       // Hack
+kof98hc49                       // Hack
+kof98hc50                       // Hack
+kof98hc51                       // Hack
+kof98hc52                       // Hack
+kof98hc53                       // Hack
+kof98hc54                       // Hack
+kof98hc55                       // Hack
+kof98hc56                       // Hack
+kof98hc57                       // Hack
+kof98hc58                       // Hack
+kof98hc59                       // Hack
+kof98hc60                       // Hack
+kof98hc61                       // Hack
+kof98hc62                       // Hack
+kof98hc63                       // Hack
+kof98hc64                       // Hack
+kof98hc65                       // Hack
+kof98hc66                       // Hack
+kof98hc67                       // Hack
+kof98hc68                       // Hack
+kof98hc69                       // Hack
+kof98hc70                       // Hack
+kof98hc71                       // Hack
+kof98hc72                       // Hack
+kof98hc73                       // Hack
+kof98hc74                       // Hack
+kof98hc75                       // Hack
+kof98hc76                       // Hack
+kof98hc77                       // Hack
+kof98hc78                       // Hack
+kof98hc79                       // Hack
+kof98hc80                       // Hack
+kof98hc81                       // Hack
+kof98hc82                       // Hack
+kof98hc83                       // Hack
+kof98hc84                       // Hack
+kof98hc85                       // Hack
+kof98hc86                       // Hack
+kof98hc87                       // Hack
+kof98hc88                       // Hack
+kof98hc89                       // Hack
+kof98hc90                       // Hack
+kof98hc91                       // Hack
+kof98hc92                       // Hack
+kof98hc93                       // Hack
+kof98hc94                       // Hack
+kof98hc95                       // Hack
+kof98hc96                       // Hack
+kof98hc97                       // Hack
+kof98hc98                       // Hack
+kof98hc99                       // Hack
+kof98hc100                      // Hack
+kof98hc101                      // Hack
+kof98hc102                      // Hack
+kof98hc103                      // Hack
+kof98hc104                      // Hack
+kof98hc105                      // Hack
+kof98hc106                      // Hack
+kof98hc107                      // Hack
+kof98hc108                      // Hack
+kof98hc109                      // Hack
+kof98hc110                      // Hack
+kof98hc111                      // Hack
+kof98hc112                      // Hack
+kof98hc113                      // Hack
+kof98hc114                      // Hack
+kof98hc115                      // Hack
+kof98hc116                      // Hack
+kof98hc117                      // Hack
+kof98hc118                      // Hack
+kof98hc119                      // Hack
+kof98hc120                      // Hack
+kof98hc121                      // Hack
+kof98hc122                      // Hack
+kof98hc123                      // Hack
+kof98hc124                      // Hack
+kof99hc01                       // Hack
+kof99hc02                       // Hack
+kof99hc03                       // Hack
+kof99hc04                       // Hack
+kof99hc05                       // Hack
+kof99hc06                       // Hack
+kof99hc07                       // Hack
+kof99hc08                       // Hack
+kof99hc09                       // Hack
+kof99hc10                       // Hack
+kof99hc11                       // Hack
+kof99hc12                       // Hack
+kof99hc13                       // Hack
+kof99hc14                       // Hack
+kof99hc15                       // Hack
+kof99hc16                       // Hack
+kof99hc17                       // Hack
+kof99hc18                       // Hack
+kof99hc19                       // Hack
+kof99hc20                       // Hack
+kof99hc21                       // Hack
+kof99hc22                       // Hack
+kof99hc23                       // Hack
+kof99hc24                       // Hack
+kof99hc25                       // Hack
+kof99hc26                       // Hack
+kof99hc27                       // Hack
+kof99hc28                       // Hack
+kof99hc29                       // Hack
+kof99hc30                       // Hack
+kof99hc31                       // Hack
+kof99hc32                       // Hack
+kof99hc33                       // Hack
+kof99hc34                       // Hack
+kof99hc35                       // Hack
+kof99hc36                       // Hack
+kof99hc37                       // Hack
+kof99hc38                       // Hack
+kof99hc39                       // Hack
+kof99hc40                       // Hack
+kof99hc41                       // Hack
+kof99hc42                       // Hack
+kof99hc43                       // Hack
+kof99hc44                       // Hack
+kof99hc45                       // Hack
+kof99hc46                       // Hack
+kof99hc47                       // Hack
+kof99hc48                       // Hack
+kof99hc49                       // Hack
+kof99hc50                       // Hack
+kof99hc51                       // Hack
+kof99hc52                       // Hack
+kof99hc53                       // Hack
+kof99hc54                       // Hack
+kof99hc55                       // Hack
+kof99hc56                       // Hack
+kof99hc57                       // Hack
+kof99hc58                       // Hack
+kof99hc59                       // Hack
+kof99hc60                       // Hack
+kof99hc61                       // Hack
+kof99hc62                       // Hack
+kof99hc63                       // Hack
+kof99hc64                       // Hack
+kof99hc65                       // Hack
+kof99hc66                       // Hack
+kof99hc67                       // Hack
+kof99hc68                       // Hack
+kof99hc69                       // Hack
+kof99hc70                       // Hack
+kof99hc71                       // Hack
+kof99hc72                       // Hack
+kof99hc73                       // Hack
+kof99hc74                       // Hack
+kof99hc75                       // Hack
+kof99hc76                       // Hack
+kof99hc77                       // Hack
+kof99hc78                       // Hack
+kof99hc79                       // Hack
+kof99hc80                       // Hack
+kof99hc81                       // Hack
+kof99hc82                       // Hack
+kof99hc83                       // Hack
+kof99hc84                       // Hack
+kof99hc85                       // Hack
+kof2000hc01                     // Hack
+kof2000hc02                     // Hack
+kof2000hc03                     // Hack
+kof2000hc04                     // Hack
+kof2000hc05                     // Hack
+kof2000hc06                     // Hack
+kof2000hc07                     // Hack
+kof2000hc08                     // Hack
+kof2000hc09                     // Hack
+kof2000hc10                     // Hack
+kof2000hc11                     // Hack
+kof2000hc12                     // Hack
+kof2000hc13                     // Hack
+kof2000hc14                     // Hack
+kof2000hc15                     // Hack
+kof2000hc16                     // Hack
+kof2000hc17                     // Hack
+kof2000hc18                     // Hack
+kof2000hc19                     // Hack
+kof2000hc20                     // Hack
+kof2000hc21                     // Hack
+kof2000hc22                     // Hack
+kof2000hc23                     // Hack
+kof2000hc24                     // Hack
+kof2000hc25                     // Hack
+kof2000hc26                     // Hack
+kof2000hc27                     // Hack
+kof2000hc28                     // Hack
+kof2000hc29                     // Hack
+kof2000hc30                     // Hack
+kof2000hc31                     // Hack
+//kof2001hc01                     // Hack [It does not work]
+//kof2001hc02                     // Hack [It does not work]
+//kof2001hc03                     // Hack [It does not work]
+//kof2001hc04                     // Hack [It does not work]
+kof2001hc05                     // Hack
+kof2001hc06                     // Hack
+kof2001hc07                     // Hack
+kof2001hc08                     // Hack
+kof2001hc09                     // Hack
+kof2001hc10                     // Hack
+kof2001hc11                     // Hack
+kof2001hc12                     // Hack
+kof2001hc13                     // Hack
+kof2001hc14                     // Hack
+kof2001hc15                     // Hack
+kof2001hc16                     // Hack
+kof2001hc17                     // Hack
+kof2001hc18                     // Hack
+kof2001hc19                     // Hack
+kof2001hc20                     // Hack
+kof2001hc21                     // Hack
+kof2001hc22                     // Hack
+kof2001hc23                     // Hack
+kof2001hc24                     // Hack
+kof2001hc25                     // Hack
+kof2001hc26                     // Hack
+//kof2001hc27                     // Hack [It does not work]
+kof2001hc28                     // Hack
+kof2002hc01                     // Hack
+kof2002hc02                     // Hack
+kof2002hc03                     // Hack
+kof2002hc04                     // Hack
+kof2002hc05                     // Hack
+kof2002hc06                     // Hack
+kof2002hc07                     // Hack
+kof2002hc08                     // Hack
+kof2002hc09                     // Hack
+kof2002hc10                     // Hack
+kof2002hc11                     // Hack
+kof2002hc12                     // Hack
+kof2002hc13                     // Hack
+kof2002hc14                     // Hack
+kof2002hc15                     // Hack
+kof2002hc16                     // Hack
+kof2002hc17                     // Hack
+kof2002hc18                     // Hack
+kof2002hc19                     // Hack
+kof2002hc20                     // Hack
+kof2002hc21                     // Hack
+kof2002hc22                     // Hack
+kof2002hc23                     // Hack
+kof2002hc24                     // Hack
+kof2002hc25                     // Hack
+kof2002hc26                     // Hack
+//kof2002hc27                     // Hack
+kof2002hc28                     // Hack
+kof2002hc29                     // Hack
+//kof2002hc30                     // Hack
+kof2002hc31                     // Hack
+kof2002hc32                     // Hack
+kof2002hc33                     // Hack
+kof2002hc34                     // Hack
+kof2002hc35                     // Hack
+kof2002hc36                     // Hack
+kof2002hc37                     // Hack
+kof2002hc38                     // Hack
+kof2002hc39                     // Hack
+//kof2002hc40                     // Hack
+//kof2002hc41                     // Hack
+kof2002hc42                     // Hack
+kof2002hc43                     // Hack
+//kof2002hc44                     // Hack
+//kof2002hc45                     // Hack
+//kof2002hc46                     // Hack
+//kof2002hc47                     // Hack
+kof2002hc48                     // Hack
+//kof2002hc49                     // Hack
+kof2002hc50                     // Hack
+kof2002hc51                     // Hack
+kof2002hc52                     // Hack
+kof2002hc53                     // Hack
+kof2002hc54                     // Hack
+kof2002hc55                     // Hack
+kof2002hc56                     // Hack
+//kof2002hc57                     // Hack
+kof2002hc58                     // Hack
+kof2002hc59                     // Hack
+kof2002hc60                     // Hack
+kof2002hc61                     // Hack
+kof2002hc62                     // Hack
+kof2002hc63                     // Hack
+kof2002hc64                     // Hack
+kof2002hc65                     // Hack
+kof2002hc66                     // Hack
+kof2002hc67                     // Hack
+kof2002hc68                     // Hack
+kof2002hc69                     // Hack
+//kof2002hc70                     // Hack
+kof2002hc71                     // Hack
+kof2002hc72                     // Hack
+kof2002hc73                     // Hack
+kof2002hc74                     // Hack
+kof2002hc75                     // Hack
+kof2002hc76                     // Hack
+kof2002hc77                     // Hack
+kof2002hc78                     // Hack
+kof2002hc79                     // Hack
+kof2002hc80                     // Hack
+kof2002hc81                     // Hack
+kof2002hc82                     // Hack
+kof2002hc83                     // Hack
+kof2002hc84                     // Hack
+kof2002hc85                     // Hack
+kof2002hc86                     // Hack
+kof2002hc87                     // Hack
+kof2002hc88                     // Hack
+kof2002hc89                     // Hack
+kof2002hc90                     // Hack
+kof2002hc91                     // Hack
+kof2002hc92                     // Hack
+kof2002hc93                     // Hack
+kof2002hc94                     // Hack
+kof2002hc95                     // Hack
+kof2002hc96                     // Hack
+kof2002hc97                     // Hack
+kof2002hc98                     // Hack
+kof2002hc99                     // Hack
+kof2002hc100                    // Hack
+kof2002hc101                    // Hack
+kof2002hc102                    // Hack
+kof2002hc103                    // Hack
+kof2002hc104                    // Hack
+kof2002hc105                    // Hack
+kof2002hc106                    // Hack
+kof2002hc107                    // Hack
+kof2002hc108                    // Hack
+kof2002hc109                    // Hack
+kof2002hc110                    // Hack
+kof2002hc111                    // Hack
+kof2002hc112                    // Hack
+kof2002hc113                    // Hack
+kof2002hc114                    // Hack
+//kof2002hc115                    // Hack [It does not work]
+//kof2002hc116                    // Hack [It does not work]
+kof2002hc117                    // Hack
+kof2002hc118                    // Hack
+//kof2002hc119                    // Hack [It does not work]
+kof2002hc120                    // Hack
+kof2002hc121                    // Hack
+kof2002hc122                    // Hack
+kof2002hc123                    // Hack
+kof2002hc124                    // Hack
+kof2002hc125                    // Hack
+kof2002hc126                    // Hack
+kof2002hc127                    // Hack
+kof2002hc128                    // Hack
+kof2002hc129                    // Hack
+kof2002hc130                    // Hack
+kof2002hc131                    // Hack
+kof2002hc132                    // Hack
+kof2002hc133                    // Hack
+kof2002hc134                    // Hack
+kof2002hc135                    // Hack
+kof2002hc136                    // Hack
+kof2002hc137                    // Hack
+kof2002hc138                    // Hack
+kof2002hc139                    // Hack
+kof2002hc140                    // Hack
+kof2002hc141                    // Hack
+kof2002hc142                    // Hack
+kof2002hc143                    // Hack
+kof2002hc144                    // Hack
+kof2002hc145                    // Hack
+kof2002hc146                    // Hack
+kof2002hc147                    // Hack
+kof2002hc148                    // Hack
+kof2002hc149                    // Hack
+kof2002hc150                    // Hack
+kof2002hc151                    // Hack
+kof2002hc152                    // Hack
+kof2002hc153                    // Hack
+kof2002hc154                    // Hack
+kof2002hc155                    // Hack
+kof2002hc156                    // Hack
+kof2003hc01                     // Hack
+kof2003hc02                     // Hack
+kof2003hc03                     // Hack
+kof2003hc04                     // Hack
+kof2003hc05                     // Hack
+kof2003hc06                     // Hack
+kof2003hc07                     // Hack
+kof2003hc08                     // Hack
+//kof2003hc09                     // Hack [It does not work]
+kof2003hc10                     // Hack
+kof2003hc11                     // Hack
+kof2003hc12                     // Hack
+kof2003hc13                     // Hack
+koghc01                         // Hack
+koghc02                         // Hack
+koghc03                         // Hack
+lans2004hc01                    // Hack
+lastbladhc01                    // Hack
+lastbladhc02                    // Hack
+lastbladhc03                    // Hack
+lastbladhc04                    // Hack
+lastbladhc05                    // Hack
+lastbladhc06                    // Hack
+lastbladhc07                    // Hack
+//lastbladhc08                    // Hack [It does not work]
+//lastbladhc09                    // Hack [It does not work]
+lastbld2hc01                    // Hack
+lastbld2hc02                    // Hack
+lastbld2hc03                    // Hack
+lastbld2hc04                    // Hack
+lastbld2hc05                    // Hack
+lastbld2hc06                    // Hack
+lastbld2hc07                    // Hack
+lresorthc01                     // Hack
+magdrop3hc01                    // Hack
+magdrop3hc02                    // Hack
+magdrop3hc03                    // Hack
+maglordhc01                     // Hack
+matrimhc01                      // Hack  
+matrimhc02                      // Hack 
+matrimhc03                      // Hack
+miexchnghc01                    // Hack 
+mslughx01                       // Hack
+mslughx02                       // Hack
+mslughx03                       // Hack
+mslughx04                       // Hack
+mslughx05                       // Hack
+mslug2hx01                      // Hack
+mslug2hx02                      // Hack
+mslug2hx03                      // Hack
+mslug2hx04                      // Hack
+mslug2hx05                      // Hack
+mslug2hx06                      // Hack
+mslug2hx07                      // Hack
+mslug2hx08                      // Hack
+mslug3hx01                      // Hack
+mslug3hx02                      // Hack
+mslug3hx03                      // Hack
+mslug3hx04                      // Hack
+mslug3hx05                      // Hack
+mslug3hx06                      // Hack
+mslug3hx07                      // Hack
+mslug3hx08                      // Hack
+mslug3hx09                      // Hack
+mslug3hx10                      // Hack
+mslug3hx11                      // Hack
+mslug3hx12                      // Hack
+mslug3hx13                      // Hack
+mslug3hx14                      // Hack
+mslug3hx15                      // Hack
+mslug3hx16                      // Hack
+mslug3hx17                      // Hack
+mslug3hx18                      // Hack
+mslug3hx19                      // Hack
+mslug3hx20                      // Hack
+mslug3hx21                      // Hack
+mslug4hx01                      // Hack
+mslug4hx02                      // Hack
+mslug4hx03                      // Hack
+mslug4hx04                      // Hack
+mslug4hx05                      // Hack
+mslug4hx06                      // Hack
+mslug4hx07                      // Hack
+mslug4hx08                      // Hack
+mslug4hx09                      // Hack
+mslug4hx10                      // Hack
+mslug4hx11                      // Hack
+mslug4hx12                      // Hack
+mslug4hx13                      // Hack
+mslug4hx14                      // Hack
+mslug4hx15                      // Hack
+mslug4hx16                      // Hack
+mslug4hx17                      // Hack
+mslug4hx18                      // Hack
+mslug4hx19                      // Hack
+mslug4hx20                      // Hack
+mslug4hx21                      // Hack
+mslug4hx22                      // Hack
+mslug4hx23                      // Hack
+mslug4hx24                      // Hack
+mslug4hx25                      // Hack
+mslug4hx26                      // Hack
+mslug4hx27                      // Hack
+mslug4hx28                      // Hack
+mslug5hx01                      // Hack
+mslug5hx02                      // Hack
+mslug5hx03                      // Hack
+mslug5hx04                      // Hack
+mslug5hx05                      // Hack
+mslug5hx06                      // Hack
+mslug5hx07                      // Hack
+mslug5hx08                      // Hack
+mslug5hx09                      // Hack
+mslug5hx10                      // Hack
+mslug5hx11                      // Hack
+mslug5hx12                      // Hack
+//mslug5hx13                      // Hack
+mslug5hx14                      // Hack
+mslug5hx15                      // Hack
+mslug5hx16                      // Hack
+mslug5hx17                      // Hack
+mslug5hx18                      // Hack
+mslug5hx19                      // Hack
+mslug5hx20                      // Hack
+mslug5hx21                      // Hack
+mslug5hx22                      // Hack
+mslug5hx23                      // Hack
+mslug5hx24                      // Hack
+mslug5hx25                      // Hack
+mslug5hx26                      // Hack
+mslug5hx27                      // Hack
+mslug5hx28                      // Hack
+mslug5hx29                      // Hack
+mslug5hx30                      // Hack
+mslug5hx31                      // Hack
+mslug5hx32                      // Hack
+mslug5hx33                      // Hack
+mslug5hx34                      // Hack
+mslug5hx35                      // Hack
+mslug5hx36                      // Hack
+mslug5hx37                      // Hack
+mslug5hx38                      // Hack
+mslug5hx39                      // Hack
+mslug5hx40                      // Hack
+mslug5hx41                      // Hack
+mslug5hx42                      // Hack
+mslug5hx43                      // Hack
+mslug5hx44                      // Hack
+mslug5hx45                      // Hack
+mslug5hx46                      // Hack
+mslug5hx47                      // Hack
+mslug5hx48                      // Hack
+mslug5hx49                      // Hack
+mslug5hx50                      // Hack
+mslug5hx51                      // Hack
+mslug5hx52                      // Hack
+mslug5hx53                      // Hack
+mslug5hx54                      // Hack
+mslug5hx55                      // Hack
+mslug5hx56                      // Hack
+mslug3b6hx01                    // Hack
+mslug3b6hx02                    // Hack
+mslug3b6hx03                    // Hack
+mslug3b6hx04                    // Hack
+mslug3b6hx05                    // Hack
+mslugxhx01                      // Hack
+mslugxhx02                      // Hack
+mslugxhx03                      // Hack
+mslugxhx04                      // Hack
+mslugxhx05                      // Hack
+mslugxhx06                      // Hack
+mslugxhx07                      // Hack
+mslugxhx08                      // Hack
+mslugxhx09                      // Hack
+mslugxhx10                      // Hack
+mslugxhx11                      // Hack
+mslugxhx12                      // Hack
+mslugxhx13                      // Hack
+mslugxhx14                      // Hack
+mslugxhx15                      // Hack
+mslugxhx16                      // Hack
+mslugxhx17                      // Hack
+mslugxhx18                      // Hack
+mslugxhx19                      // Hack
+mslugxhx20                      // Hack
+mslugxhx21                      // Hack
+mslugxhx22                      // Hack
+mslugxhx23                      // Hack
+mslugxhx24                      // Hack
+mslugxhx25                      // Hack
+mslugxhx26                      // Hack
+mslugxhx27                      // Hack
+mslugxhx28                      // Hack
+mslugxhx29                      // Hack
+mslugxhx30                      // Hack
+mslugxhx31                      // Hack
+mslugxhx32                      // Hack
+mslugxhx33                      // Hack
+mslugxhx34                      // Hack
+mslugxhx35                      // Hack
+mslugxhx36                      // Hack
+mslugxhx37                      // Hack
+mslugxhx38                      // Hack
+mslugxhx39                      // Hack
+mslugxhx40                      // Hack
+mslugxhx41                      // Hack
+mslugxhx42                      // Hack
+mslugxhx43                      // Hack
+mslugxhx44                      // Hack
+mslugxhx45                      // Hack
+mslugxhx46                      // Hack
+mslughwhc01                     // HomeBrew
+mutnathc01                      // Hack
+nam1975hc01                     // Hack
+nblktiger                       // HomeBrew
+neopang                         // HomeBrew
+ncombathc01                     // Hack
+ncommandhc01                    // Hack
+neobombehc01                    // Hack
+ninjamashc01                    // Hack
+ninjamashc02                    // Hack
+ninjamashc03                    // Hack
+ninjamashc04                    // Hack
+ninjamashc05                    // Hack
+ninjamashc06                    // Hack
+nitdhc01                        // Hack
+nitdhc02                        // Hack
+nitdhc03                        // Hack
+pbobblenhc01                    // Hack
+pbobblenhc02                    // Hack
+ragnagrdhc01                    // Hack
+ragnagrdhc02                    // Hack
+ragnagrdhc03                    // Hack
+ragnagrdhc04                    // Hack
+rbffspechc01                    // Hack
+rbffspechc02                    // Hack
+rbff1hc01                       // Hack
+rbff2hc01                       // Hack
+rbff2hc02                       // Hack
+rotdhc01                        // Hack
+rotdhc02                        // Hack
+rotdhc03                        // Hack
+rotdhc04                        // Hack
+rotdhc05                        // Hack
+s1945phc01                      // Hack
+s1945phc02                      // Hack
+samshohc01                      // Hack
+samshohc02                      // Hack
+samshohc03                      // Hack
+samshohc04                      // Hack
+samshohc05                      // Hack
+samshohc06                      // Hack
+samsho2hc01                     // Hack
+samsho2hc02                     // Hack
+samsho2hc03                     // Hack
+samsho2hc04                     // Hack
+samsho2hc05                     // Hack
+samsho2hc06                     // Hack
+samsho2hc07                     // Hack
+samsho2hc08                     // Hack
+samsho2hc09                     // Hack
+samsho2hc10                     // Hack
+samsho2hc11                     // Hack
+samsho2hc12                     // Hack
+samsho2hc13                     // Hack
+samsho2hc14                     // Hack
+samsho3hc01                     // Hack
+samsho3hc02                     // Hack
+samsho3hc03                     // Hack
+samsho3hc04                     // Hack
+samsho3hc05                     // Hack
+samsho3hc06                     // Hack
+samsho4hc01                     // Hack
+samsho4hc02                     // Hack
+samsho4hc03                     // Hack
+samsho4hc04                     // Hack
+samsho4hc05                     // Hack
+samsho4hc06                     // Hack
+samsho4hc07                     // Hack
+samsho4hc08                     // Hack
+samsho4hc09                     // Hack
+samsho4hc10                     // Hack
+samsho5hc01                     // Hack
+samsho5hc02                     // Hack
+samsho5hc03                     // Hack
+samsho5hc04                     // Hack
+samsho5hc05                     // Hack
+samsho5hc06                     // Hack
+samsho5hc07                     // Hack
+samsho5hc08                     // Hack
+samsho5hc09                     // Hack
+samsho5hc10                     // Hack
+samsho5hc11                     // Hack
+samsho5hc12                     // Hack
+samsh5sphc01                    // Hack
+samsh5sphc02                    // Hack
+samsh5sphc03                    // Hack
+samsh5sphc04                    // Hack
+samsh5sphc05                    // Hack
+samsh5sphc06                    // Hack
+samsh5sphc07                    // Hack
+samsh5sphc08                    // Hack
+samsh5sphc09                    // Hack
+samsh5sphc10                    // Hack
+samsh5sphc11                    // Hack
+savagerehc01                    // Hack
+savagerehc02                    // Hack
+savagerehc03                    // Hack
+savagerehc04                    // Hack
+savagerehc05                    // Hack
+sdodgebhc01                     // Hack
+sdodgebhc02                     // Hack
+sengoku3hc01                    // Hack
+sengoku3hc02                    // Hack
+sengoku3hc03                    // Hack
+sengoku3hc04                    // Hack
+sengoku3hc05                    // Hack
+sengoku3hc06                    // Hack
+sengoku3hc07                    // Hack
+sengoku3hc08                    // Hack
+sengoku3hc09                    // Hack
+sengoku3hc10                    // Hack
+sengoku3hc11                    // Hack
+shocktrohc01                    // Hack
+shocktr2hc01                    // Hack
+shocktr2hc02                    // Hack
+sonicwi2hc01                    // Hack
+sonicwi2hc02                    // Hack
+sonicwi3hc01                    // Hack
+sonicwi3hc02                    // Hack
+sonicwi3hc03                    // Hack
+svchc01                         // Hack
+svchc02                         // Hack
+svchc03                         // Hack
+svchc04                         // Hack
+svchc05                         // Hack
+svchc06                         // Hack
+svchc07                         // Hack
+svchc08                         // Hack
+svchc09                         // Hack
+svchc10                         // Hack
+svchc11                         // Hack
+svchc12                         // Hack
+spinmasthc01                    // Hack
+tophuntrhc01                    // Hack
+twinsprihc01                    // Hack
+viewpoinhc01                    // Hack
+viewpoinhc02                    // Hack
+wakuwak7hc01                    // Hack
+wakuwak7hc02                    // Hack
+wjammershc01                    // Hack
+wjammershc02                    // Hack
+wh1hc01                         // Hack
+wh1hc02                         // Hack
+wh2hc01                         // Hack
+wh2hc02                         // Hack
+wh2hc03                         // Hack
+wh2jhc01                        // Hack
+wh2jhc02                        // Hack
+whphc01                         // Hack
+whphc02                         // Hack
+zintrckbhc01                    // Hack
+
+@source:neogeo.cpp
+cndi            // Intro Demo Music
+dti             // Intro Demo Music
+dwi             // Intro Demo Music
+gbi             // Intro Demo Music
+rci             // Intro Demo Music
+smi             // Intro Demo Music
+tmnti           // Intro Demo Music
 
 @source:neogeo.cpp
 msluge                          // Nazca
@@ -12299,8 +13242,7 @@ mslugxrmh02                     // Hack
 mslugxrmh03                     // Hack
 
 @source:neogeo.cpp
-mslughz                         //HomeBrew 
-neopang                         //HomeBrew
+mslughz                         //HomeBrew
 
 @source:nmk16.cpp
 tdragon2p                       // hack

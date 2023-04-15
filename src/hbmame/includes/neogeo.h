@@ -108,17 +108,21 @@ public:
 	void init_cthd2003();
 	void init_cthd2k3a();
 	void init_fatfury2();
-	void init_fr2ch();
 	void init_ganryu();
 	void init_garou();
 	void init_garouh();
 	void init_garoubl();
 	void init_garoud();
+	void init_garouhd();
 	void init_irrmaze();
 	void init_jckeygpd();
 	void init_jockeygp();
 	void init_kf10thep();
 	void init_kf2k1pa();
+	void init_kf2k2mp2hb();
+	void init_kf2k2pla();
+	void init_kf2k2plb();
+	void init_kf2k2plc();
 	void init_kf2k2mp();
 	void init_kf2k2mp2();
 	void init_kf2k3pcb();
@@ -128,7 +132,7 @@ public:
 	void init_kof10th();
 	void init_kof10thu();
 	void init_kof2k2bd();
-	void init_kof2k2pl17();
+	void init_kof2k2plus();
 	void init_kof2k3fd();
 	void init_kof2k3hd();
 	void init_kof2k3pcd();
@@ -139,11 +143,11 @@ public:
 	void init_kof97oro();
 	void init_kof98();
 	void init_kof99();
+	void init_kof99d();
 	void init_kof2000();
 	void init_kof2001();
 	void init_kof2002();
 	void init_kof2002b();
-	void init_kof2002s20();
 	void init_kof2003();
 	void init_kof2003h();
 	void init_kof2003b();
@@ -174,11 +178,11 @@ public:
 	void init_ms5pcb();
 	void init_ms5plus();
 	void init_ms5plushb();
-	void init_mp2s39();
 	void init_neogeo();
 	void init_nitd();
 	void init_pnyaa();
 	void init_pnyaad();
+	void init_pnyaan();
 	void init_preisle2();
 	void init_rotd();
 	void init_rotdb();
@@ -204,8 +208,8 @@ public:
 	void init_svcplusa();
 	void init_svcsplus();
 	void init_vliner();
-	void init_xs02();
 	void init_zupapa();
+	void init_xs02();	
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);
 	DECLARE_CUSTOM_INPUT_MEMBER(kizuna4p_start_r);
@@ -432,6 +436,13 @@ INPUT_PORTS_EXTERN(dualbios);
 	ROM_LOAD16_WORD_SWAP_BIOS( x+13, "uni-bios_1_1.rom",  0x00000, 0x020000, CRC(5dda0d84) SHA1(4153d533c02926a2577e49c32657214781ff29b7) ) /* Universe Bios v1.1 (hack) */ \
 	ROM_SYSTEM_BIOS( x+14, "unibios10", "Universe Bios (Hack, Ver. 1.0)" ) \
 	ROM_LOAD16_WORD_SWAP_BIOS( x+14, "uni-bios_1_0.rom",  0x00000, 0x020000, CRC(0ce453a0) SHA1(3b4c0cd26c176fc6b26c3a2f95143dd478f6abf9) ) /* Universe Bios v1.0 (hack) */
+#define NEOGEO_UNIBIOS_THE_REGION_IS_CHANGED(x) \
+	ROM_SYSTEM_BIOS( x+15, "bios_defecto", "Universe Bios 4.0 (Defecto)" ) \
+	ROM_LOAD16_WORD_SWAP_BIOS( x+15, "uni-bios_defecto.rom",  0x00000, 0x020000, CRC(b16c9c40) SHA1(7b2a3e98f7235567f3d330764efc803f1a1ca7fc) ) /* Universe Bios v4.0 Defecto (hack) */ \
+	ROM_SYSTEM_BIOS( x+16, "mslug_forever", "Universe Bios 4.0 (Metal Slug Forever)" ) \
+	ROM_LOAD16_WORD_SWAP_BIOS( x+16, "metalslug_forever.rom",  0x00000, 0x020000, CRC(94c741c6) SHA1(2b0aa0295b733bf6d1b47df25b61ef7cbeabf9a9) ) /* Universe Bios v4.0 Metal Slug Forever (hack) */ \
+	ROM_SYSTEM_BIOS( x+17, "console_mode", "Universe Bios 4.0 (Ver.Regions: Europe Mode: Console)" ) \
+	ROM_LOAD16_WORD_SWAP_BIOS( x+17, "console_mode.rom",  0x00000, 0x020000, CRC(9ac99aed) SHA1(9880d1906e784dcb1b98dfe5eaf5072fdd84fd47) ) /* Universe Bios v4.0 Regions: Europe Mode: Console "Disabled Command Region Selection Menu, Start+A+B+C, Start+Select And Start+Coin" (hack) */
 
 #define NEOGEO_BIOS \
 	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \
@@ -474,7 +485,8 @@ INPUT_PORTS_EXTERN(dualbios);
 	\
 	NEOGEO_UNIBIOS(16) \
 	NEOGEO_UNIBIOS_1_2_AND_OLDER(16) \
-	ROM_DEFAULT_BIOS("euro")
+	NEOGEO_UNIBIOS_THE_REGION_IS_CHANGED(16) \
+	ROM_DEFAULT_BIOS("bios_defecto")
 
 
 #define NEO_BIOS_AUDIO_64K(name, hash) \
@@ -574,3 +586,95 @@ INPUT_PORTS_EXTERN(dualbios);
 
 #define NEO_SFIX_512K(name, hash) \
 	NEO_SFIX( 0x80000, name, hash )
+
+#define MSLUG_ROM_FILL \
+    ROM_FILL(0x1783E7,1,0x78)\
+	ROM_FILL(0x1783EB,1,0x12)\
+	ROM_FILL(0x1783E8,1,0x34)\
+	ROM_FILL(0x1783EE,1,0x23)\
+	ROM_FILL(0x1783EA,1,0x02)
+//	ROM_FILL(0x1783ED,1,0x34)
+//	ROM_FILL(0x1783E9,1,0x02)
+//	ROM_FILL(0x1783E6,1,0x02)
+//	ROM_FILL(0x1783E4,1,0x04)
+
+#define MSLUG2_ROM_FILL \
+    ROM_FILL(0x100D,1,0x78)\
+	ROM_FILL(0x1011,1,0x12)\
+	ROM_FILL(0x1013,1,0x34)\
+	ROM_FILL(0x100E,1,0x34)\
+	ROM_FILL(0x1014,1,0x34)\
+	ROM_FILL(0x1010,1,0x02) 
+//	ROM_FILL(0x100F,1,0x02)
+//	ROM_FILL(0x100C,1,0x02)
+//	ROM_FILL(0x100A,1,0x04)
+
+#define MSLUG3H_ROM_FILL \
+    ROM_FILL(0x2EA7,1,0x78)\
+	ROM_FILL(0x2EAE,1,0x12)\
+	ROM_FILL(0x2EAF,1,0x12)\
+	ROM_FILL(0x2EAB,1,0x34)\
+	ROM_FILL(0x2EA8,1,0x34)\
+	ROM_FILL(0x2EAD,1,0x24)\
+	ROM_FILL(0x2EAA,1,0x02)
+//	ROM_FILL(0x2EA9,1,0x02)
+//	ROM_FILL(0x2EA6,1,0x02)
+//	ROM_FILL(0x2EA4,1,0x04)
+
+#define MSLUG4_ROM_FILL \
+    ROM_FILL(0x1741,1,0x78)\
+	ROM_FILL(0x1748,1,0x12)\
+	ROM_FILL(0x1749,1,0x12)\
+	ROM_FILL(0x1745,1,0x34)\
+	ROM_FILL(0x1742,1,0x34)\
+	ROM_FILL(0x1747,1,0x24)\
+	ROM_FILL(0x1744,1,0x02)
+//	ROM_FILL(0x1743,1,0x02)
+//	ROM_FILL(0x1740,1,0x02)
+//	ROM_FILL(0x173E,1,0x04)
+
+#define MSLUG5_ROM_FILL \
+    ROM_FILL(0x2CD3,1,0x75)\
+	ROM_FILL(0x2CD7,1,0x3B)\
+	ROM_FILL(0x2CDA,1,0x8B)\
+    ROM_FILL(0x2CD4,1,0x71)\
+	ROM_FILL(0x2CDB,1,0x09)\
+	ROM_FILL(0x2CD6,1,0x26)\
+//	ROM_FILL(0x2CD5,1,0x70)
+//	ROM_FILL(0x2CD2,1,0x80)
+//	ROM_FILL(0x2CD0,1,0x70)
+
+#define MSLUG5HD_ROM_FILL \
+    ROM_FILL(0x2CD3,1,0x78)\
+	ROM_FILL(0x2CDA,1,0x12)\
+	ROM_FILL(0x2CDB,1,0x12)\
+	ROM_FILL(0x2CD7,1,0x34)\
+	ROM_FILL(0x2CD4,1,0x34)\
+	ROM_FILL(0x2CD9,1,0x24)\
+	ROM_FILL(0x2CD6,1,0x02)
+//	ROM_FILL(0x2CD5,1,0x02)
+//	ROM_FILL(0x2CD2,1,0x02)
+//	ROM_FILL(0x2CD0,1,0x04)
+
+#define MSLUGX_ROM_FILL \
+    ROM_FILL(0x3185,1,0x78)\
+	ROM_FILL(0x3189,1,0x12)\
+	ROM_FILL(0x318D,1,0x12)\
+	ROM_FILL(0x318B,1,0x34)\
+	ROM_FILL(0x3186,1,0x34)\
+	ROM_FILL(0x318C,1,0x34)\
+	ROM_FILL(0x3188,1,0x02)
+//  ROM_FILL(0x3187,1,0x02)
+//	ROM_FILL(0x3184,1,0x02)
+//	ROM_FILL(0x3182,1,0x04)
+
+
+#define UNKNOWN_ROM_FILL \
+	ROM_FILL(0xB0E49,1,0x78)\
+	ROM_FILL(0xB0E4F,1,0x12)\
+	ROM_FILL(0xB0E4A,1,0x34)\
+	ROM_FILL(0xB0E4D,1,0x34)\
+	ROM_FILL(0xB0E4E,1,0x13)
+//  ROM_FILL(0xB0E48,1,0x34)
+//  ROM_FILL(0xB0E4B,1,0x34)
+//  ROM_FILL(0xB0E47,1,0x12)

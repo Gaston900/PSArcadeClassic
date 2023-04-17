@@ -1756,7 +1756,7 @@ files {
 	MAME_DIR .. "src/mame/machine/decocpu6.cpp",
 --	MAME_DIR .. "src/mame/machine/decocpu6.h",
 	MAME_DIR .. "src/mame/drivers/deco_ld.cpp",
-	MAME_DIR .. "src/mame/drivers/deco_mlc.cpp",
+	MAME_DIR .. "src/hbmame/drivers/deco_mlchb.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/deco_mlc.h",
 	MAME_DIR .. "src/mame/video/deco_mlc.cpp",
 	MAME_DIR .. "src/mame/drivers/deco156.cpp",
@@ -3294,7 +3294,7 @@ files {
 	MAME_DIR .. "src/mame/video/nmk16spr.cpp",
 --	MAME_DIR .. "src/mame/video/nmk16spr.h",
 --	MAME_DIR .. "src/mame/drivers/nmkmedal.cpp",
-	MAME_DIR .. "src/hbmame/drivers/powerins.cpp", --HBMAME
+	MAME_DIR .. "src/hbmame/drivers/powerinshb.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/powerins.h",
 	MAME_DIR .. "src/mame/video/powerins.cpp",
 	MAME_DIR .. "src/mame/drivers/quizdna.cpp",
@@ -4450,7 +4450,7 @@ files {
 	MAME_DIR .. "src/mame/video/snowbros.cpp",
 	MAME_DIR .. "src/mame/video/kan_pand.cpp",
 --	MAME_DIR .. "src/mame/video/kan_pand.h",
-	MAME_DIR .. "src/mame/drivers/toaplan1.cpp",
+	MAME_DIR .. "src/hbmame/drivers/toaplan1hb.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/toaplan1.h",
 	MAME_DIR .. "src/mame/machine/toaplan1.cpp",
 	MAME_DIR .. "src/mame/video/toaplan1.cpp",
@@ -4849,7 +4849,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/cave.h",
 	MAME_DIR .. "src/mame/video/cave.cpp",
 	MAME_DIR .. "src/mame/drivers/cavepc.cpp",
-	MAME_DIR .. "src/hbmame/drivers/cv1k.cpp", --HBMAME
+	MAME_DIR .. "src/hbmame/drivers/cv1khb.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/drivers/cb2001.cpp",
 	MAME_DIR .. "src/mame/drivers/cdi.cpp",
 --	MAME_DIR .. "src/mame/includes/cdi.h",

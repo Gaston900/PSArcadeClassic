@@ -2,9 +2,9 @@
 // copyright-holders:Gaston90
 #include "../mame/drivers/stv.cpp"
 
-/***********
- Golden Axe
-************/
+/********************
+  Hack And Homebrow
+***********************/
 
 ROM_START( gaxeduelhc01 )
 	STV_BIOS

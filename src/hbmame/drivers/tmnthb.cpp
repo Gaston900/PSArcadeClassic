@@ -2,9 +2,9 @@
 // copyright-holders:Gaston90
 #include "../mame/drivers/tmnt.cpp"
 
- /*************
- Sunset Riders
-***************/
+/********************
+  Hack And Homebrow
+***********************/
 
 ROM_START( ssridershc01 )
 	ROM_REGION( 0xc0000, "maincpu", 0 )

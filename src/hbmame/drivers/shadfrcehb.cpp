@@ -37,4 +37,4 @@ ROM_END
 
 /*    YEAR    NAME          PARENT     MACHINE    INPUT                       INIT      MONITOR   COMPANY       FULLNAME FLAGS */
 // Hack/Homebrow
-GAME( 1993, shadfrcehc01,   shadfrce,  shadfrce, shadfrce, shadfrce_state, empty_init,   ROT0,    "hack",       "Shadow Force (Enable All Characters)", MACHINE_NOT_WORKING | MACHINE_NO_COCKTAIL | MACHINE_SUPPORTS_SAVE )
+GAME( 1993, shadfrcehc01,   shadfrce,  shadfrce, shadfrce, shadfrce_state, empty_init,   ROT0,    "hack",       "Shadow Force (Enable Hidden Characters)", MACHINE_NOT_WORKING | MACHINE_NO_COCKTAIL | MACHINE_SUPPORTS_SAVE )

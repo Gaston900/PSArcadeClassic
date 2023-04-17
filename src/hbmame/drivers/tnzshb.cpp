@@ -2,9 +2,9 @@
 // copyright-holders:Gaston90
 #include "../mame/drivers/tnzs.cpp"
 
- /**********
- Insector X
-************/
+/********************
+  Hack And Homebrow
+***********************/
 
 ROM_START( insectxhc01 )
 	ROM_REGION( 0x20000, "maincpu", 0 )

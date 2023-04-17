@@ -8,8 +8,8 @@
 
 ROM_START( blandiahc01 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "ux001001_hc01.u3", 0x000000, 0x040000, CRC(245d404d) SHA1(708dede3bb37e1a90fbd196cf7297f1c5c4fc518) )
-	ROM_LOAD16_BYTE( "ux001002_hc01.u4", 0x000001, 0x040000, CRC(9aa9fb5c) SHA1(24ead69c38573ea2b0f1cc8de5c46adb712e5b3b) )
+	ROM_LOAD16_BYTE( "ux001001_hc01.u3", 0x000000, 0x040000, CRC(3020be51) SHA1(0e00fa720e23271cacb745830d41a0070476f935) )
+	ROM_LOAD16_BYTE( "ux001002_hc01.u4", 0x000001, 0x040000, CRC(ee030ea6) SHA1(dd917cc5bee20368257331ede395e2774fe094ea) )
 	ROM_LOAD16_WORD_SWAP( "ux001003.u202",    0x100000, 0x100000, CRC(98052c63) SHA1(b523596de29038b3ec9f1b6e1f7374a6a8709d42) )
 
 	ROM_REGION( 0x400000, "gfx1", 0 )
@@ -41,8 +41,8 @@ ROM_END
 
 ROM_START( blandiahc02 )
 	ROM_REGION( 0x200000, "maincpu", 0 )  
-	ROM_LOAD16_BYTE( "ux001001_hc02.u3", 0x000000, 0x040000, CRC(370b5fef) SHA1(39b310e7c1f5e4b17d618b2ad583697cbbdc4936) )
-	ROM_LOAD16_BYTE( "ux001002_hc02.u4", 0x000001, 0x040000, CRC(cdbf1488) SHA1(ed3c0ecf0d15ece35d54e8d6be64f6091328505e) )
+	ROM_LOAD16_BYTE( "ux001001_hc02.u3", 0x000000, 0x040000, CRC(245d404d) SHA1(708dede3bb37e1a90fbd196cf7297f1c5c4fc518) )
+	ROM_LOAD16_BYTE( "ux001002_hc02.u4", 0x000001, 0x040000, CRC(9aa9fb5c) SHA1(24ead69c38573ea2b0f1cc8de5c46adb712e5b3b) )
 	ROM_LOAD16_WORD_SWAP( "ux001003.u202",    0x100000, 0x100000, CRC(98052c63) SHA1(b523596de29038b3ec9f1b6e1f7374a6a8709d42) )
 
 	ROM_REGION( 0x400000, "gfx1", 0 )
@@ -74,8 +74,8 @@ ROM_END
 
 ROM_START( blandiahc03 )
 	ROM_REGION( 0x200000, "maincpu", 0 )  
-	ROM_LOAD16_BYTE( "ux001001_hc03.u3", 0x000000, 0x040000, CRC(3020be51) SHA1(0e00fa720e23271cacb745830d41a0070476f935) )
-	ROM_LOAD16_BYTE( "ux001002_hc03.u4", 0x000001, 0x040000, CRC(ee030ea6) SHA1(dd917cc5bee20368257331ede395e2774fe094ea) )
+	ROM_LOAD16_BYTE( "ux001001_hc03.u3", 0x000000, 0x040000, CRC(370b5fef) SHA1(39b310e7c1f5e4b17d618b2ad583697cbbdc4936) )
+	ROM_LOAD16_BYTE( "ux001002_hc03.u4", 0x000001, 0x040000, CRC(cdbf1488) SHA1(ed3c0ecf0d15ece35d54e8d6be64f6091328505e) )
 	ROM_LOAD16_WORD_SWAP( "ux001003.u202",    0x100000, 0x100000, CRC(98052c63) SHA1(b523596de29038b3ec9f1b6e1f7374a6a8709d42) )
 
 	ROM_REGION( 0x400000, "gfx1", 0 )
@@ -117,7 +117,7 @@ ROM_START( msgundamhc01 )
 	ROM_REGION( 0x100000, "gfx2", 0 )
 	ROM_LOAD16_WORD_SWAP( "fa001006.u23",  0x000000, 0x100000, CRC(3b60365c) SHA1(bdf5a0b1b45eb75dbbb6725d1e5303716321aeb9) )
 
-	ROM_REGION( 0x080000, "gfx3", 0 )  
+	ROM_REGION( 0x080000, "gfx3", 0 )
 	ROM_LOAD16_WORD_SWAP( "fa001005.u24",  0x000000, 0x080000, CRC(8cd7ff86) SHA1(ce7eb90776e21239f8f52e822c636143506c6f9b) )
 
 	ROM_REGION( 0x100000, "x1snd", 0 )
@@ -131,9 +131,9 @@ ROM_START( msgundamhc01 )
 	ROM_LOAD( "fa-015.u54", 0x800, 0x104, NO_DUMP )
 ROM_END
 
-/*    YEAR    NAME        PARENT      MACHINE    INPUT                         INIT       MONITOR  COMPANY       FULLNAME FLAGS */
+/*    YEAR    NAME         PARENT     MACHINE    INPUT                         INIT        MONITOR  COMPANY      FULLNAME FLAGS */
 // Hack/Homebrow
-GAME( 1992, blandiahc01,   blandia,   blandia,   blandia,   seta_state,     init_bankx1,    ROT0,   "DDJ",       "Blandia (Enable hidden characters)", MACHINE_IMPERFECT_GRAPHICS )
-GAME( 1992, blandiahc02,   blandia,   blandia,   blandia,   seta_state,     init_bankx1,    ROT0,   "DDJ",       "Blandia (Easy Move)", MACHINE_IMPERFECT_GRAPHICS )
-GAME( 2018, blandiahc03,   blandia,   blandia,   blandia,   seta_state,     init_bankx1,    ROT0,   "hack",      "Blandia (Boss With Simple Attack Edition 2018-07-28)", MACHINE_IMPERFECT_GRAPHICS )
+GAME( 1992, blandiahc01,   blandia,   blandia,   blandia,   seta_state,     init_bankx1,    ROT0,   "DDJ",       "Blandia (Boss With Simple Attack Edition 2018-07-28)", MACHINE_IMPERFECT_GRAPHICS )
+GAME( 1992, blandiahc02,   blandia,   blandia,   blandia,   seta_state,     init_bankx1,    ROT0,   "DDJ",       "Blandia (Enable hidden characters)", MACHINE_IMPERFECT_GRAPHICS )
+GAME( 1992, blandiahc03,   blandia,   blandia,   blandia,   seta_state,     init_bankx1,    ROT0,   "hack",      "Blandia (Easy Move)", MACHINE_IMPERFECT_GRAPHICS )
 GAME( 1993, msgundamhc01,  msgundam,  msgundam,  msgundam,  seta_state,     empty_init,     ROT0,   "DDJ",       "Mobile Suit Gundam (Easy Move)", 0 )

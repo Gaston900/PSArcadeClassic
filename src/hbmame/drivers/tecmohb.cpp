@@ -72,6 +72,39 @@ ROM_START( geminihc02 ) // same as gemini except for 1c
 	ROM_LOAD( "gw01-6a.rom",   0x0000, 0x8000, CRC(d78afa05) SHA1(b02a739b045f5cddf943ce59226ef234463eeebe) )
 ROM_END
 
+ROM_START( geminihc03 )
+	ROM_REGION( 0x20000, "maincpu", 0 )
+	ROM_LOAD( "g-2_hc03.6d",       0x00000, 0x10000, CRC(9ee823e9) SHA1(5cb2157e07324ce3e292425ea8a4bb471ba8e409) )
+	ROM_LOAD( "gw05-6s.rom",  0x10000, 0x10000, CRC(5a6947a9) SHA1(18b7aeb0f0e2c396bc759118dd7c45fd6070b804) )
+
+	ROM_REGION( 0x10000, "soundcpu", 0 )
+	ROM_LOAD( "gw03-5h.rom",  0x0000, 0x8000, CRC(9bc79596) SHA1(61de9ddd45140e8ed88173294bd26147e2abfa21) )
+
+	ROM_REGION( 0x08000, "gfx1", 0 )
+	ROM_LOAD( "gw02-3h_hc01.rom",  0x00000, 0x08000, CRC(3ddd13f3) SHA1(b7b1f3b0c1b457fa7744f6fedb694cdd855372c9) )
+
+	ROM_REGION( 0x40000, "gfx2", 0 )
+	ROM_LOAD( "gw06-1c.rom",  0x00000, 0x10000, CRC(4ea51631) SHA1(9aee0f1ba210ac953dc193cfc739322966b6de8a) )
+	ROM_LOAD( "gw07-1d.rom",  0x10000, 0x10000, CRC(da42637e) SHA1(9885c52823279f26871092c77bdbe027df08268f) )
+	ROM_LOAD( "gw08-1f.rom",  0x20000, 0x10000, CRC(0b4e8d70) SHA1(55069f3df1c8db83f306d46b8262fd23585e6013) )
+	ROM_LOAD( "gw09-1h.rom",  0x30000, 0x10000, CRC(b65c5e4c) SHA1(699e1a9e72b8d94edae7382ba119fe5da113514d) )
+
+	ROM_REGION( 0x40000, "gfx3", 0 )
+	ROM_LOAD( "gw10-1n.rom",  0x00000, 0x10000, CRC(5e84cd4f) SHA1(e85320291027a16619c87fc2365448367bda454a) )
+	ROM_LOAD( "gw11-2na.rom", 0x10000, 0x10000, CRC(08b458e1) SHA1(b3426faa57dca51dc053db44fa4968425d8bf3ee) )
+	ROM_LOAD( "gw12-2nb.rom", 0x20000, 0x10000, CRC(229c9714) SHA1(f4f47d6b379c973c22f9ae7d7bec7041cdf3f737) )
+	ROM_LOAD( "gw13-3n.rom",  0x30000, 0x10000, CRC(c5dfaf47) SHA1(c3202ca8c7f3c5c7dc9acdc09c1c894e168ef9fe) )
+
+	ROM_REGION( 0x40000, "gfx4", 0 )
+	ROM_LOAD( "gw14-1r.rom",  0x00000, 0x10000, CRC(9c10e5b5) SHA1(a81399b85d8f3ddca26883ec3535cb9044c35ada) )
+	ROM_LOAD( "gw15-2ra.rom", 0x10000, 0x10000, CRC(4cd18cfa) SHA1(c197a098a7c1e5220aad039383a40702fe7c4f21) )
+	ROM_LOAD( "gw16-2rb.rom", 0x20000, 0x10000, CRC(f911c7be) SHA1(3f49f6c4734f2b644d93c4a54249aae6ff080e1d) )
+	ROM_LOAD( "gw17-3r.rom",  0x30000, 0x10000, CRC(79a9ce25) SHA1(74e3917b8e7a920ceb2135d7ef8fb2f2c5176b21) )
+
+	ROM_REGION( 0x8000, "adpcm", 0 )  
+	ROM_LOAD( "gw01-6a.rom",  0x0000, 0x8000, CRC(d78afa05) SHA1(b02a739b045f5cddf943ce59226ef234463eeebe) )
+ROM_END
+
 ROM_START( rygarhc01 )
 	ROM_REGION( 0x20000, "maincpu", 0 )
 	
@@ -179,6 +212,7 @@ ROM_END
 // Hack/Homebrow
 GAME( 1987, geminihc01,    gemini,   gemini,   gemini,   tecmo_state, init_gemini,   ROT90,   "hack",       "Gemini Wing (Translation Chinese)",          MACHINE_SUPPORTS_SAVE )
 GAME( 2002, geminihc02,    gemini,   gemini,   gemini,   tecmo_state, init_gemini,   ROT90,   "hack",       "Gemini Wing (Sprite Donkey kong)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, geminihc03,    gemini,   geminib,  gemini,   tecmo_state, init_gemini,   ROT90,   "hack",       "Gemini Wing (Super Simple Version 2022-05-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 1986, rygarhc01,     rygar,    rygar,    rygar,    tecmo_state, init_rygar,    ROT0,    "hack",       "Argus no Senshi (Translation Chinese)",      MACHINE_SUPPORTS_SAVE )
 GAME( 1986, rygarhc02,     rygar,    rygar,    rygar,    tecmo_state, init_rygar,    ROT0,    "hack",       "Argus no Senshi (Translation Korean)", MACHINE_SUPPORTS_SAVE )
 GAME( 1988, silkwormhc01,  silkworm, silkworm, silkworm, tecmo_state, init_silkworm, ROT0,    "hack",       "Silk Worm (Translation Chinese)",            MACHINE_SUPPORTS_SAVE )

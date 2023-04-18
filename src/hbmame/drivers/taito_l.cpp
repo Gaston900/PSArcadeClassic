@@ -30,6 +30,10 @@ ROM_START( kurikinthc01 )
 	ROM_REGION( 0x100000, "maincpu:gfx", 0 )
 	ROM_LOAD( "b42-01_hc01.ic1",  0x00000, 0x80000, CRC(592c6d20) SHA1(4c5d58e23855a905064049a7758706778a81f129) )
 	ROM_LOAD( "b42-02_hc01.ic5",  0x80000, 0x80000, CRC(cd5fc143) SHA1(5a5a6e674a47786ed9c843cefacf307429df9933) )
+
+	ROM_REGION( 0x022e, "plds", 0 )
+	ROM_LOAD( "gal16v8-b42-03.ic4.bin",  0x0000, 0x0117, CRC(f7150d37) SHA1(10f9190b89c802e0722fd6ba0f17ba97d463f434) )  /* derived, but verified, PAL16L8 Stamped B42-03 */
+	ROM_LOAD( "gal16v8-b42-04.ic21.bin", 0x0117, 0x0117, CRC(b57b806c) SHA1(04cbb008256b7317ebf366327dfd38ead8eaf94e) )  /* derived, but verified, PAL16L8 Stamped B42-04 */
 ROM_END
 
 ROM_START( plottinghc01 )

@@ -1677,6 +1677,27 @@ static const struct CPS1config cps1_config_table[]=
 	{"wofud",       CPS_B_21_DEF, mapper_TK263B },                          //works
 #endif
 	// HBMAME end
+	
+    // cps1bl_5205, cps1bl_pic and fcrash.
+	{"captcommb2",  CPS_B_21_BT3, mapper_CC63B,  0x36, 0x38, 0x34 },        //works
+	{"sf2b",        CPS_B_17,     mapper_STF29,  0x36, 0, 0, 0x41 },
+	{"sf2b2",       CPS_B_17,     mapper_STF29,  0x36, 0, 0, 0x41 },
+	{"sf2ceb",      CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },
+	{"sf2ceb2",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },
+	{"sf2ceb3",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },
+	{"sf2ceb4",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },
+	{"sf2ceb5",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },
+	{"sf2m1",       CPS_B_21_DEF, mapper_S9263B, 0x36 },
+    {"sf2m9",       CPS_B_21_DEF, mapper_S9263B, 0x36 },
+	{"sf2mdt",      CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
+	{"sf2mdta",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
+	{"sf2mdtb",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
+	{"sf2mdthc01",  CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
+	{"sf2mdthc02",  CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
+	{"sf2mdthc03",  CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
+	{"slampic",     CPS_B_21_QS4, mapper_MB63B },
+	{"slampic2",    CPS_B_21_QS4, mapper_sfzch },  // default cps2 mapper breaks scroll layers
+
 	{nullptr}     /* End of table */
 };
 

@@ -10875,9 +10875,9 @@ smotor                          // (c) 19?? Duintronic
 @source:toki_ms.cpp
 tokims                          //
 
-/****************************************************
-  List of all enabled drivers in the system homebrow.
-*******************************************************/
+/*************************************************
+  List of all enabled drivers in the system hack.
+***************************************************/
 
 @source:1942.cpp
 1942hc01                        // hack
@@ -15530,7 +15530,6 @@ geminihc01                      // hack
 geminihc02                      // hack
 geminihc03                      // hack
 rygarhc01                       // hack
-rygarhc02                       // hack
 silkwormhc01                    // hack
 
 @source:tecmo16.cpp

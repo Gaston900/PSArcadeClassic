@@ -12523,7 +12523,6 @@ spclone                         // hack
 
 @source:neogeo.cpp
 bangbedd                        // Decrypted / Bootleg
-ct2k3sp                         // Decrypted / Bootleg
 ct2k3spd                        // Decrypted / Bootleg
 cthd2k3d                        // Decrypted / Bootleg
 ct2k3ad                         // Decrypted / Bootleg
@@ -12533,8 +12532,6 @@ garoud                          // Decrypted / Bootleg
 garouhd                         // Decrypted / Bootleg
 jckeygpd                        // Decrypted / Bootleg
 kof96ep                         // Decrypted / Bootleg
-kof96ep2                        // Decrypted / Bootleg
-kof96ep3                        // Decrypted / Bootleg
 kof97pla                        // Decrypted / Bootleg
 kof99d                          // Decrypted / Bootleg
 kof99kd                         // Decrypted / Bootleg
@@ -13067,7 +13064,7 @@ kof98hc70                       // Hack
 kof98hc71                       // Hack
 kof98hc72                       // Hack
 kof98hc73                       // Hack
-kof98hc74                       // Hack
+//kof98hc74                       // Hack
 kof98hc75                       // Hack
 kof98hc76                       // Hack
 kof98hc77                       // Hack
@@ -14564,7 +14561,6 @@ kovplushc165                     // Hack
 kovplushc168                     // Hack
 kovplushc169                     // Hack
 //kovplushc170                     // Hack [It does not work]
-kovplushc170                     // Hack
 kovplushc171                     // Hack
 kovplushc172                     // Hack
 kovplushc173                     // Hack

@@ -48,8 +48,8 @@ ROM_START( plottinghc01 )
 	ROM_LOAD( "gal16v8-b86-04.bin", 0x0000, 0x0117, CRC(bf8c0ea0) SHA1(e0a00f1f6363fb79650202f90a56329990876d49) ) 
 ROM_END
 
-/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
+/*    YEAR  NAME            PARENT    MACHINE      INPUT                        INIT          MONITOR  COMPANY     FULLNAME FLAGS */
 // Hack/Homebrow
-GAME( 2007, evilstonhc01,  evilston, evilston,  evilston, taitol_2cpu_state, empty_init, ROT270, "Arkatrad", "Evil Stone (Translation French)", MACHINE_IMPERFECT_SOUND )
-GAME( 1988, kurikinthc01,  kurikint, kurikint,  kurikintj, taitol_2cpu_state, empty_init, ROT0,   "hack", "Kuri Kinton (Translation Chinese)", 0 )
-GAME( 1989, plottinghc01,  plotting, plotting,  plotting,  taitol_1cpu_state, init_plottinga, ROT0,   "hack", "Plotting (Translation Chinese)", 0 )
+GAME( 2007, evilstonhc01,  evilston, evilston,  evilston,  taitol_2cpu_state, empty_init,     ROT270, "Arkatrad", "Evil Stone (Translation French)", MACHINE_IMPERFECT_SOUND )
+GAME( 1988, kurikinthc01,  kurikint, kurikint,  kurikintj, taitol_2cpu_state, empty_init,     ROT0,   "hack",     "Kuri Kinton (Translation Chinese)", 0 )
+GAME( 1989, plottinghc01,  plotting, plotting,  plotting,  taitol_1cpu_state, init_plottinga, ROT0,   "hack",     "Plotting (Translation Chinese)", 0 )

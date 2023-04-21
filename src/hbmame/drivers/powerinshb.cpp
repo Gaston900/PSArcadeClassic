@@ -343,7 +343,7 @@ GAME( 2015, powerinshc01,    powerins, powerins,      powerins,   powerins_state
 GAME( 2006, powerinshc02,    powerins, powerins,      powerins,   powerins_state,   empty_init,  ROT0,    "hack",      "Power Instinct (Enable Hidden Character)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, powerinshc03,    powerins, powerins,      powerins,   powerins_state,   empty_init,  ROT0,    "hack",      "Power Instinct (Simplify Edition 2018-06-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, powerinshc04,    powerins, powerins,      powerins,   powerins_state,   empty_init,  ROT0,    "hack",      "Power Instinct (Optimised Edition 2020-05-15)", MACHINE_SUPPORTS_SAVE )
-GAME( 2006, powerinshc05,    powerins, powerins,      powerins,   powerins_state,   empty_init,  ROT0,    "hack",      "Power Instinct (translation Brazilian)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, powerinshc05,    powerins, powerins,      powerins,   powerins_state,   empty_init,  ROT0,    "hack",      "Power Instinct (Translation Brazilian)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, powerinshc06,    powerins, powerinsa,     powerins,   powerins_state,   empty_init,  ROT0,    "hack",      "Power Instinct (Dragon Edition Fixed 2022-03-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, powerinshc07,    powerins, powerins,      powerinj,   powerins_state,   empty_init,  ROT0,    "hack",      "Power Instinct (Dragon Edition 2022-03-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, powerinshc08,    powerins, powerins,      powerinj,   powerins_state,   empty_init,  ROT0,    "hack",      "Power Instinct (Simplify Edition 2021-10-02)", MACHINE_SUPPORTS_SAVE )

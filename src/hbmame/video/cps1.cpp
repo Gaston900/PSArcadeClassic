@@ -1678,8 +1678,17 @@ static const struct CPS1config cps1_config_table[]=
 #endif
 	// HBMAME end
 	
-    // cps1bl_5205, cps1bl_pic and fcrash.
+    // PSARCADE CCLASSIC+
 	{"captcommb2",  CPS_B_21_BT3, mapper_CC63B,  0x36, 0x38, 0x34 },        //works
+	{"dinopic",     CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
+	{"dinopic2",    CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
+	{"dinopic3",    CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
+	{"dinopic3hc01", CPS_B_21_QS2, mapper_CD63B },  /* layer enable never used */
+    {"cawingbl",    CPS_B_16,     mapper_CA22B },   // equivalent to CA24B
+	{"cawingb2",    CPS_B_16,     mapper_CA22B },   // equivalent to CA24B
+	{"jurassic99",  CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
+	{"knightsb3",   CPS_B_21_BT4, mapper_KR63B },
+    {"kodb",        CPS_B_21_BT2, mapper_KD29B,  0x36, 0, 0x34 },   /* bootleg, doesn't use multiply protection */
 	{"sf2b",        CPS_B_17,     mapper_STF29,  0x36, 0, 0, 0x41 },
 	{"sf2b2",       CPS_B_17,     mapper_STF29,  0x36, 0, 0, 0x41 },
 	{"sf2ceb",      CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },
@@ -1697,6 +1706,12 @@ static const struct CPS1config cps1_config_table[]=
 	{"sf2mdthc03",  CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
 	{"slampic",     CPS_B_21_QS4, mapper_MB63B },
 	{"slampic2",    CPS_B_21_QS4, mapper_sfzch },  // default cps2 mapper breaks scroll layers
+	{"punipic",     CPS_B_21_QS3, mapper_PS63B },
+	{"punipic2",    CPS_B_21_QS3, mapper_PS63B },
+	{"punipic3",    CPS_B_21_QS3, mapper_PS63B },
+    {"varthb",      CPS_B_04,     mapper_VA63B, 0, 0, 0, 0x0F },            //works
+	{"wofpic",      CPS_B_21_DEF, mapper_TK263B, 0x36 },
+    {"wofr1bl",     CPS_B_21_DEF, mapper_TK263B, 0x36 },
 
 	{nullptr}     /* End of table */
 };

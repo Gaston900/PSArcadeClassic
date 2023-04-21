@@ -1,5 +1,5 @@
-// Proyecto Shadow Legendary Edition
-// copyright-holders:Gaston90 (2016 - 2023)
+// Proyecto Shadows Arcade Classic+
+// copyright-holders:Gaston90
 #include "../mame/drivers/aerofgt.cpp"
 
 /********************

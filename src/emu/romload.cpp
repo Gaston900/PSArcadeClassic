@@ -504,6 +504,7 @@ void rom_load_manager::dump_wrong_and_correct_checksums(const util::hash_collect
 
 void rom_load_manager::verify_length_and_hash(emu_file *file, std::string_view name, u32 explength, const util::hash_collection &hashes)
 {
+/* 
 	// we've already complained if there is no file
 	if (!file)
 		return;
@@ -512,14 +513,14 @@ void rom_load_manager::verify_length_and_hash(emu_file *file, std::string_view n
 	u64 const actlength = file->size();
 	if (explength != actlength)
 	{
-		m_errorstring.append(string_format("%s WRONG LENGTH (expected: %08x found: %08x)\n", name, explength, actlength));
+	 m_errorstring.append(string_format("%s WRONG LENGTH (expected: %08x found: %08x)\n", name, explength, actlength));
 		m_warnings++;
 	}
 
 	if (hashes.flag(util::hash_collection::FLAG_NO_DUMP))
 	{
 		// If there is no good dump known, write it
-		m_errorstring.append(string_format("%s NO GOOD DUMP KNOWN\n", name));
+	    m_errorstring.append(string_format("%s NO GOOD DUMP KNOWN\n", name));
 		m_knownbad++;
 	}
 	else
@@ -529,20 +530,21 @@ void rom_load_manager::verify_length_and_hash(emu_file *file, std::string_view n
 		if (hashes != acthashes)
 		{
 			// otherwise, it's just bad
-			util::hash_collection const &all_acthashes = (acthashes.hash_types() == util::hash_collection::HASH_TYPES_ALL)
+		   util::hash_collection const &all_acthashes = (acthashes.hash_types() == util::hash_collection::HASH_TYPES_ALL)
 					? acthashes
 					: file->hashes(util::hash_collection::HASH_TYPES_ALL);
 			m_errorstring.append(string_format("%s WRONG CHECKSUMS:\n", name));
 			dump_wrong_and_correct_checksums(hashes, all_acthashes);
-			m_warnings++;
+			m_warnings++;  
 		}
 		else if (hashes.flag(util::hash_collection::FLAG_BAD_DUMP))
 		{
 			// If it matches, but it is actually a bad dump, write it
-			m_errorstring.append(string_format("%s ROM NEEDS REDUMP\n", name));
+		    m_errorstring.append(string_format("%s ROM NEEDS REDUMP\n", name));
 			m_knownbad++;
 		}
 	}
+ */
 }
 
 

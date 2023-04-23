@@ -117,7 +117,7 @@ void windows_osd_interface::customize_input_type_list(std::vector<input_type_ent
 			// alt-enter for fullscreen
 			case IPT_OSD_1:
 				entry.configure_osd("TOGGLE_FULLSCREEN", "Toggle Fullscreen");
-				entry.defseq(SEQ_TYPE_STANDARD).set(KEYCODE_U);
+				entry.defseq(SEQ_TYPE_STANDARD).set(KEYCODE_ENTER);
 				break;
 
 			// lalt-F12 for fullscreen snap (HLSL)

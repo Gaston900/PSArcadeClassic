@@ -79,13 +79,13 @@
 #endif
 
 #ifdef PTR64
-#define MAMEUINAME			"PSArcade Classic+ 64X"
+#define MAMEUINAME			"PSArcade Classic+"
 #else
-#define MAMEUINAME			"PSArcade Classic+ 32X"
+#define MAMEUINAME			"PSArcade Classic+"
 #endif
 #define MAMENAME			"PSArcade Classic+"
 
-#define MAME_VERSION		"2.3"
+#define MAME_VERSION		"2.4"
 #define MAMEUIFX_VERSION	MAME_VERSION " (" __DATE__")"
 
 #define SEARCH_PROMPT		"<search here>"

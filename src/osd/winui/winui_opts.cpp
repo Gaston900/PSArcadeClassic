@@ -61,7 +61,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_SHOW_TABS,					"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_HIDE_TABS,					"",         	OPTION_STRING, nullptr },
 	{ MUIOPTION_HISTORY_TAB,				"0",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_SORT_COLUMN,				"1",        	OPTION_INTEGER, nullptr },
+	{ MUIOPTION_SORT_COLUMN,				"0",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SORT_REVERSED,				"0",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_WINDOW_X,					"0",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_WINDOW_Y,					"0",        	OPTION_INTEGER, nullptr },
@@ -1890,14 +1890,11 @@ static void SaveOptionsFile(windows_options &opts, const std::string &filename)
 
 static void LoadOptionsAndInterface(void)
 {
-	// parse INTERFACE.INI
+	// parse INTERFACE.INI	
 	std::string intername = std::string(GetGuiDir()).append(PATH_SEPARATOR).append(INTERFACE_INI_FILENAME).append(".ini");
 	LoadInterfaceFile(winui_opts, intername);
-	// if .\mame.ini not exist, create a default one
-	std::string filename = std::string(DEFAULT_INI_FILENAME).append(".ini");
-	LoadOptionsStartup(core_opts, filename);
 	// parse the real MAME.INI, create it if it doesn't exist
-	filename = std::string(GetIniDir()).append(PATH_SEPARATOR).append(DEFAULT_INI_FILENAME).append(".ini");
+	std::string filename = std::string(GetIniDir()).append(PATH_SEPARATOR).append(DEFAULT_INI_FILENAME).append(".ini");
 	LoadOptionsStartup(core_opts, filename);
 	// parse UI.INI
 	std::string uiname = std::string(GetIniDir()).append(PATH_SEPARATOR).append(INTERNAL_UI_INI_FILENAME).append(".ini");

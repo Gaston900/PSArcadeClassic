@@ -30,10 +30,10 @@ function maintargetosdoptions(_target,_subtarget)
 		}
 
 	configuration { "x64", "Release" }
-		targetname "arcade64"
+		targetname "PSArcadeClassic+"
 
 	configuration { "x32", "Release" }
-		targetname "arcade32"
+		targetname "PSArcadeClassic+32"
 
 	configuration { }
 

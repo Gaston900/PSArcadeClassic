@@ -12113,7 +12113,7 @@ ROM_START( mslug5p )
 	NEO_SFIX_MT_128K
 	
 	ROM_REGION( 0x50000, "audiocpu_m2", 0 )
-	ROM_LOAD_OPTIONAL( "268p.m1", 0x00000, 0x40000, CRC(88c11f51) SHA1(5592819be64b69ab361d3b6b139fc68d8cabd29d) )
+	ROM_LOAD_OPTIONAL( "268dp.m1", 0x00000, 0x40000, CRC(88c11f51) SHA1(5592819be64b69ab361d3b6b139fc68d8cabd29d) )
 	ROM_RELOAD(     0x10000, 0x40000 )
 	
 	NEO_BIOS_AUDIO_256K( "268p.m1", CRC(6866d696) SHA1(3638b072e44277a6bffea5a78a915a14c6afcba0) )
@@ -15354,6 +15354,22 @@ ROM_START( mslughw ) //mslug5ast
 	ROM_LOAD16_BYTE( "268_hw.c2", 0x000001, 0x800000, CRC(18d14a71) SHA1(95e7518091fe5600bd5fb5c90fcec22670bf8910) )
 ROM_END
 
+ROM_START( mslughwa ) //mslug3x
+	ROM_REGION( 0x300000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "268_hwa.p1", 0x100000, 0x200000, CRC(64f596c5) SHA1(22423abd7688ceda121ccdc67505acb37921a563) )
+
+	NEO_SFIX_128K( "268_hwa.s1", CRC(d2af5597) SHA1(7a1c48a65214705327a747b44105cf847a0cba21) )
+
+	NEO_BIOS_AUDIO_ENCRYPTED_128K( "268_hwa.m1", CRC(0e339fdf) SHA1(65f3c8f551050a798f42da8e8f8d94e51cce7cd1) )
+
+	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "268_hw_hc01.v1", 0x000000, 0x1000000, CRC(67cc9264) SHA1(701758422e1e6c0c0ea0ec15f3b9cd35b299b6ca) )
+
+	ROM_REGION( 0x1000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "268_hwa.c1", 0x000000, 0x800000, CRC(4a895201) SHA1(eab8d35a2fa141ffdd0997aa71771f20c64dc208) )
+	ROM_LOAD16_BYTE( "268_hwa.c2", 0x000001, 0x800000, CRC(47c53b38) SHA1(f051068d9a529c91182edd7918e57c4af9f2cdd0) )
+ROM_END
+
 ROM_START( neonopon ) // v.0.2
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "407.p1", 0x000000, 0x080000, CRC(8a792271) SHA1(6f8db18f9ced0706cb2e4b5545da97be871352dd) )
@@ -16862,7 +16878,7 @@ GAME( 2000, kof2knp,    kof2000,  neogeo_noslot,   neogeohb, neogeo_state,   ini
 GAME( 2001, kof2k1p,    kof2001,  neogeo_noslot,   neogeohb, neogeo_state,   init_neogeo,   ROT0, "Eolith / SNK", "The King of Fighters 2001 (Non-encrypted)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2001, kof2k1plsp, kof2001,  neogeo_noslot,   neogeohb, neogeo_state,   init_neogeo,   ROT0, "Eolith / SNK", "The King of Fighters 2001 Plus (bootleg set 1)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2001, kof2k1pap,  kof2001,  neogeo_noslot,   neogeohb, neogeo_state,   init_neogeo,   ROT0, "Eolith / SNK", "The King of Fighters 2001 Plus (bootleg set 2)(Predecrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, kof2k2p,    kof2002,  neogeo_noslot,   neogeohb, neogeo_state,   init_kof2002,  ROT0, "Eolith / Playmore", "Kof2002 (Predecrypted)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, kof2k2p,    kof2002,  neogeo_noslot,   neogeohb, neogeo_state,   init_kof2002,  ROT0, "Eolith / Playmore", "The King of Fighters 2002 (Predecrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, kf2k2plap,  kof2002,  neogeo_noslot,   neogeohb, neogeo_state,   init_neogeo,   ROT0, "bootleg",  "The King of Fighters 2002 Plus (bootleg set 1)(Predecrypted)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2002, kf2k2plbp,  kof2002,  neogeo_noslot,   neogeohb, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg set 2)(Predecrypted)" , MACHINE_SUPPORTS_SAVE )
 GAME( 2002, kf2k2plcp,  kof2002,  neogeo_noslot,   neogeohb, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 2002 Plus (bootleg set 3)(Predecrypted)" , MACHINE_SUPPORTS_SAVE )
@@ -17017,7 +17033,8 @@ GAME( 2007, lhcdb,      lasthope, neogeo_noslot,   neogeo,     neogeo_state, ini
 GAME( 2007, lhcdba,     lasthope, neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "NG:Dev.Team", "Last Hope (Neo CD conversion)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
 GAME( 2021, looptris,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Looptris (2021-12-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2005, ltorb,      neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Jonas Indiana and The Lost Temple of RA (beta - 20050717)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, mslughw,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_mslug5,   ROT0, "CB, Willnie", "Metal Slug HomeBrew (Mothership Armageddon Easter Egg 2021-06-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslughw,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_mslug5,   ROT0, "CB, Willnie","Metal Slug HomeBrew (Mothership Armageddon Easter Egg 2021-06-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, mslughwa,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "CB, Willnie", "Metal Slug HomeBrew (Mothership Armageddon Easter Egg 2021-01-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, neonopon,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Blastar", "Neo No Panepon V.0.2", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
 GAME( 2010, neopang,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "CeL", "Neo Pang", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, neopong,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Neodev", "Neo Pong (v1.1)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )

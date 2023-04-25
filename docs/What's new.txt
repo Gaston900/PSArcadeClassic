@@ -7,6 +7,41 @@
   .chd, so that we can leave roms sets much lighter for our hard drive.
 ===============================================================================================================================
 
+2023-04-29 2.4 Final Edition
+-----------------------------
+
+- A specific configuration has been developed, now you can play for free, you will no longer have to insert credits 
+  with the "5" button, now press "start" and you will be able to play with infinite credits [NeoGeo].
+- Added a credit counter for 1 player and in turn for 2 players, now individually using bios the USA [NeoGeo].
+- Added all PSMetal Slug Forever emulator updates.
+- Added bootable console mode bios for fighting roms [NeoGeo].
+- Added all Predecrypted and Decrypted roms [NeoGeo].
+- Added movement optimization for all fighting roms “GSC2007”.
+- Fixed graphic problems with driver roms: cps1bl_5205, cps1bl_pic and fcrash.
+- Removed the following annoying messages: “WRONG LENGTH”, “NO_DUMP”, “WRONG CHECKSUMS”, “BAD_DUMP” And “THE PARENT FILE DOES NOT EXIST”.
+- The graphic filter that we can apply "bgfx" was enabled by default.
+- The controls have been configured, now you will have much easier access to access it:
+  * Command to reset games, with the keyboard button "9".
+  * Command to enter the bios, with the keyboard button "0".
+  * Command to save games, with the keyboard button "K".
+   [Clarification for the command to work, the graphic filters must be deactivated, since otherwise it would not work.]
+  * Command to load games, with the keyboard button "L".
+  * Command to pause the game, with the keyboard button "P".
+  * Command to display the time in real time in the game, with the keyboard button "O".
+  * Command to overclock the game, with the keyboard button "I".
+   [Clarification for the command to work, the graphic filters must be deactivated, since otherwise it would not work.]
+  * Command for the window mode screen, with the keyboard button "Space Bar".
+  * Command to apply a graphic filter to the games, with the keyboard button "Ñ".
+   [Clarification for the command to work, the graphic filters must be deactivated, since otherwise it would not work.]
+  * Command to speed up the game, with the keyboard button "Back Space".
+- Several things have been fixed.
+
+New Games
+---------------------------------
++1000 New Roms Hacks
+
+
+
 2023-01-07 2.3
 ---------------
 

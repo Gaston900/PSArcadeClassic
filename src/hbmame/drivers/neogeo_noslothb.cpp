@@ -23624,7 +23624,7 @@ ROM_START( mslug2hc05 ) //mslug2eg
 	ROM_REGION( 0x400000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc05.p1", 0x000000, 0x100000, CRC(bb312904) SHA1(08766b1ffb8686aa4d07370dc825c9f09a100fa6) )
 	ROM_LOAD16_WORD_SWAP( "241_hc05.p2", 0x100000, 0x300000, CRC(abf37360) SHA1(09347f0502fba4965dc14fd6db89bb3cabdeea1f) )
-    ROM_DEFAULT_BIOS("mslug_forever")
+    ROM_DEFAULT_BIOS("euro")
     MSLUG2_ROM_FILL
     
 	NEO_SFIX_128K( "241_hc05.s1", CRC(d983067f) SHA1(b9da5e7e2064bf11baa601773413192c3694710a) )
@@ -23758,7 +23758,7 @@ ROM_START( mslug2hc11 )
 	ROM_REGION( 0x400000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "241_hc11.p1", 0x000000, 0x100000, CRC(aab0c2a7) SHA1(8501f543ec2a26a870195ead3dd531133390f203) )
 	ROM_LOAD16_WORD_SWAP( "241_hc05.p2", 0x100000, 0x300000, CRC(abf37360) SHA1(09347f0502fba4965dc14fd6db89bb3cabdeea1f) )
-    ROM_DEFAULT_BIOS("mslug_forever")
+    ROM_DEFAULT_BIOS("euro")
     MSLUG2_ROM_FILL
     
 	NEO_SFIX_128K( "241_hc05.s1", CRC(d983067f) SHA1(b9da5e7e2064bf11baa601773413192c3694710a) )
@@ -25634,7 +25634,7 @@ ROM_START( mslug3hc39 ) //mslug3eb
 	ROM_LOAD16_WORD_SWAP( "neo-sma_hc09.sma", 0x0c0000, 0x040000, CRC(c2dc0b28) SHA1(3aff37ec62def5a8f23523cb7c1988934e27ea30) )
 	ROM_LOAD16_WORD_SWAP( "256_hc39.p1",      0x100000, 0x400000, CRC(6ec2e58d) SHA1(d83dd522a5c8a8b4bd32722967e3d934d2e73e08) )
 	ROM_LOAD16_WORD_SWAP( "256_hc39.p2",      0x500000, 0x400000, CRC(faaf8cd8) SHA1(264018877eab84582ba553cb42d75f15c0c08f65) )
-    ROM_DEFAULT_BIOS("mslug_forever")
+    ROM_DEFAULT_BIOS("euro")
 
 	NEO_SFIX_MT_512K
 
@@ -28539,7 +28539,7 @@ ROM_START( mslug3b6hc06 ) //mslug3n6mp
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299_hc06.p1", 0x000000, 0x100000, CRC(0908bffe) SHA1(6cfd0deed6899f458fce26f77e8fa813ade09f5e) )
 	ROM_LOAD16_WORD_SWAP( "299_hc01.p2", 0x100000, 0x400000, CRC(bf4a80af) SHA1(514f97892375a636b84fb8388261eea645a8da1a) )
-    ROM_DEFAULT_BIOS("mslug_forever") 
+    ROM_DEFAULT_BIOS("euro")
     MSLUG3H_ROM_FILL
 
 	NEO_SFIX_128K( "299.s1", CRC(6f8b9635) SHA1(86b0c8c0ccac913c6192ed6a96c35d4e1a5e8061) )
@@ -28567,7 +28567,7 @@ ROM_START( mslug3b6hc07 ) //mslug3n6mp
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299_hc07.p1", 0x000000, 0x100000, CRC(e394087c) SHA1(58d08bb8721faf286148513988e1e9bccf9968dd) )
 	ROM_LOAD16_WORD_SWAP( "299_hc01.p2", 0x100000, 0x400000, CRC(bf4a80af) SHA1(514f97892375a636b84fb8388261eea645a8da1a) )
-    ROM_DEFAULT_BIOS("mslug_forever")
+    ROM_DEFAULT_BIOS("euro")
     MSLUG3H_ROM_FILL
 
 	NEO_SFIX_128K( "299.s1", CRC(6f8b9635) SHA1(86b0c8c0ccac913c6192ed6a96c35d4e1a5e8061) )
@@ -28594,7 +28594,7 @@ ROM_END
 ROM_START( mslug3b6hc08 ) //mslug3b6v
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299_hc08.p1", 0x000000, 0x600000, CRC(e1ba2377) SHA1(c7156e080fced6f53ef55fa2f3fefeeaa34afec2) )
-    ROM_DEFAULT_BIOS("mslug_forever")
+    ROM_DEFAULT_BIOS("euro")
     MSLUG3H_ROM_FILL
 
 	//NEO_SFIX_128K( "256_hc09.s1", CRC(39f1a271) SHA1(07835758801f31876274a25bc7796abe1b5f052b) )
@@ -28651,7 +28651,7 @@ ROM_START( mslug3b6hc10 ) //mslug3n6mp
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "299_hc06.p1", 0x000000, 0x100000, CRC(0908bffe) SHA1(6cfd0deed6899f458fce26f77e8fa813ade09f5e) )
 	ROM_LOAD16_WORD_SWAP( "299_hc09.p2", 0x100000, 0x400000, CRC(7610b94d) SHA1(e2a016a1136ad91ef25577b5036b0d3e0fe70dce) )
-    ROM_DEFAULT_BIOS("mslug_forever")
+    ROM_DEFAULT_BIOS("euro")
     MSLUG3H_ROM_FILL
 
 	NEO_SFIX_128K( "299.s1", CRC(6f8b9635) SHA1(86b0c8c0ccac913c6192ed6a96c35d4e1a5e8061) )
@@ -28907,7 +28907,7 @@ ROM_START( mslug4hc10 )
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "263_hc10.p1", 0x000000, 0x100000, CRC(3f7ce3c5) SHA1(a0a9cf5d887f2ff9c048d2bb22cfba168b393df0) )
 	ROM_LOAD16_WORD_SWAP( "263.p2",      0x100000, 0x400000, CRC(fdb7aed8) SHA1(dbeaec38f44e58ffedba99e70fa1439c2bf0dfa3) )
-    ROM_DEFAULT_BIOS("mslug_forever")
+    ROM_DEFAULT_BIOS("euro")
     MSLUG4_ROM_FILL
 
 	NEO_SFIX_128K( "263hd.s1", CRC(a9446774) SHA1(c5a309fd8ee6d6750a15c82e710218a3755e38b2) )
@@ -33887,7 +33887,7 @@ ROM_START( mslugxhc45 ) //mslugxeb
 	ROM_REGION( 0x500000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "250_hx19.p1", 0x000000, 0x100000, CRC(5836f4d7) SHA1(002c6a519c118d33e3cef92066b0e8fc96f52627) )
 	ROM_LOAD16_WORD_SWAP( "250_hx19.p2", 0x100000, 0x400000, CRC(9033c16c) SHA1(13336d2d9a042973dd744966c37a0a3d5f574808) )
-    ROM_DEFAULT_BIOS("mslug_forever")
+    ROM_DEFAULT_BIOS("euro")
     MSLUGX_ROM_FILL
 
 	NEO_SFIX_128K( "250.s1", CRC(fb6f441d) SHA1(2cc392ecde5d5afb28ddbaa1030552b48571dcfb) )
@@ -41251,7 +41251,7 @@ GAME( 2013, mslugxhc05,       mslugx,   neogeo_noslot, neogeohb, neogeo_state, i
 GAME( 2020, mslugxhc06,       mslugx,   neogeo_noslot, neogeohb, neogeo_state, init_mslugx,    ROT0, "GOTVG",        "Metal Slug X (Infinite Firepower Edition 2021-03-20 )", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, mslugxhc07,       mslugx,   neogeo_noslot, neogeohb, neogeo_state, init_mslugx,    ROT0, "PlayerX China","Metal Slug X (Enemy Heavy Plate 2013-06-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mslugxhc08,       mslugx,   neogeo_noslot, neogeohb, neogeo_state, init_mslugx,    ROT0, "DDJ",          "Metal Slug X (Change Weapon And Mummy 2018-09-26)", MACHINE_SUPPORTS_SAVE )
-GAME( 2020, mslugxhc09,       mslugx,   neogeo_noslot, neogeohb, neogeo_state, init_mslugx,    ROT0, "GOTVG",        "Metal Slug X (Generation SV 2020-11-04)", MACHINE_SUPPORTS_SAVE )
+GAME( 2020, mslugxhc09,       mslugx,   neogeo_noslot, neogeohb, neogeo_state, init_mslugx,    ROT0, "GOTVG",        "Metal Slug X (SV Generation 2020-11-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, mslugxhc10,       mslugx,   neogeo_noslot, neogeohb, neogeo_state, init_mslugx,    ROT0, "DDJ",          "Metal Slug X (War Chariot 2016-03-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mslugxhc11,       mslugx,   neogeo_noslot, neogeohb, neogeo_state, init_mslugx,    ROT0, "PlayerX China","Metal Slug X (Enemy Soldiers Remake Version 3 2017-12-31)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, mslugxhc12,       mslugx,   neogeo_noslot, neogeohb, neogeo_state, init_mslugx,    ROT0, "GOTVG",        "Metal Slug X (Last Legendary Edition 2023-03-11)", MACHINE_SUPPORTS_SAVE )

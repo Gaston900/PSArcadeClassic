@@ -5,6 +5,9 @@ It's called Project Shadow Arcade Classic+, it's a project that started at the b
  
 This project is focused on merging the Arcade64 + HBMame system, The main thing has started by updating the Roms Sets from version 0.232 - 0.245, then it continued with a total cleaning of the roms thus eliminating hundreds of useless roms or .chd and unnecessary and thus to be able to generate a collectible edition and in this way a single version will be published. So that we can leave the roms system much lighter for our hard drive.
  
+I am only giving support for the Windows XP, Windows 7, Windows 8, Windows 10 and Windows 11 operating systems,
+for the 86/64 bit cpu of the compatible microprocessors.
+
 This way you will be able to enjoy all the arcade systems in a single version, including all the hacks that currently exist.
 
 Games that have not been included:

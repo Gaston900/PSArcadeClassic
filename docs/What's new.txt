@@ -16,6 +16,7 @@
 - Added all PSMetal Slug Forever emulator updates.
 - Added bootable console mode bios for fighting roms [NeoGeo].
 - Added all Predecrypted and Decrypted roms [NeoGeo].
+- Added a filter for all hack roms.
 - Added movement optimization for all fighting roms “GSC2007”.
 - Fixed graphic problems with driver roms: cps1bl_5205, cps1bl_pic and fcrash.
 - Removed the following annoying messages: “WRONG LENGTH”, “NO_DUMP”, “WRONG CHECKSUMS”, “BAD_DUMP” And “THE PARENT FILE DOES NOT EXIST”.

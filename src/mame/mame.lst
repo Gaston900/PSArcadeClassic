@@ -11770,19 +11770,19 @@ ffighthc08                      // Hack
 ffighthc09                      // Hack
 ffighthc10                      // Hack
 mswordhc01                      // Hack
-//kodhc01                        // Hack [It does not work]
-//kodhc02                        // Hack [It does not work]
-//kodhc03                        // Hack [It does not work]
-//kodhc04                        // Hack [It does not work]
-//kodhc05                        // Hack [It does not work]
-//kodhc06                        // Hack [It does not work]
-//kodhc07                        // Hack [It does not work]
-//kodhc08                        // Hack [It does not work]
-//kodhc09                        // Hack [It does not work]
-//kodhc10                        // Hack [It does not work]
-//kodhc11                        // Hack [It does not work]
-//kodhc12                        // Hack [It does not work]
-//kodhc13                        // Hack [It does not work]
+kodhc01                         // Hack [It does not work]
+kodhc02                         // Hack [It does not work]
+kodhc03                         // Hack [It does not work]
+kodhc04                         // Hack [It does not work]
+kodhc05                         // Hack [It does not work]
+kodhc06                         // Hack [It does not work]
+kodhc07                         // Hack [It does not work]
+kodhc08                         // Hack [It does not work]
+kodhc09                         // Hack [It does not work]
+kodhc10                         // Hack [It does not work]
+kodhc11                         // Hack [It does not work]
+kodhc12                         // Hack [It does not work]
+kodhc13                         // Hack [It does not work]
 kodhc14                         // Hack
 kodhc15                         // Hack
 kodhc16                         // Hack
@@ -11790,9 +11790,9 @@ kodhc17                         // Hack
 kodhc18                         // Hack
 kodhc19                         // Hack
 kodhc20                         // Hack
-//kodhc21                        // Hack [It does not work]
-//kodhc22                        // Hack [It does not work]
-//kodhc23                        // Hack [It does not work]
+kodhc21                         // Hack [It does not work]
+kodhc22                         // Hack [It does not work]
+kodhc23                         // Hack [It does not work]
 knightshc01                     // Hack
 knightshc02                     // Hack
 knightshc03                     // Hack
@@ -13991,7 +13991,6 @@ mslugxhc45                      // Hack
 mslugxhc46                      // Hack
 mslugxhc47                      // Hack
 mslugxhc48                      // Hack
-mslugxhc49                      // Hack
 mslugxhc50                      // Hack
 mslugxhc51                      // Hack
 mslugxhc52                      // Hack

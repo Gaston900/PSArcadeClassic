@@ -120,7 +120,7 @@ extern const FILTER_ITEM g_filterList[] =
 
 static const TREEICON treeIconNames[] =
 {
-//	{ IDI_FOLDER_OPEN,         "foldopen" },
+	{ IDI_FOLDER_OPEN,         "foldopen" },
 	{ IDI_FOLDER,              "folder" },
 	{ IDI_FOLDER_ALLGAMES,     "allgames" },
 	{ IDI_FOLDER_AVAILABLE,    "foldavail" },

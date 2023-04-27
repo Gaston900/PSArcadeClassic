@@ -52,9 +52,7 @@ Added custom buttons and auto fire
 
 Removed the black border on NeoGeo systems, now has full screen.
 
-Removed warning screen.
-
-Removed Startups, Loading, Decryption screen texts.
+Removed warning screen, startups, Loading, Decryption screen texts.
 
 Removed the following annoying messages: “WRONG LENGTH”, “NO_DUMP”, “WRONG CHECKSUMS”, “BAD_DUMP” And “THE PARENT FILE DOES NOT EXIST”.
 

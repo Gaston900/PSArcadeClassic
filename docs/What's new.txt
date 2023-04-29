@@ -19,6 +19,7 @@
 - Added a filter for all hack roms.
 - Added movement optimization for all fighting roms “GSC2007”.
 - Fixed graphic problems with driver roms: cps1bl_5205, cps1bl_pic and fcrash.
+- Fix screen timings, remove non-existent sprite buffer ram [PGM]
 - Removed the following annoying messages: “WRONG LENGTH”, “NO_DUMP”, “WRONG CHECKSUMS”, “BAD_DUMP” And “THE PARENT FILE DOES NOT EXIST”.
 - The graphic filter that we can apply "bgfx" was enabled by default.
 - The controls have been configured, now you will have much easier access to access it:

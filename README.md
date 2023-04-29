@@ -58,6 +58,8 @@ Removed the following annoying messages: “WRONG LENGTH”, “NO_DUMP”, “W
 
 Added movement optimization for all fighting games “GSC2007”.
 
+Fix screen timings, remove non-existent sprite buffer ram [PGM].
+
 The Arcade64 “GUI” was modernized with new icons, a custom default configuration has been made.
 
 It is already pre-configured, enforce aspect ratio is disabled, full screen mode and tricks are already enabled by default.

@@ -20,7 +20,7 @@
 - Added movement optimization for all fighting roms “GSC2007”.
 - Fixed graphic problems with driver roms: cps1bl_5205, cps1bl_pic and fcrash.
 - Fixed screen timings, remove non-existent sprite buffer ram [PGM]
-- Fixed portal bug Metal Slug hack [remikare]
+- Fixed portal bug Metal Slug hack "remikare"
 - Removed the following annoying messages: “WRONG LENGTH”, “NO_DUMP”, “WRONG CHECKSUMS”, “BAD_DUMP” And “THE PARENT FILE DOES NOT EXIST”.
 - The graphic filter that we can apply "bgfx" was enabled by default.
 - The controls have been configured, now you will have much easier access to access it:

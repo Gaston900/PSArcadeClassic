@@ -321,7 +321,6 @@ void pgm_state::pgm_base_mem(address_map &map)
 	map(0x900000, 0x907fff).mirror(0x0f8000).rw(FUNC(pgm_state::videoram_r), FUNC(pgm_state::videoram_w)).share("videoram"); /* IGS023 VIDEO CHIP */
 	map(0xa00000, 0xa011ff).ram().w(m_palette, FUNC(palette_device::write16)).share("palette");
 	map(0xb00000, 0xb0ffff).ram().share("videoregs"); /* Video Regs inc. Zoom Table */
-
 	map(0xc00003, 0xc00003).r(m_soundlatch, FUNC(generic_latch_8_device::read)).w(FUNC(pgm_state::m68k_l1_w));
 	map(0xc00005, 0xc00005).rw("soundlatch2", FUNC(generic_latch_8_device::read), FUNC(generic_latch_8_device::write));
 	map(0xc00007, 0xc00007).rw("rtc", FUNC(v3021_device::read), FUNC(v3021_device::write));
@@ -483,6 +482,7 @@ TIMER_DEVICE_CALLBACK_MEMBER(pgm_state::interrupt)
 //  if (scanline == 224)
 //      m_maincpu->set_input_line(6, HOLD_LINE);
 
+//  vblank end interrupt
 	if (scanline == 0)
 		if (!m_irq4_disabled) m_maincpu->set_input_line(4, HOLD_LINE);
 }

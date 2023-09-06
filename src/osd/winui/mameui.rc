@@ -44,6 +44,8 @@ BEGIN
         MENUITEM SEPARATOR
         MENUITEM "Grouped\tCtrl+G",                     ID_ENABLE_INDENT        
         MENUITEM SEPARATOR
+		MENUITEM "Game list", 				            ID_CHINESE_GAMELIST // USE_KLIST
+        MENUITEM SEPARATOR
         POPUP "Sort games list by"
         BEGIN
             MENUITEM "Description\tAlt+1",              ID_VIEW_BYGAME
@@ -996,6 +998,7 @@ BEGIN
     VK_NEXT,        ID_UI_HISTORY_DOWN,         VIRTKEY, CONTROL, NOINVERT
     VK_UP,            ID_SORT_ASCENDING,             VIRTKEY, ALT, NOINVERT
     VK_PRIOR,       ID_UI_HISTORY_UP,           VIRTKEY, CONTROL, NOINVERT
+    "K",			ID_CHINESE_GAMELIST,	    VIRTKEY, ALT, NOINVERT //USE_KLIST
 END
 
 /////////////////////////////////////////////////////////////////////////////
@@ -1061,7 +1064,7 @@ IDB_FILTERS                BITMAP                    "res\\filters.bmp"
 IDB_REMOVE                BITMAP                    "res\\remove.bmp"
 IDB_RENAME                BITMAP                    "res\\rename.bmp"
 IDB_RESET                BITMAP                    "res\\reset.bmp"
-
+IDB_CLIST				 BITMAP					   "res\\klist.bmp"
 /////////////////////////////////////////////////////////////////////////////
 //
 // Cursor

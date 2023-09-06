@@ -71,9 +71,9 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_LIST_COLOR,					"255,255,255",  OPTION_INTEGER, nullptr },
 	{ MUIOPTION_HISTORY_COLOR,				"255,255,255",  OPTION_INTEGER, nullptr },
 	{ MUIOPTION_TREE_COLOR,					"255,255,255",  OPTION_INTEGER, nullptr },
-	{ MUIOPTION_TREEBG_COLOR,				"154,13,13", 	    OPTION_INTEGER, nullptr },
-	{ MUIOPTION_LISTBG_COLOR,				"0,0,0", 	    OPTION_INTEGER, nullptr },
-	{ MUIOPTION_HISTORYBG_COLOR,			"0,0,0", 	    OPTION_INTEGER, nullptr },
+	{ MUIOPTION_TREEBG_COLOR,				"0,32,65", 	    OPTION_INTEGER, nullptr },
+	{ MUIOPTION_LISTBG_COLOR,				"0,32,65", 	    OPTION_INTEGER, nullptr },
+	{ MUIOPTION_HISTORYBG_COLOR,			"0,32,65", 	    OPTION_INTEGER, nullptr },
 	{ MUIOPTION_CUSTOM_COLOR,				"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0", OPTION_STRING, nullptr },
 	{ MUIOPTION_LIST_MODE,					"1",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SPLITTERS,					"150,649",  	OPTION_STRING, nullptr },
@@ -136,6 +136,9 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_UI_JOY_SS_CHANGE,			"2,0,3,0",  	OPTION_STRING, nullptr },
 	{ MUIOPTION_UI_JOY_HISTORY_UP,			"2,0,4,0",  	OPTION_STRING, nullptr },
 	{ MUIOPTION_UI_JOY_HISTORY_DOWN,		"2,0,1,0",  	OPTION_STRING, nullptr },
+
+	{ nullptr,								nullptr,		OPTION_HEADER, "Korean GAME List" },
+	{ MUIOPTION_USECHINESE_GAMELIST,			"1",		OPTION_BOOLEAN, nullptr },
 	{ nullptr }
 };
 
@@ -449,6 +452,17 @@ void SetShowFolderList(bool val)
 bool GetShowFolderList(void)
 {
 	return winui_opts.bool_value(MUIOPTION_SHOW_FOLDER_SECTION);
+}
+
+// USE_KLIST
+void SetUsechineseList(bool val)
+{
+	winui_opts.set_value(MUIOPTION_USECHINESE_GAMELIST, val, OPTION_PRIORITY_CMDLINE);
+}
+
+bool GetUsechineseList(void)
+{
+	return winui_opts.bool_value(MUIOPTION_USECHINESE_GAMELIST);
 }
 
 static void GetsShowFolderFlags(LPBITS bits)

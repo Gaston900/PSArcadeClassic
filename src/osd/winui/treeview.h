@@ -70,6 +70,16 @@ enum
 	FOLDER_SOURCE,
 	FOLDER_SAVESTATE,
 	FOLDER_DUMPING,
+//#ifdef USE_GAMEFOLDERS
+	FOLDER_NEOGEO,
+	FOLDER_CPS,
+	FOLDER_PGM,
+	FOLDER_NAMCO,		
+	FOLDER_TAITO,		
+	FOLDER_KONAMI,		
+	FOLDER_SEGA,	
+	FOLDER_CAVE,
+//#endif	
 	MAX_FOLDERS
 };
 
@@ -146,5 +156,14 @@ HIMAGELIST GetTreeViewIconList(void);
 int GetTreeViewIconIndex(int icon_id);
 void ResetTreeViewFolders(void);
 void SelectTreeViewFolder(int folder_id);
-
+//#ifdef USE_GAMEFOLDERS
+void CreateNEOGEOFolders(int parent_index);
+void CreateCPSFolders(int parent_index);
+void CreatePGMFolders(int parent_index);
+void CreateNAMCOFolders(int parent_index);
+void CreateTAITOFolders(int parent_index);
+void CreateKONAMIFolders(int parent_index);
+void CreateSEGAFolders(int parent_index);
+void CreateTOAFolders(int parent_index);
+//#endif
 #endif

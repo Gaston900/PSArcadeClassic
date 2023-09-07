@@ -117,14 +117,14 @@ BEGIN
     END
     POPUP "&Help"
     BEGIN
-        MENUITEM "Online Manual\tF1",                      ID_HELP_CONTENTS
-        MENUITEM "Support Forum\tF3",                       ID_HELP_TROUBLE
-        MENUITEM SEPARATOR
+//        MENUITEM "Online Manual\tF1",                      ID_HELP_CONTENTS
+//        MENUITEM "Support Forum\tF3",                       ID_HELP_TROUBLE
+//        MENUITEM SEPARATOR
         MENUITEM "Mame release notes\tF6",              ID_HELP_WHATS_NEW
-        MENUITEM SEPARATOR
-        MENUITEM "MAME development site\tF7",             ID_MAME_HOMEPAGE
-        MENUITEM "Frequently Asked Questions\tF8",         ID_MAME_FAQ
-        MENUITEM SEPARATOR
+//        MENUITEM SEPARATOR
+//        MENUITEM "MAME development site\tF7",             ID_MAME_HOMEPAGE
+//        MENUITEM "Frequently Asked Questions\tF8",         ID_MAME_FAQ
+//        MENUITEM SEPARATOR
         MENUITEM "About\tF9",                            ID_HELP_ABOUT
     END
 END
@@ -280,9 +280,9 @@ IDI_ADVANCED            ICON                    "res\\advanced.ico"
 IDI_AUDIT_FAIL          ICON                    "res\\audit_fail.ico"
 IDI_FOLDER_IMPERFECT    ICON                    "res\\foldimp.ico"
 IDI_FOLDER_CPU          ICON                    "res\\foldcsb.ico"
-IDI_FOLDER_SOUND        ICON                    "res\\foldcsb.ico"
+IDI_FOLDER_SOUND        ICON                    "res\\folduni.ico"
 IDI_FOLDER_BIOS         ICON                    "res\\foldbios.ico"
-IDI_FOLDER_DUMP         ICON                    "res\\foldcsb.ico"
+IDI_FOLDER_DUMP         ICON                    "res\\folduni.ico"
 IDI_SYSTRAY             ICON                    "res\\psarcadeclassic.ico"
 IDI_DEBUG               ICON                    "res\\debug.ico"
 IDI_MONITOR             ICON                    "res\\monitor.ico"
@@ -314,7 +314,16 @@ IDI_CONTROLSHEET        ICON                    "res\\joystick.ico"
 IDI_MISCSHEET           ICON                    "res\\misc.ico"
 IDI_MISC2SHEET          ICON                    "res\\debug.ico"
 IDI_SNAPSHEET           ICON                    "res\\snapshot.ico"
-
+//#ifdef USE_GAMEFOLDERS
+IDI_FOLDER_NEOGEO		ICON					"res\\fold_neogeo.ico"
+IDI_FOLDER_CAPCOM		ICON				    "res\\fold_cps.ico"
+IDI_FOLDER_PGM			ICON				    "res\\fold_pgm.ico"
+IDI_FOLDER_NAMCO		ICON				 	"res\\fold_namco.ico"
+IDI_FOLDER_TAITO		ICON	 				"res\\fold_taito.ico"
+IDI_FOLDER_KONAMI		ICON	 				"res\\fold_konami.ico"
+IDI_FOLDER_SEGA 		ICON	 				"res\\fold_sega.ico"
+IDI_FOLDER_CAVE 		ICON	 				"res\\fold_cave.ico"
+//#endif
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog

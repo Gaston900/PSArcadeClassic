@@ -375,6 +375,7 @@ static int *icon_index = NULL; 	/* for custom per-game icons */
 
 //Source Code Ekmame
 static bool bclist = true; // USE_CLIST
+static int game_count=0;
 
 static const TBBUTTON tbb[] =
 {
@@ -1216,6 +1217,8 @@ static void Win32UI_init(void)
 	else
 		winui_set_window_text_utf8(GetDlgItem(hSplash, IDC_PROGBAR), "Loading folders structure...");
 	SendMessage(hProgress, PBM_SETPOS, 10, 0);
+
+    game_count =  driver_list::total();
 
 	srand((unsigned)time(NULL));
 	// create the memory pool
@@ -6013,4 +6016,9 @@ char *core_strdup(const char *str)
 			strcpy(cpy, str);
 	}
 	return cpy;
+}
+
+int GetNumGames(void)
+{
+	return game_count;
 }

@@ -203,6 +203,8 @@ char *GetGameNameByIndex(int nIndex, bool bUse);// USE_CLIST
 char *GetDescriptionByIndex(int nIndex, bool bUse);// USE_CLIST	
 char *GetGameManufactureByIndex(int nIndex, bool bUse);
 
+int GetNumGames(void);
+
 char *core_strdup(const char *str);
 
 #endif

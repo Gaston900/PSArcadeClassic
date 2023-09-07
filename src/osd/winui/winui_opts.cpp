@@ -76,7 +76,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_HISTORYBG_COLOR,			"0,32,65", 	    OPTION_INTEGER, nullptr },
 	{ MUIOPTION_CUSTOM_COLOR,				"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0", OPTION_STRING, nullptr },
 	{ MUIOPTION_LIST_MODE,					"1",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_SPLITTERS,					"150,649",  	OPTION_STRING, nullptr },
+	{ MUIOPTION_SPLITTERS,					"150,778",  	OPTION_STRING, nullptr },
 	{ MUIOPTION_GUI_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
 	{ MUIOPTION_LIST_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
 	{ MUIOPTION_HISTORY_FONT,				"-11,0,0,0,400,0,0,0,0,3,2,1,34,Verdana", OPTION_STRING, nullptr },

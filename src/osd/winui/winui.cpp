@@ -523,7 +523,7 @@ public:
 		if (channel == OSD_OUTPUT_CHANNEL_VERBOSE)
 		{
 			FILE *pFile;
-			pFile = fopen("verbose.log", "a");
+			pFile = fopen("config/verbose.log", "a");
 			fputs(buffer, pFile);
 			fflush(pFile);
 			fclose (pFile);

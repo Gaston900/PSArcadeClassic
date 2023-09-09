@@ -64,6 +64,22 @@ The Arcade64 “GUI” was modernized with new icons, a custom default configura
 
 It is already pre-configured, enforce aspect ratio is disabled, full screen mode and tricks are already enabled by default.
 
+Now automatically use the game's main cheat file when the cloned game does not have a cheat file.
+
+Added the default option to force games to run at 60 FPS.
+
+Optimized UI + added the Toggle Game List option.
+
+8 new folders with their respective icons were added by default, each folder has a filter of the most popular arcade system.
+ * Neogeo
+ * Cps
+ * Pgm
+ * Namco
+ * Taito
+ * konami
+ * sega
+ * cave
+
 Two new folder sections called “config” and “support” were added that independently group the configurations and extra content, so that everything is kept in order in a single folder.
 
 In the Config folders it is incorporated by:

@@ -475,6 +475,7 @@
 #define IDC_NVRAM_SAVE                  1401
 #define IDC_REWIND                      1402
 #define IDC_DRC_CORE                    1403
+#define IDC_60FPS						1404
 #define IDC_BGFX_BACKEND                1407
 #define ID_CONTEXT_SHOW_FOLDER_START    39000
 #define ID_CONTEXT_SHOW_FOLDER_END      39499

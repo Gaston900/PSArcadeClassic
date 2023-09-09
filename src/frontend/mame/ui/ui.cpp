@@ -38,6 +38,8 @@
 #include "romload.h"
 #include "uiinput.h"
 
+// FIXME: allow OSD module headers to be included in a less ugly way
+#include "../osd/modules/lib/osdlib.h"
 #include "../osd/modules/lib/osdobj_common.h"
 
 #include <chrono>

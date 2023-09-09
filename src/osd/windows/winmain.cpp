@@ -62,7 +62,7 @@ using namespace Windows::UI::Popups;
 //============================================================
 //  winui_output_error
 //============================================================
-
+// MAMEFX Robbbert, 2022-10-20. The removed code was a total horrible hack and froze the system.
 class winui_output_error : public osd_output
 {
 public:
@@ -76,10 +76,15 @@ public:
 
 			std::ostringstream buffer;
 			util::stream_format(buffer, args);
-			win_message_box_utf8(!osd_common_t::s_window_list.empty() ? std::static_pointer_cast<win_window_info>(osd_common_t::s_window_list.front())->platform_window() : nullptr, buffer.str().c_str(), emulator_info::get_appname(), MB_OK);
+			win_message_box_utf8(!osd_common_t::s_window_list.empty() ?
+				std::static_pointer_cast<win_window_info>(osd_common_t::s_window_list.front())->platform_window() :
+					nullptr, buffer.str().c_str(), "ARCADE", MB_OK);
+// MAMEFX end
 		}
 		else
+		{
 			chain_output(channel, args);
+		}
 	}
 };
 
@@ -304,7 +309,7 @@ int main_(int argc, char *argv[])
 	diagnostics_module::get_instance()->init_crash_diagnostics();
 
 	// parse config and cmdline options
-	DWORD result;
+	int result = 0;
 	{
 		windows_options options;
 		windows_osd_interface osd(options);

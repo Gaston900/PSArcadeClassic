@@ -48,7 +48,7 @@ What has been optimized in this version?
 
 The command of all the game systems was optimized, now it is much more practical to be able to play, the command of the arrow keys "Up, Down, Left, Right" comes by default, this command is used to be able to move and to take actions For shooting or jumping and throwing grenades, the A, S, D key is used and the rest of the keys are used for certain kinds of games Z, X, C, Q, W, E.
 
-Added custom buttons and auto fire
+Added custom buttons and autofire.
 
 Removed the black border on NeoGeo systems, now has full screen.
 

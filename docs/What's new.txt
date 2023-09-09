@@ -7,6 +7,23 @@
   .chd, so that we can leave roms sets much lighter for our hard drive.
 ===============================================================================================================================
 
+2023-09-XX Optimization Edition
+-------------------------------
+- Now automatically use the game's main cheat file when the cloned game does not have a cheat file.
+- Added the default option to force games to run at 60 FPS.
+- Optimized UI by restoring the menu bar, added the Toggle Game List option.
+- 8 new folders with their respective icons were added by default, each folder has to be a filter of the most popular arcade system.
+ * Neogeo
+ * Cps
+ * Pgm
+ * Namco
+ * Taito
+ * konami
+ * sega
+ * cave
+
+
+
 2023-04-29 2.4 Final Edition
 -----------------------------
 

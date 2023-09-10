@@ -7,7 +7,7 @@
   .chd, so that we can leave roms sets much lighter for our hard drive.
 ===============================================================================================================================
 
-2023-09-XX Optimization Edition
+2023-09-11 Optimization Edition
 -------------------------------
 - Now automatically use the game's main cheat file when the cloned game does not have a cheat file.
 - Added the default option to force games to run at 60 FPS.

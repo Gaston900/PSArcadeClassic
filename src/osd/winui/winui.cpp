@@ -1335,6 +1335,7 @@ static void Win32UI_init(void)
 		case VIEW_ICONS_SMALL :
 		default :
 			SetView(ID_VIEW_ICONS_SMALL);
+			break;
 	}
 
 	UpdateListView();
@@ -1520,11 +1521,13 @@ static LRESULT CALLBACK MameWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPAR
 		case WM_CLOSE:
 			if (GetExitDialog())
 			{
+/*
 				if (winui_message_box_utf8(hMain, "Are you sure you want to quit?", MAMEUINAME, MB_ICONQUESTION | MB_YESNO) == IDNO)
 				{
 					SetFocus(hWndList);
 					return true;
 				}
+*/
 			}
 
 			Win32UI_exit();

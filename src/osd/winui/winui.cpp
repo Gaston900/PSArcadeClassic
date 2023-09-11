@@ -7,6 +7,8 @@
 static int MIN_WIDTH  = DBU_MIN_WIDTH;
 static int MIN_HEIGHT = DBU_MIN_HEIGHT;
 
+static HIMAGELIST   hHeaderImages = NULL;
+
 typedef struct
 {
 	int resource;
@@ -246,6 +248,12 @@ typedef struct
 
 static void ResizeWindow(HWND hParent, Resize *r);
 
+/* List view Icon defines */
+#define LG_ICONMAP_WIDTH    GetSystemMetrics(SM_CXICON)
+#define LG_ICONMAP_HEIGHT   GetSystemMetrics(SM_CYICON)
+#define ICONMAP_WIDTH       GetSystemMetrics(SM_CXSMICON)
+#define ICONMAP_HEIGHT      GetSystemMetrics(SM_CYSMICON)
+
 /***************************************************************************
     Internal variables
  ***************************************************************************/
@@ -379,29 +387,27 @@ static int game_count=0;
 
 static const TBBUTTON tbb[] =
 {
-	{0, ID_VIEW_FOLDERS,        TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 0},
-	{1, ID_VIEW_PICTURE_AREA,   TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 1},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{2, ID_VIEW_ICONS_LARGE,    TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 2},
-	{3, ID_VIEW_ICONS_SMALL,    TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 3},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{4, ID_ENABLE_INDENT,       TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 12},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	// Source Code Ekmame
-	{6, ID_CHINESE_GAMELIST,     TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 13}, // USE_CLIST
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{7, ID_UPDATE_GAMELIST,   TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 4},
-	{8, ID_OPTIONS_INTERFACE,    TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 5},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{9, ID_OPTIONS_DEFAULTS,          TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 6},
-	{10,ID_VIDEO_SNAP,             TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 7},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{11,ID_PLAY_M1,          TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 8},
-	{12,ID_HELP_ABOUT,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 9},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{13,ID_HELP_CONTENTS,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 10},
-	{14,ID_MAME_HOMEPAGE,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 11},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0}
+	{0, ID_VIEW_FOLDERS,    	TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 0},
+	{1, ID_VIEW_PICTURE_AREA,	TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 1},
+	{0, 0,                  	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{2, ID_VIEW_ICONS_LARGE,  	TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 2},
+	{3, ID_VIEW_ICONS_SMALL, 	TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 3},
+//	{11, ID_VIEW_LIST_MENU,  	TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 4},
+	{5, ID_VIEW_DETAIL, 		TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 5},
+//	{6, ID_VIEW_GROUPED,  		TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 6},
+	{0, 0,                  	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{4, ID_ENABLE_INDENT,  		TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 12},
+	{0, 0,                  	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{7, ID_UPDATE_GAMELIST,  	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 4},
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{8, ID_OPTIONS_INTERFACE,	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 5},
+	{9, ID_OPTIONS_DEFAULTS, 	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 6},
+	{0, 0,                   	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{10,ID_VIDEO_SNAP,			TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 7},
+	{11,ID_PLAY_M1,   			TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 8},
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{6, ID_CHINESE_GAMELIST,    TBSTATE_ENABLED, BTNS_CHECK,	  {0, 0}, 0, 13}, // USE_KLIST
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0}
 };
 
 static const wchar_t szTbStrings[NUM_TOOLTIPS][30] =
@@ -410,16 +416,17 @@ static const wchar_t szTbStrings[NUM_TOOLTIPS][30] =
 	TEXT("Toggle pictures area"),
 	TEXT("Large icons"),
 	TEXT("Small icons"),
+//  TEXT("List menu"),
+	TEXT("Details"),
 	TEXT("Refresh"),
 	TEXT("Interface setttings"),
 	TEXT("Default games options"),
 	TEXT("Play ProgettoSnaps movie"),
 	TEXT("M1FX"),
-	TEXT("About"),
-	TEXT("Help"),
-	TEXT("MAME homepage"),
 	TEXT("Toggle grouped view"),
-	TEXT("Toggle game list")
+	TEXT("Toggle game list"),
+//	TEXT("Help"),
+//	TEXT("MAME homepage")
 };
 
 static const int CommandToString[] =
@@ -428,14 +435,14 @@ static const int CommandToString[] =
 	ID_VIEW_PICTURE_AREA,
 	ID_VIEW_ICONS_LARGE,
 	ID_VIEW_ICONS_SMALL,
+//	ID_VIEW_LIST_MENU,
+	ID_VIEW_DETAIL,
+//	ID_VIEW_GROUPED,
 	ID_UPDATE_GAMELIST,
 	ID_OPTIONS_INTERFACE,
 	ID_OPTIONS_DEFAULTS,
 	ID_VIDEO_SNAP,
 	ID_PLAY_M1,
-	ID_HELP_ABOUT,
-	ID_HELP_CONTENTS,
-	ID_MAME_HOMEPAGE,
 	ID_ENABLE_INDENT,
 	// Source Code Ekmame
 	ID_CHINESE_GAMELIST,					
@@ -558,12 +565,14 @@ public:
 
 //		else
 //			chain_output(channel, msg, args);   // goes down the black hole
+#ifdef LOGSAVE
 		// LOG all messages
-//		FILE *pFile;
-//		pFile = fopen("config/winui.log", "a");
-//		fputs(buffer, pFile);
-//		fflush(pFile);
-//		fclose (pFile);
+		FILE *pFile;
+		pFile = fopen("config/winui.log", "a");
+		fputs(buffer, pFile);
+		fflush(pFile);
+		fclose (pFile);
+#endif
 	}
 };
 
@@ -1333,8 +1342,20 @@ static void Win32UI_init(void)
 			break;
 
 		case VIEW_ICONS_SMALL :
-		default :
 			SetView(ID_VIEW_ICONS_SMALL);
+			break;
+
+		case VIEW_INLIST :
+			SetView(ID_VIEW_LIST_MENU);
+			break;
+
+		case VIEW_REPORT :
+			SetView(ID_VIEW_DETAIL);
+			break;
+		
+		case VIEW_GROUPED :
+		default :
+			SetView(ID_VIEW_GROUPED);
 			break;
 	}
 
@@ -1705,8 +1726,9 @@ static bool GameCheck(void)
 	AuditRefresh();
 
 	if (game_index == 0)
+	{
 		ProgressBarShow();
-
+	}
 	if (bFolderCheck == true)
 	{
 		LVITEM lvi;
@@ -1757,10 +1779,7 @@ static bool GameCheck(void)
 bool OnIdle(HWND hWnd)
 {
 	static bool bFirstTime = true;
-	// Source Code Ekmame
-	//const char *pDescription;
-	//const char *pName;
-	
+
 // Source Code Ekmame					
 #ifdef USE_CLIST	// 错误。在启动后进入游戏的开头有一个问题。
 	  int		i;
@@ -2646,21 +2665,32 @@ static void PollGUIJoystick()
 
 static void SetView(int menu_id)
 {
+	BOOL force_reset = false;
+
 	// first uncheck previous menu item, check new one
-	CheckMenuRadioItem(GetMenu(hMain), ID_VIEW_ICONS_LARGE, ID_VIEW_ICONS_SMALL, menu_id, MF_CHECKED);
+	CheckMenuRadioItem(GetMenu(hMain), ID_VIEW_ICONS_LARGE, ID_ENABLE_INDENT, menu_id, MF_CHECKED);
 	ToolBar_CheckButton(hToolBar, menu_id, MF_CHECKED);
 
 	// Associate the image lists with the list view control.
-	if (menu_id == ID_VIEW_ICONS_LARGE)
-		(void)ListView_SetImageList(hWndList, hLarge, LVSIL_SMALL);
-	else
-		(void)ListView_SetImageList(hWndList, hSmall, LVSIL_SMALL);
+//	if (menu_id == ID_VIEW_ICONS_LARGE)
+//		(void)ListView_SetImageList(hWndList, hLarge, LVSIL_SMALL);
+//	else
+//		(void)ListView_SetImageList(hWndList, hSmall, LVSIL_SMALL);
+
+	if (Picker_GetViewID(hWndList) == VIEW_GROUPED || menu_id == ID_VIEW_GROUPED)
+	{
+		// this changes the sort order, so redo everything
+		force_reset = true;
+	}
 
 	for (int i = 0; i < sizeof(s_nPickers) / sizeof(s_nPickers[0]); i++)
 		Picker_SetViewID(GetDlgItem(hMain, s_nPickers[i]), menu_id - ID_VIEW_ICONS_LARGE);
 
-	for (int i = 0; i < sizeof(s_nPickers) / sizeof(s_nPickers[0]); i++)
-		Picker_Sort(GetDlgItem(hMain, s_nPickers[i]));
+	if(force_reset)
+	{
+		for (int i = 0; i < sizeof(s_nPickers) / sizeof(s_nPickers[0]); i++)
+			Picker_Sort(GetDlgItem(hMain, s_nPickers[i]));
+	}
 }
 
 static void ResetListView()
@@ -2727,6 +2757,12 @@ static void ResetListView()
 		else
 			Picker_SetSelectedItem(hWndList, current_game);
 	}
+
+	/*RS Instead of the Arrange Call that was here previously on all Views
+         We now need to set the ViewMode for SmallIcon again,
+         for an explanation why, see SetView*/
+	if (GetViewMode() == VIEW_ICONS_SMALL)
+		SetView(ID_VIEW_ICONS_SMALL);
 
 	SetWindowRedraw(hWndList, true);
 	UpdateStatusBar();
@@ -3032,6 +3068,19 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			UpdateListView();
 			return true;
 		/* Arrange Icons submenu */
+
+		case ID_VIEW_LIST_MENU:
+			SetView(ID_VIEW_LIST_MENU);
+			return true;
+
+		case ID_VIEW_DETAIL:
+			SetView(ID_VIEW_DETAIL);
+			return true;
+		
+		case ID_VIEW_GROUPED:
+			SetView(ID_VIEW_GROUPED);
+			return true;
+
 		case ID_VIEW_BYGAME:
 			SetSortReverse(false);
 			SetSortColumn(COLUMN_GAMES);
@@ -3988,16 +4037,81 @@ static void ReloadIcons(void)
 	}
 }
 
+static DWORD GetShellLargeIconSize(void)
+{
+	DWORD  dwSize = 32, dwLength = 512, dwType = REG_SZ;
+	HKEY   hKey;
+	LPTSTR tErrorMessage = NULL;
+
+	/* Get the Key */
+	LONG lRes = RegOpenKey(HKEY_CURRENT_USER, TEXT("Control Panel\\Desktop\\WindowMetrics"), &hKey);
+	if( lRes != ERROR_SUCCESS )
+	{
+		//GetSystemErrorMessage(lRes, &tErrorMessage);
+		MessageBox(GetMainWindow(), tErrorMessage, TEXT("Large shell icon size registry access"), MB_OK | MB_ICONERROR);
+		LocalFree(tErrorMessage);
+		return dwSize;
+	}
+
+	/* Save the last size */
+	TCHAR  szBuffer[512];
+	lRes = RegQueryValueEx(hKey, TEXT("Shell Icon Size"), NULL, &dwType, (LPBYTE)szBuffer, &dwLength);
+	if( lRes != ERROR_SUCCESS )
+	{
+		//GetSystemErrorMessage(lRes, &tErrorMessage);
+		MessageBox(GetMainWindow(), tErrorMessage, TEXT("Large shell icon size registry query"), MB_OK | MB_ICONERROR);
+		LocalFree(tErrorMessage);
+		RegCloseKey(hKey);
+		return dwSize;
+	}
+
+	dwSize = _ttol(szBuffer);
+	if (dwSize < 32)
+		dwSize = 32;
+
+	if (dwSize > 48)
+		dwSize = 48;
+
+	/* Clean up */
+	RegCloseKey(hKey);
+	return dwSize;
+}
+
+static DWORD GetShellSmallIconSize(void)
+{
+	DWORD dwSize = ICONMAP_WIDTH;
+
+	if (dwSize < 48)
+	{
+		if (dwSize < 32)
+			dwSize = 16;
+		else
+			dwSize = 32;
+	}
+	else
+	{
+		dwSize = 48;
+	}
+	return dwSize;
+}
+
 // create iconlist for Listview control
 static void CreateIcons(void)
 {
+	DWORD dwSmallIconSize = GetShellSmallIconSize();
+	DWORD dwLargeIconSize = GetShellLargeIconSize();
+	HICON hIcon;
+	DWORD dwStyle;
 	int icon_count = 0;
-	int grow = 1000;
+	int grow = 5000;
 
 	while(g_iconData[icon_count].icon_name)
 		icon_count++;
 
-	hSmall = ImageList_Create(16, 16, ILC_COLORDDB | ILC_MASK, icon_count, icon_count + grow);
+	dwStyle = GetWindowLong(hWndList,GWL_STYLE);
+	SetWindowLong(hWndList,GWL_STYLE,(dwStyle & ~LVS_TYPEMASK) | LVS_ICON);
+
+	hSmall = ImageList_Create(dwSmallIconSize, dwSmallIconSize, ILC_COLORDDB | ILC_MASK, icon_count, icon_count + grow);
 
 	if (hSmall == NULL) 
 	{
@@ -4005,7 +4119,7 @@ static void CreateIcons(void)
 		PostQuitMessage(0);
 	}
 
-	hLarge = ImageList_Create(32, 32, ILC_COLORDDB | ILC_MASK, icon_count, icon_count + grow);
+	hLarge = ImageList_Create(dwLargeIconSize, dwLargeIconSize, ILC_COLORDDB | ILC_MASK, icon_count, icon_count + grow);
 
 	if (hLarge == NULL) 
 	{
@@ -4014,6 +4128,23 @@ static void CreateIcons(void)
 	}
 
 	ReloadIcons();
+
+	// Associate the image lists with the list view control.
+	(void)ListView_SetImageList(hWndList, hSmall, LVSIL_SMALL);
+	(void)ListView_SetImageList(hWndList, hLarge, LVSIL_NORMAL);
+
+	// restore our view
+	SetWindowLong(hWndList,GWL_STYLE,dwStyle);
+
+	// Now set up header specific stuff
+	hHeaderImages = ImageList_Create(16,16,ILC_COLORDDB | ILC_MASK,2,2);
+	hIcon = LoadIcon(hInst,MAKEINTRESOURCE(IDI_HEADER_UP));
+	ImageList_AddIcon(hHeaderImages,hIcon);
+	hIcon = LoadIcon(hInst,MAKEINTRESOURCE(IDI_HEADER_DOWN));
+	ImageList_AddIcon(hHeaderImages,hIcon);
+
+	for (int i = 0; i < sizeof(s_nPickers) / sizeof(s_nPickers[0]); i++)
+		Picker_SetHeaderImageList(GetDlgItem(hMain, s_nPickers[i]), hHeaderImages);	
 }
 
 
@@ -5381,9 +5512,12 @@ static LPTREEFOLDER GetSelectedFolder(void)
 /* Updates all currently displayed Items in the List with the latest Data*/
 void UpdateListView(void)
 {
+	//ErrorMessageBox("update listview");
+
 	ResetWhichGamesInFolders();
 	ResetListView();
-	(void)ListView_RedrawItems(hWndList, ListView_GetTopIndex(hWndList), ListView_GetTopIndex(hWndList) + ListView_GetCountPerPage(hWndList));
+	if( (GetViewMode() == VIEW_GROUPED) || (GetViewMode() == VIEW_REPORT ) )
+		(void)ListView_RedrawItems(hWndList, ListView_GetTopIndex(hWndList), ListView_GetTopIndex(hWndList) + ListView_GetCountPerPage(hWndList));
 	SetFocus(hWndList);
 }
 

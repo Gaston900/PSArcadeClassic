@@ -171,6 +171,8 @@
 #define IDI_FOLDER_KONAMI				289
 #define IDI_FOLDER_SEGA 				290
 #define IDI_FOLDER_CAVE 				291
+#define IDI_HEADER_UP                   298
+#define IDI_HEADER_DOWN                 299
 #define IDC_LIST                        1000
 #define IDC_JOYSTICK                    1003
 #define IDC_SIZES                       1005
@@ -596,5 +598,7 @@
 #define ID_TOGGLE_TAB_PCB               40155
 #define ID_TOGGLE_TAB_HISTORY           40156
 #define ID_CHINESE_GAMELIST             40157 //USE_KLIST
-//#define ID_RC_CLEAN                     40157
+#define ID_VIEW_LIST_MENU				40160
+#define ID_VIEW_DETAIL					40161
+#define ID_VIEW_GROUPED					40163
 #define IDC_STATIC                      1

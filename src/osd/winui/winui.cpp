@@ -82,6 +82,7 @@ struct _play_options
 	const char *mngwrite;		// OPTION_MNGWRITE
 	const char *aviwrite;		// OPTION_AVIWRITE
 };
+
 // Source Code Ekmame
 //#ifdef USE_CLIST
 #define TSVNAME "Game List.txt"
@@ -99,7 +100,7 @@ typedef struct
 static TSV  *tsv_index  = NULL;
 static TSV  *tsv_data   = NULL;
 static int  need_update = 0;
-//#endif	
+//#endif
 /***************************************************************************
     function prototypes
  ***************************************************************************/
@@ -445,7 +446,7 @@ static const int CommandToString[] =
 	ID_PLAY_M1,
 	ID_ENABLE_INDENT,
 	// Source Code Ekmame
-	ID_CHINESE_GAMELIST,					
+	ID_CHINESE_GAMELIST,
 	-1
 };
 
@@ -1812,13 +1813,13 @@ bool OnIdle(HWND hWnd)
   	pDescription = GetDescriptionByIndex(i, GetUsechineseList());
 #else
 	const char *pDescription = GetDriverGameTitle(driver_index);
-#endif	  
+#endif
 	SetStatusBarText(0, pDescription);
 #ifdef USE_CLIST
 	pName = GetGameNameByIndex(i, GetUsechineseList());
 #else
 	const char *pName = GetDriverGameName(driver_index);
-#endif	  
+#endif
 // Source Code Ekmame
 	SetStatusBarText(1, pName);
 	idle_work = false;
@@ -2484,7 +2485,7 @@ static const char* GetCloneParentName(int nItem)
 			return (char*)GetDescriptionByIndex(nParentIndex,GetUsechineseList());
 //#else
 //			return GetDriverGameTitle(nParentIndex);
-//#endif	
+//#endif
 	}
 
 	return "";
@@ -3067,6 +3068,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			SetView(ID_VIEW_ICONS_SMALL);
 			UpdateListView();
 			return true;
+
 		/* Arrange Icons submenu */
 
 		case ID_VIEW_LIST_MENU:
@@ -3132,6 +3134,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			ToolBar_CheckButton(hToolBar, ID_VIEW_FOLDERS, (bShowTree) ? MF_CHECKED : MF_UNCHECKED);
 			UpdateScreenShot();
 			break;
+
 		// Source Code Ekmame
 	    case ID_CHINESE_GAMELIST: // USE_CLIST
 			bclist = !bclist;
@@ -3140,7 +3143,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			ToolBar_CheckButton(hToolBar, ID_CHINESE_GAMELIST, (bclist) ? MF_CHECKED : MF_UNCHECKED);
 			ResetListView();
 			break;
-			
+
 		case ID_VIEW_TOOLBARS:
 			bShowToolBar = !bShowToolBar;
 			SetShowToolBar(bShowToolBar);
@@ -4923,7 +4926,7 @@ static void UpdateMenu(HMENU hMenu)
 		wchar_t *t_description= win_wstring_from_utf8(ConvertAmpersandString(GetDescriptionByIndex(nGame, GetUsechineseList())));
 //#else				  
 //		wchar_t *t_description = win_wstring_from_utf8(ConvertAmpersandString(GetDriverGameTitle(nGame)));
-//#endif	 
+//#endif
 
 		if( !t_description )
 			return;
@@ -5921,11 +5924,11 @@ static void TSV_GetPath(char *path)
 
 static void LoadGameListFromFile(int games)
 {
-	//?°ê¶°???ë¤¾í¬??
+
 	char tsvname[MAX_PATH];
 	int  i, j;
 
-	//甕곌쑵???醫딅뼣
+
 	tsv_index = (TSV *)calloc(games + 1, sizeof(TSV));
 	if (tsv_index == NULL)
 	{

@@ -350,26 +350,16 @@ bool GameFiltered(int nGame, DWORD dwMask)
 	if (strlen(GetSearchText()) && _stricmp(GetSearchText(), SEARCH_PROMPT))
 	{
 
-		if (MyStrStrI(GetDescriptionByIndex(nGame, GetUsechineseList()), GetSearchText()) == NULL &&
-			MyStrStrI(GetGameNameByIndex(nGame,GetUsechineseList()), GetSearchText()) == NULL )
+		if (MyStrStrI(GetDriverGameTitle(nGame), GetSearchText()) == NULL &&
+			MyStrStrI(GetDriverGameName(nGame), GetSearchText()) == NULL)
 			return true;
-
-//		if (MyStrStrI(GetDriverGameTitle(nGame), GetSearchText()) == NULL &&
-//			MyStrStrI(GetDriverGameName(nGame), GetSearchText()) == NULL)
-//			return true;
 	}
 
 	/*Filter Text is already global*/
-//	if (MyStrStrI(GetDriverGameTitle(nGame), GetFilterText()) == NULL &&
-//		MyStrStrI(GetDriverGameName(nGame), GetFilterText()) == NULL &&
-//		MyStrStrI(GetDriverFileName(nGame), GetFilterText()) == NULL &&
-//		MyStrStrI(GetDriverGameManufacturer(nGame), GetFilterText()) == NULL)
-//		return true;
-
-	if (MyStrStrI(GetDescriptionByIndex(nGame, GetUsechineseList()), GetFilterText()) == NULL &&
-		MyStrStrI(GetGameNameByIndex(nGame,GetUsechineseList()), GetFilterText()) == NULL &&
+	if (MyStrStrI(GetDriverGameTitle(nGame), GetFilterText()) == NULL &&
+		MyStrStrI(GetDriverGameName(nGame), GetFilterText()) == NULL &&
 		MyStrStrI(GetDriverFileName(nGame), GetFilterText()) == NULL &&
-		MyStrStrI(GetGameManufactureByIndex(nGame,GetUsechineseList()), GetFilterText()) == NULL)
+		MyStrStrI(GetDriverGameManufacturer(nGame), GetFilterText()) == NULL)
 		return true;
 
 	// Are there filters set on this folder?

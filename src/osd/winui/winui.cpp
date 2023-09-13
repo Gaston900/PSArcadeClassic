@@ -407,6 +407,10 @@ static const TBBUTTON tbb[] =
 	{10,ID_VIDEO_SNAP,			TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 7},
 	{11,ID_PLAY_M1,   			TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 8},
 	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{12,ID_HELP_ABOUT,          TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 9},
+	{13,ID_HELP_CONTENTS,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 10},
+	{14,ID_MAME_HOMEPAGE,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 14},
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
 	{6, ID_CHINESE_GAMELIST,    TBSTATE_ENABLED, BTNS_CHECK,	  {0, 0}, 0, 13}, // USE_KLIST
 	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0}
 };
@@ -417,17 +421,17 @@ static const wchar_t szTbStrings[NUM_TOOLTIPS][30] =
 	TEXT("Toggle pictures area"),
 	TEXT("Large icons"),
 	TEXT("Small icons"),
-//  TEXT("List menu"),
 	TEXT("Details"),
 	TEXT("Refresh"),
 	TEXT("Interface setttings"),
 	TEXT("Default games options"),
 	TEXT("Play ProgettoSnaps movie"),
 	TEXT("M1FX"),
+	TEXT("About"),
+	TEXT("Help"),
+	TEXT("MAME homepage"),
 	TEXT("Toggle grouped view"),
-	TEXT("Toggle game list"),
-//	TEXT("Help"),
-//	TEXT("MAME homepage")
+	TEXT("Toggle game list")
 };
 
 static const int CommandToString[] =
@@ -444,6 +448,9 @@ static const int CommandToString[] =
 	ID_OPTIONS_DEFAULTS,
 	ID_VIDEO_SNAP,
 	ID_PLAY_M1,
+	ID_HELP_ABOUT,
+	ID_HELP_CONTENTS,
+	ID_MAME_HOMEPAGE,
 	ID_ENABLE_INDENT,
 	// Source Code Ekmame
 	ID_CHINESE_GAMELIST,
@@ -2438,18 +2445,9 @@ static void EnableSelection(int nGame)
 	mmi.cch = _tcslen(mmi.dwTypeData);
 
 	SetMenuItemInfo(hMenu, ID_FILE_PLAY, false, &mmi);
-// Source Code Ekmame
-//#ifdef USE_CLIST
-	const char *pText = GetDescriptionByIndex(nGame, GetUsechineseList());
-//#else	
-//	const char *pText = GetDriverGameTitle(nGame);
-//#endif
+	const char *pText = GetDriverGameTitle(nGame);
 	SetStatusBarText(0, pText);
-//#ifdef USE_CLIST
-	const char *pName = GetGameNameByIndex(nGame,GetUsechineseList());
-//#else
-//	const char *pName = GetDriverGameName(nGame);
-//#endif
+	const char *pName = GetDriverGameName(nGame);
 	SetStatusBarText(1, pName);
 	SendMessage(hStatusBar, SB_SETICON, 1, (LPARAM)GetSelectedPickItemIconSmall());
 	char *pStatus = GameInfoStatusBar(nGame);
@@ -2461,13 +2459,8 @@ static void EnableSelection(int nGame)
 	EnableMenuItem(hMenu, ID_GAME_PROPERTIES, 	MF_ENABLED);
 
 	if (bProgressShown && bListReady == true)
+        SetDefaultGame(GetDriverGameName(nGame));
 
-//Source Code Ekmame				  
-//#ifdef USE_CLIST																
-		SetDefaultGame(GetGameNameByIndex(nGame, GetUsechineseList()));
-//#else	   
-//		SetDefaultGame(GetDriverGameName(nGame));
-//#endif
 	have_selection = true;
 	UpdateScreenShot();
 	free(t_description);
@@ -2480,12 +2473,7 @@ static const char* GetCloneParentName(int nItem)
 		int nParentIndex = GetParentIndex(&driver_list::driver(nItem));
 
 		if( nParentIndex >= 0)
-// Source Code Ekmame					 
-//#ifdef USE_CLIST			
-			return (char*)GetDescriptionByIndex(nParentIndex,GetUsechineseList());
-//#else
-//			return GetDriverGameTitle(nParentIndex);
-//#endif
+			return GetDriverGameTitle(nParentIndex);
 	}
 
 	return "";
@@ -3804,7 +3792,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			return true;
 
 		case ID_HELP_TROUBLE:
-			ShellExecuteCommon(hMain, "https://psarcadeplus.blogspot.com/2019/10/psarcade-plus-proyecto-shadow-arcade.html");
+			ShellExecuteCommon(hMain, "https://psarcadeplus.blogspot.com");
 			SetFocus(hWndList);
 			return true;
 
@@ -3854,12 +3842,7 @@ const wchar_t *GamePicker_GetItemString(HWND hwndPicker, int nItem, int nColumn,
 	{
 		case COLUMN_GAMES:
 			/* Driver description */
-// Source Code Ekmame				  
-//#ifdef USE_CLIST
-			utf8_s = GetDescriptionByIndex(nItem, GetUsechineseList());
-//#else	
-//			utf8_s = GetDriverGameTitle(nItem);
-//#endif
+			utf8_s = GetDriverGameTitle(nItem);
 			break;
 
 		case COLUMN_ROMNAME:
@@ -4158,12 +4141,7 @@ int GamePicker_Compare(HWND hwndPicker, int index1, int index2, int sort_subitem
 	switch (sort_subitem)
 	{
 		case COLUMN_GAMES:
-// Source Code Ekmame
-//#ifdef USE_CLIST
-  			value = core_stricmp(GetDescriptionByIndex(index1,GetUsechineseList()), GetDescriptionByIndex(index2, GetUsechineseList()));
-//#else
-//			value = core_stricmp(GetDriverGameTitle(index1), GetDriverGameTitle(index2));
-//#endif
+ 		   value = core_stricmp(GetDriverGameTitle(index1), GetDriverGameTitle(index2));
 			break;
 
 		case COLUMN_ROMNAME:
@@ -4919,14 +4897,9 @@ static void UpdateMenu(HMENU hMenu)
 	if (have_selection)
 	{
 		wchar_t buf[200];
-		int nGame = Picker_GetSelectedItem(hWndList);
-// Source Code Ekmame
-//wchar_t *t_description;
-//#ifdef USE_CLIST						 
-		wchar_t *t_description= win_wstring_from_utf8(ConvertAmpersandString(GetDescriptionByIndex(nGame, GetUsechineseList())));
-//#else				  
-//		wchar_t *t_description = win_wstring_from_utf8(ConvertAmpersandString(GetDriverGameTitle(nGame)));
-//#endif
+		int nGame = Picker_GetSelectedItem(hWndList);			  
+		
+		wchar_t *t_description = win_wstring_from_utf8(ConvertAmpersandString(GetDriverGameTitle(nGame)));
 
 		if( !t_description )
 			return;

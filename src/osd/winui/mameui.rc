@@ -44,8 +44,6 @@ BEGIN
         MENUITEM SEPARATOR
         MENUITEM "Grouped\tCtrl+G",                     ID_ENABLE_INDENT        
         MENUITEM SEPARATOR
-		MENUITEM "Toggle game list", 				    ID_CHINESE_GAMELIST // USE_KLIST
-        MENUITEM SEPARATOR
         POPUP "Sort games list by"
         BEGIN
             MENUITEM "Description\tAlt+1",              ID_VIEW_BYGAME
@@ -81,6 +79,8 @@ BEGIN
             MENUITEM "PCB",                               ID_TOGGLE_TAB_PCB
             MENUITEM "Info",                               ID_TOGGLE_TAB_HISTORY
         END
+        MENUITEM SEPARATOR
+		MENUITEM "Toggle game list", 				    ID_CHINESE_GAMELIST // USE_KLIST
         MENUITEM SEPARATOR
         MENUITEM "Fullscreen\tF11",                     ID_VIEW_FULLSCREEN
     END

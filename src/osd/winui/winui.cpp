@@ -3792,7 +3792,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			return true;
 
 		case ID_HELP_TROUBLE:
-			ShellExecuteCommon(hMain, "https://psarcadeplus.blogspot.com");
+			ShellExecuteCommon(hMain, "https://www.1emulation.com/forums/forum/127-arcade/");
 			SetFocus(hWndList);
 			return true;
 

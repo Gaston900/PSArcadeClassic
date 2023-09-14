@@ -60,7 +60,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_SHOW_FOLDER_SECTION,		"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_SHOW_TABS,					"1",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_HIDE_TABS,					"history",      OPTION_STRING, nullptr },
-	{ MUIOPTION_HISTORY_TAB,				"0",        	OPTION_INTEGER, nullptr },
+	{ MUIOPTION_HISTORY_TAB,				"18",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SORT_COLUMN,				"0",        	OPTION_INTEGER, nullptr },
 	{ MUIOPTION_SORT_REVERSED,				"0",        	OPTION_BOOLEAN, nullptr },
 	{ MUIOPTION_WINDOW_X,					"0",        	OPTION_INTEGER, nullptr },

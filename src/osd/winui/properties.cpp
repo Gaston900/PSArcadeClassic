@@ -423,7 +423,10 @@ void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int fol
 	switch(opt_type)
 	{
 		case OPTIONS_GAME:
-			snprintf(tmp, std::size(tmp), "Properties for %s", GetDriverGameTitle(g_nGame));
+//#ifdef USE_CLIST
+			snprintf(tmp, std::size(tmp), "Properties for %s", GetDescriptionByIndex(g_nGame,GetUsechineseList()));
+//#endif
+//			snprintf(tmp, std::size(tmp), "Properties for %s", GetDriverGameTitle(g_nGame));
 			break;
 
 		case OPTIONS_RASTER:
@@ -1156,9 +1159,15 @@ intptr_t CALLBACK GamePropertiesDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, 
 			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
 			SendMessage(hDlg, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrushDlg = CreateSolidBrush(RGB(240, 240, 240));
-			snprintf(tmp, std::size(tmp), "Information for \"%s\"", GetDriverGameName(index));
+//#ifdef USE_CLIST
+			snprintf(tmp, std::size(tmp), "Information for \"%s\"", (char *)GetGameNameByIndex(index,GetUsechineseList()));
+//#endif
+//			snprintf(tmp, std::size(tmp), "Information for \"%s\"", GetDriverGameName(index));
 			winui_set_window_text_utf8(hDlg, tmp);
-			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDriverGameTitle(index));
+//#ifdef USE_KLIST
+			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDescriptionByIndex(index,GetUsechineseList()));
+//#endif
+//			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDriverGameTitle(index));
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_MANUFACTURED), GameInfoManufactured(index));
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_STATUS), GameInfoStatus(index));
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_CPU), GameInfoCPU(index));

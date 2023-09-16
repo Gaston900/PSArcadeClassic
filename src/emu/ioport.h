@@ -196,6 +196,25 @@ enum ioport_type
 	IPT_BUTTON15,
 	IPT_BUTTON16,
 
+//#ifdef USE_COMBOKEY
+  /* neogeo buttons */
+	IPT_BUTTON_3KICKS,			// PLx 3 Kicks   
+	IPT_BUTTON_3PUNCHES,		// PLx 3 Punches
+	IPT_BUTTON_SPEC1,			// PLx Special Atk1
+	IPT_BUTTON_SPEC2,			// PLx Special Atk2
+	IPT_BUTTON_SPEC3,			// PLx Special Atk3
+	IPT_BUTTON_AB,				// PLx A+B (NG  
+	IPT_BUTTON_AD,				// PLx A+D (NG  
+	IPT_BUTTON_CD,				// PLx C+D (NG  
+	IPT_BUTTON_BC,				// PLx B+C (NG  
+	IPT_BUTTON_AC,				// PLx A+C (NG  
+	IPT_BUTTON_BD,				// PLx B+D (NG  
+	IPT_BUTTON_ABC,			    // PLx A+B+C (NG)
+	IPT_BUTTON_ABD,
+	IPT_BUTTON_ACD,
+	IPT_BUTTON_BCD,			    // PLx B+C+D (NG)
+	IPT_BUTTON_ABCD,			// PLx A+B+C+D (NG)
+//#endif //USE_COMBOKEY		
 	// autofire control buttons
 	IPT_TOGGLE_AUTOFIRE,
 	// custom action buttons

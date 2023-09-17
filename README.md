@@ -64,11 +64,13 @@ The Arcade64 “GUI” was modernized with new icons, a custom default configura
 
 It is already pre-configured, enforce aspect ratio is disabled, full screen mode and tricks are already enabled by default.
 
-Now automatically use the game's main cheat file when the cloned game does not have a cheat file.
+The cheat reference function, if the cloned game does not have a cheat file, it will reference the cheat file of the main ROM.
 
 Added the default option to force games to run at 60 FPS.
 
-Optimized UI + added the Toggle Game List option.
+Supports game list lst language files. The list language can be edited freely.
+
+CPS 1, 2, NEOGEO, PGM, driver supports key combination settings.
 
 8 new folders with their respective icons were added by default, each folder has a filter of the most popular arcade system.
  * Neogeo

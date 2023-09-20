@@ -10,6 +10,8 @@
 XXXX-XX-XX Optimization Edition
 -------------------------------
 - CPS 1, 2, NEOGEO, PGM, driver supports key combination settings.
+- Neo geo command fixed
+- Settings menu simplified
 
 
 

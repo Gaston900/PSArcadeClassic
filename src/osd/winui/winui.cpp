@@ -686,14 +686,14 @@ int MameUIMain(HINSTANCE hInstance, LPWSTR lpCmdLine)
 
 	// set up window class
 	memset(&wndclass, 0, sizeof(WNDCLASS));
-	wndclass.style = 0; //CS_HREDRAW | CS_VREDRAW;
+	wndclass.style = CS_HREDRAW | CS_VREDRAW;
 	wndclass.lpfnWndProc = MameWindowProc;
 	wndclass.cbClsExtra = 0;
 	wndclass.cbWndExtra = DLGWINDOWEXTRA;
 	wndclass.hInstance = hInstance;
 	wndclass.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MAMEUI_ICON));
 	wndclass.hCursor = NULL;
-	wndclass.hbrBackground = GetSysColorBrush(COLOR_3DFACE);
+	wndclass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);// GetSysColorBrush(COLOR_3DFACE); 
 	wndclass.lpszMenuName = MAKEINTRESOURCE(IDR_UI_MENU);
 	wndclass.lpszClassName = TEXT("MainClass");
 

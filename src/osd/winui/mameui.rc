@@ -80,7 +80,7 @@ BEGIN
             MENUITEM "Info",                               ID_TOGGLE_TAB_HISTORY
         END
         MENUITEM SEPARATOR
-		MENUITEM "Toggle game list", 				    ID_CHINESE_GAMELIST // USE_KLIST
+		MENUITEM "Language game list", 				    ID_CHINESE_GAMELIST // USE_KLIST
         MENUITEM SEPARATOR
         MENUITEM "Fullscreen\tF11",                     ID_VIEW_FULLSCREEN
     END

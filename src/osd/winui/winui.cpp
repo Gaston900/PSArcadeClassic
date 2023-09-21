@@ -431,7 +431,7 @@ static const wchar_t szTbStrings[NUM_TOOLTIPS][30] =
 	TEXT("Help"),
 	TEXT("MAME homepage"),
 	TEXT("Toggle grouped view"),
-	TEXT("Toggle game list")
+	TEXT("Language game list")
 };
 
 static const int CommandToString[] =

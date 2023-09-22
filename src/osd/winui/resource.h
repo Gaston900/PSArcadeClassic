@@ -162,7 +162,7 @@
 #define IDI_MISC2SHEET                  282
 #define IDI_SNAPSHEET                   283
 #define IDI_SHADER                      284
-#define IDB_CLIST						285	//USE_KLIST
+#define IDB_KLIST						285	//USE_KLIST
 #define IDI_FOLDER_NEOGEO				286
 #define IDI_FOLDER_CAPCOM				292
 #define IDI_FOLDER_PGM					297
@@ -597,7 +597,7 @@
 #define ID_TOGGLE_TAB_CONTROL_PANEL     40154
 #define ID_TOGGLE_TAB_PCB               40155
 #define ID_TOGGLE_TAB_HISTORY           40156
-#define ID_CHINESE_GAMELIST             40157 //USE_KLIST
+#define ID_KOREAN_GAMELIST              40157 //USE_KLIST
 #define ID_VIEW_LIST_MENU				40160
 #define ID_VIEW_DETAIL					40161
 #define ID_VIEW_GROUPED					40163

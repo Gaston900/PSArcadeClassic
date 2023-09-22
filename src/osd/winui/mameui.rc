@@ -80,7 +80,7 @@ BEGIN
             MENUITEM "Info",                               ID_TOGGLE_TAB_HISTORY
         END
         MENUITEM SEPARATOR
-		MENUITEM "Language game list", 				    ID_CHINESE_GAMELIST // USE_KLIST
+		MENUITEM "Language game list", 				    ID_KOREAN_GAMELIST // USE_KLIST
         MENUITEM SEPARATOR
         MENUITEM "Fullscreen\tF11",                     ID_VIEW_FULLSCREEN
     END
@@ -990,7 +990,7 @@ BEGIN
     VK_NEXT,        ID_UI_HISTORY_DOWN,         VIRTKEY, CONTROL, NOINVERT
     VK_UP,            ID_SORT_ASCENDING,             VIRTKEY, ALT, NOINVERT
     VK_PRIOR,       ID_UI_HISTORY_UP,           VIRTKEY, CONTROL, NOINVERT
-    "K",			ID_CHINESE_GAMELIST,	    VIRTKEY, ALT, NOINVERT //USE_KLIST
+    "K",			ID_KOREAN_GAMELIST,	        VIRTKEY, ALT, NOINVERT //USE_KLIST
 END
 
 /////////////////////////////////////////////////////////////////////////////
@@ -1056,7 +1056,7 @@ IDB_FILTERS                BITMAP                    "res\\filters.bmp"
 IDB_REMOVE                BITMAP                    "res\\remove.bmp"
 IDB_RENAME                BITMAP                    "res\\rename.bmp"
 IDB_RESET                BITMAP                    "res\\reset.bmp"
-IDB_CLIST				 BITMAP					   "res\\klist.bmp"
+IDB_KLIST				 BITMAP					   "res\\klist.bmp"
 /////////////////////////////////////////////////////////////////////////////
 //
 // Cursor

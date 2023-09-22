@@ -136,7 +136,7 @@
 #define MIN_VIEW_WIDTH		10
 
 #define NUM_TOOLBUTTONS     std::size(tbb)
-#define NUM_TOOLTIPS 		(15)
+#define NUM_TOOLTIPS 		(16)
 
 enum
 {

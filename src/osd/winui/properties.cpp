@@ -428,10 +428,11 @@ void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int fol
 	switch(opt_type)
 	{
 		case OPTIONS_GAME:
-//#ifdef USE_CLIST
-			snprintf(tmp, std::size(tmp), "Properties for %s", GetDescriptionByIndex(g_nGame,GetUsechineseList()));
-//#endif
+//#ifdef USE_KLIST
+			snprintf(tmp, std::size(tmp), "Properties for %s", GetDescriptionByIndex(g_nGame,GetUsekoreanList()));
+//else			
 //			snprintf(tmp, std::size(tmp), "Properties for %s", GetDriverGameTitle(g_nGame));
+//#endif
 			break;
 
 		case OPTIONS_RASTER:
@@ -748,8 +749,11 @@ static char *GameInfoTitle(OPTIONS_TYPE opt_type, int nIndex)
 	else if (OPTIONS_SOURCE == opt_type)
 		strcpy(buffer, "Driver options\r\nDefault options used by all games in the driver");
 	else
+//#ifdef USE_KLIST
+//		snprintf(buffer, std::size(buffer), "%s - \"%s\"", GetDescriptionByIndex(nIndex,GetUsekoreanList()), GetGameNameByIndex(nIndex,GetUsekoreanList()));
+//#else
 		snprintf(buffer, std::size(buffer), "%s - \"%s\"", GetDriverGameTitle(nIndex), GetDriverGameName(nIndex));
-
+//#endif
 	return buffer;
 }
 
@@ -763,7 +767,11 @@ static char *GameInfoCloneOf(int nIndex)
 	if (DriverIsClone(nIndex))
 	{
 		int nParentIndex = GetParentIndex(&driver_list::driver(nIndex));
+//#ifdef USE_KLIST
+//		snprintf(buffer, std::size(buffer), "%s - \"%s\"", GetDescriptionByIndex(nParentIndex,GetUsekoreanList()), GetGameNameByIndex(nParentIndex,GetUsekoreanList()));
+//#else
 		snprintf(buffer, std::size(buffer), "%s - \"%s\"", GetDriverGameTitle(nParentIndex), GetDriverGameName(nParentIndex));
+//#endif
 	}
 
 	return buffer;
@@ -776,9 +784,9 @@ static char *GameInfoSaveState(int driver_index)
 	memset(&buffer, 0, sizeof(buffer));
 
 	if (DriverSupportsSaveState(driver_index))
-		strcpy(buffer, "Supported");
-	else
-		strcpy(buffer, "Unsupported");
+			strcpy(buffer, "Supported");
+		else
+			strcpy(buffer, "Unsupported");
 
 	return buffer;
 }
@@ -836,7 +844,7 @@ static void UpdateSheetCaption(HWND hWnd)
 
 		FillRect(hDC, &rc, hBrush);
 		DeleteObject(hBrush);
-		
+
 		rc.left++;
 		rc.right++;
 	}
@@ -1307,15 +1315,17 @@ intptr_t CALLBACK GamePropertiesDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, 
 			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
 			SendMessage(hDlg, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrushDlg = CreateSolidBrush(RGB(240, 240, 240));
-//#ifdef USE_CLIST
-			snprintf(tmp, std::size(tmp), "Information for \"%s\"", (char *)GetGameNameByIndex(index,GetUsechineseList()));
-//#endif
+//#ifdef USE_KLIST
+			snprintf(tmp, std::size(tmp), "Information for \"%s\"", (char *)GetGameNameByIndex(index,GetUsekoreanList()));
+//#else
 //			snprintf(tmp, std::size(tmp), "Information for \"%s\"", GetDriverGameName(index));
+//#endif
 			winui_set_window_text_utf8(hDlg, tmp);
 //#ifdef USE_KLIST
-			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDescriptionByIndex(index,GetUsechineseList()));
-//#endif
+			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDescriptionByIndex(index,GetUsekoreanList()));
+//#else
 //			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDriverGameTitle(index));
+//#endif
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_MANUFACTURED), GameInfoManufactured(index));
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_STATUS), GameInfoStatus(index));
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_CPU), GameInfoCPU(index));
@@ -1398,7 +1408,6 @@ static intptr_t CALLBACK GameOptionsDialogProc(HWND hDlg, UINT uMsg, WPARAM wPar
 			UpdateProperties(hDlg, properties_datamap, pCurrentOpts);
 			g_bUseDefaults = AreOptionsEqual(pCurrentOpts, pDefaultOpts);
 			g_bReset = AreOptionsEqual(pCurrentOpts, pOrigOpts) ? false : true;
-
 			if (g_nGame == GLOBAL_OPTIONS)
 				ShowWindow(GetDlgItem(hDlg, IDC_USE_DEFAULT), SW_HIDE);
 			else

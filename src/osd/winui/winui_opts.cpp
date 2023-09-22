@@ -138,7 +138,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_UI_JOY_HISTORY_DOWN,		"2,0,1,0",  	OPTION_STRING, nullptr },
 
 	{ nullptr,								nullptr,		OPTION_HEADER, "Korean GAME List" },
-	{ MUIOPTION_USECHINESE_GAMELIST,			"1",		OPTION_BOOLEAN, nullptr },
+	{ MUIOPTION_USEKOREAN_GAMELIST,			"1",		    OPTION_BOOLEAN, nullptr },
 	{ nullptr }
 };
 
@@ -455,15 +455,16 @@ bool GetShowFolderList(void)
 }
 
 // USE_KLIST
-void SetUsechineseList(bool val)
+void SetUsekoreanList(bool val)
 {
-	winui_opts.set_value(MUIOPTION_USECHINESE_GAMELIST, val, OPTION_PRIORITY_CMDLINE);
+	winui_opts.set_value(MUIOPTION_USEKOREAN_GAMELIST, val, OPTION_PRIORITY_CMDLINE);
 }
 
-bool GetUsechineseList(void)
+bool GetUsekoreanList(void)
 {
-	return winui_opts.bool_value(MUIOPTION_USECHINESE_GAMELIST);
+	return winui_opts.bool_value(MUIOPTION_USEKOREAN_GAMELIST);
 }
+
 
 static void GetsShowFolderFlags(LPBITS bits)
 {

@@ -83,8 +83,7 @@ struct _play_options
 	const char *aviwrite;		// OPTION_AVIWRITE
 };
 
-// Source Code Ekmame
-//#ifdef USE_CLIST
+//#ifdef USE_KLIST
 #define TSVNAME "Game List.txt"
 #define LINEBUF_SIZE  1024
 #define NUM_COLUMNS   3
@@ -101,6 +100,7 @@ static TSV  *tsv_index  = NULL;
 static TSV  *tsv_data   = NULL;
 static int  need_update = 0;
 //#endif
+
 /***************************************************************************
     function prototypes
  ***************************************************************************/
@@ -189,8 +189,7 @@ enum
 static bool CommonListDialog(common_file_dialog_proc cfd, int filetype);
 static void SaveGameListToFile(char *szFile, int filetype);
 
-// Source Code Ekmame
-//#ifdef USE_CLIST
+//#ifdef USE_KLIST
 static void LoadGameListFromFile(int games);
 static void SaveAllGameListToFile();
 char *GetDescriptionByIndex(int nIndex, bool bUse);
@@ -199,6 +198,7 @@ char *GetGameNameByIndex(int nIndex, bool bUse);
 char *GetGameName(const char *name, bool bUse);
 char *GetGameManufactureByIndex(int nIndex, bool bUse);
 //#endif
+
 /***************************************************************************
     Internal structures
  ***************************************************************************/
@@ -331,8 +331,7 @@ static HBITMAP hFilters	= NULL;
 static HBITMAP hRemove = NULL;
 static HBITMAP hRename = NULL;
 static HBITMAP hReset = NULL;
-// Source Code Ekmame
-static HBITMAP hclist = NULL;	//use_CLIST			
+static HBITMAP hklist = NULL;	//use_KLIST
 static int optionfolder_count = 0;
 /* global data--know where to send messages */
 static bool in_emulation = false;
@@ -382,8 +381,8 @@ static HIMAGELIST hSmall = NULL;
 static HICON hIcon = NULL;
 static int *icon_index = NULL; 	/* for custom per-game icons */
 
-//Source Code Ekmame
-static bool bclist = true; // USE_CLIST
+
+static bool bklist = true; // USE_KLIST
 static int game_count=0;
 
 static const TBBUTTON tbb[] =
@@ -411,7 +410,7 @@ static const TBBUTTON tbb[] =
 	{13,ID_HELP_CONTENTS,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 10},
 	{14,ID_MAME_HOMEPAGE,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 14},
 	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{6, ID_CHINESE_GAMELIST,    TBSTATE_ENABLED, BTNS_CHECK,	  {0, 0}, 0, 13}, // USE_KLIST
+	{6, ID_KOREAN_GAMELIST,     TBSTATE_ENABLED, BTNS_CHECK,	  {0, 0}, 0, 13}, // USE_KLIST
 	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0}
 };
 
@@ -421,7 +420,8 @@ static const wchar_t szTbStrings[NUM_TOOLTIPS][30] =
 	TEXT("Toggle pictures area"),
 	TEXT("Large icons"),
 	TEXT("Small icons"),
-	TEXT("Details"),
+	TEXT("Details icons"),
+	TEXT("List icons"),
 	TEXT("Refresh"),
 	TEXT("Interface setttings"),
 	TEXT("Default games options"),
@@ -440,7 +440,7 @@ static const int CommandToString[] =
 	ID_VIEW_PICTURE_AREA,
 	ID_VIEW_ICONS_LARGE,
 	ID_VIEW_ICONS_SMALL,
-//	ID_VIEW_LIST_MENU,
+	ID_VIEW_LIST_MENU,
 	ID_VIEW_DETAIL,
 //	ID_VIEW_GROUPED,
 	ID_UPDATE_GAMELIST,
@@ -452,8 +452,7 @@ static const int CommandToString[] =
 	ID_HELP_CONTENTS,
 	ID_MAME_HOMEPAGE,
 	ID_ENABLE_INDENT,
-	// Source Code Ekmame
-	ID_CHINESE_GAMELIST,
+	ID_KOREAN_GAMELIST,
 	-1
 };
 
@@ -537,11 +536,13 @@ public:
 		const char* buffer = s.c_str();
 		if (channel == OSD_OUTPUT_CHANNEL_VERBOSE)
 		{
+#ifdef LOGSAVE
 			FILE *pFile;
 			pFile = fopen("config/verbose.log", "a");
 			fputs(buffer, pFile);
 			fflush(pFile);
 			fclose (pFile);
+#endif
 			return;
 		}
 
@@ -1143,7 +1144,6 @@ int GetMinimumScreenShotWindowWidth(void)
 	return bmp.bmWidth + 6; 	// 6 is for a little breathing room
 }
 
-/* Source Code Ekmame */
 const char *funcGetParentName(const char *name)
 {
 	int index = GetGameNameIndex(name);// get current game index
@@ -1156,7 +1156,7 @@ const char *funcGetParentName(const char *name)
 	}
 
 	return NULL;
-}													 
+}
 
 int GetParentIndex(const game_driver *driver)
 {
@@ -1303,9 +1303,10 @@ static void Win32UI_init(void)
 	CheckMenuItem(GetMenu(hMain), ID_VIEW_PAGETAB, (bShowTabCtrl) ? MF_CHECKED : MF_UNCHECKED);
 	CheckMenuItem(GetMenu(hMain), ID_ENABLE_INDENT, (bEnableIndent) ? MF_CHECKED : MF_UNCHECKED);
 	ToolBar_CheckButton(hToolBar, ID_ENABLE_INDENT, (bEnableIndent) ? MF_CHECKED : MF_UNCHECKED);
-// Source Code Ekmame
-	CheckMenuItem(GetMenu(hMain), ID_CHINESE_GAMELIST, (bclist) ? MF_CHECKED : MF_UNCHECKED); //USE_CLIST
-	ToolBar_CheckButton(hToolBar, ID_CHINESE_GAMELIST, (bclist) ? MF_CHECKED : MF_UNCHECKED); //USE_CLIST						
+
+	CheckMenuItem(GetMenu(hMain), ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED); //USE_KLIST
+	ToolBar_CheckButton(hToolBar, ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED); //USE_KLIST
+
 	InitTree(g_folderData, g_filterList);
 	SendMessage(hProgress, PBM_SETPOS, 112, 0);
 	winui_set_window_text_utf8(GetDlgItem(hSplash, IDC_PROGBAR), "Building list structure...");
@@ -1339,10 +1340,10 @@ static void Win32UI_init(void)
 	idle_work = true;
 	bFullScreen = false;
 
-// Source Code Ekmame
-//#ifdef USE_CLIST
+//#ifdef USE_KLIST
 	LoadGameListFromFile(game_total);
 //#endif
+
 	switch (GetViewMode())
 	{
 		case VIEW_ICONS_LARGE :
@@ -1381,8 +1382,7 @@ static void Win32UI_init(void)
 
 static void Win32UI_exit(void)
 {
-// Source Code Ekmame
-//#ifdef USE_CLIST
+//#ifdef USE_KLIST
 	SaveAllGameListToFile();
 //#endif
 	SaveWindowStatus();
@@ -1452,12 +1452,12 @@ static void Win32UI_exit(void)
 	DeleteBitmap(hRename);
 	DeleteBitmap(hReset);
 	DeleteBitmap(hMissing_bitmap);
-	// Source Code Ekmame
-	DeleteBitmap(hclist);// USE_CLIST	
+	DeleteBitmap(hklist);// USE_KLIST
 	DeleteFont(hFontGui);
 	DeleteFont(hFontList);
 	DeleteFont(hFontHist);
 	DeleteFont(hFontTree);
+
 	DestroyIcons();
 	DestroyAcceleratorTable(hAccel);
 	DirectInputClose();
@@ -1787,14 +1787,17 @@ static bool GameCheck(void)
 bool OnIdle(HWND hWnd)
 {
 	static bool bFirstTime = true;
+	const char *pDescription;
+	const char *pName; 
 
-// Source Code Ekmame					
-#ifdef USE_CLIST	// 错误。在启动后进入游戏的开头有一个问题。
+#ifdef USE_KLIST	// 버그. 게임 실행후 맨 앞으로 가는 문제점이 있음.
 	  int		i;
 	  LV_FINDINFO lvfi;
 #else
 	  int driver_index;
 #endif
+
+
 	if (bFirstTime)
 		bFirstTime = false;
 
@@ -1805,8 +1808,8 @@ bool OnIdle(HWND hWnd)
 	}
 
 	// in case it's not found, get it back
-// Source Code Ekmame
-#ifdef USE_CLIST
+
+#ifdef USE_KLIST
 	lvfi.flags = LVFI_STRING;
 	lvfi.psz   = (LPCWSTR)GetDefaultGame();
 	i = ListView_FindItem(hWndList, -1, &lvfi);
@@ -1816,18 +1819,20 @@ bool OnIdle(HWND hWnd)
 #else	
 	driver_index = Picker_GetSelectedItem(hWndList);
 #endif
-#ifdef USE_CLIST
-  	pDescription = GetDescriptionByIndex(i, GetUsechineseList());
+
+#ifdef USE_KLIST
+  	pDescription = GetDescriptionByIndex(i, GetUsekoreanList());
 #else
-	const char *pDescription = GetDriverGameTitle(driver_index);
+	pDescription = GetDriverGameTitle(driver_index);
 #endif
 	SetStatusBarText(0, pDescription);
-#ifdef USE_CLIST
-	pName = GetGameNameByIndex(i, GetUsechineseList());
+
+#ifdef USE_KLIST
+	pName = GetGameNameByIndex(i, GetUsekoreanList());
 #else
-	const char *pName = GetDriverGameName(driver_index);
+	pName = GetDriverGameName(driver_index);
 #endif
-// Source Code Ekmame
+
 	SetStatusBarText(1, pName);
 	idle_work = false;
 	UpdateStatusBar();
@@ -2139,9 +2144,8 @@ static void InitMenuIcons(void)
 	hRename = CreateBitmapTransparent(hTemp);
 	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_RESET));
 	hReset = CreateBitmapTransparent(hTemp);
-	// Source Code Ekmame
-	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_CLIST)); // USE_CLIST
-	hclist = CreateBitmapTransparent(hTemp);
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_KLIST)); // USE_KLIST
+	hklist = CreateBitmapTransparent(hTemp);
 }
 
 static void CopyToolTipText(LPTOOLTIPTEXT lpttt)
@@ -2432,6 +2436,8 @@ static void EnableSelection(int nGame)
 	MENUITEMINFO mmi;
 	HMENU hMenu = GetMenu(hMain);
 	wchar_t *t_description = win_wstring_from_utf8(ConvertAmpersandString(GetDriverGameTitle(nGame)));
+	const char *pText;
+	const char *pName;
 
 	if( !t_description )
 		return;
@@ -2445,17 +2451,20 @@ static void EnableSelection(int nGame)
 	mmi.cch = _tcslen(mmi.dwTypeData);
 
 	SetMenuItemInfo(hMenu, ID_FILE_PLAY, false, &mmi);
-//#ifdef USE_CLIST
-	const char *pText = GetDescriptionByIndex(nGame, GetUsechineseList());
+
+//#ifdef USE_KLIST
+	pText = GetDescriptionByIndex(nGame, GetUsekoreanList());
 //#else	
-//	const char *pText = GetDriverGameTitle(nGame);
-//#endif		 
-	SetStatusBarText(0, pText);
-//#ifdef USE_CLIST
-	const char *pName = GetGameNameByIndex(nGame,GetUsechineseList());
-//#else
-//	const char *pName = GetDriverGameName(nGame);
+//	pText = GetDriverGameTitle(nGame);
 //#endif
+	SetStatusBarText(0, pText);
+
+//#ifdef USE_KLIST
+	pName = GetGameNameByIndex(nGame,GetUsekoreanList());
+//#else
+//	pName = GetDriverGameName(nGame);
+//#endif
+
 	SetStatusBarText(1, pName);
 	SendMessage(hStatusBar, SB_SETICON, 1, (LPARAM)GetSelectedPickItemIconSmall());
 	char *pStatus = GameInfoStatusBar(nGame);
@@ -2467,11 +2476,11 @@ static void EnableSelection(int nGame)
 	EnableMenuItem(hMenu, ID_GAME_PROPERTIES, 	MF_ENABLED);
 
 	if (bProgressShown && bListReady == true)
-//#ifdef USE_CLIST																
-		SetDefaultGame(GetGameNameByIndex(nGame, GetUsechineseList())); 
-//#end
-//        SetDefaultGame(GetDriverGameName(nGame));
-
+//#ifdef USE_KLIST
+		SetDefaultGame(GetGameNameByIndex(nGame, GetUsekoreanList()));
+//#else
+//		SetDefaultGame(GetDriverGameName(nGame));
+//#endif
 	have_selection = true;
 	UpdateScreenShot();
 	free(t_description);
@@ -2484,10 +2493,11 @@ static const char* GetCloneParentName(int nItem)
 		int nParentIndex = GetParentIndex(&driver_list::driver(nItem));
 
 		if( nParentIndex >= 0)
-//#ifdef USE_CLIST	
-			return (char*)GetDescriptionByIndex(nParentIndex,GetUsechineseList());
-//#end
+//#ifdef USE_KLIST
+			return (char*)GetDescriptionByIndex(nParentIndex,GetUsekoreanList());
+//#else
 //			return GetDriverGameTitle(nParentIndex);
+//#endif
 	}
 
 	return "";
@@ -2607,6 +2617,7 @@ static char* ConvertAmpersandString(const char *s)
 	return buf;
 }
 
+
 static void PollGUIJoystick()
 {
 	if (in_emulation)
@@ -2673,6 +2684,9 @@ static void SetView(int menu_id)
 	// first uncheck previous menu item, check new one
 	CheckMenuRadioItem(GetMenu(hMain), ID_VIEW_ICONS_LARGE, ID_ENABLE_INDENT, menu_id, MF_CHECKED);
 	ToolBar_CheckButton(hToolBar, menu_id, MF_CHECKED);
+
+//	if (menu_id == ID_VIEW_DETAIL)
+//		(void)ListView_SetImageList(hWndList, hLarge, LVSIL_SMALL);
 
 	// Associate the image lists with the list view control.
 //	if (menu_id == ID_VIEW_ICONS_LARGE)
@@ -2767,6 +2781,7 @@ static void ResetListView()
 	if (GetViewMode() == VIEW_ICONS_SMALL)
 		SetView(ID_VIEW_ICONS_SMALL);
 
+
 	SetWindowRedraw(hWndList, true);
 	UpdateStatusBar();
 }
@@ -2786,9 +2801,9 @@ static void UpdateGameList(void)
 	idle_work = true;
 	ReloadIcons();
 	Picker_ResetIdle(hWndList);
-// Source Code Ekmame
-//#ifdef USE_CLIST
-	SetDefaultGame(GetDescriptionByIndex(Picker_GetSelectedItem(hWndList), GetUsechineseList()));
+
+//#ifdef USE_KLIST
+	SetDefaultGame(GetDescriptionByIndex(Picker_GetSelectedItem(hWndList), GetUsekoreanList()));
 	/*SetSelectedPick(0);*/ /* To avoid flickering. */	
 //#endif
 }
@@ -3071,8 +3086,6 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			UpdateListView();
 			return true;
 
-		/* Arrange Icons submenu */
-
 		case ID_VIEW_LIST_MENU:
 			SetView(ID_VIEW_LIST_MENU);
 			return true;
@@ -3085,6 +3098,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			SetView(ID_VIEW_GROUPED);
 			return true;
 
+		/* Arrange Icons submenu */
 		case ID_VIEW_BYGAME:
 			SetSortReverse(false);
 			SetSortColumn(COLUMN_GAMES);
@@ -3137,12 +3151,11 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			UpdateScreenShot();
 			break;
 
-		// Source Code Ekmame
-	    case ID_CHINESE_GAMELIST: // USE_CLIST
-			bclist = !bclist;
-			SetUsechineseList(bclist);
-			CheckMenuItem(GetMenu(hMain), ID_CHINESE_GAMELIST, (bclist) ? MF_CHECKED : MF_UNCHECKED);
-			ToolBar_CheckButton(hToolBar, ID_CHINESE_GAMELIST, (bclist) ? MF_CHECKED : MF_UNCHECKED);
+	    case ID_KOREAN_GAMELIST: // USE_KLIST
+			bklist = !bklist;
+			SetUsekoreanList(bklist);
+			CheckMenuItem(GetMenu(hMain), ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED);
+			ToolBar_CheckButton(hToolBar, ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED);
 			ResetListView();
 			break;
 
@@ -3180,8 +3193,8 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 
 		case ID_TOOLBAR_EDIT:
 		{
-			// Source Code Ekmame				  
-			setlocale(LC_ALL,"Chinese");
+			setlocale(LC_ALL,"Korean");
+
 			char buf[256];
 			winui_get_window_text_utf8(hWndCtl, buf, std::size(buf));
 
@@ -3856,11 +3869,12 @@ const wchar_t *GamePicker_GetItemString(HWND hwndPicker, int nItem, int nColumn,
 	{
 		case COLUMN_GAMES:
 			/* Driver description */
-//#ifdef USE_CLIST
-			utf8_s = GetDescriptionByIndex(nItem, GetUsechineseList());
-//#endif
+//#ifdef USE_KLIST
+			utf8_s = GetDescriptionByIndex(nItem, GetUsekoreanList());
+//#else		
 //			utf8_s = GetDriverGameTitle(nItem);
-			break;
+//#endif
+  	        break;
 
 		case COLUMN_ROMNAME:
 			/* Driver name (directory) */
@@ -3959,15 +3973,19 @@ static void InitListView(void)
 
 static void AddDriverIcon(int nItem, int default_icon_index)
 {
+	HICON hIcon = 0;
+	int nParentIndex = -1;
+
 	/* if already set to rom or clone icon, we've been here before */
 	if (icon_index[nItem] == 1 || icon_index[nItem] == 3)
 		return;
 
-	HICON hIcon = LoadIconFromFile((char *)GetDriverGameName(nItem));
+	hIcon = LoadIconFromFile((char *)GetDriverGameName(nItem));
 
 	if (hIcon == NULL)
 	{
-		int nParentIndex = GetParentIndex(&driver_list::driver(nItem));
+		//logmsg("Game %s Icon Not Found\n",(char *)GetDriverGameName(nItem));
+		nParentIndex = GetParentIndex(&driver_list::driver(nItem));
 
 		if( nParentIndex >= 0)
 		{
@@ -4080,6 +4098,7 @@ static DWORD GetShellLargeIconSize(void)
 	return dwSize;
 }
 
+
 static DWORD GetShellSmallIconSize(void)
 {
 	DWORD dwSize = ICONMAP_WIDTH;
@@ -4158,10 +4177,11 @@ int GamePicker_Compare(HWND hwndPicker, int index1, int index2, int sort_subitem
 	switch (sort_subitem)
 	{
 		case COLUMN_GAMES:
-//#ifdef USE_CLIST
-  		   value = core_stricmp(GetDescriptionByIndex(index1,GetUsechineseList()), GetDescriptionByIndex(index2, GetUsechineseList()));
+//#ifdef USE_KLIST
+  			value = core_stricmp(GetDescriptionByIndex(index1,GetUsekoreanList()), GetDescriptionByIndex(index2, GetUsekoreanList()));
+//#else			
+//			value = core_stricmp(GetDriverGameTitle(index1), GetDriverGameTitle(index2));
 //#endif
-// 		   value = core_stricmp(GetDriverGameTitle(index1), GetDriverGameTitle(index2));
 			break;
 
 		case COLUMN_ROMNAME:
@@ -4917,11 +4937,14 @@ static void UpdateMenu(HMENU hMenu)
 	if (have_selection)
 	{
 		wchar_t buf[200];
-		int nGame = Picker_GetSelectedItem(hWndList);			  
+		int nGame = Picker_GetSelectedItem(hWndList);
 
-//#ifdef USE_CLIST						 
-        wchar_t *t_description = win_wstring_from_utf8(ConvertAmpersandString(GetDescriptionByIndex(nGame, GetUsechineseList())));
-//		wchar_t *t_description = win_wstring_from_utf8(ConvertAmpersandString(GetDriverGameTitle(nGame)));
+		wchar_t *t_description;
+//#ifdef USE_KLIST
+		t_description= win_wstring_from_utf8(ConvertAmpersandString(GetDescriptionByIndex(nGame, GetUsekoreanList())));
+//#else
+//		t_description= win_wstring_from_utf8(ConvertAmpersandString(GetDriverGameTitle(nGame)));
+//#endif
 
 		if( !t_description )
 			return;
@@ -5103,8 +5126,9 @@ void InitMainMenu(HMENU hMainMenu)
 	SetMenuItemBitmaps(hMainMenu, ID_FILE_LOADSTATE, MF_BYCOMMAND, hSavestate, hSavestate);
 	SetMenuItemBitmaps(hMainMenu, ID_CONTEXT_FILTERS, MF_BYCOMMAND, hFilters, hFilters);
 	SetMenuItemBitmaps(hMainMenu, ID_OPTIONS_RESET_DEFAULTS, MF_BYCOMMAND, hReset, hReset);
-	// Source Code Ekmame																						  
- 	SetMenuItemBitmaps(hMainMenu, ID_CHINESE_GAMELIST, MF_BYCOMMAND, hclist, hclist); // USE_CLIST
+	SetMenuItemBitmaps(hMainMenu, ID_KOREAN_GAMELIST, MF_BYCOMMAND, hklist, hklist); // USE_KLIST
+
+
 }
 
 void InitTreeContextMenu(HMENU hTreeMenu)
@@ -5687,6 +5711,7 @@ static void SwitchFullScreenMode(void)
 		CheckMenuItem(GetMenu(hMain), ID_VIEW_STATUS, GetShowStatusBar() ? MF_CHECKED : MF_UNCHECKED);
 		CheckMenuItem(GetMenu(hMain), ID_VIEW_PAGETAB, GetShowTabCtrl() ? MF_CHECKED : MF_UNCHECKED);
 		CheckMenuItem(GetMenu(hMain), ID_ENABLE_INDENT, GetEnableIndent() ? MF_CHECKED : MF_UNCHECKED);
+
 		// Add frame to dialog again
 		SetWindowLong(hMain, GWL_STYLE, GetWindowLong(hMain, GWL_STYLE) | WS_OVERLAPPEDWINDOW);
 
@@ -5899,8 +5924,7 @@ static void SaveGameListToFile(char *szFile, int filetype)
 	winui_message_box_utf8(hMain, "File saved successfully.", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
 }
 
-//Source Code Ekmame
-//#ifdef USE_CLIST
+//#ifdef USE_KLIST
 static void TSV_GetPath(char *path)
 {
 	char drive[256];
@@ -6113,6 +6137,7 @@ char *GetGameManufactureByIndex(int nIndex, bool bUse)
 
 
 //#endif
+
 static HBITMAP CreateBitmapTransparent(HBITMAP hSource)
 {
 	BITMAP bm;

@@ -349,22 +349,15 @@ bool GameFiltered(int nGame, DWORD dwMask)
 
 	if (strlen(GetSearchText()) && _stricmp(GetSearchText(), SEARCH_PROMPT))
 	{
-//#ifdef USE_CLIST
-		if (MyStrStrI(GetDescriptionByIndex(nGame, GetUsechineseList()), GetSearchText()) == NULL &&
-			MyStrStrI(GetGameNameByIndex(nGame,GetUsechineseList()), GetSearchText()) == NULL )
+
+		if (MyStrStrI(GetDescriptionByIndex(nGame, GetUsekoreanList()), GetSearchText()) == NULL &&
+			MyStrStrI(GetGameNameByIndex(nGame,GetUsekoreanList()), GetSearchText()) == NULL )
 			return true;
-	
+
 //		if (MyStrStrI(GetDriverGameTitle(nGame), GetSearchText()) == NULL &&
 //			MyStrStrI(GetDriverGameName(nGame), GetSearchText()) == NULL)
 //			return true;
 	}
-
-//#ifdef USE_CLIST
-	if (MyStrStrI(GetDescriptionByIndex(nGame, GetUsechineseList()), GetFilterText()) == NULL &&
-		MyStrStrI(GetGameNameByIndex(nGame,GetUsechineseList()), GetFilterText()) == NULL &&
-		MyStrStrI(GetDriverFileName(nGame), GetFilterText()) == NULL &&
-		MyStrStrI(GetGameManufactureByIndex(nGame,GetUsechineseList()), GetFilterText()) == NULL)
-		return true;
 
 	/*Filter Text is already global*/
 //	if (MyStrStrI(GetDriverGameTitle(nGame), GetFilterText()) == NULL &&
@@ -372,6 +365,13 @@ bool GameFiltered(int nGame, DWORD dwMask)
 //		MyStrStrI(GetDriverFileName(nGame), GetFilterText()) == NULL &&
 //		MyStrStrI(GetDriverGameManufacturer(nGame), GetFilterText()) == NULL)
 //		return true;
+
+
+	if (MyStrStrI(GetDescriptionByIndex(nGame, GetUsekoreanList()), GetFilterText()) == NULL &&
+		MyStrStrI(GetGameNameByIndex(nGame,GetUsekoreanList()), GetFilterText()) == NULL &&
+		MyStrStrI(GetDriverFileName(nGame), GetFilterText()) == NULL &&
+		MyStrStrI(GetGameManufactureByIndex(nGame,GetUsekoreanList()), GetFilterText()) == NULL)
+		return true;
 
 	// Are there filters set on this folder?
 	if ((dwMask & F_MASK) == 0)

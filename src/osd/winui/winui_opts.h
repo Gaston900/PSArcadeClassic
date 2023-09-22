@@ -99,7 +99,7 @@
 #define INTERNAL_UI_INI_FILENAME 				"ui"
 #define PLUGINS_INI_FILENAME 					"plugin"
 
-#define MUIOPTION_USECHINESE_GAMELIST			"Korean GAME List"
+#define MUIOPTION_USEKOREAN_GAMELIST			"Korean GAME List"
 // Because we have added the Options after MAX_TAB_TYPES, we have to subtract 2 here
 // (that's how many options we have after MAX_TAB_TYPES)
 #define TAB_SUBTRACT 2
@@ -454,7 +454,7 @@ uint32_t GetDriverCacheUpper(int driver_index);
 void SetDriverCache(int driver_index, uint32_t val);
 BOOL RequiredDriverCache(void);
 // USE_KLIST
-bool GetUsechineseList(void);
-void SetUsechineseList(bool val);
+bool GetUsekoreanList(void);
+void SetUsekoreanList(bool val);
 
 #endif

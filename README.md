@@ -19,8 +19,6 @@ Does not include pinball games.
 
 Does not include crane games.
 
-Does not include erotic games.
-
 Does not include trivia games.
 
 Does not include bingo games.
@@ -102,7 +100,7 @@ Now we will locate the folder where the compiler that we want to use is located,
 
 And we will apply this command to start the compilation, this command is for Windows 64Bit system:
 ```
-make PTR64=1 TARGET=mame OSD=winui NOWERROR=1 STRIP_SYMBOLS=1
+make PTR64=1 SUBTARGET=arcade OSD=winui NOWERROR=1 STRIP_SYMBOLS=1
 ```
 
 I recommend downloading the compilation tool, whether it is the version msys64-32 that is from the year 2019-03-25, since this version is much more comfortable to compile for this version.

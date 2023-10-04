@@ -9019,7 +9019,7 @@ GAME( 1998, grdnstrmau, grdnstrm, grdnstrm,     grdnstrm,     afega_state, init_
 GAME( 1998, bubl2000,   0,        popspops,     bubl2000,     afega_state, init_bubl2000,        ROT0,               "Afega (Tuning license)",            "Bubble 2000", 0 ) // on a tuning board - Has a Demo Sound DSW
 GAME( 1998, bubl2000a,  bubl2000, popspops,     bubl2000a,    afega_state, init_bubl2000,        ROT0,               "Afega (Tuning license)",            "Bubble 2000 V1.2", 0 ) // on a tuning board - No Demo Sounds
 GAME( 1998, hotbubl,    bubl2000, popspops,     bubl2000,     afega_state, init_bubl2000,        ROT0,               "Afega (Pandora license)",           "Hot Bubble (Korea, with adult pictures)", 0 ) // on an afega board ..
-GAME( 1998, hotbubla,   0,        popspops,     bubl2000,     afega_state, init_bubl2000,        ROT0,               "Afega (Pandora license)",           "Hot Bubble (Korea)", 0 ) // on an afega board ..
+GAME( 1998, hotbubla,   bubl2000, popspops,     bubl2000,     afega_state, init_bubl2000,        ROT0,               "Afega (Pandora license)",           "Hot Bubble (Korea)", 0 ) // on an afega board ..
 
 GAME( 1999, popspops,   0,        popspops,     popspops,     afega_state, init_grdnstrm,        ROT0,               "Afega",                             "Pop's Pop's", 0 )
 

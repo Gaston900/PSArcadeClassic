@@ -1489,6 +1489,8 @@ zodiack.cpp
 //zpinball.cpp          // pinball, skeleton
 zr107.cpp
 zwackery.cpp
+schaser.cpp
+spacmiss.cpp
 //exceptions + to add - to remove from imported list
 //3do.cpp
 -3do

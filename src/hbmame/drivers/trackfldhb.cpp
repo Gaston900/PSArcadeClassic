@@ -39,4 +39,4 @@ ROM_END
 
 /*    YEAR    NAME       PARENT   MACHINE  INPUT                INIT      MONITOR   COMPANY       FULLNAME FLAGS */
 // Hack/Homebrow
-GAME( 2004, trackfldhc01, trackfld, trackfld, trackfld, trackfld_state, init_trackfld, ROT0, "Gameland.gr", "Athens 2004", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, trackfldhc01, trackfld, trackfld, trackfld, trackfld_state, init_trackfld, ROT0, "hack", "Athens 2004", MACHINE_SUPPORTS_SAVE )

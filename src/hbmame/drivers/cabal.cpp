@@ -47,6 +47,7 @@ ROM_START( cabalsv )
 	ROM_LOAD( "1-1u",           0x00000, 0x10000, CRC(8b3e0789) SHA1(b1450db1b1bada237c90930623e4def321099f13) )
 ROM_END
 
-/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
+/*    YEAR  NAME     PARENT   MACHINE  INPUT                      INIT    MONITOR COMPANY        FULLNAME FLAGS */
 // Cabal
-GAME( 2009, cabalsv, cabal, cabal,   cabalj,  cabal_state,  init_cabal,  ROT0, "pipi899", "Cabal (Ex Super Version 2009-03-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, cabalsv, cabal,   cabal,   cabalj,  cabal_state,  init_cabal,  ROT0, "hack",         "Cabal (Ex Super Version 2009-03-09)", MACHINE_SUPPORTS_SAVE )
+

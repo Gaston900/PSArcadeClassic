@@ -47,5 +47,4 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Sagaia
-GAME( 2018, sagaiav2, 0, darius2d, sagaia,   warriorb_state, empty_init, ROT0,   "Taito Corporation Japan", "Sagaia (dual screen) (V2)", MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND )
-
+GAME( 2018, sagaiav2, 0, darius2d, sagaia,   warriorb_state, empty_init, ROT0,   "Taito Corporation Japan", "Sagaia (dual screen) (V2)", MACHINE_SUPPORTS_SAVE )

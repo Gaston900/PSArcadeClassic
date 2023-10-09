@@ -10,11 +10,11 @@
 
 #include "emu.h"
 
-#define APPNAME                 "PSArcade Classic+"
+#define APPNAME                 "PSARCADE CLASSIC+"
 #define APPNAME_LOWER           "PSArcade Classic+"
 #define CONFIGNAME              "mame"
-#define COPYRIGHT               "Copyright Nicola Salmoria\nand the MAME team\nhttp://mamedev.org"
-#define COPYRIGHT_INFO          "Copyright Nicola Salmoria and the MAME team"
+#define COPYRIGHT               "Copyright MAMEdev and contributors\nhttps://mamedev.org"
+#define COPYRIGHT_INFO          "Copyright MAMEdev and contributors"
 
 const char * emulator_info::get_appname() { return APPNAME;}
 const char * emulator_info::get_appname_lower() { return APPNAME_LOWER;}

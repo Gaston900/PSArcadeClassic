@@ -2043,7 +2043,7 @@ INPUT_PORTS_END
 
 MACHINE_START_MEMBER(cps2_state,cps2)
 {
-	if (m_audiocpu != nullptr) // gigaman2 has an AT89C4051 (8051) MCU as an audio cpu, no qsound.
+	if (m_audiocpu) // gigaman2 has an AT89C4051 (8051) MCU as an audio cpu, no qsound.
 		membank("bank1")->configure_entries(0, (QSOUND_SIZE - 0x10000) / 0x4000, memregion("audiocpu")->base() + 0x10000, 0x4000);
 }
 
@@ -4338,6 +4338,40 @@ ROM_START( vampj )
 	ROM_LOAD16_WORD_SWAP( "vamj.03a", 0x000000, 0x80000, CRC(f55d3722) SHA1(e26bbcc47a2485914d567a6cf1cddd0f668689a1) ) /* Incomplete updated set? At least rom 03 */
 	ROM_LOAD16_WORD_SWAP( "vamj.04b", 0x080000, 0x80000, CRC(4d9c43c4) SHA1(2087090306646fed959d503ee75e24996ad95b88) ) /* should be "B" revision too. Both this   */
 	ROM_LOAD16_WORD_SWAP( "vamj.05a", 0x100000, 0x80000, CRC(6c497e92) SHA1(7c1ccdfd77fb50afe024c8402376daaeab641a24) ) /* set & "vampja" below have the same date */
+																												   
+																												   
+																												   
+																												   
+																												   
+
+								  
+																																		 
+																																		 
+																																		 
+																																		 
+																																		 
+																																		 
+																																		 
+																																		 
+
+										 
+																									   
+										 
+																									   
+
+									
+																													 
+																													 
+
+							 
+																									 
+	   
+
+				   
+									  
+																												   
+																													
+																												   
 	ROM_LOAD16_WORD_SWAP( "vamj.06a", 0x180000, 0x80000, CRC(f1bbecb6) SHA1(6adba89393e05f16f70b57085cabd6b4c20f53e8) )
 	ROM_LOAD16_WORD_SWAP( "vamj.07a", 0x200000, 0x80000, CRC(1067ad84) SHA1(5e4cc75cfdfd512b6230c656e7304262b5143aee) )
 	ROM_LOAD16_WORD_SWAP( "vamj.08a", 0x280000, 0x80000, CRC(4b89f41f) SHA1(bd78f33a6d448655eecf7448921d282b302fa4cb) )
@@ -11137,6 +11171,7 @@ GAME( 1994, dstlkur1,   dstlk,    cps2,     cps2_2p6b, cps2_state, init_cps2,   
 GAME( 1994, dstlka,     dstlk,    cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Capcom", "Darkstalkers: The Night Warriors (Asia 940705)",                                MACHINE_SUPPORTS_SAVE )
 GAME( 1994, dstlkh,     dstlk,    cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Capcom", "Darkstalkers: The Night Warriors (Hispanic 940818)",                            MACHINE_SUPPORTS_SAVE )
 GAME( 1994, vampj,      dstlk,    cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Capcom", "Vampire: The Night Warriors (Japan 940705)",                                    MACHINE_SUPPORTS_SAVE ) // Partial update set? Only rom 04 is "B" revision
+																																																			
 GAME( 1994, vampjr1,    dstlk,    cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Capcom", "Vampire: The Night Warriors (Japan 940630)",                                    MACHINE_SUPPORTS_SAVE )
 GAME( 1994, ringdest,   0,        cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Capcom", "Ring of Destruction: Slammasters II (Euro 940902)",                             MACHINE_SUPPORTS_SAVE )
 GAME( 1994, ringdesta,  ringdest, cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Capcom", "Ring of Destruction: Slammasters II (Asia 940831)",                             MACHINE_SUPPORTS_SAVE )
@@ -11469,9 +11504,13 @@ ROM_START( sfaud )
 	ROM_LOAD16_WORD_SWAP( "sfz.04b",  0x080000, 0x80000, CRC(8b73b0e5) SHA1(5318761f615c21395366b5333e75eaaa73ef2073) )
 	ROM_LOAD16_WORD_SWAP( "sfz.05a",  0x100000, 0x80000, CRC(0810544d) SHA1(5f39bda3e7b16508eb58e5a2e0cc58c09cf428ce) )
 	ROM_LOAD16_WORD_SWAP( "sfz.06",   0x180000, 0x80000, CRC(806e8f38) SHA1(b6d6912aa8f2f590335d7ff9a8214648e7131ebb) )
+																													
 
 	ROM_REGION( 0x1000000, "gfx", 0 )
 	ROM_FILL(               0x000000, 0x800000, 0 )
+																																		 
+																																		 
+																																		 
 	ROMX_LOAD( "sfz.14m",   0x800000, 0x200000, CRC(90fefdb3) SHA1(5eb28c8de57acfeaefebdd01509c7d9ba5244705) , ROM_GROUPWORD | ROM_SKIP(6) )
 	ROMX_LOAD( "sfz.16m",   0x800002, 0x200000, CRC(5354c948) SHA1(07588f1ba6addc04fef3274c971174aaf3e632ab) , ROM_GROUPWORD | ROM_SKIP(6) )
 	ROMX_LOAD( "sfz.18m",   0x800004, 0x200000, CRC(41a1e790) SHA1(ce25dad542308691dbe9606b26279bbd59ea4b81) , ROM_GROUPWORD | ROM_SKIP(6) )
@@ -11592,6 +11631,9 @@ ROM_START( avspud )
 	ROM_LOAD16_WORD_SWAP( "avped.04d", 0x080000, 0x80000, CRC(579306c2) SHA1(cabee3fdb624e681013a5a57d2a37339b96518fb) )
 	ROM_LOAD16_WORD_SWAP( "avpu.05d",  0x100000, 0x80000, CRC(3d9b92ac) SHA1(218756eec9180df78b5cd01b446d07616b387759) )
 	ROM_LOAD16_WORD_SWAP( "avpu.06",   0x180000, 0x80000, CRC(9c3ec898) SHA1(a5bd67bbb9d9f603092ab34126d94c30e0ddda49) )
+																													
+																													
+																													
 
 	ROM_REGION( 0x1000000, "gfx", 0 )
 	ROMX_LOAD( "avp.13m",   0x0000000, 0x200000, CRC(8f8b5ae4) SHA1(457ce959aa5db3a003de7dda2b3799b2f1ae279b) , ROM_GROUPWORD | ROM_SKIP(6) )
@@ -11606,6 +11648,7 @@ ROM_START( avspud )
 	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 )
 	ROM_LOAD( "avp.01",   0x00000, 0x08000, CRC(2d3b4220) SHA1(2b2d04d4282550fa9f6e1ad8528f20d1f2ac02eb) )
 	ROM_CONTINUE(         0x10000, 0x18000 )
+																									   
 
 	ROM_REGION( 0x400000, "qsound", 0 )
 	ROM_LOAD16_WORD_SWAP( "avp.11m",   0x000000, 0x200000, CRC(83499817) SHA1(e65b0ebd61ddc748842a9d4d92404b5305307623) )
@@ -11808,6 +11851,9 @@ ROM_START( megamn2d )
 
 	ROM_REGION16_BE( CODE_SIZE, "user1", 0 )
 	ROM_FILL( 0x000000, 0x100000, 0x00 )
+																																	   
+																																	   
+																																	   
 
 	ROM_REGION( 0x1000000, "gfx", 0 )
 	ROM_FILL(               0x000000, 0x800000, 0x00 )
@@ -11870,6 +11916,12 @@ ROM_START( mpangjd )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "mpnj_d.03a", 0x000000, 0x80000, CRC(dac63128) SHA1(e5ee8f6d698a28dbf54520473520e40efadf30e3) )
 	ROM_LOAD16_WORD_SWAP( "mpnj_d.04a", 0x080000, 0x80000, CRC(d0b2592b) SHA1(f18c026776326f9bab70d1a8f66dd5fffb115b1b) )
+																													
+																													
+																													
+																													
+																													
+																													
 
 	ROM_REGION( 0x1000000, "gfx", 0 )
 	ROMX_LOAD( "mpn-simm.01c",   0x0000000, 0x200000, CRC(388db66b) SHA1(7416cce3d0dbea71c92ea9f72f5536146f757b45) , ROM_GROUPBYTE | ROM_SKIP(7) )
@@ -11884,6 +11936,7 @@ ROM_START( mpangjd )
 	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 )
 	ROM_LOAD( "mpn.01",   0x00000, 0x08000, CRC(90c7adb6) SHA1(a2653e977e5e0457b249e098e5ca0abc93dac336) )
 	ROM_CONTINUE(         0x10000, 0x18000 )
+																									   
 
 	ROM_REGION( 0x400000, "qsound", 0 )
 	ROM_LOAD16_WORD_SWAP( "mpn-simm.05a",   0x000000, 0x200000, CRC(318a2e21) SHA1(c573cd88f8279a062c73ef1d79cd8421dbdcd93e) )
@@ -11978,6 +12031,9 @@ ROM_START( sfad )
 
 	ROM_REGION16_BE( CODE_SIZE, "user1", 0 )
 	ROM_FILL( 0x000000, 0x100000, 0x00 )
+																																	   
+																																	   
+																																	   
 
 	ROM_REGION( 0x1000000, "gfx", 0 )
 	ROM_FILL(               0x000000, 0x800000, 0x00 )
@@ -12111,6 +12167,9 @@ ROM_START( spf2xjd )
 	ROM_LOAD16_WORD_SWAP( "pzf.04",    0x080000, 0x80000, CRC(b80649e2) SHA1(5bfccd656aea7ff82e9a20bb5856f4ab99b5a007) )
 
 	ROM_REGION16_BE( CODE_SIZE, "user1", 0 )
+																																	  
+																																	  
+																																	  
 	ROM_FILL( 0x000000, 0x100000, 0x00 )
 
 	ROM_REGION( 0xC00000, "gfx", 0 )
@@ -12846,6 +12905,9 @@ ROM_START( spf2td )
 	ROM_LOAD16_WORD_SWAP( "pzf.04",    0x080000, 0x80000, CRC(b80649e2) SHA1(5bfccd656aea7ff82e9a20bb5856f4ab99b5a007) )
 
 	ROM_REGION16_BE( CODE_SIZE, "user1", 0 )
+																																	  
+																																	  
+																																	  
 	ROM_FILL( 0x000000, 0x100000, 0x00 )
 
 	ROM_REGION( 0xC00000, "gfx", 0 )
@@ -13092,3 +13154,4 @@ GAME( 1994, ssf2td,    ssf2t,     dead_cps2,     cps2_2p6b, cps2_state, init_cps
 
 // HBMAME
 #include "cps2hb.cpp"
+#include "cps2t.cpp"

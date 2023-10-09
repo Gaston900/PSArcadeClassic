@@ -3085,18 +3085,19 @@ static void InitializeBIOSUI(HWND hWnd)
 					if (ROMENTRY_ISSYSTEM_BIOS(rom))
 					{
 						const char *name = rom->hashdata().c_str();
-						const char *biosname = ROM_GETNAME(rom);
 						wchar_t *t_s = win_wstring_from_utf8(name);
 
 						if(!t_s)
 							return;
 
 						(void)ComboBox_InsertString(hCtrl, i, t_s);
-						(void)ComboBox_SetItemData(hCtrl, i++, biosname);
 						free(t_s);
+						const char *biosname = core_strdup(ROM_GETNAME(rom));
+						(void)ComboBox_SetItemData(hCtrl, i++, biosname);
 
 						if (ROMENTRY_ISDEFAULT_BIOS(rom))
 							(void)ComboBox_SetItemData( hCtrl, 0, biosname);
+						biosname = nullptr;
 					}
 				}
 			}
@@ -3114,7 +3115,7 @@ static void InitializeBIOSUI(HWND hWnd)
 		(void)ComboBox_InsertString(hCtrl, i, TEXT("Default"));
 		(void)ComboBox_SetItemData(hCtrl, i++, "");
 
-		if (gamedrv->rom != NULL)
+		if (gamedrv->rom)
 		{
 			auto rom_entries = rom_build_entries(gamedrv->rom);
 
@@ -3123,15 +3124,16 @@ static void InitializeBIOSUI(HWND hWnd)
 				if (ROMENTRY_ISSYSTEM_BIOS(rom))
 				{
 					const char *name = rom->hashdata().c_str();
-					const char *biosname = ROM_GETNAME(rom);
 					wchar_t *t_s = win_wstring_from_utf8(name);
 
 					if(!t_s)
 						return;
 
 					(void)ComboBox_InsertString(hCtrl, i, t_s);
-					(void)ComboBox_SetItemData(hCtrl, i++, biosname);
 					free(t_s);
+					const char *biosname = core_strdup(ROM_GETNAME(rom));
+					(void)ComboBox_SetItemData(hCtrl, i++, biosname);
+					biosname = nullptr;
 				}
 			}
 		}

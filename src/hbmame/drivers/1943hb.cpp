@@ -66,4 +66,4 @@ ROM_END
 
 /*    YEAR    NAME       PARENT        MACHINE  INPUT                 INIT      MONITOR   COMPANY       FULLNAME FLAGS */
 // Hack/Homebrow
-GAME( 2009, 1943hc01,     1943kai,     _1943,   1943, _1943_state,  init_1943,  ROT270,  "hack",        "1943 Kai: Midway Kaisen(Ex Super Version 2009-02-10)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, 1943hc01,    1943kai,     _1943,    1943, _1943_state,   init_1943, ROT270,   "hack",       "1943 Kai: Midway Kaisen(Ex Super Version 2009-02-10)", MACHINE_SUPPORTS_SAVE )

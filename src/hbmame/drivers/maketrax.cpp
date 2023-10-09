@@ -616,7 +616,7 @@ ROM_START( pacmatri )
 	PACMAN_PROMS
 ROM_END
 
-ROM_START( pactest )
+ROM_START( pacmtest )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "pactest.1",    0x0000, 0x1000, CRC(c0423406) SHA1(51630780dd7fa32a827d81a060906130fbe57345) )
 
@@ -703,6 +703,20 @@ ROM_START( piranhao )
 	PACMAN_SOUND_PROMS
 ROM_END
 
+ROM_START( pollen )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "pollen.6e",      0x0000, 0x1000, CRC(cafb430f) SHA1(9ac81affec3c9f1dfbec722712f7e907905f5662) )
+	ROM_LOAD( "pollen.6f",      0x1000, 0x1000, CRC(9ca9850b) SHA1(b2d48cba1a58e28f450aa4556139ac5021f7fa61) )
+	ROM_LOAD( "pollen.6h",      0x2000, 0x1000, CRC(04108eb0) SHA1(4773af22762b2da2f992867bee706325a999c2b0) )
+	ROM_LOAD_OPTIONAL( "pollen.1k",      0x3000, 0x0400, CRC(b9d2e5e6) SHA1(82546b7ecf9e46374b1af1ad32f582b4d35bddd1) )  // not used
+
+	ROM_REGION( 0x2000, "gfx1", 0 )
+	ROM_LOAD( "pollen.5e",      0x0000, 0x1000, CRC(c360bb29) SHA1(f220959c11a17d3f443743f88435553f9d7916c4) )
+	ROM_LOAD( "pollen.5f",      0x1000, 0x1000, CRC(b049f6cd) SHA1(69bea38cf4c133c7f6ce8b52824d214e8d726c7c) )
+
+	PACMAN_PROMS
+ROM_END
+
 ROM_START( ppong )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "ppong.1",      0x0000, 0x1000, CRC(abf90af3) SHA1(785059f68b69d031e8017fc5c6f44d22208ba1d1) )
@@ -783,19 +797,7 @@ ROM_START( seq2 )
 	PACMAN_PROMS
 ROM_END
 
-ROM_START( snakes ) // No text, no scores. Need 2 joysticks (2nd stick is RDFG keys). If you run the snake next to an edge, gfx break.
-	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "snakes.6e",    0x0000, 0x1000, CRC(5cba3718) SHA1(c093acd0f38e24d68c5dd618b742360976f1a3fa) )
-	ROM_REGION( 0x2000, "gfx1", 0 )
-	ROM_LOAD( "puckman.5e",   0x0000, 0x0800, CRC(2066a0b7) SHA1(6d4ccc27d6be185589e08aa9f18702b679e49a4a) )
-	ROM_LOAD( "puckman.5h",   0x0800, 0x0800, CRC(3591b89d) SHA1(79bb456be6c39c1ccd7d077fbe181523131fb300) )
-	ROM_LOAD( "puckman.5f",   0x1000, 0x0800, CRC(9e39323a) SHA1(be933e691df4dbe7d12123913c3b7b7b585b7a35) )
-	ROM_LOAD( "puckman.5j",   0x1800, 0x0800, CRC(1b1d9096) SHA1(53771c573051db43e7185b1d188533056290a620) )
-
-	PACMAN_PROMS
-ROM_END
-
-ROM_START( snakes2 ) // No text, no scores. Need 2 joysticks (2nd stick is RDFG keys).
+ROM_START( snakes ) // No text, no scores. Need 2 joysticks (2nd stick is RDFG keys).
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "snakes2.6e",   0x0000, 0x1000, CRC(6737be9c) SHA1(69a04dc9e9f08d78a6ad0a206b2af9126bfbe40c) )
 	ROM_REGION( 0x2000, "gfx1", 0 )
@@ -823,10 +825,21 @@ ROM_START( tinyworld )
 	PACMAN_SOUND_PROMS
 ROM_END
 
-/* note: the original rom was only 3154 bytes with a CRC of 0E67D062 - the one here is padded out to normal size */
-ROM_START( tst_pacm )
+/* note: the original rom was only 3154 (0xC52) bytes with a CRC of 0E67D062 - the one here is padded out to normal size */
+ROM_START( pacmtest1 )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "test.6e",      0x0000, 0x1000, CRC(fb645998) SHA1(ff57155533e1ec0fdc5c407dce8d270e86d33882) )
+
+	ROM_REGION( 0x2000, "gfx1", 0 )
+	ROM_LOAD( "pacman.5e",    0x0000, 0x1000, CRC(0c944964) SHA1(06ef227747a440831c9a3a613b76693d52a2f0a9) )
+	ROM_LOAD( "pacman.5f",    0x1000, 0x1000, CRC(958fedf9) SHA1(4a937ac02216ea8c96477d4a15522070507fb599) )
+
+	PACMAN_PROMS
+ROM_END
+
+ROM_START( pacmtest2 )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "pacmtest2.1",  0x0000, 0x0530, CRC(3c33cbeb) SHA1(b26f4fcad7042f93e6df29af73c3ee91a7333837) )
 
 	ROM_REGION( 0x2000, "gfx1", 0 )
 	ROM_LOAD( "pacman.5e",    0x0000, 0x1000, CRC(0c944964) SHA1(06ef227747a440831c9a3a613b76693d52a2f0a9) )
@@ -895,7 +908,7 @@ GAME( 2003, kangaroh,  0,        woodpek,  mspacpls, puckman_state, empty_init, 
 GAME( 2003, ladybugh,  lazybug,  woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Ladybug on Pacman Hardware", MACHINE_SUPPORTS_SAVE )
 GAME( 1981, lazybug,   0,        woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Lazy Bug", MACHINE_SUPPORTS_SAVE )
 GAME( 1981, lazybug1,  lazybug,  woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Lazy Bug (Slower)", MACHINE_SUPPORTS_SAVE )
-GAME( 19??, pactest,   0,        woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Test - Pacman board test", MACHINE_SUPPORTS_SAVE )
+GAME( 19??, pacmtest,  puckman,  woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Pacman Test Rom (set 1)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ppong,     0,        woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Ping Pong demo (Pacman Hardware)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, ppong2,    ppong,    woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Ping Pong demo (Pacman Hardware) v2", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, rainboh,   0,        pacman,   mspacpls, puckman_state, empty_init,          ROT90,  "David Widel", "Rainbow (Incomplete)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
@@ -919,16 +932,17 @@ GAME( 2002, alienres,  0,        pacman,   pacman,   puckman_state, empty_init, 
 GAME( 2002, alienresp, alienres, pacman,   pacman,   puckman_state, empty_init,          ROT90,  "MonstersGoBoom", "Alien Rescue (non-working prototype)", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, crashh,    0,        woodpek,  mspacpls, puckman_state, empty_init,          ROT90,  "hack", "Crash (Pac-Man)", MACHINE_SUPPORTS_SAVE )
 GAME( 1981, mtturbo,   0,        maketrax, maketrax, puckman_state, init_maketrax,       ROT270, "Tim Arcadecollecting", "Make Trax (Turbo Hack)", MACHINE_SUPPORTS_SAVE ) // http://www.arcadecollecting.com/hacks/maketrax
-GAME( 1999, tst_pacm,  0,        pacman,   mspacpls, puckman_state, empty_init,          ROT90,  "David Caldwell", "Test - Pacman Hardware", MACHINE_SUPPORTS_SAVE ) // http://www.porkrind.org/arcade/
+GAME( 1999, pacmtest1, puckman,  pacman,   mspacpls, puckman_state, empty_init,          ROT90,  "David Caldwell", "Pacman Test Rom (set 2)", MACHINE_SUPPORTS_SAVE ) // http://www.porkrind.org/arcade/
+GAME( 2020, pacmtest2, puckman,  pacman,   mspacpls, puckman_state, empty_init,          ROT90,  "Phil Murray", "Pacman Test Rom (set 3)", MACHINE_SUPPORTS_SAVE )
 GAME( 1982, eyesb,     eyes,     pacman,   eyes,     puckman_state, init_eyes,           ROT90,  "bootleg", "Eyes (unknown bootleg)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, ghohunt,   puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Hurray Banana", "Ghost Hunt", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, pactetris, puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Ben Leperchey", "Tetris on Pacman hardware (incomplete)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, deathstar, puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Stefano Bodrato", "Death Star", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, deathstar2,puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Stefano Bodrato", "Death Star v2", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, scroller,  puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Hurray Banana", "Scroller", MACHINE_SUPPORTS_SAVE )
-GAME( 2017, snakes,    puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Stefano Bodrato", "Snakes", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, snakes2,   puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Stefano Bodrato", "Snakes v2", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, snakes,    puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Stefano Bodrato", "Snakes", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, 100doors,  puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Hurray Banana", "100 doors", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, pollen,    puckman,  pacman,   pacman0,  puckman_state, empty_init,          ROT90,  "Arlasoft", "Pollen Angel", MACHINE_SUPPORTS_SAVE )
 
 
 /*************************************************************************************************************************/
@@ -1016,6 +1030,139 @@ ROM_START( theglobpb )
 ROM_END
 
 GAME( 1999, theglobpb, 0, pacman, theglobp, puckman_state,  empty_init,    ROT90,  "chaneman", "Super Glob (English conversion of sprglbpg)", MACHINE_SUPPORTS_SAVE )
+
+static INPUT_PORTS_START( ponpoko )
+	PORT_START("IN0")
+	PORT_BIT( 0x01, IP_ACTIVE_HIGH, IPT_JOYSTICK_UP ) PORT_4WAY
+	PORT_BIT( 0x02, IP_ACTIVE_HIGH, IPT_JOYSTICK_LEFT ) PORT_4WAY
+	PORT_BIT( 0x04, IP_ACTIVE_HIGH, IPT_JOYSTICK_RIGHT ) PORT_4WAY
+	PORT_BIT( 0x08, IP_ACTIVE_HIGH, IPT_JOYSTICK_DOWN ) PORT_4WAY
+	PORT_BIT( 0x10, IP_ACTIVE_HIGH, IPT_BUTTON1 )
+	PORT_BIT( 0x20, IP_ACTIVE_LOW, IPT_COIN1 )
+	PORT_BIT( 0x40, IP_ACTIVE_LOW, IPT_COIN2 )
+	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_SERVICE1 )
+
+	/* The 2nd player controls are used even in upright mode */
+	PORT_START("IN1")
+	PORT_BIT( 0x01, IP_ACTIVE_HIGH, IPT_JOYSTICK_UP ) PORT_4WAY PORT_PLAYER(2)
+	PORT_BIT( 0x02, IP_ACTIVE_HIGH, IPT_JOYSTICK_LEFT ) PORT_4WAY PORT_PLAYER(2)
+	PORT_BIT( 0x04, IP_ACTIVE_HIGH, IPT_JOYSTICK_RIGHT ) PORT_4WAY PORT_PLAYER(2)
+	PORT_BIT( 0x08, IP_ACTIVE_HIGH, IPT_JOYSTICK_DOWN ) PORT_4WAY PORT_PLAYER(2)
+	PORT_BIT( 0x10, IP_ACTIVE_HIGH, IPT_BUTTON1 ) PORT_PLAYER(2)
+	PORT_BIT( 0x20, IP_ACTIVE_HIGH, IPT_START1 )
+	PORT_BIT( 0x40, IP_ACTIVE_HIGH, IPT_START2 )
+	PORT_BIT( 0x80, IP_ACTIVE_HIGH, IPT_UNUSED )
+
+	PORT_START("DSW1")
+	PORT_DIPNAME( 0x03, 0x01, DEF_STR( Bonus_Life ) )
+	PORT_DIPSETTING(    0x01, "10000" )
+	PORT_DIPSETTING(    0x02, "30000" )
+	PORT_DIPSETTING(    0x03, "50000" )
+	PORT_DIPSETTING(    0x00, DEF_STR( None ) )
+	PORT_DIPNAME( 0x0c, 0x00, DEF_STR( Unknown ) )
+	PORT_DIPSETTING(    0x00, "0" )
+	PORT_DIPSETTING(    0x04, "1" )
+	PORT_DIPSETTING(    0x08, "2" )
+	PORT_DIPSETTING(    0x0c, "3" )
+	PORT_DIPNAME( 0x30, 0x20, DEF_STR( Lives ) )
+	PORT_DIPSETTING(    0x00, "2" )
+	PORT_DIPSETTING(    0x10, "3" )
+	PORT_DIPSETTING(    0x20, "4" )
+	PORT_DIPSETTING(    0x30, "5" )
+	PORT_DIPNAME( 0x40, 0x40, DEF_STR( Cabinet ) )
+	PORT_DIPSETTING(    0x40, DEF_STR( Upright ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( Cocktail ) )
+	PORT_DIPNAME( 0x80, 0x80, DEF_STR( Unknown ) )
+	PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+
+	PORT_START("DSW2")
+	PORT_DIPNAME( 0x0f, 0x01, DEF_STR( Coinage ) )
+	PORT_DIPSETTING(    0x04, "A 3/1 B 3/1" )
+	PORT_DIPSETTING(    0x0e, "A 3/1 B 1/2" )
+	PORT_DIPSETTING(    0x0f, "A 3/1 B 1/4" )
+	PORT_DIPSETTING(    0x02, "A 2/1 B 2/1" )
+	PORT_DIPSETTING(    0x0d, "A 2/1 B 1/1" )
+	PORT_DIPSETTING(    0x07, "A 2/1 B 1/3" )
+	PORT_DIPSETTING(    0x0b, "A 2/1 B 1/5" )
+	PORT_DIPSETTING(    0x0c, "A 2/1 B 1/6" )
+	PORT_DIPSETTING(    0x01, "A 1/1 B 1/1" )
+	PORT_DIPSETTING(    0x06, "A 1/1 B 4/5" )
+	PORT_DIPSETTING(    0x05, "A 1/1 B 2/3" )
+	PORT_DIPSETTING(    0x0a, "A 1/1 B 1/3" )
+	PORT_DIPSETTING(    0x08, "A 1/1 B 1/5" )
+	PORT_DIPSETTING(    0x09, "A 1/1 B 1/6" )
+	PORT_DIPSETTING(    0x03, "A 1/2 B 1/2" )
+	PORT_DIPSETTING(    0x00, DEF_STR( Free_Play ) )
+	PORT_DIPNAME( 0x10, 0x10, DEF_STR( Unknown ) )  /* Most likely unused */
+	PORT_DIPSETTING(    0x10, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x20, 0x20, DEF_STR( Unknown ) )  /* Most likely unused */
+	PORT_DIPSETTING(    0x20, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x40, 0x00, DEF_STR( Demo_Sounds ) )
+	PORT_DIPSETTING(    0x40, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+	PORT_DIPNAME( 0x80, 0x80, DEF_STR( Unknown ) )  /* Most likely unused */
+	PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+INPUT_PORTS_END
+
+void puckman_state::init_ponpoko()
+{
+	/* The gfx data is swapped wrt the other Pac-Man hardware games. */
+	/* Here we revert it to the usual format. */
+
+	int i, j;
+	uint8_t *RAM, temp;
+	int length = memregion("gfx1")->bytes()/2;
+
+	/* Characters */
+	RAM = memregion("gfx1")->base();
+	for (i = 0;i < length;i += 0x10)
+	{
+		for (j = 0; j < 8; j++)
+		{
+			temp          = RAM[i+j+0x08];
+			RAM[i+j+0x08] = RAM[i+j+0x00];
+			RAM[i+j+0x00] = temp;
+		}
+	}
+
+	/* Sprites */
+	RAM = memregion("gfx1")->base()+length;
+	for (i = 0;i < length;i += 0x20)
+	{
+		for (j = 0; j < 8; j++)
+		{
+			temp          = RAM[i+j+0x18];
+			RAM[i+j+0x18] = RAM[i+j+0x10];
+			RAM[i+j+0x10] = RAM[i+j+0x08];
+			RAM[i+j+0x08] = RAM[i+j+0x00];
+			RAM[i+j+0x00] = temp;
+		}
+	}
+}
+
+ROM_START( chuckie )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "chuckie.1",    0x0000, 0x1000, CRC(f2ba04fd) SHA1(30fd7256ac1706db94dfd0f7e7518b36197f4a32) )
+	ROM_LOAD( "chuckie.2",    0x1000, 0x1000, CRC(161510d3) SHA1(ad77509495a03466554f2388a9651a6183c16066) )
+	ROM_LOAD( "chuckie.3",    0x2000, 0x1000, CRC(5c594671) SHA1(598aa268b45a04e4dafbf7271278b06271b31e50) )
+	ROM_LOAD( "chuckie.4",    0x3000, 0x1000, CRC(25d4fc4f) SHA1(42f8424a8059248bb57e054e3bd129e995b94622) )
+
+	ROM_REGION( 0x2000, "gfx1", 0 )
+	ROM_LOAD( "chuckie.9",    0x0000, 0x1000, CRC(7394bd6d) SHA1(0a4973636d1366872b1ce1e77772d6fef604922f) )
+	ROM_LOAD( "chuckie.10",   0x1000, 0x1000, CRC(0024afe1) SHA1(bd6ad919a9e116d08b030cd55597900bae6fd7e3) )
+
+	ROM_REGION( 0x0120, "proms", 0 )
+	ROM_LOAD( "chuckie.7f",   0x0000, 0x0020, CRC(f2f2cbfb) SHA1(b00207e379809168c0420d4d2ce5ee49a46e1bd7) )
+	ROM_LOAD( "82s126.4a",    0x0020, 0x0100, CRC(3eb3a8e4) SHA1(19097b5f60d1030f8b82d9f1d3a241f93e5c75d6) )
+
+	PACMAN_SOUND_PROMS
+ROM_END
+
+GAME( 2023, chuckie, 0, woodpek, ponpoko, puckman_state, init_ponpoko, ROT0, "Arlasoft", "Chuckie Egg", MACHINE_SUPPORTS_SAVE )
 
 static INPUT_PORTS_START( paintrlr )
 	PORT_START("IN0")

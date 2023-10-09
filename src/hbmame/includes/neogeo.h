@@ -17,6 +17,7 @@
 #include "machine/ng_memcard.h"
 #include "machine/gen_latch.h"
 #include "video/neogeo_spr.h"
+#include "imagedev/snapquik.h"
 #include "bus/neogeo/prot.h"
 #include "bus/neogeo/banked_cart.h"
 #include "bus/neogeo_ctrl/ctrl.h"
@@ -98,6 +99,8 @@ public:
 	void neogeo_mj(machine_config &config);
 	void neogeo_noctrl(machine_config &config);
 	void neogeo_noslot(machine_config &config);
+	void ngmvs(machine_config &config);
+	void ngneo(machine_config &config);
 	void no_watchdog(machine_config &config);
 	void gsc(machine_config &config);
 
@@ -209,7 +212,7 @@ public:
 	void init_svcsplus();
 	void init_vliner();
 	void init_zupapa();
-	void init_xs02();	
+	void init_xs02();
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);
 	DECLARE_CUSTOM_INPUT_MEMBER(kizuna4p_start_r);
@@ -217,6 +220,7 @@ public:
 
 private:
 
+	u32 mvs_open7z(std::string zip_name, std::string filename, uint8_t *region_name, u32 region_size);
 	void io_control_w(offs_t offset, u8 data);
 	u16 memcard_r(offs_t offset);
 	void memcard_w(offs_t offset, u16 data, u16 mem_mask = ~0);
@@ -238,6 +242,8 @@ private:
 	TIMER_CALLBACK_MEMBER(display_position_interrupt_callback);
 	TIMER_CALLBACK_MEMBER(display_position_vblank_callback);
 	TIMER_CALLBACK_MEMBER(vblank_interrupt_callback);
+	DECLARE_QUICKLOAD_LOAD_MEMBER(mvs_q_cb);
+	DECLARE_QUICKLOAD_LOAD_MEMBER(neo_q_cb);
 
 	u32 screen_update_neogeo(screen_device &screen, bitmap_rgb32 &bitmap, const rectangle &cliprect);
 
@@ -277,53 +283,53 @@ private:
 	virtual void machine_start() override;
 	virtual void machine_reset() override;
 
-	memory_bank           *m_bank_audio_cart[4];
+	memory_bank           *m_bank_audio_cart[4]{};
 
 	// configuration
 	enum {NEOGEO_MVS, NEOGEO_AES, NEOGEO_CD} m_type;
 
 	// internal state
-	bool       m_recurse;
-	bool       m_audio_cpu_nmi_enabled;
-	bool       m_audio_cpu_nmi_pending;
+	bool       m_recurse = 0;
+	bool       m_audio_cpu_nmi_enabled = 0;
+	bool       m_audio_cpu_nmi_pending = 0;
 
 	// MVS-specific state
-	u8      m_save_ram_unlocked;
-	u8      m_output_data;
-	u8      m_output_latch;
-	u8      m_el_value;
-	u8      m_led1_value;
-	u8      m_led2_value;
+	u8      m_save_ram_unlocked = 0U;
+	u8      m_output_data = 0U;
+	u8      m_output_latch = 0U;
+	u8      m_el_value = 0U;
+	u8      m_led1_value = 0U;
+	u8      m_led2_value = 0U;
 
 	virtual void video_start() override;
 
-	emu_timer  *m_display_position_interrupt_timer;
-	emu_timer  *m_display_position_vblank_timer;
-	emu_timer  *m_vblank_interrupt_timer;
-	u32     m_display_counter;
-	u8      m_vblank_interrupt_pending;
-	u8      m_display_position_interrupt_pending;
-	u8      m_irq3_pending;
-	u8      m_display_position_interrupt_control;
-	u8      m_vblank_level;
-	u8      m_raster_level;
+	emu_timer  *m_display_position_interrupt_timer = nullptr;
+	emu_timer  *m_display_position_vblank_timer = nullptr;
+	emu_timer  *m_vblank_interrupt_timer = nullptr;
+	u32     m_display_counter = 0U;
+	u8      m_vblank_interrupt_pending = 0U;
+	u8      m_display_position_interrupt_pending = 0U;
+	u8      m_irq3_pending = 0U;
+	u8      m_display_position_interrupt_control = 0U;
+	u8      m_vblank_level = 0U;
+	u8      m_raster_level = 0U;
 
 	u16  get_video_control(  );
 
 	// color/palette related
-	std::vector<u16 > m_paletteram;
-	u8        m_palette_lookup[32][4];
+	std::vector<u16 > m_paletteram{};
+	u8        m_palette_lookup[32][4]{};
 	const pen_t *m_bg_pen;
-	int          m_screen_shadow;
-	int          m_palette_bank;
+	int          m_screen_shadow = 0;
+	int          m_palette_bank = 0;
 
 	u16 neogeo_slot_rom_low_r();
 	u16 neogeo_slot_rom_low_vectors_r(offs_t offset);
 
 	void install_banked_bios();
 
-	int m_use_cart_vectors;
-	int m_use_cart_audio;
+	int m_use_cart_vectors = 0;
+	int m_use_cart_audio = 0;
 	optional_device<neogeo_banked_cart_device> m_banked_cart;
 	required_device<cpu_device> m_maincpu;
 	required_device<cpu_device> m_audiocpu;

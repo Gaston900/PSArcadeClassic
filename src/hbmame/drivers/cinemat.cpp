@@ -29,7 +29,7 @@ public:
 
 	void init_bbugtest()
 	{
-		m_maincpu->space(AS_IO).install_read_handler(0x0c, 0x0f, read8_delegate(FUNC(cinemat_hbmame::boxingb_dial_r),this));
+		m_maincpu->space(AS_IO).install_read_handler(0x0c, 0x0f, read8sm_delegate(*this, FUNC(cinemat_hbmame::boxingb_dial_r)));
 	}
 };
 
@@ -41,7 +41,7 @@ public:
  *
  *************************************/
 
-ROM_START( bbugtest )
+ROM_START( bbugtest ) // This wrongly indicates failures in all RAM chips. This is fixed in bbugtest1.
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "bbugtest.t7", 0x0000, 0x1000, CRC(92a460f1) SHA1(eaa8fea38d87f1fd6e2e52b92085fed43498e5ce) )
 	ROM_LOAD16_BYTE( "bbugtest.p7", 0x0001, 0x1000, CRC(06d0bde2) SHA1(b0a224b7a74fa739b293ad7383236ffaa012f3c3) )
@@ -72,7 +72,8 @@ ROM_END
 GAME(1981, bbugtest,  0,        boxingb, boxingb, cinemat_hbmame, init_bbugtest, ORIENTATION_FLIP_Y, "Test Rom", "Test Rom - Boxing Bugs", MACHINE_NO_SOUND_HW | MACHINE_SUPPORTS_SAVE )
 GAME(2018, bbugtest1, bbugtest, boxingb, boxingb, cinemat_hbmame, init_bbugtest, ORIENTATION_FLIP_Y, "Timothy Shiels", "Test Rom - Cinematic", MACHINE_NO_SOUND_HW | MACHINE_SUPPORTS_SAVE )
 
-// WARRIOR modifications. See http://www.outerworldarcade.com/arcade/cinematronics/mods/warrior/warrior_4j_mod.html
+
+// WARRIOR modifications. See https://www.outerworldarcade.com/cinematronics/mods/warrior/warrior_4j_mod.html
 
 static INPUT_PORTS_START( warrior4j )
 	PORT_START("INPUTS")
@@ -133,5 +134,5 @@ ROM_START( warrior4j2 )
 	CCPU_PROMS
 ROM_END
 
-GAME(2014, warrior4j1, warrior, warrior, warrior4j, cinemat_state, empty_init, ORIENTATION_FLIP_Y, "Timothy Shiels", "Warrior (4 joysticks, v1)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
-GAME(2014, warrior4j2, warrior, warrior, warrior4j, cinemat_state, empty_init, ORIENTATION_FLIP_Y, "Timothy Shiels", "Warrior (4 joysticks, v2)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME(2014, warrior4j1, warrior, warrior, warrior4j, cinemat_state, empty_init, ORIENTATION_FLIP_Y, "Timothy Shiels", "Warrior (4 joysticks, v1)", MACHINE_SUPPORTS_SAVE )
+GAME(2014, warrior4j2, warrior, warrior, warrior4j, cinemat_state, empty_init, ORIENTATION_FLIP_Y, "Timothy Shiels", "Warrior (4 joysticks, v2)", MACHINE_SUPPORTS_SAVE )

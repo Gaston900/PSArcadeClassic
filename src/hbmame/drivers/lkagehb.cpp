@@ -2,7 +2,6 @@
 // copyright-holders:Gaston90
 #include "../mame/drivers/lkage.cpp"
 
- 
 /********************
   Hack And Homebrow
 ***********************/

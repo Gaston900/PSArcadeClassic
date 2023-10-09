@@ -110,7 +110,7 @@ ROM_END
 
 /*    YEAR    NAME       PARENT   MACHINE  INPUT                INIT      MONITOR   COMPANY       FULLNAME FLAGS */
 // Hack/Homebrow
-GAME( 2009, ssridershc01, ssriders, ssriders, ssriders,  tmnt_state, empty_init, ROT0,   "Pipi899","Sunset Riders (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, ssridershc01, ssriders, ssriders, ssriders,  tmnt_state, empty_init, ROT0,   "hack",  "Sunset Riders (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, ssridershc02, ssriders, ssriders, ssridr4p,  tmnt_state, empty_init, ROT0,   "hack",  "Sunset Riders (1V4 Edition 2019-07-28)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
 GAME( 2019, ssridershc03, ssriders, ssriders, ssridr4p,  tmnt_state, empty_init, ROT0,   "hack",  "Sunset Riders (The Hardest Version In Two Weeks 2019-04-20)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
 GAME( 1991, tmnt2hc01,    tmnt2,    tmnt2,    ssrid4ps,  tmnt_state, empty_init, ROT0,   "hack",  "Teenage Mutant Ninja Turtles (Ex Super Version)", MACHINE_SUPPORTS_SAVE )

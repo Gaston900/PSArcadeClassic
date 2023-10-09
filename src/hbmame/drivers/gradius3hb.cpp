@@ -45,6 +45,7 @@ ROM_START( gradius3hc01 )
 	ROM_LOAD( "945_l11b.c20", 0x60000, 0x20000, CRC(89ea3baf) SHA1(8edcbaa7969185cfac48c02559826d1b8b081f3f) )
 ROM_END
 
+
 /*    YEAR    NAME        PARENT    MACHINE    INPUT                       INIT      MONITOR   COMPANY       FULLNAME FLAGS */
 // Hack/Homebrow
-GAME( 1989, gradius3hc01, gradius3, gradius3, gradius3, gradius3_state, empty_init,    ROT0,   "hack",       "Gradius III (Secret fighters)", MACHINE_SUPPORTS_SAVE )
+GAME( 1989, gradius3hc01, gradius3, gradius3, gradius3, gradius3_state, empty_init,    ROT0,   "hack",       "Gradius III (Secret Fighters)", MACHINE_SUPPORTS_SAVE )

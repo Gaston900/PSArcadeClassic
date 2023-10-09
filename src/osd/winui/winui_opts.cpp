@@ -47,104 +47,104 @@ static winui_game_options game_opts;    // game stats
 const options_entry winui_options::s_option_entries[] =
 {
 	// UI options
-	{ nullptr,								nullptr,    	OPTION_HEADER, "APPLICATION VERSION" },
+	{ nullptr,								nullptr,    core_options::option_type::HEADER, "APPLICATION VERSION" },
 
-	{ nullptr,								nullptr,    	OPTION_HEADER, "DISPLAY STATE OPTIONS" },
-	{ MUIOPTION_DEFAULT_GAME,				"88games",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_DEFAULT_FOLDER_ID,			"0",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_SHOW_IMAGE_SECTION,			"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_CURRENT_TAB,				"0",        	OPTION_STRING, nullptr },
-	{ MUIOPTION_SHOW_TOOLBAR,				"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_SHOW_STATUS_BAR,			"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_HIDE_FOLDERS,				nullptr,        OPTION_STRING, nullptr },
-	{ MUIOPTION_SHOW_FOLDER_SECTION,		"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_SHOW_TABS,					"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_HIDE_TABS,					"history",      OPTION_STRING, nullptr },
-	{ MUIOPTION_HISTORY_TAB,				"18",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_SORT_COLUMN,				"0",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_SORT_REVERSED,				"0",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_WINDOW_X,					"0",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_WINDOW_Y,					"0",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_WINDOW_WIDTH,				"1150",     	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_WINDOW_HEIGHT,				"639",      	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_WINDOW_STATE,				"1",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_LIST_COLOR,					"255,255,255",  OPTION_INTEGER, nullptr },
-	{ MUIOPTION_HISTORY_COLOR,				"255,255,255",  OPTION_INTEGER, nullptr },
-	{ MUIOPTION_TREE_COLOR,					"255,255,255",  OPTION_INTEGER, nullptr },
-	{ MUIOPTION_TREEBG_COLOR,				"0,32,65", 	    OPTION_INTEGER, nullptr },
-	{ MUIOPTION_LISTBG_COLOR,				"0,32,65", 	    OPTION_INTEGER, nullptr },
-	{ MUIOPTION_HISTORYBG_COLOR,			"0,32,65", 	    OPTION_INTEGER, nullptr },
-	{ MUIOPTION_CUSTOM_COLOR,				"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0", OPTION_STRING, nullptr },
-	{ MUIOPTION_LIST_MODE,					"154",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_SPLITTERS,					"150,778",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_GUI_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
-	{ MUIOPTION_LIST_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
-	{ MUIOPTION_HISTORY_FONT,				"-11,0,0,0,400,0,0,0,0,3,2,1,34,Verdana", OPTION_STRING, nullptr },
-	{ MUIOPTION_TREE_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", OPTION_STRING, nullptr },
-	{ MUIOPTION_COLUMN_WIDTHS,				"452,77,108,140,39,160,60,70", OPTION_STRING, nullptr },
-	{ MUIOPTION_COLUMN_ORDER,				"0,4,1,2,5,3,6,7", OPTION_STRING, nullptr },
-	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,1,1", OPTION_STRING, nullptr },
+	{ nullptr,								nullptr,    core_options::option_type::HEADER, "DISPLAY STATE OPTIONS" },
+	{ MUIOPTION_DEFAULT_GAME,				"88games",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_DEFAULT_FOLDER_ID,			"0",        core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_SHOW_IMAGE_SECTION,			"1",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_CURRENT_TAB,				"0",        core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_SHOW_TOOLBAR,				"1",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_SHOW_STATUS_BAR,			"1",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_HIDE_FOLDERS,				nullptr,        core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_SHOW_FOLDER_SECTION,		"1",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_SHOW_TABS,					"1",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_HIDE_TABS,					"history",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_HISTORY_TAB,				"18",       core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_SORT_COLUMN,				"0",        core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_SORT_REVERSED,				"0",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_WINDOW_X,					"0",        core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_WINDOW_Y,					"0",        core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_WINDOW_WIDTH,				"1150",     core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_WINDOW_HEIGHT,				"639",      core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_WINDOW_STATE,				"1",        core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_LIST_COLOR,					"255,255,255",  core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_HISTORY_COLOR,				"255,255,255",  core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_TREE_COLOR,					"255,255,255",  core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_TREEBG_COLOR,				"0,32,65",      core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_LISTBG_COLOR,				"0,32,65",      core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_HISTORYBG_COLOR,			"0,32,65",      core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_CUSTOM_COLOR,				"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0", core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_LIST_MODE,					"154",        core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_SPLITTERS,					"150,778",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_GUI_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_LIST_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_HISTORY_FONT,				"-11,0,0,0,400,0,0,0,0,3,2,1,34,Verdana", core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_TREE_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_COLUMN_WIDTHS,				"452,77,108,140,39,160,60,70", core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_COLUMN_ORDER,				"0,4,1,2,5,3,6,7", core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,1,1", core_options::option_type::STRING, nullptr },
 
-	{ nullptr,								nullptr,     	OPTION_HEADER, "INTERFACE OPTIONS" },
-	{ MUIOPTION_NOROMS_GAMES,				"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_TRAY_ICON,					"0",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_EXIT_DIALOG,				"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_JOYSTICK_IN_INTERFACE,		"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_INHERIT_FILTER,				"0",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_USE_BROKEN_ICON,			"0",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_ENABLE_INDENT,				"1",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_ENABLE_FASTAUDIT,			"0",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_ENABLE_SEVENZIP,			"0",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_STRETCH_SCREENSHOT_LARGER,	"0",        	OPTION_BOOLEAN, nullptr },
-	{ MUIOPTION_CYCLE_SCREENSHOT,			"0",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_SCREENSHOT_BORDER_SIZE,		"1",        	OPTION_INTEGER, nullptr },
-	{ MUIOPTION_SCREENSHOT_BORDER_COLOR,	"187,0,0",    	OPTION_INTEGER, nullptr },
+	{ nullptr,								nullptr,     core_options::option_type::HEADER, "INTERFACE OPTIONS" },
+	{ MUIOPTION_NOROMS_GAMES,				"1",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_TRAY_ICON,					"0",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_EXIT_DIALOG,				"1",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_JOYSTICK_IN_INTERFACE,		"1",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_INHERIT_FILTER,				"0",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_USE_BROKEN_ICON,			"0",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_ENABLE_INDENT,				"1",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_ENABLE_FASTAUDIT,			"0",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_ENABLE_SEVENZIP,			"0",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_STRETCH_SCREENSHOT_LARGER,	"0",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_CYCLE_SCREENSHOT,			"0",        core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_SCREENSHOT_BORDER_SIZE,		"1",        core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_SCREENSHOT_BORDER_COLOR,	"187,0,0",  core_options::option_type::INTEGER, nullptr },
 
-	{ nullptr,								nullptr,       	OPTION_HEADER, "SEARCH PATH OPTIONS" },
-	{ MUIOPTION_ARTWORK_DIRECTORY,			"support/artpreview", 	OPTION_STRING, nullptr },
-	{ MUIOPTION_AUDIO_DIRECTORY,			"config/audio",    	    OPTION_STRING, nullptr },
-	{ MUIOPTION_BOSSES_DIRECTORY,			"support/bosses",   	OPTION_STRING, nullptr },
-	{ MUIOPTION_CABINET_DIRECTORY,			"support/cabinets", 	OPTION_STRING, nullptr },
-	{ MUIOPTION_CPANEL_DIRECTORY,			"support/cpanel",   	OPTION_STRING, nullptr },
-	{ MUIOPTION_DATS_DIRECTORY,				"support/dats",    	 	OPTION_STRING, nullptr },
-	{ MUIOPTION_ENDS_DIRECTORY,				"support/ends",     	OPTION_STRING, nullptr },
-	{ MUIOPTION_FLYER_DIRECTORY,			"support/flyers",   	OPTION_STRING, nullptr },
-	{ MUIOPTION_FOLDER_DIRECTORY,			"config/folders",       OPTION_STRING, nullptr },
-	{ MUIOPTION_GAMEOVER_DIRECTORY,			"support/gameover", 	OPTION_STRING, nullptr },
-	{ MUIOPTION_GUI_DIRECTORY,				"config/gui",           OPTION_STRING, nullptr },
-	{ MUIOPTION_HOWTO_DIRECTORY,			"support/howto",    	OPTION_STRING, nullptr },
-	{ MUIOPTION_ICONS_DIRECTORY,			"support/icons",    	OPTION_STRING, nullptr },
-	{ MUIOPTION_LOGO_DIRECTORY,				"support/logo",     	OPTION_STRING, nullptr },
-	{ MUIOPTION_MANUALS_DIRECTORY,          "support/manuals",      OPTION_STRING, nullptr },
-	{ MUIOPTION_MARQUEE_DIRECTORY,			"support/marquees", 	OPTION_STRING, nullptr },
-	{ MUIOPTION_PCB_DIRECTORY,				"support/pcb",      	OPTION_STRING, nullptr },
-	{ MUIOPTION_SCORES_DIRECTORY,			"support/scores",   	OPTION_STRING, nullptr },
-	{ MUIOPTION_SELECT_DIRECTORY,			"support/select",   	OPTION_STRING, nullptr },
-	{ MUIOPTION_TITLE_DIRECTORY,			"support/titles",   	OPTION_STRING, nullptr },
-	{ MUIOPTION_VERSUS_DIRECTORY,			"support/versus",   	OPTION_STRING, nullptr },
+	{ nullptr,								nullptr,       core_options::option_type::HEADER, "SEARCH PATH OPTIONS" },
+	{ MUIOPTION_ARTWORK_DIRECTORY,			"support/artpreview", core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_AUDIO_DIRECTORY,			"config/audio",       core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_BOSSES_DIRECTORY,			"support/bosses",     core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_CABINET_DIRECTORY,			"support/cabinets",   core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_CPANEL_DIRECTORY,			"support/cpanel",     core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_DATS_DIRECTORY,				"support/dats",       core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_ENDS_DIRECTORY,				"support/ends",       core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_FLYER_DIRECTORY,			"support/flyers",     core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_FOLDER_DIRECTORY,			"config/folders",     core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_GAMEOVER_DIRECTORY,			"support/gameover",   core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_GUI_DIRECTORY,				"config/gui",         core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_HOWTO_DIRECTORY,			"support/howto",      core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_ICONS_DIRECTORY,			"support/icons",      core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_LOGO_DIRECTORY,				"support/logo",       core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_MANUALS_DIRECTORY,          "support/manuals",    core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_MARQUEE_DIRECTORY,			"support/marquees",   core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_PCB_DIRECTORY,				"support/pcb",        core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_SCORES_DIRECTORY,			"support/scores",     core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_SELECT_DIRECTORY,			"support/select",     core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_TITLE_DIRECTORY,			"support/titles",     core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_VERSUS_DIRECTORY,			"support/versus",     core_options::option_type::STRING, nullptr },
 
-	{ nullptr,								nullptr,        OPTION_HEADER, "NAVIGATION JOYSTICK CODES" },
-	{ MUIOPTION_UI_JOY_UP,					"1,1,1,1",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_UI_JOY_DOWN,				"1,1,1,2",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_UI_JOY_LEFT,				"1,1,2,1",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_UI_JOY_RIGHT,				"1,1,2,2",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_UI_JOY_START,				"1,0,1,0",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_UI_JOY_PGUP,				"2,1,2,1",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_UI_JOY_PGDWN,				"2,1,2,2",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_UI_JOY_HOME,				"0,0,0,0",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_UI_JOY_END,					"0,0,0,0",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_UI_JOY_SS_CHANGE,			"2,0,3,0",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_UI_JOY_HISTORY_UP,			"2,0,4,0",  	OPTION_STRING, nullptr },
-	{ MUIOPTION_UI_JOY_HISTORY_DOWN,		"2,0,1,0",  	OPTION_STRING, nullptr },
+	{ nullptr,								nullptr,    core_options::option_type::HEADER, "NAVIGATION JOYSTICK CODES" },
+	{ MUIOPTION_UI_JOY_UP,					"1,1,1,1",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_UI_JOY_DOWN,				"1,1,1,2",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_UI_JOY_LEFT,				"1,1,2,1",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_UI_JOY_RIGHT,				"1,1,2,2",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_UI_JOY_START,				"1,0,1,0",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_UI_JOY_PGUP,				"2,1,2,1",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_UI_JOY_PGDWN,				"2,1,2,2",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_UI_JOY_HOME,				"0,0,0,0",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_UI_JOY_END,					"0,0,0,0",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_UI_JOY_SS_CHANGE,			"2,0,3,0",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_UI_JOY_HISTORY_UP,			"2,0,4,0",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_UI_JOY_HISTORY_DOWN,		"2,0,1,0",  core_options::option_type::STRING, nullptr },
 
-	{ nullptr,								nullptr,		OPTION_HEADER, "Korean GAME List" },
-	{ MUIOPTION_USEKOREAN_GAMELIST,			"1",		    OPTION_BOOLEAN, nullptr },
+	{ nullptr,								nullptr,	core_options::option_type::HEADER, "Korean GAME List" },
+	{ MUIOPTION_USEKOREAN_GAMELIST,			"1",	    core_options::option_type::BOOLEAN, nullptr },
 	{ nullptr }
 };
 
 static const options_entry filterOptions[] =
 {
-	{ "_filters",                           "0",        	OPTION_INTEGER, nullptr },
+	{ "_filters",                           "0",        core_options::option_type::STRING, nullptr },
 	{ nullptr }
 };
 
@@ -1752,12 +1752,11 @@ static void TabFlagsDecodeString(const char *str, int *data)
 
 static void LoadInterfaceFile(winui_options &opts, const std::string &filename)
 {
-	osd_file::error filerr;
 	emu_file file(OPEN_FLAG_READ);
 
-	filerr = file.open(filename);
+	std::error_condition filerr = file.open(filename);
 
-	if (filerr == osd_file::error::NONE)
+	if (!filerr)
 	{
 		opts.parse_ini_file((util::core_file&)file, OPTION_PRIORITY_CMDLINE, true, true);
 		file.close();
@@ -1768,12 +1767,11 @@ static void LoadInterfaceFile(winui_options &opts, const std::string &filename)
 
 static void LoadInternalUIFile(ui_options &opts, const std::string &filename)
 {
-	osd_file::error filerr;
 	emu_file file(OPEN_FLAG_READ);
 
-	filerr = file.open(filename);
+	std::error_condition filerr = file.open(filename);
 
-	if (filerr == osd_file::error::NONE)
+	if (!filerr)
 	{
 		opts.parse_ini_file((util::core_file&)file, OPTION_PRIORITY_CMDLINE, true, true);
 		file.close();
@@ -1784,12 +1782,11 @@ static void LoadInternalUIFile(ui_options &opts, const std::string &filename)
 
 static void LoadPluginsFile(plugin_options &opts, const std::string &filename)
 {
-	osd_file::error filerr;
 	emu_file file(OPEN_FLAG_READ);
 
-	filerr = file.open(filename);
+	std::error_condition filerr = file.open(filename);
 
-	if (filerr == osd_file::error::NONE)
+	if (!filerr)
 	{
 		try
 		{
@@ -1797,11 +1794,11 @@ static void LoadPluginsFile(plugin_options &opts, const std::string &filename)
 		}
 		catch (options_exception &)
 		{
-			filerr = osd_file::error::INVALID_DATA;
+			filerr = std::errc::invalid_argument;
 		}
 		file.close();
 	}
-	if (filerr != osd_file::error::NONE)
+	if (filerr)
 	{
 		plugin_options opts_temp;
 		SavePluginsFile(opts_temp, filename); // try save default values assuming directory exists
@@ -1810,12 +1807,11 @@ static void LoadPluginsFile(plugin_options &opts, const std::string &filename)
 
 static void LoadOptionsFile(windows_options &opts, const std::string &filename)
 {
-	osd_file::error filerr;
 	emu_file file(OPEN_FLAG_READ);
 
-	filerr = file.open(filename);
+	std::error_condition filerr = file.open(filename);
 
-	if (filerr == osd_file::error::NONE)
+	if (!filerr)
 	{
 		opts.parse_ini_file((util::core_file&)file, OPTION_PRIORITY_CMDLINE, true, true);
 		file.close();
@@ -1824,12 +1820,11 @@ static void LoadOptionsFile(windows_options &opts, const std::string &filename)
 
 static void LoadOptionsStartup(windows_options &opts, const std::string &filename)
 {
-	osd_file::error filerr;
 	emu_file file(OPEN_FLAG_READ);
 
-	filerr = file.open(filename);
+	std::error_condition filerr = file.open(filename);
 
-	if (filerr == osd_file::error::NONE)
+	if (!filerr)
 	{
 		opts.parse_ini_file((util::core_file&)file, OPTION_PRIORITY_CMDLINE, true, true);
 		file.close();
@@ -1840,12 +1835,11 @@ static void LoadOptionsStartup(windows_options &opts, const std::string &filenam
 
 static void SaveInterfaceFile(winui_options &opts, const std::string &filename)
 {
-	osd_file::error filerr;
 	emu_file file(OPEN_FLAG_WRITE | OPEN_FLAG_CREATE | OPEN_FLAG_CREATE_PATHS);
 
-	filerr = file.open(filename);
+	std::error_condition filerr = file.open(filename);
 
-	if (filerr == osd_file::error::NONE)
+	if (!filerr)
 	{
 		file.puts(opts.output_ini().c_str());
 		file.close();
@@ -1854,12 +1848,11 @@ static void SaveInterfaceFile(winui_options &opts, const std::string &filename)
 
 static void SaveInternalUIFile(ui_options &opts, const std::string &filename)
 {
-	osd_file::error filerr;
 	emu_file file(OPEN_FLAG_WRITE | OPEN_FLAG_CREATE | OPEN_FLAG_CREATE_PATHS);
 
-	filerr = file.open(filename);
+	std::error_condition filerr = file.open(filename);
 
-	if (filerr == osd_file::error::NONE)
+	if (!filerr)
 	{
 		file.puts(opts.output_ini().c_str());
 		file.close();
@@ -1873,16 +1866,14 @@ static void SavePluginsFile(plugin_options &opts, const std::string &filename)
 
 	while (iter.next(pluginpath))
 	{
-		osd_subst_env(pluginpath,pluginpath);
-		opts.scan_directory(pluginpath,true);
+		opts.scan_directory(osd_subst_env(pluginpath),true);
 	}
 
-	osd_file::error filerr;
 	emu_file file(OPEN_FLAG_WRITE | OPEN_FLAG_CREATE | OPEN_FLAG_CREATE_PATHS);
 
-	filerr = file.open(filename);
+	std::error_condition filerr = file.open(filename);
 
-	if (filerr == osd_file::error::NONE)
+	if (!filerr)
 	{
 		file.puts(opts.output_ini().c_str());
 		file.close();
@@ -1891,12 +1882,11 @@ static void SavePluginsFile(plugin_options &opts, const std::string &filename)
 
 static void SaveOptionsFile(windows_options &opts, const std::string &filename)
 {
-	osd_file::error filerr;
 	emu_file file(OPEN_FLAG_WRITE | OPEN_FLAG_CREATE | OPEN_FLAG_CREATE_PATHS);
 
-	filerr = file.open(filename);
+	std::error_condition filerr = file.open(filename);
 
-	if (filerr == osd_file::error::NONE)
+	if (!filerr)
 	{
 		file.puts(opts.output_ini().c_str());
 		file.close();
@@ -1905,9 +1895,12 @@ static void SaveOptionsFile(windows_options &opts, const std::string &filename)
 
 static void LoadOptionsAndInterface(void)
 {
-	// parse INTERFACE.INI	
+	// parse INTERFACE.INI
 	std::string intername = std::string(GetGuiDir()).append(PATH_SEPARATOR).append(INTERFACE_INI_FILENAME).append(".ini");
 	LoadInterfaceFile(winui_opts, intername);
+	// if .\mame.ini not exist, create a default one
+	//std::string filename = std::string(DEFAULT_INI_FILENAME).append(".ini");
+	//LoadOptionsStartup(core_opts, filename);
 	// parse the real MAME.INI, create it if it doesn't exist
 	std::string filename = std::string(GetIniDir()).append(PATH_SEPARATOR).append(DEFAULT_INI_FILENAME).append(".ini");
 	LoadOptionsStartup(core_opts, filename);
@@ -2095,7 +2088,7 @@ static void AddFolderFlags(winui_options &opts)
 
 	entries[0].name = nullptr;
 	entries[0].defvalue = nullptr;
-	entries[0].type = OPTION_HEADER;
+	entries[0].type = core_options::option_type::HEADER;
 	entries[0].description = "FOLDER FILTERS";
 	opts.add_entries(entries);
 
@@ -2396,7 +2389,7 @@ bool AreOptionsEqual(windows_options &opts1, windows_options &opts2)
 {
 	for (auto &curentry : opts1.entries())
 	{
-		if (curentry->type() != OPTION_HEADER)
+		if (curentry->type() != core_options::option_type::HEADER)
 		{
 			// if the values differ, return false
 			const char *value = curentry->value();

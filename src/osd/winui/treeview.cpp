@@ -185,7 +185,7 @@ static const TREEICON treeIconNames[] =
 /* De-allocate all folder memory */
 void FreeFolders(void)
 {
-	if (treeFolders != NULL)
+	if (treeFolders)
 	{
 		if (numExtraFolders)
 		{
@@ -210,7 +210,7 @@ void FreeFolders(void)
 /* Reset folder filters */
 void ResetFilters(void)
 {
-	if (treeFolders != 0)
+	if (treeFolders)
 		for (int i = 0; i < (int)numFolders; i++)
 			treeFolders[i]->m_dwFlags &= ~F_MASK;
 }
@@ -2047,6 +2047,7 @@ HIMAGELIST GetTreeViewIconList(void)
 	return hTreeSmall;
 }
 
+
 void CreateNEOGEOFolders(int parent_index)
 {
 	int jj;
@@ -2089,16 +2090,16 @@ void CreateCPSFolders(int parent_index)
 		if (s == NULL || s[0] == '\0')
 			continue;
 
-		if (!strcmp("cps1.cpp", s))		     AddGame(lpFolder, jj);
-		if (!strcmp("cps1hb.cpp", s))		 AddGame(lpFolder, jj);
-        if (!strcmp("cps1bl_5205.cpp", s))   AddGame(lpFolder, jj);
-		if (!strcmp("cps1bl_pic.cpp", s))    AddGame(lpFolder, jj);
-		if (!strcmp("cps2.cpp", s))          AddGame(lpFolder, jj);
-		if (!strcmp("cps2hb.cpp", s))        AddGame(lpFolder, jj);
-        if (!strcmp("cps3.cpp", s))	     	 AddGame(lpFolder, jj);
-        if (!strcmp("cps3hb.cpp", s))		 AddGame(lpFolder, jj);
-		if (!strcmp("fcrash.cpp", s))		 AddGame(lpFolder, jj);
-
+		if (!strcmp("cps1.cpp", s))			          AddGame(lpFolder, jj);
+		if (!strcmp("cps1hb.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("cps1bl_5205.cpp", s))		      AddGame(lpFolder, jj);
+		if (!strcmp("cps1bl_pic.cpp", s))			  AddGame(lpFolder, jj);
+		if (!strcmp("cps2.cpp", s))			          AddGame(lpFolder, jj);
+		if (!strcmp("cps2hb.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("cps2t.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("cps3.cpp", s))			          AddGame(lpFolder, jj);
+		if (!strcmp("cps3hb.cpp", s))		          AddGame(lpFolder, jj);
+		if (!strcmp("fcrash.cpp", s))			      AddGame(lpFolder, jj);
 	}
 }
 
@@ -2120,10 +2121,9 @@ void CreatePGMFolders(int parent_index)
 		if (s == NULL || s[0] == '\0')
 			continue;
 
-		if (!strcmp("pgm.cpp", s))	         AddGame(lpFolder, jj);
-		if (!strcmp("pgmhb.cpp", s))	     AddGame(lpFolder, jj);
-        if (!strcmp("pgm2.cpp", s))	         AddGame(lpFolder, jj);
-
+		if (!strcmp("pgm.cpp", s))			AddGame(lpFolder, jj);
+        if (!strcmp("pgmhb.cpp", s))	    AddGame(lpFolder, jj);
+		if (!strcmp("pgm2.cpp", s))			AddGame(lpFolder, jj);
 	}
 }
 

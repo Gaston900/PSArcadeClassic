@@ -53,6 +53,6 @@ ROM_END
 
 /*    YEAR    NAME         PARENT   MACHINE    INPUT                      INIT       MONITOR   COMPANY       FULLNAME FLAGS */
 // Hack/Homebrow
-GAME( 1994, gaxeduelhc01,  gaxeduel, stv,      stv6b,    stv_state,   init_gaxeduel,   ROT0,   "hack",       "Golden Axe (Enable Hidden Characters)", MACHINE_IMPERFECT_SOUND | MACHINE_IMPERFECT_GRAPHICS)
-GAME( 1997, groovefhc01,   groovef,  stv,      stv6b,    stv_state,   init_groovef,    ROT0,   "hack",       "Groove on Fight (Enable Hidden Characters)", MACHINE_IMPERFECT_SOUND | MACHINE_IMPERFECT_GRAPHICS )
-GAME( 1995, suikoenbhc01,  suikoenb, stv,      stv6b,    stv_state,   init_suikoenb,   ROT0,   "hack",       "Suiko Enbu / Outlaws of the Lost Dynasty (Enable Hidden Characters)", MACHINE_IMPERFECT_SOUND | MACHINE_IMPERFECT_GRAPHICS )
+GAME( 1994, gaxeduelhc01,  gaxeduel, stv,      stv6b,    stv_state,   init_gaxeduel,   ROT0,   "hack",       "Golden Axe (Enable Hidden Characters)", 0)
+GAME( 1997, groovefhc01,   groovef,  stv,      stv6b,    stv_state,   init_groovef,    ROT0,   "hack",       "Groove on Fight (Enable Hidden Characters)", 0 )
+GAME( 1995, suikoenbhc01,  suikoenb, stv,      stv6b,    stv_state,   init_suikoenb,   ROT0,   "hack",       "Suiko Enbu / Outlaws of the Lost Dynasty (Enable Hidden Characters)", 0 )

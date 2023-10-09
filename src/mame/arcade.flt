@@ -1,379 +1,385 @@
-1942.cpp           //
-1943.cpp           //
-1945kiii.cpp       //
-20pacgal.cpp       //
-//24cdjuke.cpp     // mechanical
-//2mindril.cpp     // disabled
-//30test.cpp       // disabled
-39in1.cpp          //
-//3do.cpp          // chd
-3x3puzzl.cpp       //
-40love.cpp         //
-//4enlinea.cpp     // mnw, hang at start
-4enraya.cpp        //
-//4roses.cpp       // black screen
-//5clown.cpp       // poker
-8080bw.cpp         //
-88games.cpp        //
-//a1supply.cpp     // no screen
-ace.cpp            //
-//acefruit.cpp     // fruit, mech
-//aces1.cpp        // fruit, mech
-//acesp.cpp        // fruit, mech
-acommand.cpp       //
-actfancr.cpp       //
-//adp.cpp          // disabled
-aeroboto.cpp       //
-aerofgt.cpp        //
-//age_candy.cpp    // mechanical
-airbustr.cpp
-//airraid.cpp      // disabled
-ajax.cpp
-akkaarrh.cpp
-//albazc.cpp       // disabled
-//albazg.cpp       // disabled
-aleck64.cpp
-//aleisttl.cpp     // ttl
-//alg.cpp
-//alien.cpp        // black screen
-aliens.cpp
-alinvade.cpp
-//allied.cpp       // pinball
-alpha68k.cpp
-alpha68k_i.cpp
-alpha68k_n.cpp
-//alvg.cpp         // pinball
-//amaticmg.cpp     // gambling, mnw
-ambush.cpp         //
-//amerihok.cpp     // mech, works
-//ampoker2.cpp     // poker
-amspdwy.cpp
-//amusco.cpp       // poker
-//anes.cpp         // black screen
-angelkds.cpp
-appoooh.cpp
-aquarium.cpp
-arabian.cpp
-//arachnid.cpp     // mech, seems to work, W=enter
-arcadecl.cpp
-argus.cpp
-//aristmk4.cpp     // fruit, mech
-//aristmk5.cpp     // fruit, mech
-//aristmk6.cpp     // fruit, mech
-arkanoid.cpp
-armedf.cpp
-arsystems.cpp
-artmagic.cpp
-ashnojoe.cpp
-asterix.cpp
-asteroid.cpp
-astinvad.cpp
-//astrafr.cpp      // fruit, mech
-//astrcorp.cpp
-astrocde.cpp
-astrof.cpp
-//astropc.cpp      // no screen
-asuka.cpp
-atarifb.cpp
-atarig1.cpp
-atarig42.cpp
-atarigt.cpp
-atarigx2.cpp
-atarisy1.cpp
-atarisy2.cpp
-atarisy4.cpp
-//atarittl.cpp     // ttl
-//atari_s1.cpp     // pinball
-//atari_s2.cpp     // pinball
-atetris.cpp
-//atlantis.cpp     // chd
-//atronic.cpp      // hang at start
-attckufo.cpp
-//atvtrack.cpp     // check
-avalnche.cpp
-//avt.cpp          // disabled
-aztarac.cpp
-backfire.cpp
-badlands.cpp
-//badlandsbl.cpp   // inputs nw
-bagman.cpp
-//bailey.cpp       // black screen
-balsente.cpp
-bankp.cpp
-baraduke.cpp
-//barata.cpp       // no screen
-//barni.cpp        // pinball
-bartop52.cpp
-batman.cpp
-battlane.cpp
-battlera.cpp
-battlex.cpp
-battlnts.cpp
-bbusters.cpp
-beaminv.cpp
-beathead.cpp
-beezer.cpp
-//belatra.cpp      // fruit, no screen
-berzerk.cpp
-bestleag.cpp
-bfcobra.cpp
-//bfmsys83.cpp     // fruit, mech, no screen
-//bfmsys85.cpp     // fruit, mech
-//bfm_ad5sw.cpp    // fruit, mech, no screen
-//bfm_sc1.cpp      // fruit, mech
-//bfm_sc2.cpp      // fruit, mech
-//bfm_sc4.cpp      // fruit, mech
-//bfm_sc5sw.cpp    // fruit, mech
-//bfm_swp.cpp      // fruit, mech, chd, mnw
-//bgt.cpp          // fruit, mech, skeleton
-//big10.cpp        // keno
-bigevglf.cpp
-//bigkarnk_ms.cpp  // disabled
-bigstrkb.cpp
-//bingo.cpp        // check
-//bingoc.cpp       // bingo, not playable
-//bingoman.cpp     // bingo, black screen
-//bingor.cpp       // bingo, mnw
-//bingowav.cpp     // bingo, no screen
-bionicc.cpp
-bishi.cpp
-bking.cpp
-blackt96.cpp
-bladestl.cpp
-//blitz68k.cpp     // fruit, mech&poker
-blktiger.cpp
-//blktiger_ms.cpp  // bad gfx
-blmbycar.cpp
-blockade.cpp
-//blockch.cpp      // bat not working
-blockhl.cpp
-blockout.cpp
-//blocktax.cpp     // black screen
-bloodbro.cpp
-//bloodbro_ms.cpp  // bad gfx
-blstroid.cpp
-blueprnt.cpp
-bmcbowl.cpp
-//bmcpokr.cpp      // poker, majong
-bnstars.cpp
-//bntyhunt.cpp     // chd, listed as mnw
-bogeyman.cpp
-bombjack.cpp
-boogwing.cpp
-bottom9.cpp
-//bowltry.cpp      // black screen
-//boxer.cpp        // runs by itself, player has no control
-brkthru.cpp
-bsktball.cpp
-btime.cpp
-btoads.cpp
-bublbobl.cpp
-buggychl.cpp
-//buster.cpp       // fruit, mech
-bwidow.cpp
-bwing.cpp
-bzone.cpp
-//by17.cpp         // pinball
-//by35.cpp         // pinball
-//by6803.cpp       // pinball
-//by68701.cpp      // pinball
-byvid.cpp          // pinball-video
-cabal.cpp
-//cabaret.cpp      // poker
-calchase.cpp
-calcune.cpp
-//calomega.cpp     // poker
-calorie.cpp
-canyon.cpp
-capbowl.cpp
-//capcom.cpp       // pinball
-//capr1.cpp        // mnw
-//caprcyc.cpp      // mnw
-//cardline.cpp     // poker
-carjmbre.cpp
-carpolo.cpp
-carrera.cpp
-//castle.cpp       // mnw
-//caswin.cpp       // disabled
-cave.cpp
-cavepc.cpp
-//cb2001.cpp       // fruit, mech
-//cball.cpp        // bad gfx
-cbasebal.cpp
-cbuster.cpp
-ccastles.cpp
-//cchance.cpp      // fruit, mech
-cchasm.cpp
-cclimber.cpp
-cdi.cpp
-cedar_magnet.cpp
-centiped.cpp
-cesclass.cpp
-cgang.cpp
-chaknpop.cpp
-cham24.cpp
-//chameleonrx1.cpp // no screen
-champbas.cpp
-champbwl.cpp
-chanbara.cpp
-//chance32.cpp     // poker
-changela.cpp
-//changyu.cpp      // skeleton gambling
-cheekyms.cpp
-//chexx.cpp        // mechanical
-//chicago.cpp      // black screen
-//chihiro.cpp      // chd
-chinagat.cpp
-//chinsan.cpp      // mahjong
-chqflag.cpp
-//chsuper.cpp      // poker
-cidelsa.cpp
-cinemat.cpp
-circus.cpp
-circusc.cpp
-//cirsa820xxx.cpp  // skel-mech
-//cirsa910510.cpp  // skel-mech
-cischeat.cpp
-citycon.cpp
-clayshoo.cpp
-cliffhgr.cpp
-cloak.cpp
-cloud9.cpp
-//clowndwn.cpp     // MNW, mechanical
-//clpoker.cpp      // poker
-clshroad.cpp
-//cmmb.cpp         // no inputs
-cninja.cpp
-cntsteer.cpp
-cobra.cpp
-cocoloco.cpp
-coinmstr.cpp
-//coinmvga.cpp     // black screen
-//cointek.cpp      // skeleton
-combatsc.cpp
-//comebaby.cpp     // black screen
-commando.cpp
-compgolf.cpp
-contra.cpp
-coolpool.cpp
-coolridr.cpp
-cop01.cpp
-//cops.cpp         // undumped chds
-copsnrob.cpp
-//corona.cpp       // disabled
-cosmic.cpp
-cosmicg.cpp
-//cowtipping.cpp   // skeleton
-cps1.cpp
-cps1bl_5205.cpp
-cps1bl_pic.cpp
-cps2.cpp
-cps3.cpp
-//cpzodiac.cpp     // MNW, mech
-//crazybal.cpp     // black screen
-crbaloon.cpp
-crgolf.cpp
-crimfght.cpp
-//cromptons.cpp    // mechanical
-crospang.cpp
-//crospuzl.cpp     // hang at start
-crshrace.cpp
-crystal.cpp
-//csplayh5.cpp     // chd
-//cswat.cpp        // bad gfx, weird game
-cubeqst.cpp
-cubo.cpp
-//cultures.cpp     // mahjong
-//cupidon.cpp      // black screen
-cv1k.cpp
-cvs.cpp
-//cwheel.cpp       // no screen
-cyberbal.cpp
-cybertnk.cpp
-cybstorm.cpp
-cyclemb.cpp
-//d9final.cpp      // gambling
-dacholer.cpp
-dai3wksi.cpp
-dambustr.cpp
-//dangbar.cpp      // mech, no screen
-darius.cpp
-darkmist.cpp
-darkseal.cpp
-//daryde.cpp       // mech, no screen
-dassault.cpp
-//dblcrown.cpp     // poker
-dblewing.cpp
-dbz.cpp
-dcheese.cpp
-dcon.cpp
-dday.cpp
-ddayjlc.cpp
-ddealer.cpp
-ddenlovr.cpp
-ddragon.cpp
-ddragon3.cpp
-ddribble.cpp
-//ddz.cpp          // skeleton
-deadang.cpp
-dec0.cpp
-dec8.cpp
-deco_ld.cpp        // needed by combram3
-deco_mlc.cpp
-deco156.cpp
-deco32.cpp
-decocass.cpp
-deco_ld.cpp
-deco_mlc.cpp
-deniam.cpp
-//deshoros.cpp     // black screen
-destroyr.cpp
-//de_2.cpp         // pinball
-//de_3.cpp         // pinball
-//de_3b.cpp        // pinball
-dfruit.cpp
-dgpix.cpp
-//diamondking.cpp  // no screen
-dietgo.cpp
-//dinoking.cpp     // no screen
-discoboy.cpp
-divebomb.cpp
-diverboy.cpp
-djboy.cpp
-djmain.cpp
-//dkmb.cpp         // hang at atart
-dkong.cpp
-//dlair.cpp        // laser-disk
-//dlair2.cpp       // laser-disk
-//dmndrby.cpp      // dmndrby
-docastle.cpp
-dogfgt.cpp
-dominob.cpp
-dooyong.cpp
-dorachan.cpp
-dotrikun.cpp
-dragrace.cpp
-//drdmania.cpp     // MNW
-//dreambal.cpp     // fruit, mech
-dreamwld.cpp
-drgnmst.cpp
-dribling.cpp
-drmicro.cpp
-drtomy.cpp
-//drw80pkr.cpp     // poker
-//dunhuang.cpp     // mahjong
-//dwarfd.cpp       // poker
-//dynadice.cpp     // poker
-//dynamoah.cpp     // no screen
-dynax.cpp
-dynduke.cpp
-//ecoinf1.cpp      // fruit, mech
-//ecoinf2.cpp      // fruit, mech
-//ecoinf3.cpp      // fruit, mech
-//ecoinfr.cpp      // fruit, mech
-efdt.cpp           //
+1942.cpp                               //
+1943.cpp                               //
+1945kiii.cpp                           //
+20pacgal.cpp                           //
+//24cdjuke.cpp                         // mechanical
+2mindril.cpp                           //
+30test.cpp                             //
+39in1.cpp                              //
+//3do.cpp                              // chd
+3x3puzzl.cpp                           //
+40love.cpp                             //
+//4enlinea.cpp                         // mnw, hang at start
+4enraya.cpp                            //
+//4roses.cpp                           // black screen
+//5clown.cpp                           // poker
+8080bw.cpp                             //
+88games.cpp                            //
+//a1supply.cpp                         // no screen
+ace.cpp                                //
+//acefruit.cpp                         // fruit
+//aces1.cpp                            // fruit
+//acesp.cpp                            // fruit
+acommand.cpp                           //
+actfancr.cpp                           //
+adp.cpp                                //
+aeroboto.cpp                           //
+aerofgt.cpp                            //
+//age_candy.cpp                        // mechanical
+airbustr.cpp                           //
+//airraid.cpp                          // for failgate
+ajax.cpp                               //
+akkaarrh.cpp                           //
+albazc.cpp                             //
+albazg.cpp                             // weird jp gambling
+aleck64.cpp                            //
+//aleisttl.cpp                         // ttl
+//alg.cpp                              // bad gfx, mnw
+//alien.cpp                            // black screen
+aliens.cpp                             //
+alinvade.cpp                           //
+//allied.cpp                           // pinball
+alpha68k.cpp                           //
+alpha68k_i.cpp                         //
+alpha68k_n.cpp                         //
+//alvg.cpp                             // pinball
+//amaticmg.cpp                         // gambling
+ambush.cpp                             //
+//amerihok.cpp                         // mech, works
+//ampoker2.cpp                         // poker
+amspdwy.cpp                            //
+//amusco.cpp                           // poker
+//anes.cpp                             // black screen
+angelkds.cpp                           //
+appoooh.cpp                            //
+aquarium.cpp                           //
+arabian.cpp                            //
+//arachnid.cpp                         // mech, seems to work, W=enter
+arcadecl.cpp                           //
+argus.cpp                              //
+//aristmk4.cpp                         // fruit
+//aristmk5.cpp                         // fruit
+//aristmk6.cpp                         // fruit
+arkanoid.cpp                           //
+armedf.cpp                             //
+arsystems.cpp                          //
+artmagic.cpp                           //
+ashnojoe.cpp                           //
+asterix.cpp                            //
+asteroid.cpp                           //
+astinvad.cpp                           //
+//astrafr.cpp                          // fruit
+//astrcorp.cpp                         // gambling
+astrocde.cpp                           //
+astrof.cpp                             //
+//astropc.cpp                          // no screen
+asuka.cpp                              //
+atarifb.cpp                            //
+atarig1.cpp                            //
+atarig42.cpp                           //
+atarigt.cpp                            //
+atarigx2.cpp                           //
+atarisy1.cpp                           //
+atarisy2.cpp                           //
+atarisy4.cpp                           //
+//atarittl.cpp                         // ttl
+//atari_4x4.cpp                        // pinball
+//atari_s1.cpp                         // pinball
+//atari_s2.cpp                         // pinball
+atetris.cpp                            //
+//atlantis.cpp                         // chd, untested
+//atronic.cpp                          // hang at start
+attckufo.cpp                           //
+//atvtrack.cpp                         // black screen
+avalnche.cpp                           //
+//avt.cpp                              //
+aztarac.cpp                            //
+backfire.cpp                           //
+badlands.cpp                           //
+//badlands_ms.cpp                      // black screen
+//badlandsbl.cpp                       // inputs nw
+bagman.cpp                             //
+//bailey.cpp                           // black screen
+balsente.cpp                           //
+bankp.cpp                              //
+banprestoms.cpp                        //
+baraduke.cpp                           //
+//barata.cpp                           // no screen
+//barni.cpp                            // pinball
+bartop52.cpp                           //
+batman.cpp                             //
+battlane.cpp                           //
+battlera.cpp                           //
+battlex.cpp                            //
+battlnts.cpp                           //
+bbusters.cpp                           //
+beaminv.cpp                            //
+beathead.cpp                           //
+beezer.cpp                             //
+//belatra.cpp                          // fruit, skel
+berzerk.cpp                            //
+bestleag.cpp                           //
+bfcobra.cpp                            //
+//bfmsys83.cpp                         // fruit
+//bfmsys85.cpp                         // fruit
+//bfm_ad5sw.cpp                        // fruit
+//bfm_sc1.cpp                          // fruit
+//bfm_sc2.cpp                          // fruit
+//bfm_sc4.cpp                          // fruit
+//bfm_sc5sw.cpp                        // fruit
+//bfm_swp.cpp                          // fruit
+//bgt.cpp                              // fruit, skeleton
+//big10.cpp                            // keno
+bigevglf.cpp                           //
+bigkarnk_ms.cpp                        //
+bigstrkb.cpp                           //
+//bingo.cpp                            // bingo
+//bingoc.cpp                           // bingo
+//bingoman.cpp                         // bingo
+//bingor.cpp                           // bingo
+//bingowav.cpp                         // bingo
+bionicc.cpp                            //
+bishi.cpp                              //
+bking.cpp                              //
+blackt96.cpp                           //
+bladestl.cpp                           //
+//blitz68k.cpp                         // fruit&poker
+blktiger.cpp                           //
+//blktiger_ms.cpp                      // bad gfx
+blmbycar.cpp                           //
+blockade.cpp                           //
+//blockch.cpp                          // bat not working
+blockhl.cpp                            //
+blockout.cpp                           //
+//blocktax.cpp                         // black screen
+bloodbro.cpp                           //
+//bloodbro_ms.cpp                      // bad gfx
+blstroid.cpp                           //
+blueprnt.cpp                           //
+bmcbowl.cpp                            //
+//bmcpokr.cpp                          // poker, majong
+bnstars.cpp                            // needed by ms32.cpp
+//bntyhunt.cpp                         // chd, listed as mnw
+bogeyman.cpp                           //
+bombjack.cpp                           //
+boogwing.cpp                           //
+bottom9.cpp                            //
+//bowltry.cpp                          // mech skel
+//boxer.cpp                            // runs by itself, player has no control
+brkthru.cpp                            //
+bsktball.cpp                           //
+btime.cpp                              //
+btoads.cpp                             //
+bublbobl.cpp                           //
+buggychl.cpp                           //
+//buster.cpp                           // fruit
+bwidow.cpp                             //
+bwing.cpp                              //
+//by17.cpp                             // pinball
+//by35.cpp                             // pinball
+//by6803.cpp                           // pinball
+//by68701.cpp                          // pinball
+byvid.cpp                              //
+bzone.cpp                              //
+cabal.cpp                              //
+//cabaret.cpp                          // poker
+calchase.cpp                           // calchase: BOOT to start game
+calcune.cpp                            //
+//calomega.cpp                         // poker
+calorie.cpp                            //
+canyon.cpp                             //
+capbowl.cpp                            //
+//capcom.cpp                           // pinball
+//capr1.cpp                            // mnw
+//caprcyc.cpp                          // mnw
+//cardline.cpp                         // poker
+carjmbre.cpp                           //
+carpolo.cpp                            //
+carrera.cpp                            //
+//castle.cpp                           // mnw
+caswin.cpp                             //
+cave.cpp                               //
+cavepc.cpp                             // chd untested
+//cb2001.cpp                           // fruit
+//cball.cpp                            // bad gfx
+cbasebal.cpp                           //
+cbuster.cpp                            //
+ccastles.cpp                           //
+//cchance.cpp                          // fruit
+cchasm.cpp                             //
+cclimber.cpp                           //
+cdi.cpp                                //
+cedar_magnet.cpp                       //
+centiped.cpp                           //
+cesclass.cpp                           //
+cgang.cpp                              //
+chaknpop.cpp                           //
+cham24.cpp                             //
+//chameleonrx1.cpp                     // chd untested
+champbas.cpp                           //
+champbwl.cpp                           //
+chanbara.cpp                           //
+//chance32.cpp                         // poker
+changela.cpp                           //
+//changyu.cpp                          // skeleton gambling
+cheekyms.cpp                           //
+//chexx.cpp                            // mechanical
+//chicago.cpp                          // ttl
+//chihiro.cpp                          // chd
+chinagat.cpp                           //
+//chinsan.cpp                          // mahjong
+chqflag.cpp                            //
+//chsuper.cpp                          // poker
+cidelsa.cpp                            //
+cinemat.cpp                            //
+circus.cpp                             //
+circusc.cpp                            //
+//cirsa820xxx.cpp                      // skel-mech
+//cirsa910510.cpp                      // skel-mech
+cischeat.cpp                           //
+citycon.cpp                            //
+clayshoo.cpp                           //
+cliffhgr.cpp                           // chd untested
+cloak.cpp                              //
+cloud9.cpp                             //
+//clowndwn.cpp                         // MNW, mechanical
+//clpoker.cpp                          // poker
+clshroad.cpp                           //
+//cmmb.cpp                             // no inputs
+cninja.cpp                             //
+cntsteer.cpp                           //
+cobra.cpp                              // chd untested
+cocoloco.cpp                           //
+coinmstr.cpp                           //
+//coinmvga.cpp                         // MNW
+//cointek.cpp                          // skeleton
+combatsc.cpp                           //
+//comebaby.cpp                         // chd untested
+commando.cpp                           //
+compgolf.cpp                           //
+//compucranes.cpp                      // MNW, mechanical
+contra.cpp                             //
+coolpool.cpp                           //
+coolridr.cpp                           //
+cop01.cpp                              //
+//cops.cpp                             // undumped chds
+copsnrob.cpp                           //
+corona.cpp                             //
+cosmic.cpp                             //
+cosmicg.cpp                            //
+//cosmos_playc8f.cpp                   // skel-mech
+//cowtipping.cpp                       // skeleton
+cps1.cpp                               //
+cps1bl_5205.cpp                        //
+cps1bl_pic.cpp                         //
+cps2.cpp                               //
+cps3.cpp                               //
+//cpzodiac.cpp                         // MNW, mech
+//crazybal.cpp                         // MNW, TTL
+crbaloon.cpp                           //
+crgolf.cpp                             //
+crimfght.cpp                           //
+//cromptons.cpp                        // mech, no screen
+crospang.cpp                           //
+//crospuzl.cpp                         // hang at start
+crshrace.cpp                           //
+crystal.cpp                            //
+csplayh5.cpp                           // chd, untested
+//cswat.cpp                            // bad gfx, weird game
+cubeqst.cpp                            //
+cubo.cpp                               //
+//cucaracha.cpp
+//cultures.cpp                         // mahjong
+//cupidon.cpp                          // mnw, black screen
+cv1k.cpp                               //
+cvs.cpp                                //
+//cwheel.cpp                           // no screen
+cyberbal.cpp                           //
+cybertnk.cpp                           //
+cybstorm.cpp                           //
+cyclemb.cpp                            //
+//d9final.cpp                          // gambling
+dacholer.cpp                           //
+dai3wksi.cpp                           //
+dambustr.cpp                           //
+//dangbar.cpp                          // mech, no screen
+darius.cpp                             //
+darkmist.cpp                           //
+darkseal.cpp                           //
+//daryde.cpp                           // mech, no screen
+dassault.cpp                           //
+//dblcrown.cpp                         // poker
+dblewing.cpp                           //
+dbz.cpp                                //
+dc_atomiswave.cpp                      //
+dcheese.cpp                            //
+dcon.cpp                               //
+dday.cpp                               //
+ddayjlc.cpp                            //
+ddealer.cpp                            //
+ddenlovr.cpp                           //
+ddragon.cpp                            //
+ddragon3.cpp                           //
+ddribble.cpp                           //
+//ddz.cpp                              // skel, fills up log
+deadang.cpp                            //
+dec0.cpp                               //
+dec8.cpp                               //
+deco156.cpp                            //
+deco32.cpp                             //
+decocass.cpp                           //
+deco_ld.cpp                            // not working, but parent of combram3
+deco_mlc.cpp                           //
+deniam.cpp                             //
+//deshoros.cpp                         // black screen
+destroyr.cpp                           //
+//de_2.cpp                             // pinball
+//de_3.cpp                             // pinball
+dfruit.cpp                             //
+dgpix.cpp                              //
+//diamondking.cpp                      // no screen
+dietgo.cpp                             //
+//dinoking.cpp                         // no screen
+discoboy.cpp                           //
+divebomb.cpp                           //
+diverboy.cpp                           //
+djboy.cpp                              //
+djmain.cpp                             // chd untested
+//dkmb.cpp                             // hang at atart
+dkong.cpp                              //
+//dlair.cpp                            // not working, laser-disk
+//dlair2.cpp                           // black screen, laser-disk
+//dmainevent.cpp                       // no screen
+dmndrby.cpp                            //
+docastle.cpp                           //
+dogfgt.cpp                             //
+dominob.cpp                            //
+dooyong.cpp                            //
+dorachan.cpp                           //
+dotrikun.cpp                           //
+dragrace.cpp                           //
+//drdmania.cpp                         // MNW
+//dreambal.cpp                         // fruit
+dreamwld.cpp                           //
+drgnmst.cpp                            //
+dribling.cpp                           //
+drmicro.cpp                            //
+drtomy.cpp                             //
+//drw80pkr.cpp                         // poker
+//dunhuang.cpp                         // mahjong
+//dwarfd.cpp                           // poker
+dynadice.cpp                           //
+//dynamoah.cpp                         // no screen
+dynax.cpp                              // 99% mahjong
+dynduke.cpp                            //
+//ecoinf1.cpp                          // fruit
+//ecoinf2.cpp                          // fruit
+//ecoinf3.cpp                          // fruit
+//ecoinfr.cpp                          // fruit
+efdt.cpp                               //
+efg8080.cpp
 egghunt.cpp
-//electra.cpp      // black screen
+//electra.cpp                          // ttl
 embargo.cpp
 enigma2.cpp
 eolith.cpp
@@ -383,42 +389,43 @@ eprom.cpp
 equites.cpp
 ertictac.cpp
 esd16.cpp
-//esh.cpp          // chd
+//esh.cpp                              // chd
 espial.cpp
 esripsys.cpp
-//ettrivia.cpp     // disabled
+ettrivia.cpp
 exedexes.cpp
 exerion.cpp
 exidy.cpp
 exidy440.cpp
-//exidyttl.cpp     // black screen
+//exidyttl.cpp                         // ttl
 expro02.cpp
 exprraid.cpp
 exterm.cpp
-//extrema.cpp      // fruit, no screen
+//extrema.cpp                          // check
 exzisus.cpp
-//ez2d.cpp         // mnw, chd
+//ez2d.cpp                             // mnw, chd
 f-32.cpp
 f1gp.cpp
+//falgas_m89.cpp                       // no screen
 famibox.cpp
 fantland.cpp
 fastfred.cpp
-//fastinvaders.cpp // no ship
+//fastinvaders.cpp                     // no ship
 fastlane.cpp
 fcombat.cpp
 fcrash.cpp
-//feversoc.cpp     // fruit, mech
-//ffantasy_ms.cpp  // skeleton
+//feversoc.cpp                         // fruit
+//ffantasy_ms.cpp                      // skeleton
 fgoal.cpp
 finalizr.cpp
-//fireball.cpp     // mechanical
+//fireball.cpp                         // mechanical
 firebeat.cpp
 firefox.cpp
 firetrap.cpp
 firetrk.cpp
 fitfight.cpp
-//flicker.cpp      // pinball
-//flashbeats.cpp   // not working
+//flicker.cpp                          // pinball
+//flashbeats.cpp                       // not working
 flipjack.cpp
 flkatck.cpp
 flower.cpp
@@ -426,37 +433,41 @@ flstory.cpp
 flyball.cpp
 foodf.cpp
 forte2.cpp
-//fortecar.cpp     // poker
+//fortecar.cpp                         // poker
 freekick.cpp
-//fresh.cpp        // fruit, mech
-//freeway.cpp      // black screen; driver has no info about this system
-//fromanc2.cpp     // disabled
-//fromance.cpp     // disabled
-//fruitpc.cpp      // cannot find boot device
-//fungames.cpp     // black screen
-//funkball.cpp     // disabled
+//fresh.cpp                            // fruit
+//frenzyxprss.cpp
+//freeway.cpp                          // black screen; driver has no info about this system
+fromanc2.cpp
+fromance.cpp
+//fruitpc.cpp                          // cannot find boot device
+//funeball.cpp                         // mechanical
+//fungames.cpp                         // ttl
+funkball.cpp
 funkybee.cpp
 funkyjet.cpp
-//funtech.cpp      // poker
-//funworld.cpp     // poker
+//funtech.cpp                          // poker
+//funworld.cpp                         // poker
 funybubl.cpp
 fuukifg2.cpp
 fuukifg3.cpp
-//g627.cpp         // pinball
+//fwheel.cpp                           // skel
+//g627.cpp                             // pinball
 gaelco.cpp
 gaelco2.cpp
 gaelco3d.cpp
-//gaelcof3.cpp     // no screen
-//gaelcopc.cpp     // black screen, some chd
+//gaelcof3.cpp                         // no screen
+//gaelcopc.cpp                         // black screen, some chd
 gaiden.cpp
-//gal3.cpp         // black screen
+//gal3.cpp                             // check
 galaga.cpp
 galastrm.cpp
-//galaxi.cpp       // disabled
+galaxi.cpp
 galaxia.cpp
 galaxian.cpp
+galaxian_rockclim.cpp
 galaxold.cpp
-galgame.cpp
+//galgame.cpp
 galgames.cpp
 galivan.cpp
 galpani2.cpp
@@ -464,67 +475,66 @@ galpani3.cpp
 galpanic.cpp
 galpanic_ms.cpp
 galspnbl.cpp
-//gambl186.cpp     // mnw
-//gamecstl.cpp     // chd
-//gamemasters.cpp  // mechanical
+//gambl186.cpp                         // check                      // chd
+//gamemasters.cpp                      // mechanical
 gameplan.cpp
-//gammagic.cpp     // chd, mnw
-//gamtor.cpp       // black screen
+//gammagic.cpp                         // check
+//gamtor.cpp                           // check
 gaplus.cpp
-//gatron.cpp       // disabled
+gatron.cpp
 gauntlet.cpp
 gberet.cpp
 gcpinbal.cpp
-//gei.cpp          // disabled
+gei.cpp
 getaway.cpp
-//gfamily.cpp      // skeleton, check later
-//ggconnie.cpp     // disabled
+//gfamily.cpp                          // skeleton, check later
+ggconnie.cpp
 ghosteo.cpp
-//giclassic.cpp    // mnw
+//giclassic.cpp                        // mnw
 gijoe.cpp
 ginganin.cpp
-//gkigt.cpp        // mnw
+//gkigt.cpp                            // check
 gladiatr.cpp
 glass.cpp
-//globalfr.cpp     // mechanical
-//globalvr.cpp     // chd
-//gluck2.cpp       // disabled
+//globalfr.cpp                         // mechanical
+//globalvr.cpp                         // chd
+gluck2.cpp
 gng.cpp
 go2000.cpp
 goal92.cpp
 goindol.cpp
-//gokidetor.cpp     // check
-//goldart.cpp       // mechanical
-//goldngam.cpp      // poker
-//goldnpkr.cpp      // poker
-//goldstar.cpp      // fruit, mech
+//goldart.cpp                          // mechanical
+//goldngam.cpp                         // poker
+//goldnpkr.cpp                         // poker
+//goldstar.cpp                         // fruit
 gomoku.cpp
-//good.cpp          // disabled
-//goodejan.cpp      // disabled
+good.cpp
+goodejan.cpp
 goori.cpp
 gotcha.cpp
 gottlieb.cpp
 gotya.cpp
-//gpworld.cpp       // stuck warming up
-//gp_1.cpp          // pinball
-//gp_2.cpp          // pinball
+//gpworld.cpp                          // stuck warming up
+//gp_1.cpp                             // pinball
+//gp_2.cpp                             // pinball
 gradius3.cpp
 grchamp.cpp
 gridlee.cpp
 groundfx.cpp
-//gsspade.cpp       // no screen
+//gsspade.cpp                          // no screen
 gstream.cpp
 gstriker.cpp
 gsword.cpp
 gticlub.cpp
-//gts1.cpp          // pinball
-//gts3.cpp          // pinball
-//gts3a.cpp         // pinball
-//gts80.cpp         // pinball
-//gts80a.cpp        // pinball
-//gts80b.cpp        // pinball
-//guab.cpp          // need to load a disk, random hang or crash
+//gts1.cpp                             // pinball
+//gts3.cpp                             // pinball
+//gts3a.cpp                            // pinball
+//gts80.cpp                            // pinball
+//gts80a.cpp                           // pinball
+//gts80b.cpp                           // pinball
+//guab.cpp                             // need to load a disk, random hang or crash
 gumbo.cpp
+//gumrally.cpp                         // no screen
 gunbustr.cpp
 gundealr.cpp
 gunpey.cpp
@@ -532,142 +542,145 @@ gunsmoke.cpp
 gyruss.cpp
 halleys.cpp
 hanaawas.cpp
-//hankin.cpp       // pinball
-//hapyfish.cpp     // too big to fit in memory
+//hankin.cpp                           // pinball
+//hapyfish.cpp                         // too big to fit in memory
 harddriv.cpp
-//hazelgr.cpp      // fruit, mech
+//hazelgr.cpp                          // fruit
 hcastle.cpp
-headonb.cpp
-//heromem.cpp      // comms error
+//heromem.cpp                          // comms error
 hexion.cpp
-//hideseek.cpp     // black screen
+//hideseek.cpp                         // check
 higemaru.cpp
-//highvdeo.cpp     // poker
-//hikaru.cpp       // black screen
+//highvdeo.cpp                         // poker
+//hikaru.cpp                           // check
 himesiki.cpp
-//hitme.cpp        // disabled
-//hitpoker.cpp     // hangs while starting game
-//hnayayoi.cpp     // disabled
+hitme.cpp
+//hitpoker.cpp                         // check
+hnayayoi.cpp
 hng64.cpp
-//hobbyplay.cpp    // fruit, mech
+//hobbyplay.cpp                        // fruit
 holeland.cpp
 homedata.cpp
 homerun.cpp
-hornet.cpp
+hornet.cpp                             //
 hotblock.cpp
-//hotstuff.cpp     // poker
-//hshavoc.cpp      // black screen
+hotchili.cpp
+//hotstuff.cpp                         // poker
+//houseball.cpp                        // mechanical
+//hshavoc.cpp                          // check
 hvyunit.cpp
-//hyhoo.cpp        // disabled
+hyhoo.cpp
 hyperspt.cpp
 hyprduel.cpp
-//icecold.cpp      // mechanical
-//ice_bozopail.cpp // mechanical
-//ice_hhhippos.cpp // mnw
-//ice_tbd.cpp      // mechanical
-//ichiban.cpp      // check
-//idsa.cpp         // pinball
-//igs009.cpp       // disabled
+//icecold.cpp                          // mechanical
+//ice_bozopail.cpp                     // mechanical
+//ice_hhhippos.cpp                     // mnw
+//ice_tbd.cpp                          // mechanical
+//idsa.cpp                             // pinball
+igs009.cpp
 igs011.cpp
 igs017.cpp
-//igspc.cpp        // chd
-//igspoker.cpp     // poker
-//igs_fear.cpp     // black screen
-//igs_m027.cpp     // white screen
-//igs_m036.cpp     // black screen
+//igspc.cpp                            // chd
+//igspoker.cpp                         // poker
+//igs_fear.cpp                         // check
+//igs_m027.cpp                         // check
+//igs_m036.cpp                         // check
 ikki.cpp
 imolagp.cpp
-//inder.cpp        // pinball
-//inderp.cpp       // pinball
-//instantm.cpp     // mechanical
-//intrscti.cpp     // hang just after start
+//inder.cpp                            // pinball
+//inderp.cpp                           // pinball
+//instantm.cpp                         // mechanical
+//intrscti.cpp                         // check
 inufuku.cpp
 invqix.cpp
 iqblock.cpp
 irobot.cpp
 ironhors.cpp
-//island.cpp       // mechanical
-//istellar.cpp     // check, mnw
+//island.cpp                           // mechanical
+//istellar.cpp                         // check, mnw
 istrebiteli.cpp
 iteagle.cpp
 itech32.cpp
 itech8.cpp
-//itgambl2.cpp     // fruit, mech
-//itgambl3.cpp     // fruit, mech
-//itgamble.cpp     // fruit, mech
+//itgambl2.cpp                         // fruit
+//itgambl3.cpp                         // fruit
+//itgamble.cpp                         // fruit
 jack.cpp
 jackal.cpp
-//jackie.cpp       // disabled
-//jackpool.cpp     // poker
-//jackpot.cpp      // mnw, not stated, probably junk
+jackie.cpp
+//jackpool.cpp                         // poker
+//jackpot.cpp                          // mnw, not stated, probably junk
 jaguar.cpp
 jailbrek.cpp
-//jalmah.cpp       // disabled
-//jangou.cpp       // disabled
-//jankenmn.cpp     // disabled
-//jantotsu.cpp     // disabled
+jalmah.cpp
+jangou.cpp
+jankenmn.cpp                           //
+jantotsu.cpp
 jchan.cpp
 jclub2.cpp
 jedi.cpp
-//jeutel.cpp       // pinball
-//joctronic.cpp    // mechanical
-//jokrwild.cpp     // poker
+//jeutel.cpp                           // pinball
+//joctronic.cpp                        // mechanical
+//jokrwild.cpp                         // poker
 jollyjgr.cpp
-//jongkyo.cpp
+//jongkyo.cpp                          // bad colours, mahjong
 joystand.cpp
-//jp.cpp           // pinball
-//jpmimpct.cpp     // check
-//jpmimpctsw.cpp   // fruit, mech
-//jpmmps.cpp       // fruit, mech
-//jpms80.cpp       // fruit, mech
-//jpmsru.cpp       // fruit, mech
-//jpmsys5.cpp      // fruit, mech
-//jpmsys5sw.cpp    // fruit, mech
-//jpmsys7.cpp      // fruit, mech
+//jp.cpp                               // pinball
+//jpmimpct.cpp                         // check
+//jpmimpctsw.cpp                       // fruit
+//jpmmps.cpp                           // fruit
+//jpms80.cpp                           // fruit
+//jpmsru.cpp                           // fruit
+//jpmsys5.cpp                          // fruit
+//jpmsys5sw.cpp                        // fruit
+//jpmsys7.cpp                          // fruit
 jrpacman.cpp
-//jubilee.cpp
-//jungleyo.cpp     // exception at start
+//jubilee.cpp                          // poker
+//jungleyo.cpp                         // check
 junofrst.cpp
-//jvh.cpp          // pinball
+//jvh.cpp                              // pinball
 kaneko16.cpp
 kangaroo.cpp
 karnov.cpp
-//kas89.cpp        // alarm at start, gambling
+//kas89.cpp                            // alarm at start, gambling
 kchamp.cpp
 kenseim.cpp
 kickgoal.cpp
 kikikai.cpp
-//kingdrby.cpp     // disabled
+kingdrby.cpp
 kingobox.cpp
 kingpin.cpp
 kinst.cpp
-//kissproto.cpp    // pinball
+//kissproto.cpp                        // pinball
 klax.cpp
 kncljoe.cpp
-//koftball.cpp     // no inputs
-//koikoi.cpp       // disabled
+//koftball.cpp                         // no inputs
+//koikoi.cpp                           //
 konamigq.cpp
 konamigs.cpp
 konamigv.cpp
 konamigx.cpp
 konamim2.cpp
-//konblands.cpp    // not working; check back later
-//konendev.cpp     // fruit, mech
-//kongs470.cpp     // skel
-//konmedal.cpp     // check
-//konmedal68k.cpp  // check
-//kontest.cpp      // stuck at crosshatch
-kopunch.cpp
-//kpontoon.cpp     // card game
-//kpython.cpp      // chd, mnw
+//konblands.cpp                        // not working; check back later
+//konendev.cpp                         // fruit
+//kongs470.cpp                         // skel
+//konmedal.cpp                         // check
+//konmedal020.cpp
+//konmedal68k.cpp                      // check
+//kontest.cpp                          // stuck at crosshatch
+//kopunch.cpp
+//kpontoon.cpp                         // card game
+//kpython.cpp                          // chd, mnw
+krokha.cpp
 ksayakyu.cpp
 ksys573.cpp
-//kungfur.cpp      // mech, works
+//kungfur.cpp                          // mech, works
 kurukuru.cpp
 kyugo.cpp
 labyrunr.cpp
 ladybug.cpp
 ladyfrog.cpp
+//lancelot.cpp                         // pinball
 laserbas.cpp
 laserbat.cpp
 lasso.cpp
@@ -675,41 +688,43 @@ lastbank.cpp
 lastduel.cpp
 lastfght.cpp
 lazercmd.cpp
-//laz_aftrshok.cpp // mechanical
-//laz_ribrac.cpp   // mechanical
+//laz_aftrshok.cpp                     // mechanical
+//laz_ribrac.cpp                       // mechanical
 lbeach.cpp
-//lckydraw.cpp     // pinball
+//lckydraw.cpp                         // pinball
 legionna.cpp
 leland.cpp
 lemmings.cpp
+lependu.cpp
 lethal.cpp
 lethalj.cpp
-//lgp.cpp          // black screen
+//lgp.cpp                              // check
 liberate.cpp
 liberatr.cpp
 limenko.cpp
-//lindbergh.cpp    // fatal memory handler error at start
+//lindbergh.cpp                        // fatal memory handler error at start
 littlerb.cpp
 lkage.cpp
 lockon.cpp
 looping.cpp
 lordgun.cpp
 lsasquad.cpp
-//ltcasino.cpp     // gambling
-//ltd.cpp          // pinball
-//luckgrln.cpp     // gambling
-//lucky37.cpp      // poker
-//lucky74.cpp      // poker
-//luckybal.cpp     // gambling
-//lvcards.cpp      // poker
+//ltcasino.cpp                         // gambling
+//ltd.cpp                              // pinball
+//luckgrln.cpp                         // gambling
+//lucky37.cpp                          // poker
+//lucky74.cpp                          // poker
+//luckybal.cpp                         // gambling
+//lvcards.cpp                          // poker
 lwings.cpp
 m10.cpp
 m107.cpp
-//m14.cpp          // disabled
+m14.cpp
 m52.cpp
 m57.cpp
 m58.cpp
 m62.cpp
+m62_bkungfu.cpp
 m63.cpp
 m72.cpp
 m79amb.cpp
@@ -723,38 +738,39 @@ madmotor.cpp
 //magic10.cpp      // poker
 //magicard.cpp     // poker
 //magicfly.cpp     // poker
-//magictg.cpp      // black screen
+//magictg.cpp      // check
 magmax.cpp
 //magreel.cpp      // no screen
 magtouch.cpp
 mainevt.cpp
 mainsnk.cpp
-//majorpkr.cpp     // Poker
+majorpkr.cpp
 malzak.cpp
 //manohman.cpp     // check
 mappy.cpp
+marblmd2.cpp
 marineb.cpp
 marinedt.cpp
 mario.cpp
 markham.cpp
-//marywu.cpp       // hang just after start
-//mastboy.cpp      // disabled 
-//mastboyo.cpp     // disabled 
+//marywu.cpp       // check
+mastboy.cpp
+mastboyo.cpp
 matmania.cpp
-//matrix.cpp       // fruit, mech
+//matrix.cpp         // fruit
 maxaflex.cpp
-//maygay1bsw.cpp   // fruit, mech
-//maygayep.cpp     // fruit, mech
-//maygaysw.cpp     // fruit, mech
-//maygayv1.cpp     // fruit, mech
+//maygay1bsw.cpp     // fruit
+//maygayep.cpp     // fruit
+//maygayew.cpp     // fruit
+//maygayv1.cpp     // fruit
 mazerbla.cpp
 mcatadv.cpp
 mcr.cpp
 mcr3.cpp
 mcr68.cpp
 meadows.cpp
-//meadwttl.cpp     // black screen
-mechatt.cpp
+//meadwttl.cpp     // ttl
+mechatt.cpp           // ok
 mediagx.cpp
 megadriv_acbl.cpp
 megaphx.cpp
@@ -765,26 +781,27 @@ megazone.cpp
 meijinsn.cpp
 //menghong.cpp     // gambling
 //mephistp.cpp     // pinball
-//merit.cpp        // disabled
+merit.cpp
 //merit3xx.cpp     // black screen
-//meritm.cpp       // disabled
+meritm.cpp
 //merits.cpp       // no screen
 //meritsdx.cpp     // no screen
 mermaid.cpp
-//metalmx.cpp      // gets stuck at start
+//metalmx.cpp      // check
 metlclsh.cpp
 metlfrzr.cpp
 metro.cpp
 //meyc8080.cpp     // poker
-//meyc8088.cpp     // fruit, mech
+//meyc8088.cpp     // fruit
 //mgames.cpp       // poker
-//mgavegas.cpp     // no inputs
+//mgavegas.cpp     // check
 mgolf.cpp
 mhavoc.cpp
+miconkit.cpp	
 micro3d.cpp
 //microdar.cpp     // mechanical
 //micropin.cpp     // pinball
-//midas.cpp        // disabled
+//midas.cpp        // not working (An incompatible with the neogeo of a is generated ARCADE with that of HBMAME.)
 //midqslvr.cpp     // black screen, most use chd
 midtunit.cpp
 midvunit.cpp
@@ -794,20 +811,20 @@ midyunit.cpp
 midzeus.cpp
 mikie.cpp
 //mil4000.cpp      // poker
-//miniboy7.cpp     // disabled
+miniboy7.cpp
 //miniguay.cpp     // no screen
 minivadr.cpp
 //minivideo.cpp    // black screen
 mirage.cpp
 mirax.cpp
-//missamer.cpp     // Not working
+//missamer.cpp            // Not working
 missb2.cpp
-//missbamby.cpp    // no screen
+//missbamby.cpp           // no screen
 missile.cpp
 mitchell.cpp
-//mjkjidai.cpp     // disabled
-//mjsenpu.cpp      // disabled
-//mjsister.cpp     // disabled
+mjkjidai.cpp
+mjsenpu.cpp
+mjsister.cpp
 mlanding.cpp
 mmagic.cpp
 //mmm.cpp          // mechanical
@@ -817,30 +834,31 @@ model3.cpp
 mogura.cpp
 mole.cpp
 momoko.cpp
-//monacogp.cpp     // black screen
+//monacogp.cpp     // ttl
 monzagp.cpp
 moo.cpp
 mosaic.cpp
 mouser.cpp
-//mpu12wbk.cpp     // fruit, mech
-//mpu2.cpp         // fruit, mech
-//mpu3.cpp         // fruit, mech
-//mpu4.cpp         // fruit, mech
-//mpu4avan.cpp     // fruit, mech
-//mpu4bwb.cpp      // fruit, mech
-//mpu4concept.cpp  // fruit, mech
-//mpu4crystal.cpp  // fruit, mech
-//mpu4dealem.cpp   // fruit, mech
-//mpu4empire.cpp   // fruit, mech
-//mpu4mdm.cpp      // fruit, mech
-//mpu4misc.cpp     // fruit, mech
-//mpu4mod2sw.cpp   // fruit, mech
-//mpu4mod4yam.cpp  // fruit, mech
-//mpu4plasma.cpp   // fruit, mech
-//mpu4sw.cpp       // fruit, mech
-//mpu4union.cpp    // fruit, mech
-//mpu4vid.cpp      // fruit, mech
-//mpu5sw.cpp       // fruit, mech
+//mpu12wbk.cpp     // fruit
+//mpu2.cpp         // fruit
+//mpu3.cpp         // fruit
+//mpu4.cpp         // fruit
+//mpu4avan.cpp     // fruit
+//mpu4bwb.cpp      // fruit
+//mpu4concept.cpp  // fruit
+//mpu4crystal.cpp  // fruit
+//mpu4dealem.cpp   // fruit
+//mpu4empire.cpp   // fruit
+//mpu4mdm.cpp      // fruit
+//mpu4misc.cpp     // fruit
+//mpu4mod2sw.cpp   // fruit
+//mpu4mod4oki.cpp 
+//mpu4mod4yam.cpp  // fruit
+//mpu4plasma.cpp   // fruit
+//mpu4union.cpp       // fruit
+//mpu4unsorted.cpp    // fruit
+//mpu4vid.cpp      // fruit
+//mpu5sw.cpp         // fruit
 //mquake.cpp       // test rom
 mrdo.cpp
 mrflea.cpp
@@ -850,8 +868,8 @@ ms32.cpp
 msisaac.cpp
 //mtouchxl.cpp     // chd
 mugsmash.cpp
-//multfish.cpp      // fruit, mech
-//multfish_boot.cpp // fruit, mech
+//multfish.cpp     // fruit
+//multfish_boot.cpp // fruit
 multigam.cpp
 munchmo.cpp
 //murogem.cpp      // poker
@@ -868,7 +886,7 @@ namcofl.cpp
 namcona1.cpp
 namconb1.cpp
 namcond1.cpp
-//namcops2.cpp     // chd, mnw
+//namcops2.cpp     // check
 namcos1.cpp
 //namcos10.cpp     // check
 namcos11.cpp
@@ -881,49 +899,54 @@ namcos21_de.cpp
 namcos22.cpp
 //namcos23.cpp     // check
 namcos86.cpp
-//naomi.cpp       // disabled
+naomi.cpp
 naughtyb.cpp
-//nbmj8688.cpp    // disabled
-//nbmj8891.cpp    // disabled
-//nbmj8900.cpp    // disabled
-//nbmj8991.cpp    // disabled
-//nbmj9195.cpp    // disabled
+nbmj8688.cpp
+nbmj8891.cpp
+nbmj8900.cpp
+nbmj8991.cpp
+nbmj9195.cpp
 nemesis.cpp
 neogeo.cpp
-//neopcb.cpp      // disabled
+//neomania.cpp                         // skel
+//neopcb.cpp
 //neoprint.cpp    // gets stuck on some screen
-//neptunp2.cpp    // no screen
+//neptunp2.cpp    // check
 news.cpp
-//nexus3d.cpp     // black screen
-//nibble.cpp      // corrupt frozen screen
+//nexus3d.cpp     // check
+//nibble.cpp      // check
 //nichild.cpp     // check (black screen)
-//nightgal.cpp    // disabled
+nightgal.cpp
 nightmare.cpp
 ninjakd2.cpp
 ninjaw.cpp
 nitedrvr.cpp
-//niyanpai.cpp     // disabled
+niyanpai.cpp
 nmg5.cpp
 nmk16.cpp
 //nmkmedal.cpp     // mechanical
 //norautp.cpp      // poker
-//notechan.cpp     // black screen
+//notechan.cpp     // check
 nova2001.cpp
-//nsg6809.cpp      // mechanical
-//nsm.cpp          // pinball
-//nsmpoker.cpp     // corrupt frozen screen
+//novadesitec_fr002.cpp                // black screen, fills up log
+//novadesitec_fr004.cpp                // black screen, fills up log
+//novadesitec_fr009.cpp                // black screen, fills up log
+//nsg6809.cpp                          // mechanical
+//nsm.cpp                              // pinball
+//nsmpoker.cpp                         // check
 nss.cpp
-//nwk-tr.cpp       // disabled
+nwk-tr.cpp
 nycaptor.cpp
 nyny.cpp
-//odyssey.cpp      // black screen
+//odyssey.cpp                          // black screen
 offtwall.cpp
-ohmygod.cpp
-//ojankohs.cpp     // disabled
+ohmygod.cpp                            //ok
+ojankohs.cpp
 olibochu.cpp
 omegrace.cpp
 oneshot.cpp
 onetwo.cpp
+//opercoin.cpp     // no screen
 opwolf.cpp
 orbit.cpp
 othello.cpp
@@ -932,17 +955,18 @@ othunder.cpp
 overdriv.cpp
 pachifev.cpp
 pacland.cpp
-pacman.cpp
+puckman.cpp
 pandoras.cpp
-//pangofun.cpp     // missing floppy
+//pangofun.cpp     // check
 panicr.cpp
+//paokaipc.cpp     // black screen
 paradise.cpp
 paranoia.cpp
 parodius.cpp
 pasha2.cpp
 pass.cpp
-//pastelg.cpp      // disabled
-//patapata.cpp     //not english
+pastelg.cpp
+patapata.cpp
 pbaction.cpp
 //pcat_dyn.cpp     // impossible to control
 //pcat_nit.cpp     // impossible to control
@@ -950,7 +974,7 @@ pcktgal.cpp
 pcxt.cpp
 pengadvb.cpp
 pengo.cpp
-//peplus.cpp       // fruit, mech
+//peplus.cpp       // fruit
 //peyper.cpp       // pinball
 pgm.cpp
 pgm2.cpp
@@ -959,12 +983,12 @@ phoenix.cpp
 photon.cpp
 photon2.cpp
 //photoply.cpp     // chd
-//photoplys.cpp    // unknown skeleton
-//photoplysx.cpp   // skeleton
+//photoplys.cpp                // unknown skeleton
+//photoplysx.cpp           // skeleton
 //piggypas.cpp     // mechanical
 //pinball2k.cpp    // pinball
 pingpong.cpp
-//pinkiri8.cpp     // disabled
+pinkiri8.cpp
 pipedrm.cpp
 pipeline.cpp
 pirates.cpp
@@ -974,13 +998,15 @@ pkscram.cpp
 pktgaldx.cpp
 playch10.cpp
 playmark.cpp
-//play_1.cpp       // pinball
-//play_2.cpp       // pinball
-//play_3.cpp       // pinball
-//pluto5.cpp       // fruit, mech
-//plygonet.cpp     // check
-//playcenter.cpp   // unknown skeleton
-//pntnpuzl.cpp     // game ends immediately then freezes
+//play_1.cpp                       // pinball
+//play_2.cpp                       // pinball
+//play_3.cpp                       // pinball
+//playcenter.cpp                   // skel
+//plsonic4.cpp                     // skel
+//pluto5.cpp                       // fruit
+//plygonet.cpp                     // fatal error
+//pmc.cpp                              // no screen
+//pntnpuzl.cpp                     // game ends immediately then freezes
 pokechmp.cpp
 //poker72.cpp      // poker
 //pokerout.cpp     // black screen
@@ -991,22 +1017,22 @@ pong.cpp
 poolshrk.cpp
 pooyan.cpp
 popeye.cpp
-popobear.cpp
+popobear.cpp                           //ok
 popper.cpp
 portrait.cpp
-//potgoldu.cpp     // black screen
+//potgoldu.cpp     // check
 powerbal.cpp
 powerins.cpp
 ppmast93.cpp
 prehisle.cpp
-//proconn.cpp      // fruit, mech
+//proconn.cpp      // fruit
 progolf.cpp
 //psattack.cpp     // skeleton
-//pse.cpp          // black screen
+//pse.cpp          // ttl
 psikyo.cpp
 psikyo4.cpp
 psikyosh.cpp
-//psrockman.cpp    // skel
+//psrockman.cpp                        // skel
 psychic5.cpp
 pturn.cpp
 //pubtimed.cpp     // no screen
@@ -1021,26 +1047,31 @@ quasar.cpp
 //queen.cpp        // black screen
 quickpick5.cpp
 quizdna.cpp
-//quizo.cpp        // disabled
+quizo.cpp
 quizpani.cpp
 //quizpun2.cpp     // check
 //quizshow.cpp     // hangs when quiz starts
 r2dtank.cpp
 r2dx_v33.cpp
 rabbit.cpp
+//radikaldarts.cpp                     // skel
 raiden.cpp
 raiden2.cpp
-//raiden_ms.cpp    // disabled
+raiden_ms.cpp
+//rallypnt.cpp
 rallyx.cpp
 rampart.cpp
-//ramtek.cpp       // black screen
+//ramtek.cpp       // ttl
 rastan.cpp
 rastersp.cpp
+//rawthrillspc.cpp                     // skel
 rbisland.cpp
-//rbmk.cpp         // disabled
-//rcorsair.cpp     // black screen
-//re900.cpp        // disabled
+rbmk.cpp
+//rbowlorama.cpp                       // skel
+//rcorsair.cpp     // check
+re900.cpp
 realbrk.cpp
+//recel.cpp                            // pinball
 redalert.cpp
 redclash.cpp
 relief.cpp
@@ -1050,21 +1081,21 @@ retofinv.cpp
 //rfslots8085.cpp             // skel mech
 //rfslotsmcs48.cpp            // skel mech
 //rfslotspcpent.cpp           // mechanical
-//rgum.cpp         // mnw
+//rgum.cpp                    // check
 rltennis.cpp
-//rmhaihai.cpp     // disabled
+rmhaihai.cpp
 rockrage.cpp
 rocnrope.cpp
 rohga.cpp
 rollerg.cpp
-//rollext.cpp      // black screen
+//rollext.cpp      // check
 rollrace.cpp
-//ron.cpp          // disabled
+ron.cpp
 rotaryf.cpp
 //roul.cpp         // gambling, how to use?
 route16.cpp
 //rowamet.cpp      // pinball
-//royalmah.cpp     // disabled
+royalmah.cpp
 rpunch.cpp
 //rulechan.cpp     // mnw
 runaway.cpp
@@ -1076,16 +1107,14 @@ rungun.cpp
 //s3.cpp           // pinball
 //s4.cpp           // pinball
 //s6.cpp           // pinball
-//s6a.cpp          // pinball
 //s7.cpp           // pinball
 //s8.cpp           // pinball
-//s8a.cpp          // pinball
 //s9.cpp           // pinball
 safarir.cpp
 //sam.cpp          // pinball
 sandscrp.cpp
 sangho.cpp
-//sanremmg.cpp     // black screen
+//sanremmg.cpp     // check
 sanremo.cpp
 //saturn.cpp       // no arcade games
 sauro.cpp
@@ -1095,37 +1124,41 @@ sbasketb.cpp
 sbowling.cpp
 sbrkout.cpp
 sbugger.cpp
-schick.cpp         // playable, bad gfx, no sound
-//scm_500.cpp      // mechanical
+//schexx4gen.cpp                        // mechanical
+schick.cpp                            // playable, just
+//scm_500.cpp                           // mechanical
 scobra.cpp
 scotrsht.cpp
 scramble.cpp
 scregg.cpp
 scyclone.cpp
 sderby.cpp
-//sderby2.cpp      // black screen
+//sderby2.cpp      // check
 seabattl.cpp
 //sealy.cpp        // black screen
 //sealy_fr.cpp     // skeleton
 seattle.cpp
 //segaatom.cpp     // black screen
 segac2.cpp
-//segacoin.cpp     // no screen
+//segacoin.cpp     // check
 segae.cpp
+//segafruit.cpp
 segag80r.cpp
 segag80v.cpp
 segahang.cpp
-//segajw.cpp       // disabled
-//segald.cpp       // black screen
-//segam1.cpp       // check
+segajw.cpp
+//segald.cpp       // check
 segaorun.cpp
 segas16a.cpp
 segas16b.cpp
+segas16b_isgsm.cpp
 segas18.cpp
+segas18_astormbl.cpp
 segas24.cpp
 segas32.cpp
-//segasp.cpp       // mnw, some chd
-//segattl.cpp      // black screen
+//segasm1.cpp
+//segasp.cpp       // check
+//segattl.cpp      // ttl
 //segaufo.cpp      // mechanical
 segaxbd.cpp
 segaybd.cpp
@@ -1138,8 +1171,8 @@ senjyo.cpp
 seta.cpp
 seta2.cpp
 sf.cpp
-//sfbonus.cpp      // fruit, mech
-//sfcbox.cpp       // mnw
+//sfbonus.cpp      // fruit
+//sfcbox.cpp       // check
 sfkick.cpp
 sg1000a.cpp
 shadfrce.cpp
@@ -1148,7 +1181,7 @@ shanghai.cpp
 shangkid.cpp
 shaolins.cpp
 shisen.cpp
-//shootaway2.cpp   // black screen
+//shootaway2.cpp   // check
 shootout.cpp
 shougi.cpp
 //shtzone.cpp      // console, mnw
@@ -1160,12 +1193,13 @@ sidepckt.cpp
 //sigmab52.cpp     // poker
 sigmab98.cpp
 silkroad.cpp
-//silverball.cpp   // unknown skeleton
+//silverball.cpp                   // unknown skeleton
 silvmil.cpp
 simpl156.cpp
 simple_st0016.cpp
 simpsons.cpp
-//skeetsht.cpp     // mnw
+//sis630.cpp       // chd, mnw
+//skeetsht.cpp     // check
 skimaxx.cpp
 //skopro.cpp       // chd, mnw
 skullxbo.cpp
@@ -1176,19 +1210,20 @@ skykid.cpp
 skylncr.cpp
 skyraid.cpp
 slapfght.cpp
+//slapfght_ms.cpp  // stuck on ramcheck
 slapshot.cpp
 //sleic.cpp        // pinball
 sliver.cpp
-//slotcarn.cpp     // fruit, mech-poker
-smotor.cpp         
-//smsmcorp.cpp     // disabled
+//slotcarn.cpp     // fruit-poker
+smotor.cpp           //
+smsmcorp.cpp
 //sms_bootleg.cpp  // console, mnw
 snesb.cpp
 snesb51.cpp
 snk.cpp
 snk6502.cpp
 snk68.cpp
-//snookr10.cpp     // disabled
+snookr10.cpp
 snowbros.cpp
 solomon.cpp
 sonson.cpp
@@ -1198,12 +1233,14 @@ spaceg.cpp
 spartanxtec.cpp
 spbactn.cpp
 spcforce.cpp
+//spdamjes.cpp       // no screen
 spdheat.cpp
 spdodgeb.cpp
 //special_gambl.cpp  // gambling
 //spectra.cpp      // pinball
 speedatk.cpp
 speedbal.cpp
+//speedbsk.cpp                         // mechanical
 speedspn.cpp
 speglsht.cpp
 spiders.cpp
@@ -1211,7 +1248,7 @@ spiders.cpp
 //spirit76.cpp     // pinball
 splash.cpp
 splash_ms.cpp      // adult
-//splus.cpp        // fruit, mech
+//splus.cpp        // fruit
 //spoker.cpp       // poker
 //spool99.cpp      // poker, mnw
 sprcros2.cpp
@@ -1220,9 +1257,9 @@ sprint4.cpp
 sprint8.cpp
 spy.cpp
 spyhuntertec.cpp
-//srmp2.cpp        // disabled
-//srmp5.cpp        // disabled
-//srmp6.cpp        // disabled
+srmp2.cpp
+//srmp5.cpp
+srmp6.cpp
 srumbler.cpp
 ssfindo.cpp
 sshangha.cpp
@@ -1243,10 +1280,11 @@ starfire.cpp
 starshp1.cpp
 //startouch.cpp    // chd, mnw
 starwars.cpp
-//statriv2.cpp     // disabled
-//stellafr.cpp     // fruit, mech
+statriv2.cpp
+//stellafr.cpp     // fruit
 stfight.cpp
 stlforce.cpp
+//stop.cpp         // no screen
 //strkzn.cpp       // no screen
 stuntair.cpp
 stv.cpp
@@ -1254,20 +1292,21 @@ stv.cpp
 //st_mp200.cpp     // pinball
 //su2000.cpp       // mnw
 sub.cpp
-//subhuntr.cpp     // hang at start
+//subhuntr.cpp     // check
 subs.cpp
-//subsino.cpp      // fruit, mech/poker
+//subsino.cpp      // fruit/poker
 subsino2.cpp
-//summit.cpp       // fruit, mech
+//summit.cpp       // fruit
 //sumt8035.cpp     // mechanical
 suna16.cpp
 suna8.cpp
 supbtime.cpp
-//supdrapo.cpp     // disabled
+supdrapo.cpp
 supduck.cpp
 superchs.cpp
-//supercrd.cpp     // fruit, mech
-//superdq.cpp      // black screen
+//supercrd.cpp     // fruit
+//superdq.cpp      // check
+superga2.cpp
 superqix.cpp
 supertnk.cpp
 superwng.cpp
@@ -1289,10 +1328,10 @@ taitogn.cpp
 taitojc.cpp
 taitopjc.cpp
 taitosj.cpp
-//taitottl.cpp     // black screen
+//taitottl.cpp     // ttl
 //taitotx.cpp      // chd, mnw
 //taitotz.cpp      // hangs while booting, some chd
-//taitowlf.cpp     // hangs while booting
+//taitowlf.cpp     // check
 taito_b.cpp
 taito_f2.cpp
 taito_f3.cpp
@@ -1301,13 +1340,13 @@ taito_l.cpp
 //taito_o.cpp      // poker
 taito_x.cpp
 taito_z.cpp
-//tank8.cpp        // freezes when start pressed
+//tank8.cpp     //freezes when start pressed
 tankbatt.cpp
 tankbust.cpp
 taotaido.cpp
 tapatune.cpp
 targeth.cpp
-//tasman.cpp       // hang after hw test
+//tasman.cpp       // check
 tatsumi.cpp
 tattack.cpp
 taxidriv.cpp
@@ -1337,17 +1376,18 @@ tickee.cpp
 tigeroad.cpp
 timelimt.cpp
 timeplt.cpp
-timetrv.cpp        // chd, known to work, mooglyguy
+timetrv.cpp                        // chd, known to work, mooglyguy
 tmaster.cpp
 tmmjprd.cpp
 tmnt.cpp
-//tmspoker.cpp     // black screen
+//tmspoker.cpp     // check
 tnzs.cpp
 toaplan1.cpp
 toaplan2.cpp
 toki.cpp
 toki_ms.cpp
 tomcat.cpp
+//tomsadvs.cpp
 tonton.cpp
 toobin.cpp
 topspeed.cpp
@@ -1359,13 +1399,14 @@ tp84.cpp
 trackfld.cpp
 travrusa.cpp
 //triforce.cpp      // chd, mnw. Some freeze mame.
-triplhnt.cpp
+//triplhnt.cpp
 //triviaquiz.cpp    // skeleton
-//trivrus.cpp       // disabled
-//truco.cpp         // disabled
-//trucocl.cpp       // disabled
-//trvmadns.cpp      // disabled
-//trvquest.cpp      // disabled
+trivrus.cpp
+truco.cpp
+trucocl.cpp
+//truesys.cpp       // black screen
+trvmadns.cpp
+trvquest.cpp
 tryout.cpp
 tsamurai.cpp
 ttchamp.cpp
@@ -1379,7 +1420,7 @@ tutankhm.cpp
 //tvcapcom.cpp     // skeleton
 tvg01.cpp
 twin16.cpp
-//twinbskt.cpp     // skeleton
+//twinbskt.cpp       // skeleton
 twincobr.cpp
 twinkle.cpp
 twins.cpp
@@ -1395,8 +1436,8 @@ unico.cpp
 unkhorse.cpp
 //unkpoker.cpp     // not working poker
 upscope.cpp
-//usbilliards.cpp  // black screen
-//usgames.cpp      // disabled
+//usbilliards.cpp  // ttl
+usgames.cpp
 //v0bowl.cpp       // black screen
 vamphalf.cpp
 vaportra.cpp
@@ -1420,12 +1461,13 @@ vigilant.cpp
 vindictr.cpp
 //viper.cpp        // chd, mnw
 //vlc.cpp          // check
-//vlc34010.cpp     // skel
-//volfied.cpp      // black screen
+//vlc34010.cpp            // skel
+volfied.cpp
 //voyager.cpp      // chd, mnw
 //vp101.cpp        // not working
 //vpoker.cpp       // poker
-//vroulet.cpp      // disabled
+vroulet.cpp
+vsmjtria.cpp
 vsnes.cpp
 vulgus.cpp
 //wacky_gator.cpp  // mech, works
@@ -1441,7 +1483,6 @@ welltris.cpp
 wgp.cpp
 wheelfir.cpp
 //whitestar.cpp    // pinball
-//white_mod.cpp    // pinball
 //wico.cpp         // pinball
 //wildpkr.cpp      // poker
 williams.cpp
@@ -1451,7 +1492,8 @@ wiping.cpp
 //witch.cpp        // cannot start game or ram error
 wiz.cpp
 wmg.cpp
-//wms.cpp          // fruit, mech
+//wms.cpp          // fruit
+//wms_shuffle.cpp                      // pinball
 wolfpack.cpp
 //wpc_95.cpp       // pinball
 //wpc_an.cpp       // pinball
@@ -1468,11 +1510,11 @@ xexex.cpp
 xmen.cpp
 xorworld.cpp
 xtheball.cpp
-//xtom3d.cpp            // boot failure
+//xtom3d.cpp       // check
 xxmissio.cpp
 xybots.cpp
 xyonix.cpp
-//y2.cpp                // black screen
+//y2.cpp           // black screen
 yiear.cpp
 yunsun16.cpp
 yunsung8.cpp
@@ -1489,46 +1531,14 @@ zodiack.cpp
 //zpinball.cpp          // pinball, skeleton
 zr107.cpp
 zwackery.cpp
+hh_sm510.cpp
+monaco.cpp
 schaser.cpp
 spacmiss.cpp
 //exceptions + to add - to remove from imported list
 //3do.cpp
 -3do
--3do_m2
 -3do_pal
-
-//cdi.cpp
--cdi490a
--cdi910
--cdimono1
--cdimono2
-
-//cps1.cpp
-//-sfach
-//-sfzbch
-//-sfzch
-//-wofch
-
-//jaguar.cpp
--jaguar
--jaguarcd
-
-//saturn.cpp
--saturn
--saturnjp
--saturneu
--vsaturn
--hisaturn
-
-//vectrex.cpp
--vectrex
-
-//hornet.cpp
--sscope
--sscope2
--sscopea
--sscopeb
--sscopec
 
 //cdi.cpp
 -cdi490a
@@ -1541,81 +1551,46 @@ spacmiss.cpp
 -sf2stt
 -varthb3
 
+//BROKEN STUFF
 //8080bw.cpp
 -invasionrza
 -sisv1
 
-//champbas.cpp
 -tbasebal
-
-//centiped.cpp
 -magworma
-
-//galaxian.cpp
+-mag_drac
 -ckongcv
 -ckongis
-
-//cchance.cpp
 -cchance
-
-//cb2001.cpp
 -scherrym
-
-//cavepc.cpp
 -deathsm2
-
-//calchase.cpp
--calchase
 -hostinv
-
-//bwidow.cpp
 -bwidowp
-
-//bublbobl.cpp
 -bub8749
-
-//btime.cpp
 -tisland
-
-//bfcobra.cpp
+-unkzilec
 -beeline
 -inquiztr
-
-//balsente.cpp
+-tvdenwad
 -triviaes4
 -triviaes5
-
-//cclimber.cpp
 -bagmanf
-
-//avt.cpp
 -avtnfl
 -avtsym14
 -avtsym25
-
-//atetris.cpp
 -atetrisb5
-
-//atarisy2.cpp
 -paperboyp
-
-//astrocde.cpp
--profpac
 -tenpindx
-
-//astrcorp.cpp
 -magibombd
 -magibombc
 -magibombb
 -magibomba
+-magibombf
 -westvent
 -winbingoa
-
-//airraid.cpp
 -airraid
 -cshooter
-
-//adp.cpp
+-cshootert
 -fashiong
 -fashiong2
 -fstation
@@ -1623,38 +1598,32 @@ spacmiss.cpp
 -quickjac
 -skattv
 -skattva
-
-//39in1.cpp
 -19in1
 -4in1b
 -4in1a
 -48in1a
+-48in1c
 -48in1
 -48in1b
 -60in1
+-fruitwld
+-fruitwlda
+-jumanji
+-plutus
+-pokrwild
 -rodent
-
-//sshot.cpp
+-strker
 -gunchamps
-
-//acefruit.cpp
 -acefruit
 -starspnr
-
-//acommand.cpp
 -acommand
-
-//taitogn.cpp
 -otenamhf
-
-//segas32.cpp
 -kokoroj
--kokoroja
-
-//seattle.cpp
 -carnevil1
-
-//cliffhgr.cpp
+-dsfdct
+-dsfdcta
+-cr589fw
+-cr589fwa
 -cliffhgra2
 -goaltogo
 
@@ -1666,7 +1635,7 @@ spacmiss.cpp
 //cntsteer.cpp
 -cntsteer
 
-//konami/cobra.cpp
+//cobra.cpp
 -racjamdx
 
 //coinmstr.cpp
@@ -1726,6 +1695,7 @@ spacmiss.cpp
 //docastle.cpp
 -asoccer
 -idsoccera
+-idsoccert
 
 //dwarf.cpp
 -quarterh
@@ -1734,16 +1704,15 @@ spacmiss.cpp
 -qc
 
 //dynax.cpp
+-ougonhaib3
 -majrjhdx
 -tenkai2b
--ougonhaib
 
 //epos.cpp
 -catapult
 -revenger
 
 //exidy440.cpp
--showdown
 -showdown4
 
 //fastfred.cpp
@@ -1762,6 +1731,9 @@ spacmiss.cpp
 //freekick.cpp
 -countrunb2
 
+//frenzyxprss.cpp
+-frenzyxprss
+
 //gaelco2.cpp
 -aligatorp
 -chmppool
@@ -1769,11 +1741,11 @@ spacmiss.cpp
 -srollnd
 
 //galaxian.cpp
+-amidarc
 -dingoe
 -supergx
 -highroll
 -ncentury
--jungsub
 -scrammr
 -scramblebun
 -warofbugg
@@ -1790,6 +1762,8 @@ spacmiss.cpp
 
 //goldnpkr.cpp
 -falcnwldc
+-goldnpkd
+-maxidpkr
 -pokerdub
 -wldwitchb
 -wldwitche
@@ -1805,12 +1779,14 @@ spacmiss.cpp
 -chryangl
 -chryanglb
 -cb3c
+-cb3f
 -cmast92
 -cmast97
 -cmast99
 -cmast99b
 -cmv4a
 -cmasterbv
+-super7
 -crazybonb
 -eldoradd
 -feverch
@@ -1848,15 +1824,18 @@ spacmiss.cpp
 
 //highvdeo.cpp
 -magicbom
+-newtiger
+-unksmk
 
 //homedata.cpp
 -mirderby
 
 //hornet.cpp
 -sscope
--sscopea
 -sscope2
--thrilldbu
+-sscopea
+-sscopeb
+-sscopec
 
 //igs017.cpp
 -tarzana
@@ -1865,6 +1844,7 @@ spacmiss.cpp
 //igspoker.cpp
 -cpoker210ks
 -kungfu
+-kungfua
 -stellecu
 
 //ironhors.cpp
@@ -1925,13 +1905,11 @@ spacmiss.cpp
 -tsururin
 
 //konmedal68k.cpp
+-crossmg2
+-fruitsmg
 -unkkonmd
 
 //ksys573.cpp
--dsfdct
--dsfdcta
--cr589fw
--cr589fwa
 -ddr3mk
 -ddr3ma
 -ddr3mj
@@ -2050,7 +2028,11 @@ spacmiss.cpp
 -saturn
 -saturneu
 -saturnjp
+-saturnkr
 -vsaturn
+
+//sis630.cpp
+-shutms11
 
 //vectrex.cpp
 -vectrex
@@ -2095,58 +2077,30 @@ spacmiss.cpp
 
 //model2.cpp
 -bel
--doa
--doab
--doaa
--dynabb
--dynabb97
--dynamcopb
 -dynamcopc
--dyndeka2b
--fvipers
--fvipersb
--gunblade
 -hotd
+-hotdo
 -hotdp
--indy500
--indy500d
--indy500to
 -lastbrnx
 -lastbrnxu
 -lastbrnxj
--manxtt
--manxttc
--motoraiddx
--overrev
--overrevb
--overrevba
 -powsled
 -powsledm
 -powsledr
 -rascot2
--schamp
--segawski
--sfight
--sgt24h
 -skisuprg
 -stcc
 -stcca
 -stccb
+-segawski
 -topskatr
 -topskatrj
 -topskatruo
 -topskatru
--von
--vonj
 -vonr
--vonu
--vonr
--vstriker
--vstrikero
 -waverunr
 
 //model3.cpp
--bassdx
 -daytona2
 -dayto2pe
 -dirtdvls
@@ -2155,49 +2109,29 @@ spacmiss.cpp
 -dirtdvlsj
 -dirtdvlsu
 -ecap
--eca
--ecaj
--ecau
 -fvipers2
 -fvipers2o
 -getbass
 -getbassdx
--getbassur
--harley
 -harleya
--lamachin
 -lemans24
 -lostwsga
 -lostwsgp
--magtruck
--oceanhun
--scud
 -scudau
--scuddx
 -scudplusa
 -scudplus
--skichamp
--spikeofe
--spikeout
 -srally2
 -srally2p
 -srally2pa
 -srally2dx
+-skichamp
 -spikeout
 -spikeofe
 -swtrilgya
--swtrilgyp
 -vf3
 -vf3a
 -vf3c
 -vf3tb
--von2
--von2a
--von2o
--von254g
--vs2
--vs215
--vs215o
 -vs298
 -vs29815
 -vs2v991
@@ -2211,6 +2145,11 @@ spacmiss.cpp
 //moo.cpp
 -moomesabl
 
+//namcona1.cpp
+-bbbingo
+-zelos
+-zelost
+
 //namcond1.cpp
 -gynotai
 
@@ -2218,6 +2157,7 @@ spacmiss.cpp
 -kd2001
 -pacmball
 -sekaikh
+-sekaikha
 -keroro
 -gegemdb
 
@@ -2227,10 +2167,6 @@ spacmiss.cpp
 -tektagtja
 -tektagtjb
 -tektagtjc1
--mdhorse
--kartduel
--kaiunqz
--truckk
 
 //namcos23.cpp
 -500gp
@@ -2266,6 +2202,7 @@ spacmiss.cpp
 -18wheelrt
 -alpilotj
 -alpilot
+-anpanman2
 -beachspi
 -clubkcyc
 -clubkcyco
@@ -2325,9 +2262,12 @@ spacmiss.cpp
 -mazanj
 -mazanu
 -mj1
+-mushikc
+-mushikk
 -mushikeo
 -mushik2e
 -mushik4e
+-mushik2k
 -mushi2eo
 -mushi2k5
 -mushi2k62
@@ -2347,6 +2287,7 @@ spacmiss.cpp
 -ringout
 -ringouto
 -sambap
+-sgdrvsim
 -shootopl
 -shootplm
 -shootplmp
@@ -2459,6 +2400,9 @@ spacmiss.cpp
 //oneshot.cpp
 -maddonnab
 
+//pasha2.cpp
+-zdrum
+
 //pgm.cpp
 -dmnfrntpcb
 -martmasttw
@@ -2466,8 +2410,6 @@ spacmiss.cpp
 -kovlsjba
 -kovlsqh
 -kovlsqh2
--pgm3in1
--pgm3in1c100
 
 //phoenix.cpp
 -fenix
@@ -2486,14 +2428,16 @@ spacmiss.cpp
 -quizpun
 
 //raiden2
--xsedae
 -zeroteamsr
 
 //rbmk.cpp
+-magslot
 -rbspm
+-sc2in1
 
 //royalmah.cpp
 -mjvegas
+-pongboo2
 -mjsenka
 -cafepara
 -cafedoll
@@ -2503,6 +2447,9 @@ spacmiss.cpp
 //rpunch.cpp
 -svolleybl
 
+//sanremo.cpp
+-roadstar
+
 //scobra.cpp
 -hustlerb6
 -schick
@@ -2510,6 +2457,9 @@ spacmiss.cpp
 
 //scramble.cpp
 -conquer
+
+//sderby.cpp
+-magictch
 
 //seabattl.cpp
 -seabattla
@@ -2530,6 +2480,7 @@ spacmiss.cpp
 
 //segas18.cpp
 -pontoon
+-pontoona
 
 //segas24.cpp
 -sspirtfc
@@ -2567,7 +2518,11 @@ spacmiss.cpp
 -miaction
 -olymp
 -score5
+-seadevil
 -sonikfig
+-spcliner
+-speedway
+-speedwaya
 -superb2k
 -tigerslt
 -rolla
@@ -2580,7 +2535,6 @@ spacmiss.cpp
 
 //snesb51.cpp
 -snes4sl
--snes4sln
 
 //splash.cpp
 -rebus
@@ -2589,6 +2543,7 @@ spacmiss.cpp
 //spoker.cpp
 -spk102ua
 -spk200ua
+-spk201ua
 -spk203us
 -spk205us
 
@@ -2623,8 +2578,6 @@ spacmiss.cpp
 -statriv5se
 
 //stv.cpp
--decathlt
--decathlto
 -choroqhr
 -dfeverg
 -fanzonem
@@ -2666,12 +2619,9 @@ spacmiss.cpp
 -sfish2j
 -smleague
 -stress
+-yattrmnp
 
 //subsino2.cpp
--qbeebing
--treacity
--treacity202
--treamary
 -queenbeeb
 -queenbeei
 -queenbeesa
@@ -2689,14 +2639,13 @@ spacmiss.cpp
 
 //system16.cpp
 -beautyb
--shdancbla
 -iqpipe
 -wb3bble
 
 //taitoair.cpp
 -ainferno
--ainfernou
 -ainfernoj
+-ainfernou
 
 //taito_b.cpp
 -realpunc
@@ -2708,7 +2657,6 @@ spacmiss.cpp
 -footchmpbl
 
 //taito_f3.cpp
--bubsymphb
 -quizhuhu
 
 //taitogn.cpp
@@ -2721,7 +2669,6 @@ spacmiss.cpp
 //tapatune.cpp
 -smartoss
 -srockbwl
--tapatune
 
 //tetrisp2.cpp
 -step3
@@ -2729,7 +2676,6 @@ spacmiss.cpp
 -vjdash
 
 //thepit.cpp
--rtriv
 -zaryavos
 
 //tmnt2.cpp
@@ -2742,14 +2688,11 @@ spacmiss.cpp
 
 //trackfld.cpp
 -hipoly
--wizzquiz
--wizzquiza
 
 //tumbleb.cpp
--tumblepba
 -funkyjetb
 
-//twinkle.cpp
+//konami/twinkle.cpp
 -bmiidx
 -bmiidxa
 -bmiidxc
@@ -2769,194 +2712,154 @@ spacmiss.cpp
 //zodiack.cpp
 -bounty2
 
-//arsystems.cpp
--ar_dart2
+//hh_sm510.cpp
+-atakaast
+-auslalom
+-bassmate
+-biathlon
+-ecircus 
+-ehockey 
+-gnw_ball   
+-gnw_bfight 
+-gnw_bfightn
+-gnw_bjack  
+-gnw_boxing 
+-gnw_bsweep 
+-gnw_cgrab  
+-gnw_chef   
+-gnw_climber
+-gnw_climbern
+-gnw_dkcirc 
+-gnw_dkhockey
+-gnw_dkjr   
+-gnw_dkjrp  
+-gnw_dkong  
+-gnw_dkong2 
+-gnw_dkong3 
+-gnw_egg    
+-gnw_fire   
+-gnw_fireatk
+-gnw_fires  
+-gnw_flagman
+-gnw_gcliff 
+-gnw_ghouse 
+-gnw_helmet 
+-gnw_helmeto
+-gnw_judge  
+-gnw_judgeo 
+-gnw_lboat  
+-gnw_lion   
+-gnw_manhole
+-gnw_manholeg
+-gnw_mario  
+-gnw_mariocm
+-gnw_mariocmt
+-gnw_mariocmta
+-gnw_mariotj
+-gnw_mbaway 
+-gnw_mmouse 
+-gnw_mmousep
+-gnw_mickdon
+-gnw_octopus
+-gnw_opanic 
+-gnw_pchute 
+-gnw_pinball
+-gnw_popeye 
+-gnw_popeyep
+-gnw_rshower
+-gnw_sbuster
+-gnw_smb    
+-gnw_smbn   
+-gnw_snoopyp
+-gnw_squish 
+-gnw_ssparky
+-gnw_stennis
+-gnw_tbridge
+-gnw_tfish  
+-gnw_vermin 
+-gnw_zelda
+-kbilly 
+-kblades
+-kbucky 
+-kcontra
+-kdribble
+-kgarfld
+-kgradius
+-kloneran
+-knfl   
+-kosmicmt
+-kosmicpt
+-krybolov
+-ktmnt  
+-ktopgun
+-kvakazad
+-morataka
+-nochnyev
+-nsmb3   
+-nsmw    
+-nstarfox
+-nummunch
+-nupogodi
+-okhota  
+-rkosmosa
+-taddams  
+-taltbeast
+-tapollo13
+-taynyoke
+-tbatfor  
+-tbatman  
+-tbatmana 
+-tbtoads  
+-tbttf    
+-tddragon 
+-tddragon3
+-tdennis  
+-tdummies 
+-tflash   
+-tgaiden  
+-tgaunt   
+-tgoldeye 
+-tgoldnaxe
+-thalone  
+-thalone2 
+-thook    
+-tigarden 
+-tinday   
+-tjdredd  
+-tjpark   
+-tkarnov  
+-tkazaam  
+-tmchammer
+-tmkombat 
+-tnmarebc 
+-topaliens
+-trobhood 
+-trobocop2
+-trobocop3
+-trockteer
+-trshutvoy
+-trspacmis
+-trspider 
+-trsrescue
+-trthuball
+-tsddragon
+-tsf2010  
+-tsfight2 
+-tshadow  
+-tsharr2  
+-tsjam    
+-tskelwarr
+-tsonic   
+-tsonic2  
+-tspidman 
+-tstrider 
+-tswampt  
+-ttransf2 
+-tvindictr
+-twworld  
+-txmen    
+-txmenpx  
+-vespovar
+-vfutbol
 
-//balsente.cpp
--nametune
--nametune2
--sentetst
--trivia12
--triviabb
--triviaes
--triviaes2
--triviag1
--triviag2
--triviasp
--triviayp
--triviaes4
--triviaes5
 
-//bfcobra.cpp
--qos
--qosa
--qosb
--escounts
--quizvadr
--trebltop
-
-//coinmstr.cpp
--jpcoin
--jpcoin2
--quizmstr
-
-//dec0.cpp
--bandit
--mastbond
-
-//deco_ld.cpp
--cobra
-
-//decocass.cpp
--cdsteljn
--cluckypo
--cocean1a
--cocean6b
--ctsttape
-
-//dkong.cpp
--dkongddk
-
-//dribling.cpp
--driblinga
-
-//epos.cpp
--dealer
-
-//exidy440.cpp
--yukon
--yukon1
-
-//exidy.cpp
--fax
--fax2
-
-//fitfight.cpp
--bbprot
-
-//gaelco.cpp
--bigkarnk
-
-//gaelco2.cpp
--play2000
--play2000_40i
--play2000_50i
-
-//gaiden.cpp
--mastninj
-
-//galaxian.cpp
--tst_galx
--luctoday
--chewing
--tdpgal
-
-//gstriker.cpp
--gstriker
--gstrikera
--gstrikerj
--vgoalsca
--vgoalsoc
-
-//himesiki.cpp
--himesiki
-
-//jack.cpp
--trikitri
--sucasino
--striv
--strivf
--loverboy
-
-//lbeach.cpp
--speedrs
-
-//legionna.cpp
--cupsocs
-
-//lethalj.cpp
--franticf
--franticfa
-
-//limenko.cpp
--spotty
-
-//m72.cpp
--lohtb
-
-//mcr.cpp
--dpoker
-
-//monzagp.cpp
--monzagpb
-
-//ms32.cpp
--f1superb
-
-//8080bw.cpp
--tst_invd
-
-naughtyb.cpp
--trvgns
--trvmstr
--trvmstra
--trvmstrb
--trvmstrc
-
-//nycaptor.cpp
--cyclshtg
-
-//pingpong.cpp
--cashquiz
-
-//route16.cpp
--jongpute
--ttmahjng
--vscompmj
-
-//tatsumi.cpp
--apache3
--apache3a
--apache3b
-
-//tehkanwc.cpp
--tehkanwcc
-
-//zr107.cpp
--midnruna2
-
-//videopin.cpp
--videopina
-
-//vegas.cpp
--sf2049te
--sf2049tea
-
-//artmagic.cpp
--shtstar
-
-//asteroid.cpp
--llandert
-
-//bagman.cpp
--bagmans3
-
-//crystal.cpp
--donghaer
--officeye
--wulybuly
-
-//djmain.cpp
--popnstex
-
-//f-32.cpp
--royalpk2
-
-//gottlieb.cpp
--qbtrktst
-
-//skylncr.cpp
--bdream97
-
-//stfight.cpp
--cshootert

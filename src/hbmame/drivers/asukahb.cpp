@@ -17,12 +17,11 @@ ROM_START( asukahc01 ) //asukac
 
 	ROM_REGION( 0xa0000, "pc090oj", 0 )
 	ROM_LOAD16_WORD_SWAP( "b68-02_hc01.ic6", 0x00000, 0x80000, CRC(09927d23) SHA1(b9761286feaa14c4eb6fc87ec35e7245c318d687) )
-	ROM_LOAD16_BYTE     ( "b68-07.ic5", 0x80000, 0x10000, CRC(c113acc8) SHA1(613c61a78df73dcb0b9c9018ae829e865baac772) )
-	ROM_LOAD16_BYTE     ( "b68-06.ic4", 0x80001, 0x10000, CRC(f517e64d) SHA1(8be491bfe0f7eed58521de9d31da677acf635c23) )
+	ROM_LOAD16_BYTE( "b68-07.ic5", 0x80000, 0x10000, CRC(c113acc8) SHA1(613c61a78df73dcb0b9c9018ae829e865baac772) )
+	ROM_LOAD16_BYTE( "b68-06.ic4", 0x80001, 0x10000, CRC(f517e64d) SHA1(8be491bfe0f7eed58521de9d31da677acf635c23) )
 
 	ROM_REGION( 0x1c000, "audiocpu", 0 )
-	ROM_LOAD( "b68-11.ic27", 0x00000, 0x04000, CRC(c378b508) SHA1(1b145fe736b924f298e02532cf9f26cc18b42ca7) )
-	ROM_CONTINUE(            0x10000, 0x0c000 )
+	ROM_LOAD( "b68-11.ic27", 0x00000, 0x10000, CRC(c378b508) SHA1(1b145fe736b924f298e02532cf9f26cc18b42ca7) )
 
 	ROM_REGION( 0x10000, "msm", 0 )
 	ROM_LOAD( "b68-10.ic24", 0x00000, 0x10000, CRC(387aaf40) SHA1(47c583564ef1d49ece15f97221b2e073e8fb0544) )
@@ -34,4 +33,4 @@ ROM_END
 
 /*    YEAR  NAME          PARENT       MACHINE         INPUT                   INIT        MONITOR   COMPANY       FULLNAME FLAGS */
 // Hack/Homebrow
-GAME( 1988, asukahc01,    asuka,       asuka,          asuka,  asuka_state, empty_init,     ROT270,  "hack",       "Asuka & Asuka (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
+GAME( 1988, asukahc01,    asuka,       asuka,          asuka,   msm_state,     empty_init, ROT270,   "hack",       "Asuka & Asuka (Translation Chinese)", MACHINE_SUPPORTS_SAVE )

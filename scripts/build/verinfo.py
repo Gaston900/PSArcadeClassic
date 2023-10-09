@@ -1,10 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 ##
 ## license:BSD-3-Clause
 ## copyright-holders:Aaron Giles, Andrew Gardner
 
-from __future__ import with_statement
-
+import io
 import re
 import sys
 
@@ -27,7 +26,7 @@ def parse_args():
             format = 'plist'
         elif flags and (sys.argv[i] == '-b'):
             i += 1
-            if (i >= len(sys.argv)):
+            if i >= len(sys.argv):
                 usage()
             else:
                 target = sys.argv[i]
@@ -57,13 +56,14 @@ def extract_version(input):
         match = pattern.search(line)
         if match:
             return match.group(1), match.group(2), match.group(3)
+##    return '0.226.A','0','226'
     return None, None, None
 
 
 build, outfmt, srcfile, dstfile = parse_args()
 
 try:
-    fp = open(srcfile, 'rU')
+    fp = io.open(srcfile, 'r')
 except IOError:
     sys.stderr.write("Unable to open source file '%s'\n" % srcfile)
     sys.exit(1)
@@ -85,7 +85,7 @@ if dstfile is not None:
 else:
     fp = sys.stdout
 
-legal_copyright = "Gaston90"
+legal_copyright = "Copyright Nicola Salmoria and the MAME team"
 
 if build == "mess":
     # MESS
@@ -99,25 +99,25 @@ if build == "mess":
     bundle_identifier = "org.mamedev.mess"
 elif build == "hbmame":
     # HBMAME
-    author = "Gaston90"
+    author = "Robbbert and the MAME team"
     legal_copyright = author
-    comments = "Proyecto Shadow Arcade Classic+"
+    comments = "Homebrew MAME"
     company_name = "MAME Team"
-    file_description = "PSArcade Classic+"
-    internal_name = "PSArcade Classic+"
-    original_filename = "PSArcade Classic+"
-    product_name = "PSArcade Classic+"
-    bundle_identifier = "org.mamedev.PSArcade Classic+"
+    file_description = "HBMAME"
+    internal_name = "HBMAME"
+    original_filename = "HBMAME"
+    product_name = "HBMAME"
+    bundle_identifier = "org.mamedev.hbmame"
 else:
     # MAME
     author = "Gaston90"
-    comments = "Proyecto Shadow Arcade Classic+"
+    comments = "Proyecto Shadow Arcade Forever"
     company_name = "MAME Team"
-    file_description = "PSArcade Classic+"
-    internal_name = "PSArcade Classic+"
-    original_filename = "PSArcade Classic+"
-    product_name = "PSArcade Classic+"
-    bundle_identifier = "org.mamedev.Arcade Classic+"
+    file_description = "PSArcade Forever"
+    internal_name = "PSArcade Forever"
+    original_filename = "PSArcade Forever"
+    product_name = "PSArcade Forever"
+    bundle_identifier = "org.mamedev."
 
 if outfmt == 'rc':
     fp.write('VS_VERSION_INFO VERSIONINFO\n')

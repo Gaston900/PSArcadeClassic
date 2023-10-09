@@ -119,7 +119,7 @@ static void PollGUIJoystick(void);
 static bool MameCommand(HWND hwnd,int id, HWND hwndCtl, UINT codeNotify);
 static void UpdateStatusBar(void);
 static bool TreeViewNotify(NMHDR *nm);
-static int CLIB_DECL SrcDriverDataCompareFunc(const void *arg1, const void *arg2);
+//static int CLIB_DECL SrcDriverDataCompareFunc(const void *arg1, const void *arg2);
 static void DisableSelection(void);
 static void EnableSelection(int nGame);
 static HICON GetSelectedPickItemIconSmall(void);
@@ -338,8 +338,6 @@ static bool in_emulation = false;
 static bool game_launched = false;
 /* idle work at startup */
 static bool idle_work = false;
-/* object pool in use */
-static object_pool *mameui_pool;
 static int game_index = 0;
 static int game_total = 0;
 static int oldpercent = 0;
@@ -379,7 +377,7 @@ static HDC hDC = NULL;
 static HIMAGELIST hLarge = NULL;
 static HIMAGELIST hSmall = NULL;
 static HICON hIcon = NULL;
-static int *icon_index = NULL; 	/* for custom per-game icons */
+static std::unique_ptr<int[]> icon_index; // for custom per-game icons
 
 
 static bool bklist = true; // USE_KLIST
@@ -499,7 +497,6 @@ static HIMAGELIST himl_drag = NULL;
 static int game_dragged = 0; 					/* which game started the drag */
 static HTREEITEM prev_drag_drop_target = NULL; 	/* which tree view item we're currently highlighting */
 static bool g_in_treeview_edit = false;
-static srcdriver_data_type *sorted_srcdrivers = NULL;
 
 /***************************************************************************
     Global variables
@@ -525,6 +522,35 @@ extern const wchar_t* const column_names[COLUMN_MAX] =
 /***************************************************************************
     External functions
  ***************************************************************************/
+static void load_translation(emu_options &m_options)
+{
+	util::unload_translation();
+
+	std::string name = m_options.language();
+	if (name.empty())
+		return;
+
+	strreplace(name, " ", "_");
+	strreplace(name, "(", "");
+	strreplace(name, ")", "");
+
+	// MESSUI: See if language file exists. If not, try English, see if that exists. If not, use inbuilt default.
+	emu_file file(m_options.language_path(), OPEN_FLAG_READ);
+	if (file.open(name + PATH_SEPARATOR "strings.mo"))
+	{
+		osd_printf_verbose("Error opening translation file %s\n", name);
+		name = "English";
+		if (file.open(name + PATH_SEPARATOR "strings.mo"))
+		{
+			osd_printf_verbose("Error opening translation file %s\n", name);
+			return;
+		}
+	}
+
+	osd_printf_verbose("Loading translation file %s\n", file.fullpath());
+	util::load_translation(file);
+}
+
 class mameui_output_error : public osd_output
 {
 public:
@@ -759,11 +785,6 @@ HWND GetProgressBar(void)
 	return hProgress;
 }
 
-object_pool *GetMameUIMemoryPool(void)
-{
-	return mameui_pool;
-}
-
 void GetRealColumnOrder(int order[])
 {
 	int tmpOrder[COLUMN_MAX];
@@ -876,7 +897,7 @@ HICON LoadIconFromFile(const char *iconname)
 			tmpStr = std::string(s1).append(PATH_SEPARATOR).append("icons.zip");
 			std::string tmpIcoName = std::string(iconname).append(".ico");
 
-			if (util::archive_file::open_zip(tmpStr, zip) == util::archive_file::error::NONE)
+			if (!util::archive_file::open_zip(tmpStr, zip))
 			{
 				if (zip->search(tmpIcoName, false) >= 0)
 				{
@@ -884,7 +905,7 @@ HICON LoadIconFromFile(const char *iconname)
 
 					if (bufferPtr)
 					{
-						if (zip->decompress(bufferPtr, zip->current_uncompressed_length()) == util::archive_file::error::NONE)
+						if (!zip->decompress(bufferPtr, zip->current_uncompressed_length()))
 							hIcon = FormatICOInMemoryToHICON(bufferPtr, zip->current_uncompressed_length());
 
 						free(bufferPtr);
@@ -898,7 +919,7 @@ HICON LoadIconFromFile(const char *iconname)
 				tmpStr = std::string(s1).append(PATH_SEPARATOR).append("icons.7z");
 				tmpIcoName = std::string(iconname).append(".ico");
 
-				if (util::archive_file::open_7z(tmpStr, zip) == util::archive_file::error::NONE)
+				if (!util::archive_file::open_7z(tmpStr, zip))
 				{
 					if (zip->search(tmpIcoName, false) >= 0)
 					{
@@ -906,7 +927,7 @@ HICON LoadIconFromFile(const char *iconname)
 
 						if (bufferPtr)
 						{
-							if (zip->decompress(bufferPtr, zip->current_uncompressed_length()) == util::archive_file::error::NONE)
+							if (!zip->decompress(bufferPtr, zip->current_uncompressed_length()))
 								hIcon = FormatICOInMemoryToHICON(bufferPtr, zip->current_uncompressed_length());
 
 							free(bufferPtr);
@@ -1176,28 +1197,10 @@ int GetParentRomSetIndex(const game_driver *driver)
 	return -1;
 }
 
-int GetSrcDriverIndex(const char *name)
-{
-	srcdriver_data_type *srcdriver_index_info;
-	srcdriver_data_type key;
-	key.name = name;
-
-	srcdriver_index_info = (srcdriver_data_type *)bsearch(&key, sorted_srcdrivers, driver_list::total(), sizeof(srcdriver_data_type), SrcDriverDataCompareFunc);
-
-	if (srcdriver_index_info == NULL)
-		return -1;
-
-	return srcdriver_index_info->index;
-}
 
 /***************************************************************************
     Internal functions
  ***************************************************************************/
-
-static int CLIB_DECL SrcDriverDataCompareFunc(const void *arg1, const void *arg2)
-{
-	return strcmp(((srcdriver_data_type *)arg1)->name, ((srcdriver_data_type *)arg2)->name);
-}
 
 static void SetMainTitle(void)
 {
@@ -1205,12 +1208,6 @@ static void SetMainTitle(void)
 
 	snprintf(buffer, std::size(buffer), "%s %s", MAMEUINAME, GetVersionString());
 	winui_set_window_text_utf8(hMain, buffer);
-}
-
-static void memory_error(const char *message)
-{
-	ErrorMessageBox(message);
-	exit(-1);
 }
 
 static void Win32UI_init(void)
@@ -1238,24 +1235,9 @@ static void Win32UI_init(void)
     game_count =  driver_list::total();
 
 	srand((unsigned)time(NULL));
-	// create the memory pool
-	mameui_pool = pool_alloc_lib(memory_error);
 	// custom per-game icons
-	icon_index = (int*)pool_malloc_lib(mameui_pool, sizeof(int) * driver_list::total());
-	memset(icon_index, 0, sizeof(int) * driver_list::total());
-	// sorted list of source drivers by name
-	sorted_srcdrivers = (srcdriver_data_type *) pool_malloc_lib(mameui_pool, sizeof(srcdriver_data_type) * driver_list::total());
-	memset(sorted_srcdrivers, 0, sizeof(srcdriver_data_type) * driver_list::total());
+	icon_index = make_unique_clear<int[]>(driver_list::total());
 
-	for (int i = 0; i < driver_list::total(); i++)
-	{
-		const char *driver_name = core_strdup(GetDriverFileName(i));
-		sorted_srcdrivers[i].name = driver_name;
-		sorted_srcdrivers[i].index = i;
-		driver_name = NULL;
-	}
-
-	qsort(sorted_srcdrivers, driver_list::total(), sizeof(srcdriver_data_type), SrcDriverDataCompareFunc);
 	/* initialize tab control */
 	memset(&opts, 0, sizeof(opts));
 	opts.pCallbacks = &s_tabviewCallbacks;
@@ -1469,8 +1451,6 @@ static void Win32UI_exit(void)
 	SaveGameDefaults();
 	FreeFolders();
 	FreeScreenShot();
-	pool_free_lib(mameui_pool);
-	mameui_pool = NULL;
 	DestroyWindow(hMain);
 }
 
@@ -4490,7 +4470,6 @@ static void MamePlayBackGame(void)
 
 	if (CommonFileDialog(GetOpenFileName, filename, FILETYPE_INPUT_FILES, false))
 	{
-		osd_file::error filerr;
 		wchar_t *t_filename = win_wstring_from_utf8(filename);
 		wchar_t *tempname = PathFindFileName(t_filename);
 		char *fname = win_utf8_from_wstring(tempname);
@@ -4499,9 +4478,9 @@ static void MamePlayBackGame(void)
 		free(fname);
 
 		emu_file check(GetInpDir(), OPEN_FLAG_READ);
-		filerr = check.open(name);
+		std::error_condition filerr = check.open(name);
 
-		if (filerr != osd_file::error::NONE)
+		if (filerr)
 		{
 			ErrorMessageBox("Could not open '%s' as a valid input file.", name);
 			return;

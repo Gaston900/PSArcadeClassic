@@ -53,4 +53,4 @@ ROM_END
 
 /*    YEAR    NAME        PARENT    MACHINE   INPUT                          INIT      MONITOR   COMPANY       FULLNAME FLAGS */
 // Hack/Homebrow
-GAME( 2002, twincobrhc01, twincobr, twincobr, twincobr,  twincobr_state, init_twincobr, ROT270,  "hack",       "Twin Twist (Airplane sprite change)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, twincobrhc01, twincobr, twincobr, twincobr,  twincobr_state, init_twincobr, ROT270,  "hack",       "Twin Twist (Airplane sprite change)", 0 )

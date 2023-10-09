@@ -111,11 +111,11 @@ ROM_START( vecbtime )
 ROM_END
 
 
-/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
+/*    YEAR  NAME      PARENT    MACHINE   INPUT                   INIT        MONITOR COMPANY     FULLNAME FLAGS */
 // Burnin' Rubber
-GAME( 2002, bnjr,     brubber, bnj,      bnj,   btime_state,   init_lnc,     ROT270, "DaveC",       "Bump 'n' Jump Reverse Mod", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, bnjr,     brubber,  bnj,       bnj,   btime_state,   init_lnc,     ROT270, "hack",    "Bump 'n' Jump Reverse Mod", MACHINE_SUPPORTS_SAVE )
 // Lock'n'Chase
-GAME( 1981, pnc,      lnc,     lnc,      lnc,   btime_state,   init_lnc,     ROT270, "Marks Hacks", "Pac'n'Chase", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, pnc,      lnc,      lnc,       lnc,   btime_state,   init_lnc,     ROT270, "hack",    "Pac'n'Chase", MACHINE_SUPPORTS_SAVE )
 // Burger Time
-GAME( 2002, stictime, btime,   btime,    btime, btime_state,   init_btime,   ROT270, "Marks Hacks", "Mr Sticky Time", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, vecbtime, btime,   btime,    btime, btime_state,   init_btime,   ROT270, "T-Bone",      "Burgertime (Vector sim)", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, stictime, btime,    btime,     btime, btime_state,   init_btime,   ROT270, "hack",    "Mr Sticky Time", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, vecbtime, btime,    btime,     btime, btime_state,   init_btime,   ROT270, "hack",    "Burgertime (Vector sim)", MACHINE_SUPPORTS_SAVE )

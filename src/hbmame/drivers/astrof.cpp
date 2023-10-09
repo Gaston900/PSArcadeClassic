@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
-// copyright-holders:Gaston90
+// license:BSD-3-Clause
+// copyright-holders:Robbbert
 #include "../mame/drivers/astrof.cpp"
 
- /*************
- Astro Fighter
-*****************/
+/********************
+  Hack And Homebrow
+***********************/
 
 ROM_START( astrofbl )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -20,5 +20,5 @@ ROM_START( astrofbl )
 ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
-//Astro Fighter
+// Hack/Homebrow
 GAME( 1979, astrofbl, astrof, astrof, astrof, astrof_state, empty_init, ROT90, "hack", "Astro Fighter (Black Background)", MACHINE_SUPPORTS_SAVE )

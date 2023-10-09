@@ -55,7 +55,7 @@ ROM_START( phoenixg )
 ROM_END
 
 
-/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
+/*    YEAR  NAME      PARENT    MACHINE    INPUT                    INIT     MONITOR COMPANY   FULLNAME FLAGS */
 // Phoenix
-GAME( 2000, phoenixr, phoenix, phoenix,  phoenix , phoenix_state, empty_init, ROT90, "CYBERYOGI =CO= Windler", "PhoenixR (GDR hack)", MACHINE_SUPPORTS_SAVE )
-GAME( 1980, phoenixg, phoenix, phoenix,  phoenixt, phoenix_state, empty_init, ROT90, "GreekRoms",              "Phoenix (Greek)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, phoenixr, phoenix, phoenix,  phoenix , phoenix_state, empty_init, ROT90, "hack",   "PhoenixR (GDR hack)", MACHINE_SUPPORTS_SAVE )
+GAME( 1980, phoenixg, phoenix, phoenix,  phoenixt, phoenix_state, empty_init, ROT90, "hack",   "Phoenix (Greek)", MACHINE_SUPPORTS_SAVE )

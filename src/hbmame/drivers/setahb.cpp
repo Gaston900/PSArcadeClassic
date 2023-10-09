@@ -133,7 +133,7 @@ ROM_END
 
 /*    YEAR    NAME         PARENT     MACHINE    INPUT                         INIT        MONITOR  COMPANY      FULLNAME FLAGS */
 // Hack/Homebrow
-GAME( 1992, blandiahc01,   blandia,   blandia,   blandia,   seta_state,     init_bankx1,    ROT0,   "DDJ",       "Blandia (Boss With Simple Attack Edition 2018-07-28)", MACHINE_IMPERFECT_GRAPHICS )
-GAME( 1992, blandiahc02,   blandia,   blandia,   blandia,   seta_state,     init_bankx1,    ROT0,   "DDJ",       "Blandia (Enable hidden characters)", MACHINE_IMPERFECT_GRAPHICS )
-GAME( 1992, blandiahc03,   blandia,   blandia,   blandia,   seta_state,     init_bankx1,    ROT0,   "hack",      "Blandia (Easy Move)", MACHINE_IMPERFECT_GRAPHICS )
+GAME( 1992, blandiahc01,   blandia,   blandia,   blandia,   seta_state,     init_bankx1,    ROT0,   "DDJ",       "Blandia (Boss With Simple Attack Edition 2018-07-28)", 0 )
+GAME( 1992, blandiahc02,   blandia,   blandia,   blandia,   seta_state,     init_bankx1,    ROT0,   "DDJ",       "Blandia (Enable hidden characters)", 0 )
+GAME( 1992, blandiahc03,   blandia,   blandia,   blandia,   seta_state,     init_bankx1,    ROT0,   "hack",      "Blandia (Easy Move)", 0 )
 GAME( 1993, msgundamhc01,  msgundam,  msgundam,  msgundam,  seta_state,     empty_init,     ROT0,   "DDJ",       "Mobile Suit Gundam (Easy Move)", 0 )

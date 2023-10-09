@@ -46,6 +46,6 @@ ROM_START( astrob2h ) // same as astrob2 except u2 and u4
 	ROM_LOAD( "316-0764.cpu-u15",    0x0400, 0x0020, CRC(c609b79e) SHA1(49dbcbb607079a182d7eb396c0da097166ea91c9) )
 ROM_END
 
-/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
+/*    YEAR  NAME      PARENT   MACHINE  INPUT                       INIT    MONITOR COMPANY                 FULLNAME FLAGS */
 // Astro Blaster
-GAME( 1981, astrob2h, astrob, astrob, astrob2, segag80r_state, init_astrob, ROT270, "Clay Cowgill", "Astro Blaster (ver 2 Hack)", 0 )
+GAME( 1981, astrob2h, astrob, astrob, astrob2, segag80r_state, init_astrob, ROT270, "hack", "Astro Blaster (ver 2 Hack)", 0 )

@@ -119,4 +119,4 @@ ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
 // Salamander
-GAME( 2007, spclone,  salamand, salamand, lifefrcj, nemesis_state, empty_init, ROT0, "Konami", "Salamander (version YY 0.7.3) ", MACHINE_NO_COCKTAIL | MACHINE_SUPPORTS_SAVE )
+GAME( 2007, spclone,  salamand, salamand, lifefrcj, nemesis_state, empty_init, ROT0, "Konami", "Salamander (version YY 0.7.3) ", MACHINE_SUPPORTS_SAVE )

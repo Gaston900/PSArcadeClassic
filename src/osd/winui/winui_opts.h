@@ -197,8 +197,8 @@ public:
 	void play_time(int index, int val)  { assert(0 <= index && index < driver_list::total()); m_list[index].play_time = val; }
 
 	void add_entries(void);
-	osd_file::error load_options(const std::string &filename);
-	osd_file::error save_options(const std::string &filename);
+	std::error_condition load_options(const std::string &filename);
+	std::error_condition save_options(const std::string &filename);
 	void load_settings(void);
 	void save_settings(void);
 	void load_settings(const char *str, int index);

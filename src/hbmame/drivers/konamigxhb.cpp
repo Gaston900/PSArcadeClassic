@@ -140,7 +140,7 @@ ROM_END
 
 /*    YEAR    NAME         PARENT    MACHINE      INPUT                       INIT      MONITOR   COMPANY       FULLNAME FLAGS */
 // Hack/Homebrow
-GAME( 1995, dragoonahc01,  dragoona, dragoonj,  dragoonj, konamigx_state, init_posthack, ROT0,    "DDJ",        "Dragoon Might (Enable Hidden Character)", 0 )
-GAME( 1995, dragoonahc02,  dragoona, dragoonj,  dragoonj, konamigx_state, init_posthack, ROT0,    "DDJ",        "Dragoon Might (Always Have Super Move)", 0 )
-GAME( 1995, dragoonahc03,  dragoona, dragoonj,  dragoonj, konamigx_state, init_posthack, ROT0,    "DDJ",        "Dragoon Might (Easy Move)", 0 )
-GAME( 2018, dragoonahc04,  dragoona, dragoonj,  dragoonj, konamigx_state, init_posthack, ROT0,    "hack",       "Dragoon Might (Ex Super Version 2018-03-04)", 0 )
+GAME( 1995, dragoonahc01,  dragoona, dragoonj,  dragoonj, konamigx_state, init_posthack, ROT0,    "hack",        "Dragoon Might (Enable Hidden Character)", 0 )
+GAME( 1995, dragoonahc02,  dragoona, dragoonj,  dragoonj, konamigx_state, init_posthack, ROT0,    "hack",        "Dragoon Might (Always Have Super Move)", 0 )
+GAME( 1995, dragoonahc03,  dragoona, dragoonj,  dragoonj, konamigx_state, init_posthack, ROT0,    "hack",        "Dragoon Might (Easy Move)", 0 )
+GAME( 2018, dragoonahc04,  dragoona, dragoonj,  dragoonj, konamigx_state, init_posthack, ROT0,    "hack",        "Dragoon Might (Ex Super Version 2018-03-04)", 0 )

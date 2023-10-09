@@ -79,7 +79,7 @@ enum
 	FOLDER_KONAMI,		
 	FOLDER_SEGA,	
 	FOLDER_CAVE,
-//#endif	
+//#endif
 	MAX_FOLDERS
 };
 

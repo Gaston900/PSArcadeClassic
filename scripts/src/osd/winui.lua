@@ -61,6 +61,8 @@ function maintargetosdoptions(_target,_subtarget)
 		"ole32",
 		"shell32",
 		"uxtheme",
+		"uuid",
+		"shlwapi",
 	}
 
 	override_resources = true;
@@ -241,6 +243,7 @@ project ("osd_" .. _OPTIONS["osd"])
 		MAME_DIR .. "src/osd/winui/directories.h",
 		MAME_DIR .. "src/osd/winui/dxdecode.cpp",
 --		MAME_DIR .. "src/osd/winui/emu_opts.cpp",
+		MAME_DIR .. "src/osd/winui/main.cpp",
 		MAME_DIR .. "src/osd/winui/picker.cpp",
 		MAME_DIR .. "src/osd/winui/picker.h",
 		MAME_DIR .. "src/osd/winui/properties.cpp",
@@ -305,7 +308,6 @@ project ("ocore_" .. _OPTIONS["osd"])
 		MAME_DIR .. "src/osd/strconv.h",
 		MAME_DIR .. "src/osd/osdsync.cpp",
 		MAME_DIR .. "src/osd/osdsync.h",
-		MAME_DIR .. "src/osd/windows/main.cpp",
 		MAME_DIR .. "src/osd/windows/winutf8.cpp",
 		MAME_DIR .. "src/osd/windows/winutf8.h",
 		MAME_DIR .. "src/osd/windows/winutil.cpp",

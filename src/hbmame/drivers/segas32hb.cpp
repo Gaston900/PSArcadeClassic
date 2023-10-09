@@ -35,4 +35,4 @@ ROM_END
 
 /*    YEAR    NAME       PARENT   MACHINE            INPUT                           INIT      MONITOR   COMPANY       FULLNAME FLAGS */
 // Hack/Homebrow
-GAME( 1992, brivalhc01,  brival,  sega_system32_4p,  brival,   segas32_new_state, init_brival,   ROT0,   "DDJ",        "Burning Rival (Easy Move)", MACHINE_IMPERFECT_GRAPHICS )
+GAME( 1992, brivalhc01,  brival,  sega_system32_4p,  brival,   segas32_new_state, init_brival,   ROT0,   "DDJ",        "Burning Rival (Easy Move)", 0 )

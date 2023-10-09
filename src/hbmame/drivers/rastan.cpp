@@ -118,9 +118,9 @@ ROM_START( rastaneh )
 	ROM_LOAD( "b04-20.76", 0x0000, 0x10000, CRC(fd1a34cc) SHA1(b1682959521fa295769207b75cf7d839e9ec95fd) )
 ROM_END
 
-/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
+/*    YEAR  NAME      PARENT   MACHINE  INPUT                    INIT   MONITOR COMPANY       FULLNAME FLAGS */
 // KiKi KaiKai
-GAME( 2000, rastwack, rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "Vogel",       "Wacky Rastan", MACHINE_SUPPORTS_SAVE )
-GAME( 2001, rastandh, rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "Neil Pearce", "Rastan (2X Eenemy Edition)", MACHINE_SUPPORTS_SAVE )
-GAME( 2001, rastand2, rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "Neil Pearce", "Rastan (Zinc Children's Edition)", MACHINE_SUPPORTS_SAVE )
-GAME( 2001, rastaneh, rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "Neil Pearce", "Rastan (Ex Super Version)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, rastwack, rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "hack",       "Wacky Rastan", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, rastandh, rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "hack",       "Rastan (2X Eenemy Edition)", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, rastand2, rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "hack",       "Rastan (Zinc Children's Edition)", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, rastaneh, rastan, rastan, rastsaga, rastan_state, empty_init, ROT0, "hack",       "Rastan (Ex Super Version)", MACHINE_SUPPORTS_SAVE )

@@ -2621,6 +2621,25 @@ ROM_START( ms2600a )
 	PACMAN_PROMS
 ROM_END
 
+ROM_START( pacjrz80 )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "pacjrz80.1",   0x0000, 0x1000, CRC(8e190242) SHA1(3c6e540153c16f347993d78202a4a3e18dc5959b) )
+	ROM_LOAD( "pacjrz80.2",   0x1000, 0x1000, CRC(cdd466b5) SHA1(40d626adb177936143edfb91e5692ace30d564d7) )
+	ROM_LOAD( "pacjrz80.3",   0x2000, 0x1000, CRC(2b9cbba9) SHA1(578dba7faa2b960cde98f6a29534767cdb08ea1b) )
+	ROM_LOAD( "pacjrz80.4",   0x3000, 0x1000, CRC(c9010e06) SHA1(d9adb93323afacada3f691a83f00db8634ff4f33) )
+	ROM_LOAD( "pacjrz80.5",   0x8000, 0x1000, CRC(0c4c5d36) SHA1(064581261d308a27be296687d46ae998a0940a02) )
+	ROM_LOAD( "pacjrz80.6",   0x9000, 0x1000, CRC(064b1545) SHA1(1faf68504d9a28c9354ce6d6a2960904e34e3bf4) )
+
+	ROM_REGION( 0x2000, "gfx1", 0 )
+	ROM_LOAD( "pacjrz80.5e",  0x0000, 0x1000, CRC(235981d7) SHA1(fcbaf52c3c927db3f3e6d1754011b2904250cb82) )
+	ROM_LOAD( "pacjrz80.5f",  0x1000, 0x1000, CRC(a822eb36) SHA1(1b947db8da41fcb05fe0a04e203e06579e2800dd) )
+
+	ROM_REGION( 0x0120, "proms", 0 )
+	ROM_LOAD( "pacjrz80.7f",  0x0000, 0x0020, CRC(b4da2d20) SHA1(798754da11341a21eafcffe55eba0861f04a4074) )
+	ROM_LOAD( "pacjrz80.4a",  0x0020, 0x0100, CRC(2b7d3ac6) SHA1(9529a6d8c5d299919230ee40bdf00aba8f85c2b9) )
+
+	PACMAN_SOUND_PROMS
+ROM_END
 
 /*************************************
  *
@@ -2747,8 +2766,8 @@ GAME( 2000, faststrm, mspacman, woodpek,  mspacpls, puckman_state, empty_init,  
 GAME( 2000, fstmsatk, mspacman, woodpek,  mspacpls, puckman_state, empty_init,  ROT90, "[Midway]", "Ms. Pacman Attack [f]", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, heartbn2, mspacman, woodpek,  mspacman, puckman_state, empty_init,  ROT90, "PacHack", "Ms. Heart Burn", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, heartbrn, mspacman, woodpek,  mspacman, puckman_state, empty_init,  ROT90, "TwoBit Score", "Ms. Heart Burn (set 2)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, msatk2ad, mspacman, woodpek,  mspacpls, puckman_state, empty_init,  ROT90, "[Midway]", "Ms. Pacman Plus / Attack After Dark [c]", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, manpac,   mspacman, woodpek,  mspacpls, puckman_state, empty_init,  ROT90, "Mr McScrewup", "Man-Pac", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, msatk2ad, mspacman, woodpek,  mspacpls, puckman_state, empty_init,  ROT90, "[Midway]", "Ms. Pacman Plus / Attack After Dark [c]", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, msatkad,  mspacman, woodpek,  mspacpls, puckman_state, empty_init,  ROT90, "[Midway]", "Ms. Pacman Plus After Dark [c]", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, msdstorm, mspacman, woodpek,  mspacman, puckman_state, empty_init,  ROT90, "Mike Naylor", "Ms. Desert Storm", MACHINE_SUPPORTS_SAVE )
 GAME( 2000, mshangly, mspacman, woodpek,  mspacman, puckman_state, empty_init,  ROT90, "[Midway]", "Ms. Hangly Man", MACHINE_SUPPORTS_SAVE )
@@ -2797,9 +2816,10 @@ GAME( 2018, mspacmadp,   mspacman, woodpek,  mspacman, puckman_state, empty_init
 GAME( 2018, mspacatttur, mspacman, woodpek,  mspacman, puckman_state, empty_init,  ROT90, "MamePlus", "Ms. Pac Attack Plus Turbo", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mspacii2,    mspacman, woodpek,  mspacman, puckman_state, empty_init,  ROT90, "MamePlus", "Ms. Pacman (Pink Plus)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, ms2600a,     mspacman, woodpek,  mspacman, puckman_state, empty_init,  ROT90, "MamePlus", "Ms. Pacman (Atari look)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, pacjrz80,    mspacman, woodpek,  mspacman, puckman_state, empty_init,  ROT90, "Pookin", "Pac-Jr on Pacman Hardware", MACHINE_SUPPORTS_SAVE )
 
 
-
+#if 0
 // LOST ROMS - Crazy Otto - Below is the official list of Crazy Otto & Super Pacman roms with their hashes, and the supplied documentation
 //             All roms with names beginning with "otto" or "sp4" are missing.
 
@@ -2966,6 +2986,7 @@ GAME( 1981, otto1020, otto1012, otto1012, mspacman, puckman_state, empty_init,  
 GAME( 1981, otto1029, otto1012, otto1012, mspacman, puckman_state, init_otto1029, ROT90,  "General Computer", "Crazy Otto (prototype of 29 Oct 1981)", MACHINE_SUPPORTS_SAVE )
 GAME( 1981, sp4n1029, otto1012, otto1012, mspacman, puckman_state, init_otto1029, ROT90,  "General Computer", "Super Pac-Man (prototype of 29 Oct 1981 with Crazy Otto monsters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1981, sp4o1029, otto1012, otto1012, mspacman, puckman_state, init_otto1029, ROT90,  "General Computer", "Super Pac-Man (prototype of 29 Oct 1981 with Pac-Man monsters)", MACHINE_SUPPORTS_SAVE )
+#endif
 
 ROM_START( mspacmab2 )
 	ROM_REGION( 0x10000, "maincpu", 0 )

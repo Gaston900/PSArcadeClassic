@@ -10232,6 +10232,7 @@ cannonb2                        // (c) 1985 TV Game Gruenberg
 cannonb3                        // (c) 1985 Soft
 ccboot                          // bootleg
 ccboot2                         // bootleg
+ccbootmm                        // ManilaMatic bootleg
 ccbootmr                        // Model Racing bootleg
 cclimber                        // (c) 1980 Nichibutsu
 cclimbera                       // (c) 1980 Nichibutsu
@@ -11119,6 +11120,7 @@ strideruc                       // conversion
 unsquad                         // 8/1989 (c) 1989 (USA)
 varth                           // 14/07/1992 (c) 1992 (World)
 varthb2                         // bootleg
+varthb3                         // bootleg
 varthj                          // 14/07/1992 (c) 1992 (Japan)
 varthjr                         // 14/07/1992 (c) 1992 (Japan)
 varthr1                         // 12/06/1992 (c) 1992 (World)
@@ -12225,6 +12227,7 @@ baddudes                        // EI (c) 1988 Data East USA (US)
 bandit                          // (c) 1989 Data East USA (US)
 birdtry                         // EK (c) 1988 Data East Corporation (Japan)
 birdtrya                        // EK (c) 1988 Data East Corporation (Japan)
+birdtryb                        // EK (c) 1988 Data East Corporation (Japan)
 bouldash                        // (c) 1990 Data East Corporation (World)
 bouldashj                       // (c) 1990 Data East Corporation (Japan)
 drgninja                        // EG (c) 1988 Data East Corporation (Japan)
@@ -14515,6 +14518,7 @@ wrally2a                        // (c) 1995 - Ref 950510
 
 @source:gaelco3d.cpp
 footbpow                        // (c) 1999 - Ref 000208
+footbpow11                      // (c) 1999 - Ref 980512 (main) + 000208 (ROMs)
 radikalb                        // (c) 1998 - Ref ???
 radikalba                       // (c) 1998 - Ref ???
 speedup                         // (c) 1996 - Ref 961022 (main) + 961029 (ROMs)
@@ -15748,6 +15752,7 @@ wupndownd                       // (c) 1998, Video Klein
 @source:goldstar.cpp
 3cdpoker                        // hack?
 3cdpokera                       // hack?
+animalw                         // bootleg
 aplan                           // bootleg (WeaShing)
 bingowng                        // (c) 1993 Wing Co. Ltd
 bingownga                       // (c) 1993 Wing Co. Ltd
@@ -15795,6 +15800,8 @@ cmpacmanb                       //
 cmtetris                        //
 cmtetrsa                        //
 cmtetrsb                        //
+cmtetrsc                        //
+cmtetrsd                        //
 cmv4                            // (c) 1992 Dyna Electronics
 cmv4a                           // (c) 1992 Dyna Electronics
 cmv801                          // (c) 198? Corsica
@@ -15822,6 +15829,7 @@ ladylinrb                       // (c) 198? TAB Austria
 ladylinrc                       // (c) 198? TAB Austria
 ladylinrd                       // (c) 198? TAB Austria
 ladylinre                       // (c) 198? TAB Austria
+ll3                             // bootleg
 lucky8                          // (c) 1989 Wing Co. Ltd
 lucky8a                         // (c) 1989 Wing Co. Ltd
 lucky8b                         // (c) 1989 Wing Co. Ltd
@@ -20465,7 +20473,9 @@ lviv                            // Lviv/L'vov
 
 @source:lwings.cpp
 avengers                        // 2/1987 (c) 1987 (US)
-avengers2                       // 2/1987 (c) 1987 (US)
+avengersa                       // 2/1987 (c) 1987 (US)
+avengersb                       // 2/1987 (c) 1987 (US)
+avengersc                       // 2/1987 (c) 1987 (US)
 buraiken                        // 2/1987 (c) 1987 (Japan)
 buraikenb                       // 2/1987 (c) 1987 (Japan)
 fball                           //
@@ -23852,7 +23862,8 @@ term2la3                        // (c) 1992 Midway
 term2lg1                        // (c) 1992 Midway
 term2pa2                        // (c) 1992 Midway
 totcarn                         // (c) 1992 Midway
-totcarnp                        // (c) 1992 Midway
+totcarnp1                       // (c) 1992 Midway
+totcarnp2                       // (c) 1992 Midway
 trog                            // (c) 1990 Midway (rev LA5 3/29/91)
 trog3                           // (c) 1990 Midway (rev LA3 2/14/91)
 trog3a                          // (c) 1990 Midway (rev LA3 2/10/91)
@@ -23875,7 +23886,7 @@ mk4a                            // (c) 1997 Midway (v2.1)
 mk4b                            // (c) 1997 Midway (v1.0)
 thegrid                         // (c) 2001 Midway (v1.2) Latest offical release
 thegrida                        // (c) 2001 Midway (v1.1)
-
+thegridb                        // (c) 2001 Midway (v1.01)
 @source:mightyframe.cpp
 mightyframe                     // Convergent
 
@@ -24002,6 +24013,7 @@ dokaben                         // 3/1989 (c) 1989 Capcom (Japan)
 dokaben2                        // ?/1989 (c) 1989 Capcom (Japan)
 hatena                          // 28/02/1990 (QUIZ 2) (c) 1990 Capcom (Japan)
 marukin                         // 17/10/1990 (c) 1990 Yuga (Japan)
+marukina                        // 28/11/1991 (c) 1990 Yuga (Japan)
 mgakuen                         // (c) 1988 Yuga
 mgakuen2                        // (c) 1989 Face
 mstworld                        // (c) 1994
@@ -24133,6 +24145,7 @@ lastbrnx                        // 1996.06 Last Bronx (Export, Revision A)
 lastbrnxj                       // 1996.06 Last Bronx (Japan, Revision A)
 lastbrnxu                       // 1996.06 Last Bronx (USA, Revision A)
 manxtt                          // 1995.11 Manx T.T. DX (Revision D)
+manxtta                         // 1995.?? Manx T.T. (Revision A)
 manxttc                         // 1995.11 Manx T.T. (Revision C)
 motoraid                        // 1997.10 Motor Raid Twin
 motoraiddx                      // 1997.10 Motor Raid DX
@@ -32493,6 +32506,7 @@ dragntr3                        // 2005.11 Dragon Treasure 3 (Rev A)
 drbyocwa                        // 2001.?? Derby Owners Club World Edition (Rev A)
 drbyocwb                        // 2001.?? Derby Owners Club World Edition (Rev B)
 drbyocwc                        // 2001.?? Derby Owners Club World Edition (Rev C)
+drbyocwt                        // 2001.?? Derby Owners Club World Edition (Rev T)
 dybb99                          // 1999.11 Dynamite Baseball '99 (Rev B)
 dybbnao                         // 1998.12 Dynamite Baseball NAOMI
 dygolf                          // 2001.04.27 Dynamic Golf / Virtua Golf (Rev A)
@@ -33892,6 +33906,7 @@ wondstcka                       // (c) ???? Yun Sung
 
 @source:nmk16.cpp
 acrobatm                        // UPL-91073 (c) 1991 UPL + Taito license
+acrobatmbl                      // bootleg
 airattck                        // (c) 1996 Comad
 airattcka                       // (c) 1996 Comad
 arcadian                        // (c) 1994 NMK
@@ -38268,6 +38283,7 @@ scyclone                        // (c) 1980 Taito Corporation
 @source:sderby.cpp
 croupier                        // (c) 1997 Playmark
 croupiera                       // (c) 1997 Playmark
+croupierb                       // (c) 1997 Playmark
 luckboom                        //
 magictch                        //
 sderby                          // (c) 1996
@@ -39104,6 +39120,7 @@ sokonuke                        // (c) 1995 Sammy Industries
 stg                             // (c) 1991 Athena / Tecmo
 superbar                        // (c) 1994 Promat (not genuine seta hardware, but based on thunderl code)
 thunderl                        // (c) 1990 Seta + Romstar or Visco license (DSW)
+thunderla                       // (c) 1990 Seta + Romstar or Visco license (DSW)
 thunderlbl                      // (c) 1991 Hyogo bootleg with Tetris sound
 thunderlbl2                     // (c) 1990 bootleg with Tetris sound
 tndrcade                        // UA-0 (c) 1987 Taito
@@ -43667,6 +43684,7 @@ wackygtr                        // Wacky Gator
 @source:wallc.cpp
 brkblast                        // bootleg (Fadesa)
 sidampkr                        //
+sidampkra                       //
 unkitpkr                        //
 wallc                           // (c) 1984 Midcoin
 wallca                          // (c) 1984 Midcoin

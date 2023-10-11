@@ -194,7 +194,7 @@
   Also there are some other calls to the same range, that also lack of code.
 
 
-  * Tetris + Cherry Master (+K, Canada Version, encrypted) (cmtetrsb)
+  * Tetris + Cherry Master (+K, Canada Version, encrypted) (cmtetrisb)
 
   Start the game and you can find some garbage due to wrong graphics banks.
   Press the key "insert" to throttle the game. Keep the key pressed till
@@ -10643,8 +10643,8 @@ ROM_END
 /*
   Channel Three
   Seems a modded version of Cherry Master.
-
-*/ROM_START( chthree )
+*/
+ROM_START( chthree )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "1.u40",   0x0000, 0x8000, CRC(3d677758) SHA1(d2d13e54d3b55460a05b0ca42e12d8a6d72954ba) ) // 1ST AND 2ND HALF IDENTICAL
 	ROM_IGNORE(0x8000)
@@ -11556,6 +11556,32 @@ ROM_START( cmasterk )
 	ROM_LOAD( "prom3.u46", 0x0000, 0x0100, CRC(50ec383b) SHA1(ae95b92bd3946b40134bcdc22708d5c6b0f4c23e) )
 ROM_END
 
+ROM_START( srmagic )
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "real magic.u81", 0x00000, 0x10000, CRC(93ef9f6a) SHA1(ad482b5df9de02a245567642d20f51da2ec2dfed) )
+
+	ROM_REGION( 0x18000, "gfx1", 0 )
+	ROM_LOAD( "7.u16", 0x00000, 0x8000, CRC(a88e5ba1) SHA1(571658a50dd7dafdaf3eeb18a5153b014ee9f837) )
+	ROM_LOAD( "6.u11", 0x08000, 0x8000, CRC(ca6578e7) SHA1(a33fe55f51b15850bef507d36192707c0959f708) )
+	ROM_LOAD( "5.u4",  0x10000, 0x8000, CRC(5227ccd6) SHA1(16b31977782e14aa9757cc99bf21a95ffdae3d25) )
+
+	ROM_REGION( 0x8000, "gfx2", 0 )
+	ROM_LOAD( "4.u15", 0x0000, 0x2000, CRC(1df9ffa7) SHA1(851f32c369e7879c2054399a820463d84007bc1c) ) // 1xxxxxxxxxxxx = 0x00
+	ROM_LOAD( "3.u10", 0x2000, 0x2000, CRC(123ccb63) SHA1(c23391a1fb70a8122eee48b8ea6300a058da98d5) ) // 1xxxxxxxxxxxx = 0x00
+	ROM_LOAD( "2.u14", 0x4000, 0x2000, CRC(fdaeb68f) SHA1(f41e54d43cb73c7e9ae99e78043a7df4958cb8ce) ) // 1xxxxxxxxxxxx = 0x00
+	ROM_LOAD( "1.u9",  0x6000, 0x2000, CRC(768d2483) SHA1(ac7f02b26d12363281cb65b74577a8fc1d68c35b) ) // 1xxxxxxxxxxxx = 0x00
+
+	ROM_REGION( 0x10000, "user1", 0 )
+	ROM_LOAD( "8.u13", 0x00000, 0x10000, CRC(e92443d3) SHA1(4b6ca4521841610054165f085ae05510e77af191) )
+
+	ROM_REGION( 0x200, "proms", 0 )
+	ROM_LOAD( "82s129.u84", 0x000, 0x100, CRC(208727e7) SHA1(7c868b06da03fe95266555775b8185d38e25ce3f) )
+	ROM_LOAD( "82s129.u79", 0x100, 0x100, CRC(01349092) SHA1(cd2910f7d842f37db35ad25414536a8c49a85293) )
+
+	ROM_REGION( 0x100, "proms2", 0 )
+	ROM_LOAD( "82s129.u46", 0x000, 0x100, CRC(50ec383b) SHA1(ae95b92bd3946b40134bcdc22708d5c6b0f4c23e) )
+ROM_END
+
 ROM_START( ll3 ) // WANG QL-1  V3.03 string
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "min bet 8.u1", 0x00000, 0x10000, CRC(f19d0af3) SHA1(deefe5782213d60d8d0aae6826aa6a0109925289) ) // on sub PCB
@@ -11821,6 +11847,36 @@ ROM_START( tonypok )
 
 	ROM_REGION( 0x100, "proms2", 0 )
 	ROM_LOAD( "82s129.u46", 0x0000, 0x0100, CRC(50ec383b) SHA1(ae95b92bd3946b40134bcdc22708d5c6b0f4c23e) )
+ROM_END
+
+ROM_START( cmfb55 ) // uses same GFX as pkrmast
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "cherry master dyna plus v9.0. jackpot 9000.n3", 0x3000, 0x1000, CRC(875bc881) SHA1(c4b59442f6c55e37672d9b80712125042408d541) )
+	ROM_CONTINUE(                                              0x6000, 0x1000)
+	ROM_CONTINUE(                                              0x4000, 0x1000)
+	ROM_CONTINUE(                                              0x1000, 0x1000)
+	ROM_CONTINUE(                                              0x0000, 0x1000)
+	ROM_CONTINUE(                                              0x2000, 0x1000)
+	ROM_CONTINUE(                                              0x7000, 0x1000)
+	ROM_CONTINUE(                                              0x5000, 0x1000)
+
+	ROM_REGION( 0x20000, "gfx1", 0 ) // tiles
+	ROM_LOAD( "cherry master f-3.f3", 0x00000,  0x20000, CRC(ed0dfbfe) SHA1(c3a5b68e821461b161293eaec1515e2b0f26c4f9) )
+
+	ROM_REGION( 0x10000, "gfx2", 0 ) // reels
+	ROM_LOAD( "cherry master h-3.3h", 0x00000,  0x10000, CRC(4c42f829) SHA1(110f7b7cd186d0e56ae822709ad42db70a3d0788) )
+
+	ROM_REGION( 0x10000, "user1", 0 )
+	ROM_LOAD( "c.m.89-005-8.j6",  0x0000, 0x10000, CRC(e92443d3) SHA1(4b6ca4521841610054165f085ae05510e77af191) )
+
+	ROM_REGION( 0x10000, "palette_rom", 0 )
+	ROM_LOAD( "cherry master n-5.n5", 0x00000, 0x10000, CRC(2ae7f151) SHA1(b41ec09fddf51895dfcca461d9b0ddb1cdb72506) ) // this uses a big ROM containing the data for the usual PROMs
+
+	ROM_REGION( 0x200, "proms", ROMREGION_ERASE00 )
+	// filled at init from the "palette_rom" region
+
+	ROM_REGION( 0x100, "proms2", 0 )
+	ROM_COPY( "palette_rom", 0x1000, 0x0000, 0x0100 )
 ROM_END
 
 // the program roms on these are scrambled
@@ -16949,7 +17005,6 @@ ROM_START( bonusch )
 	ROM_LOAD( "tbp24s10.4e", 0x0000, 0x0100, CRC(06fa2649) SHA1(b2f17d37826317ccad19d535cd5afeedb143778b) )
 	ROM_LOAD( "tbp24s10.4f", 0x0100, 0x0100, CRC(38000593) SHA1(e0113590cb2dc338d61ae2e7e92b1046c5c2d19f) )
 	ROM_LOAD( "tbp24s10.4h", 0x0200, 0x0100, CRC(cbf0062d) SHA1(f49dfca34d2eb86b5ff16872fab23d3e3a10be9a) )
-
 ROM_END
 
 /*
@@ -17268,7 +17323,7 @@ ROM_END
   PPI pin 19 (PB1), to switch to Cherry Master game.
 
 */
-ROM_START( cmtetrsa )
+ROM_START( cmtetrisa )
 	ROM_REGION( 0x20000, "maincpu", 0 )
 	ROM_LOAD( "cm89-tetri-9.u81",  0x10000,  0x10000, CRC(75e0c101) SHA1(6dc4f7c43f0f4e21d621f3c42cb1709d6b730c53) )
 	ROM_COPY( "maincpu", 0x1c000, 0x0000, 0x0800 )      /* src-dest-size */ // #01
@@ -17366,7 +17421,7 @@ ROM_END
   Need proper implementation.
 
 */
-ROM_START( cmtetrsb )
+ROM_START( cmtetrisb )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "9__canada_daughterboard.bin",  0x0000,  0x10000, CRC(9810b853) SHA1(cf1216414f93cc78c7c9e5a3998e8b162692e05e) )
 
@@ -17394,7 +17449,7 @@ ROM_START( cmtetrsb )
 ROM_END
 
 
-ROM_START( cmtetrsc ) // this set uses a standard Z80 + an Altera EPM7032LC
+ROM_START( cmtetrisc ) // this set uses a standard Z80 + an Altera EPM7032LC
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "sub-pcb.bin", 0x00000, 0x10000, CRC(8e19fec2) SHA1(796746f8b4715b7a1c6324d7f9ff288aa7367026) )
 
@@ -17421,7 +17476,7 @@ ROM_START( cmtetrsc ) // this set uses a standard Z80 + an Altera EPM7032LC
 ROM_END
 
 
-ROM_START( cmtetrsd ) // this set uses a standard Z80 + PLDs
+ROM_START( cmtetrisd ) // this set uses a standard Z80 + PLDs
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "u81", 0x00000, 0x10000, CRC(7e16563b) SHA1(64b1f61e6203d39eb4c1e9876a34a2b67b57ed45) )
 
@@ -17888,7 +17943,6 @@ ROM_START( fl7_3121 )  // Red, White & Blue 7's + Hollywood Nights. Serial 7D063
 
 	ROM_REGION(0x8, "fl7w4_id", 0)     /* Electronic Serial DS2401 */
 	ROM_LOAD( "ds2401.bin", 0x0000, 0x0008, CRC(b7078792) SHA1(f9eba1587b65ed9bc07ea6c4b2d393fb43f60659) ) // Hand built to match our ROM set
-
 ROM_END
 
 /*
@@ -17919,7 +17973,6 @@ ROM_START( fl7_50 )  // Serial 00000069A1C9.
 
 	ROM_REGION(0x8, "fl7w4_id", 0)     /* Electronic Serial */
 	ROM_LOAD( "eserial.bin", 0x0000, 0x0008, NO_DUMP ) // Hand built to match our ROM set
-
 ROM_END
 
 
@@ -17951,7 +18004,6 @@ ROM_START( fl7_500 )  // Serial 000000125873.
 
 	ROM_REGION(0x8, "fl7w4_id", 0)     /* Electronic Serial */
 	ROM_LOAD( "eserial.bin",  0x0000, 0x0008, NO_DUMP ) // Hand built to match our ROM set
-
 ROM_END
 
 
@@ -17983,7 +18035,6 @@ ROM_START( fl7_2000 )  // Serial 00000063A47F.
 
 	ROM_REGION(0x8, "fl7w4_id", 0)     /* Electronic Serial */
 	ROM_LOAD( "eserial.bin", 0x0000, 0x0008, NO_DUMP ) // Hand built to match our ROM set
-
 ROM_END
 
 
@@ -18015,7 +18066,6 @@ ROM_START( fl7_2k16 )  // Serial 000000743111.
 
 	ROM_REGION(0x8, "fl7w4_id", 0)     /* Electronic Serial */
 	ROM_LOAD( "eserial.bin", 0x0000, 0x0008, NO_DUMP ) // Hand built to match our ROM set
-
 ROM_END
 
 
@@ -18046,7 +18096,6 @@ ROM_START( fl7_tw )  // Serial 00000050E9B7.
 
 	ROM_REGION(0x8, "fl7w4_id", 0)     /* Electronic Serial */
 	ROM_LOAD( "eserial.bin", 0x0000, 0x0008, NO_DUMP ) // Hand built to match our ROM set
-
 ROM_END
 
 
@@ -20041,15 +20090,15 @@ GAME( 200?, ss2001,    0,        ss2001,   cmaster,   cmaster_state,  empty_init
 /* Stealth sets.
    These have hidden games inside that can be switched to avoid inspections, police or whatever purposes)... */
 
-/*    YEAR  NAME        PARENT    MACHINE    INPUT     STATE           INIT            ROT   COMPANY                FULLNAME                                                                    FLAGS                                           LAYOUT    */
+/*    YEAR  NAME        PARENT    MACHINE    INPUT     STATE           INIT            ROT   COMPANY                    FULLNAME                                                                    FLAGS                                           LAYOUT    */
 GAMEL( 198?, cmpacman,  0,        cm,        cmpacman, cmaster_state,  init_cm,        ROT0, "<unknown>",               "Super Pacman (v1.2) + Cherry Master (Corsica, v8.31, unencrypted, set 1)", 0,                                              layout_cmpacman ) // need to press K to switch between games...
 GAMEL( 198?, cmpacmana, cmpacman, cm,        cmpacman, cmaster_state,  init_cm,        ROT0, "<unknown>",               "Super Pacman (v1.2) + Cherry Master (Corsica, v8.31, unencrypted, set 2)", 0,                                              layout_cmpacman ) // need to press K to switch between games...
 GAMEL( 198?, cmpacmanb, cmpacman, cm,        cmpacman, cmaster_state,  init_cmpacmanb, ROT0, "<unknown>",               "Super Pacman (v1.2) + Cherry Master (Corsica, v8.31, encrypted)",          0,                                              layout_cmpacman ) // need to press K to switch between games...
 GAMEL( 198?, cmtetris,  0,        cm,        cmtetris, cmaster_state,  init_cm,        ROT0, "<unknown>",               "Tetris + Cherry Master (Corsica, v8.01, unencrypted, set 1)",              0,                                              layout_cmpacman ) // need to press K/L to switch between games...
-GAMEL( 198?, cmtetrsa,  0,        cm,        cmtetris, cmaster_state,  init_cm,        ROT0, "<unknown>",               "Tetris + Cherry Master (Corsica, v8.01, unencrypted, set 2)",              0,                                              layout_cmpacman )
-GAMEL( 198?, cmtetrsb,  0,        cm,        cmtetris, cmaster_state,  init_cm,        ROT0, "<unknown>",               "Tetris + Cherry Master (+K, Canada Version, encrypted)",                   MACHINE_NOT_WORKING,                            layout_cmpacman ) // different Tetris game. press insert to throttle and see the attract running.
-GAMEL( 198?, cmtetrsc,  0,        cm,        cmtetris, cmaster_state,  init_cmtetrsc,  ROT0, "<unknown>",               "Tetris + Cherry Master (Corsica, v8.01, encrypted)",                       0,                                              layout_cmpacman )
-GAMEL( 198?, cmtetrsd,  0,        cm,        cmtetris, cmaster_state,  init_cmtetrsd,  ROT0, "bootleg (Aidonis Games)", "Tetris + Cherry Master (Aidonis Games bootleg)",                           0,                                              layout_cmpacman ) // seems to have been hacked to run the slot game as default, see 0x8ba8
+GAMEL( 198?, cmtetrisa, cmtetris, cm,        cmtetris, cmaster_state,  init_cm,        ROT0, "<unknown>",               "Tetris + Cherry Master (Corsica, v8.01, unencrypted, set 2)",              0,                                              layout_cmpacman )
+GAMEL( 198?, cmtetrisb, cmtetris, cm,        cmtetris, cmaster_state,  init_cm,        ROT0, "<unknown>",               "Tetris + Cherry Master (+K, Canada Version, encrypted)",                   MACHINE_NOT_WORKING,                            layout_cmpacman ) // different Tetris game. press insert to throttle and see the attract running.
+GAMEL( 198?, cmtetrisc, cmtetris, cm,        cmtetris, cmaster_state,  init_cmtetrsc,  ROT0, "<unknown>",               "Tetris + Cherry Master (Corsica, v8.01, encrypted)",                       0,                                              layout_cmpacman )
+GAMEL( 198?, cmtetrisd, cmtetris, cm,        cmtetris, cmaster_state,  init_cmtetrsd,  ROT0, "bootleg (Aidonis Games)", "Tetris + Cherry Master (Aidonis Games bootleg)",                           0,                                              layout_cmpacman ) // seems to have been hacked to run the slot game as default, see 0x8ba8
 GAMEL( 1997, crazybon,  0,        crazybon,  crazybon, goldstar_state, empty_init,     ROT0, "bootleg (Crazy Co.)",     "Crazy Bonus 2002 (Ver. 1, set 1)",                                         MACHINE_IMPERFECT_COLORS,                       layout_crazybon ) // Windows ME desktop... but not found the way to switch it.
 GAMEL( 1997, crazybona, crazybon, crazybon,  crazybon, goldstar_state, empty_init,     ROT0, "bootleg (Crazy Co.)",     "Crazy Bonus 2002 (Ver. 1, set 2)",                                         MACHINE_IMPERFECT_COLORS,                       layout_crazybon )
 GAMEL( 1997, crazybonb, crazybon, crazybonb, pkrmast,  goldstar_state, init_crazybonb, ROT0, "bootleg (TV Games)",      "Crazy Bonus 2002 (Ver. 1, set 3)",                                         MACHINE_NOT_WORKING | MACHINE_IMPERFECT_COLORS, layout_crazybon ) // F.B. & POKER 94, VER.1 in NVRAM, decryption seems ok, possibly needs proper memory map

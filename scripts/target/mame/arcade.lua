@@ -2922,7 +2922,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/xevious.h",
 	MAME_DIR .. "src/mame/video/xevious.cpp",
 	MAME_DIR .. "src/hbmame/drivers/galaxian.cpp", --HBMAME
---	MAME_DIR .. "src/mame/includes/galaxian.h",
+	MAME_DIR .. "src/mame/drivers/galaxian_v.cpp",
 	MAME_DIR .. "src/mame/drivers/galaxian_rockclim.cpp",
 	MAME_DIR .. "src/mame/audio/galaxian.cpp",
 --	MAME_DIR .. "src/mame/audio/galaxian.h",
@@ -4730,7 +4730,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/artmagic.h",
 	MAME_DIR .. "src/mame/video/artmagic.cpp",
 --	MAME_DIR .. "src/mame/drivers/astrafr.cpp",
---	MAME_DIR .. "src/mame/drivers/astrcorp.cpp",
+	MAME_DIR .. "src/mame/drivers/astrcorp.cpp",
 --	MAME_DIR .. "src/mame/drivers/astropc.cpp",
 --	MAME_DIR .. "src/mame/drivers/atronic.cpp",
 	MAME_DIR .. "src/mame/drivers/attckufo.cpp",
@@ -5134,7 +5134,7 @@ files {
 	MAME_DIR .. "src/hbmame/drivers/schaser.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/drivers/spacmiss.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/drivers/monaco.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/hh_sm510.cpp", --HBMAME
+--	MAME_DIR .. "src/hbmame/drivers/hh_sm510.cpp", --HBMAME
 	MAME_DIR .. "src/devices/video/ppu2c0x.cpp", --HBMAME
 	MAME_DIR .. "src/devices/machine/z80dma.cpp", --HBMAME
 }

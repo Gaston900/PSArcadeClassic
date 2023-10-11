@@ -2748,7 +2748,6 @@ void seta_state::madshark_map(address_map &map)
 	map(0xd00000, 0xd03fff).rw(m_x1, FUNC(x1_010_device::word_r), FUNC(x1_010_device::word_w));   // Sound
 }
 
-/*
 void seta_state::madsharkbl_map(address_map &map)
 {
 	map(0x000000, 0x0fffff).rom();                             // ROM
@@ -2782,7 +2781,6 @@ void seta_state::madsharkbl_oki_map(address_map &map)
 	map(0x00000, 0x1ffff).rom();
 	map(0x20000, 0x3ffff).bankr(m_oki_bank);
 }
-*/
 
 void magspeed_state::lights_w(offs_t offset, u16 data, u16 mem_mask)
 {
@@ -9320,11 +9318,10 @@ void seta_state::madshark(machine_config &config)
 	m_x1->add_route(ALL_OUTPUTS, "mono", 0.5);
 }
 
-/*
 void seta_state::madsharkbl(machine_config &config) // bootleg doesn't actually use the Seta customs
 {
-	// basic machine hardware
-	M68000(config, m_maincpu, 16000000);   // 16 MHz
+	/* basic machine hardware */
+	M68000(config, m_maincpu, 16000000);   /* 16 MHz */
 	m_maincpu->set_addrmap(AS_PROGRAM, &seta_state::madsharkbl_map);
 	m_maincpu->set_vblank_int("screen", FUNC(seta_state::irq2_line_assert));
 
@@ -9335,7 +9332,7 @@ void seta_state::madsharkbl(machine_config &config) // bootleg doesn't actually 
 	m_seta001->set_fg_yoffsets(-0x12, 0x0e);
 	m_seta001->set_bg_yoffsets(0x1, -0x1);
 
-	// video hardware
+	/* video hardware */
 	screen_device &screen(SCREEN(config, "screen", SCREEN_TYPE_RASTER));
 	screen.set_refresh_hz(60);
 	screen.set_vblank_time(ATTOSECONDS_IN_USEC(0));
@@ -9348,15 +9345,13 @@ void seta_state::madsharkbl(machine_config &config) // bootleg doesn't actually 
 	X1_012(config, m_layers[1], m_palette, gfx_jjsquawk_layer2);
 	PALETTE(config, m_palette, FUNC(seta_state::jjsquawk_palette), 16*32 + 64*32*4, 0x600);  // sprites, layer2, layer1 - layers are 6 planes deep
 
-	// sound hardware
+	/* sound hardware */
 	SPEAKER(config, "mono").front_center();
 
-	OKIM6295(config, "oki", 1'000'000, okim6295_device::PIN7_HIGH); // clock frequency & pin 7 not verified
+	X1_010(config, m_x1, 1'000'000, okim6295_device::PIN7_HIGH); // clock frequency & pin 7 not verified
 	m_x1->set_addrmap(0, &seta_state::madsharkbl_oki_map);
 	m_x1->add_route(ALL_OUTPUTS, "mono", 1.0);
-
 }
-*/
 
 /***************************************************************************
                                 Magical Speed
@@ -12587,12 +12582,10 @@ void seta_state::init_bankx1()
 	m_x1_bank->configure_entries(0, 8, memregion("x1snd")->base(), 0x40000);
 }
 
-/*
 void seta_state::init_madsharkbl()
 {
 	m_oki_bank->configure_entries(0, 4, memregion("oki")->base(), 0x20000);
 }
-*/
 
 void seta_state::init_eightfrc()
 {
@@ -12742,7 +12735,7 @@ GAME( 2003, simpsonjr, jjsquawk, jjsquawb,  jjsquawk,  seta_state,     empty_ini
 GAME( 1993, kamenrid,  0,        kamenrid,  kamenrid,  seta_state,     empty_init,     ROT0,   "Banpresto / Toei",          "Masked Riders Club Battle Race / Kamen Rider Club Battle Racer", 0 )
 
 GAME( 1993, madshark,  0,        madshark,  madshark,  seta_state,     empty_init,     ROT270, "Allumer",                   "Mad Shark", 0 )
-//GAME( 1993, madsharkbl,madshark, madsharkbl,madshark,  seta_state,     init_madsharkbl,ROT270, "bootleg",                   "Mad Shark (bootleg)", MACHINE_IMPERFECT_SOUND ) // no BGM. Wrong Oki banking?
+GAME( 1993, madsharkbl,madshark, madsharkbl,madshark,  seta_state,     init_madsharkbl,ROT270, "bootleg",                   "Mad Shark (bootleg)", MACHINE_IMPERFECT_SOUND ) // no BGM. Wrong Oki banking?
 
 // end credits shows Allumer as developer.
 GAME( 1993, msgundam,  0,        msgundam,  msgundam,  seta_state,     empty_init,     ROT0,   "Banpresto / Allumer",       "Mobile Suit Gundam", 0 )

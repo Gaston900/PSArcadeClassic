@@ -329,7 +329,7 @@ ROM_START( redeartn )
 ROM_END
 
 /*    YEAR  NAME       PARENT    MACHINE        INPUT       CLASS             INIT       MONITOR     COMPANY        FULLNAME FLAGS */
-GAME( 1996, redeartn,  0,        redeartn,      cps3_ren,   cps3_hbmame, init_redearth,   ROT0,     "Capcom",       "Red Earth (Asia 961121, NO CD)", 0 )
+//GAME( 1996, redeartn,  0,        redeartn,      cps3_ren,   cps3_hbmame, init_redearth,   ROT0,     "Capcom",       "Red Earth (Asia 961121, NO CD)", 0 )
 
 
 
@@ -1811,7 +1811,7 @@ GAME( 2018, jojobahc01,     jojoba,   jojoba,        cps3_jojo,  cps3_hbmame,   
 GAME( 2018, jojobahc02,     jojoba,   jojoba,        cps3_jojo,  cps3_state,      init_jojoba,   ROT0,      "hack",        "JoJo's Bizarre Adventure (Ex Super Version Edition)", 0 )
 GAME( 2021, jojobahc03,     jojoba,   jojoba,        cps3_jojo,  cps3_state,      init_jojoba,   ROT0,      "hack",        "JoJo's Bizarre Adventure (Rainbow Edition v1.0.1 2021)", 0 )
 GAME( 2009, jojohc01,       jojo,     jojo,          cps3_jojo,  cps3_hbmame,     init_jojon,    ROT0,      "hack",        "JoJo's Venture (Enable Hidden Characters 2009-07-09)", 0 )
-GAME( 2009, redeartnhc01,   redeartn, redeartn,      cps3_ren,   cps3_hbmame,     init_redeartno,ROT0,      "hack",        "Red Earth (Ex Super Version 2009-09-08)", 0 )
+GAME( 2009, redeartnhc01,   redearth, redeartn,      cps3_ren,   cps3_hbmame,     init_redeartno,ROT0,      "hack",        "Red Earth (Ex Super Version 2009-09-08)", 0 )
 GAME( 2016, sfiiihc01,      sfiii,    sfiii,         cps3,       cps3_state,      init_sfiii,    ROT0,      "hack",        "Street Fighter III: New Generation (Simple Attack 2016-01-21)", 0 )
 GAME( 2009, sfiiihc02,      sfiii,    sfiii,         cps3,       cps3_hbmame,     init_sfiiin,   ROT0,      "hack",        "Street Fighter III: New Generation (Enable Hidden Characters 2009-08-08)", 0 )
 GAMEL(1997, sfiii2hc01,     sfiii2,   sfiii2,        cps3,       cps3_state,      init_sfiii2,   ROT0,      "hack",        "Street Fighter III 2nd Impact: Giant Attack (Enable Hidden Characters)", 0, layout_sfiii2 )

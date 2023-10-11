@@ -2,7 +2,7 @@
 // copyright-holders:Gaston90
 // copyright-holders:Robbbert
 /*******************************************
- PSARCADE CLASSIC+ // MAME 0.245
+ PSARCADE CLASSIC+ // ARCADE 0.249
  List of all drivers enabled in the system.
 **********************************************/
 
@@ -1019,6 +1019,7 @@ svolly91                        // (c) 1991 Video System Co. (Japan)
 turbofrc                        // (c) 1991 Video System Co.
 turbofrco                       // (c) 1991 Video System Co.
 turbofrcu                       // (c) 1991 Video System Co. (US)
+turbofrcua                      // (c) 1991 Video System Co. (US)
 wbbc97                          // (c) 1997 Comad
 kickball                        // (c) 1998 Seoung Youn
 
@@ -2456,7 +2457,7 @@ speeddrp                        // (c) 2003  Astro Corp.
 westvent                        // (c) 2007? Astro Corp.
 winbingo                        // (c) 2006  Astro Corp.
 winbingoa                       // (c) 2006  Astro Corp.
-zulu                            // (c) 2004  Astro Corp.
+zoo                             // (c) 2004  Astro Corp.
 
 @source:astrocde.cpp
 demndrgn                        // (c) 1982 Bally Midway
@@ -2984,6 +2985,7 @@ roadriotb                       // 136089           (c) 1991
 
 @source:atarigt.cpp
 primrage                        // 136102           (c) 1994
+primrageo                       // 136102           (c) 1994
 primrage20                      // 136102           (c) 1994
 tmek                            // 136100           (c) 1994
 tmek20                          // 136100           (c) 1994
@@ -10721,6 +10723,7 @@ codata                          //
 @source:coinmstr.cpp
 jpcoin                          // (c) 19?? Coinmaster
 jpcoin2                         // (c) 19?? Coinmaster
+jpjcoin                         // (c) 1988 unknown
 pokeroul                        // (c) 1990 Coinmaster
 quizmstr                        // (c) 1985 Coinmaster
 supnudg2                        // (c) 1989 Coinmaster
@@ -11084,6 +11087,7 @@ sf2rb2                          // hack
 sf2rb3                          // hack
 sf2re                           // bootleg
 sf2red                          // hack
+sf2reda                         // bootleg
 sf2redp2                        // hack
 sf2rk                           // bootleg
 sf2rules                        // bootleg
@@ -11522,6 +11526,8 @@ jojou                           // 28/01/1999 (c) 1998 (USA)
 jojour1                         // 08/01/1999 (c) 1998 (USA)
 jojour2                         // 02/12/1998 (c) 1998 (USA)
 redearth                        // 21/11/1996 (c) 1996 (Euro)
+redearthn                       // 21/11/1996 (c) 1996 (Asia)
+redearthnr1                     // 23/10/1996 (c) 1996 (Asia)
 redearthr1                      // 23/10/1996 (c) 1996 (Euro)
 sfiii                           // 04/02/1997 (c) 1997 (Euro)
 sfiii2                          // 30/09/1997 (c) 1997 (USA)
@@ -14632,7 +14638,9 @@ azurian                         // (c) 1982 Rait Electronics Ltd
 bagmanm2                        // (c) 1984 Valadon Automation / GIB
 bagmanmc                        // bootleg
 batman2                         // bootleg
+bigkonggx                       // bootleg
 blkhole                         // TDS (Tokyo Denshi Sekkei) & MINTS
+bmxstunts                       // (c) 1985 Jetsoft
 bomber                          //
 bongo                           // (c) 1983 Jetsoft
 calipso                         // (c) 1982 Tago
@@ -16323,6 +16331,7 @@ gunbustru                       // D27 (c) 1992 Taito America Corporation (US)
 gundealr                        // (c) 1990 Dooyong
 gundealra                       // (c) 1990 Dooyong
 gundealrbl                      // bootleg
+gundealrbl2                     // bootleg
 gundealrt                       // (c) 1990 Tecmo
 wiseguy                         // (c) 1990 Dooyong
 yamyam                          // (c) 1990 Dooyong
@@ -17035,6 +17044,7 @@ nbapbp                          // GX778 (c)1998
 nbapbpa                         // GX778 (c)1998
 sscope                          // GX830 (c)1999
 sscope2                         // GX931 (c)2000
+sscope2e                        // GX931 (c)2000
 sscopea                         // GX830 (c)1999
 sscopeb                         // GX830 (c)1999
 sscopec                         // GX830 (c)1999
@@ -17688,8 +17698,9 @@ gtg2                            // (c) 1992 Strata/Incredible Technologies
 gtg2j                           // (c) 1991 Strata/Incredible Technologies
 gtg2t                           // (c) 1989 Strata/Incredible Technologies
 gtgj31                          // (c) 1990 Strata/Incredible Technologies
-gtgt                            // (c) 1990 Strata/Incredible Technologies
-gtgt1                           // (c) 1990 Strata/Incredible Technologies
+gtgt10                          // (c) 1990 Strata/Incredible Technologies
+gtgt20                          // (c) 1990 Strata/Incredible Technologies
+gtgt21                          // (c) 1990 Strata/Incredible Technologies
 hstennis                        // (c) 1990 Strata/Incredible Technologies
 hstennis10                      // (c) 1990 Strata/Incredible Technologies
 neckneck                        // (c) 1992 Bundra Games/Incredible Technologies
@@ -19458,6 +19469,7 @@ bloodwar                        // (c) 1994 Kaneko
 bonkadv                         // (c) 1994 Kaneko
 brapboys                        // (c) 1992 Kaneko
 brapboysp                       // (c) 1992 Kaneko
+brapboysp2                      // (c) 1992 Kaneko
 brapboyspj                      // (c) 1992 Kaneko
 brapboyspu                      // (c) 1992 Kaneko
 explbrkr                        // (c) 1992 Kaneko
@@ -19854,11 +19866,13 @@ cr589fw                         // 1999 - CR-589 Firmware (700B04)
 cr589fwa                        // 1999 - CR-589 Firmware (700A04)
 darkhleg                        // 1998 - Dark Horse Legend (GX706 VER. JAA)
 ddrkara                         // 1999 - Dance Dance Revolution Karaoke Mix (GQ921 VER. JBB)
+ddrkara2                        // 2000 - Dance Dance Revolution Karaoke Mix 2 (GQ947 VER. JAA)
 ddr2m                           // 1999 - Dance Dance Revolution 2nd Mix (GN895 VER. JAA)
 ddr2mc                          // 1999 - Dance Dance Revolution 2nd Mix with beatmaniaIIDX CLUB VERSiON (GE896 VER. JAA)
 ddr2mc2                         // 1999 - Dance Dance Revolution 2nd Mix with beatmaniaIIDX substream CLUB VERSiON 2 (GE984 VER. JAA)
-ddr2ml                          // 1999 - Dance Dance Revolution 2nd Mix - Link Ver (GE885 VER. JAB)
-ddr2mla                         // 1999 - Dance Dance Revolution 2nd Mix - Link Ver (GE885 VER. JAA)
+ddr2ml                          // 1999 - Dance Dance Revolution 2nd Mix - Link Ver (GE885 VER. JAC)
+ddr2mla                         // 1999 - Dance Dance Revolution 2nd Mix - Link Ver (GE885 VER. JAB)
+ddr2mlb                         // 1999 - Dance Dance Revolution 2nd Mix - Link Ver (GE885 VER. JAA)
 ddr3ma                          // 1999 - Dance Dance Revolution 3rd Mix (GN887 VER. AAA)
 ddr3mj                          // 1999 - Dance Dance Revolution 3rd Mix (GN887 VER. JAA)
 ddr3mk                          // 2000 - Dance Dance Revolution 3rd Mix - Ver.Korea2 (GN887 VER. KBA)
@@ -19885,6 +19899,7 @@ ddrsbm                          // 1999 - Dance Dance Revolution Solo Bass Mix (
 ddru                            // 1999 - Dance Dance Revolution (GN845 VER. UAA)
 ddrusa                          // 2000 - Dance Dance Revolution USA (G*A44 VER. UAA)
 dmx                             // 2000 - Dance Maniax (G*874 VER. JAA)
+dmxa                            // 2000 - Dance Maniax (G*874 VER. AAA)
 dmx2m                           // 2000 - Dance Maniax 2nd Mix (G*A39 VER. JAA)
 dmx2majp                        // 2001 - Dance Maniax 2nd Mix Append J-Paradise (G*A38 VER. JAA
 dncfrks                         // 2000 - Dance Freaks (G*874 VER. KAA)
@@ -19892,6 +19907,7 @@ drmn                            // 1999 - DrumMania (GQ881 VER. JAD)
 drmna                           // 1999 - DrumMania (GQ881 VER. JAB)
 drmnu                           // 1999 - DrumMania (GQ881 VER. UAB)
 drmn10m                         // 2004 - DrumMania 10th Mix (G*D40 VER. JAA)
+drmn10ma                        // 2004 - DrumMania 10th Mix eAmusement (G*D40 VER. JCA)
 drmn2m                          // 1999 - DrumMania 2nd Mix (GE912 VER. JAB)
 drmn2mpu                        // 1999 - DrumMania 2nd Mix Session Power Up Kit (GE912 VER. JAB)
 drmn3m                          // 2000 - DrumMania 3rd Mix (G*A23 VER. JAA)
@@ -19901,7 +19917,9 @@ drmn6m                          // 2001 - DrumMania 6th Mix (G*B16 VER. JAA)
 drmn7m                          // 2002 - DrumMania 7th Mix power-up ver. (G*C07 VER. JBA)
 drmn7ma                         // 2002 - DrumMania 7th Mix (G*C07 VER. JAA)
 drmn8m                          // 2003 - DrumMania 8th Mix (G*C38 VER. JAA)
-drmn9m                          // 2003 - DrumMania 9th Mix (G*D09 VER. JAA)
+drmn9m                          // 2003 - DrumMania 9th Mix (G*D09 VER. JAB)
+drmn9ma                         // 2003 - DrumMania 9th Mix (G*D09 VER. JAA)
+drmn9mb                         // 2003 - DrumMania 9th Mix eAmusement (G*D09 VER. JCA)
 dsem                            // 2000 - Dancing Stage Euro Mix (G*936 VER. EAA)
 dsem2                           // 2002 - Dancing Stage Euro Mix 2 (G*C23 VER. EAA)
 dsfdct                          // 1999 - Dancing Stage featuring Dreams Come True (GC910 VER. JCA)
@@ -19926,6 +19944,7 @@ gtfrk10m                        // 2003 - Guitar Freaks 10th Mix (G*D10 VER. JAB
 gtfrk10ma                       // 2003 - Guitar Freaks 10th Mix (G*D10 VER. JAA)
 gtfrk10mb                       // 2003 - Guitar Freaks 10th Mix eAmusement (G*D10 VER. JBA)
 gtfrk11m                        // 2004 - Guitar Freaks 11th Mix (G*D39 VER. JAA)
+gtfrk11ma                       // 2004 - Guitar Freaks 11th Mix eAmusement (G*D39 VER. JBA)
 gtfrk3ma                        // 2000 - Guitar Freaks 3rd Mix (GE949 VER. JAB)
 gtfrk3mb                        // 2000 - Guitar Freaks 3rd Mix - security cassette versionup (949JAZ02)
 gtrfrk2m                        // 1999 - Guitar Freaks 2nd Mix Ver 1.01 (GQ883 VER. JAD)
@@ -19939,6 +19958,7 @@ gtrfrk2ml2                      // 1999 - Guitar Freaks Link Kit 2 (GC929 VER. J
 gtrfrk3m                        // 2000 - Guitar Freaks 3rd Mix (GE949 VER. JAC)
 gtrfrk4m                        // 2000 - Guitar Freaks 4th Mix (G*A24 VER. JAA)
 gtrfrk5m                        // 2001 - Guitar Freaks 5th Mix (G*A26 VER. JAA)
+gtrfrk5ma                       // 2001 - Guitar Freaks 5th Mix (G*A26 VER. AAA)
 gtrfrk6m                        // 2001 - Guitar Freaks 6th Mix (G*B06 VER. JAA)
 gtrfrk7m                        // 2001 - Guitar Freaks 7th Mix (G*B17 VER. JAA)
 gtrfrk8m                        // 2002 - Guitar Freaks 8th Mix power-up ver. (G*C08 VER. JBA)
@@ -19952,6 +19972,10 @@ gtrfrksc                        // 1999 - Guitar Freaks (GQ886 VER. EAC)
 gtrfrksac                       // 1999 - Guitar Freaks (GQ886 VER. AAC)
 gtrfrksjc                       // 1999 - Guitar Freaks (GQ886 VER. JAC)
 gtrfrksuc                       // 1999 - Guitar Freaks (GQ886 VER. UAC)
+gtrfrksea                       // 1999 - Guitar Freaks (GQ886 VER. EAA)
+gtrfrksaa                       // 1999 - Guitar Freaks (GQ886 VER. AAA)
+gtrfrksja                       // 1999 - Guitar Freaks (GQ886 VER. JAA)
+gtrfrksua                       // 1999 - Guitar Freaks (GQ886 VER. UAA)
 gunmania                        // 2000 - GunMania (GL906 VER. JAA)
 strgchmp                        // 1997 - Steering Champ (GQ710 97/12/18 VER. UAA)
 hndlchmp                        // 1997 - Handle Champ (GQ710 97/12/18 VER. SAA)
@@ -19985,8 +20009,10 @@ pcnfrk5mk                       // 2001 - Percussion Freaks 5th Mix (G*B05 VER. 
 pcnfrk6m                        // 2001 - Percussion Freaks 6th Mix (G*B16 VER. AAA)
 pcnfrk7m                        // 2002 - Percussion Freaks 7th Mix (G*C07 VER. AAA)
 pcnfrk8m                        // 2003 - Percussion Freaks 8th Mix (G*C38 VER. AAA)
-pcnfrk9m                        // 2003 - Percussion Freaks 9th Mix eAmusement (G*D09 VER. ABA)
-pcnfrk10m                       // 2004 - Percussion Freaks 10th Mix eAmusement (G*D40 VER. ACA)
+pcnfrk9m                        // 2003 - Percussion Freaks 9th Mix (G*D09 VER. AAA)
+pcnfrk9ma                       // 2003 - Percussion Freaks 9th Mix eAmusement (G*D09 VER. ABA)
+pcnfrk10m                       // 2004 - Percussion Freaks 10th Mix (G*D40 VER. AAA)
+pcnfrk10ma                      // 2004 - Percussion Freaks 10th Mix eAmusement (G*D40 VER. ACA)
 pnchmn                          // 2000 - Punch Mania: Hokuto no Ken (GQ918 VER. JAB)
 pnchmn2                         // 2000 - Punch Mania 2: Hokuto no Ken (GQA09 JAA)
 pnchmna                         // 2000 - Punch Mania: Hokuto no Ken (GQ918 VER. JAB, ALT CD)
@@ -20668,6 +20694,7 @@ dynablst                        // (c) 1991 Irem (World)
 dynablstb                       // bootleg
 dynablstb2                      // bootleg
 dynablstb3                      // bootleg
+dynablstb4                      // bootleg
 gussun                          // (c) 1993 Irem (Japan)
 hasamu                          // (c) 1991 Irem (Japan)
 matchit2                        // (c) 1993 Tamtex
@@ -20959,6 +20986,7 @@ mastboy                         // (c) 1991 - No Ref on the PCB
 mastboya                        // (c) 1991 - No Ref on the PCB
 mastboyi                        // (c) 1991 - No Ref on the PCB
 mastboyia                       // (c) 1991 - No Ref on the PCB
+mastboyib                       // (c) 1992 - No Ref on the PCB
 
 @source:mastboyo.cpp
 mastboyo                        // (c) 1987 - No Ref on the PCB
@@ -23527,6 +23555,7 @@ pbst30a                         // (c) 1993 Merit
 pitboss2                        // (c) 1988 Merit
 pitbossm                        // (c) 1994 Merit
 pitbossma                       // (c) 1994 Merit
+pitbossmb                       // (c) 1994 Merit
 pitbosss                        // (c) 1990 Merit
 pitbosssa                       // (c) 1990 Merit
 pitbosssc                       // (c) 1992 Merit
@@ -32183,7 +32212,8 @@ taiko6                          // 2004.?? Taiko no Tatsujin 6 (Japan, TK61 Ver.
 unks10md                        // 200?.?? unknown Namco System 10 medal game (MTL1 SPRB0)
 
 @source:namcos11.cpp
-danceyes                        // 1996.10 Dancing Eyes (US, DC3/VER.C)
+danceyes                        // 1996.09 Dancing Eyes (World, DC2/VER.B)
+danceyesu                       // 1996.10 Dancing Eyes (US, DC3/VER.C)
 danceyesj                       // 1996.09 Dancing Eyes (Japan, DC1/VER.A)
 dunkmnia                        // 1996.05 Dunk Mania (World, DM2/VER.C)
 dunkmniajc                      // 1996.05 Dunk Mania (Japan, DM1/VER.C)
@@ -32240,6 +32270,7 @@ pacapp2                         // 1999.07 Paca Paca Passion 2 (Japan, PKS1/VER.
 pacappsp                        // 1999.12 Paca Paca Passion Special (Japan, PSP1/VER.A)
 ptblank2                        // 1999.?? Point Blank 2 (GNB5/VER.A)
 soulclbr                        // 1998.?? Soul Calibur (World, SOC14/VER.C)
+soulclbraa                      // 1998.?? Soul Calibur (Asia, SOC12/VER.A2)
 soulclbrja                      // 1998.?? Soul Calibur (Japan, SOC11/VER.A2)
 soulclbrjb                      // 1998.?? Soul Calibur (Japan, SOC11/VER.B)
 soulclbrjc                      // 1998.07 Soul Calibur (Japan, SOC11/VER.C)
@@ -32475,6 +32506,7 @@ clubkcyc                        // 2003.?? Club Kart Cycraft Edition (Rev A)
 clubkcyco                       // 2003.?? Club Kart Cycraft Edition
 clubkprz                        // 2003.?? Club Kart Prize
 clubkpzb                        // 2004.01.23 Club Kart Prize Ver. B (strings in the EPROM indicate a build date of Jan. 23, 2004 for the game's program)
+clubkpzbp                       // 2004.?? Club Kart Prize Ver. B (prototype)
 clubkrt                         // 2001.06 Club Kart: European Session (Rev D)
 clubkrta                        // 2001.?? Club Kart: European Session (Rev A)
 clubkrtc                        // 2001.?? Club Kart: European Session (Rev C)
@@ -32510,6 +32542,7 @@ drbyocwt                        // 2001.?? Derby Owners Club World Edition (Rev 
 dybb99                          // 1999.11 Dynamite Baseball '99 (Rev B)
 dybbnao                         // 1998.12 Dynamite Baseball NAOMI
 dygolf                          // 2001.04.27 Dynamic Golf / Virtua Golf (Rev A)
+dygolfp                         // 2001.?? Dynamic Golf / Virtua Golf (prototype)
 f355                            // 1999.07 Ferrari F355 Challenge (deluxe, no link)
 f355p                           // 1999.05 Ferrari F355 Challenge (private show version)
 f355bios                        // 1999.08 F355 Challenge Twin/Deluxe (BIOS)
@@ -32610,6 +32643,7 @@ ninjasltu                       // 2000.11 Ninja Assault (US, NJA3 Ver.A)
 oinori                          // 2003.08 Oinori-daimyoujin Matsuri
 otrigger                        // 1999.11 OutTrigger
 pjustic                         // 2000.12 Moero! Justice Gakuen / Project Justice
+pjustica                        // 2000.12 Moero! Justice Gakuen / Project Justice
 pokasuka                        // 2007.07 Pokasuka Ghost!
 pstone                          // 1999.02 Power Stone
 pstone2                         // 2000.04 Power Stone 2
@@ -32764,6 +32798,7 @@ trvmstr                         // (c) 1985 Enerdyne Technologies Inc.
 trvmstra                        // (c) 1985 Enerdyne Technologies Inc.
 trvmstrb                        // (c) 1985 Enerdyne Technologies Inc.
 trvmstrc                        // (c) 1985 Enerdyne Technologies Inc.
+trvmstrd                        // (c) 1985 Enerdyne Technologies Inc.
 
 @source:nbmj8688.cpp
 apparel                         // (c) 1986 Central Denshi
@@ -34070,6 +34105,7 @@ nova2001h                       // hack?
 nova2001u                       // UPL-83005 (c) [1983] + Universal license
 pkunwar                         // UPL-????? (c) 1985 (Arcade Game TV List - P.98, Left, 22 from top)
 pkunwarj                        // UPL-????? (c) 1985 (Arcade Game TV List - P.98, Left, 22 from top)
+pkunwarja                       //
 raiders5                        // UPL-85004 (c) 1985
 raiders5t                       // UPL-85004 (c) 1985 Taito license
 raiders5ta                      //
@@ -35940,6 +35976,7 @@ svgtw                           //
 theglad                         // (c) 2003 The Gladiator
 theglad100                      //
 theglad101                      //
+theglad104                      //
 thegladpcb                      //
 thegladpcba                     //
 
@@ -36814,6 +36851,7 @@ gunbird2a                       // (c) 1998
 mjgtaste                        // (c) 2002
 s1945ii                         // (c) 1997
 s1945iii                        // (c) 1999
+s1945iiibl                      // bootleg
 sbomber                         // (c) 1998
 sbombera                        // (c) 1998
 soldivid                        // (c) 1997
@@ -38331,7 +38369,6 @@ hyprdriv                        // (c) 1998 Midway Games
 mace                            // (c) 1996 Atari Games
 macea                           // (c) 1996 Atari Games
 sfrush                          // (c) 1996 Atari Games
-sfrusha                         // (c) 1996 Atari Games
 sfrushrk                        // (c) 1996 Atari Games
 sfrushrkw                       // (c) 1996 Atari Games
 sfrushrkwo                      // (c) 1996 Atari Games
@@ -39101,6 +39138,7 @@ keroppij                        // (c) 1993 Sammy
 kiwame                          // (c) 1994 Athena
 krzybowl                        // (c) 1994 American Sammy
 madshark                        // (c) 1993 Allumer
+//madsharkbl                     // bootleg
 magspeed                        // (c) 1994 Allumer
 metafox                         // UP   (c) 1989 + Jordan, Romstar or Taito license (DSW)
 msgundam                        // (c) 1993 Banpresto
@@ -42518,8 +42556,10 @@ bbakraidja                      // (c) 1999 8ing
 bgaregga                        // (c) 1996 Raizing/8ing
 bgareggabl                      // hack
 bgareggabla                     // hack
+bgareggablj                     // hack
 bgareggacn                      // (c) 1996 Raizing/8ing
 bgareggahk                      // (c) 1996 Raizing/8ing
+bgareggak                       // (c) 1996 Raizing/8ing
 bgaregganv                      // (c) 1996 Raizing/8ing
 bgareggat                       // (c) 1996 Raizing/8ing
 bgareggat2                      // (c) 1996 Raizing/8ing
@@ -42562,6 +42602,7 @@ pipibibsbl                      // (c) 1991 Ryouta Kikaku (bootleg)
 pipibibsbl2                     // bootleg
 pipibibsbl3                     // (c) 1991 Ryouta Kikaku (bootleg)
 pipibibsp                       // TP-025
+probowl2                        // (c) 1996 Zuck + Able license
 pwrkick                         // (c) 1994 Sunwise
 shippumd                        // (c) 1994 Raizing/8ing
 snowbro2                        // TP-033 (c) 1994 Hanafram
@@ -42954,7 +42995,8 @@ gulfwar2                        // (c) 1991 Comad
 gulfwar2a                       //
 hishouza                        // B02 / TP-007 (c) 1987 Taito Corporation (Japan)
 hishouzab                       // bootleg
-ktiger                          // B30 / TP-011 (c) 1987 Taito Corporation (Japan)
+ktiger                          // B30 / TP-011 (c) 1989 Taito Corporation (Japan)
+ktigera                         // B30 / TP-011 (c) 1987 Taito Corporation (Japan)
 skyshark                        // B02 / TP-007 (c) 1987 Taito America Corporation + Romstar license (US)
 skysharka                       // B02 / TP-007 (c) 1987 Taito America Corporation + Romstar license (US)
 skysharkb                       // bootleg
@@ -43081,6 +43123,7 @@ superten                        // (c) 1988
 usg182                          // (c) 1989
 usg185                          // (c) 1990
 usg187c                         // (c) 1991
+usg211c                         // (c) 1991
 usg32                           // (c) 1987
 usg82                           // (c) 1988
 usg83x                          // (c) 1988
@@ -44141,6 +44184,7 @@ bubblesp                        // (c) 1982
 bubblesr                        // (c) 1982
 colony7                         // (c) 1981 Taito
 colony7a                        // (c) 1981 Taito
+conquest                        // prototype
 defcmnd                         // bootleg
 defence                         // bootleg
 defender                        // (c) 1980
@@ -46536,7 +46580,6 @@ xmvsfhc01                       // Hack
 xmvsfhc02                       // Hack
 
 @source:cps3.cpp
-redeartn                        // Asia NOCD
 jojobahc01                      // Hack
 jojobahc02                      // Hack
 jojobahc03                      // Hack
@@ -49883,3 +49926,11 @@ sdojb                           // Hack
 futari15bc                      // Hack
 futariblc                       // Hack
 futaribljc                      // Hack
+
+/*******************************************
+ PSARCADE CLASSIC+ // ARCADE 0.249
+ List of all disabled drivers on the system.
+**********************************************/
+
+@source:seta.cpp
+//madsharkbl                     // It does not work

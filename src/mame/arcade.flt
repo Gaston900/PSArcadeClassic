@@ -666,7 +666,7 @@ konamim2.cpp
 //kongs470.cpp                         // skel
 //konmedal.cpp                         // check
 //konmedal020.cpp
-//konmedal68k.cpp                      // check
+konmedal68k.cpp                        // check
 //kontest.cpp                          // stuck at crosshatch
 //kopunch.cpp
 //kpontoon.cpp                         // card game
@@ -735,7 +735,7 @@ macrossp.cpp
 macs.cpp
 madalien.cpp
 madmotor.cpp
-//magic10.cpp      // poker
+magic10.cpp      // poker
 //magicard.cpp     // poker
 //magicfly.cpp     // poker
 //magictg.cpp      // check
@@ -839,7 +839,7 @@ monzagp.cpp
 moo.cpp
 mosaic.cpp
 mouser.cpp
-//mpu12wbk.cpp     // fruit
+mpu12wbk.cpp       // fruit
 //mpu2.cpp         // fruit
 //mpu3.cpp         // fruit
 //mpu4.cpp         // fruit

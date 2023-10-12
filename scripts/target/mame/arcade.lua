@@ -2527,7 +2527,7 @@ files {
 --	MAME_DIR .. "src/mame/drivers/kongs470.cpp",
 --	MAME_DIR .. "src/mame/drivers/konmedal.cpp",
 --	MAME_DIR .. "src/mame/drivers/konmedal020.cpp",
---	MAME_DIR .. "src/mame/drivers/konmedal68k.cpp",
+	MAME_DIR .. "src/mame/drivers/konmedal68k.cpp",
 --	MAME_DIR .. "src/mame/drivers/kontest.cpp",
 --	MAME_DIR .. "src/mame/drivers/konendev.cpp",
 --	MAME_DIR .. "src/mame/drivers/kpontoon.cpp",

@@ -89,7 +89,7 @@ public:
 	void rtype2(machine_config &config);
 	void m82(machine_config &config);
 	void rtype(machine_config &config);
-	void imgfightb(machine_config &config);
+	void imgfightjb(machine_config &config);
 	void lohtb(machine_config &config);
 	void imgfight(machine_config &config);
 	void mrheli(machine_config &config);

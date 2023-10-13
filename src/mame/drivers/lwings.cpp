@@ -14,7 +14,7 @@ To Do:
     increment twice per coin.
 -   clean up Avengers protection; it currently checks against hard-coded program
     counter rather than behaving as a memory-mapped black box.
--   Avengers had a protection chip underneath the sound module. Needs dumping.
+-   Avengers had a protection chip underneath the sound module. Needs to be hooked up.
     The protection is extensive: palette data, calculates player movement,
     even a hand in the sound.  The angle/movement stuff isn't 100% accurate either.
 -   accurate music tempo (audiocpu irq freq)
@@ -451,6 +451,7 @@ void lwings_state::trojan_adpcm_io_map(address_map &map)
 	map(0x01, 0x01).w(FUNC(lwings_state::msm5205_w));
 }
 
+
 /*************************************
  *
  *  Generic port definitions
@@ -488,6 +489,7 @@ static INPUT_PORTS_START( lwings_generic )
 	PORT_BIT( 0x40, IP_ACTIVE_LOW, IPT_UNKNOWN )    /* probably unused */
 	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_UNKNOWN )    /* probably unused */
 INPUT_PORTS_END
+
 
 /*************************************
  *
@@ -618,7 +620,6 @@ static INPUT_PORTS_START( fball )
 	PORT_MODIFY("SERVICE")
 	PORT_BIT( 0x04, IP_ACTIVE_LOW, IPT_START3 )
 	PORT_BIT( 0x08, IP_ACTIVE_LOW, IPT_START4 )
-
 
 	PORT_START("DSWA") // only one set of dipswitches
 	PORT_DIPNAME( 0x01, 0x01, DEF_STR( Difficulty ) ) PORT_DIPLOCATION("SWA:1")
@@ -784,6 +785,7 @@ static INPUT_PORTS_START( avengers )
 	PORT_DIPSETTING(    0x00, "6" )
 INPUT_PORTS_END
 
+
 /*************************************
  *
  *  Graphics definitions
@@ -853,6 +855,7 @@ static GFXDECODE_START( gfx_trojan )
 	GFXDECODE_ENTRY( "gfx3", 0, spritelayout,   640,  8 ) /* colors 640-767 */
 	GFXDECODE_ENTRY( "gfx4", 0, bg2_tilelayout,   0,  8 ) /* colors   0-127 */
 GFXDECODE_END
+
 
 /*************************************
  *
@@ -1657,7 +1660,7 @@ ROM_START( avengers )
 	ROM_LOAD( "av_01.6d",     0x0000, 0x8000, CRC(c1e5d258) SHA1(88ed978e6df72ce22f9371930360aa9cde73abe9) ) /* adpcm player - "Talker" ROM */
 
 	ROM_REGION( 0x1000, "mcu", 0 ) // Intel C8751H-88
-	ROM_LOAD( "av.13k", 0x0000, 0x1000, NO_DUMP )
+	ROM_LOAD( "av.13k", 0x0000, 0x1000, CRC(505a0987) SHA1(ea1d855a9870d79d0e00eaa88a23038355a1203a) )
 
 	ROM_REGION( 0x08000, "gfx1", 0 )
 	ROM_LOAD( "av_03.8k",     0x00000, 0x8000, CRC(efb5883e) SHA1(08aebf579f2c5ff472db66597cde1c6871d7d757) )  /* characters */
@@ -1707,7 +1710,7 @@ ROM_START( avengersa )
 	ROM_LOAD( "av_01.6d",     0x0000, 0x8000, CRC(c1e5d258) SHA1(88ed978e6df72ce22f9371930360aa9cde73abe9) ) /* adpcm player - "Talker" ROM */
 
 	ROM_REGION( 0x1000, "mcu", 0 ) // Intel C8751H-88
-	ROM_LOAD( "av.13k", 0x0000, 0x1000, NO_DUMP )
+	ROM_LOAD( "av.13k", 0x0000, 0x1000, CRC(505a0987) SHA1(ea1d855a9870d79d0e00eaa88a23038355a1203a) )
 
 	ROM_REGION( 0x08000, "gfx1", 0 )
 	ROM_LOAD( "av_03.8k",     0x00000, 0x8000, CRC(efb5883e) SHA1(08aebf579f2c5ff472db66597cde1c6871d7d757) )  /* characters */
@@ -1757,7 +1760,7 @@ ROM_START( avengersb )
 	ROM_LOAD( "av_01.6d",     0x0000, 0x8000, CRC(c1e5d258) SHA1(88ed978e6df72ce22f9371930360aa9cde73abe9) ) /* adpcm player - "Talker" ROM */
 
 	ROM_REGION( 0x1000, "mcu", 0 ) // Intel C8751H-88
-	ROM_LOAD( "av.13k", 0x0000, 0x1000, NO_DUMP )
+	ROM_LOAD( "av.13k", 0x0000, 0x1000, CRC(505a0987) SHA1(ea1d855a9870d79d0e00eaa88a23038355a1203a) )
 
 	ROM_REGION( 0x08000, "gfx1", 0 )
 	ROM_LOAD( "av_03.8k",     0x00000, 0x8000, CRC(efb5883e) SHA1(08aebf579f2c5ff472db66597cde1c6871d7d757) )  /* characters */
@@ -1807,7 +1810,7 @@ ROM_START( avengersc )
 	ROM_LOAD( "av_01.6d",     0x0000, 0x8000, CRC(c1e5d258) SHA1(88ed978e6df72ce22f9371930360aa9cde73abe9) ) /* adpcm player - "Talker" ROM */
 
 	ROM_REGION( 0x1000, "mcu", 0 ) // Intel C8751H-88
-	ROM_LOAD( "av.13k", 0x0000, 0x1000, NO_DUMP )
+	ROM_LOAD( "av.13k", 0x0000, 0x1000, CRC(505a0987) SHA1(ea1d855a9870d79d0e00eaa88a23038355a1203a) )
 
 	ROM_REGION( 0x08000, "gfx1", 0 )
 	ROM_LOAD( "av_03.8k",     0x00000, 0x8000, CRC(efb5883e) SHA1(08aebf579f2c5ff472db66597cde1c6871d7d757) )  /* characters */
@@ -1857,7 +1860,7 @@ ROM_START( buraiken )
 	ROM_LOAD( "av_01.6d",     0x0000, 0x8000, CRC(c1e5d258) SHA1(88ed978e6df72ce22f9371930360aa9cde73abe9) ) /* adpcm player - "Talker" ROM */
 
 	ROM_REGION( 0x1000, "mcu", 0 ) // Intel C8751H-88
-	ROM_LOAD( "av.13k", 0x0000, 0x1000, NO_DUMP )
+	ROM_LOAD( "av.13k", 0x0000, 0x1000, CRC(505a0987) SHA1(ea1d855a9870d79d0e00eaa88a23038355a1203a) )
 
 	ROM_REGION( 0x08000, "gfx1", 0 )
 	ROM_LOAD( "av_03.8k",     0x00000, 0x8000, CRC(efb5883e) SHA1(08aebf579f2c5ff472db66597cde1c6871d7d757) )  /* characters */
@@ -1896,9 +1899,9 @@ ROM_END
 
 ROM_START( buraikenb )
 	ROM_REGION( 0x20000, "maincpu", 0 )     /* 64k for code + 3*16k for the banked ROMs images */
-	ROM_LOAD( "a4",       0x00000, 0x8000, CRC(b4ac7928) SHA1(4a525532f634dd9e800dc3dbd1230a5c431f869a) )
-	ROM_LOAD( "a6",       0x10000, 0x8000, CRC(b1c6d40d) SHA1(d150adace829130ebf99b8beeedde0e673124984) )
-	ROM_LOAD( "av_05.12n",    0x18000, 0x8000, CRC(9a214b42) SHA1(e13d47dcf9fa055fef467a10751badffcc3b8734) )
+	ROM_LOAD( "a4",        0x00000, 0x8000, CRC(b4ac7928) SHA1(4a525532f634dd9e800dc3dbd1230a5c431f869a) )
+	ROM_LOAD( "a6",        0x10000, 0x8000, CRC(b1c6d40d) SHA1(d150adace829130ebf99b8beeedde0e673124984) )
+	ROM_LOAD( "av_05.12n", 0x18000, 0x8000, CRC(9a214b42) SHA1(e13d47dcf9fa055fef467a10751badffcc3b8734) )
 
 	ROM_REGION( 0x10000, "soundcpu", 0 )
 	ROM_LOAD( "a2",       0x0000, 0x8000, CRC(5e991c96) SHA1(1866f38043f61244b65213544fa5ec5d6d82f96f) )

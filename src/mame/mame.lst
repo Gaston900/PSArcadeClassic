@@ -2,7 +2,7 @@
 // copyright-holders:Gaston90
 // copyright-holders:Robbbert
 /*******************************************
- PSARCADE CLASSIC+ // ARCADE 0.253
+ PSARCADE CLASSIC+ // ARCADE 0.256
  List of all drivers enabled in the system.
 **********************************************/
 
@@ -10528,6 +10528,7 @@ boxingb                         // (c) 1981
 demon                           // (c) 1982 Rock-ola
 qb3                             // (c) 1982 Rock-ola - prototype
 ripoff                          // (c) 1980
+skyfire                         // bootleg
 solarq                          // (c) 1981
 spaceftr                        // (c) 1981 Zaccaria
 spaceshp                        // (c) 1978 Cinematronics (Sega licence)
@@ -11033,6 +11034,7 @@ pang3j                          // 11/05/1995 (c) 1995 Mitchell (Japan) not list
 pang3r1                         // 11/05/1995 (c) 1995 Mitchell (Euro) not listed on Capcom's site
 pang3b4                         // bootleg
 pang3b5                         // bootleg
+pmonster                        // 19/05/1999 (c) 1999 (Japan)
 pnickj                          // 08/06/1994 (c) 1994 Compile + Capcom license (Japan) not listed on Capcom's site
 punisher                        // 22/04/1993 (c) 1993 (World) (CPS1 + QSound)
 punisherbz                      // bootleg
@@ -11056,6 +11058,7 @@ sf2ce                           // 13/05/1992 (c) 1992 (World)
 sf2ceblp                        // hack
 sf2cebltw                       // hack
 sf2ceea                         // 13/03/1992 (c) 1992 (World)
+sf2ceec                         // 03/08/1992 (c) 1992 (World)
 sf2ceja                         // 22/03/1992 (c) 1992 (Japan)
 sf2cejb                         // 13/05/1992 (c) 1992 (Japan)
 sf2cejc                         // 03/08/1992 (c) 1992 (Japan)
@@ -12311,6 +12314,7 @@ makyosen                        // (c) 1987 Data East Corporation (Japan)
 meikyuh                         // (c) 1987 Data East Corporation (Japan)
 meikyuha                        // (c) 1987 Data East Corporation (Japan)
 oscar                           // (c) 1988 Data East Corporation (World)
+oscarbl                         // bootleg
 oscarj1                         // (c) 1987 Data East Corporation (Japan)
 oscarj2                         // (c) 1987 Data East Corporation (Japan)
 oscaru                          // (c) 1987 Data East USA (US)
@@ -13671,8 +13675,12 @@ mrrack                          // 1996 MR-Rack
 
 @source:esripsys.cpp
 turbosub                        // (c) 1985 Entertainment Sciences
-turbosub6                       // (c) 1985 Entertainment Sciences
-turbosub7                       // (c) 1985 Entertainment Sciences
+turbosubb8                      // (c) 1985 Entertainment Sciences
+turbosubc5                      // (c) 1985 Entertainment Sciences
+turbosubc5s                     // (c) 1985 Entertainment Sciences
+turbosubc6                      // (c) 1985 Entertainment Sciences
+turbosubc7                      // (c) 1985 Entertainment Sciences
+turbosubc8                      // (c) 1985 Entertainment Sciences
 
 @source:et3400.cpp
 et3400                          //
@@ -14491,6 +14499,7 @@ funybublc                       // (c) 1999 Comad Industries
 gogomile                        // (c) 1995
 gogomileo                       // (c) 1995 (Japan)
 pbancho                         // (c) 1996 (Japan)
+pbanchoa                        // (c) 1996 (Japan)
 
 @source:fuukifg3.cpp
 asurabld                        // (c) 1998 (Japan)
@@ -14639,6 +14648,7 @@ galaxiac                        // (c) 1979
 amidar                          // GX337 (c) 1982 Konami
 amidar1                         // GX337 (c) 1981 Konami
 amidarb                         // bootleg
+amidarb2                        // bootleg
 amidarc                         // bootleg
 amidaro                         // GX337 (c) 1982 Konami + Olympia license
 amidars                         // GX337 (c) 1982 Konami
@@ -14708,6 +14718,7 @@ froggervd                       // Video Dens
 fourplay                        // multigame
 galactica2                      // bootleg (Cirsa)
 galap1                          // hack
+galap2                          // hack
 galap4                          // hack
 galapx                          // hack
 galartic                        // Artic System
@@ -14721,6 +14732,7 @@ galaxianbl2                     // bootleg
 galaxianbl3                     // bootleg
 galaxianem                      // bootleg (Electromar Madrid)
 galaxiani                       // (c) Irem
+galaxianiii                     // bootleg
 galaxianm                       // (c) Midway
 galaxianmo                      // (c) Midway
 galaxianrp                      // bootleg (Rene Pierre)
@@ -19663,6 +19675,7 @@ kc85_5                          // VEB KC 85/5
 karatedo                        // (c) 1984 Data East Corporation (Japan)
 karatevs                        // (c) 1984 Data East Corporation (Japan)
 kchamp                          // (c) 1984 Data East USA (US)
+kchamp2p                        // (c) 1984 Data East USA (US)
 kchamptec                       // bootleg (Tecfri)
 kchampvs                        // (c) 1984 Data East USA (US)
 kchampvs2                       // (c) 1984 Data East USA (US)
@@ -36150,6 +36163,7 @@ capitol                         // bootleg?
 cityatta                        // bootleg (Petaco S.A.)
 condor                          // bootleg (Sidam)
 condorn                         // bootleg (S C Novar)
+condorva                        // bootleg (Valadon Automation)
 falcon                          // bootleg
 falconz                         // bootleg
 fenix                           // bootleg (Orio)
@@ -36278,6 +36292,7 @@ piratesh                        // (c) 1995 Konami
 @source:pitnrun.cpp
 pitnrun                         // PR  (c) 1984 Taito Corporation
 pitnruna                        // PR  (c) 1984 Taito Corporation
+pitnrunb                        // PR  (c) 1984 Taito Corporation
 jumpkun                         // prototype
 
 @source:pk8000.cpp
@@ -40616,6 +40631,7 @@ sprint2h                        // 005922 romkit
 @source:sprint4.cpp
 sprint4                         // 008716           1977/12 [6502]
 sprint4a                        // 008716           1977/12 [6502]
+sprint4b                        // 008716           1977/12 [6502]
 
 @source:sprint8.cpp
 sprint8                         // ??????           1977/05 [6800]
@@ -42707,6 +42723,7 @@ bgaregganv                      // (c) 1996 Raizing/8ing
 bgareggat                       // (c) 1996 Raizing/8ing
 bgareggat2                      // (c) 1996 Raizing/8ing
 bgareggatw                      // (c) 1996 Raizing/8ing
+burgkids                        // (c) 1995 Sunwise
 dogyuun                         // TP-022 (c) 1992 Toaplan
 dogyuuna                        // TP-022 (c) 1992 Toaplan
 dogyuunb                        // TP-022 (c) 1992 Toaplan
@@ -43923,6 +43940,7 @@ twcup90t                           // (c) 1989 Tecmo
 @source:wc90b.cpp
 twcup90b1                          // bootleg
 twcup90b2                          // bootleg
+twcup90b3                          // bootleg
 twcup90ba                          // bootleg
 twcup90bb                          // bootleg
 eurogael                           // bootleg
@@ -50075,7 +50093,7 @@ futariblc                       // Hack
 futaribljc                      // Hack
 
 /*******************************************
- PSARCADE CLASSIC+ // ARCADE 0.254
+ PSARCADE CLASSIC+ // ARCADE 0.256
  List of all disabled drivers on the system.
 **********************************************/
 
@@ -50126,14 +50144,42 @@ futaribljc                      // Hack
 //taiko5
 //taiko6
 
+@source:system1.cpp
+//teddybboa
+
+@source:stlforce.cpp
+//mortalr
+
+@source:supercrd.cpp
+//supercrd
+//fruitstr
+//fruitstra
+//gampo816
+//gampo812
+//supst839
+//supst834
+//redline
+
+@source:pitnrun.cpp
+//pitnrunb
+
 @source:topdrive.cpp
 //topdrive
 
+@source:wwfsstar.cpp
+//wwfsstarb2
+
 /*******************************************
- PSARCADE CLASSIC+ // ARCADE 0.254
+ PSARCADE CLASSIC+ // ARCADE 0.256
  List of all disabled device on the system.
 **********************************************/
 
 //centennial_sl01m_15_11194
 //centennial_sl02m_15_11194
 //centennial_sl04m_15_11194
+//cp2024
+//votrsc01
+//tvga9000
+
+
+

@@ -3926,6 +3926,92 @@ static INPUT_PORTS_START( wofhfh )
 
 INPUT_PORTS_END
 
+static INPUT_PORTS_START( pmonster )
+	PORT_START("IN0")
+	PORT_BIT( 0x01, IP_ACTIVE_LOW, IPT_COIN2 ) // medal switch in test mode
+	PORT_BIT( 0x02, IP_ACTIVE_LOW, IPT_COIN1 )
+	PORT_BIT( 0x04, IP_ACTIVE_LOW, IPT_SERVICE1 )
+	PORT_BIT( 0x08, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x10, IP_ACTIVE_LOW, IPT_BUTTON2 ) // hopper switch in test mode
+	PORT_BIT( 0x20, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_SERVICE_NO_TOGGLE( 0x40, IP_ACTIVE_LOW )
+	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_UNKNOWN )
+
+	PORT_START("IN1")
+	PORT_BIT( 0x0001, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0002, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0004, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0008, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_START1 )
+	PORT_BIT( 0x0020, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0040, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0080, IP_ACTIVE_LOW, IPT_BUTTON1 ) // select switch in test mode
+	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_UNKNOWN )
+
+	PORT_START("DSWA")
+	PORT_DIPNAME( 0x01, 0x01, "Medal Setup" )                   PORT_DIPLOCATION("SW(A):1")
+	PORT_DIPSETTING(    0x01, "1 Medal 1 Credit" )
+	PORT_DIPSETTING(    0x00, "Don't use" )
+	PORT_DIPNAME( 0x02, 0x02, "Coin Setup" )                    PORT_DIPLOCATION("SW(A):2")
+	PORT_DIPSETTING(    0x02, "100 Yen" )
+	PORT_DIPSETTING(    0x00, "10 Yen" )
+	PORT_DIPNAME( 0x1c, 0x1c, "Change Setup" )                  PORT_DIPLOCATION("SW(A):3,4,5")
+	PORT_DIPSETTING(    0x04, "12" )
+	PORT_DIPSETTING(    0x00, "11" )
+	PORT_DIPSETTING(    0x1c, "10" )
+	PORT_DIPSETTING(    0x18, "8" )
+	PORT_DIPSETTING(    0x14, "7" )
+	PORT_DIPSETTING(    0x10, "6" )
+	PORT_DIPSETTING(    0x0c, "5" )
+	PORT_DIPSETTING(    0x08, "No change" )
+	PORT_DIPNAME( 0x60, 0x60, "10 Yen Setup" )                  PORT_DIPLOCATION("SW(A):6,7")
+	PORT_DIPSETTING(    0x60, DEF_STR( 1C_1C ) )
+	PORT_DIPSETTING(    0x40, DEF_STR( 2C_1C ) )
+	PORT_DIPSETTING(    0x20, DEF_STR( 3C_1C ) )
+	PORT_DIPSETTING(    0x00, "Don't use" )
+	PORT_DIPUNKNOWN_DIPLOC( 0x80, 0x80, "SW(A):8" )
+
+	PORT_START("DSWB")
+	PORT_DIPNAME( 0x07, 0x07, "Payout Rate Setup" )             PORT_DIPLOCATION("SW(B):1,2,3")
+	PORT_DIPSETTING(    0x01, "90%" )
+	PORT_DIPSETTING(    0x00, "85%" )
+	PORT_DIPSETTING(    0x07, "80%" )
+	PORT_DIPSETTING(    0x06, "75%" )
+	PORT_DIPSETTING(    0x05, "70%" )
+	PORT_DIPSETTING(    0x04, "65%" )
+	PORT_DIPSETTING(    0x03, "60%" )
+	PORT_DIPSETTING(    0x02, "55%" )
+	PORT_DIPUNKNOWN_DIPLOC( 0x08, 0x08, "SW(B):4" )
+	PORT_DIPUNKNOWN_DIPLOC( 0x10, 0x10, "SW(B):5" )
+	PORT_DIPUNKNOWN_DIPLOC( 0x20, 0x20, "SW(B):6" )
+	PORT_DIPUNKNOWN_DIPLOC( 0x40, 0x40, "SW(B):7" )
+	PORT_DIPUNKNOWN_DIPLOC( 0x80, 0x80, "SW(B):8" )
+
+	PORT_START("DSWC")
+	PORT_DIPNAME( 0x03, 0x03, DEF_STR( Demo_Sounds ) )          PORT_DIPLOCATION("SW(C):1,2")
+	PORT_DIPSETTING(    0x03, DEF_STR( On ) )
+	PORT_DIPSETTING(    0x02, "Every second sound" )
+	PORT_DIPSETTING(    0x01, "Every third sound" )
+	PORT_DIPSETTING(    0x00, DEF_STR( Off ) )
+	PORT_DIPUNKNOWN_DIPLOC( 0x04, 0x04, "SW(C):3" )
+	PORT_DIPUNKNOWN_DIPLOC( 0x08, 0x08, "SW(C):4" )
+	PORT_DIPUNKNOWN_DIPLOC( 0x10, 0x10, "SW(C):5" )
+	PORT_DIPUNKNOWN_DIPLOC( 0x20, 0x20, "SW(C):6" )
+	PORT_DIPNAME( 0x40, 0x40, "Clear RAM" )                     PORT_DIPLOCATION("SW(C):7")
+	PORT_DIPSETTING(    0x40, DEF_STR( No ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( Yes ) )
+	PORT_DIPNAME( 0x80, 0x80, "Tes Mode Display" )              PORT_DIPLOCATION("SW(C):8")
+	PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
+	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
+INPUT_PORTS_END
+
 static INPUT_PORTS_START( ganbare )
 	PORT_START("IN0")
 	PORT_BIT( 0x01, IP_ACTIVE_LOW, IPT_COIN1 )
@@ -9215,6 +9301,39 @@ ROM_START( sf2ceea )
 ROM_END
 
 /* B-Board 91635B-2 */
+ROM_START( sf2ceec ) // single byte difference, may be legit or may be a region hack
+	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
+	ROM_LOAD16_WORD_SWAP( "s92e_23c.8f", 0x000000, 0x80000, BAD_DUMP CRC(994b408d) SHA1(f4b9880b3668e09b1250fbd2ff5e58f181d0402f) ) // E seems hand-written, bad dump cause it would be better to have it confirmed from other board
+	ROM_LOAD16_WORD_SWAP( "s92_22c.7f",  0x080000, 0x80000, CRC(5fd8630b) SHA1(f0ef9c5ab91a4b421fb4b1747eef99c964c15de3) )
+	ROM_LOAD16_WORD_SWAP( "s92_21a.6f",  0x100000, 0x80000, CRC(925a7877) SHA1(1960dca35f0ca6f2b399a9fccfbc0132ac6425d1) )
+
+	ROM_REGION( 0x600000, "gfx", 0 )
+	ROM_LOAD64_WORD( "s92-1m.3a",  0x000000, 0x80000, CRC(03b0d852) SHA1(f370f25c96ad2b94f8c53d6b7139100285a25bef) )
+	ROM_LOAD64_WORD( "s92-3m.5a",  0x000002, 0x80000, CRC(840289ec) SHA1(2fb42a242f60ba7e74009b5a90eb26e035ba1e82) )
+	ROM_LOAD64_WORD( "s92-2m.4a",  0x000004, 0x80000, CRC(cdb5f027) SHA1(4c7d944fef200fdfcaf57758b901b5511188ed2e) )
+	ROM_LOAD64_WORD( "s92-4m.6a",  0x000006, 0x80000, CRC(e2799472) SHA1(27d3796429338d82a8de246a0ea06dd487a87768) )
+	ROM_LOAD64_WORD( "s92-5m.7a",  0x200000, 0x80000, CRC(ba8a2761) SHA1(4b696d66c51611e43522bed752654314e76d33b6) )
+	ROM_LOAD64_WORD( "s92-7m.9a",  0x200002, 0x80000, CRC(e584bfb5) SHA1(ebdf1f5e2638eed3a65dda82b1ed9151a355f4c9) )
+	ROM_LOAD64_WORD( "s92-6m.8a",  0x200004, 0x80000, CRC(21e3f87d) SHA1(4a4961bb68c3a1ce15f9d393d9c03ecb2466cc29) )
+	ROM_LOAD64_WORD( "s92-8m.10a", 0x200006, 0x80000, CRC(befc47df) SHA1(520390420da3a0271ba90b0a933e65143265e5cf) )
+	ROM_LOAD64_WORD( "s92-10m.3c", 0x400000, 0x80000, CRC(960687d5) SHA1(2868c31121b1c7564e9767b9a19cdbf655c7ed1d) )
+	ROM_LOAD64_WORD( "s92-12m.5c", 0x400002, 0x80000, CRC(978ecd18) SHA1(648a59706b93c84b4206a968ecbdc3e834c476f6) )
+	ROM_LOAD64_WORD( "s92-11m.4c", 0x400004, 0x80000, CRC(d6ec9a0a) SHA1(ed6143f8737013b6ef1684e37c05e037e7a80dae) )
+	ROM_LOAD64_WORD( "s92-13m.6c", 0x400006, 0x80000, CRC(ed2c67f6) SHA1(0083c0ffaf6fe7659ff0cf822be4346cd6e61329) )
+
+	ROM_REGION( 0x18000, "audiocpu", 0 ) /* 64k for the audio CPU (+banks) */
+	ROM_LOAD( "s92_09.11a",  0x00000, 0x08000, CRC(08f6b60e) SHA1(8258fcaca4ac419312531eec67079b97f471179c) )
+	ROM_CONTINUE(            0x10000, 0x08000 )
+
+	ROM_REGION( 0x40000, "oki", 0 ) /* Samples */
+	ROM_LOAD( "s92_18.11c",  0x00000, 0x20000, CRC(7f162009) SHA1(346bf42992b4c36c593e21901e22c87ae4a7d86d) )
+	ROM_LOAD( "s92_19.12c",  0x20000, 0x20000, CRC(beade53f) SHA1(277c397dc12752719ec6b47d2224750bd1c07f79) )
+
+	ROM_REGION( 0x80, "control", 0 )
+	ROM_LOAD( "sf2ce.key", 0x00, 0x80, CRC(35b37429) SHA1(b372cce106c0900554735c207fb333ac93554ec2) )
+ROM_END
+
+/* B-Board 91635B-2 */
 ROM_START( sf2ceua )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_WORD_SWAP( "s92u_23a.8f", 0x000000, 0x80000, CRC(ac44415b) SHA1(218f8b1886eb72b8547127042b5ae47600e18944) )
@@ -12598,6 +12717,36 @@ ROM_START( ganbare )
 	ROM_LOAD( "ganbare.key", 0x00, 0x80, CRC(b30c6f12) SHA1(d30c4694471375e50068e0ff5a5b3b7f13421692) )
 ROM_END
 
+/* B-Board 91634B-2 */
+ROM_START( pmonster )
+	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
+	ROM_LOAD16_WORD_SWAP( "gbpj_23a.8f", 0x00000, 0x80000, CRC(52ef2d85) SHA1(e6ec80159474e974987c6057a989d71ccb9b1b89) )
+
+	ROM_REGION( 0x400000, "gfx", 0 )
+	ROM_LOAD64_WORD( "gbpj_01.3a",  0x000000, 0x80000, CRC(a7bea5bb) SHA1(57b594afcc4b42d7c61bab90574d45a53c2a4237) )
+	ROM_LOAD64_WORD( "gbpj_02.4a",  0x000002, 0x80000, CRC(357b76ec) SHA1(247e18e0a289d833d6c0268265f775148c498378) )
+	ROM_LOAD64_WORD( "gbpj_03.5a",  0x000004, 0x80000, CRC(bcbc1881) SHA1(15793dda4b72125a2c9e14b1d931648e4fb490fe) )
+	ROM_LOAD64_WORD( "gbpj_04.6a",  0x000006, 0x80000, CRC(b1126fde) SHA1(5258226018ab8233d245f3b2f8fbe205dd338f27) )
+	ROM_LOAD64_WORD( "gbpj_05.7a",  0x200000, 0x80000, CRC(bb5be4b0) SHA1(7febfb78606912419a65d66aef89772fa2fdd26c) ) // x1xxxxxxxxxxxxxxxxx = 0xFF
+	ROM_LOAD64_WORD( "gbpj_06.8a",  0x200002, 0x80000, CRC(1be8fd86) SHA1(4b1dac47c15dd08e60f47c36d110844937a18c14) ) // x1xxxxxxxxxxxxxxxxx = 0xFF
+	ROM_LOAD64_WORD( "gbpj_07.9a",  0x200004, 0x80000, CRC(deb8ef02) SHA1(25217e988ea26c8af1ba877f914185abd3bd70b2) ) // x1xxxxxxxxxxxxxxxxx = 0xFF
+	ROM_LOAD64_WORD( "gbpj_08.10a", 0x200006, 0x80000, CRC(9f90359d) SHA1(cb673c9d902a75ed833248e5abacba4bb785930d) ) // x1xxxxxxxxxxxxxxxxx = 0xFF
+
+	ROM_REGION( 0x18000, "audiocpu", 0 ) /* 64k for the audio CPU (+banks) */
+	ROM_LOAD( "gbpj_09.12a",  0x00000, 0x08000,  CRC(fc431024) SHA1(58e90c1b98cd3c2e2597f2f11374395952b8a8f3) )
+	ROM_CONTINUE(             0x10000, 0x08000 )
+
+	ROM_REGION( 0x40000, "oki", 0 ) /* Samples */
+	ROM_LOAD( "gbpj_18.11c",  0x00000, 0x20000, CRC(cc54778d) SHA1(bc31397d6b0ae7357c1df9e537bbe5acbea430b2) )
+	ROM_LOAD( "gbpj_19.12c",  0x20000, 0x20000, CRC(ea8b56d8) SHA1(ac0b2a32f5ac1c624bf7a80636a6b0e3944b9acc) )
+
+	ROM_REGION( 0x8000, "timekeeper", ROMREGION_ERASE00 )
+	ROM_LOAD( "m48t35y-70pc1.9n", 0x00000, 0x8000, NO_DUMP )
+
+	ROM_REGION( 0x80, "control", 0 )
+	ROM_LOAD( "pokonyan.key", 0x00, 0x80, CRC(c6b69f33) SHA1(1e7211733100a9a9a9afd61fa1d63285f86bd031) )
+ROM_END
+
 ROM_START( pokonyan )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_BYTE( "xmqq-12f.bin", 0x00000, 0x20000, CRC(196297bf) SHA1(4724c4ccb755d3d457f5224d4c4ea860664d3b10) )
@@ -13345,6 +13494,7 @@ GAME( 1991, knightsja,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,  
 GAME( 1991, knightsb2,   knights,  cps1_10MHz, knights,  cps_state, init_cps1,     ROT0,   "Capcom", "Knights of the Round (bootleg, World 911127)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE ) // i.e. player selection screen problems
 GAME( 1992, sf2ce,       0,        cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "Capcom", "Street Fighter II': Champion Edition (World 920513)", MACHINE_SUPPORTS_SAVE )   // "ETC"
 GAME( 1992, sf2ceea,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "Capcom", "Street Fighter II': Champion Edition (World 920313)", MACHINE_SUPPORTS_SAVE )   // "ETC"
+GAME( 1992, sf2ceec,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "Capcom", "Street Fighter II': Champion Edition (World 920803)", MACHINE_SUPPORTS_SAVE )   // "ETC"
 GAME( 1992, sf2ceua,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "Capcom", "Street Fighter II': Champion Edition (USA 920313)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, sf2ceub,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "Capcom", "Street Fighter II': Champion Edition (USA 920513)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, sf2ceuc,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "Capcom", "Street Fighter II': Champion Edition (USA 920803)", MACHINE_SUPPORTS_SAVE )
@@ -13430,6 +13580,7 @@ GAME( 1995, qtono2j,     0,        cps1_12MHz, qtono2j,  cps_state, init_cps1,  
 GAME( 1995, megaman,     0,        cps1_12MHz, megaman,  cps_state, init_cps1,     ROT0,   "Capcom", "Mega Man: The Power Battle (CPS1, USA 951006)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, megamana,    megaman,  cps1_12MHz, megaman,  cps_state, init_cps1,     ROT0,   "Capcom", "Mega Man: The Power Battle (CPS1, Asia 951006)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, rockmanj,    megaman,  cps1_12MHz, rockmanj, cps_state, init_cps1,     ROT0,   "Capcom", "Rockman: The Power Battle (CPS1, Japan 950922)", MACHINE_SUPPORTS_SAVE )
+GAME( 1999, pmonster,    0,        ganbare,    pmonster, cps_state, init_ganbare,  ROT0,   "Capcom", "Gamushara Battle! Puchi Monster (Japan 990519)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) // Needs hopper emulation
 GAME( 2000, ganbare,     0,        ganbare,    ganbare,  cps_state, init_ganbare,  ROT0,   "Capcom", "Ganbare! Marine Kun (Japan 2K0411)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, pokonyan,    0,        cps1_10MHz, pokonyan, cps_state, init_cps1,     ROT0,   "Capcom", "Pokonyan! Balloon (Japan 940322)", MACHINE_SUPPORTS_SAVE ) // 2002-10-24 was on the ROM labels, 940322 on the startup screen... take your pick
 GAME( 1996, hkittymp,    0,        cps1_10MHz, pokonyan, cps_state, init_cps1,     ROT0,   "Capcom", "Hello Kitty Magical Pumpkin (Japan 960712)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE ) // needs 'wheel' emulation

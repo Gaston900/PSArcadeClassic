@@ -2278,6 +2278,17 @@ void _8080bw_state::polaris(machine_config &config)
 /*                                                     */
 /*******************************************************/
 
+void ozmawars_state::ozmawars_io_map(address_map &map)
+{
+	map(0x00, 0x00).portr("IN0").nopw(); // ozmawars2 writes random stuff here
+	map(0x01, 0x01).portr("IN1");
+	map(0x02, 0x02).portr("IN2");
+	map(0x03, 0x03).w(FUNC(ozmawars_state::ozmawars_port03_w));
+	map(0x04, 0x04).w(FUNC(ozmawars_state::ozmawars_port04_w));
+	map(0x05, 0x05).w(FUNC(ozmawars_state::ozmawars_port05_w));
+	map(0x06, 0x06).w(m_watchdog, FUNC(watchdog_timer_device::reset_w));
+}
+
 static INPUT_PORTS_START( ozmawars )
 	PORT_INCLUDE( sicv_base )
 
@@ -2306,6 +2317,27 @@ static INPUT_PORTS_START( spaceph )
 	PORT_MODIFY("IN1")
 	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_UNKNOWN )
 INPUT_PORTS_END
+
+void ozmawars_state::ozmawars(machine_config &config)
+{
+	mw8080bw_root(config);
+
+	/* basic machine hardware */
+	m_maincpu->set_addrmap(AS_IO, &ozmawars_state::ozmawars_io_map);
+	MCFG_MACHINE_START_OVERRIDE(ozmawars_state,extra_8080bw)
+
+	/* 60 Hz signal clocks two LS161. Ripple carry will */
+	/* reset circuit, if LS161 not cleared before.      */
+	WATCHDOG_TIMER(config, m_watchdog).set_vblank_count("screen", 255);
+
+	/* video hardware */
+	m_screen->set_screen_update(FUNC(ozmawars_state::screen_update_invadpt2));
+
+	PALETTE(config, m_palette, palette_device::RBG_3BIT);
+
+	/* sound hardware */
+	ozmawars_samples_audio(config);
+}
 
 
 
@@ -4498,6 +4530,16 @@ ROM_START( spceking )
 	ROM_LOAD( "spcekng4",     0x1800, 0x0800, CRC(54170ada) SHA1(1e8b3774355ec0d448f04805a917f4c1fe64bceb) )
 ROM_END
 
+ROM_START( spcebttl ) // Three PCB stack (U-1109 + 29-22-2 + 29-22-1), almost exact duplicates of Taito PCBs.
+	ROM_REGION( 0x10000, "maincpu", 0 )
+	ROM_LOAD( "1", 0x0000, 0x0400, CRC(86bb8cb6) SHA1(a75648e7f2446c756d86624b15d387d25ce47b66) )
+	ROM_LOAD( "2", 0x0400, 0x0400, CRC(febe6d1a) SHA1(e1c3a24b4fa5862107ada1f9d7249466e8c3f06a) )
+	ROM_LOAD( "3", 0x0800, 0x0400, CRC(e11ef4ae) SHA1(26f21297cfff1e9922ea20283c5e8eb6a54e8359) )
+	ROM_LOAD( "4", 0x1400, 0x0400, CRC(1293b826) SHA1(165cd5d08a19eadbe954145b12807f10df9e691a) )
+	ROM_LOAD( "5", 0x1800, 0x0400, CRC(3c89b4d5) SHA1(cf0622a9dcdadc5769546fe807a0f168cc6e18dc) )
+	ROM_LOAD( "6", 0x1c00, 0x0400, CRC(e154f4e5) SHA1(eeda4cbae72e0753965cbb99dfbfa927c6a372d1) )
+ROM_END
+
 ROM_START( spcewars )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "sanritsu.1",   0x0000, 0x0400, CRC(ca331679) SHA1(5c362c3d1c721d293bcddbef4033533769c8f0e0) )
@@ -5902,6 +5944,7 @@ GAMEL(1978, invadernc,   invaders, invaders,  sicv,      sisv_state,     empty_i
 GAMEL(1978, spcewars,    invaders, spcewars,  spcewars,  _8080bw_state,  empty_init,    ROT270, "Taito / Sanritsu",                   "Space War (Sanritsu)",                                            MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE, layout_invaders ) // Unclassified, licensed or bootleg?
 GAME( 1979, spcewarla,   invaders, spcewarla, spcewars,  _8080bw_state,  empty_init,    ROT270, "bootleg (Leisure and Allied)",       "Space War (Leisure and Allied)",                                  MACHINE_IMPERFECT_COLORS | MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // unclassified, licensed or bootleg?
 GAMEL(1978, spceking,    invaders, invaders,  sicv,      sisv_state,     empty_init,    ROT270, "Taito / Leijac Corporation",         "Space King",                                                      MACHINE_SUPPORTS_SAVE, layout_invaders ) // Unclassified, licensed or bootleg?
+GAME( 1978, spcebttl,    invaders, invaders,  sitv,      sisv_state,     empty_init,    ROT270, "bootleg",                            "Space Battle (Space Invaders bootleg)",                           MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAMEL(1979, cosmicmo,    invaders, cosmicmo,  cosmicmo,  _8080bw_state,  empty_init,    ROT270, "bootleg (Universal)",                "Cosmic Monsters (version II)",                                    MACHINE_SUPPORTS_SAVE, layout_cosmicm ) // Taito sued, and as settlement they were allowed to sell Universal's Galaxy Wars
 GAMEL(1979, cosmicm2,    invaders, cosmicmo,  cosmicmo,  _8080bw_state,  empty_init,    ROT270, "bootleg (Universal)",                "Cosmic Monsters 2",                                               MACHINE_SUPPORTS_SAVE, layout_cosmicm ) // "
 GAMEL(1980?,sinvzen,     invaders, invaders,  sinvzen,   invaders_state, empty_init,    ROT270, "Taito / Zenitone-Microsec Ltd.",     "Super Invaders (Zenitone-Microsec)",                              MACHINE_SUPPORTS_SAVE, layout_invaders ) // Unclassified, licensed or bootleg?
@@ -5979,14 +6022,14 @@ GAME( 1980, polarisb,    polaris,  polaris,   polaris,   _8080bw_state,  empty_i
 GAME( 1980, polariso,    polaris,  polaris,   polaris,   _8080bw_state,  empty_init,    ROT270, "Taito",                              "Polaris (original version)",                                      MACHINE_SUPPORTS_SAVE )
 GAME( 1981, polarisbr,   polaris,  polaris,   polaris,   _8080bw_state,  empty_init,    ROT270, "Taito do Brasil",                    "Polaris (Brazil)",                                                MACHINE_SUPPORTS_SAVE )
 
-GAME( 1980, ballbomb,    0,        ballbomb,  ballbomb,  _8080bw_state,  empty_init,    ROT270, "Taito",                              "Balloon Bomber",                                                  MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND | MACHINE_IMPERFECT_GRAPHICS )  // Missing clouds
+GAME( 1980, ballbomb,    0,        ballbomb,  ballbomb,  _8080bw_state,  empty_init,    ROT270, "Taito",                              "Balloon Bomber",                                                  MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND | MACHINE_IMPERFECT_GRAPHICS ) // Missing clouds
 
 GAME( 1980, indianbt,    0,        indianbt,  indianbt,  _8080bw_state,  empty_init,    ROT270, "Taito",                              "Indian Battle",                                                   MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND )
 GAME( 1983, indianbtbr,  indianbt, indianbtbr,indianbtbr,_8080bw_state,  empty_init,    ROT270, "Taito do Brasil",                    "Indian Battle (Brazil)",                                          MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND )
 
-GAME( 1980, steelwkr,    0,        steelwkr,  steelwkr,  _8080bw_state,  empty_init,    ROT0  , "Taito",                              "Steel Worker",                                                    MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND )
+GAME( 1980, steelwkr,    0,        steelwkr,  steelwkr,  _8080bw_state,  empty_init,    ROT0,   "Taito",                              "Steel Worker",                                                    MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND )
 
-GAMEL(1980?,galactic,    0,        invaders,  galactic,  invaders_state, empty_init,    ROT270, "Taito do Brasil",                    "Galactica - Batalha Espacial",                                    MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND, layout_galactic )
+GAMEL(1980?,galactic,    0,        invaders,  galactic,  invaders_state, empty_init,    ROT270, "Taito do Brasil",                    "Galactica - Batalha Espacial",                                    MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND, layout_galactic ) // Modified version of Taito Spacian, on Space Invaders hardware
 GAMEL(1980?,spacmiss,    galactic, invaders,  galactic,  invaders_state, empty_init,    ROT270, "bootleg?",                           "Space Missile - Space Fighting Game",                             MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_SOUND, layout_galactic )
 
 // Misc. manufacturers
@@ -6009,8 +6052,8 @@ GAME( 1980, vortex,      0,        vortex,    vortex,    vortex_state,   init_vo
 
 GAME( 1979, rollingc,    0,        rollingc,  rollingc,  rollingc_state, empty_init,    ROT270, "Nichibutsu",                         "Rolling Crash / Moon Base",                                       MACHINE_IMPERFECT_SOUND | MACHINE_IMPERFECT_COLORS | MACHINE_SUPPORTS_SAVE )
 
-GAME( 1979, ozmawars,    0,        invadpt2,  ozmawars,  _8080bw_state,  empty_init,    ROT270, "SNK",                                "Ozma Wars (set 1)",                                               MACHINE_SUPPORTS_SAVE )
-GAME( 1979, ozmawars2,   ozmawars, invadpt2,  ozmawars,  _8080bw_state,  empty_init,    ROT270, "SNK",                                "Ozma Wars (set 2)",                                               MACHINE_SUPPORTS_SAVE ) // Uses Taito's three board color version of Space Invaders PCB
+GAME( 1979, ozmawars,    0,        invadpt2,  ozmawars,  ozmawars_state, empty_init,    ROT270, "SNK",                                "Ozma Wars (set 1)",                                               MACHINE_SUPPORTS_SAVE )
+GAME( 1979, ozmawars2,   ozmawars, invadpt2,  ozmawars,  ozmawars_state, empty_init,    ROT270, "SNK",                                "Ozma Wars (set 2)",                                               MACHINE_SUPPORTS_SAVE ) // Uses Taito's three board color version of Space Invaders PCB
 GAME( 1979, ozmawarsmr,  ozmawars, invaders,  ozmawars,  invaders_state, empty_init,    ROT270, "bootleg (Model Racing)",             "Ozma Wars (Model Racing bootleg)",                                MACHINE_SUPPORTS_SAVE )
 GAME( 1979, spaceph,     ozmawars, invaders,  spaceph,   invaders_state, empty_init,    ROT270, "bootleg? (Zilec Games)",             "Space Phantoms (bootleg of Ozma Wars)",                           MACHINE_SUPPORTS_SAVE )
 GAME( 1979, solfight,    ozmawars, invaders,  ozmawars,  invaders_state, empty_init,    ROT270, "bootleg",                            "Solar Fight (bootleg of Ozma Wars)",                              MACHINE_SUPPORTS_SAVE )

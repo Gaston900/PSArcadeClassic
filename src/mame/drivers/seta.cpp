@@ -11961,7 +11961,7 @@ ROM_START( madshark )
 
 	ROM_REGION( 0x300000, "user1", 0 )  /* Layers 1+2 */
 	ROM_LOAD24_WORD_SWAP( "fq001006.152", 0x000001, 0x200000, CRC(3bc5e8e4) SHA1(74cdf1bb2e58bef29c6f4371ff40f64472bff3ce) )
-	ROM_LOAD24_BYTE     ( "fq001005.205", 0x000000, 0x100000, CRC(5f6c6d4a) SHA1(eed5661738282a14ce89917335fd1b695eb7351e) )
+	ROM_LOAD24_BYTE     ( "fq001005.205", 0x000000, 0x100000, CRC(5f6c6d4a) SHA1(eed5661738282a14ce89917335fd1b695eb7351e) ) // 1xxxxxxxxxxxxxxxxxxx = 0x00
 
 	ROM_REGION( 0x180000, "gfx2", 0 )   /* Layer 1 */
 	ROM_COPY( "user1", 0x000000, 0x000000, 0x180000 )
@@ -12115,6 +12115,9 @@ ROM_START( crazyfgt )
 
 	ROM_REGION( 0x40000, "oki", 0 ) /* OKI samples */
 	ROM_LOAD( "rom.u85",  0x00000, 0x40000, CRC(7b95d0bb) SHA1(f16dfd639eed6856e3ab93704caef592a07ba367) )
+
+	ROM_REGION( 0x28, "eeprom", 0 )
+	ROM_LOAD( "ds2430a.bin", 0x00, 0x28, CRC(3b5ea5d2) SHA1(bbaad9a879834d1510f20321b97de558d9759ec7) BAD_DUMP ) // handcrafted to pass protection check
 ROM_END
 
 ROM_START( jockeyc )
@@ -12782,4 +12785,4 @@ GAME( 1995, zombraid,  0,        zombraid,  zombraid,  zombraid_state, init_zomb
 GAME( 1995, zombraidp, zombraid, zombraid,  zombraid,  zombraid_state, init_zombraid,  ROT0,   "American Sammy",            "Zombie Raid (9/28/95, US, prototype PCB)", MACHINE_NO_COCKTAIL ) // actual code is same as the released version
 GAME( 1995, zombraidpj,zombraid, zombraid,  zombraid,  zombraid_state, init_zombraid,  ROT0,   "Sammy Industries Co.,Ltd.", "Zombie Raid (9/28/95, Japan, prototype PCB)", MACHINE_NO_COCKTAIL ) // just 3 bytes different from above
 
-GAME( 1996, crazyfgt,  0,        crazyfgt,  crazyfgt,  seta_state,     init_crazyfgt,  ROT0,   "Subsino",                   "Crazy Fight", MACHINE_UNEMULATED_PROTECTION | MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND )
+GAME( 1996, crazyfgt,  0,        crazyfgt,  crazyfgt,  seta_state,     init_crazyfgt,  ROT0,   "Subsino",                   "Crazy Fight", MACHINE_IMPERFECT_GRAPHICS | MACHINE_IMPERFECT_SOUND )

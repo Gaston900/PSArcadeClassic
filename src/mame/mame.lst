@@ -253,6 +253,7 @@ spaceph                         // Zilec Games
 spacerng                        // bootleg
 spacewr3                        // bootleg
 spacmiss                        // bootleg?
+spcebttl                        // bootleg
 spceking                        // (c) 1978 Leijac Corporation (Konami)
 spcewarl                        // (c) 1979 Leijac Corporation (Konami)
 spcewarla                       //
@@ -14877,6 +14878,7 @@ streakng                        // [1980] Shoei
 streaknga                       // [1980] Shoei
 strfbomb                        // bootleg
 superbon                        // bootleg
+superbona                       // bootleg
 superg                          // hack
 supergs                         // Silver Systems hack
 supergx                         // [1980] Nichibutsu
@@ -20737,6 +20739,7 @@ gallopm72                       // (c) 1991 (Japan)
 hharry                          // (c) 1990 (World)
 hharryu                         // (c) 1990 Irem America (US)
 hharryb                         // bootleg
+hharryb2                        // bootleg
 imgfight                        // (c) 1988 (World)
 imgfightj                       // (c) 1988 (Japan)
 imgfightjb                      // bootleg
@@ -23786,6 +23789,7 @@ mice2_6809                      // (c) 1986 Microtek International, Inc.
 
 @source:miconkit.cpp
 micon2
+smiconk
 
 @source:micral.cpp
 micral                          //
@@ -24272,8 +24276,8 @@ lastbrnx                        // 1996.06 Last Bronx (Export, Revision A)
 lastbrnxj                       // 1996.06 Last Bronx (Japan, Revision A)
 lastbrnxu                       // 1996.06 Last Bronx (USA, Revision A)
 manxtt                          // 1995.11 Manx T.T. DX (Revision D)
-manxtta                         // 1995.?? Manx T.T. (Revision A)
 manxttc                         // 1995.11 Manx T.T. (Revision C)
+manxttdx                        // 1995.?? Manx T.T. DX (Revision A)
 motoraid                        // 1997.10 Motor Raid Twin
 motoraiddx                      // 1997.10 Motor Raid DX
 overrev                         // 1997.09 Over Rev (Revision A)
@@ -24349,6 +24353,7 @@ lostwsga                        // 1997.07 Lost World Jurassic Park
 lostwsgp                        // 1997.06 Lost World Jurassic Park (location test)
 magtruck                        // 1999.03 Magical Truck Adventure (Japan)
 oceanhun                        // 1998.09 Ocean Hunter (Japan)
+oceanhuna                       // 1998.09 Ocean Hunter (Japan)
 scud                            // 1996.12 Scud Race Twin/DX
 scudau                          // 1996.12 Scud Race Twin/DX - Australia
 scuddx                          // 1996.12 Scud Race Deluxe
@@ -32317,6 +32322,7 @@ danceyesu                       // 1996.10 Dancing Eyes (US, DC3/VER.C)
 danceyesj                       // 1996.09 Dancing Eyes (Japan, DC1/VER.A)
 dunkmnia                        // 1996.05 Dunk Mania (World, DM2/VER.C)
 dunkmniajc                      // 1996.05 Dunk Mania (Japan, DM1/VER.C)
+fambowl                         // 1997.?? Family Bowl (Ver. 1.00)
 gunbarla                        // 1999.?? Gunbarl (Japan, GNB1/VER.A)
 myangel3                        // 1998.03 Kosodate Quiz My Angel 3 (Japan, KQT1/VER.A)
 pocketrc                        // 1997.03 Pocket Racer (Japan, PKR1/VER.B)
@@ -38513,6 +38519,7 @@ spongbob                        // (c) 200? Sega
 
 @source:segac2.cpp
 anpanman                        // (c) 1993 Sega
+anpanmana                       // (c) 1993 Sega
 bloxeedc                        // (c) 1989 Sega / Elorg
 bloxeedu                        // (c) 1989 Sega / Elorg
 borench                         // (c) 1990 Sega
@@ -38560,6 +38567,7 @@ tfrceacb                        // bootleg
 tfrceacj                        // (c) 1990 Sega / Technosoft
 tfrceacjpb                      // prototype / bootleg
 twinsqua                        // (c) 1991 Sega
+wwanpanm                        // (c) 1992 Sega
 wwmarine                        // (c) 1992 Sega
 zunkyou                         // (c) 1994 Sega
 
@@ -38859,6 +38867,7 @@ wb33                            // (c) 1988 Sega / Westone (FD1094)
 wb33d                           //
 wb34                            // (c) 1988 Sega / Westone (FD1094)
 wb34d                           //
+wfishing                        // (c) 1996 (Unprotected)
 wrestwar                        // (c) 1989 (8751)
 wrestwar1                       // (c) 1989 (FD1094)
 wrestwar1d                      //
@@ -50066,12 +50075,65 @@ futariblc                       // Hack
 futaribljc                      // Hack
 
 /*******************************************
- PSARCADE CLASSIC+ // ARCADE 0.253
+ PSARCADE CLASSIC+ // ARCADE 0.254
  List of all disabled drivers on the system.
 **********************************************/
 
+@source:f1gp.cpp
+//f1gpbl
+
 @source:seta.cpp
-//madsharkbl                     // It does not work
+//madsharkbl
 
 @source:bzone.cpp
 //dsrtwars
+
+@source:namcos10.cpp
+//ballpom
+//chocovdr
+//g13jnr
+//gahaha
+//gahaha2
+//gamshara
+//gamsharaj
+//gegemdb
+//gjspace
+//gunbalina
+//kd2001
+//keroro
+//knpuzzle
+//konotako
+//medalnt
+//medalnt2
+//mrdrilr2
+//mrdrilr2j
+//mrdrilr2u
+//mrdrilrg
+//nflclsfb
+//nicetsuk
+//pacmball
+//panikuru
+//ptblank3
+//puzzball
+//sekaikh
+//sekaikha
+//squizchs
+//startrgn
+//sugorotc
+//taiko2
+//taiko3
+//taiko4
+//taiko5
+//taiko6
+
+@source:topdrive.cpp
+//topdrive
+
+/*******************************************
+ PSARCADE CLASSIC+ // ARCADE 0.254
+ List of all disabled device on the system.
+**********************************************/
+
+//centennial_sl01m_15_11194
+//centennial_sl02m_15_11194
+//centennial_sl04m_15_11194

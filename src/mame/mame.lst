@@ -2,7 +2,7 @@
 // copyright-holders:Gaston90
 // copyright-holders:Robbbert
 /*******************************************
- PSARCADE CLASSIC+ // ARCADE 0.256
+ PSARCADE CLASSIC+ // ARCADE 0.257
  List of all drivers enabled in the system.
 **********************************************/
 
@@ -2186,6 +2186,7 @@ terrafb                         // (c) 1987
 terrafj                         // (c) 1987 Nichibutsu Japan
 terrafjb                        // (c) 1987
 terrafu                         // (c) 1987 Nichibutsu USA
+terrafua                        // (c) 1987 Nichibutsu USA
 
 @source:arsystems.cpp
 ar_airh                         // (c) 1988
@@ -12312,7 +12313,7 @@ lastmisnu5                      // (c) 1986 Data East USA (US)
 lastmisnu6                      // (c) 1986 Data East USA (US)
 makyosen                        // (c) 1987 Data East Corporation (Japan)
 meikyuh                         // (c) 1987 Data East Corporation (Japan)
-meikyuha                        // (c) 1987 Data East Corporation (Japan)
+meikyuhbl                       // bootleg
 oscar                           // (c) 1988 Data East Corporation (World)
 oscarbl                         // bootleg
 oscarj1                         // (c) 1987 Data East Corporation (Japan)
@@ -14192,6 +14193,7 @@ firetrapj                       // (c) 1986 Wood Place Inc. (Japan)
 
 @source:firetrk.cpp
 firetrk                         // 030926           1978/06 [6808]
+firetrka                        // 030926           1978/06 [6808]
 montecar                        // 035763-035780    1980/04 [6502]
 superbug                        // 009115-009467    1977/09 [6800]
 
@@ -14294,6 +14296,7 @@ omegaa                          // (c) 1986 Nihon System
 countrun                        // (c) 1988 Nihon System (+ optional Sega) NS6201-A 1988.3
 countrunb                       // (c) 1988 bootleg
 countrunb2                      // (c) 1988 bootleg
+countrunb3                      // (c) 1988 bootleg
 freekick                        // (c) 1988 Nihon System licensed to Merit (+ optional Sega) NS6201-A 1987.10
 freekicka                       // (c) 1988 Nihon System (+ optional Sega) NS6201-A 1987.9
 freekickb1                      // (c) 1987 bootleg
@@ -14707,6 +14710,7 @@ frogf                           // bootleg
 frogg                           // bootleg
 frogger                         // GX392 (c) 1981 Konami
 froggeram                       // bootleg
+froggereb                       // bootleg
 froggermc                       // 800-3110 (c) 1981 Sega
 froggers                        // bootleg
 froggers1                       // (c) 1981 Sega
@@ -23235,6 +23239,7 @@ barekch                         // MegaDrive-based hack
 barek2ch                        // MegaDrive-based hack
 barek2mb                        // MegaDrive-based hack
 barek3mb                        // MegaDrive-based hack
+barek3mba
 bk3ssrmb                        // MegaDrive-based hack
 jparkmb                         // MegaDrive-based hack
 mk3mdb                          // MegaDrive-based hack
@@ -23970,6 +23975,7 @@ mazebl                          // bootleg
 mkla1                           // (c) 1992 Midway
 mkla2                           // (c) 1992 Midway
 mkla3                           // (c) 1992 Midway
+mkla3bl                         // bootleg
 mkla4                           // (c) 1992 Midway
 mknifty                         // hack
 mknifty666                      // hack
@@ -24481,6 +24487,9 @@ fruitstba                       // 1997 Webak
 fruitstbb                       // 1997 Webak
 fruitstbc                       // 1997 Webak
 fruitstbd                       // 1997 Webak
+fruitstbe                       // 1999 Webak
+fruitstbf                       // 1997 Webak
+fruitstbg                       // 1997 Webak
 
 @source:mpu2.cpp
 m2hilite                        // Hi-Lights (Barcrest) (MPU2)
@@ -36273,6 +36282,7 @@ pipbug                          //
 @source:pipedrm.cpp
 hatris                          // (c) 1990 Video System Co. (US)
 hatrisj                         // (c) 1990 Video System Co. (Japan)
+hatrisp                         // (c) 1990 Video System Co. (prototype)
 pipedrm                         // (c) 1990 Video System Co. (World)
 pipedrmj                        // (c) 1990 Video System Co. (Japan)
 pipedrmt                        // (c) 1990 Video System Co. (Taiwan)
@@ -37200,6 +37210,7 @@ r2dtank                         // (c) 1980 Sigma Ent. Inc.
 @source:r2dx_v33.cpp
 nzeroteam                       // (c) 1997 Seibu Kaihatsu
 nzeroteama                      //
+nzeroteamb                      //
 r2dx_v33                        // (c) 1996 Seibu Kaihatsu
 r2dx_v33_r2                     // (c) 1996 Seibu Kaihatsu
 zerotm2k                        // (c) 2000 Seibu Kaihatsu
@@ -39232,6 +39243,7 @@ cupsocsb                        // bootleg
 cupsocsb2                       // bootleg
 cupsocsb3                       // bootleg
 cupsocsb4                       // bootleg
+cupsocsb5                       // bootleg
 
 @source:selz80.cpp
 dagz80                          //
@@ -39264,6 +39276,7 @@ daioha                          // (C) 1993 Athena
 daiohc                          // (C) 1993 Athena (93111A PCB conversion)
 daiohp                          // (C) 1993 Athena (prototype)
 daiohp2                         // (C) 1993 Athena (prototype, earlier)
+daiohp3                         // (C) 1993 Athena (prototype)
 downtown                        // UD-2 (c) 1989 + Romstar or Taito license (DSW)
 downtown2                       // UD-2 (c) 1989 + Romstar or Taito license (DSW)
 downtownj                       // UD-2 (c) 1989 + Romstar or Taito license (DSW)
@@ -40328,6 +40341,7 @@ tk95                            // 1986 TK95 Color Computer
 zvezda                          // 1990 Zvezda
 
 @source:speedatk.cpp
+daifugo
 speedatk                        // CB-0 (c) SetaKikaku
 
 @source:speedbal.cpp
@@ -42728,6 +42742,7 @@ dogyuun                         // TP-022 (c) 1992 Toaplan
 dogyuuna                        // TP-022 (c) 1992 Toaplan
 dogyuunb                        // TP-022 (c) 1992 Toaplan
 dogyuunt                        // TP-022 (c) 1992 Toaplan
+dogyuunto                       // TX-022 (c) 1992 Toaplan
 fixeight                        // TP-026 (c) 1992 + Taito license
 fixeighta                       // TP-026 (c) 1992 + Taito license
 fixeightat                      // TP-026 (c) 1992 + Taito license
@@ -42768,6 +42783,7 @@ shippumd                        // (c) 1994 Raizing/8ing
 snowbro2                        // TP-033 (c) 1994 Hanafram
 snowbro2b                       //
 snowbro2b2                      //
+snowbro2b3                      //
 snowbro2ny                      // TP-033 (c) 1994 Nyanko
 sstriker                        // (c) 1993 Raizing
 sstrikerk                       // (c) 1993 Raizing
@@ -50093,9 +50109,35 @@ futariblc                       // Hack
 futaribljc                      // Hack
 
 /*******************************************
- PSARCADE CLASSIC+ // ARCADE 0.256
+ PSARCADE CLASSIC+ // ARCADE 0.257
  List of all disabled drivers on the system.
 **********************************************/
+
+@source:astrcorp.cpp
+//astoneag
+//dinodino
+//hacher
+//magibomb
+//magibomba
+//magibomba
+//magibombc
+//magibombd
+//magibombe
+//magibombf
+//magibombg
+//magibombh
+//magibombi
+//showhanc
+//showhand
+//skilldrp
+//speeddrp
+//westvent
+//winbingo
+//winbingoa
+//zoo
+
+@source:dmndrby.cpp
+//dmndrbybl
 
 @source:f1gp.cpp
 //f1gpbl
@@ -50160,17 +50202,74 @@ futaribljc                      // Hack
 //supst834
 //redline
 
-@source:pitnrun.cpp
-//pitnrunb
-
 @source:topdrive.cpp
 //topdrive
+
+@source:puckman.cpp
+//8bpm
+//acitya
+//alibaba
+//alibabab
+//beastfp
+//bigbucks
+//birdiy
+//bwcasino
+//candory
+//cannonbp
+//clubpacm
+//clubpacma        
+//clubpacmb
+//crush5
+//crushbl2
+//crushbl3
+//crushs
+//dremshpr
+//drivfrcp
+//eeekk
+//eeekkp
+//eggor
+//gorkans
+//jumpshot
+//jumpshotp
+//korosuke
+//lizwiz
+//mbrush
+//mrtnt
+//mspactwin
+//mspacmbn
+//nmouse
+//nmouseb
+//numcrash
+//pacmanpe
+//pacmansp
+//pacuman
+//paintrlr
+//pengojpm
+//pengomc1
+//pengomc2 
+//pengopac
+//pinguinos
+//ponpoko
+//ponpokov
+//porky
+//rocktrv2
+//sprglbpg
+//sprglobp
+//shootbul
+//theglobme
+//theglobp
+//titanpac
+//vanvan
+//vanvanb
+//vanvank
+//woodpeca
+//woodpeck
 
 @source:wwfsstar.cpp
 //wwfsstarb2
 
 /*******************************************
- PSARCADE CLASSIC+ // ARCADE 0.256
+ PSARCADE CLASSIC+ // ARCADE 0.257
  List of all disabled device on the system.
 **********************************************/
 

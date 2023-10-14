@@ -488,5 +488,5 @@ ROM_END
 
 GAME( 1984, pitnrun,  0,       pitnrun_mcu, pitnrun, pitnrun_state, empty_init, ROT90, "Taito Corporation", "Pit & Run - F-1 Race (set 1)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1984, pitnruna, pitnrun, pitnrun_mcu, pitnrun, pitnrun_state, empty_init, ROT90, "Taito Corporation", "Pit & Run - F-1 Race (set 2)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
-//GAME( 1984, pitnrunb, pitnrun, pitnrun_mcu, pitnrun, pitnrun_state, empty_init, ROT90, "Taito Corporation", "Pit & Run - F-1 Race (set 3)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+GAME( 1984, pitnrunb, pitnrun, pitnrun_mcu, pitnrun, pitnrun_state, empty_init, ROT90, "Taito Corporation", "Pit & Run - F-1 Race (set 3)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1984, jumpkun,  0,       pitnrun,     jumpkun, pitnrun_state, empty_init, ROT90, "Kaneko",            "Jump Kun (prototype)",         MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE ) // no copyright message

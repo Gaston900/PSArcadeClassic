@@ -914,6 +914,9 @@ ROM_START( showhand )
 
 	ROM_REGION( 0x80000, "oki", 0 )
 	ROM_LOAD( "5", 0x00000, 0x80000, CRC(e6987122) SHA1(fb3e7c2399057c64b5c496a393f6f22a1e54c844) )
+
+	ROM_REGION16_BE( 0x80, "eeprom", 0 )
+	ROM_LOAD( "93c46.u9", 0x00, 0x80, CRC(1583a53e) SHA1(e4ba380e8cce64fba94dd3f9506ae43f37d11440) ) // factory default
 ROM_END
 
 /***************************************************************************
@@ -960,6 +963,9 @@ ROM_START( showhanc )
 
 	ROM_REGION( 0x80000, "oki", 0 )
 	ROM_LOAD( "5.u43", 0x00000, 0x80000, CRC(d6b70f02) SHA1(5a94680594c1f06196fe3bcf7faf56e2ed576f01) )
+
+	ROM_REGION16_BE( 0x80, "eeprom", 0 )
+	ROM_LOAD( "93c46.u9", 0x00, 0x80, CRC(f0c30fdc) SHA1(48f6f964e096e8b9f675f84400a5c99b92964c3d) ) // factory default
 ROM_END
 
 /***************************************************************************
@@ -1030,7 +1036,7 @@ ROM_START( skilldrp )
 	ROM_LOAD( "5-skill_drop", 0x00000, 0x80000, CRC(a479e06d) SHA1(ee690d39188b8a43652c4aa5bf8267c1f6632d2f) ) // No chip location just "ROM#5" silkscreened under socket
 
 	ROM_REGION16_BE( 0x80, "eeprom", 0 )
-	ROM_LOAD( "skilldrp.u6", 0x00, 0x80, CRC(57886a3d) SHA1(bad8fa2ec2262ccb5ef8ec50959aec3f3bf8b90b) )
+	ROM_LOAD( "93c46.u6", 0x00, 0x80, CRC(01c4bc62) SHA1(49710d2dac73791b4019b1dc15e0b5159c6fbaef) ) // factory default
 ROM_END
 
 /***************************************************************************
@@ -1106,7 +1112,7 @@ ROM_START( speeddrp )
 	ROM_LOAD( "5_speed_drop", 0x00000, 0x80000, CRC(684bb8b5) SHA1(65276ce03da7be7275646f5a0d9d163eecb78190) ) // No chip location just "ROM#5" silkscreened under socket
 
 	ROM_REGION16_BE( 0x80, "eeprom", 0 )
-	ROM_LOAD16_WORD_SWAP( "93c46.u6", 0x00, 0x80, CRC(6890534e) SHA1(a62893015e53c02551d57d0e1cce436b6df8d289) )
+	ROM_LOAD( "93c46.u6", 0x00, 0x80, CRC(6890534e) SHA1(a62893015e53c02551d57d0e1cce436b6df8d289) ) // factory default
 ROM_END
 
 /***************************************************************************
@@ -1127,7 +1133,7 @@ ROM_START( magibomb )
 	ROM_LOAD( "rom5", 0x00000, 0x80000, CRC(c9edbf1b) SHA1(8e3a96a38aea23950d6add66a5a3d079013bc217) )
 
 	ROM_REGION16_BE( 0x80, "eeprom", 0 )
-	ROM_LOAD16_WORD_SWAP( "93c46.u6", 0x00, 0x80, BAD_DUMP CRC(53bb180a) SHA1(8a2b7ae3abf31a1972864cf96e1ac74ed69fb1ee) )
+	ROM_LOAD( "93c46.u6", 0x00, 0x80, CRC(28644b9e) SHA1(3d63892bf5207145039ae7994552e2ab67cd8293) ) // factory default
 ROM_END
 
 ROM_START( magibomba )
@@ -1142,7 +1148,7 @@ ROM_START( magibomba )
 	ROM_LOAD( "rom5", 0x00000, 0x80000, CRC(f7d14414) SHA1(af932df09aa970ec05cc12e590e152e7288c1f5c) )
 
 	ROM_REGION16_BE( 0x80, "eeprom", 0 )
-	ROM_LOAD16_WORD_SWAP( "93c46.u6", 0x00, 0x80, BAD_DUMP CRC(53bb180a) SHA1(8a2b7ae3abf31a1972864cf96e1ac74ed69fb1ee) )
+	ROM_LOAD( "93c46.u6", 0x00, 0x80, BAD_DUMP CRC(28644b9e) SHA1(3d63892bf5207145039ae7994552e2ab67cd8293) ) // factory default from parent (this set doesn't work)
 ROM_END
 
 ROM_START( magibombb )
@@ -1157,7 +1163,7 @@ ROM_START( magibombb )
 	ROM_LOAD( "rom5", 0x00000, 0x80000, CRC(c9edbf1b) SHA1(8e3a96a38aea23950d6add66a5a3d079013bc217) )
 
 	ROM_REGION16_BE( 0x80, "eeprom", 0 )
-	ROM_LOAD16_WORD_SWAP( "93c46.u6", 0x00, 0x80, BAD_DUMP CRC(53bb180a) SHA1(8a2b7ae3abf31a1972864cf96e1ac74ed69fb1ee) )
+	ROM_LOAD( "93c46.u6", 0x00, 0x80, CRC(53bb180a) SHA1(8a2b7ae3abf31a1972864cf96e1ac74ed69fb1ee) ) // factory default
 ROM_END
 
 ROM_START( magibombc )
@@ -1172,13 +1178,14 @@ ROM_START( magibombc )
 	ROM_LOAD( "rom5", 0x00000, 0x80000, CRC(c9edbf1b) SHA1(8e3a96a38aea23950d6add66a5a3d079013bc217) )
 
 	ROM_REGION16_BE( 0x80, "eeprom", 0 )
-	ROM_LOAD16_WORD_SWAP( "93c46.u6", 0x00, 0x80, BAD_DUMP CRC(53bb180a) SHA1(8a2b7ae3abf31a1972864cf96e1ac74ed69fb1ee) )
+	ROM_LOAD( "93c46.u6", 0x00, 0x80, CRC(e7d335e8) SHA1(cda263e6012985f17765a449b0614615c35efcfe) ) // factory default
 ROM_END
 
 ROM_START( magibombd )
 	ROM_REGION( 0x40000, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "rom1", 0x00000, 0x10000, CRC(91883755) SHA1(bc6dd5cac352f169beac790825e86a2ecb45af05) )
 	ROM_LOAD16_BYTE( "rom2", 0x00001, 0x10000, CRC(b55bc270) SHA1(7486018b87708cf5b653c27b1ed824e441c169b7) )
+	ROM_FILL(                0x20000, 0x20000, 0xff )
 
 	ROM_REGION( 0x200000, "sprites", 0 )
 	ROM_LOAD( "gfx", 0x000000, 0x200000, BAD_DUMP CRC(042f7992) SHA1(2e175994d0b14200a92bdb46e82847b1a1c88265) ) // dumped for the Ver. A3.1A set, should be same for all, marking as bad as precaution
@@ -1187,7 +1194,10 @@ ROM_START( magibombd )
 	ROM_LOAD( "rom5", 0x00000, 0x80000, CRC(c9edbf1b) SHA1(8e3a96a38aea23950d6add66a5a3d079013bc217) )
 
 	ROM_REGION16_BE( 0x80, "eeprom", 0 )
-	ROM_LOAD16_WORD_SWAP( "93c46.u6", 0x00, 0x80, BAD_DUMP CRC(53bb180a) SHA1(8a2b7ae3abf31a1972864cf96e1ac74ed69fb1ee) )
+	ROM_LOAD( "93c46.u6", 0x00, 0x80, CRC(7278d581) SHA1(c0851466b669e42c657ca5517c00c44d76e559f4) ) // factory default
+
+	ROM_REGION16_BE( 0x02, "astro_cpucode", 0 )
+	ROM_LOAD( "magibombd_cpucode.key", 0x00, 0x02, CRC(ee980d67) SHA1(f3bdb8a14701ec01828f7c92f18e9bba4c56a4e0) )
 ROM_END
 
 ROM_START( magibombe )
@@ -1202,8 +1212,7 @@ ROM_START( magibombe )
 	ROM_LOAD( "rom5", 0x00000, 0x80000, CRC(c9edbf1b) SHA1(8e3a96a38aea23950d6add66a5a3d079013bc217) )
 
 	ROM_REGION16_BE( 0x80, "eeprom", 0 )
-	// TODO: doesn't seem to initialize properly, set works with above eeprom
-	ROM_LOAD16_WORD_SWAP( "93c46p.u6", 0x00, 0x80, CRC(037f5f07) SHA1(d82145ebb94681841ec0c41724ef93857f50d8f0) )
+	ROM_LOAD( "93c46.u6", 0x00, 0x80, CRC(2e38cfad) SHA1(0f2490ca2ba738723b4c014a4fec4f631167f786) ) // factory default
 ROM_END
 
 ROM_START( magibombf )
@@ -1218,7 +1227,26 @@ ROM_START( magibombf )
 	ROM_LOAD( "rom5.u33", 0x00000, 0x80000, CRC(c9edbf1b) SHA1(8e3a96a38aea23950d6add66a5a3d079013bc217) )
 
 	ROM_REGION16_BE( 0x80, "eeprom", 0 )
-	ROM_LOAD16_WORD_SWAP( "93c46.u6", 0x00, 0x80, CRC(532b7aae) SHA1(cb93a3061a05a9741d01fcdc19b7319ad4792e49) )
+	ROM_LOAD( "93c46.u6", 0x00, 0x80, CRC(a01e5ce7) SHA1(77213c0b426ca1806bb8a4c55e9e7f4f2db66962) ) // factory default
+ROM_END
+
+ROM_START( magibombg )
+	ROM_REGION( 0x40000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "1 magic bomb nb.6.1.u20", 0x00000, 0x10000, CRC(8aaa14c3) SHA1(44ade91596b8cd907c7556f3c5f977e2c7b4029d) )
+	ROM_LOAD16_BYTE( "2 magic bomb nb.6.1.u19", 0x00001, 0x10000, CRC(d371c3ab) SHA1(3f63883ad2735a772e9dbc958346b692420667dc) )
+	ROM_FILL(                                   0x20000, 0x20000, 0xff )
+
+	ROM_REGION( 0x200000, "sprites", 0 )
+	ROM_LOAD( "mx29f1610mc.u26", 0x000000, 0x200000, BAD_DUMP CRC(042f7992) SHA1(2e175994d0b14200a92bdb46e82847b1a1c88265) ) // wasn't dumped, different from the Ver. A3.1 set!
+
+	ROM_REGION( 0x80000, "oki", 0 )
+	ROM_LOAD( "5 magic bomb", 0x00000, 0x80000, CRC(c9edbf1b) SHA1(8e3a96a38aea23950d6add66a5a3d079013bc217) )
+
+	ROM_REGION16_BE( 0x80, "eeprom", 0 )
+	ROM_LOAD( "93c46.u10", 0x00, 0x80, BAD_DUMP CRC(a01e5ce7) SHA1(77213c0b426ca1806bb8a4c55e9e7f4f2db66962)  ) // TODO: this is correct for magibombf, create good one
+
+	ROM_REGION16_BE( 0x02, "astro_cpucode", ROMREGION_ERASE00 )
+	ROM_LOAD( "magibombg_cpucode.key", 0x00, 0x02, NO_DUMP ) // TODO: RE correct one
 ROM_END
 
 ROM_START( magibombh )
@@ -1280,15 +1308,18 @@ ROM_START( westvent )
 	ROM_LOAD16_BYTE( "2_w.v.aa.02.d.bin", 0x00001, 0x20000, BAD_DUMP CRC(f56d3ead) SHA1(2cf8960eab221cfce1c7ac6a20d002c4b05d8cc6) ) // FIXED BITS (xxxxxx0xxxxxxxxx)
 
 	ROM_REGION( 0x600000, "sprites", 0 )
-	ROM_LOAD( "top.bin",    0x000000, 0x200000, CRC(75bbaae0) SHA1(ef35775dd481ff343df1ee071ccd52b024d084b7) )
-	ROM_LOAD( "bottom.bin", 0x200000, 0x200000, CRC(e2dd58d5) SHA1(9ab881cfb2ee6cbc48aa28ba28529adb00803e44) )
-	ROM_LOAD( "middle.bin", 0x400000, 0x200000, CRC(7348fd37) SHA1(b5ec0994afb5bceae5627c37f1b35c7abcfd2f0a) )
+	ROM_LOAD( "mx29f1610mc_bottom.bin", 0x000000, 0x200000, CRC(e2dd58d5) SHA1(9ab881cfb2ee6cbc48aa28ba28529adb00803e44) ) // no U location on the PCB
+	ROM_LOAD( "mx29f1610mc_middle.u51", 0x200000, 0x200000, CRC(7348fd37) SHA1(b5ec0994afb5bceae5627c37f1b35c7abcfd2f0a) )
+	ROM_LOAD( "mx29f1610mc_top.u30",    0x400000, 0x200000, CRC(75bbaae0) SHA1(ef35775dd481ff343df1ee071ccd52b024d084b7) )
 
 	ROM_REGION( 0x80000, "oki", 0 )
 	ROM_LOAD( "5.bin", 0x00000, 0x80000, CRC(92dc09d1) SHA1(6b448b3372e78047d054c5e42fcfcff7f75ff9b9) )
 
 	ROM_REGION16_BE( 0x80, "eeprom", 0 )
 	ROM_LOAD( "at93c46.bin", 0x00, 0x80, CRC(fd961d46) SHA1(e238da65e8769575f17b4464fb00f5c4813bafab) )
+
+	ROM_REGION16_BE( 0x02, "astro_cpucode", 0 )
+	ROM_LOAD( "westvent_cpucode.key", 0x00, 0x02, NO_DUMP )
 ROM_END
 
 /***************************************************************************
@@ -1359,14 +1390,24 @@ ROM_START( winbingo )
 	ROM_LOAD16_BYTE( "f29c51001t.u31", 0x00000, 0x20000, CRC(964cfdb5) SHA1(01109466e07f5e906be300bc69310171d34f2e6c) )
 	ROM_LOAD16_BYTE( "f29c51001t.u25", 0x00001, 0x20000, CRC(4ebeec72) SHA1(c603265e6319cff94a0c75017a12c6d86787f906) )
 
-	ROM_REGION( 0x400000, "sprites", ROMREGION_ERASE )
+	ROM_REGION( 0x1000000, "sprites", 0 )
 	ROM_LOAD( "mx29f1610mc.u26", 0x000000, 0x200000, CRC(ad1f61e7) SHA1(845aa01d49c50bcadaed16d76c0dd9131a425b46) )
-	ROM_LOAD( "mx29f1610mc.u30", 0x200000, 0x200000, CRC(31613d99) SHA1(1c720f8d981c3e9cb9d9b3b27eb95e7f72ccfc93) )
-//  ROM_LOAD( "mx29f1610mc.u30.bad.dump", 0x200000, 0x0a0000, BAD_DUMP CRC(6da439c5) SHA1(6afc0c800fe57b9b34ca317f4d1c040b11d3d988) )
-//  U30 is a bad dump in this set, so use U30 from winbingoa (since U26 is the same too)
+	ROM_LOAD( "mx29f1610mc.u30", 0x200000, 0x200000, CRC(31613d99) SHA1(1c720f8d981c3e9cb9d9b3b27eb95e7f72ccfc93) ) // girl animation at 1ff0 in u26 continues into u30, it needs this rom here
+	ROM_RELOAD(                  0x400000, 0x200000 )
+	ROM_RELOAD(                  0x600000, 0x200000 )
+	ROM_RELOAD(                  0x800000, 0x200000 ) // u30 tiles addressed as 8xxx also
+	ROM_RELOAD(                  0xa00000, 0x200000 )
+	ROM_RELOAD(                  0xc00000, 0x200000 )
+	ROM_RELOAD(                  0xe00000, 0x200000 )
 
 	ROM_REGION( 0x80000, "oki", 0 )
 	ROM_LOAD( "mx27c4000pc.u35", 0x00000, 0x80000, CRC(445d81c0) SHA1(cacb9c262740c31ea42f406e9f960a1edd1b3ead) )
+
+	ROM_REGION16_BE( 0x80, "eeprom", 0 )
+	ROM_LOAD( "93c46.u13", 0x00, 0x80, CRC(a8c974b1) SHA1(4a42aeded6296881bc343179863e515230ed5fc5) ) // factory default
+
+	ROM_REGION16_BE( 0x02, "astro_cpucode", 0 )
+	ROM_LOAD( "winbingo_cpucode.key", 0x00, 0x02, CRC(66035e7e) SHA1(d8696eeeb66e4050635141ed987c9347db408cfb) )
 ROM_END
 
 ROM_START( winbingoa )
@@ -1374,12 +1415,24 @@ ROM_START( winbingoa )
 	ROM_LOAD16_BYTE( "f29c51001t.u31", 0x00000, 0x20000, CRC(c33676c3) SHA1(9f5b7d05d187cf59948a572f80c55cb8fa1f656f) ) // sldh
 	ROM_LOAD16_BYTE( "f29c51001t.u25", 0x00001, 0x20000, CRC(43c7b2d8) SHA1(16ee79c34b7c485dfccecdf3e0ae9f18f8a20150) ) // sldh
 
-	ROM_REGION( 0x400000, "sprites", 0 )
-	ROM_LOAD( "mx29f1610mc.u26", 0x000000, 0x200000, CRC(ad1f61e7) SHA1(845aa01d49c50bcadaed16d76c0dd9131a425b46) )
-	ROM_LOAD( "mx29f1610mc.u30", 0x200000, 0x200000, CRC(31613d99) SHA1(1c720f8d981c3e9cb9d9b3b27eb95e7f72ccfc93) )
+	ROM_REGION( 0x1000000, "sprites", 0 )
+	ROM_LOAD( "mx29f1610mc.u26", 0x000000, 0x200000, BAD_DUMP CRC(ad1f61e7) SHA1(845aa01d49c50bcadaed16d76c0dd9131a425b46) )
+	ROM_LOAD( "mx29f1610mc.u30", 0x200000, 0x200000, BAD_DUMP CRC(31613d99) SHA1(1c720f8d981c3e9cb9d9b3b27eb95e7f72ccfc93) ) // girl animation at 1ff0 in u26 continues into u30, it needs this rom here
+	ROM_RELOAD(                  0x400000, 0x200000 )
+	ROM_RELOAD(                  0x600000, 0x200000 )
+	ROM_RELOAD(                  0x800000, 0x200000 ) // u30 tiles addressed as 8xxx also
+	ROM_RELOAD(                  0xa00000, 0x200000 )
+	ROM_RELOAD(                  0xc00000, 0x200000 )
+	ROM_RELOAD(                  0xe00000, 0x200000 )
 
 	ROM_REGION( 0x80000, "oki", 0 )
 	ROM_LOAD( "mx27c4000pc.u35", 0x00000, 0x80000, CRC(e48ed57d) SHA1(11995b90e70e010b292ba9db2da0af4ebf795c1a) ) // sldh
+
+	ROM_REGION16_BE( 0x80, "eeprom", 0 )
+	ROM_LOAD( "93c46.u13", 0x00, 0x80, CRC(a8c974b1) SHA1(4a42aeded6296881bc343179863e515230ed5fc5) ) // factory default
+
+	ROM_REGION16_BE( 0x02, "astro_cpucode", 0 )
+	ROM_LOAD( "winbingoa_cpucode.key", 0x00, 0x02, CRC(6bd252c3) SHA1(8d1ad9546795e81573df1c79f7be28cf41fd04e0) )
 ROM_END
 
 /***************************************************************************
@@ -1395,17 +1448,25 @@ ROM_START( hacher )
 	ROM_LOAD16_BYTE( "w-w-en-01-6.rom1", 0x00000, 0x20000, CRC(994acd32) SHA1(ee137ca96f4e2d22f2bae32051bbf2bd487e8c5a) )
 	ROM_LOAD16_BYTE( "w-w-en-01-6.rom2", 0x00001, 0x20000, CRC(b45c3f64) SHA1(c8f26fc3f9e2c46d8083d249f79ff8a3d47b67d0) )
 
-	ROM_REGION( 0x400000, "sprites", 0 )
+	ROM_REGION( 0x1000000, "sprites", 0 )
 	ROM_LOAD( "wb3.bin", 0x000000, 0x200000, CRC(d97e5056) SHA1(662fefc2dcac31023fa063fbf891b05a139e48d8) )
-	ROM_LOAD( "wb4.bin", 0x200000, 0x200000, BAD_DUMP CRC(5cd7dcd9) SHA1(69e5fd0c8c5c14938c02f4f50e5b16fc0fbff7e4) ) // FIXED BITS (xxxxxxxxxxxxx1xx)
+	ROM_LOAD( "wb4.bin", 0x800000, 0x200000, BAD_DUMP CRC(5cd7dcd9) SHA1(69e5fd0c8c5c14938c02f4f50e5b16fc0fbff7e4) ) // FIXED BITS (xxxxxxxxxxxxx1xx)
+	ROM_RELOAD(                    0x400000, 0x200000 )
+	ROM_RELOAD(                    0x600000, 0x200000 )
+	ROM_RELOAD(                    0x800000, 0x200000 ) // wb4 tiles addressed as 8xxx also
+	ROM_RELOAD(                    0xa00000, 0x200000 )
+	ROM_RELOAD(                    0xc00000, 0x200000 )
+	ROM_RELOAD(                    0xe00000, 0x200000 )
 
 	ROM_REGION( 0x80000, "oki", 0 )
 	ROM_LOAD( "win-win-bingo.ic5", 0x00000, 0x80000, CRC(445d81c0) SHA1(cacb9c262740c31ea42f406e9f960a1edd1b3ead) ) // = mx27c4000pc.u35 winbingo
 
 	ROM_REGION16_BE( 0x80, "eeprom", 0 )
-	ROM_LOAD( "93c46.u13", 0x00, 0x80, CRC(e097ae26) SHA1(90a670b5f1931e892d0a134aa8bf7d36d6222dcb) )
-ROM_END
+	ROM_LOAD( "93c46.u13", 0x00, 0x80, CRC(6c776ff8) SHA1(5f48b0ac657df41a747718ef0f3b14715c40cb4a) ) // factory default
 
+	ROM_REGION16_BE( 0x02, "astro_cpucode", 0 )
+	ROM_LOAD( "hacher_cpucode.key", 0x00, 0x02, CRC(6fdfa275) SHA1(d22c5fcaf182ccb78ec486a9f1d47ad0d1c63466) )
+ROM_END
 
 /***************************************************************************
 
@@ -1476,6 +1537,7 @@ ROM_START( zoo )
 	ROM_REGION( 0x40000, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "zoo_zo.02.d.u26", 0x00000, 0x10000, CRC(1a3be45a) SHA1(877be4c9e8d5e7c4644e7bcb9a6729443ed772a4) )
 	ROM_LOAD16_BYTE( "zoo_zo.02.d.u25", 0x00001, 0x10000, CRC(8566aa21) SHA1(319192e2074f3bdda6001d8e9a4b97e98826d7ce) )
+	ROM_FILL(                           0x20000, 0x20000, 0xff )
 
 	ROM_REGION( 0x200000, "sprites", 0 )
 	ROM_LOAD( "29f1610mc.u26", 0x000000, 0x200000, CRC(f5cfd915) SHA1(ec869b47d0762102509dcfc1349d94340037fad5) )
@@ -1484,7 +1546,10 @@ ROM_START( zoo )
 	ROM_LOAD( "5_zoo", 0x00000, 0x80000, CRC(b0c9f7aa) SHA1(99345ba0f8da3907f26c9bd29d70135f3ab7cd60) )
 
 	ROM_REGION16_BE( 0x80, "eeprom", 0 )
-	ROM_LOAD( "zoo_93c46", 0x00, 0x80, CRC(0053fcc4) SHA1(e67a495f9586dd3946f79d50506fba1ae913f6ec) )
+	ROM_LOAD( "93c46.u13", 0x00, 0x80, CRC(2af3fab5) SHA1(7097e735eb1beda8aff12f783d4039b4b9aab651) ) // factory default
+
+	ROM_REGION16_BE( 0x02, "astro_cpucode", 0 )
+	ROM_LOAD( "zoo_cpucode.key", 0x00, 0x02, CRC(cd3fdba4) SHA1(33d33bf711f96e18a2fc515689853f92cd71713d) )
 ROM_END
 
 /***************************************************************************
@@ -1542,17 +1607,20 @@ ROM_START( astoneag )
 	ROM_LOAD16_BYTE( "1-s-a-eng-03-a.rom1", 0x00000, 0x20000, CRC(5e600713) SHA1(48ac0a52f90b972b77064e9e59711082aa95c654) )
 	ROM_LOAD16_BYTE( "2-s-a-eng-03-a.rom2", 0x00001, 0x20000, CRC(488e355e) SHA1(6550292cae7eda95a24e1982e869540464b1fcdd) )
 
-	ROM_REGION( 0x800000, "sprites", 0 )
-	ROM_LOAD( "29f1610.rom3", 0x200000, 0x200000, CRC(8d4e66f0) SHA1(744f83b35684aa6653b0d93b303f2914cd0250ba) )
-	ROM_LOAD( "29f1610.rom4", 0x000000, 0x200000, CRC(1affd8db) SHA1(2523f156933c61d36b6646944b5da874f8424864) )
-	ROM_LOAD( "29f1610.rom5", 0x600000, 0x200000, CRC(2b77d827) SHA1(b082254e1c8a7945e2a406b1b937a763b30cb496) )
-	ROM_LOAD( "29f1610.rom6", 0x400000, 0x200000, CRC(eb8ee0e7) SHA1(c6c973460ca96b54151f7523f6afc0184b8fbd40) )
+	ROM_REGION( 0x2000000, "sprites", 0 ) // 16 x 32 tiles !!
+	ROM_LOAD16_BYTE( "29f1610.rom4", 0x0000000, 0x200000, CRC(1affd8db) SHA1(2523f156933c61d36b6646944b5da874f8424864) )
+	ROM_LOAD16_BYTE( "29f1610.rom5", 0x0000001, 0x200000, CRC(2b77d827) SHA1(b082254e1c8a7945e2a406b1b937a763b30cb496) )
+	ROM_LOAD16_BYTE( "29f1610.rom3", 0x1000000, 0x200000, CRC(8d4e66f0) SHA1(744f83b35684aa6653b0d93b303f2914cd0250ba) )
+	ROM_LOAD16_BYTE( "29f1610.rom6", 0x1000001, 0x200000, CRC(eb8ee0e7) SHA1(c6c973460ca96b54151f7523f6afc0184b8fbd40) )
 
 	ROM_REGION( 0x80000, "oki", 0 )
 	ROM_LOAD( "5-s-a-eng-03-a.rom7", 0x00000, 0x80000, CRC(1b13b0c2) SHA1(d6d8c8070ba146b444958fa0b896cebc12b32f5c) )
 
 	ROM_REGION16_BE( 0x80, "eeprom", 0 )
-	ROM_LOAD( "93c46.ic99", 0x0000, 0x0080, CRC(2fd85a9b) SHA1(3240e40debf5af15f08072b76d6910808d3d282f) )
+	ROM_LOAD( "93c46.u99", 0x00, 0x80, CRC(be7cb115) SHA1(0f2eb141e84785b565b387cd52a1594bc876fc8d) ) // factory default
+
+	ROM_REGION16_BE( 0x02, "astro_cpucode", 0 )
+	ROM_LOAD( "astoneag_cpucode.key", 0x00, 0x02, CRC(fd3642ce) SHA1(8b4e630e114f36c9c15b1a6e6185156786ec9502) )
 ROM_END
 
 /***************************************************************************
@@ -1591,15 +1659,24 @@ ROM_START( dinodino )
 	ROM_LOAD16_BYTE( "dd_rom1.u20", 0x00000, 0x20000, CRC(056613dd) SHA1(e8481177b1dacda222fe4fae2b50841ddb0c87ba) )
 	ROM_LOAD16_BYTE( "dd_rom2.u19", 0x00001, 0x20000, CRC(575519c5) SHA1(249fe33b6ea0bc154125a988315f571a30b9375c) )
 
-	ROM_REGION( 0x400000, "sprites", 0 )
+	ROM_REGION( 0x1000000, "sprites", 0 )
 	ROM_LOAD( "dd_rom3.u26", 0x000000, 0x200000, CRC(47c95b43) SHA1(43e9a13c38f2f7d13dd4dcb105c65e43b18ccdbf) )
-	ROM_LOAD( "dd_rom4.u24", 0x200000, 0x200000, CRC(2cf4be21) SHA1(831d7d125c4161b42b017a69fc05e30a51172620) )
+	ROM_LOAD( "dd_rom4.u24", 0x200000, 0x200000, CRC(2cf4be21) SHA1(831d7d125c4161b42b017a69fc05e30a51172620) ) // rotating cherries uses 1fff as tile code for 1 frame, they need this rom here
+	ROM_RELOAD(              0x400000, 0x200000 )
+	ROM_RELOAD(              0x600000, 0x200000 )
+	ROM_RELOAD(              0x800000, 0x200000 ) // rom4 tiles addressed as 8xxx also
+	ROM_RELOAD(              0xa00000, 0x200000 )
+	ROM_RELOAD(              0xc00000, 0x200000 )
+	ROM_RELOAD(              0xe00000, 0x200000 )
 
 	ROM_REGION( 0x80000, "oki", 0 )
 	ROM_LOAD( "dd_rom5.u33", 0x00000, 0x80000, CRC(482e456a) SHA1(c7111522383c4e1fd98b0f759153be98dcbe06c1) )
 
-	ROM_REGION16_BE( 0x80, "eeprom", 0 )
-	ROM_LOAD16_WORD_SWAP( "93c46.u10", 0x0000, 0x0080, CRC(6769bfb8) SHA1(bf6b905805c2c61a89fbc4c046b23069431e4709) )
+	ROM_REGION16_LE( 0x80, "eeprom", 0 )
+	ROM_LOAD( "93c46.u10", 0x0000, 0x0080, CRC(29fe0e1d) SHA1(9694d7a7ad401d0fec879c183a28b3aa1ff02407) ) // factory default
+
+	ROM_REGION16_LE( 0x02, "astro_cpucode", 0 )
+	ROM_LOAD( "dinodino_cpucode.key", 0x00, 0x02, CRC(674b2687) SHA1(9c1338a41162fa2ffbd2ea0a579ad87a6c084a0e) )
 ROM_END
 
 

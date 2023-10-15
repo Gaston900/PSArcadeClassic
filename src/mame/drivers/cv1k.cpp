@@ -94,7 +94,7 @@ PCB CV1000-B / CV1000-D
 
   CPU: Hitachi 6417709S SH3 clocked at 102.4MHz (12.800MHz * 8)
 Sound: Yamaha YMZ770C-F clocked at 16.384MHz
-Other: Altera Cyclone EPIC12 FPGA
+Other: Altera Cyclone EP1C12 FPGA
        Altera EPM7032 (MAX 7000 Series) at U13
 
 OSC:
@@ -103,8 +103,8 @@ OSC:
  X3 16.384MHz (Yamaha YMZ770C-F clock)
 
 Memory:
- U6 (SDRAM)  MT46V16M16 ? 4 MBit x 16 x 4 banks, RAM (256 MBit)
- U7 (SDRAM)  MT46V16M16 ? 4 MBit x 16 x 4 banks, RAM (256 MBit)
+ U6 (SDRAM)  MT46V16M16 ? 4 MBit x 16 x 4 banks, DDR RAM (256 MBit)
+ U7 (SDRAM)  MT46V16M16 ? 4 MBit x 16 x 4 banks, DDR RAM (256 MBit)
  U1 (SDRAM)  MT48LC2M32 ? 512K x 32 x 4 banks, (64 MBit) for CV1000-B
  U1 (SDRAM)  IS42S32400 - 1024K x 32 x 4 banks, (128 MBit) for CV1000-D
 
@@ -138,13 +138,18 @@ Misc:
  D1-D6 (LED) Status LED's. D6 lights up at power on then shuts off, D2 indicates coinage.
 
 Note: * The Altera EPM7032 usually stamped / labeled with the Cave game ID number as listed above.
-      * Actual flash ROMs will vary by manufacturer but will be compatible with flash ROM listed.
+      * U4, U23, U24 flash ROMs will vary by manufacturer but will be compatible with flash ROM listed.
+      * The game logic does a manufacturer check on U2. K9F1G08U0M and two other device codes are allowed.
+        Trying to replace U2 with a flash ROM from another manufacturer does not work. Allowed devices are:
+        - Manufacturer ID: 0x98, ID code: 0x76
+        - Manufacturer ID: 0x98, ID code: 0x79
+        - Manufacturer ID: 0xEC, ID code: 0xF1  <- This is K9F1G08U0M
       * There are two known CV1000-B PCB revisions. The newer one has some minor hardware differences
         and uses an updated FPGA firmware, they are not compatible with eachother.
       * The CV1000-D revision PCB has double the RAM at U1, double the ROM at U4 and no battery.
         The CV1000-D is used for Dodonpachi Daifukkatsu and later games. Commonly referred to as SH3B PCB.
 
-Information by The Sheep, rtw, Ex-Cyber, BrianT & Guru
+Information by The Sheep, rtw, Ex-Cyber, BrianT, Guru & buffi
 
 ------------------------------------------------------
 
@@ -171,12 +176,11 @@ Touchscreen
 
 Remaining Video issues
  - mmpork startup screen flicker - the FOR USE IN JAPAN screen doesn't appear on the real PCB until after the graphics are fully loaded, it still displays 'please wait' until that point.
- - is the use of the 'scroll' registers 100% correct? (related to above?)
  - Sometimes the 'sprites' in mushisam lag by a frame vs the 'backgrounds' is this a timing problem, does the real game do it?
+ - End of Blit should send IRQ1. (one game has a valid irq routine that looks like it was used for profiling, but nothing depends on it)
 
-Blitter Timing
- - Correct slowdown emulation and flags (depends on blit mode, and speed of RAM) - could do with the recompiler or alt idle skips on the busy flag wait loops
- - End of Blit IRQ? (one game has a valid irq routine that looks like it was used for profiling, but nothing depends on it)
+Timing
+ - Correct CPU slowdown emulation and flags (and speed of RAM). Most slowdown seems due to SH-3 uncached RAM access wait states, which is not implemented.
 
 31/12/2021:
   Akai Katana and Dodonpachi Saidaioujou removed at the request of the

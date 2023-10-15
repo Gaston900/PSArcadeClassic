@@ -1222,7 +1222,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/blstroid.cpp",
 --	MAME_DIR .. "src/mame/includes/blstroid.h",
 	MAME_DIR .. "src/mame/video/blstroid.cpp",
---	MAME_DIR .. "src/mame/drivers/boxer.cpp",
+	MAME_DIR .. "src/mame/drivers/boxer.cpp",
 	MAME_DIR .. "src/mame/drivers/bsktball.cpp",
 --	MAME_DIR .. "src/mame/includes/bsktball.h",
 	MAME_DIR .. "src/mame/machine/bsktball.cpp",
@@ -1413,10 +1413,10 @@ files {
 	MAME_DIR .. "src/mame/drivers/tourtabl.cpp",
 	MAME_DIR .. "src/mame/video/tia.cpp",
 --	MAME_DIR .. "src/mame/video/tia.h",
---	MAME_DIR .. "src/mame/drivers/triplhnt.cpp",
+	MAME_DIR .. "src/mame/drivers/triplhnt.cpp",
 --	MAME_DIR .. "src/mame/includes/triplhnt.h",
---	MAME_DIR .. "src/mame/audio/triplhnt.cpp",
---	MAME_DIR .. "src/mame/video/triplhnt.cpp",
+	MAME_DIR .. "src/mame/audio/triplhnt.cpp",
+	MAME_DIR .. "src/mame/video/triplhnt.cpp",
 	MAME_DIR .. "src/mame/drivers/tunhunt.cpp",
 --	MAME_DIR .. "src/mame/includes/tunhunt.h",
 	MAME_DIR .. "src/mame/video/tunhunt.cpp",
@@ -1540,9 +1540,9 @@ files {
 createMAMEProjects(_target, _subtarget, "bmc")
 files {
 	MAME_DIR .. "src/mame/drivers/bmcbowl.cpp",
---	MAME_DIR .. "src/mame/drivers/koftball.cpp",
+	MAME_DIR .. "src/mame/drivers/koftball.cpp",
 	MAME_DIR .. "src/mame/drivers/popobear.cpp",
---	MAME_DIR .. "src/mame/drivers/bmcpokr.cpp",
+	MAME_DIR .. "src/mame/drivers/bmcpokr.cpp",
 }
 
 createMAMEProjects(_target, _subtarget, "capcom")
@@ -2408,8 +2408,8 @@ files {
 
 createMAMEProjects(_target, _subtarget, "kiwako")
 files {
---	MAME_DIR .. "src/mame/drivers/jongkyo.cpp",
---	MAME_DIR .. "src/mame/drivers/koikoi.cpp",
+	MAME_DIR .. "src/mame/drivers/jongkyo.cpp",
+	MAME_DIR .. "src/mame/drivers/koikoi.cpp",
 	MAME_DIR .. "src/mame/drivers/mrjong.cpp",
 --	MAME_DIR .. "src/mame/includes/mrjong.h",
 	MAME_DIR .. "src/mame/video/mrjong.cpp",
@@ -2525,7 +2525,7 @@ files {
 --	MAME_DIR .. "src/mame/video/3dom2_te.h",
 --	MAME_DIR .. "src/mame/drivers/konblands.cpp",
 --	MAME_DIR .. "src/mame/drivers/kongs470.cpp",
---	MAME_DIR .. "src/mame/drivers/konmedal.cpp",
+	MAME_DIR .. "src/mame/drivers/konmedal.cpp",
 --	MAME_DIR .. "src/mame/drivers/konmedal020.cpp",
 	MAME_DIR .. "src/mame/drivers/konmedal68k.cpp",
 --	MAME_DIR .. "src/mame/drivers/kontest.cpp",
@@ -2808,7 +2808,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/astrocde.cpp",
 --	MAME_DIR .. "src/mame/includes/astrocde.h",
 	MAME_DIR .. "src/mame/video/astrocde.cpp",
---	MAME_DIR .. "src/mame/drivers/atlantis.cpp",
+	MAME_DIR .. "src/mame/drivers/atlantis.cpp",
 	MAME_DIR .. "src/mame/drivers/balsente.cpp",
 --	MAME_DIR .. "src/mame/includes/balsente.h",
 	MAME_DIR .. "src/mame/machine/balsente.cpp",
@@ -3000,7 +3000,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/namcos22.cpp",
 --	MAME_DIR .. "src/mame/includes/namcos22.h",
 	MAME_DIR .. "src/mame/video/namcos22.cpp",
---	MAME_DIR .. "src/mame/drivers/namcos23.cpp",
+	MAME_DIR .. "src/mame/drivers/namcos23.cpp",
 	MAME_DIR .. "src/mame/drivers/namcos86.cpp",
 --	MAME_DIR .. "src/mame/includes/namcos86.h",
 	MAME_DIR .. "src/mame/video/namcos86.cpp",
@@ -3454,9 +3454,9 @@ files {
 --	MAME_DIR .. "src/mame/drivers/gpworld.cpp",
 --	MAME_DIR .. "src/mame/drivers/hikaru.cpp",
 --	MAME_DIR .. "src/mame/drivers/hshavoc.cpp",
---	MAME_DIR .. "src/mame/drivers/kopunch.cpp",
+	MAME_DIR .. "src/mame/drivers/kopunch.cpp",
 --	MAME_DIR .. "src/mame/includes/kopunch.h",
---	MAME_DIR .. "src/mame/video/kopunch.cpp",
+	MAME_DIR .. "src/mame/video/kopunch.cpp",
 --	MAME_DIR .. "src/mame/drivers/lindbergh.cpp",
 --	MAME_DIR .. "src/mame/drivers/sderby2.cpp",
 	MAME_DIR .. "src/mame/machine/segabb.cpp",
@@ -3709,7 +3709,7 @@ files {
 
 createMAMEProjects(_target, _subtarget, "seibu")
 files {
---	MAME_DIR .. "src/mame/drivers/airraid.cpp",
+	MAME_DIR .. "src/mame/drivers/airraid.cpp",
 	MAME_DIR .. "src/mame/drivers/banprestoms.cpp",
 	MAME_DIR .. "src/hbmame/drivers/bloodbrohb.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/bloodbro.h",
@@ -3820,7 +3820,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/srmp2.cpp",
 --	MAME_DIR .. "src/mame/includes/srmp2.h",
 	MAME_DIR .. "src/mame/video/srmp2.cpp",
---	MAME_DIR .. "src/mame/drivers/srmp5.cpp",
+	MAME_DIR .. "src/mame/drivers/srmp5.cpp",
 	MAME_DIR .. "src/mame/drivers/srmp6.cpp",
 	MAME_DIR .. "src/hbmame/drivers/ssvhb.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/ssv.h",
@@ -4760,7 +4760,7 @@ files {
 	MAME_DIR .. "src/mame/video/cave.cpp",
 	MAME_DIR .. "src/mame/drivers/cavepc.cpp",
 	MAME_DIR .. "src/hbmame/drivers/cv1khb.cpp", --HBMAME
---	MAME_DIR .. "src/mame/drivers/cb2001.cpp",
+	MAME_DIR .. "src/mame/drivers/cb2001.cpp",
 	MAME_DIR .. "src/mame/drivers/cdi.cpp",
 --	MAME_DIR .. "src/mame/includes/cdi.h",
 	MAME_DIR .. "src/mame/video/mcd212.cpp",
@@ -4776,7 +4776,7 @@ files {
 --	MAME_DIR .. "src/mame/drivers/chicago.cpp",
 --	MAME_DIR .. "src/mame/drivers/chsuper.cpp",
 --	MAME_DIR .. "src/mame/drivers/clowndwn.cpp",
---	MAME_DIR .. "src/mame/drivers/clpoker.cpp",
+	MAME_DIR .. "src/mame/drivers/clpoker.cpp",
 	MAME_DIR .. "src/mame/drivers/cocoloco.cpp",
 --	MAME_DIR .. "src/mame/audio/nl_cocoloco.h",
 	MAME_DIR .. "src/mame/audio/nl_cocoloco.cpp",
@@ -4851,7 +4851,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/flower.cpp",
 --	MAME_DIR .. "src/mame/audio/flower.h",
 	MAME_DIR .. "src/mame/audio/flower.cpp",
---	MAME_DIR .. "src/mame/drivers/fortecar.cpp",
+	MAME_DIR .. "src/mame/drivers/fortecar.cpp",
 --	MAME_DIR .. "src/mame/drivers/fresh.cpp",
 	MAME_DIR .. "src/mame/drivers/freekick.cpp",
 --	MAME_DIR .. "src/mame/includes/freekick.h",
@@ -4863,7 +4863,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/funkball.cpp",
 --	MAME_DIR .. "src/mame/drivers/gambl186.cpp",
 	MAME_DIR .. "src/mame/drivers/galaxi.cpp",
---	MAME_DIR .. "src/mame/drivers/galgame.cpp",
+	MAME_DIR .. "src/mame/drivers/galgame.cpp",
 --	MAME_DIR .. "src/mame/drivers/gamemasters.cpp",
 --	MAME_DIR .. "src/mame/drivers/gammagic.cpp",
 --	MAME_DIR .. "src/mame/drivers/gamtor.cpp",
@@ -5110,7 +5110,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/vectrex.h",
 	MAME_DIR .. "src/mame/video/vectrex.cpp",
 	MAME_DIR .. "src/mame/machine/vectrex.cpp",
---	MAME_DIR .. "src/mame/drivers/video21.cpp",
+	MAME_DIR .. "src/mame/drivers/video21.cpp",
 --	MAME_DIR .. "src/mame/drivers/videosaa.cpp",
 --	MAME_DIR .. "src/mame/drivers/vlc.cpp",
 --	MAME_DIR .. "src/mame/drivers/vlc34010.cpp",

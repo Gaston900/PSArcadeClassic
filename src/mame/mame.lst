@@ -11471,6 +11471,7 @@ ssf2xjr1d                       //
 ssf2xjr1r                       // 23/02/1994 (c) 1994 (Japan)
 uecology                        // 03/12/1993 (c) 1994 (Japan)
 vampj                           // 05/07/1994 (c) 1994 (Japan)
+vampja                          // 05/07/1994 (c) 1994 (Japan)
 vampjr1                         // 30/06/1994 (c) 1994 (Japan)
 vhunt2                          // 29/09/1997 (c) 1997 (Japan)
 vhunt2d                         //
@@ -11733,6 +11734,7 @@ dfkbl                           // (c) 2010 Cave (AMI license) - 2010/1/18 BLACK
 dsmbl                           // (c) 2008 Cave (AMI license) - 2008/10/06 MEGABLACK LABEL VER
 espgal2                         // (c) 2005 Cave (AMI license) - 2005/11/14 MASTER VER
 espgal2a                        // (c) 2005 Cave (AMI license) - 2005/11/14 MASTER VER
+espgal2b                        // (c) 2005 Cave (AMI license) - 2005/11/14 MASTER VER
 futari10                        // (c) 2006 Cave (AMI license) - 2006/10/23 MASTER VER.
 futari15                        // (c) 2006 Cave (AMI license) - 2006/12/8.MASTER VER. 1.54.
 futari15a                       // (c) 2006 Cave (AMI license) - 2006/12/8 MASTER VER 1.54
@@ -12571,10 +12573,9 @@ djboyua                         // (c) 1990 Kaneko (USA, American Sammy license)
 bm1stmix                        // GQ753 (c) 1997 (Japan)
 bm2ndmix                        // GX853 (c) 1998 (Japan)
 bm2ndmxa                        // GX853 (c) 1998 (Japan)
+bm3rdeaa                        // GX853 (c) 1998 (Europe)
 bm3rdmix                        // GX853 (c) 1998 (Japan)
 bm4thmix                        // GX847 (c) 1999 (Japan)
-bs4thmix                        // GX847 (c) 1999 (Korea)
-bscompmx                        // GX858 (c) 1999 (Korea)
 bm5thmix                        // GX981 (c) 1999 (Japan)
 bm6thmix                        // GXA21 (c) 2001 (Japan)
 bm7thmix                        // GXB07 (c) 2001 (Japan)
@@ -12586,12 +12587,14 @@ bmcompmxb                       // GX858 (c) 1999 (Japan)
 bmcorerm                        // GXA05 (c) 1999 (Japan)
 bmdct                           // GX995 (c) 2000 (Japan)
 bmfinal                         // GXC01 (c) 2002 (Japan)
+bs4thmix                        // GX847 (c) 1999 (Korea)
+bscompmx                        // GX858 (c) 1999 (Korea)
 hmcompm2                        // GX988 (c) 2000
 hmcompmx                        // GX858 (c) 1999
 popn1                           // GX803 (c) 1998 (Export)
 popn1a                          // GX803 (c) 1998 (Asia)
-popn1k                          // GX803 (c) 1998 (Korea)
 popn1j                          // GX803 (c) 1998 (Japan)
+popn1k                          // GX803 (c) 1998 (Korea)
 popn2                           // GX831 (c) 1998 (Japan)
 popn3                           // GX980 (c) 1999 (Japan)
 popnstex                        // GQ970 (c) 1999 (Japan)
@@ -14187,7 +14190,9 @@ popn8                           // GQB30 (c) 2002 (Japan)
 popnmt                          // GQ976 (c) 2000 (Japan)
 popnmt2                         // GQ976 (c) 2000 (Japan)
 popnanm                         // GQ987 (c) 2000 (Japan)
+popnanma                        // GQ987 (c) 2000 (Japan)
 popnanm2                        // GEA02 (c) 2001 (Japan)
+popnanm2a                       // GEA02 (c) 2001 (Japan)
 ppd                             // GQ977 (c) 2000 (Korea)
 ppp                             // GQ977 (c) 2000 (Japan)
 ppp11                           // GQ977 (c) 2000 (Japan)
@@ -14618,10 +14623,11 @@ gal3                            // (c) 1992 (Arcade TV Game List - P.73, Right, 
 battles                         // bootleg
 battles2                        // bootleg
 bosco                           // (c) 1981
+bosco1                          // (c) 1981
+bosco1o                         // (c) 1981
+bosco3                          // (c) 1981
 boscomd                         // (c) 1981 Midway
 boscomdo                        // (c) 1981 Midway
-boscoo                          // (c) 1981
-boscoo2                         // (c) 1981
 digdug                          // (c) 1982
 digdug1                         // (c) 1982
 digdugat                        // 136007   (c) 1982 Atari
@@ -16411,10 +16417,11 @@ gunpey                          // (c) 2000 Banpresto
 gunsmoke                        // 11/1985 (c) 1985 (World)
 gunsmokeb                       //
 gunsmokej                       // 11/1985 (c) 1985 (Japan)
-gunsmokeu                       // 11/1985 (c) 1985 + Romstar (US)
-gunsmokeua                      // 11/1985 (c) 1985 (US)
-gunsmokeub                      // 11/1985 (c) 1985 (US)
-gunsmokeg                       //
+gunsmokeu                       // 04/1986 (c) 1986 + Romstar (US)
+gunsmokeua                      // 01/1986 (c) 1985 + Romstar (US)
+gunsmokeub                      // 11/1985 (c) 1985 + Romstar (US)
+gunsmokeuc                      // 11/1985 (c) 1985 + Romstar (US)
+gunsmokeg                       // 11/1985 (c) 1985 (Germany)
 
 @source:gyruss.cpp
 gyruss                          // GX347 (c) 1983
@@ -23776,6 +23783,7 @@ pangpomsn                       // (c) 1992 Nova
 poitto                          // (c) 1993 Metro / Able Corp.
 poittoc                         // (c) 1993 Metro / Able Corp.
 pururun                         // (c) 1995 Metro / Banpresto
+pururuna                        // (c) 1995 Metro / Banpresto
 puzzlet                         // (c) 2000 Yunizu Corporation (Japan)
 puzzli                          // (c) 1995 Metro / Banpresto
 puzzlia                         // (c) 1995 Metro / Banpresto
@@ -32417,6 +32425,7 @@ golgo13                         // 2000.03 Golgo 13 (Japan, GLG1/VER.A)
 gunbarl                         // 1999.?? Gunbarl (Japan, GNB4/VER.A)
 kaiunqz                         // 1999.12 Kaiun Quiz (Japan, KW1/VER.A)
 kartduel                        // 2000.07 Kart Duel (Japan, KTD1/VER.A)
+kartduelj                       // 2000.07 Kart Duel (Japan, KTD1/VER.A)
 lbgrande                        // 1997.?? Libero Grande (World, LG2/VER.A)
 mdhorse                         // 1998.11 Derby Quiz My Dream Horse (Japan, MDH1/VER.A2)
 mrdrillr                        // 1999.11 Mr Driller (US, DRI3/VER.A2)
@@ -32427,6 +32436,8 @@ pacapp2                         // 1999.07 Paca Paca Passion 2 (Japan, PKS1/VER.
 pacappsp                        // 1999.12 Paca Paca Passion Special (Japan, PSP1/VER.A)
 ptblank2                        // 1999.?? Point Blank 2 (GNB5/VER.A)
 soulclbr                        // 1998.?? Soul Calibur (World, SOC14/VER.C)
+soulclbra                       // 1998.?? Soul Calibur (World, SOC12/VER.A2)
+soulclbrab                      // 1998.?? Soul Calibur (Asia, SOC14/VER.B)
 soulclbrja                      // 1998.?? Soul Calibur (Japan, SOC11/VER.A2)
 soulclbrjb                      // 1998.?? Soul Calibur (Japan, SOC11/VER.B)
 soulclbrjc                      // 1998.07 Soul Calibur (Japan, SOC11/VER.C)
@@ -34865,6 +34876,7 @@ eyesb2                          // Hack
 maketrax                        // (c) 1981 Williams, high score table says KRL (fur Kural)
 maketrxb                        // (c) 1981 [Kural] (Williams license)
 painter                         // Hack
+mspacmab3                       // bootleg
 
 @source:puckman.cpp
 mspacman                        // (c) 1981 Midway  // made by General Computer
@@ -38626,6 +38638,7 @@ ribbitj                         // (c) 1991 Sega
 soniccar                        // (c) 1991 Sega
 sonicpop                        // (c) 1993 Sega
 sonicfgt                        // (c) 1993 Sega
+sonicfgtj                       // (c) 1993 Sega
 ssonicbr                        // (c) 1992 Sega
 stkclmns                        // (c) 1994 Sega
 stkclmnsj                       // (c) 1994 Sega
@@ -42279,6 +42292,7 @@ whousetc                        //
 
 @source:tetrisp2.cpp
 nndmseal                        // (c) 1997 I'Max/Jaleco
+nndmseal11                      // (c) 1997 I'Max/Jaleco
 nndmseala                       // (c) 1997 I'Max/Jaleco
 nndmsealb                       // (c) 1997 I'Max/Jaleco
 nndmsealc                       // (c) 1997 I'Max/Jaleco
@@ -46822,6 +46836,9 @@ xmcotahc02                      // Hack
 xmvsfhc01                       // Hack
 xmvsfhc02                       // Hack
 
+@source:cps2t.cpp
+sfz3mix                         // Hack
+
 @source:cps3.cpp
 jojobahc01                      // Hack
 jojobahc02                      // Hack
@@ -50175,14 +50192,24 @@ futaribljc                      // Hack
  List of all disabled drivers on the system.
 **********************************************/
 
+@source:akazukin.cpp
+//akazukin    
+
 @source:astrcorp.cpp
 //magibombg
+
+@source:cothello.cpp
+//cothello
 
 @source:dmndrby.cpp
 //dmndrbybl
 
 @source:f1gp.cpp
 //f1gpbl
+
+@source:gameace.cpp
+//hotbody
+//hotbody2
 
 @source:lkage.cpp
 //lkagem
@@ -50192,6 +50219,13 @@ futaribljc                      // Hack
 
 @source:bzone.cpp
 //dsrtwars
+
+@source:midas.cpp
+//hammer
+//livequiz  
+
+@source:musclem.cpp
+//musclem  
 
 @source:namcos10.cpp
 //ballpom
@@ -50285,6 +50319,8 @@ futaribljc                      // Hack
 //mrtnt
 //mspactwin
 //mspacmbn
+//mschamp
+//mspackpls
 //nmouse
 //nmouseb
 //numcrash
@@ -50304,6 +50340,7 @@ futaribljc                      // Hack
 //sprglbpg
 //sprglobp
 //shootbul
+//superabc
 //theglobme
 //theglobp
 //titanpac
@@ -50312,6 +50349,16 @@ futaribljc                      // Hack
 //vanvank
 //woodpeca
 //woodpeck
+
+@source:videopkr.cpp
+//babydad
+//babypkr
+//blckjack
+//bpoker
+//fortune1
+//videocba
+//videodad
+//videopkr
 
 @source:wwfsstar.cpp
 //wwfsstarb2
@@ -50326,6 +50373,12 @@ futaribljc                      // Hack
 //centennial_sl02m_15_11194
 //centennial_sl04m_15_11194
 //cp2024
+//jaleco_vj_pc
+//ks0066_f00
+//nlq401
+//votrsc01
+//virge_pci
+//virgedx_pci
 //votrsc01
 //tvga9000
 //zip100_ide

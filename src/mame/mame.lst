@@ -2454,6 +2454,8 @@ magibombc                       // (c) 2001  Astro Corp.
 magibombd                       // (c) 2005  Astro Corp.
 magibombe                       // (c) 2001? Astro Corp.
 magibombf                       // (c) 2002  Astro Corp.
+magibombh                       // (c) 2001? Astro Corp.
+magibombi                       // (c) 2001? Astro Corp.
 showhanc                        // (c) 2000  Astro Corp.
 showhand                        // (c) 2000  Astro Corp.
 skilldrp                        // (c) 2002  Astro Corp.
@@ -11197,6 +11199,7 @@ wofpic                          // bootleg
 1944d                           //
 1944j                           // 20/06/2000 (c) 2000 Eighting/Raizing (Japan)
 1944u                           // 20/06/2000 (c) 2000 Eighting/Raizing (USA)
+1944n                           // 20/06/2000 (c) 2000 Eighting/Raizing (Euro)
 19xx                            // 04/01/1996 (c) 1996 (Euro)
 19xxu                           // 07/12/1995 (c) 1996 (USA)
 19xxa                           // 04/01/1996 (c) 1996 (Asia)
@@ -11222,6 +11225,7 @@ avsph                           // 20/05/1994 (c) 1994 (Hispanic)
 avspj                           // 20/05/1994 (c) 1994 (Japan)
 avspu                           // 20/05/1994 (c) 1994 (USA)
 avspud                          //
+avspn                           // 20/05/1994 (c) 1994 (Euro)
 batcir                          // 19/03/1997 (c) 1997 (Euro)
 batcira                         // 19/03/1997 (c) 1997 (Asia)
 batcird                         //
@@ -15862,7 +15866,7 @@ cmasteri                        // (c) 1991 Dyna Electronics
 cmasterj                        // (c) 1991 Dyna Electronics
 cmasterk                        // (c) 1991 Dyna Electronics
 cmezspin                        // (c) 1991 Dyna Electronics
-mfb55                          // bootleg
+cmfb55                          // bootleg
 cmfun                           // (c) 1995 Dyna Electronics
 cmpacman                        //
 cmpacmana                       //
@@ -16978,6 +16982,7 @@ hideseek                        //
 higemaru                        // 9/1984 (c) 1984
 
 @source:highvdeo.cpp
+bingopd
 brasil                          // (c) 2000 unknown
 cfever1k                        // (c) 2000 High Video
 cfever40                        // (c) 2000 High Video
@@ -16995,9 +17000,13 @@ newmcard                        // (c) 19?? unknown
 newtiger                        // (c) 200? unknown
 nyjoker                         //
 record                          // (c) 2000 High Video
+saladue
+saladuea
 tour4000                        // (c) 2000 High Video
 tour4010                        // (c) 2000 High Video
 unksmk                          //
+zoomania
+zoomaniaa
 
 @source:hikaru.cpp
 airtrix                         // 2001.02? Air Trix (Rev A)
@@ -34095,6 +34104,7 @@ airattck                        // (c) 1996 Comad
 airattcka                       // (c) 1996 Comad
 arcadian                        // (c) 1994 NMK
 bigbang                         // UPL-93091 (c) 1993 NMK
+bigbanga                        // UPL-93091 (c) 1993 NMK
 bioship                         // UPL-90062 (c) 1990 UPL + American Sammy license
 bjtwin                          // UPL-93087 (c) 1993 NMK
 bjtwina                         // UPL-93087 (c) 1993 NMK
@@ -50166,27 +50176,7 @@ futaribljc                      // Hack
 **********************************************/
 
 @source:astrcorp.cpp
-//astoneag
-//dinodino
-//hacher
-//magibomb
-//magibomba
-//magibomba
-//magibombc
-//magibombd
-//magibombe
-//magibombf
 //magibombg
-//magibombh
-//magibombi
-//showhanc
-//showhand
-//skilldrp
-//speeddrp
-//westvent
-//winbingo
-//winbingoa
-//zoo
 
 @source:dmndrby.cpp
 //dmndrbybl
@@ -50330,7 +50320,8 @@ futaribljc                      // Hack
  PSARCADE CLASSIC+ // ARCADE 0.259
  List of all disabled device on the system.
 **********************************************/
-
+//atari810
+//atari1050
 //centennial_sl01m_15_11194
 //centennial_sl02m_15_11194
 //centennial_sl04m_15_11194

@@ -12,7 +12,7 @@
 //4enlinea.cpp                         // mnw, hang at start
 4enraya.cpp                            //
 //4roses.cpp                           // black screen
-//5clown.cpp                           // poker
+5clown.cpp                             // poker
 8080bw.cpp                             //
 88games.cpp                            //
 //a1supply.cpp                         // no screen
@@ -69,7 +69,7 @@ asterix.cpp                            //
 asteroid.cpp                           //
 astinvad.cpp                           //
 //astrafr.cpp                          // fruit
-//astrcorp.cpp                           // gambling
+astrcorp.cpp                           // gambling
 astrocde.cpp                           //
 astrof.cpp                             //
 //astropc.cpp                          // no screen
@@ -92,7 +92,7 @@ atetris.cpp                            //
 attckufo.cpp                           //
 //atvtrack.cpp                         // black screen
 avalnche.cpp                           //
-//avt.cpp                              //
+avt.cpp                                //
 aztarac.cpp                            //
 backfire.cpp                           //
 badlands.cpp                           //
@@ -129,7 +129,7 @@ bfcobra.cpp                            //
 //bfm_sc5sw.cpp                        // fruit
 //bfm_swp.cpp                          // fruit
 //bgt.cpp                              // fruit, skeleton
-//big10.cpp                            // keno
+big10.cpp                            // keno
 bigevglf.cpp                           //
 bigkarnk_ms.cpp                        //
 bigstrkb.cpp                           //
@@ -505,8 +505,8 @@ goal92.cpp
 goindol.cpp
 //goldart.cpp                          // mechanical
 //goldngam.cpp                         // poker
-//goldnpkr.cpp                         // poker
-//goldstar.cpp                         // fruit
+goldnpkr.cpp                           // poker
+goldstar.cpp                         // fruit
 gomoku.cpp
 good.cpp
 goodejan.cpp
@@ -551,7 +551,7 @@ hcastle.cpp
 hexion.cpp
 //hideseek.cpp                         // check
 higemaru.cpp
-//highvdeo.cpp                         // poker
+highvdeo.cpp                         // poker
 //hikaru.cpp                           // check
 himesiki.cpp
 hitme.cpp
@@ -711,7 +711,7 @@ lordgun.cpp
 lsasquad.cpp
 //ltcasino.cpp                         // gambling
 //ltd.cpp                              // pinball
-//luckgrln.cpp                         // gambling
+luckgrln.cpp                           // gambling
 //lucky37.cpp                          // poker
 //lucky74.cpp                          // poker
 //luckybal.cpp                         // gambling
@@ -737,7 +737,7 @@ madalien.cpp
 madmotor.cpp
 magic10.cpp      // poker
 //magicard.cpp     // poker
-//magicfly.cpp     // poker
+magicfly.cpp       // poker
 //magictg.cpp      // check
 magmax.cpp
 //magreel.cpp      // no screen
@@ -1171,7 +1171,7 @@ senjyo.cpp
 seta.cpp
 seta2.cpp
 sf.cpp
-//sfbonus.cpp      // fruit
+sfbonus.cpp        // fruit
 //sfcbox.cpp       // check
 sfkick.cpp
 sg1000a.cpp
@@ -1249,7 +1249,7 @@ spiders.cpp
 splash.cpp
 splash_ms.cpp      // adult
 //splus.cpp        // fruit
-//spoker.cpp       // poker
+spoker.cpp         // poker
 //spool99.cpp      // poker, mnw
 sprcros2.cpp
 sprint2.cpp

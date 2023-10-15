@@ -1545,8 +1545,10 @@ spacmiss.cpp
 -cdi910
 -cdimono1
 -cdimono2
+-quizardi_10
 
 //cps1.cpp
+-pmonster
 -sf2amf
 -sf2stt
 -varthb3
@@ -1619,6 +1621,7 @@ spacmiss.cpp
 -acommand
 -otenamhf
 -kokoroj
+-kokoroja
 -carnevil1
 -dsfdct
 -dsfdcta
@@ -1745,6 +1748,7 @@ spacmiss.cpp
 -dingoe
 -supergx
 -highroll
+-mutacion
 -ncentury
 -scrammr
 -scramblebun
@@ -1774,6 +1778,7 @@ spacmiss.cpp
 -3cdpoker
 -3cdpokera
 -aplan
+-animalw
 -bonusch
 -chryangla
 -chryangl
@@ -1785,7 +1790,10 @@ spacmiss.cpp
 -cmast99
 -cmast99b
 -cmv4a
+-srmagic
+-cmfb55
 -cmasterbv
+-ll3
 -super7
 -crazybonb
 -eldoradd
@@ -1811,6 +1819,7 @@ spacmiss.cpp
 -cherry96
 -ss2001
 -tcl
+-cmtetrisb
 -war3cb
 -wcat3
 -wcat3a
@@ -1832,10 +1841,52 @@ spacmiss.cpp
 
 //hornet.cpp
 -sscope
--sscope2
+-sscopeaa
+-sscopeab
+-sscopeac
+-sscopeacvd2
 -sscopea
--sscopeb
--sscopec
+-sscopeavd2
+-sscopeea
+-sscopeeb
+-sscopeec
+-sscopeecvd2
+-sscopee
+-sscopeevd2
+-sscopeja
+-sscopejb
+-sscopeua
+-sscopeub
+-sscopeuc
+-sscopeucvd2
+-sscopevd2
+-sscope2
+-sscope2ub
+-sscope2ubvd1
+-sscope2uc
+-sscope2ucvd1
+-sscope2vd1
+-sscope2eb
+-sscope2ebvd1
+-sscope2ec
+-sscope2ecvd1
+-sscope2e
+-sscope2evd1
+-sscope2ab
+-sscope2abvd1
+-sscope2ac
+-sscope2acvd1
+-sscope2a
+-sscope2avd1
+-sscope2jb
+-sscope2jbvd1
+-sscope2jc
+-sscope2jcvd1
+-sscope2j
+-sscope2jvd1
+-terabrstaa
+-terabrstja
+-terabrstua
 
 //igs017.cpp
 -tarzana
@@ -1923,6 +1974,7 @@ spacmiss.cpp
 -ddr4msj
 -ddrs2k
 -ddrs2kj
+-dmxa
 -dmx
 -ddrja
 -ddrjb
@@ -1932,6 +1984,7 @@ spacmiss.cpp
 -gtfrk3mb
 -gtrfrk4m
 -gtrfrk5m
+-gtrfrk5ma
 -gtrfrk6m
 -gtrfrk7m
 -gtrfrk8m
@@ -1960,6 +2013,7 @@ spacmiss.cpp
 -drmn7m
 -drmn8m
 -pcnfrk9m
+-drmn9ma
 -drmn9m
 
 //legionna.cpp
@@ -1986,6 +2040,7 @@ spacmiss.cpp
 -kftgoal
 
 //m72.cpp
+-hharryb2
 -loht_ms
 
 //m92.cpp
@@ -2059,6 +2114,7 @@ spacmiss.cpp
 -crusnexoc
 -crusnexob
 -crusnexoa
+-thegridb
 
 //missile.cpp
 -mcombats
@@ -2147,6 +2203,7 @@ spacmiss.cpp
 
 //namcona1.cpp
 -bbbingo
+-bbbingot
 -zelos
 -zelost
 
@@ -2203,11 +2260,14 @@ spacmiss.cpp
 -alpilotj
 -alpilot
 -anpanman2
+-anpanman2a
 -beachspi
+-chokomk
 -clubkcyc
 -clubkcyco
 -clubkprz
 -clubkpzb
+-clubkpzbp
 -clubk2k3
 -clubk2kp
 -clubk2kpa
@@ -2225,6 +2285,7 @@ spacmiss.cpp
 -drbyocwa
 -drbyocwb
 -drbyocwc
+-drbyocwt
 -dragntr
 -dragntra
 -dragntr2
@@ -2339,9 +2400,12 @@ spacmiss.cpp
 -vtennisg
 -wldrider
 -wccf310j
+-wccf341j
+-wccf331j
 -wccf322e
 -wccf331e
 -wccf420e
+-wccf400j
 -wccf1dup
 -wccf116
 -wccf2chk
@@ -2421,6 +2485,9 @@ spacmiss.cpp
 //powerins.cpp
 -powerinsc
 
+//psikyosh.cpp
+-s1945iiibl
+
 //quickpick5.cpp
 -waijockey
 
@@ -2433,6 +2500,7 @@ spacmiss.cpp
 //rbmk.cpp
 -magslot
 -rbspm
+-super555
 -sc2in1
 
 //royalmah.cpp
@@ -2459,6 +2527,7 @@ spacmiss.cpp
 -conquer
 
 //sderby.cpp
+-croupierb
 -magictch
 
 //seabattl.cpp
@@ -2583,8 +2652,10 @@ spacmiss.cpp
 -fanzonem
 -magzun
 -nameclub
+-nclubdis
 -nclubv2
 -nclubv3
+-nclubv4
 -prc297wi
 -prc297wia
 -prc298au
@@ -2639,6 +2710,7 @@ spacmiss.cpp
 
 //system16.cpp
 -beautyb
+-bloxeedbl
 -iqpipe
 -wb3bble
 
@@ -2673,7 +2745,9 @@ spacmiss.cpp
 //tetrisp2.cpp
 -step3
 -stepstag
+-vjslap
 -vjdash
+-vjdasha
 
 //thepit.cpp
 -zaryavos
@@ -2684,6 +2758,7 @@ spacmiss.cpp
 
 //toaplan2.cpp
 -nprobowl
+-probowl2
 -pipibibsbl2
 
 //trackfld.cpp
@@ -2704,6 +2779,7 @@ spacmiss.cpp
 //wallc.cpp
 -unkitpkr
 -sidampkr
+-sidampkra
 
 //williams.cpp
 -tornado2

@@ -2045,7 +2045,11 @@ ROM_START( defenderj )
 	ROM_LOAD( "df4-1.c1",     0x16000, 0x0800, CRC(65f4efd1) SHA1(a960fd1559ed74b81deba434391e49fc6ec389ca) ) //2716
 
 	ROM_REGION( 0x10000, "soundcpu", 0 )
-	ROM_LOAD( "df12.i3",   0xf800, 0x0800, CRC(f122d9c9) SHA1(70092fc354a2efbe7365be922fa36309b50d5c6f) ) //2716
+	ROM_LOAD( "dr12.i3",   0xf800, 0x0800, CRC(f122d9c9) SHA1(70092fc354a2efbe7365be922fa36309b50d5c6f) ) //2716
+
+	ROM_REGION( 0x0400, "proms", 0 ) // Same as Colony 7 with different labels. The type is NEC B425, equivalent to 82S141 and 74S474
+	ROM_LOAD( "df11.k3", 0x0000, 0x0200, CRC(25de5d85) SHA1(826f78c2fe847f594d261c280dd10b9e776bf4fd) )
+	ROM_LOAD( "df12.f3", 0x0200, 0x0200, CRC(c3f45f70) SHA1(d19036cbc46b130548873597b44b8b70758f25c4) )
 ROM_END
 
 ROM_START( defndjeu )
@@ -3146,6 +3150,14 @@ There is known to be a "perfect" version of Sinistar, that being the original ve
   dev team. The dev team thought this version had the best game play while Williams decided it was too easy (IE: it
   could be played too long on one quarter)
 
+Sinistar's cockpit cabinet features two sound boards, one for the front speakers and another for the rear.  The rear
+  sound board uses a different ROM, Video Sound ROM 10.  It adds a slight delay to some of the sound effects,
+  producing a reverberation effect, and ignores the extra ship and bounce effects.  It has no speech ROMs.
+
+If you disconnect the speech ROMs from the upright sound board, Video Sound ROM 9 will play two replacement sound
+  effects for the Sinistar's missing audio.  Any line of dialogue will be replaced by a generic alarm noise,
+  while the Sinistar roar is replaced by a loud square wave synth noise that attempts to emulate the "sini-scream".
+  Video Sound Rom 10 disables this functionality so that it doesn't play placeholder sounds in place of speech.
 */
 ROM_START( sinistar ) // rev. 3
 	ROM_REGION( 0x19000, "maincpu", 0 ) // solid RED labels with final production part numbers
@@ -3168,14 +3180,34 @@ ROM_START( sinistar ) // rev. 3
 	ROM_LOAD( "3004_speech_ic4_r1_16-3004-49.ic4", 0xe000, 0x1000, CRC(4b56a626) SHA1(44430cd5c110ec751b0bfb8ae99b26d443350db1) )
 	ROM_LOAD( "video_sound_rom_9_std.808.ic12",    0xf000, 0x1000, CRC(b82f4ddb) SHA1(c70c7dd6e88897920d7709a260f27810f66aade1) )
 
-/*
-    ROM_REGION( 0x10000, "soundcpu_b", 0 ) // Stereo sound requires 2nd sound board as used in the cockpit version
-    ROM_LOAD( "3004_speech_ic7_r1_16-3004-52.ic7", 0xb000, 0x1000, CRC(e1019568) SHA1(442f4f3ccd2e1db2136d2ffb121ea442921f87ca) )
-    ROM_LOAD( "3004_speech_ic5_r1_16-3004-50.ic5", 0xc000, 0x1000, CRC(cf3b5ffd) SHA1(d5d51c550581c9d46ab331dd4fd32541a2ef598e) )
-    ROM_LOAD( "3004_speech_ic6_r1_16-3004-51.ic6", 0xd000, 0x1000, CRC(ff8d2645) SHA1(16fa2a602acbbc182dd96bab113ab18356f3daf0) )
-    ROM_LOAD( "3004_speech_ic4_r1_16-3004-49.ic4", 0xe000, 0x1000, CRC(4b56a626) SHA1(44430cd5c110ec751b0bfb8ae99b26d443350db1) )
-    ROM_LOAD( "video_sound_rom_10_std.ic12",       0xf000, 0x1000, CRC(b5c70082) SHA1(643af087b57da3a71c68372c79c5777e0c1fbef7) ) // not sure if all speech ROMs need to be here too
-*/
+	ROM_REGION( 0x0400, "proms", 0 )
+	ROM_LOAD( "decoder_rom_4.3g", 0x0000, 0x0200, CRC(e6631c23) SHA1(9988723269367fb44ef83f627186a1c88cf7877e) ) // Universal Horizontal decoder ROM - 7641-5 BPROM - P/N A-5342-09694
+	ROM_LOAD( "decoder_rom_6.3c", 0x0200, 0x0200, CRC(83faf25e) SHA1(30002643d08ed983a6701a7c4b5ee74a2f4a1adb) ) // Universal Vertical decoder ROM - 7641-5 BPROM - P/N A-5342-09821
+ROM_END
+
+ROM_START( sinistarc ) // rev. 3
+	ROM_REGION( 0x19000, "maincpu", 0 ) // solid RED labels with final production part numbers
+	ROM_LOAD( "sinistar_rom_10-b_16-3004-62.4c", 0x0e000, 0x1000, CRC(3d670417) SHA1(81802622bee8dbea5c0f08019d87d941dcdbe292) )
+	ROM_LOAD( "sinistar_rom_11-b_16-3004-63.4a", 0x0f000, 0x1000, CRC(3162bc50) SHA1(2f38e572ab9c731e38dfe9bad3cc8222a775c5ea) )
+	ROM_LOAD( "sinistar_rom_1-b_16-3004-53.1d",  0x10000, 0x1000, CRC(f6f3a22c) SHA1(026d8cab07734fa294a5645edbe65a904bcbc302) )
+	ROM_LOAD( "sinistar_rom_2-b_16-3004-54.1c",  0x11000, 0x1000, CRC(cab3185c) SHA1(423d1e3b0c07333ec582529bc4d0b7baf591820a) )
+	ROM_LOAD( "sinistar_rom_3-b_16-3004-55.1a",  0x12000, 0x1000, CRC(1ce1b3cc) SHA1(5bc03d7249529d827dc60c087e074ab3e4ea7361) )
+	ROM_LOAD( "sinistar_rom_4-b_16-3004-56.2d",  0x13000, 0x1000, CRC(6da632ba) SHA1(72c0c3d5a5ca87ca4d95fcedaf834206e4633950) )
+	ROM_LOAD( "sinistar_rom_5-b_16-3004-57.2c",  0x14000, 0x1000, CRC(b662e8fc) SHA1(828a89d2ea13d8a362dae708f86bff54cb231887) )
+	ROM_LOAD( "sinistar_rom_6-b_16-3004-58.2a",  0x15000, 0x1000, CRC(2306183d) SHA1(703e29e6446856615760a4897c0f5d79cc7bdfb2) )
+	ROM_LOAD( "sinistar_rom_7-b_16-3004-59.3d",  0x16000, 0x1000, CRC(e5dd918e) SHA1(bf4e2ada6a59d246218544d822ba5355da925924) )
+	ROM_LOAD( "sinistar_rom_8-b_16-3004-60.3c",  0x17000, 0x1000, CRC(4785a787) SHA1(8c7eca656b2c23b0da41a8c7ce51a2735cab85a4) )
+	ROM_LOAD( "sinistar_rom_9-b_16-3004-61.3a",  0x18000, 0x1000, CRC(50cb63ad) SHA1(96e28e4fef98fff2649741a266fa590e0313e3b0) )
+
+	ROM_REGION( 0x10000, "soundcpu", 0 )
+	ROM_LOAD( "3004_speech_ic7_r1_16-3004-52.ic7", 0xb000, 0x1000, CRC(e1019568) SHA1(442f4f3ccd2e1db2136d2ffb121ea442921f87ca) )
+	ROM_LOAD( "3004_speech_ic5_r1_16-3004-50.ic5", 0xc000, 0x1000, CRC(cf3b5ffd) SHA1(d5d51c550581c9d46ab331dd4fd32541a2ef598e) )
+	ROM_LOAD( "3004_speech_ic6_r1_16-3004-51.ic6", 0xd000, 0x1000, CRC(ff8d2645) SHA1(16fa2a602acbbc182dd96bab113ab18356f3daf0) )
+	ROM_LOAD( "3004_speech_ic4_r1_16-3004-49.ic4", 0xe000, 0x1000, CRC(4b56a626) SHA1(44430cd5c110ec751b0bfb8ae99b26d443350db1) )
+	ROM_LOAD( "video_sound_rom_9_std.808.ic12",    0xf000, 0x1000, CRC(b82f4ddb) SHA1(c70c7dd6e88897920d7709a260f27810f66aade1) )
+
+	ROM_REGION( 0x10000, "soundcpu_b", 0 ) // Stereo sound requires 2nd sound board as used in the cockpit version
+	ROM_LOAD( "video_sound_rom_10_std.ic12",       0xf000, 0x1000, CRC(b5c70082) SHA1(643af087b57da3a71c68372c79c5777e0c1fbef7) ) // no speech board is connected
 
 	ROM_REGION( 0x0400, "proms", 0 )
 	ROM_LOAD( "decoder_rom_4.3g", 0x0000, 0x0200, CRC(e6631c23) SHA1(9988723269367fb44ef83f627186a1c88cf7877e) ) // Universal Horizontal decoder ROM - 7641-5 BPROM - P/N A-5342-09694
@@ -3203,14 +3235,34 @@ ROM_START( sinistar2 ) // rev. 2
 	ROM_LOAD( "3004_speech_ic4_r1_16-3004-49.ic4", 0xe000, 0x1000, CRC(4b56a626) SHA1(44430cd5c110ec751b0bfb8ae99b26d443350db1) )
 	ROM_LOAD( "video_sound_rom_9_std.808.ic12",    0xf000, 0x1000, CRC(b82f4ddb) SHA1(c70c7dd6e88897920d7709a260f27810f66aade1) )
 
-/*
-    ROM_REGION( 0x10000, "soundcpu_b", 0 ) // Stereo sound requires 2nd sound board as used in the cockpit version
-    ROM_LOAD( "3004_speech_ic7_r1_16-3004-52.ic7", 0xb000, 0x1000, CRC(e1019568) SHA1(442f4f3ccd2e1db2136d2ffb121ea442921f87ca) )
-    ROM_LOAD( "3004_speech_ic5_r1_16-3004-50.ic5", 0xc000, 0x1000, CRC(cf3b5ffd) SHA1(d5d51c550581c9d46ab331dd4fd32541a2ef598e) )
-    ROM_LOAD( "3004_speech_ic6_r1_16-3004-51.ic6", 0xd000, 0x1000, CRC(ff8d2645) SHA1(16fa2a602acbbc182dd96bab113ab18356f3daf0) )
-    ROM_LOAD( "3004_speech_ic4_r1_16-3004-49.ic4", 0xe000, 0x1000, CRC(4b56a626) SHA1(44430cd5c110ec751b0bfb8ae99b26d443350db1) )
-    ROM_LOAD( "video_sound_rom_10_std.ic12",       0xf000, 0x1000, CRC(b5c70082) SHA1(643af087b57da3a71c68372c79c5777e0c1fbef7) ) // not sure if all speech ROMs need to be here too
-*/
+	ROM_REGION( 0x0400, "proms", 0 )
+	ROM_LOAD( "decoder_rom_4.3g", 0x0000, 0x0200, CRC(e6631c23) SHA1(9988723269367fb44ef83f627186a1c88cf7877e) ) // Universal Horizontal decoder ROM - 7641-5 BPROM - P/N A-5342-09694
+	ROM_LOAD( "decoder_rom_6.3c", 0x0200, 0x0200, CRC(83faf25e) SHA1(30002643d08ed983a6701a7c4b5ee74a2f4a1adb) ) // Universal Vertical decoder ROM - 7641-5 BPROM - P/N A-5342-09821
+ROM_END
+
+ROM_START( sinistarc2 ) // rev. 2
+	ROM_REGION( 0x19000, "maincpu", 0 ) // solid RED labels with final production part numbers
+	ROM_LOAD( "sinistar_rom_10-b_16-3004-47.4c", 0x0e000, 0x1000, CRC(3d670417) SHA1(81802622bee8dbea5c0f08019d87d941dcdbe292) ) //  == rev. 3 PN 16-3004-62
+	ROM_LOAD( "sinistar_rom_11-b_16-3004-48.4a", 0x0f000, 0x1000, CRC(792c8b00) SHA1(1f847ca8a67595927c36d69cead02813c2431c7b) ) //  unique to rev. 2
+	ROM_LOAD( "sinistar_rom_1-b_16-3004-38.1d",  0x10000, 0x1000, CRC(f6f3a22c) SHA1(026d8cab07734fa294a5645edbe65a904bcbc302) ) //  == rev. 3 PN 16-3004-53
+	ROM_LOAD( "sinistar_rom_2-b_16-3004-39.1c",  0x11000, 0x1000, CRC(cab3185c) SHA1(423d1e3b0c07333ec582529bc4d0b7baf591820a) ) //  == rev. 3 PN 16-3004-54
+	ROM_LOAD( "sinistar_rom_3-b_16-3004-40.1a",  0x12000, 0x1000, CRC(1ce1b3cc) SHA1(5bc03d7249529d827dc60c087e074ab3e4ea7361) ) //  == rev. 3 PN 16-3004-55
+	ROM_LOAD( "sinistar_rom_4-b_16-3004-41.2d",  0x13000, 0x1000, CRC(6da632ba) SHA1(72c0c3d5a5ca87ca4d95fcedaf834206e4633950) ) //  == rev. 3 PN 16-3004-56
+	ROM_LOAD( "sinistar_rom_5-b_16-3004-42.2c",  0x14000, 0x1000, CRC(b662e8fc) SHA1(828a89d2ea13d8a362dae708f86bff54cb231887) ) //  == rev. 3 PN 16-3004-57
+	ROM_LOAD( "sinistar_rom_6-b_16-3004-43.2a",  0x15000, 0x1000, CRC(2306183d) SHA1(703e29e6446856615760a4897c0f5d79cc7bdfb2) ) //  == rev. 3 PN 16-3004-57
+	ROM_LOAD( "sinistar_rom_7-b_16-3004-44.3d",  0x16000, 0x1000, CRC(e5dd918e) SHA1(bf4e2ada6a59d246218544d822ba5355da925924) ) //  == rev. 3 PN 16-3004-59
+	ROM_LOAD( "sinistar_rom_8-b_16-3004-45.3c",  0x17000, 0x1000, CRC(d7ecee45) SHA1(f9552035409bce0a36ed93a677b28f8cd361f8f1) ) //  unique to rev. 2
+	ROM_LOAD( "sinistar_rom_9-b_16-3004-46.3a",  0x18000, 0x1000, CRC(50cb63ad) SHA1(96e28e4fef98fff2649741a266fa590e0313e3b0) ) //  == rev. 3 PN 16-3004-61
+
+	ROM_REGION( 0x10000, "soundcpu", 0 )
+	ROM_LOAD( "3004_speech_ic7_r1_16-3004-52.ic7", 0xb000, 0x1000, CRC(e1019568) SHA1(442f4f3ccd2e1db2136d2ffb121ea442921f87ca) )
+	ROM_LOAD( "3004_speech_ic5_r1_16-3004-50.ic5", 0xc000, 0x1000, CRC(cf3b5ffd) SHA1(d5d51c550581c9d46ab331dd4fd32541a2ef598e) )
+	ROM_LOAD( "3004_speech_ic6_r1_16-3004-51.ic6", 0xd000, 0x1000, CRC(ff8d2645) SHA1(16fa2a602acbbc182dd96bab113ab18356f3daf0) )
+	ROM_LOAD( "3004_speech_ic4_r1_16-3004-49.ic4", 0xe000, 0x1000, CRC(4b56a626) SHA1(44430cd5c110ec751b0bfb8ae99b26d443350db1) )
+	ROM_LOAD( "video_sound_rom_9_std.808.ic12",    0xf000, 0x1000, CRC(b82f4ddb) SHA1(c70c7dd6e88897920d7709a260f27810f66aade1) )
+
+	ROM_REGION( 0x10000, "soundcpu_b", 0 ) // Stereo sound requires 2nd sound board as used in the cockpit version
+	ROM_LOAD( "video_sound_rom_10_std.ic12",       0xf000, 0x1000, CRC(b5c70082) SHA1(643af087b57da3a71c68372c79c5777e0c1fbef7) ) // no speech board is connected
 
 	ROM_REGION( 0x0400, "proms", 0 )
 	ROM_LOAD( "decoder_rom_4.3g", 0x0000, 0x0200, CRC(e6631c23) SHA1(9988723269367fb44ef83f627186a1c88cf7877e) ) // Universal Horizontal decoder ROM - 7641-5 BPROM - P/N A-5342-09694
@@ -3938,8 +3990,10 @@ GAME( 1982, bubblesp,   bubbles,  bubbles,        bubbles,  bubbles_state,      
 
 GAME( 1982, splat,      0,        williams_muxed, splat,    williams_muxed_state, init_splat,    ROT0,   "Williams", "Splat!", MACHINE_SUPPORTS_SAVE )
 
-GAME( 1982, sinistar,   0,        sinistar,       sinistar, sinistar_state,       empty_init,    ROT270, "Williams", "Sinistar (revision 3)",        MACHINE_SUPPORTS_SAVE )
-GAME( 1982, sinistar2,  sinistar, sinistar,       sinistar, sinistar_state,       empty_init,    ROT270, "Williams", "Sinistar (revision 2)",        MACHINE_SUPPORTS_SAVE )
+GAME( 1982, sinistar,   0,        sinistar,       sinistar, sinistar_state,       empty_init,    ROT270, "Williams", "Sinistar (revision 3, upright)", MACHINE_SUPPORTS_SAVE )
+GAME( 1982, sinistarc,  sinistar, sinistar,       sinistar, sinistar_state,       empty_init,    ROT270, "Williams", "Sinistar (revision 3, cockpit)", MACHINE_SUPPORTS_SAVE )
+GAME( 1982, sinistar2,  sinistar, sinistar,       sinistar, sinistar_state,       empty_init,    ROT270, "Williams", "Sinistar (revision 2, upright)", MACHINE_SUPPORTS_SAVE )
+GAME( 1982, sinistarc2, sinistar, sinistar,       sinistar, sinistar_state,       empty_init,    ROT270, "Williams", "Sinistar (revision 2, cockpit)", MACHINE_SUPPORTS_SAVE )
 GAME( 1982, sinistarp,  sinistar, sinistar,       sinistar, sinistar_state,       empty_init,    ROT270, "Williams", "Sinistar (AMOA-82 prototype)", MACHINE_SUPPORTS_SAVE )
 
 GAME( 1983, playball,   0,        playball,       playball, playball_state,       empty_init,    ROT270, "Williams", "PlayBall! (prototype)", MACHINE_SUPPORTS_SAVE )

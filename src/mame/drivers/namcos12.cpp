@@ -2417,11 +2417,27 @@ ROM_END
 
 ROM_START( kartduel )
 	ROM_REGION32_LE( 0x00400000, "maincpu:rom", 0 ) /* main prg */
+	ROM_LOAD16_BYTE( "ktd2vera.2l",  0x0000000, 0x200000, CRC(7e7d8454) SHA1(4e0db56e433015cf1b9fd4cad35df99f1730e567) )
+	ROM_LOAD16_BYTE( "ktd2vera.2p",  0x0000001, 0x200000, CRC(6c8af7e7) SHA1(602975500180de98a0a7e22c079344e7a3ece25e) )
+
+	ROM_REGION32_LE( 0x01000000, "bankedroms", 0 ) /* main data */
+	ROM_LOAD16_BYTE( "kdt1rom0l.ic12", 0x000000, 0x800000, CRC(f8a79aef) SHA1(8c2a6aef5cc0ffe4b5e9f2a98ef5a29edd59eb4d) )
+	ROM_LOAD16_BYTE( "kdt1rom0u.ic11", 0x000001, 0x800000, CRC(bab0d328) SHA1(9a15bfb38c63b0012f29755b2be071e9c82d1c20) )
+
+	ROM_REGION( 0x0080000, "sub", 0 ) /* sound prg */
+	ROM_LOAD16_WORD_SWAP( "ktd1vera.11s", 0x000000, 0x080000, CRC(c2ff1971) SHA1(32ee2afe08e92049d8139c9324a0ea1a3b7ee5a1) )
+
+	ROM_REGION( 0x1000000, "c352", 0 ) /* samples */
+	ROM_LOAD( "ktd1wave0.ic2",  0x0000000, 0x800000, CRC(c54d5539) SHA1(17518dc76bb3627ca42bac665938bb11ea926396) )
+ROM_END
+
+ROM_START( kartduelj )
+	ROM_REGION32_LE( 0x00400000, "maincpu:rom", 0 ) /* main prg */
 	ROM_LOAD16_BYTE( "ktd1vera.2l",  0x0000000, 0x200000, CRC(0c207249) SHA1(6c57de25d452226a25f658638d89b81257960741) )
 	ROM_LOAD16_BYTE( "ktd1vera.2p",  0x0000001, 0x200000, CRC(f6e2581f) SHA1(06eb108c2775290590dba75f964f26443a585d70) )
 
 	ROM_REGION32_LE( 0x01000000, "bankedroms", 0 ) /* main data */
-	ROM_LOAD16_BYTE( "kdt1rom0l.ic12", 0x000000, 0x800000, CRC(4a3bac12) SHA1(7758d97049d30a00b7bede3688d451fbf4eddbfb) )
+	ROM_LOAD16_BYTE( "kdt1rom0l.ic12", 0x000000, 0x800000, CRC(f8a79aef) SHA1(8c2a6aef5cc0ffe4b5e9f2a98ef5a29edd59eb4d) )
 	ROM_LOAD16_BYTE( "kdt1rom0u.ic11", 0x000001, 0x800000, CRC(bab0d328) SHA1(9a15bfb38c63b0012f29755b2be071e9c82d1c20) )
 
 	ROM_REGION( 0x0080000, "sub", 0 ) /* sound prg */
@@ -3377,6 +3393,31 @@ ROM_START( aplarail )
 	ROM_LOAD( "at28c16",      0x000000, 0x000800, CRC(db1b63c5) SHA1(01fc3386a2d1cb1bed1b7fd9bd2fd59e503832d3) )
 ROM_END
 
+ROM_START( ujlnow )
+	ROM_REGION32_LE( 0x00400000, "maincpu:rom", 0 ) /* main prg */
+	ROM_LOAD16_BYTE( "ul1vera.2l",  0x000000, 0x200000, CRC(40251bc3) SHA1(377a156d738b29d8f19d9696a261cc6e3470ee3e) )
+	ROM_LOAD16_BYTE( "ul1vera.2p",  0x000001, 0x200000, CRC(98181955) SHA1(febd73361d0de10282a850611b5f966a99eecdec) )
+
+	ROM_REGION32_LE( 0x2000000, "bankedroms", 0 ) /* main data */
+	ROM_LOAD16_BYTE( "ul1rom0l.ic12", 0x0000000, 0x800000, CRC(7a77cffd) SHA1(6bd18837f475615061be73ee6d1bc09726e96fb5) )
+	ROM_LOAD16_BYTE( "ul1rom0u.ic11", 0x0000001, 0x800000, CRC(1fdb34b3) SHA1(3773b3fb1574a0b4acebfaf510c75fa117394ae4) )
+	ROM_LOAD16_BYTE( "ul1rom1l.ic10", 0x1000000, 0x800000, CRC(2d300d8c) SHA1(eabd0b4525530e5b33a6d85fa4d959e88c6fbd42) )
+	ROM_LOAD16_BYTE( "ul1rom1u.ic9",  0x1000001, 0x800000, CRC(a4762002) SHA1(0faadc04bcc32e4f805069af8e635765a0b77ca9) )
+
+	ROM_REGION( 0x0080000, "sub", 0 ) /* sound prg */
+	ROM_LOAD16_WORD_SWAP( "ul1vera.11s", 0x000000, 0x080000, CRC(2f466df3) SHA1(6468089c6cf3e056a30fa04274056ff2c9a01d5b) )
+
+	ROM_REGION( 0x1000000, "c352", 0 ) /* samples */
+	ROM_LOAD( "ul1wave0.ic2", 0x0000000, 0x800000, CRC(4efbff5d) SHA1(add4caf9aa9443707bcb6cf9ebad0a5a59900ca9) )
+	ROM_LOAD( "ul1wave1.ic1", 0x0800000, 0x800000, CRC(ad512f4c) SHA1(cfbecaad13a2239be0e697f3f9856401f11a1bc5) )
+
+	ROM_REGION( 0x80000, "m148", 0) /* M148 EMI DRIVE PCB */
+	ROM_LOAD( "ul1spro.10c", 0x000000, 0x080000, CRC(1bd0e763) SHA1(07e9ad77bb983fcb4e4e6f66fbe55808b5a27d2e) )
+
+	DISK_REGION( "cdrom" )
+	DISK_IMAGE( "ul1-a", 0, SHA1(676f2c530f8d422ab9895ea04a43b2e9272fb8f8) )
+ROM_END
+
 } // anonymous namespace
 
 
@@ -3427,6 +3468,7 @@ GAME( 1999, ohbakyuun, ghlpanic, ptblank2, ghlpanic,  namcos12_boothack_state, i
 GAME( 1999, pacapp2,   0,        coh700,   namcos12,  namcos12_boothack_state, init_namcos12, ROT0, "Produce / Namco", "Paca Paca Passion 2 (Japan, PKS1/VER.A)", 0 ) /* KC046 */
 GAME( 1999, mrdrillr,  0,        coh700,   namcos124w,namcos12_boothack_state, init_namcos12, ROT0, "Namco",           "Mr. Driller (US, DRI3/VER.A2)", 0 ) /* KC048 */
 GAME( 1999, mrdrillrj, mrdrillr, coh700,   namcos124w,namcos12_boothack_state, init_namcos12, ROT0, "Namco",           "Mr. Driller (Japan, DRI1/VER.A2)", 0 ) /* KC048 */
+//GAME( 1999, ujlnow,    0,        cdxa_pcb, ujlnow,    namcos12_cdxa_state,     init_alt_bank1,ROT0, "Namco",           "Um Jammer Lammy NOW! (Japan, UL1/VER.A)", 0 ) /* KC049 */
 GAME( 1999, kaiunqz,   0,        coh700,   namcos12,  namcos12_state,          init_namcos12, ROT0, "Namco",           "Kaiun Quiz (Japan, KW1/VER.A)", MACHINE_NOT_WORKING ) /* KC050 */
 GAME( 1999, pacappsp,  0,        coh700,   namcos12,  namcos12_boothack_state, init_namcos12, ROT0, "Produce / Namco", "Paca Paca Passion Special (Japan, PSP1/VER.A)", 0 ) /* KC052 */
 GAME( 1999, aquarush,  0,        coh700,   namcos12,  namcos12_state,          init_namcos12, ROT0, "Namco",           "Aqua Rush (Japan, AQ1/VER.A1)", 0 ) /* KC053 */
@@ -3434,5 +3476,6 @@ GAME( 1999, golgo13,   0,        golgo13,  golgo13,   namcos12_boothack_state, i
 GAME( 2000, g13knd,    0,        golgo13,  golgo13,   namcos12_boothack_state, init_golgo13,  ROT0, "Eighting / Raizing / Namco", "Golgo 13 Kiseki no Dandou (Japan, GLS1/VER.A)", 0 ) /* KC059 */
 GAME( 2000, sws2000,   0,        coh700,   namcos12,  namcos12_boothack_state, init_namcos12, ROT0, "Namco",           "Super World Stadium 2000 (Japan, SS01/VER.A)", MACHINE_NOT_WORKING ) /* KC055 */
 GAME( 2000, truckk,    0,        truckk,   namcos12,  namcos12_boothack_state, init_namcos12, ROT0, "Metro / Namco",   "Truck Kyosokyoku (Japan, TKK2/VER.A)", MACHINE_IMPERFECT_SOUND | MACHINE_NOT_WORKING ) /* KC056 */
-GAME( 2000, kartduel,  0,        kartduel, kartduel,  namcos12_boothack_state, init_namcos12, ROT0, "Gaps / Namco",    "Kart Duel (Japan, KTD1/VER.A)", MACHINE_NOT_WORKING ) /* KC057 */
+GAME( 2000, kartduel,  0,        kartduel, kartduel,  namcos12_boothack_state, init_namcos12, ROT0, "Gaps / Namco",    "Kart Duel (World, KTD1/VER.A)", MACHINE_NOT_WORKING ) /* KC057 */
+GAME( 2000, kartduelj, kartduel, kartduel, kartduel,  namcos12_boothack_state, init_namcos12, ROT0, "Gaps / Namco",    "Kart Duel (Japan, KTD1/VER.A)", MACHINE_NOT_WORKING ) /* KC057 */
 GAME( 2001, sws2001,   sws2000,  coh716,   namcos12,  namcos12_boothack_state, init_namcos12, ROT0, "Namco",           "Super World Stadium 2001 (Japan, SS11/VER.A)", MACHINE_NOT_WORKING ) /* KC061 */

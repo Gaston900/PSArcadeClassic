@@ -2922,7 +2922,6 @@ files {
 --	MAME_DIR .. "src/mame/includes/xevious.h",
 	MAME_DIR .. "src/mame/video/xevious.cpp",
 	MAME_DIR .. "src/hbmame/drivers/galaxian.cpp", --HBMAME
-	MAME_DIR .. "src/mame/drivers/galaxian_v.cpp",
 	MAME_DIR .. "src/mame/drivers/galaxian_rockclim.cpp",
 	MAME_DIR .. "src/mame/audio/galaxian.cpp",
 --	MAME_DIR .. "src/mame/audio/galaxian.h",

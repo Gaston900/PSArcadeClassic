@@ -34876,7 +34876,6 @@ eyesb2                          // Hack
 maketrax                        // (c) 1981 Williams, high score table says KRL (fur Kural)
 maketrxb                        // (c) 1981 [Kural] (Williams license)
 painter                         // Hack
-mspacmab3                       // bootleg
 
 @source:puckman.cpp
 mspacman                        // (c) 1981 Midway  // made by General Computer
@@ -50196,7 +50195,27 @@ futaribljc                      // Hack
 //akazukin    
 
 @source:astrcorp.cpp
+//astoneag
+//dinodino
+//hacher
+//magibomb
+//magibomba
+//magibombb
+//magibombc
+//magibombd
+//magibombe
+//magibombf
+//magibombh
+//magibombi
 //magibombg
+//showhanc
+//showhand
+//skilldrp
+//speeddrp
+//westvent
+//winbingo
+//winbingoa
+//zoo
 
 @source:cothello.cpp
 //cothello
@@ -50321,6 +50340,7 @@ futaribljc                      // Hack
 //mspacmbn
 //mschamp
 //mspackpls
+//mspacmab3
 //nmouse
 //nmouseb
 //numcrash

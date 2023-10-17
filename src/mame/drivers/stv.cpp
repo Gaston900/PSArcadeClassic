@@ -1928,7 +1928,6 @@ ROM_LOAD16_WORD_SWAP_BIOS( x, "saturn.bin", 0x000000, 0x080000, CRC(653ff2d8) SH
 
 #define STV_BIOS \
 	ROM_REGION32_BE( 0x080000, "bios", 0 ) /* SH2 code */ \
-	ROM_REGION32_BE( 0x080000, "bios", 0 ) /* SH2 code */ \
 	ROM_SYSTEM_BIOS( 0,  "jp",    "EPR-23603 (Japan 00/10/24)" ) \
 	ROM_LOAD16_WORD_SWAP_BIOS( 0,  "epr-23603.ic8",   0x000000, 0x080000, CRC(f688ae60) SHA1(1a31b6b1a4257fcb6ac6a91e67dd798f91505f48) ) \
 	ROM_SYSTEM_BIOS( 1,  "jp1",   "EPR-20091 (Japan 97/08/21)" ) \

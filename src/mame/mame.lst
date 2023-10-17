@@ -10976,7 +10976,7 @@ dynwarj                         // 4/1989 (c) 1989 (Japan)
 dynwarjr                        // 4/1989 (c) 1989 (Japan)
 ffight                          // 12/1989 (c) 1989 (World)
 ffighta                         // 12/1989 (c) 1989 (World)
-ffightae
+ffightae                        // hack
 ffightj                         // 12/1989 (c) 1989 (Japan)
 ffightj1                        // 12/01/1990 (c) 1989 (Japan)
 ffightj2                        // 05/03/1990 (c) 1989 (Japan)
@@ -34472,6 +34472,7 @@ okean240t                       //
 @source:olibochu.cpp
 olibochu                        // M47 (c) 1981 + "GDI presents"
 punchkid
+
 @source:olivpc1.cpp
 olivpc1
 

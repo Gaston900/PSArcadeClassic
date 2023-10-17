@@ -2580,9 +2580,6 @@ static void BuildDataMap(void)
 	datamap_add(properties_datamap, IDC_INTSCALEY,				DM_INT,		OPTION_INTSCALEY);
 	datamap_add(properties_datamap, IDC_INTSCALEY_TXT,			DM_INT,		OPTION_INTSCALEY);
 
-//#ifdef USE_FIX60FPS	
-	datamap_add(properties_datamap, IDC_60FPS,					DM_BOOL,	OPTION_60FPS);//60fps
-//#endif
 	// core opengl - bgfx options
 	datamap_add(properties_datamap, IDC_GLSLPOW,				DM_BOOL,	OSDOPTION_GL_FORCEPOW2TEXTURE);
 	datamap_add(properties_datamap, IDC_GLSLTEXTURE,			DM_BOOL,	OSDOPTION_GL_NOTEXTURERECT);
@@ -3703,7 +3700,6 @@ static void DisableVisualStyles(HWND hDlg)
 	SetWindowTheme(GetDlgItem(hDlg, IDC_AUTOFRAMESKIP), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_FRAMESKIP), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_EFFECT), L" ", L" ");
-	SetWindowTheme(GetDlgItem(hDlg, IDC_60FPS), L" ", L" ");
 	/* Screen */
 	SetWindowTheme(GetDlgItem(hDlg, IDC_VIEW), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_SIZES), L" ", L" ");

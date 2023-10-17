@@ -846,16 +846,8 @@ void screen_device::device_start()
 		m_scanline_timer = timer_alloc(FUNC(screen_device::scanline_tick), this);
 
 	// configure the screen with the default parameters
-//#ifdef USE_FIX60FPS	
-		if(machine().options().Frame_60fps())
-		{
-			configure(m_width, m_height, m_visarea, HZ_TO_ATTOSECONDS(60));
-		}
-		else
-		{
-			configure(m_width, m_height, m_visarea, m_refresh);
-		}
-//#else
+	configure(m_width, m_height, m_visarea, m_refresh);
+
 	// reset VBLANK timing
 	m_vblank_start_time = attotime::zero;
 	m_vblank_end_time = attotime(0, m_vblank_period);

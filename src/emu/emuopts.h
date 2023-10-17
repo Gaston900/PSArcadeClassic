@@ -200,10 +200,6 @@
 #define OPTION_HTTP_PORT            "http_port"
 #define OPTION_HTTP_ROOT            "http_root"
 
-//#ifdef USE_FIX60FPS
-#define OPTION_60FPS        		"Frame_60fps"
-//#endif
-
 //**************************************************************************
 //  TYPE DEFINITIONS
 //**************************************************************************
@@ -504,10 +500,7 @@ public:
 	const ::image_option &image_option(const std::string &device_name) const;
 	::image_option &image_option(const std::string &device_name);
 	bool has_image_option(const std::string &device_name) const { return m_image_options.find(device_name) != m_image_options.end(); }
-//#ifdef USE_FIX60FPS
-	bool Frame_60fps() const { return bool_value(OPTION_60FPS); }
-	//bool Frame_60fps();
-//#endif
+
 
 protected:
 	virtual void command_argument_processed() override;

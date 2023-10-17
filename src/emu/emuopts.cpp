@@ -225,12 +225,7 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_HTTP_PORT,                                  "8080",      core_options::option_type::INTEGER,    "HTTP server port" },
 	{ OPTION_HTTP_ROOT,                                  "web",       core_options::option_type::STRING,     "HTTP server document root" },
 
-//#ifdef USE_FIX60FPS	
-	{ nullptr,                                           nullptr,     core_options::option_type::HEADER,     "FORCE GAME 60 FPS OPTIONS" },
-	{ OPTION_60FPS, 									 "1",		  core_options::option_type::BOOLEAN,	 "Fix to GAME Frame 60 Fps" },
-//#endif
 	{ nullptr }
-
 };
 
 

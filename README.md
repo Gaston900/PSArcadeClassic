@@ -64,8 +64,6 @@ It is already pre-configured, enforce aspect ratio is disabled, full screen mode
 
 The cheat reference function, if the cloned game does not have a cheat file, it will reference the cheat file of the main ROM.
 
-Added the default option to force games to run at 60 FPS.
-
 Supports game list lst language files. The list language can be edited freely.
 
 CPS 1, 2, NEOGEO, PGM, driver supports key combination settings.

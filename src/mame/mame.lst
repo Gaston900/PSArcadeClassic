@@ -20047,7 +20047,6 @@ drmn                            // 1999 - DrumMania (GQ881 VER. JAD)
 drmna                           // 1999 - DrumMania (GQ881 VER. JAB)
 drmnu                           // 1999 - DrumMania (GQ881 VER. UAB)
 drmn10m                         // 2004 - DrumMania 10th Mix (G*D40 VER. JAA)
-drmn10ma                        // 2004 - DrumMania 10th Mix eAmusement (G*D40 VER. JCA)
 drmn2m                          // 1999 - DrumMania 2nd Mix (GE912 VER. JAB)
 drmn2mpu                        // 1999 - DrumMania 2nd Mix Session Power Up Kit (GE912 VER. JAB)
 drmn3m                          // 2000 - DrumMania 3rd Mix (G*A23 VER. JAA)
@@ -20059,7 +20058,6 @@ drmn7ma                         // 2002 - DrumMania 7th Mix (G*C07 VER. JAA)
 drmn8m                          // 2003 - DrumMania 8th Mix (G*C38 VER. JAA)
 drmn9m                          // 2003 - DrumMania 9th Mix (G*D09 VER. JAB)
 drmn9ma                         // 2003 - DrumMania 9th Mix (G*D09 VER. JAA)
-drmn9mb                         // 2003 - DrumMania 9th Mix eAmusement (G*D09 VER. JCA)
 dsem                            // 2000 - Dancing Stage Euro Mix (G*936 VER. EAA)
 dsem2                           // 2002 - Dancing Stage Euro Mix 2 (G*C23 VER. EAA)
 dsfdct                          // 1999 - Dancing Stage featuring Dreams Come True (GC910 VER. JCA)
@@ -20150,9 +20148,7 @@ pcnfrk6m                        // 2001 - Percussion Freaks 6th Mix (G*B16 VER. 
 pcnfrk7m                        // 2002 - Percussion Freaks 7th Mix (G*C07 VER. AAA)
 pcnfrk8m                        // 2003 - Percussion Freaks 8th Mix (G*C38 VER. AAA)
 pcnfrk9m                        // 2003 - Percussion Freaks 9th Mix (G*D09 VER. AAA)
-pcnfrk9ma                       // 2003 - Percussion Freaks 9th Mix eAmusement (G*D09 VER. ABA)
 pcnfrk10m                       // 2004 - Percussion Freaks 10th Mix (G*D40 VER. AAA)
-pcnfrk10ma                      // 2004 - Percussion Freaks 10th Mix eAmusement (G*D40 VER. ACA)
 pnchmn                          // 2000 - Punch Mania: Hokuto no Ken (GQ918 VER. JAB)
 pnchmn2                         // 2000 - Punch Mania 2: Hokuto no Ken (GQA09 JAA)
 pnchmna                         // 2000 - Punch Mania: Hokuto no Ken (GQ918 VER. JAB, ALT CD)
@@ -33285,7 +33281,7 @@ lans2004                        // bootleg of shocktr2
 lastblad                        // 0234 (c) 1997 SNK
 lastbladh                       // 0234 (c) 1997 SNK
 lastbld2                        // 0243 (c) 1998 SNK
-lasthope
+lasthope                        //
 lastsold                        // 0196 Censored Korean release of lastblad
 lbowling                        // 0019 (c) 1990 SNK
 legendos                        // 0029 (c) 1991 SNK
@@ -33297,7 +33293,7 @@ maglord                         // 0005 (c) 1990 Alpha Denshi Co.
 maglordh                        // 0005 (c) 1990 Alpha Denshi Co.
 mahretsu                        // 0004 (c) 1990 SNK
 marukodq                        // 0206 (c) 1995 Takara
-matrim                          // 0266 (c) 2002 Atlus
+matrim                          // 0266 (c) 2003 Atlus
 matrimbl                        // bootleg
 miexchng                        // 0231 (c) 1997 Face
 minasan                         // 0027 (c) 1990 Monolith Corp.
@@ -33362,7 +33358,7 @@ rbffspeck                       // 0124 (c) 1996 SNK
 ridhero                         // 0006 (c) 1990 SNK
 ridheroh                        // 0006 (c) 1990 SNK
 roboarmy                        // 0032 (c) 1991 SNK
-roboarma                        // 0032 (c) 1991 SNK
+roboarmya                       // 0032 (c) 1991 SNK
 rotd                            // 0264 (c) 2002 Evoga
 rotdh                           // 0264 (c) 2002 Evoga
 s1945p                          // 0254 (c) 1999 Psikyo
@@ -33372,6 +33368,7 @@ samsh5spho                      // 0272 (c) 2004 Playmore
 samsho                          // 0045 (c) 1993 SNK
 samsho2                         // 0063 (c) 1994 SNK
 samsho2k                        // 0063 (c) 1994 SNK (Korean hack)
+samsho2ka                       // 0063 (c) 1994 SNK (Korean hack)
 samsho3                         // 0087 (c) 1995 SNK
 samsho3h                        // 0087 (c) 1995 SNK
 samsho4                         // 0222 (c) 1996 SNK
@@ -33402,7 +33399,7 @@ ssideki                         // 0052 (c) 1992 SNK
 ssideki2                        // 0061 (c) 1994 SNK
 ssideki3                        // 0081 (c) 1995 SNK
 ssideki4                        // 0215 (c) 1996 SNK
-stakwin                         // 0088 (c) 1995 music broken in mame, works here
+stakwin                         // 0088 (c) 1995 Saurus
 stakwindev                      // prototype
 stakwin2                        // 0227 (c) 1996 Saurus
 strhoop                         // 0079 (c) 1994 Data East Corporation
@@ -46836,7 +46833,7 @@ xmcotahc02                      // Hack
 xmvsfhc01                       // Hack
 xmvsfhc02                       // Hack
 
-@source:cps2t.cpp
+@source:cps2.cpp
 sfz3mix                         // Hack
 
 @source:cps3.cpp

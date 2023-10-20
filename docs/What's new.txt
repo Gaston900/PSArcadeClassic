@@ -10,7 +10,7 @@
 XXXX-XX-XX Optimization Edition
 -------------------------------
 - Base build 0.232 has been moved to version 0.245.
-- MAME version 0.245 - 0.259 has been updated.
+- MAME version 0.245 - 0.260 has been updated.
 - CPS 1, 2, NEOGEO, PGM, driver supports key combination settings.
 - Neo Geo command fixed.
 - Settings menu simplified.

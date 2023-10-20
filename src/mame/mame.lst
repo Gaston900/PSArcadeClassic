@@ -2,7 +2,7 @@
 // copyright-holders:Gaston90
 // copyright-holders:Robbbert
 /*******************************************
- PSARCADE CLASSIC+ // ARCADE 0.259
+ PSARCADE CLASSIC+ // ARCADE 0.260
  List of all drivers enabled in the system.
 **********************************************/
 
@@ -50200,7 +50200,7 @@ futariblc                       // Hack
 futaribljc                      // Hack
 
 /*******************************************
- PSARCADE CLASSIC+ // ARCADE 0.259
+ PSARCADE CLASSIC+ // ARCADE 0.260
  List of all disabled drivers on the system.
 **********************************************/
 
@@ -50400,7 +50400,7 @@ futaribljc                      // Hack
 //wwfsstarb2
 
 /*******************************************
- PSARCADE CLASSIC+ // ARCADE 0.259
+ PSARCADE CLASSIC+ // ARCADE 0.260
  List of all disabled device on the system.
 **********************************************/
 //atari810

@@ -6071,6 +6071,9 @@ ROM_START( tharrier )
 	ROM_LOAD16_BYTE( "2.18b", 0x00000, 0x20000, CRC(f3887a44) SHA1(4e5b660d33ba1d1e00263030efa67e2db376a234) )
 	ROM_LOAD16_BYTE( "3.21b", 0x00001, 0x20000, CRC(65c247f6) SHA1(9f35f2b6f54814b4c4d23e2d78db8043e678fef2) )
 
+	ROM_REGION( 0x2000, "mcu", 0 )
+	ROM_LOAD( "upl.13m", 0x0000, 0x2000, NO_DUMP ) // 64-pin SDIP covered by sticker, probably M50747 (as in jalmah.cpp) or similar
+
 	ROM_REGION( 0x010000, "audiocpu", 0 )
 	ROM_LOAD( "12.4l", 0x00000, 0x10000, CRC(b959f837) SHA1(073b14935e7d5b0cad19a3471fd26e9e3a363827) )
 
@@ -6103,6 +6106,9 @@ ROM_START( tharrieru )
 	ROM_REGION( 0x40000, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "u_2.18b", 0x00000, 0x20000, CRC(78923aaa) SHA1(28338f49581180604403e1bd200f524fc4cb8b9f) ) // "U" stamped on label
 	ROM_LOAD16_BYTE( "u_3.21b", 0x00001, 0x20000, CRC(99cea259) SHA1(75abfb08b2358dd13809ade5a2dfffeb8b8df82c) ) // "U" stamped on label
+
+	ROM_REGION( 0x2000, "mcu", 0 )
+	ROM_LOAD( "upl.13m", 0x0000, 0x2000, NO_DUMP ) // 64-pin SDIP covered by sticker, probably M50747 (as in jalmah.cpp) or similar
 
 	ROM_REGION( 0x010000, "audiocpu", 0 )
 	ROM_LOAD( "12.4l", 0x00000, 0x10000, CRC(b959f837) SHA1(073b14935e7d5b0cad19a3471fd26e9e3a363827) )
@@ -6748,6 +6754,9 @@ ROM_START( tdragon1 )
 	ROM_LOAD16_BYTE( "thund.8",  0x00000, 0x20000, CRC(edd02831) SHA1(d6bc8d2c37707768a8bf666090f33eea12dda336) )
 	ROM_LOAD16_BYTE( "thund.7",  0x00001, 0x20000, CRC(52192fe5) SHA1(9afef197410e7feb71dc48003e181fbbaf5c99b2) )
 
+	ROM_REGION( 0x04000, "protcpu", ROMREGION_ERASE00 )
+	ROM_LOAD( "nmk-110-tdragon.bin", 0x00000, 0x4000, CRC(cf66a660) SHA1(a1d3346f7688e9bf5513194a2890a9a6aaf28742) ) // 910527 and "SLASH META" for game name string (Slash Metal was an earlier name for the game, tiles still exist in ROM)
+
 	ROM_REGION( 0x020000, "fgtile", 0 )
 	ROM_LOAD( "91070.6",        0x000000, 0x20000, CRC(fe365920) SHA1(7581931cb95cd5a8ed40e4f5385b533e3d19af22) )   // 8x8 tiles
 
@@ -7098,6 +7107,10 @@ ROM_START( hachamf )
 	ROM_LOAD16_BYTE( "7.93",  0x00000, 0x20000, CRC(9d847c31) SHA1(1d370d8db9cadadb9c2cb213e32f681947d81b7f) ) // internally reports as 19th Sep. 1991
 	ROM_LOAD16_BYTE( "6.94",  0x00001, 0x20000, CRC(de6408a0) SHA1(2df77fecd44d2d8b0444abd4545923213ed76b2d) )
 
+	ROM_REGION( 0x04000, "protcpu", 0 )
+	// has 'WAKAUS' for the game name string, and appears to have programs for multiple games, depending on port 7 reads
+	ROM_LOAD( "nmk-113.bin", 0x00000, 0x04000, CRC(f3072715) SHA1(cee6534de6645c41cbbb1450ad3e5207e44460c7) )
+
 	ROM_REGION( 0x10000, "audiocpu", 0 )        // unknown  - sound CPU ??????
 	ROM_LOAD( "1.70",  0x00000, 0x10000, CRC(9e6f48fc) SHA1(aeb5bfecc025b5478f6de874792fc0f7f54932be) )
 
@@ -7123,6 +7136,10 @@ ROM_START( hachamfa) // reportedly a Korean PCB / version
 	ROM_REGION( 0x40000, "maincpu", 0 )     // 68000 code
 	ROM_LOAD16_BYTE( "7.ic93",  0x00000, 0x20000, CRC(f437e52b) SHA1(061a75a7a9734034d1c499fc0bc2d8a61bb26da4) ) // internally reports as 19th Sep. 1991
 	ROM_LOAD16_BYTE( "6.ic94",  0x00001, 0x20000, CRC(60d340d0) SHA1(3c6f862901b403d6ddf58823af7d6e3f67573788) )
+
+	ROM_REGION( 0x04000, "protcpu", 0 )
+	// has 'WAKAUS' for the game name string, and appears to have programs for multiple games, depending on port 7 reads
+	ROM_LOAD( "nmk-113.bin", 0x00000, 0x04000, CRC(f3072715) SHA1(cee6534de6645c41cbbb1450ad3e5207e44460c7) )
 
 	ROM_REGION( 0x10000, "audiocpu", 0 )        // unknown  - sound CPU ??????
 	ROM_LOAD( "1.70",  0x00000, 0x10000, CRC(9e6f48fc) SHA1(aeb5bfecc025b5478f6de874792fc0f7f54932be) )
@@ -7769,6 +7786,10 @@ ROM_START( sabotenb )
 	ROM_REGION( 0x010000, "fgtile", 0 )
 	ROM_LOAD( "ic35.sb3",       0x000000, 0x010000, CRC(eb7bc99d) SHA1(b3063afd58025a441d4750c22483e9129da402e7) )  // 8x8 tiles
 
+	ROM_REGION( 0x02000, "protcpu", 0 )
+	// has 'SABOTEN' for the game name string, uploads data to '214' for sprite decryption
+	ROM_LOAD( "nmk-215.bin", 0x00000, 0x02000, CRC(d355a06f) SHA1(ebb7b1ff35a97599550f6f3524124246f2d718c5) )
+
 	ROM_REGION( 0x200000, "bgtile", 0 )
 	ROM_LOAD( "ic32.sb4",       0x000000, 0x200000, CRC(24c62205) SHA1(3ab0ca5d7c698328d91421ccf6f7dafc20df3c8d) )  // 8x8 tiles
 
@@ -7790,6 +7811,10 @@ ROM_START( sabotenba )
 	ROM_REGION( 0x80000, "maincpu", 0 )     // 68000 code
 	ROM_LOAD16_BYTE( "sb1.76",  0x00000, 0x40000, CRC(df6f65e2) SHA1(6ad9e9f13539310646895c5e7992c6546e75684b) )
 	ROM_LOAD16_BYTE( "sb2.75",  0x00001, 0x40000, CRC(0d2c1ab8) SHA1(abb43a8c5398195c0ad48d8d772ef47635bf25c2) )
+
+	ROM_REGION( 0x02000, "protcpu", 0 )
+	// has 'SABOTEN' for the game name string, uploads data to '214' for sprite decryption
+	ROM_LOAD( "nmk-215.bin", 0x00000, 0x02000, CRC(d355a06f) SHA1(ebb7b1ff35a97599550f6f3524124246f2d718c5) )
 
 	ROM_REGION( 0x010000, "fgtile", 0 )
 	ROM_LOAD( "ic35.sb3",       0x000000, 0x010000, CRC(eb7bc99d) SHA1(b3063afd58025a441d4750c22483e9129da402e7) )  // 8x8 tiles

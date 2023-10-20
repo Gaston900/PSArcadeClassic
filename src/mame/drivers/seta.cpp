@@ -11386,6 +11386,33 @@ ROM_START( triplfun ) /* the program fails its self-check but thats probably bec
 	ROM_LOAD( "01.bin", 0x000000, 0x40000, CRC(c186a930) SHA1(e17e1a620e380f0737b80c7f160ad643979b2799) )
 ROM_END
 
+/* There is another Korean set (undumped) with only two noticeable differences: One space on the game title ("숨어있는 덩달이를 찾아 라!"
+   instead of "숨어있는 덩달이를 찾아라!") and that there's no bootlegger company name on title screen. */
+ROM_START( triplfunk )
+	ROM_REGION( 0x180000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "05.bin", 0x000000, 0x40000, CRC(06eb3821) SHA1(51c67c87b5c28e693dfffd32d25cdb6d2a9448cf) )
+	ROM_CONTINUE(0x100000,0x40000)
+	ROM_LOAD16_BYTE( "04.bin", 0x000001, 0x40000, CRC(37a5c46e) SHA1(80b49b422a7db64d9ba5896da2b01a4588a6cf62) )
+	ROM_CONTINUE(0x100001,0x40000)
+
+	ROM_REGION( 0x200000, "gfx1", 0 )
+	ROM_LOAD16_BYTE( "08k.bin", 0x000001, 0x80000, CRC(e9a4b535) SHA1(a1c7ed9e432ab732a42d8ff74c3052917ba2711e) )
+	ROM_LOAD16_BYTE( "09k.bin", 0x000000, 0x80000, CRC(06730143) SHA1(69747db906c3a7c896d902d79feb2317f85a9557) )
+	ROM_LOAD16_BYTE( "10k.bin", 0x100001, 0x80000, CRC(2cea4898) SHA1(99281943ac45b68f816d518b8daf7feb6f0e2ce0) )
+	ROM_LOAD16_BYTE( "11k.bin", 0x100000, 0x80000, CRC(8166e961) SHA1(1c39524197878a3806a26afdc4623c6fdb1108dc) )
+
+	ROM_REGION( 0x100000, "gfx2", 0 )
+	ROM_LOAD16_BYTE( "02k.bin", 0x000001, 0x80000, CRC(3188b102) SHA1(b5d0bf0b93866c18c72533ac80da3080f8fdced0) )
+	ROM_LOAD16_BYTE( "03k.bin", 0x000000, 0x80000, CRC(4a9520a4) SHA1(9e962efcfe21669f3cba2c1b6632975d706ff118) )
+
+	ROM_REGION( 0x80000, "gfx3", 0 )
+	ROM_LOAD16_BYTE( "06k.bin", 0x000001, 0x40000, CRC(f65f72d5) SHA1(d783720a70b0ffabec149550fbd91608181b134f) )
+	ROM_LOAD16_BYTE( "07k.bin", 0x000000, 0x40000, CRC(4522829e) SHA1(cd071bcef77f059cd06d7b8315d1f25dc652bcdc) )
+
+	ROM_REGION( 0x40000, "oki", 0 )
+	ROM_LOAD( "01.bin", 0x000000, 0x40000, CRC(c186a930) SHA1(e17e1a620e380f0737b80c7f160ad643979b2799) )
+ROM_END
+
 ROM_START( qzkklgy2 )
 	ROM_REGION( 0x0c0000, "maincpu", 0 )        /* 68000 Code */
 	ROM_LOAD16_WORD_SWAP( "fn001001.106", 0x000000, 0x080000, CRC(7bf8eb17) SHA1(f2d1666e22f564d59b37ca00c8db34ca822fd142) )
@@ -12862,6 +12889,7 @@ GAME( 1993, msgundamb, msgundam, msgundamb, msgundam,  seta_state,     empty_ini
 
 GAME( 1993, oisipuzl,  0,        oisipuzl,  oisipuzl,  seta_state,     empty_init,     ROT0,   "Sunsoft / Atlus",           "Oishii Puzzle Ha Irimasenka", 0 )
 GAME( 1993, triplfun,  oisipuzl, triplfun,  oisipuzl,  seta_state,     empty_init,     ROT0,   "bootleg",                   "Triple Fun", 0 )
+GAME( 1993, triplfunk, oisipuzl, triplfun,  oisipuzl,  seta_state,     empty_init,     ROT0,   "bootleg (Jin Young)",       "Sum-eoitneun Deongdalireul Chat-ara!", 0 ) // 숨어있는 덩달이를 찾아라! (Find the hiding Deongdari!)
 
 GAME( 1993, qzkklgy2,  0,        qzkklgy2,  qzkklgy2,  seta_state,     empty_init,     ROT0,   "Tecmo",                     "Quiz Kokology 2", 0 )
 

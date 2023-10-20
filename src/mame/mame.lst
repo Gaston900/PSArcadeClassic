@@ -2470,6 +2470,7 @@ demndrgn                        // (c) 1982 Bally Midway
 ebases                          // (c) 1980
 gorf                            // (c) 1981
 gorfpgm1                        // (c) 1981
+gorfpgm1f                       // (c) 1981
 gorfpgm1g                       // (c) 1981
 profpac                         // (c) 1983 Bally Midway
 robby                           // (c) 1981 Bally Midway
@@ -15995,6 +15996,7 @@ ss2001                          // bootleg / hack
 star100                         // (c) 199? Sang Ho
 super7                          // bootleg (New Impeuropex?)
 super9                          // (c) 2001 Playmark
+super9a                         // (c) 2001 Playmark
 super972                        // unknown
 tcl                             // (c) 1995 Uniwang
 tonypok                         // (c) 1991 Corsica
@@ -20849,6 +20851,7 @@ bmaster                         // (c) 1991 Irem (World)
 crossbld                        // (c) 1991 Irem (Japan)
 dsoccr94j                       // (c) 1994 Irem (Japan)
 geostorm                        // (c) 1994 Irem (Japan)
+geostorma                       // (c) 1994 Irem (Japan)
 gunforc2                        // (c) 1994 Irem (World)
 gunforce                        // (c) 1991 Irem (World)
 gunforcej                       // (c) 1991 Irem (Japan)
@@ -23605,8 +23608,10 @@ dodgectya                       // (c) 1986 Merit
 dodgectyb                       // (c) 1986 Merit
 dodgectyc                       // (c) 1986 Merit
 dtrvwz5                         // (c) 1987 Merit
+dtrvwz5v                        // (c) 1987 Merit
 housecard                       // (c) 1983 Merit
 iowapp                          // (c) 1990 Merit
+matchem                         // (c) 1986 Merit
 matchemg                        // (c) 1986 Merit
 misdraw                         // (c) 1986 Merit / Big Apple Games
 mosdraw                         // (c) 1990 Merit
@@ -23620,28 +23625,33 @@ phrcrazeb                       // (c) 1986 Merit
 phrcrazec                       // (c) 1986 Merit
 phrcrazev                       // (c) 1986 Merit
 pitboss                         // (c) 1983 Merit
-pitboss04                       // (c) 1983 Merit
 pitboss03                       // (c) 1983 Merit
 pitboss03a                      // (c) 1983 Merit
 pitboss03b                      // (c) 1983 Merit
+pitboss04                       // (c) 1983 Merit
+pitbossa                        // (c) 1983 Merit
 pitbossm4                       // (c) 1983 Merit
 pitbossps                       // (c) 1983 Merit
 riviera                         // (c) 1987 Merit
 rivieraa                        // (c) 1986 Merit
 rivierab                        // (c) 1986 Merit
 tictac                          // (c) 1985 Merit
+tictaca                         // (c) 1985 Merit
 tictacv                         // (c) 1985 Merit
+trvwz                           // (c) 1985 Merit
 trvwz2                          // (c) 1985 Merit
 trvwz2a                         // (c) 1985 Merit
-trvwz3h                         // (c) 1985 Merit
-trvwz3ha                        // (c) 1985 Merit
+trvwz3                          // (c) 1985 Merit
+trvwz3a                         // (c) 1985 Merit
+trvwz3b                         // (c) 1985 Merit
 trvwz3v                         // (c) 1985 Merit
 trvwz4                          // (c) 1985 Merit
-trvwz4a                         // (c) 1985 Merit
-trvwzh                          // (c) 1985 Merit
-trvwzha                         // (c) 1985 Merit
-trvwzhb                         // (c) 1985 Merit
+trvwz4v                         // (c) 1985 Merit
+trvwz4va                        // (c) 1985 Merit
+trvwza                          // (c) 1985 Merit
+trvwzb                          // (c) 1985 Merit
 trvwzv                          // (c) 1985 Merit
+unkmerit                        // (c) 1989 Merit
 
 @source:merit3xx.cpp
 ma6710                          // (c) 1989 Merit
@@ -24320,6 +24330,7 @@ gunblade                        // 1996.04 Gunblade N.Y. (Revision A)
 hotd                            // 1997.0? The House of the Dead (Revision A)
 hotdo                           // 1997.03 The House of the Dead
 hotdp                           // 1997.01 The House of the Dead (prototype)
+hpyagu98                        // 1998.?? Hanguk Pro Yagu 98
 indy500                         // 1995.07 Indy 500 (Revision A, Newer)
 indy500d                        // 1995.07 Indy 500 Deluxe (Revision A)
 indy500to                       // 1995.07 Indy 500 Twin (Revision A)
@@ -39387,6 +39398,7 @@ thunderlbl2                     // (c) 1990 bootleg with Tetris sound
 tndrcade                        // UA-0 (c) 1987 Taito
 tndrcadej                       // UA-0 (c) 1987 Taito
 triplfun                        // bootleg
+triplfunk                       // bootleg
 twineagl                        // UA-2 (c) 1988 + Taito license
 umanclub                        // (c) 1992 Tsuburaya Prod. / Banpresto
 usclssic                        // UE   (c) 1989 + Romstar or Taito license (DSW)
@@ -42751,6 +42763,7 @@ demonwld1                       // TP-O16 (c) 1989 Toaplan + Taito license
 demonwld2                       // TP-O16 (c) 1989 Toaplan
 demonwld3                       // TP-O16 (c) 1989 Toaplan
 demonwld4                       // TP-O16 (c) 1989 Toaplan
+demonwld5                       // TP-O16 (c) 1989 Toaplan + APM Electronics license
 fireshrk                        // TP-O17 (c) 1990 Toaplan
 fireshrka                       // TP-O17 (c) 1989 Toaplan
 fireshrkd                       // TP-O17 (c) 1990 Toaplan
@@ -43426,6 +43439,7 @@ newxpanga                       // (c) 1999 F2 System
 poosho                          // (c) 1999 F2 System
 puzlbang                        // (c) 1999 Omega System
 puzlbanga                       // (c) 1999 Omega System
+solitaire                       // (c) 1999 F2 System
 suplup                          // (c) 1999 Omega System
 toyland                         // (c) 2001 Semicom
 vamphalf                        // (c) 1999 DanBi & F2 System (Europe version 1.1.0908)
@@ -50228,6 +50242,9 @@ futaribljc                      // Hack
 @source:gameace.cpp
 //hotbody
 //hotbody2
+
+@source:misc/joystand.cpp
+//x180ii
 
 @source:lkage.cpp
 //lkagem

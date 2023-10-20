@@ -664,8 +664,8 @@ ROM_START( ddealer )
 	ROM_LOAD16_BYTE( "1.ic6",  0x00001, 0x20000, CRC(ce0dff50) SHA1(2d7a03f6b9609aea7511a4dc49560a901b0b9f19) )
 	ROM_LOAD16_BYTE( "2.ic28", 0x00000, 0x20000, CRC(f00c346f) SHA1(bd73efb19d5f9efc88210d92a82a3f4595b41097) )
 
-	ROM_REGION( 0x40000, "mcu", 0 ) /* M50747? MCU Code */
-	ROM_LOAD( "mcu", 0x0000, 0x1000, NO_DUMP ) // might be NMK-110 8131 chip
+	ROM_REGION( 0x04000, "mcu", 0 ) /* M50747? MCU Code */
+	ROM_LOAD( "nmk-110_ddealer.bin", 0x0000, 0x4000, CRC(088db9b4) SHA1(71946399e37ffa9293eceac637b76c9169ac16e6) ) // chip markings are identical to nmk-110 on thunder dragon, code is confirmed to be different
 
 	ROM_REGION( 0x20000, "bgrom", 0 ) /* BG */
 	ROM_LOAD( "4.ic65", 0x00000, 0x20000, CRC(4939ff1b) SHA1(af2f2feeef5520d775731a58cbfc8fcc913b7348) )

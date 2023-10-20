@@ -14,6 +14,7 @@
     Jumping Break                   (c) 1999 F2 System
     Poosho Poosho                   (c) 1999 F2 System
     New Cross Pang                  (c) 1999 F2 System
+    Solitaire                       (c) 1999 F2 System          (version 2.5)
     World Adventure                 (c) 1999 F2 System + Logic
     Lup Lup Puzzle                  (c) 1999 Omega System       (version 3.0, 2.9 and 1.05)
     Puzzle Bang Bang                (c) 1999 Omega System       (version 2.8 and 2.9)
@@ -110,6 +111,7 @@ public:
 	void aoh(machine_config &config);
 	void coolmini(machine_config &config);
 	void mrkicker(machine_config &config);
+	void solitaire(machine_config &config);
 
 	void init_vamphalf();
 	void init_vamphalfr1();
@@ -134,6 +136,7 @@ public:
 	void init_aoh();
 	void init_boonggab();
 	void init_mrkicker();
+	void init_solitaire();
 
 	DECLARE_CUSTOM_INPUT_MEMBER(boonggab_photo_sensors_r);
 
@@ -237,6 +240,7 @@ private:
 	void worldadv_io(address_map &map);
 	void mrdig_io(address_map &map);
 	void mrkicker_io(address_map &map);
+	void solitaire_io(address_map &map);
 	void suplup_io(address_map &map);
 	void vamphalf_io(address_map &map);
 };
@@ -666,6 +670,19 @@ void vamphalf_state::worldadv_io(address_map &map)
 	map(0x700, 0x703).w("ymsnd", FUNC(ym2151_device::address_w)).umask16(0x00ff);
 	map(0x704, 0x707).rw("ymsnd", FUNC(ym2151_device::status_r), FUNC(ym2151_device::data_w)).umask16(0x00ff);
 	map(0x780, 0x783).r(FUNC(vamphalf_state::eeprom_r));
+}
+
+void vamphalf_state::solitaire_io(address_map &map)
+{
+	map(0x000, 0x003).r(FUNC(vamphalf_state::eeprom_r));
+	map(0x0c0, 0x0c3).portr("P1_P2");
+	map(0x140, 0x141).noprw(); // return 0, when oki chip is read / written
+	map(0x143, 0x143).rw("oki1", FUNC(okim6295_device::read), FUNC(okim6295_device::write));
+	map(0x440, 0x443).portr("SYSTEM");
+	// map(0x504, 0x50b) // lamps
+	map(0x580, 0x583).w("ymsnd", FUNC(ym2151_device::address_w)).umask16(0x00ff);
+	map(0x584, 0x587).rw("ymsnd", FUNC(ym2151_device::status_r), FUNC(ym2151_device::data_w)).umask16(0x00ff);
+	map(0x680, 0x683).w(FUNC(vamphalf_state::eeprom_w));
 }
 
 void vamphalf_state::mrdig_io(address_map &map)
@@ -1135,6 +1152,37 @@ static INPUT_PORTS_START( yorijori )
 	PORT_SERVICE_NO_TOGGLE( 0x00800000, IP_ACTIVE_LOW )
 INPUT_PORTS_END
 
+static INPUT_PORTS_START( solitaire )
+	PORT_START("P1_P2")
+	PORT_BIT( 0x0001, IP_ACTIVE_LOW, IPT_BUTTON1 ) // L1 Button in test mode
+	PORT_BIT( 0x0002, IP_ACTIVE_LOW, IPT_BUTTON2 ) // L2 Button in test mode
+	PORT_BIT( 0x0004, IP_ACTIVE_LOW, IPT_BUTTON3 ) // L3 Button in test mode
+	PORT_BIT( 0x0008, IP_ACTIVE_LOW, IPT_BUTTON4 ) // L4 Button in test mode
+	PORT_BIT( 0x0010, IP_ACTIVE_LOW, IPT_BUTTON5 ) // L5 Button in test mode
+	PORT_BIT( 0x0020, IP_ACTIVE_LOW, IPT_BUTTON6 ) // L6 Button in test mode
+	PORT_BIT( 0x0040, IP_ACTIVE_LOW, IPT_BUTTON7 ) // L7 Button in test mode
+	PORT_BIT( 0x0080, IP_ACTIVE_LOW, IPT_UNKNOWN ) // no effect in test mode
+	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_BUTTON8 ) // D1 Button in test mode
+	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_BUTTON9 ) // D2 Button in test mode
+	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_BUTTON10 ) // R1 Button in test mode
+	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_BUTTON11 ) // Gift Button in test mode
+	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_UNKNOWN ) // no effect in test mode
+	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_UNKNOWN ) // no effect in test mode
+	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_UNKNOWN ) // no effect in test mode
+	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_UNKNOWN ) // no effect in test mode
+
+	PORT_START("SYSTEM")
+	PORT_BIT( 0x0001, IP_ACTIVE_LOW, IPT_COIN1 )
+	PORT_BIT( 0x0002, IP_ACTIVE_LOW, IPT_SERVICE1 )
+	PORT_BIT( 0x0004, IP_ACTIVE_LOW, IPT_COIN2 )
+	PORT_BIT( 0x0008, IP_ACTIVE_LOW, IPT_SERVICE )
+	PORT_SERVICE_NO_TOGGLE( 0x0010, IP_ACTIVE_LOW )
+	PORT_BIT( 0x0020, IP_ACTIVE_LOW, IPT_UNKNOWN )
+	PORT_BIT( 0x0040, IP_ACTIVE_LOW, IPT_START1 )
+	PORT_BIT( 0x0080, IP_ACTIVE_LOW, IPT_START2 )
+	PORT_BIT( 0xff00, IP_ACTIVE_LOW, IPT_UNKNOWN )
+INPUT_PORTS_END
+
 static GFXDECODE_START( gfx_vamphalf )
 	GFXDECODE_ENTRY( "gfx", 0, gfx_16x16x8_raw, 0, 0x80 )
 GFXDECODE_END
@@ -1260,6 +1308,14 @@ void vamphalf_state::jmpbreak(machine_config &config)
 {
 	common(config);
 	m_maincpu->set_addrmap(AS_IO, &vamphalf_state::jmpbreak_io);
+
+	sound_ym_oki(config);
+}
+
+void vamphalf_state::solitaire(machine_config &config)
+{
+	common(config);
+	m_maincpu->set_addrmap(AS_IO, &vamphalf_state::solitaire_io);
 
 	sound_ym_oki(config);
 }
@@ -1927,6 +1983,38 @@ ROM_START( worldadv ) /* Developed April 1999 */
 
 	ROM_REGION( 0x40000, "oki1", 0 ) /* Oki Samples */
 	ROM_LOAD( "vrom1.bin", 0x00000, 0x40000, CRC(c87cce3b) SHA1(0b189fee8fb87c8fb06a67ae9d901732b89fbf38) )
+ROM_END
+
+/*
+
+Solitaire (c) 1999 F2 System
+
+   CPU: Hyperstone E1-16T
+ Video: 2 x QuickLogic QL2003-XPL84C FPGA
+ Sound: AD-65 (OKI 6295), KA51 (YM2151) & KA12 (YM3012)
+   OSC: 20MHz & 28MHz
+EEPROM: 93C46
+
+PCB: F-E1-16-004
+
+*/
+
+ROM_START( solitaire ) // Version 2.5
+	ROM_REGION32_BE( 0x100000, "maincpu", ROMREGION_ERASE00 ) // Hyperstone CPU Code
+	// 0 - 0x80000 empty
+	ROM_LOAD( "rom2-27c040.bin",                    0x080000, 0x080000, CRC(304e4338) SHA1(6b2817d7505c943ca7cdfa9176c9504e30936235) )
+
+	ROM_REGION32_BE( 0x800000, "gfx", 0 )  // gfx data
+	ROM_LOAD32_WORD_SWAP( "romu00-mx29f1610mc.bin", 0x000000, 0x200000, CRC(7fee63ac) SHA1(ef22145da9ce3100c8736e9a77e59da4f984aaba) )
+	ROM_LOAD32_WORD_SWAP( "roml00-mx29f1610mc.bin", 0x000002, 0x200000, CRC(0d973625) SHA1(b482a97732a6117d9c1c7507118e111ac4f7f3f1) )
+	ROM_LOAD32_WORD_SWAP( "romu01-mx29f1610mc.bin", 0x400000, 0x200000, CRC(f3f3f3e5) SHA1(9a0d91351903b70049fbbc76a9ccff1a382ecbfd) )
+	ROM_LOAD32_WORD_SWAP( "roml01-mx29f1610mc.bin", 0x400002, 0x200000, CRC(5bba95b8) SHA1(6d884a694cbbad6768e606afd5b234a07a3b5b50) )
+
+	ROM_REGION( 0x80000, "oki1", 0 ) // Oki Samples
+	ROM_LOAD( "vrom1-27c020.bin",                   0x000000, 0x040000, CRC(bbbf4ac8) SHA1(b37f945143a9ed7a372a953ef93dbea01c4fcce4) )
+
+	ROM_REGION( 0x2dd, "plds", 0 )
+	ROM_LOAD( "palce22v10.gal1",                    0x000000, 0x0002dd, NO_DUMP ) // Protected
 ROM_END
 
 /*
@@ -3658,6 +3746,16 @@ void vamphalf_state::init_worldadv()
 	m_palshift = 0;
 }
 
+void vamphalf_state::init_solitaire()
+{
+
+	// TODO: speedup
+	//m_maincpu->space(AS_PROGRAM).install_read_handler(0x0c5e78, 0x0c5e79, read16smo_delegate(*this, FUNC(vamphalf_state::worldadv_speedup_r)));
+	//m_maincpu->space(AS_PROGRAM).install_write_handler(0xe0000000, 0xe0000003, write16smo_delegate(*this, FUNC(vamphalf_state::jmpbreak_flipscreen_w)));
+
+	m_palshift = 0;
+}
+
 void vamphalf_state::init_boonggab()
 {
 	banked_oki(0);
@@ -3683,6 +3781,8 @@ GAME( 1999, newxpang,   0,        newxpang,  common,   vamphalf_state,      init
 GAME( 1999, newxpanga,  newxpang, jmpbreak,  common,   vamphalf_state,      init_newxpanga, ROT0,   "F2 System",                     "New Cross Pang (set 2)", MACHINE_SUPPORTS_SAVE ) // TODO: speed up for this set
 
 GAME( 1999, worldadv,   0,        worldadv,  common,   vamphalf_state,      init_worldadv,  ROT0,   "Logic / F2 System",             "World Adventure", MACHINE_SUPPORTS_SAVE | MACHINE_NOT_WORKING ) // game starts to stall for several seconds at a time after it's been running for a certain amount of time
+
+GAME( 1999, solitaire,  0,        solitaire, solitaire, vamphalf_state,     init_solitaire, ROT0,   "F2 System",                     "Solitaire (version 2.5)", MACHINE_SUPPORTS_SAVE )
 
 GAME( 1999, suplup,     0,        suplup,    common,   vamphalf_state,      init_suplup,    ROT0,   "Omega System",                  "Super Lup Lup Puzzle / Zhuan Zhuan Puzzle (version 4.0 / 990518)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, luplup,     suplup,   suplup,    common,   vamphalf_state,      init_luplup,    ROT0,   "Omega System",                  "Lup Lup Puzzle / Zhuan Zhuan Puzzle (version 3.0 / 990128)", MACHINE_SUPPORTS_SAVE )

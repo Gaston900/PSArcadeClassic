@@ -87,7 +87,7 @@ atarisy4.cpp                           //
 //atari_s1.cpp                         // pinball
 //atari_s2.cpp                         // pinball
 atetris.cpp                            //
-atlantis.cpp                           // chd, untested
+//atlantis.cpp                         // chd, untested
 //atronic.cpp                          // hang at start
 attckufo.cpp                           //
 //atvtrack.cpp                         // black screen
@@ -183,7 +183,7 @@ byvid.cpp                              //
 bzone.cpp                              //
 cabal.cpp                              //
 //cabaret.cpp                          // poker
-calchase.cpp                           // calchase: BOOT to start game
+//calchase.cpp                         // calchase: BOOT to start game
 calcune.cpp                            //
 //calomega.cpp                         // poker
 calorie.cpp                            //
@@ -208,7 +208,7 @@ ccastles.cpp                           //
 //cchance.cpp                          // fruit
 cchasm.cpp                             //
 cclimber.cpp                           //
-cdi.cpp                                //
+//cdi.cpp                              // Does not load the BIOS
 cedar_magnet.cpp                       //
 centiped.cpp                           //
 cesclass.cpp                           //
@@ -248,7 +248,7 @@ clshroad.cpp                           //
 //cmmb.cpp                             // no inputs
 cninja.cpp                             //
 cntsteer.cpp                           //
-cobra.cpp                              // chd untested
+//cobra.cpp                            // It cannot exceed more than 24 FPS
 cocoloco.cpp                           //
 coinmstr.cpp                           //
 //coinmvga.cpp                         // MNW
@@ -311,7 +311,7 @@ dassault.cpp                           //
 dblcrown.cpp                           // poker
 dblewing.cpp                           //
 dbz.cpp                                //
-dc_atomiswave.cpp                      //
+//dc_atomiswave.cpp                    // It cannot exceed more than 24 FPS
 dcheese.cpp                            //
 dcon.cpp                               //
 dday.cpp                               //
@@ -660,7 +660,7 @@ konamigq.cpp
 konamigs.cpp
 konamigv.cpp
 konamigx.cpp
-konamim2.cpp
+//konamim2.cpp
 //konblands.cpp                        // not working; check back later
 //konendev.cpp                         // fruit
 //kongs470.cpp                         // skel
@@ -899,7 +899,7 @@ namcos21_de.cpp
 namcos22.cpp
 namcos23.cpp       // check
 namcos86.cpp
-naomi.cpp
+//naomi.cpp        //It cannot exceed more than 24 FPS
 naughtyb.cpp
 nbmj8688.cpp
 nbmj8891.cpp
@@ -1323,7 +1323,7 @@ system16.cpp
 tagteam.cpp
 tail2nos.cpp
 //taito.cpp        // pinball
-taitoair.cpp
+//taitoair.cpp
 taitogn.cpp
 taitojc.cpp
 taitopjc.cpp
@@ -1393,7 +1393,7 @@ toobin.cpp
 topspeed.cpp
 toratora.cpp
 tourtabl.cpp
-tourvis.cpp
+//tourvis.cpp
 toypop.cpp
 tp84.cpp
 trackfld.cpp
@@ -1422,7 +1422,7 @@ tvg01.cpp
 twin16.cpp
 //twinbskt.cpp       // skeleton
 twincobr.cpp
-twinkle.cpp
+//twinkle.cpp
 twins.cpp
 tx1.cpp
 uapce.cpp
@@ -1657,6 +1657,7 @@ spacmiss.cpp
 -odeontw
 -odeontw2
 -lsrquizg
+-lsrquiz
 
 //crystal.cpp
 -maldaiza
@@ -1730,6 +1731,17 @@ spacmiss.cpp
 -ppp
 -ppp11
 -ppp1mp
+-popn4          //Version 0.245 does not work
+-popn5          //Version 0.245 does not work
+-popn6          //Version 0.245 does not work
+-popn7          //Version 0.245 does not work
+-popn8          //Version 0.245 does not work
+-popnanm        //Version 0.245 does not work
+-popnanma       //Version 0.245 does not work
+-popnanm2       //Version 0.245 does not work
+-popnanm2a      //Version 0.245 does not work
+-popnmt         //Version 0.245 does not work
+-popnmt2        //Version 0.245 does not work
 
 //freekick.cpp
 -countrunb2
@@ -1799,6 +1811,7 @@ spacmiss.cpp
 -eldoradd
 -feverch
 -super9
+-super9a
 -jkrmast
 -jkrmasta
 -pkrmast
@@ -1910,9 +1923,21 @@ spacmiss.cpp
 -slikshot17
 -stratabs
 
+//iteagle.cpp
+-bbh
+-bbhsc
+-bbhsca
+-bbhcotw
+-bbh2sp
+-bbh2spa
+-bbh2spb
+-carnking
+
 //jaguar.cpp
 -jaguar
 -jaguarcd
+-a51mxr3k
+-a51mxr3ka
 
 //jpmimpct.cpp
 -buzzundr
@@ -1943,6 +1968,11 @@ spacmiss.cpp
 -totlvicj
 -totlvicu
 -btltryst
+-evilngt
+-heatof11
+-hellngt
+-polystar
+-totlvice
 
 //konamigv.cpp
 -btchamp
@@ -1951,6 +1981,7 @@ spacmiss.cpp
 -tmoshs
 -tmoshsp
 -tmoshspa
+-simpbowl
 
 //konmedal.cpp
 -tsururin
@@ -2017,6 +2048,45 @@ spacmiss.cpp
 -pcnfrk9m
 -drmn9ma
 -drmn9m
+-ddr2mla          //Does not recognize the controls
+-ddr2mc           //Does not recognize the controls
+-ddr2mc2          //Does not recognize the controls
+-ddrbocd          //Does not recognize the controls
+-ddrkara          //Does not recognize the controls
+-ddrkara2         //Does not recognize the controls
+-gtfrk10m         //Does not recognize the controls
+-gtfrk10ma        //Does not recognize the controls
+-gtfrk11m         //Does not recognize the controls
+-gtrfrk2m         //Does not recognize the controls
+-gtrfrk2ma        //Does not recognize the controls
+-gtrfrk2mua       //Does not recognize the controls
+-gtrfrk2mja       //Does not recognize the controls
+-gtrfrk2mka       //Does not recognize the controls
+-gtrfrk2maa       //Does not recognize the controls
+-gtrfrk2ml1       //Does not recognize the controls
+-gtrfrk2ml2       //Does not recognize the controls
+-gtrfrks          //Does not recognize the controls
+-gtrfrksa         //Does not recognize the controls
+-gtrfrksj         //Does not recognize the controls
+-gtrfrksu         //Does not recognize the controls
+-gtrfrksc         //Does not recognize the controls
+-gtrfrksac        //Does not recognize the controls
+-gtrfrksjc        //Does not recognize the controls
+-gtrfrksuc        //Does not recognize the controls
+-gtrfrksea        //Does not recognize the controls
+-gtrfrksaa        //Does not recognize the controls
+-gtrfrksja        //Does not recognize the controls
+-gtrfrksua        //Does not recognize the controls
+-gtrfrks
+-pcnfrka
+-pcnfrk4m
+-pnchmn
+-pnchmn2
+-pnchmna
+-fghtmn
+-fghtmna
+-fghtmnk
+-fghtmnu
 
 //legionna.cpp
 -olysoc92
@@ -2099,6 +2169,7 @@ spacmiss.cpp
 -dodgectyc
 -dodgectya
 -dodgectyb
+-unkmerit
 
 //meritm.cpp
 -megat5a
@@ -2135,30 +2206,63 @@ spacmiss.cpp
 
 //model2.cpp
 -bel
+-doa
+-doaa
+-doaa
+-doaab
+-doaae
+-doab
+-dynabb
+-dynabb97
+-dynamcopb
 -dynamcopc
+-dyndeka2b
+-fvipers
+-fvipersb
+-gunblade
 -hotd
 -hotdo
 -hotdp
+-indy500
+-indy500d
+-indy500to
 -lastbrnx
 -lastbrnxu
 -lastbrnxj
+-manxtt
+-manxttc
+-motoraiddx
+-overrev
+-overrevb
+-overrevba
 -powsled
 -powsledm
 -powsledr
 -rascot2
+-schamp
+-segawski
+-sfight
+-sgt24h
 -skisuprg
 -stcc
 -stcca
 -stccb
--segawski
 -topskatr
 -topskatrj
 -topskatruo
 -topskatru
+-von
+-vonj
 -vonr
+-vonu
+-vonr
+-vstriker
+-vstrikero
 -waverunr
+-hpyagu98
 
 //model3.cpp
+-bassdx
 -daytona2
 -dayto2pe
 -dirtdvls
@@ -2167,29 +2271,49 @@ spacmiss.cpp
 -dirtdvlsj
 -dirtdvlsu
 -ecap
+-eca
+-ecaj
+-ecau
 -fvipers2
 -fvipers2o
 -getbass
 -getbassdx
+-getbassur
+-harley
 -harleya
+-lamachin
 -lemans24
 -lostwsga
 -lostwsgp
+-magtruck
+-oceanhun
+-scud
 -scudau
+-scuddx
 -scudplusa
 -scudplus
+-skichamp
+-spikeofe
+-spikeout
 -srally2
 -srally2p
 -srally2pa
 -srally2dx
--skichamp
 -spikeout
 -spikeofe
 -swtrilgya
+-swtrilgyp
 -vf3
 -vf3a
 -vf3c
 -vf3tb
+-von2
+-von2a
+-von2o
+-von254g
+-vs2
+-vs215
+-vs215o
 -vs298
 -vs29815
 -vs2v991
@@ -2226,6 +2350,7 @@ spacmiss.cpp
 -tektagtja
 -tektagtjb
 -tektagtjc1
+-truckk
 
 //namcos23.cpp
 -500gp
@@ -2538,6 +2663,9 @@ spacmiss.cpp
 //seattle.cpp
 -sfrushrkw
 -sfrushrkwo
+-biofreak
+-carnevil
+-vaportrxp
 
 //segac2.cpp
 -pclubj
@@ -2775,6 +2903,12 @@ spacmiss.cpp
 -bmiidxc
 -bmiidxca
 
+//vegas.cpp
+-gauntleg12
+-roadburn
+-roadburn1
+-tenthdeg
+
 //videopkr.cpp
 -bpoker
 
@@ -2792,3 +2926,10 @@ spacmiss.cpp
 
 //zodiack.cpp
 -bounty2
+
+//joystand.cpp
+//x180ii (Could not add)
+
+//tapatune.cpp
+-smartoss
+-srockbwl

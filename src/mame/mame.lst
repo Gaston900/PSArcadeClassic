@@ -33730,7 +33730,9 @@ cnbe2018                        // HomeBrew
 cphd                            // HomeBrew
 columnsn                        // HomeBrew
 columnsncd                      // HomeBrew
+cyborg                          // HomeBrew
 ffeast                          // HomeBrew
+gladmortd                       // HomeBrew
 hypernoid                       // HomeBrew
 lhbb                            // HomeBrew
 lhcdb                           // HomeBrew
@@ -33759,6 +33761,7 @@ teot                            // HomeBrew
 timesup                         // HomeBrew
 timesupd                        // HomeBrew
 totc                            // HomeBrew
+yoyoshkn                        // HomeBrew
 xeno                            // HomeBrew
 
 @source:neogeo.cpp
@@ -46526,6 +46529,7 @@ sf2hfhc04                       // Hack
 sf2hfhc05                       // Hack
 sf2hfhc06                       // Hack
 sf2hfhc07                       // Hack
+sf2hfhc08                       // Hack
 striderhc01                     // Hack
 tk2hc01                         // Hack
 tk2hc02                         // Hack
@@ -46834,6 +46838,8 @@ ssf2thc18                       // Hack
 ssf2thc19                       // Hack
 ssf2thc20                       // Hack
 ssf2thc21                       // Hack
+ssf2thc22                       // Hack
+ssf2thc23                       // Hack
 ssf2hc01                        // Hack
 ssf2hc02                        // Hack
 ssf2hc03                        // Hack
@@ -48647,6 +48653,7 @@ samsho2hc11                     // Hack
 samsho2hc12                     // Hack
 samsho2hc13                     // Hack
 samsho2hc14                     // Hack
+samsho2hc15                     // Hack
 samsho3hc01                     // Hack
 samsho3hc02                     // Hack
 samsho3hc03                     // Hack
@@ -48731,6 +48738,7 @@ viewpoinhc01                    // Hack
 viewpoinhc02                    // Hack
 wakuwak7hc01                    // Hack
 wakuwak7hc02                    // Hack
+wakuwak7hc03                    // Hack
 wjammershc01                    // Hack
 wjammershc02                    // Hack
 wh1hc01                         // Hack

@@ -1497,6 +1497,10 @@ void neogeo_state::init_samsho5()
 
 void neogeo_state::init_samsh5sp()
 {
+	if (ym_region[0] == 0xE0) ym_region[0] = 0x43; // [6bc0] becomes 08
+	if (ym_region[1] == 0x25) ym_region[1] = 0xC9; // [16bc0] becomes 82
+	if (ym_region[0x18180] == 0xAC) ym_region[0x18180] = 0x2D; // [ed41] becomes 89
+	if (ym_region[0x18181] == 0x7E) ym_region[0x18181] = 0x2B; // [1ed41] becomes 8f
 	init_neogeo();
 	m_kof2002_prot->samsh5sp_decrypt_68k(cpuregion, cpuregion_size);
 	m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 6);
@@ -2531,8 +2535,21 @@ void neogeo_state::init_sam5sphb()
 	ram = memregion("ymsnd:adpcma")->base();
 	if (ram[0] != 8)
 	{
+		// fix sound crackling on encrypted
+		if (ym_region[0] == 0xE0) ym_region[0] = 0x43; // [6bc0] becomes 08
+		if (ym_region[1] == 0x25) ym_region[1] = 0xC9; // [16bc0] becomes 82
+		if (ym_region[0x18180] == 0xAC) ym_region[0x18180] = 0x2D; // [ed41] becomes 89
+		if (ym_region[0x18181] == 0x7E) ym_region[0x18181] = 0x2B; // [1ed41] becomes 8f
 		//printf("ym=%X\n",ram[0]);
 		m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 6);
+	}
+	else
+	{
+		// fix sound crackling on decrypted
+		if (ym_region[0x6bc0] == 0xAB) ym_region[0x6bc0] = 0x08;
+		if (ym_region[0xed41] == 0x08) ym_region[0xed41] = 0x89;
+		if (ym_region[0x16bc0] == 0x6E) ym_region[0x16bc0] = 0x82;
+		if (ym_region[0x1ed41] == 0xDA) ym_region[0x1ed41] = 0x8F;
 	}
 
 	// if no s rom, copy info from end of c roms

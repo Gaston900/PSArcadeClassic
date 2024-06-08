@@ -243,19 +243,19 @@ u8 pgm_state::z80_ram_r(offs_t offset)
 
 void pgm_state::z80_ram_w(offs_t offset, u8 data)
 {
-	const int pc = m_maincpu->pc();
+//	const int pc = m_maincpu->pc();
 
 	m_z80_mainram[offset] = data;
 
-	if (pc != 0xf12 && pc != 0xde2 && pc != 0x100c50 && pc != 0x100b20)
-		if (PGMLOGERROR)
-			logerror("Z80: write %04x, %02x (%06x)\n", offset, data, m_maincpu->pc());
+//	if (pc != 0xf12 && pc != 0xde2 && pc != 0x100c50 && pc != 0x100b20)
+//		if (PGMLOGERROR)
+//			logerror("Z80: write %04x, %02x (%06x)\n", offset, data, m_maincpu->pc());
 }
 
 void pgm_state::z80_reset_w(offs_t offset, u16 data, u16 mem_mask)
 {
-	if (PGMLOGERROR)
-		logerror("Z80: reset %04x @ %04x (%06x)\n", data, mem_mask, m_maincpu->pc());
+//	if (PGMLOGERROR)
+//		logerror("Z80: reset %04x @ %04x (%06x)\n", data, mem_mask, m_maincpu->pc());
 
 	if (data == 0x5050)
 	{
@@ -273,22 +273,22 @@ void pgm_state::z80_reset_w(offs_t offset, u16 data, u16 mem_mask)
 
 void pgm_state::z80_ctrl_w(offs_t offset, u16 data, u16 mem_mask)
 {
-	if (PGMLOGERROR)
-		logerror("Z80: ctrl %04x @ %04x (%06x)\n", data, mem_mask, m_maincpu->pc());
+//	if (PGMLOGERROR)
+//		logerror("Z80: ctrl %04x @ %04x (%06x)\n", data, mem_mask, m_maincpu->pc());
 }
 
 void pgm_state::m68k_l1_w(u8 data)
 {
-	if (PGMLOGERROR)
-		logerror("SL 1 m68.w %02x (%06x) IRQ\n", data, m_maincpu->pc());
+//	if (PGMLOGERROR)
+//		logerror("SL 1 m68.w %02x (%06x) IRQ\n", data, m_maincpu->pc());
 	m_soundlatch->write(data);
 	m_soundcpu->pulse_input_line(INPUT_LINE_NMI, attotime::zero);
 }
 
 void pgm_state::z80_l3_w(u8 data)
 {
-	if (PGMLOGERROR)
-		logerror("SL 3 z80.w %02x (%04x)\n", data, m_soundcpu->pc());
+//	if (PGMLOGERROR)
+//		logerror("SL 3 z80.w %02x (%04x)\n", data, m_soundcpu->pc());
 	m_soundlatch3->write(data);
 }
 
@@ -347,6 +347,7 @@ void pgm_state::pgm_base_mem(address_map &map)
 void pgm_state::pgm_mem(address_map &map)
 {
 	pgm_base_mem(map);
+	// if a cart is not inserted, bios is mirrorred every 0x20000 to 0x7fffff (mirror=0x7e0000)
 	map(0x000000, 0x0fffff).rom();   /* BIOS ROM */
 }
 
@@ -547,7 +548,7 @@ void pgm_state::pgmbase(machine_config &config)
 
 	ICS2115(config, m_ics, 33.8688_MHz_XTAL);
 	m_ics->irq().set_inputline("soundcpu", 0);
-	m_ics->add_route(ALL_OUTPUTS, "mono", 1.0);
+	m_ics->add_route(ALL_OUTPUTS, "mono", 2.0); // HBMAME - wind the volume up to 11
 }
 
 void pgm_state::pgm(machine_config &config)
@@ -561,15 +562,31 @@ void pgm_state::pgm(machine_config &config)
 /* take note of "sprmask" needed for expanding the Sprite Colour Data */
 
 #define ROM_LOAD16_WORD_SWAP_BIOS(bios,name,offset,length,hash) \
-		ROMX_LOAD(name, offset, length, hash, ROM_GROUPWORD | ROM_REVERSE | ROM_BIOS(bios))
+	ROMX_LOAD(name, offset, length, hash, ROM_GROUPWORD | ROM_REVERSE | ROM_BIOS(bios))
 
 #define PGM_68K_BIOS \
 	ROM_SYSTEM_BIOS( 0, "v2",     "PGM Bios V2" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 0, "pgm_p02s.u20",    0x00000, 0x020000, CRC(78c15fa2) SHA1(885a6558e022602cc6f482ac9667ba9f61e75092) ) /* Version 2 (Label: IGS | PGM P02S | 1P0792D1 | J992438 )*/ \
+	ROM_LOAD16_WORD_SWAP_BIOS( 0, "pgm_p02s.u20",    0x00000, 0x020000, CRC(78c15fa2) SHA1(885a6558e022602cc6f482ac9667ba9f61e75092) ) \
+	ROM_RELOAD(0x20000,0x20000) \
+	ROM_RELOAD(0x40000,0x20000) \
+	ROM_RELOAD(0x60000,0x20000) \
+	ROM_RELOAD(0x80000,0x20000) \
+	ROM_RELOAD(0xA0000,0x20000) \
+	ROM_RELOAD(0xC0000,0x20000) \
+	ROM_RELOAD(0xE0000,0x20000) \
 	ROM_SYSTEM_BIOS( 1, "v1",     "PGM Bios V1" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 1, "pgm_p01s.u20",    0x00000, 0x020000, CRC(e42b166e) SHA1(2a9df9ec746b14b74fae48b1a438da14973702ea) ) /* Version 1 */
+	ROM_LOAD16_WORD_SWAP_BIOS( 1, "pgm_p01s.u20",    0x00000, 0x020000, CRC(e42b166e) SHA1(2a9df9ec746b14b74fae48b1a438da14973702ea) ) \
+	ROM_RELOAD(0x20000,0x20000) \
+	ROM_RELOAD(0x40000,0x20000) \
+	ROM_RELOAD(0x60000,0x20000) \
+	ROM_RELOAD(0x80000,0x20000) \
+	ROM_RELOAD(0xA0000,0x20000) \
+	ROM_RELOAD(0xC0000,0x20000) \
+	ROM_RELOAD(0xE0000,0x20000)
+
 #define PGM_AUDIO_BIOS \
 	ROM_LOAD( "pgm_m01s.rom", 0x000000, 0x200000, CRC(45ae7159) SHA1(d3ed3ff3464557fd0df6b069b2e431528b0ebfa8) )
+
 #define PGM_VIDEO_BIOS \
 	ROM_LOAD( "pgm_t01s.rom", 0x000000, 0x200000, CRC(1a7123a0) SHA1(cc567f577bfbf45427b54d6695b11b74f2578af3) )
 /* The Bios - NOT A GAME */

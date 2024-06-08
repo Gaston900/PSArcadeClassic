@@ -26966,6 +26966,38 @@ ROM_START( sf2hfhc07 ) //sf2hfh
 	ROM_LOAD( "sf2ce.key", 0x00, 0x80, CRC(35b37429) SHA1(b372cce106c0900554735c207fb333ac93554ec2) )
 ROM_END
 
+ROM_START( sf2hfhc08 ) // sf2hfsce - just says Street Fighter II' - nothing about turbo or hyper fighting
+	ROM_REGION( CODE_SIZE, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "s2te_23_hc08.8f", 0x000000, 0x80000, CRC(ee74bae8) SHA1(1174e3f042dec0907be0d99acc4288379f40bec0) )
+	ROM_LOAD16_WORD_SWAP( "s2te_22_hc08.7f", 0x080000, 0x80000, CRC(eea9b9c0) SHA1(30ec78a81125434a7391fc886c7620e1c590f2a4) )
+	ROM_LOAD16_WORD_SWAP( "s2te_21_hc08.6f", 0x100000, 0x80000, CRC(d6246802) SHA1(61b820139696b5da2189195f0e29f59c3790c085) )
+
+	ROM_REGION( 0x600000, "gfx", 0 )
+	ROM_LOAD64_WORD( "s92-1m.3a",   0x000000, 0x80000, CRC(03b0d852) SHA1(f370f25c96ad2b94f8c53d6b7139100285a25bef) )
+	ROM_LOAD64_WORD( "s92-3m.5a",   0x000002, 0x80000, CRC(840289ec) SHA1(2fb42a242f60ba7e74009b5a90eb26e035ba1e82) )
+	ROM_LOAD64_WORD( "s92-2m.4a",   0x000004, 0x80000, CRC(cdb5f027) SHA1(4c7d944fef200fdfcaf57758b901b5511188ed2e) )
+	ROM_LOAD64_WORD( "s92-4m.6a",   0x000006, 0x80000, CRC(e2799472) SHA1(27d3796429338d82a8de246a0ea06dd487a87768) )
+	ROM_LOAD64_WORD( "s92-5m_hc08.7a",   0x200000, 0x80000, CRC(75e20f8c) SHA1(61a902c5e9c7e583ae9d8718dd847377539beefd) )
+	ROM_LOAD64_WORD( "s92-7m_hc08.9a",   0x200002, 0x80000, CRC(ee803831) SHA1(dffbeb6d9edbc7551fffe45ecab83530749ed050) )
+	ROM_LOAD64_WORD( "s92-6m_hc08.8a",   0x200004, 0x80000, CRC(779c37ed) SHA1(16db84b27523d0f46f7f2334ec22af203dbaadcb) )
+	ROM_LOAD64_WORD( "s92-8m_hc08.10a",  0x200006, 0x80000, CRC(005867b6) SHA1(1622651cfaa5ae23d4876321bb83cc0aed39d517) )
+	ROM_LOAD64_WORD( "s2t_10_hc08.bin",  0x400000, 0x80000, CRC(d374589b) SHA1(6078fcc6ea307086d0371e2c526c72a8a62f6ead) )
+	ROM_LOAD64_WORD( "s2t_11_hc08.bin",  0x400002, 0x80000, CRC(d43d5f31) SHA1(bc6340757fabeb949b4262f5e7237d3132476fb2) )
+	ROM_LOAD64_WORD( "s2t_12_hc08.bin",  0x400004, 0x80000, CRC(09e7ea4b) SHA1(e5bbf5caa653ea9c02f68792c25e405c33a084f8) )
+	ROM_LOAD64_WORD( "s2t_13_hc08.bin",  0x400006, 0x80000, CRC(136d9999) SHA1(4a912bddfe472d77ae53638acd144380b798d033) )
+
+	ROM_REGION( 0x18000, "audiocpu", 0 )
+	ROM_LOAD( "s92_09.11a",  0x00000, 0x08000, CRC(08f6b60e) SHA1(8258fcaca4ac419312531eec67079b97f471179c) )
+	ROM_CONTINUE(            0x10000, 0x08000 )
+
+	ROM_REGION( 0x40000, "oki", 0 )
+	ROM_LOAD( "s92_18.11c",  0x00000, 0x20000, CRC(7f162009) SHA1(346bf42992b4c36c593e21901e22c87ae4a7d86d) )
+	ROM_LOAD( "s92_19.12c",  0x20000, 0x20000, CRC(beade53f) SHA1(277c397dc12752719ec6b47d2224750bd1c07f79) )
+
+	ROM_REGION( 0x80, "control", 0 )
+	ROM_LOAD( "sf2ce.key", 0x00, 0x80, CRC(35b37429) SHA1(b372cce106c0900554735c207fb333ac93554ec2) )
+ROM_END
+
 ROM_START( striderhc01 ) //striderfix
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "30_hb01.11f",   0x00000, 0x20000, CRC(8be794bf) SHA1(b237288638f27ed778745f3090be04f8718ab388) )
@@ -32809,6 +32841,7 @@ GAME( 2021, sf2hfhc04,    sf2hf,    cps1_12MHz,     sf2j,     cps_state,   init_
 GAME( 2021, sf2hfhc05,    sf2hf,    cps1_12MHz,     sf2j,     cps_state,   init_cps1,     ROT0,   "hack",      "Street Fighter II': Hyper Fighting (Version Japanese Simplified 2021-12-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, sf2hfhc06,    sf2hf,    cps1_12MHz,     sf2,      cps_state,   init_cps1,     ROT0,   "hack",      "Street Fighter II': Hyper Fighting (Version USA Simplified 2021-11-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, sf2hfhc07,    sf2hf,    cps1_12MHz,     sf2j,     cps_state,   init_cps1,     ROT0,   "hack",      "Street Fighter II': Hyper Fighting (Version Japanese Simplified 2021-11-16)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, sf2hfhc08,    sf2hf,    cps1_12MHz,     sf2,      cps_state,   init_cps1,     ROT0,   "hack",      "Street Fighter II': Hyper Fighting (SrSreet Edition)", MACHINE_SUPPORTS_SAVE ) // bad tile for Blanka on player select screen
 GAME( 2018, striderhc01,  strider,  cps1_10MHz,     strider,  cps_state,   init_cps1,     ROT0,   "hack",      "Strider (Revised Edition 2018-12-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, tk2hc01,      wof,      qsound,         wof,      cps_state,   init_wof,      ROT0,   "hack",      "Tenchi wo Kurau II (Master Edition 2022-07-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, tk2hc02,      wof,      qsound,         wof,      cps_state,   init_wof,      ROT0,   "hack",      "Tenchi wo Kurau II (Unparalleled Master Edition 2020 2022-07-10)", MACHINE_SUPPORTS_SAVE )

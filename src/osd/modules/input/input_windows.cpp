@@ -141,7 +141,7 @@ void windows_osd_interface::customize_input_type_list(std::vector<input_type_ent
 			// lctrl-lalt-F5 to toggle post-processing
 			case IPT_OSD_4:
 				entry.configure_osd("POST_PROCESS", N_p("input-name", "Toggle Post-Processing"));
-				entry.defseq(SEQ_TYPE_STANDARD).set(KEYCODE_COLON);
+				entry.defseq(SEQ_TYPE_STANDARD).set(KEYCODE_F5, KEYCODE_LALT, KEYCODE_LCONTROL);
 				break;
 
 			// leave everything else alone

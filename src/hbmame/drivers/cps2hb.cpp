@@ -3992,6 +3992,80 @@ ROM_START( ssf2thc21 ) //ssf2xjr1
 	ROM_LOAD( "ssf2xj.key",   0x000000, 0x000014, CRC(160d1424) SHA1(187baff83b54acfdcedd9b9222a4cc768040c622) )
 ROM_END
 
+ROM_START( ssf2thc22 )  // ssf2tnl 0.8
+	ROM_REGION( CODE_SIZE, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc22.03c",  0x000000, 0x80000, CRC(09b53b58) SHA1(0b27760e4b0d0de08f73c9d4e70c6a66874b6d23) )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc22.04a",  0x080000, 0x80000, CRC(71202594) SHA1(ef59591a158000d4770ffeb418917c490c7d4ebf) )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc22.05",   0x100000, 0x80000, CRC(bbbd5ef6) SHA1(4c47553353e89a8a9d849755daee9413bbba2cbf) )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc22.06a",  0x180000, 0x80000, CRC(ddb5dee6) SHA1(d7a40359c2e85d8e7040b088021b183de8e9401c) )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc22.07",   0x200000, 0x80000, CRC(7c228198) SHA1(920d63a4ef82c779153e372909694f567a731c22) )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc22.08",   0x280000, 0x80000, CRC(cbbd989b) SHA1(75ee6d619351ddd5e65aeb7d05a6a400868c030d) )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc22.09",   0x300000, 0x80000, CRC(bb18adff) SHA1(597ffa3f34f0566d3160113ee2950f3449367823) )
+
+	ROM_REGION( 0x1000000, "gfx", 0 )
+	ROM_LOAD64_WORD( "sfxh_hc22.13m",    0x000000, 0x200000, CRC(63e77950) SHA1(f52ee73f9417168c6e6603e79427cd8056967094) )
+	ROM_LOAD64_WORD( "sfxh_hc22.15m",    0x000002, 0x200000, CRC(dd35a143) SHA1(5f04a113faee805a4bc828b70c6a9a02be25f779) )
+	ROM_LOAD64_WORD( "sfxh_hc22.17m",    0x000004, 0x200000, CRC(f4ac22f3) SHA1(307ab4f81bff22d6380ef63206266afa1cbe8c43) )
+	ROM_LOAD64_WORD( "sfxh_hc22.19m",    0x000006, 0x200000, CRC(71cf7604) SHA1(fcc79ab169187eec81f64bb1f61d4e6422d95ad9) )
+	ROM_LOAD64_WORD( "sfx_hc01.14m",     0x800000, 0x100000, CRC(08c6976b) SHA1(56aa74632b0a6b92b1ff33bc62a150642671b8d1) )
+	ROM_LOAD64_WORD( "sfx_hc01.16m",     0x800002, 0x100000, CRC(4d94aee3) SHA1(48b7e01bbf4fba4de0eed51c2016ed9b912c0766) )
+	ROM_LOAD64_WORD( "sfx_hc01.18m",     0x800004, 0x100000, CRC(fab6dfd6) SHA1(e60dd3f3570c431955984c124a6499ed139d85f1) )
+	ROM_LOAD64_WORD( "sfx_hc01.20m",     0x800006, 0x100000, CRC(5080bc5c) SHA1(4bd20a8566601f14678426d85c76b245a87d8b87) )
+	ROM_LOAD64_WORD( "sfxh_hc22.21m",    0xc00000, 0x100000, CRC(648519f7) SHA1(5810d710dcbbd1b34168a0390176bfa170f49fcf) )
+	ROM_LOAD64_WORD( "sfxh_hc22.23m",   0xc00002, 0x100000, CRC(efd2eb24) SHA1(500311f92817520983bb7f6957cdc5eb9bc3135a) )
+	ROM_LOAD64_WORD( "sfxh_hc22.25m",   0xc00004, 0x100000, CRC(3294c78b) SHA1(8166a2c0434c301f7ef5eec5362f41ce0382a8c1) )
+	ROM_LOAD64_WORD( "sfxh_hc22.27m",   0xc00006, 0x100000, CRC(fc283290) SHA1(ee35fb03fd1e3ca238d9155d3bc8491d38173826) )
+
+	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 )
+	ROM_LOAD( "sfx.01",   0x00000, 0x08000, CRC(b47b8835) SHA1(c8b2d50fe3a329bd0592ea160d505155d873dab1) )
+	ROM_CONTINUE(         0x10000, 0x18000 )
+	ROM_LOAD( "sfx.02",   0x28000, 0x20000, CRC(0022633f) SHA1(cab3afc79da53e3887eb1ccd1f4d19790728e6cd) )
+
+	ROM_REGION( 0x400000, "qsound", 0 )
+	ROM_LOAD16_WORD_SWAP( "sfx.11m",   0x000000, 0x200000, CRC(9bdbd476) SHA1(a8520f77f30b97aae36408e0c4ca1ebbde1808a5) )
+	ROM_LOAD16_WORD_SWAP( "sfx.12m",   0x200000, 0x200000, CRC(a05e3aab) SHA1(d4eb9cae66c74e956569fea8b815156fbd420f83) )
+
+	ROM_REGION( 0x20, "key", 0 )
+	ROM_LOAD( "ssf2t.key",    0x00, 0x14, CRC(524d608e) SHA1(fcd2b9a1a640a0dee4a674dc9cfb3975466f7757) )
+ROM_END
+
+ROM_START( ssf2thc23 )  // ssf2tnl 0.9
+	ROM_REGION( CODE_SIZE, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc23.03c",  0x000000, 0x80000, CRC(4beda7d5) SHA1(2045e322043387a05fb1773d45bcc2c1215a9a98) )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc23.04a",  0x080000, 0x80000, CRC(d00594d8) SHA1(2ee61a9ecbeab64d2b03e38b1e753c4d800b62b1) )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc23.05",   0x100000, 0x80000, CRC(c7e8ded4) SHA1(3fd9b943e7fc61925910e53eded1ac3e8083845e) )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc23.06a",  0x180000, 0x80000, CRC(16b305b7) SHA1(af0a85295ecefc7d8a4c612b8f0e0c8c3ed5748d) )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc23.07",   0x200000, 0x80000, CRC(43ad0333) SHA1(5ae4b127a9dd3f4c7c9396fb7f2398d6dc820524) )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc23.08",   0x280000, 0x80000, CRC(1c1696e4) SHA1(a3baf599b2e8a9cb124e1f80a819688626047ed5) )
+	ROM_LOAD16_WORD_SWAP( "sfxh_hc23.09",   0x300000, 0x80000, CRC(6b2068bc) SHA1(db5e69a0748df373a0ecff39cd1ac2c426f0e6d5) )
+
+	ROM_REGION( 0x1000000, "gfx", 0 )
+	ROM_LOAD64_WORD( "sfxh_hc23.13m",     0x000000, 0x200000, CRC(c1df58ed) SHA1(b24d6033aefc8dee1b946bb82c5496725716c8cd) )
+	ROM_LOAD64_WORD( "sfxh_hc23.15m",     0x000002, 0x200000, CRC(0f1bdf35) SHA1(f2c037e52fc704f4237bf8df3bf427b534851195) )
+	ROM_LOAD64_WORD( "sfxh_hc23.17m",     0x000004, 0x200000, CRC(13acf82f) SHA1(a8bcc134644f355232493896af9c0b8287984f3c) )
+	ROM_LOAD64_WORD( "sfxh_hc23.19m",     0x000006, 0x200000, CRC(7a7e1bba) SHA1(f62de983c5bd7c9ccb3367dd8e2171f7f0c87e61) )
+	ROM_LOAD64_WORD( "sfxh_hc23.14m",     0x800000, 0x100000, CRC(d24d002b) SHA1(ef63edabca6cdaf53b526349e9100ae1792f32e7) )
+	ROM_LOAD64_WORD( "sfxh_hc23.16m",     0x800002, 0x100000, CRC(8e81e9c4) SHA1(5f77a3d30230481f62573cb7f92dd263a866cae2) )
+	ROM_LOAD64_WORD( "sfxh_hc23.18m",     0x800004, 0x100000, CRC(261285bc) SHA1(d01cac512858500a1d52575844c0a280eafe1965) )
+	ROM_LOAD64_WORD( "sfxh_hc23.20m",     0x800006, 0x100000, CRC(ffa37375) SHA1(3589e3f1048d55cd8f8a9986b487bcc5d096d6d8) )
+	ROM_LOAD64_WORD( "sfxh_hc22.21m",     0xc00000, 0x100000, CRC(648519f7) SHA1(5810d710dcbbd1b34168a0390176bfa170f49fcf) )
+	ROM_LOAD64_WORD( "sfxh_hc22.23m",     0xc00002, 0x100000, CRC(efd2eb24) SHA1(500311f92817520983bb7f6957cdc5eb9bc3135a) )
+	ROM_LOAD64_WORD( "sfxh_hc22.25m",     0xc00004, 0x100000, CRC(3294c78b) SHA1(8166a2c0434c301f7ef5eec5362f41ce0382a8c1) )
+	ROM_LOAD64_WORD( "sfxh_hc22.27m",     0xc00006, 0x100000, CRC(fc283290) SHA1(ee35fb03fd1e3ca238d9155d3bc8491d38173826) )
+
+	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 )
+	ROM_LOAD( "sfx.01",   0x00000, 0x08000, CRC(b47b8835) SHA1(c8b2d50fe3a329bd0592ea160d505155d873dab1) )
+	ROM_CONTINUE(         0x10000, 0x18000 )
+	ROM_LOAD( "sfx.02",   0x28000, 0x20000, CRC(0022633f) SHA1(cab3afc79da53e3887eb1ccd1f4d19790728e6cd) )
+
+	ROM_REGION( 0x400000, "qsound", 0 )
+	ROM_LOAD16_WORD_SWAP( "sfx.11m",   0x000000, 0x200000, CRC(9bdbd476) SHA1(a8520f77f30b97aae36408e0c4ca1ebbde1808a5) )
+	ROM_LOAD16_WORD_SWAP( "sfx.12m",   0x200000, 0x200000, CRC(a05e3aab) SHA1(d4eb9cae66c74e956569fea8b815156fbd420f83) )
+
+	ROM_REGION( 0x20, "key", 0 )
+	ROM_LOAD( "ssf2t.key",    0x00, 0x14, CRC(524d608e) SHA1(fcd2b9a1a640a0dee4a674dc9cfb3975466f7757) )
+ROM_END
+
 ROM_START( ssf2hc01 )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "ssfj_hc01.03b", 0x000000, 0x80000, CRC(ea1d3237) SHA1(f7a8dded94299b34657d066a89f55bfd91c7070c) )
@@ -4486,7 +4560,6 @@ GAME( 2023, hsf2hc16,    hsf2,         cps2,         cps2_2p6b, cps2_state, init
 GAME( 2023, hsf2hc17,    hsf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Hyper Street Fighter II: The Anniversary Edition (Triple Enhanced Version Simplified 2023-02-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, hsf2hc18,    hsf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Hyper Street Fighter II: The Anniversary Edition (Phoenix Edition USA Simplified 2023-02-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, hsf2hc19,    hsf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Hyper Street Fighter II: The Anniversary Edition (Phoenix Edition Japan Simplified 2023-02-11)", MACHINE_SUPPORTS_SAVE )
-
 GAME( 2022, mvschc01,    mvsc,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Marvel Vs. Capcom: Clash of Super Heroes (Enhanced Edition Original Edition 2022-06-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, mvschc02,    mvsc,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Marvel Vs. Capcom: Clash of Super Heroes (Enhanced Edition Simplified Edition 2022-06-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, mvschc03,    mvsc,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Marvel Vs. Capcom: Clash of Super Heroes (Enable Characters)", MACHINE_SUPPORTS_SAVE )
@@ -4512,7 +4585,6 @@ GAME( 2019, sfa2hc03,    sfa2,         cps2,         cps2_2p6b, cps2_state, init
 GAME( 1996, sfa2hc04,    sfa2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Alpha 2 (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, sfa2hc05,    sfa2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Alpha 2 (Ultimate Simplified Edition 2020-03-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, sfa2hc06,    sfa2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Zero 2 (Crazy Edition Simplified 2021-02-12)", MACHINE_SUPPORTS_SAVE )
-
 GAME( 2022, sfa3hc01,    sfa3,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Alpha 3 (Challenger Edition 2022-07-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, sfa3hc02,    sfa3,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Zero 3 (Mix 0.13 2022-08-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, sfa3hc03,    sfa3,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Zero 3 (Mix 0.13 2022-05-27)", MACHINE_SUPPORTS_SAVE )
@@ -4533,7 +4605,6 @@ GAME( 2022, sfa3hc17,    sfa3,         cps2,         cps2_2p6b, cps2_state, init
 GAME( 2022, sfa3hc18,    sfa3,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Zero 3 (Mix 0.8 2022-03-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, sfa3hc19,    sfa3,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Zero 3 (Mix 0.7b 2022-03-26)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, sfa3hc20,    sfa3,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Zero 3 (Mix 0.7b Simplified 2022-03-26)", MACHINE_SUPPORTS_SAVE )
-
 GAME( 2014, sgemfhc01,   sgemf,        cps2,         cps2_2p3b, cps2_state, init_cps2,     ROT0,   "hack",        "Pocket Fighter (Resurgence Lite 2014-12-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, sfz2alhc01,  sfz2al,       cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Zero 2 Alpha (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2014, sfz2alhc02,  sfz2al,       cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Zero 2 Alpha (Dragon Fighter Edition 2014-11-19)", MACHINE_SUPPORTS_SAVE )
@@ -4544,7 +4615,6 @@ GAME( 2016, sfz2alhc06,  sfz2al,       cps2,         cps2_2p6b, cps2_state, init
 GAME( 2009, sfz2alhc07,  sfz2al,       cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Zero 2 Alpha (Dragon Edition v2.0 2009-04-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, sfz2alhc08,  sfz2al,       cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Zero 2 Alpha (Ex Super Version 2020-05-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, sfz2alhc09,  sfz2al,       cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Street Fighter Zero 2 Alpha (Dragon King Gold Edition Simplified 2022-03-30)", MACHINE_SUPPORTS_SAVE )
-
 GAME( 2022, ssf2thc01,   ssf2t,        cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Street Fighter II Turbo (Simplified Edition New Legacy v0.7 2022-07-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, ssf2thc02,   ssf2t,        cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Street Fighter II Turbo (Original Edition New Legacy v0.7 2022-07-17)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, ssf2thc03,   ssf2t,        cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Street Fighter II Turbo (Original Edition New Legacy v0.7.1 2022-09-06)", MACHINE_SUPPORTS_SAVE )
@@ -4566,7 +4636,8 @@ GAME( 2021, ssf2thc18,   ssf2t,        cps2,         cps2_2p6b, cps2_state, init
 GAME( 2022, ssf2thc19,   ssf2t,        cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Street Fighter II Turbo (Battle Edition Original 2022-06-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, ssf2thc20,   ssf2t,        cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Street Fighter II Turbo (Battle Edition Simplified 2022-06-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, ssf2thc21,   ssf2t,        cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Street Fighter II X: Grand Master Challenge (Version Japan Enhanced Edition Simplified 2023-02-07)", MACHINE_SUPPORTS_SAVE )
-
+GAME( 2023, ssf2thc22,   ssf2t,        cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Street Fighter II Turbo (New Legacy v0.8 beta, 2023-07-20)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, ssf2thc23,   ssf2t,        cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Street Fighter II Turbo (New Legacy v0.9 beta, 2024-04-02)", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, ssf2hc01,    ssf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "DDJ",         "Super Street Fighter II X: The New Challengers (Easy Move 2012-09-12)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, ssf2hc02,    ssf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Street Fighter II X: The New Challengers (Simplified World Edition 2021-11-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, ssf2hc03,    ssf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Street Fighter II X: The New Challengers (Simplified USA Edition 2021-11-28)", MACHINE_SUPPORTS_SAVE )
@@ -4574,10 +4645,8 @@ GAME( 2021, ssf2hc04,    ssf2,         cps2,         cps2_2p6b, cps2_state, init
 GAME( 2021, ssf2hc05,    ssf2,         cps2,         cps2_2p6b, cps2_state, init_ssf2tb,   ROT0,   "hack",        "Super Street Fighter II: The Tournament Battle (Simplified Japan Edition 2021-11-28)", MACHINE_SUPPORTS_SAVE | MACHINE_NODEVICE_LAN )
 GAME( 2021, ssf2hc06,    ssf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Street Fighter II: The New Challengers Super 2 (Simplified USA Edition 2021-11-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, ssf2hc07,    ssf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Street Fighter II: The New Challengers Super 2 (Simplified USA Edition 2021-11-01)", MACHINE_SUPPORTS_SAVE )
-
 GAME( 1996, spf2thc01,   spf2t,        cps2,         cps2_2p2b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Puzzle Fighter II Turbo (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, spf2thc02,   spf2t,        cps2,         cps2_2p2b, cps2_state, init_cps2,     ROT0,   "hack",        "Super Puzzle Fighter II Turbo (Patch Modified Version 2022-01-01)", MACHINE_SUPPORTS_SAVE )
-
 GAME( 1994, xmcotahc01,  xmcota,       cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "X-Men: Children of the Atom (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, xmcotahc02,  xmcota,       cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "X-Men: Children of the Atom (Boss With Simple Attack Edition 2013-01-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, xmvsfhc01,   xmvsf,        cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "X-Men Vs. Street Fighter (2v1 Edition 2022-05-03)", MACHINE_SUPPORTS_SAVE )

@@ -444,11 +444,11 @@ INPUT_PORTS_EXTERN(dualbios);
 	ROM_LOAD16_WORD_SWAP_BIOS( x+14, "uni-bios_1_0.rom",  0x00000, 0x020000, CRC(0ce453a0) SHA1(3b4c0cd26c176fc6b26c3a2f95143dd478f6abf9) ) /* Universe Bios v1.0 (hack) */
 #define NEOGEO_UNIBIOS_THE_REGION_IS_CHANGED(x) \
 	ROM_SYSTEM_BIOS( x+15, "bios_defecto", "Universe Bios 4.0 (Defecto)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( x+15, "uni-bios_defecto.rom",  0x00000, 0x020000, CRC(b16c9c40) SHA1(7b2a3e98f7235567f3d330764efc803f1a1ca7fc) ) /* Universe Bios v4.0 Defecto (hack) */ \
+	ROM_LOAD16_WORD_SWAP_BIOS( x+15, "uni-bios_defecto.rom",  0x00000, 0x020000, CRC(6327bb3b) SHA1(70ffe05ca37fb55871aca5ec449006e708c41141) ) /* Universe Bios v4.0 Defecto (hack) */ \
 	ROM_SYSTEM_BIOS( x+16, "mslug_forever", "Universe Bios 4.0 (Metal Slug Forever)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( x+16, "metalslug_forever.rom",  0x00000, 0x020000, CRC(94c741c6) SHA1(2b0aa0295b733bf6d1b47df25b61ef7cbeabf9a9) ) /* Universe Bios v4.0 Metal Slug Forever (hack) */ \
+	ROM_LOAD16_WORD_SWAP_BIOS( x+16, "metalslug_forever.rom",  0x00000, 0x020000, CRC(a17e6518) SHA1(5a6ba89bdf577599612cffaedce7feac76349331) ) /* Universe Bios v4.0 Metal Slug Forever (hack) */ \
 	ROM_SYSTEM_BIOS( x+17, "console_mode", "Universe Bios 4.0 (Ver.Regions: Europe Mode: Console)" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( x+17, "console_mode.rom",  0x00000, 0x020000, CRC(9ac99aed) SHA1(9880d1906e784dcb1b98dfe5eaf5072fdd84fd47) ) /* Universe Bios v4.0 Regions: Europe Mode: Console "Disabled Command Region Selection Menu, Start+A+B+C, Start+Select And Start+Coin" (hack) */
+	ROM_LOAD16_WORD_SWAP_BIOS( x+17, "console_mode.rom",  0x00000, 0x020000, CRC(6d649877) SHA1(3339e1e10c9b20af3df5e1b29bf7198be651661a) ) /* Universe Bios v4.0 Regions: Europe Mode: Console "Disabled Command Region Selection Menu, Start+A+B+C, Start+Select And Start+Coin" (hack) */
 
 #define NEOGEO_BIOS \
 	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \

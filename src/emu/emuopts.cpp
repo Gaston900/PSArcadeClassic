@@ -37,7 +37,7 @@ const options_entry emu_options::s_option_entries[] =
 	// search path options
 	{ nullptr,                                           nullptr,     core_options::option_type::HEADER,     "CORE SEARCH PATH OPTIONS" },
 	{ OPTION_PLUGINDATAPATH,                             ".",         core_options::option_type::STRING,     "path to base folder for plugin data (read/write)" },
-	{ OPTION_MEDIAPATH ";rp;biospath;bp",                "support/roms",      core_options::option_type::STRING,     "path to ROM sets and hard disk images" },
+	{ OPTION_MEDIAPATH ";rp;biospath;bp",                "roms",      core_options::option_type::STRING,     "path to ROM sets and hard disk images" },
 	{ OPTION_HASHPATH ";hash_directory;hash",            "config/hash",       core_options::option_type::STRING,     "path to software definition files" },
 	{ OPTION_SAMPLEPATH ";sp",                           "support/samples",   core_options::option_type::STRING,     "path to audio sample sets" },
 	{ OPTION_ARTPATH,                                    "support/artwork",   core_options::option_type::STRING,     "path to artwork files" },

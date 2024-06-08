@@ -36628,6 +36628,7 @@ ROM_START( nitdhc01 )
 
 	ROM_REGION( 0x0400000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "260.v1", 0x000000, 0x400000, CRC(24b0480c) SHA1(d769e621be52a5cd2e2568891b5f95a48268e1e0) )
+    ROM_FILL(0x50820,1,0x08)  // fix crackle when jumping
 
 	ROM_REGION( 0x1000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "260_hc01.c1", 0x0000000, 0x800000, CRC(250010d5) SHA1(514053c16eb7b3e5879ddf02c422e5e923b0d1e6) )
@@ -36644,6 +36645,7 @@ ROM_START( nitdhc02 )
 
 	ROM_REGION( 0x0400000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "260.v1", 0x000000, 0x400000, CRC(24b0480c) SHA1(d769e621be52a5cd2e2568891b5f95a48268e1e0) )
+    ROM_FILL(0x50820,1,0x08)  // fix crackle when jumping
 
 	ROM_REGION( 0x1000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "260_hc02.c1", 0x0000000, 0x800000, CRC(3f7fbd0c) SHA1(2e6cedcb099ae8f5bbdb9d989ca3918d7fb0504f) )
@@ -36660,6 +36662,7 @@ ROM_START( nitdhc03 )
 
 	ROM_REGION( 0x0400000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "260.v1", 0x000000, 0x400000, CRC(24b0480c) SHA1(d769e621be52a5cd2e2568891b5f95a48268e1e0) )
+    ROM_FILL(0x50820,1,0x08)  // fix crackle when jumping
 
 	ROM_REGION( 0x1000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "260.c1", 0x0000000, 0x800000, CRC(147b0c7f) SHA1(a647c3a2f6d146ff47521c1d39f58830601f5781) )
@@ -37648,6 +37651,36 @@ ROM_START( samsho2hc14 ) //samsho2
 	ROM_LOAD16_BYTE( "063.c8", 0xc00001, 0x200000, CRC(1ffc6dfa) SHA1(acea18aca76c072e0bac2a364fc96d49cfc86e77) )
 ROM_END
 
+ROM_START( samsho2hc15 ) //samsho2pe
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "063_hc15.p1", 0x000000, 0x100000, CRC(7af0612c) SHA1(840a8447682293aff734def21fa8556b69511d9b) )
+	ROM_LOAD16_WORD_SWAP( "063_hc15.p2", 0x100000, 0x100000, CRC(5fb8a564) SHA1(d83e6c8e3bc65597aa41434cb57a476a65eb7f6e) )
+    ROM_DEFAULT_BIOS("console_mode")
+
+	ROM_REGION( 0x020000, "gsc", ROMREGION_BE | ROMREGION_16BIT )
+	ROM_LOAD16_WORD_SWAP( "063_hc15.p3", 0x000000, 0x020000, CRC(74c7e103) SHA1(c833f5714be0c82b042301c11ee4fb45e96f1760) )
+
+	NEO_SFIX_128K( "063.s1", CRC(64a5cd66) SHA1(12cdfb27bf9ccd5a8df6ddd4628ef7cf2c6d4964) )
+
+	NEO_BIOS_AUDIO_128K( "063.m1", CRC(56675098) SHA1(90429fc40d056d480d0e2bbefbc691d9fa260fc4) )
+
+	ROM_REGION( 0x700000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "063.v1", 0x000000, 0x200000, CRC(37703f91) SHA1(a373ebef4c33ba1d8340e826981a58769aada238) )
+	ROM_LOAD( "063.v2", 0x200000, 0x200000, CRC(0142bde8) SHA1(0be6c53acac44802bf70b6925452f70289a139d9) )
+	ROM_LOAD( "063.v3", 0x400000, 0x200000, CRC(d07fa5ca) SHA1(1da7f081f8b8fc86a91feacf900f573218d82676) )
+	ROM_LOAD( "063.v4", 0x600000, 0x100000, CRC(24aab4bb) SHA1(10ee4c5b3579865b93dcc1e4079963276aa700a6) )
+
+	ROM_REGION( 0x1000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "063.c1", 0x000000, 0x200000, CRC(86cd307c) SHA1(0d04336f7c436d74638d8c1cd8651faf436a6bec) )
+	ROM_LOAD16_BYTE( "063.c2", 0x000001, 0x200000, CRC(cdfcc4ca) SHA1(179dc81432424d68cefedd20cc1c4b2a95deb891) )
+	ROM_LOAD16_BYTE( "063.c3", 0x400000, 0x200000, CRC(7a63ccc7) SHA1(49d97c543bc2860d493a353ab0d059088c6fbd21) )
+	ROM_LOAD16_BYTE( "063.c4", 0x400001, 0x200000, CRC(751025ce) SHA1(e1bbaa7cd67fd04e4aab7f7ea77f63ae1cbc90d0) )
+	ROM_LOAD16_BYTE( "063.c5", 0x800000, 0x200000, CRC(20d3a475) SHA1(28da44a136bd14c73c62c147c3f6e6bcfa1066de) )
+	ROM_LOAD16_BYTE( "063.c6", 0x800001, 0x200000, CRC(ae4c0a88) SHA1(cc8a7d11daa3821f83a6fd0942534706f939e576) )
+	ROM_LOAD16_BYTE( "063.c7", 0xc00000, 0x200000, CRC(2df3cbcf) SHA1(e54f9022359963711451c2025825b862d36c6975) )
+	ROM_LOAD16_BYTE( "063.c8", 0xc00001, 0x200000, CRC(1ffc6dfa) SHA1(acea18aca76c072e0bac2a364fc96d49cfc86e77) )
+ROM_END
+
 ROM_START( samsho3hc01 ) //samsho3l
 	ROM_REGION( 0x300000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "087_hc01.p1", 0x000000, 0x080000, CRC(7b2d2054) SHA1(da6a33a084ef03eaa42e97a40f81242769ffb766) )
@@ -38485,6 +38518,11 @@ ROM_START( samsh5sphc03 )
 	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "272spn.v1", 0x000000, 0x800000, CRC(3bf61586) SHA1(270fd58781b2b897a7365ccdf878c7e57048da35) )
 	ROM_LOAD( "272spn.v2", 0x800000, 0x800000, CRC(95fe7646) SHA1(eec1a3a4dc5b5a960735147c29b976581a660628) )
+	// fix sound crackling
+	ROM_FILL(0x6bc0,1,0x08)
+	ROM_FILL(0xed41,1,0x89)
+	ROM_FILL(0x16bc0,1,0x82)
+	ROM_FILL(0x1ed41,1,0x8f)
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "272_hc03.c1", 0x0000000, 0x800000, CRC(ec9fda8d) SHA1(acc307e864d0ba15beb78a42edfa62941394ab9f) )
@@ -38586,6 +38624,11 @@ ROM_START( samsh5sphc07 ) //samsh5fe
 	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "272spn.v1", 0x000000, 0x800000, CRC(3bf61586) SHA1(270fd58781b2b897a7365ccdf878c7e57048da35) )
 	ROM_LOAD( "272spn.v2", 0x800000, 0x800000, CRC(95fe7646) SHA1(eec1a3a4dc5b5a960735147c29b976581a660628) )
+	// fix sound crackling
+	ROM_FILL(0x6bc0,1,0x08)
+	ROM_FILL(0xed41,1,0x89)
+	ROM_FILL(0x16bc0,1,0x82)
+	ROM_FILL(0x1ed41,1,0x8f)
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "272_hc03.c1", 0x0000000, 0x800000, CRC(ec9fda8d) SHA1(acc307e864d0ba15beb78a42edfa62941394ab9f) )
@@ -38610,6 +38653,11 @@ ROM_START( samsh5sphc08 ) //samsh5pf
 	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "272spn.v1", 0x000000, 0x800000, CRC(3bf61586) SHA1(270fd58781b2b897a7365ccdf878c7e57048da35) )
 	ROM_LOAD( "272spn.v2", 0x800000, 0x800000, CRC(95fe7646) SHA1(eec1a3a4dc5b5a960735147c29b976581a660628) )
+	// fix sound crackling
+	ROM_FILL(0x6bc0,1,0x08)
+	ROM_FILL(0xed41,1,0x89)
+	ROM_FILL(0x16bc0,1,0x82)
+	ROM_FILL(0x1ed41,1,0x8f)
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "272_hc03.c1", 0x0000000, 0x800000, CRC(ec9fda8d) SHA1(acc307e864d0ba15beb78a42edfa62941394ab9f) )
@@ -38635,6 +38683,11 @@ ROM_START( samsh5sphc09 ) //samsh5spczjh
 	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "272spn.v1", 0x000000, 0x800000, CRC(3bf61586) SHA1(270fd58781b2b897a7365ccdf878c7e57048da35) )
 	ROM_LOAD( "272spn.v2", 0x800000, 0x800000, CRC(95fe7646) SHA1(eec1a3a4dc5b5a960735147c29b976581a660628) )
+	// fix sound crackling
+	ROM_FILL(0x6bc0,1,0x08)
+	ROM_FILL(0xed41,1,0x89)
+	ROM_FILL(0x16bc0,1,0x82)
+	ROM_FILL(0x1ed41,1,0x8f)
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "272d.c1", 0x0000000, 0x800000, CRC(8548097e) SHA1(99177F64039D2914FA4EBD4AFC7EB0FBF4FFE0AF) )
@@ -39759,6 +39812,28 @@ ROM_START( wakuwak7hc02 ) //wakuwak7l
 	ROM_LOAD16_BYTE( "225.c6", 0x1000001, 0x400000, CRC(0eb11a6d) SHA1(c6d4f978ff3ca190a3060ac52bd7347189194f76) )
 ROM_END
 
+ROM_START( wakuwak7hc03 ) // wakuw7jq
+	ROM_REGION( 0x300000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "225_hc03.p1", 0x000000, 0x100000, CRC(680b0912) SHA1(608061e0b63dd54f953bc7ea5aea8894cab3832b) )
+	ROM_LOAD16_WORD_SWAP( "225.p2", 0x100000, 0x200000, CRC(fe190665) SHA1(739d9a8fc2da34381654d9e291141eacc210ae5c) )
+    ROM_DEFAULT_BIOS("console_mode")
+
+	NEO_SFIX_128K( "225.s1", CRC(71c4b4b5) SHA1(9410f13807f01082dc86f2d84051be4bed8e9f7c) )
+
+	NEO_BIOS_AUDIO_128K( "225.m1", CRC(0634bba6) SHA1(153aaf016440500df7a4454f3f2f2911219cb7d8) )
+
+	ROM_REGION( 0x800000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "225.v1", 0x000000, 0x400000, CRC(6195c6b4) SHA1(66c06b5904aedb256e3997bbec60f8ab50c6ff0c) )
+	ROM_LOAD( "225.v2", 0x400000, 0x400000, CRC(6159c5fe) SHA1(9015e93416497f1ef877c717afed40f7ecfa42e4) )
+
+	ROM_REGION( 0x1800000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "225.c1", 0x0000000, 0x400000, CRC(ee4fea54) SHA1(314b513a52b2cc88cbf2409d1934c357269a8bb2) )
+	ROM_LOAD16_BYTE( "225.c2", 0x0000001, 0x400000, CRC(0c549e2d) SHA1(d8c4626231c92e43d9bf183202553ee2b5c532e6) )
+	ROM_LOAD16_BYTE( "225.c3", 0x0800000, 0x400000, CRC(af0897c0) SHA1(2b8ec19b9dd0bd1f1171fb01b915e9d25ec8c421) )
+	ROM_LOAD16_BYTE( "225.c4", 0x0800001, 0x400000, CRC(4c66527a) SHA1(6c8c9342fad70b456e282b0d52e7ad890e4673d3) )
+	ROM_LOAD16_BYTE( "225.c5", 0x1000000, 0x400000, CRC(8ecea2b5) SHA1(cad51e6e76d8258a78becb6f4096dd061f537494) )
+	ROM_LOAD16_BYTE( "225.c6", 0x1000001, 0x400000, CRC(0eb11a6d) SHA1(c6d4f978ff3ca190a3060ac52bd7347189194f76) )
+ROM_END
 
 ROM_START( wjammershc01 )
 	ROM_REGION( 0x100000, "maincpu", 0 )
@@ -41444,6 +41519,7 @@ GAME( 2017, samsho2hc11,      samsho2,  gsc,           neogeo, neogeo_state, ini
 GAME( 2017, samsho2hc12,      samsho2,  gsc,           neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Samurai Shodown II (Special v1.1 Final)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, samsho2hc13,      samsho2,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Samurai Shodown II (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, samsho2hc14,      samsho2,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Samurai Shodown II (Ex Super Version 2016-10-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, samsho2hc15,      samsho2,  gsc,           neogeo, neogeo_state, init_neogeo,    ROT0, "Bear",         "Samurai Shodown II (Perfect v2.0, 2024-05-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, samsho3hc01,      samsho3,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Samurai Shodown III (Simplify Edition 2018-06-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, samsho3hc02,      samsho3,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Samurai Shodown III (Zankurou Musouken Color Change Boss With Simple Attack Edition 2018-11-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2014, samsho3hc03,      samsho3,  neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Samurai Shodown III (Chop Hong Lang Warriors Sword 2014-11-27)", MACHINE_SUPPORTS_SAVE )
@@ -41528,6 +41604,7 @@ GAME( 2004, viewpoinhc01,     viewpoin, neogeo_noslot, neogeo, neogeo_state, ini
 GAME( 1992, viewpoinhc02,     viewpoin, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Viewpoint (Ex Super Version)", MACHINE_SUPPORTS_SAVE )
 GAME( 2009, wakuwak7hc01,     wakuwak7, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Waku Waku 7 (Seven Hot Seven Fire Enhanced Version 2009-03-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, wakuwak7hc02,     wakuwak7, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Waku Waku 7 (Simplify Edition 2018-06-04)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, wakuwak7hc03,     wakuwak7, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Waku Waku 7 (Ex Super Version 2023-06-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, wjammershc01,     wjammers, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Windjammers (Traduction French)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, wjammershc02,     wjammers, neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "Windjammers (Traduction Korean)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, wh1hc01,          wh1,      neogeo_noslot, neogeo, neogeo_state, init_neogeo,    ROT0, "hack",         "World Heroes (Simple Attack Edition 2018-09-12)", MACHINE_SUPPORTS_SAVE )

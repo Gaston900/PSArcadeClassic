@@ -10247,6 +10247,7 @@ ROM_START( nitdd )
 
 	ROM_REGION( 0x0400000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "260.v1", 0x000000, 0x400000, CRC(24b0480c) SHA1(d769e621be52a5cd2e2568891b5f95a48268e1e0) )
+    ROM_FILL(0x50820,1,0x08)  // fix crackle when jumping
 
 	ROM_REGION( 0x1000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "260d.c1", 0x0000000, 0x800000, CRC(f3ff4953) SHA1(0e54548387f3056088e89086a30da05935d08b24) )
@@ -10604,6 +10605,11 @@ ROM_START( ssh5spnd )
 	ROM_LOAD( "272n.v2", 0x400000, 0x400000, CRC(0e46d2f8) SHA1(b8b0838124ea29f73f31e08d5cced8797cea75b1) )
 	ROM_LOAD( "272n.v3", 0x800000, 0x400000, CRC(3f0f7554) SHA1(2581e297725f3b950b59e9086ac5569171da6140) )
 	ROM_LOAD( "272n.v4", 0xc00000, 0x400000, CRC(ad8fabb4) SHA1(cebe3b7306e1431ebb99df13bfc2270b1d3ba1ff) )
+	// fix sound crackling
+	ROM_FILL(0x6bc0,1,0x08)
+	ROM_FILL(0xed41,1,0x89)
+	ROM_FILL(0x16bc0,1,0x82)
+	ROM_FILL(0x1ed41,1,0x8f)
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "272d.c1", 0x0000000, 0x800000, CRC(8548097e) SHA1(99177F64039D2914FA4EBD4AFC7EB0FBF4FFE0AF) )
@@ -10679,6 +10685,11 @@ ROM_START( samsh5spd )
 	ROM_LOAD( "272n.v2",   0x400000, 0x400000, CRC(0e46d2f8) SHA1(b8b0838124ea29f73f31e08d5cced8797cea75b1) )
 	ROM_LOAD( "272n.v3",   0x800000, 0x400000, CRC(3f0f7554) SHA1(2581e297725f3b950b59e9086ac5569171da6140) )
 	ROM_LOAD( "272n.v4",   0xc00000, 0x400000, CRC(ad8fabb4) SHA1(cebe3b7306e1431ebb99df13bfc2270b1d3ba1ff) )
+	// fix sound crackling
+	ROM_FILL(0x6bc0,1,0x08)
+	ROM_FILL(0xed41,1,0x89)
+	ROM_FILL(0x16bc0,1,0x82)
+	ROM_FILL(0x1ed41,1,0x8f)
 
 	ROM_REGION( 0x4000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "272d.c1", 0x0000000, 0x800000, CRC(8548097e) SHA1(99177F64039D2914FA4EBD4AFC7EB0FBF4FFE0AF) )
@@ -12328,6 +12339,7 @@ ROM_START( nitdp )
 
 	ROM_REGION( 0x0400000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "260.v1", 0x000000, 0x400000, CRC(24b0480c) SHA1(d769e621be52a5cd2e2568891b5f95a48268e1e0) )
+    ROM_FILL(0x50820,1,0x08)  // fix crackle when jumping
 
 	ROM_REGION( 0x1000000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "260d.c1", 0x0000000, 0x800000, CRC(f3ff4953) SHA1(0e54548387f3056088e89086a30da05935d08b24) )
@@ -15244,6 +15256,25 @@ ROM_START( columnsncd )
 	ROM_LOAD16_BYTE( "404a.c2", 0x000001, 0x80000, CRC(c4d6e319) SHA1(19a5bb2622c01bea2c0eb2206724c7751caca318) )
 ROM_END
 
+// 502: Cyborg Force by Neo Byte Force
+ROM_START( cyborg )
+	ROM_REGION( 0x900000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "502.p1", 0x000000, 0x100000, CRC(89e1c728) SHA1(4b996f42373d77969c490534858aa0906d110685) )
+	ROM_LOAD16_WORD_SWAP( "502.p2", 0x100000, 0x300000, CRC(e4a8b27a) SHA1(cbdf21414a5be59664dfd363b4d62ba0c8b05847) )
+
+	NEO_SFIX_128K( "502.s1", CRC(5bd29810) SHA1(cfa054dfa027e3617ba1a1f25a043f03a25676fd) )
+
+	NEO_BIOS_AUDIO_64K( "502.m1", CRC(06da3cec) SHA1(034c250229920891edc70fecb5844e12a7c1c1bd) )
+
+	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "502.v1",   0x000000, 0x800000, CRC(dc50718c) SHA1(e4150bc3625a60be197d629444906a8663a4aebe) )
+	ROM_LOAD( "502.v2",   0x800000, 0x800000, CRC(8135d5a8) SHA1(186a516ed0fbc1d39f96385513de2ad662511559) )
+
+	ROM_REGION( 0x2000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "502.c1",   0x0000000, 0x1000000, CRC(77078687) SHA1(9485bcc2af6f59ebce57a6b19f215db712f93278) )
+	ROM_LOAD16_BYTE( "502.c2",   0x0000001, 0x1000000, CRC(a5abdb83) SHA1(cfc54c46ae6a593a9d2f4fdd1ee0d27877f55c20) )
+ROM_END
+
 // 415 : Frog Feast by Rastersoft
 ROM_START( ffeast ) /* Frog Feast - Full Version */
 	ROM_REGION( 0x100000, "maincpu", 0 )
@@ -15280,6 +15311,23 @@ ROM_START( hypernoid )
 	ROM_REGION( 0x400000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "447.c1", 0x000000, 0x200000, CRC(41d6140a) SHA1(862b95ca1fe2b75d7ead0de8ac50c1b8a049c774) )
 	ROM_LOAD16_BYTE( "447.c2", 0x000001, 0x200000, CRC(36f35df2) SHA1(22715561d5383263e41563fcb060f83a0c544531) )
+ROM_END
+
+// 503 : Gladmort Demo by Pixelheart
+ROM_START( gladmortd )
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "503.p1", 0x000000, 0x080000, CRC(e0ceafec) SHA1(f147fdb7c0fee02e8ae1923bf0ef3aff954588ae) )
+
+	NEO_SFIX_128K( "503.s1", CRC(8304be52) SHA1(fbeaee12553709e54e7f5134dfd2ff96df5fdee0) )
+
+	NEO_BIOS_AUDIO_64K( "503.m1", CRC(fb945087) SHA1(a2bae6907bf02c93068f9ee23409506277c8a027) )
+
+	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "503.v1",   0x000000, 0x1000000, CRC(49d60c52) SHA1(56134745ce1fef3272aa5ddfcd24e3e894d5cca9) )
+
+	ROM_REGION( 0x2000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "503.c1",   0x0000000, 0x1000000, CRC(2c4fe4c3) SHA1(7121a8713d58bf61a88fcf075cdc9529838af6e1) )
+	ROM_LOAD16_BYTE( "503.c2",   0x0000001, 0x1000000, CRC(1bdd21bd) SHA1(13749d078525a63ac85ea2aa17b326409a4609e9) )
 ROM_END
 
 ROM_START( lhbb )  // Last Hope with Blue Bullets
@@ -15800,6 +15848,24 @@ ROM_START( totc )
 	ROM_REGION( 0x400000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "316.c1", 0x000000, 0x200000, CRC(cdd6600f) SHA1(85649c199b32db7553012cb5a058a92bbbb7355a) )
 	ROM_LOAD16_BYTE( "316.c2", 0x000001, 0x200000, CRC(f362c271) SHA1(4a2efa043cd2553ff7039cb18a1dba8b41493be7) )
+ROM_END
+
+ROM_START( yoyoshkn )
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "307.p1", 0x000000, 0x100000, CRC(8a36bd7d) SHA1(5a1af3f1de96cadd9680996d3b59471dfe6768e6) )
+
+	NEO_SFIX_128K( "307.s1", CRC(59ce2b22) SHA1(1b5633bd9e707f035c8a3c9811c47e1ea3c74481) )
+
+	NEO_BIOS_AUDIO_128K( "307.m1", CRC(079ac27e) SHA1(d5c8429a80845be46de0833d3fa64f1864d2fe15) )
+
+	ROM_REGION( 0x600000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "307.v1", 0x000000, 0x200000, CRC(79e1b73f) SHA1(a905b24f973874199803d95beff786a81cb581ba) )
+	ROM_LOAD( "307.v2", 0x200000, 0x200000, CRC(4c464d41) SHA1(15ae20f3e26e7458ccfc3ad11ea99af754bf696d) )
+	ROM_LOAD( "307.v3", 0x400000, 0x200000, CRC(0fbe1f09) SHA1(952045f146aad3e593cc568fbebf1c4f4cdaddf3) )
+
+	ROM_REGION( 0x400000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "307.c1", 0x000000, 0x200000, CRC(fde9b178) SHA1(21060a2695e3f1cd046322ebaacde9dbb3fb5436) )
+	ROM_LOAD16_BYTE( "307.c2", 0x000001, 0x200000, CRC(780c2045) SHA1(5551c7f3010da658ac31c3478820a59eab71f5f4) )
 ROM_END
 
 ROM_START( xeno )
@@ -17070,8 +17136,10 @@ GAME( 2018, cnbe2018,   cnbe,     neogeo_noslot,   neogeo,     neogeo_state, ini
 GAME( 2013, cphd,       neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Le Cortex", "Crouching Pony Hidden Dragon Demo", MACHINE_SUPPORTS_SAVE )
 GAME( 1990, columnsn,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Jeff Kurtz", "Columns (NeoGeo)(Homebrew)", MACHINE_SUPPORTS_SAVE )
 GAME( 1990, columnsncd, columnsn, neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Jeff Kurtz", "Columns (CD conversion)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, cyborg,     neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Neo Byte Force", "Cyborg Force", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, ffeast,     neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Rastersoft", "Frog Feast (NeoGeo)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, hypernoid,  neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "M.Priewe", "Hypernoid (2021-11-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, gladmortd,  neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Pixelheart", "Gladmort (Demo)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, lhbb,       lasthope, neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Elrayzeur", "Last Hope (Blue Bullets)", MACHINE_SUPPORTS_SAVE )
 GAME( 2007, lhcdb,      lasthope, neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "NG:Dev.Team", "Last Hope CD Beta", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
 GAME( 2007, lhcdba,     lasthope, neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "NG:Dev.Team", "Last Hope (Neo CD conversion)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
@@ -17099,6 +17167,7 @@ GAME( 2022, teot,       neogeo,   neogeo_noslot,   neogeo,     neogeo_state, ini
 GAME( 2012, timesup,    neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "NGF Dev. Inc", "Time's Up!", MACHINE_SUPPORTS_SAVE )
 GAME( 2012, timesupd,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "NGF Dev. Inc", "Time's Up! (Demo)", MACHINE_SUPPORTS_SAVE )
 GAME( 2011, totc,       neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "FACE Corporation / N.C.I - Le Cortex", "Treasure of the Caribbean", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, yoyoshkn,   neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Dr Ludos", "Yo-Yo Shuriken", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, xeno,       neogeo,   neogeo_noslot,   neogeo,     neogeo_state, init_neogeo,   ROT0, "Bitmap Bureau", "Xeno Crisis v1.0.0", MACHINE_SUPPORTS_SAVE )
 
 // Intro Demo Music

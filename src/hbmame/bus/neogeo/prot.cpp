@@ -1031,6 +1031,16 @@ void ngbootleg_prot_device::matrimbl_decrypt(u8* sprrom, u32 sprrom_size, u8* au
 	cthd2003_c(sprrom,sprrom_size, 0 );
 }
 
+/* Fixed by remikare */
+void ngbootleg_prot_device::neogeo_darksoft_cx_decrypt(u8*sprrom, u32 sprrom_size)
+{
+	int cx_size = sprrom_size;
+	u8 *rom = sprrom;
+
+	for (int i = 0; i < cx_size; i+=4)
+		std::swap(rom[i+1], rom[i+2]);
+}
+
 /***********************************************************************************************************************************/
 
 DEFINE_DEVICE_TYPE(KOG_PROT, kog_prot_device, "kog_prot", "NeoGeo Protection (King of Gladiator)")

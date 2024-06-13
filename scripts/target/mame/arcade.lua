@@ -3084,6 +3084,7 @@ files {
 	MAME_DIR .. "src/hbmame/drivers/neogeo_noslothb.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/video/neogeo.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/drivers/neogeo_noslot.cpp", --HBMAME
+	MAME_DIR .. "src/hbmame/drivers/mslughb.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/video/neogeo_spr.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/machine/ng_memcard.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/bus/neogeo/prot.cpp", --HBMAME

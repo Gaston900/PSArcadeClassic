@@ -635,10 +635,10 @@ namespace {
 
 #define CORE_INPUT_TYPES_SERVICE \
 		CORE_INPUT_TYPES_BEGIN(service) \
-		INPUT_PORT_DIGITAL_TYPE(  0, OTHER,    SERVICE1,            N_p("input-name", "Service 1"),              input_seq() ) \
-		INPUT_PORT_DIGITAL_TYPE(  0, OTHER,    SERVICE2,            N_p("input-name", "Service 2"),              input_seq() ) \
-		INPUT_PORT_DIGITAL_TYPE(  0, OTHER,    SERVICE3,            N_p("input-name", "Service 3"),              input_seq() ) \
-		INPUT_PORT_DIGITAL_TYPE(  0, OTHER,    SERVICE4,            N_p("input-name", "Service 4"),              input_seq() ) \
+		INPUT_PORT_DIGITAL_TYPE(  0, OTHER,    SERVICE1,            N_p("input-name", "Service 1"),              input_seq(KEYCODE_9) ) \
+		INPUT_PORT_DIGITAL_TYPE(  0, OTHER,    SERVICE2,            N_p("input-name", "Service 2"),              input_seq(KEYCODE_0) ) \
+		INPUT_PORT_DIGITAL_TYPE(  0, OTHER,    SERVICE3,            N_p("input-name", "Service 3"),              input_seq(KEYCODE_MINUS) ) \
+		INPUT_PORT_DIGITAL_TYPE(  0, OTHER,    SERVICE4,            N_p("input-name", "Service 4"),              input_seq(KEYCODE_EQUALS) ) \
 		CORE_INPUT_TYPES_END()
 
 #define CORE_INPUT_TYPES_TILT \
@@ -932,7 +932,7 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_SHOW_GFX,          N_p("input-name", "Show Decoded Graphics"),  input_seq(KEYCODE_F4) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_FRAMESKIP_DEC,     N_p("input-name", "Frameskip Dec"),          input_seq(KEYCODE_F8) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_FRAMESKIP_INC,     N_p("input-name", "Frameskip Inc"),          input_seq(KEYCODE_F9) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_THROTTLE,          N_p("input-name", "Throttle"),               input_seq(KEYCODE_I) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_THROTTLE,          N_p("input-name", "Throttle"),               input_seq(KEYCODE_F10) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_FAST_FORWARD,      N_p("input-name", "Fast Forward"),           input_seq(KEYCODE_BACKSPACE) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_SHOW_FPS,          N_p("input-name", "Show FPS"),               input_seq(KEYCODE_F11, input_seq::not_code, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_SNAPSHOT,          N_p("input-name", "Save Snapshot"),          input_seq(KEYCODE_F12, input_seq::not_code, KEYCODE_LSHIFT) ) \
@@ -963,8 +963,8 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_TOGGLE_UI,         N_p("input-name", "UI Toggle"),              input_seq(KEYCODE_SCRLOCK, input_seq::not_code, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_RELEASE_POINTER,   N_p("input-name", "UI Release Pointer"),     input_seq(KEYCODE_RCONTROL, KEYCODE_RALT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_PASTE,             N_p("input-name", "UI Paste Text"),          input_seq(KEYCODE_SCRLOCK, KEYCODE_LSHIFT) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_SAVE_STATE,        N_p("input-name", "Save State"),             input_seq(KEYCODE_K) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_LOAD_STATE,        N_p("input-name", "Load State"),             input_seq(KEYCODE_L) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_SAVE_STATE,        N_p("input-name", "Save State"),             input_seq(KEYCODE_F7, KEYCODE_LSHIFT, input_seq::or_code, KEYCODE_F7, KEYCODE_RSHIFT) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_LOAD_STATE,        N_p("input-name", "Load State"),             input_seq(KEYCODE_F7, input_seq::not_code, KEYCODE_LSHIFT, input_seq::not_code, KEYCODE_RSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_TAPE_START,        N_p("input-name", "UI (First) Tape Start"),  input_seq(KEYCODE_F2, input_seq::not_code, KEYCODE_LSHIFT, input_seq::not_code, KEYCODE_RSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_TAPE_STOP,         N_p("input-name", "UI (First) Tape Stop"),   input_seq(KEYCODE_F2, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_DATS,              N_p("input-name", "UI External DAT View"),   input_seq(KEYCODE_LALT, KEYCODE_D) ) \

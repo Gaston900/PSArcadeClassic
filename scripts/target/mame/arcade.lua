@@ -1807,7 +1807,7 @@ files {
 --	MAME_DIR .. "src/mame/includes/metlclsh.h",
 	MAME_DIR .. "src/mame/video/metlclsh.cpp",
 	MAME_DIR .. "src/mame/drivers/mirage.cpp",
-	MAME_DIR .. "src/mame/drivers/pcktgal.cpp",
+	MAME_DIR .. "src/hbmame/drivers/pcktgal.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/pktgaldx.cpp",
 --	MAME_DIR .. "src/mame/includes/pktgaldx.h",
 	MAME_DIR .. "src/mame/video/pktgaldx.cpp",
@@ -3829,7 +3829,7 @@ files {
 --	MAME_DIR .. "src/mame/video/st0020.h",
 	MAME_DIR .. "src/mame/machine/st0016.cpp",
 --	MAME_DIR .. "src/mame/machine/st0016.h",
-	MAME_DIR .. "src/mame/drivers/simple_st0016.cpp",
+	MAME_DIR .. "src/hbmame/drivers/simple_st0016.cpp", --HBMAME
 	MAME_DIR .. "src/mame/video/seta001.cpp",
 --	MAME_DIR .. "src/mame/video/seta001.h",
 	MAME_DIR .. "src/mame/video/x1_012.cpp",

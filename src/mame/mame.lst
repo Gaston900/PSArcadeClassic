@@ -45854,7 +45854,7 @@ captcommhc125                   // Hack
 captcommhc126                   // Hack
 captcommhc127                   // Hack
 captcommhc128                   // Hack
-//captcommhc129                   // Hack
+captcommhc129                   // Hack
 captcommhc130                   // Hack
 dinohc01                        // Hack
 dinohc02                        // Hack
@@ -46681,6 +46681,19 @@ dinosf2                         // SF2 Conversion
 ghoulsf2                        // SF2 Conversion
 forgottnsf2                     // SF2 Conversion
 striderf2                       // SF2 Conversion
+area88rk                        // Hack
+area88rka                       // Hack
+captcommjk                      // Hack
+daimakaik                       // Hack
+ffightaek                       // Hack
+ffightjk                        // Hack
+kodjk                           // Hack
+knightsk                        // Hack
+rockmank                        // Hack
+sfzchk                          // Hack
+striderjk                       // Hack
+tk2h10dk                        // Hack
+wofchk                          // Hack
 
 @source:cps1bl_5205.cpp
 sf2mdthc01                      // Hack
@@ -46738,6 +46751,7 @@ hsf2hc16                        // Hack [It does not work]
 hsf2hc17                        // Hack
 hsf2hc18                        // Hack
 hsf2hc19                        // Hack
+hsf2hc20                        // Hack
 mvschc01                        // Hack
 mvschc02                        // Hack
 mvschc03                        // Hack
@@ -46783,6 +46797,7 @@ sfa3hc17                        // Hack
 sfa3hc18                        // Hack
 sfa3hc19                        // Hack
 sfa3hc20                        // Hack
+sfa3hc21                        // Hack
 sgemfhc01                       // Hack
 sfz2alhc01                      // Hack
 sfz2alhc02                      // Hack
@@ -46816,6 +46831,7 @@ ssf2thc20                       // Hack
 ssf2thc21                       // Hack
 ssf2thc22                       // Hack
 ssf2thc23                       // Hack
+ssf2thc24                       // Hack
 ssf2hc01                        // Hack
 ssf2hc02                        // Hack
 ssf2hc03                        // Hack
@@ -46829,6 +46845,14 @@ xmcotahc01                      // Hack
 xmcotahc02                      // Hack
 xmvsfhc01                       // Hack
 xmvsfhc02                       // Hack
+csclubk                         // Hack
+ddsomak                         // Hack
+ddsomjk                         // Hack
+rockman2k                       // Hack
+sfzk                            // Hack
+sfz2jk                          // Hack
+sfz2jr1k                        // Hack
+sfz2alk                         // Hack
 
 @source:cps2.cpp
 sfz3mix                         // Hack
@@ -46908,6 +46932,7 @@ dkong07                         // Hack
 dkrndmzr                        // Hack
 dktrain                         // Hack
 dkong19                         // Hack
+dkremix                         // Hack
 
 @source:docastle.cpp
 sdreturn                        // Hack
@@ -47118,6 +47143,7 @@ nbbatmanhc10                    // Hack
 nbbatmanhc11                    // Hack
 nbbatmanhc12                    // Hack
 uccopshc01                      // Hack
+uccopsk                         // Hack
 
 @source:mappy.cpp
 crackhea                        // Hack
@@ -47273,7 +47299,6 @@ fatfury3hc01                    // Hack
 fatfury3hc02                    // Hack
 fatfury3hc03                    // Hack
 fightfevhc01                    // Hack
-flipshothc01                    // Hack
 galaxyfghc01                    // Hack
 garouhc01                       // Hack
 garouhc02                       // Hack
@@ -48254,7 +48279,6 @@ wakuwak7hc01                    // Hack
 wakuwak7hc02                    // Hack
 wakuwak7hc03                    // Hack
 wjammershc01                    // Hack
-wjammershc02                    // Hack
 wh1hc01                         // Hack
 wh1hc02                         // Hack
 wh2hc01                         // Hack
@@ -48265,6 +48289,21 @@ wh2jhc02                        // Hack
 whphc01                         // Hack
 whphc02                         // Hack
 zintrckbhc01                    // Hack
+aofkt                           // Hack
+flipshotk                       // Hack
+kof94kt                         // Hack
+kof95kt                         // Hack
+kof96kt                         // Hack
+kof97kt                         // Hack
+kof97plskt                      // Hack
+kof98hkt                        // Hack
+kof99ndkt                       // Hack
+kof2kkt                         // Hack
+neocup98k                       // Hack
+tophuntrk                       // Hack
+puzzledpk                       // Hack
+puzzldprk                       // Hack
+wjammersk                       // Hack
 
 @source:nmk16.cpp
 tdragon2p                       // Hack
@@ -49355,7 +49394,9 @@ powerinshc07                    // Hack
 powerinshc08                    // Hack
 
 @source:psikyo.cpp
+gunbirdkp                       // Hack
 tengaihc01                      // Hack
+tengaik                         // Hack
 
 @source:psikyosh.cpp
 darakuhc01                      // Hack
@@ -49620,6 +49661,7 @@ geminihc02                      // Hack
 geminihc03                      // Hack
 rygarhc01                       // Hack
 silkwormhc01                    // Hack
+rygark                          // Hack
 
 @source:tecmo16.cpp
 fstarfrchc01                    // Hack
@@ -49729,6 +49771,13 @@ sdojb                           // Hack
 futari15bc                      // Hack
 futariblc                       // Hack
 futaribljc                      // Hack
+
+@source:simple_st0016.cpp
+renjuk                          // Hack
+
+@source:pcktgal.cpp
+pckgalgr                       // Hack
+pcktgalk                       // Hack
 
 /*******************************************
  PSMSLUGFOREVER 5.2

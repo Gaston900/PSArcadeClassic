@@ -1842,6 +1842,37 @@ ROM_START( uccopshc01 ) //uccopsj
 	ROM_LOAD( "uc_da.bin", 0x000000, 0x080000, CRC(0b2855e9) SHA1(70f9decd78eab679a2ccad69e01cb303b61e0d38) )
 ROM_END
 
+/********************
+  Korean Translation
+***********************/
+
+ROM_START( uccopsk )
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "uc_h0_a.ic28", 0x000001, 0x040000, CRC(9e17cada) SHA1(086bb9c1ab851cab3734c2f9188d8ff3c5f98913) )
+	ROM_LOAD16_BYTE( "uc_l0_a.ic39", 0x000000, 0x040000, CRC(4a4e3208) SHA1(d61c74d46584e2c15e70f7a17b598e51981da9e8) )
+	ROM_LOAD16_BYTE( "ucc_h1k.ic27", 0x080001, 0x020000, CRC(b96e6276) SHA1(b6c0cbfba257f798187b087079df74fc4737eacd) )
+	ROM_LOAD16_BYTE( "ucc_l1k.ic38", 0x080000, 0x020000, CRC(6795dd15) SHA1(213a1ffe5357068d4a274607cb15c117bace55f5) )
+
+	ROM_REGION( 0x20000, "soundcpu", 0 )
+	ROM_LOAD16_BYTE( "uc_sh0.ic30", 0x00001, 0x10000, CRC(f0ca1b03) SHA1(07154a2c747091f8be23587c109d91ed1672da6e) )
+	ROM_LOAD16_BYTE( "uc_sl0.ic31", 0x00000, 0x10000, CRC(d1661723) SHA1(bdc00196aa2074e7b21e5949f73e9f2b93d76fd9) )
+
+	ROM_REGION( 0x200000, "gfx1", 0 )
+	ROM_LOAD( "uc_w38mk.ic26", 0x000000, 0x080000, CRC(dc672f1b) SHA1(12894ad8d2d5fc9820bd25c1c013f472ddfa85c3) )
+	ROM_LOAD( "uc_w39mk.ic25", 0x080000, 0x080000, CRC(bb73ca75) SHA1(068dd9f3f674ec55ad23cff20d6e69efb30f6058) )
+	ROM_LOAD( "uc_c2.ic24", 0x100000, 0x080000, CRC(96397ac6) SHA1(6dfe507bd9f41b5d46d85ef5f46a368745593b52) )
+	ROM_LOAD( "uc_c3.ic23", 0x180000, 0x080000, CRC(5d07d10d) SHA1(ee1a928b37043c476346f189f75d2bfcc44bffe6) )
+
+	ROM_REGION( 0x400000, "gfx2", 0 )
+	ROM_LOAD( "uc_030.ic37", 0x000000, 0x100000, CRC(97f7775e) SHA1(5cd147fd940b1ab6eba8e6c6f803bdcc5da5a563) )
+	ROM_LOAD( "uc_020.ic36", 0x100000, 0x100000, CRC(5e0b1d65) SHA1(9e45753d10b2d7b580cd11cef74181209a424189) )
+	ROM_LOAD( "uc_010.ic35", 0x200000, 0x100000, CRC(bdc224b3) SHA1(09477ec39890d954fac6ff653b9f46c9adea56b6) )
+	ROM_LOAD( "uc_000.ic34", 0x300000, 0x100000, CRC(7526daec) SHA1(79431d711deb6ed09dc52be753b7b0f2c5588dc3) )
+
+	ROM_REGION( 0x80000, "irem", 0 )
+	ROM_LOAD( "uc_da.bin", 0x000000, 0x080000, CRC(0b2855e9) SHA1(70f9decd78eab679a2ccad69e01cb303b61e0d38) )
+ROM_END
+
 /*    YEAR  NAME         PARENT     MACHINE         INPUT                    INIT            MONITOR COMPANY     FULLNAME FLAGS */
 // Hack/Homebrow
 GAME( 2022, hookhc01,     hook,      hook,          hook,      m92_state, empty_init,    ROT0,   "hack",         "Hook (Dragon Slayer 2022-06-25)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL)
@@ -1912,3 +1943,6 @@ GAME( 2020, nbbatmanhc10, nbbatman,  nbbatman,      nbbatman,  m92_state, init_b
 GAME( 2020, nbbatmanhc11, nbbatman,  nbbatman,      nbbatman,  m92_state, init_bank,     ROT0,   "hack",         "Ninja Baseball Bat Man (1V8 2020-01-08)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL )
 GAME( 2020, nbbatmanhc12, nbbatman,  nbbatman,      nbbatman,  m92_state, init_bank,     ROT0,   "hack",         "Ninja Baseball Bat Man (Warriors Edition 2020-01-14)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL)
 GAME( 2019, uccopshc01,   uccops,    uccops,        uccops,    m92_state, empty_init,    ROT0,   "hack",         "Undercover Cops (Ex Super Version 2019-07-22)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL )
+
+/* Korean Translation */
+GAME( 1992, uccopsk,      uccops,    uccops,        uccops,    m92_state, empty_init,    ROT0,   "hack",         "Undercover Cops (Korean Translation)", MACHINE_SUPPORTS_SAVE )

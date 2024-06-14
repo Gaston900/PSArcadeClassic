@@ -524,6 +524,15 @@ INPUT_PORTS_EXTERN(dualbios);
 #define NEO_BIOS_AUDIO_512K(name, hash) \
 	NEO_BIOS_AUDIO(0x80000, name, hash)
 
+#define NEO_JAPAN_BIOS_AUDIO(size, name, hash) \
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 ) \
+	ROM_LOAD16_WORD_SWAP("vs-bios.rom",  0x00000, 0x20000, CRC(f0e8f27d) SHA1(ecf01eda815909f1facec62abf3594eaa8d11075) ) \
+	ROM_REGION( 0x20000, "audiobios", 0 ) \
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
+	ROM_REGION(size+0x10000, "audiocpu", 0 ) \
+	ROM_LOAD( name, 0x00000, size, hash ) \
+	ROM_RELOAD(     0x10000, size )
+
 #define NEO_BIOS_AUDIO_ENCRYPTED(size, name, hash) \
 	NEOGEO_BIOS \
 	ROM_REGION( 0x20000, "audiobios", 0 ) \
@@ -543,6 +552,15 @@ INPUT_PORTS_EXTERN(dualbios);
 
 #define NEO_BIOS_AUDIO_ENCRYPTED_512K(name, hash) \
 	NEO_BIOS_AUDIO_ENCRYPTED(0x80000, name, hash)
+
+#define NEO_JAPAN_BIOS_AUDIO_ENCRYPTED(size, name, hash) \
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 ) \
+	ROM_LOAD16_WORD_SWAP("vs-bios.rom",  0x00000, 0x20000, CRC(f0e8f27d) SHA1(ecf01eda815909f1facec62abf3594eaa8d11075) ) \
+	ROM_REGION( 0x20000, "audiobios", 0 ) \
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
+	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF ) \
+	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
+	ROM_LOAD( name, 0x00000, size, hash )
 
 #define ROM_Y_ZOOM \
 	ROM_REGION( 0x20000, "zoomy", 0 ) \

@@ -2067,7 +2067,8 @@ void CreateNEOGEOFolders(int parent_index)
 			continue;
 
 		if( (!strcmp("neogeo_noslot.cpp", s))||
-            (!strcmp("neogeo_noslothb.cpp", s)))
+            (!strcmp("neogeo_noslothb.cpp", s))||
+            (!strcmp("mslughb.cpp", s)))
 		{
 			AddGame(lpFolder, jj);
 		}

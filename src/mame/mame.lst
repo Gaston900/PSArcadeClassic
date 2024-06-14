@@ -46897,6 +46897,17 @@ dkpace                          // Hack
 dkongss                         // Hack
 dkwizard                        // Hack
 dksprfin                        // Hack
+dkongacc                        // Hack
+dkonghh                         // Hack
+dkbarpal6                       // Hack
+dkongp                          // Hack
+dkong21                         // Hack
+dkong22                         // Hack
+dkong23                         // Hack
+dkong07                         // Hack
+dkrndmzr                        // Hack
+dktrain                         // Hack
+dkong19                         // Hack
 
 @source:docastle.cpp
 sdreturn                        // Hack
@@ -47187,6 +47198,9 @@ umk3hc32                        // Hack
 umk3hc33                        // Hack
 umk3hc34                        // Hack
 umk3hc35                        // Hack
+umk3hc36                        // Hack
+umk3hc37                        // Hack
+umk3hc38                        // Hack
 umk3plushc01                    // Hack
 umk3plushc02                    // Hack
 wwfmaniahc01                    // Hack

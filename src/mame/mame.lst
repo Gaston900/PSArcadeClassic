@@ -33267,6 +33267,7 @@ kof95a                          // 0084 (c) 1995 SNK, alternate board
 kof95h                          // 0084 (c) 1995 SNK
 kof96                           // 0214 (c) 1996 SNK
 kof96h                          // 0214 (c) 1996 SNK
+kof96a                          // 0214 (c) 1996 SNK
 kof97                           // 0232 (c) 1997 SNK
 kof97h                          // 0232 (c) 1997 SNK
 kof97k                          // 0232 (c) 1997 SNK
@@ -33291,6 +33292,7 @@ kotm2p                          // 0039 (c) 1992 SNK (prototype)
 kotmh                           // 0016 (c) 1991 SNK
 lans2004                        // bootleg of shocktr2
 lastblad                        // 0234 (c) 1997 SNK
+lastblada                       // 0234 (c) 1997 SNK
 lastbladh                       // 0234 (c) 1997 SNK
 lastbld2                        // 0243 (c) 1998 SNK
 lasthope                        //
@@ -33454,8 +33456,8 @@ kof2k1d                         // Decrypted / Bootleg
 kof2k1hd                        // Decrypted / Bootleg
 kof2k1nd                        // Decrypted / Bootleg
 kof2k1e                         // Decrypted / Bootleg
-kof2k1pls                       // Decrypted / Bootleg
-kof2k1pa                        // Decrypted / Bootleg
+kf2k1pls                       // Decrypted / Bootleg
+kf2k1pla                        // Decrypted / Bootleg
 kof2k2d                         // Decrypted / Bootleg
 kof2k2nd                        // Decrypted / Bootleg
 kf2k2plad                       // Decrypted / Bootleg
@@ -33464,23 +33466,23 @@ kf2k2plc                        // Decrypted / Bootleg
 kof2003d                        // Decrypted / Bootleg
 kof2003f                        // Decrypted / Bootleg
 kof2k3d                         // Decrypted / Bootleg
-kof2k3bd                        // Decrypted / Bootleg
+kf2k3bd                         // Decrypted / Bootleg
 kof2k3hd                        // Decrypted / Bootleg
 kof2k3nd                        // Decrypted / Bootleg
 kf2k3pcd                        // Decrypted / Bootleg
-kof2k3pd                        // Decrypted / Bootleg
+kf2k3pd                         // Decrypted / Bootleg
 kf2k3upd                        // Decrypted / Bootleg
 kf2k3bl2                        // Decrypted / Bootleg
 kogd                            // Decrypted / Bootleg
 kogplus                         // Decrypted / Bootleg
 kof10thd                        // Decrypted / Bootleg
-kof2k8uni                       // Decrypted / Bootleg
+kf2k8uni                        // Decrypted / Bootleg
+kf2k8unid                       // Decrypted / Bootleg
 kof10thu                        // Decrypted / Bootleg
 kof10thud                       // Decrypted / Bootleg
 kof2k4mp                        // Decrypted / Bootleg
 kof2k4mp2                       // Decrypted / Bootleg
 kf2k4pls                        // Decrypted / Bootleg
-kof2k4spl                       // Decrypted / Bootleg
 kofse2k4                        // Decrypted / Bootleg
 lans2k4d                        // Decrypted / Bootleg
 matrimd                         // Decrypted / Bootleg
@@ -33655,7 +33657,7 @@ wh1d                            // Multi Game Doctor 2
 @source:neogeo.cpp
 2020bbcd                        // CD conversion
 crswd2bl                        // CD conversion
-gpilotscd                       // CD conversion
+gpilotcd                        // CD conversion
 ironcladcd                      // CD conversion
 joyjoycd                        // CD conversion
 lbowlingcd                      // CD conversion
@@ -46681,19 +46683,25 @@ dinosf2                         // SF2 Conversion
 ghoulsf2                        // SF2 Conversion
 forgottnsf2                     // SF2 Conversion
 striderf2                       // SF2 Conversion
+
+@source:cps1.cpp
 area88rk                        // Hack
 area88rka                       // Hack
 captcommjk                      // Hack
 daimakaik                       // Hack
+dinok                           // Hack
 ffightaek                       // Hack
 ffightjk                        // Hack
 kodjk                           // Hack
 knightsk                        // Hack
-rockmank                        // Hack
+punisherjk                      // Hack
+rockmanjk                       // Hack
 sfzchk                          // Hack
 striderjk                       // Hack
 tk2h10dk                        // Hack
+wofjk                           // Hack
 wofchk                          // Hack
+wonder3k                        // Hack
 
 @source:cps1bl_5205.cpp
 sf2mdthc01                      // Hack
@@ -46846,14 +46854,22 @@ xmcotahc01                      // Hack
 xmcotahc02                      // Hack
 xmvsfhc01                       // Hack
 xmvsfhc02                       // Hack
+
+@source:cps2.cpp
+avspjk                          // Hack
 csclubk                         // Hack
 ddsomak                         // Hack
 ddsomjk                         // Hack
+ddtodak                         // Hack
+ddtodjk                         // Hack
+pfghtjk                         // Hack
+rmancp2jk                       // Hack
 rockman2k                       // Hack
 sfzk                            // Hack
 sfz2jk                          // Hack
 sfz2jr1k                        // Hack
 sfz2alk                         // Hack
+spf2xjk                         // Hack
 
 @source:cps2.cpp
 sfz3mix                         // Hack
@@ -47144,6 +47160,8 @@ nbbatmanhc10                    // Hack
 nbbatmanhc11                    // Hack
 nbbatmanhc12                    // Hack
 uccopshc01                      // Hack
+hookk                           // Hack
+leaguemnk                       // Hack
 uccopsk                         // Hack
 
 @source:mappy.cpp
@@ -49396,6 +49414,7 @@ powerinshc08                    // Hack
 
 @source:psikyo.cpp
 gunbirdkp                       // Hack
+sngkacek                        // Hack
 tengaihc01                      // Hack
 tengaik                         // Hack
 

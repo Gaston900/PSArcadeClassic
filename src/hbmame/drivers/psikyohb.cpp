@@ -64,6 +64,28 @@ ROM_START( gunbirdkp )
 	ROM_LOAD( "u3.bin",  0x000000, 0x040000, CRC(0905aeb2) SHA1(8cca09f7dfe3f804e77515f7b1b1bdbeb7bb3d80) )
 ROM_END
 
+ROM_START( sngkacek )
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD32_WORD_SWAP( "1-u127k.bin", 0x000000, 0x040000, CRC(f78906ff) SHA1(2c4bb76a4c5a5917459d335c6a42b915d9f18469) )
+	ROM_LOAD32_WORD_SWAP( "2-u126k.bin", 0x000002, 0x040000, CRC(e5a51908) SHA1(05511f039a26064a857c3a503a5819a1472654d3) )
+
+	ROM_REGION( 0x020000, "audiocpu", 0 )
+	ROM_LOAD( "3-u58.bin", 0x00000, 0x20000, CRC(310f5c76) SHA1(dbfd1c5a7a514bccd89fc4f7191744cf76bb745d) )
+
+	ROM_REGION( 0x200000, "gfx1", 0 )
+	ROM_LOAD16_WORD_SWAP( "u14k.bin",  0x000000, 0x200000, CRC(460c0b15) SHA1(32f4d2dbb3668ab93661633dff8497205c11805b) )
+
+	ROM_REGION( 0x200000, "gfx2", 0 )
+	ROM_LOAD16_WORD_SWAP( "u34.bin",   0x000000, 0x100000, CRC(e6a75bd8) SHA1(1aa84ea54584b6c8b2846194b48bf6d2afa67fee) )
+	ROM_LOAD16_WORD_SWAP( "u35k.bin",  0x100000, 0x100000, CRC(6eb5b9c6) SHA1(4bd93c1b1a665620b3275790081c018a529b3663) )
+
+	ROM_REGION( 0x100000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "u68.bin",  0x000000, 0x100000, CRC(9a7f6c34) SHA1(c549b209bce1d2c6eeb512db198ad20c3f5fb0ea) )
+
+	ROM_REGION16_LE( 0x040000, "spritelut", 0 )
+	ROM_LOAD( "u11.bin",  0x000000, 0x040000, CRC(11a04d91) SHA1(5d146a9a39a70f2ee212ceab9a5469598432449e) )
+ROM_END
+
 ROM_START( tengaik )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD32_WORD_SWAP( "5k.u40", 0x000000, 0x80000, CRC(279f7493) SHA1(bb39c50258fe30e4cc4b3da1f2acc05c362f8ddf) )
@@ -97,4 +119,5 @@ GAME( 2009, tengaihc01,    tengai,   s1945,    tengai,   psikyo_state, init_teng
 
 /* Korean Translation */
 GAME( 1994, gunbirdkp,  gunbird,  gunbird,  gunbirdj, psikyo_state, init_gunbird,  ROT270, "hack",          "Gunbird (Korean Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 1993, sngkacek,   samuraia, sngkace,  sngkace,  psikyo_state, init_sngkace,  ROT270, "hack",          "Sengoku Ace (Korean Translation)", MACHINE_SUPPORTS_SAVE | MACHINE_IMPERFECT_TIMING )
 GAME( 1996, tengaik,    tengai,   s1945,    tengaij,  psikyo_state, init_tengai,   ROT0,   "hack",          "Tengai (Korean Translation)", MACHINE_SUPPORTS_SAVE )

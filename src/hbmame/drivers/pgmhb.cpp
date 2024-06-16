@@ -26271,6 +26271,64 @@ ROM_START( oldsplushc35 ) //oldsplusnr211, oldsplusnr211o
 	ROM_LOAD( "m05301_hc35.rom",   0x400000, 0x400000, CRC(b740b810) SHA1(e2539df0fcce63157586b15f45fb24d0b59fcebc) )
 ROM_END
 
+ROM_START( oldsplushc36 ) //oldsplusnew
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	PGM_68K_BIOS
+	ROM_LOAD16_WORD_SWAP( "p05301_hc36.rom",   0x100000, 0x400000, CRC(04d50747) SHA1(48da1e67e0a4e98f8577c8624e260e180c53904f) )
+
+	ROM_REGION( 0x4000, "prot", 0 )
+	ROM_LOAD( "oldsplus_igs027a.bin", 0x000000, 0x04000, NO_DUMP )
+
+	ROM_REGION32_LE( 0x800000, "user1", ROMREGION_ERASE00 )
+
+	ROM_REGION( 0xc00000, "tiles", 0 )
+	PGM_VIDEO_BIOS
+	ROM_LOAD( "t05301_hc35.rom",   0x180000, 0x800000, CRC(bf3db9be) SHA1(c460e9d33f91d30e665dc2747bcf7bd8578c3b5b) )
+
+	ROM_REGION16_LE( 0x2000000, "sprcol", 0 )
+    ROM_LOAD( "a05301_hc35.rom",   0x0000000, 0x0800000, CRC(0f456049) SHA1(cb9395f3865132c6d84372560ddd8bb2cab8b22a) )
+	ROM_LOAD( "a05302_hc01.rom",   0x0800000, 0x0800000, CRC(4ed9028c) SHA1(9c4038097b225c331618dbf0dac3fb9d37a25e9f) )
+	ROM_LOAD( "a05303_hc02.rom",   0x1000000, 0x0800000, CRC(5f75eca2) SHA1(09b1657c8acfe144fc10d12a0607eb347f4e7943) )
+	ROM_LOAD( "a05304_hc35.rom",   0x1800000, 0x0800000, CRC(bce3d08b) SHA1(129604e52a582e27c0437176475165c0dd4e471b) )
+
+	ROM_REGION16_LE( 0x1000000, "sprmask", 0 )
+	ROM_LOAD( "b05301_hc35.rom",   0x0000000, 0x0800000, CRC(1cc7c2b1) SHA1(557a07af4df83789c2524c730060631736d45f8b) )
+	ROM_LOAD( "b05302_hc35.rom",   0x0800000, 0x0800000, CRC(25b7a816) SHA1(958c6397674da18b56f3b015a1263196240b8f0b) )
+
+	ROM_REGION( 0x800000, "ics", 0 )
+	PGM_AUDIO_BIOS
+	ROM_LOAD( "m05301_hc35.rom",   0x400000, 0x400000, CRC(b740b810) SHA1(e2539df0fcce63157586b15f45fb24d0b59fcebc) )
+ROM_END
+
+ROM_START( oldsplushc37 ) //oldsplusnew
+	ROM_REGION( 0x600000, "maincpu", 0 )
+	PGM_68K_BIOS
+	ROM_LOAD16_WORD_SWAP( "p05301_hc37.rom",   0x100000, 0x400000, CRC(89c0afdf) SHA1(b9177171676ce5bbbd3389a1e5423b716a60c61d) )
+
+	ROM_REGION( 0x4000, "prot", 0 )
+	ROM_LOAD( "oldsplus_igs027a.bin", 0x000000, 0x04000, NO_DUMP )
+
+	ROM_REGION32_LE( 0x800000, "user1", ROMREGION_ERASE00 )
+
+	ROM_REGION( 0xc00000, "tiles", 0 )
+	PGM_VIDEO_BIOS
+	ROM_LOAD( "t05301_hc35.rom",   0x180000, 0x800000, CRC(bf3db9be) SHA1(c460e9d33f91d30e665dc2747bcf7bd8578c3b5b) )
+
+	ROM_REGION16_LE( 0x2000000, "sprcol", 0 )
+    ROM_LOAD( "a05301_hc35.rom",   0x0000000, 0x0800000, CRC(0f456049) SHA1(cb9395f3865132c6d84372560ddd8bb2cab8b22a) )
+	ROM_LOAD( "a05302_hc01.rom",   0x0800000, 0x0800000, CRC(4ed9028c) SHA1(9c4038097b225c331618dbf0dac3fb9d37a25e9f) )
+	ROM_LOAD( "a05303_hc02.rom",   0x1000000, 0x0800000, CRC(5f75eca2) SHA1(09b1657c8acfe144fc10d12a0607eb347f4e7943) )
+	ROM_LOAD( "a05304_hc35.rom",   0x1800000, 0x0800000, CRC(bce3d08b) SHA1(129604e52a582e27c0437176475165c0dd4e471b) )
+
+	ROM_REGION16_LE( 0x1000000, "sprmask", 0 )
+	ROM_LOAD( "b05301_hc35.rom",   0x0000000, 0x0800000, CRC(1cc7c2b1) SHA1(557a07af4df83789c2524c730060631736d45f8b) )
+	ROM_LOAD( "b05302_hc35.rom",   0x0800000, 0x0800000, CRC(25b7a816) SHA1(958c6397674da18b56f3b015a1263196240b8f0b) )
+
+	ROM_REGION( 0x800000, "ics", 0 )
+	PGM_AUDIO_BIOS
+	ROM_LOAD( "m05301_hc35.rom",   0x400000, 0x400000, CRC(b740b810) SHA1(e2539df0fcce63157586b15f45fb24d0b59fcebc) )
+ROM_END
+
 ROM_START( orlegendhc01 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
 	PGM_68K_BIOS
@@ -28776,6 +28834,8 @@ GAME( 2020, oldsplushc32,     oldsplus,    pgm_arm_type1_sim,      oldsplus,  pg
 GAME( 2022, oldsplushc33,     oldsplus,    pgm_arm_type1_sim,      oldsplus,  pgm_arm_type1_state,  init_oldsplus,   ROT0,   "hack",       "Oriental Legend 2 (Yellow Hat Version 2022-05-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, oldsplushc34,     oldsplus,    pgm_arm_type1_sim,      oldsplus,  pgm_arm_type1_state,  init_oldsplus,   ROT0,   "hack",       "Oriental Legend 2 (The Road To Learning 2022-05-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, oldsplushc35,     oldsplus,    pgm_arm_type1_sim,      oldsplus,  pgm_arm_type1_state,  init_oldsplus,   ROT0,   "hack",       "Oriental Legend 2 (The Legend of Shi'er-Xin Qunma Ranwu V211 Final Edition 2023-01-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, oldsplushc36,     oldsplus,    pgm_arm_type1_sim,      oldsplus,  pgm_arm_type1_state,  init_oldsplus,   ROT0,   "hack",       "Oriental Legend 2 (New Group Demon Flurry 2023-01-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2024, oldsplushc37,     oldsplus,    pgm_arm_type1_sim,      oldsplus,  pgm_arm_type1_state,  init_oldsplus,   ROT0,   "hack",       "Oriental Legend 2 (New Group Demon Flurry 2024-01-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, orlegendhc01,     orlegend,    pgm_asic3,              orlegend,  pgm_asic3_state,      init_orlegend,   ROT0,   "hack",       "Oriental Legend (Dream Returning to Seek Immortals 2022-08-08)", MACHINE_SUPPORTS_SAVE )                 
 GAME( 1997, orlegendhc02,     orlegend,    pgm_asic3,              orlegend,  pgm_asic3_state,      init_orlegend,   ROT0,   "hack",       "Oriental Legend Plus", MACHINE_SUPPORTS_SAVE )                 
 GAME( 2013, orlegendhc03,     orlegend,    pgm_asic3,              orlegend,  pgm_asic3_state,      init_orlegend,   ROT0,   "hack",       "Oriental Legend (Enhanced Edition 2013-02-11)", MACHINE_SUPPORTS_SAVE )

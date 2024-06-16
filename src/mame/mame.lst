@@ -46685,15 +46685,15 @@ forgottnsf2                     // SF2 Conversion
 striderf2                       // SF2 Conversion
 
 @source:cps1.cpp
+area88k                         // Hack
 area88rk                        // Hack
-area88rka                       // Hack
 captcommjk                      // Hack
 daimakaik                       // Hack
 dinok                           // Hack
 ffightaek                       // Hack
 ffightjk                        // Hack
 kodjk                           // Hack
-knightsk                        // Hack
+knightsjk                       // Hack
 punisherjk                      // Hack
 rockmanjk                       // Hack
 sfzchk                          // Hack
@@ -46857,11 +46857,12 @@ xmvsfhc02                       // Hack
 
 @source:cps2.cpp
 avspjk                          // Hack
-csclubk                         // Hack
+csclubjk                        // Hack
 ddsomak                         // Hack
 ddsomjk                         // Hack
 ddtodak                         // Hack
 ddtodjk                         // Hack
+ffightaec2k                     // Hack
 pfghtjk                         // Hack
 rmancp2jk                       // Hack
 rockman2k                       // Hack
@@ -49236,6 +49237,8 @@ oldsplushc32                    // Hack
 oldsplushc33                    // Hack
 oldsplushc34                    // Hack
 oldsplushc35                    // Hack
+oldsplushc36                    // Hack
+oldsplushc37                    // Hack
 orlegendhc01                    // Hack
 orlegendhc02                    // Hack
 orlegendhc03                    // Hack

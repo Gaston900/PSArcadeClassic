@@ -7,6 +7,20 @@
   .chd, so that we can leave roms sets much lighter for our hard drive.
 ===============================================================================================================================
 
+2024-06-17 Optimization Edition
+-------------------------------
+- Synchronizes with PSMSLUG FOREVER 5.2 version.
+- Several system hack roms have been updated: Cps1, Cps2, Neogeo, Pgm, Cave, M92, Raiden2, Seta2, Dkong, Midwunit.
+- Part of the default mapping that causes conflict with some systems was eliminated, only this default command was kept:
+   Window mode: With the space bar key.
+   How to configure the system bios: With the number 0 key.
+   Mode to reset the systems: With the number 9 key.
+- Implemented PGM Music system configurations restoring for kovshp roms and many of its hacks. Developed by Robert [HBMAME]
+- Configured Neo-Geo Korean language translations to actually display Korean text. Developed by Robert [HBMAME]
+- Korean language hack roms Cps1, Cps2, Neogeo, simple_st0016, pcktgal were included. From the Ekmame emulator.
+
+
+
 2023-10-25 Optimization Edition
 -------------------------------
 - Base build 0.232 has been moved to version 0.245.

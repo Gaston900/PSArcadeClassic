@@ -33511,7 +33511,7 @@ GAME( 2023, captcommhc124,  captcomm, cps1_10MHz,     captcomm, cps_state,   ini
 GAME( 2024, captcommhc125,  captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "hack",      "Captain Commando (Peerless Edition 2024-05-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, captcommhc126,  captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "hack",      "Captain Commando (Contest 2024-05-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, captcommhc127,  captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "hack",      "Captain Commando (Erye Version 2023-02-27)", MACHINE_SUPPORTS_SAVE )
-GAME( 2023, captcommhc128,  captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "hack",      "Captain Commando (God of War 2023-03-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, captcommhc128,  captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "hack",      "Captain Commando (God of War Version 2023-03-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, captcommhc129,  captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "hack",      "Captain Commando (Readjusted v1.1)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, captcommhc130,  captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "hack",      "Captain Commando (Readjusted v1.2)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, dinohc01,       dino,     qsound,         dino,     cps_state,   init_dino,     ROT0,   "hack",      "Cadillacs and Dinosaurs (Still Dagger Dragon Subduing Edition 2022-07-03)", MACHINE_SUPPORTS_SAVE )

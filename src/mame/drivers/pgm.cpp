@@ -1114,6 +1114,7 @@ ROM_START( drgw2 )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code  */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "dragon_ii_v-110x.u2",    0x100000, 0x080000, CRC(1978106b) SHA1(af8a13d7783b755a58762c98bdc32cab845b2251) )
+	ROM_RELOAD(0x180000,0x80000)
 
 	ROM_REGION( 0xa00000, "tiles",  0 ) /* 8x8 Text Tiles + 32x32 BG Tiles */
 	PGM_VIDEO_BIOS
@@ -1133,6 +1134,7 @@ ROM_START( drgw2100x )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code  */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "dragon_ii_v-100x.u2",    0x100000, 0x080000,  CRC(5e71851d) SHA1(62052469f69daec88efd26652c1b893d6f981912) )
+	ROM_RELOAD(0x180000,0x80000)
 
 	ROM_REGION( 0xa00000, "tiles",  0 ) /* 8x8 Text Tiles + 32x32 BG Tiles */
 	PGM_VIDEO_BIOS
@@ -1152,6 +1154,7 @@ ROM_START( drgw2101c )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code  */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "dragon_ii_v-101c.u2",    0x100000, 0x080000, CRC(b0c592fa) SHA1(87ccfdb940303ebcf42cb2952aecae97648c1e0d) )
+	ROM_RELOAD(0x180000,0x80000)
 
 	ROM_REGION( 0xa00000, "tiles",  0 ) /* 8x8 Text Tiles + 32x32 BG Tiles */
 	PGM_VIDEO_BIOS
@@ -1171,6 +1174,7 @@ ROM_START( drgw2100c )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code  */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "dragon_ii_v-100c.u2",    0x100000, 0x080000, CRC(67467981) SHA1(58af01a3871b6179fe42ff471cc39a2161940043) )
+	ROM_RELOAD(0x180000,0x80000)
 
 	ROM_REGION( 0xa00000, "tiles",  0 ) /* 8x8 Text Tiles + 32x32 BG Tiles */
 	PGM_VIDEO_BIOS
@@ -1190,6 +1194,7 @@ ROM_START( drgw2100j )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code  */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "dragon_ii_v100j.u2",    0x100000, 0x080000, CRC(f8f8393e) SHA1(ef0db668b4e4f661d4c1e95d57afe881bcdf13cc) )
+	ROM_RELOAD(0x180000,0x80000)
 	// A cart has been found with same contents but ROM label on sticker is DRAGON II V101J.
 	// Is this correct or wrong sticker applied?
 
@@ -1211,6 +1216,7 @@ ROM_START( drgw2100hk ) // the IGS025 has a "DRAGON-II 0004-1" sticker, the IGS0
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code  */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "dragon_ii_v-100-h.u2",    0x100000, 0x080000, CRC(c6e2e6ec) SHA1(84145dfb26857ea20efb233363f175bc9bb25b0c) )
+	ROM_RELOAD(0x180000,0x80000)
 
 	ROM_REGION( 0xa00000, "tiles",  0 ) /* 8x8 Text Tiles + 32x32 BG Tiles */
 	PGM_VIDEO_BIOS
@@ -3489,6 +3495,13 @@ ROM_START( dw2001 )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "dw2001_u22.u22", 0x100000, 0x80000, CRC(5cabed92) SHA1(d513e353c5c4695b16228e0bda9388c396aa4a81) ) // 02/21/01 16:05:16
+	ROM_RELOAD(0x180000,0x80000)
+	ROM_RELOAD(0x200000,0x80000)
+	ROM_RELOAD(0x280000,0x80000)
+	ROM_RELOAD(0x300000,0x80000)
+	ROM_RELOAD(0x380000,0x80000)
+	ROM_RELOAD(0x400000,0x80000)
+	ROM_RELOAD(0x480000,0x80000)
 
 	ROM_REGION( 0x4000, "prot", ROMREGION_ERASEFF ) /* ARM protection ASIC - internal rom */
 	ROM_LOAD( "dw2001_igs027a_japan.bin", 0x000000, 0x04000, CRC(3a79159b) SHA1(0d693c798ce24c6a749669be8c7b1e4633409e49) )
@@ -4712,6 +4725,13 @@ ROM_START( happy6 )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "s101xx_u5.u5",      0x100000, 0x080000, CRC(aa4646e3) SHA1(e6772cc480ddd3e1d199364b1f2ff93b973e6842) ) // V101 03/17/04 11:26:48
+	ROM_RELOAD(0x180000,0x80000)
+	ROM_RELOAD(0x200000,0x80000)
+	ROM_RELOAD(0x280000,0x80000)
+	ROM_RELOAD(0x300000,0x80000)
+	ROM_RELOAD(0x380000,0x80000)
+	ROM_RELOAD(0x400000,0x80000)
+	ROM_RELOAD(0x480000,0x80000)
 
 	ROM_REGION( 0x4000, "prot", 0 ) /* ARM protection ASIC - internal rom */
 	// data before 0x188 is read-protected and cannot be read even with a trojan (as with most 2001/2+ IGS titles)
@@ -4743,6 +4763,13 @@ ROM_START( happy6101 )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "v100cn_u5.u5",      0x100000, 0x080000, CRC(a25418e8) SHA1(acd7e7b69956cb4ce8e26c6420cb97bb4bf404e7) ) // V100 12/22/03 15:35:33
+	ROM_RELOAD(0x180000,0x80000)
+	ROM_RELOAD(0x200000,0x80000)
+	ROM_RELOAD(0x280000,0x80000)
+	ROM_RELOAD(0x300000,0x80000)
+	ROM_RELOAD(0x380000,0x80000)
+	ROM_RELOAD(0x400000,0x80000)
+	ROM_RELOAD(0x480000,0x80000)
 
 	ROM_REGION( 0x4000, "prot", 0 ) /* ARM protection ASIC - internal rom */
 	// data before 0x188 is read-protected and cannot be read even with a trojan (as with most 2001/2+ IGS titles)
@@ -4774,6 +4801,13 @@ ROM_START( happy6100hk )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "v100hk_u5.u5",      0x100000, 0x080000, CRC(a25418e8) SHA1(acd7e7b69956cb4ce8e26c6420cb97bb4bf404e7) ) // V100 12/22/03 15:35:33
+	ROM_RELOAD(0x180000,0x80000)
+	ROM_RELOAD(0x200000,0x80000)
+	ROM_RELOAD(0x280000,0x80000)
+	ROM_RELOAD(0x300000,0x80000)
+	ROM_RELOAD(0x380000,0x80000)
+	ROM_RELOAD(0x400000,0x80000)
+	ROM_RELOAD(0x480000,0x80000)
 
 	ROM_REGION( 0x4000, "prot", 0 ) /* ARM protection ASIC - internal rom */
 	// data before 0x188 is read-protected and cannot be read even with a trojan (as with most 2001/2+ IGS titles)
@@ -4805,6 +4839,13 @@ ROM_START( happy6100cn )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "v100cn_u5.u5",      0x100000, 0x080000, CRC(a25418e8) SHA1(acd7e7b69956cb4ce8e26c6420cb97bb4bf404e7) ) // V100 12/22/03 15:35:33
+	ROM_RELOAD(0x180000,0x80000)
+	ROM_RELOAD(0x200000,0x80000)
+	ROM_RELOAD(0x280000,0x80000)
+	ROM_RELOAD(0x300000,0x80000)
+	ROM_RELOAD(0x380000,0x80000)
+	ROM_RELOAD(0x400000,0x80000)
+	ROM_RELOAD(0x480000,0x80000)
 
 	ROM_REGION( 0x4000, "prot", 0 ) /* ARM protection ASIC - internal rom */
 	// data before 0x188 is read-protected and cannot be read even with a trojan (as with most 2001/2+ IGS titles)

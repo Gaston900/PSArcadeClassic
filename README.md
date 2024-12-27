@@ -67,15 +67,20 @@ Supports game list lst language files. The list language can be edited freely.
 
 CPS 1, 2, NEOGEO, PGM, driver supports key combination settings.
 
-Added 8 new UI folders by default.
- * Neogeo
- * Cps
- * Pgm
- * Namco
- * Taito
+Added 13 new UI folders by default.
+ * Capcom
+ * Dataeast
+ * IGS
  * konami
- * sega
- * cave
+ * Namco
+ * Nintendo
+ * Neogeo
+ * Midway
+ * Sega
+ * Seta
+ * Taito
+ * Toaplan
+ * Misc
 
 Two new folder sections called “config” and “support” were added that independently group the configurations and extra content, so that everything is kept in order in a single folder.
 

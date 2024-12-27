@@ -184,11 +184,6 @@ static windows_options pOptsVertical;
 static windows_options pOptsRaster;
 static windows_options pOptsVector;
 static windows_options pOptsSource;
-//#ifdef USE_LOADPREVIEW
-static RECT rcSheetSnap;
-static HBITMAP hSheetBitmap = NULL;
-static BOOL bUseScreenShot = FALSE;
-//#endif
 
 static struct PropSheets
 {
@@ -784,9 +779,9 @@ static char *GameInfoSaveState(int driver_index)
 	memset(&buffer, 0, sizeof(buffer));
 
 	if (DriverSupportsSaveState(driver_index))
-			strcpy(buffer, "Supported");
-		else
-			strcpy(buffer, "Unsupported");
+		strcpy(buffer, "Supported");
+	else
+		strcpy(buffer, "Unsupported");
 
 	return buffer;
 }
@@ -826,7 +821,7 @@ static void UpdateSheetCaption(HWND hWnd)
 	BeginPaint (hWnd, &ps);
 	hDC = ps.hdc;
 
-	hRgn = CreateRectRgn(rect.left, rect.top, rect.right - 2, rect.bottom);
+	hRgn = CreateRectRgn(rect.left, rect.top, rect.right, rect.bottom);
 	SelectClipRgn(hDC, hRgn);
 
 	rc.left = rect.left;
@@ -877,82 +872,15 @@ static void UpdateSheetCaption(HWND hWnd)
 
 	SelectClipRgn(hDC, NULL);
 	DeleteObject(hRgn);
-//	rect.left = SHEET_TREE_WIDTH + 15;
-//	rect.top = 8;
-//	rect.right = rcTabCaption.right - 1;
-//	rect.bottom = rcTabCtrl.bottom + 4;
-
-	memcpy(&rect, &rcSheetSnap, sizeof(RECT));
+	rect.left = SHEET_TREE_WIDTH + 15;
+	rect.top = 8;
+	rect.right = rcTabCaption.right - 1;
+	rect.bottom = rcTabCtrl.bottom + 4;
 	hRgn = CreateRectRgn(rect.left, rect.top, rect.right, rect.bottom);
 	SelectClipRgn(hDC, hRgn);
-
-	if (hSheetBitmap != NULL) 
-		{
-			HDC hMemDC;
-			HBITMAP hOldBitmap;
-			int iWidth, iHeight, iSnapWidth, iSnapHeight, iDrawWidth, iDrawHeight;
-	
-			if (bUseScreenShot == TRUE)
-			{
-				iSnapWidth = GetScreenShotWidth();
-				iSnapHeight = GetScreenShotHeight();
-			}
-			else
-			{
-				BITMAP bmpInfo;
-	
-				GetObject(hSheetBitmap, sizeof(BITMAP), &bmpInfo);
-				iSnapWidth = bmpInfo.bmWidth;
-				iSnapHeight = bmpInfo.bmHeight;
-			}
-	
-			iWidth = rect.right - rect.left;
-			iHeight = rect.bottom - rect.top;
-	
-			if (iWidth && iHeight)
-			{
-				int iXOffs, iYOffs;
-				double dXRatio, dYRatio;
-	
-				dXRatio = (double)iWidth  / (double)iSnapWidth;
-				dYRatio = (double)iHeight / (double)iSnapHeight;
-	
-				if (dXRatio > dYRatio)
-				{
-					iDrawWidth = (int)((iSnapWidth * dYRatio) + 0.5);
-					iDrawHeight = (int)((iSnapHeight * dYRatio) + 0.5);
-				}
-				else
-				{
-					iDrawWidth = (int)((iSnapWidth * dXRatio) + 0.5);
-					iDrawHeight = (int)((iSnapHeight * dXRatio) + 0.5);
-				}
-	
-				iXOffs = (iWidth - iDrawWidth)	/ 2;
-				iYOffs = (iHeight - iDrawHeight) / 2;
-	
-				hMemDC = CreateCompatibleDC(hDC);
-	
-				hOldBitmap = (HBITMAP)SelectObject(hMemDC, hSheetBitmap);
-		
-				SetStretchBltMode(hDC, STRETCH_HALFTONE);
-				StretchBlt(hDC,
-						rect.left+iXOffs, rect.top+iYOffs,
-						iDrawWidth, iDrawHeight,
-						hMemDC, 0, 0,
-						iSnapWidth, iSnapHeight, SRCCOPY);
-	
-				SelectObject(hMemDC, hOldBitmap);
-				DeleteDC(hMemDC);
-			}
-		}
-		else
-		{
-			hBrush = CreateSolidBrush(RGB(127, 127, 127));
-			FrameRect(hDC, &rect, hBrush);
-			DeleteObject(hBrush);
-		}
-
+	hBrush = CreateSolidBrush(RGB(127, 127, 127));
+	FrameRect(hDC, &rect, hBrush);
+	DeleteObject(hBrush);
 	SelectClipRgn(hDC, NULL);
 	DeleteObject(hRgn);
 	EndPaint (hWnd, &ps);
@@ -1117,7 +1045,6 @@ static void ModifyPropertySheetForTreeSheet(HWND hPageDlg)
 	TCITEM item;
 	HTREEITEM hItem;
 	int nPage = 0;
-	int i;
 
 	if (g_nFirstInitPropertySheet == 0)
 	{
@@ -1174,45 +1101,12 @@ static void ModifyPropertySheetForTreeSheet(HWND hPageDlg)
 	rcTabCaption.right = rcTabCaption.left + (rcTabCtrl.right - rcTabCtrl.left - 6);
 	rcTabCaption.bottom = rcTabCaption.top + nCaptionHeight;
 	DestroyWindow(hTempTab);
-//#ifdef USE_LOADPREVIEW
-	i = (int)((SHEET_TREE_WIDTH * 3) / 4 + 0.5);
-
-	rcSheetSnap.left   = rcTabCtrl.left + 4;
-	rcSheetSnap.top    = (rcTabCtrl.bottom - i);
-	rcSheetSnap.right  = rcTabCtrl.left + SHEET_TREE_WIDTH;
-	rcSheetSnap.bottom = rcTabCtrl.bottom;
-
-	if ((g_nGame == GLOBAL_OPTIONS) || (g_nGame == FOLDER_OPTIONS))
-	{
-		hSheetBitmap = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_SNAPSHOT));
-		bUseScreenShot = FALSE;
-	}
-	else
-	{
-		if (!ScreenShotLoaded())
-			LoadScreenShot(g_nGame, TAB_SCREENSHOT);
-
-		if (ScreenShotLoaded())
-		{
-			hSheetBitmap =(HBITMAP)GetScreenShotHandle();
-			bUseScreenShot = TRUE;
-			//ErrorMessageBox("ScreenShotLoaded success");
-		}
-		else
-		{
-			hSheetBitmap = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_SNAPSHOT));
-			bUseScreenShot = FALSE;
-			//ErrorMessageBox("ScreenShotLoaded fail");
-		}
-	}
-//#endif
-
-	rectTree.left = rcTabCtrl.left + 4;
-	rectTree.top = rcTabCtrl.top  + 5;
-	rectTree.right = rcTabCtrl.left + SHEET_TREE_WIDTH;
-	rectTree.bottom = (rcTabCtrl.bottom -i) - 5;
+	rectTree.left = rcTabCtrl.left + 8;
+	rectTree.top = rcTabCtrl.top  + 8;
+	rectTree.right = rcTabCtrl.left + SHEET_TREE_WIDTH + 2;
+	rectTree.bottom = rcTabCtrl.bottom + 4;
 	hSheetTreeCtrl = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_NOPARENTNOTIFY, WC_TREEVIEW, NULL,
-		WS_TABSTOP | WS_CHILD | WS_VISIBLE | TVS_SHOWSELALWAYS | TVS_FULLROWSELECT | TVS_TRACKSELECT |TVS_NOHSCROLL,
+		WS_TABSTOP | WS_CHILD | WS_VISIBLE | TVS_SHOWSELALWAYS | TVS_FULLROWSELECT | TVS_TRACKSELECT,
 		rectTree.left, rectTree.top, rectTree.right - rectTree.left, rectTree.bottom - rectTree.top,
 		hWnd, (HMENU)0x7EEE, hSheetInstance, NULL);
 
@@ -1408,6 +1302,7 @@ static intptr_t CALLBACK GameOptionsDialogProc(HWND hDlg, UINT uMsg, WPARAM wPar
 			UpdateProperties(hDlg, properties_datamap, pCurrentOpts);
 			g_bUseDefaults = AreOptionsEqual(pCurrentOpts, pDefaultOpts);
 			g_bReset = AreOptionsEqual(pCurrentOpts, pOrigOpts) ? false : true;
+
 			if (g_nGame == GLOBAL_OPTIONS)
 				ShowWindow(GetDlgItem(hDlg, IDC_USE_DEFAULT), SW_HIDE);
 			else
@@ -2579,7 +2474,6 @@ static void BuildDataMap(void)
 	datamap_add(properties_datamap, IDC_INTSCALEX_TXT,			DM_INT,		OPTION_INTSCALEX);
 	datamap_add(properties_datamap, IDC_INTSCALEY,				DM_INT,		OPTION_INTSCALEY);
 	datamap_add(properties_datamap, IDC_INTSCALEY_TXT,			DM_INT,		OPTION_INTSCALEY);
-
 	// core opengl - bgfx options
 	datamap_add(properties_datamap, IDC_GLSLPOW,				DM_BOOL,	OSDOPTION_GL_FORCEPOW2TEXTURE);
 	datamap_add(properties_datamap, IDC_GLSLTEXTURE,			DM_BOOL,	OSDOPTION_GL_NOTEXTURERECT);
@@ -2734,7 +2628,7 @@ static void BuildDataMap(void)
 	// trackbar ranges - slider-name,start,end,step
 	datamap_set_trackbar_range(properties_datamap, IDC_JDZ,         	0.00, 1.00, 0.01);
 	datamap_set_trackbar_range(properties_datamap, IDC_JSAT,        	0.00, 1.00, 0.01);
-	datamap_set_trackbar_range(properties_datamap, IDC_SPEED,       	0.00, 100.00, 0.1);
+	datamap_set_trackbar_range(properties_datamap, IDC_SPEED,       	0.1, 100.00, 0.1);
 	datamap_set_trackbar_range(properties_datamap, IDC_BEAM_MIN,        0.00, 1.00, 0.01);
 	datamap_set_trackbar_range(properties_datamap, IDC_BEAM_MAX,        1.00, 10.00, 0.01);
 	datamap_set_trackbar_range(properties_datamap, IDC_BEAM_INTEN,      -10.00, 10.00, 0.01);
@@ -2744,13 +2638,13 @@ static void BuildDataMap(void)
 	datamap_set_trackbar_range(properties_datamap, IDC_HIGH_PRIORITY, 	-15, 1, 1);
 	datamap_set_trackbar_range(properties_datamap, IDC_SECONDSTORUN, 	0, 60, 1);
 	datamap_set_trackbar_range(properties_datamap, IDC_NUMSCREENS, 		1, 4, 1);
-	datamap_set_trackbar_range(properties_datamap, IDC_PRESCALE, 		1, 8, 1);
-	datamap_set_trackbar_range(properties_datamap, IDC_FSGAMMA, 		0.00, 3.00, 0.05);
-	datamap_set_trackbar_range(properties_datamap, IDC_FSBRIGHTNESS, 	0.00, 2.00, 0.01);
-	datamap_set_trackbar_range(properties_datamap, IDC_FSCONTRAST, 		0.00, 2.00, 0.05);
-	datamap_set_trackbar_range(properties_datamap, IDC_GAMMA, 			0.00, 3.00, 0.05);
-	datamap_set_trackbar_range(properties_datamap, IDC_BRIGHTCORRECT, 	0.00, 2.00, 0.01);
-	datamap_set_trackbar_range(properties_datamap, IDC_CONTRAST, 		0.00, 2.00, 0.05);
+	datamap_set_trackbar_range(properties_datamap, IDC_PRESCALE, 		1, 20, 1);
+	datamap_set_trackbar_range(properties_datamap, IDC_FSGAMMA, 		0.10, 3.00, 0.05);
+	datamap_set_trackbar_range(properties_datamap, IDC_FSBRIGHTNESS, 	0.10, 2.00, 0.01);
+	datamap_set_trackbar_range(properties_datamap, IDC_FSCONTRAST, 		0.10, 2.00, 0.05);
+	datamap_set_trackbar_range(properties_datamap, IDC_GAMMA, 			0.10, 3.00, 0.05);
+	datamap_set_trackbar_range(properties_datamap, IDC_BRIGHTCORRECT, 	0.10, 2.00, 0.01);
+	datamap_set_trackbar_range(properties_datamap, IDC_CONTRAST, 		0.10, 2.00, 0.05);
 	datamap_set_trackbar_range(properties_datamap, IDC_PAUSEBRIGHT, 	0.00, 1.00, 0.01);
 	datamap_set_trackbar_range(properties_datamap, IDC_BOOTDELAY, 		0, 5, 1);
 	datamap_set_trackbar_range(properties_datamap, IDC_INTSCALEX, 		0, 4, 1);

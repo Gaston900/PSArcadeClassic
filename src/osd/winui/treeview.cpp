@@ -73,14 +73,19 @@ extern const FOLDERDATA g_folderData[] =
 	{"Available",       "available",         FOLDER_AVAILABLE,    IDI_FOLDER_AVAILABLE,     F_AVAILABLE,   0,            0, NULL,                       FilterAvailable,         true },
     {"Unavailable",     "unavailable",       FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
 //#ifdef USE_GAMEFOLDERS
-	{"Neo-Geo",        "neogeo", 		     FOLDER_NEOGEO,	      IDI_FOLDER_NEOGEO,	    0,			   0, 		     0, CreateNEOGEOFolders },
-	{"CPS",	  	       "cps",			     FOLDER_CPS,		  IDI_FOLDER_CAPCOM,		0,			   0, 		     0, CreateCPSFolders },
-	{"PGM", 	       "pgm",			     FOLDER_PGM,		  IDI_FOLDER_PGM,		    0,			   0, 		     0, CreatePGMFolders },
-	{"Namco", 		   "namco",			     FOLDER_NAMCO,		  IDI_FOLDER_NAMCO,		    0,			   0, 		     0, CreateNAMCOFolders },
-	{"Taito", 		   "taito",			     FOLDER_TAITO,		  IDI_FOLDER_TAITO,		    0,			   0, 		     0, CreateTAITOFolders },
-	{"Konami",		   "konami", 		     FOLDER_KONAMI,		  IDI_FOLDER_KONAMI,		0,			   0, 		     0, CreateKONAMIFolders },
-	{"Sega",		   "sega",			     FOLDER_SEGA, 		  IDI_FOLDER_SEGA,		    0,			   0, 		     0, CreateSEGAFolders },
-	{"Cave",	       "cave",			     FOLDER_CAVE, 		  IDI_FOLDER_CAVE,		    0,			   0, 		     0, CreateTOAFolders },
+	{"Capcom",	  	    "capcom",			 FOLDER_CPS,		  IDI_FOLDER_CAPCOM,		0,			   0, 		     0, CreateCPSFolders },
+    {"Dataeast",		"dataeast",		     FOLDER_DATAEAST,	  IDI_FOLDER_DATAEAST, 	    0,			   0,            0,	CreateDATAEASTFolders },
+	{"IGS", 	        "igs",			     FOLDER_PGM,		  IDI_FOLDER_PGM,		    0,			   0, 		     0, CreatePGMFolders },
+	{"Konami",		    "konami", 		     FOLDER_KONAMI,		  IDI_FOLDER_KONAMI,		0,			   0, 		     0, CreateKONAMIFolders },
+	{"Namco", 		    "namco",			 FOLDER_NAMCO,		  IDI_FOLDER_NAMCO,		    0,			   0, 		     0, CreateNAMCOFolders },
+	{"Neo-Geo",         "neogeo", 		     FOLDER_NEOGEO,	      IDI_FOLDER_NEOGEO,	    0,			   0, 		     0, CreateNEOGEOFolders },
+    {"Midway",	        "Midway",		     FOLDER_MIDWAY,	      IDI_FOLDER_MIDWAY,		0,			   0, 		     0, CreateMIDWAYFolders },
+	{"Nintendo",        "nintendo", 		 FOLDER_NINTENDO,     IDI_FOLDER_NINTENDO,		0,			   0, 		     0, CreateNINTENDOFolders },
+    {"Sega",		    "sega",			     FOLDER_SEGA, 		  IDI_FOLDER_SEGA,		    0,			   0, 		     0, CreateSEGAFolders },
+	{"Seta", 		    "seta",			     FOLDER_SETA,		  IDI_FOLDER_SETA,		    0,			   0, 		     0, CreateSETAFolders },
+	{"Taito", 		    "taito",			 FOLDER_TAITO,		  IDI_FOLDER_TAITO,		    0,			   0, 		     0, CreateTAITOFolders },
+	{"Toaplan", 	    "toaplan",		     FOLDER_TOAPLAN,	  IDI_FOLDER_TOAPLAN,	    0,			   0, 		     0, CreateTOAPLANFolders },
+	{"Misc",	        "misc",			     FOLDER_CAVE, 		  IDI_FOLDER_CAVE,		    0,			   0, 		     0, CreateTOAFolders },
 //#endif 
 	{"Parents",         "originals",         FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
 	{"Clones",          "clones",            FOLDER_CLONES,       IDI_FOLDER_CLONES,        F_CLONES,      F_ORIGINALS,  0, NULL,                       DriverIsClone,           true },
@@ -159,11 +164,16 @@ static const TREEICON treeIconNames[] =
 	{ IDI_FOLDER_NEOGEO,       "fold_neogeo" },
     { IDI_FOLDER_CAPCOM,	   "fold_cps" },
     { IDI_FOLDER_PGM,	   	   "fold_pgm" },
- 	{ IDI_FOLDER_NAMCO,		   "fold_namco"},			
+ 	{ IDI_FOLDER_NAMCO,		   "fold_namco"},
+ 	{ IDI_FOLDER_SETA,		   "fold_seta"},	
  	{ IDI_FOLDER_TAITO,		   "fold_taito"},	
  	{ IDI_FOLDER_KONAMI,	   "fold_konami"},			
  	{ IDI_FOLDER_SEGA,		   "fold_sega"},		
  	{ IDI_FOLDER_CAVE,		   "fold_cave"},		
+    { IDI_FOLDER_MIDWAY,	   "fold_midway" },
+    { IDI_FOLDER_TOAPLAN,	   "fold_toaplan" },
+    { IDI_FOLDER_NINTENDO,     "fold_nintendo" },
+	{ IDI_FOLDER_DATAEAST,	   "fold_dataeast"},
 //#endif	
 	{ IDI_FOLDER_TRACKBALL,    "foldball" },
 	{ IDI_FOLDER_UNAVAILABLE,  "foldunav" },
@@ -2047,13 +2057,12 @@ HIMAGELIST GetTreeViewIconList(void)
 	return hTreeSmall;
 }
 
-
 void CreateNEOGEOFolders(int parent_index)
 {
 	int jj;
 	int nGames = GetNumGames();
 
-	
+
 	LPTREEFOLDER lpFolder = treeFolders[parent_index];
 
 	// no games in top level folder
@@ -2091,16 +2100,42 @@ void CreateCPSFolders(int parent_index)
 		if (s == NULL || s[0] == '\0')
 			continue;
 
+		if (!strcmp("1942.cpp", s))			          AddGame(lpFolder, jj);
+		if (!strcmp("1943.cpp", s))		              AddGame(lpFolder, jj);
+		if (!strcmp("alien.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("bionicc.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("supduck.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("blktiger.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("blktiger_ms.cpp", s))			  AddGame(lpFolder, jj);
+		if (!strcmp("cbasebal.cpp", s))		          AddGame(lpFolder, jj);
+		if (!strcmp("commando.cpp", s))			      AddGame(lpFolder, jj);
 		if (!strcmp("cps1.cpp", s))			          AddGame(lpFolder, jj);
 		if (!strcmp("cps1hb.cpp", s))			      AddGame(lpFolder, jj);
-		if (!strcmp("cps1bl_5205.cpp", s))		      AddGame(lpFolder, jj);
+		if (!strcmp("cps1bl_5205.cpp", s))			  AddGame(lpFolder, jj);
 		if (!strcmp("cps1bl_pic.cpp", s))			  AddGame(lpFolder, jj);
-		if (!strcmp("cps2.cpp", s))			          AddGame(lpFolder, jj);
+		if (!strcmp("kenseim.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("cps2.cpp", s))		              AddGame(lpFolder, jj);
 		if (!strcmp("cps2hb.cpp", s))			      AddGame(lpFolder, jj);
-		if (!strcmp("cps2t.cpp", s))			      AddGame(lpFolder, jj);
 		if (!strcmp("cps3.cpp", s))			          AddGame(lpFolder, jj);
 		if (!strcmp("cps3hb.cpp", s))		          AddGame(lpFolder, jj);
+		if (!strcmp("egghunt.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("exedexes.cpp", s))			      AddGame(lpFolder, jj);
 		if (!strcmp("fcrash.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("gng.cpp", s))			          AddGame(lpFolder, jj);
+		if (!strcmp("gunsmoke.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("higemaru.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("lastduel.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("lwings.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("mitchell.cpp", s))		          AddGame(lpFolder, jj);
+		if (!strcmp("psrockman.cpp", s))			  AddGame(lpFolder, jj);
+		if (!strcmp("sf.cpp", s))			          AddGame(lpFolder, jj);
+		if (!strcmp("sidearms.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("sonson.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("srumbler.cpp", s))		          AddGame(lpFolder, jj);
+		if (!strcmp("tigeroad.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("vulgus.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("tvcapcom.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("instantm.cpp", s))			      AddGame(lpFolder, jj);
 	}
 }
 
@@ -2122,9 +2157,25 @@ void CreatePGMFolders(int parent_index)
 		if (s == NULL || s[0] == '\0')
 			continue;
 
-		if (!strcmp("pgm.cpp", s))			AddGame(lpFolder, jj);
-        if (!strcmp("pgmhb.cpp", s))	    AddGame(lpFolder, jj);
-		if (!strcmp("pgm2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cabaret.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("dunhuang.cpp", s))		          AddGame(lpFolder, jj);
+		if (!strcmp("goldstar.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("funtech.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("jackie.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("igspoker.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("igs009.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("igs011.cpp", s))		          AddGame(lpFolder, jj);
+		if (!strcmp("igs017.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("igs_fear.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("igs_m027.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("igs_m036.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("iqblock.cpp", s))			      AddGame(lpFolder, jj);
+		if (!strcmp("lordgun.cpp", s))		          AddGame(lpFolder, jj);
+		if (!strcmp("pgm.cpp", s))			          AddGame(lpFolder, jj);
+		if (!strcmp("pgmhb.cpp", s))	              AddGame(lpFolder, jj);
+		if (!strcmp("pgm2.cpp", s))			          AddGame(lpFolder, jj);
+		if (!strcmp("pgm3.cpp", s))		              AddGame(lpFolder, jj);
+		if (!strcmp("spoker.cpp", s))			      AddGame(lpFolder, jj);
 	}
 }
 
@@ -2144,24 +2195,54 @@ void CreateNAMCOFolders(int parent_index)
 		if (s == NULL || s[0] == '\0')
 			continue;
 
-		if (!strcmp("namcos1.cpp", s))        AddGame(lpFolder, jj);
-		if (!strcmp("namcos2.cpp", s))        AddGame(lpFolder, jj);
-		if (!strcmp("namcos86.cpp", s))       AddGame(lpFolder, jj);
-		if (!strcmp("baraduke.cpp", s))       AddGame(lpFolder, jj);
-		if (!strcmp("galaga.cpp", s))         AddGame(lpFolder, jj);
-		if (!strcmp("puckman.cpp", s))        AddGame(lpFolder, jj);
-		if (!strcmp("pengo.cpp", s))          AddGame(lpFolder, jj);
-		if (!strcmp("gaplus.cpp", s))         AddGame(lpFolder, jj);
-		if (!strcmp("mappy.cpp", s))          AddGame(lpFolder, jj);
-		if (!strcmp("toypop.cpp", s))         AddGame(lpFolder, jj);
-		if (!strcmp("skykid.cpp", s))         AddGame(lpFolder, jj);
-		if (!strcmp("pacland.cpp", s))        AddGame(lpFolder, jj);
-		if (!strcmp("namcona1hb.cpp", s))     AddGame(lpFolder, jj);
-		if (!strcmp("namconb1.cpp", s))       AddGame(lpFolder, jj);
-		if (!strcmp("namcond1.cpp", s))       AddGame(lpFolder, jj);
-		if (!strcmp("tceptor.cpp", s))        AddGame(lpFolder, jj);
-		if (!strcmp("polepos.cpp", s))        AddGame(lpFolder, jj);
-		if (!strcmp("rallyx.cpp", s))         AddGame(lpFolder, jj);
+		if (!strcmp("20pacgal.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("30test.cpp", s))                 AddGame(lpFolder, jj);
+		if (!strcmp("baraduke.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("cgang.cpp", s))                  AddGame(lpFolder, jj);
+		if (!strcmp("cswat.cpp", s))                  AddGame(lpFolder, jj);
+		if (!strcmp("dambustr.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("dangbar.cpp", s))                AddGame(lpFolder, jj);
+		if (!strcmp("dkmb.cpp", s))                   AddGame(lpFolder, jj);
+		if (!strcmp("gal3.cpp", s))                   AddGame(lpFolder, jj);
+		if (!strcmp("galaga.cpp", s))                 AddGame(lpFolder, jj);
+		if (!strcmp("galaxian.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("galaxold.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("gaplus.cpp", s))                 AddGame(lpFolder, jj);
+		if (!strcmp("kungfur.cpp", s))                AddGame(lpFolder, jj);
+		if (!strcmp("mappy.cpp", s))                  AddGame(lpFolder, jj);
+		if (!strcmp("namcofl.cpp", s))                AddGame(lpFolder, jj);
+		if (!strcmp("namcona1.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("namcona1hb.cpp", s))             AddGame(lpFolder, jj);
+		if (!strcmp("namconb1.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("namcond1.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("namcops2.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("namcos1.cpp", s))                AddGame(lpFolder, jj);
+		if (!strcmp("namcos1b.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("puckman.cpp", s))                AddGame(lpFolder, jj);
+		if (!strcmp("pengo.cpp", s))                  AddGame(lpFolder, jj);
+		if (!strcmp("namcos10.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("namcos11.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("namcos12.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("namcos2.cpp", s))                AddGame(lpFolder, jj);
+		if (!strcmp("pacland.cpp", s))                AddGame(lpFolder, jj);
+		if (!strcmp("namcos21.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("namcos21_de.cpp", s))            AddGame(lpFolder, jj);
+		if (!strcmp("namcos21_c67.cpp", s))           AddGame(lpFolder, jj);
+		if (!strcmp("namcos22.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("namcos23.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("namcos86.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("polepos.cpp", s))                AddGame(lpFolder, jj);
+		if (!strcmp("rallyx.cpp", s))                 AddGame(lpFolder, jj);
+		if (!strcmp("rbowlorama.cpp", s))             AddGame(lpFolder, jj);
+		if (!strcmp("shootaway2.cpp", s))             AddGame(lpFolder, jj);
+		if (!strcmp("skykid.cpp", s))                 AddGame(lpFolder, jj);
+		if (!strcmp("sweetland.cpp", s))              AddGame(lpFolder, jj);
+		if (!strcmp("tankbatt.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("tceptor.cpp", s))                AddGame(lpFolder, jj);
+		if (!strcmp("toypop.cpp", s))                 AddGame(lpFolder, jj);
+		if (!strcmp("turrett.cpp", s))                AddGame(lpFolder, jj);
+		if (!strcmp("wacky_gator.cpp", s))            AddGame(lpFolder, jj);
+		if (!strcmp("warpwarp.cpp", s))               AddGame(lpFolder, jj);
 	}
 }
 
@@ -2181,40 +2262,92 @@ void CreateTAITOFolders(int parent_index)
 		if (s == NULL || s[0] == '\0')
 			continue;
 
+		if (!strcmp("2mindril.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("40love.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("arkanoid.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("arkanoidhb.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("ashnojoe.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("asuka.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("asukahb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("bigevglf.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("bingowav.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("bking.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("bublbobl.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("buggychl.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cchance.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("chaknpop.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("champbwl.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("changela.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("crbaloon.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cyclemb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("darius.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("exzisus.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("fgoal.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("flstory.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("flstoryhb.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("galastrm.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gladiatr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("grchamp.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("groundfx.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gsword.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gunbustr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("halleys.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("invqix.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("jollyjgr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ksayakyu.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ikage.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("lsasquad.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("marinedt.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("kikikai.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("kikikaihb.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("minivadr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("missb2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mlanding.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("msisaac.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ninjaw.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("nycaptor.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("opwolf.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("othunder.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("pitnrun.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("qix.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("rbisland.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("rastan.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("retofinv.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("rollrace.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sbmjb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sbowling.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("scyclone.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("slapshot.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("spdheat.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ssrj.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("superchs.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("superqix.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taito_b.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("taito_f2.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("taito_f2hb.cpp", s))		AddGame(lpFolder, jj);
 		if (!strcmp("taito_f3.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("taito_f3hb.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("taito_z.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("taito_b.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("taito_l.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("taito_h.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("warriorb.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("ninjaw.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("darius.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("bublbobl.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("tnzs.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("taito_l.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taito_x.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taito_z.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taito_o.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taitoair.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taitogn.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taitojc.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taitopjc.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taitosj.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tnzs.cpp", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("tnzshb.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("asuka.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("asukahb.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("rastan.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("flstory.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("flstoryhb.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("chaknpop.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("lkage.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("lkagehb.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("halleys.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("ashnojoe.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("slapshot.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("topspeed.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("opwolf.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("othunder.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("kikikai.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("kikikaihb.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("tsamurai.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("undrfire.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("volfied.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("lsasquad.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("warriorb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("wgp.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("wyvernf0.cpp", s))			AddGame(lpFolder, jj);
+	    if (!strcmp("lkage.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("lkagehb.cpp", s))			AddGame(lpFolder, jj);
 	}
 }
 
@@ -2235,44 +2368,102 @@ void CreateKONAMIFolders(int parent_index)
 		if (s == NULL || s[0] == '\0')
 			continue;
 
-		if (!strcmp("konamigx.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("konamigxhb.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("mystwarr.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("mystwarrhb.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("xexex.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("tmnt.cpp", s))				AddGame(lpFolder, jj);
-		if (!strcmp("tmnthb.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("twin16.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("nemesis.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("gradius3.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("gradius3hb.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("thunderx.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("ajax.cpp", s))				AddGame(lpFolder, jj);
-		if (!strcmp("flkatck.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("88games.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ajax.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("aliens.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("asterix.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("battlnts.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("bishi.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("bladestl.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("blockhl.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("bottom9.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("chqflag.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("circusc.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cobra.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("combatsc.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("contra.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("contrahb.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("parodius.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("hcastle.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("battlnts.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("combatsc.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("labyrunr.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("moo.cpp", s))				AddGame(lpFolder, jj);
-		if (!strcmp("vendetta.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("yiear.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("xmen.cpp", s))				AddGame(lpFolder, jj);
-		if (!strcmp("chqflag.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("blockhl.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("crimfght.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dbz.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("ddribble.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("divebomb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("djmain.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("fastfred.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("fastlane.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("finalizr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("firebeat.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("flkatck.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("gberet.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("gijoe.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("scotrsht.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("simpsons.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("ironhors.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("rockrage.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("mainevt.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("aliens.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("wecleman.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("jackal.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gradius3.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gradius3hb.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("gticlub.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gyruss.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("hcastle.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("hexion.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("hornet.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("hyperspt.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ironhors.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("jackal.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("jailbrek.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("junofrst.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("konamigq.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("konamigs.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("konamigv.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("konamigx.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("konamigxhb.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("konamim2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("konmedal.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("konmedal68k.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("ksys573.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("labyrunr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("lethal.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mainevt.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("megazone.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mikie.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mogura.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("moo.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("mystwarr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mystwarrhb.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("nemesis.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("nwk-tr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("overdriv.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("pandoras.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("parodius.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("pingpong.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("piratesh.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("plygonet.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("pooyan.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("qdrmfgp.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("quickpick5.cpp", s))	    AddGame(lpFolder, jj);
+		if (!strcmp("rockrage.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("rocnrope.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("rollerg.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("rungun.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sbasketb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("scobra.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("scotrsht.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("scramble.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("shaolins.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("simpsons.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("spy.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("surpratk.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("thunderx.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("timeplt.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tmnt.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("tmnthb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tp84.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("trackfld.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tutankhm.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("twin16.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("twinkle.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ultrsprt.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ultraman.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("vendetta.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("wecleman.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("xexex.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("yiear.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("zr107.cpp", s))			AddGame(lpFolder, jj);
 	}
 }
 
@@ -2293,21 +2484,55 @@ void CreateSEGAFolders(int parent_index)
 		if (s == NULL || s[0] == '\0')
 			continue;
 
-		if (!strcmp("system1.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("system16.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("angelkds.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("blockade.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("calorie.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("coolridr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("deniam.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dotrikun.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("kopunch.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segabb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("megadriv.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("megadriv_acbl.cpp", s))	AddGame(lpFolder, jj);
+		if (!strcmp("megaplay.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("megatech.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("calcune.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("model1.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("s32comm.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("model2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("model3.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("naomi.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dc_atomiswave.cpp", s))	AddGame(lpFolder, jj);
+		if (!strcmp("puckpkmn.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segac2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segae.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sms.cpp", s))	            AddGame(lpFolder, jj);
+		if (!strcmp("segag80r.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segag80v.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segahang.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segajw.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segaorun.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("segas16a.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("segas16b.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("segas16bhb.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("segaorun.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("segahang.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segas16b_isgsm.cpp", s))	AddGame(lpFolder, jj);
 		if (!strcmp("segas18.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("segas18_astormbl.cpp", s))	AddGame(lpFolder, jj);
 		if (!strcmp("segas24.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("segas32.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("segas32hb.cpp", s))		AddGame(lpFolder, jj);
 		if (!strcmp("segaxbd.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("segaybd.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("segac2.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("megadriv_acbl.cpp", s))    AddGame(lpFolder, jj);
+		if (!strcmp("sg1000a.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("stactics.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("stv.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("suprloco.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("system1.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("system16.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("timetrv.cpp", s))		    AddGame(lpFolder, jj);
+		if (!strcmp("turbo.cpp", s))		    AddGame(lpFolder, jj);
+		if (!strcmp("vicdual.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("zaxxon.cpp", s))			AddGame(lpFolder, jj);
 	}
 }
 
@@ -2327,53 +2552,494 @@ void CreateTOAFolders(int parent_index)
 		if (s == NULL || s[0] == '\0')
 			continue;
 
+		if (!strcmp("39in1.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("4enraya.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("5clown.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("acefruit.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("alinvade.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("amspdwy.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("amusco.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("apple2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("artmagic.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("astrcorp.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("attckufo.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("avt.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("aztarac.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("beaminv.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("beezer.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cardline.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("carrera.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cave.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("cavehb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cavepc.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cv1k.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("cb2001.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cdi.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("chameleonrx1.cpp", s))	    AddGame(lpFolder, jj);
+		if (!strcmp("chance32.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("clpoker.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cocoloco.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("coinmstr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("comebaby.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("coolpool.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("megaphx.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("corona.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("crystal.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("trivrus.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cubeqst.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cybertnk.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dcheese.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dfruit.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dgpix.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("discoboy.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dominob.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dorachan.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dreamwld.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dwarfd.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dynadice.cpp", s))		    AddGame(lpFolder, jj);
+		if (!strcmp("efdt.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("efg8080.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("epos.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("esd16.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("esripsys.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ettrivia.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("flipjack.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("flower.cpp", s))		    AddGame(lpFolder, jj);
+		if (!strcmp("fortecar.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("freekick.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("funkball.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("galaxi.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("galgame.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gei.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("gluck2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("goldnpkr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("good.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("gotcha.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gumbo.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gunpey.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("highvdeo.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("homedata.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("hotblock.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("hotchili.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("imolagp.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("jackpool.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("jankenmn.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("joystand.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("jubilee.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("kingpin.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("krokha.cpp", s))		    AddGame(lpFolder, jj);
+		if (!strcmp("kurukuru.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("kyugo.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ladyfrog.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("laserbas.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("lependu.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("lethalj.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("limenko.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ltcasino.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("magic10.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("magicfly.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("magtouch.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("majorpkr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("malzak.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mcatadv.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("meyc8080.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("meyc8088.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("micro3d.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("miniboy7.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mirax.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mjsenpu.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mole.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("mosaic.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mpu12wbk.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("murogem.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("murogmbl.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("news.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("norautp.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("oneshot.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("onetwo.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("othello.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("pachifev.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("pasha2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("pass.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("photon.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("photon2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("pipeline.cpp", s))		    AddGame(lpFolder, jj);
+		if (!strcmp("pkscram.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("policetr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("polyplay.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("quizo.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("quizpun2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("rbmk.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("re900.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sanremo.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sealy_fr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sfbonus.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("shangkid.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("skimaxx.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("skyarmy.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("skylncr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sliver.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("smotor.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("smsmcorp.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sothello.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("special_gambl.cpp", s))	AddGame(lpFolder, jj);
+		if (!strcmp("sprcros2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ssingles.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sstrangr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("statriv2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("stuntair.cpp", s))		    AddGame(lpFolder, jj);
+		if (!strcmp("superga2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("supertnk.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tapatune.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tattack.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taxidriv.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("thedeep.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tickee.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("triviaquiz.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("truco.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("trucocl.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("trvmadns.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("trvquest.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ttchamp.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tugboat.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tvg01.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("umipoker.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("unkhorse.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("usgames.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("vamphalf.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("vectrex.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("video21.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("vroulet.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("xyonix.cpp", s))			AddGame(lpFolder, jj);
+	}
+}
+
+void CreateMIDWAYFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("astrocde.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("atlantis.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("balsente.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("gridlee.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mcr.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("mcr3.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("spyhuntertec.cpp", s)) 	AddGame(lpFolder, jj);
+		if (!strcmp("mcr68.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("zwackery.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("midqslvr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("midtunit.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("midvunit.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("midwunit.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("midxunit.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("midyunit.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("midzeus.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("omegrace.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("seattle.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sspeedr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tmaster.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("vegas.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("wmg.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("williams.cpp", s))			AddGame(lpFolder, jj);
+	}
+}
+
+
+void CreateTOAPLANFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+	
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mjsister.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("slapfght.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("snowbros.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("snowbroshb.cpp", s))		AddGame(lpFolder, jj);
 		if (!strcmp("toaplan1.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("toaplan1hb.cpp", s))		AddGame(lpFolder, jj);
 		if (!strcmp("toaplan2.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("toaplan2hb.cpp", s))		AddGame(lpFolder, jj);
 		if (!strcmp("twincobr.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("twincobrhb.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("slapfght.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("snowbros.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("snowbroshb.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("cave.cpp", s))				AddGame(lpFolder, jj);
-		if (!strcmp("cavehb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("wardner.cpp", s))			AddGame(lpFolder, jj);
+	}
+}
+
+void CreateNINTENDOFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("cham24.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dkong.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mario.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mmagic.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("multigam.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("n8080.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("nss.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("playch10.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("popeye.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("punchout.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("famibox.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sfcbox.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("snesb51.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("snesb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("spacefb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("vsnes.cpp", s))			AddGame(lpFolder, jj);
+	}
+}
+
+void CreateDATAEASTFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+	if (!strcmp("actfancr.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("astrof.cpp", s))		    AddGame(lpFolder, jj);
+		if (!strcmp("backfire.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("battlera.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("boogwing.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("brkthru.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("btime.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("bwing.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cbuster.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("chanbara.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cninja.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cntsteer.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("compgolf.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("darkseal.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dassault.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dblewing.cpp", s))		    AddGame(lpFolder, jj);
+		if (!strcmp("dec0.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("dec8.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("deco_ld.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("deco_mlc.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("deco_mlchb.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("deco156.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("deco32.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("deco32hb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("decocass.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("deshoros.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dietgo.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("dreambal.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("exprraid.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("firetrap.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("funkyjet.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("karnov.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("kchamp.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("kingobox.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("lemmings.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("liberate.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("madalien.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("madmotor.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("metlclsh.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mirage.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("pcktgal.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("pktgaldx.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("progolf.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("rohga.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("shootout.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sidepckt.cpp", s))		    AddGame(lpFolder, jj);
+		if (!strcmp("simpl156.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sshangha.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("stadhero.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("supbtime.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tryout.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tumbleb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("vaportra.cpp", s))			AddGame(lpFolder, jj);
+	}
+}
+
+void CreateSETAFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+
+		if (!strcmp("zn.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("znmcu.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cat702.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("acommand.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cultures.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ddealer.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("jalmah.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("macrossp.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("psikyo.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("psikyohb.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("psikyo4.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("seta.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("nmk16.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("powerins.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("quizdna.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("quizpani.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("aleck64.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("hanaawas.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("jclub2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("macs.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("seta.cpp", s))			    AddGame(lpFolder, jj);
 		if (!strcmp("setahb.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("seta2.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("seta2hb.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("ssv.cpp", s))				AddGame(lpFolder, jj);
-		if (!strcmp("ssvhb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("speedatk.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("speglsht.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("srmp2.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("raiden.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("suprnova.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("srmp5.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("srmp6.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("ssv.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("ssvhb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("simple_st0016.cpp", s))	AddGame(lpFolder, jj);
+		if (!strcmp("thedealr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("airraid.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("banprestoms.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("bloodbro.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cabal.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("darkmist.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("dcon.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("deadang.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("dynduke.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("feversoc.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("goal92.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("goodejan.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("kncljoe.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("legionna.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("seicupbl.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("metlfrzr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mustache.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("panicr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("raiden.cpp", s))		    AddGame(lpFolder, jj);
+		if (!strcmp("raiden_ms.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("raiden2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("r2dx_v33.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("seibuspi.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sengokmj.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("stfight.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("toki.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("toki_ms.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("wiz.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("airbustr.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("djboy.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("expro02.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("galpanic.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("galpanic_ms.cpp", s))	    AddGame(lpFolder, jj);
+		if (!strcmp("galpani2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("galpani3.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("hvyunit.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("jchan.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("kaneko16.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("kaneko16hb.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("taito_x.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("sandscrp.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("suprnova.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("aerofgt.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("aerofgthb.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("crshrace.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("f1gp.cpp", s))			    AddGame(lpFolder, jj);
+		if (!strcmp("fromance.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("fromanc2.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("gstriker.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("inufuku.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("dcon.cpp", s))				AddGame(lpFolder, jj);
-		if (!strcmp("mjsister.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("ms32.cpp", s))				AddGame(lpFolder, jj);
+		if (!strcmp("ojankohs.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("pipedrm.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("rpunch.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("suprslam.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tail2nos.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("taotaido.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("welltris.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("fuukifg2.cpp", s))	        AddGame(lpFolder, jj);
 		if (!strcmp("fuukifg3.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("fuukifg3hb.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("aerofgt.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("aerofgthb.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("hyprduel.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("metro.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("rabbit.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("rabbithb.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("powerins.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tmmjprd.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("acommand.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cultures.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ddealer.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("jalmah.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("macrossp.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("nmk16.cpp", s))		    AddGame(lpFolder, jj);
+		if (!strcmp("powerins.cpp", s))		    AddGame(lpFolder, jj);
 		if (!strcmp("powerinshb.cpp", s))		AddGame(lpFolder, jj);
+		if (!strcmp("quizdna.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("quizpani.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("psikyo.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("psikyohb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("psikyo4.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("psikyosh.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("psikyoshhb.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("tetrisp2.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("deco_mlc.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("deco_mlchb.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("deco32.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("deco32hb.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("seibuspi.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("aeroboto.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("argus.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("bestleag.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("bigstrkb.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("blueprnt.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("bnstars.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("cischeat.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("citycon.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ddayjlc.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("exerion.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("fcombat.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ginganin.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("homerun.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("megasys1.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("momoko.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("ms32.cpp", s))	            AddGame(lpFolder, jj);
+		if (!strcmp("psychic5.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("pturn.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("skyfox.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("tetrisp2.cpp", s))	        AddGame(lpFolder, jj);
 	}
 }
 

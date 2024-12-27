@@ -323,6 +323,11 @@ IDI_FOLDER_TAITO		ICON	 				"res\\fold_taito.ico"
 IDI_FOLDER_KONAMI		ICON	 				"res\\fold_konami.ico"
 IDI_FOLDER_SEGA 		ICON	 				"res\\fold_sega.ico"
 IDI_FOLDER_CAVE 		ICON	 				"res\\fold_cave.ico"
+IDI_FOLDER_NINTENDO		ICON					"res\\fold_nintendo.ico"
+IDI_FOLDER_MIDWAY		ICON				    "res\\fold_midway.ico"
+IDI_FOLDER_SETA 		ICON	 				"res\\fold_seta.ico"
+IDI_FOLDER_TOAPLAN		ICON				    "res\\fold_Toaplan.ico"
+IDI_FOLDER_DATAEAST		ICON				    "res\\fold_dataeast.ico"
 //#endif
 /////////////////////////////////////////////////////////////////////////////
 //

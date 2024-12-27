@@ -512,6 +512,9 @@ INPUT_PORTS_EXTERN(dualbios);
 	ROM_LOAD( name, 0x00000, size, hash ) \
 	ROM_RELOAD(     0x10000, size )
 
+#define NEO_BIOS_AUDIO_32K(name, hash) \
+	NEO_BIOS_AUDIO(0x8000, name, hash)
+
 #define NEO_BIOS_AUDIO_64K(name, hash) \
 	NEO_BIOS_AUDIO(0x10000, name, hash)
 

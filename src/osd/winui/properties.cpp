@@ -192,17 +192,10 @@ static struct PropSheets
 } g_PropSheets[] = 
 {
 	{ IDD_PROP_DISPLAY,		GameOptionsDialogProc },
-	{ IDD_PROP_ADVANCED,	GameOptionsDialogProc },
-	{ IDD_PROP_SCREEN,		GameOptionsDialogProc },
 	{ IDD_PROP_OPENGL,		GameOptionsDialogProc },
-	{ IDD_PROP_SHADER,		GameOptionsDialogProc },
 	{ IDD_PROP_VECTOR,		GameOptionsDialogProc },
-	{ IDD_PROP_SOUND,		GameOptionsDialogProc },
 	{ IDD_PROP_INPUT,		GameOptionsDialogProc },
-	{ IDD_PROP_CONTROLLER,	GameOptionsDialogProc },
-	{ IDD_PROP_MISC,		GameOptionsDialogProc },
-	{ IDD_PROP_MISC2,		GameOptionsDialogProc },
-	{ IDD_PROP_SNAP,		GameOptionsDialogProc }
+	{ IDD_PROP_MISC,		GameOptionsDialogProc }
 };
 
 typedef struct

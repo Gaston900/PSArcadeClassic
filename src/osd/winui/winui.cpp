@@ -385,51 +385,51 @@ static int game_count=0;
 
 static const TBBUTTON tbb[] =
 {
-	{0, ID_VIEW_FOLDERS,        TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 0},
-	{1, ID_VIEW_PICTURE_AREA,   TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 1},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{2, ID_VIEW_ICONS_LARGE,    TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 2},
-	{3, ID_VIEW_ICONS_SMALL,    TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 3},
-//	{11, ID_VIEW_LIST_MENU,  	TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 4},
+	{0, ID_VIEW_FOLDERS,    	TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 0},
+	{1, ID_VIEW_PICTURE_AREA,	TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 1},
+	{0, 0,                  	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{2, ID_VIEW_ICONS_LARGE,  	TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 2},
+	{3, ID_VIEW_ICONS_SMALL, 	TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 3},
+	{15, ID_VIEW_LIST_MENU,  	TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 15},
 	{5, ID_VIEW_DETAIL, 		TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 5},
 //	{6, ID_VIEW_GROUPED,  		TBSTATE_ENABLED, BTNS_CHECKGROUP, {0, 0}, 0, 6},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{4, ID_ENABLE_INDENT,       TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 12},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{6, ID_KOREAN_GAMELIST,     TBSTATE_ENABLED, BTNS_CHECK,	  {0, 0}, 0, 4},
-	{7, ID_UPDATE_GAMELIST,     TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 5}, 
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{8, ID_OPTIONS_INTERFACE,   TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 6},
-	{9, ID_OPTIONS_DEFAULTS,    TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 7},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{10,ID_VIDEO_SNAP,          TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 8},
-	{11,ID_PLAY_M1,             TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 9},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{12,ID_HELP_ABOUT,          TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 10},
-	{13,ID_HELP_CONTENTS,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 11},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
-	{14,ID_MAME_HOMEPAGE,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 13},
-	{0, 0,                      TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0}
+	{0, 0,                  	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{4, ID_ENABLE_INDENT,  		TBSTATE_ENABLED, BTNS_CHECK,      {0, 0}, 0, 12},
+	{0, 0,                  	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{7, ID_UPDATE_GAMELIST,  	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 4},
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{8, ID_OPTIONS_INTERFACE,	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 5},
+	{9, ID_OPTIONS_DEFAULTS, 	TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 6},
+	{0, 0,                   	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{10,ID_VIDEO_SNAP,			TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 7},
+	{11,ID_PLAY_M1,   			TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 8},
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{12,ID_HELP_ABOUT,          TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 9},
+	{13,ID_HELP_CONTENTS,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 10},
+	{14,ID_MAME_HOMEPAGE,       TBSTATE_ENABLED, BTNS_BUTTON,     {0, 0}, 0, 14},
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0},
+	{6, ID_KOREAN_GAMELIST,     TBSTATE_ENABLED, BTNS_CHECK,	  {0, 0}, 0, 13}, // USE_KLIST
+	{0, 0,                    	TBSTATE_ENABLED, BTNS_SEP,        {0, 0}, 0, 0}
 };
 
 static const wchar_t szTbStrings[NUM_TOOLTIPS][30] =
 {
-	TEXT("Toggle folders list"),
-	TEXT("Toggle pictures area"),
-	TEXT("Large icons"),
-	TEXT("Small icons"),
-	TEXT("Details icons"),
-	TEXT("List icons"),
-	TEXT("Language game list"),
-	TEXT("Refresh"),
-	TEXT("Interface setttings"),
-	TEXT("Default games options"),
-	TEXT("Play ProgettoSnaps movie"),
-	TEXT("M1FX"),
-	TEXT("About"),
-	TEXT("Help"),
-	TEXT("MAME homepage"),
-	TEXT("Toggle grouped view")
+	L"Toggle folders list",
+	L"Toggle pictures area",
+	L"Large icons",
+	L"Small icons",
+	L"List icons",
+	L"Toggle grouped view",
+	L"Refresh",
+	L"Interface setttings",
+	L"Default games options",
+	L"Play ProgettoSnaps movie",
+	L"M1FX",
+	L"About",
+	L"Help",
+	L"MAME homepage",
+	L"Details icons",
+	L"Language game list"
 };
 
 static const int CommandToString[] =
@@ -441,7 +441,6 @@ static const int CommandToString[] =
 	ID_VIEW_LIST_MENU,
 	ID_VIEW_DETAIL,
 //	ID_VIEW_GROUPED,
-	ID_KOREAN_GAMELIST,
 	ID_UPDATE_GAMELIST,
 	ID_OPTIONS_INTERFACE,
 	ID_OPTIONS_DEFAULTS,
@@ -451,6 +450,7 @@ static const int CommandToString[] =
 	ID_HELP_CONTENTS,
 	ID_MAME_HOMEPAGE,
 	ID_ENABLE_INDENT,
+	ID_KOREAN_GAMELIST,
 	-1
 };
 

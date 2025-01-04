@@ -5,6 +5,8 @@ It's called Project Shadow Arcade Classic+, it's a project that started at the b
 
 This project is focused on merging two emulator systems [ARCADE64](https://arcade.mameworld.info/) + [HBMAME](https://hbmame.1emulation.com/), has started updating the Roms from version 0.245 - 0.260, then has implemented the new hack roms (Which was not included in the [HBMAME](https://hbmame.1emulation.com/) version), has been done with a total cleaning of the roms/hack roms, eliminating thus hundreds of useless roms or . chd and unnecessary and thus be able to generate a collectible edition and in this way a single version will be published. In order to make the rom system much lighter for our hard drive.
 
+Included with synchronization with the most current source of codes [PSMSLUGFOREVER](https://github.com/Gaston900/PSMSlugForever) 5.3 
+
 I am only supporting the operating systems, Windows 7, Windows 8, Windows 10 and Windows 11.
 
 So you can enjoy all the arcade systems in a single version, including all the hacks that currently exist.
@@ -71,7 +73,8 @@ Supports game list lst language files. The list language can be edited freely.
 
 CPS 1, 2, NEOGEO, PGM, driver supports key combination settings.
 
-Added 13 new UI folders by default.
+Added 14 new UI folders by default.
+ * Metal Slug
  * Capcom
  * Dataeast
  * IGS

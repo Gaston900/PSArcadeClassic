@@ -176,8 +176,9 @@
 #define IDI_FOLDER_TOAPLAN				296
 #define IDI_FOLDER_PGM					297	
 #define IDI_FOLDER_SETA				    298
-#define IDI_HEADER_UP                   299
-#define IDI_HEADER_DOWN                 300
+#define IDI_FOLDER_MSLUG			    299
+#define IDI_HEADER_UP                   300
+#define IDI_HEADER_DOWN                 301
 #define IDC_LIST                        1000
 #define IDC_JOYSTICK                    1003
 #define IDC_SIZES                       1005

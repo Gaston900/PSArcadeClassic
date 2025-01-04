@@ -80,6 +80,7 @@ enum
 	FOLDER_KONAMI,		
 	FOLDER_SEGA,	
 	FOLDER_CAVE,
+	FOLDER_MSLUG,
 	FOLDER_MIDWAY,
 	FOLDER_TOAPLAN,
 	FOLDER_NINTENDO,
@@ -171,6 +172,7 @@ void CreateTAITOFolders(int parent_index);
 void CreateKONAMIFolders(int parent_index);
 void CreateSEGAFolders(int parent_index);
 void CreateTOAFolders(int parent_index);
+void CreateMSLUGFolders(int parent_index);
 void CreateMIDWAYFolders(int parent_index);
 void CreateTOAPLANFolders(int parent_index);
 void CreateNINTENDOFolders(int parent_index);

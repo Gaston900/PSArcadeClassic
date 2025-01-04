@@ -73,6 +73,7 @@ extern const FOLDERDATA g_folderData[] =
 	{"Available",       "available",         FOLDER_AVAILABLE,    IDI_FOLDER_AVAILABLE,     F_AVAILABLE,   0,            0, NULL,                       FilterAvailable,         true },
     {"Unavailable",     "unavailable",       FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
 //#ifdef USE_GAMEFOLDERS
+    {"Metal Slug",	    "mslug",			 FOLDER_MSLUG, 		  IDI_FOLDER_MSLUG,		    0,			   0, 		     0, CreateMSLUGFolders },
 	{"Capcom",	  	    "capcom",			 FOLDER_CPS,		  IDI_FOLDER_CAPCOM,		0,			   0, 		     0, CreateCPSFolders },
     {"Dataeast",		"dataeast",		     FOLDER_DATAEAST,	  IDI_FOLDER_DATAEAST, 	    0,			   0,            0,	CreateDATAEASTFolders },
 	{"IGS", 	        "igs",			     FOLDER_PGM,		  IDI_FOLDER_PGM,		    0,			   0, 		     0, CreatePGMFolders },
@@ -169,7 +170,8 @@ static const TREEICON treeIconNames[] =
  	{ IDI_FOLDER_TAITO,		   "fold_taito"},	
  	{ IDI_FOLDER_KONAMI,	   "fold_konami"},			
  	{ IDI_FOLDER_SEGA,		   "fold_sega"},		
- 	{ IDI_FOLDER_CAVE,		   "fold_cave"},		
+ 	{ IDI_FOLDER_CAVE,		   "fold_cave"},
+	{ IDI_FOLDER_MSLUG,		   "fold_mslug"},
     { IDI_FOLDER_MIDWAY,	   "fold_midway" },
     { IDI_FOLDER_TOAPLAN,	   "fold_toaplan" },
     { IDI_FOLDER_NINTENDO,     "fold_nintendo" },
@@ -2219,6 +2221,9 @@ void CreateNAMCOFolders(int parent_index)
 		if (!strcmp("namcos1.cpp", s))                AddGame(lpFolder, jj);
 		if (!strcmp("namcos1b.cpp", s))               AddGame(lpFolder, jj);
 		if (!strcmp("puckman.cpp", s))                AddGame(lpFolder, jj);
+		if (!strcmp("mspacman.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("multipac.cpp", s))               AddGame(lpFolder, jj);
+		if (!strcmp("maketrax.cpp", s))               AddGame(lpFolder, jj);
 		if (!strcmp("pengo.cpp", s))                  AddGame(lpFolder, jj);
 		if (!strcmp("namcos10.cpp", s))               AddGame(lpFolder, jj);
 		if (!strcmp("namcos11.cpp", s))               AddGame(lpFolder, jj);
@@ -2923,6 +2928,7 @@ void CreateSETAFolders(int parent_index)
 		if (!strcmp("macrossp.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("nmk16.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("powerins.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("powerinshb.cpp", s))		AddGame(lpFolder, jj);
 		if (!strcmp("quizdna.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("quizpani.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("aleck64.cpp", s))			AddGame(lpFolder, jj);
@@ -3005,16 +3011,6 @@ void CreateSETAFolders(int parent_index)
 		if (!strcmp("rabbit.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("rabbithb.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("tmmjprd.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("acommand.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("cultures.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("ddealer.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("jalmah.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("macrossp.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("nmk16.cpp", s))		    AddGame(lpFolder, jj);
-		if (!strcmp("powerins.cpp", s))		    AddGame(lpFolder, jj);
-		if (!strcmp("powerinshb.cpp", s))		AddGame(lpFolder, jj);
-		if (!strcmp("quizdna.cpp", s))			AddGame(lpFolder, jj);
-		if (!strcmp("quizpani.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("psikyo.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("psikyohb.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("psikyo4.cpp", s))			AddGame(lpFolder, jj);
@@ -3040,6 +3036,28 @@ void CreateSETAFolders(int parent_index)
 		if (!strcmp("pturn.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("skyfox.cpp", s))			AddGame(lpFolder, jj);
 		if (!strcmp("tetrisp2.cpp", s))	        AddGame(lpFolder, jj);
+	}
+}
+
+void CreateMSLUGFolders(int parent_index)
+{
+	int jj;
+	int nGames = GetNumGames();
+
+
+	LPTREEFOLDER lpFolder = treeFolders[parent_index];
+
+	// no games in top level folder
+	SetAllBits(lpFolder->m_lpGameBits,FALSE);
+
+	for (jj = 0; jj < nGames; jj++)
+	{
+		const char *s = GetDriverFileName(jj);
+
+		if (s == NULL || s[0] == '\0')
+			continue;
+
+		if (!strcmp("mslughb.cpp", s))	        AddGame(lpFolder, jj);
 	}
 }
 

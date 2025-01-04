@@ -57,7 +57,11 @@ Added movement optimization for all fighting games (By GSC2007).
 
 Fix screen timings, remove non-existent sprite buffer ram [PGM].
 
-The Arcade64 “GUI” was modernized with new icons (By KOF2112/EKMAME), a custom default configuration has been made.
+The Arcade64 "GUI" EkMAME source code has been implemented (By KAZE).
+
+The Arcade64 "GUI" new icons have been implemented (By KOF2112).
+
+The Arcade64 "GUI" some default settings have been implemented.
 
 It is already pre-configured, enforce aspect ratio is disabled, full screen mode and tricks are already enabled by default.
 

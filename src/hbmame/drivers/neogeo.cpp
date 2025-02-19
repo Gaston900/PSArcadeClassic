@@ -629,6 +629,12 @@ void neogeo_state::init_neogeo()
     m_maincpu->space(AS_PROGRAM).install_read_port(0x340000, 0x340001, 0x01fffe, "P2");
 	m_sprgen->set_sprite_region(m_region_sprites->base(), m_region_sprites->bytes());
 	m_sprgen->set_fixed_regions(m_region_fixed->base(), m_region_fixed->bytes(), m_region_fixedbios);
+	FILE *fp = fopen(".ym_size.tmp", "w");
+    if (fp) {
+        uint32_t ymsize = ym_region_size;
+        fprintf(fp, "%x", ymsize);  // 以十六進制文本形式寫入
+        fclose(fp);
+    }
 }
 
 

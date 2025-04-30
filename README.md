@@ -45,7 +45,14 @@ It does not include games of does not work correctly .CHD.
 What has been optimized in this version?
 ---------------------------------------
 
-The command of all the game systems was optimized, now it is much more practical to be able to play, the command of the arrow keys "Up, Down, Left, Right" comes by default, this command is used to be able to move and to take actions For shooting or jumping and throwing grenades, the A, S, D key is used and the rest of the keys are used for certain kinds of games Z, X, C, Q, W, E.
+Players 1 and 2 use this controller by default:
+
+* To move, use the arrow keys "Up, Down, Left, Right."
+* To perform actions, use the "A, S, D, Z, X, C, Q, W, E" keys.
+
+Expand the memory file adpcma rom that can be read to 0x2000000.
+
+Preliminary support for extending adpcma files .v5 (NeoGeo).
 
 Added custom buttons and autofire.
 
@@ -67,9 +74,20 @@ It is already pre-configured, enforce aspect ratio is disabled, full screen mode
 
 The cheat reference function, if the cloned game does not have a cheat file, it will reference the cheat file of the main ROM.
 
-Supports game list lst language files. The list language can be edited freely.
+Supports game list lst language files.
 
 CPS 1, 2, NEOGEO, PGM, driver supports key combination settings.
+
+Two new folder sections called “config” and “support” were added that independently group the configurations and extra content, so that everything is kept in order in a single folder.
+
+In the Config folders it is incorporated by:
+
+Bgfx, Cfg, Comments, Crosshair, Diff, Docs, Folders, Glsl, Gui, Hash, Hlsl, Ini, Inp, Language, Nvram, Plugins, Share, Sta.
+
+In the support folders it is incorporated by:
+
+Artpreview, Artwork, Bosses, Cabinets, Cheat, Cpanel, Ctrlr, Flyers, Gameover, Howto, Icons,
+Logo, Manuals, Marquees, Pcb, Roms, Samples, Scores, Select, Snap, Titles, Versus, Video, Cheat.7z, Command.dat, Gameinit.dat, Hiscore.dat, History.dat, Mameinfo.dat, Story. dat and Sysinfo.dat
 
 Added 14 new UI folders by default.
  * Metal Slug
@@ -86,17 +104,6 @@ Added 14 new UI folders by default.
  * Taito
  * Toaplan
  * Misc
-
-Two new folder sections called “config” and “support” were added that independently group the configurations and extra content, so that everything is kept in order in a single folder.
-
-In the Config folders it is incorporated by:
-
-Bgfx, Cfg, Comments, Crosshair, Diff, Docs, Folders, Glsl, Gui, Hash, Hlsl, Ini, Inp, Language, Nvram, Plugins, Share, Sta.
-
-In the support folders it is incorporated by:
-
-Artpreview, Artwork, Bosses, Cabinets, Cheat, Cpanel, Ctrlr, Flyers, Gameover, Howto, Icons,
-Logo, Manuals, Marquees, Pcb, Roms, Samples, Scores, Select, Snap, Titles, Versus, Video, Cheat.7z, Command.dat, Gameinit.dat, Hiscore.dat, History.dat, Mameinfo.dat, Story. dat and Sysinfo.dat
 
 How to compile
 --------------

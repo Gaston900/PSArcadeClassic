@@ -50,9 +50,15 @@ Players 1 and 2 use this controller by default:
 * To move, use the arrow keys "Up, Down, Left, Right."
 * To perform actions, use the "A, S, D, Z, X, C, Q, W, E" keys.
 
+The M68000 CPU core has been modified to be compatible with all current types of hack ROMs.
+
 Expand the memory file adpcma rom that can be read to 0x2000000.
 
 Preliminary support for extending adpcma files .v5 (NeoGeo).
+
+The free mod is enabled on the NeoGeo system by pressing the Start button, you don't need to add credits every time you lose.
+
+It has been configured by default that it has 99 Credits in MVS/AES mode (Metal Slug).
 
 Added custom buttons and autofire.
 

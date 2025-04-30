@@ -80,7 +80,7 @@ It is already pre-configured, enforce aspect ratio is disabled, full screen mode
 
 The cheat reference function, if the cloned game does not have a cheat file, it will reference the cheat file of the main ROM.
 
-Supports game list lst language files.
+Supports game list language files.
 
 CPS 1, 2, NEOGEO, PGM, driver supports key combination settings.
 

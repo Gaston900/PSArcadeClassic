@@ -7,6 +7,13 @@
   .chd, so that we can leave roms sets much lighter for our hard drive.
 ===============================================================================================================================
 
+2025-07-23 Optimization Edition
+-------------------------------
+- Synchronizes with PSMSLUG FOREVER 5.6 version.
+- Preliminary support for extending adpcma files (HBMAME)
+
+
+
 2024-06-17 Optimization Edition
 -------------------------------
 - Synchronizes with PSMSLUG FOREVER 5.2 version.

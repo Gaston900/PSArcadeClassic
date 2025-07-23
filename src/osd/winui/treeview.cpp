@@ -3057,7 +3057,13 @@ void CreateMSLUGFolders(int parent_index)
 		if (s == NULL || s[0] == '\0')
 			continue;
 
-		if (!strcmp("mslughb.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("mslug.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslug2.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslug3.cpp", s))	        AddGame(lpFolder, jj);
+		if (!strcmp("mslug4.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslug5.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("mslugx.cpp", s))			AddGame(lpFolder, jj);
+		if (!strcmp("homebrew.cpp", s))	        AddGame(lpFolder, jj);
 	}
 }
 

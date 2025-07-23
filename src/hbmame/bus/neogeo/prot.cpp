@@ -2401,6 +2401,49 @@ void pvc_prot_device::mslug5_decrypt_68k(u8* rom, u32 size)
 }
 
 
+
+void pvc_prot_device::mslug5nd_decrypt_68k(u8* rom, u32 size)
+{
+	static const u8 xor1[ 0x20 ] = { 0xc2, 0x4b, 0x74, 0xfd, 0x0b, 0x34, 0xeb, 0xd7, 0x10, 0x6d, 0xf9, 0xce, 0x5d, 0xd5, 0x61, 0x29, 0xf5, 0xbe, 0x0d, 0x82, 0x72, 0x45, 0x0f, 0x24, 0xb3, 0x34, 0x1b, 0x99, 0xea, 0x09, 0xf3, 0x03 };
+	static const u8 xor2[ 0x20 ] = { 0x36, 0x09, 0xb0, 0x64, 0x95, 0x0f, 0x90, 0x42, 0x6e, 0x0f, 0x30, 0xf6, 0xe5, 0x08, 0x30, 0x64, 0x08, 0x04, 0x00, 0x2f, 0x72, 0x09, 0xa0, 0x13, 0xc9, 0x0b, 0xa0, 0x3e, 0xc2, 0x00, 0x40, 0x2b };
+	int i, ofst, rom_size = 0x800000;
+	std::vector<u8> buf( rom_size );
+
+	for( i = 0; i < 0x100000; i++ )
+		rom[ i ] ^= xor1[ (BYTE_XOR_LE(i) % 0x20) ];
+
+	for( i = 0x100000; i < 0x800000; i++ )
+		rom[ i ] ^= xor2[ (BYTE_XOR_LE(i) % 0x20) ];
+
+	for( i = 0x100000; i < 0x0800000; i += 4 )
+	{
+		u16 rom16;
+		rom16 = rom[BYTE_XOR_LE(i+1)] | rom[BYTE_XOR_LE(i+2)]<<8;
+		rom16 = bitswap<16>( rom16, 15, 14, 13, 12, 10, 11, 8, 9, 6, 7, 4, 5, 3, 2, 1, 0 );
+		rom[BYTE_XOR_LE(i+1)] = rom16&0xff;
+		rom[BYTE_XOR_LE(i+2)] = rom16>>8;
+	}
+
+	memcpy( &buf[0], rom, rom_size );
+
+	for( i = 0; i < 0x0100000 / 0x10000; i++ )
+	{
+		ofst = (i & 0xf0) + bitswap<8>( (i & 0x0f), 7, 6, 5, 4, 1, 0, 3, 2 );
+		memcpy( &rom[ i * 0x10000 ], &buf[ ofst * 0x10000 ], 0x10000 );
+	}
+
+	for( i = 0x100000; i < 0x800000; i += 0x100 )
+	{
+		ofst = (i & 0xf000ff) + ((i & 0x000f00) ^ 0x00700) + (bitswap<8>( ((i & 0x0ff000) >> 12), 5, 4, 7, 6, 1, 0, 3, 2 ) << 12);
+		memcpy( &rom[ i ], &buf[ ofst ], 0x100 );
+	}
+
+	memcpy( &buf[0], rom, rom_size );
+	memcpy( &rom[ 0x200000 ], &buf[ 0x700000 ], 0x100000 );
+	memcpy( &rom[ 0x200000 ], &buf[ 0x200000 ], 0x600000 );
+}
+
+
 void pvc_prot_device::svc_px_decrypt(u8* rom, u32 size)
 {
 	static const u8 xor1[ 0x20 ] = { 0x3b, 0x6a, 0xf7, 0xb7, 0xe8, 0xa9, 0x20, 0x99, 0x9f, 0x39, 0x34, 0x0c, 0xc3, 0x9a, 0xa5, 0xc8,
@@ -3029,6 +3072,34 @@ void sma_prot_device::mslug3_decrypt_68k(u8* base)
 		for (j = 0;j < 0x10000/2;j++)
 			rom[i+j] = buffer[bitswap<24>(j,23,22,21,20,19,18,17,16,15,2,11,0,14,6,4,13,8,9,3,10,7,5,12,1)];
 	}
+}
+
+
+void sma_prot_device::mslug3cqt_decrypt_68k(u8* base)
+{
+	int i,j;
+
+	/* thanks to Razoola and Mr K for the info */
+	u16 *rom = (u16 *)(base + 0x100000);
+	/* swap data lines on the whole ROMs */
+	for (i = 0;i < 0x800000/2;i++)
+		rom[i] = bitswap<16>(rom[i],4,11,14,3,1,13,0,7,2,8,12,15,10,9,5,6);
+
+	/* swap address lines & relocate fixed part */
+	rom = (u16 *)base;
+	for (i = 0;i < 0x0c0000/2;i++)
+		rom[i] = rom[0x5d0000/2 + bitswap<24>(i,23,22,21,20,19,18,15,2,1,13,3,0,9,6,16,4,11,5,7,12,17,14,10,8)];
+
+	/* swap address lines for the banked part */
+	rom = (u16 *)(base + 0x100000);
+	for (i = 0;i < 0x800000/2;i+=0x10000/2)
+	{
+		u16 buffer[0x10000/2];
+		memcpy(buffer,&rom[i],0x10000);
+		for (j = 0;j < 0x10000/2;j++)
+			rom[i+j] = buffer[bitswap<24>(j,23,22,21,20,19,18,17,16,15,2,11,0,14,6,4,13,8,9,3,10,7,5,12,1)];
+	}
+    memmove(&rom[0x500000/2], &rom[0x900000/2], 0x100000);
 }
 
  //By Remikare [kuroma_mameui]

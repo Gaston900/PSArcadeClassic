@@ -103,6 +103,7 @@ public:
 	void ngneo(machine_config &config);
 	void no_watchdog(machine_config &config);
 	void gsc(machine_config &config);
+    void neogeo_68kram(machine_config &config);
 
 	void init_bangbead();
 	void init_cmc42sfix();
@@ -197,30 +198,33 @@ public:
 /*****************
   PSMSLUGFOREVER
 ********************/
-	void init_darksoft();
 	void init_ms5plusd();
-	void init_ms5pluse();	
 	void init_ms5plush();
 	void init_ms5plusdd();
 	void init_ms5plushb();
 	void init_ms5pcbhb();
+	void init_ms5pcbdd();
+	void init_mslugdd();
+	void init_mslug2dd();
 	void init_mslug3a();
 	void init_mslug3e();
 	void init_mslug3hb();
+	void init_mslug3cqt();
 	void init_mslug3dd();
-	void init_mslug3dde();
+	void init_mslug3ndd();
     void init_mslug3b6d();
     void init_mslug3b6dd();
     void init_mslug4dd();
-	void init_mslug4dde();
+	void init_mslug4ndd();
 	void init_mslug4hb();
     void init_mslug4lw();
 	void init_mslug4p();
 	void init_mslug5b();
 	void init_mslug5e();
 	void init_mslug5dd();
+	void init_mslug5ndd();
 	void init_mslug5dde();
-	void init_mslug5ddh();
+	void init_mslug5nd();
 	void init_mslug5hb();
 	void init_mslugx();
 	void init_mslugxdd();
@@ -266,6 +270,7 @@ private:
 	void main_map_noslot(address_map &map);
 	void gsc_map(address_map &map);
 	void main_map1(address_map &map);
+    void neogeo_68kram_map(address_map &map);
 
 	void neogeo_postload();
 	void update_interrupts();
@@ -734,3 +739,25 @@ INPUT_PORTS_EXTERN(dualbios);
 
 #define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_ENCRYPTED_512K(name, hash) \
 	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_ENCRYPTED(0x80000, name, hash)
+
+#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO(size, name, hash) \
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 ) \
+	ROM_LOAD16_WORD_SWAP("sp-1.sp1",  0x00000, 0x20000, CRC(98f34e99) SHA1(ff63c492d11d0f26533d6e73d331e15152e62cc7) ) \
+	ROM_REGION( 0x20000, "audiobios", 0 ) \
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
+	ROM_REGION( size+0x10000, "audiocpu", 0 ) \
+	ROM_LOAD( name, 0x00000, size, hash ) \
+	ROM_RELOAD(     0x10000, size )
+
+#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_64K(name, hash) \
+	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO(0x10000, name, hash)
+
+#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_128K(name, hash) \
+	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO(0x20000, name, hash)
+
+#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_256K(name, hash) \
+	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO(0x40000, name, hash)
+
+#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_512K(name, hash) \
+	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO(0x80000, name, hash)
+

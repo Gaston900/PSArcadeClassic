@@ -2493,6 +2493,18 @@ void neogeo_state::init_kof99d()
 	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
 }
 
+void neogeo_state::neogeo_68kram_map(address_map &map)
+{
+	main_map_noslot(map);
+	map(0x100000,0x1FFFFF).ram();
+}
+
+void neogeo_state::neogeo_68kram(machine_config &config)
+{
+	neogeo_noslot(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::neogeo_68kram_map);
+}
+
 QUICKLOAD_LOAD_MEMBER(neogeo_state::neo_q_cb)
 {
 	if (image.length() < 0x60000)

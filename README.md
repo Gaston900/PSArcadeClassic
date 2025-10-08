@@ -54,8 +54,6 @@ The M68000 CPU core has been modified to be compatible with all current types of
 
 Support for extending adpcma files (NeoGeo) (By Robert)
 
-The free mod is enabled on the NeoGeo system by pressing the Start button, you don't need to add credits every time you lose.
-
 Added custom buttons and autofire.
 
 Removed the black border on NeoGeo systems, now has full screen.
@@ -69,8 +67,6 @@ Added movement optimization for all fighting games (By GSC2007).
 Fix screen timings, remove non-existent sprite buffer ram [PGM].
 
 The Arcade64 "GUI" EKMAME source code has been implemented (By KAZE).
-
-The Arcade64 "GUI" some default settings have been implemented.
 
 It is already pre-configured, enforce aspect ratio is disabled, full screen mode and tricks are already enabled by default.
 

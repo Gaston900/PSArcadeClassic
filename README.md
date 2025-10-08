@@ -52,13 +52,9 @@ Players 1 and 2 use this controller by default:
 
 The M68000 CPU core has been modified to be compatible with all current types of hack ROMs.
 
-Expand the memory file adpcma rom that can be read to 0x2000000.
-
-Preliminary support for extending adpcma files .v5 (NeoGeo).
+Support for extending adpcma files (NeoGeo) (By Robert)
 
 The free mod is enabled on the NeoGeo system by pressing the Start button, you don't need to add credits every time you lose.
-
-It has been configured by default that it has 99 Credits in MVS/AES mode (Metal Slug).
 
 Added custom buttons and autofire.
 
@@ -94,22 +90,6 @@ In the support folders it is incorporated by:
 
 Artpreview, Artwork, Bosses, Cabinets, Cheat, Cpanel, Ctrlr, Flyers, Gameover, Howto, Icons,
 Logo, Manuals, Marquees, Pcb, Roms, Samples, Scores, Select, Snap, Titles, Versus, Video, Cheat.7z, Command.dat, Gameinit.dat, Hiscore.dat, History.dat, Mameinfo.dat, Story. dat and Sysinfo.dat
-
-Added 14 new UI folders by default.
- * Metal Slug
- * Capcom
- * Dataeast
- * IGS
- * konami
- * Namco
- * Nintendo
- * Neogeo
- * Midway
- * Sega
- * Seta
- * Taito
- * Toaplan
- * Misc
 
 How to compile
 --------------

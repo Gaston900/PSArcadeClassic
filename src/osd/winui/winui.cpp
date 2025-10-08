@@ -7,7 +7,10 @@
 static int MIN_WIDTH  = DBU_MIN_WIDTH;
 static int MIN_HEIGHT = DBU_MIN_HEIGHT;
 
+// 修改的 代码来源 (EKMAME)
+/******************************************/
 static HIMAGELIST   hHeaderImages = NULL;
+/******************************************/
 
 typedef struct
 {
@@ -83,7 +86,8 @@ struct _play_options
 	const char *aviwrite;		// OPTION_AVIWRITE
 };
 
-//#ifdef USE_KLIST
+// 修改的 代码来源 (EKMAME)
+/****************************************/
 #define TSVNAME "Arcade_List.lst"
 #define LINEBUF_SIZE  1024
 #define NUM_COLUMNS   3
@@ -99,7 +103,7 @@ typedef struct
 static TSV  *tsv_index  = NULL;
 static TSV  *tsv_data   = NULL;
 static int  need_update = 0;
-//#endif
+/****************************************/
 
 /***************************************************************************
     function prototypes
@@ -189,7 +193,8 @@ enum
 static bool CommonListDialog(common_file_dialog_proc cfd, int filetype);
 static void SaveGameListToFile(char *szFile, int filetype);
 
-//#ifdef USE_KLIST
+// 修改的 代码来源 (EKMAME)
+/**********************************************************/
 static void LoadGameListFromFile(int games);
 static void SaveAllGameListToFile();
 char *GetDescriptionByIndex(int nIndex, bool bUse);
@@ -197,7 +202,7 @@ char *GetDescriptionByName(const char *name, bool bUse);
 char *GetGameNameByIndex(int nIndex, bool bUse);
 char *GetGameName(const char *name, bool bUse);
 char *GetGameManufactureByIndex(int nIndex, bool bUse);
-//#endif
+/**********************************************************/
 
 /***************************************************************************
     Internal structures
@@ -249,11 +254,13 @@ typedef struct
 
 static void ResizeWindow(HWND hParent, Resize *r);
 
-/* List view Icon defines */
+// 修改的 代码来源 (EKMAME)
+/**********************************************************/
 #define LG_ICONMAP_WIDTH    GetSystemMetrics(SM_CXICON)
 #define LG_ICONMAP_HEIGHT   GetSystemMetrics(SM_CYICON)
 #define ICONMAP_WIDTH       GetSystemMetrics(SM_CXSMICON)
 #define ICONMAP_HEIGHT      GetSystemMetrics(SM_CYSMICON)
+/**********************************************************/
 
 /***************************************************************************
     Internal variables
@@ -331,7 +338,10 @@ static HBITMAP hFilters	= NULL;
 static HBITMAP hRemove = NULL;
 static HBITMAP hRename = NULL;
 static HBITMAP hReset = NULL;
-static HBITMAP hklist = NULL;	//use_KLIST
+// 修改的 代码来源 (EKMAME)
+/*****************************/
+static HBITMAP hklist = NULL;
+/*****************************/
 static int optionfolder_count = 0;
 /* global data--know where to send messages */
 static bool in_emulation = false;
@@ -379,8 +389,9 @@ static HIMAGELIST hSmall = NULL;
 static HICON hIcon = NULL;
 static std::unique_ptr<int[]> icon_index; // for custom per-game icons
 
-
-static bool bklist = true; // USE_KLIST
+// 修改的 代码来源 (EKMAME)
+/********************************************************************************/
+static bool bklist = true;
 static int game_count=0;
 
 static const TBBUTTON tbb[] =
@@ -453,6 +464,7 @@ static const int CommandToString[] =
 	ID_KOREAN_GAMELIST,
 	-1
 };
+/********************************************************************************/
 
 static const int s_nPickers[] =
 {
@@ -564,7 +576,7 @@ public:
 		{
 #ifdef LOGSAVE
 			FILE *pFile;
-			pFile = fopen("config/verbose.log", "a");
+			pFile = fopen("verbose.log", "a");
 			fputs(buffer, pFile);
 			fflush(pFile);
 			fclose (pFile);
@@ -603,7 +615,7 @@ public:
 #ifdef LOGSAVE
 		// LOG all messages
 		FILE *pFile;
-		pFile = fopen("config/winui.log", "a");
+		pFile = fopen("winui.log", "a");
 		fputs(buffer, pFile);
 		fflush(pFile);
 		fclose (pFile);
@@ -694,8 +706,8 @@ static void RunMAME(int nGameIndex, const play_options *playopts)
 int MameUIMain(HINSTANCE hInstance, LPWSTR lpCmdLine)
 {
 	// delete old log file, ignore any error
-	unlink("config/winui.log");
-	unlink("config/verbose.log");
+	unlink("winui.log");
+	unlink("verbose.log");
 
 	if (__argc != 1)
 	{
@@ -713,14 +725,14 @@ int MameUIMain(HINSTANCE hInstance, LPWSTR lpCmdLine)
 
 	// set up window class
 	memset(&wndclass, 0, sizeof(WNDCLASS));
-	wndclass.style = CS_HREDRAW | CS_VREDRAW;
+	wndclass.style = CS_HREDRAW | CS_VREDRAW; // 修改的 代码来源 (EKMAME)
 	wndclass.lpfnWndProc = MameWindowProc;
 	wndclass.cbClsExtra = 0;
 	wndclass.cbWndExtra = DLGWINDOWEXTRA;
 	wndclass.hInstance = hInstance;
 	wndclass.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MAMEUI_ICON));
 	wndclass.hCursor = NULL;
-	wndclass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);// GetSysColorBrush(COLOR_3DFACE); 
+	wndclass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH); // 修改的 代码来源 (EKMAME)
 	wndclass.lpszMenuName = MAKEINTRESOURCE(IDR_UI_MENU);
 	wndclass.lpszClassName = TEXT("MainClass");
 
@@ -1165,6 +1177,8 @@ int GetMinimumScreenShotWindowWidth(void)
 	return bmp.bmWidth + 6; 	// 6 is for a little breathing room
 }
 
+// 修改的 代码来源 (EKMAME)
+/****************************************************************************************/
 const char *funcGetParentName(const char *name)
 {
 	int index = GetGameNameIndex(name);// get current game index
@@ -1178,6 +1192,7 @@ const char *funcGetParentName(const char *name)
 
 	return NULL;
 }
+/****************************************************************************************/
 
 int GetParentIndex(const game_driver *driver)
 {
@@ -1232,7 +1247,10 @@ static void Win32UI_init(void)
 		winui_set_window_text_utf8(GetDlgItem(hSplash, IDC_PROGBAR), "Loading folders structure...");
 	SendMessage(hProgress, PBM_SETPOS, 10, 0);
 
+// 修改的 代码来源 (EKMAME)
+/******************************************/
     game_count =  driver_list::total();
+/******************************************/
 
 	srand((unsigned)time(NULL));
 	// custom per-game icons
@@ -1286,8 +1304,11 @@ static void Win32UI_init(void)
 	CheckMenuItem(GetMenu(hMain), ID_ENABLE_INDENT, (bEnableIndent) ? MF_CHECKED : MF_UNCHECKED);
 	ToolBar_CheckButton(hToolBar, ID_ENABLE_INDENT, (bEnableIndent) ? MF_CHECKED : MF_UNCHECKED);
 
-	CheckMenuItem(GetMenu(hMain), ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED); //USE_KLIST
-	ToolBar_CheckButton(hToolBar, ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED); //USE_KLIST
+// 修改的 代码来源 (EKMAME)
+/***********************************************************************************************/
+	CheckMenuItem(GetMenu(hMain), ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED);
+	ToolBar_CheckButton(hToolBar, ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED);
+/***********************************************************************************************/
 
 	InitTree(g_folderData, g_filterList);
 	SendMessage(hProgress, PBM_SETPOS, 112, 0);
@@ -1322,9 +1343,10 @@ static void Win32UI_init(void)
 	idle_work = true;
 	bFullScreen = false;
 
-//#ifdef USE_KLIST
+// 修改的 代码来源 (EKMAME)
+/****************************************/
 	LoadGameListFromFile(game_total);
-//#endif
+/****************************************/
 
 	switch (GetViewMode())
 	{
@@ -1336,6 +1358,8 @@ static void Win32UI_init(void)
 			SetView(ID_VIEW_ICONS_SMALL);
 			break;
 
+// 修改的 代码来源 (EKMAME)
+/******************************************/
 		case VIEW_INLIST :
 			SetView(ID_VIEW_LIST_MENU);
 			break;
@@ -1348,6 +1372,7 @@ static void Win32UI_init(void)
 		default :
 			SetView(ID_VIEW_GROUPED);
 			break;
+/******************************************/
 	}
 
 	UpdateListView();
@@ -1364,9 +1389,12 @@ static void Win32UI_init(void)
 
 static void Win32UI_exit(void)
 {
-//#ifdef USE_KLIST
+
+// 修改的 代码来源 (EKMAME)
+/****************************/
 	SaveAllGameListToFile();
-//#endif
+/****************************/
+
 	SaveWindowStatus();
 	ShowWindow(hMain, SW_HIDE);
 
@@ -1434,12 +1462,16 @@ static void Win32UI_exit(void)
 	DeleteBitmap(hRename);
 	DeleteBitmap(hReset);
 	DeleteBitmap(hMissing_bitmap);
-	DeleteBitmap(hklist);// USE_KLIST
+
+// 修改的 代码来源 (EKMAME)
+/**************************/
+    DeleteBitmap(hklist);
+/**************************/
+
 	DeleteFont(hFontGui);
 	DeleteFont(hFontList);
 	DeleteFont(hFontHist);
 	DeleteFont(hFontTree);
-
 	DestroyIcons();
 	DestroyAcceleratorTable(hAccel);
 	DirectInputClose();
@@ -1530,13 +1562,15 @@ static LRESULT CALLBACK MameWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPAR
 		case WM_CLOSE:
 			if (GetExitDialog())
 			{
-/*
+
+// 修改的 (加斯顿90)
+/**********************************************************
 				if (winui_message_box_utf8(hMain, "Are you sure you want to quit?", MAMEUINAME, MB_ICONQUESTION | MB_YESNO) == IDNO)
 				{
 					SetFocus(hWndList);
 					return true;
 				}
-*/
+ **********************************************************/
 			}
 
 			Win32UI_exit();
@@ -1714,9 +1748,14 @@ static bool GameCheck(void)
 	AuditRefresh();
 
 	if (game_index == 0)
+		ProgressBarShow();
+
+// 修改的 代码来源 (EKMAME)
+/***********************************/
 	{
 		ProgressBarShow();
 	}
+/***********************************/
 	if (bFolderCheck == true)
 	{
 		LVITEM lvi;
@@ -1767,16 +1806,20 @@ static bool GameCheck(void)
 bool OnIdle(HWND hWnd)
 {
 	static bool bFirstTime = true;
+
+// 修改的 代码来源 (EKMAME)
+/*************************/
 	const char *pDescription;
 	const char *pName; 
 
-#ifdef USE_KLIST	// 버그. 게임 실행후 맨 앞으로 가는 문제점이 있음.
+
+#ifdef USE_KLIST
 	  int		i;
 	  LV_FINDINFO lvfi;
 #else
 	  int driver_index;
 #endif
-
+/*************************/
 
 	if (bFirstTime)
 		bFirstTime = false;
@@ -1787,8 +1830,8 @@ bool OnIdle(HWND hWnd)
 		return idle_work;
 	}
 
-	// in case it's not found, get it back
-
+// 修改的 代码来源 (EKMAME)
+/*******************************************************************/
 #ifdef USE_KLIST
 	lvfi.flags = LVFI_STRING;
 	lvfi.psz   = (LPCWSTR)GetDefaultGame();
@@ -1805,14 +1848,18 @@ bool OnIdle(HWND hWnd)
 #else
 	pDescription = GetDriverGameTitle(driver_index);
 #endif
+/*******************************************************************/
+
 	SetStatusBarText(0, pDescription);
 
-#ifdef USE_KLIST
+// 修改的 代码来源 (EKMAME)
+/*******************************************************************/
+	#ifdef USE_KLIST
 	pName = GetGameNameByIndex(i, GetUsekoreanList());
 #else
 	pName = GetDriverGameName(driver_index);
 #endif
-
+/*******************************************************************/
 	SetStatusBarText(1, pName);
 	idle_work = false;
 	UpdateStatusBar();
@@ -2124,8 +2171,12 @@ static void InitMenuIcons(void)
 	hRename = CreateBitmapTransparent(hTemp);
 	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_RESET));
 	hReset = CreateBitmapTransparent(hTemp);
-	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_KLIST)); // USE_KLIST
+
+// 修改的 代码来源 (EKMAME)
+/***********************************************************/
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_KLIST));
 	hklist = CreateBitmapTransparent(hTemp);
+/***********************************************************/
 }
 
 static void CopyToolTipText(LPTOOLTIPTEXT lpttt)
@@ -2416,8 +2467,12 @@ static void EnableSelection(int nGame)
 	MENUITEMINFO mmi;
 	HMENU hMenu = GetMenu(hMain);
 	wchar_t *t_description = win_wstring_from_utf8(ConvertAmpersandString(GetDriverGameTitle(nGame)));
+
+// 修改的 代码来源 (EKMAME)
+/**************************/
 	const char *pText;
 	const char *pName;
+/**************************/
 
 	if( !t_description )
 		return;
@@ -2432,18 +2487,17 @@ static void EnableSelection(int nGame)
 
 	SetMenuItemInfo(hMenu, ID_FILE_PLAY, false, &mmi);
 
-//#ifdef USE_KLIST
-	pText = GetDescriptionByIndex(nGame, GetUsekoreanList());
-//#else	
-//	pText = GetDriverGameTitle(nGame);
-//#endif
+// 修改的 代码来源 (EKMAME)
+/***************************************************************/
+    pText = GetDescriptionByIndex(nGame, GetUsekoreanList());
+/***************************************************************/
+	
 	SetStatusBarText(0, pText);
 
-//#ifdef USE_KLIST
+// 修改的 代码来源 (EKMAME)
+/***************************************************************/
 	pName = GetGameNameByIndex(nGame,GetUsekoreanList());
-//#else
-//	pName = GetDriverGameName(nGame);
-//#endif
+/***************************************************************/
 
 	SetStatusBarText(1, pName);
 	SendMessage(hStatusBar, SB_SETICON, 1, (LPARAM)GetSelectedPickItemIconSmall());
@@ -2456,11 +2510,12 @@ static void EnableSelection(int nGame)
 	EnableMenuItem(hMenu, ID_GAME_PROPERTIES, 	MF_ENABLED);
 
 	if (bProgressShown && bListReady == true)
-//#ifdef USE_KLIST
+
+// 修改的 代码来源 (EKMAME)
+/************************************************************************/
 		SetDefaultGame(GetGameNameByIndex(nGame, GetUsekoreanList()));
-//#else
-//		SetDefaultGame(GetDriverGameName(nGame));
-//#endif
+/************************************************************************/
+
 	have_selection = true;
 	UpdateScreenShot();
 	free(t_description);
@@ -2473,11 +2528,11 @@ static const char* GetCloneParentName(int nItem)
 		int nParentIndex = GetParentIndex(&driver_list::driver(nItem));
 
 		if( nParentIndex >= 0)
-//#ifdef USE_KLIST
+
+// 修改的 代码来源 (EKMAME)
+/***********************************************************************************/
 			return (char*)GetDescriptionByIndex(nParentIndex,GetUsekoreanList());
-//#else
-//			return GetDriverGameTitle(nParentIndex);
-//#endif
+/***********************************************************************************/
 	}
 
 	return "";
@@ -2597,7 +2652,6 @@ static char* ConvertAmpersandString(const char *s)
 	return buf;
 }
 
-
 static void PollGUIJoystick()
 {
 	if (in_emulation)
@@ -2659,21 +2713,18 @@ static void PollGUIJoystick()
 
 static void SetView(int menu_id)
 {
+
+// 修改的 代码来源 (EKMAME)
+/*********************************************************************************************************/
 	BOOL force_reset = false;
 
 	// first uncheck previous menu item, check new one
 	CheckMenuRadioItem(GetMenu(hMain), ID_VIEW_ICONS_LARGE, ID_ENABLE_INDENT, menu_id, MF_CHECKED);
+/*********************************************************************************************************/
 	ToolBar_CheckButton(hToolBar, menu_id, MF_CHECKED);
 
-//	if (menu_id == ID_VIEW_DETAIL)
-//		(void)ListView_SetImageList(hWndList, hLarge, LVSIL_SMALL);
-
-	// Associate the image lists with the list view control.
-//	if (menu_id == ID_VIEW_ICONS_LARGE)
-//		(void)ListView_SetImageList(hWndList, hLarge, LVSIL_SMALL);
-//	else
-//		(void)ListView_SetImageList(hWndList, hSmall, LVSIL_SMALL);
-
+// 修改的 代码来源 (EKMAME)
+/*******************************************************************************************/
 	if (Picker_GetViewID(hWndList) == VIEW_GROUPED || menu_id == ID_VIEW_GROUPED)
 	{
 		// this changes the sort order, so redo everything
@@ -2688,6 +2739,7 @@ static void SetView(int menu_id)
 		for (int i = 0; i < sizeof(s_nPickers) / sizeof(s_nPickers[0]); i++)
 			Picker_Sort(GetDlgItem(hMain, s_nPickers[i]));
 	}
+/*******************************************************************************************/
 }
 
 static void ResetListView()
@@ -2755,15 +2807,17 @@ static void ResetListView()
 			Picker_SetSelectedItem(hWndList, current_game);
 	}
 
+// 修改的 代码来源 (EKMAME)
+/*************************************/
 	/*RS Instead of the Arrange Call that was here previously on all Views
          We now need to set the ViewMode for SmallIcon again,
          for an explanation why, see SetView*/
 	if (GetViewMode() == VIEW_ICONS_SMALL)
 		SetView(ID_VIEW_ICONS_SMALL);
 
-
 	SetWindowRedraw(hWndList, true);
 	UpdateStatusBar();
+/*************************************/
 }
 
 static void UpdateGameList(void)
@@ -2782,10 +2836,10 @@ static void UpdateGameList(void)
 	ReloadIcons();
 	Picker_ResetIdle(hWndList);
 
-//#ifdef USE_KLIST
+// 修改的 代码来源 (EKMAME)
+/*************************************************************************************************/
 	SetDefaultGame(GetDescriptionByIndex(Picker_GetSelectedItem(hWndList), GetUsekoreanList()));
-	/*SetSelectedPick(0);*/ /* To avoid flickering. */	
-//#endif
+/*************************************************************************************************/
 }
 
 static uintptr_t CALLBACK HookProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -3066,6 +3120,8 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			UpdateListView();
 			return true;
 
+// 修改的 代码来源 (EKMAME)
+/******************************************/
 		case ID_VIEW_LIST_MENU:
 			SetView(ID_VIEW_LIST_MENU);
 			return true;
@@ -3077,6 +3133,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 		case ID_VIEW_GROUPED:
 			SetView(ID_VIEW_GROUPED);
 			return true;
+/******************************************/
 
 		/* Arrange Icons submenu */
 		case ID_VIEW_BYGAME:
@@ -3131,13 +3188,16 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			UpdateScreenShot();
 			break;
 
-	    case ID_KOREAN_GAMELIST: // USE_KLIST
+// 修改的 代码来源 (EKMAME)
+/******************************************************************************************************/
+	    case ID_KOREAN_GAMELIST:
 			bklist = !bklist;
 			SetUsekoreanList(bklist);
 			CheckMenuItem(GetMenu(hMain), ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED);
 			ToolBar_CheckButton(hToolBar, ID_KOREAN_GAMELIST, (bklist) ? MF_CHECKED : MF_UNCHECKED);
 			ResetListView();
 			break;
+/******************************************************************************************************/
 
 		case ID_VIEW_TOOLBARS:
 			bShowToolBar = !bShowToolBar;
@@ -3173,7 +3233,10 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 
 		case ID_TOOLBAR_EDIT:
 		{
+// 修改的 代码来源 (EKMAME)
+/********************************************/
 			setlocale(LC_ALL,"Korean");
+/********************************************/
 
 			char buf[256];
 			winui_get_window_text_utf8(hWndCtl, buf, std::size(buf));
@@ -3849,12 +3912,12 @@ const wchar_t *GamePicker_GetItemString(HWND hwndPicker, int nItem, int nColumn,
 	{
 		case COLUMN_GAMES:
 			/* Driver description */
-//#ifdef USE_KLIST
+
+// 修改的 代码来源 (EKMAME)
+/*************************************************************************/
 			utf8_s = GetDescriptionByIndex(nItem, GetUsekoreanList());
-//#else		
-//			utf8_s = GetDriverGameTitle(nItem);
-//#endif
-  	        break;
+			break;
+/*************************************************************************/
 
 		case COLUMN_ROMNAME:
 			/* Driver name (directory) */
@@ -3953,6 +4016,8 @@ static void InitListView(void)
 
 static void AddDriverIcon(int nItem, int default_icon_index)
 {
+// 修改的 代码来源 (EKMAME)
+/**************************************************************************/
 	HICON hIcon = 0;
 	int nParentIndex = -1;
 
@@ -3964,8 +4029,8 @@ static void AddDriverIcon(int nItem, int default_icon_index)
 
 	if (hIcon == NULL)
 	{
-		//logmsg("Game %s Icon Not Found\n",(char *)GetDriverGameName(nItem));
 		nParentIndex = GetParentIndex(&driver_list::driver(nItem));
+/**************************************************************************/
 
 		if( nParentIndex >= 0)
 		{
@@ -4038,6 +4103,9 @@ static void ReloadIcons(void)
 	}
 }
 
+
+// 修改的 代码来源 (EKMAME)
+/********************************************************************************************************/
 static DWORD GetShellLargeIconSize(void)
 {
 	DWORD  dwSize = 32, dwLength = 512, dwType = REG_SZ;
@@ -4095,25 +4163,32 @@ static DWORD GetShellSmallIconSize(void)
 		dwSize = 48;
 	}
 	return dwSize;
+/********************************************************************************************************/
 }
 
 // create iconlist for Listview control
 static void CreateIcons(void)
 {
+// 修改的 代码来源 (EKMAME)
+/********************************************************/
 	DWORD dwSmallIconSize = GetShellSmallIconSize();
 	DWORD dwLargeIconSize = GetShellLargeIconSize();
 	HICON hIcon;
 	DWORD dwStyle;
+
 	int icon_count = 0;
 	int grow = 5000;
-
+/********************************************************/
 	while(g_iconData[icon_count].icon_name)
 		icon_count++;
 
+// 修改的 代码来源 (EKMAME)
+/*****************************************************************************************************/
 	dwStyle = GetWindowLong(hWndList,GWL_STYLE);
 	SetWindowLong(hWndList,GWL_STYLE,(dwStyle & ~LVS_TYPEMASK) | LVS_ICON);
+/*****************************************************************************************************/
 
-	hSmall = ImageList_Create(dwSmallIconSize, dwSmallIconSize, ILC_COLORDDB | ILC_MASK, icon_count, icon_count + grow);
+	hSmall = ImageList_Create(dwSmallIconSize, dwSmallIconSize, ILC_COLORDDB | ILC_MASK, icon_count, icon_count + grow); // 修改的 代码来源 (EKMAME)
 
 	if (hSmall == NULL) 
 	{
@@ -4121,7 +4196,10 @@ static void CreateIcons(void)
 		PostQuitMessage(0);
 	}
 
+// 修改的 代码来源 (EKMAME)
+/*************************************************************************************************************************/
 	hLarge = ImageList_Create(dwLargeIconSize, dwLargeIconSize, ILC_COLORDDB | ILC_MASK, icon_count, icon_count + grow);
+/*************************************************************************************************************************/
 
 	if (hLarge == NULL) 
 	{
@@ -4131,6 +4209,8 @@ static void CreateIcons(void)
 
 	ReloadIcons();
 
+// 修改的 代码来源 (EKMAME)
+/************************************************************************************/
 	// Associate the image lists with the list view control.
 	(void)ListView_SetImageList(hWndList, hSmall, LVSIL_SMALL);
 	(void)ListView_SetImageList(hWndList, hLarge, LVSIL_NORMAL);
@@ -4147,6 +4227,7 @@ static void CreateIcons(void)
 
 	for (int i = 0; i < sizeof(s_nPickers) / sizeof(s_nPickers[0]); i++)
 		Picker_SetHeaderImageList(GetDlgItem(hMain, s_nPickers[i]), hHeaderImages);	
+/************************************************************************************/
 }
 
 
@@ -4157,12 +4238,12 @@ int GamePicker_Compare(HWND hwndPicker, int index1, int index2, int sort_subitem
 	switch (sort_subitem)
 	{
 		case COLUMN_GAMES:
-//#ifdef USE_KLIST
+			
+// 修改的 代码来源 (EKMAME)
+/***************************************************************************************************************************************/
   			value = core_stricmp(GetDescriptionByIndex(index1,GetUsekoreanList()), GetDescriptionByIndex(index2, GetUsekoreanList()));
-//#else			
-//			value = core_stricmp(GetDriverGameTitle(index1), GetDriverGameTitle(index2));
-//#endif
 			break;
+/***************************************************************************************************************************************/
 
 		case COLUMN_ROMNAME:
 			value = core_stricmp(GetDriverGameName(index1), GetDriverGameName(index2));
@@ -4918,12 +4999,12 @@ static void UpdateMenu(HMENU hMenu)
 		wchar_t buf[200];
 		int nGame = Picker_GetSelectedItem(hWndList);
 
+// 修改的 代码来源 (EKMAME)
+/*************************************************************************************************************************/
 		wchar_t *t_description;
-//#ifdef USE_KLIST
+
 		t_description= win_wstring_from_utf8(ConvertAmpersandString(GetDescriptionByIndex(nGame, GetUsekoreanList())));
-//#else
-//		t_description= win_wstring_from_utf8(ConvertAmpersandString(GetDriverGameTitle(nGame)));
-//#endif
+/*************************************************************************************************************************/
 
 		if( !t_description )
 			return;
@@ -5105,9 +5186,11 @@ void InitMainMenu(HMENU hMainMenu)
 	SetMenuItemBitmaps(hMainMenu, ID_FILE_LOADSTATE, MF_BYCOMMAND, hSavestate, hSavestate);
 	SetMenuItemBitmaps(hMainMenu, ID_CONTEXT_FILTERS, MF_BYCOMMAND, hFilters, hFilters);
 	SetMenuItemBitmaps(hMainMenu, ID_OPTIONS_RESET_DEFAULTS, MF_BYCOMMAND, hReset, hReset);
-	SetMenuItemBitmaps(hMainMenu, ID_KOREAN_GAMELIST, MF_BYCOMMAND, hklist, hklist); // USE_KLIST
 
-
+// 修改的 代码来源 (EKMAME)
+/**************************************************************************************/
+	SetMenuItemBitmaps(hMainMenu, ID_KOREAN_GAMELIST, MF_BYCOMMAND, hklist, hklist);
+/**************************************************************************************/
 }
 
 void InitTreeContextMenu(HMENU hTreeMenu)
@@ -5513,12 +5596,15 @@ static LPTREEFOLDER GetSelectedFolder(void)
 /* Updates all currently displayed Items in the List with the latest Data*/
 void UpdateListView(void)
 {
-	//ErrorMessageBox("update listview");
-
 	ResetWhichGamesInFolders();
 	ResetListView();
+
+// 修改的 代码来源 (EKMAME)
+/***************************************************************************************************************************************************/
 	if( (GetViewMode() == VIEW_GROUPED) || (GetViewMode() == VIEW_REPORT ) )
 		(void)ListView_RedrawItems(hWndList, ListView_GetTopIndex(hWndList), ListView_GetTopIndex(hWndList) + ListView_GetCountPerPage(hWndList));
+/***************************************************************************************************************************************************/
+
 	SetFocus(hWndList);
 }
 
@@ -5903,7 +5989,8 @@ static void SaveGameListToFile(char *szFile, int filetype)
 	winui_message_box_utf8(hMain, "File saved successfully.", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
 }
 
-//#ifdef USE_KLIST
+// 修改的 代码来源 (EKMAME)
+/****************************************************************************/
 static void TSV_GetPath(char *path)
 {
 	char drive[256];
@@ -6113,9 +6200,7 @@ char *GetGameManufactureByIndex(int nIndex, bool bUse)
 	}
 
 }
-
-
-//#endif
+/****************************************************************************/
 
 static HBITMAP CreateBitmapTransparent(HBITMAP hSource)
 {
@@ -6157,7 +6242,10 @@ char *core_strdup(const char *str)
 	return cpy;
 }
 
+// 修改的 代码来源 (EKMAME)
+/****************************/
 int GetNumGames(void)
 {
 	return game_count;
 }
+/****************************/

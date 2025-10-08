@@ -68,26 +68,26 @@ static void CreateDumpingFolders(int parent_index);
 
 extern const FOLDERDATA g_folderData[] =
 {
+// Modified Code Source (EKMAME)
+/*******************************************************************************************************************************************************************************************/
 	// commented-out lines have parts not defined elsewhere
 	{"All Games",       "allgames",          FOLDER_ALLGAMES,     IDI_FOLDER_ALLGAMES,      0,             0,            0, NULL,                       NULL,                    true },
 	{"Available",       "available",         FOLDER_AVAILABLE,    IDI_FOLDER_AVAILABLE,     F_AVAILABLE,   0,            0, NULL,                       FilterAvailable,         true },
     {"Unavailable",     "unavailable",       FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
-//#ifdef USE_GAMEFOLDERS
-    {"Metal Slug",	    "mslug",			 FOLDER_MSLUG, 		  IDI_FOLDER_MSLUG,		    0,			   0, 		     0, CreateMSLUGFolders },
+//    {"Metal Slug",	"mslug",			 FOLDER_MSLUG, 		  IDI_FOLDER_MSLUG,		    0,			   0, 		     0, CreateMSLUGFolders },
 	{"Capcom",	  	    "capcom",			 FOLDER_CPS,		  IDI_FOLDER_CAPCOM,		0,			   0, 		     0, CreateCPSFolders },
     {"Dataeast",		"dataeast",		     FOLDER_DATAEAST,	  IDI_FOLDER_DATAEAST, 	    0,			   0,            0,	CreateDATAEASTFolders },
 	{"IGS", 	        "igs",			     FOLDER_PGM,		  IDI_FOLDER_PGM,		    0,			   0, 		     0, CreatePGMFolders },
 	{"Konami",		    "konami", 		     FOLDER_KONAMI,		  IDI_FOLDER_KONAMI,		0,			   0, 		     0, CreateKONAMIFolders },
-	{"Namco", 		    "namco",			 FOLDER_NAMCO,		  IDI_FOLDER_NAMCO,		    0,			   0, 		     0, CreateNAMCOFolders },
+    {"Namco", 	   	    "namco",			 FOLDER_NAMCO,		  IDI_FOLDER_NAMCO,		    0,			   0, 		     0, CreateNAMCOFolders },
 	{"Neo-Geo",         "neogeo", 		     FOLDER_NEOGEO,	      IDI_FOLDER_NEOGEO,	    0,			   0, 		     0, CreateNEOGEOFolders },
     {"Midway",	        "Midway",		     FOLDER_MIDWAY,	      IDI_FOLDER_MIDWAY,		0,			   0, 		     0, CreateMIDWAYFolders },
 	{"Nintendo",        "nintendo", 		 FOLDER_NINTENDO,     IDI_FOLDER_NINTENDO,		0,			   0, 		     0, CreateNINTENDOFolders },
     {"Sega",		    "sega",			     FOLDER_SEGA, 		  IDI_FOLDER_SEGA,		    0,			   0, 		     0, CreateSEGAFolders },
 	{"Seta", 		    "seta",			     FOLDER_SETA,		  IDI_FOLDER_SETA,		    0,			   0, 		     0, CreateSETAFolders },
 	{"Taito", 		    "taito",			 FOLDER_TAITO,		  IDI_FOLDER_TAITO,		    0,			   0, 		     0, CreateTAITOFolders },
-	{"Toaplan", 	    "toaplan",		     FOLDER_TOAPLAN,	  IDI_FOLDER_TOAPLAN,	    0,			   0, 		     0, CreateTOAPLANFolders },
-	{"Misc",	        "misc",			     FOLDER_CAVE, 		  IDI_FOLDER_CAVE,		    0,			   0, 		     0, CreateTOAFolders },
-//#endif 
+    {"Toaplan", 	    "toaplan",		     FOLDER_TOAPLAN,	  IDI_FOLDER_TOAPLAN,	    0,			   0, 		     0, CreateTOAPLANFolders },
+    {"Misc",	        "misc",			     FOLDER_CAVE, 		  IDI_FOLDER_CAVE,		    0,			   0, 		     0, CreateTOAFolders },
 	{"Parents",         "originals",         FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
 	{"Clones",          "clones",            FOLDER_CLONES,       IDI_FOLDER_CLONES,        F_CLONES,      F_ORIGINALS,  0, NULL,                       DriverIsClone,           true },
 	{"Source",          "source",            FOLDER_SOURCE,       IDI_FOLDER_SOURCE,        0,             0,            0, CreateSourceFolders },
@@ -116,6 +116,7 @@ extern const FOLDERDATA g_folderData[] =
 	{"Screens",         "screens",           FOLDER_SCREENS,      IDI_FOLDER_MONITOR,       0,             0,            0, CreateScreenFolders },
 	//{"Stereo",          "stereo",            FOLDER_STEREO,       IDI_FOLDER,               0,             0,            0, NULL,                       DriverIsStereo,          TRUE },
 	{ NULL }
+/*******************************************************************************************************************************************************************************************/
 };
 
 /* list of filter/control Id pairs */
@@ -136,7 +137,7 @@ extern const FILTER_ITEM g_filterList[] =
 
 static const TREEICON treeIconNames[] =
 {
-	{ IDI_FOLDER_OPEN,         "foldopen" },
+	{ IDI_FOLDER_OPEN,         "foldopen" }, // Modified (Gaston90)
 	{ IDI_FOLDER,              "folder" },
 	{ IDI_FOLDER_ALLGAMES,     "allgames" },
 	{ IDI_FOLDER_AVAILABLE,    "foldavail" },
@@ -161,7 +162,8 @@ static const TREEICON treeIconNames[] =
 	{ IDI_FOLDER_SOUND,        "foldcsb" },
 	{ IDI_FOLDER_SOURCE,       "foldsrc" },
 	{ IDI_SOURCE,              "source" },
-//#ifdef USE_GAMEFOLDERS
+// Modified Code Source (EKMAME)
+/**********************************************/
 	{ IDI_FOLDER_NEOGEO,       "fold_neogeo" },
     { IDI_FOLDER_CAPCOM,	   "fold_cps" },
     { IDI_FOLDER_PGM,	   	   "fold_pgm" },
@@ -176,7 +178,7 @@ static const TREEICON treeIconNames[] =
     { IDI_FOLDER_TOAPLAN,	   "fold_toaplan" },
     { IDI_FOLDER_NINTENDO,     "fold_nintendo" },
 	{ IDI_FOLDER_DATAEAST,	   "fold_dataeast"},
-//#endif	
+/**********************************************/
 	{ IDI_FOLDER_TRACKBALL,    "foldball" },
 	{ IDI_FOLDER_UNAVAILABLE,  "foldunav" },
 	{ IDI_FOLDER_VECTOR,       "foldvect" },
@@ -361,29 +363,23 @@ bool GameFiltered(int nGame, DWORD dwMask)
 
 	if (strlen(GetSearchText()) && _stricmp(GetSearchText(), SEARCH_PROMPT))
 	{
-
+// Modified Code Source (EKMAME)
+/*******************************************************************************/
 		if (MyStrStrI(GetDescriptionByIndex(nGame, GetUsekoreanList()), GetSearchText()) == NULL &&
 			MyStrStrI(GetGameNameByIndex(nGame,GetUsekoreanList()), GetSearchText()) == NULL )
 			return true;
-
-//		if (MyStrStrI(GetDriverGameTitle(nGame), GetSearchText()) == NULL &&
-//			MyStrStrI(GetDriverGameName(nGame), GetSearchText()) == NULL)
-//			return true;
+/*******************************************************************************/
 	}
 
+// Modified Code Source (EKMAME)
+/*******************************************************************************/	
 	/*Filter Text is already global*/
-//	if (MyStrStrI(GetDriverGameTitle(nGame), GetFilterText()) == NULL &&
-//		MyStrStrI(GetDriverGameName(nGame), GetFilterText()) == NULL &&
-//		MyStrStrI(GetDriverFileName(nGame), GetFilterText()) == NULL &&
-//		MyStrStrI(GetDriverGameManufacturer(nGame), GetFilterText()) == NULL)
-//		return true;
-
-
 	if (MyStrStrI(GetDescriptionByIndex(nGame, GetUsekoreanList()), GetFilterText()) == NULL &&
 		MyStrStrI(GetGameNameByIndex(nGame,GetUsekoreanList()), GetFilterText()) == NULL &&
 		MyStrStrI(GetDriverFileName(nGame), GetFilterText()) == NULL &&
 		MyStrStrI(GetGameManufactureByIndex(nGame,GetUsekoreanList()), GetFilterText()) == NULL)
 		return true;
+/*******************************************************************************/
 
 	// Are there filters set on this folder?
 	if ((dwMask & F_MASK) == 0)
@@ -2059,6 +2055,8 @@ HIMAGELIST GetTreeViewIconList(void)
 	return hTreeSmall;
 }
 
+// Modified Code Source (EKMAME)
+/****************************************************************************/
 void CreateNEOGEOFolders(int parent_index)
 {
 	int jj;
@@ -2077,9 +2075,10 @@ void CreateNEOGEOFolders(int parent_index)
 		if (s == NULL || s[0] == '\0')
 			continue;
 
-		if( (!strcmp("neogeo_noslot.cpp", s))||
-            (!strcmp("neogeo_noslothb.cpp", s))||
-            (!strcmp("mslughb.cpp", s)))
+		if (!strcmp("neogeo_noslot.cpp", s))		   AddGame(lpFolder, jj);
+		if (!strcmp("neogeo_noslothb.cpp", s))		   AddGame(lpFolder, jj);
+		if (!strcmp("neogeo_noslotdd.cpp", s))		   AddGame(lpFolder, jj);
+
 		{
 			AddGame(lpFolder, jj);
 		}
@@ -3066,6 +3065,8 @@ void CreateMSLUGFolders(int parent_index)
 		if (!strcmp("homebrew.cpp", s))	        AddGame(lpFolder, jj);
 	}
 }
+
+/****************************************************************************/
 
 int GetTreeViewIconIndex(int icon_id)
 {

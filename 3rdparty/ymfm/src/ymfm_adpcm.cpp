@@ -32,41 +32,6 @@
 
 namespace ymfm
 {
-// 定義全局變量
-uint32_t g_ym_rom_size = 0xFFFFFF;
- void init_ym_rom_size() {
-        static bool initialized = false;
-        if (!initialized) {
-            // 嘗試打開文件
-            FILE* fp = fopen(".ym_size.tmp", "r");
-            if (fp) 
-            {
-                // 準備一個緩衝區來讀取文本
-                char buffer[32] = {0};
-                if (fgets(buffer, sizeof(buffer), fp))
-                {
-                    // 將十六進制字符串轉換為數值
-                    unsigned int read_size = 0;
-                    if (sscanf(buffer, "%x", &read_size) == 1)
-                    {
-                        g_ym_rom_size = read_size;
-                    }
-                }
-                fclose(fp);
-                  if (remove(".ym_size.tmp") != 0) 
-            {
-                // 如果 remove 失敗，記錄錯誤
-                if (FILE* debug = fopen("file_delete_error.txt", "w"))
-                {
-                    fprintf(debug, "Failed to delete ym_size.tmp\n");
-                    perror("Error details");  // 輸出系統錯誤信息
-                    fclose(debug);
-                }
-                }                               
-                initialized = true;
-            }                        
-        }
-    }
 //*********************************************************
 // ADPCM "A" REGISTERS
 //*********************************************************
@@ -155,25 +120,25 @@ void adpcm_a_channel::save_restore(ymfm_saved_state &state)
 
 void adpcm_a_channel::keyonoff(bool on)
 {
-    m_playing = on;
-    if (m_playing)
-    {
-        m_curaddress = m_regs.ch_start(m_choffs) << m_address_shift;
-        m_curnibble = 0;
-        m_curbyte = 0;
-        m_accumulator = 0;
-        m_step_index = 0;
+	m_playing = on;
+	if (m_playing)
+	{
+		m_curaddress = m_regs.ch_start(m_choffs) << m_address_shift;
+		m_curnibble = 0;
+		m_curbyte = 0;
+		m_accumulator = 0;
+		m_step_index = 0;
 
-        // don't log masked channels
-        if (((debug::GLOBAL_ADPCM_A_CHANNEL_MASK >> m_choffs) & 1) != 0)
-            debug::log_keyon("KeyOn ADPCM-A%d: pan=%d%d start=%04X end=%04X level=%02X\n",
-                m_choffs,
-                m_regs.ch_pan_left(m_choffs),
-                m_regs.ch_pan_right(m_choffs),
-                m_regs.ch_start(m_choffs),
-                m_regs.ch_end(m_choffs),
-                m_regs.ch_instrument_level(m_choffs));
-    }
+		// don't log masked channels
+		if (((debug::GLOBAL_ADPCM_A_CHANNEL_MASK >> m_choffs) & 1) != 0)
+			debug::log_keyon("KeyOn ADPCM-A%d: pan=%d%d start=%04X end=%04X level=%02X\n",
+				m_choffs,
+				m_regs.ch_pan_left(m_choffs),
+				m_regs.ch_pan_right(m_choffs),
+				m_regs.ch_start(m_choffs),
+				m_regs.ch_end(m_choffs),
+				m_regs.ch_instrument_level(m_choffs));
+	}
 }
 
 
@@ -183,7 +148,6 @@ void adpcm_a_channel::keyonoff(bool on)
 
 bool adpcm_a_channel::clock()
 {
-    init_ym_rom_size();  // 確保已初始化
 	// if not playing, just output 0
 	if (m_playing == 0)
 	{
@@ -209,26 +173,23 @@ bool adpcm_a_channel::clock()
 			m_playing = m_accumulator = 0;
 			return true;
 		}
-	    // 當Channel 3且需要修改地址時
-        uint32_t read_address = m_curaddress;
-        uint32_t reg_value = m_regs.read(m_choffs + 0x08);
-   
-         if (g_ym_rom_size > 0x1000000)
-    {    
-        if (reg_value >= 0xF0) 
-        {
-            read_address += 0x1000000;
-                                }
-    }
-    
-        // 使用修改後的地址進行實際讀取
-        m_curbyte = m_owner.intf().ymfm_external_read(ACCESS_ADPCM_A, read_address);
-        m_curaddress++;  // 只增加原始地址，不使用修改後的地址
-        data = m_curbyte >> 4;
-        m_curnibble = 1;
+		// Look for extra neogeo hack stuff
+		uint32_t read_address = m_curaddress;
+// 修改的 代码来源 (HBMAME)
+/************************************************************************************/
+		if (m_regs.read(m_choffs + 0x08) >= 0xF0)
+		{
+			read_address |= 0x1'000'000;
+			//printf("%X ",read_address);
+		}
+/************************************************************************************/
+		m_curbyte = m_owner.intf().ymfm_external_read(ACCESS_ADPCM_A, read_address);
+		m_curaddress++;
+		data = m_curbyte >> 4;
+		m_curnibble = 1;
 	}
 
-	// otherwise just extract from the previosuly-fetched byte
+	// otherwise just extract from the previously-fetched byte
 	else
 	{
 		data = m_curbyte & 0xf;
@@ -506,48 +467,60 @@ void adpcm_b_channel::clock()
 	if (position < 0x10000)
 		return;
 
-	// if playing from RAM/ROM, check the end address and process
-	if (m_regs.external())
+	// if we're about to process nibble 0, fetch sample
+	if (m_curnibble == 0)
 	{
-		// wrap at the limit address
-		if (at_limit())
-			m_curaddress = 0;
-
-		// handle the sample end, either repeating or stopping
-		if (at_end())
-		{
-			// if repeating, go back to the start
-			if (m_regs.repeat())
-				load_start();
-
-			// otherwise, done; set the EOS bit and return
-			else
-			{
-				m_accumulator = 0;
-				m_prev_accum = 0;
-				m_status = (m_status & ~STATUS_PLAYING) | STATUS_EOS;
-				debug::log_keyon("%s\n", "ADPCM EOS");
-				return;
-			}
-		}
-
-		// if we're about to process nibble 0, fetch and increment
-		if (m_curnibble == 0)
-		{
-			m_curbyte = m_owner.intf().ymfm_external_read(ACCESS_ADPCM_B, m_curaddress++);
-			m_curaddress &= 0xffffff;
-		}
+		// playing from RAM/ROM
+		if (m_regs.external())
+			m_curbyte = m_owner.intf().ymfm_external_read(ACCESS_ADPCM_B, m_curaddress);
 	}
 
 	// extract the nibble from our current byte
 	uint8_t data = uint8_t(m_curbyte << (4 * m_curnibble)) >> 4;
 	m_curnibble ^= 1;
 
-	// if CPU-driven and we just processed the last nibble, copy the next byte and request more
-	if (m_curnibble == 0 && !m_regs.external())
+	// we just processed the last nibble
+	if (m_curnibble == 0)
 	{
-		m_curbyte = m_regs.cpudata();
-		m_status |= STATUS_BRDY;
+		// if playing from RAM/ROM, check the end/limit address or advance
+		if (m_regs.external())
+		{
+			// handle the sample end, either repeating or stopping
+			if (at_end())
+			{
+				// if repeating, go back to the start
+				if (m_regs.repeat())
+					load_start();
+
+				// otherwise, done; set the EOS bit
+				else
+				{
+					m_accumulator = 0;
+					m_prev_accum = 0;
+					m_status = (m_status & ~STATUS_PLAYING) | STATUS_EOS;
+					debug::log_keyon("%s\n", "ADPCM EOS");
+					return;
+				}
+			}
+
+			// wrap at the limit address
+			else if (at_limit())
+				m_curaddress = 0;
+
+			// otherwise, advance the current address
+			else
+			{
+				m_curaddress++;
+				m_curaddress &= 0xffffff;
+			}
+		}
+
+		// if CPU-driven, copy the next byte and request more
+		else
+		{
+			m_curbyte = m_regs.cpudata();
+			m_status |= STATUS_BRDY;
+		}
 	}
 
 	// remember previous value for interpolation
@@ -611,18 +584,27 @@ uint8_t adpcm_b_channel::read(uint32_t regnum)
 			m_dummy_read--;
 		}
 
-		// did we hit the end? if so, signal EOS
-		if (at_end())
-		{
-			m_status = STATUS_EOS | STATUS_BRDY;
-			debug::log_keyon("%s\n", "ADPCM EOS");
-		}
-
-		// otherwise, write the data and signal ready
+		// read the data
 		else
 		{
+			// read from outside of the chip
 			result = m_owner.intf().ymfm_external_read(ACCESS_ADPCM_B, m_curaddress++);
-			m_status = STATUS_BRDY;
+
+			// did we hit the end? if so, signal EOS
+			if (at_end())
+			{
+				m_status = STATUS_EOS | STATUS_BRDY;
+				debug::log_keyon("%s\n", "ADPCM EOS");
+			}
+			else
+			{
+				// signal ready
+				m_status = STATUS_BRDY;
+			}
+
+			// wrap at the limit address
+			if (at_limit())
+				m_curaddress = 0;
 		}
 	}
 	return result;

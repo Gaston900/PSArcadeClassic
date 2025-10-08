@@ -44,8 +44,13 @@
 namespace ui {
 
 enum : unsigned {
+// 修改的 代码来源 (EKMAME)
+/*********************/
 	AUTOFIRE,
+#ifdef USE_CUSTOM_BUTTON
 	CUSTOM_BUTTON,
+#endif /* USE_CUSTOM_BUTTON */
+/*********************/
 	INPUT_OPTIONS,
 	SETTINGS_DIP_SWITCHES,
 	SETTINGS_DRIVER_CONFIG,
@@ -124,9 +129,13 @@ void menu_main::populate(float &customtop, float &custombottom)
 
 	item_append(_("menu-main", "System Information"), 0, (void *)GAME_INFO);
 
+// 修改的 代码来源 (EKMAME)
+/*******************************************************************************/
 	item_append(_("menu-main", "Autofire Setting"), 0, (void *)AUTOFIRE);
-
+#ifdef USE_CUSTOM_BUTTON
 	item_append(_("menu-main", "Custom Buttons"), 0, (void *)CUSTOM_BUTTON);
+#endif /* USE_CUSTOM_BUTTON */
+/*******************************************************************************/
 
 	if (ui().found_machine_warnings())
 		item_append(_("menu-main", "Warning Information"), 0, (void *)WARN_INFO);
@@ -183,6 +192,8 @@ void menu_main::populate(float &customtop, float &custombottom)
 // MAMEFX items commented out
 	item_append(menu_item_type::SEPARATOR);
 
+// 修改的 代码来源 (加斯顿90)
+/***************************************************************************************************************/
 	/* add favorite menu */
 	if (!mame_machine_manager::instance()->favorite().is_favorite(machine()))
 		item_append(_("menu-main", "Add To Favorites"), 0, (void *)ADD_FAVORITE);
@@ -207,6 +218,7 @@ void menu_main::populate(float &customtop, float &custombottom)
 		item_append(_("menu-main", "Select New System"), 0, (void *)SELECT_GAME);
 		item_append(_("menu-main", "Close Menu"), 0, (void *)DISMISS);
 	}
+/***************************************************************************************************************/
 }
 
 
@@ -225,13 +237,17 @@ void menu_main::handle(event const *ev)
 			menu::stack_push<menu_input_options>(ui(), container());
 			break;
 
+// 修改的 代码来源 (EKMAME)
+/****************************************************************************/
 		case AUTOFIRE:
 			menu::stack_push<menu_autofire>(ui(), container());
 			break;
-
+#ifdef USE_CUSTOM_BUTTON
 		case CUSTOM_BUTTON:
 			menu::stack_push<menu_custom_button>(ui(), container());		
 			break;
+#endif /* USE_CUSTOM_BUTTON */
+/****************************************************************************/
 
 		case SETTINGS_DIP_SWITCHES:
 			menu::stack_push<menu_settings_dip_switches>(ui(), container());

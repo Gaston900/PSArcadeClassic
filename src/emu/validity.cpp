@@ -1981,8 +1981,12 @@ void validity_checker::validate_driver(device_t &root)
 
 	// if we have at least 100 drivers, validate the clone
 	// (100 is arbitrary, but tries to avoid tiny.mak dependencies)
-	/* if (driver_list::total() > 100 && clone_of == -1 && is_clone)
-		osd_printf_error("Driver is a clone of nonexistent driver %s\n", m_current_driver->parent); */
+
+// 修改的 代码来源 (EKMAME)
+/*******************************************************************************************************
+	if (driver_list::total() > 100 && clone_of == -1 && is_clone)
+		osd_printf_error("Driver is a clone of nonexistent driver %s\n", m_current_driver->parent);
+*******************************************************************************************************/
 
 	// look for recursive cloning
 	if (clone_of != -1 && &driver_list::driver(clone_of) == m_current_driver)

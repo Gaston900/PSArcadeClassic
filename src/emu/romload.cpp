@@ -508,7 +508,8 @@ void rom_load_manager::dump_wrong_and_correct_checksums(const util::hash_collect
 
 void rom_load_manager::verify_length_and_hash(emu_file *file, std::string_view name, u32 explength, const util::hash_collection &hashes)
 {
-/* 
+// 修改的 (加斯顿90)
+/****************************************************************************************************************************************
 	// we've already complained if there is no file
 	if (!file)
 		return;
@@ -548,7 +549,7 @@ void rom_load_manager::verify_length_and_hash(emu_file *file, std::string_view n
 			m_knownbad++;
 		}
 	}
- */
+*****************************************************************************************************************************************/
 }
 
 
@@ -559,14 +560,17 @@ void rom_load_manager::verify_length_and_hash(emu_file *file, std::string_view n
 
 void rom_load_manager::display_loading_rom_message(const char *name, bool from_list)
 {
-	/*std::string buffer;
+// 修改的 (加斯顿90)
+/****************************************************************************************************************************************
+	std::string buffer;
 	if (name)
 		buffer = util::string_format("%s (%d%%)", from_list ? "Loading Software" : "Loading Machine", u32(100 * m_romsloadedsize / m_romstotalsize));
 	else
 		buffer = "Loading Complete";
 
 	if (!machine().ui().is_menu_active())
-		machine().ui().set_startup_text(buffer.c_str(), false);*/
+		machine().ui().set_startup_text(buffer.c_str(), false);
+*****************************************************************************************************************************************/
 }
 
 

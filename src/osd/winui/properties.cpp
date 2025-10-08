@@ -191,11 +191,14 @@ static struct PropSheets
 	DLGPROC pfnDlgProc;
 } g_PropSheets[] = 
 {
+// Modified Code Source (EKMAME)
+/********************************************************/
 	{ IDD_PROP_DISPLAY,		GameOptionsDialogProc },
 	{ IDD_PROP_OPENGL,		GameOptionsDialogProc },
 	{ IDD_PROP_VECTOR,		GameOptionsDialogProc },
 	{ IDD_PROP_INPUT,		GameOptionsDialogProc },
 	{ IDD_PROP_MISC,		GameOptionsDialogProc }
+/********************************************************/
 };
 
 typedef struct
@@ -416,11 +419,10 @@ void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int fol
 	switch(opt_type)
 	{
 		case OPTIONS_GAME:
-//#ifdef USE_KLIST
-			snprintf(tmp, std::size(tmp), "Properties for %s", GetDescriptionByIndex(g_nGame,GetUsekoreanList()));
-//else			
-//			snprintf(tmp, std::size(tmp), "Properties for %s", GetDriverGameTitle(g_nGame));
-//#endif
+// Modified Code Source (EKMAME)
+/**********************************************************************************************/
+			snprintf(tmp, std::size(tmp), "Properties for %s", GetDescriptionByIndex(g_nGame,GetUsekoreanList()));		
+/**********************************************************************************************/
 			break;
 
 		case OPTIONS_RASTER:
@@ -737,11 +739,8 @@ static char *GameInfoTitle(OPTIONS_TYPE opt_type, int nIndex)
 	else if (OPTIONS_SOURCE == opt_type)
 		strcpy(buffer, "Driver options\r\nDefault options used by all games in the driver");
 	else
-//#ifdef USE_KLIST
-//		snprintf(buffer, std::size(buffer), "%s - \"%s\"", GetDescriptionByIndex(nIndex,GetUsekoreanList()), GetGameNameByIndex(nIndex,GetUsekoreanList()));
-//#else
 		snprintf(buffer, std::size(buffer), "%s - \"%s\"", GetDriverGameTitle(nIndex), GetDriverGameName(nIndex));
-//#endif
+
 	return buffer;
 }
 
@@ -755,11 +754,7 @@ static char *GameInfoCloneOf(int nIndex)
 	if (DriverIsClone(nIndex))
 	{
 		int nParentIndex = GetParentIndex(&driver_list::driver(nIndex));
-//#ifdef USE_KLIST
-//		snprintf(buffer, std::size(buffer), "%s - \"%s\"", GetDescriptionByIndex(nParentIndex,GetUsekoreanList()), GetGameNameByIndex(nParentIndex,GetUsekoreanList()));
-//#else
 		snprintf(buffer, std::size(buffer), "%s - \"%s\"", GetDriverGameTitle(nParentIndex), GetDriverGameName(nParentIndex));
-//#endif
 	}
 
 	return buffer;
@@ -786,6 +781,9 @@ static void UpdateSheetCaption(HWND hWnd)
 	HRGN hRgn;
 	RECT rect, rc;
 	wchar_t szText[256];
+
+// Modified Code Source (EKMAME)
+/********************************************************************************************/
 	BYTE        bR, bG, bB, bSR, bSG, bSB, bER, bEG, bEB;
 	//DWORD       dwLColor, dwRColor;
 	int 		i, iWidth;
@@ -838,6 +836,7 @@ static void UpdateSheetCaption(HWND hWnd)
 	}
 
 	i = GetSheetPageTreeCurSelText(szText, std::size(szText));
+/********************************************************************************************/
 
 	if (i > 0)
 	{
@@ -1202,17 +1201,15 @@ intptr_t CALLBACK GamePropertiesDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, 
 			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
 			SendMessage(hDlg, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrushDlg = CreateSolidBrush(RGB(240, 240, 240));
-//#ifdef USE_KLIST
-			snprintf(tmp, std::size(tmp), "Information for \"%s\"", (char *)GetGameNameByIndex(index,GetUsekoreanList()));
-//#else
-//			snprintf(tmp, std::size(tmp), "Information for \"%s\"", GetDriverGameName(index));
-//#endif
+// Modified Code Source (EKMAME)
+/*************************************************************************************************************************/
+            snprintf(tmp, std::size(tmp), "Information for \"%s\"", (char *)GetGameNameByIndex(index,GetUsekoreanList()));
+/*************************************************************************************************************************/
 			winui_set_window_text_utf8(hDlg, tmp);
-//#ifdef USE_KLIST
-			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDescriptionByIndex(index,GetUsekoreanList()));
-//#else
-//			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDriverGameTitle(index));
-//#endif
+// Modified Code Source (EKMAME)
+/*************************************************************************************************************************/
+		    winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDescriptionByIndex(index,GetUsekoreanList()));	
+/*************************************************************************************************************************/
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_MANUFACTURED), GameInfoManufactured(index));
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_STATUS), GameInfoStatus(index));
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_CPU), GameInfoCPU(index));

@@ -265,7 +265,12 @@ public:
 	// actions
 	bool activate();
 	bool select_default_state();
+
+// 修改的 代码来源 (EKMAME)
+/***********************************/
     bool select_all_set_state();
+/***********************************/
+
 	bool select_previous_state();
 	bool select_next_state();
 	void save(util::core_file &cheatfile) const;

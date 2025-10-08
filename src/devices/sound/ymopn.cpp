@@ -150,8 +150,8 @@ template<typename ChipClass>
 ym2610_device_base<ChipClass>::ym2610_device_base(const machine_config &mconfig, const char *tag, device_t *owner, uint32_t clock, device_type type) :
 	ymfm_ssg_device_base<ChipClass>(mconfig, tag, owner, clock, type),
 	device_memory_interface(mconfig, *this),
-	m_adpcm_a_config("adpcm_a", ENDIANNESS_LITTLE, 8, 25, 0),
-	m_adpcm_b_config("adpcm_b", ENDIANNESS_LITTLE, 8, 25, 0),
+	m_adpcm_a_config("adpcm_a", ENDIANNESS_LITTLE, 8, 25, 0), // Modified Code Source (HBMAME)
+	m_adpcm_b_config("adpcm_b", ENDIANNESS_LITTLE, 8, 25, 0), // Modified Code Source (HBMAME)
 	m_adpcm_a_region(*this, "adpcma"),
 	m_adpcm_b_region(*this, "adpcmb")
 {
@@ -197,6 +197,11 @@ void ym2610_device_base<ChipClass>::device_start()
 		else if (m_adpcm_a_region)
 			space(1).install_rom(0, m_adpcm_a_region->bytes() - 1, m_adpcm_a_region->base());
 	}
+// Modified Code Source (HBMAME)
+/***********************************************************/
+	if (m_adpcm_a_region)
+		m_rom_size = m_adpcm_a_region->bytes();
+/***********************************************************/
 }
 
 
@@ -209,9 +214,20 @@ template<typename ChipClass>
 uint8_t ym2610_device_base<ChipClass>::ymfm_external_read(ymfm::access_class type, uint32_t offset)
 {
 	if (type == ymfm::ACCESS_ADPCM_A)
-		return space(0).read_byte(offset);
+// Modified Code Source (HBMAME)
+/***********************************************************/
+	{
+		if (m_rom_size > 0xffffff)
+			return space(0).read_byte(offset);
+
+		return space(0).read_byte(offset & 0xffffff);
+	}
 	else if (type == ymfm::ACCESS_ADPCM_B)
+	{
+//		printf("adpcmb ");
 		return space(1).read_byte(offset);
+	}
+/***********************************************************/
 	return 0;
 }
 

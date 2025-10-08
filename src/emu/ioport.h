@@ -33,8 +33,11 @@
 //  CONSTANTS
 //**************************************************************************
 
+// 修改的 代码来源 (EKMAME)
+/*********************************************/
 // input ports support up to 32 bits each
 typedef u32 ioport_value;
+/*********************************************/
 
 // active high/low values for input ports
 constexpr ioport_value IP_ACTIVE_HIGH = 0x00000000;
@@ -50,10 +53,16 @@ constexpr char32_t UCHAR_SHIFT_2 = UCHAR_PRIVATE + 1;
 constexpr char32_t UCHAR_SHIFT_BEGIN = UCHAR_SHIFT_1;
 constexpr char32_t UCHAR_SHIFT_END = UCHAR_SHIFT_2;
 constexpr char32_t UCHAR_MAMEKEY_BEGIN = UCHAR_PRIVATE + 2;
+
+// 修改的 代码来源 (EKMAME)
+/**************************************************************************/
 #define AUTOFIRE_ON			1	/* Autofire enable bit */
 #define AUTOFIRE_TOGGLE			2	/* Autofire toggle enable bit */
+#ifdef USE_CUSTOM_BUTTON
 #define MAX_CUSTOM_BUTTONS		4
+#endif /* USE_CUSTOM_BUTTON */
 #define MAX_NORMAL_BUTTONS		10
+/**************************************************************************/
 
 // sequence types for input_port_seq() call
 enum input_seq_type
@@ -200,8 +209,8 @@ enum ioport_type
 	IPT_BUTTON15,
 	IPT_BUTTON16,
 
-//#ifdef USE_COMBOKEY
-  /* neogeo buttons */
+// 修改的 代码来源 (EKMAME)
+/**************************************************/
 	IPT_BUTTON_3KICKS,			// PLx 3 Kicks   
 	IPT_BUTTON_3PUNCHES,		// PLx 3 Punches
 	IPT_BUTTON_SPEC1,			// PLx Special Atk1
@@ -218,15 +227,20 @@ enum ioport_type
 	IPT_BUTTON_ACD,
 	IPT_BUTTON_BCD,			    // PLx B+C+D (NG)
 	IPT_BUTTON_ABCD,			// PLx A+B+C+D (NG)
-//#endif //USE_COMBOKEY
+/**************************************************/
 
+// 修改的 代码来源 (EKMAME)
+/***********************************/
 	// autofire control buttons
 	IPT_TOGGLE_AUTOFIRE,
 	// custom action buttons
+#ifdef USE_CUSTOM_BUTTON
 	IPT_CUSTOM1,
 	IPT_CUSTOM2,
 	IPT_CUSTOM3,
 	IPT_CUSTOM4,
+#endif /* USE_CUSTOM_BUTTON */
+/***********************************/
 
 	// mahjong inputs
 	IPT_MAHJONG_FIRST,
@@ -1125,7 +1139,12 @@ public:
 	struct user_settings
 	{
 		ioport_value    value = 0;              // for DIP switches
+
+// 修改的 代码来源 (EKMAME)
+/*****************************************************************/
 		int             autofire;               // autofire
+/*****************************************************************/
+
 		input_seq       seq[SEQ_TYPE_TOTAL];    // sequences of all types
 		std::string     cfg[SEQ_TYPE_TOTAL];    // configuration strings of all types
 		s32             sensitivity = 0;        // for analog controls
@@ -1202,9 +1221,14 @@ struct ioport_field_live
 	bool                    last;               // were we pressed last time?
 	bool                    toggle;             // current toggle setting
 	digital_joystick::direction_t joydir;       // digital joystick direction index
+
+// 修改的 代码来源 (EKMAME)
+/**********************************************************************************/
 	u8                 	    autofire_toggle;    // autofire current toggle state
 	int                     autofire;           // autofire
 	int                     autopressed;        // autofire status
+/**********************************************************************************/
+
 	bool                    lockout;            // user lockout
 	std::string             name;               // overridden name
 	std::string             cfg[SEQ_TYPE_TOTAL];// configuration strings
@@ -1222,7 +1246,13 @@ public:
 	ioport_list() { }
 
 	void append(device_t &device, std::string &errorbuf);
+
+// 修改的 代码来源 (EKMAME)
+/*******************************************************************/
+#ifdef USE_CUSTOM_BUTTON
 	void append_custom(device_t &device, std::string &errorbuf);
+#endif /* USE_CUSTOM_BUTTON */
+/*******************************************************************/
 };
 
 
@@ -1436,10 +1466,16 @@ public:
 	s32 frame_interpolate(s32 oldval, s32 newval);
 	ioport_type token_to_input_type(const char *string, int &player) const;
 	std::string input_type_to_token(ioport_type type, int player);
+
+// 修改的 代码来源 (EKMAME)
+/*******************************************************************************************/
 	bool auto_pressed(ioport_field *field);
 	int get_autofiredelay(int player) { return m_autofiredelay[player]; };
 	void set_autofiredelay(int player, int delay) { m_autofiredelay[player] = delay; };
+#ifdef USE_CUSTOM_BUTTON
 	u16 m_custom_button[MAX_PLAYERS][MAX_CUSTOM_BUTTONS];
+#endif /* USE_CUSTOM_BUTTON */
+/*******************************************************************************************/
 
 private:
 	// internal helpers
@@ -1481,9 +1517,15 @@ private:
 	running_machine &       m_machine;              // reference to owning machine
 	bool                    m_safe_to_read;         // clear at start; set after state is loaded
 	ioport_list             m_portlist;             // list of input port configurations
+
+// 修改的 代码来源 (EKMAME)
+/*******************************************************************************************/
+#ifdef USE_CUSTOM_BUTTON
 	ioport_field *          m_custom_button_info[MAX_PLAYERS][MAX_CUSTOM_BUTTONS];
+#endif /* USE_CUSTOM_BUTTON */
 	int                     m_autofiredelay[MAX_PLAYERS];
 	int                     m_autofiretoggle[MAX_PLAYERS];
+/*******************************************************************************************/
 
 	// types
 	std::vector<input_type_entry> m_typelist;       // list of live type states

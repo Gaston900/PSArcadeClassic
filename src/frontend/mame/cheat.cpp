@@ -89,7 +89,10 @@
 
 #include <cctype>
 
+// 修改的 代码来源 (EKMAME)
+/**********************************************************/
 extern const char *funcGetParentName(const char *name);
+/**********************************************************/
 
 //**************************************************************************
 //  PARAMETERS
@@ -853,8 +856,8 @@ bool cheat_entry::select_default_state()
 	return changed;
 }
 
-
-// EKMAME, cheat all set
+// 修改的 代码来源 (EKMAME)
+/*********************************************************************/
 bool cheat_entry::select_all_set_state()
 {
 	bool changed(false);
@@ -871,6 +874,7 @@ bool cheat_entry::select_all_set_state()
 
 	return changed;
 }
+/*********************************************************************/
 
 //-------------------------------------------------
 //  select_previous_state - select the previous
@@ -1199,6 +1203,9 @@ void cheat_manager::reload()
 	}
 
 	// if we haven't found the cheats yet, load by basename
+
+// 修改的 代码来源 (EKMAME)
+/******************************************************************************************/
 	if (m_cheatlist.empty())
 	{
 		//const char *parentname = GetParentName(machine().basename());
@@ -1218,7 +1225,7 @@ void cheat_manager::reload()
 		}		
 		// EKMAME code End
 	}
-
+/******************************************************************************************/
 
 	// temporary: save the file back out as output.xml for comparison
 	if (m_cheatlist.size() != 0)

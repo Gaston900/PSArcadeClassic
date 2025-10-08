@@ -70,7 +70,8 @@ enum
 	FOLDER_SOURCE,
 	FOLDER_SAVESTATE,
 	FOLDER_DUMPING,
-//#ifdef USE_GAMEFOLDERS
+// Modified Code Source (EKMAME)
+/******************/
 	FOLDER_NEOGEO,
 	FOLDER_CPS,
 	FOLDER_PGM,
@@ -85,7 +86,7 @@ enum
 	FOLDER_TOAPLAN,
 	FOLDER_NINTENDO,
 	FOLDER_DATAEAST,
-//#endif
+/******************/
 	MAX_FOLDERS
 };
 
@@ -162,7 +163,8 @@ HIMAGELIST GetTreeViewIconList(void);
 int GetTreeViewIconIndex(int icon_id);
 void ResetTreeViewFolders(void);
 void SelectTreeViewFolder(int folder_id);
-//#ifdef USE_GAMEFOLDERS
+// Modified Code Source (EKMAME)
+/**********************************************/
 void CreateNEOGEOFolders(int parent_index);
 void CreateCPSFolders(int parent_index);
 void CreatePGMFolders(int parent_index);
@@ -177,5 +179,5 @@ void CreateMIDWAYFolders(int parent_index);
 void CreateTOAPLANFolders(int parent_index);
 void CreateNINTENDOFolders(int parent_index);
 void CreateDATAEASTFolders(int parent_index);
-//#endif
+/**********************************************/
 #endif

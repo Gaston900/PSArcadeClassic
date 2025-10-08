@@ -38,29 +38,29 @@ const options_entry emu_options::s_option_entries[] =
 	{ nullptr,                                           nullptr,     core_options::option_type::HEADER,     "CORE SEARCH PATH OPTIONS" },
 	{ OPTION_PLUGINDATAPATH,                             ".",         core_options::option_type::STRING,     "path to base folder for plugin data (read/write)" },
 	{ OPTION_MEDIAPATH ";rp;biospath;bp",                "roms",      core_options::option_type::STRING,     "path to ROM sets and hard disk images" },
-	{ OPTION_HASHPATH ";hash_directory;hash",            "config/hash",       core_options::option_type::STRING,     "path to software definition files" },
-	{ OPTION_SAMPLEPATH ";sp",                           "support/samples",   core_options::option_type::STRING,     "path to audio sample sets" },
-	{ OPTION_ARTPATH,                                    "support/artwork",   core_options::option_type::STRING,     "path to artwork files" },
-	{ OPTION_CTRLRPATH,                                  "support/ctrlr",     core_options::option_type::STRING,     "path to controller definitions" },
+	{ OPTION_HASHPATH ";hash_directory;hash",            "config/hash",       core_options::option_type::STRING,     "path to software definition files" }, // 修改的 (加斯顿90)
+	{ OPTION_SAMPLEPATH ";sp",                           "support/samples",   core_options::option_type::STRING,     "path to audio sample sets" }, // 修改的 (加斯顿90)
+	{ OPTION_ARTPATH,                                    "support/artwork",   core_options::option_type::STRING,     "path to artwork files" }, // 修改的 (加斯顿90)
+	{ OPTION_CTRLRPATH,                                  "support/ctrlr",     core_options::option_type::STRING,     "path to controller definitions" }, // 修改的 (加斯顿90)
 	{ OPTION_INIPATH,                                    ".;ini;ini/presets", core_options::option_type::STRING,     "path to ini files" },
 	{ OPTION_FONTPATH,                                   ".",                 core_options::option_type::STRING,     "path to font files" },
-	{ OPTION_CHEATPATH,                                  "support/cheat",     core_options::option_type::STRING,     "path to cheat files" },
-	{ OPTION_CROSSHAIRPATH,                              "config/crosshair",  core_options::option_type::STRING,     "path to crosshair files" },
-	{ OPTION_PLUGINSPATH,                                "config/plugins",    core_options::option_type::STRING,     "path to plugin files" },
-	{ OPTION_LANGUAGEPATH,                               "config/language",   core_options::option_type::STRING,     "path to UI translation files" },
-	{ OPTION_SWPATH,                                     "support/software",  core_options::option_type::STRING,     "path to loose software" },
+	{ OPTION_CHEATPATH,                                  "support/cheat",     core_options::option_type::STRING,     "path to cheat files" }, // 修改的 (加斯顿90)
+	{ OPTION_CROSSHAIRPATH,                              "config/crosshair",  core_options::option_type::STRING,     "path to crosshair files" }, // 修改的 (加斯顿90)
+	{ OPTION_PLUGINSPATH,                                "config/plugins",    core_options::option_type::STRING,     "path to plugin files" }, // 修改的 (加斯顿90)
+	{ OPTION_LANGUAGEPATH,                               "config/language",   core_options::option_type::STRING,     "path to UI translation files" }, // 修改的 (加斯顿90)
+	{ OPTION_SWPATH,                                     "support/software",  core_options::option_type::STRING,     "path to loose software" }, // 修改的 (加斯顿90)
 
 	// output directory options
 	{ nullptr,                                           nullptr,     core_options::option_type::HEADER,     "CORE OUTPUT DIRECTORY OPTIONS" },
-	{ OPTION_CFG_DIRECTORY,                              "config/cfg",       core_options::option_type::STRING,     "directory to save configurations" },
-	{ OPTION_NVRAM_DIRECTORY,                            "config/nvram",     core_options::option_type::STRING,     "directory to save NVRAM contents" },
-	{ OPTION_INPUT_DIRECTORY,                            "config/inp",       core_options::option_type::STRING,     "directory to save input device logs" },
-	{ OPTION_STATE_DIRECTORY,                            "config/sta",       core_options::option_type::STRING,     "directory to save states" },
-	{ OPTION_SNAPSHOT_DIRECTORY,                         "support/snap",     core_options::option_type::STRING,     "directory to save/load screenshots" },
-	{ OPTION_DIFF_DIRECTORY,                             "config/diff",      core_options::option_type::STRING,     "directory to save hard drive image difference files" },
-	{ OPTION_COMMENT_DIRECTORY,                          "config/comments",  core_options::option_type::STRING,     "directory to save debugger comments" },
-	{ OPTION_VIDEO_DIRECTORY,                          	 "support/video",    core_options::option_type::STRING,     "directory to save/load video files" },  // MAMEFX
-	{ OPTION_SHARE_DIRECTORY,                            "config/share",     core_options::option_type::STRING,     "directory to share with emulated machines" },
+	{ OPTION_CFG_DIRECTORY,                              "config/cfg",       core_options::option_type::STRING,     "directory to save configurations" }, // 修改的 (加斯顿90)
+	{ OPTION_NVRAM_DIRECTORY,                            "config/nvram",     core_options::option_type::STRING,     "directory to save NVRAM contents" }, // 修改的 (加斯顿90)
+	{ OPTION_INPUT_DIRECTORY,                            "config/inp",       core_options::option_type::STRING,     "directory to save input device logs" }, // 修改的 (加斯顿90)
+	{ OPTION_STATE_DIRECTORY,                            "config/sta",       core_options::option_type::STRING,     "directory to save states" }, // 修改的 (加斯顿90)
+	{ OPTION_SNAPSHOT_DIRECTORY,                         "support/snap",     core_options::option_type::STRING,     "directory to save/load screenshots" }, // 修改的 (加斯顿90)
+	{ OPTION_DIFF_DIRECTORY,                             "config/diff",      core_options::option_type::STRING,     "directory to save hard drive image difference files" }, // 修改的 (加斯顿90)
+	{ OPTION_COMMENT_DIRECTORY,                          "config/comments",  core_options::option_type::STRING,     "directory to save debugger comments" }, // 修改的 (加斯顿90)
+	{ OPTION_VIDEO_DIRECTORY,                          	 "support/video",    core_options::option_type::STRING,     "directory to save/load video files" }, // 修改的 (加斯顿90)
+	{ OPTION_SHARE_DIRECTORY,                            "config/share",     core_options::option_type::STRING,     "directory to share with emulated machines" }, // 修改的 (加斯顿90)
 
 	// state/playback options
 	{ nullptr,                                           nullptr,     core_options::option_type::HEADER,     "CORE STATE/PLAYBACK OPTIONS" },
@@ -96,7 +96,7 @@ const options_entry emu_options::s_option_entries[] =
 
 	// render options
 	{ nullptr,                                           nullptr,     core_options::option_type::HEADER,     "CORE RENDER OPTIONS" },
-	{ OPTION_KEEPASPECT ";ka",                           "0",         core_options::option_type::BOOLEAN,    "maintain aspect ratio when scaling to fill output screen/window" },
+	{ OPTION_KEEPASPECT ";ka",                           "0",         core_options::option_type::BOOLEAN,    "maintain aspect ratio when scaling to fill output screen/window" }, // 修改的 (加斯顿90)
 	{ OPTION_UNEVENSTRETCH ";ues",                       "1",         core_options::option_type::BOOLEAN,    "allow non-integer ratios when scaling to fill output screen/window horizontally or vertically" },
 	{ OPTION_UNEVENSTRETCHX ";uesx",                     "0",         core_options::option_type::BOOLEAN,    "allow non-integer ratios when scaling to fill output screen/window horizontally"},
 	{ OPTION_UNEVENSTRETCHY ";uesy",                     "0",         core_options::option_type::BOOLEAN,    "allow non-integer ratios when scaling to fill otuput screen/window vertially"},
@@ -201,7 +201,7 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_DRC_LOG_UML,                                "0",         core_options::option_type::BOOLEAN,    "write DRC UML disassembly log" },
 	{ OPTION_DRC_LOG_NATIVE,                             "0",         core_options::option_type::BOOLEAN,    "write DRC native disassembly log" },
 	{ OPTION_BIOS,                                       nullptr,     core_options::option_type::STRING,     "select the system BIOS to use" },
-	{ OPTION_CHEAT ";c",                                 "1",         core_options::option_type::BOOLEAN,    "enable cheat subsystem" },
+	{ OPTION_CHEAT ";c",                                 "1",         core_options::option_type::BOOLEAN,    "enable cheat subsystem" }, // 修改的 (加斯顿90)
 	{ OPTION_SKIP_GAMEINFO,                              "0",         core_options::option_type::BOOLEAN,    "skip displaying the system information screen at startup" },
 	{ OPTION_UI_FONT,                                    "default",   core_options::option_type::STRING,     "specify a font to use" },
 	{ OPTION_UI,                                         "cabinet",   core_options::option_type::STRING,     "type of UI (simple|cabinet)" },
@@ -209,7 +209,7 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_CONFIRM_QUIT,                               "0",         core_options::option_type::BOOLEAN,    "ask for confirmation before exiting" },
 	{ OPTION_UI_MOUSE,                                   "1",         core_options::option_type::BOOLEAN,    "display UI mouse cursor" },
 	{ OPTION_LANGUAGE ";lang",                           "English",   core_options::option_type::STRING,     "set UI display language" },
-	{ OPTION_NVRAM_SAVE ";nvwrite",                      "1",         core_options::option_type::BOOLEAN,    "save NVRAM data on exit" },
+	{ OPTION_NVRAM_SAVE ";nvwrite",                      "0",         core_options::option_type::BOOLEAN,    "save NVRAM data on exit" }, // 修改的 (加斯顿90)
 
 	{ nullptr,                                           nullptr,     core_options::option_type::HEADER,     "SCRIPTING OPTIONS" },
 	{ OPTION_AUTOBOOT_COMMAND ";ab",                     nullptr,     core_options::option_type::STRING,     "command to execute after machine boot" },

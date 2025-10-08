@@ -773,11 +773,11 @@ intptr_t CALLBACK AddCustomFileDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, L
 				}
 			}
 
-//#ifdef USE_KLIST
+// Modified Code Source (EKMAME)
+/****************************************************************************************************************************************/
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_CUSTOMFILE_GAME), GetDescriptionByIndex(driver_index, GetUsekoreanList()));
-//#endif
+/****************************************************************************************************************************************/
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_CUSTOMFILE_GAME), GetDriverGameTitle(driver_index));
-
 			return true;
 		}
 

@@ -150,6 +150,8 @@
 #define IDB_MANUAL                      270
 #define IDB_NOTEPAD                     271
 #define IDI_DISPLAYSHEET                272
+// 修改的 代码来源 (EKMAME)
+/*******************************************/
 #define IDI_VECTORSHEET                 273
 #define IDI_SOUNDSHEET                  274
 #define IDI_CONTROLSHEET                275
@@ -159,10 +161,13 @@
 #define IDI_OPENGLSHEET                 279
 #define IDI_SHADERSHEET                 280
 #define IDI_INPUTSHEET                  281
+/*******************************************/
 #define IDI_MISC2SHEET                  282
 #define IDI_SNAPSHEET                   283
 #define IDI_SHADER                      284
-#define IDB_KLIST						285	//USE_KLIST
+// 修改的 代码来源 (EKMAME)
+/*******************************************/
+#define IDB_KLIST						285
 #define IDI_FOLDER_NEOGEO				286
 #define IDI_FOLDER_NAMCO				287
 #define IDI_FOLDER_TAITO				288
@@ -179,6 +184,7 @@
 #define IDI_FOLDER_MSLUG			    299
 #define IDI_HEADER_UP                   300
 #define IDI_HEADER_DOWN                 301
+/*******************************************/
 #define IDC_LIST                        1000
 #define IDC_JOYSTICK                    1003
 #define IDC_SIZES                       1005
@@ -599,11 +605,15 @@
 #define ID_TOGGLE_TAB_CONTROL_PANEL     40154
 #define ID_TOGGLE_TAB_PCB               40155
 #define ID_TOGGLE_TAB_HISTORY           40156
-#define ID_KOREAN_GAMELIST              40157 //USE_KLIST
-#define ID_VIEW_ICONS_LARGE             40158
-#define ID_VIEW_ICONS_SMALL             40159
-#define ID_VIEW_LIST_MENU				40160
-#define ID_VIEW_DETAIL					40161
-#define ID_ENABLE_INDENT                40162
-#define ID_VIEW_GROUPED					40163
+#define ID_RC_CLEAN                     40157
+// 修改的 代码来源 (EKMAME)
+/*******************************************/
+#define ID_KOREAN_GAMELIST              40158
+#define ID_VIEW_ICONS_LARGE             40159
+#define ID_VIEW_ICONS_SMALL             40160
+#define ID_VIEW_LIST_MENU				40161
+#define ID_VIEW_DETAIL					40162
+#define ID_ENABLE_INDENT                40163
+#define ID_VIEW_GROUPED					40164
+/*******************************************/
 #define IDC_STATIC                      1

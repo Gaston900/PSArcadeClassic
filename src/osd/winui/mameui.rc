@@ -80,8 +80,11 @@ BEGIN
             MENUITEM "Info",                               ID_TOGGLE_TAB_HISTORY
         END
         MENUITEM SEPARATOR
-		MENUITEM "Language game list", 				    ID_KOREAN_GAMELIST // USE_KLIST
+// Modified Code Source (EKMAME)
+/****************************************************************************************/
+		MENUITEM "Language game list", 				    ID_KOREAN_GAMELIST
         MENUITEM SEPARATOR
+/****************************************************************************************/
         MENUITEM "Fullscreen\tF11",                     ID_VIEW_FULLSCREEN
     END
     POPUP "&Options"
@@ -280,9 +283,9 @@ IDI_ADVANCED            ICON                    "res\\advanced.ico"
 IDI_AUDIT_FAIL          ICON                    "res\\audit_fail.ico"
 IDI_FOLDER_IMPERFECT    ICON                    "res\\foldimp.ico"
 IDI_FOLDER_CPU          ICON                    "res\\foldcsb.ico"
-IDI_FOLDER_SOUND        ICON                    "res\\foldsnd.ico"
+IDI_FOLDER_SOUND        ICON                    "res\\foldsnd.ico" // Modified (Gaston90) 
 IDI_FOLDER_BIOS         ICON                    "res\\foldbios.ico"
-IDI_FOLDER_DUMP         ICON                    "res\\folduni.ico"
+IDI_FOLDER_DUMP         ICON                    "res\\folduni.ico" // Modified (Gaston90) 
 IDI_SYSTRAY             ICON                    "res\\psarcadeclassic.ico"
 IDI_DEBUG               ICON                    "res\\debug.ico"
 IDI_MONITOR             ICON                    "res\\monitor.ico"
@@ -314,7 +317,8 @@ IDI_CONTROLSHEET        ICON                    "res\\joystick.ico"
 IDI_MISCSHEET           ICON                    "res\\misc.ico"
 IDI_MISC2SHEET          ICON                    "res\\debug.ico"
 IDI_SNAPSHEET           ICON                    "res\\snapshot.ico"
-//#ifdef USE_GAMEFOLDERS
+// Modified Code Source (EKMAME)
+/****************************************************************************/
 IDI_FOLDER_NEOGEO		ICON					"res\\fold_neogeo.ico"
 IDI_FOLDER_CAPCOM		ICON				    "res\\fold_cps.ico"
 IDI_FOLDER_PGM			ICON				    "res\\fold_pgm.ico"
@@ -329,7 +333,7 @@ IDI_FOLDER_MIDWAY		ICON				    "res\\fold_midway.ico"
 IDI_FOLDER_SETA 		ICON	 				"res\\fold_seta.ico"
 IDI_FOLDER_TOAPLAN		ICON				    "res\\fold_Toaplan.ico"
 IDI_FOLDER_DATAEAST		ICON				    "res\\fold_dataeast.ico"
-//#endif
+/****************************************************************************/
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
@@ -995,7 +999,10 @@ BEGIN
     VK_NEXT,        ID_UI_HISTORY_DOWN,         VIRTKEY, CONTROL, NOINVERT
     VK_UP,            ID_SORT_ASCENDING,             VIRTKEY, ALT, NOINVERT
     VK_PRIOR,       ID_UI_HISTORY_UP,           VIRTKEY, CONTROL, NOINVERT
-    "K",			ID_KOREAN_GAMELIST,	        VIRTKEY, ALT, NOINVERT //USE_KLIST
+// Modified Code Source (EKMAME)
+/****************************************************************************/
+    "K",			ID_KOREAN_GAMELIST,	        VIRTKEY, ALT, NOINVERT
+/****************************************************************************/
 END
 
 /////////////////////////////////////////////////////////////////////////////

@@ -3080,17 +3080,11 @@ files {
 
 createMAMEProjects(_target, _subtarget, "neogeo")
 files {
-	MAME_DIR .. "src/hbmame/drivers/neogeo.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/neogeo_noslothb.cpp", --HBMAME
+	MAME_DIR .. "src/hbmame/drivers/neogeo.cpp", --NEOEX
+	MAME_DIR .. "src/hbmame/drivers/neogeo_noslot.cpp", --NEOEX
+	MAME_DIR .. "src/hbmame/drivers/neogeo_noslothb.cpp", --NEOEX
+	MAME_DIR .. "src/hbmame/drivers/neogeo_noslotdd.cpp", --NEOEX
 	MAME_DIR .. "src/hbmame/video/neogeo.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/neogeo_noslot.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/mslug.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/mslug2.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/mslug3.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/mslug4.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/mslug5.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/mslugx.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/homebrew.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/video/neogeo_spr.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/machine/ng_memcard.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/bus/neogeo/prot.cpp", --HBMAME

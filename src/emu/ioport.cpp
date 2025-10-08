@@ -125,9 +125,11 @@ namespace {
 
 const int SPACE_COUNT = 3;
 
-
+// 修改的 代码来源 (EKMAME)
+/****************************************************************************/
 #define AUTOFIRE_ON             1    /* Autofire enable bit */
 #define AUTOFIRE_TOGGLE         2    /* Autofire toggle enable bit */
+/****************************************************************************/
 
 //**************************************************************************
 //  INLINE FUNCTIONS
@@ -392,8 +394,9 @@ void ioport_list::append(device_t &device, std::string &errorbuf)
 		port.second->collapse_fields(errorbuf);
 }
 
-
-
+// 修改的 代码来源 (EKMAME)
+/******************************************************************************************/
+#ifdef USE_CUSTOM_BUTTON
 static INPUT_PORTS_START( custom1p )
     PORT_START("CUSTOM1P")
     PORT_BIT( 1 << 0, IP_ACTIVE_HIGH, IPT_TOGGLE_AUTOFIRE ) PORT_PLAYER(1) PORT_TOGGLE
@@ -516,7 +519,8 @@ void ioport_list::append_custom(device_t &device, std::string &errorbuf)
 	if (nplayer > 7)
 		INPUT_PORTS_NAME(custom8p)(device, *this, errorbuf);
 }
-
+#endif /* USE_CUSTOM_BUTTON */
+/******************************************************************************************/
 
 //**************************************************************************
 //  INPUT TYPE ENTRY
@@ -617,8 +621,12 @@ digital_joystick::digital_joystick(int player, int number)
 		m_current(0),
 		m_current4way(0),
 		m_previous(0),
-		m_previous_LEFT_or_RIGHT(0), /*GSC2007*/
-		m_previous_UP_or_DOWN(0) /*GSC2007*/
+
+// 修改的 代码来源 (GSC2007)
+/************************************/
+		m_previous_LEFT_or_RIGHT(0),
+		m_previous_UP_or_DOWN(0)
+/************************************/
 {
 }
 
@@ -659,6 +667,8 @@ void digital_joystick::frame_update()
 		}
 
 	// lock out opposing directions (left + right or up + down)
+
+// 修改的 代码来源 (GSC2007)
 //***************GSC2007*******新增代码************************
 	if((m_current & (LEFT_BIT | RIGHT_BIT)) == (LEFT_BIT | RIGHT_BIT))
 	{	
@@ -699,8 +709,9 @@ void digital_joystick::frame_update()
 //	{
 //		m_current &= ~(UP_BIT | DOWN_BIT);//同上。屏蔽下上，补全左右输入
 //	}
-		
+
 //***************GSC2007******结束*************************
+
 	// only update 4-way case if joystick has moved
 	if (m_current != m_previous)
 	{
@@ -1148,7 +1159,10 @@ void ioport_field::get_user_settings(user_settings &settings) const
 	{
 		// non-analog settings
 		settings.toggle = m_live->toggle;
+// 修改的 代码来源 (EKMAME)
+/*************************************************/
 		settings.autofire = m_live->autofire;	
+/*************************************************/
 	}
 }
 
@@ -1186,7 +1200,11 @@ void ioport_field::set_user_settings(const user_settings &settings)
 	{
 		// non-analog settings
 		m_live->toggle = settings.toggle;
+
+// 修改的 代码来源 (EKMAME)
+/*************************************************/
 		m_live->autofire = settings.autofire;	
+/*************************************************/
 	}
 }
 
@@ -1367,9 +1385,12 @@ void ioport_field::frame_update(ioport_value &result)
 	}
 
 	// if the state changed, look for switch down/switch up
-	//缘来是你
-	//bool curstate = m_digital_value || machine().input().seq_pressed(seq());
+
+// 修改的 代码来源 (EKMAME)
+/******************************************************************************/
 	bool curstate = machine().ioport().auto_pressed(this);	
+/******************************************************************************/
+
 	bool changed = false;
 	if (curstate != m_live->last)
 	{
@@ -1402,9 +1423,12 @@ void ioport_field::frame_update(ioport_value &result)
 
 			{
  				m_live->value ^= m_mask;
-				m_live->autofire_toggle = !m_live->autofire_toggle;
-			}
 
+// 修改的 代码来源 (EKMAME)
+/**********************************************************************/
+			    m_live->autofire_toggle = !m_live->autofire_toggle;
+/**********************************************************************/
+			}
 			else
 				select_next_setting();
 		}
@@ -1600,9 +1624,13 @@ ioport_field_live::ioport_field_live(ioport_field &field, analog_field *analog)
 		last(0),
 		toggle(field.toggle()),
 		joydir(digital_joystick::JOYDIR_COUNT),
+
+// 修改的 代码来源 (EKMAME)
+/***************************/
 		autofire_toggle(0),
 		autofire(0),
 		autopressed(0),
+/***************************/
 		lockout(false)
 {
 	// fill in the basic values
@@ -1917,17 +1945,22 @@ ioport_manager::ioport_manager(running_machine &machine)
 	, m_deselected_card_config()
 {
 	for (auto &entries : m_type_to_entry)
+
+// 修改的 代码来源 (EKMAME)
+/****************************************************************************/
 	{
 		std::fill(std::begin(entries), std::end(entries), nullptr);
 	}
-	
+#ifdef USE_CUSTOM_BUTTON
 	memset(m_custom_button, 0, sizeof(m_custom_button));
 	memset(m_custom_button_info, 0, sizeof(m_custom_button_info));
+#endif /* USE_CUSTOM_BUTTON */
 	for (int player = 0; player < MAX_PLAYERS; player++)
 	{
 		m_autofiredelay[player] = 3;	//mamep: 1 is too short for some games
 		m_autofiretoggle[player] = 1;
-	}	
+	}
+/****************************************************************************/
 }
 
 
@@ -1950,8 +1983,15 @@ time_t ioport_manager::initialize()
 	for (device_t &device : iter)
 	{
 		std::string errors;
-		//m_portlist.append(device, errors);	
-		m_portlist.append_custom(device, errors);	
+
+// 修改的 代码来源 (EKMAME)
+/****************************************************/
+#ifdef USE_CUSTOM_BUTTON
+		m_portlist.append_custom(device, errors);
+#else
+		m_portlist.append(device, errors);
+#endif /* USE_CUSTOM_BUTTON */
+/****************************************************/
 		if (!errors.empty())
 			osd_printf_error("Input port errors:\n%s", errors);
 	}
@@ -1965,19 +2005,24 @@ time_t ioport_manager::initialize()
 		{
 			if (&port.second->device() == &device)
 			{
+
+// 修改的 代码来源 (EKMAME)
+/**********************************************************************************************************/
 				port.second->init_live_state();	
 				for (ioport_field &field : port.second->fields())
 				{
-					//if (field.type_class() == INPUT_CLASS_CONTROLLER)
+
 					if (field.type_class()==INPUT_CLASS_CONTROLLER)
 					{
-						//if (players < field.player() + 1)
-						//	players = field.player() + 1;
+
 					if (players < field.player() + 1) players = field.player() + 1;	
 						field.set_player(field.player() + player_offset);
 					}
+#ifdef USE_CUSTOM_BUTTON
 					if (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS)
 						m_custom_button_info[field.player()][field.type() - IPT_CUSTOM1] = &field;
+#endif /* USE_CUSTOM_BUTTON */
+/**********************************************************************************************************/
 				}
 			}
 		}
@@ -2302,6 +2347,10 @@ void ioport_manager::frame_update()
 	// loop over all input ports
 	for (auto &port : m_portlist)
 	{
+
+// 修改的 代码来源 (EKMAME)
+/*************************************************************************************************/
+#ifdef USE_CUSTOM_BUTTON
 		/* now loop back and modify based on the inputs */
 		for (ioport_field &field : port.second->fields())
 		{
@@ -2319,6 +2368,8 @@ void ioport_manager::frame_update()
 				continue;
 			}
 		}
+#endif /* USE_CUSTOM_BUTTON */
+/*************************************************************************************************/
 		port.second->frame_update();
 
 		// handle playback/record
@@ -2430,6 +2481,9 @@ void ioport_manager::load_config(config_type cfg_type, config_level cfg_level, u
 		else
 			load_default_config(type, player, newseq);
 	}
+
+// 修改的 代码来源 (EKMAME)
+/********************************************************************************************************************************************************/
 	if (cfg_type == config_type::SYSTEM)
 	{
 		for (util::xml::data_node const *portnode = parentnode->get_child("autofire"); portnode; portnode = portnode->get_next_sibling("autofire"))
@@ -2440,6 +2494,8 @@ void ioport_manager::load_config(config_type cfg_type, config_level cfg_level, u
 				m_autofiredelay[player - 1] = portnode->get_attribute_int("delay", 3);
 		}
 	}
+/********************************************************************************************************************************************************/
+
 	// after applying the controller config, push that back into the backup, since that is
 	// what we will diff against
 	if (cfg_type == config_type::CONTROLLER)
@@ -2601,8 +2657,12 @@ bool ioport_manager::load_controller_config(
 	if (m_portlist.end() == port)
 		return false;
 	ioport_value const mask = portnode.get_attribute_int("mask", 0);
+
+// 修改的 代码来源 (EKMAME)
+/***********************/
 //	if (!mask)
 //		return false;
+/***********************/
 
 	// find the matching field
 	ioport_value const defvalue = portnode.get_attribute_int("defvalue", 0);
@@ -2692,10 +2752,16 @@ void ioport_manager::load_system_config(
 	char const *const tag = portnode.get_attribute_string("tag", nullptr);
 	ioport_value const mask = portnode.get_attribute_int("mask", 0);
 	ioport_value const defvalue = portnode.get_attribute_int("defvalue", 0);
+
+// 修改的 代码来源 (EKMAME)
+/*******************************************************************************************/
 	char const *const autofireValue = portnode.get_attribute_string("autofire", nullptr);
+#ifdef USE_CUSTOM_BUTTON
 	ioport_value const customValue = portnode.get_attribute_int("custom", 0);
+#endif /* USE_CUSTOM_BUTTON */
 //	if (!tag || !mask)
 //		return;
+/*******************************************************************************************/
 
 	// find the port we want
 	auto const port(m_portlist.find(tag));
@@ -2714,6 +2780,9 @@ void ioport_manager::load_system_config(
 						field.live().seq[seqtype] = newseq[seqtype].first;
 					field.live().cfg[seqtype] = newseq[seqtype].second;
 				}
+
+// 修改的 代码来源 (EKMAME)
+/**********************************************************************************************************/
 				if (autofireValue && !strcmp(autofireValue, "on")) 
 				{
 					field.live().autofire = AUTOFIRE_ON;
@@ -2726,10 +2795,13 @@ void ioport_manager::load_system_config(
 				{
 					field.live().autofire = 0;
 				}
+#ifdef USE_CUSTOM_BUTTON
 				if (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS) 
 				{
 					m_custom_button[field.player()][field.type() - IPT_CUSTOM1] = customValue;
 				}
+#endif /* USE_CUSTOM_BUTTON */
+/**********************************************************************************************************/
 				
 				// fetch configurable attributes
 				if (!field.live().analog)
@@ -2922,8 +2994,14 @@ void ioport_manager::save_game_inputs(util::xml::data_node &parentnode)
 					// non-analog changes
 					changed = changed || ((field.live().value & field.mask()) != (field.defvalue() & field.mask()));
 					changed = changed || (field.live().toggle != field.toggle());
+
+// 修改的 代码来源 (EKMAME)
+/********************************************************************************************************************************************************************************************/
 					changed = changed || (field.live().autofire != 0);
+#ifdef USE_CUSTOM_BUTTON
 					changed = changed || (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS && m_custom_button[field.player()][field.type() - IPT_CUSTOM1]);
+#endif /* USE_CUSTOM_BUTTON */
+/********************************************************************************************************************************************************************************************/
 				}
 				else
 				{
@@ -2947,15 +3025,19 @@ void ioport_manager::save_game_inputs(util::xml::data_node &parentnode)
 						portnode->set_attribute_int("mask", field.mask());
 						portnode->set_attribute_int("defvalue", field.defvalue() & field.mask());
 						
+// 修改的 代码来源 (EKMAME)
+/******************************************************************************************************************************************************************************/
 						if (field.live().autofire & AUTOFIRE_ON) {
 							portnode->set_attribute("autofire", "on");
 						} else if (field.live().autofire & AUTOFIRE_TOGGLE) {
 							portnode->set_attribute("autofire", "toggle");
 						}
-
+#ifdef USE_CUSTOM_BUTTON
 						if (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS && m_custom_button[field.player()][field.type() - IPT_CUSTOM1]) {
 							portnode->set_attribute_int("custom", m_custom_button[field.player()][field.type() - IPT_CUSTOM1]);
 						}
+#endif /* USE_CUSTOM_BUTTON */
+/******************************************************************************************************************************************************************************/
 
 						// add sequences if changed
 						for (input_seq_type seqtype = SEQ_TYPE_STANDARD; seqtype < SEQ_TYPE_TOTAL; ++seqtype)
@@ -2972,13 +3054,16 @@ void ioport_manager::save_game_inputs(util::xml::data_node &parentnode)
 						{
 							// write out non-analog changes
 							if ((field.live().value & field.mask()) != (field.defvalue() & field.mask()))
+
+// 修改的 代码来源 (EKMAME)
+/**********************************************************************************************************/
 							{
 								portnode->set_attribute_int("value", field.live().value & field.mask());
-							//if (field.live().toggle != field.toggle())
 							}
 							if (field.live().toggle != field.toggle()) {
 								portnode->set_attribute("toggle", field.live().toggle ? "yes" : "no");
 							}
+/**********************************************************************************************************/
 						}
 						else
 						{
@@ -3002,6 +3087,9 @@ void ioport_manager::save_game_inputs(util::xml::data_node &parentnode)
 		for (util::xml::data_node const *node = m_deselected_card_config->get_first_child(); node; node = node->get_next_sibling())
 			node->copy_into(parentnode);
 	}
+
+// 修改的 代码来源 (EKMAME)
+/****************************************************************************************************/
 	for (int portnum = 0; portnum < MAX_PLAYERS; portnum++)
 	{
 		if (m_autofiredelay[portnum] != 3)
@@ -3014,6 +3102,7 @@ void ioport_manager::save_game_inputs(util::xml::data_node &parentnode)
 			}
 		}
 	}
+/****************************************************************************************************/
 }
 
 
@@ -4166,6 +4255,8 @@ input_seq_type ioport_manager::token_to_seq_type(const char *string)
 	return SEQ_TYPE_INVALID;
 }
 
+// 修改的 代码来源 (EKMAME)
+/****************************************************************************************************/
 bool ioport_manager::auto_pressed(ioport_field *field)
 {
 /*
@@ -4188,7 +4279,7 @@ bool ioport_manager::auto_pressed(ioport_field *field)
 
 	if (pressed && (field->toggle()))
 		m_autofiretoggle[field->player()] = field->live().autofire_toggle;
-
+#ifdef USE_CUSTOM_BUTTON
 	if (field->type() >= IPT_BUTTON1 && field->type() < IPT_BUTTON1 + MAX_NORMAL_BUTTONS)
 	{
 		uint16_t button_mask = 1 << (field->type() - IPT_BUTTON1);
@@ -4217,7 +4308,7 @@ bool ioport_manager::auto_pressed(ioport_field *field)
 				}
 			}
 	}
-
+#endif /* USE_CUSTOM_BUTTON */
 	if (is_auto)
 	{
 		if (pressed)
@@ -4237,3 +4328,4 @@ bool ioport_manager::auto_pressed(ioport_field *field)
 
 #undef IS_AUTOKEY
 }
+/****************************************************************************************************/

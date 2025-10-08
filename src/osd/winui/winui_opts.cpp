@@ -50,7 +50,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ nullptr,								nullptr,    core_options::option_type::HEADER, "APPLICATION VERSION" },
 
 	{ nullptr,								nullptr,    core_options::option_type::HEADER, "DISPLAY STATE OPTIONS" },
-	{ MUIOPTION_DEFAULT_GAME,				"88games",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_DEFAULT_GAME,				"88games",  core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
 	{ MUIOPTION_DEFAULT_FOLDER_ID,			"0",        core_options::option_type::INTEGER, nullptr },
 	{ MUIOPTION_SHOW_IMAGE_SECTION,			"1",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_CURRENT_TAB,				"0",        core_options::option_type::STRING, nullptr },
@@ -59,8 +59,8 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_HIDE_FOLDERS,				nullptr,        core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_SHOW_FOLDER_SECTION,		"1",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_SHOW_TABS,					"1",        core_options::option_type::BOOLEAN, nullptr },
-	{ MUIOPTION_HIDE_TABS,					"scores, howto, select, versus, boss, end, gameover, logo, artpreview, flyer, cabinet, marquee, cpanel, pcb, history",  core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_HISTORY_TAB,				"18",       core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_HIDE_TABS,					"scores, howto, select, versus, boss, end, gameover, logo, artpreview, flyer, cabinet, marquee, cpanel, pcb, history",         core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_HISTORY_TAB,				"18",       core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
 	{ MUIOPTION_SORT_COLUMN,				"0",        core_options::option_type::INTEGER, nullptr },
 	{ MUIOPTION_SORT_REVERSED,				"0",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_WINDOW_X,					"0",        core_options::option_type::INTEGER, nullptr },
@@ -68,22 +68,22 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_WINDOW_WIDTH,				"1150",     core_options::option_type::INTEGER, nullptr },
 	{ MUIOPTION_WINDOW_HEIGHT,				"639",      core_options::option_type::INTEGER, nullptr },
 	{ MUIOPTION_WINDOW_STATE,				"1",        core_options::option_type::INTEGER, nullptr },
-	{ MUIOPTION_LIST_COLOR,					"255,255,255",  core_options::option_type::INTEGER, nullptr },
-	{ MUIOPTION_HISTORY_COLOR,				"255,255,255",  core_options::option_type::INTEGER, nullptr },
-	{ MUIOPTION_TREE_COLOR,					"255,255,255",  core_options::option_type::INTEGER, nullptr },
-	{ MUIOPTION_TREEBG_COLOR,				"0,32,65",      core_options::option_type::INTEGER, nullptr },
-	{ MUIOPTION_LISTBG_COLOR,				"0,32,65",      core_options::option_type::INTEGER, nullptr },
-	{ MUIOPTION_HISTORYBG_COLOR,			"0,32,65",      core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_LIST_COLOR,					"255,255,255",    core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_HISTORY_COLOR,				"255,255,255",    core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_TREE_COLOR,					"255,255,255",    core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_TREEBG_COLOR,				"0,32,65", core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_LISTBG_COLOR,				"0,32,65", core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_HISTORYBG_COLOR,			"0,32,65", core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
 	{ MUIOPTION_CUSTOM_COLOR,				"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0", core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_LIST_MODE,					"154",        core_options::option_type::INTEGER, nullptr },
-	{ MUIOPTION_SPLITTERS,					"150,778",  core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_LIST_MODE,					"154",      core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_SPLITTERS,					"150,778",  core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
 	{ MUIOPTION_GUI_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_LIST_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_HISTORY_FONT,				"-11,0,0,0,400,0,0,0,0,3,2,1,34,Verdana", core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_TREE_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_COLUMN_WIDTHS,				"481,77,108,140,39,160,60,70", core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_COLUMN_ORDER,				"0,4,1,2,5,3,6,7", core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,0,0", core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_COLUMN_WIDTHS,				"481,77,108,140,39,160,60,70", core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_COLUMN_ORDER,				"0,4,1,2,5,3,6,7", core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,0,0", core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
 
 	{ nullptr,								nullptr,     core_options::option_type::HEADER, "INTERFACE OPTIONS" },
 	{ MUIOPTION_NOROMS_GAMES,				"1",        core_options::option_type::BOOLEAN, nullptr },
@@ -92,36 +92,36 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_JOYSTICK_IN_INTERFACE,		"1",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_INHERIT_FILTER,				"0",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_USE_BROKEN_ICON,			"0",        core_options::option_type::BOOLEAN, nullptr },
-	{ MUIOPTION_ENABLE_INDENT,				"1",        core_options::option_type::BOOLEAN, nullptr },
+	{ MUIOPTION_ENABLE_INDENT,				"1",        core_options::option_type::BOOLEAN, nullptr }, // Modified (Gaston90)
 	{ MUIOPTION_ENABLE_FASTAUDIT,			"0",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_ENABLE_SEVENZIP,			"0",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_STRETCH_SCREENSHOT_LARGER,	"0",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_CYCLE_SCREENSHOT,			"0",        core_options::option_type::INTEGER, nullptr },
-	{ MUIOPTION_SCREENSHOT_BORDER_SIZE,		"1",        core_options::option_type::INTEGER, nullptr },
-	{ MUIOPTION_SCREENSHOT_BORDER_COLOR,	"187,0,0",  core_options::option_type::INTEGER, nullptr },
+	{ MUIOPTION_SCREENSHOT_BORDER_SIZE,		"1",        core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_SCREENSHOT_BORDER_COLOR,	"187,0,0",  core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
 
-	{ nullptr,								nullptr,       core_options::option_type::HEADER, "SEARCH PATH OPTIONS" },
-	{ MUIOPTION_ARTWORK_DIRECTORY,			"support/artpreview", core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_AUDIO_DIRECTORY,			"audio",       core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_BOSSES_DIRECTORY,			"support/bosses",     core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_CABINET_DIRECTORY,			"support/cabinets",   core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_CPANEL_DIRECTORY,			"support/cpanel",     core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_DATS_DIRECTORY,				"support/dats",       core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_ENDS_DIRECTORY,				"support/ends",       core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_FLYER_DIRECTORY,			"support/flyers",     core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_FOLDER_DIRECTORY,			"config/folders",     core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_GAMEOVER_DIRECTORY,			"support/gameover",   core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_GUI_DIRECTORY,				"config/gui",         core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_HOWTO_DIRECTORY,			"support/howto",      core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_ICONS_DIRECTORY,			"support/icons",      core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_LOGO_DIRECTORY,				"support/logo",       core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_MANUALS_DIRECTORY,          "support/manuals",    core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_MARQUEE_DIRECTORY,			"support/marquees",   core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_PCB_DIRECTORY,				"support/pcb",        core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_SCORES_DIRECTORY,			"support/scores",     core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_SELECT_DIRECTORY,			"support/select",     core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_TITLE_DIRECTORY,			"support/titles",     core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_VERSUS_DIRECTORY,			"support/versus",     core_options::option_type::STRING, nullptr },
+	{ nullptr,								nullptr,              core_options::option_type::HEADER, "SEARCH PATH OPTIONS" },
+	{ MUIOPTION_ARTWORK_DIRECTORY,			"support/artpreview", core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_AUDIO_DIRECTORY,			"audio",              core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_BOSSES_DIRECTORY,			"support/bosses",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_CABINET_DIRECTORY,			"support/cabinets",   core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_CPANEL_DIRECTORY,			"support/cpanel",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_DATS_DIRECTORY,				"support/dats",       core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_ENDS_DIRECTORY,				"support/ends",       core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_FLYER_DIRECTORY,			"support/flyers",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_FOLDER_DIRECTORY,			"config/folders",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_GAMEOVER_DIRECTORY,			"support/gameover",   core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_GUI_DIRECTORY,				"config/gui",         core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_HOWTO_DIRECTORY,			"support/howto",      core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_ICONS_DIRECTORY,			"support/icons",      core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_LOGO_DIRECTORY,				"support/logo",       core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_MANUALS_DIRECTORY,          "support/manuals",    core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_MARQUEE_DIRECTORY,			"support/marquees",   core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_PCB_DIRECTORY,				"support/pcb",        core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_SCORES_DIRECTORY,			"support/scores",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_SELECT_DIRECTORY,			"support/select",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_TITLE_DIRECTORY,			"support/titles",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_VERSUS_DIRECTORY,			"support/versus",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
 
 	{ nullptr,								nullptr,    core_options::option_type::HEADER, "NAVIGATION JOYSTICK CODES" },
 	{ MUIOPTION_UI_JOY_UP,					"1,1,1,1",  core_options::option_type::STRING, nullptr },
@@ -137,8 +137,11 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_UI_JOY_HISTORY_UP,			"2,0,4,0",  core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_UI_JOY_HISTORY_DOWN,		"2,0,1,0",  core_options::option_type::STRING, nullptr },
 
+// Modified Code Source (EKMAME)
+/*******************************************************************************************************************/
 	{ nullptr,								nullptr,	core_options::option_type::HEADER, "Korean GAME List" },
 	{ MUIOPTION_USEKOREAN_GAMELIST,			"1",	    core_options::option_type::BOOLEAN, nullptr },
+/*******************************************************************************************************************/
 	{ nullptr }
 };
 
@@ -454,7 +457,8 @@ bool GetShowFolderList(void)
 	return winui_opts.bool_value(MUIOPTION_SHOW_FOLDER_SECTION);
 }
 
-// USE_KLIST
+// Modified Code Source (EKMAME)
+/*************************************************************************************/
 void SetUsekoreanList(bool val)
 {
 	winui_opts.set_value(MUIOPTION_USEKOREAN_GAMELIST, val, OPTION_PRIORITY_CMDLINE);
@@ -464,7 +468,7 @@ bool GetUsekoreanList(void)
 {
 	return winui_opts.bool_value(MUIOPTION_USEKOREAN_GAMELIST);
 }
-
+/*************************************************************************************/
 
 static void GetsShowFolderFlags(LPBITS bits)
 {

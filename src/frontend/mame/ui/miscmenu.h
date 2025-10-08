@@ -178,6 +178,8 @@ protected:
 	virtual void handle(event const *ev) override;
 };
 
+// 修改的 代码来源 (EKMAME)
+/****************************************************************************/
 //-------------------------------------------------
 //  Autofire menu
 //-------------------------------------------------
@@ -193,7 +195,7 @@ public:
 //-------------------------------------------------
 //  Custom Button menu
 //-------------------------------------------------
-
+#ifdef USE_CUSTOM_BUTTON
 class menu_custom_button : public menu {
 public:
 	menu_custom_button(mame_ui_manager &mui, render_container &container);
@@ -201,17 +203,9 @@ public:
 	virtual void populate(float &customtop, float &custombottom) override;
 	virtual void handle(event const *ev) override;
 };
+#endif /* USE_CUSTOM_BUTTON */
+/****************************************************************************/
 
-//#ifdef USE_SCALE_EFFECTS
-class menu_scale_effect : public menu 
-{
-public:
-	menu_scale_effect(mame_ui_manager &mui, render_container &container);
-	virtual ~menu_scale_effect() override;
-private:
-	virtual void populate(float &customtop, float &custombottom) override;
-	virtual void handle(event const *ev) override;
-};
 } // namespace ui
 
 #endif // MAME_FRONTEND_UI_MISCMENU_H

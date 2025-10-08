@@ -376,7 +376,8 @@ void Picker_SetViewID(HWND hWndPicker, int nViewID)
 	if (pPickerInfo->pCallbacks->pfnSetViewMode)
 		pPickerInfo->pCallbacks->pfnSetViewMode(pPickerInfo->nCurrentViewID);
 
-
+// Modified Code Source (EKMAME)
+/********************************************/
 	LONG_PTR nListViewStyle;
 	switch(nViewID)
 	{
@@ -395,10 +396,11 @@ void Picker_SetViewID(HWND hWndPicker, int nViewID)
 			nListViewStyle = LVS_REPORT;
 			break;
 	}
+/********************************************/
 
 	DWORD dwStyle = GetWindowLong(hWndPicker, GWL_STYLE);
 	dwStyle &= ~LVS_TYPEMASK;
-	dwStyle |= nListViewStyle;
+	dwStyle |= nListViewStyle; // Modified Code Source(EKMAME)
 	SetWindowLong(hWndPicker, GWL_STYLE, dwStyle);
 	RedrawWindow(hWndPicker, NULL, NULL, RDW_ERASE | RDW_INVALIDATE | RDW_FRAME);
 }
@@ -854,12 +856,15 @@ const wchar_t* const *Picker_GetColumnNames(HWND hWndPicker)
 	return pPickerInfo->ppszColumnNames;
 }
 
+// Modified Code Source (EKMAME)
+/**************************************************************************************/
 void Picker_SetHeaderImageList(HWND hwndPicker, HIMAGELIST hHeaderImages)
 {
 	HWND hwndHeader;
 	hwndHeader = ListView_GetHeader(hwndPicker);
 	SendMessage(hwndHeader, HDM_SETIMAGELIST, 0, (LPARAM) (void *) hHeaderImages);
 }
+/**************************************************************************************/
 
 bool Picker_SaveColumnWidths(HWND hWndPicker)
 {

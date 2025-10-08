@@ -44,9 +44,12 @@ enum
 {
 	VIEW_ICONS_LARGE = 0,
 	VIEW_ICONS_SMALL,
+// Modified Code Source (EKMAME)
+/***************************/
 	VIEW_INLIST,
 	VIEW_REPORT,
 	VIEW_GROUPED,
+/***************************/
 	VIEW_MAX
 };
 
@@ -66,7 +69,11 @@ void Picker_ResetIdle(HWND hWndPicker);
 bool Picker_IsIdling(HWND hWndPicker);
 int Picker_InsertItemSorted(HWND hWndPicker, int nParam);
 bool Picker_SaveColumnWidths(HWND hWndPicker);
+
+// Modified Code Source (EKMAME)
+/**************************************************************************/
 void Picker_SetHeaderImageList(HWND hwndPicker, HIMAGELIST hHeaderImages);
+/**************************************************************************/
 
 // These are used to handle events received by the parent regarding
 // picker controls

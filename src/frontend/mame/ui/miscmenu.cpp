@@ -574,6 +574,8 @@ menu_crosshair::~menu_crosshair()
 {
 }
 
+// 修改的 代码来源 (EKMAME)
+/****************************************************************************************************************************/
 #define AUTOFIRE_ITEM_P1_DELAY 1
 /*-------------------------------------------------
     menu_autofire - handle the autofire settings
@@ -678,7 +680,9 @@ void menu_autofire::populate(float &customtop, float &custombottom)
 
 			if (name.c_str() != NULL && (
 			    (field.type() >= IPT_BUTTON1 && field.type() < IPT_BUTTON1 + MAX_NORMAL_BUTTONS)
-			    // || (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS)
+#ifdef USE_CUSTOM_BUTTON
+			     || (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS)
+#endif /* USE_CUSTOM_BUTTON */
 			   ))
 			{
 				ioport_field::user_settings settings;
@@ -713,6 +717,7 @@ void menu_autofire::populate(float &customtop, float &custombottom)
 }
 #undef AUTOFIRE_ITEM_P1_DELAY
 
+#ifdef USE_CUSTOM_BUTTON
 /*-------------------------------------------------
     menu_custom_button - handle the custom button
     settings menu
@@ -827,7 +832,8 @@ void menu_custom_button::populate(float &customtop, float &custombottom)
 		}
 	}
 }
-
+#endif /* USE_CUSTOM_BUTTON */
+/****************************************************************************************************************************/
 
 //-------------------------------------------------
 //  ctor / dtor

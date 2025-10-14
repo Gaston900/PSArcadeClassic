@@ -74,20 +74,22 @@ extern const FOLDERDATA g_folderData[] =
 	{"All Games",       "allgames",          FOLDER_ALLGAMES,     IDI_FOLDER_ALLGAMES,      0,             0,            0, NULL,                       NULL,                    true },
 	{"Available",       "available",         FOLDER_AVAILABLE,    IDI_FOLDER_AVAILABLE,     F_AVAILABLE,   0,            0, NULL,                       FilterAvailable,         true },
     {"Unavailable",     "unavailable",       FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
-//    {"Metal Slug",	"mslug",			 FOLDER_MSLUG, 		  IDI_FOLDER_MSLUG,		    0,			   0, 		     0, CreateMSLUGFolders },
+//#ifdef USE_GAMEFOLDERS
+    {"Metal Slug",	    "mslug",			 FOLDER_MSLUG, 		  IDI_FOLDER_MSLUG,		    0,			   0, 		     0, CreateMSLUGFolders },
 	{"Capcom",	  	    "capcom",			 FOLDER_CPS,		  IDI_FOLDER_CAPCOM,		0,			   0, 		     0, CreateCPSFolders },
     {"Dataeast",		"dataeast",		     FOLDER_DATAEAST,	  IDI_FOLDER_DATAEAST, 	    0,			   0,            0,	CreateDATAEASTFolders },
 	{"IGS", 	        "igs",			     FOLDER_PGM,		  IDI_FOLDER_PGM,		    0,			   0, 		     0, CreatePGMFolders },
 	{"Konami",		    "konami", 		     FOLDER_KONAMI,		  IDI_FOLDER_KONAMI,		0,			   0, 		     0, CreateKONAMIFolders },
-    {"Namco", 	   	    "namco",			 FOLDER_NAMCO,		  IDI_FOLDER_NAMCO,		    0,			   0, 		     0, CreateNAMCOFolders },
+	{"Namco", 		    "namco",			 FOLDER_NAMCO,		  IDI_FOLDER_NAMCO,		    0,			   0, 		     0, CreateNAMCOFolders },
 	{"Neo-Geo",         "neogeo", 		     FOLDER_NEOGEO,	      IDI_FOLDER_NEOGEO,	    0,			   0, 		     0, CreateNEOGEOFolders },
     {"Midway",	        "Midway",		     FOLDER_MIDWAY,	      IDI_FOLDER_MIDWAY,		0,			   0, 		     0, CreateMIDWAYFolders },
 	{"Nintendo",        "nintendo", 		 FOLDER_NINTENDO,     IDI_FOLDER_NINTENDO,		0,			   0, 		     0, CreateNINTENDOFolders },
     {"Sega",		    "sega",			     FOLDER_SEGA, 		  IDI_FOLDER_SEGA,		    0,			   0, 		     0, CreateSEGAFolders },
 	{"Seta", 		    "seta",			     FOLDER_SETA,		  IDI_FOLDER_SETA,		    0,			   0, 		     0, CreateSETAFolders },
 	{"Taito", 		    "taito",			 FOLDER_TAITO,		  IDI_FOLDER_TAITO,		    0,			   0, 		     0, CreateTAITOFolders },
-    {"Toaplan", 	    "toaplan",		     FOLDER_TOAPLAN,	  IDI_FOLDER_TOAPLAN,	    0,			   0, 		     0, CreateTOAPLANFolders },
-    {"Misc",	        "misc",			     FOLDER_CAVE, 		  IDI_FOLDER_CAVE,		    0,			   0, 		     0, CreateTOAFolders },
+	{"Toaplan", 	    "toaplan",		     FOLDER_TOAPLAN,	  IDI_FOLDER_TOAPLAN,	    0,			   0, 		     0, CreateTOAPLANFolders },
+	{"Misc",	        "misc",			     FOLDER_CAVE, 		  IDI_FOLDER_CAVE,		    0,			   0, 		     0, CreateTOAFolders },
+//#endif 
 	{"Parents",         "originals",         FOLDER_ORIGINAL,     IDI_FOLDER_ORIGINALS,     F_ORIGINALS,   F_CLONES,     0, NULL,                       DriverIsClone,           false },
 	{"Clones",          "clones",            FOLDER_CLONES,       IDI_FOLDER_CLONES,        F_CLONES,      F_ORIGINALS,  0, NULL,                       DriverIsClone,           true },
 	{"Source",          "source",            FOLDER_SOURCE,       IDI_FOLDER_SOURCE,        0,             0,            0, CreateSourceFolders },
@@ -137,7 +139,7 @@ extern const FILTER_ITEM g_filterList[] =
 
 static const TREEICON treeIconNames[] =
 {
-	{ IDI_FOLDER_OPEN,         "foldopen" }, // Modified (Gaston90)
+	{ IDI_FOLDER_OPEN,         "foldopen" },
 	{ IDI_FOLDER,              "folder" },
 	{ IDI_FOLDER_ALLGAMES,     "allgames" },
 	{ IDI_FOLDER_AVAILABLE,    "foldavail" },
@@ -162,8 +164,7 @@ static const TREEICON treeIconNames[] =
 	{ IDI_FOLDER_SOUND,        "foldcsb" },
 	{ IDI_FOLDER_SOURCE,       "foldsrc" },
 	{ IDI_SOURCE,              "source" },
-// Modified Code Source (EKMAME)
-/**********************************************/
+//#ifdef USE_GAMEFOLDERS
 	{ IDI_FOLDER_NEOGEO,       "fold_neogeo" },
     { IDI_FOLDER_CAPCOM,	   "fold_cps" },
     { IDI_FOLDER_PGM,	   	   "fold_pgm" },
@@ -178,7 +179,7 @@ static const TREEICON treeIconNames[] =
     { IDI_FOLDER_TOAPLAN,	   "fold_toaplan" },
     { IDI_FOLDER_NINTENDO,     "fold_nintendo" },
 	{ IDI_FOLDER_DATAEAST,	   "fold_dataeast"},
-/**********************************************/
+//#endif	
 	{ IDI_FOLDER_TRACKBALL,    "foldball" },
 	{ IDI_FOLDER_UNAVAILABLE,  "foldunav" },
 	{ IDI_FOLDER_VECTOR,       "foldvect" },
@@ -2075,10 +2076,9 @@ void CreateNEOGEOFolders(int parent_index)
 		if (s == NULL || s[0] == '\0')
 			continue;
 
-		if (!strcmp("neogeo_noslot.cpp", s))		   AddGame(lpFolder, jj);
-		if (!strcmp("neogeo_noslothb.cpp", s))		   AddGame(lpFolder, jj);
-		if (!strcmp("neogeo_noslotdd.cpp", s))		   AddGame(lpFolder, jj);
-
+		if( (!strcmp("neogeo_noslot.cpp", s))||
+            (!strcmp("neogeo_noslothb.cpp", s))||
+            (!strcmp("mslughb.cpp", s)))
 		{
 			AddGame(lpFolder, jj);
 		}

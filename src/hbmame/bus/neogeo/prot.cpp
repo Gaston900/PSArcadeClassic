@@ -2400,6 +2400,8 @@ void pvc_prot_device::mslug5_decrypt_68k(u8* rom, u32 size)
 	memcpy( &rom[ 0x200000 ], &buf[ 0x100000 ], 0x600000 );
 }
 
+
+
 void pvc_prot_device::mslug5nd_decrypt_68k(u8* rom, u32 size)
 {
 	static const u8 xor1[ 0x20 ] = { 0xc2, 0x4b, 0x74, 0xfd, 0x0b, 0x34, 0xeb, 0xd7, 0x10, 0x6d, 0xf9, 0xce, 0x5d, 0xd5, 0x61, 0x29, 0xf5, 0xbe, 0x0d, 0x82, 0x72, 0x45, 0x0f, 0x24, 0xb3, 0x34, 0x1b, 0x99, 0xea, 0x09, 0xf3, 0x03 };
@@ -2440,6 +2442,7 @@ void pvc_prot_device::mslug5nd_decrypt_68k(u8* rom, u32 size)
 	memcpy( &rom[ 0x200000 ], &buf[ 0x700000 ], 0x100000 );
 	memcpy( &rom[ 0x200000 ], &buf[ 0x200000 ], 0x600000 );
 }
+
 
 void pvc_prot_device::svc_px_decrypt(u8* rom, u32 size)
 {
@@ -3071,6 +3074,7 @@ void sma_prot_device::mslug3_decrypt_68k(u8* base)
 	}
 }
 
+
 void sma_prot_device::mslug3cqt_decrypt_68k(u8* base)
 {
 	int i,j;
@@ -3124,6 +3128,7 @@ void sma_prot_device::mslug3a_decrypt_68k(u8* base)
 			rom[i+j] = buffer[bitswap<15>(j,12,0,11,3,4,13,6,8,14,7,5,2,10,9,1)];
 	}
 }
+
 
 void sma_prot_device::kof2000_decrypt_68k(u8* base)
 {

@@ -1183,7 +1183,7 @@ const char *funcGetParentName(const char *name)
 {
 	int index = GetGameNameIndex(name);// get current game index
 	int parentindex = GetParentIndex(&driver_list::driver(index));
-	//int parentindex = GetParentIndex_2(index);		   // get Parent current game
+
 	if( parentindex >= 0)
 	{
 		const char *parentname =  GetDriverGameName(parentindex);
@@ -1748,7 +1748,6 @@ static bool GameCheck(void)
 	AuditRefresh();
 
 	if (game_index == 0)
-		ProgressBarShow();
 
 // 修改的 代码来源 (EKMAME)
 /***********************************/
@@ -1756,6 +1755,7 @@ static bool GameCheck(void)
 		ProgressBarShow();
 	}
 /***********************************/
+	
 	if (bFolderCheck == true)
 	{
 		LVITEM lvi;
@@ -2725,6 +2725,8 @@ static void SetView(int menu_id)
 
 // 修改的 代码来源 (EKMAME)
 /*******************************************************************************************/
+	// Associate the image lists with the list view control.
+
 	if (Picker_GetViewID(hWndList) == VIEW_GROUPED || menu_id == ID_VIEW_GROUPED)
 	{
 		// this changes the sort order, so redo everything
@@ -4025,11 +4027,11 @@ static void AddDriverIcon(int nItem, int default_icon_index)
 	if (icon_index[nItem] == 1 || icon_index[nItem] == 3)
 		return;
 
-	hIcon = LoadIconFromFile((char *)GetDriverGameName(nItem));
+      hIcon = LoadIconFromFile((char *)GetDriverGameName(nItem));
 
 	if (hIcon == NULL)
 	{
-		nParentIndex = GetParentIndex(&driver_list::driver(nItem));
+          nParentIndex = GetParentIndex(&driver_list::driver(nItem));
 /**************************************************************************/
 
 		if( nParentIndex >= 0)
@@ -4198,7 +4200,7 @@ static void CreateIcons(void)
 
 // 修改的 代码来源 (EKMAME)
 /*************************************************************************************************************************/
-	hLarge = ImageList_Create(dwLargeIconSize, dwLargeIconSize, ILC_COLORDDB | ILC_MASK, icon_count, icon_count + grow);
+    hLarge = ImageList_Create(dwLargeIconSize, dwLargeIconSize, ILC_COLORDDB | ILC_MASK, icon_count, icon_count + grow);
 /*************************************************************************************************************************/
 
 	if (hLarge == NULL) 
@@ -4241,7 +4243,7 @@ int GamePicker_Compare(HWND hwndPicker, int index1, int index2, int sort_subitem
 			
 // 修改的 代码来源 (EKMAME)
 /***************************************************************************************************************************************/
-  			value = core_stricmp(GetDescriptionByIndex(index1,GetUsekoreanList()), GetDescriptionByIndex(index2, GetUsekoreanList()));
+			value = core_stricmp(GetDescriptionByIndex(index1,GetUsekoreanList()), GetDescriptionByIndex(index2, GetUsekoreanList()));
 			break;
 /***************************************************************************************************************************************/
 
@@ -5601,8 +5603,8 @@ void UpdateListView(void)
 
 // 修改的 代码来源 (EKMAME)
 /***************************************************************************************************************************************************/
-	if( (GetViewMode() == VIEW_GROUPED) || (GetViewMode() == VIEW_REPORT ) )
-		(void)ListView_RedrawItems(hWndList, ListView_GetTopIndex(hWndList), ListView_GetTopIndex(hWndList) + ListView_GetCountPerPage(hWndList));
+    if( (GetViewMode() == VIEW_GROUPED) || (GetViewMode() == VIEW_REPORT ) )
+	    (void)ListView_RedrawItems(hWndList, ListView_GetTopIndex(hWndList), ListView_GetTopIndex(hWndList) + ListView_GetCountPerPage(hWndList));
 /***************************************************************************************************************************************************/
 
 	SetFocus(hWndList);
@@ -5776,7 +5778,6 @@ static void SwitchFullScreenMode(void)
 		CheckMenuItem(GetMenu(hMain), ID_VIEW_STATUS, GetShowStatusBar() ? MF_CHECKED : MF_UNCHECKED);
 		CheckMenuItem(GetMenu(hMain), ID_VIEW_PAGETAB, GetShowTabCtrl() ? MF_CHECKED : MF_UNCHECKED);
 		CheckMenuItem(GetMenu(hMain), ID_ENABLE_INDENT, GetEnableIndent() ? MF_CHECKED : MF_UNCHECKED);
-
 		// Add frame to dialog again
 		SetWindowLong(hMain, GWL_STYLE, GetWindowLong(hMain, GWL_STYLE) | WS_OVERLAPPEDWINDOW);
 

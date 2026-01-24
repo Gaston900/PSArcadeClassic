@@ -75,7 +75,7 @@ extern const FOLDERDATA g_folderData[] =
 	{"Available",       "available",         FOLDER_AVAILABLE,    IDI_FOLDER_AVAILABLE,     F_AVAILABLE,   0,            0, NULL,                       FilterAvailable,         true },
     {"Unavailable",     "unavailable",       FOLDER_UNAVAILABLE,  IDI_FOLDER_UNAVAILABLE,   0,             F_AVAILABLE,  0, NULL,                       FilterAvailable,         false },
 //#ifdef USE_GAMEFOLDERS
-    {"Metal Slug",	    "mslug",			 FOLDER_MSLUG, 		  IDI_FOLDER_MSLUG,		    0,			   0, 		     0, CreateMSLUGFolders },
+//    {"Metal Slug",	    "mslug",			 FOLDER_MSLUG, 		  IDI_FOLDER_MSLUG,		    0,			   0, 		     0, CreateMSLUGFolders },
 	{"Capcom",	  	    "capcom",			 FOLDER_CPS,		  IDI_FOLDER_CAPCOM,		0,			   0, 		     0, CreateCPSFolders },
     {"Dataeast",		"dataeast",		     FOLDER_DATAEAST,	  IDI_FOLDER_DATAEAST, 	    0,			   0,            0,	CreateDATAEASTFolders },
 	{"IGS", 	        "igs",			     FOLDER_PGM,		  IDI_FOLDER_PGM,		    0,			   0, 		     0, CreatePGMFolders },
@@ -2078,7 +2078,7 @@ void CreateNEOGEOFolders(int parent_index)
 
 		if( (!strcmp("neogeo_noslot.cpp", s))||
             (!strcmp("neogeo_noslothb.cpp", s))||
-            (!strcmp("mslughb.cpp", s)))
+            (!strcmp("neogeo_noslotdd.cpp", s)))
 		{
 			AddGame(lpFolder, jj);
 		}

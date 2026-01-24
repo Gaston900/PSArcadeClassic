@@ -137,6 +137,7 @@ BEGIN
     POPUP "Context Menu"
     BEGIN
         MENUITEM "Play\tAlt+O",                           ID_FILE_PLAY
+        MENUITEM "IPS\tAlt+P",                            ID_PLAY_IPS // Modified Code Source (Eziochiu)
         MENUITEM SEPARATOR
         MENUITEM "Record INP playback\tCtrl+F1",          ID_FILE_PLAY_RECORD
         MENUITEM "Load savestate\tAlt+F7",                ID_FILE_LOADSTATE
@@ -924,6 +925,32 @@ BEGIN
     PUSHBUTTON      "Cancel",IDCANCEL,154,124,50,14
 END
 
+// Modified Code Source (Eziochiu) 
+/************************************************************************************************************************************************************************/
+IDD_PROP_IPS DIALOGEX 0, 0, 400, 280
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "IPS Manager"
+FONT 9, "Tahoma", 0, 0, 0x0
+BEGIN
+    LTEXT           "Select IPS patch:", IDC_STATIC, 10, 10, 60, 8
+    CONTROL         "", IDC_IPS_TREE, "SysTreeView32", TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_CHECKBOXES | WS_BORDER | WS_TABSTOP, 10, 22, 200, 230
+    
+    LTEXT           "Preview:", IDC_STATIC, 220, 10, 30, 8
+    CONTROL         "", IDC_IPS_SNAP, "Static", SS_BITMAP | SS_CENTERIMAGE | WS_BORDER, 220, 22, 170, 120
+    
+    LTEXT           "Description:", IDC_STATIC, 220, 148, 30, 8
+    EDITTEXT        IDC_IPS_DESC, 220, 158, 170, 94, ES_MULTILINE | ES_READONLY | WS_VSCROLL
+    
+    LTEXT           "Language:", IDC_STATIC, 10, 261, 30, 8
+    COMBOBOX        IDC_IPS_LANG, 40, 258, 80, 100, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    
+    AUTOCHECKBOX    "Force association", IDC_IPS_RELATION, 130, 260, 60, 10
+    
+    PUSHBUTTON      "Clear", IDC_IPS_CLEAR, 220, 258, 50, 14
+    DEFPUSHBUTTON   "OK", IDOK, 280, 258, 50, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 340, 258, 50, 14
+END
+/************************************************************************************************************************************************************************/
 /////////////////////////////////////////////////////////////////////////////
 //
 // Accelerator
@@ -1068,7 +1095,14 @@ IDB_FILTERS                BITMAP                    "res\\filters.bmp"
 IDB_REMOVE                BITMAP                    "res\\remove.bmp"
 IDB_RENAME                BITMAP                    "res\\rename.bmp"
 IDB_RESET                BITMAP                    "res\\reset.bmp"
+// Modified Code Source (EKMAME)
+/****************************************************************************/
 IDB_KLIST				 BITMAP					   "res\\klist.bmp"
+/****************************************************************************/
+// Modified Code Source (Eziochiu)
+/****************************************************************************/
+IDB_MAME_IPS            BITMAP                     "res\\mame.bmp"
+/****************************************************************************/
 /////////////////////////////////////////////////////////////////////////////
 //
 // Cursor

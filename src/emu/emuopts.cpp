@@ -50,6 +50,12 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_LANGUAGEPATH,                               "config/language",   core_options::option_type::STRING,     "path to UI translation files" }, // 修改的 (加斯顿90)
 	{ OPTION_SWPATH,                                     "support/software",  core_options::option_type::STRING,     "path to loose software" }, // 修改的 (加斯顿90)
 
+// 修改的 (Eziochiu) 
+/********************************************************************************************************************************************/
+	{ OPTION_IPSPATH,                                    "support/ips",       core_options::option_type::STRING,  "path to IPS patch files" },
+	{ OPTION_IPS,                                        nullptr,     core_options::option_type::STRING,     "IPS patch name" },
+/********************************************************************************************************************************************/
+
 	// output directory options
 	{ nullptr,                                           nullptr,     core_options::option_type::HEADER,     "CORE OUTPUT DIRECTORY OPTIONS" },
 	{ OPTION_CFG_DIRECTORY,                              "config/cfg",       core_options::option_type::STRING,     "directory to save configurations" }, // 修改的 (加斯顿90)

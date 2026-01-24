@@ -63,6 +63,7 @@ function maintargetosdoptions(_target,_subtarget)
 		"uxtheme",
 		"uuid",
 		"shlwapi",
+		"gdiplus", -- 修改的 (Eziochiu)
 	}
 
 	override_resources = true;

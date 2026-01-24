@@ -11,6 +11,10 @@
 #include "emu.h"
 #include "romload.h"
 
+// 修改的 (Eziochiu) 
+/***********************/
+#include "ips.h"
+/***********************/
 #include "drivenum.h"
 #include "emuopts.h"
 #include "fileio.h"
@@ -669,6 +673,14 @@ std::unique_ptr<emu_file> rom_load_manager::open_rom_file(std::initializer_list<
 			break;
 	}
 
+// 修改的 (Eziochiu) 
+/***************************************************************************************************************************/
+	m_ips_patch = ips::assign_patch(ROM_GETNAME(romp));
+	osd_printf_info("IPS: assign_patch('%s') returned %s\n", ROM_GETNAME(romp), m_ips_patch ? "PATCH FOUND" : "nullptr");
+	if (m_ips_patch)
+		osd_printf_info("IPS: ROM '%s' has IPS patch assigned\n", ROM_GETNAME(romp));
+/***************************************************************************************************************************/
+
 	// update counters
 	m_romsloaded++;
 	m_romsloadedsize += romsize;
@@ -709,13 +721,22 @@ std::unique_ptr<emu_file> rom_load_manager::open_rom_file(const std::vector<std:
 
 int rom_load_manager::rom_fread(emu_file *file, u8 *buffer, int length, const rom_entry *parent_region)
 {
-	if (file) // files just pass through
-		return file->read(buffer, length);
+// 修改的 (Eziochiu) 
+/********************************************************************************************************************************/
+	int bytes_read = length;
 
-	if (!ROMREGION_ISERASE(parent_region)) // otherwise, fill with randomness unless it was already specifically erased
+	if (file) // files just pass through
+		bytes_read = file->read(buffer, length);
+	else if (!ROMREGION_ISERASE(parent_region)) // otherwise, fill with randomness unless it was already specifically erased
 		fill_random(buffer, length);
 
-	return length;
+	if (m_ips_patch)
+	{
+		ips::apply_patch(m_ips_patch, buffer, bytes_read);
+	}
+
+	return bytes_read;
+/********************************************************************************************************************************/
 }
 
 
@@ -1445,6 +1466,11 @@ rom_load_manager::rom_load_manager(running_machine &machine)
 	, m_region(nullptr)
 	, m_errorstring()
 	, m_softwarningstring()
+
+// 修改的 (Eziochiu) 
+/********************************/
+	, m_ips_patch(nullptr)
+/********************************/
 {
 	// figure out which BIOS we are using
 	std::map<std::string_view, std::string> card_bios;
@@ -1482,6 +1508,16 @@ rom_load_manager::rom_load_manager(running_machine &machine)
 	// count the total number of ROMs
 	count_roms();
 
+// 修改的 (Eziochiu) 
+/*********************************************************************************************************/
+	const char *patch_name = machine.options().value(OPTION_IPS);
+	if (patch_name && *patch_name && !ips::open_entry(machine, patch_name, this, machine.system().rom))
+	{
+		// Error handling if patch specified but failed to load
+		osd_printf_warning("IPS: Failed to load IPS patch: %s\n", patch_name);
+	}
+/*********************************************************************************************************/
+
 	// reset the disk list
 	m_chd_list.clear();
 
@@ -1490,6 +1526,11 @@ rom_load_manager::rom_load_manager(running_machine &machine)
 
 	// display the results and exit
 	display_rom_load_results(false);
+
+// 修改的 (Eziochiu) 
+/********************************/
+	ips::close_entry(this);
+/********************************/
 }
 
 

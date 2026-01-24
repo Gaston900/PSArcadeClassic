@@ -3,6 +3,13 @@
 
 #include "winui.h"
 
+// Modified Code Source (Eziochiu)
+/************************/
+#include <map>
+#include <algorithm>
+#include <cctype>
+/************************/
+
 /***************************************************************************
     Internal structures
  ***************************************************************************/
@@ -676,6 +683,357 @@ void CenterWindow(HWND hWnd)
 	SetWindowPos(hWnd, HWND_TOP, xLeft, yTop, -1, -1, SWP_NOSIZE);
 }
 
+// Modified Code Source (Eziochiu)
+/**************************************************************************************************************/
+struct PatchInfo
+{
+	std::string filename;    
+	std::string desc;        
+	std::string category;    
+	std::string image_path;  
+};
+
+static std::vector<PatchInfo> s_current_patches;
+static int s_current_patch_game_index = -1;
+static int s_current_patch_parent_index = -1;
+
+static std::map<std::string, std::vector<std::string>> s_dep_table;
+static std::vector<std::vector<std::string>> s_conf_table;
+static std::map<std::string, bool> s_patch_state;
+
+static void ParseRelations(const std::string& game_ips_path)
+{
+	s_dep_table.clear();
+	s_conf_table.clear();
+	
+	std::string assistant_path = game_ips_path + "assistant.txt";
+	FILE *f = fopen(assistant_path.c_str(), "r");
+	if (!f) return;
+	
+	char line[1024];
+	while (fgets(line, sizeof(line), f))
+	{
+		size_t len = strlen(line);
+		while (len > 0 && (line[len-1] == '\n' || line[len-1] == '\r'))
+			line[--len] = 0;
+		
+		char *p = line;
+		while (*p && isspace((unsigned char)*p)) p++;
+		if (*p == 0 || *p == '#') continue; 
+		
+		char *arrow = strchr(p, '>');
+		if (arrow)
+		{
+			*arrow = 0;
+			std::string parent = p;
+			parent.erase(std::remove_if(parent.begin(), parent.end(), ::isspace), parent.end());
+			std::transform(parent.begin(), parent.end(), parent.begin(), ::tolower);
+			
+			char *children_str = arrow + 1;
+			std::vector<std::string> children;
+			char *tok = strtok(children_str, ",");
+			while (tok)
+			{
+				std::string child = tok;
+				child.erase(std::remove_if(child.begin(), child.end(), ::isspace), child.end());
+				std::transform(child.begin(), child.end(), child.begin(), ::tolower);
+				if (!child.empty())
+					children.push_back(child);
+				tok = strtok(nullptr, ",");
+			}
+			
+			if (!parent.empty() && !children.empty())
+				s_dep_table[parent] = children;
+		}
+		else
+		{
+			std::vector<std::string> conflicts;
+			char *tok = strtok(p, ",");
+			while (tok)
+			{
+				std::string conf = tok;
+				conf.erase(std::remove_if(conf.begin(), conf.end(), ::isspace), conf.end());
+				std::transform(conf.begin(), conf.end(), conf.begin(), ::tolower);
+				if (!conf.empty())
+					conflicts.push_back(conf);
+				tok = strtok(nullptr, ",");
+			}
+			
+			if (conflicts.size() >= 2)
+				s_conf_table.push_back(conflicts);
+		}
+	}
+	fclose(f);
+}
+
+static void InitPatchState()
+{
+	s_patch_state.clear();
+	for (const auto& patch : s_current_patches)
+	{
+		std::string name = patch.filename;
+		std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+		s_patch_state[name] = false;
+	}
+}
+
+static void ValidateConflicts(const std::string& patch_name)
+{
+	if (!s_patch_state[patch_name])
+		return;
+	
+	for (const auto& conf_group : s_conf_table)
+	{
+		bool found = std::find(conf_group.begin(), conf_group.end(), patch_name) != conf_group.end();
+		if (found)
+		{
+			for (const auto& other : conf_group)
+			{
+				if (other != patch_name && s_patch_state[other])
+				{
+					s_patch_state[other] = false;
+				}
+			}
+		}
+	}
+}
+
+static void ValidateDependencies(const std::string& patch_name)
+{
+	if (!s_patch_state[patch_name])
+	{
+		auto it = s_dep_table.find(patch_name);
+		if (it != s_dep_table.end())
+		{
+			for (const auto& child : it->second)
+			{
+				if (s_patch_state[child])
+				{
+					bool has_other_parent = false;
+					for (const auto& dep : s_dep_table)
+					{
+						if (dep.first == patch_name) continue;
+						if (!s_patch_state[dep.first]) continue;
+						
+						if (std::find(dep.second.begin(), dep.second.end(), child) != dep.second.end())
+						{
+							has_other_parent = true;
+							break;
+						}
+					}
+					
+					if (!has_other_parent)
+					{
+						s_patch_state[child] = false;
+						ValidateDependencies(child); 
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		for (const auto& dep : s_dep_table)
+		{
+			const std::vector<std::string>& children = dep.second;
+			if (std::find(children.begin(), children.end(), patch_name) != children.end())
+			{
+				const std::string& parent = dep.first;
+				if (!s_patch_state[parent])
+				{
+					s_patch_state[parent] = true;
+					ValidateConflicts(parent);
+					ValidateDependencies(parent);
+				}
+			}
+		}
+	}
+}
+
+static int s_ips_lang_override = -1;
+
+void SetIPSLangOverride(int langIndex)
+{
+	s_ips_lang_override = langIndex;
+	s_current_patch_game_index = -1;
+}
+
+static void UpdatePatches(int nGame, int nParent)
+{
+	if (nGame == s_current_patch_game_index && nParent == s_current_patch_parent_index)
+		return;
+
+	s_current_patch_game_index = nGame;
+	s_current_patch_parent_index = nParent;
+	s_current_patches.clear();
+
+	const char *ipspath = GetIpsDir();
+	if (!ipspath) return;
+
+	const char *game_name = driver_list::driver(nGame).name;
+	if (!game_name) return;
+
+	std::string game_ips_path = std::string(ipspath).append(PATH_SEPARATOR).append(game_name).append(PATH_SEPARATOR);
+	std::string search_path = game_ips_path + "*.dat";
+
+	const char* lang_tags_cn[] = { "[zh_CN]", "[zh_TW]", "[en_US]", nullptr };
+	const char* lang_tags_tw[] = { "[zh_TW]", "[zh_CN]", "[en_US]", nullptr };
+	const char* lang_tags_en[] = { "[en_US]", "[zh_CN]", "[zh_TW]", nullptr };
+	
+	const char** lang_tags;
+	
+	if (s_ips_lang_override != -1)
+	{
+		switch (s_ips_lang_override)
+		{
+			case 0: lang_tags = lang_tags_cn; break;
+			case 1: lang_tags = lang_tags_tw; break;
+			case 2: lang_tags = lang_tags_en; break;
+			default: lang_tags = lang_tags_en; break;
+		}
+	}
+	else
+	{
+		lang_tags = lang_tags_en;
+	}
+
+	WIN32_FIND_DATA findData;
+	HANDLE hFind = winui_find_first_file_utf8(search_path.c_str(), &findData);
+	if (hFind == INVALID_HANDLE_VALUE)
+		return;
+
+	do
+	{
+		char *utf8_filename = win_utf8_from_wstring(findData.cFileName);
+		if (!utf8_filename) continue;
+
+		std::string filename(utf8_filename);
+		free(utf8_filename);
+
+		if (filename == "." || filename == "..") continue;
+		if (filename == "assistant.txt") continue; 
+
+		std::string full_path = game_ips_path + filename;
+		FILE *f = fopen(full_path.c_str(), "r");
+		if (f)
+		{
+			char line[2048];
+			std::string desc;
+			std::string category;
+			bool found_desc = false;
+			int current_lang_priority = 999;
+			
+			bool in_lang_section = false;
+			int lang_priority = 999;
+
+			while (fgets(line, sizeof(line), f))
+			{
+				size_t len = strlen(line);
+				while (len > 0 && (line[len-1] == '\n' || line[len-1] == '\r'))
+					line[--len] = 0;
+
+				char *p = line;
+				while (*p && isspace((unsigned char)*p)) p++;
+				if (*p == 0) continue;
+
+				if (*p == '[')
+				{
+					in_lang_section = false;
+					for (int i = 0; lang_tags[i] != nullptr; i++)
+					{
+						if (strstr(p, lang_tags[i]) == p)
+						{
+							lang_priority = i;
+							in_lang_section = true;
+							break;
+						}
+					}
+					continue;
+				}
+
+				if (in_lang_section && lang_priority < current_lang_priority)
+				{
+					char *sep = strchr(p, '/');
+					if (sep)
+					{
+						*sep = 0;
+						category = p;
+						desc = sep + 1;
+					}
+					else
+					{
+						desc = p;
+						category.clear();
+					}
+					current_lang_priority = lang_priority;
+					found_desc = true;
+				}
+			}
+			fclose(f);
+			PatchInfo pi;
+			pi.filename = filename.substr(0, filename.length() - 4); 
+			pi.desc = found_desc ? desc : pi.filename;
+			pi.category = category;
+			const char* img_exts[] = { ".png", ".jpg", ".bmp", nullptr };
+			for (int ext_i = 0; img_exts[ext_i] != nullptr; ext_i++)
+			{
+				std::string img_path = game_ips_path + pi.filename + img_exts[ext_i];
+				FILE *img_test = fopen(img_path.c_str(), "rb");
+				if (img_test)
+				{
+					fclose(img_test);
+					pi.image_path = img_path;
+					break;
+				}
+			}
+			
+			s_current_patches.push_back(pi);
+		}
+
+	} while (FindNextFile(hFind, &findData));
+
+	FindClose(hFind);
+}
+
+int GetPatchCount(int nGame, int nParentIndex)
+{
+	UpdatePatches(nGame, nParentIndex);
+	return s_current_patches.size();
+}
+
+char* GetPatchFilename(int nGame, int nParentIndex, int nPatchIndex)
+{
+	UpdatePatches(nGame, nParentIndex);
+	if (nPatchIndex >= 0 && nPatchIndex < s_current_patches.size())
+		return (char*)s_current_patches[nPatchIndex].filename.c_str();
+	return nullptr;
+}
+
+char* GetPatchDesc(int nGame, int nParentIndex, int nPatchIndex)
+{
+	UpdatePatches(nGame, nParentIndex);
+	if (nPatchIndex >= 0 && nPatchIndex < s_current_patches.size())
+		return (char*)s_current_patches[nPatchIndex].desc.c_str();
+	return nullptr;
+}
+
+char* GetPatchCategory(int nGame, int nParentIndex, int nPatchIndex)
+{
+	UpdatePatches(nGame, nParentIndex);
+	if (nPatchIndex >= 0 && nPatchIndex < s_current_patches.size())
+		return (char*)s_current_patches[nPatchIndex].category.c_str();
+	return nullptr;
+}
+
+char* GetPatchImagePath(int nGame, int nParentIndex, int nPatchIndex)
+{
+	UpdatePatches(nGame, nParentIndex);
+	if (nPatchIndex >= 0 && nPatchIndex < s_current_patches.size())
+		return (char*)s_current_patches[nPatchIndex].image_path.c_str();
+	return nullptr;
+}
+/**************************************************************************************************************/
+
 bool IsWindowsSevenOrHigher(void) 
 {
 	OSVERSIONINFO osvi;
@@ -690,3 +1048,67 @@ bool IsWindowsSevenOrHigher(void)
 
 	return false;
 }
+
+// Modified Code Source (Eziochiu)
+/**************************************************************************************************************/
+void IPSLoadRelations(int nGame, int nParentIndex)
+{
+	UpdatePatches(nGame, nParentIndex);
+	
+	const char *ipspath = GetIpsDir();
+	if (!ipspath) return;
+	
+	const char *game_name = driver_list::driver(nGame).name;
+	std::string game_ips_path = std::string(ipspath) + PATH_SEPARATOR + game_name + PATH_SEPARATOR;
+	
+	ParseRelations(game_ips_path);
+	
+	InitPatchState();
+}
+
+void IPSSetPatchState(const char* patch_name, bool checked)
+{
+	std::string name = patch_name;
+	std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+	
+	s_patch_state[name] = checked;
+	
+	if (checked)
+	{
+		ValidateConflicts(name);
+		ValidateDependencies(name);
+	}
+	else
+	{
+		ValidateDependencies(name);
+	}
+}
+
+bool IPSGetPatchState(const char* patch_name)
+{
+	std::string name = patch_name;
+	std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+	
+	auto it = s_patch_state.find(name);
+	if (it != s_patch_state.end())
+		return it->second;
+	return false;
+}
+
+void IPSGetAllPatchStates(int nGame, int nParentIndex, bool* states, int max_count)
+{
+	UpdatePatches(nGame, nParentIndex);
+	
+	int count = (int)s_current_patches.size();
+	if (count > max_count) count = max_count;
+	
+	for (int i = 0; i < count; i++)
+	{
+		std::string name = s_current_patches[i].filename;
+		std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+		
+		auto it = s_patch_state.find(name);
+		states[i] = (it != s_patch_state.end()) ? it->second : false;
+	}
+}
+/**************************************************************************************************************/

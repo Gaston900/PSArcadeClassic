@@ -39,6 +39,12 @@
 #define OPTION_LANGUAGEPATH         "languagepath"
 #define OPTION_SWPATH               "swpath"
 
+// 修改的 (Eziochiu) 
+/***********************************************/
+#define OPTION_IPSPATH              "ipspath"
+#define OPTION_IPS                  "ips"
+/***********************************************/
+
 // core directory options
 #define OPTION_CFG_DIRECTORY        "cfg_directory"
 #define OPTION_NVRAM_DIRECTORY      "nvram_directory"

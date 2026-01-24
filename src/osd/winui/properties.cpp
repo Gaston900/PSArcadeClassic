@@ -90,6 +90,15 @@ b) Exit the dialog.
 
 #include "winui.h"
 
+// Modified Code Source (Eziochiu) 
+/***********************/
+#include <set>
+#include <sstream>
+#include <gdiplus.h>
+#undef min
+#undef max
+/***********************/
+
 /**************************************************************
  * Local function prototypes
  **************************************************************/
@@ -112,6 +121,15 @@ static void InitializeBIOSUI(HWND hWnd);
 static void InitializeControllerMappingUI(HWND hWnd);
 static void InitializeLanguageUI(HWND hWnd);
 static void InitializePluginsUI(HWND hWnd);
+
+// Modified Code Source (Eziochiu)
+/************************************************************************************************************************/
+static void InitializeIPSUI(HWND hWnd);
+static bool IPSPopulateControl(datamap *map, HWND hDlg, HWND hWndCtrl, windows_options &opts, const char *option_name);
+static bool IPSReadControl(datamap *map, HWND hDlg, HWND hWndCtrl, windows_options &opts, const char *option_name);
+static void IPSSelectionChange(HWND hDlg, HWND hWndCtrl);
+/************************************************************************************************************************/
+
 static void InitializeGLSLFilterUI(HWND hWnd);
 static void InitializeBGFXBackendUI(HWND);
 static void UpdateOptions(HWND hDlg, datamap *map, windows_options &opts);
@@ -197,7 +215,12 @@ static struct PropSheets
 	{ IDD_PROP_OPENGL,		GameOptionsDialogProc },
 	{ IDD_PROP_VECTOR,		GameOptionsDialogProc },
 	{ IDD_PROP_INPUT,		GameOptionsDialogProc },
-	{ IDD_PROP_MISC,		GameOptionsDialogProc }
+	{ IDD_PROP_MISC,		GameOptionsDialogProc },
+/********************************************************/
+
+// Modified Code Source (Eziochiu)
+/********************************************************/
+	{ IDD_PROP_IPS,			GameOptionsDialogProc }
 /********************************************************/
 };
 
@@ -477,6 +500,802 @@ void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int fol
 	free(t_description);
 	free(pspage);
 }
+
+// ??? (Eziochiu)
+/****************************************************************************************************/
+static HBITMAP LoadImageFromFile(const wchar_t* filepath, int maxWidth, int maxHeight)
+{
+	if (!filepath || !filepath[0])
+		return NULL;
+
+	Gdiplus::Bitmap* bitmap = Gdiplus::Bitmap::FromFile(filepath);
+	if (!bitmap) return NULL;
+
+	if (bitmap->GetLastStatus() != Gdiplus::Ok)
+	{
+		delete bitmap;
+		return NULL;
+	}
+
+	int origW = bitmap->GetWidth();
+	int origH = bitmap->GetHeight();
+	
+	if (origW <= 0 || origH <= 0)
+	{
+		delete bitmap;
+		return NULL;
+	}
+
+	int targetW = (maxWidth > 0) ? maxWidth : origW;
+	int targetH = (maxHeight > 0) ? maxHeight : origH;
+
+	Gdiplus::Bitmap* scaledBitmap = new Gdiplus::Bitmap(targetW, targetH, PixelFormat24bppRGB);
+	Gdiplus::Graphics graphics(scaledBitmap);
+	DWORD sysColor = GetSysColor(COLOR_3DFACE);
+	graphics.Clear(Gdiplus::Color(255, GetRValue(sysColor), GetGValue(sysColor), GetBValue(sysColor)));
+
+	graphics.SetInterpolationMode(Gdiplus::InterpolationModeHighQualityBicubic);
+	
+	graphics.DrawImage(bitmap, 0, 0, targetW, targetH);
+
+	HBITMAP hBitmap = NULL;
+	if (scaledBitmap->GetHBITMAP(Gdiplus::Color(255, 255, 255), &hBitmap) != Gdiplus::Ok)
+	{
+		hBitmap = NULL;
+	}
+
+	delete scaledBitmap;
+	delete bitmap;
+
+	return hBitmap;
+}
+
+static intptr_t CALLBACK IPSDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+	static ULONG_PTR gdiplusToken;
+	
+	switch (uMsg)
+	{
+		case WM_INITDIALOG:
+		{
+			Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+			Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
+
+			g_nGame = (int)lParam;
+			
+			char title[256];
+			snprintf(title, sizeof(title), "%s - IPS Manager", GetDriverGameTitle(g_nGame));
+			wchar_t *wtitle = win_wstring_from_utf8(title);
+			if (wtitle)
+			{
+				SetWindowText(hDlg, wtitle);
+				free(wtitle);
+			}
+
+			{
+				int savedLang = GetIPSLang();
+				if (savedLang < 0 || savedLang > 2) savedLang = 0;
+				SetIPSLangOverride(savedLang);
+			}
+			HWND hTree = GetDlgItem(hDlg, IDC_IPS_TREE);
+			if (hTree)
+			{
+				TreeView_SetExtendedStyle(hTree, TVS_EX_DOUBLEBUFFER, TVS_EX_DOUBLEBUFFER);
+				
+				int nParentIndex = -1;
+				if (DriverIsClone(g_nGame))
+					nParentIndex = GetParentIndex(&driver_list::driver(g_nGame));
+				
+				std::map<std::string, HTREEITEM> categoryMap;
+
+				int count = GetPatchCount(g_nGame, nParentIndex);
+				for (int i = 0; i < count; i++)
+				{
+					const char* filename = GetPatchFilename(g_nGame, nParentIndex, i);
+					const char* desc = GetPatchDesc(g_nGame, nParentIndex, i);
+					const char* category = GetPatchCategory(g_nGame, nParentIndex, i);
+					
+					if (filename)
+					{
+						HTREEITEM hParent = TVI_ROOT;
+						if (category && category[0])
+						{
+							auto it = categoryMap.find(category);
+							if (it == categoryMap.end())
+							{
+								wchar_t* wcategory = win_wstring_from_utf8(category);
+								if (wcategory)
+								{
+									TVINSERTSTRUCT tvisCat;
+									memset(&tvisCat, 0, sizeof(tvisCat));
+									tvisCat.hParent = TVI_ROOT;
+									tvisCat.hInsertAfter = TVI_LAST;
+									tvisCat.item.mask = TVIF_TEXT | TVIF_PARAM;
+									tvisCat.item.pszText = wcategory;
+									tvisCat.item.lParam = -1;
+									
+									hParent = TreeView_InsertItem(hTree, &tvisCat);
+									categoryMap[category] = hParent;
+									free(wcategory);
+								}
+							}
+							else
+							{
+								hParent = it->second;
+							}
+						}
+
+						wchar_t* wfilename = win_wstring_from_utf8(desc ? desc : filename);
+						if (wfilename)
+						{
+							TVINSERTSTRUCT tvis;
+							memset(&tvis, 0, sizeof(tvis));
+							tvis.hParent = hParent;
+							tvis.hInsertAfter = TVI_LAST;
+							tvis.item.mask = TVIF_TEXT | TVIF_PARAM;
+							tvis.item.pszText = wfilename;
+							tvis.item.lParam = (LPARAM)i;
+							
+							TreeView_InsertItem(hTree, &tvis);
+							free(wfilename);
+						}
+					}
+				}
+				
+				for (auto& kv : categoryMap)
+				{
+					TreeView_Expand(hTree, kv.second, TVE_EXPAND);
+				}
+			}
+			else
+			{
+				InitializeIPSUI(hDlg);
+			}
+			
+			HWND hLang = GetDlgItem(hDlg, IDC_IPS_LANG);
+			if (hLang)
+			{
+				ComboBox_AddString(hLang, L"????");
+				ComboBox_AddString(hLang, L"????");
+				ComboBox_AddString(hLang, L"English");
+				ComboBox_SetCurSel(hLang, 0);
+
+				int savedLang = GetIPSLang();
+				if (savedLang < 0 || savedLang > 2) savedLang = 0;
+				ComboBox_SetCurSel(hLang, savedLang);
+			}
+			
+			HWND hRelation = GetDlgItem(hDlg, IDC_IPS_RELATION);
+			if (hRelation)
+			{
+				Button_SetCheck(hRelation, BST_CHECKED);
+			}
+			
+			CenterWindow(hDlg);
+			
+			{
+				int nParentIndex = -1;
+				if (DriverIsClone(g_nGame))
+					nParentIndex = GetParentIndex(&driver_list::driver(g_nGame));
+				IPSLoadRelations(g_nGame, nParentIndex);
+				
+				PostMessage(hDlg, WM_USER + 100, 0, 0);
+			}
+			
+			return TRUE;
+		}
+		
+		case WM_USER + 100:
+		{
+			int nParentIndex = -1;
+			if (DriverIsClone(g_nGame))
+				nParentIndex = GetParentIndex(&driver_list::driver(g_nGame));
+			
+			windows_options o;
+			LoadOptions(o, OPTIONS_GAME, g_nGame);
+			const char* ips_val = o.value(OPTION_IPS);
+			
+			if (ips_val && *ips_val)
+			{
+				std::set<std::string> enabled_patches;
+				std::string val_str = ips_val;
+				std::transform(val_str.begin(), val_str.end(), val_str.begin(), ::tolower);
+				
+				std::stringstream ss(val_str);
+				std::string item;
+				while (std::getline(ss, item, ','))
+				{
+					item.erase(0, item.find_first_not_of(" \t"));
+					item.erase(item.find_last_not_of(" \t") + 1);
+					if (!item.empty())
+						enabled_patches.insert(item);
+				}
+				
+				HWND hTree = GetDlgItem(hDlg, IDC_IPS_TREE);
+				if (hTree)
+				{
+					std::function<void(HTREEITEM)> restore_tree_state;
+					restore_tree_state = [&](HTREEITEM hRoot) {
+						HTREEITEM hCurrent = hRoot;
+						while (hCurrent)
+						{
+							TVITEM tvi;
+							tvi.hItem = hCurrent;
+							tvi.mask = TVIF_PARAM;
+							if (TreeView_GetItem(hTree, &tvi))
+							{
+								if (tvi.lParam >= 0)
+								{
+									int idx = (int)tvi.lParam;
+									const char* fname = GetPatchFilename(g_nGame, nParentIndex, idx);
+									if (fname)
+									{
+										std::string fname_lower = fname;
+										std::transform(fname_lower.begin(), fname_lower.end(), fname_lower.begin(), ::tolower);
+										
+										if (enabled_patches.find(fname_lower) != enabled_patches.end())
+										{
+											TreeView_SetCheckState(hTree, hCurrent, TRUE);
+											IPSSetPatchState(fname, true);
+										}
+									}
+								}
+								
+								HTREEITEM hChild = TreeView_GetChild(hTree, hCurrent);
+								if (hChild)
+									restore_tree_state(hChild);
+							}
+							hCurrent = TreeView_GetNextSibling(hTree, hCurrent);
+						}
+					};
+					
+					restore_tree_state(TreeView_GetRoot(hTree));
+					
+					HTREEITEM hCat = TreeView_GetRoot(hTree);
+					while (hCat)
+					{
+						TVITEM tviCat;
+						tviCat.mask = TVIF_PARAM;
+						tviCat.hItem = hCat;
+						if (TreeView_GetItem(hTree, &tviCat) && tviCat.lParam == -1)
+						{
+							BOOL allChecked = TRUE;
+							HTREEITEM hChild = TreeView_GetChild(hTree, hCat);
+							if (hChild)
+							{
+								while (hChild)
+								{
+									if (!TreeView_GetCheckState(hTree, hChild))
+										allChecked = FALSE;
+									hChild = TreeView_GetNextSibling(hTree, hChild);
+								}
+								TreeView_SetCheckState(hTree, hCat, allChecked);
+							}
+						}
+						hCat = TreeView_GetNextSibling(hTree, hCat);
+					}
+				}
+			}
+			return TRUE;
+		}
+		
+		case WM_NOTIFY:
+		{
+			LPNMHDR pnmh = (LPNMHDR)lParam;
+			if (pnmh->idFrom == IDC_IPS_TREE)
+			{
+				if (pnmh->code == TVN_SELCHANGED)
+				{
+					LPNMTREEVIEW pnmtv = (LPNMTREEVIEW)lParam;
+					int idx = (int)pnmtv->itemNew.lParam;
+					
+					int nParentIndex = -1;
+					if (DriverIsClone(g_nGame))
+						nParentIndex = GetParentIndex(&driver_list::driver(g_nGame));
+					
+					const char* desc = GetPatchDesc(g_nGame, nParentIndex, idx);
+					HWND hDesc = GetDlgItem(hDlg, IDC_IPS_DESC);
+					if (hDesc)
+					{
+						if (desc)
+						{
+							wchar_t *wdesc = win_wstring_from_utf8(desc);
+							if (wdesc)
+							{
+								SetWindowText(hDesc, wdesc);
+								free(wdesc);
+							}
+						}
+						else
+						{
+							SetWindowText(hDesc, L"");
+						}
+					}
+					
+					HWND hSnap = GetDlgItem(hDlg, IDC_IPS_SNAP);
+					if (hSnap)
+					{
+						const char* img_path = GetPatchImagePath(g_nGame, nParentIndex, idx);
+						if (img_path && img_path[0])
+						{
+							wchar_t *wpath = win_wstring_from_utf8(img_path);
+							if (wpath)
+							{
+								RECT rcClient;
+								GetClientRect(hSnap, &rcClient);
+								HBITMAP hBmp = LoadImageFromFile(wpath, rcClient.right, rcClient.bottom);
+								if (hBmp)
+								{
+									HBITMAP hOldBmp = (HBITMAP)SendMessage(hSnap, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hBmp);
+									if (hOldBmp)
+										DeleteObject(hOldBmp);
+								}
+								free(wpath);
+							}
+						}
+						else
+						{
+							RECT rcClient;
+							GetClientRect(hSnap, &rcClient);
+							int targetW = rcClient.right;
+							int targetH = rcClient.bottom;
+							
+							HBITMAP hSrcBmp = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_MAME_IPS), IMAGE_BITMAP, 0, 0, LR_CREATEDIBSECTION);
+							if (hSrcBmp && targetW > 0 && targetH > 0)
+							{
+								Gdiplus::Bitmap* srcBitmap = Gdiplus::Bitmap::FromHBITMAP(hSrcBmp, NULL);
+								if (srcBitmap && srcBitmap->GetLastStatus() == Gdiplus::Ok)
+								{
+									Gdiplus::Bitmap* scaledBitmap = new Gdiplus::Bitmap(targetW, targetH, PixelFormat24bppRGB);
+									Gdiplus::Graphics graphics(scaledBitmap);
+									DWORD sysColor = GetSysColor(COLOR_3DFACE);
+									graphics.Clear(Gdiplus::Color(255, GetRValue(sysColor), GetGValue(sysColor), GetBValue(sysColor)));
+									graphics.SetInterpolationMode(Gdiplus::InterpolationModeHighQualityBicubic);
+									graphics.DrawImage(srcBitmap, 0, 0, targetW, targetH);
+									
+									HBITMAP hScaledBmp = NULL;
+									if (scaledBitmap->GetHBITMAP(Gdiplus::Color(255, 255, 255), &hScaledBmp) == Gdiplus::Ok && hScaledBmp)
+									{
+										HBITMAP hOldBmp = (HBITMAP)SendMessage(hSnap, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hScaledBmp);
+										if (hOldBmp)
+											DeleteObject(hOldBmp);
+									}
+									delete scaledBitmap;
+									delete srcBitmap;
+								}
+								DeleteObject(hSrcBmp);
+							}
+							else if (hSrcBmp)
+							{
+								HBITMAP hOldBmp = (HBITMAP)SendMessage(hSnap, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hSrcBmp);
+								if (hOldBmp)
+									DeleteObject(hOldBmp);
+							}
+							else
+							{
+								HBITMAP hOldBmp = (HBITMAP)SendMessage(hSnap, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)NULL);
+								if (hOldBmp)
+									DeleteObject(hOldBmp);
+							}
+						}
+					}
+				}
+				else if (pnmh->code == NM_CLICK)
+				{
+					TVHITTESTINFO ht = {0};
+					DWORD dwpos = GetMessagePos();
+					ht.pt.x = GET_X_LPARAM(dwpos);
+					ht.pt.y = GET_Y_LPARAM(dwpos);
+					MapWindowPoints(HWND_DESKTOP, pnmh->hwndFrom, &ht.pt, 1);
+					
+					TreeView_HitTest(pnmh->hwndFrom, &ht);
+					if (ht.flags & TVHT_ONITEMSTATEICON)
+					{
+						PostMessage(hDlg, WM_APP + 1, 0, (LPARAM)ht.hItem);
+					}
+				}
+			}
+			break;
+		}
+		
+		case WM_APP + 1:
+		{
+			HTREEITEM hItem = (HTREEITEM)lParam;
+			HWND hTree = GetDlgItem(hDlg, IDC_IPS_TREE);
+			HWND hRelation = GetDlgItem(hDlg, IDC_IPS_RELATION);
+			
+			if (hTree && hItem)
+			{
+				TVITEM tvi;
+				tvi.mask = TVIF_PARAM;
+				tvi.hItem = hItem;
+				if (TreeView_GetItem(hTree, &tvi))
+				{
+					int nParentIndex = -1;
+					if (DriverIsClone(g_nGame))
+						nParentIndex = GetParentIndex(&driver_list::driver(g_nGame));
+					
+					BOOL checked = TreeView_GetCheckState(hTree, hItem);
+					
+					if (tvi.lParam == -1)
+					{
+						HTREEITEM hChild = TreeView_GetChild(hTree, hItem);
+						while (hChild)
+						{
+							TreeView_SetCheckState(hTree, hChild, checked);
+							
+							TVITEM tviChild;
+							tviChild.mask = TVIF_PARAM;
+							tviChild.hItem = hChild;
+							if (TreeView_GetItem(hTree, &tviChild) && tviChild.lParam >= 0)
+							{
+								const char* filename = GetPatchFilename(g_nGame, nParentIndex, (int)tviChild.lParam);
+								if (filename)
+									IPSSetPatchState(filename, checked ? true : false);
+							}
+							hChild = TreeView_GetNextSibling(hTree, hChild);
+						}
+					}
+					else
+					{
+						const char* filename = GetPatchFilename(g_nGame, nParentIndex, (int)tvi.lParam);
+						if (filename)
+						{
+							if (hRelation && Button_GetCheck(hRelation) == BST_CHECKED)
+							{
+								IPSSetPatchState(filename, checked ? true : false);
+								
+								std::function<void(HTREEITEM)> update_tree_state;
+								update_tree_state = [&](HTREEITEM hRoot) {
+									HTREEITEM hCurrent = hRoot;
+									while (hCurrent)
+									{
+										TVITEM tviCur;
+										tviCur.hItem = hCurrent;
+										tviCur.mask = TVIF_PARAM;
+										if (TreeView_GetItem(hTree, &tviCur))
+										{
+											if (tviCur.lParam >= 0)
+											{
+												const char* patchname = GetPatchFilename(g_nGame, nParentIndex, (int)tviCur.lParam);
+												if (patchname)
+												{
+													bool state = IPSGetPatchState(patchname);
+													TreeView_SetCheckState(hTree, hCurrent, state ? TRUE : FALSE);
+												}
+											}
+											
+											HTREEITEM hChild = TreeView_GetChild(hTree, hCurrent);
+											if (hChild)
+												update_tree_state(hChild);
+										}
+										hCurrent = TreeView_GetNextSibling(hTree, hCurrent);
+									}
+								};
+								
+								update_tree_state(TreeView_GetRoot(hTree));
+							}
+							else
+							{
+								IPSSetPatchState(filename, checked ? true : false);
+							}
+						}
+						
+						HTREEITEM hParent = TreeView_GetParent(hTree, hItem);
+						if (hParent)
+						{
+							TVITEM tviParent;
+							tviParent.mask = TVIF_PARAM;
+							tviParent.hItem = hParent;
+							if (TreeView_GetItem(hTree, &tviParent) && tviParent.lParam == -1)
+							{
+								BOOL allChecked = TRUE;
+								HTREEITEM hSibling = TreeView_GetChild(hTree, hParent);
+								while (hSibling)
+								{
+									if (!TreeView_GetCheckState(hTree, hSibling))
+										allChecked = FALSE;
+									hSibling = TreeView_GetNextSibling(hTree, hSibling);
+								}
+								
+								TreeView_SetCheckState(hTree, hParent, allChecked);
+							}
+						}
+					}
+				}
+			}
+			break;
+		}
+		
+		case WM_COMMAND:
+		{
+			WORD wID = LOWORD(wParam);
+			WORD wNotifyCode = HIWORD(wParam);
+			
+			switch (wID)
+			{
+				case IDC_IPS_LIST:
+					if (wNotifyCode == LBN_SELCHANGE)
+					{
+						IPSSelectionChange(hDlg, (HWND)lParam);
+					}
+					break;
+				
+				case IDC_IPS_LANG:
+					if (wNotifyCode == CBN_SELCHANGE)
+					{
+						HWND hLang = (HWND)lParam;
+						int idx = ComboBox_GetCurSel(hLang);
+						if (idx != CB_ERR)
+						{
+							SetIPSLangOverride(idx);
+
+							SetIPSLang(idx);
+							SaveInterface();
+
+							HWND hTree = GetDlgItem(hDlg, IDC_IPS_TREE);
+							if (hTree)
+							{
+								TreeView_DeleteAllItems(hTree);
+								
+								int nParentIndex = -1;
+								if (DriverIsClone(g_nGame))
+									nParentIndex = GetParentIndex(&driver_list::driver(g_nGame));
+									
+								std::map<std::string, HTREEITEM> categoryMap;
+								int count = GetPatchCount(g_nGame, nParentIndex);
+								
+								for (int i = 0; i < count; i++)
+								{
+									const char* filename = GetPatchFilename(g_nGame, nParentIndex, i);
+									const char* desc = GetPatchDesc(g_nGame, nParentIndex, i);
+									const char* category = GetPatchCategory(g_nGame, nParentIndex, i);
+									
+									if (filename)
+									{
+										HTREEITEM hParent = TVI_ROOT;
+										if (category && category[0])
+										{
+											auto it = categoryMap.find(category);
+											if (it == categoryMap.end())
+											{
+												wchar_t* wcategory = win_wstring_from_utf8(category);
+												if (wcategory)
+												{
+													TVINSERTSTRUCT tvisCat;
+													memset(&tvisCat, 0, sizeof(tvisCat));
+													tvisCat.hParent = TVI_ROOT;
+													tvisCat.hInsertAfter = TVI_LAST;
+													tvisCat.item.mask = TVIF_TEXT | TVIF_PARAM;
+													tvisCat.item.pszText = wcategory;
+													tvisCat.item.lParam = -1; 
+													
+													hParent = TreeView_InsertItem(hTree, &tvisCat);
+													categoryMap[category] = hParent;
+													free(wcategory);
+													
+													TreeView_Expand(hTree, hParent, TVE_EXPAND);
+												}
+											}
+											else
+											{
+												hParent = it->second;
+											}
+										}
+
+										wchar_t* wfilename = win_wstring_from_utf8(desc ? desc : filename);
+										if (wfilename)
+										{
+											TVINSERTSTRUCT tvis;
+											memset(&tvis, 0, sizeof(tvis));
+											tvis.hParent = hParent;
+											tvis.hInsertAfter = TVI_LAST;
+											tvis.item.mask = TVIF_TEXT | TVIF_PARAM;
+											tvis.item.pszText = wfilename;
+											tvis.item.lParam = (LPARAM)i;
+											
+											HTREEITEM hItem = TreeView_InsertItem(hTree, &tvis);
+											free(wfilename);
+											
+											// Restore check state
+											if (IPSGetPatchState(filename))
+											{
+												TreeView_SetCheckState(hTree, hItem, TRUE);
+											}
+										}
+									}
+								}
+								
+								for (auto& kv : categoryMap)
+								{
+									HTREEITEM hCat = kv.second;
+									BOOL allChecked = TRUE;
+									HTREEITEM hChild = TreeView_GetChild(hTree, hCat);
+									while (hChild)
+									{
+										if (!TreeView_GetCheckState(hTree, hChild))
+											allChecked = FALSE;
+										hChild = TreeView_GetNextSibling(hTree, hChild);
+									}
+									TreeView_SetCheckState(hTree, hCat, allChecked);
+								}
+								
+								std::function<HTREEITEM(HTREEITEM)> find_first_checked_lang;
+								find_first_checked_lang = [&](HTREEITEM hRoot) -> HTREEITEM {
+									HTREEITEM hCurrent = hRoot;
+									while (hCurrent)
+									{
+										TVITEM tviCheck;
+										tviCheck.mask = TVIF_PARAM;
+										tviCheck.hItem = hCurrent;
+										if (TreeView_GetItem(hTree, &tviCheck))
+										{
+											if (tviCheck.lParam >= 0 && TreeView_GetCheckState(hTree, hCurrent))
+												return hCurrent;
+											
+											HTREEITEM hChild = TreeView_GetChild(hTree, hCurrent);
+											if (hChild)
+											{
+												HTREEITEM found = find_first_checked_lang(hChild);
+												if (found)
+													return found;
+											}
+										}
+										hCurrent = TreeView_GetNextSibling(hTree, hCurrent);
+									}
+									return nullptr;
+								};
+								
+								HTREEITEM hFirstChecked = find_first_checked_lang(TreeView_GetRoot(hTree));
+								if (hFirstChecked)
+									TreeView_SelectItem(hTree, hFirstChecked);
+							}
+						}
+					}
+					break;
+				
+				case IDC_IPS_CLEAR:
+				{
+					HWND hTree = GetDlgItem(hDlg, IDC_IPS_TREE);
+					if (hTree)
+					{
+						int nParentIndex = -1;
+						if (DriverIsClone(g_nGame))
+							nParentIndex = GetParentIndex(&driver_list::driver(g_nGame));
+						
+						std::function<void(HTREEITEM)> clear_all_checkboxes;
+						clear_all_checkboxes = [&](HTREEITEM hRoot) {
+							HTREEITEM hItem = hRoot;
+							while (hItem)
+							{
+								TreeView_SetCheckState(hTree, hItem, FALSE);
+								
+								TVITEM tvi;
+								tvi.mask = TVIF_PARAM;
+								tvi.hItem = hItem;
+								if (TreeView_GetItem(hTree, &tvi) && tvi.lParam >= 0)
+								{
+									const char* filename = GetPatchFilename(g_nGame, nParentIndex, (int)tvi.lParam);
+									if (filename)
+										IPSSetPatchState(filename, false);
+								}
+								
+								HTREEITEM hChild = TreeView_GetChild(hTree, hItem);
+								if (hChild)
+									clear_all_checkboxes(hChild);
+								
+								hItem = TreeView_GetNextSibling(hTree, hItem);
+							}
+						};
+						
+						clear_all_checkboxes(TreeView_GetRoot(hTree));
+					}
+					HWND hList = GetDlgItem(hDlg, IDC_IPS_LIST);
+					if (hList)
+					{
+						ListBox_SetSel(hList, FALSE, -1);
+					}
+					break;
+				}
+				
+				case IDOK:
+				{
+					std::string ips_value;
+					
+					HWND hTree = GetDlgItem(hDlg, IDC_IPS_TREE);
+					if (hTree)
+					{
+						int nParentIndex = -1;
+						if (DriverIsClone(g_nGame))
+							nParentIndex = GetParentIndex(&driver_list::driver(g_nGame));
+						
+						std::function<void(HTREEITEM)> collect_checked;
+						collect_checked = [&](HTREEITEM hRoot) {
+							HTREEITEM hItem = hRoot;
+							while (hItem)
+							{
+								TVITEM tvi;
+								tvi.hItem = hItem;
+								tvi.mask = TVIF_PARAM;
+								if (TreeView_GetItem(hTree, &tvi))
+								{
+									if (tvi.lParam >= 0 && TreeView_GetCheckState(hTree, hItem))
+									{
+										int idx = (int)tvi.lParam;
+										const char* filename = GetPatchFilename(g_nGame, nParentIndex, idx);
+										if (filename)
+										{
+											if (!ips_value.empty()) ips_value += ",";
+											ips_value += filename;
+										}
+									}
+									
+									HTREEITEM hChild = TreeView_GetChild(hTree, hItem);
+									if (hChild)
+										collect_checked(hChild);
+								}
+								hItem = TreeView_GetNextSibling(hTree, hItem);
+							}
+						};
+						
+						collect_checked(TreeView_GetRoot(hTree));
+					}
+					else
+					{
+						HWND hList = GetDlgItem(hDlg, IDC_IPS_LIST);
+						if (hList)
+						{
+							int count = ListBox_GetCount(hList);
+							for (int i = 0; i < count; i++)
+							{
+								if (ListBox_GetSel(hList, i))
+								{
+									wchar_t wbuf[256];
+									ListBox_GetText(hList, i, wbuf);
+									char* filename = win_utf8_from_wstring(wbuf);
+									if (filename)
+									{
+										if (!ips_value.empty()) ips_value += ",";
+										ips_value += filename;
+										free(filename);
+									}
+								}
+							}
+						}
+					}
+					
+					windows_options o;
+					LoadOptions(o, OPTIONS_GAME, g_nGame);
+					o.set_value(OPTION_IPS, ips_value.c_str(), OPTION_PRIORITY_CMDLINE);
+					SaveOptions(OPTIONS_GAME, o, g_nGame);
+					
+					EndDialog(hDlg, IDOK);
+					return TRUE;
+				}
+				
+				case IDCANCEL:
+					EndDialog(hDlg, IDCANCEL);
+					return TRUE;
+			}
+			break;
+		}
+		
+		case WM_CLOSE:
+			EndDialog(hDlg, IDCANCEL);
+			return TRUE;
+		case WM_DESTROY:
+			if (gdiplusToken)
+				Gdiplus::GdiplusShutdown(gdiplusToken);
+			return TRUE;
+	}
+	return FALSE;
+}
+
+void ShowIPSDialog(HINSTANCE hInst, HWND hWnd, int game_num)
+{
+	DialogBoxParam(hInst, MAKEINTRESOURCE(IDD_PROP_IPS), hWnd, IPSDialogProc, (LPARAM)game_num);
+}
+/****************************************************************************************************/
 
 /*********************************************************************
  * Local Functions
@@ -785,25 +1604,14 @@ static void UpdateSheetCaption(HWND hWnd)
 // Modified Code Source (EKMAME)
 /********************************************************************************************/
 	BYTE        bR, bG, bB, bSR, bSG, bSB, bER, bEG, bEB;
-	//DWORD       dwLColor, dwRColor;
+
 	int 		i, iWidth;
 
 	// Gradation color
-	//dwLColor = GetSysColor(COLOR_ACTIVECAPTION);
-	//dwRColor = GetSysColor(COLOR_GRADIENTACTIVECAPTION);
-	//bSR = GetRValue(dwLColor); bSG = GetGValue(dwLColor); bSB = GetBValue(dwLColor);
-	//bER = GetRValue(dwRColor); bEG = GetGValue(dwRColor); bEB = GetBValue(dwRColor);
 	bSR = 0;   bSG = 0; bSB = 128;
 	bER = 128; bEG =0;  bEB = 128;
 
 	memcpy(&rect, &rcTabCaption, sizeof(RECT));
-//	BeginPaint (hWnd, &ps);
-//	hDC = ps.hdc;
-//	hRgn = CreateRectRgn(rect.left, rect.top, rect.right - 2, rect.bottom);
-//	SelectClipRgn(hDC, hRgn);
-//	hBrush = CreateSolidBrush(RGB(127, 127, 127));
-//	FillRect(hDC, &rect, hBrush);
-//	DeleteObject(hBrush);
 
 	iWidth = rect.right - rect.left;
 	if (iWidth == 0)
@@ -1325,6 +2133,18 @@ static intptr_t CALLBACK GameOptionsDialogProc(HWND hDlg, UINT uMsg, WPARAM wPar
 
 			switch (wID)
 			{
+
+// Modified Code Source (Eziochiu)
+/***************************************************************/
+				case IDC_IPS_LIST:
+					if (wNotifyCode == LBN_SELCHANGE)
+					{
+						IPSSelectionChange(hDlg, hWndCtrl);
+						changed = true;
+					}
+					break;
+/***************************************************************/
+
 				case IDC_REFRESH:
 					if (wNotifyCode == LBN_SELCHANGE)
 					{
@@ -1451,6 +2271,13 @@ static intptr_t CALLBACK GameOptionsDialogProc(HWND hDlg, UINT uMsg, WPARAM wPar
 				case IDC_RESET_BGFX:
 					changed = ResetBGFXChains(hDlg);
 					break;
+
+// Modified Code Source (Eziochiu)
+/***********************************************************/
+				case IDD_PROP_IPS:
+					InitializeIPSUI(hDlg);
+					break;
+/***********************************************************/
 
 				case IDC_PROP_RESET:
 					if (wNotifyCode != BN_CLICKED)
@@ -2510,7 +3337,7 @@ static void BuildDataMap(void)
 	datamap_add(properties_datamap, IDC_STEADYKEY,				DM_BOOL,	OPTION_STEADYKEY);
 	datamap_add(properties_datamap, IDC_MULTIKEYBOARD,			DM_BOOL,	OPTION_MULTIKEYBOARD);
 	datamap_add(properties_datamap, IDC_MULTIMOUSE,				DM_BOOL,	OPTION_MULTIMOUSE);
-	datamap_add(properties_datamap, IDC_RELOAD,					DM_BOOL,	OPTION_OFFSCREEN_RELOAD);
+    datamap_add(properties_datamap, IDC_RELOAD,					DM_BOOL,	OPTION_OFFSCREEN_RELOAD);
 	datamap_add(properties_datamap, IDC_JDZ,					DM_FLOAT,	OPTION_JOYSTICK_DEADZONE);
 	datamap_add(properties_datamap, IDC_JDZDISP,				DM_FLOAT,	OPTION_JOYSTICK_DEADZONE);
 	datamap_add(properties_datamap, IDC_JSAT,					DM_FLOAT,	OPTION_JOYSTICK_SATURATION);
@@ -2582,6 +3409,13 @@ static void BuildDataMap(void)
 	datamap_add(properties_datamap, IDC_DUAL_LIGHTGUN,			DM_BOOL,	WINOPTION_DUAL_LIGHTGUN);
 	// hlsl
 	datamap_add(properties_datamap, IDC_HLSL_ON,				DM_BOOL,	WINOPTION_HLSL_ENABLE);
+
+// Modified Code Source (Eziochiu)
+/*******************************************************************************************/
+    // IPS options
+	datamap_add(properties_datamap, IDC_IPS_LIST,               DM_STRING,  OPTION_IPS);
+/*******************************************************************************************/
+
 	// set up callbacks
 	datamap_set_callback(properties_datamap, IDC_ROTATE,		DCT_READ_CONTROL,		RotateReadControl);
 	datamap_set_callback(properties_datamap, IDC_ROTATE,		DCT_POPULATE_CONTROL,	RotatePopulateControl);
@@ -2637,8 +3471,14 @@ static void BuildDataMap(void)
 	datamap_set_trackbar_range(properties_datamap, IDC_CONTRAST, 		0.10, 2.00, 0.05);
 	datamap_set_trackbar_range(properties_datamap, IDC_PAUSEBRIGHT, 	0.00, 1.00, 0.01);
 	datamap_set_trackbar_range(properties_datamap, IDC_BOOTDELAY, 		0, 5, 1);
-	datamap_set_trackbar_range(properties_datamap, IDC_INTSCALEX, 		0, 4, 1);
-	datamap_set_trackbar_range(properties_datamap, IDC_INTSCALEY, 		0, 4, 1);
+	datamap_set_trackbar_range(properties_datamap, IDC_INTSCALEX, 		0, 10, 1);
+	datamap_set_trackbar_range(properties_datamap, IDC_INTSCALEY, 		0, 10, 1);
+
+// Modified Code Source (Eziochiu)
+/*************************************************************************************************************/
+    datamap_set_callback(properties_datamap, IDC_IPS_LIST,		DCT_READ_CONTROL,		IPSReadControl);
+	datamap_set_callback(properties_datamap, IDC_IPS_LIST,		DCT_POPULATE_CONTROL,	IPSPopulateControl);
+/*************************************************************************************************************/
 }
 
 //mamefx: for coloring of changed elements
@@ -2926,6 +3766,86 @@ static void InitializeControllerMappingUI(HWND hWnd)
 		}
 	}
 }
+
+// Modified Code Source (Eziochiu)
+/*************************************************************************************************************/
+static void InitializeIPSUI(HWND hWnd)
+{
+	HWND hCtrl = GetDlgItem(hWnd, IDC_IPS_LIST);
+	if (!hCtrl) return;
+
+	ListBox_ResetContent(hCtrl);
+
+	int nParentIndex = -1;
+	if (DriverIsClone(g_nGame))
+		nParentIndex = GetParentIndex(&driver_list::driver(g_nGame));
+
+	int count = GetPatchCount(g_nGame, nParentIndex);
+	for (int i = 0; i < count; i++)
+	{
+		const char* filename = GetPatchFilename(g_nGame, nParentIndex, i);
+		if (filename)
+		{
+			wchar_t* wfilename = win_wstring_from_utf8(filename);
+			int idx = ListBox_AddString(hCtrl, wfilename);
+			ListBox_SetItemData(hCtrl, idx, i);
+			free(wfilename);
+		}
+	}
+}
+
+static bool IPSPopulateControl(datamap *map, HWND hDlg, HWND hWndCtrl, windows_options &opts, const char *option_name)
+{
+	return true;
+}
+
+static bool IPSReadControl(datamap *map, HWND hDlg, HWND hWndCtrl, windows_options &opts, const char *option_name)
+{
+	std::string new_val = "";
+	int count = ListBox_GetCount(hWndCtrl);
+	for (int i = 0; i < count; i++)
+	{
+		if (ListBox_GetSel(hWndCtrl, i))
+		{
+			wchar_t wbuf[256];
+			ListBox_GetText(hWndCtrl, i, wbuf);
+			char* filename = win_utf8_from_wstring(wbuf);
+			if (!new_val.empty()) new_val += ",";
+			new_val += filename;
+			free(filename);
+		}
+	}
+	opts.set_value(option_name, new_val.c_str(), OPTION_PRIORITY_CMDLINE);
+	return true;
+}
+
+static void IPSSelectionChange(HWND hDlg, HWND hWndCtrl)
+{
+	int count = ListBox_GetCount(hWndCtrl);
+	int sel_idx = -1;
+	for (int i=0; i<count; i++) {
+		if (ListBox_GetSel(hWndCtrl, i)) {
+			sel_idx = i;
+			break;
+		}
+	}
+
+	if (sel_idx != -1) {
+		int nPatchIndex = (int)ListBox_GetItemData(hWndCtrl, sel_idx);
+		int nParentIndex = -1;
+		if (DriverIsClone(g_nGame)) nParentIndex = GetParentIndex(&driver_list::driver(g_nGame));
+		
+		const char* desc = GetPatchDesc(g_nGame, nParentIndex, nPatchIndex);
+		if (desc) {
+			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_IPS_DESC), desc);
+		} else {
+			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_IPS_DESC), "");
+		}
+	} else {
+		winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_IPS_DESC), "");
+	}
+}
+/*************************************************************************************************************/
 
 static void InitializeBIOSUI(HWND hWnd)
 {

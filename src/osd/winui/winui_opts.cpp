@@ -136,7 +136,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_UI_JOY_SS_CHANGE,			"2,0,3,0",  core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_UI_JOY_HISTORY_UP,			"2,0,4,0",  core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_UI_JOY_HISTORY_DOWN,		"2,0,1,0",  core_options::option_type::STRING, nullptr },
-
+    { MUIOPTION_IPS_LANG,						"0",	core_options::option_type::INTEGER, nullptr }, // Modified Code Source (Eziochiu)
 // Modified Code Source (EKMAME)
 /*******************************************************************************************************************/
 	{ nullptr,								nullptr,	core_options::option_type::HEADER, "Korean GAME List" },
@@ -206,8 +206,23 @@ windows_options & MameUIGlobal(void)
 	return core_opts;
 }
 
+// Modified Code Source (Eziochiu)
+/************************************************************************************/
+static const options_entry ips_option_entries[] =
+{
+	{ OPTION_IPS, nullptr, core_options::option_type::STRING, "IPS patch name" },
+	{ nullptr }
+};
+/************************************************************************************/
+
 void OptionsInit(void)
 {
+// Modified Code Source (Eziochiu)
+/************************************************************************************/
+	// manually add OPTION_IPS since windows_options doesn't inherit from emu_options
+	core_opts.add_entries(ips_option_entries);
+/************************************************************************************/
+
 	// setup our INI folder
 	SetIniDir("config/ini");
 	// now load the options and interface settings
@@ -456,6 +471,19 @@ bool GetShowFolderList(void)
 {
 	return winui_opts.bool_value(MUIOPTION_SHOW_FOLDER_SECTION);
 }
+
+// Modified Code Source (Eziochiu)
+/*************************************************************************************/
+void SetIPSLang(int val)
+{
+	winui_opts.set_value(MUIOPTION_IPS_LANG, val, OPTION_PRIORITY_CMDLINE);
+}
+
+int GetIPSLang(void)
+{
+	return winui_opts.int_value(MUIOPTION_IPS_LANG);
+}
+/*************************************************************************************/
 
 // Modified Code Source (EKMAME)
 /*************************************************************************************/
@@ -1091,6 +1119,19 @@ void SetLanguageDir(const char* path)
 {
 	core_opts.set_value(OPTION_LANGUAGEPATH, path, OPTION_PRIORITY_CMDLINE);
 }
+
+// Modified Code Source (Eziochiu)
+/************************************************************************/
+const char* GetIpsDir(void)
+{
+	return core_opts.value(OPTION_IPSPATH);
+}
+
+void SetIpsDir(const char* path)
+{
+	core_opts.set_value(OPTION_IPSPATH, path, OPTION_PRIORITY_CMDLINE);
+}
+/************************************************************************/
 
 const char* GetFlyerDir(void)
 {
@@ -1935,6 +1976,12 @@ void SetDirectories(windows_options &opts)
 //	opts.set_value(OSDOPTION_GLSLPATH, GetGLSLDir(), OPTION_PRIORITY_CMDLINE);
 	opts.set_value(OSDOPTION_BGFX_PATH, GetBGFXDir(), OPTION_PRIORITY_CMDLINE);
 	opts.set_value(OPTION_PLUGINSPATH, GetPluginsDir(), OPTION_PRIORITY_CMDLINE);
+
+// Modified Code Source (Eziochiu)
+/**************************************************************************/
+	opts.set_value(OPTION_IPSPATH, GetIpsDir(), OPTION_PRIORITY_CMDLINE);
+/**************************************************************************/
+
 	opts.set_value(OPTION_LANGUAGEPATH, GetLanguageDir(), OPTION_PRIORITY_CMDLINE);
 }
 

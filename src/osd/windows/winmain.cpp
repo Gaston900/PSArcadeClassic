@@ -279,6 +279,13 @@ const options_entry windows_options::s_option_entries[] =
 	{ WINOPTION_GLOBAL_INPUTS,                        "0",        core_options::option_type::BOOLEAN,    "enable global inputs" },
 	{ WINOPTION_DUAL_LIGHTGUN ";dual",                "0",        core_options::option_type::BOOLEAN,    "enable dual lightgun input" },
 
+// 修改的 (Eziochiu) 
+/************************************************************************************************************************************************************/
+	// IPS options
+	{ nullptr,                                        nullptr,    core_options::option_type::HEADER,     "IPS PATCH OPTIONS" },
+	{ OPTION_IPS,                                     nullptr,    core_options::option_type::STRING,     "comma-separated list of IPS patches to apply" },
+/************************************************************************************************************************************************************/
+
 	{ nullptr }
 };
 

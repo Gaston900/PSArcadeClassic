@@ -2447,6 +2447,12 @@ static void DisableSelection(void)
 
 	SetMenuItemInfo(hMenu, ID_FILE_PLAY, false, &mmi);
 	EnableMenuItem(hMenu, ID_FILE_PLAY, MF_GRAYED);
+
+// 修改的 (Eziochiu)
+/**************************************************/
+	EnableMenuItem(hMenu, ID_PLAY_IPS, MF_GRAYED);
+/**************************************************/
+
 	EnableMenuItem(hMenu, ID_FILE_PLAY_RECORD, MF_GRAYED);
 	EnableMenuItem(hMenu, ID_GAME_PROPERTIES, MF_GRAYED);
 	SetStatusBarText(0, "No selection");
@@ -3059,6 +3065,20 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			MamePlayGame();
 			SetFocus(hWndList);
 			return true;
+
+// 修改的 (Eziochiu)
+/**********************************************************/
+		case ID_PLAY_IPS:
+		{
+			int game = Picker_GetSelectedItem(hWndList);
+			if (game >= 0)
+			{
+				ShowIPSDialog(hInst, hWnd, game);
+			}
+			SetFocus(hWndList);
+			return true;
+		}
+/**********************************************************/
 
 		case ID_FILE_PLAY_RECORD:
 			MamePlayRecordGame();
@@ -5020,12 +5040,31 @@ static void UpdateMenu(HMENU hMenu)
 		mItem.cch = _tcslen(mItem.dwTypeData);
 
 		SetMenuItemInfo(hMenu, ID_FILE_PLAY, false, &mItem);
+
+// 修改的 (Eziochiu)
+/*******************************************************************************/
+		{
+			int nParentIndex = -1;
+			if (DriverIsClone(nGame))
+				nParentIndex = GetParentIndex(&driver_list::driver(nGame));
+			if (GetPatchCount(nGame, nParentIndex) > 0)
+				EnableMenuItem(hMenu, ID_PLAY_IPS, MF_ENABLED);
+			else
+				EnableMenuItem(hMenu, ID_PLAY_IPS, MF_GRAYED);
+		}
 		EnableMenuItem(hMenu, ID_CONTEXT_SELECT_RANDOM, MF_ENABLED);
 		free(t_description);
+/*******************************************************************************/
 	}
 	else
 	{
 		EnableMenuItem(hMenu, ID_FILE_PLAY, MF_GRAYED);
+
+// 修改的 (Eziochiu)
+/********************************************************/
+		EnableMenuItem(hMenu, ID_PLAY_IPS, MF_GRAYED);
+/********************************************************/
+
 		EnableMenuItem(hMenu, ID_FILE_PLAY_RECORD, MF_GRAYED);
 		EnableMenuItem(hMenu, ID_GAME_PROPERTIES, MF_GRAYED);
 		EnableMenuItem(hMenu, ID_CONTEXT_SELECT_RANDOM, MF_GRAYED);
@@ -5149,6 +5188,12 @@ void InitMainMenu(HMENU hMainMenu)
 	SetMenuItemBitmaps(hMainMenu, ID_HELP_CONTENTS, MF_BYCOMMAND, hHelp, hHelp);
 	SetMenuItemBitmaps(hMainMenu, ID_MAME_HOMEPAGE, MF_BYCOMMAND, hMameHome, hMameHome);
 	SetMenuItemBitmaps(hMainMenu, ID_FILE_PLAY, MF_BYCOMMAND, hPlay, hPlay);
+
+// 修改的 (Eziochiu)
+/***********************************************************************************/
+	SetMenuItemBitmaps(hMainMenu, ID_PLAY_IPS, MF_BYCOMMAND, hFolders, hFolders);
+/***********************************************************************************/
+
 	SetMenuItemBitmaps(hMainMenu, ID_VIDEO_SNAP, MF_BYCOMMAND, hVideo, hVideo);
 	SetMenuItemBitmaps(hMainMenu, ID_PLAY_M1, MF_BYCOMMAND, hPlayM1, hPlayM1);
 	SetMenuItemBitmaps(hMainMenu, ID_OPTIONS_DEFAULTS, MF_BYCOMMAND, hOptions, hOptions);
@@ -5287,6 +5332,12 @@ void InitBodyContextMenu(HMENU hBodyContextMenu)
 	SetMenuItemInfo(hBodyContextMenu, ID_FOLDER_SOURCEPROPERTIES, false, &mii);
 	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_ADD_CUSTOM, MF_BYCOMMAND, hCustom, hCustom);
 	SetMenuItemBitmaps(hBodyContextMenu, ID_FILE_PLAY, MF_BYCOMMAND, hPlay, hPlay);
+
+// 修改的 (Eziochiu)
+/*****************************************************************************************/
+	SetMenuItemBitmaps(hBodyContextMenu, ID_PLAY_IPS, MF_BYCOMMAND, hFolders, hFolders);
+/*****************************************************************************************/
+
 	SetMenuItemBitmaps(hBodyContextMenu, ID_VIDEO_SNAP, MF_BYCOMMAND, hVideo, hVideo);
 	SetMenuItemBitmaps(hBodyContextMenu, ID_PLAY_M1, MF_BYCOMMAND, hPlayM1, hPlayM1);
 	SetMenuItemBitmaps(hBodyContextMenu, ID_VIEW_ZIP, MF_BYCOMMAND, hZip, hZip);

@@ -48,6 +48,12 @@
 #define IDI_KEYBOARD                    161
 #define IDI_JOYSTICK                    162
 #define IDI_DISPLAY                     163
+
+// 修改的 (Eziochiu)
+/*******************************************/
+#define IDD_PROP_IPS                    164
+#define IDD_IPS_DIALOG                  301
+/*******************************************/
 #define IDC_CURSOR_HSPLIT               165
 #define IDB_TOOLBAR                     166
 #define IDR_CONTEXT_TREE                168
@@ -150,6 +156,7 @@
 #define IDB_MANUAL                      270
 #define IDB_NOTEPAD                     271
 #define IDI_DISPLAYSHEET                272
+
 // 修改的 代码来源 (EKMAME)
 /*******************************************/
 #define IDI_VECTORSHEET                 273
@@ -165,6 +172,7 @@
 #define IDI_MISC2SHEET                  282
 #define IDI_SNAPSHEET                   283
 #define IDI_SHADER                      284
+
 // 修改的 代码来源 (EKMAME)
 /*******************************************/
 #define IDB_KLIST						285
@@ -185,9 +193,21 @@
 #define IDI_HEADER_UP                   300
 #define IDI_HEADER_DOWN                 301
 /*******************************************/
+
+// 修改的 (Eziochiu)
+/*******************************************/
+#define IDB_MAME_IPS                    302
 #define IDC_LIST                        1000
-#define IDC_JOYSTICK                    1003
-#define IDC_SIZES                       1005
+#define IDC_IPS_LIST                    1001
+#define IDC_IPS_DESC                    1002
+#define IDC_IPS_TREE                    1003
+#define IDC_IPS_SNAP                    1004
+#define IDC_IPS_LANG                    1005
+#define IDC_IPS_RELATION                1006
+#define IDC_IPS_CLEAR                   1007
+/*******************************************/
+#define IDC_JOYSTICK                    1008
+#define IDC_SIZES                       1011
 #define IDC_FRAMESKIP                   1009
 #define IDC_ROTATE                      1010
 #define IDC_SCREEN                      1012
@@ -498,6 +518,11 @@
 #define ID_ABOUT                        40003
 #define ID_FILE_PLAY                    40004
 #define ID_HELP_ABOUT                   40006
+
+// 修改的 (Eziochiu)
+/********************************************/
+#define ID_PLAY_IPS                     40007
+/********************************************/
 #define ID_OPTIONS_FONT                 40012
 #define ID_OPTIONS_FOLDERS_COLOR        40013
 #define ID_OPTIONS_DIR                  40014

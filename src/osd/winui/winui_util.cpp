@@ -688,6 +688,7 @@ void CenterWindow(HWND hWnd)
 struct PatchInfo
 {
 	std::string filename;    
+	std::string title;
 	std::string desc;        
 	std::string category;    
 	std::string image_path;  
@@ -918,6 +919,7 @@ static void UpdatePatches(int nGame, int nParent)
 		if (f)
 		{
 			char line[2048];
+			std::string title;
 			std::string desc;
 			std::string category;
 			bool found_desc = false;
@@ -951,27 +953,39 @@ static void UpdatePatches(int nGame, int nParent)
 					continue;
 				}
 
-				if (in_lang_section && lang_priority < current_lang_priority)
+				if (in_lang_section && lang_priority <= current_lang_priority)
 				{
-					char *sep = strchr(p, '/');
-					if (sep)
-					{
-						*sep = 0;
-						category = p;
-						desc = sep + 1;
-					}
-					else
+					if (found_desc == false || lang_priority < current_lang_priority)
 					{
 						desc = p;
-						category.clear();
+						
+						char *sep = strchr(p, '/');
+						if (sep)
+						{
+							std::string line_copy = p;
+							size_t sep_pos = sep - p;
+							category = line_copy.substr(0, sep_pos);
+						title = line_copy.substr(sep_pos + 1) + "[" + filename + "]";
+						}
+						else
+						{
+							category.clear();
+						title = std::string(p) + "[" + filename + "]";
+						}
+						current_lang_priority = lang_priority;
+						found_desc = true;
 					}
-					current_lang_priority = lang_priority;
-					found_desc = true;
+					else if (lang_priority == current_lang_priority)
+					{
+						desc += "\r\n";
+						desc += p;
+					}
 				}
 			}
 			fclose(f);
 			PatchInfo pi;
-			pi.filename = filename.substr(0, filename.length() - 4); 
+			pi.filename = filename.substr(0, filename.length() - 4);
+			pi.title = found_desc ? title : (pi.filename + "[" + filename + "]");
 			pi.desc = found_desc ? desc : pi.filename;
 			pi.category = category;
 			const char* img_exts[] = { ".png", ".jpg", ".bmp", nullptr };
@@ -1014,6 +1028,14 @@ char* GetPatchDesc(int nGame, int nParentIndex, int nPatchIndex)
 	UpdatePatches(nGame, nParentIndex);
 	if (nPatchIndex >= 0 && nPatchIndex < s_current_patches.size())
 		return (char*)s_current_patches[nPatchIndex].desc.c_str();
+	return nullptr;
+}
+
+char* GetPatchTitle(int nGame, int nParentIndex, int nPatchIndex)
+{
+	UpdatePatches(nGame, nParentIndex);
+	if (nPatchIndex >= 0 && nPatchIndex < s_current_patches.size())
+		return (char*)s_current_patches[nPatchIndex].title.c_str();
 	return nullptr;
 }
 

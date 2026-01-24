@@ -48,6 +48,7 @@ bool IsWindowsSevenOrHigher(void);
 int   GetPatchCount(int nGame, int nParentIndex);
 char* GetPatchFilename(int nGame, int nParentIndex, int nPatchIndex);
 char* GetPatchDesc(int nGame, int nParentIndex, int nPatchIndex);
+char* GetPatchTitle(int nGame, int nParentIndex, int nPatchIndex);
 char* GetPatchCategory(int nGame, int nParentIndex, int nPatchIndex);
 char* GetPatchImagePath(int nGame, int nParentIndex, int nPatchIndex);
 

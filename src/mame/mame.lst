@@ -14019,8 +14019,11 @@ mtwinsb                         // bootleg
 sf2m1                           // hack
 sf2m9                           // bootleg
 sgyxz                           // bootleg (All-In Electronics)
+sgyxza                          // bootleg (All-In Electronics)
+sgyxzb                          // bootleg (All-In Electronics)
 varthb                          // bootleg
 wofabl                          // bootleg
+wofabla
 wofr1bl                         // bootleg
 
 @source:feversoc.cpp
@@ -46337,20 +46340,17 @@ sf2koryu3                       // Bootleg
 sf2cn	                        // Bootleg
 sf2ly	                        // Bootleg
 slammastud	                    // Bootleg
-wofhf	                        // Bootleg
-wofh                            // Bootleg
-wofha                           // Bootleg
 wofah	                        // Bootleg
 wofaha	                        // Bootleg
 wofahb	                        // Bootleg
-wof3js	                        // Bootleg
-wof3jsa	                        // Bootleg
-wof3sj	                        // Bootleg
-wof3sja	                        // Bootleg
+wofsjs	                        // Bootleg
+wofsjsa	                        // Bootleg
+//wofsjsb	                        // Bootleg
+wofssj	                        // Bootleg
+wofssja	                        // Bootleg
 wofsj	                        // Bootleg
 wofsja	                        // Bootleg
 wofsjb	                        // Bootleg
-wofsjc	                        // Bootleg
 wofjd	                        // Bootleg
 wofud	                        // Bootleg
 
@@ -47115,24 +47115,7 @@ sf2cehc149                      // Hack
 sf2cehc150                      // Hack
 sf2hc01                         // Hack
 sf2hc02                         // Hack
-sf2hc03                         // Hack
-sf2hc04                         // Hack
-sf2hc05                         // Hack
-sf2hc06                         // Hack
-sf2hc07                         // Hack
-sf2hc08                         // Hack
-sf2hc09                         // Hack
-sf2hc10                         // Hack
-sf2hc11                         // Hack
-sf2hc12                         // Hack
 sf2hfhc01                       // Hack
-sf2hfhc02                       // Hack
-sf2hfhc03                       // Hack
-sf2hfhc04                       // Hack
-sf2hfhc05                       // Hack
-sf2hfhc06                       // Hack
-sf2hfhc07                       // Hack
-sf2hfhc08                       // Hack
 striderhc01                     // Hack
 tk2hc01                         // Hack
 tk2hc02                         // Hack
@@ -47169,142 +47152,13 @@ tk2hc32                         // Hack
 tk2hc33                         // Hack
 tk2hc34                         // Hack
 tk2hc35                         // Hack
-tk2hc36                         // Hack
-tk2hc37                         // Hack
-tk2hc38                         // Hack
-tk2hc39                         // Hack
-tk2hc40                         // Hack
-tk2hc41                         // Hack
-tk2hc42                         // Hack
-tk2hc43                         // Hack
-tk2hc44                         // Hack
-tk2hc45                         // Hack
-tk2hc46                         // Hack
-tk2hc47                         // Hack
-tk2hc48                         // Hack
-tk2hc49                         // Hack
-tk2hc50                         // Hack
-tk2hc51                         // Hack
-tk2hc52                         // Hack
-tk2hc53                         // Hack
-tk2hc54                         // Hack
-tk2hc55                         // Hack
-tk2hc56                         // Hack
-tk2hc57                         // Hack
-tk2hc58                         // Hack
-tk2hc59                         // Hack
-tk2hc60                         // Hack
-tk2hc61                         // Hack
-tk2hc62                         // Hack
-//tk2hc63                         // Hack [It does not work]
-tk2hc64                         // Hack
-tk2hc65                         // Hack
-tk2hc66                         // Hack
-tk2hc67                         // Hack
-tk2hc68                         // Hack
-tk2hc69                         // Hack
-tk2hc70                         // Hack
-tk2hc71                         // Hack
-tk2hc72                         // Hack
-tk2hc73                         // Hack
-tk2hc74                         // Hack
-tk2hc75                         // Hack
-tk2hc76                         // Hack
-tk2hc77                         // Hack
-tk2hc78                         // Hack
-tk2hc79                         // Hack
-tk2hc80                         // Hack
-tk2hc81                         // Hack
-tk2hc82                         // Hack
-tk2hc83                         // Hack
-tk2hc84                         // Hack
-tk2hc85                         // Hack
-tk2hc86                         // Hack
-tk2hc87                         // Hack
-tk2hc88                         // Hack
-tk2hc89                         // Hack
-tk2hc90                         // Hack
-tk2hc91                         // Hack
-tk2hc92                         // Hack
-tk2hc93                         // Hack
-tk2hc94                         // Hack
-tk2hc95                         // Hack
-tk2hc96                         // Hack
-tk2hc97                         // Hack
-tk2hc98                         // Hack
-tk2hc99                         // Hack
-tk2hc100                        // Hack
-tk2hc101                        // Hack
-tk2hc102                        // Hack
-tk2hc103                        // Hack
-tk2hc104                        // Hack
-tk2hc105                        // Hack
-tk2hc106                        // Hack
-tk2hc107                        // Hack
-tk2hc108                        // Hack
-tk2hc109                        // Hack
-tk2hc110                        // Hack
-tk2hc111                        // Hack
-tk2hc112                        // Hack
-tk2hc113                        // Hack
-tk2hc114                        // Hack
-tk2hc115                        // Hack
-tk2hc116                        // Hack
-tk2hc117                        // Hack
-tk2hc118                        // Hack
-tk2hc119                        // Hack
-tk2hc120                        // Hack
-tk2hc121                        // Hack
-tk2hc122                        // Hack
-tk2hc123                        // Hack
 tk2chc01                        // Hack
 tk2chc02                        // Hack
 tk2chc03                        // Hack
 tk2chc04                        // Hack
-tk2chc05                        // Hack
-tk2chc06                        // Hack
-tk2chc07                        // Hack
-tk2chc08                        // Hack
-tk2chc09                        // Hack
-tk2chc10                        // Hack
-tk2chc11                        // Hack
-tk2chc12                        // Hack
-tk2chc13                        // Hack
-tk2chc14                        // Hack
-tk2chc15                        // Hack
-tk2chc16                        // Hack
-tk2chc17                        // Hack
-tk2chc18                        // Hack
-tk2chc19                        // Hack
-//sk2hc01                         // Hack [It does not work]
-sk2hc02                         // Hack
-sk2hc03                         // Hack
-sk2hc04                         // Hack
-sk2hc05                         // Hack
-sk2hc06                         // Hack
+sk2hc01                         // Hack
 sk3hc01                         // Hack
-sk3hc02                         // Hack
-sk3hc03                         // Hack
-sk3hc04                         // Hack
-sk3hc05                         // Hack
-sk3hc06                         // Hack
-sk3hc07                         // Hack
-sk3hc08                         // Hack
-sk3hc09                         // Hack
-sk3hc10                         // Hack
-sk3hc11                         // Hack
-sk3hc12                         // Hack
-wofhc01                         // Hack
-wofhc02                         // Hack
-wofhc03                         // Hack
-wofhc04                         // Hack
-wofhc05                         // Hack
-//wofhc06                        // Hack [It does not work]
-wofhhc01                        // Hack
-wofhhc02                        // Hack
-//varthhc01                      // Hack [It does not work]
-varthhc02                       // Hack
-varthhc03                       // Hack
+varthhc01                       // Hack
 willowhc01                      // Hack
 dinosf2                         // SF2 Conversion
 ghoulsf2                        // SF2 Conversion
@@ -47317,7 +47171,6 @@ area88rk                        // Hack
 captcommjk                      // Hack
 daimakaik                       // Hack
 dinok                           // Hack
-ffightaek                       // Hack
 ffightjk                        // Hack
 kodjk                           // Hack
 knightsjk                       // Hack
@@ -47325,9 +47178,6 @@ punisherjk                      // Hack
 rockmanjk                       // Hack
 sfzchk                          // Hack
 striderjk                       // Hack
-tk2h10dk                        // Hack
-wofjk                           // Hack
-wofchk                          // Hack
 wonder3k                        // Hack
 
 @source:cps1bl_5205.cpp
@@ -47369,7 +47219,7 @@ gigawinghc01                    // Hack
 gigawinghc02                    // Hack
 hsf2hc01                        // Hack
 hsf2hc02                        // Hack
-hsf2hc03                        // Hack
+hsf2hc02                        // Hack
 hsf2hc04                        // Hack
 hsf2hc05                        // Hack
 hsf2hc06                        // Hack
@@ -47470,7 +47320,7 @@ ssf2thc23                       // Hack
 ssf2thc24                       // Hack
 ssf2hc01                        // Hack
 ssf2hc02                        // Hack
-ssf2hc03                        // Hack
+ssf2hc02                        // Hack
 ssf2hc04                        // Hack
 ssf2hc05                        // Hack
 ssf2hc06                        // Hack
@@ -47591,9 +47441,6 @@ exerionhc02                     // Hack
 
 @source:fcrash.cpp
 sf2ces11                        // bootleg
-sf2cehh01                       // Hack
-sf2cehh02                       // Hack
-sf2cehh03                       // Hack
 
 @source:flstory.cpp
 flstoryhc01                     // Hack

@@ -8185,7 +8185,7 @@ ROM_START( sf2re ) // combines sf2m8 program ROMs with sf2cems6a ROMs for most G
 	ROM_LOAD( "27c020.u210", 0x00000, 0x40000, CRC(6cfffb11) SHA1(995526183ffd35f92e9096500a3fe6237faaa2dd) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m3.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
+	ROM_LOAD( "sf2ceuabl.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
 ROM_END
 
 // PCB is marked: "100P003" and "054-034" on solder side
@@ -8228,7 +8228,7 @@ ROM_START( sf2mkot )
 	ROM_LOAD( "voice.u210", 0x00000, 0x40000, CRC(6cfffb11) SHA1(995526183ffd35f92e9096500a3fe6237faaa2dd) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m2.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
+	ROM_LOAD( "sf2mega.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
 ROM_END
 
 ROM_START( sf2rk )
@@ -9664,7 +9664,6 @@ ROM_START( sf2rb )
 	ROM_LOAD( "sf2ce.key", 0x00, 0x80, CRC(35b37429) SHA1(b372cce106c0900554735c207fb333ac93554ec2) )
 ROM_END
 
-
 ROM_START( sf2rb2 )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_BYTE( "27.bin",            0x000000, 0x20000, CRC(40296ecd) SHA1(6006b9bc7e2e8ccec47f87b51791d3c0512620df) )
@@ -10082,6 +10081,9 @@ ROM_START( sf2amf )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_BYTE( "5.amf",          0x000000, 0x80000, CRC(03991fba) SHA1(6c42bf15248640fdb3e98fb01b0a870649deb410) )
 	ROM_LOAD16_BYTE( "4.amf",          0x000001, 0x80000, CRC(39f15a1e) SHA1(901c4fea76bf5bff7330ed07ffde54cdccdaa680) )
+	ROM_LOAD16_BYTE( "4.u221", 0x100000, 0x40000, CRC(b0bb6242) SHA1(453655f8767c20cbbd52bc847497408cb239da1c) )
+	ROM_LOAD16_BYTE( "3.u195", 0x100001, 0x40000, CRC(f516e578) SHA1(82fe84bd24ebc46be9d733506c6c1528035bd62d) )
+
 	/* missing last part(s) of program roms, some gfx loading instructions are missing */
 	ROM_LOAD16_BYTE( "prg part 3.amf", 0x100000, 0x40000, NO_DUMP )
 	ROM_LOAD16_BYTE( "prg part 4.amf", 0x100001, 0x40000, NO_DUMP )
@@ -10126,7 +10128,7 @@ ROM_START( sf2amf )
 	ROM_LOAD( "1.amf", 0x20000, 0x20000, CRC(beade53f) SHA1(277c397dc12752719ec6b47d2224750bd1c07f79) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m2.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
+	ROM_LOAD( "sf2mega.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
 ROM_END
 
 ROM_START( sf2amf2 )
@@ -10171,7 +10173,7 @@ ROM_START( sf2amf2 )
 	ROM_LOAD( "fun-u210.bin", 0x00000, 0x40000, CRC(6cfffb11) SHA1(995526183ffd35f92e9096500a3fe6237faaa2dd) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m2.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
+	ROM_LOAD( "sf2mega.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
 ROM_END
 
 /* This set is identical to sf2amf2 except for program roms, the pcb has some kind of mod around the rom area with cut traces
@@ -10218,7 +10220,7 @@ ROM_START( sf2amf3 )
 	ROM_LOAD( "fun-u210.bin", 0x00000, 0x40000, CRC(6cfffb11) SHA1(995526183ffd35f92e9096500a3fe6237faaa2dd) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m2.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
+	ROM_LOAD( "sf2mega.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
 ROM_END
 
 ROM_START( sf2rules ) //
@@ -10260,7 +10262,7 @@ ROM_START( sf2rules ) //
 	ROM_LOAD( "voice.u210", 0x00000, 0x40000, CRC(6cfffb11) SHA1(995526183ffd35f92e9096500a3fe6237faaa2dd) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m4.key", 0x00, 0x80, CRC(822729a2) SHA1(acaadef38fd97dba215c13688061cee87d877c19) )
+	ROM_LOAD( "sf2rb4.key", 0x00, 0x80, CRC(822729a2) SHA1(acaadef38fd97dba215c13688061cee87d877c19) )
 ROM_END
 
 ROM_START( sf2dkot2 )
@@ -10300,7 +10302,7 @@ ROM_START( sf2dkot2 )
 	ROM_LOAD( "sf2ce.key", 0x00, 0x80, CRC(35b37429) SHA1(b372cce106c0900554735c207fb333ac93554ec2) )
 ROM_END
 
-ROM_START( sf2m2 )
+ROM_START( sf2mega )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_BYTE( "ch222esp",          0x000000, 0x80000, CRC(9e6d058a) SHA1(8c9adca7b65dc929c325c0a62304d24dc0902c08) )
 	ROM_LOAD16_BYTE( "ch196esp",          0x000001, 0x80000, CRC(ed2ff437) SHA1(e76fc2953b6c800d5955c8fb442b80142e40e375) )
@@ -10329,10 +10331,10 @@ ROM_START( sf2m2 )
 	ROM_LOAD( "s92_19.bin",    0x20000, 0x20000, CRC(beade53f) SHA1(277c397dc12752719ec6b47d2224750bd1c07f79) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m2.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
+	ROM_LOAD( "sf2mega.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
 ROM_END
 
-ROM_START( sf2m3 )
+ROM_START( sf2ceuabl )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_BYTE( "u222chp",           0x000000, 0x80000, CRC(db567b66) SHA1(315bfbf2786ef67a95afb87de836ab348523dbbe) )
 	ROM_LOAD16_BYTE( "u196chp",           0x000001, 0x80000, CRC(95ea597e) SHA1(5eb82feaa1de5611a96888e4670744bbb7d90393) )
@@ -10361,10 +10363,10 @@ ROM_START( sf2m3 )
 	ROM_LOAD( "s92_19.bin",    0x20000, 0x20000, CRC(beade53f) SHA1(277c397dc12752719ec6b47d2224750bd1c07f79) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m3.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
+	ROM_LOAD( "sf2ceuabl.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
 ROM_END
 
-ROM_START( sf2m4 )
+ROM_START( sf2rb4 )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_BYTE( "u222ne",            0x000000, 0x80000, CRC(7133489e) SHA1(036ef100c64c6e912c911340b32eea0da0b6f6d9) )
 	ROM_LOAD16_BYTE( "u196ne",            0x000001, 0x80000, CRC(b07a4f90) SHA1(7a4a800bddc43cfa60f9097723b44a05c9d290ae) )
@@ -10393,10 +10395,10 @@ ROM_START( sf2m4 )
 	ROM_LOAD( "s92_19.bin",    0x20000, 0x20000, CRC(beade53f) SHA1(277c397dc12752719ec6b47d2224750bd1c07f79) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m4.key", 0x00, 0x80, CRC(822729a2) SHA1(acaadef38fd97dba215c13688061cee87d877c19) )
+	ROM_LOAD( "sf2rb4.key", 0x00, 0x80, CRC(822729a2) SHA1(acaadef38fd97dba215c13688061cee87d877c19) )
 ROM_END
 
-ROM_START( sf2m5 )
+ROM_START( sf2amf9 )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_BYTE( "u222",              0x000000, 0x80000, CRC(03991fba) SHA1(6c42bf15248640fdb3e98fb01b0a870649deb410) )
 	ROM_LOAD16_BYTE( "u196",              0x000001, 0x80000, CRC(39f15a1e) SHA1(901c4fea76bf5bff7330ed07ffde54cdccdaa680) )
@@ -10425,10 +10427,10 @@ ROM_START( sf2m5 )
 	ROM_LOAD( "s92_19.bin",    0x20000, 0x20000, CRC(beade53f) SHA1(277c397dc12752719ec6b47d2224750bd1c07f79) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m2.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
+	ROM_LOAD( "sf2mega.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
 ROM_END
 
-ROM_START( sf2m6 )
+ROM_START( sf2koryu3 )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_BYTE( "27c040.u222", 0x000000, 0x80000, CRC(0a3692be) SHA1(7b937b7b0130e460b5f12188b19f464c55b507c9) )
 	ROM_LOAD16_BYTE( "27c040.u196", 0x000001, 0x80000, CRC(80454da7) SHA1(64f6dba14d342c9933ce632aa7ca126b34b4ee8b) )
@@ -10469,10 +10471,10 @@ ROM_START( sf2m6 )
 	ROM_LOAD( "voice.u210", 0x00000, 0x40000, CRC(6cfffb11) SHA1(995526183ffd35f92e9096500a3fe6237faaa2dd) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m2.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
+	ROM_LOAD( "sf2mega.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
 ROM_END
 
-ROM_START( sf2m7 )
+ROM_START( sf2amf4 )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_BYTE( "u222-2i",           0x000000, 0x40000, CRC(1ca7adbd) SHA1(45e9dc05766ad156edcfc9e59a9804f74f90dc68) )
 	ROM_LOAD16_BYTE( "u196-2i",           0x000001, 0x40000, CRC(f758408c) SHA1(aac44a7287bb3b7ba35d68aff279e265dbd3f6d3) )
@@ -10503,10 +10505,10 @@ ROM_START( sf2m7 )
 	ROM_LOAD( "s92_19.bin",    0x20000, 0x20000, CRC(beade53f) SHA1(277c397dc12752719ec6b47d2224750bd1c07f79) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m2.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
+	ROM_LOAD( "sf2mega.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
 ROM_END
 
-ROM_START( sf2m8 )
+ROM_START( sf2ceuab2 )
 /* unconfirmed if working on real hardware */
 	/* this board has unsupported pals */
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
@@ -10558,7 +10560,7 @@ ROM_START( sf2m8 )
 	ROM_LOAD( "b-16.6", 0x00000, 0x40000, CRC(6cfffb11) SHA1(995526183ffd35f92e9096500a3fe6237faaa2dd) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m3.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
+	ROM_LOAD( "sf2ceuabl.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
 ROM_END
 
 /* SF2M10
@@ -10603,7 +10605,7 @@ Notes:
        6116 - 2k x8 SRAM
 */
 
-ROM_START( sf2m10 )
+ROM_START( sf2ceuab8 )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "sf2h14.7", 0x000000, 0x80000, CRC(74803532) SHA1(c1f774bbc4c7b18fcac15417711a86eb852b9957) )
 	ROM_LOAD16_BYTE( "sf2h14.5", 0x000001, 0x80000, CRC(66c91972) SHA1(219aecad1feb60bb758190ea82223171075c858e) )
@@ -10642,7 +10644,7 @@ ROM_START( sf2m10 )
 	ROM_LOAD( "27c010.1",    0x20000, 0x20000, CRC(beade53f) SHA1(277c397dc12752719ec6b47d2224750bd1c07f79) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m4.key", 0x00, 0x80, CRC(822729a2) SHA1(acaadef38fd97dba215c13688061cee87d877c19) )
+	ROM_LOAD( "sf2rb4.key", 0x00, 0x80, CRC(822729a2) SHA1(acaadef38fd97dba215c13688061cee87d877c19) )
 ROM_END
 
 ROM_START( sf2yyc )
@@ -10677,7 +10679,7 @@ ROM_START( sf2yyc )
 	ROM_LOAD( "s92_19.bin",    0x20000, 0x20000, CRC(beade53f) SHA1(277c397dc12752719ec6b47d2224750bd1c07f79) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m2.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
+	ROM_LOAD( "sf2mega.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
 ROM_END
 
 ROM_START( sf2koryu )
@@ -10710,7 +10712,7 @@ ROM_START( sf2koryu )
 	ROM_LOAD( "s92_19.bin",    0x20000, 0x20000, CRC(beade53f) SHA1(277c397dc12752719ec6b47d2224750bd1c07f79) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m2.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
+	ROM_LOAD( "sf2mega.key", 0x00, 0x80, CRC(67e80fca) SHA1(e937bc4cf0e05ba93c32bc47d65c5b027bc2b48e) )
 ROM_END
 
 ROM_START( sf2ceupl ) // only the program ROMs were dumped
@@ -10743,7 +10745,7 @@ ROM_START( sf2ceupl ) // only the program ROMs were dumped
 	ROM_LOAD( "s92_19.12c",  0x20000, 0x20000, CRC(beade53f) SHA1(277c397dc12752719ec6b47d2224750bd1c07f79) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m4.key", 0x00, 0x80, CRC(822729a2) SHA1(acaadef38fd97dba215c13688061cee87d877c19) )
+	ROM_LOAD( "sf2rb4.key", 0x00, 0x80, CRC(822729a2) SHA1(acaadef38fd97dba215c13688061cee87d877c19) )
 ROM_END
 
 ROM_START( sf2dongb )
@@ -10808,7 +10810,7 @@ ROM_START( sf2level ) // program very similar to sf2dkot2
 	ROM_LOAD( "km418c256z-80.u210",  0x00000, 0x40000, CRC(6cfffb11) SHA1(995526183ffd35f92e9096500a3fe6237faaa2dd) )
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m3.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
+	ROM_LOAD( "sf2ceuabl.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
 ROM_END
 
 /*
@@ -10930,7 +10932,7 @@ ROM_START( sf2cems6a )  /* 920313 USA (this set matches "sf2ceuab4" in FBA) */
 	SF2CEMS6_PLD_DEVICES
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m3.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
+	ROM_LOAD( "sf2ceuabl.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
 ROM_END
 
 ROM_START( sf2cems6b )  /* 920322 USA */
@@ -10980,7 +10982,7 @@ ROM_START( sf2cems6b )  /* 920322 USA */
 	SF2CEMS6_PLD_DEVICES
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m3.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
+	ROM_LOAD( "sf2ceuabl.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
 ROM_END
 
 ROM_START( sf2cems6c )  /* 920322 USA */
@@ -11030,7 +11032,7 @@ ROM_START( sf2cems6c )  /* 920322 USA */
 	SF2CEMS6_PLD_DEVICES
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m3.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
+	ROM_LOAD( "sf2ceuabl.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
 ROM_END
 
 ROM_START( sf2ceds6 ) // 10/17/92 DSTREET-6 on PCB, labels similar to the ones used by Subsino
@@ -11086,7 +11088,7 @@ ROM_START( sf2ceds6 ) // 10/17/92 DSTREET-6 on PCB, labels similar to the ones u
 	ROM_LOAD( "gal20v8a.u104", 0x0000, 0x0157, NO_DUMP )  // M-STREET6 probably the same?
 
 	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2m3.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
+	ROM_LOAD( "sf2ceuabl.key", 0x00, 0x80, CRC(e1cfb9fa) SHA1(a93fa22d935e925535b760631bf7408fe2d5f0d5) )
 ROM_END
 
 /* B-Board 89625B-1 */
@@ -13542,34 +13544,34 @@ GAME( 1992, sf2rb3,      sf2ce,    cps1_12MHz, sf2rb,    cps_state, init_cps1,  
 GAME( 1992, sf2red,      sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (Red Wave, bootleg, set 1)", MACHINE_SUPPORTS_SAVE )         // 920313 - based on World version
 GAME( 1992, sf2reda,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (Red Wave, bootleg, set 2)", MACHINE_SUPPORTS_SAVE )         // 920313 - based on World version
 GAME( 1992?,sf2redp2,    sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (Red Wave PtII, bootleg)", MACHINE_SUPPORTS_SAVE )    // 920313 - further modification of sf2red program
-GAME( 1992, sf2v004,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (V004, bootleg)", MACHINE_SUPPORTS_SAVE )             // 102092 !!! - based on (heavily modified) World version
+GAME( 1992, sf2v004,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (V004, bootleg, set 1)", MACHINE_SUPPORTS_SAVE )             // 102092 !!! - based on (heavily modified) World version
 GAME( 1992, sf2acc,      sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (Accelerator!, bootleg, set 1)", MACHINE_SUPPORTS_SAVE )          // 920313 - based on World version
 GAME( 1992, sf2acca,     sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (Accelerator!, bootleg, set 2)", MACHINE_SUPPORTS_SAVE )          // 920313 - based on World version
 GAME( 1992, sf2accp2,    sf2ce,    cps1_12MHz, sf2accp2, cps_state, init_cps1,     ROT0,   "bootleg (Testron)", "Street Fighter II': Champion Edition (Accelerator Pt.II, bootleg)", MACHINE_SUPPORTS_SAVE )        // 920313 - based on World version
-GAME( 1992, sf2amf,      sf2ce,    cps1_12MHz, sf2amf,   cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (Alpha Magic-F, bootleg)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )     // 920313 - based on World version
-GAME( 1992, sf2amf2,     sf2ce,    cps1_12MHz, sf2amfx,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (L735 Test Rom, bootleg, set 1)", MACHINE_SUPPORTS_SAVE )     // 920313 - based on World version
-GAME( 1992, sf2amf3,     sf2ce,    cps1_10MHz, sf2amfx,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (L735 Test Rom, bootleg, set 2)", MACHINE_SUPPORTS_SAVE )     // 920313 - based on World version, confirmed 10MHz
+GAME( 1992, sf2amf,      sf2ce,    cps1_12MHz, sf2amf,   cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (L735 Test Rom, bootleg, set 1)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )     // 920313 - based on World version
+GAME( 1992, sf2amf2,     sf2ce,    cps1_12MHz, sf2amfx,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (L735 Test Rom, bootleg, set 2)", MACHINE_SUPPORTS_SAVE )     // 920313 - based on World version
+GAME( 1992, sf2amf3,     sf2ce,    cps1_10MHz, sf2amfx,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (L735 Test Rom, bootleg, set 3)", MACHINE_SUPPORTS_SAVE )     // 920313 - based on World version, confirmed 10MHz
 GAME( 1992, sf2dkot2,    sf2ce,    cps1_12MHz, sf2,      cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (Double K.O. Turbo II, bootleg)", MACHINE_SUPPORTS_SAVE ) // 902140 !!! - based on USA version
 GAME( 1992, sf2level,    sf2ce,    sf2m3,      sf2level, cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (bootleg with level selection)", MACHINE_SUPPORTS_SAVE ) // 920322 - based on USA version
 GAME( 1992, sf2ceblp,    sf2ce,    cps1_10MHz, sf2,      cps_state, init_sf2ceblp, ROT0,   "bootleg", "Street Fighter II': Champion Edition (protected bootleg on non-dash board)", MACHINE_SUPPORTS_SAVE )          // 920313 - based on USA version
-GAME( 1992, sf2m2,       sf2ce,    cps1_12MHz, sf2m2,    cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (M2, bootleg)", MACHINE_SUPPORTS_SAVE )               // 920313 - based on World version
-GAME( 1992, sf2m3,       sf2ce,    sf2m3,      sf2,      cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (M3, bootleg)", MACHINE_SUPPORTS_SAVE )               // 920313 - based on USA version
-GAME( 1992, sf2m4,       sf2ce,    cps1_12MHz, sf2m4,    cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (M4, bootleg)", MACHINE_SUPPORTS_SAVE )               // 920322 - based on Japan version
-GAME( 1992, sf2m5,       sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (M5, bootleg)", MACHINE_SUPPORTS_SAVE )               // 920313 - based on World version
-GAME( 1992, sf2m6,       sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (M6, bootleg)", MACHINE_SUPPORTS_SAVE )               // 811102 !!! - based on World version
-GAME( 1992, sf2m7,       sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (M7, bootleg)", MACHINE_SUPPORTS_SAVE )               // 920313 - based on World version
-GAME( 1992, sf2m8,       sf2ce,    sf2m3,      sf2,      cps_state, init_sf2m8,    ROT0,   "bootleg", "Street Fighter II': Champion Edition (M8, bootleg)", MACHINE_SUPPORTS_SAVE )               // 920313 - based on USA version
-GAME( 1992, sf2m10,      sf2ce,    sf2m10,     sf2hack,  cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (M10, bootleg)", MACHINE_SUPPORTS_SAVE )
-GAME( 1992, sf2yyc,      sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (YYC, bootleg)", MACHINE_SUPPORTS_SAVE )              // 920313 - based on World version
-GAME( 1992, sf2koryu,    sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (Xiang Long, Chinese bootleg)", MACHINE_SUPPORTS_SAVE )       // 811102 !!! - based on World version
+GAME( 1992, sf2mega,     sf2ce,    cps1_12MHz, sf2m2,    cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (Mega Co, bootleg, set 1)", MACHINE_SUPPORTS_SAVE )               // 920313 - based on World version
+GAME( 1992, sf2ceuabl,   sf2ce,    sf2m3,      sf2,      cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (bootleg, USA 920313, set 1)", MACHINE_SUPPORTS_SAVE )               // 920313 - based on USA version
+GAME( 1992, sf2rb4,      sf2ce,    cps1_12MHz, sf2m4,    cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (Rainbow, bootleg, set 4)", MACHINE_SUPPORTS_SAVE )               // 920322 - based on Japan version
+GAME( 1992, sf2amf9,     sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (L735 Test Rom, bootleg, set 8)", MACHINE_SUPPORTS_SAVE )               // 920313 - based on World version
+GAME( 1992, sf2koryu3,   sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (Xiang Long, Chinese bootleg, set 3)", MACHINE_SUPPORTS_SAVE )               // 811102 !!! - based on World version
+GAME( 1992, sf2amf4,     sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (L735 Test Rom, bootleg, set 4)", MACHINE_SUPPORTS_SAVE )               // 920313 - based on World version
+GAME( 1992, sf2ceuab2,   sf2ce,    sf2m3,      sf2,      cps_state, init_sf2m8,    ROT0,   "bootleg", "Street Fighter II': Champion Edition (bootleg, USA 920313, set 2)", MACHINE_SUPPORTS_SAVE )               // 920313 - based on USA version
+GAME( 1992, sf2ceuab8,   sf2ce,    sf2m10,     sf2hack,  cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (bootleg, USA 920313, set 8)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, sf2yyc,      sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (YYC, bootleg, set 1)", MACHINE_SUPPORTS_SAVE )              // 920313 - based on World version
+GAME( 1992, sf2koryu,    sf2ce,    cps1_12MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Champion Edition (Xiang Long, Chinese bootleg, set 1)", MACHINE_SUPPORTS_SAVE )       // 811102 !!! - based on World version
 GAME( 1992, sf2dongb,    sf2ce,    cps1_12MHz, sf2,      cps_state, init_sf2dongb, ROT0,   "bootleg", "Street Fighter II': Champion Edition (Dongfang Bubai protection, bootleg)", MACHINE_SUPPORTS_SAVE ) // 920313 - based on World version
-GAME( 1992, sf2ceupl,    sf2ce,    sf2m10,     sf2hack,  cps_state, init_cps1,     ROT0,   "bootleg (UPL)", "Street Fighter II': Champion Edition (UPL bootleg)", MACHINE_SUPPORTS_SAVE ) // 920322 - based on Japan version
+GAME( 1992, sf2ceupl,    sf2ce,    sf2m10,     sf2hack,  cps_state, init_cps1,     ROT0,   "bootleg (UPL)", "Street Fighter II': Champion Edition (Japan 920322, UPL bootleg?)", MACHINE_SUPPORTS_SAVE ) // 920322 - based on Japan version
 GAME( 1992, sf2cems6a,   sf2ce,    sf2cems6,   sf2,      cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (Mstreet-6, bootleg, set 1)", MACHINE_SUPPORTS_SAVE ) // 920313 USA
 GAME( 1992, sf2cems6b,   sf2ce,    sf2cems6,   sf2bhh,   cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (Mstreet-6, bootleg, set 2)", MACHINE_SUPPORTS_SAVE ) // 920322 USA
 GAME( 1992, sf2cems6c,   sf2ce,    sf2cems6,   sf2bhh,   cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (Mstreet-6, bootleg, set 3)", MACHINE_SUPPORTS_SAVE ) // 920322 USA
 GAME( 1992, sf2ceds6,    sf2ce,    sf2cems6,   sf2,      cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (Dstreet-6, bootleg)", MACHINE_SUPPORTS_SAVE ) // 920313 USA
 GAME( 1992, sf2re,       sf2,      sf2m3,      sf2,      cps_state, init_cps1,     ROT0,   "bootleg", "Street Fighter II': Champion Edition (RE, bootleg)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )    // 920313 - based on USA version, glitch on title screen confirmed not to happen on PCB so MIG
-GAME( 1992, sf2mkot,     sf2,      cps1_10MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Magic KO Turbo!! - Nightmare Crack", MACHINE_SUPPORTS_SAVE ) // 920313 - based on World version
+GAME( 1992, sf2mkot,     sf2,      cps1_10MHz, sf2hack,  cps_state, init_sf2hack,  ROT0,   "bootleg", "Street Fighter II': Magic KO Turbo!! - Nightmare Crack (set 1)", MACHINE_SUPPORTS_SAVE ) // 920313 - based on World version
 GAME( 1992, cworld2j,    0,        cps1_12MHz, cworld2j, cps_state, init_cps1,     ROT0,   "Capcom", "Adventure Quiz Capcom World 2 (Japan 920611)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, cworld2ja,   cworld2j, cps1_12MHz, cworld2j, cps_state, init_cps1,     ROT0,   "Capcom", "Adventure Quiz Capcom World 2 (Japan 920611, B-Board 90629B-3, no battery)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, cworld2jb,   cworld2j, cps1_12MHz, cworld2j, cps_state, init_cps1,     ROT0,   "Capcom", "Adventure Quiz Capcom World 2 (Japan 920611, B-Board 91634B-2)", MACHINE_SUPPORTS_SAVE )

@@ -11097,14 +11097,14 @@ sf2jh                           // 22/05/1991 (c) 1991 (Japan)
 sf2jl                           // 12/03/1992 (c) 1991 (Japan)
 sf2koryu                        // hack
 sf2level                        // hack
-sf2m10                          // bootleg
-sf2m2                           // hack
-sf2m3                           // hack
-sf2m4                           // hack
-sf2m5                           // hack
-sf2m6                           // hack
-sf2m7                           // hack
-sf2m8                           // bootleg
+sf2ceuab8                       // bootleg
+sf2mega                         // hack
+sf2ceuabl                       // hack
+sf2rb4                          // hack
+sf2amf9                         // hack
+sf2koryu3                       // hack
+sf2amf4                         // hack
+sf2ceuab2                       // bootleg
 sf2mkot                         // hack
 sf2qp1                          // hack
 sf2qp2                          // hack
@@ -14016,8 +14016,8 @@ ffightbla                       // bootleg
 ffightblb                       // bootleg
 kodb                            // bootleg
 mtwinsb                         // bootleg
-sf2m1                           // hack
-sf2m9                           // bootleg
+sf2ceeab2                       // bootleg
+sf2md                           // bootleg
 sgyxz                           // bootleg (All-In Electronics)
 sgyxza                          // bootleg (All-In Electronics)
 sgyxzb                          // bootleg (All-In Electronics)
@@ -46312,12 +46312,10 @@ pnicku	                        // Bootleg
 punisherud1	                    // Bootleg
 punisherud2	                    // Bootleg
 punisherb	                    // Bootleg
-sf2mega2	                    // Bootleg
 sf2cejabl	                    // Bootleg
-sf2m12	                        // Bootleg
-sf2m13	                        // Bootleg
-sf2rbpr	                        // Bootleg
-sf2amf4	                        // Bootleg
+sf2rb5	                        // Bootleg
+sf2hfjb	                        // Bootleg
+sf2mega2	                    // Bootleg
 sf2amf5	                        // Bootleg
 sf2amf6	                        // Bootleg
 sf2amf7	                        // Bootleg
@@ -46325,20 +46323,16 @@ sf2amf8	                        // Bootleg
 sf2tlona	                    // Bootleg
 sf2tlonb	                    // Bootleg
 sf2tlonc	                    // Bootleg
-sf2redp2a	                    // Bootleg
+sf2red2	                        // Bootleg
 sf2v0042	                    // Bootleg
 sf2v0043	                    // Bootleg
 sf2yyc2	                        // Bootleg
-//sf2ceeabl	                    // Bootleg
 sf2cejab2	                    // Bootleg
-sf2cebr	                        // Bootleg
-sf2m11	                        // Bootleg
-sf2ceh	                        // Bootleg
 sf2sl73a                        // Bootleg
 sf2koryu2                       // Bootleg
-sf2koryu3                       // Bootleg
-sf2cn	                        // Bootleg
-sf2ly	                        // Bootleg
+sf2b3                           // Bootleg
+sf2b4                           // Bootleg
+sf2mkot2                        // Bootleg
 slammastud	                    // Bootleg
 wofah	                        // Bootleg
 wofaha	                        // Bootleg
@@ -46973,148 +46967,10 @@ sf2cehc07                       // Hack
 sf2cehc08                       // Hack
 sf2cehc09                       // Hack
 sf2cehc10                       // Hack
-sf2cehc11                       // Hack
-sf2cehc12                       // Hack
-sf2cehc13                       // Hack
-sf2cehc14                       // Hack
-sf2cehc15                       // Hack
-sf2cehc16                       // Hack
-sf2cehc17                       // Hack
-sf2cehc18                       // Hack
-sf2cehc19                       // Hack
-sf2cehc20                       // Hack
-sf2cehc21                       // Hack
-sf2cehc22                       // Hack
-sf2cehc23                       // Hack
-sf2cehc24                       // Hack
-sf2cehc25                       // Hack
-sf2cehc26                       // Hack
-sf2cehc27                       // Hack
-sf2cehc28                       // Hack
-sf2cehc29                       // Hack
-sf2cehc30                       // Hack
-sf2cehc31                       // Hack
-sf2cehc32                       // Hack
-//sf2cehc33                       // Hack [It does not work]
-sf2cehc34                       // Hack
-sf2cehc35                       // Hack
-sf2cehc36                       // Hack
-//sf2cehc37                       // Hack [Repeated]
-sf2cehc38                       // Hack
-sf2cehc39                       // Hack
-sf2cehc40                       // Hack
-sf2cehc41                       // Hack
-sf2cehc42                       // Hack
-sf2cehc43                       // Hack
-sf2cehc44                       // Hack
-sf2cehc45                       // Hack
-sf2cehc46                       // Hack
-sf2cehc47                       // Hack
-sf2cehc48                       // Hack
-sf2cehc49                       // Hack
-sf2cehc50                       // Hack
-sf2cehc51                       // Hack
-sf2cehc52                       // Hack
-sf2cehc53                       // Hack
-sf2cehc54                       // Hack
-sf2cehc55                       // Hack
-sf2cehc56                       // Hack
-sf2cehc57                       // Hack
-//sf2cehc58                       // Hack
-//sf2cehc59                       // Hack [It does not work]
-sf2cehc60                       // Hack
-sf2cehc61                       // Hack
-sf2cehc62                       // Hack
-sf2cehc63                       // Hack
-//sf2cehc64                       // Hack [It does not work]
-sf2cehc65                       // Hack
-//sf2cehc66                       // Hack [It does not work]
-sf2cehc67                       // Hack
-sf2cehc68                       // Hack
-sf2cehc69                       // Hack
-sf2cehc70                       // Hack
-sf2cehc71                       // Hack
-sf2cehc72                       // Hack
-sf2cehc73                       // Hack
-sf2cehc74                       // Hack
-sf2cehc75                       // Hack
-sf2cehc76                       // Hack
-sf2cehc77                       // Hack
-//sf2cehc78                       // Hack [It does not work]
-//sf2cehc79                       // Hack
-sf2cehc80                       // Hack
-sf2cehc81                       // Hack
-sf2cehc82                       // Hack
-sf2cehc83                       // Hack
-sf2cehc84                       // Hack
-sf2cehc85                       // Hack
-sf2cehc86                       // Hack
-sf2cehc87                       // Hack
-sf2cehc88                       // Hack
-sf2cehc89                       // Hack
-sf2cehc90                       // Hack
-//sf2cehc91                       // Hack [It does not work]
-//sf2cehc92                       // Hack [It does not work]
-sf2cehc93                       // Hack
-sf2cehc94                       // Hack
-sf2cehc95                       // Hack
-sf2cehc96                       // Hack
-sf2cehc97                       // Hack
-sf2cehc98                       // Hack
-//sf2cehc99                       // Hack
-//sf2cehc100                      // Hack [It does not work]
-sf2cehc101                      // Hack
-sf2cehc102                      // Hack
-sf2cehc103                      // Hack
-sf2cehc104                      // Hack
-sf2cehc105                      // Hack
-sf2cehc106                      // Hack
-sf2cehc107                      // Hack
-sf2cehc108                      // Hack
-sf2cehc109                      // Hack
-sf2cehc110                      // Hack
-sf2cehc111                      // Hack
-sf2cehc112                      // Hack
-sf2cehc113                      // Hack
-sf2cehc114                      // Hack
-sf2cehc115                      // Hack
-sf2cehc116                      // Hack
-sf2cehc117                      // Hack
-sf2cehc118                      // Hack
-sf2cehc119                      // Hack
-sf2cehc120                      // Hack
-sf2cehc121                      // Hack
-sf2cehc122                      // Hack
-sf2cehc123                      // Hack
-sf2cehc124                      // Hack
-sf2cehc125                      // Hack
-sf2cehc126                      // Hack
-sf2cehc127                      // Hack
-sf2cehc128                      // Hack
-sf2cehc129                      // Hack
-//sf2cehc130                      // Hack [It does not work]
-sf2cehc131                      // Hack
-sf2cehc132                      // Hack
-sf2cehc133                      // Hack
-sf2cehc134                      // Hack
-sf2cehc135                      // Hack
-sf2cehc136                      // Hack
-sf2cehc137                      // Hack
-sf2cehc138                      // Hack
-sf2cehc139                      // Hack
-sf2cehc140                      // Hack
-sf2cehc141                      // Hack
-sf2cehc142                      // Hack
-sf2cehc143                      // Hack
-sf2cehc144                      // Hack
-sf2cehc145                      // Hack
-sf2cehc146                      // Hack
-sf2cehc147                      // Hack
-sf2cehc148                      // Hack
-sf2cehc149                      // Hack
-sf2cehc150                      // Hack
 sf2hc01                         // Hack
 sf2hc02                         // Hack
+sf2hc03                         // Hack
+sf2hc04                         // Hack
 sf2hfhc01                       // Hack
 striderhc01                     // Hack
 tk2hc01                         // Hack
@@ -47180,11 +47036,6 @@ sfzchk                          // Hack
 striderjk                       // Hack
 wonder3k                        // Hack
 
-@source:cps1bl_5205.cpp
-sf2mdthc01                      // Hack
-sf2mdthc02                      // Hack
-sf2mdthc03                      // Hack
-
 @source:cps1bl_pic.cpp
 dinopic3hc01                    // Hack
 
@@ -47219,7 +47070,7 @@ gigawinghc01                    // Hack
 gigawinghc02                    // Hack
 hsf2hc01                        // Hack
 hsf2hc02                        // Hack
-hsf2hc02                        // Hack
+hsf2hc03                        // Hack
 hsf2hc04                        // Hack
 hsf2hc05                        // Hack
 hsf2hc06                        // Hack
@@ -47320,7 +47171,7 @@ ssf2thc23                       // Hack
 ssf2thc24                       // Hack
 ssf2hc01                        // Hack
 ssf2hc02                        // Hack
-ssf2hc02                        // Hack
+ssf2hc03                        // Hack
 ssf2hc04                        // Hack
 ssf2hc05                        // Hack
 ssf2hc06                        // Hack
@@ -47438,9 +47289,6 @@ mineswp                         // Hack
 @source:exerion.cpp
 exerionhc01                     // Hack
 exerionhc02                     // Hack
-
-@source:fcrash.cpp
-sf2ces11                        // bootleg
 
 @source:flstory.cpp
 flstoryhc01                     // Hack

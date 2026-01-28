@@ -2316,7 +2316,7 @@ ROM_END
 
 // ************************************************************************* SF2M1, SF2M9
 
-ROM_START( sf2m1 )
+ROM_START( sf2ceeab2 )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_BYTE( "222e",             0x000000, 0x80000, CRC(1e20d0a3) SHA1(5e05b52fd938aff5190bca7e178705d7236aef66) )
 	ROM_LOAD16_BYTE( "196e",             0x000001, 0x80000, CRC(88cc38a3) SHA1(6049962f943bd37748a9531cc3254e8b59326eac) )
@@ -2345,7 +2345,7 @@ ROM_START( sf2m1 )
 	ROM_LOAD( "s92_19.bin", 0x20000, 0x20000, CRC(beade53f) SHA1(277c397dc12752719ec6b47d2224750bd1c07f79) )
 ROM_END
 
-ROM_START( sf2m9 )
+ROM_START( sf2md )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_BYTE( "27040.6", 0x000000, 0x80000, CRC(16c6372e) SHA1(5d5a49392f2fb806e66e0ac137df00425ca52e7f) )
 	ROM_LOAD16_BYTE( "27040.5", 0x000001, 0x80000, CRC(137d5f2e) SHA1(835e9b767e6499f161c5c4fd9a31a9f54b3ee68f) )
@@ -2442,8 +2442,8 @@ GAME( 1991, kodb,       kod,     kodb,      kodb,      fcrash_state,   init_kodb
 
 GAME( 1993, mtwinsb,    mtwins,  mtwinsb,   mtwins,    fcrash_state,   init_mtwinsb,   ROT0,    "David Inc. (bootleg)",  "Twins (Mega Twins bootleg)",  MACHINE_SUPPORTS_SAVE ) // based on World version
 
-GAME( 1992, sf2m1,      sf2ce,   sf2m1,     sf2,       fcrash_state,   init_sf2m1,     ROT0,    "bootleg",  "Street Fighter II': Champion Edition (M1, bootleg)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE ) // 920313 ETC
-GAME( 1992, sf2m9,      sf2ce,   sf2m1,     sf2,       fcrash_state,   init_sf2m1,     ROT0,    "bootleg",  "Street Fighter II': Champion Edition (M9, bootleg)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE ) // 920313 ETC
+GAME( 1992, sf2ceeab2,  sf2ce,   sf2m1,     sf2,       fcrash_state,   init_sf2m1,     ROT0,    "bootleg",  "Street Fighter II': Champion Edition (bootleg, World 920313, set 2)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE ) // 920313 ETC
+GAME( 1992, sf2md,      sf2ce,   sf2m1,     sf2,       fcrash_state,   init_sf2m1,     ROT0,    "bootleg",  "Street Fighter II': Champion Edition (Magic Delta, bootleg)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE ) // 920313 ETC
 
 GAME( 1999, sgyxz,      wof,     sgyxz,     sgyxz,     cps1bl_no_brgt, init_cps1,      ROT0,    "bootleg (All-In Electronic)",  "SanGuo YingXiongZhuan (Chinese bootleg of Sangokushi II, set 1)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )   // 921005 - Sangokushi 2
 GAME( 1999, sgyxza,     wof,     sgyxz,     sgyxz,     cps1bl_no_brgt, init_cps1,      ROT0,    "bootleg (All-In Electronic)",  "SanGuo YingXiongZhuan (Chinese bootleg of Sangokushi II, set 2)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )   // 921005 - Sangokushi 2
@@ -2457,60 +2457,3 @@ GAME( 1992, wofr1bl,    wof,     wofr1bl,   wof,       cps1bl_no_brgt, init_wofr
 GAME( 1992, varthb,     varth,   varthb,    varth,     fcrash_state,   init_mtwinsb,   ROT270,  "bootleg",  "Varth: Operation Thunderstorm (bootleg, set 1)",  MACHINE_SUPPORTS_SAVE )
 
 // ************************************************************************* DRIVER HACK
-
-/********
-  Hack
-*********/
-
-ROM_START( sf2ces11 ) // much the same as sf2m1
-	ROM_REGION( CODE_SIZE, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "c19s11.p1",             0x000000, 0x80000, CRC(e927556c) SHA1(3878ed3cfb10888a3c99001c3d6076c54d61999f) )
-	ROM_LOAD16_BYTE( "c19s11.p2",             0x000001, 0x80000, CRC(8632e786) SHA1(56d4faf986a4791ae608b066659bd365d47bbe01) )
-	ROM_LOAD16_BYTE( "c19m9.p3",              0x100000, 0x20000, CRC(8226c11c) SHA1(9588bd64e338901394805aca8a234f880674dc60) )
-	ROM_LOAD16_BYTE( "c19m8.p4",              0x100001, 0x20000, CRC(924c6ce2) SHA1(676a912652bd75da5087f0c7eae047b7681a993c) )
-
-	ROM_REGION( 0x600000, "gfx", 0 )
-	ROMX_LOAD( "c19m9.c01",  0x000000, 0x40000, CRC(a887f7d4) SHA1(d7e0c46b3ab1c6352f45033cb9e610d9c34d51fb), ROM_SKIP(7) )
-	ROM_CONTINUE(            0x000004, 0x40000)
-	ROMX_LOAD( "c19m9.c02",  0x000001, 0x40000, CRC(9390ff23) SHA1(b234169615aa952e3b15c7b0dfb495e499ba49ef), ROM_SKIP(7) )
-	ROM_CONTINUE(            0x000005, 0x40000)
-	ROMX_LOAD( "c19m9.c03",  0x000002, 0x40000, CRC(afb3b589) SHA1(9721fa705d62814e416c38a6c3e698efb9385a98), ROM_SKIP(7) )
-	ROM_CONTINUE(            0x000006, 0x40000)
-	ROMX_LOAD( "c19m9.c04",  0x000003, 0x40000, CRC(90f2053e) SHA1(a78710421e702b410650c45c3dec21bf16799fb4), ROM_SKIP(7) )
-	ROM_CONTINUE(            0x000007, 0x40000)
-
-	ROMX_LOAD( "c19m9.c05",  0x200000, 0x40000, CRC(79fa8bf0) SHA1(9f8f7b8dc54a75226beb017b9ca9fd62a9e42f6b), ROM_SKIP(7) )
-	ROM_CONTINUE(            0x200004, 0x40000)
-	ROMX_LOAD( "c19m9.c06",  0x200001, 0x40000, CRC(6a5f153c) SHA1(f3d82ad01e2e4bdb2039815747fa14399c69753a), ROM_SKIP(7) )
-	ROM_CONTINUE(            0x200005, 0x40000)
-	ROMX_LOAD( "c19m9.c07",  0x200002, 0x40000, CRC(32518120) SHA1(56ffa5fffb714cff8be8be5a3675b8a5fa29b2bc), ROM_SKIP(7) )
-	ROM_CONTINUE(            0x200006, 0x40000)
-	ROMX_LOAD( "c19m9.c08",  0x200003, 0x40000, CRC(c16579ae) SHA1(42c9d6df9f3b015f5d1ad4fa2b34ea90bb37bcae), ROM_SKIP(7) )
-	ROM_CONTINUE(            0x200007, 0x40000)
-
-	ROMX_LOAD( "c19m9.c09",  0x400000, 0x40000, CRC(169d85a6) SHA1(dd98c8807e80465858b2eac10825e598c37e1a93), ROM_SKIP(7) )
-	ROM_CONTINUE(            0x400004, 0x40000)
-	ROMX_LOAD( "c19m9.c10",  0x400001, 0x40000, CRC(32a3a841) SHA1(6f9a13b8828998d194dd3933b032c75efed9cab3), ROM_SKIP(7) )
-	ROM_CONTINUE(            0x400005, 0x40000)
-	ROMX_LOAD( "c19m9.c11",  0x400002, 0x40000, CRC(0c638630) SHA1(709d183d181a0509c7ed839c59214851468d2bb8), ROM_SKIP(7) )
-	ROM_CONTINUE(            0x400006, 0x40000)
-	ROMX_LOAD( "c19m9.c12",  0x400003, 0x40000, CRC(6ee19b94) SHA1(c45119d04879b6ca23a3f7749175c56b381b43f2), ROM_SKIP(7) )
-	ROM_CONTINUE(            0x400007, 0x40000)
-
-	ROM_REGION( 0x18000, "audiocpu", 0 )
-	ROM_LOAD( "c19.m1",      0x00000, 0x08000, CRC(08f6b60e) SHA1(8258fcaca4ac419312531eec67079b97f471179c) )
-	ROM_CONTINUE(            0x10000, 0x08000 )
-
-	ROM_REGION( 0x40000, "oki", 0 )
-	ROM_LOAD( "c19m8.v1",    0x00000, 0x40000, CRC(6cfffb11) SHA1(995526183ffd35f92e9096500a3fe6237faaa2dd) )
-
-	ROM_REGION( 0x00c8d, "pld", 0 )
-	ROM_LOAD_OPTIONAL( "gal20v8.68kadd",    0x00000, 0x00c8d, CRC(27cdd376) SHA1(9fb5844b33002bec80fb92d3e5d1bbc779087300) )//68k address decoder
-
-	ROM_REGION( 0x80, "control", 0 )
-	ROM_LOAD( "sf2ce.key", 0x00, 0x80, CRC(35b37429) SHA1(b372cce106c0900554735c207fb333ac93554ec2) )
-ROM_END
-
-/*    YEAR  NAME      PARENT MACHINE INPUT                INIT    MONITOR  COMPANY   FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1992, sf2ces11,  sf2ce, sf2m1, sf2, fcrash_state, init_sf2m1, ROT0, "bootleg", "Street Fighter II': Champion Edition (M11, bootleg)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )

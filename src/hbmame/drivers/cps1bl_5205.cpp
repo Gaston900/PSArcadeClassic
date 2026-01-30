@@ -1100,6 +1100,25 @@ ROM_START( knightsb3 )
 	ROM_LOAD( "2_palce16v8.bin", 0x200, 0x117, CRC(bad3316b) SHA1(b25141540fbaab028ba563f4fe1796b6039a4d59) )
 ROM_END
 
+ROM_START( knightsb4 )
+	ROM_REGION( CODE_SIZE, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "5.bin", 0x00000, 0x80000, CRC(b818272c) SHA1(680b1539bbeebf26706c9367decce2a8de0144e4) )  // 27c040
+	ROM_LOAD16_BYTE( "3.bin", 0x00001, 0x80000, CRC(b0b9a4c2) SHA1(7d49b260224756303f9c6cdb67e8c531b0f5689f) )  // 27c040
+
+	ROM_REGION( 0x400000, "gfx", 0 )
+	ROM_LOAD64_WORD( "kr_01.3a",  0x000000, 0x80000, CRC(9e36c1a4) SHA1(772daae74e119371dfb76fde9775bda78a8ba125) ) // == kr-5m.3a
+	ROM_LOAD64_WORD( "kr_02.4a",  0x000002, 0x80000, CRC(c5832cae) SHA1(a188cf401cd3a2909b377d3059f14d22ec3b0643) ) // == kr-7m.5a
+	ROM_LOAD64_WORD( "kr_03.5a",  0x000004, 0x80000, CRC(f095be2d) SHA1(0427d1574062f277a9d04440019d5638b05de561) ) // == kr-1m.4a
+	ROM_LOAD64_WORD( "kr_04.6a",  0x000006, 0x80000, CRC(179dfd96) SHA1(b1844e69da7ab13474da569978d5b47deb8eb2be) ) // == kr-3m.6a
+	ROM_LOAD64_WORD( "kr_05.7a",  0x200000, 0x80000, CRC(1f4298d2) SHA1(4b162a7f649b0bcd676f8ca0c5eee9a1250d6452) ) // == kr-6m.7a
+	ROM_LOAD64_WORD( "kr_06.8a",  0x200002, 0x80000, CRC(37fa8751) SHA1(b88b39d1f08621f15a5620095aef998346fa9891) ) // == kr-8m.9a
+	ROM_LOAD64_WORD( "kr_07.9a",  0x200004, 0x80000, CRC(0200bc3d) SHA1(c900b1be2b4e49b951e5c1e3fd1e19d21b82986e) ) // == kr-2m.8a
+	ROM_LOAD64_WORD( "kr_08.10a", 0x200006, 0x80000, CRC(0bb2b4e7) SHA1(983b800925d58e4aeb4e5105f93ed5faf66d009c) ) // == kr-4m.10a
+
+	ROM_REGION( 0x50000, "audiocpu", 0 )
+	ROM_LOAD( "1.ic26", 0x00000, 0x40000, CRC(bd6f9cc1) SHA1(9f33cccef224d2204736a9eae761196866bd6e41) )  // knightsb
+	ROM_RELOAD( 0x10000, 0x40000 )
+ROM_END
 
 // ************************************************************************* SF2B, SF2B2
 
@@ -1372,6 +1391,7 @@ GAME( 1991,  captcommb2,  captcomm, captcommb2,  captcommb2,  captcommb2_state, 
 
 GAME( 1991,  knightsb,    knights,  knightsb,    knights,     captcommb2_state,   init_knightsb,    ROT0,  "bootleg",  "Knights of the Round (bootleg with 2xMSM5205, set 1)",  MACHINE_SUPPORTS_SAVE )  // 911127 ETC
 GAME( 1991,  knightsb3,   knights,  knightsb,    knights,     captcommb2_state,   init_knightsb,    ROT0,  "bootleg",  "Knights of the Round (bootleg with 2xMSM5205, set 2)",  MACHINE_SUPPORTS_SAVE )  // 911127 ETC
+GAME( 1991,  knightsb4,   knights,  knightsb,    knights,     captcommb2_state,   init_knightsb,    ROT0,  "bootleg",  "Knights of the Round (bootleg with YM2151 + 2xMSM5205)",  MACHINE_SUPPORTS_SAVE )  // 911127 ETC
 
 GAME( 1992,  sf2b,        sf2,      sf2b,        sf2mdt,      cps1bl_5205_state,  init_sf2b,        ROT0,  "bootleg (Playmark)",  "Street Fighter II: The World Warrior (bootleg, set 1)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )  // 910204 ETC
 GAME( 1992,  sf2b2,       sf2,      sf2b,        sf2mdt,      cps1bl_5205_state,  init_sf2mdtb,     ROT0,  "bootleg", "Street Fighter II: The World Warrior (bootleg, set 2)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )              // 910204 ETC

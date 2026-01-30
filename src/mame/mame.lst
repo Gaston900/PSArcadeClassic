@@ -11172,6 +11172,7 @@ wonder3                         // 20/05/1991 (c) 1991 (Japan)
 captcommb2                      // bootleg
 knightsb                        // bootleg
 knightsb3                       // bootleg
+knightsb4
 sf2b                            // bootleg
 sf2b2                           // bootleg
 sf2ceb                          // bootleg
@@ -46306,20 +46307,23 @@ dinotpic	                    // Bootleg
 dinohc	                        // Bootleg
 dinopic4	                    // Bootleg
 dinod	                        // Bootleg
-knightsc                        // Bootleg
-mercscn	                        // Bootleg
+knightsh2                       // Bootleg
+knightsb5                       // Bootleg
 pnicku	                        // Bootleg
 punisherud1	                    // Bootleg
 punisherud2	                    // Bootleg
 punisherb	                    // Bootleg
 sf2cejabl	                    // Bootleg
 sf2rb5	                        // Bootleg
-sf2hfjb	                        // Bootleg
+sf2rb6	                        // Bootleg
 sf2mega2	                    // Bootleg
 sf2amf5	                        // Bootleg
 sf2amf6	                        // Bootleg
 sf2amf7	                        // Bootleg
 sf2amf8	                        // Bootleg
+sf2amf12	                    // Bootleg
+sf2amf13	                    // Bootleg
+sf2amf14	                    // Bootleg
 sf2tlona	                    // Bootleg
 sf2tlonb	                    // Bootleg
 sf2tlonc	                    // Bootleg
@@ -46330,9 +46334,16 @@ sf2yyc2	                        // Bootleg
 sf2cejab2	                    // Bootleg
 sf2sl73a                        // Bootleg
 sf2koryu2                       // Bootleg
+sf2koryua	                    // Bootleg
+sf2tlona2	                    // Bootleg
+sf2tlonb2	                    // Bootleg
+sf2tlonc2	                    // Bootleg
 sf2b3                           // Bootleg
 sf2b4                           // Bootleg
 sf2mkot2                        // Bootleg
+sf2hfjb	                        // Bootleg
+sf2hfjb2                        // Bootleg
+//sf2hfub                         // Bootleg (It has a graphics problem)
 slammastud	                    // Bootleg
 wofah	                        // Bootleg
 wofaha	                        // Bootleg
@@ -46901,21 +46912,8 @@ knightshc03                     // Hack
 knightshc04                     // Hack
 knightshc05                     // Hack
 knightshc06                     // Hack
-knightshc07                     // Hack
-knightshc08                     // Hack
-knightshc09                     // Hack
-knightshc10                     // Hack
-knightshc11                     // Hack
-knightshc12                     // Hack
-knightshc13                     // Hack
-knightshc14                     // Hack
-knightshc15                     // Hack
-knightshc16                     // Hack
-knightshc17                     // Hack
-knightshc18                     // Hack
-knightshc19                     // Hack
-knightshc20                     // Hack
 mercshc01                       // Hack
+mercshc02                       // Hack
 punisherhc01                    // Hack
 punisherhc02                    // Hack
 punisherhc03                    // Hack
@@ -46925,38 +46923,6 @@ punisherhc06                    // Hack
 punisherhc07                    // Hack
 punisherhc08                    // Hack
 punisherhc09                    // Hack
-punisherhc10                    // Hack
-punisherhc11                    // Hack
-punisherhc12                    // Hack
-punisherhc13                    // Hack
-punisherhc14                    // Hack
-punisherhc15                    // Hack
-punisherhc16                    // Hack
-punisherhc17                    // Hack
-punisherhc18                    // Hack
-punisherhc19                    // Hack
-punisherhc20                    // Hack
-punisherhc21                    // Hack
-punisherhc22                    // Hack
-punisherhc23                    // Hack
-punisherhc24                    // Hack
-punisherhc25                    // Hack
-punisherhc26                    // Hack
-punisherhc27                    // Hack
-punisherhc28                    // Hack
-punisherhc29                    // Hack
-punisherhc30                    // Hack
-punisherhc31                    // Hack
-punisherhc32                    // Hack
-punisherhc33                    // Hack
-punisherhc34                    // Hack
-punisherhc35                    // Hack
-punisherhc36                    // Hack
-punisherhc37                    // Hack
-punisherhc38                    // Hack
-punisherhc39                    // Hack
-punisherhc40                    // Hack
-punisherhc41                    // Hack
 sf2cehc01                       // Hack
 sf2cehc02                       // Hack
 sf2cehc03                       // Hack
@@ -46967,12 +46933,25 @@ sf2cehc07                       // Hack
 sf2cehc08                       // Hack
 sf2cehc09                       // Hack
 sf2cehc10                       // Hack
+sf2cehc11                       // Hack
+sf2cehc12                       // Hack
+sf2cehc13                       // Hack
+sf2cehc14                       // Hack
+sf2cehc15                       // Hack
+sf2cehc16                       // Hack
+sf2cehc17                       // Hack
+sf2cehc18                       // Hack
+sf2cehc19                       // Hack
 sf2hc01                         // Hack
 sf2hc02                         // Hack
 sf2hc03                         // Hack
 sf2hc04                         // Hack
+sf2hc05                         // Hack
+sf2hfhc01                       // Hack
 sf2hfhc01                       // Hack
 striderhc01                     // Hack
+striderhc02                     // Hack
+striderhc03                     // Hack
 tk2hc01                         // Hack
 tk2hc02                         // Hack
 tk2hc03                         // Hack
@@ -47008,6 +46987,7 @@ tk2hc32                         // Hack
 tk2hc33                         // Hack
 tk2hc34                         // Hack
 tk2hc35                         // Hack
+tk2hc36                         // Hack
 tk2chc01                        // Hack
 tk2chc02                        // Hack
 tk2chc03                        // Hack
@@ -47016,10 +46996,10 @@ sk2hc01                         // Hack
 sk3hc01                         // Hack
 varthhc01                       // Hack
 willowhc01                      // Hack
+willowhc02                      // Hack
 dinosf2                         // SF2 Conversion
 ghoulsf2                        // SF2 Conversion
 forgottnsf2                     // SF2 Conversion
-striderf2                       // SF2 Conversion
 
 @source:cps1.cpp
 area88k                         // Hack
@@ -47029,11 +47009,7 @@ daimakaik                       // Hack
 dinok                           // Hack
 ffightjk                        // Hack
 kodjk                           // Hack
-knightsjk                       // Hack
-punisherjk                      // Hack
 rockmanjk                       // Hack
-sfzchk                          // Hack
-striderjk                       // Hack
 wonder3k                        // Hack
 
 @source:cps1bl_pic.cpp

@@ -1449,6 +1449,7 @@ static const struct CPS1config cps1_config_table[]=
 	{"knightsb2",   CPS_B_21_BT4, mapper_KR63B,  0x36, 0, 0x34 },   // wrong, knightsb bootleg doesn't use the KR63B PAL
 	//{"knightsb",    CPS_B_21_BT4, mapper_KR63B,  0x36, 0, 0x34 },   // wrong, knightsb bootleg doesn't use the KR63B PAL
 	{"knightsb3",   CPS_B_21_BT4, mapper_KR63B },
+	{"knightsb4",   CPS_B_21_BT4, mapper_KR63B },
 	{"pokonyan",    CPS_B_21_DEF, mapper_pokonyan, 0x36 },   // wrong, this set uses an unknown PAL, still not dumped
 	{"sf2ce",       CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2ceea",     CPS_B_21_DEF, mapper_S9263B, 0x36 },

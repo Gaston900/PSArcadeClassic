@@ -446,7 +446,6 @@ public:
 	void init_dinoh();
 	void init_dinoz();
 	void init_dinohb();
-	void init_punisherb();
 	void init_sf2rk();
 	void init_sf2h9();
 	void init_sf2h13();

@@ -46307,12 +46307,13 @@ dinotpic	                    // Bootleg
 dinohc	                        // Bootleg
 dinopic4	                    // Bootleg
 dinod	                        // Bootleg
+kodh                            // Bootleg
+kodda                           // Bootleg
 knightsh2                       // Bootleg
 knightsb5                       // Bootleg
 pnicku	                        // Bootleg
 punisherud1	                    // Bootleg
 punisherud2	                    // Bootleg
-punisherb	                    // Bootleg
 sf2cejabl	                    // Bootleg
 sf2rb5	                        // Bootleg
 sf2rb6	                        // Bootleg
@@ -46341,8 +46342,10 @@ sf2tlonc2	                    // Bootleg
 sf2b3                           // Bootleg
 sf2b4                           // Bootleg
 sf2mkot2                        // Bootleg
+sf2ly                           // Capcom
 sf2hfjb	                        // Bootleg
 sf2hfjb2                        // Bootleg
+sfzcha                          // Capcom
 //sf2hfub                         // Bootleg (It has a graphics problem)
 slammastud	                    // Bootleg
 wofah	                        // Bootleg
@@ -46360,6 +46363,7 @@ wofjd	                        // Bootleg
 wofud	                        // Bootleg
 
 @source:cps1.cpp
+3wondershc01                    // Hack
 captcommhc01                    // Hack
 captcommhc02                    // Hack
 captcommhc03                    // Hack
@@ -46632,7 +46636,7 @@ dinohc139                       // Hack
 dinohc140                       // Hack
 dinohc141                       // Hack
 dinohc142                       // Hack
-//dinohc143                       // Hack [It does not work]
+//dinohc143                       // Hack
 dinohc144                       // Hack
 dinohc145                       // Hack
 dinohc146                       // Hack
@@ -46654,11 +46658,11 @@ dinohc161                       // Hack
 dinohc162                       // Hack
 dinohc163                       // Hack
 dinohc164                       // Hack
-//dinohc165                       // Hack [It does not work]
+//dinohc165                       // Hack
 dinohc166                       // Hack
 dinohc167                       // Hack
 dinohc168                       // Hack
-//dinohc169                       // Hack [It does not work]
+//dinohc169                       // Hack
 dinohc170                       // Hack
 dinohc171                       // Hack
 dinohc172                       // Hack
@@ -46846,14 +46850,14 @@ dinohc353                       // Hack
 dinohc354                       // Hack
 dinohc355                       // Hack
 dinohc356                       // Hack
-//dinohc357                       // Hack [It does not work]
+//dinohc357                       // Hack
 dinohc358                       // Hack
 dinohc359                       // Hack
 dinohc360                       // Hack
 dinohc361                       // Hack
 dinohc362                       // Hack
 dinohc363                       // Hack
-//dinohc364                       // Hack [It does not work]
+//dinohc364                       // Hack
 dinohc365                       // Hack
 dinohc366                       // Hack
 dinohc367                       // Hack
@@ -46871,41 +46875,22 @@ dinohc378                       // Hack
 dinohc379                       // Hack
 dinohc380                       // Hack
 forgottnhc01                    // Hack
+forgottnhc02                    // Hack
 ffighthc01                      // Hack
 ffighthc02                      // Hack
 ffighthc03                      // Hack
 ffighthc04                      // Hack
 ffighthc05                      // Hack
-ffighthc06                      // Hack
-ffighthc07                      // Hack
-ffighthc08                      // Hack
-ffighthc09                      // Hack
-ffighthc10                      // Hack
+ghoulshc01                      // Hack
 mswordhc01                      // Hack
-kodhc01                         // Hack [It does not work]
-kodhc02                         // Hack [It does not work]
-kodhc03                         // Hack [It does not work]
-kodhc04                         // Hack [It does not work]
-kodhc05                         // Hack [It does not work]
-kodhc06                         // Hack [It does not work]
-kodhc07                         // Hack [It does not work]
-kodhc08                         // Hack [It does not work]
-kodhc09                         // Hack [It does not work]
-kodhc10                         // Hack [It does not work]
-kodhc11                         // Hack [It does not work]
-kodhc12                         // Hack [It does not work]
-kodhc13                         // Hack [It does not work]
-kodhc14                         // Hack
-kodhc15                         // Hack
-kodhc16                         // Hack
-kodhc17                         // Hack
-kodhc18                         // Hack
-kodhc19                         // Hack
-kodhc20                         // Hack
-kodhc21                         // Hack
-kodhc22                         // Hack
-kodhc23                         // Hack
-kodhc24                         // Hack
+kodhc01                         // Hack
+kodhc02                         // Hack
+kodhc03                         // Hack
+kodhc04                         // Hack
+kodhc05                         // Hack
+kodhc06                         // Hack
+kodhc07                         // Hack
+kodhc08                         // Hack
 knightshc01                     // Hack
 knightshc02                     // Hack
 knightshc03                     // Hack
@@ -46923,6 +46908,7 @@ punisherhc06                    // Hack
 punisherhc07                    // Hack
 punisherhc08                    // Hack
 punisherhc09                    // Hack
+rockmanjhc01                    // Hack
 sf2cehc01                       // Hack
 sf2cehc02                       // Hack
 sf2cehc03                       // Hack
@@ -46946,9 +46932,9 @@ sf2hc01                         // Hack
 sf2hc02                         // Hack
 sf2hc03                         // Hack
 sf2hc04                         // Hack
-sf2hc05                         // Hack
 sf2hfhc01                       // Hack
-sf2hfhc01                       // Hack
+sf2hfhc02                       // Hack
+sfzchhc01                       // Hack
 striderhc01                     // Hack
 striderhc02                     // Hack
 striderhc03                     // Hack
@@ -46997,9 +46983,9 @@ sk3hc01                         // Hack
 varthhc01                       // Hack
 willowhc01                      // Hack
 willowhc02                      // Hack
+wofhc01                         // Hack
+wofhc02                         // Hack
 dinosf2                         // SF2 Conversion
-ghoulsf2                        // SF2 Conversion
-forgottnsf2                     // SF2 Conversion
 
 @source:cps1.cpp
 area88k                         // Hack
@@ -47007,9 +46993,6 @@ area88rk                        // Hack
 captcommjk                      // Hack
 daimakaik                       // Hack
 dinok                           // Hack
-ffightjk                        // Hack
-kodjk                           // Hack
-rockmanjk                       // Hack
 wonder3k                        // Hack
 
 @source:cps1bl_pic.cpp
@@ -47058,8 +47041,8 @@ hsf2hc11                        // Hack
 hsf2hc12                        // Hack
 hsf2hc13                        // Hack
 hsf2hc14                        // Hack
-hsf2hc15                        // Hack [It does not work]
-hsf2hc16                        // Hack [It does not work]
+hsf2hc15                        // Hack
+hsf2hc16                        // Hack
 hsf2hc17                        // Hack
 hsf2hc18                        // Hack
 hsf2hc19                        // Hack
@@ -47488,7 +47471,7 @@ sargex                          // Hack
 kikikaihc01                     // Hack
 
 @source:midtunit.cpp
-//nbajamhc01                      // Hack [It does not work]
+//nbajamhc01                      // Hack
 mkhc01                          // Hack
 mkhc02                          // Hack
 mkhc03                          // Hack
@@ -48527,10 +48510,10 @@ kov2hc28                        // Hack
 kov2hc29                        // Hack
 kov2hc30                        // Hack
 kov2hc31                        // Hack
-//kov2hc32                        // Hack [It does not work]
+//kov2hc32                        // Hack
 kov2hc33                        // Hack
-//kov2hc34                        // Hack [It does not work]
-//kov2hc35                        // Hack [It does not work]
+//kov2hc34                        // Hack
+//kov2hc35                        // Hack
 kov2hc36                        // Hack
 kov2hc37                        // Hack
 kov2hc38                        // Hack
@@ -48538,11 +48521,11 @@ kov2hc39                        // Hack
 kov2hc40                        // Hack
 kov2hc41                        // Hack
 kov2hc42                        // Hack
-//kov2hc43                        // Hack [It does not work]
-//kov2phc01                       // Hack [It does not work]
+//kov2hc43                        // Hack
+//kov2phc01                       // Hack
 kov2phc02                       // Hack
 kov2phc03                       // Hack
-//kov2phc04                       // Hack [It does not work]
+//kov2phc04                       // Hack
 kov2phc05                       // Hack
 kov2phc06                       // Hack
 kov2phc07                       // Hack
@@ -48553,7 +48536,7 @@ kov2phc11                       // Hack
 kov2phc12                       // Hack
 kov2phc13                       // Hack
 kov2phc14                       // Hack
-//kov2phc15                       // Hack [It does not work]
+//kov2phc15                       // Hack
 kov2phc16                       // Hack
 kov2phc17                       // Hack
 kov2phc18                       // Hack
@@ -48590,7 +48573,7 @@ kov2phc48                       // Hack
 kov2phc49                       // Hack
 kov2phc50                       // Hack
 kov2phc51                       // Hack
-//kov2phc52                       // Hack [It does not work]
+//kov2phc52                       // Hack
 kov2phc53                       // Hack
 kov2phc54                       // Hack
 kov2phc55                       // Hack
@@ -48607,13 +48590,13 @@ kov2phc65                       // Hack
 kov2phc66                       // Hack
 kov2phc67                       // Hack
 kov2phc68                       // Hack
-//kov2phc69                       // Hack [It does not work]
-//kov2phc70                       // Hack [It does not work]
-//kov2phc71                       // Hack [It does not work]
-//kov2phc72                       // Hack [It does not work]
+//kov2phc69                       // Hack
+//kov2phc70                       // Hack
+//kov2phc71                       // Hack
+//kov2phc72                       // Hack
 kov2phc73                       // Hack
 kov2phc74                       // Hack
-//kov2phc75                       // Hack [It does not work]
+//kov2phc75                       // Hack
 kov2phc76                       // Hack
 kov2phc77                       // Hack
 kov2phc78                       // Hack
@@ -48628,29 +48611,29 @@ kov2phc86                       // Hack
 kov2phc87                       // Hack
 kov2phc88                       // Hack
 kov2phc89                       // Hack
-//kov2phc90                       // Hack [It does not work]
+//kov2phc90                       // Hack
 kov2phc91                       // Hack
 kov2phc92                       // Hack
 kov2phc93                       // Hack
-//kov2phc94                       // Hack [It does not work]
+//kov2phc94                       // Hack
 kov2phc95                       // Hack
 kov2phc96                       // Hack
-//kov2phc97                       // Hack [It does not work]
-//kov2phc98                       // Hack [It does not work]
-//kov2phc99                       // Hack [It does not work]
+//kov2phc97                       // Hack
+//kov2phc98                       // Hack
+//kov2phc99                       // Hack
 kov2phc100                       // Hack
-//kov2phc101                     // Hack [It does not work]
+//kov2phc101                     // Hack
 kov2phc102                       // Hack
-//kov2phc103                       // Hack [It does not work]
-//kov2phc104                       // Hack [It does not work]
+//kov2phc103                       // Hack
+//kov2phc104                       // Hack
 kov2phc105                       // Hack
-//kov2phc106                       // Hack [It does not work]
+//kov2phc106                       // Hack
 kov2phc107                       // Hack
 kov2phc108                       // Hack
 kov2phc109                       // Hack
-//kov2phc110                       // Hack [It does not work]
-//kov2phc111                       // Hack [It does not work]
-kov2phc112                       // Hack [It does not work]
+//kov2phc110                       // Hack
+//kov2phc111                       // Hack
+kov2phc112                       // Hack
 kov2phc113                       // Hack
 kov2phc114                       // Hack
 kov2phc115                       // Hack
@@ -48662,27 +48645,27 @@ kov2phc120                       // Hack
 kov2phc121                       // Hack
 kov2phc122                       // Hack
 kov2phc123                       // Hack
-//kov2phc124                       // Hack [It does not work]
-//kov2phc125                       // Hack [It does not work]
+//kov2phc124                       // Hack
+//kov2phc125                       // Hack
 kov2phc126                       // Hack
 kovplushc01                      // Hack
-//kovplushc02                      // Hack [It does not work]
-//kovplushc03                      // Hack [It does not work]
-//kovplushc04                      // Hack [It does not work]
-//kovplushc05                      // Hack [It does not work]
-//kovplushc06                      // Hack [It does not work]
-//kovplushc07                      // Hack [It does not work]
-//kovplushc08                      // Hack [It does not work]
-//kovplushc09                      // Hack [It does not work]
-//kovplushc10                      // Hack [It does not work]
-//kovplushc11                      // Hack [It does not work]
+//kovplushc02                      // Hack
+//kovplushc03                      // Hack
+//kovplushc04                      // Hack
+//kovplushc05                      // Hack
+//kovplushc06                      // Hack
+//kovplushc07                      // Hack
+//kovplushc08                      // Hack
+//kovplushc09                      // Hack
+//kovplushc10                      // Hack
+//kovplushc11                      // Hack
 kovplushc12                      // Hack
-//kovplushc13                      // Hack [It does not work]
-//kovplushc14                      // Hack [It does not work]
-//kovplushc15                      // Hack [It does not work]
-//kovplushc16                      // Hack [It does not work]
-//kovplushc17                      // Hack [It does not work]
-//kovplushc18                      // Hack [It does not work]
+//kovplushc13                      // Hack
+//kovplushc14                      // Hack
+//kovplushc15                      // Hack
+//kovplushc16                      // Hack
+//kovplushc17                      // Hack
+//kovplushc18                      // Hack
 kovplushc19                      // Hack
 kovplushc20                      // Hack
 kovplushc21                      // Hack
@@ -48705,12 +48688,12 @@ kovplushc37                      // Hack
 kovplushc38                      // Hack
 kovplushc39                      // Hack
 kovplushc40                      // Hack
-//kovplushc41                      // Hack [It does not work]
-//kovplushc42                      // Hack [It does not work]
-//kovplushc43                      // Hack [It does not work]
+//kovplushc41                      // Hack
+//kovplushc42                      // Hack
+//kovplushc43                      // Hack
 kovplushc44                      // Hack
 kovplushc45                      // Hack
-//kovplushc47                      // Hack [It does not work]
+//kovplushc47                      // Hack
 kovplushc48                      // Hack
 kovplushc49                      // Hack
 kovplushc50                      // Hack
@@ -48721,18 +48704,18 @@ kovplushc54                      // Hack
 kovplushc55                      // Hack
 kovplushc56                      // Hack
 kovplushc57                      // Hack
-//kovplushc58                      // Hack [It does not work]
+//kovplushc58                      // Hack
 kovplushc59                      // Hack
-//kovplushc60                      // Hack [It does not work]
+//kovplushc60                      // Hack
 kovplushc61                      // Hack
 kovplushc62                      // Hack
 kovplushc63                      // Hack
 kovplushc64                      // Hack
-//kovplushc65                      // Hack [It does not work]
+//kovplushc65                      // Hack
 kovplushc66                      // Hack
 kovplushc67                      // Hack
 kovplushc68                      // Hack
-//kovplushc69                      // Hack [It does not work]
+//kovplushc69                      // Hack
 kovplushc70                      // Hack
 kovplushc71                      // Hack
 kovplushc72                      // Hack
@@ -48748,7 +48731,7 @@ kovplushc81                      // Hack
 kovplushc82                      // Hack
 kovplushc83                      // Hack
 kovplushc84                      // Hack
-//kovplushc85                      // Hack [It does not work]
+//kovplushc85                      // Hack
 kovplushc86                      // Hack
 kovplushc87                      // Hack
 kovplushc88                      // Hack
@@ -48762,7 +48745,7 @@ kovplushc95                      // Hack
 kovplushc96                      // Hack
 kovplushc97                      // Hack
 kovplushc98                      // Hack
-//kovplushc99                      // Hack [It does not work]
+//kovplushc99                      // Hack
 kovplushc100                     // Hack
 kovplushc101                     // Hack
 kovplushc102                     // Hack
@@ -48805,7 +48788,7 @@ kovplushc138                     // Hack
 kovplushc139                     // Hack
 kovplushc140                     // Hack
 kovplushc141                     // Hack
-//kovplushc142                     // Hack [It does not work]
+//kovplushc142                     // Hack
 kovplushc143                     // Hack
 kovplushc144                     // Hack
 kovplushc145                     // Hack
@@ -48827,13 +48810,13 @@ kovplushc160                     // Hack
 kovplushc161                     // Hack
 kovplushc162                     // Hack
 kovplushc163                     // Hack
-//kovplushc164                     // Hack [It does not work]
+//kovplushc164                     // Hack
 kovplushc165                     // Hack
-//kovplushc166                     // Hack [It does not work]
-//kovplushc167                     // Hack [It does not work]
+//kovplushc166                     // Hack
+//kovplushc167                     // Hack
 kovplushc168                     // Hack
 kovplushc169                     // Hack
-//kovplushc170                     // Hack [It does not work]
+//kovplushc170                     // Hack
 kovplushc171                     // Hack
 kovplushc172                     // Hack
 kovplushc173                     // Hack
@@ -48855,12 +48838,12 @@ kovplushc188                     // Hack
 kovplushc189                     // Hack
 kovplushc190                     // Hack
 kovplushc191                     // Hack
-//kovplushc192                     // Hack [It does not work]
-//kovplushc193                     // Hack [It does not work]
+//kovplushc192                     // Hack
+//kovplushc193                     // Hack
 kovplushc194                     // Hack
 kovplushc195                     // Hack
 kovplushc196                     // Hack
-//kovplushc197                     // Hack [It does not work]
+//kovplushc197                     // Hack
 kovplushc198                     // Hack
 kovplushc199                     // Hack
 kovplushc200                     // Hack
@@ -48880,82 +48863,82 @@ kovplushc213                     // Hack
 kovplushc214                     // Hack
 kovplushc215                     // Hack
 kovplushc216                     // Hack
-//kovplushc217                     // Hack [It does not work]
-//kovplushc218                     // Hack [It does not work]
-//kovplushc219                     // Hack [It does not work]
-//kovplushc220                     // Hack [It does not work]
+//kovplushc217                     // Hack
+//kovplushc218                     // Hack
+//kovplushc219                     // Hack
+//kovplushc220                     // Hack
 kovplushc221                     // Hack
 kovplushc222                     // Hack
-//kovplushc223                     // Hack [It does not work]
-//kovplushc224                     // Hack [It does not work]
-//kovplushc225                     // Hack [It does not work]
-//kovplushc226                     // Hack [It does not work]
-//kovplushc227                     // Hack [It does not work]
-//kovplushc228                     // Hack [It does not work]
-//kovplushc229                     // Hack [It does not work]
-//kovplushc230                     // Hack [It does not work]
+//kovplushc223                     // Hack
+//kovplushc224                     // Hack
+//kovplushc225                     // Hack
+//kovplushc226                     // Hack
+//kovplushc227                     // Hack
+//kovplushc228                     // Hack
+//kovplushc229                     // Hack
+//kovplushc230                     // Hack
 kovplushc231                     // Hack
 kovplushc232                     // Hack
 kovplushc233                     // Hack
 kovplushc234                     // Hack
 kovplushc235                     // Hack
 kovplushc236                     // Hack
-//kovplushc237                     // Hack [It does not work]
+//kovplushc237                     // Hack
 kovplushc238                     // Hack
 kovplushc239                     // Hack
 kovplushc240                     // Hack
-//kovplushc241                     // Hack [It does not work]
-//kovplushc242                     // Hack [It does not work]
+//kovplushc241                     // Hack
+//kovplushc242                     // Hack
 kovplushc243                     // Hack
-//kovplushc244                     // Hack [It does not work]
-//kovplushc245                     // Hack [It does not work]
-//kovplushc246                     // Hack [It does not work]
-//kovplushc247                     // Hack [It does not work]
-//kovplushc248                     // Hack [It does not work]
-//kovplushc249                     // Hack [It does not work]
-//kovplushc250                     // Hack [It does not work]
-kovplushc251                     // Hack [It does not work]
-//kovplushc252                     // Hack [It does not work]
-//kovplushc253                     // Hack [It does not work]
-//kovplushc254                     // Hack [It does not work]
-//kovplushc255                     // Hack [It does not work]
-//kovplushc256                     // Hack [It does not work]
-//kovplushc257                     // Hack [It does not work]
+//kovplushc244                     // Hack
+//kovplushc245                     // Hack
+//kovplushc246                     // Hack
+//kovplushc247                     // Hack
+//kovplushc248                     // Hack
+//kovplushc249                     // Hack
+//kovplushc250                     // Hack
+kovplushc251                     // Hack
+//kovplushc252                     // Hack
+//kovplushc253                     // Hack
+//kovplushc254                     // Hack
+//kovplushc255                     // Hack
+//kovplushc256                     // Hack
+//kovplushc257                     // Hack
 kovplushc258                     // Hack
-//kovplushc259                     // Hack [It does not work]
-//kovplushc260                     // Hack [It does not work]
-//kovplushc261                     // Hack [It does not work]
-//kovplushc262                     // Hack [It does not work]
-//kovplushc263                     // Hack [It does not work]
-//kovplushc264                     // Hack [It does not work]
-//kovplushc265                     // Hack [It does not work]
-//kovplushc266                     // Hack [It does not work]
-//kovplushc267                     // Hack [It does not work]
+//kovplushc259                     // Hack
+//kovplushc260                     // Hack
+//kovplushc261                     // Hack
+//kovplushc262                     // Hack
+//kovplushc263                     // Hack
+//kovplushc264                     // Hack
+//kovplushc265                     // Hack
+//kovplushc266                     // Hack
+//kovplushc267                     // Hack
 kovplushc268                     // Hack
 kovplushc269                     // Hack
 kovplushc270                     // Hack
 kovplushc271                     // Hack
-//kovplushc272                     // Hack [It does not work]
+//kovplushc272                     // Hack
 kovplushc273                     // Hack
 kovplushc274                     // Hack
-//kovplushc275                     // Hack [It does not work]
-//kovplushc276                     // Hack [It does not work]
-//kovplushc277                     // Hack [It does not work]
-kovplushc278                     // Hack [It does not work]
-//kovplushc279                     // Hack [It does not work]
-//kovplushc280                     // Hack [It does not work]
+//kovplushc275                     // Hack
+//kovplushc276                     // Hack
+//kovplushc277                     // Hack
+kovplushc278                     // Hack
+//kovplushc279                     // Hack
+//kovplushc280                     // Hack
 kovplushc281                     // Hack
-//kovplushc282                     // Hack [It does not work]
+//kovplushc282                     // Hack
 kovplushc283                     // Hack
-//kovplushc284                     // Hack [It does not work]
+//kovplushc284                     // Hack
 kovplushc285                     // Hack
-//kovplushc286                     // Hack [It does not work]
-//kovplushc287                     // Hack [It does not work]
-//kovplushc288                     // Hack [It does not work]
-//kovplushc289                     // Hack [It does not work]
+//kovplushc286                     // Hack
+//kovplushc287                     // Hack
+//kovplushc288                     // Hack
+//kovplushc289                     // Hack
 kovplushc290                     // Hack
-//kovplushc291                     // Hack [It does not work]
-//kovplushc292                     // Hack [It does not work]
+//kovplushc291                     // Hack
+//kovplushc292                     // Hack
 kovshhc01                        // Hack
 kovshhc02                        // Hack
 kovshhc03                        // Hack
@@ -48976,15 +48959,15 @@ kovshhc17                        // Hack
 kovshhc18                        // Hack
 kovshhc19                        // Hack
 kovshhc20                        // Hack
-//kovshhc21                        // Hack [It does not work]
+//kovshhc21                        // Hack
 kovshhc22                        // Hack
-//kovshhc23                        // Hack [It does not work]
+//kovshhc23                        // Hack
 kovshhc24                        // Hack
 kovshhc25                        // Hack
 kovshhc26                        // Hack
 kovshhc27                        // Hack
 kovshhc28                        // Hack
-//kovshhc29                        // Hack [It does not work]
+//kovshhc29                        // Hack
 kovshhc30                        // Hack
 kovshhc31                        // Hack
 kovshhc32                        // Hack
@@ -48993,12 +48976,12 @@ kovshhc34                        // Hack
 kovshhc35                        // Hack
 kovshhc36                        // Hack
 kovshhc37                        // Hack
-//kovshhc38                        // Hack [It does not work]
+//kovshhc38                        // Hack
 kovshhc39                        // Hack
 kovshhc40                        // Hack
 kovshhc41                        // Hack
 kovshhc42                        // Hack
-//kovshhc43                        // Hack [It does not work]
+//kovshhc43                        // Hack
 kovshhc44                        // Hack
 kovshhc45                        // Hack
 kovshhc46                        // Hack
@@ -49010,15 +48993,15 @@ kovshhc51                        // Hack
 kovshhc52                        // Hack
 kovshhc53                        // Hack
 kovshhc54                        // Hack
-//kovshhc55                        // Hack [It does not work]
+//kovshhc55                        // Hack
 kovshhc56                        // Hack
-//kovshhc57                        // Hack [It does not work]
+//kovshhc57                        // Hack
 kovshhc58                        // Hack
-//kovshhc59                        // Hack [It does not work]
+//kovshhc59                        // Hack
 kovshhc60                        // Hack
-//kovshphc01                       // Hack [It does not work]
-//kovshphc02                       // Hack [It does not work]
-//kovshphc03                       // Hack [It does not work]
+//kovshphc01                       // Hack
+//kovshphc02                       // Hack
+//kovshphc03                       // Hack
 kovshphc04                       // Hack
 kovshphc05                       // Hack
 kovshphc06                       // Hack
@@ -49032,7 +49015,7 @@ kovshphc13                       // Hack
 kovshphc14                       // Hack
 kovshphc15                       // Hack
 kovshphc16                       // Hack
-//kovshphc17                       // Hack [It does not work]
+//kovshphc17                       // Hack
 kovshphc18                       // Hack
 kovshphc19                       // Hack
 kovshphc20                       // Hack
@@ -49059,7 +49042,7 @@ kovshphc40                       // Hack
 kovshphc41                       // Hack
 kovshphc42                       // Hack
 kovshphc43                       // Hack
-//kovshphc44                       // Hack [It does not work]
+//kovshphc44                       // Hack
 kovshphc45                       // Hack
 kovshphc46                       // Hack
 kovshphc47                       // Hack
@@ -49079,10 +49062,10 @@ kovshphc60                       // Hack
 kovshphc61                       // Hack
 kovshphc62                       // Hack
 kovshphc63                       // Hack
-//kovshphc64                       // Hack [It does not work]
+//kovshphc64                       // Hack
 kovshphc65                       // Hack
 kovshphc66                       // Hack
-//kovshphc67                       // Hack [It does not work]
+//kovshphc67                       // Hack
 kovshphc68                       // Hack
 kovshphc69                       // Hack
 kovshphc70                       // Hack
@@ -49110,14 +49093,14 @@ kovshphc91                       // Hack
 kovshphc92                       // Hack
 kovshphc93                       // Hack
 kovshphc94                       // Hack
-//kovshphc95                       // Hack [It does not work]
+//kovshphc95                       // Hack
 kovshphc96                       // Hack
 kovshphc97                       // Hack
-//kovshphc98                       // Hack [It does not work]
+//kovshphc98                       // Hack
 kovshphc99                       // Hack
 kovshphc100                      // Hack
 kovshphc101                      // Hack
-//kovshphc102                      // Hack [It does not work]
+//kovshphc102                      // Hack
 kovshphc103                      // Hack
 kovshphc104                      // Hack
 kovshphc105                      // Hack
@@ -49134,17 +49117,17 @@ kovshphc115                      // Hack
 kovshphc116                      // Hack
 kovshphc117                      // Hack
 kovshphc118                      // Hack
-//kovshphc119                      // Hack [It does not work]
-//kovshphc120                      // Hack [It does not work]
+//kovshphc119                      // Hack
+//kovshphc120                      // Hack
 kovshphc121                      // Hack
 kovshphc122                      // Hack
 kovshphc123                      // Hack
 kovshphc124                      // Hack
-//kovshphc125                      // Hack [It does not work]
+//kovshphc125                      // Hack
 kovshphc126                      // Hack
-//kovshphc127                      // Hack [It does not work]
-//kovshphc128                      // Hack [It does not work]
-//kovshphc129                      // Hack [It does not work]
+//kovshphc127                      // Hack
+//kovshphc128                      // Hack
+//kovshphc129                      // Hack
 kovshphc130                      // Hack
 kovshphc131                      // Hack
 kovshphc132                      // Hack
@@ -49175,7 +49158,7 @@ kovshphc156                      // Hack
 kovshphc157                      // Hack
 kovshphc158                      // Hack
 kovshphc159                      // Hack
-//kovshphc160                      // Hack [It does not work]
+//kovshphc160                      // Hack
 kovshphc161                      // Hack
 kovshphc162                      // Hack
 kovshphc163                      // Hack
@@ -49194,8 +49177,8 @@ kovshphc175                      // Hack
 kovshphc176                      // Hack
 kovshphc177                      // Hack
 kovshphc178                      // Hack
-//kovshphc179                      // Hack [It does not work]
-//kovshphc180                      // Hack [It does not work]
+//kovshphc179                      // Hack
+//kovshphc180                      // Hack
 kovshphc181                      // Hack
 kovshphc182                      // Hack
 kovshphc183                      // Hack
@@ -49217,23 +49200,23 @@ kovshphc189                      // Hack
 kovshphc199                      // Hack
 kovshphc200                      // Hack
 kovshphc201                      // Hack
-//kovshphc202                      // Hack [It does not work]
+//kovshphc202                      // Hack
 kovshphc203                      // Hack
 kovshphc204                      // Hack
 kovshphc205                      // Hack
-//kovshphc206                      // Hack [It does not work]
+//kovshphc206                      // Hack
 martmasthc01                     // Hack
 martmasthc02                     // Hack
 martmasthc03                     // Hack
-//olds100ahc01                     // Hack [It does not work]
-//olds100ahc02                     // Hack [It does not work]
-//olds100ahc03                     // Hack [It does not work]
+//olds100ahc01                     // Hack
+//olds100ahc02                     // Hack
+//olds100ahc03                     // Hack
 olds100ahc04                     // Hack
-//olds100ahc05                     // Hack [It does not work]
+//olds100ahc05                     // Hack
 olds100ahc06                     // Hack
 olds100ahc07                     // Hack
-//olds100ahc08                     // Hack [It does not work]
-//olds100ahc09                     // Hack [It does not work]
+//olds100ahc08                     // Hack
+//olds100ahc09                     // Hack
 olds100ahc10                     // Hack
 olds100ahc11                     // Hack
 olds100ahc12                     // Hack
@@ -49244,19 +49227,19 @@ olds100ahc16                     // Hack
 olds100ahc17                     // Hack
 olds100ahc18                     // Hack
 olds100ahc19                     // Hack
-//olds100ahc20                     // Hack [It does not work]
+//olds100ahc20                     // Hack
 olds100ahc21                     // Hack
 olds100ahc22                     // Hack
 olds100ahc23                     // Hack
-//olds100ahc24                     // Hack [It does not work]
+//olds100ahc24                     // Hack
 olds100ahc25                     // Hack
-//olds100ahc26                     // Hack [It does not work]
+//olds100ahc26                     // Hack
 olds100ahc27                     // Hack
 olds100ahc28                     // Hack
-//olds100ahc29                     // Hack [It does not work]
-//olds100ahc30                     // Hack [It does not work]
-//olds100ahc31                     // Hack [It does not work]
-//olds100ahc32                     // Hack [It does not work]
+//olds100ahc29                     // Hack
+//olds100ahc30                     // Hack
+//olds100ahc31                     // Hack
+//olds100ahc32                     // Hack
 olds100ahc33                     // Hack
 olds100ahc34                     // Hack
 olds100ahc35                     // Hack
@@ -49266,11 +49249,11 @@ olds100ahc38                     // Hack
 olds100ahc39                     // Hack
 olds100ahc40                     // Hack
 olds100ahc41                     // Hack
-//olds100ahc42                     // Hack [It does not work]
+//olds100ahc42                     // Hack
 olds100ahc43                     // Hack
-//olds100ahc44                     // Hack [It does not work]
-//olds100ahc45                     // Hack [It does not work]
-//olds100ahc46                     // Hack [It does not work]
+//olds100ahc44                     // Hack
+//olds100ahc45                     // Hack
+//olds100ahc46                     // Hack
 olds100ahc47                     // Hack
 olds100ahc48                     // Hack
 olds100ahc49                     // Hack
@@ -49278,8 +49261,8 @@ olds100ahc50                     // Hack
 olds100ahc51                     // Hack
 olds100ahc52                     // Hack
 olds100ahc53                     // Hack
-//olds100ahc54                     // Hack [It does not work]
-//olds100ahc55                     // Hack [It does not work]
+//olds100ahc54                     // Hack
+//olds100ahc55                     // Hack
 olds100ahc56                     // Hack
 olds100ahc57                     // Hack
 olds100ahc58                     // Hack
@@ -49288,9 +49271,9 @@ olds100ahc60                     // Hack
 olds100ahc61                     // Hack
 olds100ahc62                     // Hack
 olds100ahc63                     // Hack
-//olds100ahc64                     // Hack [It does not work]
-//olds100ahc65                     // Hack [It does not work]
-//olds100ahc66                     // Hack [It does not work]
+//olds100ahc64                     // Hack
+//olds100ahc65                     // Hack
+//olds100ahc66                     // Hack
 olds100ahc67                     // Hack
 olds100ahc68                     // Hack
 olds100ahc69                     // Hack
@@ -49308,29 +49291,29 @@ olds100ahc80                     // Hack
 olds100ahc81                     // Hack
 olds100ahc82                     // Hack
 olds100ahc83                     // Hack
-//olds100ahc84                     // Hack [It does not work]
+//olds100ahc84                     // Hack
 olds100ahc85                    // Hack
-//olds100ahc86                     // Hack [It does not work]
+//olds100ahc86                     // Hack
 olds100ahc87                    // Hack
 olds100ahc88                    // Hack
 olds100ahc89                    // Hack
-//olds100ahc90                     // Hack [It does not work]
-//olds100ahc91                     // Hack [It does not work]
-//olds100ahc92                     // Hack [It does not work]
+//olds100ahc90                     // Hack
+//olds100ahc91                     // Hack
+//olds100ahc92                     // Hack
 olds100ahc93                    // Hack
 //olds100ahc94                     // Hack
 olds100ahc95                    // Hack
-//olds100ahc96                     // Hack [It does not work]
-//olds100ahc97                     // Hack [It does not work]
-//olds103thc01                     // Hack [It does not work]
-//olds103thc02                     // Hack [It does not work]
+//olds100ahc96                     // Hack
+//olds100ahc97                     // Hack
+//olds103thc01                     // Hack
+//olds103thc02                     // Hack
 olds103thc03                    // Hack
 olds103thc04                    // Hack
 olds103thc05                    // Hack
-//olds103thc06                    // Hack [It does not work]
+//olds103thc06                    // Hack
 olds103thc07                    // Hack
 olds103thc08                    // Hack
-//olds103thc09                    // Hack [It does not work]
+//olds103thc09                    // Hack
 oldsplushc01                    // Hack
 oldsplushc02                    // Hack
 oldsplushc03                    // Hack
@@ -49360,8 +49343,8 @@ oldsplushc26                    // Hack
 oldsplushc27                    // Hack
 oldsplushc28                    // Hack
 oldsplushc29                    // Hack
-//oldsplushc30                    // Hack [It does not work]
-//oldsplushc31                    // Hack [It does not work]
+//oldsplushc30                    // Hack
+//oldsplushc31                    // Hack
 oldsplushc32                    // Hack
 oldsplushc33                    // Hack
 oldsplushc34                    // Hack
@@ -49384,7 +49367,7 @@ orlegendhc13                    // Hack
 orlegendhc14                    // Hack
 orlegendhc15                    // Hack
 orlegendhc16                    // Hack
-//orlegendhc17                    // Hack [It does not work]
+//orlegendhc17                    // Hack
 orlegendhc18                    // Hack
 orlegendhc19                    // Hack
 orlegendhc20                    // Hack
@@ -49392,7 +49375,7 @@ orlegendhc21                    // Hack
 orlegendhc22                    // Hack
 orlegendhc23                    // Hack
 orlegendhc24                    // Hack
-//orlegendhc25                    // Hack [It does not work]
+//orlegendhc25                    // Hack
 orlegendhc26                    // Hack
 orlegendhc27                    // Hack
 orlegendhc28                    // Hack

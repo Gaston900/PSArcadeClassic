@@ -1751,38 +1751,3 @@ GAME( 1993,  slampic2,   slammast,  slampic2,  slampic2,  slampic2_state,    ini
 GAME( 1992,  wofpic,     wof,       wofpic,    wof,       wofpic_state,      init_wofpic,    ROT0,  "bootleg",  "Warriors of Fate (bootleg with PIC16C57)",  MACHINE_IMPERFECT_GRAPHICS | MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )  // 921002 ETC
 
 // ************************************************************************* DRIVER HACK
-
-/********************
-  Hack And Homebrow
-***********************/
-
-ROM_START( dinopic3hc01 ) //dinopic3
-	ROM_REGION( CODE_SIZE, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "tk1-305_27c800_hc01.bin", 0x000000, 0x100000, CRC(4ab73b94) SHA1(d6b12cdeebce9aa047dd27e5c0965fc4f77cb23b) )
-	ROM_LOAD16_WORD_SWAP( "tk1-204_27c800_hc01.bin", 0x100000, 0x100000, CRC(492606ed) SHA1(cbe880b75b90fc508a7780c045a6c1ae018616a3) )
-
-	ROM_REGION( 0x400000, "gfx", 0 )
-	ROM_LOAD64_WORD("tb416-02_27c160.bin", 0x000000, 0x80000, CRC(bfd01d21) SHA1(945f2764b0ca7f9e1569a591363c70207e8efbd0) )
-	ROM_CONTINUE( 0x200000, 0x80000 )
-	ROM_CONTINUE( 0x000004, 0x80000 )
-	ROM_CONTINUE( 0x200004, 0x80000 )
-	ROM_LOAD64_WORD("tb415-01_27c160.bin", 0x000002, 0x80000, CRC(ef508ec5) SHA1(ebb521b51d7269b4a9b441bd44b6d5320a72aaaa) )
-	ROM_CONTINUE( 0x200002, 0x80000 )
-	ROM_CONTINUE( 0x000006, 0x80000 )
-	ROM_CONTINUE( 0x200006, 0x80000 )
-
-	ROM_REGION( 0x80000, "oki", 0 )
-	ROM_LOAD( "ti-i_27c040.bin", 0x000000, 0x80000, CRC(7d921309) SHA1(d51e60e904d302c2516b734189e141aa171b2b82) )
-
-	ROM_REGION( 0xc00, "plds", 0 )
-	ROM_LOAD( "1_palce20v8.bin", 0x000, 0x157, CRC(cd99ca47) SHA1(ee1d990fd294aa46f56f31264134251569f6792e) )
-	ROM_LOAD( "2_palce20v8.bin", 0x200, 0x157, CRC(60d016b9) SHA1(add42c763c819f3fe6d7cf3adc7123a52c2a3be9) )
-	ROM_LOAD( "3_palce20v8.bin", 0x400, 0x157, CRC(049b7f4f) SHA1(6c6ea03d9a293db69a8bd10e042ee75e3c01313c) )
-	ROM_LOAD( "4_palce16v8.bin", 0x600, 0x117, CRC(97a67c6d) SHA1(822411f878f1efe462a7a8e93960a1fc5140422e) )
-	ROM_LOAD( "5_palce16v8.bin", 0x800, 0x117, CRC(48253c66) SHA1(8c94e655b768c45c3edf6ef39e62e3b7a4e57530) )
-	ROM_LOAD( "6_palce16v8.bin", 0xa00, 0x117, CRC(9ae375ba) SHA1(6f227c2a5b1170a41e6419f12d1e1f98edc6f8e5) )
-ROM_END
-
-/*    YEAR  NAME           PARENT    MACHINE    INPUT                    INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 2021, dinopic3hc01,  dino,     dinopic,   dino,     dinopic_state, init_dinopic,  ROT0,   "hack",        "Cadillacs and Dinosaurs (bootleg with PIC16C57, Frame Edition Multi-mode Enhanced Edition 2020 2021-10-05)", MACHINE_NO_SOUND | MACHINE_SUPPORTS_SAVE )

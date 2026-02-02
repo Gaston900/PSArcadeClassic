@@ -46307,6 +46307,8 @@ dinotpic	                    // Bootleg
 dinohc	                        // Bootleg
 dinopic4	                    // Bootleg
 dinod	                        // Bootleg
+dikd	                        // Bootleg
+cawingh                         // Bootleg
 kodh                            // Bootleg
 kodda                           // Bootleg
 knightsh2                       // Bootleg
@@ -46363,6 +46365,12 @@ wofjd	                        // Bootleg
 wofud	                        // Bootleg
 
 @source:cps1.cpp
+cps1demo                        // HomeBrew
+cps1frog                        // HomeBrew
+cps1tests                       // HomeBrew
+cps1testm                       // HomeBrew
+
+@source:cps1.cpp
 3wondershc01                    // Hack
 3wondershc02                    // Hack
 area88hc01                      // Hack
@@ -46411,15 +46419,18 @@ dinohc24                        // Hack
 dinohc25                        // Hack
 dinohc26                        // Hack
 dinohc27                        // Hack
+dinohc28                        // Hack
+dinohc29                        // Hack
+dinohc30                        // Hack
+dinohc31                        // Hack
+dinohc32                        // Hack
 forgottnhc01                    // Hack
-forgottnhc02                    // Hack
 ffighthc01                      // Hack
 ffighthc02                      // Hack
 ffighthc03                      // Hack
 ffighthc04                      // Hack
 ffighthc05                      // Hack
 ghoulshc01                      // Hack
-mswordhc01                      // Hack
 kodhc01                         // Hack
 kodhc02                         // Hack
 kodhc03                         // Hack

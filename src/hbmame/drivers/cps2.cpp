@@ -11492,6 +11492,10 @@ GAME( 2001, progeara,   progear,  cps2, cps2_2p3b, cps2_state, init_cps2,     RO
 */
 
 
+/**********
+  Bootleg
+***********/
+
 ROM_START( 1944d )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 ) // 68000 code
 	ROM_LOAD16_WORD_SWAP( "nffud.03", 0x000000, 0x80000, CRC(28e8aae4) SHA1(b2ae11bddbf156cbf38eafdc705067bff9256752) )
@@ -13129,8 +13133,35 @@ ROM_START( ssf2td )
 	ROM_LOAD( "phoenix.key",  0x00, 0x14, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
-// Phoenix bootleg sets
+ /*********
+  HomeBrew
+*************/
 
+ROM_START( suicide )
+	ROM_REGION(CODE_SIZE, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "c65su.p1", 0x000000, 0x80000, CRC(4d5eea90) SHA1(c6f6361650d64401354111bf111bd924126b7035) )
+
+	ROM_REGION( 0xC00000, "gfx", ROMREGION_ERASE00 )
+	ROM_LOAD64_WORD( "pzf.14m",  0x800000, 0x100000, CRC(2d4881cb) SHA1(fd3baa183c25bed153b19c251980e2fb761600e2) )
+	ROM_LOAD64_WORD( "pzf.16m",  0x800002, 0x100000, CRC(4b0fd1be) SHA1(377aafdcdb7a866b1c8487670e3598d8197976e4) )
+	ROM_LOAD64_WORD( "pzf.18m",  0x800004, 0x100000, CRC(e43aac33) SHA1(d041e0688c3807d3363861a7f216de43b34d846c) )
+	ROM_LOAD64_WORD( "pzf.20m",  0x800006, 0x100000, CRC(7f536ff1) SHA1(905b9d62ef7bef47297c7f4a4dd697aed6df38a5) )
+
+	ROM_REGION(QSOUND_SIZE, "audiocpu", 0 )
+	ROM_LOAD( "pzf.01",   0x00000, 0x08000, CRC(600fb2a3) SHA1(1fab1c2a23bf6ad8309d29ddbbc29435a8aeea13) )
+	ROM_CONTINUE(         0x10000, 0x18000 )
+	ROM_LOAD( "pzf.02",   0x28000, 0x20000, CRC(496076e0) SHA1(1ee4e135140afd0e8e03231e570cd77d140f6367) )
+
+	ROM_REGION( 0x400000, "qsound", 0 )
+	ROM_LOAD16_WORD_SWAP( "pzf.11m",   0x000000, 0x200000, CRC(78442743) SHA1(b61190bb586871de6d54af580e3e1d9cc0de0acb) )
+	ROM_LOAD16_WORD_SWAP( "pzf.12m",   0x200000, 0x200000, CRC(399d2c7b) SHA1(e849dea97b8d16540415c0d9bbc4f9f4eb755ec4) )
+
+	ROM_REGION( 0x20, "key", 0 )
+	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
+ROM_END
+
+// CPS2 Bootleg
+/*    YEAR    NAME     PARENT     MACHINE           INPUT                  INIT       MONITOR   COMPANY   FULLNAME FLAGS */
 GAME( 1994, avspud,     avsp,     dead_cps2,     cps2_3p3b, cps2_state, init_cps2,     ROT0,   "bootleg", "Alien vs. Predator (USA 940520 Phoenix edition)",                                            MACHINE_SUPPORTS_SAVE )
 GAME( 1993, ddtodd,     ddtod,    dead_cps2,     cps2_4p4b, cps2_state, init_cps2,     ROT0,   "bootleg", "Dungeons & Dragons: Tower of Doom (Euro 940412 Phoenix Edition) (bootleg)",                  MACHINE_SUPPORTS_SAVE )
 GAME( 1993, ecofghtrd,  ecofghtr, dead_cps2,     ecofghtr,  cps2_state, init_ecofghtr, ROT0,   "bootleg", "Eco Fighters (World 931203 Phoenix Edition) (bootleg)",                                      MACHINE_SUPPORTS_SAVE )
@@ -13180,9 +13211,12 @@ GAME( 2001, progearjd,  progear,  dead_cps2,     cps2_2p3b, cps2_state, init_cps
 GAME( 2001, progearjbl, progear,  dead_cps2,     cps2_2p3b, cps2_state, init_cps2,     ROT0,   "bootleg", "Progear no Arashi (Japan 010117) (decrypted bootleg)",                                       MACHINE_SUPPORTS_SAVE ) // Not an actual phoenix set, but works as one
 GAME( 2001, pzloop2jd,  pzloop2,  dead_cps2,     pzloop2,   cps2_state, init_pzloop2,  ROT0,   "bootleg", "Puzz Loop 2 (Japan 010226 Phoenix Edition) (bootleg)",                                       MACHINE_SUPPORTS_SAVE )
 GAME( 2004, hsf2d,      hsf2,     dead_cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "bootleg", "Hyper Street Fighter II: The Anniversary Edition (Asia 040202 Phoenix Edition) (bootleg)",   MACHINE_SUPPORTS_SAVE )
-GAME( 1993, ssf2r1d,   ssf2,      dead_cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "bootleg", "Super Street Fighter II X: The New Challengers (ETC 930911 Phoenix Edition)",                MACHINE_SUPPORTS_SAVE )
-GAME( 1994, ssf2td,    ssf2t,     dead_cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "bootleg", "Super Street Fighter II Turbo (940223 Etc Phoenix Edition)(bootleg)",                        MACHINE_SUPPORTS_SAVE )
+GAME( 1993, ssf2r1d,    ssf2,     dead_cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "bootleg", "Super Street Fighter II X: The New Challengers (ETC 930911 Phoenix Edition)",                MACHINE_SUPPORTS_SAVE )
+GAME( 1994, ssf2td,     ssf2t,    dead_cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "bootleg", "Super Street Fighter II Turbo (940223 Etc Phoenix Edition)(bootleg)",                        MACHINE_SUPPORTS_SAVE )
+
+// CPS2 HomeBrew
+/*    YEAR    NAME     PARENT     MACHINE           INPUT                  INIT       MONITOR   COMPANY   FULLNAME FLAGS */
+GAME( 2015, suicide,    0,        dead_cps2,      cps2_2p2b, cps2_state, init_cps2,    ROT0,   "Razoola", "Suicide Test", MACHINE_SUPPORTS_SAVE )
 
 // HBMAME
 #include "cps2hb.cpp"
-#include "cps2t.cpp"

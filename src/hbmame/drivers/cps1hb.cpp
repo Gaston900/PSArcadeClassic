@@ -5145,7 +5145,7 @@ GAME( 2009, punisherhc06, punisher, qsound,         punisher, cps_state,   init_
 GAME( 2017, punisherhc07, punisher, qsound,         punisher, cps_state,   init_punisher, ROT0,   "hack",      "The Punisher (Warriors Fast Fighting 2017-12-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, punisherhc08, punisher, wofhfh,         punisherbz, cps_state, init_cps1,     ROT0,   "hack",      "Biaofeng Zhanjing (Warrior Extreme Edition 2017-12-13)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 1993, punisherhc09, punisher, qsound,         punisher, cps_state,   init_punisher, ROT0,   "hack",      "The Punisher (Korean Translation)", MACHINE_SUPPORTS_SAVE )
-GAME( 1995, rockmanjhc01, megaman,  cps1_12MHz,      rockmanj, cps_state,   init_cps1,     ROT0,   "hack",     "Rockman: The Power Battle (Korean Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 1995, rockmanjhc01, megaman,  cps1_12MHz,     rockmanj, cps_state,   init_cps1,     ROT0,   "hack",      "Rockman: The Power Battle (Korean Translation / CPS1)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, sf2cehc01,    sf2ce,    cps1_12MHz,     sf2,      cps_state,   init_cps1,     ROT0,   "DDJ",       "Street Fighter II': Champion Edition (Quick Go Next Stage 2016-01-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, sf2cehc02,    sf2ce,    cps1_12MHz,     sf2,      cps_state,   init_cps1,     ROT0,   "hack",      "Street Fighter II': Champion Edition (3 Questions Edition 2019-10-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, sf2cehc03,    sf2ce,    cps1_12MHz,     sf2,      cps_state,   init_cps1,     ROT0,   "hack",      "Street Fighter II': Champion Edition (Question Mark 2019-10-21)", MACHINE_SUPPORTS_SAVE )
@@ -5171,7 +5171,7 @@ GAME( 1991, sf2hc03,      sf2,      cps1_10MHz,     sf2j,     cps_state,   init_
 GAME( 2020, sf2hc04,      sf2,      cps1_12MHz,     sf2j,     cps_state,   init_cps1,     ROT0,   "hack",      "Street Fighter II: The World Warrior (Plus+ 2020-07-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, sf2hfhc01,    sf2hf,    cps1_12MHz,     sf2,      cps_state,   init_cps1,     ROT0,   "hack",      "Street Fighter II': Hyper Fighting (SrSreet Edition)", MACHINE_SUPPORTS_SAVE ) // bad tile for Blanka on player select screen
 GAME( 2022, sf2hfhc02,    sf2hf,    cps1_12MHz,     sf2,      cps_state,   init_cps1,     ROT0,   "hack",      "Street Fighter II': Hyper Fighting (Ukraine Translation)", MACHINE_SUPPORTS_SAVE )
-GAME( 1995, sfzchhc01,    sfzch,    cps1_12MHz,     sfzch,    cps_state,   init_cps1,     ROT0,   "hack",      "Street Fighter Zero (Korean Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 1995, sfzchhc01,    sfzch,    cps1_12MHz,     sfzch,    cps_state,   init_cps1,     ROT0,   "hack",      "Street Fighter Zero (Korean Translation / CPS1)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, striderhc01,  strider,  cps1_10MHz,     strider,  cps_state,   init_cps1,     ROT0,   "hack",      "Strider (Revised Edition 2018-12-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 1989, striderhc02,  strider,  cps1_10MHz,     strider,  cps_state,   init_cps1,     ROT0,   "hack",      "Strider (Korean Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, striderhc03,  strider,  cps1_10MHz,     strider,  cps_state,   init_cps1,     ROT0,   "hack",      "Strider (SF2 For Conversion)", MACHINE_SUPPORTS_SAVE )

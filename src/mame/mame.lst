@@ -46596,7 +46596,6 @@ sfa3hc04                        // Hack
 sfa3hc05                        // Hack
 sfa3hc06                        // Hack
 sfa3hc07                        // Hack
-//sfa3hc08                        // Hack
 sfz2alhc01                      // Hack
 sfz2alhc02                      // Hack
 sfz2alhc03                      // Hack
@@ -46636,17 +46635,20 @@ sfiiihc01                       // Hack
 sfiiihc02                       // Hack
 sfiii2hc01                      // Hack
 sfiii2hc02                      // Hack
-sfiii2hc03                      // Hack
 sfiii3hc01                      // Hack
 sfiii3hc02                      // Hack
 sfiii3hc03                      // Hack
 sfiii3hc04                      // Hack
 sfiii3hc05                      // Hack
 sfiii3hc06                      // Hack
-sfiii3hc07                      // Hack
-sfiii3hc08                      // Hack
-sfiii3hc09                      // Hack
-sfiii3hc10                      // Hack
+
+@source:cps3.cpp
+jojobatn                        // Capcom
+jojotn                          // Capcom
+redeartn                        // Capcom
+sfiiitn                         // Capcom
+sfiii2tn                        // Capcom
+sfiii3tn                        // Capcom
 
 @source:dbz.cpp
 dbzhc01                         // Hack

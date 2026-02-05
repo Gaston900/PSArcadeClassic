@@ -1573,7 +1573,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/kenseim.cpp",
 	MAME_DIR .. "src/hbmame/drivers/cps2.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/video/cps2.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/cps3hb.cpp", --HBMAME
+	MAME_DIR .. "src/hbmame/drivers/cps3.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/cps3.h",
 	MAME_DIR .. "src/mame/audio/cps3.cpp",
 --	MAME_DIR .. "src/mame/audio/cps3.h",

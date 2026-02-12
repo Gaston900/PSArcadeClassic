@@ -36752,6 +36752,7 @@ orlegend111t                    //
 orlegendc                       //
 orlegendca                      //
 orlegende                       //
+orlegendea                      //
 pgm                             // Base Unit
 pgm3in1                         // (c) 2004 Photo Y2K2 3-in-1
 pgm3in1c100                     //
@@ -48260,7 +48261,7 @@ kovplushc144                     // Hack
 kovplushc145                     // Hack
 kovplushc146                     // Hack
 kovplushc147                     // Hack
-kovplushc148                     // Hack
+//kovplushc148                     // Hack
 kovplushc149                     // Hack
 kovplushc150                     // Hack
 kovplushc151                     // Hack
@@ -48819,7 +48820,7 @@ oldsplushc36                    // Hack
 oldsplushc37                    // Hack
 orlegendhc01                    // Hack
 orlegendhc02                    // Hack
-orlegendhc03                    // Hack
+//orlegendhc03                    // Hack
 orlegendhc04                    // Hack
 orlegendhc05                    // Hack
 orlegendhc06                    // Hack

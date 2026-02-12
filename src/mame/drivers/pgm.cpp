@@ -650,6 +650,33 @@ ROM_START( orlegende )
 	ROM_LOAD( "pgm_m0100.u1",     0x400000, 0x200000, CRC(e5c36c83) SHA1(50c6f66770e8faa3df349f7d68c407a7ad021716) )
 ROM_END
 
+ROM_START( orlegendea )
+	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code  */
+	PGM_68K_BIOS
+	ROM_LOAD16_WORD_SWAP( "pgm_p0102a.u2",    0x100000, 0x200000, CRC(13e7486d) SHA1(fc42e807845443fe477b51fdb095b68cdadda6d8) )
+
+	ROM_REGION( 0xa00000, "tiles",  0 ) /* 8x8 Text Tiles + 32x32 BG Tiles */
+	PGM_VIDEO_BIOS
+	ROM_LOAD( "pgm_t0100.u8",     0x180000, 0x400000, CRC(61425e1e) SHA1(20753b86fc12003cfd763d903f034dbba8010b32) )
+
+	ROM_REGION16_LE( 0x2000000, "sprcol", 0 ) /* Sprite Colour Data */
+	ROM_LOAD( "pgm_a0100.u5",     0x0000000, 0x400000, CRC(8b3bd88a) SHA1(42db3a60c6ba9d83ebe2008c8047d094027f65a7) )
+	ROM_LOAD( "pgm_a0101.u6",     0x0400000, 0x400000, CRC(3b9e9644) SHA1(5b95ec1d25c3bc3504c93547f5adb5ce24376405) )
+	ROM_LOAD( "pgm_a0102.u7",     0x0800000, 0x400000, CRC(069e2c38) SHA1(9bddca8c2f5bd80f4abe4e1f062751736dc151dd) )
+	ROM_LOAD( "pgm_a0103.u8",     0x0c00000, 0x400000, CRC(4460a3fd) SHA1(cbebdb65c17605853f7d0b298018dd8801a25a58) )
+	ROM_LOAD( "pgm_a0104.u11",    0x1000000, 0x400000, CRC(5f8abb56) SHA1(6c1ddc0309862a141aa0c0f63b641aec9257aaee) )
+	ROM_LOAD( "pgm_a0105.u12",    0x1400000, 0x400000, CRC(a17a7147) SHA1(44eeb43c6b0ebb829559a20ae357383fbdeecd82) )
+
+	ROM_REGION16_LE( 0x1000000, "sprmask", 0 ) /* Sprite Masks + Colour Indexes */
+	ROM_LOAD( "pgm_b0100.u9",     0x0000000, 0x400000, CRC(69d2e48c) SHA1(5b5f759007264c07b3b39be8e03a713698e1fc2a) )
+	ROM_LOAD( "pgm_b0101.u10",    0x0400000, 0x400000, CRC(0d587bf3) SHA1(5347828b0a6e4ddd7a263663d2c2604407e4d49c) )
+	ROM_LOAD( "pgm_b0102.u15",    0x0800000, 0x400000, CRC(43823c1e) SHA1(e10a1a9a81b51b11044934ff702e35d8d7ab1b08) )
+
+	ROM_REGION( 0x600000, "ics", 0 ) /* Samples - (8 bit mono 11025Hz) - */
+	PGM_AUDIO_BIOS
+	ROM_LOAD( "pgm_m0100.u1",     0x400000, 0x200000, CRC(e5c36c83) SHA1(50c6f66770e8faa3df349f7d68c407a7ad021716) )
+ROM_END
+
 ROM_START( orlegendc )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code  */
 	PGM_68K_BIOS
@@ -1834,6 +1861,60 @@ ROM_START( kovsgqyzb )
 	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
 	PGM_68K_BIOS
 	ROM_LOAD16_WORD_SWAP( "pgm_sgqyzb.rom",    0x100000, 0x400000, CRC(18b8b9c0) SHA1(f4937aa21cd11af16fb50e7a75c8d4c4ed27c5cf) )
+
+	ROM_REGION( 0x4000, "prot", 0 ) /* ARM protection ASIC - internal rom */
+	ROM_LOAD( "kovsgqyzb_igs027a.bin", 0x000000, 0x04000, NO_DUMP ) // bootleg is probably a different device
+
+	ROM_REGION( 0xa00000, "tiles", 0 ) /* 8x8 Text Tiles + 32x32 BG Tiles */
+	PGM_VIDEO_BIOS
+	ROM_LOAD( "pgm_t0600.u11",    0x180000, 0x800000, CRC(4acc1ad6) SHA1(0668dbd5e856c2406910c6b7382548b37c631780) )
+
+	ROM_REGION16_LE( 0x2000000, "sprcol", 0 ) /* Sprite Colour Data */
+	ROM_LOAD( "pgm_a0600.u2",    0x0000000, 0x0800000, CRC(d8167834) SHA1(fa55a99629d03b2ea253392352f70d2c8639a991) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
+	ROM_LOAD( "pgm_a0601.u4",    0x0800000, 0x0800000, CRC(ff7a4373) SHA1(7def9fca7513ad5a117da230bebd2e3c78679041) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
+	ROM_LOAD( "pgm_a0602.u6",    0x1000000, 0x0800000, CRC(e7a32959) SHA1(3d0ed684dc5b269238890836b2ce7ef46aa5265b) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
+	ROM_LOAD( "qyza0603.rom",    0x1800000, 0x0800000, CRC(c8b92220) SHA1(4f9c43970d92ac8a8f1563021022797ae8e32012) )
+
+	ROM_REGION16_LE( 0x1000000, "sprmask", 0 ) /* Sprite Masks + Colour Indexes */
+	ROM_LOAD( "pgm_b0600.u5",    0x0000000, 0x0800000, CRC(7d3cd059) SHA1(00cf994b63337e0e4ebe96453daf45f24192af1c) )
+	ROM_LOAD( "qyzb0601.rom",    0x0800000, 0x0800000, CRC(64f55882) SHA1(ab9ac1396587c3d78d06f6ec83cab61d6a9faacd) )
+
+	ROM_REGION( 0x800000, "ics", 0 ) /* Samples - (8 bit mono 11025Hz) - */
+	PGM_AUDIO_BIOS
+	ROM_LOAD( "pgm_m0600.u3",    0x400000, 0x400000, CRC(3ada4fd6) SHA1(4c87adb25d31cbd41f04fbffe31f7bc37173da76) )
+ROM_END
+
+ROM_START( kovsgqyzc )
+	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
+	PGM_68K_BIOS
+	ROM_LOAD16_WORD_SWAP( "pgm_sgqyzc.rom",    0x100000, 0x400000, CRC(09774a3e) SHA1(f5131d07abb048cd3e3549bf0223c9cb485ce7f6) )
+
+	ROM_REGION( 0x4000, "prot", 0 ) /* ARM protection ASIC - internal rom */
+	ROM_LOAD( "kovsgqyzb_igs027a.bin", 0x000000, 0x04000, NO_DUMP ) // bootleg is probably a different device
+
+	ROM_REGION( 0xa00000, "tiles", 0 ) /* 8x8 Text Tiles + 32x32 BG Tiles */
+	PGM_VIDEO_BIOS
+	ROM_LOAD( "pgm_t0600.u11",    0x180000, 0x800000, CRC(4acc1ad6) SHA1(0668dbd5e856c2406910c6b7382548b37c631780) )
+
+	ROM_REGION16_LE( 0x2000000, "sprcol", 0 ) /* Sprite Colour Data */
+	ROM_LOAD( "pgm_a0600.u2",    0x0000000, 0x0800000, CRC(d8167834) SHA1(fa55a99629d03b2ea253392352f70d2c8639a991) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
+	ROM_LOAD( "pgm_a0601.u4",    0x0800000, 0x0800000, CRC(ff7a4373) SHA1(7def9fca7513ad5a117da230bebd2e3c78679041) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
+	ROM_LOAD( "pgm_a0602.u6",    0x1000000, 0x0800000, CRC(e7a32959) SHA1(3d0ed684dc5b269238890836b2ce7ef46aa5265b) ) // FIXED BITS (xxxxxxxx1xxxxxxx)
+	ROM_LOAD( "qyza0603.rom",    0x1800000, 0x0800000, CRC(c8b92220) SHA1(4f9c43970d92ac8a8f1563021022797ae8e32012) )
+
+	ROM_REGION16_LE( 0x1000000, "sprmask", 0 ) /* Sprite Masks + Colour Indexes */
+	ROM_LOAD( "pgm_b0600.u5",    0x0000000, 0x0800000, CRC(7d3cd059) SHA1(00cf994b63337e0e4ebe96453daf45f24192af1c) )
+	ROM_LOAD( "qyzb0601.rom",    0x0800000, 0x0800000, CRC(64f55882) SHA1(ab9ac1396587c3d78d06f6ec83cab61d6a9faacd) )
+
+	ROM_REGION( 0x800000, "ics", 0 ) /* Samples - (8 bit mono 11025Hz) - */
+	PGM_AUDIO_BIOS
+	ROM_LOAD( "pgm_m0600.u3",    0x400000, 0x400000, CRC(3ada4fd6) SHA1(4c87adb25d31cbd41f04fbffe31f7bc37173da76) )
+ROM_END
+
+ROM_START( kovsgqyzd )
+	ROM_REGION( 0x600000, "maincpu", 0 ) /* 68000 Code */
+	PGM_68K_BIOS
+	ROM_LOAD16_WORD_SWAP( "pgm_sgqyzd.rom",    0x100000, 0x400000, CRC(a019e6d2) SHA1(44b720ba3b306e3d2e064d14eb63edc6e475de59) )
 
 	ROM_REGION( 0x4000, "prot", 0 ) /* ARM protection ASIC - internal rom */
 	ROM_LOAD( "kovsgqyzb_igs027a.bin", 0x000000, 0x04000, NO_DUMP ) // bootleg is probably a different device
@@ -5537,7 +5618,8 @@ GAME( 1997, pgm,          0,         pgm,                   pgm,       pgm_state
 //西遊釋厄傳/Xīyóu shì è chuán (Taiwan; Traditional Chinese)
 // the version numbering on these is a mess... date strings from ROM (and in some cases even those are missing..)
 GAME( 1997, orlegend,     pgm,       pgm_asic3,              orlegend,  pgm_asic3_state,   init_orlegend, ROT0,   "IGS", "Oriental Legend / Xiyou Shi E Chuan (ver. 126)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )                 // V0001 01/14/98 18:16:38 - runs as World
-GAME( 1997, orlegende,    orlegend,  pgm_asic3,              orlegend,  pgm_asic3_state,   init_orlegend, ROT0,   "IGS", "Oriental Legend / Xiyou Shi E Chuan (ver. 112)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )                 // V0001 07/14/97 11:19:45 - runs as World
+GAME( 1997, orlegende,    orlegend,  pgm_asic3,              orlegend,  pgm_asic3_state,   init_orlegend, ROT0,   "IGS", "Oriental Legend / Xiyou Shi E Chuan (ver. 112, set 1)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )          // V0001 07/14/97 11:19:45 - runs as World
+GAME( 1997, orlegendea,   orlegend,  pgm_asic3,              orlegend,  pgm_asic3_state,   init_orlegend, ROT0,   "IGS", "Oriental Legend / Xiyou Shi E Chuan (ver. 112, set 2)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
 GAME( 1997, orlegendc,    orlegend,  pgm_asic3,              orlegend,  pgm_asic3_state,   init_orlegend, ROT0,   "IGS", "Oriental Legend / Xiyou Shi E Chuan (ver. 112, Chinese Board)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )  // V0001 05/05/97 10:08:21 - runs as World, Korea, China
 GAME( 1997, orlegendca,   orlegend,  pgm_asic3,              orlegend,  pgm_asic3_state,   init_orlegend, ROT0,   "IGS", "Oriental Legend / Xiyou Shi E Chuan (ver. ???, Chinese Board)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )  // V0001 04/02/97 13:35:43 - runs as HongKong, China, China
 GAME( 1997, orlegend111c, orlegend,  pgm_asic3,              orlegend,  pgm_asic3_state,   init_orlegend, ROT0,   "IGS", "Oriental Legend / Xiyou Shi E Chuan (ver. 111, Chinese Board)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )  // V0001 no date!          - runs as HongKong, China, China
@@ -5782,10 +5864,11 @@ GAME( 1999, kovplusa,     kovplus,   pgm_arm_type1_sim,      sango,     pgm_arm_
 
 //三國群英传正宗Plus/Sānguó qúnyīng chuán Zhèngzōng Plus (Mixed Simplified and Traditional Chinese in title screen)
 // modified title screen is only visible for china region, so use that by default.  Character select portraits don't seem quite right (different protection?)
-GAME( 1999, kovsgqyz,     kovplus,   pgm_arm_type1_sim,      sango_ch,  pgm_arm_type1_state,  init_kovboot, ROT0,   "bootleg", "Sanguo Qunying Chuan Zhengzong Plus (bootleg of Knights of Valour Plus, set 1)", MACHINE_IMPERFECT_SOUND | MACHINE_UNEMULATED_PROTECTION | MACHINE_SUPPORTS_SAVE ) /* need internal rom of IGS027A */
-GAME( 1999, kovsgqyza,    kovplus,   pgm_arm_type1_sim,      sango_ch,  pgm_arm_type1_state,  init_kovboot, ROT0,   "bootleg", "Sanguo Qunying Chuan Zhengzong Plus (bootleg of Knights of Valour Plus, set 2)", MACHINE_IMPERFECT_SOUND | MACHINE_UNEMULATED_PROTECTION | MACHINE_SUPPORTS_SAVE ) /* need internal rom of IGS027A */
-GAME( 1999, kovsgqyzb,    kovplus,   pgm_arm_type1_sim,      sango_ch,  pgm_arm_type1_state,  init_kovboot, ROT0,   "bootleg", "Sanguo Qunying Chuan Zhengzong Plus (bootleg of Knights of Valour Plus, set 3)", MACHINE_IMPERFECT_SOUND | MACHINE_UNEMULATED_PROTECTION | MACHINE_SUPPORTS_SAVE ) /* need internal rom of IGS027A */
-
+GAME( 1999, kovsgqyz,     kovplus,   pgm_arm_type1_sim,      sango_ch,  pgm_arm_type1_state,  init_kovboot, ROT0,   "bootleg", "San Guo Qun Ying Zhuan - Zheng Zong Plus (bootleg of Knights of Valour Plus, set 1)", MACHINE_IMPERFECT_SOUND | MACHINE_UNEMULATED_PROTECTION | MACHINE_SUPPORTS_SAVE ) /* need internal rom of IGS027A */
+GAME( 1999, kovsgqyza,    kovplus,   pgm_arm_type1_sim,      sango_ch,  pgm_arm_type1_state,  init_kovboot, ROT0,   "bootleg", "San Guo Qun Ying Zhuan - Zheng Zong Plus (bootleg of Knights of Valour Plus, set 2)", MACHINE_IMPERFECT_SOUND | MACHINE_UNEMULATED_PROTECTION | MACHINE_SUPPORTS_SAVE ) /* need internal rom of IGS027A */
+GAME( 1999, kovsgqyzb,    kovplus,   pgm_arm_type1_sim,      sango_ch,  pgm_arm_type1_state,  init_kovboot, ROT0,   "bootleg", "San Guo Qun Ying Zhuan - Zheng Zong Plus (bootleg of Knights of Valour Plus, set 3)", MACHINE_IMPERFECT_SOUND | MACHINE_UNEMULATED_PROTECTION | MACHINE_SUPPORTS_SAVE ) /* need internal rom of IGS027A */
+GAME( 1999, kovsgqyzc,    kovplus,   pgm_arm_type1_sim,      sango,    pgm_arm_type1_state,  init_kovboot,  ROT0,   "bootleg", "San Guo Qun Ying Zhuan - Zheng Zong Plus (bootleg of Knights of Valour Plus, set 4)", MACHINE_SUPPORTS_SAVE )
+GAME( 1999, kovsgqyzd,    kovplus,   pgm_arm_type1_sim,      sango,    pgm_arm_type1_state,  init_kovboot,  ROT0,   "bootleg", "San Guo Qun Ying Zhuan - Zheng Zong Plus (bootleg of Knights of Valour Plus, set 5)", MACHINE_SUPPORTS_SAVE )
 
 /* -----------------------------------------------------------------------------------------------------------------------
    NOT Working (mostly due to needing internal protection roms dumped)

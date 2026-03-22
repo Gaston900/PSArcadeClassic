@@ -1,7 +1,7 @@
 # PSArcadeClassic+
 What is PSARCADECLASSIC+?
 
-It's called Project Shadow Arcade Classic+, it's a project that started at the beginning of this year 2022, currently a version 0.245 [HBMAME](https://hbmame.1emulation.com/) is being used as a base system.
+It's called Project Shadow Arcade Classic+, it is a project that began in the middle of year 2016, currently a version 0.245 [HBMAME](https://hbmame.1emulation.com/) is being used as a base system.
 
 This project is focused on merging two emulator systems [ARCADE64](https://arcade.mameworld.info/) + [HBMAME](https://hbmame.1emulation.com/), then has implemented the new hack roms (Which was not included in the [HBMAME](https://hbmame.1emulation.com/) version), has been done with a total cleaning of the roms/hack roms, eliminating thus hundreds of useless roms or . chd and unnecessary and thus be able to generate a collectible edition and in this way a single version will be published. In order to make the rom system much lighter for our hard drive.
 

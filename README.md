@@ -62,8 +62,6 @@ Removed the following annoying messages: “WRONG LENGTH”, “NO_DUMP”, “W
 
 Added movement optimization for all fighting games (By GSC2007).
 
-Fix screen timings, remove non-existent sprite buffer ram [PGM].
-
 The Arcade64 "GUI" EKMAME source code has been implemented (By KAZE).
 
 It is already pre-configured, enforce aspect ratio is disabled, full screen mode and tricks are already enabled by default.
@@ -72,7 +70,7 @@ The cheat reference function, if the cloned game does not have a cheat file, it 
 
 Supports game list language files.
 
-CPS 1, 2, NEOGEO, PGM, driver supports key combination settings.
+NEOGEO, PGM, driver supports key combination settings.
 
 Two new folder sections called “config” and “support” were added that independently group the configurations and extra content, so that everything is kept in order in a single folder.
 

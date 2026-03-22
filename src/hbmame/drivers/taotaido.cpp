@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/taotaido.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( taotaidohc01 )
 	ROM_REGION( 0x100000, "maincpu", 0 )
@@ -30,5 +30,5 @@ ROM_START( taotaidohc01 )
 ROM_END
 
 /*    YEAR    NAME       PARENT     MACHINE   INPUT                        INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1993, taotaidohc01, taotaido, taotaido, taotaido6, taotaido_state, empty_init,  ROT0,     "DDJ",       "Tao Taido (Easy Move)", MACHINE_SUPPORTS_SAVE )
+/* Taotaido Hack */
+GAME( 1993, taotaidohc01, taotaido, taotaido, taotaido6, taotaido_state, empty_init,  ROT0,     "DDJ",       "Tao Taido (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )

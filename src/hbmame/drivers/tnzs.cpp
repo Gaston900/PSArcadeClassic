@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/tnzs.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( insectxhc01 )
 	ROM_REGION( 0x20000, "maincpu", 0 )
@@ -19,5 +19,5 @@ ROM_START( insectxhc01 )
 ROM_END
 
 /*    YEAR    NAME         PARENT      MACHINE    INPUT                        INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
+/* Tnzs Hack */
 GAME( 1989, insectxhc01,   insectx,    insectx,  insectx,  insectx_state,  empty_init,    ROT0,     "hack",      "Insector X (Translation Chinese)", MACHINE_SUPPORTS_SAVE )

@@ -1,12 +1,12 @@
-// license:BSD-3-Clause
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/1943.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
-ROM_START( 1943hc01 )
+ROM_START( 1943kaihc01 )
 	ROM_REGION( 0x30000, "maincpu", 0 )
 	ROM_LOAD( "bmk01_hc01.12d", 0x00000, 0x08000, CRC(03036734) SHA1(cdde7a2ebe4be0d99de2d2dc39625e7d3976ee9b) )
 	ROM_LOAD( "bmk02.13d", 0x10000, 0x10000, CRC(2ebbc8c5) SHA1(3be5ad061411642723e3f2bcb7b3c3caa11ee15f) )
@@ -64,6 +64,6 @@ ROM_START( 1943hc01 )
 	ROM_LOAD( "bm6.4b",    0x0b00, 0x0100, CRC(0eaf5158) SHA1(bafd4108708f66cd7b280e47152b108f3e254fc9) )
 ROM_END
 
-/*    YEAR    NAME       PARENT        MACHINE  INPUT                 INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 2009, 1943hc01,    1943kai,     _1943,    1943, _1943_state,   init_1943, ROT270,   "hack",       "1943 Kai: Midway Kaisen(Ex Super Version 2009-02-10)", MACHINE_SUPPORTS_SAVE )
+/*    YEAR    NAME          PARENT        MACHINE  INPUT                 INIT      MONITOR   COMPANY       FULLNAME FLAGS */
+/* 1943 Hack */
+GAME( 2009,  1943kaihc01,   1943kai,      _1943,   1943, _1943_state,   init_1943, ROT270,   "hack",       "1943 Kai: Midway Kaisen (Infinite Power 2009-02-10)", MACHINE_SUPPORTS_SAVE )

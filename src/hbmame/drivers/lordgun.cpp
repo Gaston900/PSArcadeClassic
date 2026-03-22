@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/lordgun.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( alienchahc01 ) //alienchal
 	ROM_REGION( 0x200000, "maincpu", 0 )
@@ -39,5 +39,5 @@ ROM_START( alienchahc01 ) //alienchal
 ROM_END
 
 /*    YEAR    NAME         PARENT    MACHINE    INPUT                       INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 2018, alienchahc01,  aliencha,  aliencha, aliencha, lordgun_state, empty_init,   ROT0,    "hack",       "Alien Challenge (Simplified Edition 2018-07-05)", MACHINE_SUPPORTS_SAVE )
+/* lordgun Hack */
+GAME( 2018, alienchahc01,  aliencha,  aliencha, aliencha, lordgun_state, empty_init,   ROT0,    "hack",       "Alien Challenge (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )

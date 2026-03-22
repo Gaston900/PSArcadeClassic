@@ -1,6 +1,10 @@
-// license:BSD-3-Clause
-// copyright-holders:Robbbert
+// NeoEX
+// copyright-holders:Gaston90
 #include "../mame/drivers/rallyx.cpp"
+
+/******
+  Hack
+********/
 
 INPUT_PORTS_START( nrallyv )
 	PORT_START("P1")
@@ -49,19 +53,15 @@ INPUT_PORTS_START( nrallyv )
 	PORT_DIPSETTING(    0x00, DEF_STR( Free_Play ) )
 INPUT_PORTS_END
 
- /*******
- Rally-X
-**********/
-
-ROM_START( rxtron ) // roms from rallyx except where marked
+ROM_START( rallyxhc01 ) //rxtron
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "1b",           0x0000, 0x1000, CRC(5882700d) SHA1(b6029e9730f1694894fe8b729ac0ba8d6712dea9) )
-	ROM_LOAD( "rxtron.1e",    0x1000, 0x1000, CRC(8d5b88e5) SHA1(95a8bde287325f88cfc7ce12ad900647831b861e) )
-	ROM_LOAD( "rxtron.1h",    0x2000, 0x1000, CRC(1ecfddc0) SHA1(e800a3bb0e2d35dbfba49c7724689d29ab1912fd) )
-	ROM_LOAD( "rxtron.1k",    0x3000, 0x1000, CRC(2729e00a) SHA1(1f3d17e8342d8a7db57d64fd890b70e64315752a) )
+	ROM_LOAD( "rallyxn_hc01.1e",    0x1000, 0x1000, CRC(8d5b88e5) SHA1(95a8bde287325f88cfc7ce12ad900647831b861e) )
+	ROM_LOAD( "rallyxn_hc01.1h",    0x2000, 0x1000, CRC(1ecfddc0) SHA1(e800a3bb0e2d35dbfba49c7724689d29ab1912fd) )
+	ROM_LOAD( "rallyxn_hc01.1k",    0x3000, 0x1000, CRC(2729e00a) SHA1(1f3d17e8342d8a7db57d64fd890b70e64315752a) )
 
 	ROM_REGION( 0x1000, "gfx1", 0 )
-	ROM_LOAD( "rxtron.8e",    0x0000, 0x1000, CRC(91538868) SHA1(4ba04a56a6255895214bca1e0249e365b95f566d) )
+	ROM_LOAD( "8e_hc01",    0x0000, 0x1000, CRC(91538868) SHA1(4ba04a56a6255895214bca1e0249e365b95f566d) )
 
 	ROM_REGION( 0x0100, "gfx2", 0 )
 	ROM_LOAD( "rx1-6.8m",     0x0000, 0x0100, CRC(3c16f62c) SHA1(7a3800be410e306cf85753b9953ffc5575afbcd6) )
@@ -75,29 +75,29 @@ ROM_START( rxtron ) // roms from rallyx except where marked
 	ROM_LOAD( "rx1-4.2m",     0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) )
 ROM_END
 
-ROM_START( nrallyv )
+ROM_START( rallyxhc02 ) //nrallyv
 	ROM_REGION( 0x10000, "maincpu", 0 ) // from nrallyxb except where marked
-	ROM_LOAD( "nrallyx.1b",   0x0000, 0x1000, CRC(9404c8d6) SHA1(ee7e45c22a2fbf72d3ac5ac26ab1111a22623fc5) )
-	ROM_LOAD( "nrallyx.1e",   0x1000, 0x1000, CRC(ac01bf3f) SHA1(8e1a7cce92ef709d18727db6ee7f89936f4b8df8) )
-	ROM_LOAD( "nrallyx.1h",   0x2000, 0x1000, CRC(aeba29b5) SHA1(2a6e4568729b83c430bf70e43c4146ad6a556b1b) )
-	ROM_LOAD( "nrallyx.1k",   0x3000, 0x1000, CRC(78f17da7) SHA1(1e035746a10f91e898166a58093d45bdb158ae47) )
+	ROM_LOAD( "rallyxn_hc02.1b",   0x0000, 0x1000, CRC(9404c8d6) SHA1(ee7e45c22a2fbf72d3ac5ac26ab1111a22623fc5) )
+	ROM_LOAD( "rallyxn_hc02.1e",   0x1000, 0x1000, CRC(ac01bf3f) SHA1(8e1a7cce92ef709d18727db6ee7f89936f4b8df8) )
+	ROM_LOAD( "rallyxn_hc02.1h",   0x2000, 0x1000, CRC(aeba29b5) SHA1(2a6e4568729b83c430bf70e43c4146ad6a556b1b) )
+	ROM_LOAD( "rallyxn_hc02.1k",   0x3000, 0x1000, CRC(78f17da7) SHA1(1e035746a10f91e898166a58093d45bdb158ae47) )
 
 	ROM_REGION( 0x1000, "gfx1", 0 )
-	ROM_LOAD( "nrallyv.8e",   0x0000, 0x1000, CRC(031acfc5) SHA1(7e0df966b7f2be416e22ec2c36bb86425138c203) )
+	ROM_LOAD( "8e_hc02",   0x0000, 0x1000, CRC(031acfc5) SHA1(7e0df966b7f2be416e22ec2c36bb86425138c203) )
 
 	ROM_REGION( 0x0100, "gfx2", 0 )
 	ROM_LOAD( "rx1-6.8m",     0x0000, 0x0100, CRC(3c16f62c) SHA1(7a3800be410e306cf85753b9953ffc5575afbcd6) )
 
 	ROM_REGION( 0x0120, "proms", 0 )
 	ROM_LOAD( "nrx1-1.11n",   0x0000, 0x0020, CRC(a0a49017) SHA1(494c920a157e9f876d533c1b0146275a366c4989) )
-	ROM_LOAD( "nrallyv.pr2",  0x0020, 0x0100, CRC(b2b7ca15) SHA1(e604d58f2f20ebf042f28b01e74eddeacf5baba9) )
+	ROM_LOAD( "nrx1-7_hc02.8p",  0x0020, 0x0100, CRC(b2b7ca15) SHA1(e604d58f2f20ebf042f28b01e74eddeacf5baba9) )
 
 	ROM_REGION( 0x0200, "namco", 0 )
-	ROM_LOAD( "nrallyv.spr",  0x0000, 0x0100, CRC(b75c4e87) SHA1(450f79a5ae09e34f7624d37769815baf93c0028e) )
+	ROM_LOAD( "rx1-5_hc02.3p",  0x0000, 0x0100, CRC(b75c4e87) SHA1(450f79a5ae09e34f7624d37769815baf93c0028e) )
 	ROM_LOAD( "rx1-4.2m",     0x0100, 0x0100, CRC(77245b66) SHA1(0c4d0bee858b97632411c440bea6948a74759746) )
 ROM_END
 
-/*    YEAR  NAME    PARENT   MACHINE  INPUT                    INIT     MONITOR COMPANY         FULLNAME FLAGS */
-// Rally-X
-GAME( 1998, rxtron,  rallyx, rallyx, rallyx,  rallyx_state, empty_init, ROT0,  "hack",          "Rally-X Tron", MACHINE_SUPPORTS_SAVE )
-GAME( 1981, nrallyv, rallyx, rallyx, nrallyv, rallyx_state, empty_init, ROT90, "hack",          "New Rally X (Vertical Screen)", MACHINE_SUPPORTS_SAVE )
+/*    YEAR  NAME         PARENT   MACHINE  INPUT                    INIT     MONITOR COMPANY         FULLNAME FLAGS */
+/* Rallyx Hack */
+GAME( 1998, rallyxhc01,  rallyx, rallyx, rallyx,  rallyx_state, empty_init,   ROT0,  "hack",         "Rally-X Tron", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, rallyxhc02,  rallyx, rallyx, nrallyv, rallyx_state, empty_init,   ROT90, "hack",         "New Rally X (Vertical Screen)", MACHINE_SUPPORTS_SAVE )

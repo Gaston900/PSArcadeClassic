@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/deco32.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( fghthisthc01 )
 	ROM_REGION(0x100000, "maincpu", 0 )
@@ -41,5 +41,5 @@ ROM_START( fghthisthc01 )
 ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
-// Fighter's History
+/* Deco32 Hack */
 GAME( 1993, fghthisthc01, fghthist, fghthist,     fghthist,    fghthist_state, init_fghthist,  ROT0, "yumeji[2ch]", "Fighter's History (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )

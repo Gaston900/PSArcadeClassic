@@ -2,9 +2,9 @@
 // copyright-holders:Robbbert
 #include "../mame/drivers/docastle.cpp"
 
- /*********
- Sticky Do
-*************/
+/******
+  Hack
+********/
 
 ROM_START( sdreturn )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -32,6 +32,7 @@ ROM_START( sdreturn )
 	ROM_LOAD( "dorunrun.clr", 0x0000, 0x0100, CRC(d5bab5d5) SHA1(7a465fe30b6008793d33f6e07086c89111e1e407) )
 ROM_END
 
-/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
-// Sticky Do
+/*    YEAR  NAME           PARENT    MACHINE    INPUT                       INIT       MONITOR  COMPANY    FULLNAME FLAGS */
+/* Docastle Hack */
 GAME( 2002, sdreturn, dorunrun, dorunrun, dorunrun, docastle_state, empty_init, ROT0, "hack", "Sticky Do Returns", MACHINE_SUPPORTS_SAVE )
+

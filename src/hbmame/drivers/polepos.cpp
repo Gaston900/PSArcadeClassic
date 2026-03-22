@@ -2,9 +2,9 @@
 // copyright-holders:Robbbert
 #include "../mame/drivers/polepos.cpp"
 
- /*************
- Pole Position
-****************/
+/******
+  Hack
+********/
 
 ROM_START( mmadness )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -73,6 +73,7 @@ ROM_START( mmadness )
 	ROM_LOAD( "7052-4.c14",   0x0000, 0x0100, CRC(0e742cb1) SHA1(3ae43270aab4848fdeece1648e7e040ab216b08e) )
 ROM_END
 
-/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
-// Pole Position
-GAME( 2018, mmadness, polepos,  polepos, polepos, polepos_state, empty_init, ROT0, "Tesla", "Mars Madness", 0 )
+/*    YEAR  NAME       PARENT    MACHINE   INPUT                    INIT    MONITOR COMPANY  FULLNAME FLAGS */
+/* Polepos Hack */
+GAME( 2018, mmadness, polepos,  polepos, polepos, polepos_state, empty_init, ROT0, "Tesla", "Mars Madness", MACHINE_SUPPORTS_SAVE )
+

@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Ren� Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 #ifndef PROPERTIES_H
 #define PROPERTIES_H
@@ -23,7 +23,7 @@
 void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int folder_id, int game_num);
 intptr_t CALLBACK GamePropertiesDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /****************************************************************/
 /* Called to show the standalone IPS dialog */
 void ShowIPSDialog(HINSTANCE hInst, HWND hWnd, int game_num);

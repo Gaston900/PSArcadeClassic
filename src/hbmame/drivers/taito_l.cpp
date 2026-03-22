@@ -1,10 +1,10 @@
-// license:BSD-3-Clause
-// copyright-holders:Robbbert
+// NeoEX
+// copyright-holders:Gaston90
 #include "../mame/drivers/taito_l.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( evilstonhc01 )
 	ROM_REGION( 0x40000, "maincpu", 0 )
@@ -49,7 +49,7 @@ ROM_START( plottinghc01 )
 ROM_END
 
 /*    YEAR  NAME            PARENT    MACHINE      INPUT                        INIT          MONITOR  COMPANY     FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 2007, evilstonhc01,  evilston, evilston,  evilston,  taitol_2cpu_state, empty_init,     ROT270, "Arkatrad", "Evil Stone (Translation French)", MACHINE_IMPERFECT_SOUND )
-GAME( 1988, kurikinthc01,  kurikint, kurikint,  kurikintj, taitol_2cpu_state, empty_init,     ROT0,   "hack",     "Kuri Kinton (Translation Chinese)", 0 )
-GAME( 1989, plottinghc01,  plotting, plotting,  plotting,  taitol_1cpu_state, init_plottinga, ROT0,   "hack",     "Plotting (Translation Chinese)", 0 )
+/* Taito_l Hack */
+GAME( 2007, evilstonhc01,  evilston, evilston,  evilston,  taitol_2cpu_state, empty_init,     ROT270, "Arkatrad", "Evil Stone (French Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 1988, kurikinthc01,  kurikint, kurikint,  kurikintj, taitol_2cpu_state, empty_init,     ROT0,   "hack",     "Kuri Kinton (Chinese Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 1989, plottinghc01,  plotting, plotting,  plotting,  taitol_1cpu_state, init_plottinga, ROT0,   "hack",     "Plotting (Chinese Translation)", MACHINE_SUPPORTS_SAVE )

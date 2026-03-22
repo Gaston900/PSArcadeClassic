@@ -1,10 +1,11 @@
-// Proyecto Shadows Arcade Classic+
-// copyright-holders:Gaston90
+// license:BSD-3-Clause
+// copyright-holders:Robbbert
 #include "../mame/drivers/btime.cpp"
 
-/***************
- Burnin' Rubber
-*****************/
+/******
+  Hack
+********/
+
 ROM_START( bnjr )
 	ROM_REGION( 2*0x10000, "maincpu", 0 )
 	ROM_LOAD( "bnj12b.bin",  0xa000, 0x2000, CRC(ba3e3801) SHA1(56284076d938c33c1492a07281b936681eb09808) )
@@ -23,10 +24,6 @@ ROM_START( bnjr )
 	ROM_LOAD( "bnjr10e.bin", 0x0000, 0x1000, CRC(9e523e4c) SHA1(4d76696c7594d84d081d17220dc58c0e7e35a14c) )
 	ROM_LOAD( "bnjr10f.bin", 0x1000, 0x1000, CRC(5cf10f28) SHA1(66b2d8cc27ff6dd340054290f6eb2d71c9a1052a) )
 ROM_END
-
-/*************
- Lock'n'Chase
-***************/
 
 ROM_START( pnc )
 	ROM_REGION( 2*0x10000, "maincpu", 0 )
@@ -50,10 +47,6 @@ ROM_START( pnc )
 	ROM_LOAD( "sc-5m",        0x0000, 0x0020, CRC(2a976ebe) SHA1(f3c1b0d98f431f9cd0d5fa009fafa1115aabe6e5) )
 	ROM_LOAD( "sb-4c",        0x0020, 0x0020, CRC(a29b4204) SHA1(7f15cae5c4aaa29638fb45029782dafd2b3d1484) )
 ROM_END
-
-/*************
- Burger Time
-***************/
 
 ROM_START( stictime )
 	ROM_REGION( 2*0x10000, "maincpu", 0 )
@@ -110,12 +103,10 @@ ROM_START( vecbtime )
 	ROM_LOAD( "ab03.6b",          0x0000, 0x0800, CRC(d26bc1f3) SHA1(737af6e264183a1f151f277a07cf250d6abb3fd8) )
 ROM_END
 
+/*    YEAR  NAME      PARENT   MACHINE   INPUT     CLASS        INIT         MONITOR COMPANY        FULLNAME FLAGS */
+/* Btime Hack */
+GAME( 2002, bnjr,     brubber, bnj,      bnj,   btime_state,   init_lnc,     ROT270, "DaveC",       "Bump 'n' Jump Reverse Mod", MACHINE_SUPPORTS_SAVE )
+GAME( 1981, pnc,      lnc,     lnc,      lnc,   btime_state,   init_lnc,     ROT270, "Marks Hacks", "Pac'n'Chase", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, stictime, btime,   btime,    btime, btime_state,   init_btime,   ROT270, "Marks Hacks", "Mr Sticky Time", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, vecbtime, btime,   btime,    btime, btime_state,   init_btime,   ROT270, "T-Bone",      "Burgertime (Vector Sim)", MACHINE_SUPPORTS_SAVE )
 
-/*    YEAR  NAME      PARENT    MACHINE   INPUT                   INIT        MONITOR COMPANY     FULLNAME FLAGS */
-// Burnin' Rubber
-GAME( 2002, bnjr,     brubber,  bnj,       bnj,   btime_state,   init_lnc,     ROT270, "hack",    "Bump 'n' Jump Reverse Mod", MACHINE_SUPPORTS_SAVE )
-// Lock'n'Chase
-GAME( 1981, pnc,      lnc,      lnc,       lnc,   btime_state,   init_lnc,     ROT270, "hack",    "Pac'n'Chase", MACHINE_SUPPORTS_SAVE )
-// Burger Time
-GAME( 2002, stictime, btime,    btime,     btime, btime_state,   init_btime,   ROT270, "hack",    "Mr Sticky Time", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, vecbtime, btime,    btime,     btime, btime_state,   init_btime,   ROT270, "hack",    "Burgertime (Vector sim)", MACHINE_SUPPORTS_SAVE )

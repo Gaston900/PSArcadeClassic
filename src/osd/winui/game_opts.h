@@ -262,7 +262,7 @@ public:
 				else
 				if ((info.machine_flags() & machine_flags::MASK_TYPE) == machine_flags::TYPE_OTHER)
 					t = 3;
-				m_cache = t;
+				m_cache = t;	
 				// BIT 2 = SWAP_XY
 				t = (drv->flags & ORIENTATION_SWAP_XY) ? 0x0004 : 0;
 				m_cache |= t;

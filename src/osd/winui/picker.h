@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Ren� Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 #ifndef PICKER_H
 #define PICKER_H
@@ -44,7 +44,7 @@ enum
 {
 	VIEW_ICONS_LARGE = 0,
 	VIEW_ICONS_SMALL,
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /***************************/
 	VIEW_INLIST,
 	VIEW_REPORT,
@@ -70,7 +70,7 @@ bool Picker_IsIdling(HWND hWndPicker);
 int Picker_InsertItemSorted(HWND hWndPicker, int nParam);
 bool Picker_SaveColumnWidths(HWND hWndPicker);
 
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /**************************************************************************/
 void Picker_SetHeaderImageList(HWND hwndPicker, HIMAGELIST hHeaderImages);
 /**************************************************************************/

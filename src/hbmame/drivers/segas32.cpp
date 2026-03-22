@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/segas32.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( brivalhc01 )
 	ROM_REGION( 0x200000, "mainpcb:maincpu", 0 )
@@ -34,5 +34,5 @@ ROM_START( brivalhc01 )
 ROM_END
 
 /*    YEAR    NAME       PARENT   MACHINE            INPUT                           INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1992, brivalhc01,  brival,  sega_system32_4p,  brival,   segas32_new_state, init_brival,   ROT0,   "DDJ",        "Burning Rival (Easy Move)", 0 )
+/* Segas32 Hack */
+GAME( 1992, brivalhc01,  brival,  sega_system32_4p,  brival,   segas32_new_state, init_brival,   ROT0,   "DDJ",        "Burning Rival (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )

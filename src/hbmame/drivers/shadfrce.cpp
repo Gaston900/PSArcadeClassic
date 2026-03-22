@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/shadfrce.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( shadfrcehc01 )
 	ROM_REGION( 0x100000, "maincpu", 0 )
@@ -36,5 +36,5 @@ ROM_START( shadfrcehc01 )
 ROM_END
 
 /*    YEAR    NAME          PARENT     MACHINE    INPUT                       INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1993, shadfrcehc01,   shadfrce,  shadfrce, shadfrce, shadfrce_state, empty_init,   ROT0,    "hack",       "Shadow Force (Enable Hidden Characters)", MACHINE_NOT_WORKING | MACHINE_NO_COCKTAIL | MACHINE_SUPPORTS_SAVE )
+/* Shadfrce Hack */
+GAME( 1993, shadfrcehc01,   shadfrce,  shadfrce, shadfrce, shadfrce_state, empty_init,   ROT0,    "hack",       "Shadow Force (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )

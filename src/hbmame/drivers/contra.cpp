@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/contra.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( contrahc01 ) //contrajc
 	ROM_REGION( 0x20000, "maincpu", ROMREGION_ERASEFF )
@@ -32,5 +32,5 @@ ROM_START( contrahc01 ) //contrajc
 ROM_END
 
 /*    YEAR    NAME       PARENT   MACHINE   INPUT                  INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1987, contrahc01,  contra,  contra,  contra, contra_state, empty_init, ROT90,    "hack",       "Contra (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
+/* Contra Hack */
+GAME( 1987, contrahc01,  contra,  contra,  contra, contra_state, empty_init, ROT90,    "hack",       "Contra (Chinese Translation)", MACHINE_SUPPORTS_SAVE )

@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/tecmosys.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( tkdenshohc01 )
 	ROM_REGION( 0x600000, "maincpu", 0 )
@@ -139,7 +139,7 @@ ROM_START( tkdenshohc03 )
 ROM_END
 
 /*    YEAR    NAME         PARENT   MACHINE    INPUT                          INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
+/* Tecmosys Hack */
 GAME( 1996, tkdenshohc01,  tkdensho, tecmosys, tecmosys, tecmosys_state, init_tkdensho,   ROT0,   "hack",       "Toukidenshou (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, tkdenshohc02,  tkdensho, tecmosys, tecmosys, tecmosys_state, init_tkdensho,   ROT0,   "DDJ",        "Toukidenshou (Always Have Super Move)", MACHINE_SUPPORTS_SAVE )
-GAME( 1996, tkdenshohc03,  tkdensho, tecmosys, tecmosys, tecmosys_state, init_tkdensho,   ROT0,   "DDJ",        "Toukidenshou (Easy Move)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, tkdenshohc03,  tkdensho, tecmosys, tecmosys, tecmosys_state, init_tkdensho,   ROT0,   "DDJ",        "Toukidenshou (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )

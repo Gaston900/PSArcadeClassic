@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Ren� Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 #include "winui.h"
 
@@ -655,7 +655,7 @@ intptr_t CALLBACK AboutDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lP
 			SetWindowFont(GetDlgItem(hDlg, IDC_TEXT4), hFont, true);
 			SetWindowFont(GetDlgItem(hDlg, IDC_SICKFX), hFontFX, true);
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_BUILD), "Build time: " __DATE__" - " __TIME__"");
-			snprintf(tmp, std::size(tmp), "Version: %s", MAME_VERSION);
+			snprintf(tmp, std::size(tmp), "Version: %s", long_build_version);
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_BUILDVER), tmp);
 			return true;
 		}
@@ -773,7 +773,7 @@ intptr_t CALLBACK AddCustomFileDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, L
 				}
 			}
 
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /****************************************************************************************************************************************/
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_CUSTOMFILE_GAME), GetDescriptionByIndex(driver_index, GetUsekoreanList()));
 /****************************************************************************************************************************************/

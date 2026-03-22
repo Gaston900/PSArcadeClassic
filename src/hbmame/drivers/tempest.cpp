@@ -2,108 +2,89 @@
 // copyright-holders:Robbbert
 #include "../mame/drivers/tempest.cpp"
 
+/******
+  Hack
+********/
 
-/* most of these inputs are not verified */
-static INPUT_PORTS_START( aliensv )
-	PORT_START("IN0")
-	PORT_BIT( 0x01, IP_ACTIVE_LOW, IPT_COIN3 )
-	PORT_BIT( 0x02, IP_ACTIVE_LOW, IPT_COIN2 )
-	PORT_BIT( 0x04, IP_ACTIVE_LOW, IPT_COIN1 )
-	PORT_BIT( 0x08, IP_ACTIVE_LOW, IPT_TILT )   /* no tilt */
-	PORT_SERVICE( 0x10, IP_ACTIVE_LOW )
-	PORT_BIT( 0x20, IP_ACTIVE_LOW, IPT_SERVICE ) PORT_NAME("Diagnostic Step") PORT_CODE(KEYCODE_F1)
-	PORT_BIT( 0x40, IP_ACTIVE_HIGH, IPT_CUSTOM ) PORT_READ_LINE_DEVICE_MEMBER("avg", avg_tempest_device, done_r)
-	PORT_BIT( 0x80, IP_ACTIVE_HIGH, IPT_CUSTOM ) PORT_READ_LINE_MEMBER(tempest_state, clock_r)
+/*********************************************************************************************************************************
 
-	PORT_START("IN1_DSW0")
-	PORT_BIT( 0x0f, IP_ACTIVE_HIGH, IPT_CUSTOM ) PORT_CUSTOM_MEMBER(tempest_state,tempest_knob_r)
-	PORT_DIPNAME( 0x10, 0x10, DEF_STR( Cabinet ) )
-	PORT_DIPSETTING(    0x10, DEF_STR( Upright ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( Cocktail ) ) /* controls change but no flip */
-	PORT_BIT( 0x20, IP_ACTIVE_LOW, IPT_UNKNOWN )
-	PORT_BIT( 0x40, IP_ACTIVE_LOW, IPT_UNKNOWN )
-	PORT_BIT( 0x80, IP_ACTIVE_LOW, IPT_UNKNOWN )
+Tempest Multigame - only the menu rom is dumped. The other roms were gathered up from existing sets.
 
-	PORT_START("IN2")
-	PORT_DIPNAME(  0x03, 0x03, DEF_STR( Difficulty ) )
-	PORT_DIPSETTING(     0x02, DEF_STR( Easy ) )
-	PORT_DIPSETTING(     0x03, "Medium1" )
-	PORT_DIPSETTING(     0x00, "Medium2" )
-	PORT_DIPSETTING(     0x01, DEF_STR( Hard ) )
-	PORT_DIPNAME(  0x04, 0x04, "Rating" )
-	PORT_DIPSETTING(     0x04, "1, 3, 5, 7, 9" )
-	PORT_DIPSETTING(     0x00, "tied to high score" )
-	PORT_BIT(0x18, IP_ACTIVE_HIGH, IPT_CUSTOM ) PORT_CUSTOM_MEMBER(tempest_state,tempest_buttons_r)
-	PORT_BIT(0x20, IP_ACTIVE_LOW, IPT_START1 )
-	PORT_BIT(0x40, IP_ACTIVE_LOW, IPT_START2 )
-	PORT_BIT(0x80, IP_ACTIVE_LOW, IPT_UNKNOWN )
+*********************************************************************************************************************************/
 
-	PORT_START("DSW1")
-	PORT_DIPNAME( 0x03, 0x02, DEF_STR( Coinage ) )  /* coinage verified */
-	PORT_DIPSETTING(    0x03, DEF_STR( 2C_1C ) )
-	PORT_DIPSETTING(    0x02, DEF_STR( 1C_1C ) )
-	PORT_DIPSETTING(    0x01, DEF_STR( 1C_2C ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( Free_Play ) )
-	PORT_DIPNAME( 0x0c, 0x00, "Right Coin" )
-	PORT_DIPSETTING(    0x00, "*1" )
-	PORT_DIPSETTING(    0x04, "*4" )
-	PORT_DIPSETTING(    0x08, "*5" )
-	PORT_DIPSETTING(    0x0c, "*6" )
-	PORT_DIPNAME( 0x10, 0x00, "Left Coin" )
-	PORT_DIPSETTING(    0x00, "*1" )
-	PORT_DIPSETTING(    0x10, "*2" )
-	PORT_DIPNAME( 0xe0, 0x00, "Bonus Coins" )
-	PORT_DIPSETTING(    0x00, DEF_STR( None ) )
-	PORT_DIPSETTING(    0x80, "1 each 5" )
-	PORT_DIPSETTING(    0x40, "1 each 4 (+Demo)" )
-	PORT_DIPSETTING(    0xa0, "1 each 3" )
-	PORT_DIPSETTING(    0x60, "2 each 4 (+Demo)" )
-	PORT_DIPSETTING(    0x20, "1 each 2" )
-	PORT_DIPSETTING(    0xc0, "Freeze Mode" )
-	PORT_DIPSETTING(    0xe0, "Freeze Mode" )
+class tempmg_state : public tempest_state
+{
+public:
+	using tempest_state::tempest_state;
 
-	PORT_START("DSW2")  /* DSW2 all dips verified */
-	PORT_DIPNAME( 0x01, 0x00, "Minimum" )
-	PORT_DIPSETTING(    0x00, "1 Credit" )
-	PORT_DIPSETTING(    0x01, "2 Credit" )
-	PORT_DIPNAME( 0x0c, 0x04, DEF_STR( Lives ) )
-	PORT_DIPSETTING(    0x00, "2" )
-	PORT_DIPSETTING(    0x04, "3" )
-	PORT_DIPSETTING(    0x08, "4" )
-	PORT_DIPSETTING(    0x0c, "5" )
-	PORT_DIPNAME( 0x30, 0x00, DEF_STR( Language ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( English ) )
-	PORT_DIPSETTING(    0x10, DEF_STR( French ) )
-	PORT_DIPSETTING(    0x20, DEF_STR( German ) )
-	PORT_DIPSETTING(    0x30, DEF_STR( Spanish ) )
-	PORT_DIPNAME( 0x02, 0x00, DEF_STR( Bonus_Life ) )
-	PORT_DIPSETTING(    0x00, "10000" )
-	PORT_DIPSETTING(    0x02, "20000" )
-	PORT_DIPNAME( 0x40, 0x00, DEF_STR( Unknown ) )
-	PORT_DIPSETTING(    0x00, DEF_STR( Off ) )
-	PORT_DIPSETTING(    0x40, DEF_STR( On ) )
-	PORT_BIT( 0x80, IP_ACTIVE_HIGH, IPT_UNUSED ) // if high it freezes
+	void tempmg(machine_config &config);
+	void init_tempmg();
 
-	PORT_START(TEMPEST_KNOB_P1_TAG )
-	/* This is the Tempest spinner input. It only uses 4 bits. */
-	PORT_BIT( 0x0f, 0x00, IPT_DIAL ) PORT_SENSITIVITY(100) PORT_KEYDELTA(20) PORT_PLAYER(1) PORT_FULL_TURN_COUNT(72)
-	PORT_BIT( 0xf0, IP_ACTIVE_LOW, IPT_UNUSED )
+private:
 
-	PORT_START(TEMPEST_KNOB_P2_TAG )
-	/* This is the Tempest spinner input. It only uses 4 bits. */
-	PORT_BIT( 0x0f, 0x00, IPT_DIAL ) PORT_SENSITIVITY(100) PORT_KEYDELTA(20) PORT_PLAYER(2) PORT_FULL_TURN_COUNT(72)
-	PORT_BIT( 0xf0, IP_ACTIVE_LOW, IPT_UNUSED )
+	void tempmg_map(address_map &map);
+	DECLARE_MACHINE_RESET(tempmg);
+	void rombank_w(u8 data);
+};
 
-	PORT_START(TEMPEST_BUTTONS_P1_TAG )
-	PORT_BIT( 0x01, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(1)
-	PORT_BIT( 0x02, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(1)
-	PORT_BIT( 0xfc, IP_ACTIVE_LOW, IPT_UNUSED )
+void tempmg_state::rombank_w(u8 data)
+{
+	data &= 7;
+	uint8_t *RAM = memregion("maincpu")->base();
+	membank("bank1")->set_entry(data);
+	membank("bank2")->set_entry(data);
+	/* standard rom banking would not work here, using memcpy instead */
+	u8 *vec = memregion("vectorrom")->base();
+	if (data < 4)
+		memcpy(&RAM[0x3000], &vec[data*0x1000],0x1000);
+	else
+		memcpy(&RAM[0x3000], &vec[0],0x1000);
+}
 
-	PORT_START(TEMPEST_BUTTONS_P2_TAG )
-	PORT_BIT( 0x01, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(2)
-	PORT_BIT( 0x02, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(2)
-	PORT_BIT( 0xfc, IP_ACTIVE_LOW, IPT_UNUSED )
-INPUT_PORTS_END
+MACHINE_RESET_MEMBER( tempmg_state, tempmg )
+{
+	rombank_w(0);
+}
+
+void tempmg_state::init_tempmg()
+{
+	uint8_t *RAM = memregion("maincpu")->base();
+	membank("bank1")->configure_entries(0, 8, &RAM[0x11000], 0x8000); // main roms
+	membank("bank2")->configure_entries(0, 8, &RAM[0x17800], 0x8000); // boot vectors
+}
+
+void tempmg_state::tempmg_map(address_map &map) {
+	map(0x0000, 0x07ff).ram();
+	map(0x0800, 0x080f).ram().share("avg:colorram");
+	map(0x0c00, 0x0c00).portr("IN0");
+	map(0x0d00, 0x0d00).portr("DSW1");
+	map(0x0e00, 0x0e00).portr("DSW2");
+	map(0x2000, 0x2fff).ram();
+	map(0x3000, 0x3fff).rom();
+	map(0x4000, 0x4000).w(FUNC(tempmg_state::tempest_coin_w));
+	map(0x4800, 0x4800).w(m_avg,FUNC(avg_tempest_device::go_w));
+	map(0x5000, 0x5000).w(FUNC(tempmg_state::wdclr_w));
+	map(0x5800, 0x5800).w(m_avg,FUNC(avg_tempest_device::reset_w));
+	map(0x6000, 0x603f).w(FUNC(tempmg_state::earom_write));
+	map(0x6040, 0x6040).r(m_mathbox, FUNC(mathbox_device::status_r)).w(FUNC(tempmg_state::earom_control_w));
+	map(0x6050, 0x6050).r(FUNC(tempmg_state::earom_read));
+	map(0x6060, 0x6060).r(m_mathbox,FUNC(mathbox_device::lo_r));
+	map(0x6070, 0x6070).r(m_mathbox,FUNC(mathbox_device::hi_r));
+	map(0x6080, 0x609f).w(m_mathbox,FUNC(mathbox_device::go_w));
+	map(0x60c0, 0x60cf).rw("pokey1",FUNC(pokey_device::read),FUNC(pokey_device::write));
+	map(0x60d0, 0x60df).rw("pokey2",FUNC(pokey_device::read),FUNC(pokey_device::write));
+	map(0x60e0, 0x60e0).w(FUNC(tempmg_state::tempest_led_w));
+	map(0x9000, 0xdfff).bankr("bank1");
+	map(0xe000, 0xe000).lw8(NAME([this] (u8 data) { rombank_w(data); }));
+	map(0xf800, 0xffff).bankr("bank2");
+}
+
+void tempmg_state::tempmg(machine_config &config)
+{
+	tempest(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &tempmg_state::tempmg_map);
+	MCFG_MACHINE_RESET_OVERRIDE(tempmg_state, tempmg)
+}
 
 ROM_START( temped )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -433,276 +414,6 @@ ROM_START( vbrakout )
 	ROM_REGION(0x40, "earom", ROMREGION_ERASE00 ) // default earom to 0
 ROM_END
 
-ROM_START( temptlm )
-	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "temptlm.113",  0x9000, 0x0800, CRC(44103863) SHA1(18272457a3d704c0a99c2f028793e100d826964c) )
-	ROM_LOAD( "136002-114.e1",   0x9800, 0x0800, CRC(11077375) SHA1(ed8ff0ca969da6672a7683b93d4fcf2935a0d903) )
-	ROM_LOAD( "136002.115",   0xa000, 0x0800, CRC(f3e2827a) SHA1(bd04fcfbbba995e08c3144c1474fcddaaeb1c700) )
-	ROM_LOAD( "136002.316",   0xa800, 0x0800, CRC(aeb0f7e9) SHA1(a5cc25015b98692673cfc1c7c2e9634efd750870) )
-	ROM_LOAD( "136002.217",   0xb000, 0x0800, CRC(ef2eb645) SHA1(b1a2c969e8897e335d5354de6ae04a65d4b2a1e4) )
-	ROM_LOAD( "136002.118",   0xb800, 0x0800, CRC(beb352ab) SHA1(f213166d3970e0bd0f29d8dea8d6afa6990cce38) )
-	ROM_LOAD( "136002.119",   0xc000, 0x0800, CRC(a4de050f) SHA1(ea302e43a313a5a18115e74ddbaaedde0fbecda7) )
-	ROM_LOAD( "temptlm.120",  0xc800, 0x0800, CRC(d27ed181) SHA1(84ef9a56c0640c9a2cebf4c94a4f19379e3bd34c) )
-	ROM_LOAD( "136002.121",   0xd000, 0x0800, CRC(73d38e47) SHA1(9980606376a79ba94f8e2a325871a6c8d10d83fc) )
-	ROM_LOAD( "136002.222",   0xd800, 0x0800, CRC(707bd5c3) SHA1(2f0af6fb7154c244c794f7247e5c16a1e06ddf7d) )
-	ROM_RELOAD(               0xf800, 0x0800 ) /* for reset/interrupt vectors */
-	/* Vector ROM */
-	ROM_REGION( 0x1000, "vectorrom", 0 )
-	ROM_LOAD( "136002-123.np3",  0x0000, 0x0800, CRC(29f7e937) SHA1(686c8b9b8901262e743497cee7f2f7dd5cb3af7e) )
-	ROM_LOAD( "136002-124.r3",   0x0800, 0x0800, CRC(c16ec351) SHA1(a30a3662c740810c0f20e3712679606921b8ca06) )
-
-	/* AVG PROM */
-	ROM_REGION( 0x100, "avg:prom", 0 )
-	ROM_LOAD( "136002-125.d7",   0x0000, 0x0100, CRC(5903af03) SHA1(24bc0366f394ad0ec486919212e38be0f08d0239) )
-
-	/* Mathbox PROMs */
-	ROM_REGION( 0x20, "user2", 0 )
-	ROM_LOAD( "136002-126.a1",   0x0000, 0x0020, CRC(8b04f921) SHA1(317b3397482f13b2d1bc21f296d3b3f9a118787b) )
-
-	ROM_REGION32_BE( 0x400, "user3", 0 )
-	ROMX_LOAD( "136002-132.l1", 0, 0x100, CRC(2af82e87) SHA1(3816835a9ccf99a76d246adf204989d9261bb065), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-131.k1", 0, 0x100, CRC(b31f6e24) SHA1(ce5f8ca34d06a5cfa0076b47400e61e0130ffe74), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-	ROMX_LOAD( "136002-130.j1", 1, 0x100, CRC(8119b847) SHA1(c4fbaedd4ce1ad6a4128cbe902b297743edb606a), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-129.h1", 1, 0x100, CRC(09f5a4d5) SHA1(d6f2ac07ca9ee385c08831098b0dcaf56808993b), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-	ROMX_LOAD( "136002-128.f1", 2, 0x100, CRC(823b61ae) SHA1(d99a839874b45f64e14dae92a036e47a53705d16), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-127.e1", 2, 0x100, CRC(276eadd5) SHA1(55718cd8ec4bcf75076d5ef0ee1ed2551e19d9ba), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-
-	ROM_REGION(0x40, "earom", ROMREGION_ERASE00 ) // default earom to 0
-ROM_END
-
-
-/* The following prototypes, if run on the real hardware, can ruin your monitor...             */
-/* or, as written in the readme, "DONT RUN IT ON REAL HARDWARE - IT CAN FUCK THE MONITOR."  ;) */
-
-ROM_START( tvortex ) /* rev 1 */
-	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "d1.bin",    0x9000, 0x0800, CRC(3aff3417) SHA1(3b7c31f01b7467757ec85e98a17038e5df5720bb) )
-	ROM_LOAD( "e1.bin",    0x9800, 0x0800, CRC(11861be3) SHA1(a35797c649e8286c844cee6dac86ac50f4fbd669) )
-	ROM_LOAD( "f1.bin",    0xa000, 0x0800, CRC(1d251111) SHA1(2912a21dc708231e28d6164e54e593a8300b9c4a) )
-	ROM_LOAD( "h1.bin",    0xa800, 0x0800, CRC(937a9859) SHA1(336b25291533d19294f1ced730bbf20971849adf) )
-	ROM_LOAD( "j1.bin",    0xb000, 0x0800, CRC(79481246) SHA1(c5362670fd29ef1432f8e626323da395d6e8a675) )
-	ROM_LOAD( "k1.bin",    0xb800, 0x0800, CRC(390f872a) SHA1(c5463ea2d2307e21c941b5b459e3652c12154609) )
-	ROM_LOAD( "lm1.bin",   0xc000, 0x0800, CRC(515760dd) SHA1(773f06c9a64e72f9d3d8a5c622bf3ec2b4ba678d) )
-	ROM_LOAD( "mn1.bin",   0xc800, 0x0800, CRC(c6c41c68) SHA1(9323c07fc80a947142dde008c53f5e8c0b0c572d) )
-	ROM_LOAD( "p1.bin",    0xd000, 0x0800, CRC(3c2ff130) SHA1(32ebabcb2cbd7aab5e29de2b873f02ed78776ae6) )
-	ROM_LOAD( "r1.bin",    0xd800, 0x0800, CRC(67cafbb1) SHA1(467515733d843398e6fe29661002536a1e6c8fc9) )
-	ROM_RELOAD(             0xf800, 0x0800 ) /* for reset/interrupt vectors */
-	/* Vector ROM */
-	ROM_REGION( 0x1000, "vectorrom", 0 )
-	ROM_LOAD( "n3.bin",    0x0000, 0x0800, CRC(29c6a1cb) SHA1(290702a1c0942a68e288b37963e51eba02177a3f) )
-	ROM_LOAD( "r3.bin",    0x0800, 0x0800, CRC(7fbe5e21) SHA1(e5de6c3af82e64444b0ddcda559e9cb4fbf6c1da) )
-
-	/* AVG PROM */
-	ROM_REGION( 0x100, "avg:prom", 0 )
-	ROM_LOAD( "136002-125.d7",   0x0000, 0x0100, CRC(5903af03) SHA1(24bc0366f394ad0ec486919212e38be0f08d0239) )
-
-	/* Mathbox PROMs */
-	ROM_REGION( 0x20, "user2", 0 )
-	ROM_LOAD( "136002-126.a1",   0x0000, 0x0020, CRC(8b04f921) SHA1(317b3397482f13b2d1bc21f296d3b3f9a118787b) )
-
-	ROM_REGION32_BE( 0x400, "user3", 0 )
-	ROMX_LOAD( "136002-132.l1", 0, 0x100, CRC(2af82e87) SHA1(3816835a9ccf99a76d246adf204989d9261bb065), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-131.k1", 0, 0x100, CRC(b31f6e24) SHA1(ce5f8ca34d06a5cfa0076b47400e61e0130ffe74), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-	ROMX_LOAD( "136002-130.j1", 1, 0x100, CRC(8119b847) SHA1(c4fbaedd4ce1ad6a4128cbe902b297743edb606a), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-129.h1", 1, 0x100, CRC(09f5a4d5) SHA1(d6f2ac07ca9ee385c08831098b0dcaf56808993b), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-	ROMX_LOAD( "136002-128.f1", 2, 0x100, CRC(823b61ae) SHA1(d99a839874b45f64e14dae92a036e47a53705d16), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-127.e1", 2, 0x100, CRC(276eadd5) SHA1(55718cd8ec4bcf75076d5ef0ee1ed2551e19d9ba), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-
-	ROM_REGION(0x40, "earom", ROMREGION_ERASE00 ) // default earom to 0
-ROM_END
-
-ROM_START( tvortexa ) /* rev 2? */
-	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "d1.bin",    0x9000, 0x0800, CRC(3aff3417) SHA1(3b7c31f01b7467757ec85e98a17038e5df5720bb) )
-	ROM_LOAD( "e1.bin",    0x9800, 0x0800, CRC(11861be3) SHA1(a35797c649e8286c844cee6dac86ac50f4fbd669) )
-	ROM_LOAD( "f1.bin",    0xa000, 0x0800, CRC(1d251111) SHA1(2912a21dc708231e28d6164e54e593a8300b9c4a) )
-	ROM_LOAD( "h1.bin",    0xa800, 0x0800, CRC(937a9859) SHA1(336b25291533d19294f1ced730bbf20971849adf) )
-	ROM_LOAD( "j1.bin",    0xb000, 0x0800, CRC(79481246) SHA1(c5362670fd29ef1432f8e626323da395d6e8a675) )
-	ROM_LOAD( "k1.bin",    0xb800, 0x0800, CRC(390f872a) SHA1(c5463ea2d2307e21c941b5b459e3652c12154609) )
-	ROM_LOAD( "lm1.bin",   0xc000, 0x0800, CRC(515760dd) SHA1(773f06c9a64e72f9d3d8a5c622bf3ec2b4ba678d) )
-	ROM_LOAD( "mn1.bin",   0xc800, 0x0800, CRC(c6c41c68) SHA1(9323c07fc80a947142dde008c53f5e8c0b0c572d) )
-	ROM_LOAD( "p1.bin",    0xd000, 0x0800, CRC(3c2ff130) SHA1(32ebabcb2cbd7aab5e29de2b873f02ed78776ae6) )
-	ROM_LOAD( "r1_alt.bin",    0xd800, 0x0800, CRC(2711c2cc) SHA1(f5e43dd46c24828e733b70f7bd678522c34e318a) )
-	ROM_RELOAD(             0xf800, 0x0800 ) /* for reset/interrupt vectors */
-	/* Vector ROM */
-	ROM_REGION( 0x1000, "vectorrom", 0 )
-	ROM_LOAD( "n3.bin",    0x0000, 0x0800, CRC(29c6a1cb) SHA1(290702a1c0942a68e288b37963e51eba02177a3f) )
-	ROM_LOAD( "r3.bin",    0x0800, 0x0800, CRC(7fbe5e21) SHA1(e5de6c3af82e64444b0ddcda559e9cb4fbf6c1da) )
-
-	/* AVG PROM */
-	ROM_REGION( 0x100, "avg:prom", 0 )
-	ROM_LOAD( "136002-125.d7",   0x0000, 0x0100, CRC(5903af03) SHA1(24bc0366f394ad0ec486919212e38be0f08d0239) )
-
-	/* Mathbox PROMs */
-	ROM_REGION( 0x20, "user2", 0 )
-	ROM_LOAD( "136002-126.a1",   0x0000, 0x0020, CRC(8b04f921) SHA1(317b3397482f13b2d1bc21f296d3b3f9a118787b) )
-
-	ROM_REGION32_BE( 0x400, "user3", 0 )
-	ROMX_LOAD( "136002-132.l1", 0, 0x100, CRC(2af82e87) SHA1(3816835a9ccf99a76d246adf204989d9261bb065), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-131.k1", 0, 0x100, CRC(b31f6e24) SHA1(ce5f8ca34d06a5cfa0076b47400e61e0130ffe74), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-	ROMX_LOAD( "136002-130.j1", 1, 0x100, CRC(8119b847) SHA1(c4fbaedd4ce1ad6a4128cbe902b297743edb606a), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-129.h1", 1, 0x100, CRC(09f5a4d5) SHA1(d6f2ac07ca9ee385c08831098b0dcaf56808993b), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-	ROMX_LOAD( "136002-128.f1", 2, 0x100, CRC(823b61ae) SHA1(d99a839874b45f64e14dae92a036e47a53705d16), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-127.e1", 2, 0x100, CRC(276eadd5) SHA1(55718cd8ec4bcf75076d5ef0ee1ed2551e19d9ba), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-
-	ROM_REGION(0x40, "earom", ROMREGION_ERASE00 ) // default earom to 0
-ROM_END
-
-ROM_START( aliensv ) /* rev 1 */
-	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "aliens.d1",   0x9000, 0x0800, CRC(337e21f6) SHA1(7adadeaa975e22f0b20e8f1fb6ad68b5c3934133) )
-	ROM_RELOAD(              0x9800, 0x0800 )
-	ROM_LOAD( "aliens.f1",   0xa000, 0x0800, CRC(4d2aabb0) SHA1(31106a1fc22d2a19866f07b8d6c6f4bf76007909) )
-	ROM_LOAD( "aliens.h1",   0xa800, 0x0800, CRC(a503f54a) SHA1(91ebf9f69a183a04a5bf55fcdd9e191523bb66bb) )
-	ROM_LOAD( "aliens.j1",   0xb000, 0x0800, CRC(5487d531) SHA1(c95f037151b824345af03f27a6c3c7eb8a899b2c) )
-	ROM_LOAD( "aliens.k1",   0xb800, 0x0800, CRC(0ac96e87) SHA1(37461e84e6f46516c25dbf4ddb2ffd65877445c0) )
-	ROM_LOAD( "aliens.l1",   0xc000, 0x0800, CRC(cd246ac2) SHA1(de2e6fe2e72c092c3874e797fc302a71dbf57710) )
-	ROM_LOAD( "aliens.n1",   0xc800, 0x0800, CRC(bd98c5f3) SHA1(268487d9cf46b4b7b49eab7420d078bf676e636c) )
-	ROM_LOAD( "aliens.p1",   0xd000, 0x0800, CRC(7c10adbd) SHA1(38579128a90bff4a7a4ae46d6aaa42118b8bc218) )
-	ROM_LOAD( "aliens.r1",   0xd800, 0x0800, CRC(555c3070) SHA1(032f03af23c7ccac8a2bf50c3c646e141921ffee) )
-	ROM_RELOAD(              0xf800, 0x0800 ) /* for reset/interrupt vectors */
-	/* Vector ROM */
-	ROM_REGION( 0x1000, "vectorrom", 0 )
-	ROM_LOAD( "aliens.n3",   0x0000, 0x0800, CRC(5c8fd38b) SHA1(bb0d6bd062eba53b5d64b3f444d5ce0a34728bf5) )
-	ROM_LOAD( "aliens.r3",   0x0800, 0x0800, CRC(6cabcd08) SHA1(e3950de50f3dfbc4d4d2f4fe26625d8ef94c0819) )
-
-	/* AVG PROM */
-	ROM_REGION( 0x100, "avg:prom", 0 )
-	ROM_LOAD( "136002-125.d7",   0x0000, 0x0100, CRC(5903af03) SHA1(24bc0366f394ad0ec486919212e38be0f08d0239) )
-
-	/* Mathbox PROMs */
-	ROM_REGION( 0x20, "user2", 0 )
-	ROM_LOAD( "136002-126.a1",   0x0000, 0x0020, CRC(8b04f921) SHA1(317b3397482f13b2d1bc21f296d3b3f9a118787b) )
-
-	ROM_REGION32_BE( 0x400, "user3", 0 )
-	ROMX_LOAD( "136002-132.l1", 0, 0x100, CRC(2af82e87) SHA1(3816835a9ccf99a76d246adf204989d9261bb065), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-131.k1", 0, 0x100, CRC(b31f6e24) SHA1(ce5f8ca34d06a5cfa0076b47400e61e0130ffe74), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-	ROMX_LOAD( "136002-130.j1", 1, 0x100, CRC(8119b847) SHA1(c4fbaedd4ce1ad6a4128cbe902b297743edb606a), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-129.h1", 1, 0x100, CRC(09f5a4d5) SHA1(d6f2ac07ca9ee385c08831098b0dcaf56808993b), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-	ROMX_LOAD( "136002-128.f1", 2, 0x100, CRC(823b61ae) SHA1(d99a839874b45f64e14dae92a036e47a53705d16), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-127.e1", 2, 0x100, CRC(276eadd5) SHA1(55718cd8ec4bcf75076d5ef0ee1ed2551e19d9ba), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-
-	ROM_REGION(0x40, "earom", ROMREGION_ERASE00 ) // default earom to 0
-ROM_END
-
-ROM_START( aliensva ) /* rev 2? */
-	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "aliens.d1",   0x9000, 0x0800, CRC(337e21f6) SHA1(7adadeaa975e22f0b20e8f1fb6ad68b5c3934133) )
-	ROM_RELOAD(              0x9800, 0x0800 )
-	ROM_LOAD( "aliens.f1",   0xa000, 0x0800, CRC(4d2aabb0) SHA1(31106a1fc22d2a19866f07b8d6c6f4bf76007909) )
-	ROM_LOAD( "aliens.h1",   0xa800, 0x0800, CRC(a503f54a) SHA1(91ebf9f69a183a04a5bf55fcdd9e191523bb66bb) )
-	ROM_LOAD( "aliens.j1",   0xb000, 0x0800, CRC(5487d531) SHA1(c95f037151b824345af03f27a6c3c7eb8a899b2c) )
-	ROM_LOAD( "aliens.k1",   0xb800, 0x0800, CRC(0ac96e87) SHA1(37461e84e6f46516c25dbf4ddb2ffd65877445c0) )
-	ROM_LOAD( "aliens.l1",   0xc000, 0x0800, CRC(cd246ac2) SHA1(de2e6fe2e72c092c3874e797fc302a71dbf57710) )
-	ROM_LOAD( "aliens.n1",   0xc800, 0x0800, CRC(bd98c5f3) SHA1(268487d9cf46b4b7b49eab7420d078bf676e636c) )
-	ROM_LOAD( "aliens.p1",   0xd000, 0x0800, CRC(7c10adbd) SHA1(38579128a90bff4a7a4ae46d6aaa42118b8bc218) )
-	ROM_LOAD( "aliensa.r1",  0xd800, 0x0800, CRC(4da6627d) SHA1(01d8eea45373e3e87c81bc3b31d85ba8c7f4fcb3) )
-	ROM_RELOAD(              0xf800, 0x0800 ) /* for reset/interrupt vectors */
-	/* Vector ROM */
-	ROM_REGION( 0x1000, "vectorrom", 0 )
-	ROM_LOAD( "aliens.n3",   0x0000, 0x0800, CRC(5c8fd38b) SHA1(bb0d6bd062eba53b5d64b3f444d5ce0a34728bf5) )
-	ROM_LOAD( "aliens.r3",   0x0800, 0x0800, CRC(6cabcd08) SHA1(e3950de50f3dfbc4d4d2f4fe26625d8ef94c0819) )
-
-	/* AVG PROM */
-	ROM_REGION( 0x100, "avg:prom", 0 )
-	ROM_LOAD( "136002-125.d7",   0x0000, 0x0100, CRC(5903af03) SHA1(24bc0366f394ad0ec486919212e38be0f08d0239) )
-
-	/* Mathbox PROMs */
-	ROM_REGION( 0x20, "user2", 0 )
-	ROM_LOAD( "136002-126.a1",   0x0000, 0x0020, CRC(8b04f921) SHA1(317b3397482f13b2d1bc21f296d3b3f9a118787b) )
-
-	ROM_REGION32_BE( 0x400, "user3", 0 )
-	ROMX_LOAD( "136002-132.l1", 0, 0x100, CRC(2af82e87) SHA1(3816835a9ccf99a76d246adf204989d9261bb065), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-131.k1", 0, 0x100, CRC(b31f6e24) SHA1(ce5f8ca34d06a5cfa0076b47400e61e0130ffe74), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-	ROMX_LOAD( "136002-130.j1", 1, 0x100, CRC(8119b847) SHA1(c4fbaedd4ce1ad6a4128cbe902b297743edb606a), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-129.h1", 1, 0x100, CRC(09f5a4d5) SHA1(d6f2ac07ca9ee385c08831098b0dcaf56808993b), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-	ROMX_LOAD( "136002-128.f1", 2, 0x100, CRC(823b61ae) SHA1(d99a839874b45f64e14dae92a036e47a53705d16), ROM_NIBBLE | ROM_SHIFT_NIBBLE_LO | ROM_SKIP(3))
-	ROMX_LOAD( "136002-127.e1", 2, 0x100, CRC(276eadd5) SHA1(55718cd8ec4bcf75076d5ef0ee1ed2551e19d9ba), ROM_NIBBLE | ROM_SHIFT_NIBBLE_HI | ROM_SKIP(3))
-
-	ROM_REGION(0x40, "earom", ROMREGION_ERASE00 ) // default earom to 0
-ROM_END
-
-/*********************************************************************************************************************************
-
-Tempest Multigame - only the menu rom is dumped. The other roms were gathered up from existing sets.
-
-*********************************************************************************************************************************/
-
-class tempmg_state : public tempest_state
-{
-public:
-	using tempest_state::tempest_state;
-
-	void tempmg(machine_config &config);
-	void init_tempmg();
-
-private:
-
-	void tempmg_map(address_map &map);
-	DECLARE_MACHINE_RESET(tempmg);
-	void rombank_w(u8 data);
-};
-
-void tempmg_state::rombank_w(u8 data)
-{
-	data &= 7;
-	uint8_t *RAM = memregion("maincpu")->base();
-	membank("bank1")->set_entry(data);
-	membank("bank2")->set_entry(data);
-	/* standard rom banking would not work here, using memcpy instead */
-	u8 *vec = memregion("vectorrom")->base();
-	if (data < 4)
-		memcpy(&RAM[0x3000], &vec[data*0x1000],0x1000);
-	else
-		memcpy(&RAM[0x3000], &vec[0],0x1000);
-}
-
-MACHINE_RESET_MEMBER( tempmg_state, tempmg )
-{
-	rombank_w(0);
-}
-
-void tempmg_state::init_tempmg()
-{
-	uint8_t *RAM = memregion("maincpu")->base();
-	membank("bank1")->configure_entries(0, 8, &RAM[0x11000], 0x8000); // main roms
-	membank("bank2")->configure_entries(0, 8, &RAM[0x17800], 0x8000); // boot vectors
-}
-
-void tempmg_state::tempmg_map(address_map &map) {
-	map(0x0000, 0x07ff).ram();
-	map(0x0800, 0x080f).ram().share("avg:colorram");
-	map(0x0c00, 0x0c00).portr("IN0");
-	map(0x0d00, 0x0d00).portr("DSW1");
-	map(0x0e00, 0x0e00).portr("DSW2");
-	map(0x2000, 0x2fff).ram();
-	map(0x3000, 0x3fff).rom();
-	map(0x4000, 0x4000).w(FUNC(tempmg_state::tempest_coin_w));
-	map(0x4800, 0x4800).w(m_avg,FUNC(avg_tempest_device::go_w));
-	map(0x5000, 0x5000).w(FUNC(tempmg_state::wdclr_w));
-	map(0x5800, 0x5800).w(m_avg,FUNC(avg_tempest_device::reset_w));
-	map(0x6000, 0x603f).w(FUNC(tempmg_state::earom_write));
-	map(0x6040, 0x6040).r(m_mathbox, FUNC(mathbox_device::status_r)).w(FUNC(tempmg_state::earom_control_w));
-	map(0x6050, 0x6050).r(FUNC(tempmg_state::earom_read));
-	map(0x6060, 0x6060).r(m_mathbox,FUNC(mathbox_device::lo_r));
-	map(0x6070, 0x6070).r(m_mathbox,FUNC(mathbox_device::hi_r));
-	map(0x6080, 0x609f).w(m_mathbox,FUNC(mathbox_device::go_w));
-	map(0x60c0, 0x60cf).rw("pokey1",FUNC(pokey_device::read),FUNC(pokey_device::write));
-	map(0x60d0, 0x60df).rw("pokey2",FUNC(pokey_device::read),FUNC(pokey_device::write));
-	map(0x60e0, 0x60e0).w(FUNC(tempmg_state::tempest_led_w));
-	map(0x9000, 0xdfff).bankr("bank1");
-	map(0xe000, 0xe000).lw8(NAME([this] (u8 data) { rombank_w(data); }));
-	map(0xf800, 0xffff).bankr("bank2");
-}
-
-
-void tempmg_state::tempmg(machine_config &config)
-{
-	tempest(config);
-	m_maincpu->set_addrmap(AS_PROGRAM, &tempmg_state::tempmg_map);
-	MCFG_MACHINE_RESET_OVERRIDE(tempmg_state, tempmg)
-}
-
 ROM_START( tempmg )
 	ROM_REGION( 0x50000, "maincpu", 0 )
 	ROM_LOAD( "tempmg-113.d1",   0x11000, 0x0800, CRC(8a6633fb) SHA1(b143a5d2019f24666b350b40b0dab2924bb9c7c0) )
@@ -776,8 +487,8 @@ ROM_START( tempmg )
 	ROM_LOAD( "136002.222",      0x35800, 0x0800, CRC(707bd5c3) SHA1(2f0af6fb7154c244c794f7247e5c16a1e06ddf7d) )
 	ROM_RELOAD(                  0x37800, 0x0800 )
 	ROM_RELOAD(                  0x45800, 0x0800 )
-	ROM_RELOAD(                  0x47800, 0x0800 )
 	ROM_RELOAD(                  0x4d800, 0x0800 )
+	ROM_RELOAD(                  0x47800, 0x0800 )
 	ROM_RELOAD(                  0x4f800, 0x0800 )
 	ROM_LOAD( "136002-116.h1",   0x3a800, 0x0800, CRC(7356896c) SHA1(a013ede292189a8f5a907de882ee1a573d784b3c) )
 	ROM_RELOAD(                  0x42800, 0x0800 )
@@ -819,19 +530,15 @@ ROM_START( tempmg )
 	ROM_REGION(0x40, "earom", ROMREGION_ERASE00 ) // default earom to 0
 ROM_END
 
-
-GAME( 2000, temped,    tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack", "TempEd", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, tempall,   tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack", "Tempest All Levels", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, temptwst,  tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack", "Tempest Twisted", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, temptwsta, tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack", "Tempest Twisted (Alt)", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, temptwst2, tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack", "Tempest Twisty's Revenge", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, temptwst3, tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack", "Tempest Psycho Twist", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, temptwst4, tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack", "Tempest Twisted Maniac", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, tempm,     tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack", "Tempest Mark's Hacks", MACHINE_SUPPORTS_SAVE )
-GAME( 2001, tempmg,    tempest, tempmg,  tempest, tempmg_state,  init_tempmg, ROT270, "hack", "Tempest Multigame", MACHINE_SUPPORTS_SAVE )
-GAME( 1999, vbrakout,  tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack", "Vector Breakout [h]", MACHINE_SUPPORTS_SAVE )
-GAME( 2000, temptlm,   tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack", "Tempest Level Man", MACHINE_SUPPORTS_SAVE )
-GAME( 1980, tvortex,   tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack", "Vortex (Set 1)", MACHINE_SUPPORTS_SAVE )
-GAME( 1980, tvortexa,  tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack", "Vortex (Set 2)", MACHINE_SUPPORTS_SAVE )
-GAME( 1980, aliensv,   tempest, tempest, aliensv, tempest_state, empty_init,  ROT270, "hack", "Aliens", MACHINE_SUPPORTS_SAVE )
-GAME( 1980, aliensva,  tempest, tempest, aliensv, tempest_state, empty_init,  ORIENTATION_FLIP_Y ^ ROT270, "hack", "Aliens alt version", MACHINE_SUPPORTS_SAVE )
+/*    YEAR    NAME     PARENT   MACHINE   INPUT                     INIT      MONITOR COMPANY   FULLNAME FLAGS */
+/* Tempest Hack */
+GAME( 2000, temped,    tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack",   "TempEd", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, tempall,   tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack",   "Tempest All Levels", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, temptwst,  tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "Twisty", "Tempest Twisted", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, temptwsta, tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "Twisty", "Tempest Twisted (Alt)", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, temptwst2, tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "Twisty", "Tempest Twisty's Revenge", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, temptwst3, tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "Twisty", "Tempest Psycho Twist", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, temptwst4, tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "Twisty", "Tempest Twisted Maniac", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, tempm,     tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "hack",   "Tempest Mark's Hacks", MACHINE_SUPPORTS_SAVE )
+GAME( 2001, tempmg,    tempest, tempmg,  tempest, tempmg_state,  init_tempmg, ROT270, "Clay Cowgill", "Tempest Multigame", MACHINE_SUPPORTS_SAVE )
+GAME( 1999, vbrakout,  tempest, tempest, tempest, tempest_state, empty_init,  ROT270, "Clay Cowgill", "Vector Breakout", MACHINE_SUPPORTS_SAVE )

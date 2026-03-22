@@ -791,7 +791,7 @@ namespace {
 
 #define CORE_INPUT_TYPES_AD_STICK_Y \
 		CORE_INPUT_TYPES_BEGIN(ad_stick_y) \
-		INPUT_PORT_ANALOG_TYPE(   1, PLAYER1,  AD_STICK_Y,          N_p("input-name", "AD Stick Y"),             input_seq(JOYCODE_Y_INDEXED(0), input_seq::or_code, MOUSECODE_Y_INDEXED(0)), input_seq(KEYCODE_UP), input_seq(KEYCODE_DOWN) ) \
+		INPUT_PORT_ANALOG_TYPE(   1, PLAYER1,  AD_STICK_Y,          N_p("input-name", "AD Stick Y"),             input_seq(JOYCODE_Y_INDEXED(0), input_seq::or_code, MOUSECODE_Y_INDEXED(0)), input_seq(KEYCODE_DOWN), input_seq(KEYCODE_UP) ) \
 		INPUT_PORT_ANALOG_TYPE(   2, PLAYER2,  AD_STICK_Y,          N_p("input-name", "AD Stick Y 2"),           input_seq(JOYCODE_Y_INDEXED(1), input_seq::or_code, MOUSECODE_Y_INDEXED(1)), input_seq(KEYCODE_R), input_seq(KEYCODE_F) ) \
 		INPUT_PORT_ANALOG_TYPE(   3, PLAYER3,  AD_STICK_Y,          N_p("input-name", "AD Stick Y 3"),           input_seq(JOYCODE_Y_INDEXED(2), input_seq::or_code, MOUSECODE_Y_INDEXED(2)), input_seq(KEYCODE_I), input_seq(KEYCODE_K) ) \
 		INPUT_PORT_ANALOG_TYPE(   4, PLAYER4,  AD_STICK_Y,          N_p("input-name", "AD Stick Y 4"),           input_seq(JOYCODE_Y_INDEXED(3), input_seq::or_code, MOUSECODE_Y_INDEXED(3)), input_seq(), input_seq() ) \
@@ -892,9 +892,9 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_SHOW_GFX,          N_p("input-name", "Show Decoded Graphics"),  input_seq(KEYCODE_F4) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_FRAMESKIP_DEC,     N_p("input-name", "Frameskip Dec"),          input_seq(KEYCODE_F8) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_FRAMESKIP_INC,     N_p("input-name", "Frameskip Inc"),          input_seq(KEYCODE_F9) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_THROTTLE,          N_p("input-name", "Throttle"),               input_seq(KEYCODE_F10) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_THROTTLE,          N_p("input-name", "Throttle"),               input_seq(KEYCODE_LALT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_FAST_FORWARD,      N_p("input-name", "Fast Forward"),           input_seq(KEYCODE_BACKSPACE) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_SHOW_FPS,          N_p("input-name", "Show FPS"),               input_seq(KEYCODE_F11, input_seq::not_code, KEYCODE_LSHIFT) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_SHOW_FPS,          N_p("input-name", "Show FPS"),               input_seq(KEYCODE_LALT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_SNAPSHOT,          N_p("input-name", "Save Snapshot"),          input_seq(KEYCODE_F12, input_seq::not_code, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_RECORD_MNG,        N_p("input-name", "Record MNG"),             input_seq(KEYCODE_F12, KEYCODE_LSHIFT, input_seq::not_code, KEYCODE_LCONTROL) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_RECORD_AVI,        N_p("input-name", "Record AVI"),             input_seq(KEYCODE_F12, KEYCODE_LSHIFT, KEYCODE_LCONTROL) ) \

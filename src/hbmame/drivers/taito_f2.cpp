@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/taito_f2.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( cameltryhc01 )
 	ROM_REGION( 0x40000, "maincpu", 0 )
@@ -218,13 +218,13 @@ ROM_START( thundfoxhc01 )
 ROM_END
 
 /*    YEAR    NAME         PARENT   MACHINE      INPUT                         INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1989, cameltryhc01,  cameltry, cameltry,  cameltryj,  taitof2_state, init_cameltry, ROT0,    "hack",       "Cameltry (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
-GAME( 1992, deadconxhc01,  deadconx, deadconxj, deadconxj,  taitof2_state, empty_init,    ROT0,    "hack",       "Dead Connection (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
-GAME( 1992, dinorexhc01,   dinorex,  dinorex,   dinorex,    taitof2_state, empty_init,    ROT0,    "DDJ",        "Dino Rex (Easy Move)", MACHINE_SUPPORTS_SAVE )
-GAME( 1989, dondokodhc01,  dondokod, dondokod,  dondokodj,  taitof2_state, empty_init,    ROT0,    "hack",       "Don Doko Don (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
-GAME( 1990, gunfronthc01,  gunfront, gunfront,  gunfrontj,  taitof2_state, empty_init,    ROT270,  "hack",       "Gun Frontier (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
-GAME( 1989, megablsthc01,  megablst, megab,     megabj,     taitof2_state, empty_init,    ROT0,    "hack",       "Mega Blast (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
-GAME( 1990, mizubakuhc01,  liquidk,  liquidk,   mizubaku,   taitof2_state, empty_init,    ROT0,    "hack",       "Mizubaku Daibouken (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
-GAME( 1990, runarkhc01,    growl,    growl,     runark,     taitof2_state, empty_init,    ROT0,    "hack",       "Runark (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
-GAME( 1990, thundfoxhc01,  thundfox, thundfox,  thundfoxj,  taitof2_state, empty_init,    ROT0,    "hack",       "Thunder Fox (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
+/* Taito_f2 Hack */
+GAME( 1989, cameltryhc01,  cameltry, cameltry,  cameltryj,  taitof2_state, init_cameltry, ROT0,    "hack",       "Cameltry (Chinese Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, deadconxhc01,  deadconx, deadconxj, deadconxj,  taitof2_state, empty_init,    ROT0,    "hack",       "Dead Connection (Chinese Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, dinorexhc01,   dinorex,  dinorex,   dinorex,    taitof2_state, empty_init,    ROT0,    "DDJ",        "Dino Rex (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
+GAME( 1989, dondokodhc01,  dondokod, dondokod,  dondokodj,  taitof2_state, empty_init,    ROT0,    "hack",       "Don Doko Don (Chinese Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 1990, gunfronthc01,  gunfront, gunfront,  gunfrontj,  taitof2_state, empty_init,    ROT270,  "hack",       "Gun Frontier (Chinese Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 1989, megablsthc01,  megablst, megab,     megabj,     taitof2_state, empty_init,    ROT0,    "hack",       "Mega Blast (Chinese Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 1990, mizubakuhc01,  liquidk,  liquidk,   mizubaku,   taitof2_state, empty_init,    ROT0,    "hack",       "Mizubaku Daibouken (Chinese Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 1990, runarkhc01,    growl,    growl,     runark,     taitof2_state, empty_init,    ROT0,    "hack",       "Runark (Chinese Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 1990, thundfoxhc01,  thundfox, thundfox,  thundfoxj,  taitof2_state, empty_init,    ROT0,    "hack",       "Thunder Fox (Chinese Translation)", MACHINE_SUPPORTS_SAVE )

@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/solomon.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( solomonhc01 )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -32,5 +32,5 @@ ROM_START( solomonhc01 )
 ROM_END
 
 /*    YEAR    NAME       PARENT   MACHINE  INPUT                      INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1986, solomonhc01, solomon, solomon, solomon, solomon_state, empty_init,   ROT0,     "hack",      "Solomon no Kagi (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
+/* Solomon Hack */
+GAME( 1986, solomonhc01, solomon, solomon, solomon, solomon_state, empty_init,   ROT0,     "hack",      "Solomon no Kagi (Chinese Translation)", MACHINE_SUPPORTS_SAVE )

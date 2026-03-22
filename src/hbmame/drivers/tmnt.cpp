@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/tmnt.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( ssridershc01 )
 	ROM_REGION( 0xc0000, "maincpu", 0 )
@@ -31,7 +31,7 @@ ROM_START( ssridershc01 )
 	ROM_LOAD( "ssriders_abd.nv", 0x0000, 0x080, CRC(bfdafedf) SHA1(bc786d4fb3495a6baf2ae13c19392c6740a2be6d) )
 ROM_END
 
-ROM_START( ssridershc02 )
+ROM_START( ssridershc02 ) //ssriders1v4
 	ROM_REGION( 0xc0000, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "064eaa02_hc02.8e",   0x000000, 0x40000, CRC(f6bce510) SHA1(3c46487c4bd591fe14248344ac2563beb1437769) )
 	ROM_LOAD16_BYTE( "064eaa03_hc02.8g",   0x000001, 0x40000, CRC(9e998ebe) SHA1(683d75bcfb8b8f87996fe8aadde4d1c600b409df) )
@@ -56,12 +56,37 @@ ROM_START( ssridershc02 )
 	ROM_LOAD( "ssriders_eaa.nv", 0x0000, 0x080, CRC(74a45ef5) SHA1(da01f14684315bfb5c180f0c64a14350c34ae945) )
 ROM_END
 
-ROM_START( ssridershc03 )
+ROM_START( ssridershc03 ) //ssriderssr
 	ROM_REGION( 0xc0000, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "064eaa02_hc03.8e",   0x000000, 0x40000, CRC(734f4b4c) SHA1(a38d27d38759e3811c54e4921186c91a762eaa62) )
 	ROM_LOAD16_BYTE( "064eaa03_hc03.8g",   0x000001, 0x40000, CRC(d50e01fd) SHA1(8070090ee0da5e57d6df042da8926dd322629bfd) )
 	ROM_LOAD16_BYTE( "064eaa04_hc03.10e",  0x080000, 0x20000, CRC(56bb2e75) SHA1(78cf0cc1a529a5f9e37249d8480aa7476e338099) )
 	ROM_LOAD16_BYTE( "064eaa05_hc02.10g",  0x080001, 0x20000, CRC(0aad4619) SHA1(98678d79323f5cc439dd186aa45ab3fb2e7d1515) )
+
+	ROM_REGION( 0x10000, "audiocpu", 0 )
+	ROM_LOAD( "064eaa01.2f",   0x0000, 0x10000, CRC(bce45d82) SHA1(7f6d17fad0b556243c59d25a94925d259d98d81a) )
+
+	ROM_REGION( 0x100000, "k052109", 0 )
+	ROM_LOAD32_WORD( "064e12.16k",   0x000000, 0x080000, CRC(e2bdc619) SHA1(04449deb267b0beacfa33640b593eb16194aa0d9) )
+	ROM_LOAD32_WORD( "064e11.12k",   0x000002, 0x080000, CRC(2d8ca8b0) SHA1(7c882f79c2402cf75979c681071007d76e4db9ae) )
+
+	ROM_REGION( 0x200000, "k053245", 0 )
+	ROM_LOAD32_WORD( "064e09.7l", 0x000000, 0x100000, CRC(4160c372) SHA1(0b36181e5ccd785c7fb89b9f41e458066a42c3b0) )
+	ROM_LOAD32_WORD( "064e07.3l", 0x000002, 0x100000, CRC(64dd673c) SHA1(bea4d17a71dd21c635866ee69b4892dc9d0ab455) )
+
+	ROM_REGION( 0x100000, "k053260", 0 )
+	ROM_LOAD( "064e06.1d",    0x0000, 0x100000, CRC(59810df9) SHA1(a0affc6330bdbfab1447dc0cf13c20ff708c2c71) )
+
+	ROM_REGION( 0x80, "eeprom", 0 )
+	ROM_LOAD( "ssriders_eaa.nv", 0x0000, 0x080, CRC(74a45ef5) SHA1(da01f14684315bfb5c180f0c64a14350c34ae945) )
+ROM_END
+
+ROM_START( ssridershc04 ) //ssridersmq
+	ROM_REGION( 0xc0000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "064eaa02_hc04.8e",   0x000000, 0x40000, CRC(ec967819) SHA1(081d2a68188cdecb0eb870b0427bc02ebd30e385) )
+	ROM_LOAD16_BYTE( "064eaa03_hc04.8g",   0x000001, 0x40000, CRC(11437187) SHA1(f8e95861e86c4324852c4e018a2a48273d9f69f8) )
+	ROM_LOAD16_BYTE( "064eaa04_hc04.10e",  0x080000, 0x20000, CRC(f21e4481) SHA1(babc64526c318d0d939c097ae4431cec54b94060) )
+	ROM_LOAD16_BYTE( "064eaa05_hc04.10g",  0x080001, 0x20000, CRC(81de0fd8) SHA1(fd68d8a443574998f6088461b23343d58bba4621) )
 
 	ROM_REGION( 0x10000, "audiocpu", 0 )
 	ROM_LOAD( "064eaa01.2f",   0x0000, 0x10000, CRC(bce45d82) SHA1(7f6d17fad0b556243c59d25a94925d259d98d81a) )
@@ -108,9 +133,10 @@ ROM_START( tmnt2hc01 )
 	ROM_LOAD( "tmnt2_ada.nv", 0x0000, 0x080, CRC(063068a0) SHA1(c1da5319428fd8fb60305a2d7cc166596b2fe5a4) )
 ROM_END
 
-/*    YEAR    NAME       PARENT   MACHINE  INPUT                INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 2009, ssridershc01, ssriders, ssriders, ssriders,  tmnt_state, empty_init, ROT0,   "hack",  "Sunset Riders (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, ssridershc02, ssriders, ssriders, ssridr4p,  tmnt_state, empty_init, ROT0,   "hack",  "Sunset Riders (1V4 Edition 2019-07-28)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
-GAME( 2019, ssridershc03, ssriders, ssriders, ssridr4p,  tmnt_state, empty_init, ROT0,   "hack",  "Sunset Riders (The Hardest Version In Two Weeks 2019-04-20)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
-GAME( 1991, tmnt2hc01,    tmnt2,    tmnt2,    ssrid4ps,  tmnt_state, empty_init, ROT0,   "hack",  "Teenage Mutant Ninja Turtles (Ex Super Version)", MACHINE_SUPPORTS_SAVE )
+/*    YEAR    NAME       PARENT   MACHINE  INPUT                INIT      MONITOR   COMPANY        FULLNAME FLAGS */
+/* Asuka Hack */
+GAME( 2009, ssridershc01, ssriders, ssriders, ssriders,  tmnt_state, empty_init, ROT0,   "hack",   "Sunset Riders (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, ssridershc02, ssriders, ssriders, ssridr4p,  tmnt_state, empty_init, ROT0,   "GOTVG",  "Sunset Riders (1V4 2019-07-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, ssridershc03, ssriders, ssriders, ssridr4p,  tmnt_state, empty_init, ROT0,   "GOTVG",  "Sunset Riders (Second Round 2019-04-20)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, ssridershc04, ssriders, ssriders, ssridr4p,  tmnt_state, empty_init, ROT0,   "GOTVG",  "Sunset Riders (Firepower 2022-06-27)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, tmnt2hc01,    tmnt2,    tmnt2,    ssrid4ps,  tmnt_state, empty_init, ROT0,   "hack",   "Teenage Mutant Ninja Turtles (Switchable Character)", MACHINE_SUPPORTS_SAVE )

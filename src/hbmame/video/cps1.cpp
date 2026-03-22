@@ -1449,7 +1449,6 @@ static const struct CPS1config cps1_config_table[]=
 	{"knightsb2",   CPS_B_21_BT4, mapper_KR63B,  0x36, 0, 0x34 },   // wrong, knightsb bootleg doesn't use the KR63B PAL
 	//{"knightsb",    CPS_B_21_BT4, mapper_KR63B,  0x36, 0, 0x34 },   // wrong, knightsb bootleg doesn't use the KR63B PAL
 	{"knightsb3",   CPS_B_21_BT4, mapper_KR63B },
-	{"knightsb4",   CPS_B_21_BT4, mapper_KR63B },
 	{"pokonyan",    CPS_B_21_DEF, mapper_pokonyan, 0x36 },   // wrong, this set uses an unknown PAL, still not dumped
 	{"sf2ce",       CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2ceea",     CPS_B_21_DEF, mapper_S9263B, 0x36 },
@@ -1679,7 +1678,7 @@ static const struct CPS1config cps1_config_table[]=
 #endif
 	// HBMAME end
 	
-    // PSARCADE CLASSIC+
+    // NEOEX
 	{"captcommb2",  CPS_B_21_BT3, mapper_CC63B,  0x36, 0x38, 0x34 },        //works
 	{"dinopic",     CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
 	{"dinopic2",    CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
@@ -1696,7 +1695,9 @@ static const struct CPS1config cps1_config_table[]=
 	{"sf2ceb3",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },
 	{"sf2ceb4",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },
 	{"sf2ceb5",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },
+	{"sf2ceeabl",   CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2ceeab2",   CPS_B_21_DEF, mapper_S9263B, 0x36 },
+	{"sf2ceeab3",   CPS_B_21_DEF, mapper_S9263B, 0x36 },
     {"sf2md",       CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2mdt",      CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
 	{"sf2mdta",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works

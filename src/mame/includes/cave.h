@@ -65,13 +65,13 @@ public:
 	void init_mazinger();
 	void init_gaia();
 	void init_pwrinst2();
-	void init_pwrinst2a();
 	void init_ddonpach();
 	void init_agallet();
 	void init_hotdogst();
 	void init_tjumpman();
 	void init_korokoro();
 	void init_esprade();
+	void init_pwrinst2j();
 	void init_guwange();
 	void init_feversos();
 	void init_sailormn();
@@ -81,6 +81,7 @@ public:
 
 	void uopoko(machine_config &config);
 	void sailormn(machine_config &config);
+	void sailormn_2XCLOCK(machine_config &config);
 	void paceight(machine_config &config);
 	void pacslot(machine_config &config);
 	void paccarn(machine_config &config);

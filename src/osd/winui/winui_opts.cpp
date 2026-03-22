@@ -50,13 +50,13 @@ const options_entry winui_options::s_option_entries[] =
 	{ nullptr,								nullptr,    core_options::option_type::HEADER, "APPLICATION VERSION" },
 
 	{ nullptr,								nullptr,    core_options::option_type::HEADER, "DISPLAY STATE OPTIONS" },
-	{ MUIOPTION_DEFAULT_GAME,				"88games",  core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_DEFAULT_GAME,				"2020bb",   core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
 	{ MUIOPTION_DEFAULT_FOLDER_ID,			"0",        core_options::option_type::INTEGER, nullptr },
 	{ MUIOPTION_SHOW_IMAGE_SECTION,			"1",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_CURRENT_TAB,				"0",        core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_SHOW_TOOLBAR,				"1",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_SHOW_STATUS_BAR,			"1",        core_options::option_type::BOOLEAN, nullptr },
-	{ MUIOPTION_HIDE_FOLDERS,				nullptr,        core_options::option_type::STRING, nullptr },
+	{ MUIOPTION_HIDE_FOLDERS,				nullptr,    core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_SHOW_FOLDER_SECTION,		"1",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_SHOW_TABS,					"1",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_HIDE_TABS,					"scores, howto, select, versus, boss, end, gameover, logo, artpreview, flyer, cabinet, marquee, cpanel, pcb, history",         core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
@@ -71,9 +71,9 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_LIST_COLOR,					"255,255,255",    core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
 	{ MUIOPTION_HISTORY_COLOR,				"255,255,255",    core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
 	{ MUIOPTION_TREE_COLOR,					"255,255,255",    core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_TREEBG_COLOR,				"0,32,65", core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_LISTBG_COLOR,				"0,32,65", core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_HISTORYBG_COLOR,			"0,32,65", core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_TREEBG_COLOR,				"18,58,165", core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_LISTBG_COLOR,				"0,0,0", core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_HISTORYBG_COLOR,			"0,0,0", core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
 	{ MUIOPTION_CUSTOM_COLOR,				"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0", core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_LIST_MODE,					"154",      core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
 	{ MUIOPTION_SPLITTERS,					"150,778",  core_options::option_type::STRING, nullptr }, // Modified (Gaston90)

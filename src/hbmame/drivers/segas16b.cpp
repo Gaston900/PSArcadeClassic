@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/segas16b.cpp"
 
-/**************
- Altered Beast
- ***************/
+/******
+  Hack
+********/
 
 ROM_START( altbeasthc01 )
 	ROM_REGION( 0x040000, "maincpu", 0 )
@@ -103,7 +103,7 @@ ROM_START( altbeasthc03 )
 ROM_END
 
 /*    YEAR    NAME         PARENT    MACHINE           INPUT                        INIT          MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1988, altbeasthc01,  altbeast, system16b_i8751, altbeast, segas16b_state, init_generic_5521,  ROT0,   "hack",       "Altered Beast (Translation French)", 0 )
-GAME( 2018, altbeasthc02,  altbeast, system16b_i8751, altbeast, segas16b_state, init_generic_5521,  ROT0,   "hack",       "Altered Beast (Translation Portugues)", 0 )
-GAME( 2018, altbeasthc03,  altbeast, system16b_i8751, altbeast, segas16b_state, init_generic_5521,  ROT0,   "hack",       "Altered Beast (Translation Español)", 0 )
+/* Segas16b Hack */
+GAME( 1988, altbeasthc01,  altbeast, system16b_i8751, altbeast, segas16b_state, init_generic_5521,  ROT0,   "hack",       "Altered Beast (French Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, altbeasthc02,  altbeast, system16b_i8751, altbeast, segas16b_state, init_generic_5521,  ROT0,   "hack",       "Altered Beast (Portugues Translation)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, altbeasthc03,  altbeast, system16b_i8751, altbeast, segas16b_state, init_generic_5521,  ROT0,   "hack",       "Altered Beast (Español Translation)", MACHINE_SUPPORTS_SAVE )

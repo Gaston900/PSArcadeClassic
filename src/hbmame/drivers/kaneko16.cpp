@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/kaneko16.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( bloodwarhc01 )
 	ROM_REGION( 0x100000, "maincpu", 0 )
@@ -80,38 +80,7 @@ ROM_START( shogwarrhc01 )
 	ROM_LOAD( "fb-003.u44",   0x100000, 0x100000, CRC(0aea4ac5) SHA1(8f3b30e505b0ba51c140a0a2c071680d4fa05db9) )
 ROM_END
 
-ROM_START( shogwarrhc02 )
-	ROM_REGION( 0x040000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "fb030e_hc02.u61", 0x000000, 0x020000, CRC(3b7393b5) SHA1(ef3a1d52bac11356d0cf410476c7726c4e0f6bdf) )
-	ROM_LOAD16_BYTE( "fb030e_hc02.u62", 0x000001, 0x020000, CRC(41df237f) SHA1(8e92be40ab2eb9dd200af3d45b3f1aa8b94ddcc8) )
-
-	ROM_REGION( 0x020000, "calc3_rom", 0 )
-	ROM_LOAD( "fb040e.u33",  0x000000, 0x020000, CRC(299d0746) SHA1(67fe3a47ab01fa02ce2bb5836c2041986c19d875) )
-
-	ROM_REGION( 0x1000000, "kan_spr", ROMREGION_ERASEFF )
-	ROM_LOAD( "fb-020a.u1", 0x000000, 0x100000, CRC(87e55c6d) SHA1(87886c045d7c30b8dee3c8fb0bf8f2cdbc5fd7fb) )
-	ROM_LOAD( "fb020b.u2",  0x100000, 0x100000, CRC(276b9d7b) SHA1(7a154f65b4737f2b6ac8effa3352711079f571dc) )
-	ROM_LOAD( "fb021a.u3",  0x200000, 0x100000, CRC(7da15d37) SHA1(345cf2242e8210a697294a45197f2b3b974de885) )
-	ROM_LOAD( "fb021b.u4",  0x300000, 0x100000, CRC(6a512d7b) SHA1(7fc3002d23262a9a590a283ea9e111e38d889ef2) )
-	ROM_LOAD( "fb-22a.u5",  0x400000, 0x100000, CRC(9039e5d3) SHA1(222452cd7947f7c99c68e495835cca62e0449b5c) )
-	ROM_LOAD( "fb-22b.u6",  0x500000, 0x100000, CRC(96ac9e54) SHA1(2b066375963dc57fe2ce89d65f6c0a9d183a838d) )
-	ROM_LOAD( "fb023.u7",   0x600000, 0x100000, CRC(132794bd) SHA1(bcc73c3183c59a4b66f79d04774773b8a9239501) )
-
-	ROM_REGION( 0x400000, "view2_0", 0 )
-	ROM_LOAD( "fb010.u65",  0x000000, 0x100000, CRC(296ffd92) SHA1(183a28e4594c428deb4726ed22d5166592b94b60) )
-	ROM_LOAD( "fb011.u66",  0x100000, 0x080000, CRC(500a0367) SHA1(6dc5190f81b21f59ee56a3b2332c8d86d6599782) )
-
-	ROM_REGION( 0x100000, "oki1", 0 )
-	ROM_LOAD( "fb001e.u43",  0x000000, 0x080000, CRC(f524aaa1) SHA1(006a886f9df2e57c51b61c6cea70a6574fc20304) )
-	ROM_LOAD( "fb000e.u42",  0x080000, 0x080000, CRC(969f1465) SHA1(4f56d1ad341b08f4db41b7ab2498740612ff7c3d) )
-
-	ROM_REGION( 0x200000, "oki2", 0 )
-	ROM_LOAD( "fb-002.u45",   0x000000, 0x100000, CRC(010acc17) SHA1(2dc0897c7778eacf6bce12ff0adbadb307ea6c17) )
-	ROM_LOAD( "fb-003.u44",   0x100000, 0x100000, CRC(0aea4ac5) SHA1(8f3b30e505b0ba51c140a0a2c071680d4fa05db9) )
-ROM_END
-
 /*    YEAR    NAME          PARENT     MACHINE     INPUT                                INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1994, bloodwarhc01,   bloodwar,  bloodwar, bloodwar,  kaneko16_gtmr_state,     init_gtmr,     ROT0,   "DDJ",        "Blood Warrior (Easy Move)", MACHINE_SUPPORTS_SAVE )
-GAME( 1992, shogwarrhc01,   shogwarr,  shogwarr, shogwarr,  kaneko16_shogwarr_state, init_shogwarr, ROT0,   "hack",       "Shogun Warriors (Enable Hidden Characters) ", MACHINE_NO_COCKTAIL | MACHINE_SUPPORTS_SAVE )
-GAME( 2017, shogwarrhc02,   shogwarr,  shogwarr, shogwarr,  kaneko16_shogwarr_state, init_shogwarr, ROT0,   "hack",       "Shogun Warriors (Simplified 2017-02-28)", MACHINE_NO_COCKTAIL | MACHINE_SUPPORTS_SAVE )
+/* Kaneko16 Hack */
+GAME( 1994, bloodwarhc01,   bloodwar,  bloodwar, bloodwar,  kaneko16_gtmr_state,     init_gtmr,     ROT0,   "DDJ",        "Blood Warrior (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
+GAME( 1992, shogwarrhc01,   shogwarr,  shogwarr, shogwarr,  kaneko16_shogwarr_state, init_shogwarr, ROT0,   "hack",       "Shogun Warriors (Enable Hidden Characters) ", MACHINE_SUPPORTS_SAVE )

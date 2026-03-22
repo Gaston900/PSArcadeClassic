@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/flstory.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( flstoryhc01 )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -31,5 +31,5 @@ ROM_START( flstoryhc01 )
 ROM_END
 
 /*    YEAR    NAME        PARENT    MACHINE    INPUT                      INIT    MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1985, flstoryhc01,  flstory,  flstory,  flstory,  flstory_state, empty_init, ROT180,  "hack",       "The FairyLand Story (Translation Chinese)", MACHINE_IMPERFECT_SOUND | MACHINE_SUPPORTS_SAVE )
+/* Flstory Hack */
+GAME( 1985, flstoryhc01,  flstory,  flstory,  flstory,  flstory_state, empty_init, ROT180,  "hack",       "The FairyLand Story (Chinese Translation)", MACHINE_SUPPORTS_SAVE )

@@ -1,15 +1,15 @@
-// license:BSD-3-Clause
-// copyright-holders:Robbbert
+// NeoEX
+// copyright-holders:Gaston90
 #include "../mame/drivers/namcos2.cpp"
 
- /********************
- Valkyrie no Densetsu
-***********************/
+/******
+  Hack
+********/
 
-ROM_START( valkyrien )
+ROM_START( valkyriehc01 ) //valkyrien
 	ROM_REGION( 0x040000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "wd1mpr0.en",  0x000000, 0x020000, CRC(e98e0da1) SHA1(17fd6d822ea0dae5f4877eba3d81db57112f95e0) )
-	ROM_LOAD16_BYTE( "wd1mpr1.en",  0x000001, 0x020000, CRC(91f9fa03) SHA1(eaced548be789490cef0c0aa2503f567b1571051) )
+	ROM_LOAD16_BYTE( "wd1mpr0_hc01.bin",  0x000000, 0x020000, CRC(e98e0da1) SHA1(17fd6d822ea0dae5f4877eba3d81db57112f95e0) )
+	ROM_LOAD16_BYTE( "wd1mpr1_hc01.bin",  0x000001, 0x020000, CRC(91f9fa03) SHA1(eaced548be789490cef0c0aa2503f567b1571051) )
 
 	ROM_REGION( 0x040000, "slave", 0 )
 	ROM_LOAD16_BYTE( "wd1spr0.bin",  0x000000, 0x010000, CRC(b2398321) SHA1(13b76d8756a5e47d7469f72ef5fd2837b3e24b3e) )
@@ -57,6 +57,6 @@ ROM_START( valkyrien )
 	NAMCOS2_DATA_LOAD_E_128K( "wd1voi2.bin",  0x100000, CRC(e95c5cf3) SHA1(4bfc7303bde23bcf6739c7877dd87671c33135bc) )
 ROM_END
 
-/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
-// Valkyrie no Densetsu
-GAME(  1989, valkyrien, valkyrie, base3, base, namcos2_state, init_valkyrie, ROT90,  "hack", "Valkyrie no Densetsu (Translation English)", 0 )
+/*    YEAR  NAME            PARENT    MACHINE        INPUT           INIT        MONITOR COMPANY     FULLNAME FLAGS */
+/* Namcos2 Hack */
+GAME(  1989, valkyriehc01, valkyrie, base3, base, namcos2_state, init_valkyrie,   ROT90,  "hack",    "Valkyrie no Densetsu (English Translation)", MACHINE_SUPPORTS_SAVE )

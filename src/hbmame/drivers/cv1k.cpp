@@ -1,25 +1,11 @@
-// Proyecto Shadows Arcade Classic+
-// copyright-holders:Gaston90
+// license:BSD-3-Clause
+// copyright-holders:Robbbert
 #include "../mame/drivers/cv1k.cpp"
 
-//**************
-// Akai Katana
-//**************
-ROM_START( akatana )
-	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
-	ROM_LOAD16_WORD_SWAP( "u4", 0x000000, 0x400000, CRC(613fd380) SHA1(6e28480eef3b483d00b42d811a9d2c7fa1097924) )
+/******
+  Hack
+********/
 
-	ROM_REGION( 0x8400000, "game", ROMREGION_ERASEFF)
-	ROM_LOAD( "u2", 0x000000, 0x8400000, CRC(89a2e1a5) SHA1(e6f4ec974406283665697fdd52bd606d0337dd11) )
-
-	ROM_REGION( 0x800000, "ymz770", ROMREGION_ERASEFF)
-	ROM_LOAD16_WORD_SWAP( "u23", 0x000000, 0x400000, CRC(34a67e24) SHA1(78a7e82123b86311f1116a80c39f147b8b695549) )
-	ROM_LOAD16_WORD_SWAP( "u24", 0x400000, 0x400000, CRC(10760fed) SHA1(b70f4506c00f3901ff38f5efd4b897af1afc7a0c) )
-ROM_END
-
-//*****************
-// Deathsmiles
-//*****************
 ROM_START( deathsml01 )  // You can choose from 4 characters instead of 2
 	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
 	ROM_LOAD16_WORD_SWAP( "u4", 0x000000, 0x200000, CRC(1a7b98bf) SHA1(07798a4a846e5802756396b34df47d106895c1f1) )
@@ -33,40 +19,47 @@ ROM_START( deathsml01 )  // You can choose from 4 characters instead of 2
 	ROM_LOAD16_WORD_SWAP( "u24", 0x400000, 0x400000, CRC(83881d84) SHA1(6e2294b247dfcbf0ced155dc45c706f29052775d) )
 ROM_END
 
-//*************************
-// DoDonPachi SaiDaiOuJou
-//*************************
+ROM_START( akatana )
+	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
+	ROM_LOAD16_WORD_SWAP( "u4", 0x000000, 0x400000, CRC(613fd380) SHA1(6e28480eef3b483d00b42d811a9d2c7fa1097924) )
+
+	ROM_REGION( 0x8400000, "game", ROMREGION_ERASEFF)
+	ROM_LOAD( "u2", 0x000000, 0x8400000, CRC(89a2e1a5) SHA1(e6f4ec974406283665697fdd52bd606d0337dd11) )
+
+	ROM_REGION( 0x800000, "ymz770", ROMREGION_ERASEFF)
+	ROM_LOAD16_WORD_SWAP( "u23", 0x000000, 0x400000, CRC(34a67e24) SHA1(78a7e82123b86311f1116a80c39f147b8b695549) )
+	ROM_LOAD16_WORD_SWAP( "u24", 0x400000, 0x400000, CRC(10760fed) SHA1(b70f4506c00f3901ff38f5efd4b897af1afc7a0c) )
+ROM_END
+
 ROM_START( ddpsdoj )
 	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
 	ROM_LOAD16_WORD_SWAP("u4", 0x000000, 0x400000, CRC(e2a4411c) SHA1(f8b2b6326dd8eeae99b8b1ab2bd5a3f0b9c7f027) )
-	ROM_IGNORE( 0x000100 ) // Flash extra bytes
+	ROM_IGNORE( 0x000100 )
 
 	ROM_REGION( 0x8400000, "game", ROMREGION_ERASEFF)
 	ROM_LOAD("u2", 0x000000, 0x8400000, CRC(668e4cd6) SHA1(da0b10865df3a3e46cf8a109ca88a551faba4483) )
 
 	ROM_REGION( 0x800000, "ymz770", ROMREGION_ERASEFF)
 	ROM_LOAD16_WORD_SWAP("u23", 0x000000, 0x400000, CRC(ac94801c) SHA1(cbcc6d5d89860bc961967e1d3b7c329adaf200c5) )
-	ROM_IGNORE( 0x000100 ) // Flash extra bytes
+	ROM_IGNORE( 0x000100 )
 	ROM_LOAD16_WORD_SWAP("u24", 0x400000, 0x400000, CRC(f593045b) SHA1(91b92870d0dd2a7817cb0059cc750e2393686f4c) )
-	ROM_IGNORE( 0x000100 ) // Flash extra bytes
+	ROM_IGNORE( 0x000100 )
 ROM_END
-
 
 ROM_START( ddpsdojo )
 	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
 	ROM_LOAD16_WORD_SWAP("u4", 0x000000, 0x400000, CRC(e2a4411c) SHA1(f8b2b6326dd8eeae99b8b1ab2bd5a3f0b9c7f027) )
-	ROM_IGNORE( 0x000100 ) // Flash extra bytes
+	ROM_IGNORE( 0x000100 )
 
 	ROM_REGION( 0x8400000, "game", ROMREGION_ERASEFF)
 	ROM_LOAD("old.u2", 0x000000, 0x8400000, CRC(7420302f) SHA1(7db4bd7a72f84fbd6e9c7966769d7b6fccc17cea) )
 
 	ROM_REGION( 0x800000, "ymz770", ROMREGION_ERASEFF)
 	ROM_LOAD16_WORD_SWAP("u23", 0x000000, 0x400000, CRC(ac94801c) SHA1(cbcc6d5d89860bc961967e1d3b7c329adaf200c5) )
-	ROM_IGNORE( 0x000100 ) // Flash extra bytes
+	ROM_IGNORE( 0x000100 )
 	ROM_LOAD16_WORD_SWAP("u24", 0x400000, 0x400000, CRC(f593045b) SHA1(91b92870d0dd2a7817cb0059cc750e2393686f4c) )
-	ROM_IGNORE( 0x000100 ) // Flash extra bytes
+	ROM_IGNORE( 0x000100 )
 ROM_END
-
 
 ROM_START( sdojak )  // Cavedwellers hack
 	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
@@ -80,7 +73,6 @@ ROM_START( sdojak )  // Cavedwellers hack
 	ROM_LOAD16_WORD_SWAP( "sdojak.u24", 0x400000, 0x400000, CRC(7b9e749f) SHA1(374085a60098cc62501abae4d148bfd88c88149f) )
 ROM_END
 
-
 ROM_START( sdoja )  // hack of above hack??
 	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
 	ROM_LOAD16_WORD_SWAP( "sdoja.u4", 0x000000, 0x400000, CRC(5a3b94e8) SHA1(a546f2baa366ca02dbd462b8ee7808c2643927cb) )
@@ -93,7 +85,6 @@ ROM_START( sdoja )  // hack of above hack??
 	ROM_LOAD16_WORD_SWAP( "sdojak.u24", 0x400000, 0x400000, CRC(7b9e749f) SHA1(374085a60098cc62501abae4d148bfd88c88149f) )
 ROM_END
 
-
 ROM_START( sdojb )
 	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
 	ROM_LOAD16_WORD_SWAP( "sdojb.u4", 0x000000, 0x400000, CRC(be54ca1a) SHA1(d7ad13cc6676ab3e938c65b7e6f5c870033f42f1) )
@@ -103,15 +94,11 @@ ROM_START( sdojb )
 
 	ROM_REGION( 0x800000, "ymz770", ROMREGION_ERASEFF)
 	ROM_LOAD16_WORD_SWAP("u23", 0x000000, 0x400000, CRC(ac94801c) SHA1(cbcc6d5d89860bc961967e1d3b7c329adaf200c5) )
-	ROM_IGNORE( 0x000100 ) // Flash extra bytes
+	ROM_IGNORE( 0x000100 )
 	ROM_LOAD16_WORD_SWAP("u24", 0x400000, 0x400000, CRC(f593045b) SHA1(91b92870d0dd2a7817cb0059cc750e2393686f4c) )
-	ROM_IGNORE( 0x000100 ) // Flash extra bytes
+	ROM_IGNORE( 0x000100 )
 ROM_END
 
-
-//*************************
-// Mushihime-Sama Futari
-//*************************
 ROM_START( futari15bc )
 	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
 	ROM_LOAD16_WORD_SWAP("futari15_u4", 0x000000, 0x200000, CRC(e8c5f128) SHA1(45fb8066fdbecb83fdc2e14555c460d0c652cd5f) )
@@ -124,7 +111,6 @@ ROM_START( futari15bc )
 	ROM_LOAD16_WORD_SWAP("u23", 0x000000, 0x400000, CRC(39f1e1f4) SHA1(53d12f59a56df35c705408c76e6e02118da656f1) )
 	ROM_LOAD16_WORD_SWAP("u24", 0x400000, 0x400000, CRC(c631a766) SHA1(8bb6934a2f5b8a9841c3dcf85192b1743773dd8b) )
 ROM_END
-
 
 ROM_START( futariblc )
 	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
@@ -139,7 +125,6 @@ ROM_START( futariblc )
 	ROM_LOAD16_WORD_SWAP( "u24", 0x400000, 0x400000, CRC(c631a766) SHA1(8bb6934a2f5b8a9841c3dcf85192b1743773dd8b) )
 ROM_END
 
-
 ROM_START( futaribljc )
 	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
 	ROM_LOAD16_WORD_SWAP( "futariblk_u4", 0x000000, 0x200000, CRC(b9467b6d) SHA1(64782807fe69acb4ae028e36c5c689d8bd9b7857) )
@@ -153,10 +138,6 @@ ROM_START( futaribljc )
 	ROM_LOAD16_WORD_SWAP( "u24", 0x400000, 0x400000, CRC(c631a766) SHA1(8bb6934a2f5b8a9841c3dcf85192b1743773dd8b) )
 ROM_END
 
-
-//********
-// Ibara
-//********
 ROM_START( ibaracs )
 	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
 	ROM_LOAD16_WORD_SWAP( "u4", 0x000000, 0x200000, CRC(8e6c155d) SHA1(38ac2107dc7824836e2b4e04c7180d5ae43c9b79) )
@@ -169,7 +150,6 @@ ROM_START( ibaracs )
 	ROM_LOAD16_WORD_SWAP( "u23", 0x000000, 0x400000, CRC(ee5e585d) SHA1(7eeba4ee693060e927f8c46b16e39227c6a62392) )
 	ROM_LOAD16_WORD_SWAP( "u24", 0x400000, 0x400000, CRC(f0aa3cb6) SHA1(f9d137cd879e718811b2d21a0af2a9c6b7dca2f9) )
 ROM_END
-
 
 ROM_START( ibarablkcs )
 	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
@@ -184,26 +164,18 @@ ROM_START( ibarablkcs )
 	ROM_LOAD16_WORD_SWAP( "u24", 0x400000, 0x400000, CRC(d11ab6b6) SHA1(2132191cbe847e2560423e4545c969f21f8ff825) )
 ROM_END
 
-/*    YEAR  NAME         PARENT    MACHINE INPUT                 INIT        MONITOR COMPANY      FULLNAME FLAGS */
-// Akai Katana
-GAME( 2010, akatana,     0,        cv1k_d, cv1k, cv1k_state, init_ddpdfk,   ROT0, "Cave", "Akai Katana (2010-08-13 MASTER VER.)", 0 )
+/*    YEAR  NAME         PARENT  MACHINE   INPUT   CLASS        INIT      MONITOR COMPANY         FULLNAME FLAGS */
+/* Cv1k Hack */
+GAME( 2010, akatana,     0,        cv1k_d, cv1k, cv1k_state, init_ddpdfk,   ROT0,   "Cave",       "Akai Katana (2010-08-13 MASTER VER.)", MACHINE_SUPPORTS_SAVE )
+GAME( 2007, deathsml01,  deathsml, cv1k,   cv1k, cv1k_state, init_deathsml, ROT0,   "Cave (AMI license)", "Death Smiles (Hidden Elements Full Open + Character Enhancement)", MACHINE_SUPPORTS_SAVE )
+GAME( 2012, ddpsdoj,     0,        cv1k_d, cv1k, cv1k_state, init_ddpdfk,   ROT270, "Cave",       "DoDonPachi SaiDaiOuJou (Clean Dump)", MACHINE_SUPPORTS_SAVE )
+GAME( 2012, ddpsdojo,    ddpsdoj,  cv1k_d, cv1k, cv1k_state, init_ddpdfk,   ROT270, "Cave",       "DoDonPachi SaiDaiOuJou (Dirty Dump)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, sdojak,      0,        cv1k_d, cv1k, cv1k_state, init_ddpdfk,   ROT270, "CaveDwellers", "DoDonPachi SaiDaiOuJou & Knuckles (2021-12-01)", MACHINE_SUPPORTS_SAVE )
+GAME( 2021, sdoja,       sdojak,   cv1k_d, cv1k, cv1k_state, init_ddpdfk,   ROT270, "hack",       "DoDonPachi SaiDaiOuJou hack", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, sdojb,       sdojak,   cv1k_d, cv1k, cv1k_state, init_ddpdfk,   ROT270, "hack",       "DoDonPachi SaiDaiOuJou Saya Type B (2022-01-06)", MACHINE_SUPPORTS_SAVE )
+GAME( 2005, ibaracs,     ibara,    cv1k,   cv1ks,cv1k_state, init_ibara,    ROT270, "ArcCabView", "Ibara (2005-03-22 MASTER VER.. COLOR SAT)", MACHINE_SUPPORTS_SAVE )
+GAME( 2006, ibarablkcs,  ibarablk, cv1k,   cv1ks,cv1k_state, init_pinkswts, ROT270, "ArcCabView", "Ibara Kuro Black Label (2006-02-06. MASTER VER. COLOR SAT)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, futari15bc,  futari15, cv1k,   cv1k, cv1k_state, init_pinkswts, ROT270, "ArcCabView", "Mushihime-Sama Futari Ver 1.5 (2006-12-08.MASTER VER. 1.54. BLK COLOR)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, futariblc,   futaribl, cv1k,   cv1k, cv1k_state, init_pinkswts, ROT270, "ArcCabView", "Mushihime-Sama Futari Black Label - Another Ver (2009-11-27 INTERNATIONAL BL - ORIG COLOR)", MACHINE_SUPPORTS_SAVE )
+GAME( 2022, futaribljc,  futaribl, cv1k,   cv1k, cv1k_state, init_pinkswts, ROT270, "ArcCabView", "Mushihime-Sama Futari Black Label (2007-12-11 BLACK LABEL VER - ORIG COLOR)", MACHINE_SUPPORTS_SAVE )
 
-
-// Death Smiles
-GAME( 2007, deathsml01,  deathsml, cv1k,   cv1k, cv1k_state, init_deathsml, ROT0,   "hack",       "Death Smiles (Hidden elements full open + character enhancement)", 0 )
-
-// DoDonPachi SaiDaiOuJou
-GAME( 2012, ddpsdoj,     0,        cv1k_d, cv1k, cv1k_state, init_ddpdfk,   ROT270, "hack",       "DoDonPachi SaiDaiOuJou (clean dump)", 0 )
-GAME( 2012, ddpsdojo,    ddpsdoj,  cv1k_d, cv1k, cv1k_state, init_ddpdfk,   ROT270, "hack",       "DoDonPachi SaiDaiOuJou (dirty dump)", 0 )
-GAME( 2021, sdojak,      0,        cv1k_d, cv1k, cv1k_state, init_ddpdfk,   ROT270, "hack",       "DoDonPachi SaiDaiOuJou & Knuckles (2021-12-01)", 0 )
-GAME( 2021, sdoja,       sdojak,   cv1k_d, cv1k, cv1k_state, init_ddpdfk,   ROT270, "hack",       "DoDonPachi SaiDaiOuJou hack", 0 )
-GAME( 2022, sdojb,       sdojak,   cv1k_d, cv1k, cv1k_state, init_ddpdfk,   ROT270, "hack",       "DoDonPachi SaiDaiOuJou Saya Type B (2022-01-06)", 0 )
-
-// Ibara
-GAME( 2005, ibaracs,     ibara,    cv1k,   cv1ks,cv1k_state, init_ibara,    ROT270, "hack",       "Ibara (2005-03-22 MASTER VER.. COLOR SAT)", 0 )
-GAME( 2006, ibarablkcs,  ibarablk, cv1k,   cv1ks,cv1k_state, init_pinkswts, ROT270, "hack",       "Ibara Kuro Black Label (2006-02-06. MASTER VER. COLOR SAT)", 0 )
-
-// Mushihime-Sama Futari
-GAME( 2022, futari15bc,  futari15, cv1k,   cv1k, cv1k_state, init_pinkswts, ROT270, "hack",       "Mushihime-Sama Futari Ver 1.5 (2006-12-08.MASTER VER. 1.54. BLK COLOR)", 0 )
-GAME( 2022, futariblc,   futaribl, cv1k,   cv1k, cv1k_state, init_pinkswts, ROT270, "hack",       "Mushihime-Sama Futari Black Label - Another Ver (2009-11-27 INTERNATIONAL BL - ORIG COLOR)", 0 )
-GAME( 2022, futaribljc,  futaribl, cv1k,   cv1k, cv1k_state, init_pinkswts, ROT270, "hack",       "Mushihime-Sama Futari Black Label (2007-12-11 BLACK LABEL VER - ORIG COLOR)", 0 )

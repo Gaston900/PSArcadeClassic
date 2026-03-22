@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/lkage.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( lkagehc01 )
 	ROM_REGION( 0x14000, "maincpu", 0 ) 
@@ -36,6 +36,6 @@ ROM_START( lkagehc01 )
 	ROM_LOAD( "pal16l8a-a54-14.35", 0x0600, 0x0104, CRC(a89c644e) SHA1(b41a077d1d070d9563f924c776930c33a4ff27d0) )
 ROM_END
 
-/*    YEAR    NAME       PARENT   MACHINE  INPUT                INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1984, lkagehc01,   lkage,   lkage,   lkage, lkage_state, init_lkage, ROT0,    "hack",      "The Legend of Kage (Translation Chinese)", MACHINE_NO_COCKTAIL | MACHINE_SUPPORTS_SAVE )
+/*    YEAR    NAME       PARENT   MACHINE  INPUT                  INIT      MONITOR   COMPANY      FULLNAME FLAGS */
+/* lkage Hack */
+GAME( 1984, lkagehc01,   lkage,   lkage,   lkage, lkage_state, init_lkage,   ROT0,    "hack",      "The Legend of Kage (Translation Chinese)", MACHINE_SUPPORTS_SAVE )

@@ -43,6 +43,7 @@
 #include "ui/info.h"
 #include "romload.h"
 #include "corestr.h"
+#include "path.h"
 
 // special Windows headers, after MAME ones
 #include <dinput.h>
@@ -77,15 +78,12 @@
 #define TVM_SETEXTENDEDSTYLE		(TV_FIRST + 44)
 #endif
 
-#ifdef PTR64
+#ifdef _M_X64
 #define MAMEUINAME			"PSArcade Classic+"
 #else
 #define MAMEUINAME			"PSArcade Classic+"
 #endif
 #define MAMENAME			"PSArcade Classic+"
-
-#define MAME_VERSION		"0.245"
-#define MAMEUIFX_VERSION	MAME_VERSION " (" __DATE__")"
 
 #define SEARCH_PROMPT		"<search here>"
 

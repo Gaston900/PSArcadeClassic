@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/vamphalf.cpp"
- 
-/********************
-  Hack And Homebrow
-***********************/
+
+/******
+  Hack
+********/
 
 ROM_START( aohhc01 )
 	ROM_REGION32_BE( 0x400000, "maincpu", ROMREGION_ERASE00 )
@@ -29,5 +29,5 @@ ROM_START( aohhc01 )
 ROM_END
 
 /*    YEAR    NAME       PARENT   MACHINE  INPUT                             INIT     MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 2001, aohhc01,     aoh,     aoh,     aoh,      vamphalf_state,      init_aoh,    ROT0,    "DDJ",        "Age Of Heroes - Silkroad 2 (Easy Move)", MACHINE_SUPPORTS_SAVE )
+/* Vamphalf Hack */
+GAME( 2001, aohhc01,     aoh,     aoh,     aoh,      vamphalf_state,      init_aoh,    ROT0,    "DDJ",        "Age Of Heroes - Silkroad 2 (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )

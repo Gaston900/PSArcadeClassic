@@ -1,12 +1,12 @@
-// license:BSD-3-Clause
-// copyright-holders:Robbbert
+// NeoEX
+// copyright-holders:Gaston90
 #include "../mame/drivers/gauntlet.cpp"
 
- /************
- Gauntlet II
-****************/
+/******
+  Hack
+********/
 
-ROM_START( gaunt2s )
+ROM_START( gaunt2hc01 ) //gaunt2s
 	ROM_REGION( 0x80000, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "136037-1307.9a",  0x008000, 0x004000, CRC(46fe8743) SHA1(d5fa19e028a2f43658330c67c10e0c811d332780) )
 	ROM_CONTINUE(                       0x000000, 0x004000 )
@@ -14,9 +14,9 @@ ROM_START( gaunt2s )
 	ROM_CONTINUE(                       0x000001, 0x004000 )
 	ROM_LOAD16_BYTE( "136043-1105.10a", 0x038000, 0x004000, CRC(45dfda47) SHA1(a9a03150f5a0ad6ce62c5cfdffb4a9f54340590c) )
 	ROM_LOAD16_BYTE( "136043-1106.10b", 0x038001, 0x004000, CRC(343c029c) SHA1(d2df4e5b036500dcc537a1e0025abb2a8c730bdd) )
-	ROM_LOAD16_BYTE( "gaunt2s-1109.7a", 0x048000, 0x004000, CRC(32c909b4) SHA1(53c62d7a6660ccff4302ae9b8edcbe2949013e5e) )
+	ROM_LOAD16_BYTE( "136043-1109_hc01.7a", 0x048000, 0x004000, CRC(32c909b4) SHA1(53c62d7a6660ccff4302ae9b8edcbe2949013e5e) )
 	ROM_CONTINUE(                       0x040000, 0x004000 )
-	ROM_LOAD16_BYTE( "gaunt2s-1110.7b", 0x048001, 0x004000, CRC(a1a2ac12) SHA1(bd939cf97f8c4d52bedc475ee1ce00c226aee234) )
+	ROM_LOAD16_BYTE( "136043-1110_hc01.7b", 0x048001, 0x004000, CRC(a1a2ac12) SHA1(bd939cf97f8c4d52bedc475ee1ce00c226aee234) )
 	ROM_CONTINUE(                       0x040001, 0x004000 )
 	ROM_LOAD16_BYTE( "136043-1121.6a",  0x058000, 0x004000, CRC(ae301bba) SHA1(3d93236aaffe6ef692e5073b1828633e8abf0ce4) )
 	ROM_CONTINUE(                       0x050000, 0x004000 )
@@ -28,7 +28,7 @@ ROM_START( gaunt2s )
 	ROM_LOAD( "136043-1119.16s", 0x008000, 0x008000, CRC(dc3591e7) SHA1(6d0d8493609974bd5a63be858b045fe4db35d8df) )
 
 	ROM_REGION( 0x04000, "gfx1", 0 )
-	ROM_LOAD( "gaunt2s.6p",  0x000000, 0x002000, CRC(1343cf6f) SHA1(4a9542bc8ede305e7e8f860eb4b47ca2f3017275) )
+	ROM_LOAD( "136043-1104_hc01.6p",  0x000000, 0x002000, CRC(1343cf6f) SHA1(4a9542bc8ede305e7e8f860eb4b47ca2f3017275) )
 
 	ROM_REGION( 0x60000, "gfx2", ROMREGION_INVERT )
 	ROM_LOAD( "136043-1111.1a",  0x000000, 0x008000, CRC(09df6e23) SHA1(726984275c6a338c12ec0c4cc449f92f4a7a138c) )
@@ -54,14 +54,14 @@ ROM_START( gaunt2s )
 	ROM_LOAD( "74s287-136037-103.4r", 0x400, 0x100, CRC(6c5ccf08) SHA1(ff5dbadd85aa2e07b383a302fa399e875db8f84f) )
 ROM_END
 
-ROM_START( gaunt2ls )
+ROM_START( gaunt2hc02 ) //gaunt2ls
 	ROM_REGION( 0x80000, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "136037-1307.9a",  0x008000, 0x004000, CRC(46fe8743) SHA1(d5fa19e028a2f43658330c67c10e0c811d332780) )
 	ROM_CONTINUE(                       0x000000, 0x004000 )
 	ROM_LOAD16_BYTE( "136037-1308.9b",  0x008001, 0x004000, CRC(276e15c4) SHA1(7467b2ec21b1b4fcc18ff9387ce891495f4b064c) )
 	ROM_CONTINUE(                       0x000001, 0x004000 )
-	ROM_LOAD16_BYTE( "136043-1105ls.10a", 0x038000, 0x004000, CRC(5426ab98) SHA1(7894b0ca989428819a9ed3e9a218eb466c167ecf) )
-	ROM_LOAD16_BYTE( "136043-1106ls.10b", 0x038001, 0x004000, CRC(b53cd674) SHA1(9dfd2b2e384c2e4d2640852a05c07765cc2f246a) )
+	ROM_LOAD16_BYTE( "136043-1105_hc02.10a", 0x038000, 0x004000, CRC(5426ab98) SHA1(7894b0ca989428819a9ed3e9a218eb466c167ecf) )
+	ROM_LOAD16_BYTE( "136043-1106_hc02.10b", 0x038001, 0x004000, CRC(b53cd674) SHA1(9dfd2b2e384c2e4d2640852a05c07765cc2f246a) )
 	ROM_LOAD16_BYTE( "136043-1109.7a",  0x048000, 0x004000, CRC(58a0a9a3) SHA1(7f51184840e3c96574836b8a00bfb4a7a5f508d0) )
 	ROM_CONTINUE(                       0x040000, 0x004000 )
 	ROM_LOAD16_BYTE( "136043-1110.7b",  0x048001, 0x004000, CRC(658f0da8) SHA1(dfce027ea50188659907be698aeb26f9d8bfab23) )
@@ -76,7 +76,7 @@ ROM_START( gaunt2ls )
 	ROM_LOAD( "136043-1119.16s", 0x008000, 0x008000, CRC(dc3591e7) SHA1(6d0d8493609974bd5a63be858b045fe4db35d8df) )
 
 	ROM_REGION( 0x04000, "gfx1", 0 )
-	ROM_LOAD( "gaunt2s.6p",  0x000000, 0x002000, CRC(1343cf6f) SHA1(4a9542bc8ede305e7e8f860eb4b47ca2f3017275) )
+	ROM_LOAD( "136043-1104_hc01.6p",  0x000000, 0x002000, CRC(1343cf6f) SHA1(4a9542bc8ede305e7e8f860eb4b47ca2f3017275) )
 
 	ROM_REGION( 0x60000, "gfx2", ROMREGION_INVERT )
 	ROM_LOAD( "136043-1111.1a",  0x000000, 0x008000, CRC(09df6e23) SHA1(726984275c6a338c12ec0c4cc449f92f4a7a138c) )
@@ -102,7 +102,7 @@ ROM_START( gaunt2ls )
 	ROM_LOAD( "74s287-136037-103.4r", 0x400, 0x100, CRC(6c5ccf08) SHA1(ff5dbadd85aa2e07b383a302fa399e875db8f84f) )
 ROM_END
 
-ROM_START( gaunt2f )
+ROM_START( gaunt2hc03 ) //gaunt2f
 	ROM_REGION( 0x80000, "maincpu", 0 )
 	ROM_LOAD16_BYTE( "136037-1307.9a",  0x008000, 0x004000, CRC(46fe8743) SHA1(d5fa19e028a2f43658330c67c10e0c811d332780) )
 	ROM_CONTINUE(                       0x000000, 0x004000 )
@@ -124,7 +124,7 @@ ROM_START( gaunt2f )
 	ROM_LOAD( "136043-1119.16s", 0x008000, 0x008000, CRC(dc3591e7) SHA1(6d0d8493609974bd5a63be858b045fe4db35d8df) )
 
 	ROM_REGION( 0x04000, "gfx1", 0 )
-	ROM_LOAD( "gaunt2f.6p",  0x000000, 0x004000, CRC(d101905d) SHA1(6f50a84f4d263a7a459b642fa49a619e877535b6) )
+	ROM_LOAD( "136043-1104_hc03.6p",  0x000000, 0x004000, CRC(d101905d) SHA1(6f50a84f4d263a7a459b642fa49a619e877535b6) )
 
 	ROM_REGION( 0x60000, "gfx2", ROMREGION_INVERT )
 	ROM_LOAD( "136043-1111.1a",  0x000000, 0x008000, CRC(09df6e23) SHA1(726984275c6a338c12ec0c4cc449f92f4a7a138c) )
@@ -150,8 +150,8 @@ ROM_START( gaunt2f )
 	ROM_LOAD( "82s129-136043-1103.4r", 0x400, 0x100, CRC(32ae1fa9) SHA1(09eb56a0798456d73015909973ce2ba9660c1164) )
 ROM_END
 
-/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
-// Gauntlet II
-GAME( 1987, gaunt2s,  gaunt2,   gauntlet2, gauntlet, gauntlet_state, init_gauntlet, ROT0, "Todd Bordelon",     "Gauntlet II (Speed Hack)", MACHINE_SUPPORTS_SAVE ) // http://www.ionpool.net/arcade/gauntlet/hacks.html
-GAME( 1988, gaunt2ls, gaunt2,   gauntlet2, gauntlet, gauntlet_state, init_gauntlet, ROT0, "Carl Lloyd-Parker", "Gauntlet II (New Levels)", MACHINE_SUPPORTS_SAVE )
-GAME( 1986, gaunt2f,  gaunt2,   gauntlet2, gauntlet, gauntlet_state, init_gauntlet, ROT0, "hack",              "Gauntlet II (Graphics Hack)", MACHINE_SUPPORTS_SAVE )
+/*    YEAR  NAME         PARENT     MACHINE     INPUT                       INIT        MONITOR COMPANY                FULLNAME FLAGS */
+/* Gauntlet Hack */
+GAME( 1987, gaunt2hc01,  gaunt2,   gauntlet2, gauntlet, gauntlet_state, init_gauntlet,   ROT0, "Todd Bordelon",        "Gauntlet II (Speed Hack)", MACHINE_SUPPORTS_SAVE ) // http://www.ionpool.net/arcade/gauntlet/hacks.html
+GAME( 1988, gaunt2hc02,  gaunt2,   gauntlet2, gauntlet, gauntlet_state, init_gauntlet,   ROT0, "Carl Lloyd-Parker",    "Gauntlet II (New Levels)", MACHINE_SUPPORTS_SAVE )
+GAME( 1986, gaunt2hc03,  gaunt2,   gauntlet2, gauntlet, gauntlet_state, init_gauntlet,   ROT0, "hack",                 "Gauntlet II (Graphics Hack)", MACHINE_SUPPORTS_SAVE )

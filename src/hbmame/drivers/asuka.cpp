@@ -1,10 +1,10 @@
-// license:BSD-3-Clause
-// copyright-holders:Gaston90 (2016-2022)
+// NeoEX
+// copyright-holders:Gaston90
 #include "../mame/drivers/asuka.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( asukahc01 ) //asukac
 	ROM_REGION( 0x100000, "maincpu", 0 )
@@ -32,5 +32,5 @@ ROM_START( asukahc01 ) //asukac
 ROM_END
 
 /*    YEAR  NAME          PARENT       MACHINE         INPUT                   INIT        MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1988, asukahc01,    asuka,       asuka,          asuka,   msm_state,     empty_init, ROT270,   "hack",       "Asuka & Asuka (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
+/* Asuka Hack */
+GAME( 1988, asukahc01,    asuka,       asuka,          asuka,   msm_state,     empty_init, ROT270,   "hack",       "Asuka & Asuka (Chinese Translation)", MACHINE_SUPPORTS_SAVE )

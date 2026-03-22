@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/dec0.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( baddudeshc01 )
 	ROM_REGION( 0x60000, "maincpu", 0 )
@@ -50,5 +50,5 @@ ROM_START( baddudeshc01 )
 ROM_END
 
 /*    YEAR    NAME        PARENT    MACHINE     INPUT                 INIT         MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 2007, baddudeshc01, baddudes, baddudes, baddudes, dec0_state, init_hbarrel,   ROT0,    "hack",       "Bad Dudes vs. Dragonninja (Translation French)", MACHINE_SUPPORTS_SAVE )
+/* Dec0 Hack */
+GAME( 2007, baddudeshc01, baddudes, baddudes, baddudes, dec0_state, init_hbarrel,   ROT0,    "hack",       "Bad Dudes vs. Dragonninja (French Translation)", MACHINE_SUPPORTS_SAVE )

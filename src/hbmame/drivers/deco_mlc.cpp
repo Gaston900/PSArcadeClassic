@@ -1,10 +1,10 @@
-// license:BSD-3-Clause
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/deco_mlc.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( avengrgshc01 ) //avengrgsbh
 	ROM_REGION( 0x100000, "maincpu", 0 )
@@ -38,5 +38,5 @@ ROM_START( avengrgshc01 ) //avengrgsbh
 ROM_END
 
 /*    YEAR  NAME           PARENT         MACHINE     INPUT       CLASS            INIT      MONITOR     COMPANY        FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 2022, avengrgshc01,  avengrgs,      avengrgs,    mlc, deco_mlc_state,    init_avengrgs, ROT0,      "hack",        "Avengers In Galactic Storm (Optional Boss Version 2022-08-18)", MACHINE_IMPERFECT_GRAPHICS )
+/* Deco_mlc Hack */
+GAME( 2022, avengrgshc01,  avengrgs,      avengrgs,    mlc, deco_mlc_state,    init_avengrgs, ROT0,      "hack",        "Avengers In Galactic Storm (Optional Boss Version 2022-08-18)", MACHINE_SUPPORTS_SAVE )

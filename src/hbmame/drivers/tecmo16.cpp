@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/tecmo16.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( fstarfrchc01 )
 	ROM_REGION( 0x80000, "maincpu", 0 )
@@ -30,5 +30,5 @@ ROM_START( fstarfrchc01 )
 ROM_END
 
 /*    YEAR    NAME        PARENT   MACHINE  INPUT                     INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1992, fstarfrchc01, fstarfrc, base, fstarfrc, tecmo16_state, empty_init,   ROT90,   "hack",       "Final Star Force (Translation Chinese)", MACHINE_SUPPORTS_SAVE )
+/* Tecmo16 Hack */
+GAME( 1992, fstarfrchc01, fstarfrc, base, fstarfrc, tecmo16_state, empty_init,   ROT90,   "hack",       "Final Star Force (Chinese Translation)", MACHINE_SUPPORTS_SAVE )

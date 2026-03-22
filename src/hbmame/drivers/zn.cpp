@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/zn.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( doapphc01 )
 	TPS_BIOS
@@ -118,9 +118,9 @@ ROM_START( sfexphc01 )
 ROM_END
 
 /*    YEAR    NAME       PARENT   MACHINE     INPUT                          INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1998, doapphc01,    doapp,  coh1002m,    zn,       tecmo_zn_state, empty_init,    ROT0,    "hack",       "Dead Or Alive ++ (Enable Hidden Characters)", 0 )
-GAME( 1996, sfexhc01,     sfex,   coh1002c,    zn6b,     zn1_state,      empty_init,    ROT0,    "hack",       "Street Fighter EX (Enable Hidden Characters)", 0 )
-GAME( 1998, sfex2hc01,    sfex2,  coh3002c,    zn6b,     zn2_state,      empty_init,    ROT0,    "hack",       "Street Fighter EX2 (Enable Hidden Characters)", 0 )
-GAME( 1999, sfex2phc01,   sfex2p, coh3002c,    zn6b,     zn2_state,      empty_init,    ROT0,    "hack",       "Street Fighter EX2 Plus (Enable Hidden Characters)", 0 )
-GAME( 1997, sfexphc01,    sfexp,  coh1002c,    zn6b,     zn1_state,      empty_init,    ROT0,    "hack",       "Street Fighter EX Plus (Enable Hidden Characters)", 0 )
+/* ZN Hack */
+GAME( 1998, doapphc01,    doapp,  coh1002m,    zn,       tecmo_zn_state, empty_init,    ROT0,    "hack",       "Dead Or Alive ++ (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, sfexhc01,     sfex,   coh1002c,    zn6b,     zn1_state,      empty_init,    ROT0,    "hack",       "Street Fighter EX (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, sfex2hc01,    sfex2,  coh3002c,    zn6b,     zn2_state,      empty_init,    ROT0,    "hack",       "Street Fighter EX2 (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 1999, sfex2phc01,   sfex2p, coh3002c,    zn6b,     zn2_state,      empty_init,    ROT0,    "hack",       "Street Fighter EX2 Plus (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 1997, sfexphc01,    sfexp,  coh1002c,    zn6b,     zn1_state,      empty_init,    ROT0,    "hack",       "Street Fighter EX Plus (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )

@@ -1,15 +1,15 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/r2dx_v33.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
-ROM_START( nzeroteamhc01 ) //nzeroteama, nzeroteamp
+ROM_START( nzeroteamhc01 ) //nzeroteamp
 	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_BYTE("prg1_hc01", 0x000000, 0x80000, CRC(cc45b0c6) SHA1(3d4212512b5fa33f543e1a94f7c6b33fe9562fb3) )
-	ROM_LOAD16_BYTE("prg2_hc01", 0x000001, 0x80000, CRC(8537b97d) SHA1(5cb89ab54e9830a525bf2b68309b342fd577d2ca) )
+	ROM_LOAD16_BYTE("seibu_1_hc01.u0224", 0x000000, 0x80000, CRC(cc45b0c6) SHA1(3d4212512b5fa33f543e1a94f7c6b33fe9562fb3) )
+	ROM_LOAD16_BYTE("seibu_2_hc02.u0226", 0x000001, 0x80000, CRC(8537b97d) SHA1(5cb89ab54e9830a525bf2b68309b342fd577d2ca) )
 
 	ROM_REGION( 0x20000, "math", 0 )
 	ROM_LOAD( "copx-d3.bin", 0x00000, 0x20000, CRC(fa2cf3ad) SHA1(13eee40704d3333874b6e3da9ee7d969c6dc662a) )
@@ -20,8 +20,8 @@ ROM_START( nzeroteamhc01 ) //nzeroteama, nzeroteamp
 	ROM_COPY( "audiocpu", 0x0000, 0x018000, 0x08000 )
 
 	ROM_REGION( 0x020000, "gfx1", 0 )
-	ROM_LOAD16_BYTE( "fix1", 0x000000, 0x010000, CRC(0c4895b0) SHA1(f595dbe5a19edb8a06ea60105ee26b95db4a2619) )
-	ROM_LOAD16_BYTE( "fix2", 0x000001, 0x010000, CRC(07d8e387) SHA1(52f54a6a4830592784cdf643a5f255aa3db53e50) )
+	ROM_LOAD16_BYTE( "seibu_5.u0616", 0x000000, 0x010000, CRC(ce68ba3c) SHA1(52830533711ec906bf4fe9d06e065ec80b25b4da) )
+	ROM_LOAD16_BYTE( "seibu_6.u0617", 0x000001, 0x010000, CRC(cf44aea7) SHA1(e8d622fd5c10133fa563402daf0690fdff297f94) )
 
 	ROM_REGION( 0x400000, "gfx2", 0 )
 	ROM_LOAD( "back-1", 0x000000, 0x100000, CRC(8b7f9219) SHA1(3412b6f8a4fe245e521ddcf185a53f2f4520eb57) )
@@ -40,5 +40,5 @@ ROM_START( nzeroteamhc01 ) //nzeroteama, nzeroteamp
 ROM_END
 
 /*    YEAR    NAME           PARENT    MACHINE    INPUT                        INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 2018, nzeroteamhc01,   zeroteam, nzerotea, nzerotea, r2dx_v33_state, init_nzerotea,  ROT0,   "hack",       "New Zero Team (Special Forces 2018-02-19)", MACHINE_SUPPORTS_SAVE)
+/* R2dx_v33 Hack */
+GAME( 2018, nzeroteamhc01,   zeroteam, nzerotea, nzerotea, r2dx_v33_state, init_nzerotea,  ROT0,   "GOTVG",      "New Zero Team (Special Forces 2018-02-19)", MACHINE_SUPPORTS_SAVE)

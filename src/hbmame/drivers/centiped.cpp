@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
-// copyright-holders:Gaston90
+// license:BSD-3-Clause
+// copyright-holders:Robbbert
 #include "../mame/drivers/centiped.cpp"
 
-/**********
- Centipede
-************/
+/******
+  Hack
+********/
 
 ROM_START( astropd2 )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -51,23 +51,6 @@ ROM_START( cemescry )
 	ROM_LOAD( "136001-213.p4",   0x0000, 0x0100, CRC(6fa3093a) SHA1(2b7aeca74c1ae4156bf1878453a047330f96f0a8) )
 ROM_END
 
-/* E418 - same as centipdb except for 2 roms */
-ROM_START( centipb )
-	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "d1",         0x2000, 0x0800, CRC(b17b8e0b) SHA1(01944cf040cf23aeb4c50d4f2e63181e08a07310) )
-	ROM_LOAD( "e1",         0x2800, 0x0800, CRC(7684398e) SHA1(eea8e05506a7af2fec55c2689e3caafc62ea524f) )
-	ROM_LOAD( "h1",         0x3000, 0x0800, CRC(74580fe4) SHA1(35b8a8675e4e020e234e51c3e4bd4ee5c24b79d2) )
-	ROM_LOAD( "centipb.4",      0x3800, 0x0800, CRC(849b1614) SHA1(9060e39ec1d5c66e26c8d28a86818bcc1801c610) )
-	ROM_LOAD( "centipb.5",      0x6000, 0x0800, CRC(9d3ad0e5) SHA1(ad7520b3c95d729bfd022553817f868485e9a191) )
-
-	ROM_REGION( 0x1000, "gfx1", 0 )
-	ROM_LOAD( "136001-211.f7",  0x0000, 0x0800, CRC(880acfb9) SHA1(6c862352c329776f2f9974a0df9dbe41f9dbc361) )
-	ROM_LOAD( "136001-212.hj7", 0x0800, 0x0800, CRC(b1397029) SHA1(974c03d29aeca672fffa4dfc00a06be6a851aacb) )
-
-	ROM_REGION( 0x0100, "proms", 0 )
-	ROM_LOAD( "136001-213.p4",  0x0000, 0x0100, CRC(6fa3093a) SHA1(2b7aeca74c1ae4156bf1878453a047330f96f0a8) )
-ROM_END
-
 ROM_START( killiped )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "136001-307.d1",  0x2000, 0x0800, CRC(5ab0d9de) SHA1(8ea6e3304202831aabaf31dbd0f970a7b3bfe421) )
@@ -83,10 +66,6 @@ ROM_START( killiped )
 	ROM_LOAD( "136001-213.p4",   0x0000, 0x0100, CRC(6fa3093a) SHA1(2b7aeca74c1ae4156bf1878453a047330f96f0a8) )
 ROM_END
 
-/**********
- Magic Worm
-************/
-
 /* E626 - This dump has a bad "2" rom. Using the one from magworm for now. The coins aren't always detected. */
 ROM_START( magworm2 )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -100,10 +79,6 @@ ROM_START( magworm2 )
 	ROM_LOAD( "11005-4.c4",  0x0000, 0x0800, CRC(cea64e1a) SHA1(9022102124e1ad93f912ce8bdf85f8a886b0879b) )
 	ROM_LOAD( "11005-5.c5",  0x0800, 0x0800, CRC(24558ea5) SHA1(8cd7131e19afd7a96191b1b3c3fba7ae9a140f4b) )
 ROM_END
-
-/**********
- Centipede
-************/
 
 ROM_START( pacipede )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -120,10 +95,6 @@ ROM_START( pacipede )
 	ROM_LOAD( "136001-213.p4",   0x0000, 0x0100, CRC(6fa3093a) SHA1(2b7aeca74c1ae4156bf1878453a047330f96f0a8) )
 ROM_END
 
-/**********
- Millipede
-************/
-
 ROM_START( silliped )
 	ROM_REGION( 0x10000, "maincpu", 0 )
 	ROM_LOAD( "136013-104.mn1", 0x4000, 0x1000, CRC(40711675) SHA1(b595d6a0f5d3c611ade1b83a94c3b909d2124dc4) )
@@ -138,10 +109,6 @@ ROM_START( silliped )
 	ROM_REGION( 0x0100, "proms", 0 )
 	ROM_LOAD( "136001-213.e7", 0x0000, 0x0100, CRC(6fa3093a) SHA1(2b7aeca74c1ae4156bf1878453a047330f96f0a8) ) /* not used */
 ROM_END
-
-/**********
- Centipede
-************/
 
 ROM_START( vectiped )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -173,19 +140,14 @@ ROM_START( vectrped )
 	ROM_LOAD( "136001-213.p4",   0x0000, 0x0100, CRC(6fa3093a) SHA1(2b7aeca74c1ae4156bf1878453a047330f96f0a8) )
 ROM_END
 
-/*    YEAR  NAME       PARENT    MACHINE    INPUT                      INIT     MONITOR COMPANY    FULLNAME FLAGS */
-//Centipede
-GAME( 2002, astropd2, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "hack",    "Astropede II", MACHINE_SUPPORTS_SAVE )
-GAME( 2002, astroped, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "hack",    "Astropede", MACHINE_SUPPORTS_SAVE )
-GAME( 1998, cemescry, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "hack",    "Cemescary", MACHINE_SUPPORTS_SAVE )
-GAME( 1980, centipb,  centiped, centipdb, centiped, centiped_state, empty_init, ROT270, "bootleg", "Centipede", MACHINE_SUPPORTS_SAVE )
-GAME( 1998, killiped, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "hack",    "Killipede", MACHINE_SUPPORTS_SAVE )
-//Magic Worm
+/*    YEAR    NAME     PARENT   MACHINE   INPUT                       INIT      MONITOR COMPANY    FULLNAME FLAGS */
+/* Centiped Hack */
+GAME( 2002, astropd2, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "Twisty",  "Astropede II", MACHINE_SUPPORTS_SAVE )
+GAME( 2002, astroped, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "Twisty",  "Astropede", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, cemescry, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "NoSync",  "Cemescary", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, killiped, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "The Dog", "Killipede", MACHINE_SUPPORTS_SAVE )
 GAME( 1980, magworm2, centiped, magworm,  magworm,  centiped_state, empty_init, ROT270, "bootleg", "Magic Worm", MACHINE_SUPPORTS_SAVE )
-//Centipede
-GAME( 2000, pacipede, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "hack",    "Pacipede", MACHINE_SUPPORTS_SAVE )
-//Millipede
-GAME( 1998, silliped, milliped, milliped, milliped, centiped_state, empty_init, ROT270, "hack",    "Sillipede", MACHINE_SUPPORTS_SAVE )
-//Centipede
-GAME( 1998, vectiped, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "hack",    "Vectipede", MACHINE_SUPPORTS_SAVE )
-GAME( 1998, vectrped, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "hack",    "Vectorpede", MACHINE_SUPPORTS_SAVE )
+GAME( 2000, pacipede, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "Jeff Coleburn", "Pacipede", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, silliped, milliped, milliped, milliped, centiped_state, empty_init, ROT270, "Andy",    "Sillipede", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, vectiped, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "The Dog", "Vectipede", MACHINE_SUPPORTS_SAVE )
+GAME( 1998, vectrped, centiped, centiped, centiped, centiped_state, empty_init, ROT270, "T-Bone",  "Vectorpede", MACHINE_SUPPORTS_SAVE )

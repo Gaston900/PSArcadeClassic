@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Ren� Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 #include "windows.h"
 #include "commctrl.h"
@@ -11,7 +11,7 @@
 // Menu
 //
 
-IDR_UI_MENU MENU 
+IDR_UI_MENU MENU
 BEGIN
     POPUP "&File"
     BEGIN
@@ -80,7 +80,7 @@ BEGIN
             MENUITEM "Info",                               ID_TOGGLE_TAB_HISTORY
         END
         MENUITEM SEPARATOR
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /****************************************************************************************/
 		MENUITEM "Language game list", 				    ID_KOREAN_GAMELIST
         MENUITEM SEPARATOR
@@ -112,7 +112,7 @@ BEGIN
         MENUITEM "Custom filters\tCtrl+F",              ID_CONTEXT_FILTERS
         MENUITEM "Customize fields\tCtrl+C",             ID_CUSTOMIZE_FIELDS
         MENUITEM SEPARATOR
-        MENUITEM "Audit all games\tCtrl+A",                ID_FILE_AUDIT
+        MENUITEM "Audit all games",                      ID_FILE_AUDIT
         MENUITEM "Refresh games list\tF5",               ID_UPDATE_GAMELIST
         MENUITEM SEPARATOR
         MENUITEM "Save current games list\tAlt+F8",        ID_FILE_GAMELIST
@@ -121,14 +121,15 @@ BEGIN
     POPUP "&Help"
     BEGIN
 //        MENUITEM "Online Manual\tF1",                      ID_HELP_CONTENTS
-//        MENUITEM "Support Forum\tF3",                       ID_HELP_TROUBLE
+        MENUITEM "Support Forum",                       ID_HELP_TROUBLE
 //        MENUITEM SEPARATOR
-        MENUITEM "Mame release notes\tF6",              ID_HELP_WHATS_NEW
+        MENUITEM "Mame release notes",              ID_HELP_WHATS_NEW
 //        MENUITEM SEPARATOR
 //        MENUITEM "MAME development site\tF7",             ID_MAME_HOMEPAGE
 //        MENUITEM "Frequently Asked Questions\tF8",         ID_MAME_FAQ
-//        MENUITEM SEPARATOR
-        MENUITEM "About\tF9",                            ID_HELP_ABOUT
+        MENUITEM SEPARATOR
+//        MENUITEM "About\tF9",                            ID_HELP_ABOUT
+        MENUITEM "About",                            ID_HELP_ABOUT
     END
 END
 
@@ -137,7 +138,7 @@ BEGIN
     POPUP "Context Menu"
     BEGIN
         MENUITEM "Play\tAlt+O",                           ID_FILE_PLAY
-        MENUITEM "IPS\tAlt+P",                            ID_PLAY_IPS // Modified Code Source (Eziochiu)
+        MENUITEM "IPS\tAlt+P",                            ID_PLAY_IPS // 修改的 (Eziochiu)
         MENUITEM SEPARATOR
         MENUITEM "Record INP playback\tCtrl+F1",          ID_FILE_PLAY_RECORD
         MENUITEM "Load savestate\tAlt+F7",                ID_FILE_LOADSTATE
@@ -248,7 +249,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_MAMEUI_ICON         ICON                    "res\\psarcadeclassic.ico"
+IDI_MAMEUI_ICON         ICON                    "res\\arcadec.ico"
 IDI_WIN_ROMS            ICON                    "res\\win_roms.ico"
 IDI_WIN_NOROMS          ICON                    "res\\win_noro.ico"
 IDI_WIN_UNKNOWN         ICON                    "res\\win_unkn.ico"
@@ -284,10 +285,10 @@ IDI_ADVANCED            ICON                    "res\\advanced.ico"
 IDI_AUDIT_FAIL          ICON                    "res\\audit_fail.ico"
 IDI_FOLDER_IMPERFECT    ICON                    "res\\foldimp.ico"
 IDI_FOLDER_CPU          ICON                    "res\\foldcsb.ico"
-IDI_FOLDER_SOUND        ICON                    "res\\foldsnd.ico" // Modified (Gaston90) 
+IDI_FOLDER_SOUND        ICON                    "res\\foldsnd.ico" // 修改的 (加斯顿90) 
 IDI_FOLDER_BIOS         ICON                    "res\\foldbios.ico"
-IDI_FOLDER_DUMP         ICON                    "res\\folduni.ico" // Modified (Gaston90) 
-IDI_SYSTRAY             ICON                    "res\\psarcadeclassic.ico"
+IDI_FOLDER_DUMP         ICON                    "res\\folduni.ico" // 修改的 (加斯顿90)
+IDI_SYSTRAY             ICON                    "res\\arcadec.ico"
 IDI_DEBUG               ICON                    "res\\debug.ico"
 IDI_MONITOR             ICON                    "res\\monitor.ico"
 IDI_FOLDER_MECHANICAL   ICON                    "res\\mechanical.ico"
@@ -318,22 +319,10 @@ IDI_CONTROLSHEET        ICON                    "res\\joystick.ico"
 IDI_MISCSHEET           ICON                    "res\\misc.ico"
 IDI_MISC2SHEET          ICON                    "res\\debug.ico"
 IDI_SNAPSHEET           ICON                    "res\\snapshot.ico"
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (加斯顿90)
 /****************************************************************************/
-IDI_FOLDER_NEOGEO		ICON					"res\\fold_neogeo.ico"
-IDI_FOLDER_CAPCOM		ICON				    "res\\fold_cps.ico"
-IDI_FOLDER_PGM			ICON				    "res\\fold_pgm.ico"
-IDI_FOLDER_NAMCO		ICON				 	"res\\fold_namco.ico"
-IDI_FOLDER_TAITO		ICON	 				"res\\fold_taito.ico"
-IDI_FOLDER_KONAMI		ICON	 				"res\\fold_konami.ico"
-IDI_FOLDER_SEGA 		ICON	 				"res\\fold_sega.ico"
-IDI_FOLDER_CAVE 		ICON	 				"res\\fold_cave.ico"
-IDI_FOLDER_MSLUG 		ICON	 				"res\\fold_mslug.ico"
-IDI_FOLDER_NINTENDO		ICON					"res\\fold_nintendo.ico"
-IDI_FOLDER_MIDWAY		ICON				    "res\\fold_midway.ico"
-IDI_FOLDER_SETA 		ICON	 				"res\\fold_seta.ico"
-IDI_FOLDER_TOAPLAN		ICON				    "res\\fold_Toaplan.ico"
-IDI_FOLDER_DATAEAST		ICON				    "res\\fold_dataeast.ico"
+IDI_FOLDER_CONSOLE      ICON                    "res\\fold_cons.ico"
+IDI_FOLDER_COLLECTION	ICON					"res\\fold_neo.ico"
 /****************************************************************************/
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -375,16 +364,16 @@ BEGIN
     RTEXT            "",IDC_BUILD,6,4,308,10
     LTEXT            "",IDC_BUILDVER,6,4,120,10
     CONTROL         "",IDC_ABOUT,WC_STATIC,SS_BITMAP,6,16,56,17
-    CTEXT           "PSARCADE CLASSIC+ Copyright (C) 2022 - 2025 Gaston90",IDC_TEXT1,6,106,310,10
+    CTEXT           "PSARCADE CLASSIC+ Copyright (C) 2016 - 2026 Gaston90",IDC_TEXT1,6,106,310,10
     CTEXT           "MAMEUI version by Christopher Kirmse and The MAMEUI Team",IDC_TEXT2,6,118,310,10
     CTEXT           "Additional MAMEUI code by Mike Haaland, Andrew Kirmse,",IDC_TEXT3,6,130,310,10
     CTEXT           "Jeff Miller, John Hardy IV and Michael Soderstrom",IDC_TEXT4,6,142,310,10
-    CTEXT           "Additional MAMEUIFX code and features by Mamesick",IDC_TEXT4,6,154,310,10
+    CTEXT           "Additional MAMEUIFX code and features by Mamesick and Robbbert",IDC_SICKFX,6,154,310,10
     CTEXT           "Additional EKMAME code and features by Kaze",IDC_SICKFX,6,154,310,10
     DEFPUSHBUTTON   "OK",IDOK,136,166,50,14
 END
 
-IDD_AUDIT DIALOGEX 0, 0, 284, 206
+IDD_AUDIT DIALOGEX 0, 0, 284, 388
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFONT
 CAPTION "File audit"
 FONT 8, "Tahoma"
@@ -400,8 +389,8 @@ BEGIN
     LTEXT           "0",IDC_ROMS_NOTFOUND,52,56,20,10
     LTEXT           "0",IDC_ROMS_TOTAL,52,70,20,10
     GROUPBOX        "Details",IDC_STATIC,6,88,272,92
-    EDITTEXT        IDC_AUDIT_DETAILS,12,100,260,72,ES_MULTILINE | WS_BORDER | WS_VSCROLL | NOT WS_TABSTOP
-    DEFPUSHBUTTON   "Cancel",IDCANCEL,116,186,50,14
+    EDITTEXT        IDC_AUDIT_DETAILS,12,100,260,262,ES_MULTILINE | WS_BORDER | WS_VSCROLL | NOT WS_TABSTOP
+    DEFPUSHBUTTON   "Cancel",IDCANCEL,116,368,50,14
 END
 
 IDD_DIRECTORIES DIALOGEX 0, 0, 230, 307
@@ -447,24 +436,26 @@ BEGIN
     PUSHBUTTON       "OK",IDOK,84,274,50,14
 END
 
-IDD_GAME_AUDIT DIALOGEX 0, 0, 220, 278
+IDD_GAME_AUDIT DIALOGEX 0, 0, 520, 278
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFONT
 CAPTION "Game audit"
 FONT 8, "Tahoma"
 BEGIN
-    ICON            IDI_MAMEUI_ICON,IDC_AUDIT_ICON,188,16,32,32
-    GROUPBOX        "Audit results",IDC_STATIC,6,4,208,40
-    LTEXT           "ROM check:",IDC_STATIC,12,16,50,10
-    LTEXT           "",IDC_PROP_ROMS,68,16,50,10
-    LTEXT           "Sample check:",IDC_STATIC,12,28,50,10
-    LTEXT           "",IDC_PROP_SAMPLES,68,28,50,10
-    GROUPBOX        "ROM details",IDC_STATIC,6,48,208,100
-    EDITTEXT        IDC_ROM_DETAILS,12,60,196,80,ES_MULTILINE | WS_BORDER | WS_VSCROLL | NOT WS_TABSTOP
-    GROUPBOX        "Audit details",IDC_STATIC,6,152,208,100
-    EDITTEXT        IDC_AUDIT_DETAILS_PROP,12,164,196,80,ES_MULTILINE | WS_BORDER | WS_VSCROLL | NOT WS_TABSTOP
-    PUSHBUTTON       "OK",IDOK,84,258,50,14
+    ICON            IDI_MAMEUI_ICON,IDC_AUDIT_ICON,488,16,32,32
+    GROUPBOX        "Audit results",IDC_STATIC,6,4,508,40
+    LTEXT           "ROM check:",IDC_STATIC,12,16,350,10
+    LTEXT           "",IDC_PROP_ROMS,68,16,350,10
+    LTEXT           "Sample check:",IDC_STATIC,12,28,350,10
+    LTEXT           "",IDC_PROP_SAMPLES,68,28,350,10
+    GROUPBOX        "ROM details",IDC_STATIC,6,48,508,100
+    EDITTEXT        IDC_ROM_DETAILS,12,60,496,80,ES_MULTILINE | WS_BORDER | WS_VSCROLL | NOT WS_TABSTOP
+    GROUPBOX        "Audit details",IDC_STATIC,6,152,508,100
+    EDITTEXT        IDC_AUDIT_DETAILS_PROP,12,164,496,80,ES_MULTILINE | WS_BORDER | WS_VSCROLL | NOT WS_TABSTOP
+    PUSHBUTTON       "OK",IDOK,234,258,50,14
 END
 
+// 修改的 代码来源 (EKMAME)
+/****************************************************************************************************************************/
 IDD_PROP_DISPLAY DIALOGEX 0, 0, 400, 310
 STYLE WS_CHILD | WS_DISABLED | WS_CAPTION | DS_SETFONT
 CAPTION "Display"
@@ -576,11 +567,9 @@ BEGIN
     COMBOBOX        IDC_REFRESH,331,250,55,62,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP,0
 
     CONTROL         "Switch resolutions",IDC_SWITCHRES,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,325,275,94,10,0
-    
+
     CONTROL         "Low Latency",IDC_LOWLATENCY,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,216,275,94,10,0
 
-
-    
     PUSHBUTTON      "Reset",IDC_PROP_RESET,4,292,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,282,98,14,0,0
 END
@@ -772,16 +761,16 @@ BEGIN
     
     GROUPBOX        "BIOS selection",IDC_STATIC,4,152,180,28
     COMBOBOX        IDC_BIOS,10,162,170,62,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP,0
-    
+
     GROUPBOX        "Cheat file",IDC_STATIC,4,184,180,48
     EDITTEXT        IDC_CHEATFILE,10,194,170,14,ES_LEFT | WS_BORDER
     
     PUSHBUTTON      "Select cheat file",IDC_SELECT_CHEATFILE,10,212,60,14,0,0
     PUSHBUTTON      "Reset cheat file",IDC_RESET_CHEATFILE,80,212,60,14,0,0
     
-    CONTROL         "Skip game informations screen at startup",IDC_SKIP_GAME_INFO,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,236,200,10,0
-    CONTROL         "Quit game confirmation screen on exit",IDC_CONFIRM_QUIT,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,248,200,10,0
-    CONTROL         "Display mouse cursor in internal interface",IDC_ENABLE_MOUSE_UI,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,260,200,10,0
+    CONTROL         "Skip game informations screen at startup",IDC_SKIP_GAME_INFO,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,236,150,10,0
+    CONTROL         "Quit game confirmation screen on exit",IDC_CONFIRM_QUIT,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,248,150,10,0
+    CONTROL         "Display mouse cursor in internal interface",IDC_ENABLE_MOUSE_UI,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,260,150,10,0
     CONTROL         "Save NVRAM on exit",IDC_NVRAM_SAVE,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,272,104,10,0
     CONTROL         "Enable rewind savestates",IDC_REWIND,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,284,104,10,0
 
@@ -820,10 +809,13 @@ BEGIN
     CONTROL         "Use bilinear filtering for movie recording",IDC_SNAPBILINEAR,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,200,245,148,10,0
     CONTROL         "Create burn-in snapshots for each screen",IDC_SNAPBURNIN,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,200,257,148,10,0
     CONTROL         "Exit from MAME when INP playback is finished",IDC_EXIT_PLAYBACK,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,200,269,164,10,0
-    
+
+	CONTROL         "Skip CRC/HASH check",IDC_SKIP_CRC_CHECK,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,200,281,200,10,0   // 缘来是你
+
     PUSHBUTTON      "Reset",IDC_PROP_RESET,4,294,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,294,98,14,0,0
 END
+/****************************************************************************************************************************/
 
 IDD_FILTERS DIALOGEX 0, 0, 190, 192
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFONT
@@ -925,7 +917,7 @@ BEGIN
     PUSHBUTTON      "Cancel",IDCANCEL,154,124,50,14
 END
 
-// Modified Code Source (Eziochiu) 
+// 修改的 (Eziochiu) 
 /************************************************************************************************************************************************************************/
 IDD_PROP_IPS DIALOGEX 0, 0, 400, 280
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
@@ -971,7 +963,7 @@ BEGIN
     "5",            ID_OPTIONS_LIST_COLOR,      VIRTKEY, CONTROL, NOINVERT
     "6",            ID_OPTIONS_HISTORY_COLOR,   VIRTKEY, CONTROL, NOINVERT
     "A",            ID_GAME_AUDIT,              VIRTKEY, ALT, NOINVERT
-    "A",            ID_FILE_AUDIT,              VIRTKEY, CONTROL, NOINVERT
+//    "A",            ID_FILE_AUDIT,              VIRTKEY, CONTROL, NOINVERT
     "B",            ID_VIEW_PAGETAB,            VIRTKEY, ALT, NOINVERT
     "C",            ID_CUSTOMIZE_FIELDS,        VIRTKEY, CONTROL, NOINVERT
     "D",            ID_OPTIONS_DIR,             VIRTKEY, CONTROL, NOINVERT
@@ -1001,9 +993,9 @@ BEGIN
     "X",            ID_CONTEXT_REMOVE_CUSTOM,   VIRTKEY, ALT, NOINVERT
     "Y",            ID_CONTEXT_RESET_PLAYTIME,  VIRTKEY, ALT, NOINVERT
     "Z",            ID_VIEW_ZIP,                VIRTKEY, ALT, NOINVERT
-    VK_F1,          ID_HELP_CONTENTS,           VIRTKEY, NOINVERT
+//    VK_F1,          ID_HELP_CONTENTS,           VIRTKEY, NOINVERT
     VK_F2,            ID_CONTEXT_RENAME_CUSTOM,    VIRTKEY, NOINVERT
-    VK_F3,          ID_HELP_TROUBLE,               VIRTKEY, NOINVERT
+//    VK_F3,          ID_HELP_TROUBLE,               VIRTKEY, NOINVERT
     VK_F1,          ID_FILE_PLAY_BACK,           VIRTKEY, ALT, NOINVERT
     VK_F2,            ID_PLAY_AUDIO,                VIRTKEY, ALT, NOINVERT
     VK_F3,          ID_PLAY_MNG,                   VIRTKEY, ALT, NOINVERT
@@ -1014,19 +1006,19 @@ BEGIN
     VK_F3,          ID_FILE_PLAY_RECORD_MNG,    VIRTKEY, CONTROL, NOINVERT
     VK_F5,          ID_FILE_PLAY_RECORD_AVI,    VIRTKEY, CONTROL, NOINVERT
     VK_F5,          ID_UPDATE_GAMELIST,         VIRTKEY, NOINVERT
-    VK_F6,          ID_HELP_WHATS_NEW,           VIRTKEY, NOINVERT
-    VK_F7,          ID_MAME_HOMEPAGE,           VIRTKEY, NOINVERT
+//    VK_F6,          ID_HELP_WHATS_NEW,           VIRTKEY, NOINVERT
+//    VK_F7,          ID_MAME_HOMEPAGE,           VIRTKEY, NOINVERT
     VK_F7,          ID_FILE_LOADSTATE,             VIRTKEY, ALT, NOINVERT
-    VK_F8,             ID_MAME_FAQ,                 VIRTKEY, NOINVERT
+//    VK_F8,             ID_MAME_FAQ,                 VIRTKEY, NOINVERT
     VK_F8,             ID_FILE_GAMELIST,             VIRTKEY, ALT, NOINVERT
-    VK_F9,          ID_HELP_ABOUT,                 VIRTKEY, NOINVERT
+//    VK_F9,          ID_HELP_ABOUT,                 VIRTKEY, NOINVERT
     VK_F9,          ID_FILE_ROMSLIST,             VIRTKEY, ALT, NOINVERT
     VK_F11,         ID_VIEW_FULLSCREEN,         VIRTKEY, NOINVERT
     VK_DOWN,        ID_SORT_DESCENDING,         VIRTKEY, ALT, NOINVERT
     VK_NEXT,        ID_UI_HISTORY_DOWN,         VIRTKEY, CONTROL, NOINVERT
     VK_UP,            ID_SORT_ASCENDING,             VIRTKEY, ALT, NOINVERT
     VK_PRIOR,       ID_UI_HISTORY_UP,           VIRTKEY, CONTROL, NOINVERT
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /****************************************************************************/
     "K",			ID_KOREAN_GAMELIST,	        VIRTKEY, ALT, NOINVERT
 /****************************************************************************/
@@ -1038,8 +1030,8 @@ END
 //
 
 IDB_TOOLBAR             BITMAP                  "res\\toolbar.bmp"
-IDB_SNAPSHOT            BITMAP                  "res\\snapshotps.bmp"
-IDB_SPLASH                BITMAP                  "res\\splashps.bmp"
+IDB_SNAPSHOT            BITMAP                  "res\\snapshot.bmp"
+IDB_SPLASH                BITMAP                  "res\\splash.bmp"
 IDB_ABOUTMENU            BITMAP                    "res\\aboutmenu.bmp"
 IDB_CUSTOM                BITMAP                    "res\\custom.bmp"
 IDB_DIRECTORIES            BITMAP                    "res\\directories.bmp"
@@ -1095,11 +1087,11 @@ IDB_FILTERS                BITMAP                    "res\\filters.bmp"
 IDB_REMOVE                BITMAP                    "res\\remove.bmp"
 IDB_RENAME                BITMAP                    "res\\rename.bmp"
 IDB_RESET                BITMAP                    "res\\reset.bmp"
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /****************************************************************************/
 IDB_KLIST				 BITMAP					   "res\\klist.bmp"
 /****************************************************************************/
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /****************************************************************************/
 IDB_MAME_IPS            BITMAP                     "res\\mame.bmp"
 /****************************************************************************/
@@ -1116,4 +1108,4 @@ IDC_CURSOR_HSPLIT       CURSOR                  "res\\splith.cur"
 //
 
 1                       RT_MANIFEST             "res\\mameui.manifest"
-2                       ICON                     "res\\psarcadeclassic.ico"
+2                       ICON                    "res\\arcadec.ico"

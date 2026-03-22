@@ -55,7 +55,6 @@ public:
 	void psoldier(machine_config &config);
 	void rtypeleo(machine_config &config);
 	void gunforc2(machine_config &config);
-	void geostorma(machine_config &config);
 	void nbbatman2bl(machine_config &config);
 	void bmaster(machine_config &config);
 	void nbbatman(machine_config &config);
@@ -65,7 +64,10 @@ public:
 	void majtitl2(machine_config &config);
 	void majtitl2a(machine_config &config);
 	void mysticri(machine_config &config);
-	void leaguemna(machine_config &config);
+
+	// Mainboard Configurations CPUX2
+	void hook_2XCLOCK(machine_config &config);
+	void nbbatman_2XCLOCK(machine_config &config);
 
 	void init_bank();
 

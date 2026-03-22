@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, René Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 #include "winui.h"
 #include <setjmp.h>
@@ -182,7 +182,10 @@ static std::error_condition OpenDIBFile(const char *dir_name, const char *zip_na
 		}
 	}
 
-	return filerr;
+	// Operator | not permitted here
+	if (filerr)
+		return filerr;
+	return ziperr;
 }
 
 static bool LoadDIB(const char *filename, HGLOBAL *phDIB, HPALETTE *pPal, int pic_type)
@@ -232,7 +235,7 @@ static bool LoadDIB(const char *filename, HGLOBAL *phDIB, HPALETTE *pPal, int pi
 
 		case TAB_PCB:
 			dir_name = GetPcbDir();
-		    zip_name = "pcb";
+			zip_name = "pcb";
 			break;
 
 		case TAB_SCORES:
@@ -382,7 +385,7 @@ static bool LoadDIB(const char *filename, HGLOBAL *phDIB, HPALETTE *pPal, int pi
 
 		free(dir_name1);
 
-		if (!filerr) 
+		if (!filerr && file) 
 		{
 			if (extnum)
 				success = jpeg_read_bitmap_gui(*file, phDIB, pPal);
@@ -427,11 +430,11 @@ static HBITMAP DIBToDDB(HDC hDC, HANDLE hDIB, LPMYBITMAPINFO desc)
 	}
 
 	HBITMAP hBM = CreateDIBitmap(hDC,				/* handle to device context */
-		(LPBITMAPINFOHEADER)lpbi, 					/* pointer to bitmap info header  */
-		(long)CBM_INIT, 		  					/* initialization flag */
+		(LPBITMAPINFOHEADER)lpbi,					/* pointer to bitmap info header  */
+		(long)CBM_INIT,								/* initialization flag */
 		lpDIBBits,									/* pointer to initialization data  */
-		(LPBITMAPINFO)lpbi, 	  					/* pointer to bitmap info */
-		DIB_RGB_COLORS);		  					/* color-data usage  */
+		(LPBITMAPINFO)lpbi,							/* pointer to bitmap info */
+		DIB_RGB_COLORS);							/* color-data usage  */
 
 	return hBM;
 }
@@ -491,7 +494,7 @@ bool AllocatePNG(util::png_info *p, HGLOBAL *phDIB, HPALETTE *pPal)
 		{
 			RGBQUAD rgb;
 
-			rgb.rgbRed = p->palette[i * 3 + 0];
+			rgb.rgbRed = p->palette[i * 3];
 			rgb.rgbGreen = p->palette[i * 3 + 1];
 			rgb.rgbBlue = p->palette[i * 3 + 2];
 			rgb.rgbReserved = (uint8_t)0;
@@ -518,9 +521,9 @@ bool AllocatePNG(util::png_info *p, HGLOBAL *phDIB, HPALETTE *pPal)
 
 		for (int i = 0; i < nColors; i++)
 		{
-			pLP->palPalEntry[i].peRed	= bmInfo->bmiColors[i].rgbRed;
+			pLP->palPalEntry[i].peRed = bmInfo->bmiColors[i].rgbRed;
 			pLP->palPalEntry[i].peGreen = bmInfo->bmiColors[i].rgbGreen;
-			pLP->palPalEntry[i].peBlue	= bmInfo->bmiColors[i].rgbBlue;
+			pLP->palPalEntry[i].peBlue = bmInfo->bmiColors[i].rgbBlue;
 			pLP->palPalEntry[i].peFlags = 0;
 		}
 
@@ -681,7 +684,7 @@ static bool jpeg_read_bitmap_gui(util::core_file &mfile, HGLOBAL *phDIB, HPALETT
 		jpeg_read_scanlines(&info, cacheRow, 1);
 		//rgb to win32 bgr
 		for (JDIMENSION i = 0; i < info.output_width; ++i)
-			std::swap(cacheRow[0][i * 3 + 0], cacheRow[0][i * 3 + 2]);
+			std::swap(cacheRow[0][i * 3], cacheRow[0][i * 3 + 2]);
 		pRgb += effWidth;
 	}
 	jpeg_finish_decompress(&info);

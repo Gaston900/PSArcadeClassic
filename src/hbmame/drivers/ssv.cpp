@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/ssv.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( survartshc01 )
 	ROM_REGION( 0x100000, "maincpu", 0 )
@@ -35,5 +35,5 @@ ROM_START( survartshc01 )
 ROM_END
 
 /*    YEAR    NAME          PARENT     MACHINE   INPUT                  INIT    MONITOR  COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1993,  survartshc01,  survarts,  survarts, survarts, ssv_state, init_ssv,   ROT0,   "DDJ",       "Survival Arts (Easy Move)", MACHINE_NO_COCKTAIL | MACHINE_SUPPORTS_SAVE )
+/* Ssv Hack */
+GAME( 1993,  survartshc01,  survarts,  survarts, survarts, ssv_state, init_ssv,   ROT0,   "DDJ",       "Survival Arts (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )

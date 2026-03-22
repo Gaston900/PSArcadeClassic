@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Ren� Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 #include "winui.h"
 
@@ -376,7 +376,7 @@ void Picker_SetViewID(HWND hWndPicker, int nViewID)
 	if (pPickerInfo->pCallbacks->pfnSetViewMode)
 		pPickerInfo->pCallbacks->pfnSetViewMode(pPickerInfo->nCurrentViewID);
 
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /********************************************/
 	LONG_PTR nListViewStyle;
 	switch(nViewID)
@@ -400,7 +400,7 @@ void Picker_SetViewID(HWND hWndPicker, int nViewID)
 
 	DWORD dwStyle = GetWindowLong(hWndPicker, GWL_STYLE);
 	dwStyle &= ~LVS_TYPEMASK;
-	dwStyle |= nListViewStyle; // Modified Code Source(EKMAME)
+	dwStyle |= nListViewStyle; // 修改的 代码来源 (EKMAME)
 	SetWindowLong(hWndPicker, GWL_STYLE, dwStyle);
 	RedrawWindow(hWndPicker, NULL, NULL, RDW_ERASE | RDW_INVALIDATE | RDW_FRAME);
 }
@@ -856,7 +856,7 @@ const wchar_t* const *Picker_GetColumnNames(HWND hWndPicker)
 	return pPickerInfo->ppszColumnNames;
 }
 
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /**************************************************************************************/
 void Picker_SetHeaderImageList(HWND hwndPicker, HIMAGELIST hHeaderImages)
 {

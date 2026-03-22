@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/ginganin.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( ginganinhc01 )
 	ROM_REGION( 0x20000, "maincpu", 0 )
@@ -41,5 +41,5 @@ ROM_START( ginganinhc01 )
 ROM_END
 
 /*    YEAR    NAME         PARENT        MACHINE   INPUT                       INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 1987, ginganinhc01,  ginganin,    ginganin, ginganin, ginganin_state, init_ginganin, ROT0,   "hack",      "Ginga NinkyouDen (Translation Korean)", MACHINE_SUPPORTS_SAVE )
+/* Ginganin Hack */
+GAME( 1987, ginganinhc01,  ginganin,    ginganin, ginganin, ginganin_state, init_ginganin, ROT0,   "hack",      "Ginga NinkyouDen (Korean Translation)", MACHINE_SUPPORTS_SAVE )

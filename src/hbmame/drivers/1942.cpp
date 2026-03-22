@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/1942.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( 1942hc01 )
 	ROM_REGION( 0x20000, "maincpu", ROMREGION_ERASEFF )
@@ -105,6 +105,6 @@ ROM_START( 1942hc02 )
 ROM_END
 
 /*    YEAR    NAME       PARENT   MACHINE  INPUT                INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME( 2015, 1942hc01, 1942, _1942, 1942, _1942_state, driver_init, ROT270, "cmonkey", "1942 (With attract mode in free play)", MACHINE_SUPPORTS_SAVE )
-GAME( 1984, 1942hc02, 1942, _1942, 1942, _1942_state, driver_init, ROT270, "Jerky and Chris Moore", "1942 (Galaga X)", MACHINE_SUPPORTS_SAVE )
+/* 1942 Hack */
+GAME( 2015,   1942hc01,  1942,   _1942,    1942, _1942_state, driver_init, ROT270, "hack",        "1942 (With Attract Mode In Free Play)", MACHINE_SUPPORTS_SAVE )
+GAME( 1984,   1942hc02,  1942,   _1942,    1942, _1942_state, driver_init, ROT270, "hack",        "1942 (Galaga X)", MACHINE_SUPPORTS_SAVE )

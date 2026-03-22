@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, René Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 #ifndef DIALOGS_H
 #define DIALOGS_H

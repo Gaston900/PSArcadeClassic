@@ -6,7 +6,8 @@
 #
 ###########################################################################
 
-
+BARE_VERS := 0.245
+LONG_VERS := $(BARE_VERS).0
 
 ###########################################################################
 #################   BEGIN USER-CONFIGURABLE OPTIONS   #####################
@@ -1072,10 +1073,10 @@ endif
 ifneq ($(IGNORE_GIT),1)
 NEW_GIT_VERSION := $(shell git describe --dirty)
 else
-NEW_GIT_VERSION := unknown
+NEW_GIT_VERSION := $(strip $(shell cmd /c date /T))
 endif
 ifeq ($(NEW_GIT_VERSION),)
-NEW_GIT_VERSION := unknown
+NEW_GIT_VERSION := automated
 endif
 
 GENIE := 3rdparty/genie/bin/$(GENIEOS)/genie$(EXE)
@@ -1546,24 +1547,30 @@ endif
 
 ifeq (posix,$(SHELLTYPE))
 $(GENDIR)/version.cpp: makefile $(GENDIR)/git_desc | $(GEN_FOLDERS)
-	@echo '#define BARE_BUILD_VERSION "0.245"' > $@
+	@echo '#define LONG_BUILD_VERSION "$(LONG_VERS)"' > $@
+	@echo '#define BARE_BUILD_VERSION "$(BARE_VERS)"' >> $@
 	@echo '#define BARE_VCS_REVISION "$(NEW_GIT_VERSION)"' >> $@
 	@echo 'extern const char bare_build_version[];' >> $@
+	@echo 'extern const char long_build_version[];' >> $@
 	@echo 'extern const char bare_vcs_revision[];' >> $@
 	@echo 'extern const char build_version[];' >> $@
 	@echo 'const char bare_build_version[] = BARE_BUILD_VERSION;' >> $@
+	@echo 'const char long_build_version[] = LONG_BUILD_VERSION;' >> $@
 	@echo 'const char bare_vcs_revision[] = BARE_VCS_REVISION;' >> $@
-	@echo 'const char build_version[] = BARE_BUILD_VERSION " (" BARE_VCS_REVISION ")";' >> $@
+	@echo 'const char build_version[] = LONG_BUILD_VERSION " (" BARE_VCS_REVISION ")";' >> $@
 else
 $(GENDIR)/version.cpp: makefile $(GENDIR)/git_desc | $(GEN_FOLDERS)
-	@echo #define BARE_BUILD_VERSION "0.245" > $@
+	@echo #define LONG_BUILD_VERSION "$(LONG_VERS)" > $@
+	@echo #define BARE_BUILD_VERSION "$(BARE_VERS)" >> $@
 	@echo #define BARE_VCS_REVISION "$(NEW_GIT_VERSION)" >> $@
 	@echo extern const char bare_build_version[]; >> $@
+	@echo extern const char long_build_version[]; >> $@
 	@echo extern const char bare_vcs_revision[]; >> $@
 	@echo extern const char build_version[]; >> $@
 	@echo const char bare_build_version[] = BARE_BUILD_VERSION; >> $@
+	@echo const char long_build_version[] = LONG_BUILD_VERSION; >> $@
 	@echo const char bare_vcs_revision[] = BARE_VCS_REVISION; >> $@
-	@echo const char build_version[] = BARE_BUILD_VERSION " (" BARE_VCS_REVISION ")"; >> $@
+	@echo const char build_version[] = LONG_BUILD_VERSION " (" BARE_VCS_REVISION ")"; >> $@
 endif
 
 
@@ -1579,15 +1586,6 @@ else
 	$(SILENT)$(PYTHON) scripts/build/msgfmt.py --output-file $@ $<
 endif
 
-#-------------------------------------------------
-# Regression tests
-#-------------------------------------------------
-
-include regtests/regtests.mak
-
-.PHONY: tests
-
-tests: $(REGTESTS)
 
 #-------------------------------------------------
 # Source cleanup

@@ -2,9 +2,9 @@
 // copyright-holders:Robbbert
 #include "../mame/drivers/retofinv.cpp"
 
- /***********************
- Return of the Invaders
-**************************/
+/******
+  Hack
+********/
 
 ROM_START( retofinv4 )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -43,6 +43,7 @@ ROM_START( retofinv4 )
 	ROM_LOAD( "82s191n",   0x0000, 0x0800, CRC(93c891e3) SHA1(643a0107717b6a434432dda73a0102e6e8adbca7) )
 ROM_END
 
-/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
-// Return of the Invaders
-GAME( 2011, retofinv4, retofinv, retofinvb1, retofinv, retofinv_state, empty_init, ROT90, "Paul Smith", "Return of the Invaders (Atari Edition)", 0 )
+/*    YEAR  NAME       PARENT      MACHINE    INPUT                       INIT    MONITOR    COMPANY    FULLNAME FLAGS */
+/* Retofinv Hack */
+GAME( 2011, retofinv4, retofinv, retofinvb1, retofinv, retofinv_state, empty_init, ROT90, "Paul Smith", "Return of the Invaders (hack)", MACHINE_SUPPORTS_SAVE )
+

@@ -1,12 +1,12 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/namcona1.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
-ROM_START(knckheadhc01)
+ROM_START( knckheadhc01 )
 	ROM_REGION(0x200000, "maincpu", 0)
 	ROM_LOAD16_BYTE("kh2-ep0l_hc01.6c", 0x000001, 0x080000, CRC(7b85851d) SHA1(d283f98972c88f67cfdc281934d289d97ca5a707))
 	ROM_LOAD16_BYTE("kh2-ep0u_hc01.6f", 0x000000, 0x080000, CRC(15cb1ed1) SHA1(e659999f21be66df87f00ffc8bc990ffe8173f9f))
@@ -25,5 +25,5 @@ ROM_START(knckheadhc01)
 ROM_END
 
 /*    YEAR    NAME         PARENT     MACHINE       INPUT                          INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
-GAME(1992, knckheadhc01,   knckhead,  namcona2,  namcona1_joy,  namcona2_state, init_knckhead, ROT0,   "DDj",        "Knuckle Heads (Easy Move)", MACHINE_SUPPORTS_SAVE | MACHINE_NO_COCKTAIL)
+/* Namcona1 Hack */
+GAME(1992, knckheadhc01,   knckhead,  namcona2,  namcona1_joy,  namcona2_state, init_knckhead, ROT0,   "DDj",        "Knuckle Heads (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )

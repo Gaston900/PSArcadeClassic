@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/psikyosh.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( darakuhc01 )
 	ROM_REGION( 0x200000, "maincpu", 0)
@@ -33,29 +33,6 @@ ROM_START( darakuhc01 )
 
 	ROM_REGION( 0x100, "eeprom", 0 )
 	ROM_LOAD( "eeprom-daraku.bin", 0x0000, 0x0100, CRC(a9715297) SHA1(fcd32b936e0d05bad4ba4969ddec24aae7768cea) )
-ROM_END
-
-ROM_START( gunbird2hc01 )
-	ROM_REGION( 0x180000, "maincpu", 0)
-	ROM_LOAD32_WORD_SWAP( "2_prog_lh_hc01.u16", 0x000002, 0x080000, CRC(E4d9966a) SHA1(0164ccf6a2786e2a15c6c185dcbe03db97dbe775) )
-	ROM_LOAD32_WORD_SWAP( "1_prog_hh_hc01.u17", 0x000000, 0x080000, CRC(1cca1f60) SHA1(9647988f4871648eefd54d4afdb5d921f496ce1c) )
-	ROM_LOAD16_WORD_SWAP( "3_pdata.u1",   0x100000, 0x080000, CRC(a5b697e6) SHA1(947f124fa585c2cf77c6571af7559bd652897b89) )
-
-	ROM_REGION( 0x3800000, "gfx1", 0 )
-	ROM_LOAD32_WORD( "0l.u3",  0x0000000, 0x800000, CRC(5c826bc8) SHA1(74fb6b242b4c5fe5365cfcc3029ed6da4cf3a621) )
-	ROM_LOAD32_WORD( "0h.u10", 0x0000002, 0x800000, CRC(3df0cb6c) SHA1(271d276fa0f63d84e458223316a9517865fc2255) )
-	ROM_LOAD32_WORD( "1l.u4",  0x1000000, 0x800000, CRC(1558358d) SHA1(e3b9c3da4e9b29ffa9568b57d14fe2b600aead68) )
-	ROM_LOAD32_WORD( "1h.u11", 0x1000002, 0x800000, CRC(4ee0103b) SHA1(29bbe0162dda39919fcd188ea4a6b7b5f20366ff) )
-	ROM_LOAD32_WORD( "2l.u5",  0x2000000, 0x800000, CRC(e1c7a7b8) SHA1(b5f6e5d53e21928197773df7dde0e7c83f4082af) )
-	ROM_LOAD32_WORD( "2h.u12", 0x2000002, 0x800000, CRC(bc8a41df) SHA1(90460b11eea778f17cf8be67430e2ab149680686) )
-	ROM_LOAD32_WORD( "3l.u6",  0x3000000, 0x400000, CRC(0229d37f) SHA1(f9d98d1d2dda2d552b2a46c76b4c7fc84b1aa4c6) )
-	ROM_LOAD32_WORD( "3h.u13", 0x3000002, 0x400000, CRC(f41bbf2b) SHA1(b705274e392541e2f513a4ae4bae543c03be0913) )
-
-	ROM_REGION( 0x400000, "ymf", 0 )
-	ROM_LOAD( "sound.u9", 0x000000, 0x400000, CRC(f19796ab) SHA1(b978f0550ebd675e8ce9d9edcfcc3f6214e49e8b) )
-
-	ROM_REGION( 0x100, "eeprom", 0 )
-	ROM_LOAD( "eeprom-gunbird2.bin", 0x0000, 0x0100, CRC(7ac38846) SHA1(c5f4b05a94211f3c96b8c472adbe634f2e77d753) )
 ROM_END
 
 ROM_START( s1945iihc01 )
@@ -144,10 +121,9 @@ ROM_START( soldividhc01 )
 ROM_END
 
 /*    YEAR    NAME       PARENT      MACHINE      INPUT                      INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
+/* Psikyosh Hack */
 GAME( 1998, darakuhc01,   daraku,    psikyo3v1,   daraku,   psikyosh_state, init_ps3,   ROT0,   "hack",        "Daraku Tenshi (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-GAME( 2009, gunbird2hc01, gunbird2,  psikyo5,     gunbird2, psikyosh_state, init_ps5,   ROT270, "hack",        "Gunbird 2 (Ex Super Version 2009-08-04)", MACHINE_SUPPORTS_SAVE )
-GAME( 2009, s1945iihc01,  s1945ii,   psikyo3v1,   s1945ii,  psikyosh_state, init_ps3,   ROT270, "hack",        "Strikers 1945 II (EX Super Version 2009-07-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, s1945iihc01,  s1945ii,   psikyo3v1,   s1945ii,  psikyosh_state, init_ps3,   ROT270, "hack",        "Strikers 1945 II (Infinite Power 2009-07-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2009, s1945iiihc01, s1945iii,  psikyo5,     s1945iii, psikyosh_state, init_ps5,   ROT270, "hack",        "Strikers 1945 III (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-GAME( 2014, s1945iiihc02, s1945iii,  psikyo5,     s1945iii, psikyosh_state, init_ps5,   ROT270, "hack",        "Strikers 1945 III (Ex Super Version 2014-04-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2007, soldividhc01, soldivid,  psikyo3v1,   soldivid, psikyosh_state, init_ps3,   ROT0,   "hack",        "Sol Divide - The Sword Of Darkness (Translation French)", MACHINE_SUPPORTS_SAVE )
+GAME( 2014, s1945iiihc02, s1945iii,  psikyo5,     s1945iii, psikyosh_state, init_ps5,   ROT270, "hack",        "Strikers 1945 III (Infinite Power 2014-04-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2007, soldividhc01, soldivid,  psikyo3v1,   soldivid, psikyosh_state, init_ps3,   ROT0,   "hack",        "Sol Divide - The Sword Of Darkness (French Translation)", MACHINE_SUPPORTS_SAVE )

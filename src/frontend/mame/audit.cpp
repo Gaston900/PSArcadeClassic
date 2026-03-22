@@ -750,6 +750,18 @@ media_auditor::audit_record &media_auditor::audit_one_disk(const rom_entry *rom,
 
 void media_auditor::compute_status(audit_record &record, const rom_entry *rom, bool found)
 {
+
+// 修改的 (缘来是你)
+/**************************** 跳过CRC校验 **********************************/
+    if (m_enumerator.options().skip_crc_check())
+    {
+        if (found)
+        {
+            record.set_status(audit_status::GOOD, audit_substatus::GOOD);
+            return;
+        }
+    }
+/************************************************************************/
 	// if not found, provide more details
 	if (!found)
 	{

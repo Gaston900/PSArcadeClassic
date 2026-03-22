@@ -1,10 +1,10 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/kyugo.cpp"
 
-/********************
-  Hack And Homebrow
-***********************/
+/******
+  Hack
+********/
 
 ROM_START( airwolfhc01 )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -48,5 +48,5 @@ ROM_START( airwolfhc01 )
 ROM_END
 
 /*    YEAR    NAME       PARENT   MACHINE    INPUT                  INIT      MONITOR   COMPANY       FULLNAME FLAGS */
-// Hack/Homebrow
+/* kyugo Hack */
 GAME( 2007, airwolfhc01, airwolf, srdmissn, airwolf, kyugo_state, empty_init,  ROT0,   "hack",        "Airwolf (French Translation)", MACHINE_SUPPORTS_SAVE )

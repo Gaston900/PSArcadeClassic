@@ -1,17 +1,17 @@
-// license:BSD-3-Clause
-// copyright-holders:Robbbert
+// NeoEX
+// copyright-holders:Gaston90
 #include "../mame/drivers/volfied.cpp"
 
- /*******
- Volfied
-**********/
+/******
+  Hack
+********/
 
-ROM_START( volfiedg ) // roms that don't end in g are same as volfied
+ROM_START( volfiedhc01 ) //volfiedg
 	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "c04-12-1.30g", 0x00000, 0x10000, CRC(f13c5621) SHA1(b50aaadb1a3128aa5ecbab2a1450c5e817f33620) )
-	ROM_LOAD16_BYTE( "c04-08-1.10g", 0x00001, 0x10000, CRC(b7e5472e) SHA1(68323e46ffee7cf8d2119405543353691673ac05) )
-	ROM_LOAD16_BYTE( "c04-11-1.29g", 0x20000, 0x10000, CRC(54730fe3) SHA1(796693cd2cfb539f6691aa4e359c47cfd7348734) )
-	ROM_LOAD16_BYTE( "c04-25-1.9g",  0x20001, 0x10000, CRC(cff7aee1) SHA1(1d9a3ddebafb8b8b4075de2946a250156f81fb54) )
+	ROM_LOAD16_BYTE( "c04-12-1_hc01.30", 0x00000, 0x10000, CRC(f13c5621) SHA1(b50aaadb1a3128aa5ecbab2a1450c5e817f33620) )
+	ROM_LOAD16_BYTE( "c04-08-1_hc01.10", 0x00001, 0x10000, CRC(b7e5472e) SHA1(68323e46ffee7cf8d2119405543353691673ac05) )
+	ROM_LOAD16_BYTE( "c04-11-1_hc01.29", 0x20000, 0x10000, CRC(54730fe3) SHA1(796693cd2cfb539f6691aa4e359c47cfd7348734) )
+	ROM_LOAD16_BYTE( "c04-25-1_hc01.9",  0x20001, 0x10000, CRC(cff7aee1) SHA1(1d9a3ddebafb8b8b4075de2946a250156f81fb54) )
 	ROM_LOAD16_BYTE( "c04-20.7g",    0x80000, 0x20000, CRC(7614c798) SHA1(7465f2eaeab73f047cc9f41f5a00173c34636513) )
 	ROM_LOAD16_BYTE( "c04-22.9g",    0x80001, 0x20000, CRC(aa6e8da8) SHA1(014eb2b5ba89e267a915ea647a71fdd8413099c7) )
 	ROM_LOAD16_BYTE( "c04-19.6",     0xc0000, 0x20000, CRC(231493ae) SHA1(2658e6556fd0e75ddd0f0b8628cfa5237c187a06) )
@@ -21,8 +21,8 @@ ROM_START( volfiedg ) // roms that don't end in g are same as volfied
 	ROM_LOAD( "cchip_c04-23",        0x0000,  0x2000,  CRC(46b0b479) SHA1(73aa2267eb468c5aa5db67183047e9aef8321215) )
 
 	ROM_REGION( 0xc0000, "pc090oj", 0 )
-	ROM_LOAD16_BYTE( "c04-16.2g",    0x00000, 0x20000, CRC(1c6963a9) SHA1(2dc4b6838c95497e019c03582a8f7ecb48fa97a8) )
-	ROM_LOAD16_BYTE( "c04-18.4g",    0x00001, 0x20000, CRC(67ea587f) SHA1(2b43ba53cc563d3462a4bec430427f92290f2b23) )
+	ROM_LOAD16_BYTE( "c04-16_hc01.2",    0x00000, 0x20000, CRC(1c6963a9) SHA1(2dc4b6838c95497e019c03582a8f7ecb48fa97a8) )
+	ROM_LOAD16_BYTE( "c04-18_hc01.4",    0x00001, 0x20000, CRC(67ea587f) SHA1(2b43ba53cc563d3462a4bec430427f92290f2b23) )
 	ROM_LOAD16_BYTE( "c04-15.1",     0x40000, 0x20000, CRC(7c50b978) SHA1(aa9cad5f09f5d9dceaf4e06bcd347f1d5d02d292) )
 	ROM_LOAD16_BYTE( "c04-17.3",     0x40001, 0x20000, CRC(c62fdeb8) SHA1(a9f6ca8335071169d772e65a9f5315a22a310b25) )
 	ROM_LOAD16_BYTE( "c04-10.15",    0x80000, 0x10000, CRC(429b6b49) SHA1(dcb0c8bc9d67643d96b2ffdf5ccd747318704c37) )
@@ -38,6 +38,6 @@ ROM_START( volfiedg ) // roms that don't end in g are same as volfied
 	ROM_LOAD_OPTIONAL( "c04-5.75",  0x00200, 0x00200, CRC(2763ec89) SHA1(1e8339e21ee35b526d8604a21cfed9a1ac6455e8) )
 ROM_END
 
-/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
+/*    YEAR  NAME            PARENT    MACHINE  INPUT                      INIT    MONITOR  COMPANY            FULLNAME FLAGS */
 // Volfied
-GAME( 2005, volfiedg, volfied, volfied, volfied, volfied_state, empty_init, ROT270, "GreekRoms", "Volfied (Translation Greek)", MACHINE_SUPPORTS_SAVE )
+GAME( 2005, volfiedhc01,    volfied, volfied, volfied, volfied_state, empty_init, ROT270, "hack",             "Volfied (Translation Greek)", MACHINE_SUPPORTS_SAVE )

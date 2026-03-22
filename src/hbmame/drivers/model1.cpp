@@ -2,7 +2,11 @@
 // copyright-holders:Robbbert
 #include "../mame/drivers/model1.cpp"
 
-ROM_START( vr01 )
+/******
+  Hack
+********/
+
+ROM_START( vr7 )
 	MODEL1_CPU_BOARD
 
 	ROM_REGION( 0x2000000, "maincpu", ROMREGION_ERASEFF )
@@ -53,4 +57,7 @@ ROM_START( vr01 )
 	ROM_LOAD( "93c45.bin", 0x00, 0x80, CRC(65aac303) SHA1(17687fedf1578e977cae4e7c3f5c00cad4aa490d) )
 ROM_END
 
-GAMEL(2023, vr01, vr, vr, vr, model1_state, empty_init, ROT0, "Sega", "Virtua Racing Rival Edition V7 (2023-02-22)", 0, layout_vr )
+/*    YEAR  NAME  PARENT  MACHINE  INPUT                 INIT    MONITOR COMPANY  FULLNAME FLAGS */
+/* Model1 Hack */
+GAMEL(2023, vr7,   vr,     vr,     vr, model1_state, empty_init, ROT0, "Sega",   "Virtua Racing Rival V7 (2023-02-22)", 0 , layout_vr )
+

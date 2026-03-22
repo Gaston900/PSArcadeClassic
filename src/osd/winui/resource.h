@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Rene Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 #define ID_TOOLBAR_EDIT                 92
 #define IDD_MAIN                        101
@@ -176,23 +176,11 @@
 // 修改的 代码来源 (EKMAME)
 /*******************************************/
 #define IDB_KLIST						285
-#define IDI_FOLDER_NEOGEO				286
-#define IDI_FOLDER_NAMCO				287
-#define IDI_FOLDER_TAITO				288
-#define IDI_FOLDER_KONAMI				289
-#define IDI_FOLDER_SEGA 				290
-#define IDI_FOLDER_CAVE 				291
-#define IDI_FOLDER_CAPCOM				292
-#define IDI_FOLDER_NINTENDO				293
-#define IDI_FOLDER_MIDWAY				294
-#define IDI_FOLDER_DATAEAST				295
-#define IDI_FOLDER_TOAPLAN				296
-#define IDI_FOLDER_PGM					297	
-#define IDI_FOLDER_SETA				    298
-#define IDI_FOLDER_MSLUG			    299
-#define IDI_HEADER_UP                   300
-#define IDI_HEADER_DOWN                 301
+#define IDI_FOLDER_CONSOLE              286
+#define IDI_FOLDER_COLLECTION			287
 /*******************************************/
+#define IDI_HEADER_UP                   288
+#define IDI_HEADER_DOWN                 289
 
 // 修改的 (Eziochiu)
 /*******************************************/
@@ -510,6 +498,11 @@
 #define IDC_REWIND                      1402
 #define IDC_DRC_CORE                    1403
 #define IDC_BGFX_BACKEND                1407
+
+// 修改的 (缘来是你)
+/********************************************/
+#define IDC_SKIP_CRC_CHECK              1408
+/********************************************/
 #define ID_CONTEXT_SHOW_FOLDER_START    39000
 #define ID_CONTEXT_SHOW_FOLDER_END      39499
 #define ID_SHOW_FOLDER_START            39500

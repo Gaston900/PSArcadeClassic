@@ -15,6 +15,7 @@
 /***********************/
 #include "ips.h"
 /***********************/
+
 #include "drivenum.h"
 #include "emuopts.h"
 #include "fileio.h"
@@ -512,6 +513,12 @@ void rom_load_manager::dump_wrong_and_correct_checksums(const util::hash_collect
 
 void rom_load_manager::verify_length_and_hash(emu_file *file, std::string_view name, u32 explength, const util::hash_collection &hashes)
 {
+// 修改的 (缘来是你)
+/******** 如果启用了跳过CRC校验，则直接返回，不进行任何校验 *******/
+    if (machine().options().skip_crc_check())
+        return;
+/**********************************************************/
+
 // 修改的 (加斯顿90)
 /****************************************************************************************************************************************
 	// we've already complained if there is no file
@@ -663,15 +670,25 @@ std::unique_ptr<emu_file> rom_load_manager::open_rom_file(std::initializer_list<
 	u32 crc = 0;
 	bool const has_crc = util::hash_collection(romp->hashdata()).crc(crc);
 
+// 修改的 (缘来是你)
+/********************************************************************/
+	bool use_crc = has_crc && !machine().options().skip_crc_check();
+/********************************************************************/
+
 	// attempt reading up the chain through the parents
 	// it also automatically attempts any kind of load by checksum supported by the archives.
 	std::unique_ptr<emu_file> result;
 	for (const std::vector<std::string> &paths : searchpath)
 	{
-		result = open_rom_file(paths, tried_file_names, has_crc, crc, ROM_GETNAME(romp), filerr);
+
+// 修改的 (缘来是你)
+/********************************************************************************************************/
+		result = open_rom_file(paths, tried_file_names, use_crc, crc, ROM_GETNAME(romp), filerr);
+/********************************************************************************************************/
 		if (result)
 			break;
 	}
+
 
 // 修改的 (Eziochiu) 
 /***************************************************************************************************************************/

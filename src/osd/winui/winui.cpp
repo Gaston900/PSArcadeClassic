@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Rene Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 #include "winui.h"
 #include <fstream>
@@ -191,7 +191,8 @@ enum
 };
 
 static bool CommonListDialog(common_file_dialog_proc cfd, int filetype);
-static void SaveGameListToFile(char *szFile, int filetype);
+static void SaveGameListToFile(char *szFile);
+static void SaveROMListToFile(char *szFile);
 
 // 修改的 代码来源 (EKMAME)
 /**********************************************************/
@@ -659,7 +660,7 @@ static void RunMAME(int nGameIndex, const play_options *playopts)
 	// load interface language
 	load_translation(mame_opts);
 	// start LUA engine & http server
-	manager->start_http_server();
+	//manager->start_http_server();
 	manager->start_luaengine();
 
 	// set any specified play options
@@ -1221,7 +1222,7 @@ static void SetMainTitle(void)
 {
 	char buffer[256];
 
-	snprintf(buffer, std::size(buffer), "%s %s", MAMEUINAME, GetVersionString());
+	snprintf(buffer, std::size(buffer), "%s %s", MAMEUINAME, build_version);
 	winui_set_window_text_utf8(hMain, buffer);
 }
 
@@ -5912,11 +5913,20 @@ static bool CommonListDialog(common_file_dialog_proc cfd, int filetype)
 	of.hInstance = NULL;
 
 	if (filetype == FILETYPE_GAME_LIST)
+	{
 		of.lpstrTitle  = TEXT("Enter a name for the game list file");
+		of.lpstrFilter = TEXT("Standard text file (*.txt)\0*.txt\0");
+		of.lpstrInitialDir = list_directory;
+		of.lpstrDefExt = TEXT("txt");
+	}
 	else
-		of.lpstrTitle  = TEXT("Enter a name for the ROMs list file");
+	{
+		of.lpstrTitle  = TEXT("Enter a filter name");
+		of.lpstrFilter = TEXT("Filter file (*.ini)\0*.ini\0");
+		of.lpstrInitialDir = win_wstring_from_utf8(GetFolderDir());
+		of.lpstrDefExt = TEXT("ini");
+	}
 
-	of.lpstrFilter = TEXT("Standard text file (*.txt)\0*.txt\0");
 	of.lpstrCustomFilter = NULL;
 	of.nMaxCustFilter = 0;
 	of.nFilterIndex = 1;
@@ -5924,10 +5934,8 @@ static bool CommonListDialog(common_file_dialog_proc cfd, int filetype)
 	of.nMaxFile = sizeof(szFile);
 	of.lpstrFileTitle = NULL;
 	of.nMaxFileTitle = 0;
-	of.lpstrInitialDir = list_directory;
 	of.nFileOffset = 0;
 	of.nFileExtension = 0;
-	of.lpstrDefExt = TEXT("txt");
 	of.lCustData = 0;
 	of.lpfnHook = &OFNHookProc;
 	of.lpTemplateName = NULL;
@@ -5947,7 +5955,10 @@ static bool CommonListDialog(common_file_dialog_proc cfd, int filetype)
 				SetFileAttributes(szFile, FILE_ATTRIBUTE_NORMAL);
 			}
 
-			SaveGameListToFile(win_utf8_from_wstring(szFile), filetype);
+			if (filetype == FILETYPE_GAME_LIST)
+				SaveGameListToFile(win_utf8_from_wstring(szFile));
+			else
+				SaveROMListToFile(win_utf8_from_wstring(szFile));
 			// Save current directory (avoids mame file creation further failure)
 			GetCurrentDirectory(MAX_PATH, list_directory);
 			// Restore current file path
@@ -5960,13 +5971,10 @@ static bool CommonListDialog(common_file_dialog_proc cfd, int filetype)
 			break;
 	}
 
-	if (success)
-		return true;
-	else
-		return false;
+	return success;
 }
 
-static void SaveGameListToFile(char *szFile, int filetype)
+static void SaveGameListToFile(char *szFile)
 {
 	int nListCount = ListView_GetItemCount(hWndList);
 	const char *CrLf = "\n\n";
@@ -5982,12 +5990,8 @@ static void SaveGameListToFile(char *szFile, int filetype)
 	}
 
 	// Title
-	fprintf(f, "%s %s.%s", MAMEUINAME, GetVersionString(), CrLf);
-
-	if (filetype == FILETYPE_GAME_LIST)
-		fprintf(f, "This is the current list of games.%s", CrLf);
-	else
-		fprintf(f, "This is the current list of ROMs.%s", CrLf);
+	fprintf(f, "%s %s.%s", MAMEUINAME, build_version, CrLf);
+	fprintf(f, "This is the current list of games.%s", CrLf);
 
 	// Current folder
 	fprintf(f, "Current folder : <");
@@ -5998,14 +6002,11 @@ static void SaveGameListToFile(char *szFile, int filetype)
 		LPTREEFOLDER lpF = GetFolder(lpFolder->m_nParent);
 
 		if (lpF->m_nParent == -1)
-				fprintf(f, "\\");
- 
+			fprintf(f, "\\");
+
 		fprintf(f, "%s", lpF->m_lpTitle);
-		fprintf(f, "\\");
 	}
-	else
-		fprintf(f, "\\");
- 
+	fprintf(f, "\\");
 	fprintf(f, "%s>%s.%s", lpFolder->m_lpTitle, (lpFolder->m_dwFlags & F_CUSTOM) ? " (custom folder)" : "", CrLf);
 
 	// Sorting
@@ -6016,6 +6017,11 @@ static void SaveGameListToFile(char *szFile, int filetype)
 		fprintf(f, "Sorted by <%s> ascending order", win_utf8_from_wstring(column_names[-GetSortColumn()]));
 
 	fprintf(f, ", %d game(s) found.%s", nListCount, CrLf);
+
+// 修改的 (缘来是你)
+/*******************************************************************************/
+    fprintf(f, "Short name\tDescription\tManufacturer\n");	// 导出当前游戏列表
+/*******************************************************************************/
 
 	// Games
 	for (int nIndex = 0; nIndex < nListCount; nIndex++)
@@ -6028,12 +6034,47 @@ static void SaveGameListToFile(char *szFile, int filetype)
 		{
 			int nGameIndex  = lvi.lParam;
 
-			if (filetype == FILETYPE_GAME_LIST)
-				fprintf(f, "%s", GetDriverGameTitle(nGameIndex));
-			else
-				fprintf(f, "%s", GetDriverGameName(nGameIndex));
+// 修改的 (缘来是你)
+//======================= 导出当前游戏列表 ===================================================================>>>			
+			const char *shortname = GetDriverGameName(nGameIndex);
+            const char *description = GetDescriptionByIndex(nGameIndex, GetUsekoreanList());
+            const char *manufacturer = GetGameManufactureByIndex(nGameIndex, GetUsekoreanList());
+            fprintf(f, "%s\t%s\t%s\n", shortname, description, manufacturer);
+//=========================================================================================================>>>
+		}
+	}
 
-			fprintf(f, "\n");
+	fclose(f);
+	winui_message_box_utf8(hMain, "File saved successfully.", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
+}
+
+static void SaveROMListToFile(char *szFile)
+{
+	int nListCount = ListView_GetItemCount(hWndList);
+	LVITEM lvi;
+
+	FILE *f = fopen(szFile, "w");
+
+	if (f == NULL)
+	{
+		ErrorMessageBox("Error : unable to open file");
+		return;
+	}
+
+	// Header
+	fprintf(f, "[ROOT_FOLDER]\n");
+
+	// Games
+	for (int nIndex = 0; nIndex < nListCount; nIndex++)
+	{
+		lvi.iItem = nIndex;
+		lvi.iSubItem = 0;
+		lvi.mask = LVIF_PARAM;
+
+		if (ListView_GetItem(hWndList, &lvi))
+		{
+			int nGameIndex  = lvi.lParam;
+			fprintf(f, "%s%s", driver_list::driver(nGameIndex).name,"\n");
 		}
 	}
 

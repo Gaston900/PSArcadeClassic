@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Ren� Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 #ifndef MUI_OPTS_H
 #define MUI_OPTS_H
@@ -60,7 +60,7 @@
 #define MUIOPTION_SORT_REVERSED					"sort_reversed"
 #define MUIOPTION_FLYER_DIRECTORY				"flyer_directory"
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /********************************************************************/
 #define MUIOPTION_IPS_DIRECTORY					"ips_directory"
 /********************************************************************/
@@ -104,12 +104,12 @@
 #define INTERNAL_UI_INI_FILENAME 				"ui"
 #define PLUGINS_INI_FILENAME 					"plugin"
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /********************************************************************/
 #define MUIOPTION_IPS_LANG						"ips_lang"
 /********************************************************************/
 
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /********************************************************************/
 #define MUIOPTION_USEKOREAN_GAMELIST			"Korean GAME List"
 /********************************************************************/
@@ -369,7 +369,7 @@ void SetArtDir(const char* path);
 const char* GetFlyerDir(void);
 void SetFlyerDir(const char* path);
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /************************************/
 const char* GetIpsDir(void);
 void SetIpsDir(const char* path);
@@ -475,13 +475,13 @@ uint32_t GetDriverCacheUpper(int driver_index);
 void SetDriverCache(int driver_index, uint32_t val);
 BOOL RequiredDriverCache(void);
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /*********************************/
 int GetIPSLang(void);
 void SetIPSLang(int val);
 /*********************************/
 
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /*********************************/
 bool GetUsekoreanList(void);
 void SetUsekoreanList(bool val);

@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Ren� Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 /***************************************************************************
 
@@ -90,7 +90,7 @@ b) Exit the dialog.
 
 #include "winui.h"
 
-// Modified Code Source (Eziochiu) 
+// 修改的 (Eziochiu) 
 /***********************/
 #include <set>
 #include <sstream>
@@ -122,7 +122,7 @@ static void InitializeControllerMappingUI(HWND hWnd);
 static void InitializeLanguageUI(HWND hWnd);
 static void InitializePluginsUI(HWND hWnd);
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /************************************************************************************************************************/
 static void InitializeIPSUI(HWND hWnd);
 static bool IPSPopulateControl(datamap *map, HWND hDlg, HWND hWndCtrl, windows_options &opts, const char *option_name);
@@ -209,7 +209,7 @@ static struct PropSheets
 	DLGPROC pfnDlgProc;
 } g_PropSheets[] = 
 {
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /********************************************************/
 	{ IDD_PROP_DISPLAY,		GameOptionsDialogProc },
 	{ IDD_PROP_OPENGL,		GameOptionsDialogProc },
@@ -218,7 +218,7 @@ static struct PropSheets
 	{ IDD_PROP_MISC,		GameOptionsDialogProc },
 /********************************************************/
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /********************************************************/
 	{ IDD_PROP_IPS,			GameOptionsDialogProc }
 /********************************************************/
@@ -442,7 +442,7 @@ void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int fol
 	switch(opt_type)
 	{
 		case OPTIONS_GAME:
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /**********************************************************************************************/
 			snprintf(tmp, std::size(tmp), "Properties for %s", GetDescriptionByIndex(g_nGame,GetUsekoreanList()));		
 /**********************************************************************************************/
@@ -501,7 +501,7 @@ void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int fol
 	free(pspage);
 }
 
-// ??? (Eziochiu)
+// 修改的 (Eziochiu)
 /****************************************************************************************************/
 static HBITMAP LoadImageFromFile(const wchar_t* filepath, int maxWidth, int maxHeight)
 {
@@ -577,6 +577,7 @@ static intptr_t CALLBACK IPSDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPAR
 				if (savedLang < 0 || savedLang > 2) savedLang = 0;
 				SetIPSLangOverride(savedLang);
 			}
+		
 			HWND hTree = GetDlgItem(hDlg, IDC_IPS_TREE);
 			if (hTree)
 			{
@@ -655,8 +656,8 @@ static intptr_t CALLBACK IPSDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPAR
 			HWND hLang = GetDlgItem(hDlg, IDC_IPS_LANG);
 			if (hLang)
 			{
-				ComboBox_AddString(hLang, L"Simplified Chinese");
-				ComboBox_AddString(hLang, L"Traditional Chinese");
+				ComboBox_AddString(hLang, L"简体中文");
+				ComboBox_AddString(hLang, L"繁體中文");
 				ComboBox_AddString(hLang, L"English");
 				ComboBox_SetCurSel(hLang, 0);
 
@@ -1602,7 +1603,7 @@ static void UpdateSheetCaption(HWND hWnd)
 	RECT rect, rc;
 	wchar_t szText[256];
 
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /********************************************************************************************/
 	BYTE        bR, bG, bB, bSR, bSG, bSB, bER, bEG, bEB;
 
@@ -2010,12 +2011,12 @@ intptr_t CALLBACK GamePropertiesDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, 
 			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
 			SendMessage(hDlg, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrushDlg = CreateSolidBrush(RGB(240, 240, 240));
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /*************************************************************************************************************************/
             snprintf(tmp, std::size(tmp), "Information for \"%s\"", (char *)GetGameNameByIndex(index,GetUsekoreanList()));
 /*************************************************************************************************************************/
 			winui_set_window_text_utf8(hDlg, tmp);
-// Modified Code Source (EKMAME)
+// 修改的 代码来源 (EKMAME)
 /*************************************************************************************************************************/
 		    winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDescriptionByIndex(index,GetUsekoreanList()));	
 /*************************************************************************************************************************/
@@ -2135,7 +2136,7 @@ static intptr_t CALLBACK GameOptionsDialogProc(HWND hDlg, UINT uMsg, WPARAM wPar
 			switch (wID)
 			{
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /***************************************************************/
 				case IDC_IPS_LIST:
 					if (wNotifyCode == LBN_SELCHANGE)
@@ -2273,7 +2274,7 @@ static intptr_t CALLBACK GameOptionsDialogProc(HWND hDlg, UINT uMsg, WPARAM wPar
 					changed = ResetBGFXChains(hDlg);
 					break;
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /***********************************************************/
 				case IDD_PROP_IPS:
 					InitializeIPSUI(hDlg);
@@ -3411,11 +3412,16 @@ static void BuildDataMap(void)
 	// hlsl
 	datamap_add(properties_datamap, IDC_HLSL_ON,				DM_BOOL,	WINOPTION_HLSL_ENABLE);
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /*******************************************************************************************/
     // IPS options
 	datamap_add(properties_datamap, IDC_IPS_LIST,               DM_STRING,  OPTION_IPS);
 /*******************************************************************************************/
+
+// 修改的 (缘来是你)
+/***************************************************************************************************/
+	datamap_add(properties_datamap, IDC_SKIP_CRC_CHECK, 		DM_BOOL, 	OPTION_SKIP_CRC_CHECK);
+/***************************************************************************************************/
 
 	// set up callbacks
 	datamap_set_callback(properties_datamap, IDC_ROTATE,		DCT_READ_CONTROL,		RotateReadControl);
@@ -3451,31 +3457,31 @@ static void BuildDataMap(void)
 	datamap_set_float_format(properties_datamap, IDC_JSATDISP,			"%3.2f");
 	datamap_set_float_format(properties_datamap, IDC_SPEEDDISP,			"%3.1f");
 	// trackbar ranges - slider-name,start,end,step
-	datamap_set_trackbar_range(properties_datamap, IDC_JDZ,         	0.00, 1.00, 0.01);
-	datamap_set_trackbar_range(properties_datamap, IDC_JSAT,        	0.00, 1.00, 0.01);
-	datamap_set_trackbar_range(properties_datamap, IDC_SPEED,       	0.1, 100.00, 0.1);
+	datamap_set_trackbar_range(properties_datamap, IDC_JDZ,             0.00, 1.00, 0.01);
+	datamap_set_trackbar_range(properties_datamap, IDC_JSAT,            0.00, 1.00, 0.01);
+	datamap_set_trackbar_range(properties_datamap, IDC_SPEED,           0.1, 100.00, 0.1);
 	datamap_set_trackbar_range(properties_datamap, IDC_BEAM_MIN,        0.00, 1.00, 0.01);
 	datamap_set_trackbar_range(properties_datamap, IDC_BEAM_MAX,        1.00, 10.00, 0.01);
 	datamap_set_trackbar_range(properties_datamap, IDC_BEAM_INTEN,      -10.00, 10.00, 0.01);
-	datamap_set_trackbar_range(properties_datamap, IDC_FLICKER,       	0.00, 1.00, 0.01);
+	datamap_set_trackbar_range(properties_datamap, IDC_FLICKER,         0.00, 1.00, 0.01);
 	datamap_set_trackbar_range(properties_datamap, IDC_AUDIO_LATENCY, 	1, 5, 1);
-	datamap_set_trackbar_range(properties_datamap, IDC_VOLUME,      	-32, 0, 1);
-	datamap_set_trackbar_range(properties_datamap, IDC_HIGH_PRIORITY, 	-15, 1, 1);
-	datamap_set_trackbar_range(properties_datamap, IDC_SECONDSTORUN, 	0, 60, 1);
-	datamap_set_trackbar_range(properties_datamap, IDC_NUMSCREENS, 		1, 4, 1);
-	datamap_set_trackbar_range(properties_datamap, IDC_PRESCALE, 		1, 20, 1);
-	datamap_set_trackbar_range(properties_datamap, IDC_FSGAMMA, 		0.10, 3.00, 0.05);
-	datamap_set_trackbar_range(properties_datamap, IDC_FSBRIGHTNESS, 	0.10, 2.00, 0.01);
-	datamap_set_trackbar_range(properties_datamap, IDC_FSCONTRAST, 		0.10, 2.00, 0.05);
-	datamap_set_trackbar_range(properties_datamap, IDC_GAMMA, 			0.10, 3.00, 0.05);
-	datamap_set_trackbar_range(properties_datamap, IDC_BRIGHTCORRECT, 	0.10, 2.00, 0.01);
-	datamap_set_trackbar_range(properties_datamap, IDC_CONTRAST, 		0.10, 2.00, 0.05);
-	datamap_set_trackbar_range(properties_datamap, IDC_PAUSEBRIGHT, 	0.00, 1.00, 0.01);
-	datamap_set_trackbar_range(properties_datamap, IDC_BOOTDELAY, 		0, 5, 1);
-	datamap_set_trackbar_range(properties_datamap, IDC_INTSCALEX, 		0, 10, 1);
-	datamap_set_trackbar_range(properties_datamap, IDC_INTSCALEY, 		0, 10, 1);
+	datamap_set_trackbar_range(properties_datamap, IDC_VOLUME,          -32, 0, 1);
+	datamap_set_trackbar_range(properties_datamap, IDC_HIGH_PRIORITY,   -15, 1, 1);
+	datamap_set_trackbar_range(properties_datamap, IDC_SECONDSTORUN,    0, 60, 1);
+	datamap_set_trackbar_range(properties_datamap, IDC_NUMSCREENS,      1, 4, 1);
+	datamap_set_trackbar_range(properties_datamap, IDC_PRESCALE,        1, 20, 1);
+	datamap_set_trackbar_range(properties_datamap, IDC_FSGAMMA,         0.10, 3.00, 0.05);
+	datamap_set_trackbar_range(properties_datamap, IDC_FSBRIGHTNESS,    0.10, 2.00, 0.01);
+	datamap_set_trackbar_range(properties_datamap, IDC_FSCONTRAST,      0.10, 2.00, 0.05);
+	datamap_set_trackbar_range(properties_datamap, IDC_GAMMA,           0.10, 3.00, 0.05);
+	datamap_set_trackbar_range(properties_datamap, IDC_BRIGHTCORRECT,   0.10, 2.00, 0.01);
+	datamap_set_trackbar_range(properties_datamap, IDC_CONTRAST,        0.10, 2.00, 0.05);
+	datamap_set_trackbar_range(properties_datamap, IDC_PAUSEBRIGHT,     0.00, 1.00, 0.01);
+	datamap_set_trackbar_range(properties_datamap, IDC_BOOTDELAY,       0, 5, 1);
+	datamap_set_trackbar_range(properties_datamap, IDC_INTSCALEX,       0, 10, 1);
+	datamap_set_trackbar_range(properties_datamap, IDC_INTSCALEY,       0, 10, 1);
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /*************************************************************************************************************/
     datamap_set_callback(properties_datamap, IDC_IPS_LIST,		DCT_READ_CONTROL,		IPSReadControl);
 	datamap_set_callback(properties_datamap, IDC_IPS_LIST,		DCT_POPULATE_CONTROL,	IPSPopulateControl);
@@ -3768,7 +3774,7 @@ static void InitializeControllerMappingUI(HWND hWnd)
 	}
 }
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /*************************************************************************************************************/
 static void InitializeIPSUI(HWND hWnd)
 {

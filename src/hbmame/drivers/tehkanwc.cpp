@@ -2,9 +2,9 @@
 // copyright-holders:Robbbert
 #include "../mame/drivers/tehkanwc.cpp"
 
- /*****************
- Tehkan World Cup
-********************/
+/******
+  Hack
+********/
 
 ROM_START( ballonwc )
 	ROM_REGION( 0x10000, "maincpu", 0 )
@@ -31,33 +31,6 @@ ROM_START( ballonwc )
 
 	ROM_REGION( 0x8000, "adpcm", 0 )
 	ROM_LOAD( "twc-5.bin",    0x0000, 0x4000,  CRC(444b5544) SHA1(0786d6d9ada7fe49c8ab9751b049095474d2e598) )
-ROM_END
-
-ROM_START( tehkangc )
-	ROM_REGION( 0x10000, "maincpu", 0 )
-	ROM_LOAD( "twc-1.bin",    0x0000, 0x4000, CRC(34d6d5ff) SHA1(72f4d408b8a7766d348f6a229d395e0c98215c40) )
-	ROM_LOAD( "twc-2.bin",    0x4000, 0x4000, CRC(7017a221) SHA1(4b4700af0a6ff64f976db369ba4b9d97cee1fd5f) )
-	ROM_LOAD( "twc-3.bin",    0x8000, 0x4000, CRC(8b662902) SHA1(13bcd4bf23e34dd7193545561e05bb2cb2c95f9b) )
-
-	ROM_REGION( 0x10000, "sub", 0 )
-	ROM_LOAD( "twc-4.bin",    0x0000, 0x8000, CRC(70a9f883) SHA1(ace04359265271eb37512a89eb0217eb013aecb7) )
-
-	ROM_REGION( 0x10000, "audiocpu", 0 )
-	ROM_LOAD( "twc-6.bin",    0x0000, 0x4000, CRC(e3112be2) SHA1(7859e51b4312dc5df01c88e1d97cf608abc7ca72) )
-
-	ROM_REGION( 0x04000, "gfx1", 0 )
-	ROM_LOAD( "tgc-12.bin",   0x00000, 0x4000, CRC(dbf5cede) SHA1(ec2d21f62ab331ce64c7765f6b05a8c3c69e8ddd) )
-
-	ROM_REGION( 0x10000, "gfx2", 0 )
-	ROM_LOAD( "tgc-8.bin",    0x00000, 0x8000, CRC(1177c8a0) SHA1(be0e0c763f2ac08ede546884e616073eb9a5517d) )
-	ROM_LOAD( "tgc-7.bin",    0x08000, 0x8000, CRC(7f01d5a4) SHA1(4494ca82c9d16a4047591de7b588a8ab53ce5170) )
-
-	ROM_REGION( 0x10000, "gfx3", 0 )
-	ROM_LOAD( "twc-11.bin",   0x00000, 0x8000, CRC(669389fc) SHA1(a93e8455060ce5242cb65f78e47b4840aa13ab13) )
-	ROM_LOAD( "twc-9.bin",    0x08000, 0x8000, CRC(347ef108) SHA1(bb9c2f51d65f28655404e10c3be44d7ade98711b) )
-
-	ROM_REGION( 0x8000, "adpcm", 0 )
-	ROM_LOAD( "twc-5.bin",    0x0000, 0x4000, CRC(444b5544) SHA1(0786d6d9ada7fe49c8ab9751b049095474d2e598) )
 ROM_END
 
 ROM_START( tankwc )
@@ -114,9 +87,9 @@ ROM_START( twc_gr )
 	ROM_LOAD( "twc-5.bin",    0x0000, 0x4000, CRC(444b5544) SHA1(0786d6d9ada7fe49c8ab9751b049095474d2e598) )
 ROM_END
 
-/*    YEAR  NAME            PARENT    MACHINE        INPUT       INIT             MONITOR COMPANY                 FULLNAME FLAGS */
-// Tehkan World Cup
+/*    YEAR  NAME       PARENT    MACHINE    INPUT                       INIT  MONITOR    COMPANY    FULLNAME FLAGS */
+/* Tehkanwc Hack */
 GAME( 1985, ballonwc, tehkanwc, tehkanwc, tehkanwc, tehkanwc_state, empty_init, ROT0,  "Grand Master Peter", "Ballon World Cup", MACHINE_SUPPORTS_SAVE )
-GAME( 1985, tehkangc, tehkanwc, tehkanwc, tehkanwc, tehkanwc_state, empty_init, ROT0,  "Grand Master Peter", "Tehkan Greek Cup", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, tankwc,   tehkanwc, tehkanwc, tehkanwc, tehkanwc_state, empty_init, ROT0,  "Kazzy", "Tank World Cup", MACHINE_SUPPORTS_SAVE )
-GAME( 2004, twc_gr,   tehkanwc, tehkanwc, tehkanwc, tehkanwc_state, empty_init, ROT0,  "GreekRoms", "Tehkan World Cup (Translation Greek)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, tankwc,   tehkanwc, tehkanwc, tehkanwc, tehkanwc_state, empty_init, ROT0,  "Kazzy",     "Tank World Cup", MACHINE_SUPPORTS_SAVE )
+GAME( 2004, twc_gr,   tehkanwc, tehkanwc, tehkanwc, tehkanwc_state, empty_init, ROT0,  "GreekRoms", "Tehkan World Cup (Greek Translation)", MACHINE_SUPPORTS_SAVE )
+

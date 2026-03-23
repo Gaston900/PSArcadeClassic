@@ -655,6 +655,18 @@ static void RunMAME(int nGameIndex, const play_options *playopts)
 	mame_opts.set_value(OPTION_SYSTEMNAME, GetDriverGameName(nGameIndex), OPTION_PRIORITY_CMDLINE);
 	// set all needed paths
 	SetDirectories(mame_opts);
+
+
+// 修改的 代码来源 (缘来是你)
+/*******************************************************************************************/
+	// 如果使用中文列表，传递中文名
+	if (GetUsekoreanList()) {
+		const char* chineseName = GetDescriptionByIndex(nGameIndex, true);
+		if (chineseName && *chineseName)
+			mame_opts.set_value("chinesename", chineseName, OPTION_PRIORITY_CMDLINE);
+	}
+/*******************************************************************************************/
+
 	// parse all INI files
 	mame_options::parse_standard_inis(mame_opts, option_errors);
 	// load interface language
@@ -6020,7 +6032,7 @@ static void SaveGameListToFile(char *szFile)
 
 // 修改的 (缘来是你)
 /*******************************************************************************/
-    fprintf(f, "Short name\tDescription\tManufacturer\n");	// 导出当前游戏列表
+    fprintf(f, "ROM Name\tGame Name\tManufacturer\n");	// 导出当前游戏列表
 /*******************************************************************************/
 
 	// Games

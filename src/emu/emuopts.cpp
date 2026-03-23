@@ -222,6 +222,11 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_LANGUAGE ";lang",                           "English",   core_options::option_type::STRING,     "set UI display language" },
 	{ OPTION_NVRAM_SAVE ";nvwrite",                      "0",         core_options::option_type::BOOLEAN,    "save NVRAM data on exit" }, // 修改的 (加斯顿90)
 
+// 修改的 代码来源 (缘来是你)
+/*******************************************************************************************************************************************************************/
+	{ "chinesename",                                     nullptr,     core_options::option_type::STRING,     "Chinese name for the game (used in window title)" },
+/*******************************************************************************************************************************************************************/
+
 	{ nullptr,                                           nullptr,     core_options::option_type::HEADER,     "SCRIPTING OPTIONS" },
 	{ OPTION_AUTOBOOT_COMMAND ";ab",                     nullptr,     core_options::option_type::STRING,     "command to execute after machine boot" },
 	{ OPTION_AUTOBOOT_DELAY,                             "0",         core_options::option_type::INTEGER,    "delay before executing autoboot command (seconds)" },

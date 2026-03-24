@@ -514,7 +514,7 @@ void rom_load_manager::dump_wrong_and_correct_checksums(const util::hash_collect
 void rom_load_manager::verify_length_and_hash(emu_file *file, std::string_view name, u32 explength, const util::hash_collection &hashes)
 {
 // 修改的 (缘来是你)
-/******** 如果启用了跳过CRC校验，则直接返回，不进行任何校验 *******/
+/******** 如果启用了跳过IPS/CRC校验，则直接返回，不进行任何校验 *******/
     if (machine().options().skip_crc_check())
         return;
 /**********************************************************/
@@ -672,7 +672,7 @@ std::unique_ptr<emu_file> rom_load_manager::open_rom_file(std::initializer_list<
 
 // 修改的 (缘来是你)
 /********************************************************************/
-	bool use_crc = has_crc && !machine().options().skip_crc_check();
+	bool use_crc = has_crc && !machine().options().skip_crc_check();	//缘来是你 IPS CRC
 /********************************************************************/
 
 	// attempt reading up the chain through the parents

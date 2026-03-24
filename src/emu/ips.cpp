@@ -82,6 +82,43 @@ static const romload::file *find_rom_file(const tiny_rom_entry *romp, const char
 	return nullptr;
 }
 
+// 修改的 代码来源 (缘来是你)
+//=========================== 根据 CRC 值在当前游戏的 ROM 列表中查找匹配的文件 =========================>>>
+static const romload::file *find_rom_file_by_crc(const tiny_rom_entry *romp, const char *crc_str)
+{
+	if (!crc_str) return nullptr;
+
+	// 解析 CRC 字符串，格式为 "crc(XXXXXXXX)" 或 "CRC(XXXXXXXX)"
+	std::string crc_val(crc_str);
+	size_t start_paren = crc_val.find('(');
+	if (start_paren == std::string::npos) return nullptr;
+	size_t end_paren = crc_val.find(')', start_paren);
+	if (end_paren == std::string::npos) return nullptr;
+	std::string target_crc = crc_val.substr(start_paren + 1, end_paren - start_paren - 1);
+	if (target_crc.length() != 8) return nullptr;
+
+	for (romload::region const &region : romload::regions(romp))
+	{
+		if (!region.is_romdata())
+			continue;
+
+		for (romload::file const &file : region.get_files())
+		{
+			util::hash_collection rom_hashes(file.get_hashdata());
+			u32 crc_val;
+			if (rom_hashes.crc(crc_val))
+			{
+				std::string rom_crc = string_format("%08X", crc_val);
+				if (core_stricmp(rom_crc.c_str(), target_crc.c_str()) == 0)
+					return &file;
+			}
+			// 如果 ROM 没有 CRC（如 NO_DUMP），则无法匹配，跳过
+ 		}
+ 	}
+ 	return nullptr;
+}
+//====================================================================================================>>>
+
 static bool load_ips_file(running_machine &machine, std::vector<ips_chunk> &chunks, const char *ips_dir, const char *ips_name)
 {
     std::string path;
@@ -172,6 +209,7 @@ static bool load_ips_file(running_machine &machine, std::vector<ips_chunk> &chun
     return true;
 }
 
+/****************************************************************************************************
 static bool check_crc(const char *crc_str, const char *rom_hash)
 {
     if (!crc_str) return false;
@@ -192,6 +230,7 @@ static bool check_crc(const char *crc_str, const char *rom_hash)
     
     return ips_hash == rom_hashes;
 }
+****************************************************************************************************/
 
 static bool parse_ips_patch(running_machine &machine, const char *patch_name, const tiny_rom_entry *romp)
 {
@@ -229,6 +268,7 @@ static bool parse_ips_patch(running_machine &machine, const char *patch_name, co
         char *rom_name = strtok(p, " \t\r\n");
         if (!rom_name) continue;
 
+/**********************************************************************************************************************************
         const romload::file *current = find_rom_file(romp, rom_name);
         if (!current)
         {
@@ -238,6 +278,7 @@ static bool parse_ips_patch(running_machine &machine, const char *patch_name, co
         }
         
         osd_printf_info("IPS: ROM entry '%s' FOUND, proceeding...\n", rom_name);
+**********************************************************************************************************************************/
 
         char *ips_entry_name = strtok(nullptr, " \t\r\n");
         if (!ips_entry_name)
@@ -248,27 +289,76 @@ static bool parse_ips_patch(running_machine &machine, const char *patch_name, co
 
         char *crc = strtok(nullptr, "\r\n");
         
-        if (current && crc)
+
+// 修改的 代码来源 (缘来是你)
+//===== 跳过空 CRC 空值 =====>>>
+//        if (current && crc)
+        if (crc)
+//===== 跳过空 CRC 空值 =====>>>
         {
             char *crc_end = crc + strlen(crc) - 1;
             while (crc_end > crc && isspace((u8)*crc_end)) *crc_end-- = 0;
+		
+// 修改的 代码来源 (缘来是你)
+//======================== 跳过空 CRC 空值 =================================>>>
 
-            if (!check_crc(crc, current->get_hashdata()))
+            // 检查 CRC 数值部分是否为全零（如 CRC(00000000) 或 crc(00000000)）
+            char *paren_start = strchr(crc, '(');
+            char *paren_end = strchr(crc, ')');
+            if (paren_start && paren_end && paren_end > paren_start)
             {
-                s_error_string += string_format("ERROR: wrong CRC for ROM entry \"%s\"\n", rom_name);
-                continue; 
+                size_t inner_len = paren_end - paren_start - 1;
+                if (inner_len == 8)
+                {
+                    bool all_zero = true;
+                    for (size_t i = 0; i < inner_len; i++)
+                    {
+                        if (paren_start[1 + i] != '0')
+                        {
+                            all_zero = false;
+                            break;
+                        }
+                    }
+                    if (all_zero)
+                    {
+                        osd_printf_info("IPS: CRC value is all zeros, ignoring CRC and falling back to filename match\n");
+                        crc = nullptr; // 视为无 CRC，后续回退到文件名匹配
+                    }
+                }
             }
-        }
+		}
 
+        const romload::file *rom_file = nullptr;
+
+        // 优先按 CRC 查找（如果提供了 CRC）
+        if (crc)
+            rom_file = find_rom_file_by_crc(romp, crc);
+
+        // 若 CRC 未提供或未匹配，则按文件名查找
+        if (!rom_file)
+            rom_file = find_rom_file(romp, rom_name);
+
+        if (!rom_file)
+        {
+            if (crc)
+                s_error_string += string_format("ERROR: ROM with CRC %s not found for IPS file \"%s\"\n", crc, patch_name);
+            else
+                s_error_string += string_format("ERROR: ROM entry \"%s\" not found for IPS file \"%s\"\n", rom_name, patch_name);
+            s_warning_count++;
+            continue;
+        }
+//======================================================================>>>
         std::string ips_dir_str = machine.system().name;
         std::string ips_name_str = ips_entry_name;
-        
-        if (ips_name_str.find('\\') != std::string::npos)
-        {
-        }
 
         auto entry = std::make_unique<ips_entry>();
-        entry->rom_name = rom_name;
+
+// 修改的 代码来源 (缘来是你)
+//======================== 跳过空 CRC 空值 =================================>>>
+//        entry->rom_name = rom_name;
+        entry->rom_name = rom_file->get_name();  // 使用实际匹配到的 ROM 文件名
+//======================================================================>>>
+
         entry->ips_name = ips_name_str;
         
         osd_printf_info("IPS: Loading IPS file for ROM '%s': dir='%s', name='%s'\n", rom_name, ips_dir_str.c_str(), entry->ips_name.c_str());

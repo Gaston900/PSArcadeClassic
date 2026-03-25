@@ -137,6 +137,8 @@ files {
 	MAME_DIR .. "src/frontend/mame/ui/keyboard.h",
 	MAME_DIR .. "src/frontend/mame/ui/mainmenu.cpp",
 	MAME_DIR .. "src/frontend/mame/ui/mainmenu.h",
+	MAME_DIR .. "src/frontend/mame/ui/menu_ips_patches.cpp", -- 修改的 (缘来是你)
+	MAME_DIR .. "src/frontend/mame/ui/menu_ips_patches.h", -- 修改的 (缘来是你)
 	MAME_DIR .. "src/frontend/mame/ui/menu.cpp",
 	MAME_DIR .. "src/frontend/mame/ui/menu.h",
 	MAME_DIR .. "src/frontend/mame/ui/miscmenu.cpp",

@@ -5,7 +5,7 @@ It's called Project Shadow Arcade Classic+, it is a project that began in the mi
 
 This project is focused on merging two emulator systems [ARCADE64](https://arcade.mameworld.info/) + [HBMAME](https://hbmame.1emulation.com/), then has implemented the new hack roms (Which was not included in the [HBMAME](https://hbmame.1emulation.com/) version), has been done with a total cleaning of the roms/hack roms, eliminating thus hundreds of useless roms or . chd and unnecessary and thus be able to generate a collectible edition and in this way a single version will be published. In order to make the rom system much lighter for our hard drive.
 
-I am only supporting the operating systems, Windows 7, Windows 8, Windows 10 and Windows 11.
+I am only supporting the operating systems 64x bits, Windows 7, Windows 8, Windows 10 and Windows 11.
 
 So you can enjoy all the arcade systems in a single version, including all the hacks that currently exist.
 
@@ -42,6 +42,11 @@ It does not include games of does not work correctly .CHD.
 
 What has been optimized in this version?
 ---------------------------------------
+This command will help us have much easier access to the settings:
+
+* To enter the BIOS, press the "0" key.
+* To play in windowed mode, press the "Spacebar" key.
+* To accelerate the game by 3x, press the "Backspace" key.
 
 Players 1 and 2 use this controller by default:
 
@@ -60,11 +65,13 @@ Removed warning screen, startups, Loading, Decryption screen texts.
 
 Removed the following annoying messages: “WRONG LENGTH”, “NO_DUMP”, “WRONG CHECKSUMS”, “BAD_DUMP” And “THE PARENT FILE DOES NOT EXIST”.
 
+Support reading IPS (By Eziochiu)
+
 Added movement optimization V.4 for all fighting games (By GSC2007).
 
 The Arcade64 "GUI" EKMAME source code has been implemented (By KAZE).
 
-It is already pre-configured, enforce aspect ratio is disabled, full screen mode and tricks are already enabled by default.
+It is already pre-configured, video mode OpenGl, enforce aspect ratio is disabled, full screen mode and tricks are already enabled by default.
 
 The cheat reference function, if the cloned game does not have a cheat file, it will reference the cheat file of the main ROM.
 

@@ -60,7 +60,7 @@ Removed warning screen, startups, Loading, Decryption screen texts.
 
 Removed the following annoying messages: “WRONG LENGTH”, “NO_DUMP”, “WRONG CHECKSUMS”, “BAD_DUMP” And “THE PARENT FILE DOES NOT EXIST”.
 
-Added movement optimization for all fighting games (By GSC2007).
+Added movement optimization V.4 for all fighting games (By GSC2007).
 
 The Arcade64 "GUI" EKMAME source code has been implemented (By KAZE).
 
@@ -68,9 +68,11 @@ It is already pre-configured, enforce aspect ratio is disabled, full screen mode
 
 The cheat reference function, if the cloned game does not have a cheat file, it will reference the cheat file of the main ROM.
 
-Supports game list language files.
+Supports game list language files and multilingual title display (By 缘来是你).
 
-NEOGEO, PGM, driver supports key combination settings.
+Supports Skip CRC/IPS Check (By 缘来是你).
+
+NEOGEO, PGM, driver supports key combination settings (By KAZE).
 
 Two new folder sections called “config” and “support” were added that independently group the configurations and extra content, so that everything is kept in order in a single folder.
 

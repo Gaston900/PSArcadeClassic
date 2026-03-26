@@ -95,7 +95,7 @@ And we will apply this command to start the compilation, this command is for Win
 make PTR64=1 SUBTARGET=arcade OSD=winui NOWERROR=1 STRIP_SYMBOLS=1
 ```
 
-The compilation [TOOL](https://github.com/mamedev/buildtools/releases) is suggested to be version 7.0 msys64 Jan 11, 2022.
+The compilation [TOOL](https://github.com/mamedev/buildtools/releases) is suggested to be version 7.0 msys64 (Jan 11, 2022).
 
 Open Source Software Projects
 ------------------------------

@@ -144,11 +144,15 @@ void menu_ips_patches::populate(float &customtop, float &custombottom)
 
     for (size_t i = 0; i < m_patches.size(); i++)
     {
+	    item_append(menu_item_type::SEPARATOR);
         item_append_on_off(m_patches[i].display_name, m_patch_enabled[i], FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(uintptr_t)(i + 1));
     }
+	    item_append(menu_item_type::SEPARATOR);
+		
+//    if (m_need_reset)
 
-    if (m_need_reset)
         item_append("Modification requires reloading the game.", FLAG_DISABLE, nullptr);
+	    item_append(menu_item_type::SEPARATOR);
 }
 
 void menu_ips_patches::update_ips_option()
@@ -182,18 +186,15 @@ void menu_ips_patches::handle(event const *ev)
                     update_ips_option();
                     reset(reset_options::REMEMBER_REF);
                 }
-//                return true;
             }
         }
     }
-#if 0
+
     else if (ev && ev->iptkey == IPT_UI_CANCEL && m_need_reset)
     {
         machine().schedule_hard_reset();
-        return true;
     }
-#endif
-//    return false;
+
 }
 
 } // namespace ui

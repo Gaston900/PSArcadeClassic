@@ -503,6 +503,14 @@
 /********************************************/
 #define IDC_SKIP_CRC_CHECK              1408
 /********************************************/
+
+// 修改的 代码来源 (加斯顿90)
+/********************************************/
+#define IDC_SICKFA                      1409
+#define IDC_SICKFB                      1410
+#define IDC_SICKFC                      1411
+/********************************************/
+
 #define ID_CONTEXT_SHOW_FOLDER_START    39000
 #define ID_CONTEXT_SHOW_FOLDER_END      39499
 #define ID_SHOW_FOLDER_START            39500

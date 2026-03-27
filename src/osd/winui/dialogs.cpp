@@ -654,6 +654,14 @@ intptr_t CALLBACK AboutDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lP
 			SetWindowFont(GetDlgItem(hDlg, IDC_TEXT3), hFont, true);
 			SetWindowFont(GetDlgItem(hDlg, IDC_TEXT4), hFont, true);
 			SetWindowFont(GetDlgItem(hDlg, IDC_SICKFX), hFontFX, true);
+
+// 修改的 代码来源 (加斯顿90)
+/************************************************************************/
+			SetWindowFont(GetDlgItem(hDlg, IDC_SICKFA), hFontFX, true);
+			SetWindowFont(GetDlgItem(hDlg, IDC_SICKFB), hFontFX, true);
+			SetWindowFont(GetDlgItem(hDlg, IDC_SICKFC), hFontFX, true);
+/************************************************************************/
+
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_BUILD), "Build time: " __DATE__" - " __TIME__"");
 			snprintf(tmp, std::size(tmp), "Version: %s", long_build_version);
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_BUILDVER), tmp);
@@ -671,6 +679,18 @@ intptr_t CALLBACK AboutDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lP
 
 			if ((HWND)lParam == GetDlgItem(hDlg, IDC_SICKFX))
 				SetTextColor(hDC, RGB(63, 72, 204));
+
+// 修改的 代码来源 (加斯顿90)
+/******************************************************************/
+			if ((HWND)lParam == GetDlgItem(hDlg, IDC_SICKFA))
+				SetTextColor(hDC, RGB(186, 93, 11));
+
+			if ((HWND)lParam == GetDlgItem(hDlg, IDC_SICKFB))
+				SetTextColor(hDC, RGB(186, 93, 11));
+
+			if ((HWND)lParam == GetDlgItem(hDlg, IDC_SICKFC))
+				SetTextColor(hDC, RGB(186, 93, 11));
+/******************************************************************/
 
 			return (LRESULT) hBrush;
 

@@ -7,6 +7,7 @@
 #include "hash.h"
 #include "fileio.h"
 #include "romload.h"
+#include "path.h" 
 
 #include "corestr.h"
 
@@ -82,13 +83,12 @@ static const romload::file *find_rom_file(const tiny_rom_entry *romp, const char
 	return nullptr;
 }
 
-// 修改的 代码来源 (缘来是你)
-//=========================== 根据 CRC 值在当前游戏的 ROM 列表中查找匹配的文件 =========================>>>
+//缘来是你
+//================================== IPS CRC =========================================>>>
 static const romload::file *find_rom_file_by_crc(const tiny_rom_entry *romp, const char *crc_str)
 {
 	if (!crc_str) return nullptr;
 
-	// 解析 CRC 字符串，格式为 "crc(XXXXXXXX)" 或 "CRC(XXXXXXXX)"
 	std::string crc_val(crc_str);
 	size_t start_paren = crc_val.find('(');
 	if (start_paren == std::string::npos) return nullptr;
@@ -112,41 +112,40 @@ static const romload::file *find_rom_file_by_crc(const tiny_rom_entry *romp, con
 				if (core_stricmp(rom_crc.c_str(), target_crc.c_str()) == 0)
 					return &file;
 			}
-			// 如果 ROM 没有 CRC（如 NO_DUMP），则无法匹配，跳过
  		}
  	}
  	return nullptr;
 }
-//====================================================================================================>>>
 
-static bool load_ips_file(running_machine &machine, std::vector<ips_chunk> &chunks, const char *ips_dir, const char *ips_name)
+static bool load_ips_file(running_machine &machine, std::vector<ips_chunk> &chunks, const std::vector<std::string> &paths)
 {
-    std::string path;
-    if (ips_dir && *ips_dir)
-        path = std::string(ips_dir).append(PATH_SEPARATOR).append(ips_name).append(IPS_EXT);
-    else
-        path = std::string(ips_name).append(IPS_EXT);
-
-    osd_printf_verbose("IPS: loading ips \"%s\"\n", path.c_str());
-
     emu_file file(machine.options().value(OPTION_IPSPATH), OPEN_FLAG_READ);
-    std::error_condition filerr = file.open(path.c_str());
-    
-    if (filerr)
+    std::error_condition filerr;
+    std::string opened_path;
+    for (const auto &p : paths)
     {
+        filerr = file.open(p.c_str());
+        if (!filerr)
+        {
+            opened_path = p;
+            break;
+        }
     }
 
     if (filerr)
     {
-        s_error_string += string_format("ERROR: %s: open fail\n", path);
+        s_error_string += string_format("ERROR: %s: open fail\n", paths.front().c_str());
         s_warning_count++;
         return false;
     }
 
+    osd_printf_verbose("IPS: loading ips \"%s\"\n", opened_path.c_str());
+//====================================================================================================>>>
+
     u8 buffer[8];
     if (file.read(buffer, 5) != 5 || memcmp(buffer, IPS_SIGNATURE, 5) != 0)
     {
-        s_error_string += string_format("ERROR: %s: incorrect IPS header\n", path);
+        s_error_string += string_format("ERROR: %s: incorrect IPS header\n", opened_path.c_str());	//缘来是你
         file.close();
         s_warning_count++;
         return false;
@@ -209,29 +208,6 @@ static bool load_ips_file(running_machine &machine, std::vector<ips_chunk> &chun
     return true;
 }
 
-/****************************************************************************************************
-static bool check_crc(const char *crc_str, const char *rom_hash)
-{
-    if (!crc_str) return false;
-
-    std::string crc_val(crc_str);
-    if (crc_val.find(CRC_STAG) != 0) return false;
-    
-    size_t end_pos = crc_val.find(CRC_ETAG);
-    if (end_pos == std::string::npos) return false;
-
-    std::string actual_crc = crc_val.substr(strlen(CRC_STAG), end_pos - strlen(CRC_STAG));
-    if (actual_crc.length() != 8) return false;
-
-    util::hash_collection ips_hash;
-    ips_hash.add_from_string(util::hash_collection::HASH_CRC, actual_crc.c_str());
-
-    util::hash_collection rom_hashes(rom_hash);
-    
-    return ips_hash == rom_hashes;
-}
-****************************************************************************************************/
-
 static bool parse_ips_patch(running_machine &machine, const char *patch_name, const tiny_rom_entry *romp)
 {
     std::string fname_base = std::string(machine.system().name).append(PATH_SEPARATOR).append(patch_name);
@@ -267,19 +243,7 @@ static bool parse_ips_patch(running_machine &machine, const char *patch_name, co
         
         char *rom_name = strtok(p, " \t\r\n");
         if (!rom_name) continue;
-
-/**********************************************************************************************************************************
-        const romload::file *current = find_rom_file(romp, rom_name);
-        if (!current)
-        {
-            osd_printf_info("IPS: ROM entry '%s' NOT FOUND in driver ROM list\n", rom_name);
-            s_error_string += string_format("ERROR: ROM entry \"%s\" is not found for IPS file \"%s\"\n", rom_name, patch_name);
-            continue;
-        }
-        
-        osd_printf_info("IPS: ROM entry '%s' FOUND, proceeding...\n", rom_name);
-**********************************************************************************************************************************/
-
+      
         char *ips_entry_name = strtok(nullptr, " \t\r\n");
         if (!ips_entry_name)
         {
@@ -289,20 +253,13 @@ static bool parse_ips_patch(running_machine &machine, const char *patch_name, co
 
         char *crc = strtok(nullptr, "\r\n");
         
-
-// 修改的 代码来源 (缘来是你)
-//===== 跳过空 CRC 空值 =====>>>
-//        if (current && crc)
         if (crc)
-//===== 跳过空 CRC 空值 =====>>>
         {
             char *crc_end = crc + strlen(crc) - 1;
             while (crc_end > crc && isspace((u8)*crc_end)) *crc_end-- = 0;
-		
-// 修改的 代码来源 (缘来是你)
-//======================== 跳过空 CRC 空值 =================================>>>
-
-            // 检查 CRC 数值部分是否为全零（如 CRC(00000000) 或 crc(00000000)）
+			
+//缘来是你
+//======================== IPS CRC =================================>>>
             char *paren_start = strchr(crc, '(');
             char *paren_end = strchr(crc, ')');
             if (paren_start && paren_end && paren_end > paren_start)
@@ -322,7 +279,7 @@ static bool parse_ips_patch(running_machine &machine, const char *patch_name, co
                     if (all_zero)
                     {
                         osd_printf_info("IPS: CRC value is all zeros, ignoring CRC and falling back to filename match\n");
-                        crc = nullptr; // 视为无 CRC，后续回退到文件名匹配
+                        crc = nullptr; 
                     }
                 }
             }
@@ -330,11 +287,9 @@ static bool parse_ips_patch(running_machine &machine, const char *patch_name, co
 
         const romload::file *rom_file = nullptr;
 
-        // 优先按 CRC 查找（如果提供了 CRC）
         if (crc)
             rom_file = find_rom_file_by_crc(romp, crc);
 
-        // 若 CRC 未提供或未匹配，则按文件名查找
         if (!rom_file)
             rom_file = find_rom_file(romp, rom_name);
 
@@ -347,23 +302,23 @@ static bool parse_ips_patch(running_machine &machine, const char *patch_name, co
             s_warning_count++;
             continue;
         }
-//======================================================================>>>
-        std::string ips_dir_str = machine.system().name;
+
+        std::string ips_dir_str = util::path_concat(machine.system().name, patch_name);	//缘来是你
         std::string ips_name_str = ips_entry_name;
+//======================================================================>>>
 
         auto entry = std::make_unique<ips_entry>();
-
-// 修改的 代码来源 (缘来是你)
-//======================== 跳过空 CRC 空值 =================================>>>
-//        entry->rom_name = rom_name;
-        entry->rom_name = rom_file->get_name();  // 使用实际匹配到的 ROM 文件名
-//======================================================================>>>
-
+        entry->rom_name = rom_file->get_name();  //IPS CRC 
         entry->ips_name = ips_name_str;
         
-        osd_printf_info("IPS: Loading IPS file for ROM '%s': dir='%s', name='%s'\n", rom_name, ips_dir_str.c_str(), entry->ips_name.c_str());
+//缘来是你
+//======================== IPS 子目录 ============================>>>
+        std::vector<std::string> candidate_paths;
+        candidate_paths.push_back(util::path_concat(ips_dir_str, ips_name_str + IPS_EXT));
+        candidate_paths.push_back(util::path_concat(machine.system().name, ips_name_str + IPS_EXT));
         
-        if (!load_ips_file(machine, entry->chunks, ips_dir_str.c_str(), entry->ips_name.c_str()))
+        if (!load_ips_file(machine, entry->chunks, candidate_paths))
+//================================================================>>>
         {
             osd_printf_info("IPS: ERROR - load_ips_file FAILED for '%s'\n", entry->ips_name.c_str());
             s_error_string += string_format("ERROR: %s/%s: IPS data could not be loaded\n", ips_dir_str, entry->ips_name);
@@ -444,6 +399,27 @@ void *assign_patch(const char *rom_name)
 
     return found_entry;
 }
+
+//缘来是你
+//======================= IPS 复选 ======================>>>
+void apply_all_patches(const char *rom_name, u8 *buffer, int length)
+{
+    if (!rom_name || !buffer || length <= 0) return;
+    for (auto &entry : s_ips_list)
+    {
+        if (core_stricmp(entry->rom_name.c_str(), rom_name) == 0)
+        {
+            if (entry->chunks.empty())
+            {
+                osd_printf_verbose("IPS: Skip empty patch for ROM '%s'\n", rom_name);
+                continue;
+            }
+            entry->current_chunk_index = 0;
+            apply_patch(entry.get(), buffer, length);
+        }
+    }
+}
+//========================================================>>>
 
 void apply_patch(void *patch, u8 *buffer, int length)
 {

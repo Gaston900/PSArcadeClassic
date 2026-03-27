@@ -15,13 +15,13 @@ public:
     menu_ips_patches(mame_ui_manager &mui, render_container &container);
     virtual ~menu_ips_patches() override;
 
-private:
     struct patch_info
     {
         std::string name; 
         std::string display_name; 
     };
 
+private:
     virtual void populate(float &customtop, float &custombottom) override;
     virtual void handle(event const *ev) override;
 

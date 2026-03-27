@@ -1,26 +1,18 @@
-// 基于 eziochiu 制作的 IPS 代码修改
+// license:BSD-3-Clause
+// copyright-holders:Based on the IPS code modification made by eziochiu
 
 #include "emu.h"
 #include "menu_ips_patches.h"
-
 #include "emuopts.h"
 #include "fileio.h"
 #include "path.h"
 #include "corestr.h"
+#include "osdepend.h"
 
 #include <algorithm>
 #include <cctype>
 
 namespace ui {
-
-static std::string trim(const std::string &s)
-{
-    size_t start = s.find_first_not_of(" \t\r\n");
-    if (start == std::string::npos)
-        return "";
-    size_t end = s.find_last_not_of(" \t\r\n");
-    return s.substr(start, end - start + 1);
-}
 
 menu_ips_patches::menu_ips_patches(mame_ui_manager &mui, render_container &container)
     : menu(mui, container)
@@ -34,13 +26,91 @@ menu_ips_patches::~menu_ips_patches()
 {
 }
 
+static std::string trim(const std::string &s)
+{
+    size_t start = s.find_first_not_of(" \t\r\n");
+    if (start == std::string::npos)
+        return "";
+    size_t end = s.find_last_not_of(" \t\r\n");
+    return s.substr(start, end - start + 1);
+}
+
+static void scan_directory(const std::string &dir_path, const std::string &relative_path,
+                           std::vector<menu_ips_patches::patch_info> &patches)
+{
+    file_enumerator fpath(dir_path.c_str());
+    const osd::directory::entry *entry;
+    while ((entry = fpath.next()) != nullptr)
+    {
+        std::string name(entry->name);
+        if (entry->type == osd::directory::entry::entry_type::FILE)
+        {
+            if (name.size() > 4 && name.compare(name.size()-4, 4, ".dat") == 0)
+            {
+                std::string patch_name = name.substr(0, name.size()-4);
+                std::string full_name = relative_path.empty()
+                                        ? patch_name
+                                        : util::path_concat(relative_path, patch_name);
+                
+                menu_ips_patches::patch_info info;
+                info.name = full_name;
+                info.display_name = patch_name;
+                
+                std::string fullpath = util::path_concat(dir_path, name);
+                emu_file file(OPEN_FLAG_READ);
+                if (!file.open(fullpath))
+                {
+                    bool in_section = false;
+                    char line[1024];
+                    while (file.gets(line, sizeof(line)))
+                    {
+                        std::string raw_line(line);
+                        // 去除 UTF-8 BOM/Remove UTF-8 BOM
+						// 无效/Invalid
+                        if (raw_line.size() >= 3 &&
+                            (uint8_t)raw_line[0] == 0xEF &&
+                            (uint8_t)raw_line[1] == 0xBB &&
+                            (uint8_t)raw_line[2] == 0xBF)
+                        {
+                            raw_line = raw_line.substr(3);
+                        }
+                        std::string sline = trim(raw_line);
+                        if (sline.empty()) continue;
+                        
+                        if (!in_section && sline.front() == '[' && sline.find(']') != std::string::npos)
+                        {
+                            in_section = true;
+                            continue;
+                        }
+                        else if (in_section)
+                        {
+                            info.display_name = sline;
+                            break;
+                        }
+                    }
+                    file.close();
+                }
+                patches.push_back(std::move(info));
+            }
+        }
+        else if (entry->type == osd::directory::entry::entry_type::DIR)
+        {
+            if (name == "." || name == "..")
+                continue;
+            std::string subdir = util::path_concat(dir_path, name);
+            std::string new_relative = relative_path.empty() ? name : util::path_concat(relative_path, name);
+            scan_directory(subdir, new_relative, patches);
+        }
+    }
+}
+
 void menu_ips_patches::scan_patches()
 {
     m_patches.clear();
-
+    
     const char *ipspath = machine().options().value(OPTION_IPSPATH);
     std::string sysname = machine().system().name;
-
+    
     std::string path_str(ipspath);
     size_t start = 0;
     while (start < path_str.size())
@@ -50,68 +120,24 @@ void menu_ips_patches::scan_patches()
         if (!single_path.empty())
         {
             std::string search_dir = util::path_concat(single_path, sysname);
-            file_enumerator fpath(search_dir.c_str());
-            const osd::directory::entry *entry;
-            while ((entry = fpath.next()) != nullptr)
+            std::vector<patch_info> found;
+            scan_directory(search_dir, "", found);
+            for (auto &info : found)
             {
-                if (entry->type == osd::directory::entry::entry_type::FILE)
+                if (std::find_if(m_patches.begin(), m_patches.end(),
+                    [&](const patch_info &p) { return p.name == info.name; }) == m_patches.end())
                 {
-                    std::string name(entry->name);
-                    if (name.size() > 4 && name.compare(name.size()-4, 4, ".dat") == 0)
-                    {
-                        std::string patch_name = name.substr(0, name.size()-4);
-                        if (std::find_if(m_patches.begin(), m_patches.end(),
-                            [&](const patch_info &p) { return p.name == patch_name; }) != m_patches.end())
-                            continue;
-
-                        patch_info info;
-                        info.name = patch_name;
-                        info.display_name = patch_name;
-
-                        std::string fullpath = util::path_concat(search_dir, name);
-emu_file file(OPEN_FLAG_READ); 
-if (!file.open(fullpath))
-{
-    bool in_section = false;
-    char line[1024];
-    while (file.gets(line, sizeof(line)))
-    {
-        std::string raw_line(line);
-        if (raw_line.size() >= 3 &&
-            (uint8_t)raw_line[0] == 0xEF &&
-            (uint8_t)raw_line[1] == 0xBB &&
-            (uint8_t)raw_line[2] == 0xBF)
-        {
-            raw_line = raw_line.substr(3);
-        }
-        std::string sline = trim(raw_line);
-        if (sline.empty()) continue;
-
-        if (!in_section && sline.front() == '[' && sline.find(']') != std::string::npos)
-        {
-            in_section = true;
-            continue;
-        }
-        else if (in_section)
-        {
-            info.display_name = sline;
-            break;
-        }
-    }
-    file.close();
-}
-                        m_patches.push_back(std::move(info));
-                    }
+                    m_patches.push_back(info);
                 }
             }
         }
         if (end == std::string::npos) break;
         start = end + 1;
     }
-
+    
     std::sort(m_patches.begin(), m_patches.end(),
         [](const patch_info &a, const patch_info &b) { return a.display_name < b.display_name; });
-
+    
     m_patch_enabled.assign(m_patches.size(), false);
     const char *current_ips = machine().options().value(OPTION_IPS);
     if (current_ips && *current_ips)
@@ -148,12 +174,12 @@ void menu_ips_patches::populate(float &customtop, float &custombottom)
     {
         item_append_on_off(m_patches[i].display_name, m_patch_enabled[i], FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(uintptr_t)(i + 1));
     }
-	    item_append(menu_item_type::SEPARATOR);
-		
-//    if (m_need_reset)
 
-        item_append("Modification requires reloading the game.", FLAG_DISABLE, nullptr);
 	    item_append(menu_item_type::SEPARATOR);
+
+//    if (m_need_reset)
+        item_append("Modification requires reloading the game.", FLAG_DISABLE, nullptr);
+		item_append(menu_item_type::SEPARATOR);
 }
 
 void menu_ips_patches::update_ips_option()
@@ -190,12 +216,13 @@ void menu_ips_patches::handle(event const *ev)
             }
         }
     }
-
+// Automatically restarts after changing settings
+// I have tried both soft and hard restarts, but neither worked
+// Leaving this code here in the hope that someone can fix it
     else if (ev && ev->iptkey == IPT_UI_CANCEL && m_need_reset)
     {
         machine().schedule_hard_reset();
     }
-
 }
 
 } // namespace ui

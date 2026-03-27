@@ -3111,7 +3111,6 @@ files {
 createMAMEProjects(_target, _subtarget, "neogeo")
 files {
 	MAME_DIR .. "src/hbmame/drivers/neogeo.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/drivers/neogeo_noslothb.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/video/neogeo.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/drivers/neogeo_noslot.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/video/neogeo_spr.cpp", --HBMAME

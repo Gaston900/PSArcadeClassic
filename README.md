@@ -75,6 +75,10 @@ It is already pre-configured, video mode OpenGl, enforce aspect ratio is disable
 
 The cheat reference function, if the cloned game does not have a cheat file, it will reference the cheat file of the main ROM.
 
+Supports enabling multiple IPS patches simultaneously (By 缘来是你).
+
+Supports reading IPS subdirectories (By 缘来是你).
+
 Supports game list language files and multilingual title display (By 缘来是你).
 
 Supports Skip CRC/IPS Check (By 缘来是你).

@@ -151,13 +151,44 @@ static const u8 m_olds_source_data[8][0xec] = // table addresses $2951CA
 		0xd6, 0x44, 0x43, 0x8d, 0x73, 0x0e, 0x71, 0x48, 0xd3, 0x82, 0x40, 0xda
 	}
 };
+//缘来是你 MAMEPLUS 通天河死机
+/*****************************************************************************/
+u16 pgm_028_025_state::olds_prot_swap_r(offs_t offset)
+{
+	if (m_maincpu->pc() < 0x100000)	//bios
+		return m_mainram[0x178f4 / 2];
+	else						//game
+		return m_mainram[0x178d8 / 2];
+
+}
+/*****************************************************************************/
 
 void pgm_028_025_state::machine_reset()
 {
+	//pgm state::machine reset();	//寒冰心雨 通天河
 	const int region = (ioport(":Region")->read()) & 0xff;
 
 	m_igs025->m_kb_region = region;
 	m_igs025->m_kb_game_id = 0x00900000 | region;
+	
+//缘来是你 MAMEPLUS 通天河死机
+/*****************************************************************************/	
+	u16 *mem16 = (u16 *)(memregion(":user2")->base());
+	int i;
+
+	/* populate shared protection ram with data read from pcb .. */
+	for (i = 0; i < 0x4000 / 2; i++)
+	{
+		m_sharedprotram[i] = mem16[i];
+	}
+
+	//ROM:004008B4                 .word 0xFBA5
+	for(i = 0; i < 0x4000 / 2; i++)
+	{
+		if (m_sharedprotram[i] == (0xffff - i))
+			m_sharedprotram[i] = 0x4e75;
+	}
+/*****************************************************************************/
 
 	pgm_state::machine_reset();
 }
@@ -166,7 +197,13 @@ void pgm_028_025_state::init_olds()
 {
 	pgm_basic_init();
 
-	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0xdcb400, 0xdcb403, read16sm_delegate(*m_igs025, FUNC(igs025_device::killbld_igs025_prot_r)), write16sm_delegate(*m_igs025, FUNC(igs025_device::olds_w)));
+//缘来是你 MAMEPLUS 通天河死机
+/**************************************************************************************************************************************************************************************************************************/
+//	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0xdcb400, 0xdcb403, read16sm_delegate(*m_igs025, FUNC(igs025_device::killbld_igs025_prot_r)), write16sm_delegate(*m_igs025, FUNC(igs025_device::olds_w)));
+	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0xdcb400, 0xdcb403, read16sm_delegate(*m_igs025, FUNC(igs025_device::olds_r)), write16sm_delegate(*m_igs025, FUNC(igs025_device::olds_w)));//修正
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x8178f4, 0x8178f5, read16sm_delegate(*this, FUNC(pgm_028_025_state::olds_prot_swap_r)));//修正																																 
+/**************************************************************************************************************************************************************************************************************************/
+
 	m_igs028->m_sharedprotram = m_sharedprotram;
 	m_igs025->m_kb_source_data = m_olds_source_data;
 }
@@ -201,6 +238,8 @@ void pgm_028_025_state::pgm_028_025_ol(machine_config &config)
 INPUT_PORTS_START( olds )
 	PORT_INCLUDE ( pgm )
 
+// 缘来是你  组合键代码来源 (EKMAME) 
+/***********************************************************************************************************************************************************************************************/
 	PORT_MODIFY("P1P2")
 	PORT_BIT( 0x0001, IP_ACTIVE_LOW, IPT_START1 )
 	PORT_BIT( 0x0002, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(1)
@@ -223,6 +262,7 @@ INPUT_PORTS_START( olds )
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x8000)
 	PORT_BIT( 0x6000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x6000)	
 	PORT_BIT( 0xE000, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2 + Button 3)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0xE000)	
+/***********************************************************************************************************************************************************************************************/
 
 	PORT_MODIFY("Region")   /* Region - supplied by protection device */
 	PORT_CONFNAME( 0x000f, 0x0006, DEF_STR( Region ) )

@@ -151,15 +151,18 @@ void pgm_arm_type1_state::kov_map(address_map &map)
 	map(0x100000, 0x4effff).bankr("bank1"); /* Game ROM */
 	map(0x4f0000, 0x4f003f).rw(FUNC(pgm_arm_type1_state::arm7_type1_ram_r), FUNC(pgm_arm_type1_state::arm7_type1_ram_w)); /* ARM7 Shared RAM */
 	map(0x500000, 0x500003).rw(FUNC(pgm_arm_type1_state::arm7_type1_68k_protlatch_r), FUNC(pgm_arm_type1_state::arm7_type1_68k_protlatch_w)); /* ARM7 Latch */
+    map(0x500004, 0x500007).noprw();  //缘来是你 clr of something?
 }
 
 void pgm_arm_type1_state::_55857E_arm7_map(address_map &map)
 {
+	//map(0x00000000, 0x00007fff).rom();	//缘来是你
 	map(0x00000000, 0x00003fff).rom();
 	map(0x08100000, 0x083fffff).r(FUNC(pgm_arm_type1_state::arm7_type1_exrom_r)); // unpopulated, returns 0 to keep checksum happy
 	map(0x10000000, 0x100003ff).ram(); // internal ram for asic
 	map(0x40000000, 0x40000003).rw(FUNC(pgm_arm_type1_state::arm7_type1_protlatch_r), FUNC(pgm_arm_type1_state::arm7_type1_protlatch_w));
-	map(0x40000008, 0x4000000b).nopw(); // ?
+//	map(0x40000008, 0x4000000b).nopw(); // ?
+	map(0x40000004, 0x4000000b).nopw(); // 缘来是你
 	map(0x4000000c, 0x4000000f).r(FUNC(pgm_arm_type1_state::arm7_type1_unk_r));
 	map(0x50800000, 0x5080003f).rw(FUNC(pgm_arm_type1_state::arm7_type1_shareram_r), FUNC(pgm_arm_type1_state::arm7_type1_shareram_w)).share("arm7_shareram");
 	map(0x50000000, 0x500003ff).ram(); // uploads xor table to decrypt 68k rom here
@@ -317,17 +320,412 @@ void pgm_arm_type1_state::kovshp_asic27a_write_word(offs_t offset, u16 data)
 	}
 }
 
+//	缘来是你	
+/********************************** MAMEPLUS *****************************************/
+void pgm_arm_type1_state::kovplus_fix_patch()
+{
+	u8 *mem8 = (u8 *)(memregion("maincpu")->base());
+
+	mem8[0x1085D4] = 0x1B;
+	mem8[0x1085D5] = 0x3;
+	mem8[0x1085D6] = 0x1B;
+	mem8[0x1085D7] = 0xA4;
+	mem8[0x10EBEE] = 0x10;
+	mem8[0x10EBEF] = 0x15;
+	mem8[0x10EBF0] = 0x1A;
+	mem8[0x10EBF1] = 0x11;
+	mem8[0x11D3E4] = 0xC9;
+	mem8[0x11D3E5] = 0xF8;
+	mem8[0x11D3E6] = 0xB4;
+	mem8[0x11D3E7] = 0x9A;
+	mem8[0x11D492] = 0xA;
+	mem8[0x11D493] = 0x5A;
+	mem8[0x11D494] = 0xA;
+	mem8[0x11D495] = 0x6D;
+	mem8[0x11DAC6] = 0x18;
+	mem8[0x11DAC7] = 0x3B;
+	mem8[0x11DAC8] = 0xD1;
+	mem8[0x11DAC9] = 0xFE;
+	mem8[0x11DACA] = 0xE9;
+	mem8[0x11DACB] = 0xE;
+	mem8[0x11DACC] = 0x90;
+	mem8[0x11DACD] = 0x6B;
+	mem8[0x11DACE] = 0x90;
+	mem8[0x11DACF] = 0xF;
+	mem8[0x11DAD1] = 0x41;
+	mem8[0x11DE56] = 0x12;
+	mem8[0x11DE57] = 0x7F;
+	mem8[0x11DE58] = 0xD3;
+	mem8[0x11DE59] = 0x1C;
+	mem8[0x11DE5A] = 0xEB;
+	mem8[0x11DE5B] = 0xEA;
+	mem8[0x11DE5D] = 0x86;
+	mem8[0x11DE60] = 0x10;
+	mem8[0x11DE61] = 0x7F;
+	mem8[0x11DE62] = 0xD1;
+	mem8[0x11DE63] = 0x82;
+	mem8[0x11DE64] = 0xE9;
+	mem8[0x11DE65] = 0xB6;
+	mem8[0x11DF72] = 0x12;
+	mem8[0x11DF73] = 0x53;
+	mem8[0x11DF74] = 0xD3;
+	mem8[0x11DF75] = 0x84;
+	mem8[0x11DF76] = 0xEB;
+	mem8[0x11DF77] = 0xB8;
+	mem8[0x11DF79] = 0x2A;
+	mem8[0x11DF7C] = 0x12;
+	mem8[0x11DF7D] = 0x23;
+	mem8[0x11DF7E] = 0xD3;
+	mem8[0x11DF7F] = 0xDC;
+	mem8[0x11DF80] = 0x69;
+	mem8[0x11DF81] = 0x7C;
+	mem8[0x12E7A4] = 0x95;
+	mem8[0x12E7A5] = 0xCA;
+	mem8[0x12E7A6] = 0x54;
+	mem8[0x12E7A8] = 0x6C;
+	mem8[0x12E7A9] = 0x5;
+	mem8[0x13B25E] = 0xBA;
+	mem8[0x13B25F] = 0xBF;
+	mem8[0x1463A0] = 0x95;
+	mem8[0x1463A1] = 0x87;
+	mem8[0x1463A2] = 0x7F;
+	mem8[0x1463A3] = 0x95;
+	mem8[0x1463A4] = 0xB4;
+	mem8[0x1463A5] = 0x31;
+	mem8[0x1463A6] = 0x15;
+	mem8[0x1463A8] = 0x1D;
+	mem8[0x162408] = 0xB9;
+	mem8[0x162409] = 0x63;
+	mem8[0x1655E0] = 0x54;
+	mem8[0x1655E2] = 0x68;
+	mem8[0x1655E4] = 0x4D;
+	mem8[0x1655E5] = 0xBA;
+	mem8[0x1655E6] = 0xD1;
+	mem8[0x1655E7] = 0x23;
+	mem8[0x1655E8] = 0xE9;
+	mem8[0x1655EA] = 0x28;
+	mem8[0x1655EB] = 0x6A;
+	mem8[0x183476] = 0xDC;
+	mem8[0x183477] = 0xE7;
+	mem8[0x183DB6] = 0x3D;
+	mem8[0x32A00A] = 0x21;
+	mem8[0x32A00C] = 0x46;
+	mem8[0x32A00D] = 0x93;
+	mem8[0x32A01E] = 0x8B;
+	mem8[0x32A020] = 0x7E;
+	mem8[0x32A021] = 0xD0;
+	mem8[0x381000] = 0x50;
+	mem8[0x381001] = 0x45;
+	mem8[0x381002] = 0xE9;
+	mem8[0x381003] = 0x1C;
+	mem8[0x381004] = 0x87;
+	mem8[0x381005] = 0x3F;
+	mem8[0x381006] = 0x50;
+	mem8[0x381007] = 0xE;
+	mem8[0x381008] = 0x43;
+	mem8[0x381009] = 0x62;
+	mem8[0x38100A] = 0xC9;
+	mem8[0x38100B] = 0x59;
+	mem8[0x38100C] = 0xA7;
+	mem8[0x38100D] = 0x4B;
+	mem8[0x38100E] = 0xB0;
+	mem8[0x38100F] = 0x4;
+	mem8[0x381010] = 0x78;
+	mem8[0x381011] = 0x67;
+	mem8[0x381012] = 0xB9;
+	mem8[0x381013] = 0x97;
+	mem8[0x382000] = 0x50;
+	mem8[0x382001] = 0x1B;
+	mem8[0x382002] = 0x63;
+	mem8[0x382003] = 0x1C;
+	mem8[0x382004] = 0xE9;
+	mem8[0x382005] = 0xE3;
+	mem8[0x382006] = 0x87;
+	mem8[0x382007] = 0xDE;
+	mem8[0x382008] = 0xB0;
+	mem8[0x382009] = 0x2C;
+	mem8[0x38200A] = 0x58;
+	mem8[0x38200B] = 0x59;
+	mem8[0x38200C] = 0x15;
+	mem8[0x38200D] = 0x49;
+	mem8[0x383000] = 0x50;
+	mem8[0x383001] = 0x1B;
+	mem8[0x383002] = 0x60;
+	mem8[0x383003] = 0x1C;
+	mem8[0x383004] = 0xE9;
+	mem8[0x383005] = 0xE3;
+	mem8[0x383006] = 0x87;
+	mem8[0x383007] = 0xDE;
+	mem8[0x383008] = 0xB0;
+	mem8[0x383009] = 0x2C;
+	mem8[0x38300A] = 0x58;
+	mem8[0x38300B] = 0x59;
+	mem8[0x38300C] = 0x2F;
+	mem8[0x38300D] = 0x49;
+	mem8[0x384000] = 0x50;
+	mem8[0x384001] = 0x1B;
+	mem8[0x384002] = 0x63;
+	mem8[0x384003] = 0x1C;
+	mem8[0x384004] = 0xE9;
+	mem8[0x384005] = 0xE3;
+	mem8[0x384006] = 0x87;
+	mem8[0x384007] = 0xDE;
+	mem8[0x384008] = 0x90;
+	mem8[0x384009] = 0x2C;
+	mem8[0x38400A] = 0x78;
+	mem8[0x38400B] = 0x59;
+	mem8[0x38400C] = 0x11;
+	mem8[0x38400D] = 0x48;
+	mem8[0x385000] = 0x50;
+	mem8[0x385001] = 0x1B;
+	mem8[0x385002] = 0x60;
+	mem8[0x385003] = 0x1C;
+	mem8[0x385004] = 0xE9;
+	mem8[0x385005] = 0xE3;
+	mem8[0x385006] = 0x87;
+	mem8[0x385007] = 0xDE;
+	mem8[0x385008] = 0x90;
+	mem8[0x385009] = 0x2C;
+	mem8[0x38500A] = 0x78;
+	mem8[0x38500B] = 0x59;
+	mem8[0x38500C] = 0xEB;
+	mem8[0x38500D] = 0x48;
+	mem8[0x386000] = 0x5;
+	mem8[0x386001] = 0x5D;
+	mem8[0x386002] = 0x71;
+	mem8[0x386003] = 0x1C;
+	mem8[0x386004] = 0x6D;
+	mem8[0x386005] = 0x84;
+	mem8[0x386006] = 0x5;
+	mem8[0x386007] = 0x40;
+	mem8[0x386008] = 0x71;
+	mem8[0x386009] = 0x62;
+	mem8[0x38600A] = 0xC5;
+	mem8[0x38600B] = 0x51;
+	mem8[0x38600C] = 0x6C;
+	mem8[0x38600D] = 0x97;
+	mem8[0x38600E] = 0x79;
+	mem8[0x38600F] = 0x4B;
+	mem8[0x386010] = 0x90;
+	mem8[0x386011] = 0x29;
+	mem8[0x386012] = 0x7B;
+	mem8[0x386013] = 0x4D;
+	mem8[0x386014] = 0xC3;
+	mem8[0x386015] = 0xF8;
+}
+
+//开始	缘来是你 mamep 
+void pgm_arm_type1_state::kovboot_fix_patch()
+{
+	u8 *mem8 = (u8 *)(memregion("maincpu")->base());
+
+	mem8[0x1085D4] = 0x71;
+	mem8[0x1085D5] = 0x4E;
+	mem8[0x1085D6] = 0x71;
+	mem8[0x1085D7] = 0x4E;
+	mem8[0x11D3E4] = 0x29;
+	mem8[0x11D3E5] = 0x42;
+	mem8[0x11D3E6] = 0x54;
+	mem8[0x11D3E7] = 0x29;
+	mem8[0x11D492] = 0x71;
+	mem8[0x11D493] = 0x4E;
+	mem8[0x11D494] = 0x71;
+	mem8[0x11D495] = 0x4E;
+	mem8[0x11DAC6] = 0xF9;
+	mem8[0x11DAC7] = 0x4E;
+	mem8[0x11DAC8] = 0x38;
+	mem8[0x11DAC9] = 0x0;
+	mem8[0x11DACA] = 0x0;
+	mem8[0x11DACB] = 0xF;
+	mem8[0x11DACC] = 0x71;
+	mem8[0x11DACD] = 0x4E;
+	mem8[0x11DACE] = 0x71;
+	mem8[0x11DACF] = 0x4E;
+	mem8[0x11DAD1] = 0x65;
+	mem8[0x11DE56] = 0xF9;
+	mem8[0x11DE57] = 0x4E;
+	mem8[0x11DE58] = 0x38;
+	mem8[0x11DE59] = 0x0;
+	mem8[0x11DE5A] = 0x20;
+	mem8[0x11DE5B] = 0xF;
+	mem8[0x11DE5D] = 0x64;
+	mem8[0x11DE60] = 0xF9;
+	mem8[0x11DE61] = 0x4E;
+	mem8[0x11DE62] = 0x38;
+	mem8[0x11DE63] = 0x0;
+	mem8[0x11DE64] = 0x30;
+	mem8[0x11DE65] = 0x0F;
+	mem8[0x11DF72] = 0xF9;
+	mem8[0x11DF73] = 0x4E;
+	mem8[0x11DF74] = 0x38;
+	mem8[0x11DF75] = 0x0;
+	mem8[0x11DF76] = 0x40;
+	mem8[0x11DF77] = 0x0F;
+	mem8[0x11DF79] = 0x64;
+	mem8[0x11DF7C] = 0xF9;
+	mem8[0x11DF7D] = 0x4E;
+	mem8[0x11DF7E] = 0x38;
+	mem8[0x11DF7F] = 0x0;
+	mem8[0x11DF80] = 0x50;
+	mem8[0x11DF81] = 0x0F;
+	mem8[0x12E7A4] = 0xF9;
+	mem8[0x12E7A5] = 0x4E;
+	mem8[0x12E7A6] = 0x38;
+	mem8[0x12E7A8] = 0x60;
+	mem8[0x12E7A9] = 0x0F;
+	mem8[0x13B25E] = 0x71;
+	mem8[0x13B25F] = 0x4E;
+	mem8[0x1463A0] = 0xF9;
+	mem8[0x1463A1] = 0x4E;
+	mem8[0x1463A2] = 0x13;
+	mem8[0x1463A3] = 0x0;
+	mem8[0x1463A4] = 0xD0;
+	mem8[0x1463A5] = 0xB5;
+	mem8[0x1463A6] = 0x71;
+	mem8[0x1463A8] = 0x71;
+	mem8[0x162408] = 0xD0;
+	mem8[0x162409] = 0x1;
+	mem8[0x1655E0] = 0x3C;
+	mem8[0x1655E2] = 0x0;
+	mem8[0x1655E4] = 0x25;
+	mem8[0x1655E5] = 0x0;
+	mem8[0x1655E6] = 0xB9;
+	mem8[0x1655E7] = 0x90;
+	mem8[0x1655E8] = 0x81;
+	mem8[0x1655EA] = 0x40;
+	mem8[0x1655EB] = 0xB2;
+	mem8[0x183476] = 0xB5;
+	mem8[0x183477] = 0x1;
+	mem8[0x183DB6] = 0x50;
+	mem8[0x32A00A] = 0x68;
+	mem8[0x32A00C] = 0xF;
+	mem8[0x32A00D] = 0x4;
+	mem8[0x32A01E] = 0xC0;
+	mem8[0x32A020] = 0x13;
+	mem8[0x32A021] = 0x2;
+	mem8[0x380F00] = 0x39;
+	mem8[0x380F01] = 0x52;
+	mem8[0x380F02] = 0x80;
+	mem8[0x380F03] = 0x0;
+	mem8[0x380F04] = 0xEE;
+	mem8[0x380F05] = 0xDC;
+	mem8[0x380F06] = 0x39;
+	mem8[0x380F07] = 0xC;
+	mem8[0x380F08] = 0xA;
+	mem8[0x380F09] = 0x0;
+	mem8[0x380F0A] = 0x80;
+	mem8[0x380F0B] = 0x0;
+	mem8[0x380F0C] = 0xEE;
+	mem8[0x380F0D] = 0xDC;
+	mem8[0x380F0E] = 0xF9;
+	mem8[0x380F0F] = 0x4E;
+	mem8[0x380F10] = 0x11;
+	mem8[0x380F11] = 0x0;
+	mem8[0x380F12] = 0xD0;
+	mem8[0x380F13] = 0xDA;
+	mem8[0x380F20] = 0x39;
+	mem8[0x380F21] = 0xC;
+	mem8[0x380F22] = 0xA;
+	mem8[0x380F23] = 0x0;
+	mem8[0x380F24] = 0x80;
+	mem8[0x380F25] = 0x0;
+	mem8[0x380F26] = 0xEE;
+	mem8[0x380F27] = 0xDC;
+	mem8[0x380F28] = 0xF9;
+	mem8[0x380F29] = 0x4E;
+	mem8[0x380F2A] = 0x11;
+	mem8[0x380F2B] = 0x0;
+	mem8[0x380F2C] = 0x5C;
+	mem8[0x380F2D] = 0xDE;
+	mem8[0x380F30] = 0x39;
+	mem8[0x380F31] = 0xC;
+	mem8[0x380F32] = 0x9;
+	mem8[0x380F33] = 0x0;
+	mem8[0x380F34] = 0x80;
+	mem8[0x380F35] = 0x0;
+	mem8[0x380F36] = 0xEE;
+	mem8[0x380F37] = 0xDC;
+	mem8[0x380F38] = 0xF9;
+	mem8[0x380F39] = 0x4E;
+	mem8[0x380F3A] = 0x11;
+	mem8[0x380F3B] = 0x0;
+	mem8[0x380F3C] = 0x66;
+	mem8[0x380F3D] = 0xDE;
+	mem8[0x380F40] = 0x39;
+	mem8[0x380F41] = 0xC;
+	mem8[0x380F42] = 0xA;
+	mem8[0x380F43] = 0x0;
+	mem8[0x380F44] = 0x80;
+	mem8[0x380F45] = 0x0;
+	mem8[0x380F46] = 0xEE;
+	mem8[0x380F47] = 0xDC;
+	mem8[0x380F48] = 0xF9;
+	mem8[0x380F49] = 0x4E;
+	mem8[0x380F4A] = 0x11;
+	mem8[0x380F4B] = 0x0;
+	mem8[0x380F4C] = 0x78;
+	mem8[0x380F4D] = 0xDF;
+	mem8[0x380F50] = 0x39;
+	mem8[0x380F51] = 0xC;
+	mem8[0x380F52] = 0x9;
+	mem8[0x380F53] = 0x0;
+	mem8[0x380F54] = 0x80;
+	mem8[0x380F55] = 0x0;
+	mem8[0x380F56] = 0xEE;
+	mem8[0x380F57] = 0xDC;
+	mem8[0x380F58] = 0xF9;
+	mem8[0x380F59] = 0x4E;
+	mem8[0x380F5A] = 0x11;
+	mem8[0x380F5B] = 0x0;
+	mem8[0x380F5C] = 0x82;
+	mem8[0x380F5D] = 0xDF;
+	mem8[0x380F60] = 0x6C;
+	mem8[0x380F61] = 0x4A;
+	mem8[0x380F62] = 0x18;
+	mem8[0x380F63] = 0x0;
+	mem8[0x380F64] = 0x4;
+	mem8[0x380F65] = 0x67;
+	mem8[0x380F66] = 0x6C;
+	mem8[0x380F67] = 0x42;
+	mem8[0x380F68] = 0x18;
+	mem8[0x380F69] = 0x0;
+	mem8[0x380F6A] = 0xAC;
+	mem8[0x380F6B] = 0x8;
+	mem8[0x380F6C] = 0x5;
+	mem8[0x380F6D] = 0x0;
+	mem8[0x380F6E] = 0x10;
+	mem8[0x380F6F] = 0x1;
+	mem8[0x380F70] = 0xF9;
+	mem8[0x380F71] = 0x4E;
+	mem8[0x380F72] = 0x12;
+	mem8[0x380F73] = 0x0;
+	mem8[0x380F74] = 0xAA;
+	mem8[0x380F75] = 0xE7;
+}
+
+void pgm_arm_type1_state::kovshp_fix_patch()
+{
+	u8 *mem8 = (u8 *)(memregion("prot")->base());
+
+	mem8[0x2892] = 0x1;
+	mem8[0x2893] = 0x1;
+	mem8[0x289F] = 0x1;
+	mem8[0x28A5] = 0x1;
+	mem8[0x28A8] = 0x1;
+	mem8[0x28A9] = 0x1;
+	mem8[0x2BF3] = 0x48;
+	mem8[0x2BF5] = 0x80;
+	mem8[0x2C92] = 0xF;
+	mem8[0x2C93] = 0x40;
+	mem8[0x2CE1] = 0x6C;
+	mem8[0x2CE2] = 0x48;
+}										 
+/*************************************************************************************/
 
 void pgm_arm_type1_state::init_kovshp()
 {
 	pgm_basic_init();
-	pgm_kovshp_decrypt(machine());
-	arm7_type1_latch_init();
-	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0008, 0x4f0009, read16smo_delegate(*this, FUNC(pgm_arm_type1_state::kovsh_fake_region_r)));
-	m_maincpu->space(AS_PROGRAM).install_write_handler(0x500000, 0x500005, write16sm_delegate(*this, FUNC(pgm_arm_type1_state::kovshp_asic27a_write_word)));
-
-#if 0
-	// In fbneo, what is it for?
+	// MAMEFX - code from ArcCabView 0.248, thanks to the author - added 2022-11-18
 	u16 *src16 = (u16 *)(memregion("prot")->base());
 	src16[0x2892/2] = 0x0101;
 	src16[0x289e/2] = 0x0107;
@@ -338,9 +736,6 @@ void pgm_arm_type1_state::init_kovshp()
 	src16[0x2c92/2] = 0x400f;
 	src16[0x2ce0/2] = 0x6c1e;
 	src16[0x2ce2/2] = 0x0048;
-#endif
-
-	// From fbneo, fix data offsets, restores sound to some hacks
 	u8 *src = memregion("prot")->base();
 	for (u32 i = 0x2ce8; i < 0x2e48; i+=8) // fix z80 data offsets (offset - 0x09'e0'00)
 	{
@@ -348,8 +743,12 @@ void pgm_arm_type1_state::init_kovshp()
 		src[i+4] = d >> 8;
 		src[i+7] = d & 0xff;
 	}
+	// MAMEFX end
+	pgm_kovshp_decrypt(machine());
+	arm7_type1_latch_init();
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0008, 0x4f0009, read16smo_delegate(*this, FUNC(pgm_arm_type1_state::kovsh_fake_region_r)));
+	m_maincpu->space(AS_PROGRAM).install_write_handler(0x500000, 0x500005, write16sm_delegate(*this, FUNC(pgm_arm_type1_state::kovshp_asic27a_write_word)));
 }
-
 
 
 /* bootleg inits */
@@ -357,12 +756,18 @@ void pgm_arm_type1_state::init_kovshp()
 void pgm_arm_type1_state::init_kovshxas()
 {
 	pgm_basic_init();
-//  pgm_kovshp_decrypt(machine());
-	arm7_type1_latch_init();
-	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0008, 0x4f0009, read16smo_delegate(*this, FUNC(pgm_arm_type1_state::kovsh_fake_region_r)));
-	m_maincpu->space(AS_PROGRAM).install_write_handler(0x500000, 0x500005, write16sm_delegate(*this, FUNC(pgm_arm_type1_state::kovshp_asic27a_write_word)));
 
-	// From fbneo, fix data offsets, restores sound to some hacks
+	// MAMEFX - code from ArcCabView 0.248, thanks to the author - added 2022-11-18
+	u16 *src16 = (u16 *)(memregion("prot")->base());
+	src16[0x2892/2] = 0x0101;
+	src16[0x289e/2] = 0x0107;
+	src16[0x28a4/2] = 0x0108;
+	src16[0x28a8/2] = 0x0101;
+	src16[0x2bf2/2] = 0x4810;
+	src16[0x2bf4/2] = 0x800e;
+	src16[0x2c92/2] = 0x400f;
+	src16[0x2ce0/2] = 0x6c1e;
+	src16[0x2ce2/2] = 0x0048;
 	u8 *src = memregion("prot")->base();
 	for (u32 i = 0x2ce8; i < 0x2e48; i+=8) // fix z80 data offsets (offset - 0x09'e0'00)
 	{
@@ -370,8 +775,25 @@ void pgm_arm_type1_state::init_kovshxas()
 		src[i+4] = d >> 8;
 		src[i+7] = d & 0xff;
 	}
+	// MAMEFX end
+//  pgm_kovshp_decrypt(machine());
+	arm7_type1_latch_init();
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0008, 0x4f0009, read16smo_delegate(*this, FUNC(pgm_arm_type1_state::kovsh_fake_region_r)));
+	m_maincpu->space(AS_PROGRAM).install_write_handler(0x500000, 0x500005, write16sm_delegate(*this, FUNC(pgm_arm_type1_state::kovshp_asic27a_write_word)));
 }
 
+/* 缘来是你 */
+/***************************************************************************************************************************************************************/
+void pgm_arm_type1_state::init_kovassga()
+{
+	pgm_basic_init();
+	kovshp_fix_patch();
+//  pgm_kovshp_decrypt(machine());
+	arm7_type1_latch_init();
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0008, 0x4f0009, read16smo_delegate(*this, FUNC(pgm_arm_type1_state::kovsh_fake_region_r)));
+	m_maincpu->space(AS_PROGRAM).install_write_handler(0x500000, 0x500005, write16sm_delegate(*this, FUNC(pgm_arm_type1_state::kovshp_asic27a_write_word)));
+}
+/****************************************************************************************************************************************************************/
 
 void pgm_arm_type1_state::pgm_decode_kovlsqh2_tiles()
 {
@@ -443,6 +865,24 @@ void pgm_arm_type1_state::pgm_decode_kovqhsgs2_program()
 	memcpy( src, &dst[0], 0x400000 );
 }
 
+/* 缘来是你 */
+/***********************************************************************************************************************************/
+void pgm_arm_type1_state::pgm_decode_kovassg_program()
+{
+	//int i;
+	u16 *src = (u16 *)(memregion("maincpu")->base() + 0x100000);
+	std::vector<u16> dst(0x400000);
+
+	for (int i = 0; i < 0x400000 / 2; i++)
+	{
+		const int j = (i & ~0xffff) | (bitswap<16>(i, 15, 14, 13, 12,  11, 10, 7, 3,  1, 9, 4, 8,  6, 0, 2, 5) ^ 0x019c);
+
+		dst[j] = bitswap<16>(src[j], 13, 9, 10, 11, 2, 0, 12 ,5, 4, 1, 14, 8, 15, 6, 3, 7) ^ 0x9d05;
+	}
+
+	memcpy( src, &dst[0], 0x400000 );
+}
+/***********************************************************************************************************************************/
 
 void pgm_arm_type1_state::init_kovlsqh2()
 {
@@ -485,6 +925,30 @@ void pgm_arm_type1_state::init_kovqhsgs()
 	/* we only have a china internal ROM dumped for now.. allow region to be changed for debugging (to ensure all alt titles / regions can be seen) */
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0008, 0x4f0009, read16smo_delegate(*this, FUNC(pgm_arm_type1_state::kovsh_fake_region_r)));
 }
+
+/* 缘来是你 */
+/**********************************************************************************************************************************************************/
+void pgm_arm_type1_state::init_kovassg()
+{
+	pgm_decode_kovassg_program();
+	pgm_decode_kovlsqh2_tiles();
+
+	pgm_decode_kovlsqh2_sprites(memregion("sprcol")->base() + 0x0000000);
+	pgm_decode_kovlsqh2_sprites(memregion("sprcol")->base() + 0x0800000);
+	pgm_decode_kovlsqh2_sprites(memregion("sprcol")->base() + 0x1000000);
+	pgm_decode_kovlsqh2_sprites(memregion("sprcol")->base() + 0x1800000);
+	pgm_decode_kovlsqh2_sprites(memregion("sprcol")->base() + 0x2000000);
+	pgm_decode_kovlsqh2_sprites(memregion("sprcol")->base() + 0x2800000);
+	pgm_decode_kovlsqh2_sprites(memregion("sprmask")->base() + 0x0000000);
+	pgm_decode_kovlsqh2_sprites(memregion("sprmask")->base() + 0x0800000);
+
+	pgm_decode_kovlsqh2_samples();
+	pgm_basic_init();
+	arm7_type1_latch_init();
+	/* we only have a china internal ROM dumped for now.. allow region to be changed for debugging (to ensure all alt titles / regions can be seen) */
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0008, 0x4f0009, read16smo_delegate(*this, FUNC(pgm_arm_type1_state::kovsh_fake_region_r)));
+}
+/**********************************************************************************************************************************************************/
 
 /*
  in Ketsui (ket) @ 000A719C (move.w)
@@ -2343,9 +2807,28 @@ void pgm_arm_type1_state::init_kov()
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0000, 0x4f003f, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_protram_r)));
 }
 
+/* 缘来是你 */
+/***********************************************************************************************************************************/
+void pgm_arm_type1_state::init_kovplus()
+{
+	pgm_basic_init();
+	kovplus_fix_patch();
+	pgm_kov_decrypt(machine());
+	arm7_type1_latch_init();
+	m_curslots = 0;
+	m_kov_c0_value = 0;
+	m_kov_cb_value = 0;
+	m_kov_fe_value = 0;
+	arm_sim_handler = &pgm_arm_type1_state::command_handler_kov;
+	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0x500000, 0x500005, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_r)), write16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_w)));
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0000, 0x4f003f, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_protram_r)));
+}
+/***********************************************************************************************************************************/
+
 void pgm_arm_type1_state::init_kovboot()
 {
 	pgm_basic_init();
+	kovboot_fix_patch();	//	缘来是你
 //  pgm_kov_decrypt(machine());
 	arm7_type1_latch_init();
 	m_curslots = 0;
@@ -2355,8 +2838,25 @@ void pgm_arm_type1_state::init_kovboot()
 	arm_sim_handler = &pgm_arm_type1_state::command_handler_kov;
 	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0x500000, 0x500005, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_r)), write16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_w)));
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0000, 0x4f003f, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_protram_r)));
-
 }
+
+/*缘来是你*/
+#if 0
+void pgm_arm_type1_state::init_kovhsqj()
+{
+	pgm_basic_init();
+	pgm_kov_decrypt(machine());
+	arm7_type1_latch_init();
+	m_curslots = 0;
+	m_kov_c0_value = 0;
+	m_kov_cb_value = 0;
+	m_kov_fe_value = 0;
+	arm_sim_handler = &pgm_arm_type1_state::command_handler_kov;
+	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0x500000, 0x500005, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_r)), write16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_w)));
+	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0000, 0x4f003f, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_protram_r)));
+	m_hack_sprites_buffers = true;
+}
+#endif
 
 void pgm_arm_type1_state::init_oldsplus()
 {
@@ -2402,6 +2902,8 @@ INPUT_PORTS_END
 INPUT_PORTS_START( kovsh )
 	PORT_INCLUDE ( pgm )
 
+// 缘来是你  组合键代码来源 (EKMAME) 
+/***********************************************************************************************************************************************************************************************/
 	PORT_MODIFY("P1P2")
 	PORT_BIT( 0x0001, IP_ACTIVE_LOW, IPT_START1 )
 	PORT_BIT( 0x0002, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(1)
@@ -2424,6 +2926,7 @@ INPUT_PORTS_START( kovsh )
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x8000)
 	PORT_BIT( 0x6000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x6000)	
 	PORT_BIT( 0xE000, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2 + Button 3)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0xE000)
+/***********************************************************************************************************************************************************************************************/
 
 	PORT_START("RegionHack")    /* Region - supplied by protection device */
 	PORT_CONFNAME( 0x00ff, 0x00ff, DEF_STR( Region ) )
@@ -2441,6 +2944,8 @@ INPUT_PORTS_END
 INPUT_PORTS_START( sango )
 	PORT_INCLUDE ( pgm )
 
+// 缘来是你 组合键代码来源 (EKMAME) 
+/***********************************************************************************************************************************************************************************************/
 	PORT_MODIFY("P1P2")
 	PORT_BIT( 0x0001, IP_ACTIVE_LOW, IPT_START1 )
 	PORT_BIT( 0x0002, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(1)
@@ -2463,6 +2968,7 @@ INPUT_PORTS_START( sango )
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x8000)
 	PORT_BIT( 0x6000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x6000)	
 	PORT_BIT( 0xE000, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2 + Button 3)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0xE000)
+/***********************************************************************************************************************************************************************************************/
 
 	PORT_MODIFY("Region")   /* Region - supplied by protection device */
 	PORT_CONFNAME( 0x000f, 0x0005, DEF_STR( Region ) )
@@ -2491,6 +2997,8 @@ INPUT_PORTS_END
 INPUT_PORTS_START( oldsplus )
 	PORT_INCLUDE ( pgm )
 
+// 缘来是你 组合键代码来源 (EKMAME) 
+/***********************************************************************************************************************************************************************************************/
 	PORT_MODIFY("P1P2")
 	PORT_BIT( 0x0001, IP_ACTIVE_LOW, IPT_START1 )
 	PORT_BIT( 0x0002, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(1)
@@ -2513,6 +3021,7 @@ INPUT_PORTS_START( oldsplus )
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x8000)
 	PORT_BIT( 0x6000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x6000)	
 	PORT_BIT( 0xE000, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2 + Button 3)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0xE000)	
+/***********************************************************************************************************************************************************************************************/
 
 	PORT_MODIFY("Region")   /* Region - supplied by protection device */
 	PORT_CONFNAME( 0x000f, 0x0001, DEF_STR( Region ) )

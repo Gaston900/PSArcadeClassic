@@ -18,6 +18,7 @@
 
 void pgm_asic3_state::asic3_compute_hold(int y, int z)
 {
+	int mode;//缘来是你
 	const u16 old = m_asic3_hold;
 
 	m_asic3_hold = ((old << 1) | (old >> 15));
@@ -27,7 +28,18 @@ void pgm_asic3_state::asic3_compute_hold(int y, int z)
 	m_asic3_hold ^= BIT(m_asic3_x, 2) << 10;
 	m_asic3_hold ^= BIT(old, 5);
 
-	switch (m_region->read()) // The mode is dependent on the region
+/****************缘来是你 开始*********************************/
+	if (!strcmp(machine().system().name,"orlegend111c") ||
+		!strcmp(machine().system().name,"orlegendca"))
+		mode = ioport("Region")->read();
+	else if (!strcmp(machine().system().name,"orlegend111t"))
+		mode = 4;
+	else
+		mode = 2;
+	//原版
+	//switch (m_region->read()) // The mode is dependent on the region
+	switch (mode) // The mode is dependent on the region
+/******************************结束*******************************/
 	{
 		case 0:
 		case 1:
@@ -51,6 +63,8 @@ u16 pgm_asic3_state::pgm_asic3_r()
 {
 	switch (m_asic3_reg)
 	{
+//缘来是你
+/********************************** 原代码 ***************************************
 		case 0x00: // region is supplied by the protection device
 			return (m_asic3_latch[0] & 0xf7) | ((m_region->read() << 3) & 0x08);
 
@@ -59,6 +73,34 @@ u16 pgm_asic3_state::pgm_asic3_r()
 
 		case 0x02: // region is supplied by the protection device
 			return (m_asic3_latch[2] & 0x7f) | ((m_region->read() << 6) & 0x80);
+************************************************************************************/	
+
+/*********************************** MAMEPLUS 开始 *******************************************/
+		case 0x00: // region is supplied by the protection device
+		{
+			if (!strcmp(machine().system().name,"orlegend111c") ||
+				!strcmp(machine().system().name,"orlegendca"))
+			return (m_asic3_latch[0] & 0xf7) | ((m_region->read() << 3) & 0x08);
+			else if (!strcmp(machine().system().name,"orlegend111t"))
+				return (m_asic3_latch[0] & 0xf7) | ((4 << 3) & 0x08);
+			else
+				return (m_asic3_latch[0] & 0xf7) | ((2 << 3) & 0x08);
+		}
+
+		case 0x01:
+			return m_asic3_latch[1];
+
+		case 0x02: // region is supplied by the protection device
+		{
+			if (!strcmp(machine().system().name,"orlegend111c") ||
+				!strcmp(machine().system().name,"orlegendca"))
+			return (m_asic3_latch[2] & 0x7f) | ((m_region->read() << 6) & 0x80);
+			else if (!strcmp(machine().system().name,"orlegend111t"))
+				return (m_asic3_latch[2] & 0x7f) | ((4 << 6) & 0x80);
+			else
+				return (m_asic3_latch[2] & 0x7f) | ((2 << 6) & 0x80);
+		}		
+/*********************************************************************************************/	
 
 		case 0x03:
 			return bitswap<8>(m_asic3_hold, 5,2,9,7,10,13,12,15);
@@ -162,7 +204,8 @@ void pgm_asic3_state::pgm_asic3_w(offs_t offset, u16 data)
 
 /* Oriental Legend INIT */
 
-void pgm_asic3_state::init_orlegend()
+//void pgm_asic3_state::init_orlegend() // 原代码
+void pgm_asic3_state::init_orld111c()//缘来是你
 {
 	pgm_basic_init();
 
@@ -184,10 +227,45 @@ void pgm_asic3_state::init_orlegend()
 	save_item(NAME(m_asic3_hold));
 }
 
+//缘来是你
+/******************************************** MAMEPLUS **************************************************/	
+void pgm_asic3_state::init_orlegend()
+{
+	u16 *mem16 = (u16 *)memregion("maincpu")->base();
+	init_orld111c();
+	mem16[0x146ae4/2]=0x4e71;
+	mem16[0x146ae6/2]=0x4e71;
+}
+
+void pgm_asic3_state::init_orld112c()
+{
+	u16 *mem16 = (u16 *)memregion("maincpu")->base();
+	init_orld111c();
+	mem16[0x146af4/2]=0x4e71;
+	mem16[0x146af6/2]=0x4e71;
+}
+
+void pgm_asic3_state::init_orld111t()
+{
+	u16 *mem16 = (u16 *)memregion("maincpu")->base();
+	init_orld111c();
+	mem16[0x1468a8/2]=0x4e71;
+	mem16[0x1468aa/2]=0x4e71;
+}
+
+void pgm_asic3_state::init_orlegendk()
+{
+	u16 *mem16 = (u16 *)memregion("maincpu")->base();
+	init_orld111c();
+	mem16[0x146450/2]=0x4e71;
+	mem16[0x146452/2]=0x4e71;
+}
 
 INPUT_PORTS_START( orlegend )
 	PORT_INCLUDE ( pgm )
 
+// 缘来是你 组合键代码来源 (EKMAME) 
+/***********************************************************************************************************************************************************************************************/
 	PORT_MODIFY("P1P2")
 	PORT_BIT( 0x0001, IP_ACTIVE_LOW, IPT_START1 )
 	PORT_BIT( 0x0002, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(1)
@@ -210,13 +288,66 @@ INPUT_PORTS_START( orlegend )
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x8000)
 	PORT_BIT( 0x6000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x6000)	
 	PORT_BIT( 0xE000, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2 + Button 3)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0xE000)	
+/***********************************************************************************************************************************************************************************************/
 
 	PORT_MODIFY("Region")
-	PORT_DIPNAME( 0x0003, 0x0000, DEF_STR( Region ) )
-	PORT_CONFSETTING(      0x0000, DEF_STR( World ) )
-	PORT_CONFSETTING(      0x0001, "World (duplicate)" ) // again?
-	PORT_CONFSETTING(      0x0002, DEF_STR( Korea ) )
-	PORT_CONFSETTING(      0x0003, DEF_STR( China ) )
+	PORT_DIPNAME( 0x0007,  0x0001, DEF_STR( Region ) )
+	PORT_CONFSETTING(      0x0000, DEF_STR( Taiwan ) )
+	PORT_CONFSETTING(      0x0001, DEF_STR( China ) )
+	PORT_CONFSETTING(      0x0002, "Japan (Alta license)" )
+	PORT_CONFSETTING(      0x0003, DEF_STR( Korea ) )
+	PORT_CONFSETTING(      0x0004, DEF_STR( Hong_Kong ) )
+	PORT_CONFSETTING(      0x0005, DEF_STR( World ) )
+INPUT_PORTS_END
+
+INPUT_PORTS_START( orld112c )
+	PORT_INCLUDE ( pgm )
+
+	PORT_MODIFY("Region")
+	PORT_DIPNAME( 0x0007,  0x0001, DEF_STR( Region ) )
+	PORT_CONFSETTING(      0x0000, DEF_STR( Taiwan ) )
+	PORT_CONFSETTING(      0x0001, DEF_STR( China ) )
+	PORT_CONFSETTING(      0x0002, "Japan (Alta license)" )
+	PORT_CONFSETTING(      0x0003, DEF_STR( Korea ) )
+	PORT_CONFSETTING(      0x0004, DEF_STR( Hong_Kong ) )
+	PORT_CONFSETTING(      0x0005, DEF_STR( World ) )
+INPUT_PORTS_END
+
+INPUT_PORTS_START( orld111c )
+	PORT_INCLUDE ( pgm )
+
+	PORT_MODIFY("Region")
+	PORT_DIPNAME( 0x0003,  0x0002, DEF_STR( Region ) )
+	PORT_CONFSETTING(      0x0000, DEF_STR( Hong_Kong ) )
+	PORT_CONFSETTING(      0x0001, "Hong Kong (duplicate)" ) // again?
+	PORT_CONFSETTING(      0x0002, DEF_STR( China ) )
+	PORT_CONFSETTING(      0x0003, "China (duplicate)" ) // again?
+INPUT_PORTS_END
+
+INPUT_PORTS_START( orld111t )
+	PORT_INCLUDE ( pgm )
+
+	PORT_MODIFY("Region")
+	PORT_DIPNAME( 0x0007,  0x0000, DEF_STR( Region ) )
+	PORT_CONFSETTING(      0x0000, DEF_STR( Taiwan ) )
+	PORT_CONFSETTING(      0x0001, DEF_STR( China ) )
+	PORT_CONFSETTING(      0x0002, "Japan (Alta license)" )
+	PORT_CONFSETTING(      0x0003, DEF_STR( Korea ) )
+	PORT_CONFSETTING(      0x0004, DEF_STR( Hong_Kong ) )
+	PORT_CONFSETTING(      0x0005, DEF_STR( World ) )
+INPUT_PORTS_END
+
+INPUT_PORTS_START( orlegendk )
+	PORT_INCLUDE ( pgm )
+
+	PORT_MODIFY("Region")
+	PORT_DIPNAME( 0x0007,  0x0003, DEF_STR( Region ) )
+	PORT_CONFSETTING(      0x0000, DEF_STR( Taiwan ) )
+	PORT_CONFSETTING(      0x0001, DEF_STR( China ) )
+	PORT_CONFSETTING(      0x0002, "Japan (Alta license)" )
+	PORT_CONFSETTING(      0x0003, DEF_STR( Korea ) )
+	PORT_CONFSETTING(      0x0004, DEF_STR( Hong_Kong ) )
+	PORT_CONFSETTING(      0x0005, DEF_STR( World ) )
 INPUT_PORTS_END
 
 INPUT_PORTS_START( orlegendt )
@@ -231,11 +362,59 @@ INPUT_PORTS_START( orlegendt )
 	PORT_CONFSETTING(      0x0004, DEF_STR( Taiwan ) )
 INPUT_PORTS_END
 
+void pgm_asic3_state::pgm_asic3_reset()
+{
+	// internal roms aren't fully dumped
+	u8 *mem8 = (u8 *)memregion("maincpu")->base();
+
+	if (!strcmp(machine().system().name, "orlegend")) mem8[0x1d1749] = ioport("Region")->read();
+	if (!strcmp(machine().system().name, "orlegende")) mem8[0x1d1759] = ioport("Region")->read();
+	if (!strcmp(machine().system().name, "orlegendc")) mem8[0x1d15cf] = ioport("Region")->read();
+	if (!strcmp(machine().system().name, "orlegend111t")) mem8[0x1d1287] = ioport("Region")->read();
+	if (!strcmp(machine().system().name, "orlegend105k")) mem8[0x1d0e47] = ioport("Region")->read();
+
+	pgm_state::machine_reset();
+}
+
+void pgm_asic3_state::pgm_asic3(machine_config &config)
+{
+	pgmbase(config);
+}
+
+/*********************************************************************************************************/	
+
+/******************************************* 原代码 *********************
+INPUT_PORTS_START( orlegend )
+	PORT_INCLUDE ( pgm )
+
+	PORT_MODIFY("Region")
+	PORT_BIT(     0xfffc, IP_ACTIVE_HIGH, IPT_UNUSED )
+	PORT_DIPNAME( 0x0003, 0x0000, DEF_STR( Region ) )
+	PORT_CONFSETTING(      0x0000, DEF_STR( World ) )
+	PORT_CONFSETTING(      0x0001, "World (duplicate)" ) // again?
+	PORT_CONFSETTING(      0x0002, DEF_STR( Korea ) )
+	PORT_CONFSETTING(      0x0003, DEF_STR( China ) )
+INPUT_PORTS_END
+
+INPUT_PORTS_START( orlegendt )
+	PORT_INCLUDE ( pgm )
+
+	PORT_MODIFY("Region")
+(      0x0000, "Invalid 00?" )
+	PORT_CONFSETTING(      0x0001, "Invalid 01?" )
+		PORT_BIT(     0xfff8, IP_ACTIVE_HIGH, IPT_UNUSED )
+	PORT_DIPNAME( 0x0007, 0x0004, DEF_STR( Region ) )
+	PORT_CONFSETTINGPORT_CONFSETTING(      0x0002, "Invalid 02?" )
+	PORT_CONFSETTING(      0x0003, "Invalid 03?" )
+	PORT_CONFSETTING(      0x0004, DEF_STR( Taiwan ) )
+INPUT_PORTS_END
+
 
 INPUT_PORTS_START( orlegendk )
 	PORT_INCLUDE ( pgm )
 
 	PORT_MODIFY("Region")
+	PORT_BIT(     0xfff8, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_DIPNAME( 0x0007, 0x0002, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, "Invalid 00?" )
 	PORT_CONFSETTING(      0x0001, "Invalid 01?" )
@@ -249,3 +428,4 @@ void pgm_asic3_state::pgm_asic3(machine_config &config)
 {
 	pgmbase(config);
 }
+******************************************************************************/

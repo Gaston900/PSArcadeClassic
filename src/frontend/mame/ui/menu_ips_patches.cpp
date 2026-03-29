@@ -1,6 +1,6 @@
 // license:BSD-3-Clause
 // copyright-holders:Based on the IPS code modification made by eziochiu
-
+// The code that automatically matches IPS descriptions is provided by 醉猫(Drunken Cat)
 #include "emu.h"
 #include "menu_ips_patches.h"
 #include "emuopts.h"
@@ -11,6 +11,10 @@
 
 #include <algorithm>
 #include <cctype>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <map>
 
 namespace ui {
 
@@ -35,8 +39,17 @@ static std::string trim(const std::string &s)
     return s.substr(start, end - start + 1);
 }
 
+static std::string to_lower(const std::string &s)
+{
+    std::string result = s;
+    std::transform(result.begin(), result.end(), result.begin(),
+                   [](unsigned char c) { return std::tolower(c); });
+    return result;
+}
+
 static void scan_directory(const std::string &dir_path, const std::string &relative_path,
-                           std::vector<menu_ips_patches::patch_info> &patches)
+                           std::vector<menu_ips_patches::patch_info> &patches,
+                           const std::string &target_lang)
 {
     file_enumerator fpath(dir_path.c_str());
     const osd::directory::entry *entry;
@@ -60,34 +73,79 @@ static void scan_directory(const std::string &dir_path, const std::string &relat
                 emu_file file(OPEN_FLAG_READ);
                 if (!file.open(fullpath))
                 {
+                    std::map<std::string, std::string> sections;
+                    std::string current_section;
                     bool in_section = false;
-                    char line[1024];
-                    while (file.gets(line, sizeof(line)))
+                    
+//===========================  醉猫 === 兼容UTF-8编码 ===================>>> 
+                    std::string file_content;
+                    char ch;
+                    while (file.read(&ch, 1) == 1)
+                        file_content += ch;
+                    
+                    if (file_content.size() >= 3 &&
+                        (uint8_t)file_content[0] == 0xEF &&
+                        (uint8_t)file_content[1] == 0xBB &&
+                        (uint8_t)file_content[2] == 0xBF)
                     {
-                        std::string raw_line(line);
-                        // 去除 UTF-8 BOM/Remove UTF-8 BOM
-						// 无效/Invalid
-                        if (raw_line.size() >= 3 &&
-                            (uint8_t)raw_line[0] == 0xEF &&
-                            (uint8_t)raw_line[1] == 0xBB &&
-                            (uint8_t)raw_line[2] == 0xBF)
-                        {
-                            raw_line = raw_line.substr(3);
-                        }
-                        std::string sline = trim(raw_line);
+                        file_content = file_content.substr(3);
+                    }
+                    
+                    std::istringstream iss(file_content);
+                    std::string line;
+                    while (std::getline(iss, line))
+                    {
+                        if (!line.empty() && line.back() == '\r')
+                            line.pop_back();
+                        
+                        std::string sline = trim(line);
+//=====================================================================>>>
                         if (sline.empty()) continue;
                         
                         if (!in_section && sline.front() == '[' && sline.find(']') != std::string::npos)
                         {
+                            size_t end = sline.find(']');
+                            std::string section = sline.substr(1, end - 1);
+                            section = trim(section);
+                            current_section = to_lower(section);
                             in_section = true;
                             continue;
                         }
                         else if (in_section)
                         {
-                            info.display_name = sline;
-                            break;
+                            if (sections.find(current_section) == sections.end())
+                            {
+                                sections[current_section] = sline;
+                            }
+                            in_section = false; 
                         }
                     }
+                    
+                    std::string selected_name;
+                    auto it = sections.find(target_lang);
+                    if (it != sections.end())
+                        selected_name = it->second;
+                    else
+                    {
+                        std::string other_lang = (target_lang == "zh_cn") ? "zh_tw" : "zh_cn";
+                        it = sections.find(other_lang);
+                        if (it != sections.end())
+                            selected_name = it->second;
+                        else
+                        {
+                            it = sections.find("en_us");
+                            if (it != sections.end())
+                                selected_name = it->second;
+                            else if (!sections.empty())
+                            {
+                                selected_name = sections.begin()->second;
+                            }
+                        }
+                    }
+                    
+                    if (!selected_name.empty())
+                        info.display_name = selected_name;
+                    
                     file.close();
                 }
                 patches.push_back(std::move(info));
@@ -99,7 +157,7 @@ static void scan_directory(const std::string &dir_path, const std::string &relat
                 continue;
             std::string subdir = util::path_concat(dir_path, name);
             std::string new_relative = relative_path.empty() ? name : util::path_concat(relative_path, name);
-            scan_directory(subdir, new_relative, patches);
+            scan_directory(subdir, new_relative, patches, target_lang);
         }
     }
 }
@@ -107,6 +165,17 @@ static void scan_directory(const std::string &dir_path, const std::string &relat
 void menu_ips_patches::scan_patches()
 {
     m_patches.clear();
+    
+    std::string lang = machine().options().language();
+    std::string lang_lower = to_lower(lang);
+    std::string target_lang;
+    
+    if (lang_lower.find("simplified") != std::string::npos || lang_lower == "zh_cn")
+        target_lang = "zh_cn";
+    else if (lang_lower.find("traditional") != std::string::npos || lang_lower == "zh_tw")
+        target_lang = "zh_tw";
+    else
+        target_lang = "en_us"; 
     
     const char *ipspath = machine().options().value(OPTION_IPSPATH);
     std::string sysname = machine().system().name;
@@ -121,7 +190,7 @@ void menu_ips_patches::scan_patches()
         {
             std::string search_dir = util::path_concat(single_path, sysname);
             std::vector<patch_info> found;
-            scan_directory(search_dir, "", found);
+            scan_directory(search_dir, "", found, target_lang);
             for (auto &info : found)
             {
                 if (std::find_if(m_patches.begin(), m_patches.end(),
@@ -177,8 +246,8 @@ void menu_ips_patches::populate(float &customtop, float &custombottom)
 
 	    item_append(menu_item_type::SEPARATOR);
 
-//    if (m_need_reset)
-        item_append("Modification requires reloading the game.", FLAG_DISABLE, nullptr);
+    if (m_need_reset)
+        item_append("Modification requires reloading the game", FLAG_DISABLE, nullptr);
 		item_append(menu_item_type::SEPARATOR);
 }
 

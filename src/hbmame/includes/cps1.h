@@ -228,6 +228,22 @@ public:
 	std::unique_ptr<u16 []> m_bootleg_sprite_ram{};
 	std::unique_ptr<u16 []> m_bootleg_work_ram{};
 
+// 缘来是你
+/************************/
+	void init_kodh();
+	void init_sf2hfjb();
+	void init_wofsjs();
+/*************************/
+
+// 缘来是你
+/***************************************************/
+	u16 wof_hack_dsw_r(offs_t offset);
+	u16 cps1_in0_r();
+	u16 dinoh_r();	
+	void sf2hfjb_layer_w(offs_t offset, uint16_t data);	
+	void dinoh_sound_command_w(u16 data);
+/***************************************************/
+
 	/* devices */
 	required_device<m68000_base_device> m_maincpu;
 	optional_device<cpu_device> m_audiocpu;
@@ -442,7 +458,6 @@ public:
 	void wofssj_map(address_map &map);
 	void wofsf2_map(address_map &map);
 	void captcommb2_map(address_map &map);
-	void dinoh_sound_command_w(u16 data);
 	void daimakb_layer_w(offs_t offset, u16 data);
 	void daimakb_palctrl_w(u16 data);
 	void init_dinoeh();
@@ -452,7 +467,6 @@ public:
 	void init_sf2rk();
 	void init_sf2h9();
 	void init_sf2h13();
-	void init_wofsjs();
 	void init_wofsjsa();
 	void init_wofsjsb();
 	void init_wofsjb();

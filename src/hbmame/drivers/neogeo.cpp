@@ -982,7 +982,7 @@ GFXDECODE_END
 void neogeo_state::neogeo_base(machine_config &config)
 {
 	/* basic machine hardware */
-	M68000(config, m_maincpu, NEOGEO_MAIN_CPU_CLOCK);
+	M68000(config, m_maincpu, 24000000 / 2);
 	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::neogeo_main_map);
 
 	Z80(config, m_audiocpu, NEOGEO_AUDIO_CPU_CLOCK);
@@ -1138,7 +1138,7 @@ void neogeo_state::neoclock_noslot(machine_config &config)
 {
 	neogeo_noslot(config);
 
-	m_maincpu->set_clock(NEOGEO_MAIN_CPUX2_CLOCK);
+	m_maincpu->set_clock(48000000 / 2);
 }
 
 void neogeo_state::gsc2007_map(address_map &map)

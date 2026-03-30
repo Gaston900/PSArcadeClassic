@@ -1721,7 +1721,7 @@ files {
 createMAMEProjects(_target, _subtarget, "dataeast")
 files {
 	MAME_DIR .. "src/mame/drivers/actfancr.cpp",
-	MAME_DIR .. "src/mame/drivers/astrof.cpp",
+	MAME_DIR .. "src/hbmame/drivers/astrof.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/astrof.h",
 	MAME_DIR .. "src/mame/audio/astrof.cpp",
 	MAME_DIR .. "src/mame/drivers/backfire.cpp",
@@ -2888,7 +2888,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/tmaster.cpp",
 	MAME_DIR .. "src/mame/drivers/vegas.cpp",
 	MAME_DIR .. "src/mame/drivers/wmg.cpp",
-	MAME_DIR .. "src/mame/drivers/williams.cpp",
+	MAME_DIR .. "src/hbmame/drivers/williams.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/williams.h",
 	MAME_DIR .. "src/mame/machine/williams.cpp",
 	MAME_DIR .. "src/mame/audio/williams.cpp",
@@ -3130,7 +3130,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/armedf.cpp",
 --	MAME_DIR .. "src/mame/includes/armedf.h",
 	MAME_DIR .. "src/mame/video/armedf.cpp",
-	MAME_DIR .. "src/mame/drivers/cclimber.cpp",
+	MAME_DIR .. "src/hbmame/drivers/cclimber.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/cclimber.h",
 	MAME_DIR .. "src/mame/machine/cclimber.cpp",
 	MAME_DIR .. "src/mame/audio/cclimber.cpp",
@@ -3503,7 +3503,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/deniam.cpp",
 --	MAME_DIR .. "src/mame/includes/deniam.h",
 	MAME_DIR .. "src/mame/video/deniam.cpp",
-	MAME_DIR .. "src/mame/drivers/dotrikun.cpp",
+	MAME_DIR .. "src/hbmame/drivers/dotrikun.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/drivers/fwheel.cpp",
 --	MAME_DIR .. "src/mame/drivers/gpworld.cpp",
 --	MAME_DIR .. "src/mame/drivers/hikaru.cpp",
@@ -3883,7 +3883,7 @@ files {
 --	MAME_DIR .. "src/mame/video/st0020.h",
 	MAME_DIR .. "src/mame/machine/st0016.cpp",
 --	MAME_DIR .. "src/mame/machine/st0016.h",
-	MAME_DIR .. "src/mame/drivers/simple_st0016.cpp",
+	MAME_DIR .. "src/hbmame/drivers/simple_st0016.cpp", --HBMAME
 	MAME_DIR .. "src/mame/video/seta001.cpp",
 --	MAME_DIR .. "src/mame/video/seta001.h",
 	MAME_DIR .. "src/mame/video/x1_012.cpp",
@@ -4164,7 +4164,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/superqix.cpp",
 --	MAME_DIR .. "src/mame/includes/superqix.h",
 	MAME_DIR .. "src/mame/video/superqix.cpp",
-	MAME_DIR .. "src/mame/drivers/taito_b.cpp",
+	MAME_DIR .. "src/hbmame/drivers/taito_b.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/taito_b.h",
 	MAME_DIR .. "src/mame/video/taito_b.cpp",
 --	MAME_DIR .. "src/mame/includes/taitoipt.h",
@@ -4420,7 +4420,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/thepit.cpp",
 --	MAME_DIR .. "src/mame/includes/thepit.h",
 	MAME_DIR .. "src/mame/video/thepit.cpp",
-	MAME_DIR .. "src/mame/drivers/timelimt.cpp",
+	MAME_DIR .. "src/hbmame/drivers/timelimt.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/timelimt.h",
 	MAME_DIR .. "src/mame/video/timelimt.cpp",
 }

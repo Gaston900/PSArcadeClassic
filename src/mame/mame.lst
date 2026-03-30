@@ -45053,6 +45053,9 @@ tst_gorf                        // HomeBrew
 tst_gor1                        // HomeBrew
 tst_wow3                        // HomeBrew
 
+@source:astrof.cpp
+astrofbl                        // hack
+
 @source:asuka.cpp
 asukahc01                       // hack
 
@@ -45114,6 +45117,12 @@ sailormnhc12                    // hack
 sailormnhc13                    // hack
 sailormnhc14                    // hack
 theroeshc01                     // hack
+
+@source:cclimber.cpp
+ckong01                         // hack
+ckongpt201                      // hack
+ckongpt202                      // hack
+tongypac                        // hack
 
 @source:centiped.cpp
 astropd2                        // hack
@@ -45458,6 +45467,9 @@ dkong2m                         // hack
 
 @source:docastle.cpp
 sdreturn
+
+@source:dotrikun.cpp
+mineswp                         // HomeBrew
 
 @source:exidy.cpp
 targtest                        // HomeBrew
@@ -46584,6 +46596,9 @@ wbmlhc02                        // hack
 @source:system16.cpp
 sys16dem                        // HomeBrew
 
+@source:taito_b.cpp
+bubbleb                         // hack
+
 @source:taito_f2.cpp
 cameltryhc01                    // hack
 deadconxhc01                    // hack
@@ -46619,6 +46634,9 @@ frontlinhc01                    // hack
 
 @source:taotaido.cpp
 taotaidohc01                    // hack
+
+@source:timelimt.cpp
+timelimit                       // hack
 
 @source:tecmo.cpp
 geminihc01                      // hack
@@ -46696,6 +46714,11 @@ drmarioch                       // hack
 vs_urban                        // hack
 drluigi                         // hack
 mightybjgk                      // hack
+
+@source:williams.cpp
+conquest                        // hack
+defender2                       // hack
+robotron201                     // hack
 
 @source:yiear.cpp
 nacho                           // hack

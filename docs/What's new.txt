@@ -1,0 +1,166 @@
+﻿What's new in PSARCADE CLASSIC+
+===============================
+- This project is focused on merging the Arcade64 + HBMame system, a base system of a version 0.245 was used to update until 
+  version 0.260, it will be the only version that will be published, since it is a collectible edition.
+
+  The main thing of all has started a total cleaning in the roms sets eliminating hundreds of useless and unnecessary roms or 
+  .chd, so that we can leave roms sets much lighter for our hard drive.
+===============================================================================================================================
+
+2025-07-23 Optimization Edition
+-------------------------------
+- Synchronizes with PSMSLUG FOREVER 5.6 version.
+- Preliminary support for extending adpcma files (HBMAME)
+
+
+
+2024-06-17 Optimization Edition
+-------------------------------
+- Synchronizes with PSMSLUG FOREVER 5.2 version.
+- Several system hack roms have been updated: Cps1, Cps2, Neogeo, Pgm, Cave, M92, Raiden2, Seta2, Dkong, Midwunit.
+- Part of the default mapping that causes conflict with some systems was eliminated, only this default command was kept:
+   Window mode: With the space bar key.
+   How to configure the system bios: With the number 0 key.
+   Mode to reset the systems: With the number 9 key.
+- Implemented PGM Music system configurations restoring for kovshp roms and many of its hacks. Developed by Robert [HBMAME]
+- Configured Neo-Geo Korean language translations to actually display Korean text. Developed by Robert [HBMAME]
+- Korean language hack roms Cps1, Cps2, Neogeo, simple_st0016, pcktgal were included. From the Ekmame emulator.
+
+
+
+2023-10-25 Optimization Edition
+-------------------------------
+- Base build 0.232 has been moved to version 0.245.
+- MAME version 0.245 - 0.260 has been updated.
+- CPS 1, 2, NEOGEO, PGM, driver supports key combination settings.
+- Neo Geo command fixed.
+- Settings menu simplified.
+- The arcade.flt file has been restored, a filter list game from Arcade version 0.259 has been used.
+- Fixed the problem that some games had a black screen.
+
+
+
+2023-09-11 Optimization Edition
+-------------------------------
+- Now automatically use the game's main cheat file when the cloned game does not have a cheat file.
+- Added the default option to force games to run at 60 FPS.
+- Supports game list lst language files. The list language can be edited freely.
+- Optimized UI.
+- 8 new folders with their respective icons were added by default, each folder has to be a filter of the most popular arcade system.
+ * Neogeo
+ * Cps
+ * Pgm
+ * Namco
+ * Taito
+ * konami
+ * sega
+ * cave
+
+
+
+2023-04-29 2.4 Final Edition
+-----------------------------
+
+- A specific configuration has been developed, now you can play for free, you will no longer have to insert credits 
+  with the "5" button, now press "start" and you will be able to play with infinite credits [NeoGeo].
+- Added a credit counter for 1 player and in turn for 2 players, now individually using bios the USA [NeoGeo].
+- Added all PSMetal Slug Forever emulator updates.
+- Added bootable console mode bios for fighting roms [NeoGeo].
+- Added all Predecrypted and Decrypted roms [NeoGeo].
+- Added a filter for all hack roms.
+- Added movement optimization for all fighting roms “GSC2007”.
+- Fixed graphic problems with driver roms: cps1bl_5205, cps1bl_pic and fcrash.
+- Fixed screen timings, remove non-existent sprite buffer ram [PGM]
+- Fixed portal bug Metal Slug hack "remikare"
+- Removed the following annoying messages: “WRONG LENGTH”, “NO_DUMP”, “WRONG CHECKSUMS”, “BAD_DUMP” And “THE PARENT FILE DOES NOT EXIST”.
+- The graphic filter that we can apply "bgfx" was enabled by default.
+- The controls have been configured, now you will have much easier access to access it:
+  * Command to reset games, with the keyboard button "9".
+  * Command to enter the bios, with the keyboard button "0".
+  * Command to save games, with the keyboard button "K".
+   [Clarification for the command to work, the graphic filters must be deactivated, since otherwise it would not work.]
+  * Command to load games, with the keyboard button "L".
+  * Command to pause the game, with the keyboard button "P".
+  * Command to display the time in real time in the game, with the keyboard button "O".
+  * Command to overclock the game, with the keyboard button "I".
+   [Clarification for the command to work, the graphic filters must be deactivated, since otherwise it would not work.]
+  * Command for the window mode screen, with the keyboard button "Space Bar".
+  * Command to apply a graphic filter to the games, with the keyboard button "Ñ".
+   [Clarification for the command to work, the graphic filters must be deactivated, since otherwise it would not work.]
+  * Command to speed up the game, with the keyboard button "Back Space".
+- Several things have been fixed.
+
+New Games
+---------------------------------
++1000 New Roms Hacks
+
+
+
+2023-01-07 2.3
+---------------
+
+- Added Cps1 System .key Missing Display Settings.
+- Added Missing Roms To Fix Bike Graphics In Chun-Li Stage.
+- Removed the black border on NeoGeo systems, now has full screen.
+- Updated Roms Metal Slug 5 (Stone Tortoise Edition 2022-11-15)
+- Updated Roms Metal Slug 5 (The Longest Battle 2022-12-15)
+- Updated Roms Metal Slug X (Survival Edition 2022-12-31)
+- Updated Roms The Punisher (Framework Version 2020 Multi-Mode Enhancement 2022-08-22)
+
+New Games
+---------------------------------
+- [mslug3hc34]             Metal Slug 3 (Legendary Edition 2022-12-10)
+- [mslug5hc05]             Metal Slug 5 (Ultimate Simplified Edition 2021-01-13)
+- [mslugxhc21]             Metal Slug X (Unlimited Firepower SV Edition 2021-03-20)
+- [kodhc02]                The King of Dragons (X2 Boss Battle Edition 2015-05-24)
+- [kodhc03]                The King of Dragons (Warrior Spike Edition Difficult Edition 2021-06-22)
+- [ffighthc09]             Final Fight (Frame Edition 2020 multi-mode enhancement 2022-01-25)
+
+
+2022-11-10 2.2
+---------------
+- Cps1, Cps2 And Fcrash drivers have been updated, added two new drivers: Cps1bl_pic And cps1bl_5205.
+- Updated Roms Metal Slug X (Survival Edition 2022-10-31)
+- Updated Roms Mortal Kombat II (SP4 2021-08-05)
+- Updated Roms Mortal Kombat 3 (SP4 2021-08-05)
+- Updated Roms Ultimate Mortal Kombat 3 (Ultimate Cup Edition 2022-11-09)
+
+
+
+2022-10-31 2.1
+---------------
+- A huge thank you to user Remikare for his cooperation in sharing the source code that made it possible to fix the Neogeo system command.
+
+
+
+2022-05-13 2.0
+---------------
+- The latest version.
+- A huge thank you is given to user Remikare for his cooperation in sharing the code that allowed 
+  us to get the latest NeoGeo encrypted roms working.
+- The command of all the game systems was optimized, now it is much more practical to be able to play, the command of 
+  the arrow keys "Up, Down, Left, Right" comes by default, this command is used to be able to move and to take actions 
+  For shooting or jumping and throwing grenades, the A, S, D key is used and the rest of the keys are used for certain 
+  kinds of games Z, X, C, Q, W, E.
+- Added custom buttons and auto fire
+- Removed warning screen.
+- Removed Startups, Loading, Decryption screen texts.
+- The Arcade64 “GUI” was modernized with new icons, a custom default configuration has been made.
+- It is already pre-configured, enforce aspect ratio is disabled, full screen mode and tricks are already enabled by default.
+- Two new folder sections called “config” and “support” were added that independently group the configurations + extra content, so that everything is kept in order in a single folder.
+  In the Config folders it is incorporated by:
+    Audio, Bgfx, Cfg, Comments, Crosshair, Diff, Docs, Folders, Glsl, Gui, Hash, Hlsl, Ini, Inp, Language, Nvram, Plugins, Share, Sta and m1fx.exe
+
+  In the support folders it is incorporated by:
+    Artpreview, Artwork, Bosses, Cabinets, Cheat, Cpanel, Ctrlr, Flyers, Gameover, Howto, Icons, Logo, Manuals, Marquees, Pcb, Roms, Samples, Scores, Select, Snap, Titles, Versus, Video, Cheat.7z, Command.dat, Gameinit.dat, Hiscore.dat, History.dat, Mameinfo.dat, Story. dat and Sysinfo.dat
+
+
+
+2022-04-06 1.0
+---------------
+
+- First release
+- Version used as base system 0.215, it has started updating roms from the latest version 0.242 published 
+  [It is still in a state of development]
+- All current PSMame Plus Forever Metal Slug Roms Hacks have been used. 
+- Bios like Playch10, Neogeo, Megaplay and the rest of the system have been updated.

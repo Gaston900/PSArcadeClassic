@@ -7,6 +7,12 @@
   .chd, so that we can leave roms sets much lighter for our hard drive.
 ===============================================================================================================================
 
+2026-03-31 Ver. 2.6
+---------------
+The project has reboot, a complete cleanup.
+
+
+
 2025-07-23 Optimization Edition
 -------------------------------
 - Synchronizes with PSMSLUG FOREVER 5.6 version.

@@ -609,6 +609,18 @@ void rom_load_manager::display_rom_load_results(bool from_list)
 		m_errorstring.append("WARNING: the machine might not run correctly.");
 		osd_printf_warning("%s\n", m_errorstring);
 	}
+
+// 禁用 修改的 (缘来是你)
+/*******************************************************************************************************************************************/
+#if USE_WARNING
+    if (ips::get_warning_count() > 0)
+    {
+        std::string warn_msg = string_format("If %d warnings/errors occur during IPS patch loading, the game may not function properly.",
+                                             ips::get_warning_count());
+        machine().ui().popup_time(5, "%s", warn_msg.c_str());
+    }
+#endif
+/*******************************************************************************************************************************************/
 }
 
 
@@ -748,6 +760,7 @@ int rom_load_manager::rom_fread(emu_file *file, u8 *buffer, int length, const ro
 	else if (!ROMREGION_ISERASE(parent_region)) // otherwise, fill with randomness unless it was already specifically erased
 		fill_random(buffer, length);
 
+	// 应用所有匹配的 IPS 补丁
 	if (rom_name)
   
 		ips::apply_all_patches(rom_name, buffer, bytes_read);
@@ -769,7 +782,7 @@ int rom_load_manager::read_rom_data(emu_file *file, const rom_entry *parent_regi
 
 // 修改的 (缘来是你) 
 /***********************************************/
-	const char *rom_name = ROM_GETNAME(romp); 
+	const char *rom_name = ROM_GETNAME(romp);  //缘来是你 获取 ROM 名称用于 IPS 补丁应用
 /***********************************************/
 
 	int datashift = ROM_GETBITSHIFT(romp);
@@ -802,7 +815,7 @@ int rom_load_manager::read_rom_data(emu_file *file, const rom_entry *parent_regi
 
 // 修改的 (缘来是你) 
 /***************************************************************************/
-		return rom_fread(file, base, numbytes, parent_region, rom_name);
+		return rom_fread(file, base, numbytes, parent_region, rom_name);	//缘来是你 IPS
 /***************************************************************************/
 
 	/* use a temporary buffer for complex loads */

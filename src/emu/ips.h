@@ -5,7 +5,7 @@
 #define MAME_EMU_IPS_H
 
 #pragma once
-
+#define USE_WARNING 0
 #include <string>
 
 class running_machine;
@@ -14,10 +14,16 @@ struct tiny_rom_entry;
 
 namespace ips {
 
+enum class ConflictType {
+    NONE,
+    ADDRESS_ONLY,
+    DATA_CONFLICT
+};
+
 int open_entry(running_machine &machine, const char *patch_name, rom_load_manager *romload, const tiny_rom_entry *romp);
 int close_entry(rom_load_manager *romload);
 void *assign_patch(const char *rom_name);
-void apply_all_patches(const char *rom_name, u8 *buffer, int length);	//缘来是你
+void apply_all_patches(const char *rom_name, u8 *buffer, int length);
 void apply_patch(void *patch, u8 *buffer, int length);
 std::string &get_error_string();
 int get_warning_count();

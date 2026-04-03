@@ -721,7 +721,9 @@ int MameUIMain(HINSTANCE hInstance, LPWSTR lpCmdLine)
 
 // 修改的 代码来源 (缘来是你)
 /********************************/
-		SetProcessDPIAware();
+#ifdef UIGRAPHICIMPROVEMENT
+	SetProcessDPIAware();
+#endif
 /********************************/
 
 	// delete old log file, ignore any error

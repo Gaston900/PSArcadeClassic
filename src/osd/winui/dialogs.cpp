@@ -649,7 +649,8 @@ intptr_t CALLBACK AboutDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lP
 			SendMessage(GetDlgItem(hDlg, IDC_ABOUT), STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hBmp);
 
 // 修改的 代码来源 (缘来是你)
-/*******************************************************************************************/
+/****************************************************************************************************/
+#ifdef UIGRAPHICIMPROVEMENT
 			HDC hdc = GetDC(hDlg);
 			int dpi = GetDeviceCaps(hdc, LOGPIXELSX);
 			ReleaseDC(hDlg, hdc);
@@ -659,8 +660,11 @@ intptr_t CALLBACK AboutDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lP
 			int fontSizeFX = (int)(12 * scale);
 			hFont = CreateFont(-fontSizeBase, 0, 0, 0, 400, 0, 0, 0, 0, 3, 2, 1, 34, TEXT("Verdana"));
 			hFontFX = CreateFont(-fontSizeFX, 0, 0, 0, 400, 0, 0, 0, 0, 3, 2, 1, 34, TEXT("Verdana"));
-/*******************************************************************************************/
+#endif
+/****************************************************************************************************/
 
+			hFont = CreateFont(-11, 0, 0, 0, 400, 0, 0, 0, 0, 3, 2, 1, 34, TEXT("Verdana"));
+			hFontFX = CreateFont(-12, 0, 0, 0, 400, 0, 0, 0, 0, 3, 2, 1, 34, TEXT("Verdana"));
 			SetWindowFont(GetDlgItem(hDlg, IDC_TEXT1), hFont, true);
 			SetWindowFont(GetDlgItem(hDlg, IDC_TEXT2), hFont, true);
 			SetWindowFont(GetDlgItem(hDlg, IDC_TEXT3), hFont, true);

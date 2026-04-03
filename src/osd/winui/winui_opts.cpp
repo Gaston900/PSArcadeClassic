@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Ren� Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 #include "winui.h"
 #include <fstream>      // for *_opts.h (below)
@@ -40,7 +40,7 @@ static windows_options core_opts;			// MAME.INI default options
 static windows_options save_opts;			// MAME.INI current options
 static ui_options ui_opts;					// UI.INI options
 static plugin_options plugin_opts;			// PLUGIN.INI options
-static winui_game_options game_opts;    // game stats
+static winui_game_options game_opts;        // game stats
 #define GAMEINFO_INI_FILENAME                    "GAMESTAT.ini"
 
 // UI options in INTERFACE.INI
@@ -50,7 +50,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ nullptr,								nullptr,    core_options::option_type::HEADER, "APPLICATION VERSION" },
 
 	{ nullptr,								nullptr,    core_options::option_type::HEADER, "DISPLAY STATE OPTIONS" },
-	{ MUIOPTION_DEFAULT_GAME,				"2020bb",   core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_DEFAULT_GAME,				"2020bb",   core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_DEFAULT_FOLDER_ID,			"0",        core_options::option_type::INTEGER, nullptr },
 	{ MUIOPTION_SHOW_IMAGE_SECTION,			"1",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_CURRENT_TAB,				"0",        core_options::option_type::STRING, nullptr },
@@ -59,8 +59,8 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_HIDE_FOLDERS,				nullptr,    core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_SHOW_FOLDER_SECTION,		"1",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_SHOW_TABS,					"1",        core_options::option_type::BOOLEAN, nullptr },
-	{ MUIOPTION_HIDE_TABS,					"scores, howto, select, versus, boss, end, gameover, logo, artpreview, flyer, cabinet, marquee, cpanel, pcb, history",         core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_HISTORY_TAB,				"18",       core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_HIDE_TABS,					"scores, howto, select, versus, boss, end, gameover, logo, artpreview, flyer, cabinet, marquee, cpanel, pcb, history",         core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_HISTORY_TAB,				"18",       core_options::option_type::INTEGER, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_SORT_COLUMN,				"0",        core_options::option_type::INTEGER, nullptr },
 	{ MUIOPTION_SORT_REVERSED,				"0",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_WINDOW_X,					"0",        core_options::option_type::INTEGER, nullptr },
@@ -68,22 +68,22 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_WINDOW_WIDTH,				"1150",     core_options::option_type::INTEGER, nullptr },
 	{ MUIOPTION_WINDOW_HEIGHT,				"639",      core_options::option_type::INTEGER, nullptr },
 	{ MUIOPTION_WINDOW_STATE,				"1",        core_options::option_type::INTEGER, nullptr },
-	{ MUIOPTION_LIST_COLOR,					"255,255,255",    core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_HISTORY_COLOR,				"255,255,255",    core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_TREE_COLOR,					"255,255,255",    core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_TREEBG_COLOR,				"18,58,165", core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_LISTBG_COLOR,				"0,0,0", core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_HISTORYBG_COLOR,			"0,0,0", core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_LIST_COLOR,					"255,255,255",    core_options::option_type::INTEGER, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_HISTORY_COLOR,				"255,255,255",    core_options::option_type::INTEGER, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_TREE_COLOR,					"255,255,255",    core_options::option_type::INTEGER, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_TREEBG_COLOR,				"18,58,165", core_options::option_type::INTEGER, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_LISTBG_COLOR,				"0,0,0", core_options::option_type::INTEGER, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_HISTORYBG_COLOR,			"0,0,0", core_options::option_type::INTEGER, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_CUSTOM_COLOR,				"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0", core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_LIST_MODE,					"154",      core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_SPLITTERS,					"150,778",  core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_LIST_MODE,					"154",      core_options::option_type::INTEGER, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_SPLITTERS,					"185,782",  core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_GUI_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_LIST_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_HISTORY_FONT,				"-11,0,0,0,400,0,0,0,0,3,2,1,34,Verdana", core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_TREE_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_COLUMN_WIDTHS,				"481,77,108,140,39,160,60,70", core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_COLUMN_ORDER,				"0,4,1,2,5,3,6,7", core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,0,0", core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_LIST_FONT,					"-15,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_HISTORY_FONT,				"-15,0,0,0,400,0,0,0,0,3,2,1,34,Verdana", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_TREE_FONT,					"-15,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_COLUMN_WIDTHS,				"707,107,159,140,48,194,60,70", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_COLUMN_ORDER,				"0,4,1,2,5,3,6,7", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,0,0", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 
 	{ nullptr,								nullptr,     core_options::option_type::HEADER, "INTERFACE OPTIONS" },
 	{ MUIOPTION_NOROMS_GAMES,				"1",        core_options::option_type::BOOLEAN, nullptr },
@@ -92,36 +92,36 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_JOYSTICK_IN_INTERFACE,		"1",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_INHERIT_FILTER,				"0",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_USE_BROKEN_ICON,			"0",        core_options::option_type::BOOLEAN, nullptr },
-	{ MUIOPTION_ENABLE_INDENT,				"1",        core_options::option_type::BOOLEAN, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_ENABLE_INDENT,				"1",        core_options::option_type::BOOLEAN, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_ENABLE_FASTAUDIT,			"0",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_ENABLE_SEVENZIP,			"0",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_STRETCH_SCREENSHOT_LARGER,	"1",        core_options::option_type::BOOLEAN, nullptr },
 	{ MUIOPTION_CYCLE_SCREENSHOT,			"0",        core_options::option_type::INTEGER, nullptr },
-	{ MUIOPTION_SCREENSHOT_BORDER_SIZE,		"2",        core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_SCREENSHOT_BORDER_COLOR,	"18,58,165",core_options::option_type::INTEGER, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_SCREENSHOT_BORDER_SIZE,		"2",        core_options::option_type::INTEGER, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_SCREENSHOT_BORDER_COLOR,	"18,58,165",core_options::option_type::INTEGER, nullptr }, // 修改的 (加斯顿90)
 
 	{ nullptr,								nullptr,              core_options::option_type::HEADER, "SEARCH PATH OPTIONS" },
-	{ MUIOPTION_ARTWORK_DIRECTORY,			"support/artpreview", core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_ARTWORK_DIRECTORY,			"support/artpreview", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_AUDIO_DIRECTORY,			"audio",              core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_BOSSES_DIRECTORY,			"support/bosses",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_CABINET_DIRECTORY,			"support/cabinets",   core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_CPANEL_DIRECTORY,			"support/cpanel",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_DATS_DIRECTORY,				"support/dats",       core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_ENDS_DIRECTORY,				"support/ends",       core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_FLYER_DIRECTORY,			"support/flyers",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_FOLDER_DIRECTORY,			"config/folders",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_GAMEOVER_DIRECTORY,			"support/gameover",   core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_GUI_DIRECTORY,				"config/gui",         core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_HOWTO_DIRECTORY,			"support/howto",      core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_ICONS_DIRECTORY,			"support/icons",      core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_LOGO_DIRECTORY,				"support/logo",       core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_MANUALS_DIRECTORY,          "support/manuals",    core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_MARQUEE_DIRECTORY,			"support/marquees",   core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_PCB_DIRECTORY,				"support/pcb",        core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_SCORES_DIRECTORY,			"support/scores",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_SELECT_DIRECTORY,			"support/select",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_TITLE_DIRECTORY,			"support/titles",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
-	{ MUIOPTION_VERSUS_DIRECTORY,			"support/versus",     core_options::option_type::STRING, nullptr }, // Modified (Gaston90)
+	{ MUIOPTION_BOSSES_DIRECTORY,			"support/bosses",     core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_CABINET_DIRECTORY,			"support/cabinets",   core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_CPANEL_DIRECTORY,			"support/cpanel",     core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_DATS_DIRECTORY,				"support/dats",       core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_ENDS_DIRECTORY,				"support/ends",       core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_FLYER_DIRECTORY,			"support/flyers",     core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_FOLDER_DIRECTORY,			"config/folders",     core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_GAMEOVER_DIRECTORY,			"support/gameover",   core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_GUI_DIRECTORY,				"config/gui",         core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_HOWTO_DIRECTORY,			"support/howto",      core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_ICONS_DIRECTORY,			"support/icons",      core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_LOGO_DIRECTORY,				"support/logo",       core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_MANUALS_DIRECTORY,          "support/manuals",    core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_MARQUEE_DIRECTORY,			"support/marquees",   core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_PCB_DIRECTORY,				"support/pcb",        core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_SCORES_DIRECTORY,			"support/scores",     core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_SELECT_DIRECTORY,			"support/select",     core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_TITLE_DIRECTORY,			"support/titles",     core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_VERSUS_DIRECTORY,			"support/versus",     core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 
 	{ nullptr,								nullptr,    core_options::option_type::HEADER, "NAVIGATION JOYSTICK CODES" },
 	{ MUIOPTION_UI_JOY_UP,					"1,1,1,1",  core_options::option_type::STRING, nullptr },
@@ -136,8 +136,9 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_UI_JOY_SS_CHANGE,			"2,0,3,0",  core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_UI_JOY_HISTORY_UP,			"2,0,4,0",  core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_UI_JOY_HISTORY_DOWN,		"2,0,1,0",  core_options::option_type::STRING, nullptr },
-    { MUIOPTION_IPS_LANG,						"0",	core_options::option_type::INTEGER, nullptr }, // Modified Code Source (Eziochiu)
-// Modified Code Source (EKMAME)
+    { MUIOPTION_IPS_LANG,						"0",	core_options::option_type::INTEGER, nullptr }, // 修改的 (Eziochiu)
+
+// 修改的 (EKMAME)
 /*******************************************************************************************************************/
 	{ nullptr,								nullptr,	core_options::option_type::HEADER, "Korean GAME List" },
 	{ MUIOPTION_USEKOREAN_GAMELIST,			"1",	    core_options::option_type::BOOLEAN, nullptr },
@@ -206,7 +207,7 @@ windows_options & MameUIGlobal(void)
 	return core_opts;
 }
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /************************************************************************************/
 static const options_entry ips_option_entries[] =
 {
@@ -217,14 +218,14 @@ static const options_entry ips_option_entries[] =
 
 void OptionsInit(void)
 {
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /************************************************************************************/
 	// manually add OPTION_IPS since windows_options doesn't inherit from emu_options
 	core_opts.add_entries(ips_option_entries);
 /************************************************************************************/
 
 	// setup our INI folder
-	SetIniDir("config/ini");
+	SetIniDir("config/ini"); // 修改的 (加斯顿90)
 	// now load the options and interface settings
 	LoadOptionsAndInterface();
 	// setup directory for datafiles in the Internal UI
@@ -472,7 +473,7 @@ bool GetShowFolderList(void)
 	return winui_opts.bool_value(MUIOPTION_SHOW_FOLDER_SECTION);
 }
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /*************************************************************************************/
 void SetIPSLang(int val)
 {
@@ -485,7 +486,7 @@ int GetIPSLang(void)
 }
 /*************************************************************************************/
 
-// Modified Code Source (EKMAME)
+// 修改的 (EKMAME)
 /*************************************************************************************/
 void SetUsekoreanList(bool val)
 {
@@ -1120,7 +1121,7 @@ void SetLanguageDir(const char* path)
 	core_opts.set_value(OPTION_LANGUAGEPATH, path, OPTION_PRIORITY_CMDLINE);
 }
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /************************************************************************/
 const char* GetIpsDir(void)
 {
@@ -1977,7 +1978,7 @@ void SetDirectories(windows_options &opts)
 	opts.set_value(OSDOPTION_BGFX_PATH, GetBGFXDir(), OPTION_PRIORITY_CMDLINE);
 	opts.set_value(OPTION_PLUGINSPATH, GetPluginsDir(), OPTION_PRIORITY_CMDLINE);
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /**************************************************************************/
 	opts.set_value(OPTION_IPSPATH, GetIpsDir(), OPTION_PRIORITY_CMDLINE);
 /**************************************************************************/

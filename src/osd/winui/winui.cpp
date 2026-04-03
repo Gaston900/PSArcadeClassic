@@ -718,6 +718,12 @@ static void RunMAME(int nGameIndex, const play_options *playopts)
 
 int MameUIMain(HINSTANCE hInstance, LPWSTR lpCmdLine)
 {
+
+// 修改的 代码来源 (缘来是你)
+/********************************/
+		SetProcessDPIAware();
+/********************************/
+
 	// delete old log file, ignore any error
 	unlink("winui.log");
 	unlink("verbose.log");
@@ -725,7 +731,9 @@ int MameUIMain(HINSTANCE hInstance, LPWSTR lpCmdLine)
 	if (__argc != 1)
 	{
 		extern int main_(int argc, char *argv[]);
-		exit(main_(__argc, __argv));
+		int result = main_(__argc, __argv);
+		//printf("exit result = %d\n",result);   // this gets into listxml too
+		exit(result);
 	}
 
 	// No printf's allowed before here, otherwise they get into queries from mame, such as listxml.

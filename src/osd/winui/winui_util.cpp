@@ -1,9 +1,9 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Ren� Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 #include "winui.h"
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /************************/
 #include <map>
 #include <algorithm>
@@ -686,13 +686,13 @@ void CenterWindow(HWND hWnd)
 	SetWindowPos(hWnd, HWND_TOP, xLeft, yTop, -1, -1, SWP_NOSIZE);
 }
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /**************************************************************************************************************/
 struct PatchInfo
 {
-	std::string filename;    
+	std::string filename;
 	std::string title;
-	std::string desc;        
+	std::string desc;
 	std::string category;    
 	std::string image_path;  
 };
@@ -1074,7 +1074,7 @@ bool IsWindowsSevenOrHigher(void)
 	return false;
 }
 
-// Modified Code Source (Eziochiu)
+// 修改的 (Eziochiu)
 /**************************************************************************************************************/
 void IPSLoadRelations(int nGame, int nParentIndex)
 {

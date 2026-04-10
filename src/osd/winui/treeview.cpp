@@ -338,31 +338,40 @@ bool GameFiltered(int nGame, DWORD dwMask)
 			if(lpParent)
 			{
 				/* Check the Parent Filters and inherit them on child,
-                * The inherited filters don't display on the custom Filter Dialog for the Child folder
-                * No need to promote all games to parent folder, works as is */
+				* The inherited filters don't display on the custom Filter Dialog for the Child folder
+				* No need to promote all games to parent folder, works as is */
 				dwMask |= lpParent->m_dwFlags;
 			}
 		}
 	}
 
-	if (strlen(GetSearchText()) && _stricmp(GetSearchText(), SEARCH_PROMPT))
-	{
-// 修改的 代码来源 (加斯顿90)
-/*******************************************************************************/
-		if (MyStrStrI(GetDescriptionByIndex(nGame, GetUsekoreanList()), GetSearchText()) == NULL &&
-			MyStrStrI(GetGameNameByIndex(nGame,GetUsekoreanList()), GetSearchText()) == NULL )
-			return true;
-/*******************************************************************************/
-	}
-
-// 修改的 代码来源 (EKMAME)
-/*******************************************************************************/	
-	if (MyStrStrI(GetDescriptionByIndex(nGame, GetUsekoreanList()), GetFilterText()) == NULL &&
-		MyStrStrI(GetGameNameByIndex(nGame,GetUsekoreanList()), GetFilterText()) == NULL &&
-		MyStrStrI(GetDriverFileName(nGame), GetFilterText()) == NULL &&
-		MyStrStrI(GetGameManufactureByIndex(nGame,GetUsekoreanList()), GetFilterText()) == NULL)
-		return true;
-/*******************************************************************************/
+// 修改的 代码来源 (缘来是你)
+// =========================  搜索 =====================================================================>>>
+    if (strlen(GetSearchText()) && _stricmp(GetSearchText(), SEARCH_PROMPT))
+    {
+        const char *search_text = GetSearchText();
+        
+        if (MyStrStrI(GetDescriptionByIndex(nGame, GetUsekoreanList()), search_text) != NULL)
+        {
+        }
+        else if (MyStrStrI(GetGameNameByIndex(nGame, GetUsekoreanList()), search_text) != NULL)
+        {
+        }
+        else if (MyStrStrI(GetGameManufactureByIndex(nGame, GetUsekoreanList()), search_text) != NULL)
+        {
+        }
+        else if (MyStrStrI(GetDriverGameYear(nGame), search_text) != NULL)
+        {
+        }
+        else if (MyStrStrI(GetDriverFileName(nGame), search_text) != NULL)
+        {
+        }
+        else
+        {
+            return true;
+        }
+    }
+// ====================================================================================================>>>
 
 	// Are there filters set on this folder?
 	if ((dwMask & F_MASK) == 0)

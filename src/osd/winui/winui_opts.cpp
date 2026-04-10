@@ -81,20 +81,9 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_LIST_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_HISTORY_FONT,				"-11,0,0,0,400,0,0,0,0,3,2,1,34,Verdana", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_TREE_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
-	{ MUIOPTION_COLUMN_WIDTHS,				"481,77,108,140,39,160,60,70", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_COLUMN_WIDTHS,				"665,86,123,178,48,154,58,70", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_COLUMN_ORDER,				"0,4,1,2,5,3,6,7", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
-	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,0,0", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
-
-#ifdef UIGRAPHICIMPROVEMENT
-	{ MUIOPTION_SPLITTERS,					"185,782",  core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
-	{ MUIOPTION_GUI_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr },
-	{ MUIOPTION_LIST_FONT,					"-15,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
-	{ MUIOPTION_HISTORY_FONT,				"-15,0,0,0,400,0,0,0,0,3,2,1,34,Verdana", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
-	{ MUIOPTION_TREE_FONT,					"-15,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
-	{ MUIOPTION_COLUMN_WIDTHS,				"707,107,159,140,48,194,60,70", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
-	{ MUIOPTION_COLUMN_ORDER,				"0,4,1,2,5,3,6,7", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
-	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,0,0", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
-#endif
+	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,1,1", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 
 	{ nullptr,								nullptr,     core_options::option_type::HEADER, "INTERFACE OPTIONS" },
 	{ MUIOPTION_NOROMS_GAMES,				"1",        core_options::option_type::BOOLEAN, nullptr },

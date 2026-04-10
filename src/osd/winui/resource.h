@@ -642,4 +642,19 @@
 #define ID_ENABLE_INDENT                40163
 #define ID_VIEW_GROUPED					40164
 /*******************************************/
+
+// 修改的 代码来源 (缘来是你)
+/*******************************************/
+#define ID_CONTEXT_DELETE_ROM           40165   // 删除 ROMs	
+#define ID_CONTEXT_DELETE_SELECTED_ROMS 40166   // 批量删除 ROMs
+#define ID_CONTEXT_BATCH_DELETE_MODE    40167   // 批量删除模式
+#define ID_CONTEXT_SELECT_ALL    		40168	//全选
+#define ID_CONTEXT_SELECT_NONE   		40169	//反选
+// 导出功能菜单
+#define ID_TOOLS_EXPORT_ALL             40170
+#define ID_TOOLS_EXPORT_COMPLETE        40171
+#define ID_TOOLS_EXPORT_MISSING         40172
+#define ID_TOOLS_EXPORT_CURRENT         40173
+/*******************************************/
 #define IDC_STATIC                      1
+

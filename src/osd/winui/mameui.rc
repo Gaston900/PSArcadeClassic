@@ -120,6 +120,16 @@ BEGIN
     END
     POPUP "&Help"
     BEGIN
+
+// 修改的 代码来源 (缘来是你)
+/*********************************************************************************************/
+	    MENUITEM "Export all sets",                ID_TOOLS_EXPORT_ALL
+		MENUITEM "Export complete set",                ID_TOOLS_EXPORT_COMPLETE
+		MENUITEM "Export missing sets",                ID_TOOLS_EXPORT_MISSING
+		MENUITEM SEPARATOR
+		MENUITEM "Export current list",                ID_TOOLS_EXPORT_CURRENT
+		MENUITEM SEPARATOR
+/*********************************************************************************************/
 //        MENUITEM "Online Manual\tF1",                      ID_HELP_CONTENTS
         MENUITEM "Support Forum",                       ID_HELP_TROUBLE
 //        MENUITEM SEPARATOR
@@ -145,7 +155,18 @@ BEGIN
         MENUITEM SEPARATOR
         MENUITEM "Add to custom folder\tAlt+W",           ID_CONTEXT_ADD_CUSTOM
         MENUITEM "Remove from this folder\tAlt+X",        ID_CONTEXT_REMOVE_CUSTOM
+
+// 修改的 代码来源 (缘来是你)
+/*********************************************************************************************/
+	    MENUITEM SEPARATOR
+        MENUITEM "Delete ROM file\tDel",                         ID_CONTEXT_DELETE_ROM
+	    MENUITEM "Batch delete mode\tCtrl+Alt+D",                   ID_CONTEXT_BATCH_DELETE_MODE
+	    MENUITEM "Delete the selected ROM file\tDel",                   ID_CONTEXT_DELETE_SELECTED_ROMS
         MENUITEM SEPARATOR
+        MENUITEM "Select All\tCtrl+A",                     ID_CONTEXT_SELECT_ALL
+        MENUITEM "Cancel all\tCtrl+Z",                 ID_CONTEXT_SELECT_NONE
+        MENUITEM SEPARATOR
+/*********************************************************************************************/
         MENUITEM "Information\tAlt+I",                    ID_GAME_INFO
         MENUITEM "Audit\tAlt+A",                          ID_GAME_AUDIT
         MENUITEM SEPARATOR
@@ -332,10 +353,7 @@ IDI_FOLDER_COLLECTION	ICON					"res\\fold_neo.ico"
 IDD_STARTUP DIALOGEX 0, 0, 263, 86
 STYLE WS_POPUP | WS_VISIBLE | WS_BORDER | DS_CENTER | DS_SETFOREGROUND | DS_SETFONT
 EXSTYLE WS_EX_TOOLWINDOW
-FONT 10, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     CONTROL         "",IDC_SPLASH,WC_STATIC,SS_BITMAP,0,0,56,18
     CTEXT           "",IDC_STATIC,0,69,262,12
@@ -347,10 +365,7 @@ STYLE WS_POPUP | WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN | WS_CLIPSIBLINGS | DS_NO
 EXSTYLE WS_EX_CONTROLPARENT
 CAPTION "MAMEUI - overwritten at runtime"
 CLASS "MainClass"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     CONTROL         "",IDC_DIVIDER,WC_STATIC,SS_ETCHEDHORZ,0,0,364,1
     CONTROL         "",IDC_TREE,WC_TREEVIEW,TVS_HASBUTTONS | TVS_TRACKSELECT | TVS_LINESATROOT | TVS_EDITLABELS | TVS_FULLROWSELECT | TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,5,28,48,172
@@ -365,7 +380,6 @@ END
 
 // 修改的 代码来源 (加斯顿90)
 /*****************************************************************************************************************************/
-#ifdef UIGRAPHICIMPROVEMENT
 IDD_ABOUT DIALOGEX 0, 0, 278, 208
 STYLE WS_POPUP | WS_VISIBLE | WS_BORDER | DS_SETFONT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
@@ -383,34 +397,12 @@ BEGIN
     CTEXT           "help: Robert, GXB, Remikare, Dirstac, GSC2007 and Eziochiu.",IDC_SICKFC,3,174,280,10 
     DEFPUSHBUTTON   "OK",IDOK,126,188,30,14
 END
-#endif
 /*****************************************************************************************************************************/
-
-IDD_ABOUT DIALOGEX 0, 0, 320, 228
-STYLE WS_POPUP | WS_VISIBLE | WS_BORDER | DS_SETFONT
-FONT 8, "Tahoma"
-BEGIN
-    RTEXT            "",IDC_BUILD,6,4,308,10
-    LTEXT            "",IDC_BUILDVER,6,4,120,10
-    CONTROL         "",IDC_ABOUT,WC_STATIC,SS_BITMAP,6,16,56,17
-    CTEXT           "Gaston90 Copyright (C) 2016 - 2026 PSARCADE CLASSIC+",IDC_TEXT1,6,106,310,10
-    CTEXT           "MAMEUI version by Christopher Kirmse and The MAMEUI Team",IDC_TEXT2,6,118,310,10
-    CTEXT           "Additional MAMEUI code by Mike Haaland, Andrew Kirmse,",IDC_TEXT3,6,130,310,10
-    CTEXT           "Jeff Miller, John Hardy IV and Michael Soderstrom",IDC_TEXT4,6,142,310,10
-    CTEXT           "Additional MAMEUIFX/EKMAME code and features by Mamesick and Kaze",IDC_SICKFX,6,154,310,10
-    CTEXT           "Thank you for your valuable contribution; it was fundamental in helping",IDC_SICKFA,6,166,310,10
-    CTEXT           "us achieve a limitless project. We could never have finished without your",IDC_SICKFB,6,178,310,10 
-    CTEXT           "help: Robert, Dirstac, GSC2007 and Eziochiu.",IDC_SICKFC,6,190,310,10 
-    DEFPUSHBUTTON   "OK",IDOK,136,208,30,14
-END
 
 IDD_AUDIT DIALOGEX 0, 0, 284, 388
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFONT
 CAPTION "File audit"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     GROUPBOX        "Results",IDC_STATIC,6,4,272,80
     CONTROL         "",IDC_ROMS_PROGRESS,PROGRESS_CLASS,0,12,14,260,10
@@ -430,10 +422,7 @@ END
 IDD_DIRECTORIES DIALOGEX 0, 0, 230, 307
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFONT
 CAPTION "Directories"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     LTEXT           "Show directories for:",IDC_STATIC,6,4,68,10
     COMBOBOX        IDC_DIR_COMBO,6,16,160,82,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
@@ -449,10 +438,7 @@ END
 IDD_GAME_INFO DIALOGEX 0, 0, 220, 294
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFONT
 CAPTION "Game informations"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     GROUPBOX        "Information",IDC_STATIC,6,4,208,264
     LTEXT           "Name:",IDC_STATIC,12,16,50,30
@@ -479,10 +465,7 @@ END
 IDD_GAME_AUDIT DIALOGEX 0, 0, 520, 278
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFONT
 CAPTION "Game audit"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     ICON            IDI_MAMEUI_ICON,IDC_AUDIT_ICON,488,16,32,32
     GROUPBOX        "Audit results",IDC_STATIC,6,4,508,40
@@ -502,10 +485,7 @@ END
 IDD_PROP_DISPLAY DIALOGEX 0, 0, 400, 310
 STYLE WS_CHILD | WS_DISABLED | WS_CAPTION | DS_SETFONT
 CAPTION "Display"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     ICON            IDI_DISPLAY,IDC_STATIC,10,12,32,32
     LTEXT           WC_STATIC,IDC_PROP_TITLE,42,10,168,30,SS_NOPREFIX
@@ -623,10 +603,7 @@ END
 IDD_PROP_OPENGL DIALOGEX 0, 0, 400, 310
 STYLE WS_CHILD | WS_DISABLED | WS_CAPTION | DS_SETFONT
 CAPTION "OpenGL/BGFX"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     ICON            IDI_OPENGL,IDC_STATIC,10,12,32,32
     LTEXT           WC_STATIC,IDC_PROP_TITLE,42,10,168,30,SS_NOPREFIX
@@ -703,10 +680,7 @@ END
 IDD_PROP_VECTOR DIALOGEX 0, 0, 220, 280
 STYLE WS_CHILD | WS_DISABLED | WS_CAPTION | DS_SETFONT
 CAPTION "Sound/Vector"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     ICON            IDI_VECTOR,IDC_STATIC,10,12,32,32
     LTEXT           WC_STATIC,IDC_PROP_TITLE,42,10,168,30,SS_NOPREFIX
@@ -746,10 +720,7 @@ END
 IDD_PROP_INPUT DIALOGEX 0, 0, 220, 280
 STYLE WS_CHILD | WS_DISABLED | WS_CAPTION | DS_SETFONT
 CAPTION "Controllers"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     ICON            IDI_KEYBOARD,IDC_STATIC,10,12,32,32
     LTEXT           WC_STATIC,IDC_PROP_TITLE,42,10,168,30,SS_NOPREFIX
@@ -798,10 +769,7 @@ END
 IDD_PROP_MISC DIALOGEX 0, 0, 220, 280
 STYLE WS_CHILD | WS_DISABLED | WS_CAPTION | DS_SETFONT
 CAPTION "Miscellaneous"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     ICON            IDI_MISC,IDC_STATIC,10,12,32,32
     LTEXT           WC_STATIC,IDC_PROP_TITLE,42,10,168,30,SS_NOPREFIX
@@ -878,10 +846,7 @@ END
 IDD_FILTERS DIALOGEX 0, 0, 190, 192
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFONT
 CAPTION "Game filters"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     GROUPBOX        "Game filters",IDC_STATIC,6,4,178,84
     CONTROL         "Vector graphics",IDC_FILTER_VECTOR,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,12,16,80,10,0
@@ -905,10 +870,7 @@ END
 IDD_RESET DIALOGEX 0, 0, 190, 136
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFONT
 CAPTION "Reset settings"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     GROUPBOX        "Categories",IDC_STATIC,6,4,178,82
     CONTROL         "User Interface (fonts, colors, sizes)",IDC_RESET_UI,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,12,16,146,10,0
@@ -925,10 +887,7 @@ END
 IDD_INTERFACE_OPTIONS DIALOGEX 0, 0, 378, 194
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFONT
 CAPTION "Interface settings"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     GROUPBOX        "Main window settings",IDC_STATIC,6,4,180,124
     CONTROL         "Minimize window to system tray icon",IDC_DISABLE_TRAY_ICON,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,12,16,168,10
@@ -959,10 +918,7 @@ END
 IDD_CUSTOM_FILE DIALOGEX 0, 0, 190, 136
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFONT
 CAPTION "Add game to custom folder"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     LTEXT           "",IDC_CUSTOMFILE_GAME,6,4,178,30,SS_NOPREFIX
     CONTROL         "",IDC_CUSTOM_TREE,WC_TREEVIEW,TVS_HASBUTTONS | TVS_TRACKSELECT | TVS_LINESATROOT | TVS_FULLROWSELECT | TVS_DISABLEDRAGDROP | TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,6,34,178,72
@@ -973,10 +929,7 @@ END
 IDD_COLUMNS DIALOGEX 0, 0, 302, 146
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFONT
 CAPTION "Customize fields"
-FONT 8, "Tahoma"
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     LTEXT           "Available fields:",IDC_STATIC,6,4,80,10,SS_CENTERIMAGE
     CONTROL         "",IDC_LISTAVAILABLECOLUMNS,WC_LISTVIEW,LVS_REPORT | LVS_SINGLESEL | LVS_NOCOLUMNHEADER | LVS_NOSORTHEADER | LVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,6,16,90,100
@@ -995,10 +948,7 @@ END
 IDD_PROP_IPS DIALOGEX 0, 0, 400, 280
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 CAPTION "IPS Manager"
-FONT 9, "Tahoma", 0, 0, 0x0
-#ifdef UIGRAPHICIMPROVEMENT
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
-#endif
 BEGIN
     LTEXT           "Select IPS patch:", IDC_STATIC, 10, 10, 60, 8
     CONTROL         "", IDC_IPS_TREE, "SysTreeView32", TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_CHECKBOXES | WS_BORDER | WS_TABSTOP, 10, 22, 200, 230
@@ -1094,6 +1044,12 @@ BEGIN
     VK_NEXT,        ID_UI_HISTORY_DOWN,         VIRTKEY, CONTROL, NOINVERT
     VK_UP,            ID_SORT_ASCENDING,             VIRTKEY, ALT, NOINVERT
     VK_PRIOR,       ID_UI_HISTORY_UP,           VIRTKEY, CONTROL, NOINVERT
+
+// 修改的 代码来源 (缘来是你)
+/***************************************************************************************/
+	"D",            ID_CONTEXT_BATCH_DELETE_MODE,    VIRTKEY, CONTROL, ALT, NOINVERT
+/***************************************************************************************/
+
 // 修改的 代码来源 (EKMAME)
 /****************************************************************************/
     "K",			ID_KOREAN_GAMELIST,	        VIRTKEY, ALT, NOINVERT

@@ -1,5 +1,5 @@
 // license:BSD-3-Clause
-// copyright-holders:Chris Kirmse, Mike Haaland, Ren� Single, Mamesick
+// For licensing and usage information, read docs/release/winui_license.txt
 
 #include "winui.h"
 
@@ -41,6 +41,59 @@ static HFONT hFont = NULL;
     External functions
  ***************************************************************************/
 
+// 修改的 代码来源 (缘来是你)
+//===========================================================>>>
+static bool FastRomSetFound(int index)
+{
+    char filename[MAX_PATH];
+    const char *gamename = GetDriverGameName(index);
+    bool found = false;
+
+    if (!DriverUsesRoms(index))
+        return false;
+
+    for (int i = 0; i < num_path; i++)
+    {
+        FILE *f = NULL;
+        snprintf(filename, std::size(filename), "%s\\%s.zip", rom_path[i], gamename);
+        f = fopen(filename, "r");
+
+        if (f == NULL && GetEnableSevenZip())
+        {
+            snprintf(filename, std::size(filename), "%s\\%s.7z", rom_path[i], gamename);
+            f = fopen(filename, "r");
+        }
+
+#if 0	// 未实现
+        // 如果是克隆游戏，检查父级 ROM
+        if (f == NULL && DriverIsClone(index))
+        {
+            int parent = GetParentIndex(&driver_list::driver(index));
+            if (!DriverIsBios(parent))
+            {
+                const char *parentname = GetDriverGameName(parent);
+                snprintf(filename, std::size(filename), "%s\\%s.zip", rom_path[i], parentname);
+                f = fopen(filename, "r");
+                if (f == NULL && GetEnableSevenZip())
+                {
+                    snprintf(filename, std::size(filename), "%s\\%s.7z", rom_path[i], parentname);
+                    f = fopen(filename, "r");
+                }
+            }
+        }
+#endif
+        if (f != NULL)
+        {
+            fclose(f);
+            found = true;
+            break;
+        }
+    }
+
+    return found;
+}
+//===================================================================>>>
+
 void AuditDialog(void)
 {
 	for (int i = 0; i < driver_list::total(); i++)
@@ -72,6 +125,23 @@ bool IsAuditResultNo(int audit_result)
 
 int MameUIVerifyRomSet(int game, bool refresh)
 {
+// 修改的 代码来源 (缘来是你)
+//======================= 缘来是你 ===================>>>
+    if (GetFastRomAudit())
+    {
+        if (!FastRomSetFound(game))
+        {
+            SetRomAuditResults(game, media_auditor::NOTFOUND);
+            if (!refresh)
+                DetailsPrintf("No ROMs for %s found (Quick Verification) \n", GetDriverGameName(game));
+            return media_auditor::NOTFOUND;
+        }
+			SetRomAuditResults(game, media_auditor::CORRECT);
+			if (!refresh)
+				DetailsPrintf("ROMs containing %s have been found (Quick Verification) \n", GetDriverGameName(game));
+			return media_auditor::CORRECT;
+    }
+//===================================================>>>	
 	if (!RomSetFound(game))
 	{
 		SetRomAuditResults(game, media_auditor::NOTFOUND);
@@ -97,6 +167,21 @@ int MameUIVerifyRomSet(int game, bool refresh)
 
 static int MameUIVerifyRomSetFull(int game)
 {
+// 修改的 代码来源 (缘来是你)
+//====================== 缘来是你 ====================>>>
+    if (GetFastRomAudit())
+    {
+        if (!FastRomSetFound(game))
+        {
+            SetRomAuditResults(game, media_auditor::NOTFOUND);
+            DetailsPrintf("No ROMs for %s found (Quick Verification) \n", GetDriverGameName(game));
+            return media_auditor::NOTFOUND;
+        }
+			SetRomAuditResults(game, media_auditor::CORRECT);
+			DetailsPrintf("ROMs containing %s have been found (Quick Verification) \n", GetDriverGameName(game));
+			return media_auditor::CORRECT;
+    }
+//=====================================================>>>
 	driver_enumerator enumerator(MameUIGlobal(), driver_list::driver(game));
 	enumerator.next();
 	media_auditor auditor(enumerator);
@@ -164,7 +249,7 @@ intptr_t CALLBACK AuditWindowProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lP
 			return true;
 
 		case WM_CTLCOLORDLG:
-			return (LRESULT) hBrush;	
+			return (LRESULT) hBrush;
 
 		case WM_CTLCOLORSTATIC:
 		case WM_CTLCOLORBTN:

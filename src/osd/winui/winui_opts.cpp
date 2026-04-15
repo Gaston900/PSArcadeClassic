@@ -81,7 +81,7 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_LIST_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_HISTORY_FONT,				"-11,0,0,0,400,0,0,0,0,3,2,1,34,Verdana", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_TREE_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
-	{ MUIOPTION_COLUMN_WIDTHS,				"665,86,123,178,48,154,58,70", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_COLUMN_WIDTHS,				"657,107,142,140,46,160,60,70", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_COLUMN_ORDER,				"0,4,1,2,5,3,6,7", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,1,1", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 
@@ -136,7 +136,16 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_UI_JOY_SS_CHANGE,			"2,0,3,0",  core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_UI_JOY_HISTORY_UP,			"2,0,4,0",  core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_UI_JOY_HISTORY_DOWN,		"2,0,1,0",  core_options::option_type::STRING, nullptr },
-    { MUIOPTION_IPS_LANG,						"0",	core_options::option_type::INTEGER, nullptr }, // 修改的 (Eziochiu)
+
+// 修改的 (Eziochiu)
+/********************************************************************************************************/
+    { MUIOPTION_IPS_LANG,						"0",	core_options::option_type::INTEGER, nullptr },
+/********************************************************************************************************/
+
+// 修改的 (缘来是你)
+/********************************************************************************************************/
+	{ MUIOPTION_FAST_ROM_AUDIT,					"0",	core_options::option_type::BOOLEAN, nullptr },
+/********************************************************************************************************/
 
 // 修改的 (EKMAME)
 /*******************************************************************************************************************/
@@ -2454,3 +2463,16 @@ bool AreOptionsEqual(windows_options &opts1, windows_options &opts2)
 	
 	return true;
 }
+
+// 修改的 (缘来是你)
+//======================= 缘来是你 =======================>>>
+void SetFastRomAudit(bool val)
+{
+	winui_opts.set_value(MUIOPTION_FAST_ROM_AUDIT, val, OPTION_PRIORITY_CMDLINE);
+}
+
+bool GetFastRomAudit(void)
+{
+	return winui_opts.bool_value(MUIOPTION_FAST_ROM_AUDIT);
+}
+//========================================================>>>

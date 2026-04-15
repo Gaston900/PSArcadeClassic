@@ -109,6 +109,11 @@
 #define MUIOPTION_IPS_LANG						"ips_lang"
 /********************************************************************/
 
+// 修改的 (缘来是你)
+/********************************************************************/
+#define MUIOPTION_FAST_ROM_AUDIT				"fast_rom_audit"
+/********************************************************************/
+
 // 修改的 代码来源 (EKMAME)
 /********************************************************************/
 #define MUIOPTION_USEKOREAN_GAMELIST			"Korean GAME List"
@@ -485,5 +490,11 @@ void SetIPSLang(int val);
 /*********************************/
 bool GetUsekoreanList(void);
 void SetUsekoreanList(bool val);
+/*********************************/
+
+// 修改的 代码来源 (缘来是你)
+/*********************************/
+bool GetFastRomAudit(void);
+void SetFastRomAudit(bool val);
 /*********************************/
 #endif

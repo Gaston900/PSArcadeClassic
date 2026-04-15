@@ -9,7 +9,7 @@
 #include <shellapi.h>
 #include <vector>	//导出XML
 
-#define USE_SPLASH_SCREEN 0  // 关闭启动画面
+#define USE_SPLASH_SCREEN 1  // 关闭启动画面
 
 static WNDPROC g_originalListViewProc = NULL;
 static bool g_bBatchDeleteMode = false;
@@ -4456,18 +4456,6 @@ const wchar_t *GamePicker_GetItemString(HWND hwndPicker, int nItem, int nColumn,
 	char playtime_buf[256];
 	char playcount_buf[256];
 
-// 修改的 代码来源 (缘来是你)
-//============== 修复中文列表 =============>>>
-#ifdef DISABLE
-	LVITEM lvi;
-	lvi.iItem = nItem;
-	lvi.mask = LVIF_PARAM;
-	int nRealGameIndex = nItem;
-	if (ListView_GetItem(hWndList, &lvi))
-		nRealGameIndex = lvi.lParam;
-#endif
-//==========================================>>>
-
 	switch(nColumn)
 	{
 		case COLUMN_GAMES:
@@ -6430,7 +6418,7 @@ static intptr_t CALLBACK StartupProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM
 	{
 		case WM_INITDIALOG:
 		{
-			int imgWidth = (int)(526 * g_fDpiScale);
+			int imgWidth = (int)(461 * g_fDpiScale);
 			int imgHeight = (int)(136 * g_fDpiScale);
 			
 			HBITMAP hBmp = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_SPLASH), IMAGE_BITMAP, imgWidth, imgHeight, LR_CREATEDIBSECTION);

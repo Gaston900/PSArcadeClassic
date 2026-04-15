@@ -48,6 +48,7 @@
 // 修改的 (缘来是你) 
 /***********************************************/
 #define OPTION_SKIP_CRC_CHECK       "skipcrc"
+#define OPTION_PGM2_MEMCARD_HACK    "pgm2_memcard_hack"
 /***********************************************/
 
 // core directory options

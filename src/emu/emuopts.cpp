@@ -59,6 +59,7 @@ const options_entry emu_options::s_option_entries[] =
 // 修改的 (缘来是你) 
 /********************************************************************************************************************************************/
 	{ OPTION_SKIP_CRC_CHECK,                             "0",         core_options::option_type::BOOLEAN,    "Skip CRC and HASH checks" },
+	{ OPTION_PGM2_MEMCARD_HACK, 						 "1", 		  core_options::option_type::BOOLEAN, 	 "Enable PGM2 without inserting a card" },
 /********************************************************************************************************************************************/
 
 	// output directory options

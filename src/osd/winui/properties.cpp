@@ -3434,6 +3434,7 @@ static void BuildDataMap(void)
 // 修改的 (缘来是你)
 /***************************************************************************************************/
 	datamap_add(properties_datamap, IDC_SKIP_CRC_CHECK, 		DM_BOOL, 	OPTION_SKIP_CRC_CHECK);
+	datamap_add(properties_datamap, IDC_PGM2_MEMCARD_HACK, 		DM_BOOL, 	OPTION_PGM2_MEMCARD_HACK);
 /***************************************************************************************************/
 
 	// set up callbacks
@@ -4597,6 +4598,7 @@ static void DisableVisualStyles(HWND hDlg)
 // 修改的 (缘来是你)
 /**************************************************************************/
 	SetWindowTheme(GetDlgItem(hDlg, IDC_SKIP_CRC_CHECK), L" ", L" ");
+	SetWindowTheme(GetDlgItem(hDlg, IDC_PGM2_MEMCARD_HACK), L" ", L" ");
 /**************************************************************************/
 
 	/* Snap/Movie/Playback */

@@ -35724,6 +35724,21 @@ orleg2_104jp                    //
 orleg2_103jp                    //
 orleg2_101jp                    //
 kof98umh                        // (c) 2009
+kov2nl_300hk                    //
+kov2nl_301hk                    //
+kov2nl_302hk                    //
+kov2nl_300jp                    //
+kov2nl_301jp                    //
+kov2nl_302jp                    //
+kov2nl_300tw                    //
+kov2nl_301tw                    //
+kov2nl_302tw                    //
+orleg2_101hk                    //
+orleg2_103hk                    //
+orleg2_104hk                    //
+orleg2_101tw                    //
+orleg2_103tw                    //
+orleg2_104tw                    //
 
 @source:pgm3.cpp
 kov3hd

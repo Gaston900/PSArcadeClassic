@@ -76,12 +76,12 @@ const options_entry winui_options::s_option_entries[] =
 	{ MUIOPTION_HISTORYBG_COLOR,			"0,0,0", core_options::option_type::INTEGER, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_CUSTOM_COLOR,				"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0", core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_LIST_MODE,					"154",      core_options::option_type::INTEGER, nullptr }, // 修改的 (加斯顿90)
-	{ MUIOPTION_SPLITTERS,					"150,778",  core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_SPLITTERS,					"150,782",  core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_GUI_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr },
 	{ MUIOPTION_LIST_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_HISTORY_FONT,				"-11,0,0,0,400,0,0,0,0,3,2,1,34,Verdana", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_TREE_FONT,					"-11,0,0,0,400,0,0,0,0,3,2,1,34,Tahoma", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
-	{ MUIOPTION_COLUMN_WIDTHS,				"657,107,142,140,46,160,60,70", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
+	{ MUIOPTION_COLUMN_WIDTHS,				"654,107,142,140,46,160,60,76", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_COLUMN_ORDER,				"0,4,1,2,5,3,6,7", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 	{ MUIOPTION_COLUMN_SHOWN,				"1,1,1,1,1,1,1,1", core_options::option_type::STRING, nullptr }, // 修改的 (加斯顿90)
 

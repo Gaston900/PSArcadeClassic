@@ -45036,7 +45036,7 @@ sc133                           // SC133 - Modular Backplane (RC2014)
 sc203                           // SC203 - Modular Z180 Computer
 
 /***********************************************************
- Synchronized with the current version of HBMAME 0.245.31
+ Synchronized with the current version of HBMAME 0.245.32
     List of all enabled drivers extras in the system.
 **************************************************************/
 
@@ -45548,6 +45548,10 @@ gaunt2hc03                      // hack
 @source:ginganin.cpp
 ginganinhc01                    // hack
 
+@source:gng.cpp
+gngknight                       // hack
+gngmaiden                       // hack
+
 @source:gottlieb.cpp
 qberthc01                       // hack
 qberthc02                       // hack
@@ -45665,6 +45669,9 @@ stickydo                        // hack
 @source:mario.cpp
 mariohc01                       // hack
 
+@source:megasys1.cpp
+soldam01                        // hack
+
 @source:midtunit.cpp
 mktturbo                        // hack
 mkhc01                          // hack
@@ -45753,7 +45760,9 @@ foodfn                          // HomeBrew
 galaxiann                       // HomeBrew
 gladmort                        // HomeBrew
 goldaxen                        // HomeBrew
+grime                           // HomeBrew
 gxg                             // HomeBrew
+halozero                        // HomeBrew
 horekidb3                       // HomeBrew
 hypernoid                       // HomeBrew
 igla                            // HomeBrew
@@ -46306,6 +46315,7 @@ svchc01                         // hack
 svchc02                         // hack
 tophuntrhc01                    // hack
 turfmasthc01                    // hack
+turfmasthc02                    // hack
 twinsprihc01                    // hack
 viewpoinhc01                    // hack
 viewpoinhc02                    // hack
@@ -46326,6 +46336,7 @@ whphc01                         // hack
 whphc02                         // hack
 whphc03                         // hack
 zintrckbhc01                    // hack
+zintrckbhc02                    // hack
 
 @source:pacland.cpp
 paclandhc01                     // hack
@@ -46644,6 +46655,7 @@ kurikinthc01                    // hack
 plottinghc01                    // hack
 
 @source:taitosj.cpp
+adcanoe                         // Taito Corporation
 alpinehc01                      // hack
 frontlinhc01                    // hack
 

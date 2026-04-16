@@ -19422,6 +19422,26 @@ ROM_START( goldaxen )
 	ROM_LOAD16_BYTE( "507.c2",   0x0000001, 0x200000, CRC(a78a6647) SHA1(19a9b65701935165bd972542f868b71b3d70cb47) )
 ROM_END
 
+// 517: Grime 68000
+// Bugs: Dreadful sound
+ROM_START( grime )
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "517.p1", 0x000000, 0x080000, CRC(e42ed460) SHA1(6e9e413fd67bb8b07ff2233adaa736f8f0e7510e) )
+
+	NEO_SFIX_MT(0x40000)
+	ROM_LOAD( "517.s1", 0x00000, 0x20000, CRC(9ecf7b85) SHA1(0f02b25f3ed583c1d63532a4222db1f9877b8b04) )
+	ROM_LOAD( "517.s2", 0x10000, 0x00c00, CRC(810b6254) SHA1(c4dca993a8a3e84480b5baa704aab4eea4c61d54) )
+	ROM_LOAD( "517.s3", 0x12000, 0x00200, CRC(d30e8606) SHA1(1bf36b004628bff17040826c58b164c7f813fd59) )
+	ROM_LOAD( "517.s4", 0x12200, 0x00200, CRC(b975e473) SHA1(db98378f7cfad17d290b27ad11166a4ebdb43072) )
+	ROM_LOAD( "517.s5", 0x14000, 0x00480, CRC(c9bf09bb) SHA1(87391f485914972eb7521b4242d1197dbf1a3bde) ) // not used?
+
+	NEO_BIOS_AUDIO(0xf803, "517.m1", CRC(f13f8c9b) SHA1(0abc1ffe893b32a8eb50cbc30af46d97bbd731c9) )
+
+	ROM_REGION( 0x400000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "499.c1", 0x000000, 0x100000, CRC(479543cf) SHA1(772690c872632320133a799aa41f6e68a8d07a4c) )
+	ROM_LOAD16_BYTE( "499.c2", 0x000001, 0x100000, CRC(1f6431d5) SHA1(7c90d6ec9df9e6223a066c338b7a7886071370cf) )
+ROM_END
+
 // 690 : Casanova She And She (Girl X Girl) Demo by Vasily Familiya
 ROM_START( gxg )
 	ROM_REGION( 0x100000, "maincpu", 0 )
@@ -19436,6 +19456,23 @@ ROM_START( gxg )
 
 	ROM_REGION( 0x400000, "sprites", 0 )
 	ROM_LOAD( "690.c1", 0x000000, 0x086780, CRC(e0dbb8cc) SHA1(26963461716cc45cc2fab4fa820ae292ee82afb9) )
+ROM_END
+
+// Halo Zero demo by Earok (https://earok.itch.io)
+ROM_START( halozero )
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "518.p1", 0x000000, 0x040000, CRC(472205ad) SHA1(9514c7975826b5f12607cc261e05904cb49007f3) )
+
+	NEO_SFIX_128K( "518.s1", CRC(9c8d137f) SHA1(78dc79de5708538cf49a4345ca6ffe5816a45f45) )
+
+	NEO_BIOS_AUDIO( 0x8000, "518.m1", CRC(61463826) SHA1(52a71d83357ba00b090ba0c956d180d78b6b1adf) )
+
+	ROM_REGION( 0x20000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "518.v1", 0x000000, 0x20000, CRC(293cf59b) SHA1(c035d433050007f3363c5037e8599c413bc8f4f5) )
+
+	ROM_REGION( 0x100000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "518.c1", 0x000000, 0x80000, CRC(4749a9b0) SHA1(4607ac7cd857783fef1f26960f42265e869d2d00) )
+	ROM_LOAD16_BYTE( "518.c2", 0x000001, 0x80000, CRC(aced4adc) SHA1(c06643c62042faa006623c9b5322670248a1bf04) )
 ROM_END
 
 // 500: Kid no Hore Hore Daisakusen (port by iq_132)
@@ -22193,7 +22230,9 @@ GAME( 2025, foodfn,     neogeo,   neogeo_noslot,   neogeo,   neogeo_state, init_
 GAME( 2023, galaxiann,  neogeo,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT270, "tcdev", "Galaxians Beta 2 (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, gladmort,   neogeo,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "Pixelheart / ChipsOnSteroids", "Gladmort (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, goldaxen,   neogeo,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "Hoffman", "Golden Axe - Neo Geo Conversion (HB)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, grime,      neogeo,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "ChibiAkumas", "Grime 68000 (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, gxg,        neogeo,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "Vasily Familiya", "Casanova She And She Demo (HB)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
+GAME( 2025, halozero,   neogeo,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "Earok", "Halo Zero Demo (HB)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
 GAME( 2022, horekidb3,  neogeo,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT270, "iq132", "Kid no Hore Hore Daisakusen - Neo Geo Conversion (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, hypernoid,  neogeo,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "M.Priewe", "Hypernoid (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, igla,       neogeo,   neogeo_noslot,   neogeo,   neogeo_state, init_neogeo,   ROT0, "Vasily Familiya", "Operation I.G.L.A. Demo (HB)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )

@@ -6,7 +6,7 @@
   Hack
 ********/
 
-ROM_START( mkhc05 ) // ver 5.1 beta (2026-02-06)
+ROM_START( mkhc05 ) // ver 5.5 beta (2026-03-16)
 	ROM_REGION16_LE( 0x800000, "dcs", ROMREGION_ERASEFF )
 	ROM_LOAD16_BYTE( "l2.0_mortal_kombat_1_u2_.u2", 0x000000, 0x100000, CRC(8574f56a) SHA1(a3e5fc15cb6b737d54b3f5f6b341a6464462bc80) )
 	ROM_LOAD16_BYTE( "l1_mortal_kombat_1_u3_music_spch.u3", 0x200000, 0x100000, CRC(459f578d) SHA1(56ebb5d6b55e49f4c080943287ac7db39c8d09e7) )
@@ -14,8 +14,8 @@ ROM_START( mkhc05 ) // ver 5.1 beta (2026-02-06)
 	ROM_LOAD16_BYTE( "l1_mortal_kombat_1_u5_music_spch.u5", 0x600000, 0x100000, CRC(97f4ab02) SHA1(3664ca5b886683e07a764761e709836c8391d462) )
 
 	ROM_REGION16_LE( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "mk121u54.bin",  0x00000, 0x80000, CRC(fadf8154) SHA1(815ff2c68e805611a685c1957f4f823bf191943c) )
-	ROM_LOAD16_BYTE( "mk121u63.bin",  0x00001, 0x80000, CRC(b83a8260) SHA1(3d4465d9c7b8d37bb43bf18ee099497a21358590) )
+	ROM_LOAD16_BYTE( "mk121u54.bin",  0x00000, 0x80000, CRC(33dc55eb) SHA1(b4e431d1ad7477a7ea285ecd564588d895f21070) )
+	ROM_LOAD16_BYTE( "mk121u63.bin",  0x00001, 0x80000, CRC(7957744f) SHA1(1c95bd6ebceb2b6e78ff169e7f6845a8c1746a1f) )
 
 	ROM_REGION( 0x2000000, "gfxrom", ROMREGION_ERASEFF )
 	ROM_LOAD32_BYTE( "l1_mortal_kombat_1_u129_game_rom.u129",  0x0400000, 0x100000, CRC(78357955) SHA1(4e68bc1083028e06dc4a879ce081891d906ae5a5) )
@@ -529,7 +529,7 @@ ROM_END
 
 /*    YEAR    NAME          PARENT     MACHINE      INPUT                         INIT       MONITOR COMPANY    FULLNAME FLAGS */
 /* Midwunit Hack */
-GAME( 2026, mkhc05,         mk,        wunit_picsim, mk3,      midwunit_state, empty_init,    ROT0, "Asure",    "Mortal Kombat (rev 5.1, 2026-02-06) (Ported From Midtunit)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, mkhc05,         mk,        wunit_picsim, mk3,      midwunit_state, empty_init,    ROT0, "Asure",    "Mortal Kombat (rev 5.5, 2026-03-16) (Ported From Midtunit)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mk2hc06,        mk2,       wunit_picsim, mk3,      midwunit_state, empty_init,    ROT0, "Asure",    "Mortal Kombat 2 (rev 3.2W, 2025-09-05) (Ported From Midtunit)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, mk3hc01,        mk3,       wunit_picsim, mk3,      midwunit_state, init_mk3,      ROT0, "hack",     "Mortal Kombat 3 (Revision 2.1 Kaillera Friendly SP4 2021-08-05)", MACHINE_SUPPORTS_SAVE )
 GAME( 2010, umk3hc01,       umk3,      wunit_picemu, mk3,      midwunit_state, init_umk3,     ROT0, "hack",     "Ultimate Mortal Kombat 3 (Juggernauts v1.0)", MACHINE_SUPPORTS_SAVE )

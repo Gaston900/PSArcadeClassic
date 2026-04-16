@@ -11998,6 +11998,27 @@ ROM_START( turfmasthc01 )
 	ROM_LOAD16_BYTE( "200.c2", 0x000001, 0x400000, CRC(5a65a8ce) SHA1(d6c7afe035411f3eacdf6868d36f91572dd593e0) )
 ROM_END
 
+ROM_START( turfmasthc02 ) // replace Australia with Scotland
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "200_hc02.p1", 0x100000, 0x100000, CRC(6361a52f) SHA1(0f7002cc8e9c2f170429e7d2d00a9dbfd20f2e16) )
+	ROM_CONTINUE( 0x000000, 0x100000)
+    TURFMAST_ESSENTIALPATCH_MODS_FILL
+
+	NEO_SFIX_128K( "200.s1", CRC(9a5402b2) SHA1(ae1a0b5450869d61b2bb23671c744d3dda8769c4) )
+
+	NEO_BIOS_AUDIO_128K( "200_hc02.m1", CRC(c6a6c686) SHA1(b7b9dff4575e5b17d6965aa52f4d32984937ad53) )
+
+	ROM_REGION( 0x800000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "200.v1", 0x000000, 0x200000, CRC(00fd48d2) SHA1(ddfee09328632e598fd51537b3ae8593219b2111) )
+	ROM_LOAD( "200_hc02.v2", 0x200000, 0x200000, CRC(caf341a8) SHA1(f0a3e83c300a6b09ac2cd61b6e639c06d1e9bf88) )
+	ROM_LOAD( "200.v3", 0x400000, 0x200000, CRC(7abca053) SHA1(e229bc0ea82a371d6ee8fd9fe442b0fd141d0a71) )
+	ROM_LOAD( "200.v4", 0x600000, 0x200000, CRC(6c7b4902) SHA1(d55e0f542d928a9a851133ff26763c8236cbbd4d) )
+
+	ROM_REGION( 0x800000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "200_hc02.c1", 0x000000, 0x400000, CRC(5fccd812) SHA1(5311e7fb9f991db08451a645a9ba4ad5530efc5f) )
+	ROM_LOAD16_BYTE( "200_hc02.c2", 0x000001, 0x400000, CRC(5f589076) SHA1(a43de326c1059ea101b23e933a02edcf77eb66ac) )
+ROM_END
+
 ROM_START( twinsprihc01 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "224_hc01.p1", 0x100000, 0x100000, CRC(df71c8cd) SHA1(1e49205b46c59c7f4ca6ee1dc06f555320d3b9af) )
@@ -12444,6 +12465,26 @@ ROM_START( zintrckbhc01 )
 
 	ROM_REGION( 0x200000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "028.v1", 0x000000, 0x200000, CRC(c09f74f1) SHA1(d0b56a780a6eba85ff092240b1f1cc6718f17c21) )
+
+	ROM_REGION( 0x400000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "028.c1", 0x000000, 0x200000, CRC(76aee189) SHA1(ad6929804c5b9a59aa609e6baebc6aa37e858a47) )
+	ROM_LOAD16_BYTE( "028.c2", 0x000001, 0x200000, CRC(844ed4b3) SHA1(fb7cd057bdc6cbe8b78097dd124118bae7402256) )
+ROM_END
+
+ROM_START( zintrckbhc02 ) // zintrckb v3
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "028_hc02.p1", 0x000000, 0x100000, CRC(654342e6) SHA1(3755b0c6d263b8d4da3cb2ee7dd2a9984f418066) )
+    ZINTRCKB_ESSENTIALPATCH_MODS_FILL
+
+	NEO_SFIX_128K( "028_hc02.s1", CRC(56d16afa) SHA1(6e1f960a781f5ef1f858c51507fe573bead8ea66) )
+
+	NEO_BIOS_AUDIO_128K( "028_hc02.m1", CRC(a1c68361) SHA1(d0906ca2035b3a41567cb3fdaa323241ba0798b7) )
+
+	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "028_hc02.v1", 0x000000, 0x400000, CRC(cd257055) SHA1(5361ce6f4943f6ea34a209ec15743292f05fcd7e) )
+	ROM_LOAD( "028_hc02.v2", 0x400000, 0x400000, CRC(5d8f89ab) SHA1(16f6308e4a1473bf5d25b1b1419b9b71a95ec029) )
+	ROM_LOAD( "028_hc02.v3", 0x800000, 0x400000, CRC(4626b4ff) SHA1(a3abe7a60e937a5df9cd24d418f9cfabcf9e7e48) )
+	ROM_LOAD( "028_hc02.v4", 0xc00000, 0x400000, CRC(48666336) SHA1(391f6782b3e833e16667005161cb520562b3c5dc) )
 
 	ROM_REGION( 0x400000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "028.c1", 0x000000, 0x200000, CRC(76aee189) SHA1(ad6929804c5b9a59aa609e6baebc6aa37e858a47) )
@@ -12913,6 +12954,7 @@ GAME( 2024, svchc01,          svc,      neogeo_noslot,   neogeo, neogeo_state,  
 GAME( 2003, svchc02,          svc,      neogeo_noslot,   neogeo, neogeo_state,    init_svc,      ROT0, "DDJ",          "SNK vs. Capcom - SVC Chaos Super Plus (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, tophuntrhc01,     tophuntr, neogeo_noslot,   neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Top Hunter - Roddy & Cathy (Korean Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, turfmasthc01,     turfmast, neogeo_noslot,   neogeo, neogeo_state,    init_neogeo,   ROT0, "StiNKz",       "Neo Turf Masters / Big Tournament Golf (Course And Pin Randomiser v0.1)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, turfmasthc02,     turfmast, neogeo_noslot,   neogeo, neogeo_state,    init_neogeo,   ROT0, "Deric Miller", "Neo Turf Masters / Big Tournament Golf (With Scotland course)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, twinsprihc01,     twinspri, neogeo_noslot,   neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Twinkle Star Sprites (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, viewpoinhc01,     viewpoin, neogeo_noslot,   neogeo, neogeo_state,    init_neogeo,   ROT0, "Shyma.X",      "Viewpoint (French Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, viewpoinhc02,     viewpoin, neogeo_noslot,   neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Viewpoint (Infinite Bomb)", MACHINE_SUPPORTS_SAVE )
@@ -12933,3 +12975,4 @@ GAME( 2023, whphc01,          whp,      neogeo_noslot,   neogeo, neogeo_state,  
 GAME( 1995, whphc02,          whp,      neogeo_noslot,   neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "World Heroes Perfect (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, whphc03,          whp,      neogeo_noslot,   neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "World Heroes Perfect (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 2009, zintrckbhc01,     zintrckb, neogeo_noslot,   neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Zintrick / Oshidashi Zentrix (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, zintrckbhc02,     zintrckb, neogeo_noslot,   neogeo, neogeo_state,    init_neogeo,   ROT0, "pierpa86",     "ZinTricK / Oshidashi Zentrix (Music Tracks)", MACHINE_SUPPORTS_SAVE )

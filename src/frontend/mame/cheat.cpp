@@ -72,6 +72,11 @@
 
 ***************************************************************************/
 
+// 修改的 代码来源 (缘来是你)
+/******************/
+#define MAME_UI
+/******************/
+
 #include "emu.h"
 #include "cheat.h"
 
@@ -89,10 +94,21 @@
 
 #include <cctype>
 
-// 修改的 代码来源 (EKMAME)
-/**********************************************************/
+// 修改的 代码来源 (缘来是你)
+//============ 缘来是你 =============>>>
+//JSON 字典
+#include <unordered_map>
+#include <string>
+#include <set>
+
+bool cheat_manager::m_translation_enabled = false;
+std::unordered_map<std::string, std::string> cheat_manager::m_translation_map;
+std::set<std::string> cheat_manager::m_new_missing;
+
+//作弊引用UI版
+#ifdef MAME_UI
 extern const char *funcGetParentName(const char *name);
-/**********************************************************/
+#endif
 
 //**************************************************************************
 //  PARAMETERS
@@ -100,7 +116,6 @@ extern const char *funcGetParentName(const char *name);
 
 // turn this on to enable removing duplicate cheats; not sure if we should
 #define REMOVE_DUPLICATE_CHEATS 0
-
 
 
 //**************************************************************************
@@ -142,7 +157,13 @@ inline std::string number_and_format::format() const
 //-------------------------------------------------
 
 cheat_parameter::cheat_parameter(cheat_manager &manager, symbol_table &symbols, std::string const &filename, util::xml::data_node const &paramnode)
-	: m_minval(number_and_format(paramnode.get_attribute_int("min", 0), paramnode.get_attribute_int_format("min")))
+
+// 修改的 代码来源 (缘来是你)
+/******************************************************/
+	: m_manager(manager)  // JSON字典 初始化
+/******************************************************/
+
+	, m_minval(number_and_format(paramnode.get_attribute_int("min", 0), paramnode.get_attribute_int_format("min")))
 	, m_maxval(number_and_format(paramnode.get_attribute_int("max", 0), paramnode.get_attribute_int_format("max")))
 	, m_stepval(number_and_format(paramnode.get_attribute_int("step", 1), paramnode.get_attribute_int_format("step")))
 	, m_value(0)
@@ -196,6 +217,12 @@ const char *cheat_parameter::text()
 			if (curitem.value() == m_value)
 			{
 				m_curtext = curitem.text();
+
+// 修改的 代码来源 (缘来是你)
+/******************************************************************/
+				// JSON字典
+                m_curtext = m_manager.translate(m_curtext); 
+/******************************************************************/															
 				break;
 			}
 		}
@@ -857,7 +884,9 @@ bool cheat_entry::select_default_state()
 }
 
 // 修改的 代码来源 (EKMAME)
-/*********************************************************************/
+/**********************************************************************/
+// UI作弊引用
+#ifdef MAME_UI
 bool cheat_entry::select_all_set_state()
 {
 	bool changed(false);
@@ -874,7 +903,8 @@ bool cheat_entry::select_all_set_state()
 
 	return changed;
 }
-/*********************************************************************/
+#endif
+/**********************************************************************/
 
 //-------------------------------------------------
 //  select_previous_state - select the previous
@@ -974,6 +1004,11 @@ void cheat_entry::menu_text(std::string &description, std::string &state, uint32
 	state.clear();
 	flags = 0;
 
+// 修改的 代码来源 (缘来是你)
+/******************************************************/
+    description = m_manager.translate(description);
+/******************************************************/
+
 	if (is_text_only())
 	{
 		// some cheat entries are just text for display
@@ -989,11 +1024,22 @@ void cheat_entry::menu_text(std::string &description, std::string &state, uint32
 	{
 		// if we have no parameter and no run or off script, it's a oneshot cheat
 		state = "Set";
+
+// 修改的 代码来源 (缘来是你)
+/************************************************/
+        state = m_manager.translate(state);
+/************************************************/
 	}
 	else if (is_onoff())
 	{
 		// if we have no parameter, it's just on/off
 		state = (m_state == SCRIPT_STATE_RUN) ? "On" : "Off";
+
+// 修改的 代码来源 (缘来是你)
+/***********************************************/
+        state = m_manager.translate(state);
+/***********************************************/
+
 		flags = (m_state != 0) ? ui::menu::FLAG_LEFT_ARROW : ui::menu::FLAG_RIGHT_ARROW;
 	}
 	else if (m_parameter != nullptr)
@@ -1002,11 +1048,17 @@ void cheat_entry::menu_text(std::string &description, std::string &state, uint32
 		if (m_state == SCRIPT_STATE_OFF)
 		{
 			state = is_oneshot_parameter() ? "Set" : "Off";
+
+// 修改的 代码来源 (缘来是你)
+/***********************************************/
+            state = m_manager.translate(state);
+/***********************************************/
 			flags = ui::menu::FLAG_RIGHT_ARROW;
 		}
 		else
 		{
 			state = m_parameter->text();
+
 			flags = ui::menu::FLAG_LEFT_ARROW;
 			if (!m_parameter->is_maximum())
 				flags |= ui::menu::FLAG_RIGHT_ARROW;
@@ -1114,7 +1166,6 @@ cheat_manager::cheat_manager(running_machine &machine)
 	reload();
 }
 
-
 //-------------------------------------------------
 //  set_enable - globally enable or disable the
 //  cheat engine
@@ -1138,6 +1189,11 @@ void cheat_manager::set_enable(bool enable)
 		}
 		machine().popmessage("Cheats Disabled");
 		m_disabled = true;
+
+// 修改的 代码来源 (缘来是你)
+/*************************/
+		save_to_json();
+/*************************/
 	}
 	else if (m_disabled && enable)
 	{
@@ -1165,6 +1221,12 @@ void cheat_manager::reload()
 	// if the cheat engine is disabled, we're done
 	if (!machine().options().cheat())
 		return;
+
+
+// 修改的 代码来源 (缘来是你)
+/**********************************************/
+    load_translation_table("cheat_cn.json");
+/**********************************************/
 
 	// free everything
 	m_cheatlist.clear();
@@ -1213,8 +1275,8 @@ void cheat_manager::reload()
 		//	machine().popmessage(parentname);
 
 		load_cheats(machine().basename());
-		// EKMAME code start
-		// 클론롬의 경우, 만약에 치트가 없을경우엔 부모롬의 치트를 읽어오기 위한 처리
+		// EKMAME 开始
+		// 对于克隆 ROM，若其自身没有作弊码，则会执行读取父 ROM 作弊码的处理。
 		if(m_cheatlist.size()==0) 
 		{
 			const char *parentname = funcGetParentName(machine().basename().c_str());
@@ -1222,14 +1284,22 @@ void cheat_manager::reload()
 				load_cheats(parentname);
 
 			//machine().popmessage("No Cheat");
-		}		
-		// EKMAME code End
+		}
+		// EKMAME 结束
 	}
 /******************************************************************************************/
 
 	// temporary: save the file back out as output.xml for comparison
 	if (m_cheatlist.size() != 0)
+
+// 修改的 代码来源 (缘来是你)
+/*********************************/
+	{
 		save_all("output");
+	}
+
+	save_to_json();
+/*********************************/
 }
 
 
@@ -1503,3 +1573,199 @@ void cheat_manager::load_cheats(std::string const &filename)
 		m_cheatlist.clear();
 	}
 }
+
+//缘来是你
+//===================== 加载 JSON 字典 ====================>>>
+//  JSON格式: { "English text": "中文文本", ... }
+
+void cheat_manager::set_translation_enabled(bool enabled)
+{
+    m_translation_enabled = enabled;
+}
+
+void cheat_manager::load_translation_table(const std::string& json_path)
+{
+    m_translation_map.clear();
+    
+    FILE* f = fopen(json_path.c_str(), "rb");
+    if (!f)
+    {
+        std::string alt_path = "support/cheat/" + json_path;
+        f = fopen(alt_path.c_str(), "rb");
+    }
+    
+    if (!f)
+	{	
+		m_translation_enabled = true; 	
+        return;
+    }
+	
+    fseek(f, 0, SEEK_END);
+    long size = ftell(f);
+    fseek(f, 0, SEEK_SET);
+    
+    std::string file_content;
+    file_content.resize(size);
+    fread(&file_content[0], 1, size, f);
+    fclose(f);
+    
+    size_t pos = 0;
+    while (true)
+    {
+        size_t key_start = file_content.find('"', pos);
+        if (key_start == std::string::npos) break;
+        size_t key_end = file_content.find('"', key_start + 1);
+        if (key_end == std::string::npos) break;
+        size_t colon = file_content.find(':', key_end);
+        if (colon == std::string::npos) break;
+        size_t val_start = file_content.find('"', colon);
+        if (val_start == std::string::npos) break;
+        size_t val_end = file_content.find('"', val_start + 1);
+        if (val_end == std::string::npos) break;
+        
+        std::string key = file_content.substr(key_start + 1, key_end - key_start - 1);
+        std::string value = file_content.substr(val_start + 1, val_end - val_start - 1);
+        
+        m_translation_map[key] = value;
+        pos = val_end + 1;
+    }
+    
+    m_translation_enabled = true;
+}
+
+std::string cheat_manager::translate(const std::string& text)
+{
+    if (!m_translation_enabled)
+        return text;
+    
+    auto it = m_translation_map.find(text);
+    if (it != m_translation_map.end())
+    {
+        // 如果翻译值为空，返回原文
+        if (it->second.empty())
+            return text;
+        return it->second;
+    }
+    
+//=============== 输出未翻译词条到日志，方便补充字典
+	// 检查是否包含中文 
+	bool has_chinese = false;
+	for (char c : text)
+		if (c & 0x80) { has_chinese = true; break; }
+	
+	if (!has_chinese)
+	{
+		static std::set<std::string> missing;
+	
+		if (text.find_first_not_of(" \t\n\r") == std::string::npos)
+			return text;
+	
+		if (missing.insert(text).second)
+		{
+			m_new_missing.insert(text);
+#if 0			
+			//保存未翻译词条为文本
+			static FILE* logfile = nullptr;
+			if (!logfile)
+			{
+				logfile = fopen("cheat/unloc.txt", "w");
+				if (!logfile) logfile = fopen("unloc.txt", "w");
+			}
+			
+			if (logfile)
+			{
+				fprintf(logfile, "    \"%s\": \"\",\n", text.c_str());
+				fflush(logfile);
+			}
+#endif
+		}
+	}
+ 
+    return text;
+}
+
+void cheat_manager::save_to_json()
+{
+    if (m_new_missing.empty())
+        return;
+    
+    const char* filename = "support/cheat/cheat_cn.json";
+    
+    std::map<std::string, std::string> existing;
+    FILE* f = fopen(filename, "rb");
+    if (!f) f = fopen("cheat_cn.json", "rb");
+    
+    if (f)
+    {
+        fseek(f, 0, SEEK_END);
+        long size = ftell(f);
+        fseek(f, 0, SEEK_SET);
+        
+        std::string content;
+        content.resize(size);
+        fread(&content[0], 1, size, f);
+        fclose(f);
+        
+        size_t pos = 0;
+        while (true)
+        {
+            size_t key_start = content.find('"', pos);
+            if (key_start == std::string::npos) break;
+            size_t key_end = content.find('"', key_start + 1);
+            if (key_end == std::string::npos) break;
+            size_t colon = content.find(':', key_end);
+            if (colon == std::string::npos) break;
+            size_t val_start = content.find('"', colon);
+            if (val_start == std::string::npos) break;
+            size_t val_end = content.find('"', val_start + 1);
+            if (val_end == std::string::npos) break;
+            
+            std::string key = content.substr(key_start + 1, key_end - key_start - 1);
+            std::string value = content.substr(val_start + 1, val_end - val_start - 1);
+            existing[key] = value;
+            pos = val_end + 1;
+        }
+    }
+    
+    bool has_new = false;
+    for (const auto& key : m_new_missing)
+    {
+        if (existing.find(key) == existing.end())
+        {
+            existing[key] = "";
+            has_new = true;
+        }
+    }
+    
+    if (!has_new)
+        return;
+    
+    f = fopen(filename, "w");
+    if (!f) f = fopen("cheat_cn.json", "w");
+    if (f)
+    {
+        fprintf(f, "{\n");
+        size_t count = 0;
+        for (const auto& p : existing)
+        {
+            count++;
+            fprintf(f, "    \"%s\": \"%s\"%s\n", 
+                    p.first.c_str(), 
+                    p.second.c_str(),
+                    (count < existing.size()) ? "," : "");
+        }
+        fprintf(f, "}\n");
+        fclose(f);
+    }
+}
+
+/******************** 字典格式 *****************
+{
+    "Infinite Lives": "无限生命",
+    "P1 Invincibility": "1P无敌",
+    "Unlimited Time": "时间无限"
+}
+
+保存字典为 cheat_cn.json，放到 cheat.zip 同目录
+
+*************************************************/

@@ -12,7 +12,10 @@
 #define MAME_FRONTEND_CHEAT_H
 
 #pragma once
-
+//========= JOSN字典 ========>>>
+#include <string>
+#include <unordered_map>
+//===========================>>>
 #include "debug/express.h"
 #include "ui/text.h"
 #include "xmlfile.h"
@@ -105,6 +108,12 @@ public:
 	void save(util::core_file &cheatfile) const;
 
 private:
+
+// 修改的 代码来源 (缘来是你)
+/*********************************/
+	cheat_manager &m_manager;
+/*********************************/
+
 	// a single item in a parameter item list
 	class item
 	{
@@ -268,7 +277,9 @@ public:
 
 // 修改的 代码来源 (EKMAME)
 /***********************************/
-    bool select_all_set_state();
+#ifdef MAME_UI
+	bool select_all_set_state(); //缘来是你 作弊引用UI版
+#endif
 /***********************************/
 
 	bool select_previous_state();
@@ -335,6 +346,13 @@ public:
 	static uint64_t execute_frombcd(int params, uint64_t const *param);
 	static uint64_t execute_tobcd(int params, uint64_t const *param);
 
+// 修改的 代码来源 (缘来是你)
+//==================== 缘来是你 ========================>>>
+	void set_translation_enabled(bool enabled);
+	std::string translate(const std::string& text);
+	void load_translation_table(const std::string& json_path);
+//======================================================>>>	
+
 private:
 	// internal helpers
 	void frame_update();
@@ -350,6 +368,14 @@ private:
 	int8_t                                      m_lastline;     // last line used for output
 	bool                                        m_disabled;     // true if the cheat engine is disabled
 	symbol_table                                m_symtable;     // global symbol table
+
+// 修改的 代码来源 (缘来是你)
+//==================== 缘来是你 ========================>>>
+	static std::unordered_map<std::string, std::string> m_translation_map;
+	static bool m_translation_enabled;
+	static std::set<std::string> m_new_missing;
+	static void save_to_json();
+//======================================================>>>	
 
 	// constants
 	static constexpr int CHEAT_VERSION = 1;

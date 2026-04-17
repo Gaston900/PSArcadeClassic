@@ -531,10 +531,55 @@ ROM_START( plegendshc03 )
 	ROM_LOAD( "g02.u56", 0x240000, 0x200000, CRC(9ff50dda) SHA1(1121685e387c20e228032f2b0f5cbb606376fc15) )
 ROM_END
 
-ROM_START( pwrinst2hc01 ) //pwrinst2l
+ROM_START( plegendshc04 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "g02_hc01.u45", 0x000000, 0x80000, CRC(652218b1) SHA1(90133f290636c28aaff7393dcbd196119e67e9c1) )
-	ROM_LOAD16_BYTE( "g02_hc01.u44", 0x000001, 0x80000, CRC(c427afa1) SHA1(b127bf394c7a1b064cdaf4f78de5c068151057ef) )
+	ROM_LOAD16_BYTE( "prog_hc04.u45", 0x000000, 0x80000, CRC(5472d7ba) SHA1(51f130d8266d531ceb71e7a3bdf140baed23a62d) )
+	ROM_LOAD16_BYTE( "prog_hc04.u44", 0x000001, 0x80000, CRC(5dc7302f) SHA1(9c110c47107ad6314587acc4206beee9ec690326) )
+	ROM_LOAD16_BYTE( "pr12.u2",  0x100000, 0x80000, CRC(0e202559) SHA1(217a8e47d5c679aff02ca43de1641230e4f78b01) )
+	ROM_LOAD16_BYTE( "pr12.u3",  0x100001, 0x80000, CRC(54742f21) SHA1(fae7bb7381478eb077f0409acd521f77417aa968) )
+
+	ROM_REGION16_BE( 0x100000, "user1", 0 )
+	ROM_LOAD16_BYTE( "d15.u4",  0x000000, 0x80000, CRC(6352cec0) SHA1(a54d55b8d642e438158268d0d41880b6589e48e2) )
+	ROM_LOAD16_BYTE( "d17.u5",  0x000001, 0x80000, CRC(7af810d8) SHA1(5e24f78a228809a001f3f3372c1b32ea05070e17) )
+
+	ROM_REGION( 0x20000, "audiocpu", 0 )
+	ROM_LOAD( "sound.u3", 0x00000, 0x20000, CRC(36f71520) SHA1(11d0a059ddba3e1aa4c54ccdde7b3f5c7bde482f) )
+
+	ROM_REGION( 0x1000000, "sprites0", 0 )
+	ROM_LOAD( "g02.u61", 0x000000, 0x200000, CRC(91e30398) SHA1(2b59a5e40bed2a988382054fe30d92808dad3348) )
+	ROM_LOAD( "g02.u62", 0x200000, 0x200000, CRC(d9455dd7) SHA1(afa69fe9a540cd78b8cfecf09cffa1401c01141a) )
+	ROM_LOAD( "g02.u63", 0x400000, 0x200000, CRC(4d20560b) SHA1(ceaee8cf0b69cc366b95ddcb689a5594d79e5114) )
+	ROM_LOAD( "g02.u64", 0x600000, 0x200000, CRC(b17b9b6e) SHA1(fc6213d8322cda4c7f653e2d7d6d314ce84c97b7) )
+	ROM_LOAD( "g02.u65", 0x800000, 0x200000, CRC(08541878) SHA1(138cf077a49a26440a3da1bdc2c399a208359e57) )
+	ROM_LOAD( "g02.u66", 0xa00000, 0x200000, CRC(becf2a36) SHA1(f8b386d0292b1dc745b7253a3df51d1aa8d5e9db) )
+	ROM_LOAD( "atgs.u1", 0xc00000, 0x200000, CRC(aa6f34a9) SHA1(00de85de1b413bd2c46931c13365f8556b50b634) )
+	ROM_LOAD( "atgs.u2", 0xe00000, 0x200000, CRC(553eda27) SHA1(5b9126f966f0c64b3ac7c06526064d71e4df60c5) )
+
+	ROM_REGION( 0x200000, "layer0", 0 )
+	ROM_LOAD( "atgs.u78", 0x000000, 0x200000, CRC(16710ecb) SHA1(6277f7f6095457df649932550b04242e5853ec5e) )
+
+	ROM_REGION( 0x200000, "layer1", 0 )
+	ROM_LOAD( "atgs.u81", 0x000000, 0x200000, CRC(cb2aca91) SHA1(869f0f2db35c45ec90b74d33d521cbb598e60a3f) )
+
+	ROM_REGION( 0x200000, "layer2", 0 )
+	ROM_LOAD( "atgs.u89", 0x000000, 0x200000, CRC(65f45a0f) SHA1(b7f4b56308dcdc144100d0a92d91255459a320a4) )
+
+	ROM_REGION( 0x080000, "layer3", 0 )
+	ROM_LOAD( "text.u82", 0x000000, 0x080000, CRC(f57333ea) SHA1(409d8005ffcf91943e4a743b2434ce425f5bdc36) )
+
+	ROM_REGION( 0x440000, "oki1", 0 )
+	ROM_LOAD( "g02.u53", 0x040000, 0x200000, CRC(c4bdd9e0) SHA1(a938a831e789ddf6f3cc5f3e5f3877ec7bd62d4e) )
+	ROM_LOAD( "g02.u54", 0x240000, 0x200000, CRC(1357d50e) SHA1(433766177ce9d6933f90de85ba91bfc6d8d5d664) )
+
+	ROM_REGION( 0x440000, "oki2", 0 )
+	ROM_LOAD( "g02.u55", 0x040000, 0x200000, CRC(2d102898) SHA1(bd81f4cd2ba100707db0c5bb1419f0b23c998574) )
+	ROM_LOAD( "g02.u56", 0x240000, 0x200000, CRC(9ff50dda) SHA1(1121685e387c20e228032f2b0f5cbb606376fc15) )
+ROM_END
+
+ROM_START( pwrinst2hc01 )
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_BYTE( "g02_hc01.u45", 0x000000, 0x80000, CRC(f8e7a8e6) SHA1(bc6fe2afc54959aede8773899ca7b634dd67664d) )
+	ROM_LOAD16_BYTE( "g02_hc01.u44", 0x000001, 0x80000, CRC(0dc84ee4) SHA1(07db5929e4c9298c414c5b4935f086d5f51bcd1c) )
 	ROM_LOAD16_BYTE( "g02.u43", 0x100000, 0x80000, CRC(178e3d24) SHA1(926234f4196a5d5e3bd1438abbf73355f2c65b06) )
 	ROM_LOAD16_BYTE( "g02.u42", 0x100001, 0x80000, CRC(a0b4ee99) SHA1(c6df4aa2543b04d8bda7683f503e5eb763e506af) )
 
@@ -1206,6 +1251,7 @@ GAME( 1995, metmqstrhc03,   metmqstr,       metmqstr,         metmqstr, cave_sta
 GAME( 2023, plegendshc01,   plegends,       pwrinst2,         metmqstr, cave_state, init_pwrinst2j, ROT0,   "GOTVG",      "Gouketsuji Gaiden (Infinite Energy 2023-08-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, plegendshc02,   plegends,       pwrinst2,         metmqstr, cave_state, init_pwrinst2j, ROT0,   "DDJ",        "Gouketsuji Gaiden (Always Have Super Moves)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, plegendshc03,   plegends,       pwrinst2,         metmqstr, cave_state, init_pwrinst2j, ROT0,   "DDJ",        "Gouketsuji Gaiden (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
+GAME( 1995, plegendshc04,   plegends,       pwrinst2,         metmqstr, cave_state, init_pwrinst2j, ROT0,   "DDJ",        "Gouketsuji Gaiden (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, pwrinst2hc01,   pwrinst2,       pwrinst2,         metmqstr, cave_state, init_pwrinst2,  ROT0,   "hack",       "Power Instinct 2 (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, sailormnhc01,   sailormn,       sailormn,         cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Optimised 2018-04-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, sailormnhc02,   sailormn,       sailormn,         cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Serena Tsukino 2021-03-22)", MACHINE_SUPPORTS_SAVE )

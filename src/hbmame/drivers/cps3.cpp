@@ -1,4 +1,4 @@
-// Proyecto Shadows Arcade Classic+
+// NeoEX
 // copyright-holders:Gaston90
 #include "../mame/drivers/cps3.cpp"
 
@@ -524,13 +524,13 @@ ROM_START( sfiiihc01 )
 	ROM_LOAD( "sfiii_asia_nocd.29f401.u2", 0x000000, 0x080000, CRC(ca2b715f) SHA1(86319987f9af4afd272a2488e73de8382743cb37) ) // this is a different VERSION of the bios compared to all other sets, not just an alt region code
 
 	ROM_REGION( 0x500000, "simm1.0", 0 )
-	ROM_LOAD( "sfiii-simm1_hc01.0", 0x00000, 0x454F4D, CRC(2858434c) SHA1(528b9b3716a8384bca1206a6a3863dde5a4c06f4) )
+	ROM_LOAD( "sfiii-simm1_hc01.0", 0x00000, 0x200000, CRC(6e6e86e6) SHA1(7718ec6e8ae638f821ecb7ae5f82da6d6a506385) )
 	ROM_REGION( 0x500000, "simm1.1", 0 )
-	ROM_LOAD( "sfiii-simm1_hc01.1", 0x00000, 0x454F47, CRC(75d3a584) SHA1(d2f9809d0614498bf6538b8c24eb172cd37906de) )
+	ROM_LOAD( "sfiii-simm1_hc01.1", 0x00000, 0x200000, CRC(51984fda) SHA1(ee0e038032f62a86c7db53f52ac66040442aef87) )
 	ROM_REGION( 0x500000, "simm1.2", 0 )
-	ROM_LOAD( "sfiii-simm1_hc01.2", 0x00000, 0x454F47, CRC(9a9c8312) SHA1(14d7ba6aa7186c2df1a403191d658c24bc0a5560) )
+	ROM_LOAD( "sfiii-simm1_hc01.2", 0x00000, 0x200000, CRC(f757c13d) SHA1(0c6fe26a828ecceec902ea72640d932b3ba2a998) )
 	ROM_REGION( 0x500000, "simm1.3", 0 )
-	ROM_LOAD( "sfiii-simm1_hc01.3", 0x00000, 0x454F47, CRC(d338a53f) SHA1(4814c416b37914dbfb50fd008a1b8b21f7facf33) )
+	ROM_LOAD( "sfiii-simm1_hc01.3", 0x00000, 0x200000, CRC(b27a3ca4) SHA1(aa8debbd08a8e0978b1b1198cb69fb7ee045c866) )
 
 	ROM_REGION( 0x200000, "simm3.0", 0 )
 	ROM_LOAD( "sfiii-simm3.0", 0x00000, 0x200000, CRC(080b3bd3) SHA1(f51bc5de95ab22b87ba09ea721285b308afd0bda) )
@@ -688,13 +688,13 @@ ROM_START( sfiii2hc02 )
 	ROM_LOAD( "sfiii2_asia_nocd.29f400.u2", 0x000000, 0x080000, CRC(fd297c0d) SHA1(4323deda2789f104b53f32a663196ec16de73215) )
 
 	ROM_REGION( 0x200000, "simm1.0", 0 )
-	ROM_LOAD( "sfiii2-simm1_hc02.0", 0x00000, 0x200000, CRC(116116a4) SHA1(6050151bbd10162b40588a16778d68c9812c0632) )
+	ROM_LOAD( "sfiii2-simm1.0", 0x00000, 0x200000, CRC(2d666f0b) SHA1(68de034b3a3aeaf4b26122a84ad48b0b763e4122) )
 	ROM_REGION( 0x200000, "simm1.1", 0 )
-	ROM_LOAD( "sfiii2-simm1_hc02.1", 0x00000, 0x200000, CRC(a3d639cd) SHA1(249c958afcab3b22ca5666b151b2cc6eea74c127) )
+	ROM_LOAD( "sfiii2-simm1_hc02.1", 0x00000, 0x200000, CRC(9796c68f) SHA1(ab1f3a9e76e0dd47c475d08515d2ade1dbfa5258) )
 	ROM_REGION( 0x200000, "simm1.2", 0 )
-	ROM_LOAD( "sfiii2-simm1_hc02.2", 0x00000, 0x200000, CRC(a9d988e8) SHA1(29c265b23fbd091276476f1f37a8fde359665f82) )
+	ROM_LOAD( "sfiii2-simm1.2", 0x00000, 0x200000, CRC(161d2206) SHA1(58999f876e64c1a088e8765962a9cd504f22a706) )
 	ROM_REGION( 0x200000, "simm1.3", 0 )
-	ROM_LOAD( "sfiii2-simm1_hc02.3", 0x00000, 0x200000, CRC(1d1335d9) SHA1(b41d5439a0807b3eb27dffe1803ee8581661b30d) )
+	ROM_LOAD( "sfiii2-simm1_hc02.3", 0x00000, 0x200000, CRC(4c1e140f) SHA1(cb7acfe0736b2aec26bde46f25586dbbae80c8c0) )
 
 	ROM_REGION( 0x200000, "simm2.0", 0 )
 	ROM_LOAD( "sfiii2-simm2.0", 0x00000, 0x200000, CRC(94a4ce0f) SHA1(2c8e26a66d1dcd17c22c70baa2a3ff5a54511514) )
@@ -944,13 +944,13 @@ ROM_START( sfiii3hc03 )
 	ROM_LOAD( "sfiii3_japan_nocd.29f400.u2", 0x000000, 0x080000, CRC(1edc6366) SHA1(60b4b9adeb030a33059d74fdf03873029e465b52) )
 
 	ROM_REGION( 0x200000, "simm1.0", 0 )
-	ROM_LOAD( "sfiii3-simm1_hc03.0", 0x00000, 0x200000, CRC(83e35a6c) SHA1(0598cb7203178f17a8994a9e24b80bdce29480f8) )
+	ROM_LOAD( "sfiii3-simm1_hc03.0", 0x00000, 0x200000, CRC(390164bd) SHA1(a3b5861496eda137986523561eeb5015083bc9fd) )
 	ROM_REGION( 0x200000, "simm1.1", 0 )
-	ROM_LOAD( "sfiii3-simm1_hc03.1", 0x00000, 0x200000, CRC(e83f927b) SHA1(551090cfce16f602929c0a76266120cd660c50e8) )
+	ROM_LOAD( "sfiii3-simm1_hc03.1", 0x00000, 0x200000, CRC(439ec566) SHA1(ded29124ee9ef0dba49c5da515eac533cf48e825) )
 	ROM_REGION( 0x200000, "simm1.2", 0 )
-	ROM_LOAD( "sfiii3-simm1_hc03.2", 0x00000, 0x200000, CRC(Cd6367b3) SHA1(C0cff444a79edec3044f8da05bc87981c8a00d00) )
+	ROM_LOAD( "sfiii3-simm1_hc03.2", 0x00000, 0x200000, CRC(70e0e088) SHA1(29f4e8687a6834aa90aa644d1ef5c9ac66b2af87) )
 	ROM_REGION( 0x200000, "simm1.3", 0 )
-	ROM_LOAD( "sfiii3-simm1_hc03.3", 0x00000, 0x200000, CRC(E5c4245a) SHA1(9cba661d231aa9b5e37eea9b347b2e92eaa51dce) )
+	ROM_LOAD( "sfiii3-simm1_hc03.3", 0x00000, 0x200000, CRC(8e38dd08) SHA1(a2eb6546ccc824964706592b7fe5e18fd72ed118) )
 
 	ROM_REGION( 0x200000, "simm2.0", 0 )
 	ROM_LOAD( "sfiii3-simm2.0", 0x00000, 0x200000, CRC(06eb969e) SHA1(d89f6a6585b76692d57d337f0f8186398fb056da) )
@@ -1552,13 +1552,13 @@ GAME( 2018, jojobahc01,     jojoba,   jojoba,        cps3_jojo,  cps3_hbmame,   
 GAME( 2018, jojobahc02,     jojoba,   jojoba,        cps3_jojo,  cps3_state,      init_jojoba,   ROT0,      "hack",        "JoJo's Bizarre Adventure (Easy Special Attacks)", 0 )
 GAME( 2021, jojobahc03,     jojoba,   jojoba,        cps3_jojo,  cps3_state,      init_jojoba,   ROT0,      "hack",        "JoJo's Bizarre Adventure (Rainbow v1.0.1 2021)", 0 )
 GAME( 2009, jojohc01,       jojo,     jojo,          cps3_jojo,  cps3_hbmame,     init_jojon,    ROT0,      "hack",        "JoJo's Venture (Enable Hidden Characters)", 0 ) // Hack Old Roms
-GAME( 2016, sfiiihc01,      sfiii,    sfiii,         cps3,       cps3_state,      init_sfiii,    ROT0,      "hack",        "Street Fighter III: New Generation (Easy Special Attacks)", 0 )
-GAME( 2009, sfiiihc02,      sfiii,    sfiii,         cps3,       cps3_hbmame,     init_sfiiin,   ROT0,      "hack",        "Street Fighter III: New Generation (Enable Hidden Characters)", 0 ) // Hack Old Roms
+GAME( 1997, sfiiihc01,      sfiii,    sfiii,         cps3,       cps3_state,      init_sfiii,    ROT0,      "DDJ",         "Street Fighter III: New Generation (Easy Special Attacks)", 0 )
+GAME( 1997, sfiiihc02,      sfiii,    sfiii,         cps3,       cps3_hbmame,     init_sfiiin,   ROT0,      "hack",        "Street Fighter III: New Generation (Enable Hidden Characters)", 0 ) // Hack Old Roms
 GAMEL(1997, sfiii2hc01,     sfiii2,   sfiii2,        cps3,       cps3_state,      init_sfiii2,   ROT0,      "hack",        "Street Fighter III 2nd Impact: Giant Attack (Enable Hidden Characters)", 0, layout_sfiii2 )
-GAMEL(2016, sfiii2hc02,     sfiii2,   sfiii2,        cps3,       cps3_state,      init_sfiii2,   ROT0,      "hack",        "Street Fighter III 2nd Impact: Giant Attack (Easy Special Attacks)", 0, layout_sfiii2 )
+GAMEL(1997, sfiii2hc02,     sfiii2,   sfiii2,        cps3,       cps3_state,      init_sfiii2,   ROT0,      "DDJ",         "Street Fighter III 2nd Impact: Giant Attack (Easy Special Attacks)", 0, layout_sfiii2 )
 GAME( 2011, sfiii3hc01,     sfiii3,   sfiii3,        cps3,       cps3_state,      init_sfiii3,   ROT0,      "hack",        "Street Fighter III 3rd Strike: Fight for the Future (4rd Strike 2011-07-17)", 0 )
 GAME( 2022, sfiii3hc02,     sfiii3,   sfiii3,        cps3,       cps3_state,      init_sfiii3,   ROT0,      "hack",        "Street Fighter III 3rd Strike: Fight for the Future (Widescreen 2022-09-08)", 0 )
-GAME( 2014, sfiii3hc03,     sfiii3,   sfiii3,        cps3,       cps3_state,      init_sfiii3,   ROT0,      "hack",        "Street Fighter III 3rd Strike: Fight for the Future (Easy Special Attacks)", 0 )
+GAME( 1999, sfiii3hc03,     sfiii3,   sfiii3,        cps3,       cps3_state,      init_sfiii3,   ROT0,      "DDJ",         "Street Fighter III 3rd Strike: Fight for the Future (Easy Special Attacks)", 0 )
 GAME( 2013, sfiii3hc04,     sfiii3,   sfiii3,        cps3,       cps3_state,      init_sfiii3,   ROT0,      "hack",        "Street Fighter III 3rd Strike: Fight for the Future (4rd Arrange 2013-07-16)", 0 )
 GAME( 1999, sfiii3hc05,     sfiii3,   sfiii3,        cps3,       cps3_hbmame,     init_sfiii3n,  ROT0,      "hack",        "Street Fighter III 3rd Strike: Fight for the Future (Enable Hidden Characters)", 0 ) // Hack Old Roms
 GAME( 2021, sfiii3hc06,     sfiii3,   sfiii3,        cps3,       cps3_state,      init_sfiii3,   ROT0,      "hack",        "Street Fighter III 3rd Strike: Fight for the Future (re:THIRD update 2021)", 0 )

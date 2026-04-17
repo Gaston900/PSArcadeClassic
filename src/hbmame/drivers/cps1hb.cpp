@@ -535,7 +535,7 @@ ROM_END
 ROM_START( captcommhc16 )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "cce_23d_hc16.8f", 0x000000, 0x80000, CRC(9014983d) SHA1(0204ff69f36c7f44188260ee28759ce1cdd80a77) )
-	ROM_LOAD16_WORD_SWAP( "cc_22d_hc16.7f",  0x080000, 0x80000, CRC(00af068d) SHA1(d7017ede0a224390b0c85e894b219fe8109d1800) )
+	ROM_LOAD16_WORD_SWAP( "cc_22f.7f",  0x080000, 0x80000, CRC(0fd34195) SHA1(fb2b9a53af43507f13c4f94eaebbf0b538b2e754) )
 	ROM_LOAD16_BYTE( "cc_24d_hc16.9e",       0x100000, 0x20000, CRC(936ed25e) SHA1(fda6d96102a1720b361fb7ae1ffb88fc01c0cc83) )
 	ROM_LOAD16_BYTE( "cc_28d_hc16.9f",       0x100001, 0x20000, CRC(c3448a39) SHA1(fe64bc3781752cbd2d9ac24bd43507ec400ec2f4) )
 
@@ -4624,7 +4624,7 @@ GAME( 2024, captcommhc12, captcomm, cps1_2XCLOCK,   captcomm, cps_state,   init_
 GAME( 2023, captcommhc13, captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "hack",      "Captain Commando (Readjusted v1.2)", MACHINE_SUPPORTS_SAVE )
 GAME( 1991, captcommhc14, captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "DDJ",       "Captain Commando (Change Weapon)", MACHINE_SUPPORTS_SAVE )
 GAME( 1991, captcommhc15, captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "DDJ",       "Captain Commando (Stage Select)", MACHINE_SUPPORTS_SAVE )
-GAME( 1991, captcommhc16, captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "DDJ",       "Captain Commando (Summon Mount)", MACHINE_SUPPORTS_SAVE )
+GAME( 1991, captcommhc16, captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "DDJ",       "Captain Commando (War Chariot)", MACHINE_SUPPORTS_SAVE )
 GAME( 1991, captcommhc17, captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "hack",      "Captain Commando (Korean Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 1991, captcommhc18, captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "hack",      "Captain Commando (Chinese Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, captcommhc19, captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "GOTVG",     "Captain Commando (Nostalgic Sunny Day 2025-10-08)", MACHINE_SUPPORTS_SAVE )

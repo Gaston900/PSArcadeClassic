@@ -499,18 +499,18 @@
 #define IDC_DRC_CORE                    1403
 #define IDC_BGFX_BACKEND                1407
 
-// 修改的 (缘来是你)
-/********************************************/
+//============= 缘来是你 ==========>>>
 #define IDC_SKIP_CRC_CHECK              1408
 #define IDC_PGM2_MEMCARD_HACK           1409
 #define IDC_FAST_ROM_AUDIT              1410
-/********************************************/
+#define IDC_60FPS                      	1411
+//============= 缘来是你 ==========>>>
 
 // 修改的 代码来源 (加斯顿90)
 /********************************************/
-#define IDC_SICKFA                      1409
-#define IDC_SICKFB                      1410
-#define IDC_SICKFC                      1411
+#define IDC_SICKFA                      1412
+#define IDC_SICKFB                      1413
+#define IDC_SICKFC                      1414
 /********************************************/
 
 #define ID_CONTEXT_SHOW_FOLDER_START    39000

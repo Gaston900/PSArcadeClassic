@@ -1,5 +1,6 @@
 // license:BSD-3-Clause
 // For licensing and usage information, read docs/release/winui_license.txt
+// IPS 实现代码由 eziochiu 添加，IPS 管理器由醉猫(Drunk Cat)修复
 
 /***************************************************************************
 
@@ -90,14 +91,22 @@ b) Exit the dialog.
 
 #include "winui.h"
 
-// 修改的 (Eziochiu) 
-/***********************/
+//============== 缘来是你 =============>>>
+//eziochiu 添加 IPS/
 #include <set>
 #include <sstream>
 #include <gdiplus.h>
 #undef min
 #undef max
-/***********************/
+
+// 醉猫
+#include <map>
+#include <string>
+#include <cstring>
+#include <cctype>
+
+static ULONG_PTR g_gdiplusTokenProp = 0;
+//=======================================>>>
 
 /**************************************************************
  * Local function prototypes
@@ -122,13 +131,17 @@ static void InitializeControllerMappingUI(HWND hWnd);
 static void InitializeLanguageUI(HWND hWnd);
 static void InitializePluginsUI(HWND hWnd);
 
-// 修改的 (Eziochiu)
-/************************************************************************************************************************/
+//======================= 缘来是你 ========================>>>
+//eziochiu 添加 IPS
 static void InitializeIPSUI(HWND hWnd);
 static bool IPSPopulateControl(datamap *map, HWND hDlg, HWND hWndCtrl, windows_options &opts, const char *option_name);
 static bool IPSReadControl(datamap *map, HWND hDlg, HWND hWndCtrl, windows_options &opts, const char *option_name);
 static void IPSSelectionChange(HWND hDlg, HWND hWndCtrl);
-/************************************************************************************************************************/
+//醉猫
+static HBITMAP LoadImageFromFile(const wchar_t* filepath, int maxWidth, int maxHeight);
+static void OnGlobalTreeSelChanged(HWND hDlg, HTREEITEM hItem);
+static void InitializeGlobalIPSTree(HWND hDlg);
+//==========================================================>>>
 
 static void InitializeGLSLFilterUI(HWND hWnd);
 static void InitializeBGFXBackendUI(HWND);
@@ -441,12 +454,11 @@ void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int fol
 	// Get the description use as the dialog caption.
 	switch(opt_type)
 	{
+//======================== 缘来是你 ======== 中文列表 ========================>>>
 		case OPTIONS_GAME:
-// 修改的 代码来源 (EKMAME)
-/**********************************************************************************************/
-			snprintf(tmp, std::size(tmp), "Properties for %s", GetDescriptionByIndex(g_nGame,GetUsekoreanList()));		
-/**********************************************************************************************/
+			snprintf(tmp, std::size(tmp), "Properties for %s", GetDescriptionByIndex(g_nGame, GetUsekoreanList()));
 			break;
+//============================================================================>>>
 
 		case OPTIONS_RASTER:
 		case OPTIONS_VECTOR:
@@ -501,8 +513,8 @@ void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int fol
 	free(pspage);
 }
 
-// 修改的 (Eziochiu)
-/****************************************************************************************************/
+//============================ 缘来是你 ==============================>>>
+//eziochiu 添加 IPS
 static HBITMAP LoadImageFromFile(const wchar_t* filepath, int maxWidth, int maxHeight)
 {
 	if (!filepath || !filepath[0])
@@ -564,7 +576,11 @@ static intptr_t CALLBACK IPSDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPAR
 			g_nGame = (int)lParam;
 			
 			char title[256];
-			snprintf(title, sizeof(title), "%s - IPS Manager", GetDriverGameTitle(g_nGame));
+
+// 修改的 代码来源 (缘来是你)
+//===================================================================================================================>>>
+			snprintf(title, sizeof(title), "%s - IPS Manager", GetDescriptionByIndex(g_nGame, GetUsekoreanList()));
+//===================================================================================================================>>>
 			wchar_t *wtitle = win_wstring_from_utf8(title);
 			if (wtitle)
 			{
@@ -577,7 +593,7 @@ static intptr_t CALLBACK IPSDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPAR
 				if (savedLang < 0 || savedLang > 2) savedLang = 0;
 				SetIPSLangOverride(savedLang);
 			}
-		
+			
 			HWND hTree = GetDlgItem(hDlg, IDC_IPS_TREE);
 			if (hTree)
 			{
@@ -625,8 +641,8 @@ static intptr_t CALLBACK IPSDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPAR
 								hParent = it->second;
 							}
 						}
-						
-						wchar_t* wfilename = win_wstring_from_utf8(title ? title : filename);						
+
+						wchar_t* wfilename = win_wstring_from_utf8(title ? title : filename);
 						if (wfilename)
 						{
 							TVINSERTSTRUCT tvis;
@@ -1164,14 +1180,14 @@ static intptr_t CALLBACK IPSDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPAR
 						int nParentIndex = -1;
 						if (DriverIsClone(g_nGame))
 							nParentIndex = GetParentIndex(&driver_list::driver(g_nGame));
-						
+
 						std::function<void(HTREEITEM)> clear_all_checkboxes;
 						clear_all_checkboxes = [&](HTREEITEM hRoot) {
 							HTREEITEM hItem = hRoot;
 							while (hItem)
 							{
 								TreeView_SetCheckState(hTree, hItem, FALSE);
-								
+
 								TVITEM tvi;
 								tvi.mask = TVIF_PARAM;
 								tvi.hItem = hItem;
@@ -1297,7 +1313,7 @@ void ShowIPSDialog(HINSTANCE hInst, HWND hWnd, int game_num)
 {
 	DialogBoxParam(hInst, MAKEINTRESOURCE(IDD_PROP_IPS), hWnd, IPSDialogProc, (LPARAM)game_num);
 }
-/****************************************************************************************************/
+//====================================================================>>>
 
 /*********************************************************************
  * Local Functions
@@ -1560,8 +1576,6 @@ static char *GameInfoTitle(OPTIONS_TYPE opt_type, int nIndex)
 	else if (OPTIONS_SOURCE == opt_type)
 		strcpy(buffer, "Driver options\r\nDefault options used by all games in the driver");
 	else
-		snprintf(buffer, std::size(buffer), "%s - \"%s\"", GetDriverGameTitle(nIndex), GetDriverGameName(nIndex));
-
 // 修改的 代码来源 (缘来是你)
 /************************** 中文列表 ****************************/
 		snprintf(buffer, std::size(buffer), "%s - \"%s\"", 
@@ -2018,21 +2032,23 @@ intptr_t CALLBACK GamePropertiesDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, 
 	{
 		case WM_INITDIALOG:
 		{
-			char tmp[64];
+// 修改的 代码来源 (缘来是你)
+/*****************************/
+			char tmp[256];
+/*****************************/
+
 			int index = lParam;
 			CenterWindow(hDlg);
 			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
 			SendMessage(hDlg, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrushDlg = CreateSolidBrush(RGB(240, 240, 240));
-// 修改的 代码来源 (缘来是你)
-/*************************************************************************************************************************/
+//=========================== 缘来是你 ================ 中文列表 ================================>>>
             snprintf(tmp, std::size(tmp), "\"%s\" Information for", GetDescriptionByIndex(index, GetUsekoreanList()));
-/*************************************************************************************************************************/
+//===============================================================================================>>>
 			winui_set_window_text_utf8(hDlg, tmp);
-// 修改的 代码来源 (EKMAME)
-/*************************************************************************************************************************/
-		    winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDescriptionByIndex(index,GetUsekoreanList()));	
-/*************************************************************************************************************************/
+//=========================== 缘来是你 ================ 中文列表 ================================>>>
+		    winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_TITLE), GetDescriptionByIndex(index, GetUsekoreanList()));	
+//===============================================================================================>>>
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_MANUFACTURED), GameInfoManufactured(index));
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_STATUS), GameInfoStatus(index));
 			winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_PROP_CPU), GameInfoCPU(index));
@@ -2148,9 +2164,8 @@ static intptr_t CALLBACK GameOptionsDialogProc(HWND hDlg, UINT uMsg, WPARAM wPar
 
 			switch (wID)
 			{
-
-// 修改的 (Eziochiu)
-/***************************************************************/
+//======================== 缘来是你 ===========================>>>
+//eziochiu 添加 IPS
 				case IDC_IPS_LIST:
 					if (wNotifyCode == LBN_SELCHANGE)
 					{
@@ -2158,8 +2173,23 @@ static intptr_t CALLBACK GameOptionsDialogProc(HWND hDlg, UINT uMsg, WPARAM wPar
 						changed = true;
 					}
 					break;
-/***************************************************************/
-
+					
+				//醉猫
+				case IDC_IPS_LANG:
+					if (wNotifyCode == CBN_SELCHANGE)
+					{
+						HWND hLang = (HWND)lParam;
+						int idx = ComboBox_GetCurSel(hLang);
+						if (idx != CB_ERR)
+						{
+							SetIPSLangOverride(idx);
+							SetIPSLangSaved(idx);
+							InitializeGlobalIPSTree(hDlg);
+						}
+						changed = true;
+					}
+					break;
+//===============================================================>>>
 				case IDC_REFRESH:
 					if (wNotifyCode == LBN_SELCHANGE)
 					{
@@ -2423,8 +2453,18 @@ static intptr_t CALLBACK GameOptionsDialogProc(HWND hDlg, UINT uMsg, WPARAM wPar
 					m_CurrentOpts.copy_from(pOrigOpts);
 					SetWindowLongPtr(hDlg, DWLP_MSGRESULT, false);
 					break;
+//========================= 醉猫 ============================>>>
+				case TVN_SELCHANGED:
+				{
+					LPNMTREEVIEW pnmtv = (LPNMTREEVIEW)lParam;
+					if (pnmtv->hdr.idFrom == IDC_IPS_TREE)
+					{
+						OnGlobalTreeSelChanged(hDlg, pnmtv->itemNew.hItem);
+					}
+					break;
+				}
+//===========================================================>>>
 			}
-
 			break;
 		}
 
@@ -3306,6 +3346,11 @@ static void BuildDataMap(void)
 	datamap_add(properties_datamap, IDC_INTSCALEX_TXT,			DM_INT,		OPTION_INTSCALEX);
 	datamap_add(properties_datamap, IDC_INTSCALEY,				DM_INT,		OPTION_INTSCALEY);
 	datamap_add(properties_datamap, IDC_INTSCALEY_TXT,			DM_INT,		OPTION_INTSCALEY);
+
+// 修改的 (缘来是你)
+/*********************************************************************************************/
+//	datamap_add(properties_datamap, IDC_60FPS,					DM_BOOL,	OPTION_60FPS);	//EKMAME 60fps
+/*********************************************************************************************/
 	// core opengl - bgfx options
 	datamap_add(properties_datamap, IDC_GLSLPOW,				DM_BOOL,	OSDOPTION_GL_FORCEPOW2TEXTURE);
 	datamap_add(properties_datamap, IDC_GLSLTEXTURE,			DM_BOOL,	OSDOPTION_GL_NOTEXTURERECT);
@@ -3425,17 +3470,11 @@ static void BuildDataMap(void)
 	// hlsl
 	datamap_add(properties_datamap, IDC_HLSL_ON,				DM_BOOL,	WINOPTION_HLSL_ENABLE);
 
-// 修改的 (Eziochiu)
-/*******************************************************************************************/
-    // IPS options
+//==================== 缘来是你 ========================>>>
 	datamap_add(properties_datamap, IDC_IPS_LIST,               DM_STRING,  OPTION_IPS);
-/*******************************************************************************************/
-
-// 修改的 (缘来是你)
-/***************************************************************************************************/
 	datamap_add(properties_datamap, IDC_SKIP_CRC_CHECK, 		DM_BOOL, 	OPTION_SKIP_CRC_CHECK);
 	datamap_add(properties_datamap, IDC_PGM2_MEMCARD_HACK, 		DM_BOOL, 	OPTION_PGM2_MEMCARD_HACK);
-/***************************************************************************************************/
+//======================================================>>>	
 
 	// set up callbacks
 	datamap_set_callback(properties_datamap, IDC_ROTATE,		DCT_READ_CONTROL,		RotateReadControl);
@@ -3495,11 +3534,10 @@ static void BuildDataMap(void)
 	datamap_set_trackbar_range(properties_datamap, IDC_INTSCALEX,       0, 10, 1);
 	datamap_set_trackbar_range(properties_datamap, IDC_INTSCALEY,       0, 10, 1);
 
-// 修改的 (Eziochiu)
-/*************************************************************************************************************/
-    datamap_set_callback(properties_datamap, IDC_IPS_LIST,		DCT_READ_CONTROL,		IPSReadControl);
-	datamap_set_callback(properties_datamap, IDC_IPS_LIST,		DCT_POPULATE_CONTROL,	IPSPopulateControl);
-/*************************************************************************************************************/
+//=============== 缘来是你 ===============>>>
+    datamap_set_callback(properties_datamap, IDC_IPS_LIST,		DCT_READ_CONTROL,		IPSReadControl);		// IPS
+	datamap_set_callback(properties_datamap, IDC_IPS_LIST,		DCT_POPULATE_CONTROL,	IPSPopulateControl);	// IPS
+//========================================>>>
 }
 
 //mamefx: for coloring of changed elements
@@ -3539,6 +3577,11 @@ static void InitializeOptions(HWND hDlg)
 	InitializePluginsUI(hDlg);
 	InitializeGLSLFilterUI(hDlg);
 	InitializeBGFXBackendUI(hDlg);
+
+// 修改的 (醉猫)
+/******************************/
+	InitializeIPSUI(hDlg);
+/******************************/
 }
 
 static void OptOnHScroll(HWND hWnd, HWND hWndCtl, UINT code, int pos)
@@ -3788,32 +3831,201 @@ static void InitializeControllerMappingUI(HWND hWnd)
 	}
 }
 
-// 修改的 (Eziochiu)
-/*************************************************************************************************************/
-static void InitializeIPSUI(HWND hWnd)
+//================================== 缘来是你 ==================================>>>
+//eziochiu 添加 IPS，醉猫修改
+static void InitializeGlobalIPSTree(HWND hDlg)
 {
-	HWND hCtrl = GetDlgItem(hWnd, IDC_IPS_LIST);
-	if (!hCtrl) return;
+    if (g_gdiplusTokenProp == 0)
+    {
+        Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+        Gdiplus::GdiplusStartup(&g_gdiplusTokenProp, &gdiplusStartupInput, NULL);
+    }
+	
+    ForceRescanGlobalPatches();
+	
+    HWND hTree = GetDlgItem(hDlg, IDC_IPS_TREE);
+    if (!hTree) return;
+    
+    TreeView_DeleteAllItems(hTree);
+    
+    ScanAllGlobalPatches();
+    int total = GetGlobalPatchCount();
+    if (total == 0) return;
+    
+    std::map<std::string, HTREEITEM> game_nodes;
+    
+    for (int i = 0; i < total; i++)
+    {
+        const GlobalPatchInfo* info = GetGlobalPatchInfo(i);
+        if (!info) continue;
+        
+        HTREEITEM hGameNode = TVI_ROOT;
+        auto game_it = game_nodes.find(info->game_name);
+        if (game_it == game_nodes.end())
+        {
+            wchar_t* w_game_desc = win_wstring_from_utf8(info->game_desc);
+            wchar_t* w_game_name = win_wstring_from_utf8(info->game_name);
+            if (w_game_desc && w_game_name)
+            {
+                wchar_t game_display[512];
+                
+                // 获取游戏索引和中文名
+                int game_idx = GetGameNameIndex(info->game_name);
+                const char* chinese_name = (game_idx >= 0) ? GetDescriptionByIndex(game_idx, GetUsekoreanList()) : nullptr;
+                
+                if (chinese_name && chinese_name[0] && GetUsekoreanList())
+                {
+                    wchar_t* w_chinese = win_wstring_from_utf8(chinese_name);
+                    if (w_chinese)
+                    {
+                        _snwprintf(game_display, std::size(game_display), L"%s [%s]", w_chinese, w_game_name);
+                        free(w_chinese);
+                    }
+                    else
+                    {
+                        _snwprintf(game_display, std::size(game_display), L"%s [%s]", w_game_desc, w_game_name);
+                    }
+                }
+                else
+                {
+                    _snwprintf(game_display, std::size(game_display), L"%s [%s]", w_game_desc, w_game_name);
+                }
+                
+                TVINSERTSTRUCT tvis;
+                memset(&tvis, 0, sizeof(tvis));
+                tvis.hParent = TVI_ROOT;
+                tvis.hInsertAfter = TVI_LAST;
+                tvis.item.mask = TVIF_TEXT | TVIF_PARAM;
+                tvis.item.pszText = game_display;
+                tvis.item.lParam = (LPARAM)-1;
+                
+                hGameNode = TreeView_InsertItem(hTree, &tvis);
+                game_nodes[info->game_name] = hGameNode;
+                
+                TVITEM set_item;
+                set_item.hItem = hGameNode;
+                set_item.mask = TVIF_PARAM;
+                set_item.lParam = (LPARAM)_strdup(info->game_name);
+                TreeView_SetItem(hTree, &set_item);
+                
+                free(w_game_desc);
+                free(w_game_name);
+            }
+        }
+        else
+        {
+            hGameNode = game_it->second;
+        }
+        
+        wchar_t* w_title = win_wstring_from_utf8(info->patch_title);
+        if (w_title)
+        {
+            TVINSERTSTRUCT tvis;
+            memset(&tvis, 0, sizeof(tvis));
+            tvis.hParent = hGameNode;
+            tvis.hInsertAfter = TVI_LAST;
+            tvis.item.mask = TVIF_TEXT | TVIF_PARAM;
+            tvis.item.pszText = w_title;
+            tvis.item.lParam = (LPARAM)i;
+            
+            TreeView_InsertItem(hTree, &tvis);
+            free(w_title);
+        }
+    }
+    
+    for (auto& game_pair : game_nodes)
+    {
+        TreeView_Expand(hTree, game_pair.second, TVE_EXPAND);
+    }
 
-	ListBox_ResetContent(hCtrl);
+	HWND hLang = GetDlgItem(hDlg, IDC_IPS_LANG);
+    if (hLang)
+    {
+		ComboBox_ResetContent(hLang);
+        ComboBox_AddString(hLang, L"简体中文");
+        ComboBox_AddString(hLang, L"繁體中文");
+        ComboBox_AddString(hLang, L"English");
+		ComboBox_SetCurSel(hLang, GetIPSLangSaved());
+    }
+	// 隐藏强制关联
+    HWND hRelation = GetDlgItem(hDlg, IDC_IPS_RELATION);
+    if (hRelation) ShowWindow(hRelation, SW_HIDE);
+}
 
-	int nParentIndex = -1;
-	if (DriverIsClone(g_nGame))
-		nParentIndex = GetParentIndex(&driver_list::driver(g_nGame));
-
-	int count = GetPatchCount(g_nGame, nParentIndex);
-	for (int i = 0; i < count; i++)
+static void OnGlobalTreeSelChanged(HWND hDlg, HTREEITEM hItem)
+{
+    if (!hItem || !hDlg) return;
+    
+    HWND hTree = GetDlgItem(hDlg, IDC_IPS_TREE);
+    if (!hTree) return;
+    
+    TVITEM tvi;
+    memset(&tvi, 0, sizeof(tvi));
+    tvi.hItem = hItem;
+    tvi.mask = TVIF_PARAM;
+    if (!TreeView_GetItem(hTree, &tvi)) return;
+    
+    LPARAM param = tvi.lParam;
+    
+    if (param < 0)
+    {
+        HWND hDesc = GetDlgItem(hDlg, IDC_IPS_DESC);
+        if (hDesc) SetWindowText(hDesc, L"");
+        
+        HWND hSnap = GetDlgItem(hDlg, IDC_IPS_SNAP);
+        if (hSnap)
+        {
+            HBITMAP hDefault = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_MAME_IPS));
+            if (hDefault)
+            {
+                HBITMAP hOldBmp = (HBITMAP)SendMessage(hSnap, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hDefault);
+                if (hOldBmp) DeleteObject(hOldBmp);
+            }
+        }
+        return;
+    }
+    
+    const GlobalPatchInfo* info = GetGlobalPatchInfo((int)param);
+    if (!info) return;
+    
+    HWND hDesc = GetDlgItem(hDlg, IDC_IPS_DESC);
+    if (hDesc && info->patch_desc)
+    {
+        wchar_t* w_desc = win_wstring_from_utf8(info->patch_desc);
+        if (w_desc)
+        {
+            SetWindowText(hDesc, w_desc);
+            free(w_desc);
+        }
+    }
+    
+	HWND hSnap = GetDlgItem(hDlg, IDC_IPS_SNAP);
+	if (hSnap)
 	{
-		const char* filename = GetPatchFilename(g_nGame, nParentIndex, i);
-		if (filename)
+		if (info->image_path && info->image_path[0])
 		{
-			wchar_t* wfilename = win_wstring_from_utf8(filename);
-			int idx = ListBox_AddString(hCtrl, wfilename);
-			ListBox_SetItemData(hCtrl, idx, i);
-			free(wfilename);
+			wchar_t* w_path = win_wstring_from_utf8(info->image_path);
+			if (w_path)
+			{
+				RECT rcClient;
+				GetClientRect(hSnap, &rcClient);
+				HBITMAP hBmp = LoadImageFromFile(w_path, rcClient.right, rcClient.bottom);
+				if (hBmp)
+				{
+					HBITMAP hOldBmp = (HBITMAP)SendMessage(hSnap, STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hBmp);
+					if (hOldBmp) DeleteObject(hOldBmp);
+				}
+				free(w_path);
+			}
 		}
 	}
 }
+
+static void InitializeIPSUI(HWND hWnd)
+{
+    InitializeGlobalIPSTree(hWnd);
+}
+//================================================================================>>>
 
 static bool IPSPopulateControl(datamap *map, HWND hDlg, HWND hWndCtrl, windows_options &opts, const char *option_name)
 {
@@ -3866,8 +4078,7 @@ static void IPSSelectionChange(HWND hDlg, HWND hWndCtrl)
 		winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_IPS_DESC), "");
 	}
 }
-/*************************************************************************************************************/
-
+/**************************************************/
 
 static void InitializeBIOSUI(HWND hWnd)
 {
@@ -4595,12 +4806,11 @@ static void DisableVisualStyles(HWND hDlg)
 	SetWindowTheme(GetDlgItem(hDlg, IDC_REWIND), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_DRC_CORE), L" ", L" ");
 
-// 修改的 (缘来是你)
-/**************************************************************************/
+//==================== 缘来是你 ========================>>>
 	SetWindowTheme(GetDlgItem(hDlg, IDC_SKIP_CRC_CHECK), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_PGM2_MEMCARD_HACK), L" ", L" ");
-/**************************************************************************/
-
+//	SetWindowTheme(GetDlgItem(hDlg, IDC_60FPS), L" ", L" ");
+//======================================================>>>
 	/* Snap/Movie/Playback */
 	SetWindowTheme(GetDlgItem(hDlg, IDC_SNAPVIEW), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_SNAPNAME), L" ", L" ");

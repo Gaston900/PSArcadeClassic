@@ -1,14 +1,21 @@
 // license:BSD-3-Clause
 // For licensing and usage information, read docs/release/winui_license.txt
+// IPS 实现代码由 eziochiu 添加，IPS 管理器由醉猫(Drunk Cat)修复
 
 #include "winui.h"
 
-// 修改的 (Eziochiu)
-/************************/
+//========= 缘来是你 =========>>>
+// IPS
 #include <map>
 #include <algorithm>
 #include <cctype>
-/************************/
+
+#include <io.h>
+#include <vector>
+
+static std::vector<GlobalPatchInfo> g_global_patches;
+static bool g_global_patches_scanned = false;
+//=============================>>>
 
 /***************************************************************************
     Internal structures
@@ -855,13 +862,31 @@ static void ValidateDependencies(const std::string& patch_name)
 }
 
 static int s_ips_lang_override = -1;
+//============== 醉猫 ============>>>
+static int g_saved_lang = 0;
+
+void SetIPSLangSaved(int lang)
+{
+    g_saved_lang = lang;
+}
+
+int GetIPSLangSaved(void)
+{
+    return g_saved_lang;
+}
+//================================>>>
 
 void SetIPSLangOverride(int langIndex)
 {
 	s_ips_lang_override = langIndex;
 	s_current_patch_game_index = -1;
 }
-
+//============= 醉猫 ==============>>>
+int GetIPSLangOverride(void)
+{
+    return s_ips_lang_override;
+}
+//=================================>>>
 static void UpdatePatches(int nGame, int nParent)
 {
 	if (nGame == s_current_patch_game_index && nParent == s_current_patch_parent_index)
@@ -1137,3 +1162,262 @@ void IPSGetAllPatchStates(int nGame, int nParentIndex, bool* states, int max_cou
 	}
 }
 /**************************************************************************************************************/
+
+//=================================== 醉猫 ====================================>>>
+static void ScanDirectoryForDatFiles(const std::string& dir, const std::string& game_name, const std::string& game_desc)
+{
+    std::string search_path = dir + "\\*.dat";
+    WIN32_FIND_DATA findData;
+    HANDLE hFind = winui_find_first_file_utf8(search_path.c_str(), &findData);
+    
+    if (hFind != INVALID_HANDLE_VALUE)
+    {
+        do
+        {
+            char *utf8_filename = win_utf8_from_wstring(findData.cFileName);
+            if (!utf8_filename) continue;
+            
+            std::string filename(utf8_filename);
+            free(utf8_filename);
+            
+            if (filename == "." || filename == "..") continue;
+            if (filename == "assistant.txt") continue;
+            
+            std::string full_path = dir + "\\" + filename;
+            FILE *f = fopen(full_path.c_str(), "r");
+            if (!f) continue;
+            
+            char line[2048];
+            std::string title;
+            std::string desc;
+            std::string category;
+            bool found_desc = false;
+            
+			const char* lang_tags[4];
+			int current_lang_priority = 999;
+			bool in_lang_section = false;
+			
+			int lang_override = GetIPSLangOverride();
+			if (lang_override == 0)
+			{
+				lang_tags[0] = "[zh_CN]";
+				lang_tags[1] = "[zh_TW]";
+				lang_tags[2] = "[en_US]";
+				lang_tags[3] = nullptr;
+			}
+			else if (lang_override == 1)
+			{
+				lang_tags[0] = "[zh_TW]";
+				lang_tags[1] = "[zh_CN]";
+				lang_tags[2] = "[en_US]";
+				lang_tags[3] = nullptr;
+			}
+			else
+			{
+				lang_tags[0] = "[zh_CN]";
+				lang_tags[1] = "[zh_TW]";
+				lang_tags[2] = "[en_US]";
+				lang_tags[3] = nullptr;
+			}
+            
+            size_t last_slash = dir.find_last_of("\\");
+            if (last_slash != std::string::npos)
+            {
+                std::string parent_dir = dir.substr(0, last_slash);
+                size_t parent_slash = parent_dir.find_last_of("\\");
+                if (parent_slash != std::string::npos)
+                {
+                    category = parent_dir.substr(parent_slash + 1);
+                }
+            }
+            
+            while (fgets(line, sizeof(line), f))
+            {
+                size_t len = strlen(line);
+                while (len > 0 && (line[len-1] == '\n' || line[len-1] == '\r'))
+                    line[--len] = 0;
+                
+                char *p = line;
+                while (*p && isspace((unsigned char)*p)) p++;
+                if (*p == 0) continue;
+                
+                if (*p == '[')
+                {
+                    in_lang_section = false;
+                    for (int i = 0; lang_tags[i] != nullptr; i++)
+                    {
+                        if (strstr(p, lang_tags[i]) == p)
+                        {
+                            in_lang_section = true;
+                            if (i < current_lang_priority)
+                            {
+                                current_lang_priority = i;
+                                found_desc = false;
+                            }
+                            break;
+                        }
+                    }
+                    continue;
+                }
+                
+                if (in_lang_section && current_lang_priority < 999)
+                {
+					if (!found_desc)
+					{
+						desc = p;
+						title = desc;
+						found_desc = true;
+					}
+                    else if (current_lang_priority == 0)
+                    {
+                        desc += "\r\n";
+                        desc += p;
+                    }
+                }
+            }
+            fclose(f);
+            
+            if (!found_desc)
+            {
+                title = filename.substr(0, filename.length() - 4);
+                desc = title;
+            }
+            
+            std::string image_path;
+            const char* img_exts[] = { ".png", ".jpg", ".bmp", nullptr };
+            std::string base_name = dir + "\\" + filename.substr(0, filename.length() - 4);
+            for (int ext_i = 0; img_exts[ext_i] != nullptr; ext_i++)
+            {
+                std::string img_path = base_name + img_exts[ext_i];
+                FILE *img_test = fopen(img_path.c_str(), "rb");
+                if (img_test)
+                {
+                    fclose(img_test);
+                    image_path = img_path;
+                    break;
+                }
+            }
+            
+            GlobalPatchInfo info;
+            info.game_name = _strdup(game_name.c_str());
+            info.game_desc = _strdup(game_desc.c_str());
+            info.category = _strdup(category.c_str());
+            info.patch_filename = _strdup(filename.substr(0, filename.length() - 4).c_str());
+            info.patch_title = _strdup(title.c_str());
+            info.patch_desc = _strdup(desc.c_str());
+            info.image_path = image_path.empty() ? NULL : _strdup(image_path.c_str());
+            
+            g_global_patches.push_back(info);
+            
+        } while (FindNextFile(hFind, &findData));
+        FindClose(hFind);
+    }
+    
+    search_path = dir + "\\*";
+    hFind = winui_find_first_file_utf8(search_path.c_str(), &findData);
+    if (hFind != INVALID_HANDLE_VALUE)
+    {
+        do
+        {
+            if (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+            {
+                char *utf8_dirname = win_utf8_from_wstring(findData.cFileName);
+                if (!utf8_dirname) continue;
+                
+                std::string dirname(utf8_dirname);
+                free(utf8_dirname);
+                
+                if (dirname == "." || dirname == "..") continue;
+                
+                std::string subdir = dir + "\\" + dirname;
+                ScanDirectoryForDatFiles(subdir, game_name, game_desc);
+            }
+        } while (FindNextFile(hFind, &findData));
+        FindClose(hFind);
+    }
+}
+
+void ScanAllGlobalPatches(void)
+{	
+    if (g_global_patches_scanned)
+        return;
+    
+    g_global_patches.clear();
+    
+    const char *ipspath = GetIpsDir();
+    if (!ipspath || !ipspath[0]) return;
+    
+    std::string base_path = ipspath;
+    if (base_path.back() != '\\' && base_path.back() != '/')
+        base_path += '\\';
+    
+    std::string search_path = base_path + "*";
+    WIN32_FIND_DATA findData;
+    HANDLE hFind = winui_find_first_file_utf8(search_path.c_str(), &findData);
+    
+    if (hFind == INVALID_HANDLE_VALUE)
+        return;
+    
+    do
+    {
+        if (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+        {
+            char *utf8_dirname = win_utf8_from_wstring(findData.cFileName);
+            if (!utf8_dirname) continue;
+            
+            std::string game_folder(utf8_dirname);
+            free(utf8_dirname);
+            
+            if (game_folder == "." || game_folder == "..") continue;
+            
+            std::string game_desc = game_folder;
+            int game_index = GetGameNameIndex(game_folder.c_str());
+            if (game_index >= 0)
+                game_desc = GetDriverGameTitle(game_index);
+            
+            std::string full_path = base_path + game_folder;
+            ScanDirectoryForDatFiles(full_path, game_folder, game_desc);
+        }
+    } while (FindNextFile(hFind, &findData));
+    
+    FindClose(hFind);
+    g_global_patches_scanned = true;
+}
+
+int GetGlobalPatchCount(void)
+{
+    if (!g_global_patches_scanned)
+        ScanAllGlobalPatches();
+    return (int)g_global_patches.size();
+}
+
+const GlobalPatchInfo* GetGlobalPatchInfo(int index)
+{
+    if (!g_global_patches_scanned)
+        ScanAllGlobalPatches();
+    if (index < 0 || index >= (int)g_global_patches.size())
+        return NULL;
+    return &g_global_patches[index];
+}
+
+void FreeGlobalPatches(void)
+{
+    for (auto& info : g_global_patches)
+    {
+        if (info.game_name) free(info.game_name);
+        if (info.game_desc) free(info.game_desc);
+        if (info.category) free(info.category);
+        if (info.patch_filename) free(info.patch_filename);
+        if (info.patch_title) free(info.patch_title);
+        if (info.patch_desc) free(info.patch_desc);
+        if (info.image_path) free(info.image_path);
+    }
+    g_global_patches.clear();
+    g_global_patches_scanned = false;
+}
+
+void ForceRescanGlobalPatches(void)
+{
+    g_global_patches_scanned = false;
+}
+//=============================================================================>>>

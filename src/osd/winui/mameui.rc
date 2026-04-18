@@ -599,6 +599,10 @@ BEGIN
 
     PUSHBUTTON      "Reset",IDC_PROP_RESET,4,292,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,282,98,14,0,0
+
+//==================== 缘来是你 ========================>>>
+//	CONTROL         IDB_SNAPSHOT, IDC_STATIC, "Static", SS_BITMAP, 285, 75, 60, 115
+//======================================================>>>
 END
 
 IDD_PROP_OPENGL DIALOGEX 0, 0, 400, 310
@@ -667,6 +671,10 @@ BEGIN
     PUSHBUTTON      "Select",IDC_SELECT_EFFECT,180,281,40,14,0,0
     PUSHBUTTON      "Reset",IDC_RESET_EFFECT,220,281,40,14,0,0
 
+//==================== 缘来是你 ========================>>>
+//    CONTROL         "The game is set to a fixed frame rate of 60 frames per second.", IDC_60FPS, WC_BUTTON, BS_AUTOCHECKBOX | WS_TABSTOP, 10, 254, 100, 10
+//======================================================>>>
+
     GROUPBOX        "BGFX screen chains",IDC_STATIC,280,253,102,48
     EDITTEXT         IDC_BGFX_CHAINS,290,265,90,14,ES_LEFT | WS_BORDER
     PUSHBUTTON      "Select",IDC_SELECT_BGFX,290,279,40,14,0,0
@@ -676,6 +684,10 @@ BEGIN
     COMBOBOX        IDC_BGFX_BACKEND,10,219,92,10,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP,0
 	PUSHBUTTON      "Reset",IDC_PROP_RESET,4,292,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,282,98,14,0,0
+
+//==================== 缘来是你 ========================>>>
+//	CONTROL         IDB_SNAPSHOT, IDC_STATIC, "Static", SS_BITMAP, 285, 75, 60, 115
+//======================================================>>>
 END
 
 IDD_PROP_VECTOR DIALOGEX 0, 0, 220, 280
@@ -716,6 +728,10 @@ BEGIN
     
     PUSHBUTTON      "Reset",IDC_PROP_RESET,4,282,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,282,98,14,0,0
+
+//==================== 缘来是你 ========================>>>
+//	CONTROL         IDB_SNAPSHOT, IDC_STATIC, "Static", SS_BITMAP, 285, 75, 60, 115
+//======================================================>>>
 END
 
 IDD_PROP_INPUT DIALOGEX 0, 0, 220, 280
@@ -765,6 +781,10 @@ BEGIN
 
     PUSHBUTTON      "Reset",IDC_PROP_RESET,4,292,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,292,98,14,0,0
+
+//==================== 缘来是你 ========================>>>
+//	CONTROL         IDB_SNAPSHOT, IDC_STATIC, "Static", SS_BITMAP, 285, 75, 60, 115
+//======================================================>>>
 END
 
 IDD_PROP_MISC DIALOGEX 0, 0, 220, 280
@@ -844,6 +864,10 @@ BEGIN
 
     PUSHBUTTON      "Reset",IDC_PROP_RESET,4,294,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,294,98,14,0,0
+
+//==================== 缘来是你 ========================>>>
+//	CONTROL         IDB_SNAPSHOT, IDC_STATIC, "Static", SS_BITMAP, 285, 75, 60, 115
+//======================================================>>>
 END
 /****************************************************************************************************************************/
 
@@ -908,7 +932,7 @@ BEGIN
     CONTROL         "Reset all play statistics",IDC_RESET_PLAYSTATS,WC_BUTTON, BS_AUTOCHECKBOX | WS_TABSTOP,198,16,120,10
 
 //==================== 缘来是你 ========================>>>
-	CONTROL         "Quick ROM check (list refresh skips CRC)",IDC_FAST_ROM_AUDIT,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,198,28,160,10
+	CONTROL         "Quickly refresh the game list (without CRC check)",IDC_FAST_ROM_AUDIT,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,198,28,160,10
 //======================================================>>>
 
     GROUPBOX        "Screenshot area",IDC_STATIC,192,46,180,114

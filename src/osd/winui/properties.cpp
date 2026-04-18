@@ -4078,7 +4078,7 @@ static void IPSSelectionChange(HWND hDlg, HWND hWndCtrl)
 		winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_IPS_DESC), "");
 	}
 }
-/**************************************************/
+/*************************************************************************************************************/
 
 static void InitializeBIOSUI(HWND hWnd)
 {
@@ -4811,6 +4811,7 @@ static void DisableVisualStyles(HWND hDlg)
 	SetWindowTheme(GetDlgItem(hDlg, IDC_PGM2_MEMCARD_HACK), L" ", L" ");
 //	SetWindowTheme(GetDlgItem(hDlg, IDC_60FPS), L" ", L" ");
 //======================================================>>>
+
 	/* Snap/Movie/Playback */
 	SetWindowTheme(GetDlgItem(hDlg, IDC_SNAPVIEW), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_SNAPNAME), L" ", L" ");

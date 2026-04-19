@@ -376,7 +376,7 @@ private:
 	static std::set<std::string> m_new_missing;
 	static void save_to_json();
 //======================================================>>>	
-
+	
 	// constants
 	static constexpr int CHEAT_VERSION = 1;
 };

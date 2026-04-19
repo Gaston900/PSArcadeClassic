@@ -216,6 +216,13 @@ static windows_options pOptsRaster;
 static windows_options pOptsVector;
 static windows_options pOptsSource;
 
+// 修改的 代码来源 (EKMAME)
+/*******************************************/
+static RECT rcSheetSnap;
+static HBITMAP hSheetBitmap = NULL;
+static BOOL bUseScreenShot = FALSE;
+/*******************************************/
+
 static struct PropSheets
 {
 	DWORD dwDlgID;
@@ -1586,7 +1593,7 @@ static char *GameInfoTitle(OPTIONS_TYPE opt_type, int nIndex)
 	return buffer;
 }
 
-/* Build game clone infromation string */
+// Build game clone information string
 static char *GameInfoCloneOf(int nIndex)
 {
 	static char buffer[1024];
@@ -1701,15 +1708,82 @@ static void UpdateSheetCaption(HWND hWnd)
 
 	SelectClipRgn(hDC, NULL);
 	DeleteObject(hRgn);
-	rect.left = SHEET_TREE_WIDTH + 15;
-	rect.top = 8;
-	rect.right = rcTabCaption.right - 1;
-	rect.bottom = rcTabCtrl.bottom + 4;
+
+// 修改的 代码来源 (EKMAME)
+/*************************************************************************************************/
+	memcpy(&rect, &rcSheetSnap, sizeof(RECT));
+
 	hRgn = CreateRectRgn(rect.left, rect.top, rect.right, rect.bottom);
 	SelectClipRgn(hDC, hRgn);
-	hBrush = CreateSolidBrush(RGB(127, 127, 127));
-	FrameRect(hDC, &rect, hBrush);
-	DeleteObject(hBrush);
+
+	if (hSheetBitmap != NULL) 
+		{
+			HDC hMemDC;
+			HBITMAP hOldBitmap;
+			int iWidth, iHeight, iSnapWidth, iSnapHeight, iDrawWidth, iDrawHeight;
+	
+			if (bUseScreenShot == TRUE)
+			{
+				iSnapWidth = GetScreenShotWidth();
+				iSnapHeight = GetScreenShotHeight();
+			}
+			else
+			{
+				BITMAP bmpInfo;
+	
+				GetObject(hSheetBitmap, sizeof(BITMAP), &bmpInfo);
+				iSnapWidth = bmpInfo.bmWidth;
+				iSnapHeight = bmpInfo.bmHeight;
+			}
+	
+			iWidth = rect.right - rect.left;
+			iHeight = rect.bottom - rect.top;
+	
+			if (iWidth && iHeight)
+			{
+				int iXOffs, iYOffs;
+				double dXRatio, dYRatio;
+	
+				dXRatio = (double)iWidth  / (double)iSnapWidth;
+				dYRatio = (double)iHeight / (double)iSnapHeight;
+	
+				if (dXRatio > dYRatio)
+				{
+					iDrawWidth = (int)((iSnapWidth * dYRatio) + 0.5);
+					iDrawHeight = (int)((iSnapHeight * dYRatio) + 0.5);
+				}
+				else
+				{
+					iDrawWidth = (int)((iSnapWidth * dXRatio) + 0.5);
+					iDrawHeight = (int)((iSnapHeight * dXRatio) + 0.5);
+				}
+	
+				iXOffs = (iWidth - iDrawWidth)	/ 2;
+				iYOffs = (iHeight - iDrawHeight) / 2;
+	
+				hMemDC = CreateCompatibleDC(hDC);
+	
+				hOldBitmap = (HBITMAP)SelectObject(hMemDC, hSheetBitmap);
+		
+				SetStretchBltMode(hDC, STRETCH_HALFTONE);
+				StretchBlt(hDC,
+						rect.left+iXOffs, rect.top+iYOffs,
+						iDrawWidth, iDrawHeight,
+						hMemDC, 0, 0,
+						iSnapWidth, iSnapHeight, SRCCOPY);
+	
+				SelectObject(hMemDC, hOldBitmap);
+				DeleteDC(hMemDC);
+			}
+		}
+		else
+		{
+			hBrush = CreateSolidBrush(RGB(127, 127, 127));
+			FrameRect(hDC, &rect, hBrush);
+			DeleteObject(hBrush);
+		}
+/*************************************************************************************************/
+
 	SelectClipRgn(hDC, NULL);
 	DeleteObject(hRgn);
 	EndPaint (hWnd, &ps);
@@ -1930,12 +2004,46 @@ static void ModifyPropertySheetForTreeSheet(HWND hPageDlg)
 	rcTabCaption.right = rcTabCaption.left + (rcTabCtrl.right - rcTabCtrl.left - 6);
 	rcTabCaption.bottom = rcTabCaption.top + nCaptionHeight;
 	DestroyWindow(hTempTab);
-	rectTree.left = rcTabCtrl.left + 8;
-	rectTree.top = rcTabCtrl.top  + 8;
-	rectTree.right = rcTabCtrl.left + SHEET_TREE_WIDTH + 2;
-	rectTree.bottom = rcTabCtrl.bottom + 4;
+
+// 修改的 代码来源 (EKMAME)
+/************************************************************************************************************************/
+	int i = (int)((SHEET_TREE_WIDTH * 3) / 4 + 0.5);
+
+	rcSheetSnap.left   = rcTabCtrl.left + 4;
+	rcSheetSnap.top    = (rcTabCtrl.bottom - i);
+	rcSheetSnap.right  = rcTabCtrl.left + SHEET_TREE_WIDTH;
+	rcSheetSnap.bottom = rcTabCtrl.bottom;
+
+	if ((g_nGame == GLOBAL_OPTIONS) || (g_nGame == FOLDER_OPTIONS))
+	{
+		hSheetBitmap = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_SNAPSHOT));
+		bUseScreenShot = FALSE;
+	}
+	else
+	{
+		if (!ScreenShotLoaded())
+			LoadScreenShot(g_nGame, TAB_SCREENSHOT);
+
+		if (ScreenShotLoaded())
+		{
+			hSheetBitmap =(HBITMAP)GetScreenShotHandle();
+			bUseScreenShot = TRUE;
+		}
+		else
+		{
+			hSheetBitmap = LoadBitmap(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_SNAPSHOT));
+			bUseScreenShot = FALSE;
+		}
+	}
+
+	rectTree.left = rcTabCtrl.left + 4;
+	rectTree.top = rcTabCtrl.top  + 5;
+	rectTree.right = rcTabCtrl.left + SHEET_TREE_WIDTH;
+	rectTree.bottom = (rcTabCtrl.bottom -i) - 5;
 	hSheetTreeCtrl = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_NOPARENTNOTIFY, WC_TREEVIEW, NULL,
-		WS_TABSTOP | WS_CHILD | WS_VISIBLE | TVS_SHOWSELALWAYS | TVS_FULLROWSELECT | TVS_TRACKSELECT,
+		WS_TABSTOP | WS_CHILD | WS_VISIBLE | TVS_SHOWSELALWAYS | TVS_FULLROWSELECT | TVS_TRACKSELECT |TVS_NOHSCROLL,
+/************************************************************************************************************************/
+
 		rectTree.left, rectTree.top, rectTree.right - rectTree.left, rectTree.bottom - rectTree.top,
 		hWnd, (HMENU)0x7EEE, hSheetInstance, NULL);
 
@@ -2465,6 +2573,7 @@ static intptr_t CALLBACK GameOptionsDialogProc(HWND hDlg, UINT uMsg, WPARAM wPar
 				}
 //===========================================================>>>
 			}
+
 			break;
 		}
 
@@ -3347,10 +3456,6 @@ static void BuildDataMap(void)
 	datamap_add(properties_datamap, IDC_INTSCALEY,				DM_INT,		OPTION_INTSCALEY);
 	datamap_add(properties_datamap, IDC_INTSCALEY_TXT,			DM_INT,		OPTION_INTSCALEY);
 
-// 修改的 (缘来是你)
-/*********************************************************************************************/
-//	datamap_add(properties_datamap, IDC_60FPS,					DM_BOOL,	OPTION_60FPS);	//EKMAME 60fps
-/*********************************************************************************************/
 	// core opengl - bgfx options
 	datamap_add(properties_datamap, IDC_GLSLPOW,				DM_BOOL,	OSDOPTION_GL_FORCEPOW2TEXTURE);
 	datamap_add(properties_datamap, IDC_GLSLTEXTURE,			DM_BOOL,	OSDOPTION_GL_NOTEXTURERECT);
@@ -3449,10 +3554,10 @@ static void BuildDataMap(void)
 	datamap_add(properties_datamap, IDC_SCREEN,					DM_STRING,	NULL);
 	datamap_add(properties_datamap, IDC_SCREENSELECT,			DM_STRING,	NULL);
 	datamap_add(properties_datamap, IDC_VIEW,					DM_STRING,	NULL);
-	datamap_add(properties_datamap, IDC_ASPECTRATIOD,			DM_STRING,  NULL);
-	datamap_add(properties_datamap, IDC_ASPECTRATION,			DM_STRING,  NULL);
-	datamap_add(properties_datamap, IDC_REFRESH,				DM_STRING,  NULL);
-	datamap_add(properties_datamap, IDC_SIZES,					DM_STRING,  NULL);
+	datamap_add(properties_datamap, IDC_ASPECTRATIOD,			DM_STRING,	NULL);
+	datamap_add(properties_datamap, IDC_ASPECTRATION,			DM_STRING,	NULL);
+	datamap_add(properties_datamap, IDC_REFRESH,				DM_STRING,	NULL);
+	datamap_add(properties_datamap, IDC_SIZES,					DM_STRING,	NULL);
 	// full screen options
 	datamap_add(properties_datamap, IDC_TRIPLE_BUFFER,			DM_BOOL,	WINOPTION_TRIPLEBUFFER);
 	datamap_add(properties_datamap, IDC_SWITCHRES,				DM_BOOL,	OSDOPTION_SWITCHRES);
@@ -3474,6 +3579,7 @@ static void BuildDataMap(void)
 	datamap_add(properties_datamap, IDC_IPS_LIST,               DM_STRING,  OPTION_IPS);
 	datamap_add(properties_datamap, IDC_SKIP_CRC_CHECK, 		DM_BOOL, 	OPTION_SKIP_CRC_CHECK);
 	datamap_add(properties_datamap, IDC_PGM2_MEMCARD_HACK, 		DM_BOOL, 	OPTION_PGM2_MEMCARD_HACK);
+	datamap_add(properties_datamap, IDC_60FPS,					DM_BOOL,	OPTION_60FPS);	//EKMAME 60fps
 //======================================================>>>	
 
 	// set up callbacks
@@ -4809,7 +4915,7 @@ static void DisableVisualStyles(HWND hDlg)
 //==================== 缘来是你 ========================>>>
 	SetWindowTheme(GetDlgItem(hDlg, IDC_SKIP_CRC_CHECK), L" ", L" ");
 	SetWindowTheme(GetDlgItem(hDlg, IDC_PGM2_MEMCARD_HACK), L" ", L" ");
-//	SetWindowTheme(GetDlgItem(hDlg, IDC_60FPS), L" ", L" ");
+	SetWindowTheme(GetDlgItem(hDlg, IDC_60FPS), L" ", L" ");
 //======================================================>>>
 
 	/* Snap/Movie/Playback */

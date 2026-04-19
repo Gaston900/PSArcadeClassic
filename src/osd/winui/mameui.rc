@@ -500,8 +500,12 @@ BEGIN
     CONTROL         "Wait for vertical sync",IDC_WAITVSYNC,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,112,93,10,0
     CONTROL         "Refresh speed",IDC_REFRESHSPEED,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,124,93,10,0
 
-    CONTROL         "Use bilinear filtering",IDC_D3D_FILTER,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,136,93,12,0
-    CONTROL         "Use widescreen stretch",IDC_WIDESTRETCH,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,148,82,10,0
+//==================== 缘来是你 ========================>>>
+    CONTROL         "Fixed 60 frames per second", IDC_60FPS, WC_BUTTON, BS_AUTOCHECKBOX | WS_TABSTOP, 10,136,93,12,0
+//======================================================>>>
+
+    CONTROL         "Use bilinear filtering",IDC_D3D_FILTER,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,148,93,12,0
+    CONTROL         "Use widescreen stretch",IDC_WIDESTRETCH,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,160,93,10,0
 
     GROUPBOX        "Frame skipping",IDC_STATIC,4,172,102,44
     CONTROL         "Automatic",IDC_AUTOFRAMESKIP,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,184,77,10,0
@@ -671,10 +675,6 @@ BEGIN
     PUSHBUTTON      "Select",IDC_SELECT_EFFECT,180,281,40,14,0,0
     PUSHBUTTON      "Reset",IDC_RESET_EFFECT,220,281,40,14,0,0
 
-//==================== 缘来是你 ========================>>>
-//    CONTROL         "The game is set to a fixed frame rate of 60 frames per second.", IDC_60FPS, WC_BUTTON, BS_AUTOCHECKBOX | WS_TABSTOP, 10, 254, 100, 10
-//======================================================>>>
-
     GROUPBOX        "BGFX screen chains",IDC_STATIC,280,253,102,48
     EDITTEXT         IDC_BGFX_CHAINS,290,265,90,14,ES_LEFT | WS_BORDER
     PUSHBUTTON      "Select",IDC_SELECT_BGFX,290,279,40,14,0,0
@@ -831,7 +831,7 @@ BEGIN
     CONTROL         "",IDC_BOOTDELAY,TRACKBAR_CLASS,TBS_AUTOTICKS | WS_TABSTOP,195,52,72,10,0
     RTEXT           "0",IDC_BOOTDELAYDISP,270,50,14,10,SS_CENTERIMAGE | NOT WS_GROUP
     
-    GROUPBOX        "Autoboot script",IDC_STATIC,297,40,91,50
+    GROUPBOX        "Autoboot script",IDC_STATIC,297,40,93,50
     EDITTEXT        IDC_LUASCRIPT,300,55,80,14,ES_LEFT | WS_BORDER
     PUSHBUTTON      "Select",IDC_SELECT_LUASCRIPT,300,70,30,14,0,0
     PUSHBUTTON      "Reset",IDC_RESET_LUASCRIPT,340,70,30,14,0,0
@@ -1022,7 +1022,6 @@ BEGIN
     "5",            ID_OPTIONS_LIST_COLOR,      VIRTKEY, CONTROL, NOINVERT
     "6",            ID_OPTIONS_HISTORY_COLOR,   VIRTKEY, CONTROL, NOINVERT
     "A",            ID_GAME_AUDIT,              VIRTKEY, ALT, NOINVERT
-//    "A",            ID_FILE_AUDIT,              VIRTKEY, CONTROL, NOINVERT
     "B",            ID_VIEW_PAGETAB,            VIRTKEY, ALT, NOINVERT
     "C",            ID_CUSTOMIZE_FIELDS,        VIRTKEY, CONTROL, NOINVERT
     "D",            ID_OPTIONS_DIR,             VIRTKEY, CONTROL, NOINVERT

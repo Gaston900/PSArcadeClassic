@@ -1,5 +1,7 @@
 // license:BSD-3-Clause
 // copyright-holders:Aaron Giles
+// IPS 实现代码由 eziochiu 添加
+
 /***************************************************************************
 
     emuopts.cpp
@@ -50,17 +52,12 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_LANGUAGEPATH,                               "config/language",   core_options::option_type::STRING,     "path to UI translation files" }, // 修改的 (加斯顿90)
 	{ OPTION_SWPATH,                                     "support/software",  core_options::option_type::STRING,     "path to loose software" }, // 修改的 (加斯顿90)
 
-// 修改的 (Eziochiu) 
-/********************************************************************************************************************************************/
+//================== 缘来是你 ==========================>>>
 	{ OPTION_IPSPATH,                                    "support/ips",       core_options::option_type::STRING,  "path to IPS patch files" },
 	{ OPTION_IPS,                                        nullptr,     core_options::option_type::STRING,     "IPS patch name" },
-/********************************************************************************************************************************************/
-
-// 修改的 (缘来是你) 
-/********************************************************************************************************************************************/
 	{ OPTION_SKIP_CRC_CHECK,                             "0",         core_options::option_type::BOOLEAN,    "Skip CRC and HASH checks" },
 	{ OPTION_PGM2_MEMCARD_HACK, 						 "1", 		  core_options::option_type::BOOLEAN, 	 "Enable PGM2 without inserting a card" },
-/********************************************************************************************************************************************/
+//======================================================>>>
 
 	// output directory options
 	{ nullptr,                                           nullptr,     core_options::option_type::HEADER,     "CORE OUTPUT DIRECTORY OPTIONS" },
@@ -241,6 +238,12 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_HTTP,                                       "0",         core_options::option_type::BOOLEAN,    "enable HTTP server" },
 	{ OPTION_HTTP_PORT,                                  "8080",      core_options::option_type::INTEGER,    "HTTP server port" },
 	{ OPTION_HTTP_ROOT,                                  "web",       core_options::option_type::STRING,     "HTTP server document root" },
+
+//=============================== 缘来是你 ==================================>>>
+	//EKMAME FIX60FPS	
+	{ nullptr,                                           nullptr,     core_options::option_type::HEADER,      "ADD OPTIONS" },
+	{ OPTION_60FPS,                                      "0",         core_options::option_type::BOOLEAN,     "Fixed frame rate of 60 frames per second" },
+//==========================================================================>>>
 
 	{ nullptr }
 };

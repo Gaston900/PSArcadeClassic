@@ -14,6 +14,11 @@ static void ProcessNextRom(void);
 static void DetailsPrintf(const char *fmt, ...);
 static const char * StatusString(int iStatus);
 static bool RomSetFound(int index);
+
+//===================== 缘来是你 =====================>>>
+static bool FastRomSetFound(int index);
+//===================================================>>>
+
 static void RetrievePaths(void);
 static const char * RetrieveCHDName(int romset);
 
@@ -41,59 +46,6 @@ static HFONT hFont = NULL;
     External functions
  ***************************************************************************/
 
-// 修改的 代码来源 (缘来是你)
-//===========================================================>>>
-static bool FastRomSetFound(int index)
-{
-    char filename[MAX_PATH];
-    const char *gamename = GetDriverGameName(index);
-    bool found = false;
-
-    if (!DriverUsesRoms(index))
-        return false;
-
-    for (int i = 0; i < num_path; i++)
-    {
-        FILE *f = NULL;
-        snprintf(filename, std::size(filename), "%s\\%s.zip", rom_path[i], gamename);
-        f = fopen(filename, "r");
-
-        if (f == NULL && GetEnableSevenZip())
-        {
-            snprintf(filename, std::size(filename), "%s\\%s.7z", rom_path[i], gamename);
-            f = fopen(filename, "r");
-        }
-
-#if 0	// 未实现
-        // 如果是克隆游戏，检查父级 ROM
-        if (f == NULL && DriverIsClone(index))
-        {
-            int parent = GetParentIndex(&driver_list::driver(index));
-            if (!DriverIsBios(parent))
-            {
-                const char *parentname = GetDriverGameName(parent);
-                snprintf(filename, std::size(filename), "%s\\%s.zip", rom_path[i], parentname);
-                f = fopen(filename, "r");
-                if (f == NULL && GetEnableSevenZip())
-                {
-                    snprintf(filename, std::size(filename), "%s\\%s.7z", rom_path[i], parentname);
-                    f = fopen(filename, "r");
-                }
-            }
-        }
-#endif
-        if (f != NULL)
-        {
-            fclose(f);
-            found = true;
-            break;
-        }
-    }
-
-    return found;
-}
-//===================================================================>>>
-
 void AuditDialog(void)
 {
 	for (int i = 0; i < driver_list::total(); i++)
@@ -104,7 +56,7 @@ void AuditDialog(void)
 	rom_index         = 0;
 	roms_correct      = 0;
 	roms_incorrect    = 0;
-	roms_notfound	  = 0;
+	roms_notfound     = 0;
 	RetrievePaths();
 }
 
@@ -125,7 +77,6 @@ bool IsAuditResultNo(int audit_result)
 
 int MameUIVerifyRomSet(int game, bool refresh)
 {
-// 修改的 代码来源 (缘来是你)
 //======================= 缘来是你 ===================>>>
     if (GetFastRomAudit())
     {
@@ -167,7 +118,6 @@ int MameUIVerifyRomSet(int game, bool refresh)
 
 static int MameUIVerifyRomSetFull(int game)
 {
-// 修改的 代码来源 (缘来是你)
 //====================== 缘来是你 ====================>>>
     if (GetFastRomAudit())
     {
@@ -726,3 +676,82 @@ static const char * RetrieveCHDName(int romset)
 
 	return name;
 }
+
+//====================== 缘来是你 =====================================>>>
+static bool FastRomSetFound(int index)
+{
+    char filename[MAX_PATH];
+    const char *gamename = GetDriverGameName(index);
+    const char *chdname = NULL;
+    bool found = false;
+
+    if (!DriverUsesRoms(index))
+    {
+        if (DriverIsHarddisk(index))
+        {
+            chdname = RetrieveCHDName(index);
+            for (int i = 0; i < num_path; i++)
+            {
+                FILE *f = NULL;
+
+                snprintf(filename, std::size(filename), "%s\\%s\\%s.chd", rom_path[i], gamename, chdname);
+                f = fopen(filename, "r");
+                
+                if (f == NULL)
+                {
+                    snprintf(filename, std::size(filename), "%s\\%s.chd", rom_path[i], chdname);
+                    f = fopen(filename, "r");
+                }
+                
+                if (f != NULL)
+                {
+                    fclose(f);
+                    found = true;
+                    break;
+                }
+            }
+        }
+        return found;
+    }
+
+    for (int i = 0; i < num_path; i++)
+    {
+        FILE *f = NULL;
+        snprintf(filename, std::size(filename), "%s\\%s.zip", rom_path[i], gamename);
+        f = fopen(filename, "r");
+
+        if (f == NULL && GetEnableSevenZip())
+        {
+            snprintf(filename, std::size(filename), "%s\\%s.7z", rom_path[i], gamename);
+            f = fopen(filename, "r");
+        }
+
+#if 0	// 启用后，若拥有原作，将误判为拥有全部克隆
+        // 如果是克隆游戏，检查父级 ROM
+        if (f == NULL && DriverIsClone(index))
+        {
+            int parent = GetParentIndex(&driver_list::driver(index));
+            if (!DriverIsBios(parent))
+            {
+                const char *parentname = GetDriverGameName(parent);
+                snprintf(filename, std::size(filename), "%s\\%s.zip", rom_path[i], parentname);
+                f = fopen(filename, "r");
+                if (f == NULL && GetEnableSevenZip())
+                {
+                    snprintf(filename, std::size(filename), "%s\\%s.7z", rom_path[i], parentname);
+                    f = fopen(filename, "r");
+                }
+            }
+        }
+#endif
+        if (f != NULL)
+        {
+            fclose(f);
+            found = true;
+            break;
+        }
+    }
+
+    return found;
+}
+//=============================================================================>>>

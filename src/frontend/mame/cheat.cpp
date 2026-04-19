@@ -118,6 +118,7 @@ extern const char *funcGetParentName(const char *name);
 #define REMOVE_DUPLICATE_CHEATS 0
 
 
+
 //**************************************************************************
 //  NUMBER AND FORMAT
 //**************************************************************************
@@ -1165,6 +1166,7 @@ cheat_manager::cheat_manager(running_machine &machine)
 	// load the cheats
 	reload();
 }
+
 
 //-------------------------------------------------
 //  set_enable - globally enable or disable the

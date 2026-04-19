@@ -848,6 +848,18 @@ void screen_device::device_start()
 	// configure the screen with the default parameters
 	configure(m_width, m_height, m_visarea, m_refresh);
 
+//======================== 缘来是你 =======================>>>
+		//EKMAME FIX60FPS	
+		if(machine().options().Frame_60fps())
+		{
+			configure(m_width, m_height, m_visarea, HZ_TO_ATTOSECONDS(60));
+		}
+		else
+		{
+			configure(m_width, m_height, m_visarea, m_refresh);
+		}
+//=========================================================>>>
+
 	// reset VBLANK timing
 	m_vblank_start_time = attotime::zero;
 	m_vblank_end_time = attotime(0, m_vblank_period);

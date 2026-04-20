@@ -45210,6 +45210,8 @@ dinohc25                        // hack
 dinohc26                        // hack
 dinohc27                        // hack
 dinohc28                        // hack
+dinohc29                        // hack
+dinohc30                        // hack
 forgottnhc01                    // hack
 ffighthc01                      // hack
 ffighthc02                      // hack
@@ -45218,6 +45220,7 @@ ffighthc04                      // hack
 ffighthc05                      // hack
 ffighthc06                      // hack
 ghoulshc01                      // hack
+ghoulshc02                      // hack
 kodhc01                         // hack
 kodhc02                         // hack
 kodhc03                         // hack
@@ -45380,8 +45383,9 @@ sfz2alhc06                      // hack
 ssf2thc01                       // hack
 ssf2thc02                       // hack
 ssf2thc03                       // hack
+ssf2thc04                       // hack
+ssf2thc05                       // hack
 ssf2xhc01                       // hack
-ssf2xhc02                       // hack
 ssf2hc01                        // hack
 spf2thc01                       // hack
 spf2thc02                       // hack
@@ -45923,6 +45927,7 @@ kof94hc04                       // hack
 kof94hc05                       // hack
 kof94hc06                       // hack
 kof94hc07                       // hack
+kof94hc08                       // hack
 kof95hc01                       // hack
 kof95hc02                       // hack
 kof95hc03                       // hack
@@ -46267,6 +46272,7 @@ puzzldprhc01                    // hack
 ragnagrdhc01                    // hack
 ragnagrdhc02                    // hack
 rbffspechc01                    // hack
+rbff1hc01                       // hack
 rbff2hc01                       // hack
 rotdhc01                        // hack
 rotdhc02                        // hack

@@ -540,7 +540,7 @@ static bool verify_patch_dependencies()
             auto it = patch_map.find(conf_name);
             if (it != patch_map.end()) {
                 s_error_string += string_format(
-                    "ERROR: Patches '%s' conflict with each other and cannot be used simultaneously\n",
+                    "ERROR: Patches '%s' and Patches '%s' Conflict, cannot be used simultaneously\n",
                     patch->ips_name.c_str(), conf_name.c_str());
                 all_valid = false;
             }

@@ -46383,6 +46383,7 @@ kovshhc01                       // hack
 kovshhc02                       // hack
 kovshhc03                       // hack
 kovshhc04                       // hack
+kovshhc05                       // hack
 kovplushc01                     // hack
 kovplushc02                     // hack
 kovplushc03                     // hack
@@ -46394,6 +46395,8 @@ kovshphc05                      // hack
 kovshphc06                      // hack
 kovshphc07                      // hack
 kovshphc08                      // hack
+kovshphc09                      // hack
+kovshphc10                      // hack
 martmasthc01                    // hack
 martmasthc02                    // hack
 martmasthc03                    // hack
@@ -46402,8 +46405,12 @@ olds100ahc01                    // hack
 olds100ahc02                    // hack
 olds100ahc03                    // hack
 olds100ahc04                    // hack
+olds100ahc05                    // hack
+olds100ahc06                    // hack
+olds100ahc07                    // hack
 oldsplushc01                    // hack
 oldsplushc02                    // hack
+oldsplushc03                    // hack
 orlegendhc01                    // hack
 pgemeni                         // HomeBrew
 pgmdemo                         // HomeBrew

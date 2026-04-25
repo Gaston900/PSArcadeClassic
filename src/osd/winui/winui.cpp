@@ -1623,7 +1623,6 @@ static LRESULT CALLBACK MameWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPAR
 
 			return (LRESULT) hBrushDlg;
 
-// 修改的 代码来源 (缘来是你)
 //=============== 缘来是你 ==== DPI ===============>>>
 		case WM_CREATE:
 		{
@@ -2327,8 +2326,7 @@ static void InitMenuIcons(void)
 	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_RESET));
 	hReset = CreateBitmapTransparent(hTemp);
 
-// 缘来是你
-//===================================================================>>>
+//============================== 缘来是你 ============================>>>
 	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_KLIST));
 	hklist = CreateBitmapTransparent(hTemp);
 //===================================================================>>>
@@ -2371,7 +2369,6 @@ static void CopyToolTipText(LPTOOLTIPTEXT lpttt)
 	lpttt->lpszText = t_s;
 }
 
-// 修改的 代码来源 (缘来是你)
 //============================= 复选框 ===========================>>>
 static void SetBatchDeleteMode(bool bEnable)
 {
@@ -2532,7 +2529,6 @@ static void UpdateStatusBar(void)
 	}
 }
 
-// 修改的 代码来源 (缘来是你)
 //============================== 缘来是你 ===========================>>>
 //DPI 修改
 static void ResetFonts(void)
@@ -3616,16 +3612,25 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 						found = TRUE;
 						break;
 					}
+//============================= 缘来是你 ===========================>>>
+					snprintf(rompath, sizeof(rompath), "%s\\%s.7z", dir, romname);
+					if (GetFileAttributesA(rompath) != INVALID_FILE_ATTRIBUTES)
+					{
+						found = TRUE;
+						break;
+					}
+//=================================================================>>>
 				}
 				dir = strtok(NULL, ";");
 			}
 		
 			if (!found)
 			{
-				ErrorMessageBox("ROM file not found:\n%s.zip", romname);
+//============================= 缘来是你 ===========================>>>
+				ErrorMessageBox("ROM file not found:\n%s.zip or %s.7z", romname, romname);
 				break;
+//=================================================================>>>
 			}
-		
 			snprintf(msg, sizeof(msg), "Are you sure you want to delete the ROM file? \n\n%s\n\nThis operation is irreversible!", rompath);
 			if (winui_message_box_utf8(hWnd, msg, MAMEUINAME, MB_ICONWARNING | MB_YESNO) != IDYES)
 				break;
@@ -3732,6 +3737,16 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 							found = TRUE;
 							break;
 						}
+//============================= 缘来是你 ===========================>>>
+						snprintf(roms[nValidCount].path, MAX_PATH, "%s\\%s.7z", dir, romname);
+						if (GetFileAttributesA(roms[nValidCount].path) != INVALID_FILE_ATTRIBUTES)
+						{
+							roms[nValidCount].gameIndex = nGame;
+							nValidCount++;
+							found = TRUE;
+							break;
+						}
+//=================================================================>>>
 					}
 					dir = strtok(NULL, ";");
 				}
@@ -4301,7 +4316,6 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 
 			break;
 
-// 修改的 代码来源 (缘来是你)
 //======================== 缘来是你 ========== 删除ROMs =================>>>
 		case IDCANCEL: /* esc key */
 			if (g_in_treeview_edit)
@@ -5826,7 +5840,6 @@ void InitBodyContextMenu(HMENU hBodyContextMenu)
 	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_ADD_CUSTOM, MF_BYCOMMAND, hCustom, hCustom);
 	SetMenuItemBitmaps(hBodyContextMenu, ID_FILE_PLAY, MF_BYCOMMAND, hPlay, hPlay);
 
-// 修改的 代码来源 (缘来是你)
 //================================================ 缘来是你 ===============================================>>>																		
 	SetMenuItemBitmaps(hBodyContextMenu, ID_PLAY_IPS, MF_BYCOMMAND, hFolders, hFolders);	// IPS
 	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_DELETE_ROM, MF_BYCOMMAND, hRemove, hRemove);	//删除 ROMs
@@ -6797,7 +6810,6 @@ int GetGameIndex(const char *name)
 
 char *GetDescriptionByIndex(int nIndex, bool bUse)
 {
-// 修改的 代码来源 (缘来是你)
 //=================== 缘来是你==================>>>
 	int total = driver_list::total();
 	
@@ -6821,7 +6833,6 @@ char *GetDescriptionByName(const char *name, bool bUse)
 
 char *GetGameNameByIndex(int nIndex, bool bUse)
 {
-// 修改的 代码来源 (缘来是你)
 //=================== 缘来是你==================>>>
 	int total = driver_list::total();
 	
@@ -6846,7 +6857,6 @@ char *GetGameName(const char *name, bool bUse)
 
 char *GetGameManufactureByIndex(int nIndex, bool bUse)
 {
-// 修改的 代码来源 (缘来是你)
 //=================== 缘来是你==================>>>
 	int total = driver_list::total();
 	

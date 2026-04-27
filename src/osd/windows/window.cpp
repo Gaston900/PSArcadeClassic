@@ -1029,11 +1029,22 @@ int win_window_info::complete_create()
 	if (!attached_mode())
 		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)this);
 
-// 修改的 代码来源 (缘来是你)
-//================= 如果提供中文名称，则将窗口标题为中文名称 =============>>>
+//================= 缘来是你：窗口标题中文化 =======================>>>
 	std::string ch_name = machine().chinese_name();
+	std::string short_name = machine().system().name;
+	std::string window_title;
+	
 	if (!ch_name.empty())
-		SetWindowText(hwnd, osd::text::to_tstring(ch_name).c_str());
+	{
+		window_title = ch_name + " [" + short_name + "]";
+	}
+	else
+	{
+		const char* driver_desc = machine().system().type.fullname();
+		window_title = std::string(driver_desc) + " [" + short_name + "]";
+	}
+	
+	SetWindowText(hwnd, osd::text::to_tstring(window_title).c_str());
 //=================================================================>>>
 
 	// skip the positioning stuff for '-video none' or '-attach_window'

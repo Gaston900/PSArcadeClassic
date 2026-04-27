@@ -176,7 +176,7 @@ struct _play_options
 
 // 缘来是你
 //============= USE_CLIST ===============>>>
-#define TSVNAME "Arcade_List.lst"
+#define TSVNAME "arcade.lst"
 #define LINEBUF_SIZE  1024
 #define NUM_COLUMNS   3
 
@@ -6564,11 +6564,12 @@ static void SaveGameListToFile(char *szFile)
 		{
 			int nGameIndex  = lvi.lParam;
 
-//缘来是你
-//======================= 导出当前游戏列表 ===================>>>			
+//======================= 缘来是你：导出当前游戏列表 ==============>>>			
+			//fprintf(f, "%s%s", GetDriverGameTitle(nGameIndex),"\n");	//原代码
 			const char *shortname = GetDriverGameName(nGameIndex);
             const char *description = GetDescriptionByIndex(nGameIndex, GetUsekoreanList());
             const char *manufacturer = GetGameManufactureByIndex(nGameIndex, GetUsekoreanList());
+			//fprintf(f, "%s%s", GetDescriptionByIndex(nGameIndex, GetUsekoreanList()), "\n");	//仅游戏名称
             fprintf(f, "%s\t%s\t%s\n", shortname, description, manufacturer);
 //=============================================================>>>
 		}
@@ -6689,25 +6690,23 @@ static void LoadGameListFromFile(int games)
 				//games += 12;
 			}
 		}
-//中文列表优化
-#if 0
+
+//================= 缘来是你==================================================>>>
+		//优化中文列表
 		tsv_data[i].gamename = NULL;
 		tsv_data[i].description = NULL;
 		tsv_data[i].manufacturer = NULL;
-#endif
-	
 	}
     else
     {
 		need_update = 1;
 		
-//中文列表优化
-#if 0
+		//优化中文列表
 		tsv_data[0].gamename = NULL;
 		tsv_data[0].description = NULL;
 		tsv_data[0].manufacturer = NULL;
-#endif
     }
+//===========================================================================>>>
 
 	//winui_message_box_utf8(hMain, "mame32k list load complete", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
 

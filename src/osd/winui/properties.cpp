@@ -4039,10 +4039,12 @@ static void InitializeGlobalIPSTree(HWND hDlg)
         }
     }
     
+#if 0   //展开所有节点
     for (auto& game_pair : game_nodes)
     {
         TreeView_Expand(hTree, game_pair.second, TVE_EXPAND);
     }
+#endif
 
 	HWND hLang = GetDlgItem(hDlg, IDC_IPS_LANG);
     if (hLang)

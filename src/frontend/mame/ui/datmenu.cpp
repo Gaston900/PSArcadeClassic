@@ -27,6 +27,10 @@
 #include <limits>
 #include <string_view>
 
+//=== 缘来是你 ===>>>
+#include <fstream>
+#include <string>
+//===============>>>
 
 namespace ui {
 
@@ -207,12 +211,64 @@ void menu_dats_view::populate(float &customtop, float &custombottom)
 //-------------------------------------------------
 //  perform our special rendering
 //-------------------------------------------------
-
+//===================== 缘来是你 ===== 中文化 =================>>>
 void menu_dats_view::custom_render(void *selectedref, float top, float bottom, float origx1, float origy1, float origx2, float origy2)
 {
+    static std::string cached_title;
+    static const game_driver* last_driver = nullptr;
+
+    const game_driver* current_driver = m_issoft ? nullptr : m_system->driver;
+
+    if (last_driver != current_driver)
+    {
+        last_driver = current_driver;
+        cached_title.clear();
+
+        if (!m_issoft && current_driver != nullptr)
+        {
+            std::string shortname = current_driver->name;
+			// 本地游戏列表路径
+            std::ifstream file("arcade.lst");
+
+            if (file.is_open())
+            {
+                std::string line;
+                while (std::getline(file, line))
+                {
+                    size_t tab = line.find('\t');
+                    if (tab == std::string::npos) continue;
+
+                    std::string lst_shortname = line.substr(0, tab);
+
+                    if (lst_shortname == shortname)
+                    {
+                        std::string desc = line.substr(tab + 1);
+                        size_t second_tab = desc.find('\t');
+                        if (second_tab != std::string::npos) {
+                            desc = desc.substr(0, second_tab);
+                        }
+                        if (!desc.empty() && desc.back() == '\r') {
+                            desc.pop_back();
+                        }
+                        cached_title = desc;
+                        break;
+                    }
+                }
+                file.close();
+            }
+        }
+
+        if (cached_title.empty())
+        {
+            cached_title = m_issoft ? m_swinfo->longname : m_system->description;
+        }
+    }
+
 	float maxwidth = origx2 - origx1;
+    std::string_view const driver = cached_title;
+//======================================================>>>
+
 	float width;
-	std::string_view const driver = m_issoft ? m_swinfo->longname : m_system->description;
 
 	float const lr_border = ui().box_lr_border() * machine().render().ui_aspect(&container());
 	ui().draw_text_full(

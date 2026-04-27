@@ -65,6 +65,10 @@ std::vector<submenu::option> submenu::advanced_options()
 			{ option_type::EMU,  N_("Adjust speed to match refresh rate"),      OPTION_REFRESHSPEED },
 			{ option_type::EMU,  N_("Low latency"),                             OPTION_LOWLATENCY },
 
+//================= 缘来是你==================================================>>>
+			{ option_type::EMU,  N_("Fixed 60 frames per second"),              OPTION_60FPS },
+//===========================================================================>>>
+
 			{ option_type::HEAD, N_("Rotation Options") },
 			{ option_type::EMU,  N_("Rotate"),                                  OPTION_ROTATE },
 			{ option_type::EMU,  N_("Rotate right"),                            OPTION_ROR },

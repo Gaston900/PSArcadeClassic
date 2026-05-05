@@ -15,6 +15,11 @@
 //========= JOSN字典 ========>>>
 #include <string>
 #include <unordered_map>
+#include <set>
+#include <thread>
+#include <atomic>
+#include <chrono>
+#include <mutex>
 //===========================>>>
 #include "debug/express.h"
 #include "ui/text.h"
@@ -109,10 +114,9 @@ public:
 
 private:
 
-// 修改的 代码来源 (缘来是你)
-/*********************************/
+//============ 缘来是你 =============>>>
 	cheat_manager &m_manager;
-/*********************************/
+//==================================>>>
 
 	// a single item in a parameter item list
 	class item
@@ -275,12 +279,11 @@ public:
 	bool activate();
 	bool select_default_state();
 
-// 修改的 代码来源 (EKMAME)
-/***********************************/
+//========== 缘来是你：作弊引用UI版 =========>>>
 #ifdef MAME_UI
-	bool select_all_set_state(); //缘来是你 作弊引用UI版
+	bool select_all_set_state();
 #endif
-/***********************************/
+//===========================================>>>
 
 	bool select_previous_state();
 	bool select_next_state();
@@ -325,6 +328,10 @@ public:
 	// construction/destruction
 	cheat_manager(running_machine &machine);
 
+//============ 缘来是你 =============>>>
+	~cheat_manager();
+//==================================>>>
+
 	// getters
 	running_machine &machine() const { return m_machine; }
 	bool enabled() const { return !m_disabled; }
@@ -345,8 +352,7 @@ public:
 	static std::string quote_expression(parsed_expression const &expression);
 	static uint64_t execute_frombcd(int params, uint64_t const *param);
 	static uint64_t execute_tobcd(int params, uint64_t const *param);
-
-// 修改的 代码来源 (缘来是你)
+	
 //==================== 缘来是你 ========================>>>
 	void set_translation_enabled(bool enabled);
 	std::string translate(const std::string& text);
@@ -357,6 +363,12 @@ private:
 	// internal helpers
 	void frame_update();
 	void load_cheats(std::string const &filename);
+
+//========== 缘来是你 ==========>>>
+	void save_to_json();
+	void schedule_save();
+	void save_worker_thread();
+//=============================>>>
 
 	// internal state
 	running_machine &                           m_machine;      // reference to our machine
@@ -369,12 +381,15 @@ private:
 	bool                                        m_disabled;     // true if the cheat engine is disabled
 	symbol_table                                m_symtable;     // global symbol table
 
-// 修改的 代码来源 (缘来是你)
 //==================== 缘来是你 ========================>>>
 	static std::unordered_map<std::string, std::string> m_translation_map;
 	static bool m_translation_enabled;
 	static std::set<std::string> m_new_missing;
-	static void save_to_json();
+	
+	std::thread m_save_thread;
+	std::atomic<bool> m_save_running{true};
+	std::atomic<bool> m_save_pending{false};
+	std::mutex m_save_mutex;
 //======================================================>>>	
 	
 	// constants

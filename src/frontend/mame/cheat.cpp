@@ -1,5 +1,6 @@
 // license:BSD-3-Clause
 // copyright-holders:Aaron Giles
+// 作弊引用来自EKMAME
 /***************************************************************************
 
     cheat.c
@@ -72,10 +73,9 @@
 
 ***************************************************************************/
 
-// 修改的 代码来源 (缘来是你)
-/******************/
+//============ 缘来是你 =============>>>
 #define MAME_UI
-/******************/
+//==================================>>>
 
 #include "emu.h"
 #include "cheat.h"
@@ -94,7 +94,6 @@
 
 #include <cctype>
 
-// 修改的 代码来源 (缘来是你)
 //============ 缘来是你 =============>>>
 //JSON 字典
 #include <unordered_map>
@@ -110,13 +109,14 @@ std::set<std::string> cheat_manager::m_new_missing;
 extern const char *funcGetParentName(const char *name);
 #endif
 
+//==================================>>>
+
 //**************************************************************************
 //  PARAMETERS
 //**************************************************************************
 
 // turn this on to enable removing duplicate cheats; not sure if we should
 #define REMOVE_DUPLICATE_CHEATS 0
-
 
 
 //**************************************************************************
@@ -159,10 +159,9 @@ inline std::string number_and_format::format() const
 
 cheat_parameter::cheat_parameter(cheat_manager &manager, symbol_table &symbols, std::string const &filename, util::xml::data_node const &paramnode)
 
-// 修改的 代码来源 (缘来是你)
-/******************************************************/
+//============ 缘来是你 =============>>>
 	: m_manager(manager)  // JSON字典 初始化
-/******************************************************/
+//==================================>>>
 
 	, m_minval(number_and_format(paramnode.get_attribute_int("min", 0), paramnode.get_attribute_int_format("min")))
 	, m_maxval(number_and_format(paramnode.get_attribute_int("max", 0), paramnode.get_attribute_int_format("max")))
@@ -219,11 +218,10 @@ const char *cheat_parameter::text()
 			{
 				m_curtext = curitem.text();
 
-// 修改的 代码来源 (缘来是你)
-/******************************************************************/
+//============ 缘来是你 =============>>>
 				// JSON字典
                 m_curtext = m_manager.translate(m_curtext); 
-/******************************************************************/															
+//==================================>>>
 				break;
 			}
 		}
@@ -1005,10 +1003,9 @@ void cheat_entry::menu_text(std::string &description, std::string &state, uint32
 	state.clear();
 	flags = 0;
 
-// 修改的 代码来源 (缘来是你)
-/******************************************************/
+//============ 缘来是你 =============>>>
     description = m_manager.translate(description);
-/******************************************************/
+//==================================>>>
 
 	if (is_text_only())
 	{
@@ -1026,20 +1023,18 @@ void cheat_entry::menu_text(std::string &description, std::string &state, uint32
 		// if we have no parameter and no run or off script, it's a oneshot cheat
 		state = "Set";
 
-// 修改的 代码来源 (缘来是你)
-/************************************************/
+//============ 缘来是你 =============>>>
         state = m_manager.translate(state);
-/************************************************/
+//==================================>>>
 	}
 	else if (is_onoff())
 	{
 		// if we have no parameter, it's just on/off
 		state = (m_state == SCRIPT_STATE_RUN) ? "On" : "Off";
 
-// 修改的 代码来源 (缘来是你)
-/***********************************************/
+//============ 缘来是你 =============>>>
         state = m_manager.translate(state);
-/***********************************************/
+//==================================>>>
 
 		flags = (m_state != 0) ? ui::menu::FLAG_LEFT_ARROW : ui::menu::FLAG_RIGHT_ARROW;
 	}
@@ -1050,10 +1045,9 @@ void cheat_entry::menu_text(std::string &description, std::string &state, uint32
 		{
 			state = is_oneshot_parameter() ? "Set" : "Off";
 
-// 修改的 代码来源 (缘来是你)
-/***********************************************/
+//============ 缘来是你 =============>>>
             state = m_manager.translate(state);
-/***********************************************/
+//==================================>>>
 			flags = ui::menu::FLAG_RIGHT_ARROW;
 		}
 		else
@@ -1163,10 +1157,48 @@ cheat_manager::cheat_manager(running_machine &machine)
 	m_symtable.add("frombcd", 1, 1, execute_frombcd);
 	m_symtable.add("tobcd", 1, 1, execute_tobcd);
 
+//=============================== 缘来是你 ===============================>>>
+	m_save_thread = std::thread(&cheat_manager::save_worker_thread, this);
+
 	// load the cheats
 	reload();
 }
 
+cheat_manager::~cheat_manager()
+{
+	m_save_running = false;
+	if (m_save_thread.joinable())
+		m_save_thread.join();
+}
+
+
+void cheat_manager::schedule_save()
+{
+	m_save_pending = true;
+}
+
+void cheat_manager::save_worker_thread()
+{
+	while (m_save_running)
+	{
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+		if (m_save_pending)
+		{
+			std::lock_guard<std::mutex> lock(m_save_mutex);
+
+			if (m_new_missing.empty())
+			{
+				m_save_pending = false;
+				continue;
+			}
+
+			save_to_json();
+			m_save_pending = false;
+		}
+	}
+}
+//=================================================================>>>
 
 //-------------------------------------------------
 //  set_enable - globally enable or disable the
@@ -1192,10 +1224,9 @@ void cheat_manager::set_enable(bool enable)
 		machine().popmessage("Cheats Disabled");
 		m_disabled = true;
 
-// 修改的 代码来源 (缘来是你)
-/*************************/
-		save_to_json();
-/*************************/
+//============ 缘来是你 =============>>>
+		schedule_save();
+//==================================>>>
 	}
 	else if (m_disabled && enable)
 	{
@@ -1225,10 +1256,9 @@ void cheat_manager::reload()
 		return;
 
 
-// 修改的 代码来源 (缘来是你)
-/**********************************************/
+//============ 缘来是你 =============>>>
     load_translation_table("cheat_cn.json");
-/**********************************************/
+//==================================>>>
 
 	// free everything
 	m_cheatlist.clear();
@@ -1266,16 +1296,14 @@ void cheat_manager::reload()
 		}
 	}
 
+//============= 缘来是你 ===== EKMAME 作弊引用 ==================>>>
 	// if we haven't found the cheats yet, load by basename
-
-// 修改的 代码来源 (EKMAME)
-/******************************************************************************************/
 	if (m_cheatlist.empty())
 	{
 		//const char *parentname = GetParentName(machine().basename());
 		//if(parentname !=NULL)
 		//	machine().popmessage(parentname);
-
+		
 		load_cheats(machine().basename());
 		// EKMAME 开始
 		// 对于克隆 ROM，若其自身没有作弊码，则会执行读取父 ROM 作弊码的处理。
@@ -1289,19 +1317,18 @@ void cheat_manager::reload()
 		}
 		// EKMAME 结束
 	}
-/******************************************************************************************/
+//===============================================================>>>
 
 	// temporary: save the file back out as output.xml for comparison
 	if (m_cheatlist.size() != 0)
 
-// 修改的 代码来源 (缘来是你)
-/*********************************/
+//============ 缘来是你 =============>>>
 	{
 		save_all("output");
 	}
 
-	save_to_json();
-/*********************************/
+	schedule_save();
+//==================================>>>
 }
 
 
@@ -1664,7 +1691,11 @@ std::string cheat_manager::translate(const std::string& text)
 	
 		if (missing.insert(text).second)
 		{
-			m_new_missing.insert(text);
+            std::lock_guard<std::mutex> lock(m_save_mutex);
+            if (m_new_missing.insert(text).second)
+            {
+                schedule_save();
+            }
 #if 0			
 			//保存未翻译词条为文本
 			static FILE* logfile = nullptr;
@@ -1759,6 +1790,8 @@ void cheat_manager::save_to_json()
         fprintf(f, "}\n");
         fclose(f);
     }
+    
+    m_new_missing.clear();	//缘来是你
 }
 
 /******************** 字典格式 *****************

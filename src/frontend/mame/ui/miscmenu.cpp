@@ -680,9 +680,6 @@ void menu_autofire::populate(float &customtop, float &custombottom)
 
 			if (name.c_str() != NULL && (
 			    (field.type() >= IPT_BUTTON1 && field.type() < IPT_BUTTON1 + MAX_NORMAL_BUTTONS)
-#ifdef USE_CUSTOM_BUTTON
-			     || (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS)
-#endif /* USE_CUSTOM_BUTTON */
 			   ))
 			{
 				ioport_field::user_settings settings;
@@ -717,7 +714,6 @@ void menu_autofire::populate(float &customtop, float &custombottom)
 }
 #undef AUTOFIRE_ITEM_P1_DELAY
 
-#ifdef USE_CUSTOM_BUTTON
 /*-------------------------------------------------
     menu_custom_button - handle the custom button
     settings menu
@@ -780,6 +776,142 @@ void menu_custom_button::handle(event const *ev)
 		reset (reset_options::REMEMBER_REF);
 }
 
+#define AUTOFIRE_ITEM_P1_DELAY 1
+/*-------------------------------------------------
+    menu_custom_setting - handle the autofire settings
+    menu
+-------------------------------------------------*/
+
+menu_custom_setting::menu_custom_setting(mame_ui_manager &mui, render_container &container) : menu(mui, container)
+{
+}
+
+menu_custom_setting::~menu_custom_setting()
+{
+}
+
+void menu_custom_setting::handle(event const *ev)
+{
+	bool changed = false;
+
+	/* process the menu */
+	const event *menu_event = ev;
+	
+	/* handle events */
+	if (menu_event != nullptr && menu_event->itemref != nullptr)
+	{
+		if (menu_event->iptkey == IPT_UI_LEFT || menu_event->iptkey == IPT_UI_RIGHT)
+		{
+			int player = (uintptr_t)menu_event->itemref - AUTOFIRE_ITEM_P1_DELAY;
+			//autofire delay
+			if (player >= 0 && player < MAX_PLAYERS)
+			{
+				int autofire_delay = machine().ioport().get_autofiredelay(player);
+
+				if (menu_event->iptkey == IPT_UI_LEFT)
+				{
+					autofire_delay--;
+					if (autofire_delay < 1)
+						autofire_delay = 1;
+				}
+				else
+				{
+					autofire_delay++;
+					if (autofire_delay > 99)
+						autofire_delay = 99;
+				}
+
+				machine().ioport().set_autofiredelay(player, autofire_delay);
+
+				changed = true;
+			}
+			//anything else is a toggle item
+			else
+			{
+				ioport_field *field = (ioport_field *)menu_event->itemref;
+				ioport_field::user_settings settings;
+				int selected_value;
+				field->get_user_settings(settings);
+				selected_value = settings.autofire;
+
+				if (menu_event->iptkey == IPT_UI_LEFT)
+				{
+					if (--selected_value < 0)
+					selected_value = 2;
+				}
+				else
+				{
+					if (++selected_value > 2)
+					selected_value = 0;	
+				}
+
+				settings.autofire = selected_value;
+				field->set_user_settings(settings);
+
+				changed = true;
+			}
+		}
+	}
+
+	/* if something changed, rebuild the menu */
+	if (changed)
+		reset(reset_options::REMEMBER_REF);
+}
+
+/*-------------------------------------------------
+    menu_custom_setting_populate - populate the autofire
+    menu
+-------------------------------------------------*/
+
+void menu_custom_setting::populate(float &customtop, float &custombottom)
+{
+	std::string subtext;
+	std::string text;
+	int players = 0;
+	uintptr_t i;
+
+	/* iterate over the input ports and add autofire toggle items */
+	for (auto &port : machine().ioport().ports())
+	{
+		for (auto &field : port.second->fields())
+		{
+			std::string name(field.name());
+
+			if (name.c_str() != NULL && (
+			     (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS)
+			   ))
+			{
+				ioport_field::user_settings settings;
+				field.get_user_settings(settings);
+//				entry[menu_items] = field;
+
+				if (players < field.player() + 1)
+					players = field.player() + 1;
+
+				/* add an autofire item */
+				switch (settings.autofire)
+				{
+					case 0:	subtext.assign("Off");	break;
+					case 1:	subtext.assign("On");	break;
+					case 2:	subtext.assign("Toggle");	break;
+				}
+				item_append(field.name(), subtext, FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(&field));
+			}
+		}
+	}
+	/* add autofire delay items */
+	for (i = 0; i < players; i++)
+	{
+		text.assign("P");
+		text.append(std::to_string(i + 1));
+		text.append(_("input-name", " Autofire Delay"));
+		subtext.assign(std::to_string(machine().ioport().get_autofiredelay(i)));
+
+		/* append a menu item */
+		item_append(text, subtext, FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(i + AUTOFIRE_ITEM_P1_DELAY));
+	}
+}
+#undef AUTOFIRE_ITEM_P1_DELAY
 
 /*-------------------------------------------------
     menu_custom_button_populate - populate the 
@@ -832,7 +964,6 @@ void menu_custom_button::populate(float &customtop, float &custombottom)
 		}
 	}
 }
-#endif /* USE_CUSTOM_BUTTON */
 /****************************************************************************************************************************/
 
 //-------------------------------------------------

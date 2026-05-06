@@ -396,7 +396,6 @@ void ioport_list::append(device_t &device, std::string &errorbuf)
 
 // 修改的 代码来源 (EKMAME)
 /******************************************************************************************/
-#ifdef USE_CUSTOM_BUTTON
 static INPUT_PORTS_START( custom1p )
     PORT_START("CUSTOM1P")
     PORT_BIT( 1 << 0, IP_ACTIVE_HIGH, IPT_TOGGLE_AUTOFIRE ) PORT_PLAYER(1) PORT_TOGGLE
@@ -524,7 +523,6 @@ void ioport_list::append_custom(device_t &device, std::string &errorbuf)
 	if (nplayer > 7)
 		INPUT_PORTS_NAME(custom8p)(device, *this, errorbuf);
 }
-#endif /* USE_CUSTOM_BUTTON */
 /******************************************************************************************/
 
 //**************************************************************************
@@ -1963,10 +1961,10 @@ ioport_manager::ioport_manager(running_machine &machine)
 	{
 		std::fill(std::begin(entries), std::end(entries), nullptr);
 	}
-#ifdef USE_CUSTOM_BUTTON
+
 	memset(m_custom_button, 0, sizeof(m_custom_button));
 	memset(m_custom_button_info, 0, sizeof(m_custom_button_info));
-#endif /* USE_CUSTOM_BUTTON */
+
 	for (int player = 0; player < MAX_PLAYERS; player++)
 	{
 		m_autofiredelay[player] = 3;	//mamep: 1 is too short for some games
@@ -1998,11 +1996,7 @@ time_t ioport_manager::initialize()
 
 // 修改的 代码来源 (EKMAME)
 /****************************************************/
-#ifdef USE_CUSTOM_BUTTON
 		m_portlist.append_custom(device, errors);
-#else
-		m_portlist.append(device, errors);
-#endif /* USE_CUSTOM_BUTTON */
 /****************************************************/
 		if (!errors.empty())
 			osd_printf_error("Input port errors:\n%s", errors);
@@ -2031,10 +2025,8 @@ time_t ioport_manager::initialize()
 							players = field.player() + 1;
 						field.set_player(field.player() + player_offset);
 					}
-#ifdef USE_CUSTOM_BUTTON
 					if (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS)
 						m_custom_button_info[field.player()][field.type() - IPT_CUSTOM1] = &field;
-#endif /* USE_CUSTOM_BUTTON */
 /**********************************************************************************************************/
 				}
 			}
@@ -2363,7 +2355,6 @@ void ioport_manager::frame_update()
 
 // 修改的 代码来源 (EKMAME)
 /*************************************************************************************************/
-#ifdef USE_CUSTOM_BUTTON
 		/* now loop back and modify based on the inputs */
 		for (ioport_field &field : port.second->fields())
 		{
@@ -2381,7 +2372,6 @@ void ioport_manager::frame_update()
 				continue;
 			}
 		}
-#endif /* USE_CUSTOM_BUTTON */
 /*************************************************************************************************/
 		port.second->frame_update();
 
@@ -2769,9 +2759,7 @@ void ioport_manager::load_system_config(
 // 修改的 代码来源 (EKMAME)
 /*******************************************************************************************/
 	char const *const autofireValue = portnode.get_attribute_string("autofire", nullptr);
-#ifdef USE_CUSTOM_BUTTON
 	ioport_value const customValue = portnode.get_attribute_int("custom", 0);
-#endif /* USE_CUSTOM_BUTTON */
 //	if (!tag || !mask)
 //		return;
 /*******************************************************************************************/
@@ -2808,12 +2796,10 @@ void ioport_manager::load_system_config(
 				{
 					field.live().autofire = 0;
 				}
-#ifdef USE_CUSTOM_BUTTON
 				if (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS) 
 				{
 					m_custom_button[field.player()][field.type() - IPT_CUSTOM1] = customValue;
 				}
-#endif /* USE_CUSTOM_BUTTON */
 /**********************************************************************************************************/
 				
 				// fetch configurable attributes
@@ -3011,9 +2997,7 @@ void ioport_manager::save_game_inputs(util::xml::data_node &parentnode)
 // 修改的 代码来源 (EKMAME)
 /********************************************************************************************************************************************************************************************/
 					changed = changed || (field.live().autofire != 0);
-#ifdef USE_CUSTOM_BUTTON
 					changed = changed || (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS && m_custom_button[field.player()][field.type() - IPT_CUSTOM1]);
-#endif /* USE_CUSTOM_BUTTON */
 /********************************************************************************************************************************************************************************************/
 				}
 				else
@@ -3045,11 +3029,10 @@ void ioport_manager::save_game_inputs(util::xml::data_node &parentnode)
 						} else if (field.live().autofire & AUTOFIRE_TOGGLE) {
 							portnode->set_attribute("autofire", "toggle");
 						}
-#ifdef USE_CUSTOM_BUTTON
+
 						if (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS && m_custom_button[field.player()][field.type() - IPT_CUSTOM1]) {
 							portnode->set_attribute_int("custom", m_custom_button[field.player()][field.type() - IPT_CUSTOM1]);
 						}
-#endif /* USE_CUSTOM_BUTTON */
 /******************************************************************************************************************************************************************************/
 
 						// add sequences if changed
@@ -4292,7 +4275,7 @@ bool ioport_manager::auto_pressed(ioport_field *field)
 
 	if (pressed && (field->toggle()))
 		m_autofiretoggle[field->player()] = field->live().autofire_toggle;
-#ifdef USE_CUSTOM_BUTTON
+
 	if (field->type() >= IPT_BUTTON1 && field->type() < IPT_BUTTON1 + MAX_NORMAL_BUTTONS)
 	{
 		uint16_t button_mask = 1 << (field->type() - IPT_BUTTON1);
@@ -4321,7 +4304,7 @@ bool ioport_manager::auto_pressed(ioport_field *field)
 				}
 			}
 	}
-#endif /* USE_CUSTOM_BUTTON */
+
 	if (is_auto)
 	{
 		if (pressed)

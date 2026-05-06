@@ -51,9 +51,8 @@ enum : unsigned {
 // 修改的 代码来源 (EKMAME)
 /*********************/
 	AUTOFIRE,
-#ifdef USE_CUSTOM_BUTTON
+	CUSTOM_BUTTON_SETTING,
 	CUSTOM_BUTTON,
-#endif /* USE_CUSTOM_BUTTON */
 /*********************/
 
 // 修改的 代码来源 (缘来是你)
@@ -146,9 +145,10 @@ void menu_main::populate(float &customtop, float &custombottom)
 // 修改的 代码来源 (EKMAME)
 /*******************************************************************************/
 	item_append(_("menu-main", "Autofire Setting"), 0, (void *)AUTOFIRE);
-#ifdef USE_CUSTOM_BUTTON
-	item_append(_("menu-main", "Custom Buttons"), 0, (void *)CUSTOM_BUTTON);
-#endif /* USE_CUSTOM_BUTTON */
+
+	item_append(_("menu-main", "Custom Buttons Setting"), 0, (void *)CUSTOM_BUTTON_SETTING);
+
+	item_append(_("menu-main", "Enable Custom Buttons"), 0, (void *)CUSTOM_BUTTON);
 /*******************************************************************************/
 
 	if (ui().found_machine_warnings())
@@ -264,11 +264,14 @@ void menu_main::handle(event const *ev)
 		case AUTOFIRE:
 			menu::stack_push<menu_autofire>(ui(), container());
 			break;
-#ifdef USE_CUSTOM_BUTTON
+
+		case CUSTOM_BUTTON_SETTING:
+			menu::stack_push<menu_custom_setting>(ui(), container());		
+			break;
+
 		case CUSTOM_BUTTON:
 			menu::stack_push<menu_custom_button>(ui(), container());		
 			break;
-#endif /* USE_CUSTOM_BUTTON */
 /****************************************************************************/
 
 		case SETTINGS_DIP_SWITCHES:

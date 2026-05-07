@@ -30,6 +30,10 @@
 
 #include "corestr.h"
 
+//============ 缘来是你 ============>>>			
+#include <vector>
+//=================================>>>
+
 #include <algorithm>
 #include <cstring>
 #include <fstream>
@@ -671,6 +675,13 @@ void menu_autofire::populate(float &customtop, float &custombottom)
 	int players = 0;
 	uintptr_t i;
 
+    struct ButtonItem {
+        int player;
+        std::string name;
+        ioport_field *field;
+    };
+    std::vector<ButtonItem> buttons;
+	
 	/* iterate over the input ports and add autofire toggle items */
 	for (auto &port : machine().ioport().ports())
 	{
@@ -682,13 +693,26 @@ void menu_autofire::populate(float &customtop, float &custombottom)
 			    (field.type() >= IPT_BUTTON1 && field.type() < IPT_BUTTON1 + MAX_NORMAL_BUTTONS)
 			   ))
 			{
-				ioport_field::user_settings settings;
-				field.get_user_settings(settings);
-//				entry[menu_items] = field;
-
+				//entry[menu_items] = field;
 				if (players < field.player() + 1)
 					players = field.player() + 1;
 
+                buttons.push_back({field.player(), name, &field});
+            }
+        }
+    }
+
+    // 按玩家编号排序（P1、P2、P3...）
+    std::sort(buttons.begin(), buttons.end(),
+        [](const ButtonItem &a, const ButtonItem &b) {
+            return a.player < b.player;
+        });
+
+    for (const auto &btn : buttons)
+    {
+        ioport_field::user_settings settings;
+        btn.field->get_user_settings(settings);
+		
 				/* add an autofire item */
 				switch (settings.autofire)
 				{
@@ -696,10 +720,9 @@ void menu_autofire::populate(float &customtop, float &custombottom)
 					case 1:	subtext.assign("On");	break;
 					case 2:	subtext.assign("Toggle");	break;
 				}
-				item_append(field.name(), subtext, FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(&field));
-			}
-		}
+        item_append(btn.name, subtext, FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(btn.field));
 	}
+
 	/* add autofire delay items */
 	for (i = 0; i < players; i++)
 	{
@@ -713,68 +736,6 @@ void menu_autofire::populate(float &customtop, float &custombottom)
 	}
 }
 #undef AUTOFIRE_ITEM_P1_DELAY
-
-/*-------------------------------------------------
-    menu_custom_button - handle the custom button
-    settings menu
--------------------------------------------------*/
-
-menu_custom_button::menu_custom_button(mame_ui_manager &mui, render_container &container) : menu(mui, container)
-{
-}
-
-menu_custom_button::~menu_custom_button()
-{
-}
-
-void menu_custom_button::handle(event const *ev)
-{
-	const event *menu_event = ev;
-	bool changed = false;
-	int custom_buttons_count = 0;
-
-	/* handle events */
-	if (menu_event != nullptr && menu_event->itemref != nullptr)
-	{
-		u16 *selected_custom_button = (u16 *)menu_event->itemref;
-		int i;
-		
-		//count the number of custom buttons
-		for (auto &port : machine().ioport().ports())
-		{
-			for (auto &field : port.second->fields())
-			{
-				int type = field.type();
-
-				if (type >= IPT_BUTTON1 && type < IPT_BUTTON1 + MAX_NORMAL_BUTTONS)
-				{
-					type -= IPT_BUTTON1;
-					if (type >= custom_buttons_count)
-						custom_buttons_count = type + 1;
-				}
-			}
-		}
-
-		input_item_id id = ITEM_ID_1;
-		for (i = 0; i < custom_buttons_count; i++, id++)
-		{
-			if (i == 9)
-				id = ITEM_ID_0;
-
-			//fixme: code_pressed_once() doesn't work well
-			if (machine().input().code_pressed_once(input_code(DEVICE_CLASS_KEYBOARD, 0, ITEM_CLASS_SWITCH, ITEM_MODIFIER_NONE, id)))
-			{
-				*selected_custom_button ^= 1 << i;
-				changed = true;
-				break;
-			}
-		}
-	}
-
-	/* if something changed, rebuild the menu */
-	if (changed)
-		reset (reset_options::REMEMBER_REF);
-}
 
 #define AUTOFIRE_ITEM_P1_DELAY 1
 /*-------------------------------------------------
@@ -858,6 +819,7 @@ void menu_custom_setting::handle(event const *ev)
 		reset(reset_options::REMEMBER_REF);
 }
 
+
 /*-------------------------------------------------
     menu_custom_setting_populate - populate the autofire
     menu
@@ -870,6 +832,13 @@ void menu_custom_setting::populate(float &customtop, float &custombottom)
 	int players = 0;
 	uintptr_t i;
 
+    struct ButtonItem {
+        int player;
+        std::string name;
+        ioport_field *field;
+    };
+    std::vector<ButtonItem> buttons;
+	
 	/* iterate over the input ports and add autofire toggle items */
 	for (auto &port : machine().ioport().ports())
 	{
@@ -878,16 +847,29 @@ void menu_custom_setting::populate(float &customtop, float &custombottom)
 			std::string name(field.name());
 
 			if (name.c_str() != NULL && (
-			     (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS)
+			    (field.type() >= IPT_CUSTOM1 && field.type() < IPT_CUSTOM1 + MAX_CUSTOM_BUTTONS)
 			   ))
 			{
-				ioport_field::user_settings settings;
-				field.get_user_settings(settings);
-//				entry[menu_items] = field;
-
+				//entry[menu_items] = field;
 				if (players < field.player() + 1)
 					players = field.player() + 1;
 
+                buttons.push_back({field.player(), name, &field});
+            }
+        }
+    }
+
+    // 按玩家编号排序（P1、P2、P3...）
+    std::sort(buttons.begin(), buttons.end(),
+        [](const ButtonItem &a, const ButtonItem &b) {
+            return a.player < b.player;
+        });
+
+    for (const auto &btn : buttons)
+    {
+        ioport_field::user_settings settings;
+        btn.field->get_user_settings(settings);
+		
 				/* add an autofire item */
 				switch (settings.autofire)
 				{
@@ -895,10 +877,9 @@ void menu_custom_setting::populate(float &customtop, float &custombottom)
 					case 1:	subtext.assign("On");	break;
 					case 2:	subtext.assign("Toggle");	break;
 				}
-				item_append(field.name(), subtext, FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(&field));
-			}
-		}
+        item_append(btn.name, subtext, FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(btn.field));
 	}
+
 	/* add autofire delay items */
 	for (i = 0; i < players; i++)
 	{
@@ -912,6 +893,68 @@ void menu_custom_setting::populate(float &customtop, float &custombottom)
 	}
 }
 #undef AUTOFIRE_ITEM_P1_DELAY
+
+/*-------------------------------------------------
+    menu_custom_button - handle the custom button
+    settings menu
+-------------------------------------------------*/
+
+menu_custom_button::menu_custom_button(mame_ui_manager &mui, render_container &container) : menu(mui, container)
+{
+}
+
+menu_custom_button::~menu_custom_button()
+{
+}
+
+void menu_custom_button::handle(event const *ev)
+{
+	const event *menu_event = ev;
+	bool changed = false;
+	int custom_buttons_count = 0;
+
+	/* handle events */
+	if (menu_event != nullptr && menu_event->itemref != nullptr)
+	{
+		u16 *selected_custom_button = (u16 *)menu_event->itemref;
+		int i;
+		
+		//count the number of custom buttons
+		for (auto &port : machine().ioport().ports())
+		{
+			for (auto &field : port.second->fields())
+			{
+				int type = field.type();
+
+				if (type >= IPT_BUTTON1 && type < IPT_BUTTON1 + MAX_NORMAL_BUTTONS)
+				{
+					type -= IPT_BUTTON1;
+					if (type >= custom_buttons_count)
+						custom_buttons_count = type + 1;
+				}
+			}
+		}
+
+		input_item_id id = ITEM_ID_1;
+		for (i = 0; i < custom_buttons_count; i++, id++)
+		{
+			if (i == 9)
+				id = ITEM_ID_0;
+
+			//fixme: code_pressed_once() doesn't work well
+			if (machine().input().code_pressed_once(input_code(DEVICE_CLASS_KEYBOARD, 0, ITEM_CLASS_SWITCH, ITEM_MODIFIER_NONE, id)))
+			{
+				*selected_custom_button ^= 1 << i;
+				changed = true;
+				break;
+			}
+		}
+	}
+
+	/* if something changed, rebuild the menu */
+	if (changed)
+		reset (reset_options::REMEMBER_REF);
+}
 
 /*-------------------------------------------------
     menu_custom_button_populate - populate the 

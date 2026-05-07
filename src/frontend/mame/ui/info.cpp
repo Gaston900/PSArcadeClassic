@@ -361,9 +361,8 @@ std::string machine_info::game_info_string() const
 {
 	std::ostringstream buf;
 
-// 修改的 代码来源 (缘来是你)
 //==================缘来是你==========中文名称================>>>
-#if 0
+#if 0 //原代码
 
 	// print description, manufacturer, and CPU:
 	util::stream_format(buf, _("%1$s\n%2$s %3$s\nDriver: %4$s\n\nCPU:\n"),
@@ -599,7 +598,14 @@ void menu_warn_info::populate_text(std::optional<text_layout> &layout, float &wi
 			if (!first)
 				buf << '\n';
 			first = false;
-			util::stream_format(buf, _("%1$s:\n"), root.name());
+//================= 缘来是你：警告栏中文描述 =================>>>			
+			const char* ch_name = machine().options().value("chinesename");
+			if (ch_name && *ch_name)
+				util::stream_format(buf, _("%1$s:\n"), ch_name);
+			else
+				util::stream_format(buf, _("%1$s:\n"), root.name());
+			buf << '\n';
+//========================================================>>>
 			get_system_warnings(buf, machine(), info.machine_flags(), root.type().unemulated_features(), root.type().imperfect_features());
 		}
 

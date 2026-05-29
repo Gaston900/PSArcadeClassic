@@ -1171,7 +1171,7 @@ u16 cps2_state::joy_or_paddle_ecofghtr_r()
 void cps2_state::cps2_map(address_map &map)
 {
 	map(0x000000, 0x3fffff).rom();                                                                         /* 68000 ROM */
-	map(0x400000, 0x40000b).ram().share("output");                                                      /* CPS2 object output */
+	map(0x400000, 0x40000b).ram().share(m_output);                                                      /* CPS2 object output */
 	map(0x618000, 0x619fff).rw( FUNC(cps2_state::qsound_sharedram1_r), FUNC(cps2_state::qsound_sharedram1_w));                         /* Q RAM */
 	map(0x660000, 0x663fff).ram();                                                                         /* When bit 14 of 0x804030 equals 0 this space is available. Many games store highscores and other info here if available. */
 	map(0x662000, 0x662001).ram();                                                                         /* Network adapter related, accessed in SSF2TB */
@@ -1180,8 +1180,8 @@ void cps2_state::cps2_map(address_map &map)
 	map(0x664000, 0x664001).ram();                                                                         /* Unknown - Only used if 0x660000-0x663fff available (could be RAM enable?) */
 	map(0x700000, 0x701fff).mirror(0x006000).rw( FUNC(cps2_state::cps2_objram1_r), FUNC(cps2_state::cps2_objram1_w)).share("objram1");    /* Object RAM, no game seems to use it directly */
 	map(0x708000, 0x709fff).mirror(0x006000).rw( FUNC(cps2_state::cps2_objram2_r), FUNC(cps2_state::cps2_objram2_w)).share("objram2");           /* Object RAM */
-	map(0x800100, 0x80013f).w( FUNC(cps2_state::cps1_cps_a_w)).share("cps_a_regs");                              /* mirror (sfa) */
-	map(0x800140, 0x80017f).rw( FUNC(cps2_state::cps1_cps_b_r), FUNC(cps2_state::cps1_cps_b_w)).share("cps_b_regs");            /* mirror (sfa) */
+	map(0x800100, 0x80013f).w( FUNC(cps2_state::cps1_cps_a_w)).share(m_cps_a_regs);                              /* mirror (sfa) */
+	map(0x800140, 0x80017f).rw( FUNC(cps2_state::cps1_cps_b_r), FUNC(cps2_state::cps1_cps_b_w)).share(m_cps_b_regs);            /* mirror (sfa) */
 	map(0x804000, 0x804001).portr("IN0");                                                            /* IN0 */
 	map(0x804010, 0x804011).portr("IN1");                                                            /* IN1 */
 	map(0x804020, 0x804021).portr("IN2");                                                            /* IN2 + EEPROM */
@@ -1190,9 +1190,9 @@ void cps2_state::cps2_map(address_map &map)
 	map(0x8040a0, 0x8040a1).nopw();                                                                    /* Unknown (reset once on startup) */
 	map(0x8040b0, 0x8040b3).r( FUNC(cps2_state::kludge_r));                                                               /* unknown (xmcotaj hangs if this is 0) */
 	map(0x8040e0, 0x8040e1).w( FUNC(cps2_state::cps2_objram_bank_w));                                                   /* bit 0 = Object ram bank swap */
-	map(0x804100, 0x80413f).w( FUNC(cps2_state::cps1_cps_a_w)).share("cps_a_regs");                          /* CPS-A custom */
+	map(0x804100, 0x80413f).w( FUNC(cps2_state::cps1_cps_a_w)).share(m_cps_a_regs);                          /* CPS-A custom */
 	map(0x804140, 0x80417f).rw( FUNC(cps2_state::cps1_cps_b_r), FUNC(cps2_state::cps1_cps_b_w));                                       /* CPS-B custom */
-	map(0x900000, 0x92ffff).ram().w( FUNC(cps2_state::cps1_gfxram_w)).share("gfxram"); /* Video RAM */
+	map(0x900000, 0x92ffff).ram().w( FUNC(cps2_state::cps1_gfxram_w)).share(m_gfxram); /* Video RAM */
 	map(0xff0000, 0xffffff).ram();                                                                         /* RAM */
 }
 
@@ -1204,7 +1204,7 @@ void cps2_state::decrypted_opcodes_map(address_map &map)
 void cps2_state::dead_cps2_map(address_map &map)
 {
 	map(0x000000, 0x3fffff).rom();                                                                         /* 68000 ROM */
-	map(0x400000, 0x40000b).ram().share("output");                                                      /* CPS2 object output */
+	map(0x400000, 0x40000b).ram().share(m_output);                                                      /* CPS2 object output */
 	map(0x618000, 0x619fff).rw( FUNC(cps2_state::qsound_sharedram1_r), FUNC(cps2_state::qsound_sharedram1_w));                         /* Q RAM */
 	map(0x660000, 0x663fff).ram();                                                                         /* When bit 14 of 0x804030 equals 0 this space is available. Many games store highscores and other info here if available. */
 	map(0x662000, 0x662001).ram();                                                                         /* Network adapter related, accessed in SSF2TB */
@@ -1213,8 +1213,8 @@ void cps2_state::dead_cps2_map(address_map &map)
 	map(0x664000, 0x664001).ram();                                                                         /* Unknown - Only used if 0x660000-0x663fff available (could be RAM enable?) */
 	map(0x700000, 0x701fff).rw( FUNC(cps2_state::cps2_objram1_r), FUNC(cps2_state::cps2_objram1_w)).share("objram1");    /* Object RAM, no game seems to use it directly */
 	map(0x708000, 0x709fff).mirror(0x006000).rw( FUNC(cps2_state::cps2_objram2_r), FUNC(cps2_state::cps2_objram2_w)).share("objram2");           /* Object RAM */
-	map(0x800100, 0x80013f).w( FUNC(cps2_state::cps1_cps_a_w)).share("cps_a_regs");                              /* mirror (sfa) */
-	map(0x800140, 0x80017f).rw( FUNC(cps2_state::cps1_cps_b_r), FUNC(cps2_state::cps1_cps_b_w)).share("cps_b_regs");            /* mirror (sfa) */
+	map(0x800100, 0x80013f).w( FUNC(cps2_state::cps1_cps_a_w)).share(m_cps_a_regs);                              /* mirror (sfa) */
+	map(0x800140, 0x80017f).rw( FUNC(cps2_state::cps1_cps_b_r), FUNC(cps2_state::cps1_cps_b_w)).share(m_cps_b_regs);            /* mirror (sfa) */
 	map(0x804000, 0x804001).portr("IN0");                                                            /* IN0 */
 	map(0x804010, 0x804011).portr("IN1");                                                            /* IN1 */
 	map(0x804020, 0x804021).portr("IN2");                                                            /* IN2 + EEPROM */
@@ -1223,11 +1223,11 @@ void cps2_state::dead_cps2_map(address_map &map)
 	map(0x8040a0, 0x8040a1).nopw();                                                                    /* Unknown (reset once on startup) */
 	map(0x8040b0, 0x8040b3).r( FUNC(cps2_state::kludge_r));                                                               /* unknown (xmcotaj hangs if this is 0) */
 	map(0x8040e0, 0x8040e1).w( FUNC(cps2_state::cps2_objram_bank_w));                                                   /* bit 0 = Object ram bank swap */
-	map(0x804100, 0x80413f).w( FUNC(cps2_state::cps1_cps_a_w)).share("cps_a_regs");                              /* CPS-A custom */
+	map(0x804100, 0x80413f).w( FUNC(cps2_state::cps1_cps_a_w)).share(m_cps_a_regs);                              /* CPS-A custom */
 	map(0x804140, 0x80417f).rw( FUNC(cps2_state::cps1_cps_b_r), FUNC(cps2_state::cps1_cps_b_w));                                       /* CPS-B custom */
-	map(0x900000, 0x92ffff).ram().w( FUNC(cps2_state::cps1_gfxram_w)).share("gfxram"); /* Video RAM */
+	map(0x900000, 0x92ffff).ram().w( FUNC(cps2_state::cps1_gfxram_w)).share(m_gfxram); /* Video RAM */
 	map(0xff0000, 0xffffef).ram();                                                                         /* RAM */
-	map(0xfffff0, 0xfffffb).ram().share("output");                                                      /* CPS2 output */
+	map(0xfffff0, 0xfffffb).ram().share(m_output);                                                      /* CPS2 output */
 	map(0xfffffc, 0xffffff).ram();
 }
 
@@ -2339,10 +2339,10 @@ ROM_START( avsp )
 	ROM_LOAD64_WORD( "avp.15m",   0x0000002, 0x200000, CRC(b00280df) SHA1(bc1291a4a222d410bc99b6f1ed392067d9c3999e) ) // LH53706B
 	ROM_LOAD64_WORD( "avp.17m",   0x0000004, 0x200000, CRC(94403195) SHA1(efaad001527a5eba8f626aea9037ac6ef9a2c295) ) // LH53706C
 	ROM_LOAD64_WORD( "avp.19m",   0x0000006, 0x200000, CRC(e1981245) SHA1(809ccb7f10262e227d5e9d9f710e06f0e751f550) ) // LH53706D
-	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x200000, CRC(ebba093e) SHA1(77aaf4197d1dae3321cf9c6d2b7967ee54cf3f30) ) // LH53855G
-	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x200000, CRC(fb228297) SHA1(ebd02a4ba085dc70c0603662e14d61625fa04648) ) // LH53855H
-	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x200000, CRC(34fb7232) SHA1(8b1f15bfa758a61e6ad519af24ca774edc70d194) ) // LH53855J
-	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x200000, CRC(f90baa21) SHA1(20a900819a9d321316e3dfd241210725d7191ecf) ) // LH53855K
+	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x100000, CRC(39933b1e) SHA1(911754d8930e0df71a3d929e4bc80f9efb9ad1ff) ) // LH53855G
+	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x100000, CRC(85412860) SHA1(25595161500eae9c9b329ca37a4b306ab8b96430) ) // LH53855H
+	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x100000, CRC(2e2beb06) SHA1(0de6bdca37a4ac05568b23cb071c66f51f737c08) ) // LH53855J
+	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x100000, CRC(e4798d1a) SHA1(7c90a9b98eba9b26992d3d02875b64431b941c24) ) // LH53855K
 
 	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 ) // 64k for the audio CPU (+banks)
 	ROM_LOAD( "avp.01",   0x00000, 0x08000, CRC(2d3b4220) SHA1(2b2d04d4282550fa9f6e1ad8528f20d1f2ac02eb) )
@@ -2368,10 +2368,10 @@ ROM_START( avspu )
 	ROM_LOAD64_WORD( "avp.15m",   0x0000002, 0x200000, CRC(b00280df) SHA1(bc1291a4a222d410bc99b6f1ed392067d9c3999e) ) // LH53706B
 	ROM_LOAD64_WORD( "avp.17m",   0x0000004, 0x200000, CRC(94403195) SHA1(efaad001527a5eba8f626aea9037ac6ef9a2c295) ) // LH53706C
 	ROM_LOAD64_WORD( "avp.19m",   0x0000006, 0x200000, CRC(e1981245) SHA1(809ccb7f10262e227d5e9d9f710e06f0e751f550) ) // LH53706D
-	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x200000, CRC(ebba093e) SHA1(77aaf4197d1dae3321cf9c6d2b7967ee54cf3f30) ) // LH53855G
-	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x200000, CRC(fb228297) SHA1(ebd02a4ba085dc70c0603662e14d61625fa04648) ) // LH53855H
-	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x200000, CRC(34fb7232) SHA1(8b1f15bfa758a61e6ad519af24ca774edc70d194) ) // LH53855J
-	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x200000, CRC(f90baa21) SHA1(20a900819a9d321316e3dfd241210725d7191ecf) ) // LH53855K
+	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x100000, CRC(39933b1e) SHA1(911754d8930e0df71a3d929e4bc80f9efb9ad1ff) ) // LH53855G
+	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x100000, CRC(85412860) SHA1(25595161500eae9c9b329ca37a4b306ab8b96430) ) // LH53855H
+	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x100000, CRC(2e2beb06) SHA1(0de6bdca37a4ac05568b23cb071c66f51f737c08) ) // LH53855J
+	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x100000, CRC(e4798d1a) SHA1(7c90a9b98eba9b26992d3d02875b64431b941c24) ) // LH53855K
 
 	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 ) // 64k for the audio CPU (+banks)
 	ROM_LOAD( "avp.01",   0x00000, 0x08000, CRC(2d3b4220) SHA1(2b2d04d4282550fa9f6e1ad8528f20d1f2ac02eb) )
@@ -2397,10 +2397,10 @@ ROM_START( avspj )
 	ROM_LOAD64_WORD( "avp.15m",   0x0000002, 0x200000, CRC(b00280df) SHA1(bc1291a4a222d410bc99b6f1ed392067d9c3999e) ) // LH53706B
 	ROM_LOAD64_WORD( "avp.17m",   0x0000004, 0x200000, CRC(94403195) SHA1(efaad001527a5eba8f626aea9037ac6ef9a2c295) ) // LH53706C
 	ROM_LOAD64_WORD( "avp.19m",   0x0000006, 0x200000, CRC(e1981245) SHA1(809ccb7f10262e227d5e9d9f710e06f0e751f550) ) // LH53706D
-	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x200000, CRC(ebba093e) SHA1(77aaf4197d1dae3321cf9c6d2b7967ee54cf3f30) ) // LH53855G
-	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x200000, CRC(fb228297) SHA1(ebd02a4ba085dc70c0603662e14d61625fa04648) ) // LH53855H
-	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x200000, CRC(34fb7232) SHA1(8b1f15bfa758a61e6ad519af24ca774edc70d194) ) // LH53855J
-	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x200000, CRC(f90baa21) SHA1(20a900819a9d321316e3dfd241210725d7191ecf) ) // LH53855K
+	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x100000, CRC(39933b1e) SHA1(911754d8930e0df71a3d929e4bc80f9efb9ad1ff) ) // LH53855G
+	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x100000, CRC(85412860) SHA1(25595161500eae9c9b329ca37a4b306ab8b96430) ) // LH53855H
+	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x100000, CRC(2e2beb06) SHA1(0de6bdca37a4ac05568b23cb071c66f51f737c08) ) // LH53855J
+	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x100000, CRC(e4798d1a) SHA1(7c90a9b98eba9b26992d3d02875b64431b941c24) ) // LH53855K
 
 	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 ) // 64k for the audio CPU (+banks)
 	ROM_LOAD( "avp.01",   0x00000, 0x08000, CRC(2d3b4220) SHA1(2b2d04d4282550fa9f6e1ad8528f20d1f2ac02eb) )
@@ -2426,10 +2426,10 @@ ROM_START( avspa )
 	ROM_LOAD64_WORD( "avp.15m",   0x0000002, 0x200000, CRC(b00280df) SHA1(bc1291a4a222d410bc99b6f1ed392067d9c3999e) ) // LH53706B
 	ROM_LOAD64_WORD( "avp.17m",   0x0000004, 0x200000, CRC(94403195) SHA1(efaad001527a5eba8f626aea9037ac6ef9a2c295) ) // LH53706C
 	ROM_LOAD64_WORD( "avp.19m",   0x0000006, 0x200000, CRC(e1981245) SHA1(809ccb7f10262e227d5e9d9f710e06f0e751f550) ) // LH53706D
-	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x200000, CRC(ebba093e) SHA1(77aaf4197d1dae3321cf9c6d2b7967ee54cf3f30) ) // LH53855G
-	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x200000, CRC(fb228297) SHA1(ebd02a4ba085dc70c0603662e14d61625fa04648) ) // LH53855H
-	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x200000, CRC(34fb7232) SHA1(8b1f15bfa758a61e6ad519af24ca774edc70d194) ) // LH53855J
-	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x200000, CRC(f90baa21) SHA1(20a900819a9d321316e3dfd241210725d7191ecf) ) // LH53855K
+	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x100000, CRC(39933b1e) SHA1(911754d8930e0df71a3d929e4bc80f9efb9ad1ff) ) // LH53855G
+	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x100000, CRC(85412860) SHA1(25595161500eae9c9b329ca37a4b306ab8b96430) ) // LH53855H
+	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x100000, CRC(2e2beb06) SHA1(0de6bdca37a4ac05568b23cb071c66f51f737c08) ) // LH53855J
+	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x100000, CRC(e4798d1a) SHA1(7c90a9b98eba9b26992d3d02875b64431b941c24) ) // LH53855K
 
 	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 ) // 64k for the audio CPU (+banks)
 	ROM_LOAD( "avp.01",   0x00000, 0x08000, CRC(2d3b4220) SHA1(2b2d04d4282550fa9f6e1ad8528f20d1f2ac02eb) )
@@ -2455,10 +2455,10 @@ ROM_START( avsph )
 	ROM_LOAD64_WORD( "avp.15m",   0x0000002, 0x200000, CRC(b00280df) SHA1(bc1291a4a222d410bc99b6f1ed392067d9c3999e) ) // LH53706B
 	ROM_LOAD64_WORD( "avp.17m",   0x0000004, 0x200000, CRC(94403195) SHA1(efaad001527a5eba8f626aea9037ac6ef9a2c295) ) // LH53706C
 	ROM_LOAD64_WORD( "avp.19m",   0x0000006, 0x200000, CRC(e1981245) SHA1(809ccb7f10262e227d5e9d9f710e06f0e751f550) ) // LH53706D
-	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x200000, CRC(ebba093e) SHA1(77aaf4197d1dae3321cf9c6d2b7967ee54cf3f30) ) // LH53855G
-	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x200000, CRC(fb228297) SHA1(ebd02a4ba085dc70c0603662e14d61625fa04648) ) // LH53855H
-	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x200000, CRC(34fb7232) SHA1(8b1f15bfa758a61e6ad519af24ca774edc70d194) ) // LH53855J
-	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x200000, CRC(f90baa21) SHA1(20a900819a9d321316e3dfd241210725d7191ecf) ) // LH53855K
+	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x100000, CRC(39933b1e) SHA1(911754d8930e0df71a3d929e4bc80f9efb9ad1ff) ) // LH53855G
+	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x100000, CRC(85412860) SHA1(25595161500eae9c9b329ca37a4b306ab8b96430) ) // LH53855H
+	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x100000, CRC(2e2beb06) SHA1(0de6bdca37a4ac05568b23cb071c66f51f737c08) ) // LH53855J
+	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x100000, CRC(e4798d1a) SHA1(7c90a9b98eba9b26992d3d02875b64431b941c24) ) // LH53855K
 
 	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 ) // 64k for the audio CPU (+banks)
 	ROM_LOAD( "avp.01",   0x00000, 0x08000, CRC(2d3b4220) SHA1(2b2d04d4282550fa9f6e1ad8528f20d1f2ac02eb) )
@@ -2484,10 +2484,10 @@ ROM_START( avspn )
 	ROM_LOAD64_WORD( "avp.15m",   0x0000002, 0x200000, CRC(b00280df) SHA1(bc1291a4a222d410bc99b6f1ed392067d9c3999e) ) // LH53706B
 	ROM_LOAD64_WORD( "avp.17m",   0x0000004, 0x200000, CRC(94403195) SHA1(efaad001527a5eba8f626aea9037ac6ef9a2c295) ) // LH53706C
 	ROM_LOAD64_WORD( "avp.19m",   0x0000006, 0x200000, CRC(e1981245) SHA1(809ccb7f10262e227d5e9d9f710e06f0e751f550) ) // LH53706D
-	ROM_LOAD64_WORD( "avpn.14m",  0x0800000, 0x100000, CRC(39933b1e) SHA1(911754d8930e0df71a3d929e4bc80f9efb9ad1ff) ) // LH53855G
-	ROM_LOAD64_WORD( "avpn.16m",  0x0800002, 0x100000, CRC(85412860) SHA1(25595161500eae9c9b329ca37a4b306ab8b96430) ) // LH53855H
-	ROM_LOAD64_WORD( "avpn.18m",  0x0800004, 0x100000, CRC(2e2beb06) SHA1(0de6bdca37a4ac05568b23cb071c66f51f737c08) ) // LH53855J
-	ROM_LOAD64_WORD( "avpn.20m",  0x0800006, 0x100000, CRC(e4798d1a) SHA1(7c90a9b98eba9b26992d3d02875b64431b941c24) ) // LH53855K
+	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x100000, CRC(39933b1e) SHA1(911754d8930e0df71a3d929e4bc80f9efb9ad1ff) ) // LH53855G
+	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x100000, CRC(85412860) SHA1(25595161500eae9c9b329ca37a4b306ab8b96430) ) // LH53855H
+	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x100000, CRC(2e2beb06) SHA1(0de6bdca37a4ac05568b23cb071c66f51f737c08) ) // LH53855J
+	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x100000, CRC(e4798d1a) SHA1(7c90a9b98eba9b26992d3d02875b64431b941c24) ) // LH53855K
 
 	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 ) // 64k for the audio CPU (+banks)
 	ROM_LOAD( "avp.01",   0x00000, 0x08000, CRC(2d3b4220) SHA1(2b2d04d4282550fa9f6e1ad8528f20d1f2ac02eb) )
@@ -3927,7 +3927,7 @@ ROM_START( vampj )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 ) // 68000 code
 	ROM_LOAD16_WORD_SWAP( "vamj.03a", 0x000000, 0x80000, CRC(f55d3722) SHA1(e26bbcc47a2485914d567a6cf1cddd0f668689a1) ) /* Incomplete updated set? At least rom 03 */
 	ROM_LOAD16_WORD_SWAP( "vamj.04b", 0x080000, 0x80000, CRC(4d9c43c4) SHA1(2087090306646fed959d503ee75e24996ad95b88) ) /* should be "B" revision too. Both this   */
-	ROM_LOAD16_WORD_SWAP( "vamj.05a", 0x100000, 0x80000, CRC(6c497e92) SHA1(7c1ccdfd77fb50afe024c8402376daaeab641a24) ) /* set & "vampja" below have the same date */																				   
+	ROM_LOAD16_WORD_SWAP( "vamj.05a", 0x100000, 0x80000, CRC(6c497e92) SHA1(7c1ccdfd77fb50afe024c8402376daaeab641a24) ) /* set & "vampja" below have the same date */
 	ROM_LOAD16_WORD_SWAP( "vamj.06a", 0x180000, 0x80000, CRC(f1bbecb6) SHA1(6adba89393e05f16f70b57085cabd6b4c20f53e8) )
 	ROM_LOAD16_WORD_SWAP( "vamj.07a", 0x200000, 0x80000, CRC(1067ad84) SHA1(5e4cc75cfdfd512b6230c656e7304262b5143aee) )
 	ROM_LOAD16_WORD_SWAP( "vamj.08a", 0x280000, 0x80000, CRC(4b89f41f) SHA1(bd78f33a6d448655eecf7448921d282b302fa4cb) )
@@ -4091,6 +4091,40 @@ ROM_START( dstlkh )
 
 	ROM_REGION( 0x20, "key", 0 )
 	ROM_LOAD( "dstlkh.key",   0x000000, 0x000014, CRC(d748cb77) SHA1(748be38bbc766be8eebf6a60770801942ad502f2) )
+ROM_END
+
+ROM_START( dstlkb ) // just the region byte changed if compared to the Hispanic version
+	ROM_REGION( CODE_SIZE, "maincpu", 0 ) // 68000 code
+	ROM_LOAD16_WORD_SWAP( "vamb.03a", 0x000000, 0x80000, CRC(48831596) SHA1(894f2b03e62ec29e8d92bb2723f86929762b222a) )
+	ROM_LOAD16_WORD_SWAP( "vamb.04a", 0x080000, 0x80000, CRC(2217e9a0) SHA1(b86ee89457d8a0cf828f1bed247f3b2c0c91b170) )
+	ROM_LOAD16_WORD_SWAP( "vamb.05a", 0x100000, 0x80000, CRC(3a05b13c) SHA1(14b58954bdff8dd699f867037a86f0bae8095e9d) )
+	ROM_LOAD16_WORD_SWAP( "vamb.06a", 0x180000, 0x80000, CRC(11d70a1c) SHA1(e13c5afeb9cb64ec60d570b81d7fac4869c76d1d) )
+	ROM_LOAD16_WORD_SWAP( "vamb.07a", 0x200000, 0x80000, CRC(db5a8767) SHA1(86274080e4423d09e10f2db56a4e685b32acfa18) )
+	ROM_LOAD16_WORD_SWAP( "vamb.08a", 0x280000, 0x80000, CRC(2a4fd79b) SHA1(ff0398db43ef849365ad88b9b57661db3a3b65c6) )
+	ROM_LOAD16_WORD_SWAP( "vamb.09a", 0x300000, 0x80000, CRC(15187632) SHA1(81b7166334dc3c331673822c31581e0e7809b698) )
+	ROM_LOAD16_WORD_SWAP( "vamb.10a", 0x380000, 0x80000, CRC(192d2d81) SHA1(ea99f2ea3e28edfc203e967924500dad10abb43f) )
+
+	ROM_REGION( 0x1400000, "gfx", 0 )
+	ROM_LOAD64_WORD( "vam.13m",   0x0000000, 0x400000, CRC(c51baf99) SHA1(2fb6642908e542e404391eb17392f8270e87bf48) )
+	ROM_LOAD64_WORD( "vam.15m",   0x0000002, 0x400000, CRC(3ce83c77) SHA1(93369b23c6d7d834297434691bb047ee3dd9539c) )
+	ROM_LOAD64_WORD( "vam.17m",   0x0000004, 0x400000, CRC(4f2408e0) SHA1(cd49c6b3c7e6470c6058f98ccc5210b052bb13e2) )
+	ROM_LOAD64_WORD( "vam.19m",   0x0000006, 0x400000, CRC(9ff60250) SHA1(d69ba4dc6bd37d003245f0cf3211d6e2623005b8) )
+	ROM_LOAD64_WORD( "vam.14m",   0x1000000, 0x100000, CRC(bd87243c) SHA1(87b33aeb72514e1228ffc27ec6dd534f14882760) )
+	ROM_LOAD64_WORD( "vam.16m",   0x1000002, 0x100000, CRC(afec855f) SHA1(cd117833b8d475489b90ff44b57e2c5cb1af3af5) )
+	ROM_LOAD64_WORD( "vam.18m",   0x1000004, 0x100000, CRC(3a033625) SHA1(294238f30cba5cf4f8f1de951d54c2077bd95de9) )
+	ROM_LOAD64_WORD( "vam.20m",   0x1000006, 0x100000, CRC(2bff6a89) SHA1(8f4e131e5ce0af48fb89f98026d9f0356c7c301f) )
+
+	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 ) // 64k for the audio CPU (+banks)
+	ROM_LOAD( "vam.01",   0x00000, 0x08000, CRC(64b685d5) SHA1(6c180e7420db754eca5cad17a40f5a64f5c3bd15) )
+	ROM_CONTINUE(         0x10000, 0x18000 )
+	ROM_LOAD( "vam.02",   0x28000, 0x20000, CRC(cf7c97c7) SHA1(109a4b56ecd59be9c3f5869de99d40619bdaef21) )
+
+	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
+	ROM_LOAD16_WORD_SWAP( "vam.11m",   0x000000, 0x200000, CRC(4a39deb2) SHA1(7e63e615869958db66a4e52a0272afee5a10e446) )
+	ROM_LOAD16_WORD_SWAP( "vam.12m",   0x200000, 0x200000, CRC(1a3e5c03) SHA1(c5a556e125d6c3d68da745b4d56cd7a851f2a23d) )
+
+	ROM_REGION( 0x20, "key", 0 )
+	ROM_LOAD( "dstlkb.key",   0x000000, 0x000014, CRC(d748cb77) SHA1(748be38bbc766be8eebf6a60770801942ad502f2) ) // Brazilian set, but still uses the Hispanic key
 ROM_END
 
 ROM_START( ecofghtr )
@@ -10852,6 +10886,7 @@ GAME( 1994, dstlku,     dstlk,    cps2,     cps2_2p6b, cps2_state, init_cps2,   
 GAME( 1994, dstlkur1,   dstlk,    cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Capcom", "Darkstalkers: The Night Warriors (USA 940705)",                                 MACHINE_SUPPORTS_SAVE )
 GAME( 1994, dstlka,     dstlk,    cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Capcom", "Darkstalkers: The Night Warriors (Asia 940705)",                                MACHINE_SUPPORTS_SAVE )
 GAME( 1994, dstlkh,     dstlk,    cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Capcom", "Darkstalkers: The Night Warriors (Hispanic 940818)",                            MACHINE_SUPPORTS_SAVE )
+GAME( 1994, dstlkb,     dstlk,    cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Capcom", "Darkstalkers: The Night Warriors (Brazil 940818)",                              MACHINE_SUPPORTS_SAVE )
 GAME( 1994, vampj,      dstlk,    cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Capcom", "Vampire: The Night Warriors (Japan 940705)",                                    MACHINE_SUPPORTS_SAVE ) // Partial update set? Only rom 04 is "B" revision
 GAME( 1994, vampja,     dstlk,    cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Capcom", "Vampire: The Night Warriors (Japan 940705 alt)",                                MACHINE_SUPPORTS_SAVE )
 GAME( 1994, vampjr1,    dstlk,    cps2,     cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Capcom", "Vampire: The Night Warriors (Japan 940630)",                                    MACHINE_SUPPORTS_SAVE )
@@ -11262,10 +11297,10 @@ ROM_START( avspd )
 	ROM_LOAD64_WORD( "avp.15m",   0x0000002, 0x200000, CRC(b00280df) SHA1(bc1291a4a222d410bc99b6f1ed392067d9c3999e) ) // LH53706B
 	ROM_LOAD64_WORD( "avp.17m",   0x0000004, 0x200000, CRC(94403195) SHA1(efaad001527a5eba8f626aea9037ac6ef9a2c295) ) // LH53706C
 	ROM_LOAD64_WORD( "avp.19m",   0x0000006, 0x200000, CRC(e1981245) SHA1(809ccb7f10262e227d5e9d9f710e06f0e751f550) ) // LH53706D
-	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x200000, CRC(ebba093e) SHA1(77aaf4197d1dae3321cf9c6d2b7967ee54cf3f30) ) // LH53855G
-	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x200000, CRC(fb228297) SHA1(ebd02a4ba085dc70c0603662e14d61625fa04648) ) // LH53855H
-	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x200000, CRC(34fb7232) SHA1(8b1f15bfa758a61e6ad519af24ca774edc70d194) ) // LH53855J
-	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x200000, CRC(f90baa21) SHA1(20a900819a9d321316e3dfd241210725d7191ecf) ) // LH53855K
+	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x100000, CRC(39933b1e) SHA1(911754d8930e0df71a3d929e4bc80f9efb9ad1ff) ) // LH53855G
+	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x100000, CRC(85412860) SHA1(25595161500eae9c9b329ca37a4b306ab8b96430) ) // LH53855H
+	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x100000, CRC(2e2beb06) SHA1(0de6bdca37a4ac05568b23cb071c66f51f737c08) ) // LH53855J
+	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x100000, CRC(e4798d1a) SHA1(7c90a9b98eba9b26992d3d02875b64431b941c24) ) // LH53855K
 
 	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 ) // 64k for the audio CPU (+banks)
 	ROM_LOAD( "avp.01",   0x00000, 0x08000, CRC(2d3b4220) SHA1(2b2d04d4282550fa9f6e1ad8528f20d1f2ac02eb) )
@@ -11323,10 +11358,10 @@ ROM_START( avspud )
 	ROM_LOAD64_WORD( "avp.15m",   0x0000002, 0x200000, CRC(b00280df) SHA1(bc1291a4a222d410bc99b6f1ed392067d9c3999e) )
 	ROM_LOAD64_WORD( "avp.17m",   0x0000004, 0x200000, CRC(94403195) SHA1(efaad001527a5eba8f626aea9037ac6ef9a2c295) )
 	ROM_LOAD64_WORD( "avp.19m",   0x0000006, 0x200000, CRC(e1981245) SHA1(809ccb7f10262e227d5e9d9f710e06f0e751f550) )
-	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x200000, CRC(ebba093e) SHA1(77aaf4197d1dae3321cf9c6d2b7967ee54cf3f30) )
-	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x200000, CRC(fb228297) SHA1(ebd02a4ba085dc70c0603662e14d61625fa04648) )
-	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x200000, CRC(34fb7232) SHA1(8b1f15bfa758a61e6ad519af24ca774edc70d194) )
-	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x200000, CRC(f90baa21) SHA1(20a900819a9d321316e3dfd241210725d7191ecf) )
+	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x100000, CRC(39933b1e) SHA1(911754d8930e0df71a3d929e4bc80f9efb9ad1ff) ) // LH53855G
+	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x100000, CRC(85412860) SHA1(25595161500eae9c9b329ca37a4b306ab8b96430) ) // LH53855H
+	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x100000, CRC(2e2beb06) SHA1(0de6bdca37a4ac05568b23cb071c66f51f737c08) ) // LH53855J
+	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x100000, CRC(e4798d1a) SHA1(7c90a9b98eba9b26992d3d02875b64431b941c24) ) // LH53855K
 
 	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 )
 	ROM_LOAD( "avp.01",   0x00000, 0x08000, CRC(2d3b4220) SHA1(2b2d04d4282550fa9f6e1ad8528f20d1f2ac02eb) )

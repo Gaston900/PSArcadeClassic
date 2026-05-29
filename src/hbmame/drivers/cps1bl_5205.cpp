@@ -1,5 +1,6 @@
 // license:BSD-3-Clause
 // copyright-holders:David Haywood
+// Thank you very much for updating the driver: Gaston90
 
 /*
     CPS1 single board bootlegs (thought to be produced by "Playmark")
@@ -33,13 +34,12 @@ knightsb3:       OK.
 #include "includes/fcrash.h"
 
 #include "cpu/z80/z80.h"
-#include "cpu/m68000/m68000.h"
-#include "sound/msm5205.h"
 #include "sound/ymopm.h"
 #include "speaker.h"
 
 
-#define CPS1_ROWSCROLL_OFFS  (0x20/2)    /* base of row scroll offsets in other RAM */
+namespace {
+
 #define CODE_SIZE            0x400000
 
 
@@ -72,7 +72,7 @@ private:
 	void captcommb2_soundlatch_w(offs_t offset, uint16_t data, uint16_t mem_mask = ~0);
 	uint8_t captcommb2_soundlatch_r();
 	void captcommb2_snd_bankswitch_w(uint8_t data);
-	DECLARE_WRITE_LINE_MEMBER(captcommb2_mux_select_w);
+	void captcommb2_mux_select_w(int state);
 	void knightsb_layer_w(offs_t offset, uint16_t data);
 	void sf2b_layer_w(offs_t offset, uint16_t data);
 	void sf2mdt_layer_w(offs_t offset, uint16_t data);
@@ -142,26 +142,27 @@ void cps1bl_5205_state::captcommb2_soundlatch_w(offs_t offset, uint16_t data, ui
 {
 	if (ACCESSING_BITS_0_7)
 	{
-		m_soundlatch->write(data & 0xff);
+		m_soundlatch[0]->write(data & 0xff);
 		m_audiocpu->set_input_line(0, ASSERT_LINE);
 	}
 }
 
 uint8_t cps1bl_5205_state::captcommb2_soundlatch_r()
 {
-	uint8_t latch = m_soundlatch->read();
-	m_audiocpu->set_input_line(0, CLEAR_LINE);
+	const uint8_t latch = m_soundlatch[0]->read();
+	if (!machine().side_effects_disabled())
+		m_audiocpu->set_input_line(0, CLEAR_LINE);
 	return latch;
 }
 
 void cps1bl_5205_state::captcommb2_snd_bankswitch_w(uint8_t data)
 {
-	m_msm_1->reset_w(BIT(data, 5));
-	m_msm_2->reset_w(BIT(data, 4));
-	membank("bank1")->set_entry(data & 0x0f);
+	m_msm[0]->reset_w(BIT(data, 5));
+	m_msm[1]->reset_w(BIT(data, 4));
+	m_audiobank->set_entry(data & 0x0f);
 }
 
-WRITE_LINE_MEMBER(cps1bl_5205_state::captcommb2_mux_select_w)
+void cps1bl_5205_state::captcommb2_mux_select_w(int state)
 {
 	// toggle both mux select pins (and fire /nmi)
 	// vck halved by flipflop IC186  ~2kHz
@@ -225,7 +226,7 @@ void cps1bl_5205_state::knightsb_layer_w(offs_t offset, uint16_t data)
 				data = 0x1380;
 				break;
 			default:
-				printf ("Unknown control word = %X\n",data);
+				logerror("%s: knightsb_layer_w write %X: %X\n", machine().describe_context(), offset, data);
 				data = 0x12c0;
 			}
 		m_cps_b_regs[m_layer_enable_reg / 2] = data;
@@ -239,6 +240,9 @@ void cps1bl_5205_state::knightsb_layer_w(offs_t offset, uint16_t data)
 		break;
 	case 0x12:
 		m_cps_b_regs[m_layer_mask_reg[3] / 2] = data;
+		break;
+	default:
+		logerror("%s: knightsb_layer_w write %X:%X\n", machine().describe_context(), offset, data);
 	}
 }
 
@@ -269,7 +273,7 @@ void cps1bl_5205_state::sf2b_layer_w(offs_t offset, uint16_t data)
 		m_cps_b_regs[m_layer_enable_reg / 2] = data;
 		break;
 	default:
-		printf("%X:%X ",offset,data);
+		logerror("%s: Unknown sf2b_layer_w write %X:%X ", machine().describe_context(), offset, data);
 	}
 }
 
@@ -309,7 +313,7 @@ void cps1bl_5205_state::sf2mdt_soundlatch_w(offs_t offset, uint16_t data, uint16
 {
 	if (ACCESSING_BITS_8_15)
 	{
-		m_soundlatch->write(data >> 8);
+		m_soundlatch[0]->write(data >> 8);
 		m_audiocpu->set_input_line(0, ASSERT_LINE);
 	}
 }
@@ -352,8 +356,7 @@ void cps1bl_5205_state::captcommb2(machine_config &config)
 	// xtals: 30MHz, 24MHz, 400KHz
 	M68000(config, m_maincpu, 24000000 / 2);   // 12MHz measured on pcb
 	m_maincpu->set_addrmap(AS_PROGRAM, &cps1bl_5205_state::captcommb2_map);
-	m_maincpu->set_vblank_int("screen", FUNC(cps1bl_5205_state::cps1_interrupt));
-	m_maincpu->set_addrmap(m68000_base_device::AS_CPU_SPACE, &cps1bl_5205_state::cpu_space_map);
+	m_maincpu->set_vblank_int("screen", FUNC(cps1bl_5205_state::irq2_line_hold));
 
 	Z80(config, m_audiocpu, 30000000 / 8);  // 3.75MHz measured on pcb
 	m_audiocpu->set_addrmap(AS_PROGRAM, &cps1bl_5205_state::captcommb2_z80map);
@@ -373,7 +376,7 @@ void cps1bl_5205_state::captcommb2(machine_config &config)
 	MCFG_VIDEO_START_OVERRIDE(cps_state, cps1)
 
 	SPEAKER(config, "mono").front_center();
-	GENERIC_LATCH_8(config, m_soundlatch);
+	GENERIC_LATCH_8(config, m_soundlatch[0]);
 
 	ym2151_device &ym2151(YM2151(config, "2151", 30000000 / 8));  // 3.75MHz measured on pcb
 	// IRQ pin not used
@@ -386,22 +389,22 @@ void cps1bl_5205_state::captcommb2(machine_config &config)
 	LS157(config, m_msm_mux[1], 0);
 	m_msm_mux[1]->out_callback().set("msm2", FUNC(msm5205_device::data_w));
 
-	MSM5205(config, m_msm_1, 400000);  // 400kHz measured on pcb
-	m_msm_1->vck_callback().set(FUNC(cps1bl_5205_state::captcommb2_mux_select_w));
-	m_msm_1->vck_callback().append(m_msm_2, FUNC(msm5205_device::vclk_w));
-	m_msm_1->set_prescaler_selector(msm5205_device::S96_4B);
-	m_msm_1->add_route(ALL_OUTPUTS, "mono", 0.25);
+	MSM5205(config, m_msm[0], 400000);  // 400kHz measured on pcb
+	m_msm[0]->vck_callback().set(FUNC(cps1bl_5205_state::captcommb2_mux_select_w));
+	m_msm[0]->vck_callback().append(m_msm[1], FUNC(msm5205_device::vclk_w));
+	m_msm[0]->set_prescaler_selector(msm5205_device::S96_4B);
+	m_msm[0]->add_route(ALL_OUTPUTS, "mono", 0.25);
 
-	MSM5205(config, m_msm_2, 400000);
-	m_msm_2->set_prescaler_selector(msm5205_device::SEX_4B);
-	m_msm_2->add_route(ALL_OUTPUTS, "mono", 0.25);
+	MSM5205(config, m_msm[1], 400000);
+	m_msm[1]->set_prescaler_selector(msm5205_device::SEX_4B);
+	m_msm[1]->add_route(ALL_OUTPUTS, "mono", 0.25);
 }
 
 void cps1bl_5205_state::knightsb(machine_config &config)
 {
 	captcommb2(config);
-	m_msm_1->reset_routes().add_route(ALL_OUTPUTS, "mono", 0.5);
-	m_msm_2->reset_routes().add_route(ALL_OUTPUTS, "mono", 0.5);
+	m_msm[0]->reset_routes().add_route(ALL_OUTPUTS, "mono", 0.5);
+	m_msm[1]->reset_routes().add_route(ALL_OUTPUTS, "mono", 0.5);
 }
 
 void cps1bl_5205_state::sf2b(machine_config &config)
@@ -431,14 +434,14 @@ void cps1bl_5205_state::sf2mdt(machine_config &config)
 	m_screen->set_palette(m_palette);
 
 	GFXDECODE(config, m_gfxdecode, m_palette, gfx_cps1);
-	PALETTE(config, m_palette, palette_device::BLACK).set_entries(4096);
+	PALETTE(config, m_palette, palette_device::BLACK).set_entries(0xc00);
 
 	MCFG_VIDEO_START_OVERRIDE(cps_state, cps1)
 
 	/* sound hardware */
 	SPEAKER(config, "mono").front_center();
 
-	GENERIC_LATCH_8(config, m_soundlatch);
+	GENERIC_LATCH_8(config, m_soundlatch[0]);
 
 	YM2151(config, "2151", 3750000).add_route(0, "mono", 0.35).add_route(1, "mono", 0.35);
 
@@ -448,15 +451,15 @@ void cps1bl_5205_state::sf2mdt(machine_config &config)
 	LS157(config, m_msm_mux[1], 0);
 	m_msm_mux[1]->out_callback().set("msm2", FUNC(msm5205_device::data_w));
 
-	MSM5205(config, m_msm_1, 400000);  // 400kHz ?
-	m_msm_1->vck_callback().set(FUNC(cps1bl_5205_state::captcommb2_mux_select_w));
-	m_msm_1->vck_callback().append(m_msm_2, FUNC(msm5205_device::vclk_w));
-	m_msm_1->set_prescaler_selector(msm5205_device::S96_4B);
-	m_msm_1->add_route(ALL_OUTPUTS, "mono", 0.25);
+	MSM5205(config, m_msm[0], 400000);  // 400kHz ?
+	m_msm[0]->vck_callback().set(FUNC(cps1bl_5205_state::captcommb2_mux_select_w));
+	m_msm[0]->vck_callback().append(m_msm[1], FUNC(msm5205_device::vclk_w));
+	m_msm[0]->set_prescaler_selector(msm5205_device::S96_4B);
+	m_msm[0]->add_route(ALL_OUTPUTS, "mono", 0.25);
 
-	MSM5205(config, m_msm_2, 400000);
-	m_msm_2->set_prescaler_selector(msm5205_device::SEX_4B);
-	m_msm_2->add_route(ALL_OUTPUTS, "mono", 0.25);
+	MSM5205(config, m_msm[1], 400000);
+	m_msm[1]->set_prescaler_selector(msm5205_device::SEX_4B);
+	m_msm[1]->add_route(ALL_OUTPUTS, "mono", 0.25);
 }
 
 
@@ -469,17 +472,17 @@ void cps1bl_5205_state::captcommb2_map(address_map &map)
 	map(0x800006, 0x800007).w(FUNC(cps1bl_5205_state::captcommb2_soundlatch_w));
 	map(0x800018, 0x80001f).r(FUNC(cps1bl_5205_state::cps1_dsw_r));
 	map(0x800030, 0x800031).nopw();       // coinctrl
-	map(0x800100, 0x80013f).ram().share("cps_a_regs");
-	map(0x800140, 0x80017f).ram().share("cps_b_regs");
+	map(0x800100, 0x80013f).ram().share(m_cps_a_regs);
+	map(0x800140, 0x80017f).ram().share(m_cps_b_regs);
 	map(0x800180, 0x800181).nopw();       // original sound latch, not used
 	map(0x880000, 0x880001).nopw();       // ?
-	map(0x900000, 0x92ffff).ram().w(FUNC(cps1bl_5205_state::cps1_gfxram_w)).share("gfxram");
+	map(0x900000, 0x92ffff).ram().w(FUNC(cps1bl_5205_state::cps1_gfxram_w)).share(m_gfxram);
 	map(0x980000, 0x980023).w(FUNC(cps1bl_5205_state::captcommb2_layer_w));
 	//  0x990000, 0x993fff  spriteram
 	//  0x990000, 0x990001  sprite buffer flip
 	//  0x991000, 0x9917ff  sprite buffer #1
 	//  0x993000, 0x9937ff  sprite buffer #2
-	map(0xff0000, 0xffffff).ram().share("mainram");
+	map(0xff0000, 0xffffff).ram().share(m_mainram);
 }
 
 void cps1bl_5205_state::sf2b_map(address_map &map)
@@ -492,10 +495,10 @@ void cps1bl_5205_state::sf2b_map(address_map &map)
 	map(0x70c106, 0x70c107).w(FUNC(cps1bl_5205_state::sf2mdt_soundlatch_w));
 	map(0x70d000, 0x70d001).nopw(); // writes FFFF
 	//map(0x800030, 0x800031).w(FUNC(cps1bl_5205_state::cps1_coinctrl_w));
-	map(0x800100, 0x80013f).ram().share("cps_a_regs");  /* CPS-A custom */
-	map(0x800140, 0x80017f).rw(FUNC(cps1bl_5205_state::cps1_cps_b_r), FUNC(cps1bl_5205_state::cps1_cps_b_w)).share("cps_b_regs");  /* CPS-B custom */
-	map(0x900000, 0x92ffff).ram().w(FUNC(cps1bl_5205_state::cps1_gfxram_w)).share("gfxram");
-	map(0xff0000, 0xffffff).ram().share("mainram");
+	map(0x800100, 0x80013f).ram().share(m_cps_a_regs);  /* CPS-A custom */
+	map(0x800140, 0x80017f).rw(FUNC(cps1bl_5205_state::cps1_cps_b_r), FUNC(cps1bl_5205_state::cps1_cps_b_w)).share(m_cps_b_regs);  /* CPS-B custom */
+	map(0x900000, 0x92ffff).ram().w(FUNC(cps1bl_5205_state::cps1_gfxram_w)).share(m_gfxram);
+	map(0xff0000, 0xffffff).ram().share(m_mainram);
 }
 
 void cps1bl_5205_state::sf2mdt_map(address_map &map)
@@ -508,10 +511,10 @@ void cps1bl_5205_state::sf2mdt_map(address_map &map)
 	map(0x70c106, 0x70c107).w(FUNC(cps1bl_5205_state::sf2mdt_soundlatch_w));
 	map(0x70d000, 0x70d001).nopw(); // writes FFFF
 	//map(0x800030, 0x800031).w(FUNC(cps1bl_5205_state::cps1_coinctrl_w));
-	map(0x800100, 0x80013f).ram().share("cps_a_regs");  /* CPS-A custom */
-	map(0x800140, 0x80017f).ram().share("cps_b_regs");  /* CPS-B custom */
-	map(0x900000, 0x92ffff).ram().w(FUNC(cps1bl_5205_state::cps1_gfxram_w)).share("gfxram");
-	map(0xff0000, 0xffffff).ram().share("mainram");
+	map(0x800100, 0x80013f).ram().share(m_cps_a_regs);  /* CPS-A custom */
+	map(0x800140, 0x80017f).ram().share(m_cps_b_regs);  /* CPS-B custom */
+	map(0x900000, 0x92ffff).ram().w(FUNC(cps1bl_5205_state::cps1_gfxram_w)).share(m_gfxram);
+	map(0xff0000, 0xffffff).ram().share(m_mainram);
 }
 
 /*
@@ -530,7 +533,7 @@ void cps1bl_5205_state::sf2mdt_map(address_map &map)
 void cps1bl_5205_state::captcommb2_z80map(address_map &map)
 {
 	map(0x0000, 0x7fff).rom();
-	map(0x8000, 0xbfff).bankr("bank1");
+	map(0x8000, 0xbfff).bankr(m_audiobank);
 	map(0xd000, 0xd7ff).ram();
 	map(0xd800, 0xd801).rw("2151", FUNC(ym2151_device::read), FUNC(ym2151_device::write));
 	map(0xdc00, 0xdc00).r(FUNC(cps1bl_5205_state::captcommb2_soundlatch_r));   // clear /int here
@@ -542,7 +545,7 @@ void cps1bl_5205_state::captcommb2_z80map(address_map &map)
 
 MACHINE_START_MEMBER(cps1bl_5205_state, captcommb2)
 {
-	membank("bank1")->configure_entries(0, 16, memregion("audiocpu")->base() + 0x10000, 0x4000);
+	m_audiobank->configure_entries(0, 16, memregion("audiocpu")->base() + 0x10000, 0x4000);
 
 	m_layer_enable_reg = 0x28;
 	m_layer_mask_reg[0] = 0x26;
@@ -566,7 +569,7 @@ MACHINE_RESET_MEMBER(cps1bl_5205_state, captcommb2)
 
 MACHINE_START_MEMBER(cps1bl_5205_state, sf2mdt)
 {
-	membank("bank1")->configure_entries(0, 8, memregion("audiocpu")->base() + 0x10000, 0x4000);
+	m_audiobank->configure_entries(0, 8, memregion("audiocpu")->base() + 0x10000, 0x4000);
 
 	m_layer_enable_reg = 0x26;
 	m_layer_mask_reg[0] = 0x28;
@@ -617,8 +620,6 @@ void cps1bl_5205_state::init_sf2b()
 	m_bootleg_sprite_ram = std::make_unique<uint16_t[]>(0x2000);
 	m_maincpu->space(AS_PROGRAM).install_ram(0x700000, 0x703fff, m_bootleg_sprite_ram.get());
 	m_maincpu->space(AS_PROGRAM).install_ram(0x704000, 0x707fff, m_bootleg_sprite_ram.get());
-
-	init_cps1();
 }
 
 void cps1bl_5205_state::init_sf2mdt()
@@ -863,14 +864,12 @@ static INPUT_PORTS_START( sf2mdtb )
 INPUT_PORTS_END
 
 
-void captcommb2_state::bootleg_render_sprites( screen_device &screen, bitmap_ind16 &bitmap, const rectangle &cliprect )
+void captcommb2_state::bootleg_render_sprites(screen_device &screen, bitmap_ind16 &bitmap, const rectangle &cliprect)
 {
 	int pos;
 	int last_sprite_offset = 0;
-	uint16_t tileno, colour, xpos, ypos;
-	bool flipx, flipy;
-	uint16_t *sprite_ram = m_bootleg_sprite_ram.get();
-	int base = (sprite_ram[0] ? 0x3000 : 0x1000) / 2;  // writes sprite buffer flip here instead of obj_base register
+	uint16_t const *const sprite_ram = m_bootleg_sprite_ram.get();
+	const int base = (sprite_ram[0] ? 0x3000 : 0x1000) / 2;  // writes sprite buffer flip here instead of obj_base register
 
 	// end of sprite table marker is 0x8000
 	// 1st sprite always 0x100e/0x300e
@@ -885,12 +884,12 @@ void captcommb2_state::bootleg_render_sprites( screen_device &screen, bitmap_ind
 
 	for (pos = last_sprite_offset - base; pos >= 0; pos -= 4)
 	{
-		tileno = sprite_ram[base + pos] & 0x7fff;      // see below
-		xpos   = sprite_ram[base + pos + 2] & 0x1ff;
-		ypos   = sprite_ram[base + pos - 1] & 0x1ff;
-		flipx  = BIT(sprite_ram[base + pos + 1], 5);
-		flipy  = BIT(sprite_ram[base + pos + 1], 6);
-		colour = sprite_ram[base + pos + 1] & 0x1f;
+		const uint32_t tileno = sprite_ram[base + pos] & 0x7fff;      // see below
+		int xpos              = sprite_ram[base + pos + 2] & 0x1ff;
+		int ypos              = sprite_ram[base + pos - 1] & 0x1ff;
+		const bool flipx      = BIT(sprite_ram[base + pos + 1], 5);
+		const bool flipy      = BIT(sprite_ram[base + pos + 1], 6);
+		const uint32_t colour = sprite_ram[base + pos + 1] & 0x1f;
 		ypos   = 256 - ypos - 16;
 		xpos   = xpos + m_sprite_x_offset + 49;
 
@@ -1173,17 +1172,17 @@ ROM_START( sf2b2 )
 	ROM_LOAD16_BYTE( "1.bin", 0x000001, 0x80000, CRC(e58db26c) SHA1(da1a4e063fa770257fd3df5fdb3785c1856511a5) )
 
 	ROM_REGION( 0x600000, "gfx", 0 ) /* rearranged in init */
-	ROM_LOAD64_WORD( "5a.bin",  0x000000, 0x80000, CRC(47fab9ed) SHA1(1709becbe189b21f2c1920acef96f9412eb954e2) )
+	ROM_LOAD64_WORD( "5.bin",  0x000000, 0x80000, CRC(47fab9ed) SHA1(1709becbe189b21f2c1920acef96f9412eb954e2) )
 	ROM_LOAD64_WORD( "8.bin",  0x000002, 0x80000, CRC(b8c39d56) SHA1(ee2939f42e95c926bdd88adf326eee02cba3f37a) )
-	ROM_LOAD64_WORD( "11a.bin", 0x000004, 0x80000, CRC(6e8c98d8) SHA1(fbd7d788349fd418c48aedd906c40960e41c20f1) )
+	ROM_LOAD64_WORD( "11.bin", 0x000004, 0x80000, CRC(6e8c98d8) SHA1(fbd7d788349fd418c48aedd906c40960e41c20f1) )
 	ROM_LOAD64_WORD( "14.bin", 0x000006, 0x80000, CRC(672d4f85) SHA1(511a8878d14d3fd39c9a22efb983550098ea8760) )
 	ROM_LOAD64_WORD( "4.bin",  0x200000, 0x80000, CRC(69d7b06b) SHA1(b428a0b5dfdee20d4d198673fe3b0147cad2d5bd) )
-	ROM_LOAD64_WORD( "7a.bin",  0x200002, 0x80000, CRC(ded88f5f) SHA1(71c63fed5a15f6ce1df878dca7aa5d53868e68ee) )
-	ROM_LOAD64_WORD( "10a.bin", 0x200004, 0x80000, CRC(8c2fca3c) SHA1(a84399e91dbf5790c3fe003385f6d9f4bc9d3366) )
+	ROM_LOAD64_WORD( "7.bin",  0x200002, 0x80000, CRC(ded88f5f) SHA1(71c63fed5a15f6ce1df878dca7aa5d53868e68ee) )
+	ROM_LOAD64_WORD( "10.bin", 0x200004, 0x80000, CRC(8c2fca3c) SHA1(a84399e91dbf5790c3fe003385f6d9f4bc9d3366) )
 	ROM_LOAD64_WORD( "13.bin", 0x200006, 0x80000, CRC(26f09d38) SHA1(3babc4f502ea9e07f79306b1abc9c94f484f9cc1) )
 	ROM_LOAD64_WORD( "6.bin",  0x400000, 0x80000, CRC(b6215991) SHA1(5e20632e1a2d6eebe3b5d314cf2549bb74d7118e) )
 	ROM_LOAD64_WORD( "9.bin",  0x400002, 0x80000, CRC(b6a71ed7) SHA1(1850b4b4aa4b5cafc594b174322afefbdf215221) )
-	ROM_LOAD64_WORD( "12a.bin", 0x400004, 0x80000, CRC(971903fa) SHA1(849ee7200815ef73f75456e656f061f1e852af59) )
+	ROM_LOAD64_WORD( "12.bin", 0x400004, 0x80000, CRC(971903fa) SHA1(849ee7200815ef73f75456e656f061f1e852af59) )
 	ROM_LOAD64_WORD( "15.bin", 0x400006, 0x80000, CRC(00983914) SHA1(4ead6bbce6ca8c4cc884d55c1f821242d0e67fae) )
 
 	ROM_REGION( 0x30000, "audiocpu", 0 ) /* Sound program + samples  */
@@ -1227,7 +1226,7 @@ ROM_START( sf2ceb )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
 	ROM_LOAD16_BYTE( "3.ic171", 0x000000, 0x80000, CRC(a2355d90) SHA1(6c9e1294c55a5a9f244f6f1ce46224c51f910bb1) )
 	ROM_LOAD16_BYTE( "5.ic171", 0x000001, 0x80000, CRC(c6f86e84) SHA1(546841fe7d423fff05a7772aa57fa3274515c32b) )
-	ROM_LOAD16_BYTE( "2.mdta", 0x100000, 0x20000, CRC(74844192) SHA1(99cd546c78cce7f632007af454d8a55eddb6b19b) )
+	ROM_LOAD16_BYTE( "2.ic171", 0x100000, 0x20000, CRC(74844192) SHA1(99cd546c78cce7f632007af454d8a55eddb6b19b) )
 	ROM_LOAD16_BYTE( "4.ic171", 0x100001, 0x20000, CRC(bd98ff15) SHA1(ed902d949b0b5c5beaaea78a4b418ffa6db9e1df) )
 
 	ROM_REGION( 0x600000, "gfx", 0 )
@@ -1245,8 +1244,8 @@ ROM_END
 
 ROM_START( sf2ceb2 ) // sf2ceeab3 in FBNeo, all ROMs but the first two program ROMs match sf2mdt. Dump has been confirmed on 2 different PCBs
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "3b2.ic172", 0x000000, 0x80000, CRC(11b5fe98) SHA1(6dda11e6c443a7c0ddf17a9840c93be00a424472) )
-	ROM_LOAD16_BYTE( "1b2.ic171", 0x000001, 0x80000, CRC(6d948623) SHA1(0bcdda9ba2ef2051ad70277fbc383035a63540f3) )
+	ROM_LOAD16_BYTE( "3.ic172", 0x000000, 0x80000, CRC(11b5fe98) SHA1(6dda11e6c443a7c0ddf17a9840c93be00a424472) )
+	ROM_LOAD16_BYTE( "1.ic171", 0x000001, 0x80000, CRC(6d948623) SHA1(0bcdda9ba2ef2051ad70277fbc383035a63540f3) )
 	ROM_LOAD16_BYTE( "4.ic176", 0x100000, 0x20000, CRC(1073b7b6) SHA1(81ca1eab65ceac69520584bb23a684ccb9d92f89) )
 	ROM_LOAD16_BYTE( "2.ic175", 0x100001, 0x20000, CRC(924c6ce2) SHA1(676a912652bd75da5087f0c7eae047b7681a993c) )
 
@@ -1271,8 +1270,8 @@ ROM_END
 
 ROM_START( sf2ceb3 ) // sf2ceeab4 in FBNeo, all ROMs but the first match sf2ceb2. Changes do not seem a result of bit-rot
 	ROM_REGION( CODE_SIZE, "maincpu", 0 ) // main CPU has a (sic) 'Street Figter III 00325' sticker
-	ROM_LOAD16_BYTE( "3b3.ic172", 0x000000, 0x80000, CRC(30848e16) SHA1(b48809350f033010d33666a8cd5a610f9721f994) )
-	ROM_LOAD16_BYTE( "1b2.ic171", 0x000001, 0x80000, CRC(6d948623) SHA1(0bcdda9ba2ef2051ad70277fbc383035a63540f3) )
+	ROM_LOAD16_BYTE( "3.ic172", 0x000000, 0x80000, CRC(30848e16) SHA1(b48809350f033010d33666a8cd5a610f9721f994) )
+	ROM_LOAD16_BYTE( "1.ic171", 0x000001, 0x80000, CRC(6d948623) SHA1(0bcdda9ba2ef2051ad70277fbc383035a63540f3) )
 	ROM_LOAD16_BYTE( "4.ic176", 0x100000, 0x20000, CRC(1073b7b6) SHA1(81ca1eab65ceac69520584bb23a684ccb9d92f89) )
 	ROM_LOAD16_BYTE( "2.ic175", 0x100001, 0x20000, CRC(924c6ce2) SHA1(676a912652bd75da5087f0c7eae047b7681a993c) )
 
@@ -1297,8 +1296,8 @@ ROM_END
 
 ROM_START( sf2ceb4 ) // sf2ceeab5 in FBNeo, all ROMs but ic171 match sf2ceb2. Dump has been confirmed on 3 different PCBs
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "3b.ic172", 0x000000, 0x80000, CRC(11b5fe98) SHA1(6dda11e6c443a7c0ddf17a9840c93be00a424472) )
-	ROM_LOAD16_BYTE( "5d.ic171", 0x000001, 0x80000, CRC(43e85f2c) SHA1(56026e5d0ba4e0fb1bc92b981f69d0fc9d7af1d2) )
+	ROM_LOAD16_BYTE( "3.ic172", 0x000000, 0x80000, CRC(11b5fe98) SHA1(6dda11e6c443a7c0ddf17a9840c93be00a424472) )
+	ROM_LOAD16_BYTE( "5.ic171", 0x000001, 0x80000, CRC(43e85f2c) SHA1(56026e5d0ba4e0fb1bc92b981f69d0fc9d7af1d2) )
 	ROM_LOAD16_BYTE( "2.ic176", 0x100000, 0x20000, CRC(1073b7b6) SHA1(81ca1eab65ceac69520584bb23a684ccb9d92f89) )
 	ROM_LOAD16_BYTE( "4.ic175", 0x100001, 0x20000, CRC(924c6ce2) SHA1(676a912652bd75da5087f0c7eae047b7681a993c) )
 
@@ -1327,7 +1326,7 @@ ROM_START( sf2ceb5 ) // sf2ceba in FBNeo, it`s a mix between sf2ceb and sf2mdt
 	ROM_REGION( CODE_SIZE, "maincpu", 0 ) // 68000 code
 	ROM_LOAD16_BYTE( "3.ic171", 0x000000, 0x80000, CRC(a2355d90) SHA1(6c9e1294c55a5a9f244f6f1ce46224c51f910bb1) )
 	ROM_LOAD16_BYTE( "5.ic171", 0x000001, 0x80000, CRC(c6f86e84) SHA1(546841fe7d423fff05a7772aa57fa3274515c32b) )
-	ROM_LOAD16_BYTE( "2.mdta", 0x100000, 0x20000, CRC(74844192) SHA1(99cd546c78cce7f632007af454d8a55eddb6b19b) )
+	ROM_LOAD16_BYTE( "2.ic171", 0x100000, 0x20000, CRC(74844192) SHA1(99cd546c78cce7f632007af454d8a55eddb6b19b) )
 	ROM_LOAD16_BYTE( "4.ic171", 0x100001, 0x20000, CRC(bd98ff15) SHA1(ed902d949b0b5c5beaaea78a4b418ffa6db9e1df) )
 
 	ROM_REGION( 0x600000, "gfx", 0 )
@@ -1418,10 +1417,10 @@ ROM_END
 
 ROM_START( sf2mdtb )
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )      /* 68000 code */
-	ROM_LOAD16_BYTE( "3md.ic172", 0x000000, 0x80000, CRC(0bdb9da2) SHA1(5224ee81d94be70a84ffaa3a56b8093aa36d6b4f) ) // sldh
-	ROM_LOAD16_BYTE( "1md.ic171", 0x000001, 0x80000, CRC(d88abbce) SHA1(57667a92710bb1d37daed09262c3064d09cbf4af) ) // sldh
-	ROM_LOAD16_BYTE( "2.mdta", 0x100000, 0x20000, CRC(74844192) SHA1(99cd546c78cce7f632007af454d8a55eddb6b19b) ) // sldh
-	ROM_LOAD16_BYTE( "2md.ic175", 0x100001, 0x20000, CRC(bd98ff15) SHA1(ed902d949b0b5c5beaaea78a4b418ffa6db9e1df) ) // sldh
+	ROM_LOAD16_BYTE( "3.ic172", 0x000000, 0x80000, CRC(0bdb9da2) SHA1(5224ee81d94be70a84ffaa3a56b8093aa36d6b4f) ) // sldh
+	ROM_LOAD16_BYTE( "1.ic171", 0x000001, 0x80000, CRC(d88abbce) SHA1(57667a92710bb1d37daed09262c3064d09cbf4af) ) // sldh
+	ROM_LOAD16_BYTE( "4.ic176", 0x100000, 0x20000, CRC(74844192) SHA1(99cd546c78cce7f632007af454d8a55eddb6b19b) ) // sldh
+	ROM_LOAD16_BYTE( "2.ic175", 0x100001, 0x20000, CRC(bd98ff15) SHA1(ed902d949b0b5c5beaaea78a4b418ffa6db9e1df) ) // sldh
 
 	ROM_REGION( 0x600000, "gfx", 0 ) /* rearranged in init */
 	ROM_LOAD64_WORD( "7.ic90",  0x000000, 0x80000, CRC(896eaf48) SHA1(5a13ae8b554e05eed3d5749aaf5845d499bce45b) )
@@ -1441,6 +1440,9 @@ ROM_START( sf2mdtb )
 	ROM_LOAD( "5.ic28", 0x00000, 0x20000, CRC(d5bee9cc) SHA1(e638cb5ce7a22c18b60296a7defe8b03418da56c) )
 	ROM_RELOAD(         0x10000, 0x20000 )
 ROM_END
+
+} // anonymous namespace
+
 
 // ************************************************************************* DRIVER MACROS
 

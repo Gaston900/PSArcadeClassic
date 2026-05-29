@@ -1,5 +1,6 @@
 // license:BSD-3-Clause
 // copyright-holders:Paul Leaman
+// Thank you very much for updating the driver: Gaston90
 /*****************************************************************************************************************************
 
 Format of the .key files:
@@ -474,6 +475,20 @@ static const struct gfx_range mapper_AR22B_table[] =
 	{ 0 }
 };
 
+
+#define mapper_ARA63B    { 0x8000, 0x8000, 0, 0 }, mapper_ARA63B_table
+static const struct gfx_range mapper_ARA63B_table[] =
+{
+	// verified from PAL dump:
+	// bank0 = pin 19 (ROMs 1,3) & pin 18 (ROMs 2,4)
+	// bank1 = pin 17 (ROMs 5,7) & pin 16 (ROMs 6,8)
+	// pins 12,13,14,15 are always enabled
+
+	// type                                                                  start    end      bank
+	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x07fff, 0 },
+	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x08000, 0x0ffff, 1 },
+	{ 0 }
+};
 
 #define mapper_O224B    { 0x8000, 0x4000, 0, 0 }, mapper_O224B_table
 static const struct gfx_range mapper_O224B_table[] =
@@ -1690,6 +1705,7 @@ static const struct CPS1config cps1_config_table[]=
     {"kodb",        CPS_B_21_BT2, mapper_KD29B,  0x36, 0, 0x34 },   /* bootleg, doesn't use multiply protection */
 	{"sf2b",        CPS_B_17,     mapper_STF29,  0x36, 0, 0, 0x41 },
 	{"sf2b2",       CPS_B_17,     mapper_STF29,  0x36, 0, 0, 0x41 },
+    {"sf2b5",       CPS_B_17,     mapper_STF29,  0x36, 0, 0, 0x41 },
 	{"sf2ceb",      CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },
 	{"sf2ceb2",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },
 	{"sf2ceb3",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },
@@ -1714,38 +1730,10 @@ static const struct CPS1config cps1_config_table[]=
 	{nullptr}     /* End of table */
 };
 
-
-
-
 /* Offset of each palette entry */
 #define cps1_palette_entries (32*6)  /* Number colour schemes in palette */
 
-
-/* CPS-A registers */
-#define CPS1_OBJ_BASE           (0x00/2)    /* Base address of objects */
-#define CPS1_SCROLL1_BASE       (0x02/2)    /* Base address of scroll 1 */
-#define CPS1_SCROLL2_BASE       (0x04/2)    /* Base address of scroll 2 */
-#define CPS1_SCROLL3_BASE       (0x06/2)    /* Base address of scroll 3 */
-#define CPS1_OTHER_BASE         (0x08/2)    /* Base address of other video */
-#define CPS1_PALETTE_BASE       (0x0a/2)    /* Base address of palette */
-#define CPS1_SCROLL1_SCROLLX    (0x0c/2)    /* Scroll 1 X */
-#define CPS1_SCROLL1_SCROLLY    (0x0e/2)    /* Scroll 1 Y */
-#define CPS1_SCROLL2_SCROLLX    (0x10/2)    /* Scroll 2 X */
-#define CPS1_SCROLL2_SCROLLY    (0x12/2)    /* Scroll 2 Y */
-#define CPS1_SCROLL3_SCROLLX    (0x14/2)    /* Scroll 3 X */
-#define CPS1_SCROLL3_SCROLLY    (0x16/2)    /* Scroll 3 Y */
-#define CPS1_STARS1_SCROLLX     (0x18/2)    /* Stars 1 X */
-#define CPS1_STARS1_SCROLLY     (0x1a/2)    /* Stars 1 Y */
-#define CPS1_STARS2_SCROLLX     (0x1c/2)    /* Stars 2 X */
-#define CPS1_STARS2_SCROLLY     (0x1e/2)    /* Stars 2 Y */
-#define CPS1_ROWSCROLL_OFFS     (0x20/2)    /* base of row scroll offsets in other RAM */
-#define CPS1_VIDEOCONTROL       (0x22/2)    /* flip screen, rowscroll enable */
-
-
-/*
-CPS1 VIDEO RENDERER
-
-*/
+/* CPS1 VIDEO RENDERER */
 
 MACHINE_RESET_MEMBER(cps_state,cps)
 {

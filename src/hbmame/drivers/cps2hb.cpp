@@ -466,10 +466,10 @@ ROM_START( avsphc02 ) //avspp
 	ROM_LOAD64_WORD( "avp.15m",   0x0000002, 0x200000, CRC(b00280df) SHA1(bc1291a4a222d410bc99b6f1ed392067d9c3999e) )
 	ROM_LOAD64_WORD( "avp.17m",   0x0000004, 0x200000, CRC(94403195) SHA1(efaad001527a5eba8f626aea9037ac6ef9a2c295) )
 	ROM_LOAD64_WORD( "avp.19m",   0x0000006, 0x200000, CRC(e1981245) SHA1(809ccb7f10262e227d5e9d9f710e06f0e751f550) )
-	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x200000, CRC(ebba093e) SHA1(77aaf4197d1dae3321cf9c6d2b7967ee54cf3f30) )
-	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x200000, CRC(fb228297) SHA1(ebd02a4ba085dc70c0603662e14d61625fa04648) )
-	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x200000, CRC(34fb7232) SHA1(8b1f15bfa758a61e6ad519af24ca774edc70d194) )
-	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x200000, CRC(f90baa21) SHA1(20a900819a9d321316e3dfd241210725d7191ecf) )
+	ROM_LOAD64_WORD( "avp.14m",   0x0800000, 0x100000, CRC(39933b1e) SHA1(911754d8930e0df71a3d929e4bc80f9efb9ad1ff) ) // LH53855G
+	ROM_LOAD64_WORD( "avp.16m",   0x0800002, 0x100000, CRC(85412860) SHA1(25595161500eae9c9b329ca37a4b306ab8b96430) ) // LH53855H
+	ROM_LOAD64_WORD( "avp.18m",   0x0800004, 0x100000, CRC(2e2beb06) SHA1(0de6bdca37a4ac05568b23cb071c66f51f737c08) ) // LH53855J
+	ROM_LOAD64_WORD( "avp.20m",   0x0800006, 0x100000, CRC(e4798d1a) SHA1(7c90a9b98eba9b26992d3d02875b64431b941c24) ) // LH53855K
 
 	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 )
 	ROM_LOAD( "avp.01",   0x00000, 0x08000, CRC(2d3b4220) SHA1(2b2d04d4282550fa9f6e1ad8528f20d1f2ac02eb) )
@@ -957,30 +957,6 @@ ROM_START( ffightaec2ds )
 
 	ROM_REGION( 0x20, "key", 0 )
 	ROM_LOAD( "phoenix.key",  0x00, 0x14, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
-ROM_END
-
-ROM_START( gigawinghc01 ) //gigawingh
-	ROM_REGION(CODE_SIZE, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "ggwu_hc01.03", 0x000000, 0x80000, CRC(c85a97ba) SHA1(ac0a0677bc82507cc742f49a76b2e84a3e5729e1) )
-	ROM_LOAD16_WORD_SWAP( "ggwu.04", 0x080000, 0x80000, CRC(392f4118) SHA1(3bb0bd9503ef60892d5abd8640af524cf71da848) )
-	ROM_LOAD16_WORD_SWAP( "ggw.05",  0x100000, 0x80000, CRC(3239d642) SHA1(2fe3984c46a72aedb30a28e3db5af2612bdf0045) )
-
-	ROM_REGION( 0x1000000, "gfx", 0 )
-	ROM_LOAD64_WORD( "ggw.13m",   0x000000, 0x400000, CRC(105530a4) SHA1(3be06c032985ea6bd3805d73a407bf748385087b) )
-	ROM_LOAD64_WORD( "ggw.15m",   0x000002, 0x400000, CRC(9e774ab9) SHA1(adea1e844f3d9ccd5ad116ff8277f16a96e68d76) )
-	ROM_LOAD64_WORD( "ggw.17m",   0x000004, 0x400000, CRC(466e0ba4) SHA1(9563455b95d36fafe508290659088b153539cfdf) )
-	ROM_LOAD64_WORD( "ggw.19m",   0x000006, 0x400000, CRC(840c8dea) SHA1(ea04afce17f00b45d3d2cd5140d0dd7ab4bccc00) )
-
-	ROM_REGION(QSOUND_SIZE, "audiocpu", 0 )
-	ROM_LOAD( "ggw.01",   0x00000, 0x08000, CRC(4c6351d5) SHA1(cef81fb7c4b8cb2ef1f8f3c27982aefbcbe38160) )
-	ROM_CONTINUE(         0x10000, 0x18000 )
-
-	ROM_REGION( 0x800000, "qsound", 0 )
-	ROM_LOAD16_WORD_SWAP( "ggw.11m",   0x000000, 0x400000, CRC(e172acf5) SHA1(d7b0963d66165f3607d887741c5e7ab952bcf2ff) )
-	ROM_LOAD16_WORD_SWAP( "ggw.12m",   0x400000, 0x400000, CRC(4bee4e8f) SHA1(c440b5a38359ec3b8002f39690b79bf78703f5d0) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "gigawing.key", 0x000000, 0x000014, CRC(5076c26b) SHA1(81a0aa6768a1e94aed25503ad8b3814bb23c41b5) )
 ROM_END
 
 ROM_START( hsf2hc01 )
@@ -3111,7 +3087,6 @@ GAME( 2016, dstlkhc01,   dstlk,        cps2,         cps2_2p6b, cps2_state, init
 GAME( 2006, dstlkhc02,   dstlk,        cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Darkstalkers: The Night Warriors (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, ffightaec2,  0,            dead_cps2,    cps2_3p3b, cps2_state, init_cps2,     ROT0,   "hack",        "Fight Fight Anniversary Edition (CPS2 hardware)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, ffightaec2ds,ffightaec2,   dead_cps2,    cps2_3p3b, cps2_state, init_cps2,     ROT0,   "hack",        "Fight Fight Anniversary Edition (Deadly Streets)", MACHINE_SUPPORTS_SAVE )
-GAME( 2014, gigawinghc01,gigawing,     cps2,         cps2_2p2b, cps2_state, init_cps2,     ROT0,   "hack",        "Giga Wing (Infinite Power 2014-11-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, hsf2hc01,    hsf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Hyper Street Fighter II: The Anniversary Edition (Gouki Edition 2018-07-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, hsf2hc02,    hsf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "DDJ",         "Hyper Street Fighter II: The Anniversary Edition (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, hsf2hc03,    hsf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "DDJ",         "Hyper Street Fighter II: The Anniversary Edition (Always Have Super Move)", MACHINE_SUPPORTS_SAVE )

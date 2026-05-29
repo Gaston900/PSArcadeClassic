@@ -1,6 +1,7 @@
 // license:BSD-3-Clause
 // copyright-holders:Bryan McPhail,Ernesto Corvi,Andrew Prime,Zsolt Vasvari
 // thanks-to:Fuzz
+// Thank you very much for updating the driver: Gaston90
 /***************************************************************************
 
     Neo-Geo hardware
@@ -625,8 +626,6 @@ void neogeo_state::init_neogeo()
 	// install controllers
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x300000, 0x300001, 0, 0x01ff7e, 0, read16smo_delegate(*this, FUNC(neogeo_state::in0_r)));
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x340000, 0x340001, 0, 0x01fffe, 0, read16smo_delegate(*this, FUNC(neogeo_state::in1_r)));
-    m_maincpu->space(AS_PROGRAM).install_read_port(0x300000, 0x300001, 0x01ff7e, "DSW");
-    m_maincpu->space(AS_PROGRAM).install_read_port(0x340000, 0x340001, 0x01fffe, "P2");
 	m_sprgen->set_sprite_region(m_region_sprites->base(), m_region_sprites->bytes());
 	m_sprgen->set_fixed_regions(m_region_fixed->base(), m_region_fixed->bytes(), m_region_fixedbios);
 }
@@ -863,47 +862,6 @@ INPUT_PORTS_START( neogeo )
 	PORT_DIPNAME( 0x80, 0x80, "Freeze" ) PORT_DIPLOCATION("SW:8")
 	PORT_DIPSETTING(    0x80, DEF_STR( Off ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( On ) )
-	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_JOYSTICK_UP )
-	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_JOYSTICK_DOWN )
-	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_JOYSTICK_LEFT )
-	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_JOYSTICK_RIGHT )
-	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x1000)
-	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x2000)
-	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x4000)
-	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x8000)
-	PORT_BIT( 0x3000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_NAME("P1 Button Combokey (Button 1 + Button 2)") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x3000)	
-	PORT_BIT( 0x5000, IP_ACTIVE_LOW, IPT_BUTTON_AC ) PORT_NAME("P1 Button Combokey (Button 1 + Button 3)") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x5000)
-	PORT_BIT( 0x9000, IP_ACTIVE_LOW, IPT_BUTTON_AD ) PORT_NAME("P1 Button Combokey (Button 1 + Button 4)") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x9000)	
-	PORT_BIT( 0x2000+0x4000, IP_ACTIVE_LOW, IPT_BUTTON_BC ) PORT_NAME("P1 Button Combokey (Button 2 + Button 3)") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x6000)
-	PORT_BIT( 0x2000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON_BD ) PORT_NAME("P1 Button Combokey (Button 2 + Button 4)") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xA000)
-	PORT_BIT( 0x4000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON_CD ) PORT_NAME("P1 Button Combokey (Button 3 + Button 4)") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xC000)
-	PORT_BIT( 0x1000+0x2000+0x4000, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_NAME("P1 Button Combokey (Button 1 + Button 2 + Button 3)") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0x7000)	
-	PORT_BIT( 0x1000+0x2000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON_ABD ) PORT_NAME("P1 Button Combokey (Button 1 + Button 2 + Button 4)") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xB000)
-	PORT_BIT( 0x1000+0x4000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON_ACD ) PORT_NAME("P1 Button Combokey (Button 1 + Button 3 + Button 4)") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xD000)
-	PORT_BIT( 0x2000+0x4000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON_BCD ) PORT_NAME("P1 Button Combokey (Button 2 + Button 3 + Button 4)") PORT_CONDITION("DSW", 0xF000, NOTEQUALS, 0xE000)
-	PORT_BIT( 0x1000+0x2000+0x4000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON_ABCD ) PORT_NAME("P1 Button Combokey (Button 1 + Button 2 + Button 3 + Button 4)") PORT_CONDITION("DSW", 0xF000, EQUALS, 0xF000)
-
-	PORT_START("P2")
-	PORT_BIT( 0x00ff, IP_ACTIVE_LOW, IPT_UNUSED )
-	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(2)
-	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_JOYSTICK_DOWN ) PORT_PLAYER(2)
-	PORT_BIT( 0x0400, IP_ACTIVE_LOW, IPT_JOYSTICK_LEFT ) PORT_PLAYER(2)
-	PORT_BIT( 0x0800, IP_ACTIVE_LOW, IPT_JOYSTICK_RIGHT ) PORT_PLAYER(2)
-	PORT_BIT( 0x1000, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(2) PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x1000)
-	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(2) PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x2000)
-	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2) PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x4000)
-	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON4 ) PORT_PLAYER(2) PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x8000)
-	PORT_BIT( 0x3000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2)") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x3000)
-	PORT_BIT( 0x5000, IP_ACTIVE_LOW, IPT_BUTTON_AC ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 3)") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x5000)
-	PORT_BIT( 0x9000, IP_ACTIVE_LOW, IPT_BUTTON_AD ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 4)") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x9000)	
-	PORT_BIT( 0x2000+0x4000, IP_ACTIVE_LOW, IPT_BUTTON_BC ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 2 + Button 3)") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x6000)
-	PORT_BIT( 0x2000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON_BD ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 2 + Button 4)") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0xA000)
-	PORT_BIT( 0x4000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON_CD ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 3 + Button 4)") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0xC000)
-	PORT_BIT( 0x1000+0x2000+0x4000, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2 + Button 3)") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0x7000)
-	PORT_BIT( 0x1000+0x2000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON_ABD ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2 + Button 4)") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0xB000)
-	PORT_BIT( 0x1000+0x4000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON_ACD ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 3 + Button 4)") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0xD000)
-	PORT_BIT( 0x2000+0x4000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON_BCD ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 2 + Button 3 + Button 4)") PORT_CONDITION("P2", 0xF000, NOTEQUALS, 0xE000)
-	PORT_BIT( 0x1000+0x2000+0x4000+0x8000, IP_ACTIVE_LOW, IPT_BUTTON_ABCD ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button 1 + Button 2 + Button 3 + Button 4)") PORT_CONDITION("P2", 0xF000, EQUALS, 0xF000)
 
 	PORT_START("SYSTEM")
 	PORT_BIT( 0x00ff, IP_ACTIVE_LOW, IPT_UNUSED )
@@ -1045,51 +1003,27 @@ void neogeo_state::main_map_noslot(address_map &map)
 	map(0x000080,0x0fffff).rom();
 }
 
-void neogeo_state::neogeo_noslot(machine_config &config)
-{
-	neogeo_arcade(config); // no slot config (legacy mame)
-	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
-
-	//joystick controller
-	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
-
-	//no mahjong controller
-	NEOGEO_CONTROL_PORT(config, "ctrl1", neogeo_arc_pin15, nullptr, true);
-	NEOGEO_CONTROL_PORT(config, "ctrl2", neogeo_arc_pin15, nullptr, true);
-
-	MSLUGX_PROT(config, "mslugx_prot");
-	SMA_PROT(config, "sma_prot");
-	CMC_PROT(config, "cmc_prot");
-	PCM2_PROT(config, "pcm2_prot");
-	PVC_PROT(config, "pvc_prot");
-	NGBOOTLEG_PROT(config, "bootleg_prot");
-	KOF2002_PROT(config, "kof2002_prot");
-	FATFURY2_PROT(config, "fatfury2_prot");
-	KOF98_PROT(config, "kof98_prot");
-	SBP_PROT(config, "sbp_prot");
-}
-
 void neogeo_state::neogeo_kog(machine_config &config)
 {
 	neogeo_arcade(config);
 	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
 
-	//joystick controller
 	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
 
-	//no mahjong controller
 	NEOGEO_CONTROL_PORT(config, "ctrl1", neogeo_arc_pin15, nullptr, true);
 	NEOGEO_CONTROL_PORT(config, "ctrl2", neogeo_arc_pin15, nullptr, true);
 
 	NGBOOTLEG_PROT(config, "bootleg_prot");
 	KOG_PROT(config, "kog_prot");
+
+	m_screen->set_visarea(NEOGEO_HBEND+8, NEOGEO_HBSTART-8-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
 }
 
 // these basically correspond to the cabinets which were available in arcades:
 // with mahjong panel, with dial for Pop'n Bounce and with 4 controls for Kizuna...
 void neogeo_state::neogeo_mahjong(machine_config &config)
 {
-	neogeo_noslot(config);
+	mv1_fixed(config);
 
 	//no joystick panel
 	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, nullptr, true);
@@ -1099,30 +1033,33 @@ void neogeo_state::neogeo_mahjong(machine_config &config)
 	config.device_remove("ctrl2");
 	NEOGEO_CONTROL_PORT(config, "ctrl1", neogeo_arc_pin15, "mahjong", false);
 	NEOGEO_CONTROL_PORT(config, "ctrl2", neogeo_arc_pin15, nullptr, true);
+
+	m_screen->set_visarea(NEOGEO_HBEND+8, NEOGEO_HBSTART-8-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
 }
 
-void neogeo_state::neogeo_dial(machine_config &config)
+void neogeo_state::neogeo_irrmaze(machine_config &config)
 {
-	neogeo_noslot(config);
-	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, "dial", true);
+	mv1_fixed(config);
+
+	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_irrmaze, "irrmaze", true);
+
+	m_screen->set_visarea(NEOGEO_HBEND+8, NEOGEO_HBSTART-8-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
 }
 
-void neogeo_state::neogeo_imaze(machine_config &config)
+void neogeo_state::neogeo_kizuna4p(machine_config &config)
 {
-	neogeo_noslot(config);
-	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, "irrmaze", true);
-}
+	mv1_fixed(config);
 
-void neogeo_state::neogeo_kiz4p(machine_config &config)
-{
-	neogeo_noslot(config);
 	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, "kiz4p", true);
+
+	m_screen->set_visarea(NEOGEO_HBEND+8, NEOGEO_HBSTART-8-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
 }
 
-// this is used by V-Liner, which handles differently inputs...
-void neogeo_state::neogeo_noctrl(machine_config &config)
+void neogeo_state::neogeo_vliner(machine_config &config)
 {
-	neogeo_noslot(config);
+	mv1_fixed(config);
+
+	// input handlers are installed at DRIVER_INIT...
 	config.device_remove("edge");
 	config.device_remove("ctrl1");
 	config.device_remove("ctrl2");
@@ -1130,13 +1067,13 @@ void neogeo_state::neogeo_noctrl(machine_config &config)
 
 void neogeo_state::no_watchdog(machine_config &config)
 {
-	neogeo_noslot(config);
+	mv1_fixed(config);
 	subdevice<watchdog_timer_device>("watchdog")->set_time(attotime::from_seconds(0.0));
 }
 
 void neogeo_state::neoclock_noslot(machine_config &config)
 {
-	neogeo_noslot(config);
+	neogeo_multiboot(config);
 
 	m_maincpu->set_clock(48000000 / 2);
 }
@@ -1149,7 +1086,7 @@ void neogeo_state::gsc2007_map(address_map &map)
 
 void neogeo_state::gsc2007(machine_config &config)
 {
-	neogeo_noslot(config);
+	neogeo_multiboot(config);
 	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::gsc2007_map);
 }
 
@@ -1161,7 +1098,7 @@ void neogeo_state::gsc_map(address_map &map)
 
 void neogeo_state::gsc(machine_config &config)
 {
-	neogeo_noslot(config);
+	neogeo_multiboot(config);
 	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::gsc_map);
 }
 
@@ -1446,6 +1383,87 @@ QUICKLOAD_LOAD_MEMBER(neogeo_state::mvs_q_cb)
 	machine_reset();
 
 	return image_init_result::PASS;
+}
+
+void neogeo_state::mv1_fixed(machine_config &config)
+{
+	neogeo_arcade(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
+
+	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
+
+	NEOGEO_CONTROL_PORT(config, m_ctrl1, neogeo_arc_pin15, nullptr, true);
+	NEOGEO_CONTROL_PORT(config, m_ctrl2, neogeo_arc_pin15, nullptr, true);
+}
+
+void neogeo_state::neogeo_neobase(machine_config &config)
+{
+	mv1_fixed(config);
+}
+
+void neogeo_state::neogeo_neo288h(machine_config &config)
+{
+	mv1_fixed(config);
+	m_screen->set_visarea(NEOGEO_HBEND+16, NEOGEO_HBSTART-16-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
+}
+
+void neogeo_state::neogeo_neo304h(machine_config &config)
+{
+	mv1_fixed(config);
+	m_screen->set_visarea(NEOGEO_HBEND+8, NEOGEO_HBSTART-8-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
+}
+
+void neogeo_state::neogeo_cyberlip(machine_config &config)
+{
+	mv1_fixed(config);
+	m_screen->set_visarea(NEOGEO_HBEND, NEOGEO_HBSTART-16-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
+}
+
+void neogeo_state::neogeo_multiboot(machine_config &config)
+{
+	neogeo_arcade(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
+
+	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
+
+	NEOGEO_CONTROL_PORT(config, m_ctrl1, neogeo_arc_pin15, nullptr, true);
+	NEOGEO_CONTROL_PORT(config, m_ctrl2, neogeo_arc_pin15, nullptr, true);
+
+	m_screen->set_visarea(NEOGEO_HBEND+8, NEOGEO_HBSTART-8-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
+
+	MSLUGX_PROT(config, "mslugx_prot");
+	SMA_PROT(config, "sma_prot");
+	CMC_PROT(config, "cmc_prot");
+	PCM2_PROT(config, "pcm2_prot");
+	PVC_PROT(config, "pvc_prot");
+	NGBOOTLEG_PROT(config, "bootleg_prot");
+	KOF2002_PROT(config, "kof2002_prot");
+	FATFURY2_PROT(config, "fatfury2_prot");
+	KOF98_PROT(config, "kof98_prot");
+	SBP_PROT(config, "sbp_prot");
+}
+
+void neogeo_state::neogeo_popbounc(machine_config &config)
+{
+	mv1_fixed(config);
+	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, "dial", true);
+
+	m_screen->set_visarea(NEOGEO_HBEND+8, NEOGEO_HBSTART-8-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
+}
+
+void neogeo_state::neogeo_zupapa(machine_config &config)
+{
+	neogeo_arcade(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
+
+	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
+
+	NEOGEO_CONTROL_PORT(config, m_ctrl1, neogeo_arc_pin15, nullptr, true);
+	NEOGEO_CONTROL_PORT(config, m_ctrl2, neogeo_arc_pin15, nullptr, true);
+
+	m_screen->set_visarea(NEOGEO_HBEND+16, NEOGEO_HBSTART-16-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
+
+	CMC_PROT(config, "cmc_prot");
 }
 
 /*********************************************** non-carts */
@@ -3379,6 +3397,184 @@ void neogeo_state::init_fr2cd()
 	mem16[0x1BF4/2] = 0x4E71;
 	mem16[0x1BF6/2] = 0x4E71;
 	init_neogeo();  */
+}
+
+
+/*********************************************** Darksoft */
+
+void neogeo_state::init_darksoft()
+{
+	init_neogeo();
+	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+}
+
+void neogeo_state::init_ct2k3sadd()
+{
+	init_neogeo();
+	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+	m_bootleg_prot->decrypt_ct2k3sa(spr_region, spr_region_size, audiocpu_region,audio_region_size);
+	m_bootleg_prot->patch_ct2k3sa(cpuregion, cpuregion_size);
+}
+
+void neogeo_state::init_ct2k3spdd()
+{
+	init_neogeo();
+	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+	m_bootleg_prot->patch_cthd2003(m_maincpu,m_banked_cart, cpuregion, cpuregion_size);
+}
+
+void neogeo_state::init_cthd2003dd()
+{
+	init_neogeo();
+	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+	m_bootleg_prot->patch_cthd2003(m_maincpu,m_banked_cart, cpuregion, cpuregion_size);
+}
+
+void neogeo_state::init_fatfury2dd()
+{
+	init_neogeo();
+	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+	m_fatfury2_prot->fatfury2_install_protection(m_maincpu,m_banked_cart);
+}
+
+void neogeo_state::init_garoudd()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+    m_sma_prot->garou_install_protection(m_maincpu,m_banked_cart);
+}
+
+void neogeo_state::init_garouhdd()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+    m_sma_prot->garouh_install_protection(m_maincpu,m_banked_cart);
+}
+
+void neogeo_state::init_jockeygpdd()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+    m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, JOCKEYGP_GFX_KEY);
+	/* install some extra RAM */
+	m_extra_ram = std::make_unique<uint16_t[]>(0x1000);
+	m_maincpu->space(AS_PROGRAM).install_ram(0x200000, 0x201fff, m_extra_ram.get());
+	save_pointer(NAME(m_extra_ram), 0x1000);
+}
+
+void neogeo_state::init_kf2k3pldd()
+{
+	init_neogeo();
+    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+	m_bootleg_prot->kf2k3pl_install_protection(m_maincpu, m_banked_cart, cpuregion, cpuregion_size);
+}
+
+void neogeo_state::init_kf2k3upldd()
+{
+	init_neogeo();
+    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+	m_bootleg_prot->kf2k3bl_install_protection(m_maincpu, m_banked_cart, cpuregion, cpuregion_size);
+}
+
+void neogeo_state::init_kof98dd()
+{
+	init_neogeo();
+    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+	m_kof98_prot->kof98_decrypt_68k(cpuregion, cpuregion_size);
+	m_kof98_prot->install_kof98_protection(m_maincpu);
+}
+
+void neogeo_state::init_kof99dd()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+    m_sma_prot->kof99_install_protection(m_maincpu, m_banked_cart);
+}
+
+void neogeo_state::init_kof2000dd()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 2;
+    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+	m_sma_prot->kof2000_install_protection(m_maincpu, m_banked_cart);
+}
+
+void neogeo_state::init_kof2002dd()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+    m_kof2002_prot->kof2002_decrypt_68k(cpuregion, cpuregion_size);
+	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+}
+
+void neogeo_state::init_kof2003dd()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 2;
+	m_pvc_prot->install_pvc_protection(m_maincpu,m_banked_cart);
+    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+}
+
+void neogeo_state::init_matrimdd()
+{
+	init_neogeo();
+    m_sprgen->m_fixed_layer_bank_type = 2;
+    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+}
+
+void neogeo_state::init_mslug3dd()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+	m_sma_prot->mslug3_install_protection(m_maincpu,m_banked_cart);
+}
+
+void neogeo_state::init_mslug4dd()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
+	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+}
+
+void neogeo_state::init_mslug5dd()
+{
+	init_neogeo();
+    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+	m_pvc_prot->install_pvc_protection(m_maincpu, m_banked_cart);
+}
+
+void neogeo_state::init_svcdd()
+{
+	init_neogeo();
+
+    m_sprgen->m_fixed_layer_bank_type = 2;
+	m_pvc_prot->install_pvc_protection(m_maincpu,m_banked_cart);
+    m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+}
+
+void neogeo_state::init_vlinerdd()
+{
+	m_banked_cart->install_banks(machine(), m_maincpu, m_region_maincpu->base(), m_region_maincpu->bytes());
+
+	m_sprgen->m_fixed_layer_bank_type = 0;
+
+	m_sprgen->set_sprite_region(m_region_sprites->base(), m_region_sprites->bytes());
+	m_sprgen->set_fixed_regions(m_region_fixed->base(), m_region_fixed->bytes(), m_region_fixedbios);
+    
+	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+	
+	m_extra_ram = std::make_unique<uint16_t[]>(0x1000);
+	m_maincpu->space(AS_PROGRAM).install_ram(0x200000, 0x201fff, m_extra_ram.get());
+	save_pointer(NAME(m_extra_ram), 0x1000);
+
+	m_maincpu->space(AS_PROGRAM).install_read_port(0x300000, 0x300001, 0x01ff7e, "DSW");
+	m_maincpu->space(AS_PROGRAM).install_read_port(0x280000, 0x280001, "IN5");
+	m_maincpu->space(AS_PROGRAM).install_read_port(0x2c0000, 0x2c0001, "IN6");
 }
 
 /*********************************************** non-carts */

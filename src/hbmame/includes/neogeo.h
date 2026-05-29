@@ -1,6 +1,7 @@
 // license:BSD-3-Clause
 // copyright-holders:Bryan McPhail,Ernesto Corvi,Andrew Prime,Zsolt Vasvari
 // thanks-to:Fuzz
+// Thank you very much for updating the driver: Gaston90
 /*************************************************************************
 
     Neo-Geo hardware
@@ -90,19 +91,25 @@ public:
 	void mvs(machine_config &config);
 	void neogeo_arcade(machine_config &config);
 	void neogeo_base(machine_config &config);
-	void neogeo_dial(machine_config &config);
-	void neogeo_imaze(machine_config &config);
-	void neogeo_kiz4p(machine_config &config);
+	void neogeo_irrmaze(machine_config &config);
+	void neogeo_kizuna4p(machine_config &config);
 	void neogeo_kog(machine_config &config);
 	void neogeo_mahjong(machine_config &config);
-	void neogeo_noctrl(machine_config &config);
-	void neogeo_noslot(machine_config &config);
+	void neogeo_vliner(machine_config &config);
     void no_watchdog(machine_config &config);
 	void gsc2007(machine_config &config);
 	void gsc(machine_config &config);
 	void neogeo_68kram(machine_config &config);
     void multimvs(machine_config &config);
 	void neosd(machine_config &config);
+	void mv1_fixed(machine_config &config);
+	void neogeo_neobase(machine_config &config);
+	void neogeo_neo288h(machine_config &config);
+	void neogeo_neo304h(machine_config &config);
+	void neogeo_cyberlip(machine_config &config);
+	void neogeo_multiboot(machine_config &config);
+	void neogeo_popbounc(machine_config &config);
+	void neogeo_zupapa(machine_config &config);
 
 	// Mainboard Configurations CPUX2
 	void neoclock_noslot(machine_config &config);
@@ -519,9 +526,9 @@ INPUT_PORTS_EXTERN(dualbios);
 #define NEOGEO_BIOS \
 	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \
 	ROM_SYSTEM_BIOS( 0, "arcade_mode", "Arcade Mode MVS" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 0, "arcade mode.rom",  0x00000, 0x020000, CRC(31df6230) SHA1(69b3e8c4befb5af6ebef120eec6ccf1a80c28cd3) ) \
+	ROM_LOAD16_WORD_SWAP_BIOS( 0, "arcade mode.rom",  0x00000, 0x020000, CRC(14399496) SHA1(df8532f3ab77b3dd20236247e9bc4734bf7c2bd5) ) \
 	ROM_SYSTEM_BIOS( 1, "console_mode", "Consola Mode AES" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 1, "console mode.rom", 0x00000, 0x020000, CRC(9f49bcc8) SHA1(413868907914f424d98dedb5e84e879cec173496) ) \
+	ROM_LOAD16_WORD_SWAP_BIOS( 1, "console mode.rom", 0x00000, 0x020000, CRC(baaf4a6e) SHA1(ac047989cc341183bc6c89a2fc1904db9c93c534) ) \
 	ROM_DEFAULT_BIOS("arcade_mode")
 
 #define NEOGEO_UNIBIOS(x) \

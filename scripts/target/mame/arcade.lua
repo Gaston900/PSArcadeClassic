@@ -811,7 +811,7 @@ BUSES["NES"] = true
 BUSES["MEGADRIVE"] = true
 --BUSES["MSX_SLOT"] = true
 --BUSES["NEOGEO"] = true
---BUSES["NEOGEO_CTRL"] = true
+BUSES["NEOGEO_CTRL"] = true
 BUSES["NES_CTRL"] = true -- playch10
 BUSES["NSCSI"] = true
 --BUSES["NUBUS"] = true
@@ -3117,12 +3117,6 @@ files {
 	MAME_DIR .. "src/hbmame/machine/ng_memcard.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/bus/neogeo/prot.cpp", --HBMAME
 	MAME_DIR .. "src/hbmame/bus/neogeo/banked_cart.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/ctrl.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/joystick.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/mahjong.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/dial.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/irrmaze.cpp", --HBMAME
-	MAME_DIR .. "src/hbmame/bus/neogeo_ctrl/kizuna4p.cpp", --HBMAME
 }
 
 createMAMEProjects(_target, _subtarget, "nichibut")

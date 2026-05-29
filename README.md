@@ -57,7 +57,7 @@ The M68000 CPU core has been modified to be compatible with all current types of
 
 Support for extending adpcma files (NeoGeo) (By Robert)
 
-Added custom buttons and autofire.
+Added custom buttons and autofire (By MAMEPLUS)
 
 Removed the black border on NeoGeo systems, now has full screen.
 
@@ -67,29 +67,43 @@ Removed the following annoying messages: “WRONG LENGTH”, “NO_DUMP”, “W
 
 Support reading IPS (By Eziochiu)
 
-Added movement optimization V.4 for all fighting games (By GSC2007).
+Added movement optimization V.4 for all fighting games (By GSC2007)
 
-The Arcade64 "GUI" EKMAME source code has been implemented (By KAZE).
+The Arcade64 "GUI" EKMAME source code has been implemented (By KAZE)
 
 It is already pre-configured, enforce aspect ratio is disabled, full screen mode and tricks are already enabled by default.
 
-The cheat reference function, if the cloned game does not have a cheat file, it will reference the cheat file of the main ROM (By KAZE).
+The cheat reference function, if the cloned game does not have a cheat file, it will reference the cheat file of the main ROM (By KAZE)
+
+NEOGEO, PGM, driver supports key combination settings (By KAZE)
+
+Support for the option to lock the game's frame rate to 60 (By KAZE)
+
+Support automatic game icon adaptation (By KAZE)
 
 Optimization of the "PGM, CPS1" system: adaptation of the MAME PLUS code (By 缘来是你).
 
-Supports UI DPI (The resolution 1920 x 1080 / 2560 x 1600) (By 缘来是你).
+A bug that caused a crash due to an excessive number of entries in the multilingual games list has been fixed (By 缘来是你)
 
-Supports optimized search function (By 缘来是你).
+Support for high-resolution screens 1920 x 1080 / 2560 x 1600 (By 缘来是你)
 
-Supports XML export (By 缘来是你).
+Supports optimized search function (By 缘来是你)
 
-Supports IPS optimization (By 缘来是你).
+Supports XML export (By 缘来是你)
 
-Supports game list language files and multilingual title display (By 缘来是你).
+Supports IPS optimization (By 缘来是你)
 
-Supports Skip CRC/IPS Check (By 缘来是你).
+Supports game list language files and multilingual title display (By 缘来是你)
 
-NEOGEO, PGM, driver supports key combination settings (By KAZE).
+Supports Skip CRC/IPS Check (By 缘来是你)
+
+Support for a cheat code translation system has been added (By 缘来是你)
+
+Supports the quick ROM scan function (By 缘来是你)
+
+Supports searching for games by name, driver, and manufacturer (By 缘来是你)
+
+The IPS manager has been fixed (By Drunk Cat)
 
 Two new folder sections called “config” and “support” were added that independently group the configurations and extra content, so that everything is kept in order in a single folder.
 

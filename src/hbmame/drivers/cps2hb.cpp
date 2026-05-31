@@ -228,7 +228,7 @@ void cps2_state::cps2turbo_map(address_map &map)
 	map(0x618000, 0x619fff).rw(FUNC(cps2_state::qsound_sharedram1_r), FUNC(cps2_state::qsound_sharedram1_samples_w));                 // Q RAM + Play samples condition
 	map(0x660000, 0x663fff).ram();                                                                                                    // When bit 14 of 0x804030 equals 0 this space is available. Many games store highscores and other info here if available.
 	map(0x664000, 0x664001).ram();                                                                                                    // Unknown - Only used if 0x660000-0x663fff available (could be RAM enable?)
-	map(0x665000, 0x66500b).ram().share("output"); //moved from 0x400000                                                              // CPS2 object output
+	map(0x665000, 0x66500b).ram().share(m_output); //moved from 0x400000                                                              // CPS2 object output
 	map(0x700000, 0x701fff).w(FUNC(cps2_state::cps2_objram1_w)).share("objram1");                                                     // Object RAM, no game seems to use it directly
 	map(0x708000, 0x709fff).mirror(0x006000).rw(FUNC(cps2_state::cps2_objram2_r), FUNC(cps2_state::cps2_objram2_w)).share("objram2"); // Object RAM
 	map(0x800100, 0x80013f).w(FUNC(cps2_state::cps1_cps_a_w)).share(m_cps_a_regs);                                                    // Mirror (sfa)
@@ -261,6 +261,7 @@ void cps2_state::cps2turbo(machine_config &config)
 	/* basic machine hardware */
 	M68000(config, m_maincpu, XTAL(32'000'000));
 	m_maincpu->set_addrmap(AS_PROGRAM, &cps2_state::cps2turbo_map);
+
 	//m_maincpu->disable_interrupt_mixer();
 	TIMER(config, "scantimer").configure_scanline(FUNC(cps2_state::cps2_interrupt), "screen", 0, 1);
 

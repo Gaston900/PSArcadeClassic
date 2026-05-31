@@ -527,12 +527,12 @@ static void expand_1st_key(u32 *dstkey, const u32 *srckey)
 		20,  8, 55, 54, 59, 60,
 		27, 33, 35, 18,  8, 15,
 		63,  1, 50, 44, 16, 46,
-			5,  4, 45, 51, 38, 25,
+		5,  4, 45, 51, 38, 25,
 		13, 11, 62, 29, 48,  2,
 		59, 61, 62, 56, 51, 57,
 		54,  9, 24, 63, 22,  7,
 		26, 42, 45, 40, 23, 14,
-			2, 31, 52, 28, 44, 17,
+		2, 31, 52, 28, 44, 17,
 	};
 	int i;
 
@@ -590,9 +590,9 @@ static void expand_subkey(u32* subkey, u16 seed)
 	// Note that each row of the table is a permutation of the seed bits.
 	static const int bits[64] =
 	{
-			5, 10, 14,  9,  4,  0, 15,  6,  1,  8,  3,  2, 12,  7, 13, 11,
-			5, 12,  7,  2, 13, 11,  9, 14,  4,  1,  6, 10,  8,  0, 15,  3,
-			4, 10,  2,  0,  6,  9, 12,  1, 11,  7, 15,  8, 13,  5, 14,  3,
+		5, 10, 14,  9,  4,  0, 15,  6,  1,  8,  3,  2, 12,  7, 13, 11,
+		5, 12,  7,  2, 13, 11,  9, 14,  4,  1,  6, 10,  8,  0, 15,  3,
+		4, 10,  2,  0,  6,  9, 12,  1, 11,  7, 15,  8, 13,  5, 14,  3,
 		14, 11, 12,  7,  4,  5,  2, 10,  1, 15,  0,  9,  8,  6, 13,  3,
 	};
 	int i;
@@ -607,7 +607,8 @@ static void expand_subkey(u32* subkey, u16 seed)
 
 
 static u16 feistel(u16 val, const int *bitsA, const int *bitsB,
-		const struct optimised_sbox* boxes1, const struct optimised_sbox* boxes2, const struct optimised_sbox* boxes3, const struct optimised_sbox* boxes4,
+		const struct optimised_sbox* boxes1, const struct optimised_sbox* boxes2,
+		const struct optimised_sbox* boxes3, const struct optimised_sbox* boxes4,
 		u32 key1, u32 key2, u32 key3, u32 key4)
 {
 	u8 l = bitswap<8>(val, bitsB[7],bitsB[6],bitsB[5],bitsB[4],bitsB[3],bitsB[2],bitsB[1],bitsB[0]);
@@ -641,10 +642,9 @@ static u16 feistel(u16 val, const int *bitsA, const int *bitsB,
 
 static int extract_inputs(u32 val, const int *inputs)
 {
-	int i;
 	int res = 0;
 
-	for (i = 0; i < 6; ++i)
+	for (u8 i = 0; i < 6; ++i)
 	{
 		if (inputs[i] != -1)
 			res |= BIT(val, inputs[i]) << i;
@@ -657,17 +657,13 @@ static int extract_inputs(u32 val, const int *inputs)
 
 static void optimise_sboxes(struct optimised_sbox* out, const struct sbox* in)
 {
-	int box;
+	int box, i;
 
 	for (box = 0; box < 4; ++box)
 	{
-		int i;
-
 		// precalculate the input lookup
 		for (i = 0; i < 256; ++i)
-		{
 			out[box].input_lookup[i] = extract_inputs(i, in[box].inputs);
-		}
 
 		// precalculate the output masks
 		for (i = 0; i < 64; ++i)
@@ -688,7 +684,7 @@ static void optimise_sboxes(struct optimised_sbox* out, const struct sbox* in)
 static void cps2_decrypt(running_machine &machine, u16 *rom, u16 *dec, int length, const u32 *master_key, u32 lower_limit, u32 upper_limit)
 {
 	int i;
-	u32 key1[4];
+	u32 key1[4] = { };
 	struct optimised_sbox sboxes1[4*4];
 	struct optimised_sbox sboxes2[4*4];
 
@@ -716,24 +712,24 @@ static void cps2_decrypt(running_machine &machine, u16 *rom, u16 *dec, int lengt
 
 	for (i = 0; i < 0x10000; ++i)
 	{
-		int a;
-		u16 seed;
-		u32 subkey[2];
-		u32 key2[4];
+		int a = 0;
+		u16 seed = 0;
+		u32 subkey[2] = { };
+		u32 key2[4] = { };
 
 		if ((i & 0xff) == 0)
 		{
-			/*char loadingMessage[256]; // for displaying with UI
+/*
+			char loadingMessage[256]; // for displaying with UI
 			sprintf(loadingMessage, "Decrypting %d%%", i*100/0x10000);
-			machine.ui().set_startup_text(loadingMessage,false);*/
+			machine.ui().set_startup_text(loadingMessage,false);
+*/
 		}
-
 
 		// pass the address through FN1
 		seed = feistel(i, fn1_groupA, fn1_groupB,
 				&sboxes1[0*4], &sboxes1[1*4], &sboxes1[2*4], &sboxes1[3*4],
 				key1[0], key1[1], key1[2], key1[3]);
-
 
 		// expand the result to 64-bit
 		expand_subkey(subkey, seed);
@@ -766,9 +762,7 @@ static void cps2_decrypt(running_machine &machine, u16 *rom, u16 *dec, int lengt
 					key2[0], key2[1], key2[2], key2[3]);
 			}
 			else
-			{
 				dec[a] = rom[a];
-			}
 		}
 	}
 }
@@ -784,22 +778,18 @@ void cps2_state::init_cps2crypt()
 {
 	if (m_region_key)
 	{
-		u32 key[2];
-		u32 lower;
-		u32 upper;
+		u32 key[2] = { };
+		u32 upper, lower = 0;
 
-		int b;
+		unsigned short decoded[10] = { };
+		//memset(decoded, 0, sizeof(decoded));
 
-		unsigned short decoded[10];
-		memset(decoded, 0, sizeof(decoded));
-
-		for (b = 0; b < 10 * 16; b++)
+		for (int b = 0; b < 10 * 16; b++)
 		{
 			int bit = (317 - b) % 160;
+
 			if ((m_region_key->base()[bit / 8] >> ((bit ^ 7) % 8)) & 1)
-			{
 				decoded[b / 16] |= (0x8000 >> (b % 16));
-			}
 		}
 
 		key[0] = (decoded[0] << 16) | decoded[1];
@@ -818,10 +808,7 @@ void cps2_state::init_cps2crypt()
 			lower = 0xff0000;
 		}
 		else
-		{
 			upper = (((~decoded[9] & 0x3ff) << 14) | 0x3fff) + 1;
-			lower = 0;
-		}
 
 		logerror("cps2 decrypt 0x%08x,0x%08x,0x%08x,0x%08x\n", key[0], key[1], lower, upper);
 
@@ -1552,17 +1539,16 @@ INPUT_PORTS_END
 
 MACHINE_START_MEMBER(cps2_state,cps2)
 {
-	if (m_audiocpu != nullptr) // gigaman2 has an AT89C4051 (8051) MCU as an audio cpu, no qsound.
+	if (m_audiocpu) // gigaman2 has an AT89C4051 (8051) MCU as an audio cpu, no qsound.
 		membank("bank1")->configure_entries(0, (QSOUND_SIZE - 0x10000) / 0x4000, memregion("audiocpu")->base() + 0x10000, 0x4000);
 }
 
 
-void cps2_state::cps2(machine_config &config)
+void cps2_state::dead_cps2(machine_config &config)
 {
 	/* basic machine hardware */
 	M68000(config, m_maincpu, XTAL(16'000'000));
-	m_maincpu->set_addrmap(AS_PROGRAM, &cps2_state::cps2_map);
-	m_maincpu->set_addrmap(AS_OPCODES, &cps2_state::decrypted_opcodes_map);
+	m_maincpu->set_addrmap(AS_PROGRAM, &cps2_state::dead_cps2_map);
 	TIMER(config, "scantimer").configure_scanline(FUNC(cps2_state::cps2_interrupt), "screen", 0, 1);
 
 	Z80(config, m_audiocpu, XTAL(8'000'000));
@@ -1596,11 +1582,12 @@ void cps2_state::cps2(machine_config &config)
 }
 
 
-void cps2_state::dead_cps2(machine_config &config)
+void cps2_state::cps2(machine_config &config)
 {
-	cps2(config);
+	dead_cps2(config);
 
-	m_maincpu->set_addrmap(AS_PROGRAM, &cps2_state::dead_cps2_map);
+	m_maincpu->set_addrmap(AS_PROGRAM, &cps2_state::cps2_map);
+	m_maincpu->set_addrmap(AS_OPCODES, &cps2_state::decrypted_opcodes_map);
 }
 
 void cps2_state::gigaman2(machine_config &config)
@@ -2634,9 +2621,6 @@ ROM_START( chokop )
 	ROM_REGION( 0x300000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "tko_11.bin",   0x000000, 0x200000, CRC(ca7179b1) SHA1(98d0c9d8766843b289d49ccae7083b262adfc83a) )
 	ROM_LOAD16_WORD_SWAP( "tko_12.bin",   0x200000, 0x100000, CRC(83a4e635) SHA1(933d02264ce922fb12a2c08b8c06167c75fe2241) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( csclub )
@@ -6497,9 +6481,6 @@ ROM_START( pzloop2jp )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "pl2-11m.bin",   0x000000, 0x200000, CRC(85d8fbe8) SHA1(c19d5e9084d07e610379b6e1b6be7bdf0b9b7f7f) ) // ROM on a SIMM
 	ROM_LOAD16_WORD_SWAP( "pl2-12m.bin",   0x200000, 0x200000, CRC(1ed62584) SHA1(28411f610f48cca6424a2d53e2a4ac691e826317) ) // ROM on a SIMM
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( qndream )
@@ -11185,9 +11166,6 @@ ROM_START( 1944d )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "nff.11m",   0x000000, 0x400000, CRC(243e4e05) SHA1(83281f7290ac105a3f9a7507cbc11317d45ba706) )
 	ROM_LOAD16_WORD_SWAP( "nff.12m",   0x400000, 0x400000, CRC(4fcf1600) SHA1(36f18c5d92b79433bdf7088b29a244708929d48e) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( 19xxd )
@@ -11218,9 +11196,6 @@ ROM_START( 19xxd )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "19x.11m",   0x000000, 0x200000, CRC(d38beef3) SHA1(134e961b926a97cca5e45d3558efb98f6f278e08) )
 	ROM_LOAD16_WORD_SWAP( "19x.12m",   0x200000, 0x200000, CRC(d47c96e2) SHA1(3c1b5563f8e7ee1c450b3592fcb319e928caec3c) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( sfaud )
@@ -11245,9 +11220,6 @@ ROM_START( sfaud )
 	ROM_REGION( 0x400000, "qsound", 0 )
 	ROM_LOAD16_WORD_SWAP( "sfz.11m",  0x000000, 0x200000, CRC(c4b093cd) SHA1(256526bb693a0b72443f047e060304c9b739acd1) )
 	ROM_LOAD16_WORD_SWAP( "sfz.12m",  0x200000, 0x200000, CRC(8bdbc4b4) SHA1(0e21c9a75a17a7e7dfd8bb51098c2b9dc4c933ec) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x00, 0x14, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( sfz2ad )
@@ -11277,9 +11249,6 @@ ROM_START( sfz2ad )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "sz2.11m",   0x000000, 0x200000, CRC(aa47a601) SHA1(a4d1ee89c84a3b9db06469bb66e85293b5aa9ac9) )
 	ROM_LOAD16_WORD_SWAP( "sz2.12m",   0x200000, 0x200000, CRC(2237bc53) SHA1(96d5693047e4cf1ed10a8ee1905cea267a278e92) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( avspd )
@@ -11309,9 +11278,6 @@ ROM_START( avspd )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "avp.11m",   0x000000, 0x200000, CRC(83499817) SHA1(e65b0ebd61ddc748842a9d4d92404b5305307623) )
 	ROM_LOAD16_WORD_SWAP( "avp.12m",   0x200000, 0x200000, CRC(f4110d49) SHA1(f27538776cc1ba8213f19f98728ed8c02508d3ac) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( batcird )
@@ -11341,9 +11307,6 @@ ROM_START( batcird )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "btc.11m",   0x000000, 0x200000, CRC(c27f2229) SHA1(df2459493af40937b6656a16fad43ff51bed2204) )
 	ROM_LOAD16_WORD_SWAP( "btc.12m",   0x200000, 0x200000, CRC(418a2e33) SHA1(0642ddff2ab9255f154419da24ba644ed63f34ab) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( avspud )
@@ -11370,9 +11333,6 @@ ROM_START( avspud )
 	ROM_REGION( 0x400000, "qsound", 0 )
 	ROM_LOAD16_WORD_SWAP( "avp.11m",   0x000000, 0x200000, CRC(83499817) SHA1(e65b0ebd61ddc748842a9d4d92404b5305307623) )
 	ROM_LOAD16_WORD_SWAP( "avp.12m",   0x200000, 0x200000, CRC(f4110d49) SHA1(f27538776cc1ba8213f19f98728ed8c02508d3ac) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x00, 0x14, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( ddtodd )
@@ -11403,9 +11363,6 @@ ROM_START( ddtodd )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "dad.11m",   0x000000, 0x200000, CRC(0c499b67) SHA1(a8ebd8a1cd6dece8344b7cb0439d85843fb97616) )
 	ROM_LOAD16_WORD_SWAP( "dad.12m",   0x200000, 0x200000, CRC(2f0b5a4e) SHA1(8d1ebbb811aa469b0f0d29d719d2b9af28fb63a2) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( ddsomud )
@@ -11440,9 +11397,6 @@ ROM_START( ddsomud )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "dd2.11m",   0x000000, 0x200000, CRC(98d0c325) SHA1(7406e8d943d77c468eb418c4113261f4ab973bbf) )
 	ROM_LOAD16_WORD_SWAP( "dd2.12m",   0x200000, 0x200000, CRC(5ea2e7fa) SHA1(0e6a9fd007f637adcb2226c902394f07de45e803) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( ecofghtrd )
@@ -11469,9 +11423,6 @@ ROM_START( ecofghtrd )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "uec.11m",   0x000000, 0x200000, CRC(81b25d39) SHA1(448adfcc7d98873a48c710d857225cdd1580e5c9) )
 	ROM_LOAD16_WORD_SWAP( "uec.12m",   0x200000, 0x200000, CRC(27729e52) SHA1(a55c8159adf766dda70cb047f5ac85ce6bc0a3f3) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( gigawingjd )
@@ -11496,9 +11447,6 @@ ROM_START( gigawingjd )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "ggw.11m",   0x000000, 0x400000, CRC(e172acf5) SHA1(d7b0963d66165f3607d887741c5e7ab952bcf2ff) )
 	ROM_LOAD16_WORD_SWAP( "ggw.12m",   0x400000, 0x400000, CRC(4bee4e8f) SHA1(c440b5a38359ec3b8002f39690b79bf78703f5d0) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( gigawingd )
@@ -11523,9 +11471,6 @@ ROM_START( gigawingd )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "ggw.11m",   0x000000, 0x400000, CRC(e172acf5) SHA1(d7b0963d66165f3607d887741c5e7ab952bcf2ff) )
 	ROM_LOAD16_WORD_SWAP( "ggw.12m",   0x400000, 0x400000, CRC(4bee4e8f) SHA1(c440b5a38359ec3b8002f39690b79bf78703f5d0) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( hsf2d )
@@ -11555,9 +11500,6 @@ ROM_START( hsf2d )
 
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "hs2.11m",   0x000000, 0x800000, CRC(0e15c359) SHA1(176108b0d76d821a849324680aba0cd04b5016c1) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( megamn2d )
@@ -11584,9 +11526,6 @@ ROM_START( megamn2d )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "rm2.11m",   0x000000, 0x200000, CRC(2106174d) SHA1(0a35d9ca8ebcad74904b20648d5320f839d6377e) )
 	ROM_LOAD16_WORD_SWAP( "rm2.12m",   0x200000, 0x200000, CRC(546c1636) SHA1(f96b172ab899f2c6ee17a5dd1fb61af9432e3cd2) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( mvscud )
@@ -11621,9 +11560,6 @@ ROM_START( mvscud )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "mvc.11m",   0x000000, 0x400000, CRC(850fe663) SHA1(81e519d05a08855f242ea2e17ee0859b449db895) )
 	ROM_LOAD16_WORD_SWAP( "mvc.12m",   0x400000, 0x400000, CRC(7ccb1896) SHA1(74caadf3282fcc6acffb1bbe3734106f81124121) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( mpangjd )
@@ -11648,9 +11584,6 @@ ROM_START( mpangjd )
 	ROM_REGION( 0x400000, "qsound", 0 )
 	ROM_LOAD16_WORD_SWAP( "mpn-simm.05a",   0x000000, 0x200000, CRC(318a2e21) SHA1(c573cd88f8279a062c73ef1d79cd8421dbdcd93e) )
 	ROM_LOAD16_WORD_SWAP( "mpn-simm.05b",   0x200000, 0x200000, CRC(5462f4e8) SHA1(299fbdab700e735e6395c5d9e3f079bb2e3dbd73) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x00, 0x14, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( nwarrud )
@@ -11685,9 +11618,6 @@ ROM_START( nwarrud )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "vph.11m",   0x000000, 0x200000, CRC(e1837d33) SHA1(e3cb69f64767bacbec7286d0b4cd0ce7a0ba13d8) )
 	ROM_LOAD16_WORD_SWAP( "vph.12m",   0x200000, 0x200000, CRC(fbd3cd90) SHA1(4813c25802ad71b77ca04fd8f3a86344f99f0d6a) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( ringdstd )
@@ -11724,9 +11654,6 @@ ROM_START( ringdstd )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "smb.11m",   0x000000, 0x200000, CRC(c56935f9) SHA1(ca1705e48e31ddc13505e6297bceca2bec1bb209) )
 	ROM_LOAD16_WORD_SWAP( "smb.12m",   0x200000, 0x200000, CRC(955b0782) SHA1(ee09500e7b44e923126533613bfe26cdabc7ab5f) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( sfad )
@@ -11754,9 +11681,6 @@ ROM_START( sfad )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "sfz.11m",  0x000000, 0x200000, CRC(c4b093cd) SHA1(256526bb693a0b72443f047e060304c9b739acd1) )
 	ROM_LOAD16_WORD_SWAP( "sfz.12m",  0x200000, 0x200000, CRC(8bdbc4b4) SHA1(0e21c9a75a17a7e7dfd8bb51098c2b9dc4c933ec) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( mshud )
@@ -11788,9 +11712,6 @@ ROM_START( mshud )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "msh.11m",   0x000000, 0x200000, CRC(37ac6d30) SHA1(ec67421fbf4a08a686e76792cb35e9cbf04d022d) )
 	ROM_LOAD16_WORD_SWAP( "msh.12m",   0x200000, 0x200000, CRC(de092570) SHA1(a03d0df901f6ea79685eaed67db65bee14ec29c6) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( sfz2ald )
@@ -11823,9 +11744,6 @@ ROM_START( sfz2ald )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "sz2.11m",   0x000000, 0x200000, CRC(aa47a601) SHA1(a4d1ee89c84a3b9db06469bb66e85293b5aa9ac9) )
 	ROM_LOAD16_WORD_SWAP( "sz2.12m",   0x200000, 0x200000, CRC(2237bc53) SHA1(96d5693047e4cf1ed10a8ee1905cea267a278e92) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( sfa3ud )
@@ -11860,9 +11778,6 @@ ROM_START( sfa3ud )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "sz3.11m",   0x000000, 0x400000, CRC(1c89eed1) SHA1(649a0b0a3eb72e2e69e9fb1ac51a58b70daa39f3) )
 	ROM_LOAD16_WORD_SWAP( "sz3.12m",   0x400000, 0x400000, CRC(f392b13a) SHA1(fa04ce0370144a49bd1d5acd873eef87b0dc9d15) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( spf2xjd )
@@ -11888,9 +11803,6 @@ ROM_START( spf2xjd )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "pzf.11m",   0x000000, 0x200000, CRC(78442743) SHA1(b61190bb586871de6d54af580e3e1d9cc0de0acb) )
 	ROM_LOAD16_WORD_SWAP( "pzf.12m",   0x200000, 0x200000, CRC(399d2c7b) SHA1(e849dea97b8d16540415c0d9bbc4f9f4eb755ec4) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( vsavd )
@@ -11925,9 +11837,6 @@ ROM_START( vsavd )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "vm3.11m",   0x000000, 0x400000, CRC(e80e956e) SHA1(74181fca4b764fb3c56ceef2cb4c6fd6c18ec4b6) )
 	ROM_LOAD16_WORD_SWAP( "vm3.12m",   0x400000, 0x400000, CRC(9cd71557) SHA1(7059db25698a0b286314c5961c618f6d2e6f24a1) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( xmcotar1d )
@@ -11962,9 +11871,6 @@ ROM_START( xmcotar1d )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "xmn.11m",   0x000000, 0x200000, CRC(c848a6bc) SHA1(ac8ac564d3c43225822f8bc330eba9f35b24b0a4) )
 	ROM_LOAD16_WORD_SWAP( "xmn.12m",   0x200000, 0x200000, CRC(729c188f) SHA1(3279774ad8aebbcf0fc779cdfcbe21044dd192ad) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( xmvsfu1d )
@@ -12000,9 +11906,6 @@ ROM_START( xmvsfu1d )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "xvs.11m",   0x000000, 0x200000, CRC(9cadcdbc) SHA1(64d3bd53b04daec84c9af4aa3ff010867b3d306d) )
 	ROM_LOAD16_WORD_SWAP( "xvs.12m",   0x200000, 0x200000, CRC(7b11e460) SHA1(a581c84acaaf0ce056841c15a6f36889e88be68d) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( dstlku1d )
@@ -12034,9 +11937,6 @@ ROM_START( dstlku1d )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "vam.11m",   0x000000, 0x200000, CRC(4a39deb2) SHA1(7e63e615869958db66a4e52a0272afee5a10e446) )
 	ROM_LOAD16_WORD_SWAP( "vam.12m",   0x200000, 0x200000, CRC(1a3e5c03) SHA1(c5a556e125d6c3d68da745b4d56cd7a851f2a23d) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( progearud )
@@ -12063,9 +11963,6 @@ ROM_START( progearud )
 	ROM_LOAD16_WORD_SWAP( "pga-simm.05b",   0x200000, 0x200000, CRC(37a65d86) SHA1(374d562a4648734f82aa2ddb6d258e870896dd45) ) // ROM on a SIMM
 	ROM_LOAD16_WORD_SWAP( "pga-simm.06a",   0x400000, 0x200000, CRC(d3f1e934) SHA1(5dcea28c873d0d472f5b94e07d97cd77ace2b252) ) // ROM on a SIMM
 	ROM_LOAD16_WORD_SWAP( "pga-simm.06b",   0x600000, 0x200000, CRC(8b39489a) SHA1(fd790efaf37dc2c4c16f657941044e3e2d3c2711) ) // ROM on a SIMM
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( progearjd )
@@ -12092,9 +11989,6 @@ ROM_START( progearjd )
 	ROM_LOAD16_WORD_SWAP( "pga-simm.05b",   0x200000, 0x200000, CRC(37a65d86) SHA1(374d562a4648734f82aa2ddb6d258e870896dd45) ) // ROM on a SIMM
 	ROM_LOAD16_WORD_SWAP( "pga-simm.06a",   0x400000, 0x200000, CRC(d3f1e934) SHA1(5dcea28c873d0d472f5b94e07d97cd77ace2b252) ) // ROM on a SIMM
 	ROM_LOAD16_WORD_SWAP( "pga-simm.06b",   0x600000, 0x200000, CRC(8b39489a) SHA1(fd790efaf37dc2c4c16f657941044e3e2d3c2711) ) // ROM on a SIMM
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( progearjbl )
@@ -12115,9 +12009,6 @@ ROM_START( progearjbl )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "pga.11m",   0x000000, 0x400000, CRC(abdd224e) SHA1(3316708e050204eeee91c642a2546fab80984c60) )
 	ROM_LOAD16_WORD_SWAP( "pga.12m",   0x400000, 0x400000, CRC(dac53406) SHA1(53fd271495429a7cbdeecbbc62b322f019f854a5) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( ssf2ud )
@@ -12151,9 +12042,6 @@ ROM_START( ssf2ud )
 	ROM_LOAD( "ssf.q06",  0x280000, 0x080000, CRC(4e79c951) SHA1(1144781d7dc57ef8a6458d982f5c91548ff59e27) )
 	ROM_LOAD( "ssf.q07",  0x300000, 0x080000, CRC(cdd14313) SHA1(ebe767a9d4b51dba4282fa0a36a546a88620dd59) )
 	ROM_LOAD( "ssf.q08",  0x380000, 0x080000, CRC(6f5a088c) SHA1(6c0b4690479647a99d76335f174be8455b4ff118) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( ssf2tbd )
@@ -12187,9 +12075,6 @@ ROM_START( ssf2tbd )
 	ROM_LOAD( "ssf.q06",  0x280000, 0x080000, CRC(4e79c951) SHA1(1144781d7dc57ef8a6458d982f5c91548ff59e27) )
 	ROM_LOAD( "ssf.q07",  0x300000, 0x080000, CRC(cdd14313) SHA1(ebe767a9d4b51dba4282fa0a36a546a88620dd59) )
 	ROM_LOAD( "ssf.q08",  0x380000, 0x080000, CRC(6f5a088c) SHA1(6c0b4690479647a99d76335f174be8455b4ff118) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( ssf2xjr1d )
@@ -12224,9 +12109,6 @@ ROM_START( ssf2xjr1d )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "sfx.11m",   0x000000, 0x200000, CRC(9bdbd476) SHA1(a8520f77f30b97aae36408e0c4ca1ebbde1808a5) )
 	ROM_LOAD16_WORD_SWAP( "sfx.12m",   0x200000, 0x200000, CRC(a05e3aab) SHA1(d4eb9cae66c74e956569fea8b815156fbd420f83) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( ssf2tad )
@@ -12261,9 +12143,6 @@ ROM_START( ssf2tad )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "sfx.11m",   0x000000, 0x200000, CRC(9bdbd476) SHA1(a8520f77f30b97aae36408e0c4ca1ebbde1808a5) )
 	ROM_LOAD16_WORD_SWAP( "sfx.12m",   0x200000, 0x200000, CRC(a05e3aab) SHA1(d4eb9cae66c74e956569fea8b815156fbd420f83) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( sgemfd )
@@ -12292,9 +12171,6 @@ ROM_START( sgemfd )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "pcf.11m",   0x000000, 0x400000, CRC(a5dea005) SHA1(3ae79baf6ff5bd527f82b26f164c7e3c65423ae2) )
 	ROM_LOAD16_WORD_SWAP( "pcf.12m",   0x400000, 0x400000, CRC(4ce235fe) SHA1(795b94557e954cc0e45fd3778b609064d57a34a2) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( armwar1d )
@@ -12326,9 +12202,6 @@ ROM_START( armwar1d )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "pwg.11m",   0x000000, 0x200000, CRC(a78f7433) SHA1(e47ffba7b9dac9d0dda985c5d966194be18260f7) )
 	ROM_LOAD16_WORD_SWAP( "pwg.12m",   0x200000, 0x200000, CRC(77438ed0) SHA1(733ca6c6a792e66e2aa12c5fc06dd459527afe4b) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( dimahoud )
@@ -12352,9 +12225,6 @@ ROM_START( dimahoud )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "gmd.11m",   0x000000, 0x400000, CRC(06a65542) SHA1(a1b3df70c90055a3cd59d0149fd18a74eff5bcc9) )
 	ROM_LOAD16_WORD_SWAP( "gmd.12m",   0x400000, 0x400000, CRC(50bc7a31) SHA1(7283569fc646c39f4c693f14e0ce7ff2ee49111a) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( mmatrixd )
@@ -12380,9 +12250,6 @@ ROM_START( mmatrixd )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "mmx.11m",   0x000000, 0x400000, CRC(4180b39f) SHA1(cabb1c358eae1bb6cfed07f5b92e4acd38650667) )
 	ROM_LOAD16_WORD_SWAP( "mmx.12m",   0x400000, 0x400000, CRC(95e22a59) SHA1(b3431d170c0a1a0d826ad0af21300b9180e3f114) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( vhunt2d )
@@ -12414,9 +12281,6 @@ ROM_START( vhunt2d )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "vh2.11m",  0x000000, 0x400000, CRC(38922efd) SHA1(8cfb36bdce3a524d0a81fec12ca0cba82222fa30) )
 	ROM_LOAD16_WORD_SWAP( "vh2.12m",  0x400000, 0x400000, CRC(6e2430af) SHA1(b475faf943bec4171ba0130f287e1948743ca273) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( vsav2d )
@@ -12448,9 +12312,6 @@ ROM_START( vsav2d )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "vs2.11m",   0x000000, 0x400000, CRC(d67e47b7) SHA1(15a3f6779eccb10551ed94edf7e6e406a79b3de7) )
 	ROM_LOAD16_WORD_SWAP( "vs2.12m",   0x400000, 0x400000, CRC(6d020a14) SHA1(e98f862fac1e357c90949768bb2646263d9981a0) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( csclub1d )
@@ -12493,9 +12354,6 @@ ROM_START( csclub1d )
 	ROM_LOAD16_WORD_SWAP( "csc.56",   0x280000, 0x080000, CRC(9a345334) SHA1(330291400a73215c9797457507a86c90ba415247))
 	ROM_LOAD16_WORD_SWAP( "csc.57",   0x300000, 0x080000, CRC(aedc27f2) SHA1(55137f0f22c4823558e6a8ba76011695579a4f1f) )
 	ROM_LOAD16_WORD_SWAP( "csc.58",   0x380000, 0x080000, CRC(2300b7b3) SHA1(f5ecbb45c24f7de1c1aa435870695551d4e343ca) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( cybotsud )
@@ -12527,9 +12385,6 @@ ROM_START( cybotsud )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "cyb.11m",   0x000000, 0x200000, CRC(362ccab2) SHA1(28e537067d4846f22657ee37166d18b8f05f4da1) )
 	ROM_LOAD16_WORD_SWAP( "cyb.12m",   0x200000, 0x200000, CRC(7066e9cc) SHA1(eb6a9d4998b3311344d73bae88d661d81609c492) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( cybotsjd )
@@ -12561,9 +12416,6 @@ ROM_START( cybotsjd )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "cyb.11m",   0x000000, 0x200000, CRC(362ccab2) SHA1(28e537067d4846f22657ee37166d18b8f05f4da1) )
 	ROM_LOAD16_WORD_SWAP( "cyb.12m",   0x200000, 0x200000, CRC(7066e9cc) SHA1(eb6a9d4998b3311344d73bae88d661d81609c492) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( mshvsfu1d )
@@ -12595,9 +12447,6 @@ ROM_START( mshvsfu1d )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "mvs.11m",   0x000000, 0x400000, CRC(86219770) SHA1(4e5b68d382a5aa37f8b0b6434c53a2b95f5f9a4d) )
 	ROM_LOAD16_WORD_SWAP( "mvs.12m",   0x400000, 0x400000, CRC(f2fd7f68) SHA1(28a30d55d3eaf963006c7cbe7c288099cd3ba536) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( spf2td )
@@ -12623,9 +12472,6 @@ ROM_START( spf2td )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "pzf.11m",   0x000000, 0x200000, CRC(78442743) SHA1(b61190bb586871de6d54af580e3e1d9cc0de0acb) )
 	ROM_LOAD16_WORD_SWAP( "pzf.12m",   0x200000, 0x200000, CRC(399d2c7b) SHA1(e849dea97b8d16540415c0d9bbc4f9f4eb755ec4) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( sfz3jr2d )
@@ -12657,9 +12503,6 @@ ROM_START( sfz3jr2d )
 	ROM_REGION( 0x800000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "sz3.11m",   0x000000, 0x400000, CRC(1c89eed1) SHA1(649a0b0a3eb72e2e69e9fb1ac51a58b70daa39f3) )
 	ROM_LOAD16_WORD_SWAP( "sz3.12m",   0x400000, 0x400000, CRC(f392b13a) SHA1(fa04ce0370144a49bd1d5acd873eef87b0dc9d15) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( sfz2jd )
@@ -12689,9 +12532,6 @@ ROM_START( sfz2jd )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "sz2.11m",   0x000000, 0x200000, CRC(aa47a601) SHA1(a4d1ee89c84a3b9db06469bb66e85293b5aa9ac9) )
 	ROM_LOAD16_WORD_SWAP( "sz2.12m",   0x200000, 0x200000, CRC(2237bc53) SHA1(96d5693047e4cf1ed10a8ee1905cea267a278e92) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( pzloop2jd )
@@ -12718,9 +12558,6 @@ ROM_START( pzloop2jd )
 	ROM_REGION( 0x400000, "qsound", 0 ) // QSound samples
 	ROM_LOAD16_WORD_SWAP( "pl2-simm.05a",   0x000000, 0x200000, CRC(85d8fbe8) SHA1(c19d5e9084d07e610379b6e1b6be7bdf0b9b7f7f) ) // ROM on a SIMM
 	ROM_LOAD16_WORD_SWAP( "pl2-simm.05b",   0x200000, 0x200000, CRC(1ed62584) SHA1(28411f610f48cca6424a2d53e2a4ac691e826317) ) // ROM on a SIMM
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( ssf2r1d )
@@ -12754,9 +12591,6 @@ ROM_START( ssf2r1d )
 	ROM_LOAD( "ssf.q06",  0x280000, 0x080000, CRC(4e79c951) SHA1(1144781d7dc57ef8a6458d982f5c91548ff59e27) )
 	ROM_LOAD( "ssf.q07",  0x300000, 0x080000, CRC(cdd14313) SHA1(ebe767a9d4b51dba4282fa0a36a546a88620dd59) )
 	ROM_LOAD( "ssf.q08",  0x380000, 0x080000, CRC(6f5a088c) SHA1(6c0b4690479647a99d76335f174be8455b4ff118) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x00, 0x14, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 ROM_START( ssf2td )
@@ -12791,9 +12625,6 @@ ROM_START( ssf2td )
 	ROM_REGION( 0x400000, "qsound", 0 )
 	ROM_LOAD16_WORD_SWAP( "sfx.11m",   0x000000, 0x200000, CRC(9bdbd476) SHA1(a8520f77f30b97aae36408e0c4ca1ebbde1808a5) )
 	ROM_LOAD16_WORD_SWAP( "sfx.12m",   0x200000, 0x200000, CRC(a05e3aab) SHA1(d4eb9cae66c74e956569fea8b815156fbd420f83) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x00, 0x14, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
  /*********
@@ -12818,9 +12649,6 @@ ROM_START( suicide )
 	ROM_REGION( 0x400000, "qsound", 0 )
 	ROM_LOAD16_WORD_SWAP( "pzf.11m",   0x000000, 0x200000, CRC(78442743) SHA1(b61190bb586871de6d54af580e3e1d9cc0de0acb) )
 	ROM_LOAD16_WORD_SWAP( "pzf.12m",   0x200000, 0x200000, CRC(399d2c7b) SHA1(e849dea97b8d16540415c0d9bbc4f9f4eb755ec4) )
-
-	ROM_REGION( 0x20, "key", 0 )
-	ROM_LOAD( "phoenix.key",  0x000000, 0x000014, CRC(2cf772b0) SHA1(eff33c65a4f3862c231f9e4d6fefa7b34398dbf2) )
 ROM_END
 
 // CPS2 Bootleg

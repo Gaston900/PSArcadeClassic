@@ -320,7 +320,7 @@ ROM_END
 
 ROM_START( captcommhc08 ) //captcommr1cr
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "cc_28d_hc08.10f", 0x000000, 0x3024FA, CRC(a33cba54) SHA1(9b22fe829c2bad7aded7307de8ee98f249d59121) )
+	ROM_LOAD16_WORD_SWAP( "cc_28d_hc08.10f", 0x000000, 0x3024FA, CRC(2fb86d4d) SHA1(3fac037085a24ddef8b597c9d7ebe55f6a68b1f4) )
 
 	ROM_REGION( 0x400000, "gfx", 0 )
 	ROM_LOAD64_WORD( "cc-5m.3a",  0x000000, 0x80000, CRC(7261d8ba) SHA1(4b66292e42d20d0b79a756f0e445492ddb9c6bbc) )
@@ -398,7 +398,7 @@ ROM_END
 
 ROM_START( captcommhc11 ) //captcommpmy
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "cc_28d_hc11.10f", 0x000000, 0x3024FA, CRC(bd00deb1) SHA1(65e6f99b128e3d65927745d2e2fbbd106062b5f3) )
+	ROM_LOAD16_WORD_SWAP( "cc_28d_hc11.10f", 0x000000, 0x3024FA, CRC(e5a40002) SHA1(011316e5a25d20a8d12805bb7adf1cfb15deb813) )
 
 	ROM_REGION( 0x400000, "gfx", 0 )
 	ROM_LOAD64_WORD( "cc-5m.3a",  0x000000, 0x80000, CRC(7261d8ba) SHA1(4b66292e42d20d0b79a756f0e445492ddb9c6bbc) )
@@ -4067,7 +4067,7 @@ ROM_END
 
 ROM_START( tk2hc10 ) //wofdr2020
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "tk2j_28d_hc10.10f", 0x000000, 0x200000, CRC(f813b912) SHA1(eb47585e4f5794c329a146ed1efa556191736235) )
+	ROM_LOAD16_WORD_SWAP( "tk2j_28d_hc10.10f", 0x000000, 0x200000, CRC(ff7f0213) SHA1(c64a0e4229795317fa91e1eabbe5ca91d74dce10) )
 
 	ROM_REGION( 0x400000, "gfx", 0 )
 	ROM_LOAD64_WORD( "tk2-1m.3a",  0x000000, 0x80000, CRC(0d9cb9bf) SHA1(cc7140e9a01a14b252cb1090bcea32b0de461928) )
@@ -4731,10 +4731,10 @@ GAME( 2023, captcommhc04, captcomm, cps1_2XCLOCK,   captcomm, cps_state,   init_
 GAME( 2017, captcommhc05, captcomm, cps1_2XCLOCK,   captcomm, cps_state,   init_cps1,     ROT0,   "GOTVG",     "Captain Commando (1V4 2017-09-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, captcommhc06, captcomm, cps1_2XCLOCK,   captcomm, cps_state,   init_cps1,     ROT0,   "GOTVG",     "Captain Commando (99 Henchmen 2019-02-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, captcommhc07, captcomm, cps1_2XCLOCK,   captcomm, cps_state,   init_cps1,     ROT0,   "GOTVG",     "Captain Commando (Journey 2024-11-14)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, captcommhc08, captcomm, cps1_2XCLOCK,   captcomm, cps_state,   init_cps1,     ROT0,   "GOTVG",     "Captain Commando (CR7 Elite 2024-12-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, captcommhc08, captcomm, cps1_2XCLOCK,   captcomm, cps_state,   init_cps1,     ROT0,   "GOTVG",     "Captain Commando (CR7 Elite 2026-04-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, captcommhc09, captcomm, cps1_2XCLOCK,   captcomm, cps_state,   init_cps1,     ROT0,   "GOTVG",     "Captain Commando (Master 2025-03-14)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, captcommhc10, captcomm, cps1_2XCLOCK,   captcomm, cps_state,   init_cps1,     ROT0,   "GOTVG",     "Captain Commando (Elite Competition Ver B 2025-04-16)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, captcommhc11, captcomm, cps1_2XCLOCK,   captcomm, cps_state,   init_cps1,     ROT0,   "GOTVG",     "Captain Commando (Nightmare 2026-02-28)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, captcommhc11, captcomm, cps1_2XCLOCK,   captcomm, cps_state,   init_cps1,     ROT0,   "GOTVG",     "Captain Commando (Nightmare 2026-04-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, captcommhc12, captcomm, cps1_2XCLOCK,   captcomm, cps_state,   init_cps1,     ROT0,   "GOTVG",     "Captain Commando (God of War 2024-12-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, captcommhc13, captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "hack",      "Captain Commando (Readjusted v1.2)", MACHINE_SUPPORTS_SAVE )
 GAME( 1991, captcommhc14, captcomm, cps1_10MHz,     captcomm, cps_state,   init_cps1,     ROT0,   "DDJ",       "Captain Commando (Change Weapon)", MACHINE_SUPPORTS_SAVE )
@@ -4849,7 +4849,7 @@ GAME( 2022, tk2hc06,      wof,      qsound_2XCLOCK, wof,      cps_state,   init_
 GAME( 2014, tk2hc07,      wof,      qsound_2XCLOCK, wof,      cps_state,   init_wof,      ROT0,   "GOTVG",     "Tenchi wo Kurau II: Sekiheki no Tatakai (Warriors Plus 2014-07-18)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, tk2hc08,      wof,      qsound_2XCLOCK, wof,      cps_state,   init_wof,      ROT0,   "GOTVG",     "Tenchi wo Kurau II: Sekiheki no Tatakai (Warriors Enhanced 2023-11-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, tk2hc09,      wof,      qsound_2XCLOCK, wof,      cps_state,   init_wof,      ROT0,   "GOTVG",     "Tenchi wo Kurau II: Sekiheki no Tatakai (Master 2022-07-13)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, tk2hc10,      wof,      qsound_2XCLOCK, wof,      cps_state,   init_wof,      ROT0,   "GOTVG",     "Tenchi wo Kurau II: Sekiheki no Tatakai (Master 2020 2026-02-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, tk2hc10,      wof,      qsound_2XCLOCK, wof,      cps_state,   init_wof,      ROT0,   "GOTVG",     "Tenchi wo Kurau II: Sekiheki no Tatakai (Master 2020 2026-03-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, tk2hc11,      wof,      qsound,         wof,      cps_state,   init_wof,      ROT0,   "GOTVG",     "Tenchi wo Kurau II: Sekiheki no Tatakai (Cavalry 1v3 2023-11-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, tk2hc12,      wof,      qsound,         wof,      cps_state,   init_wof,      ROT0,   "GOTVG",     "Tenchi wo Kurau II: Sekiheki no Tatakai (Subject 3 2023-12-31)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, tk2hc13,      wof,      qsound_2XCLOCK, wof,      cps_state,   init_wof,      ROT0,   "GOTVG",     "Tenchi wo Kurau II: Sekiheki no Tatakai (San Mei Wu Shuang 2018-07-10)", MACHINE_SUPPORTS_SAVE )

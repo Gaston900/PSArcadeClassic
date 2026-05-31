@@ -512,6 +512,7 @@ void cps_state::main_map(address_map &map)
 	map(0x800140,0x80017f).rw(FUNC(cps_state::cps1_cps_b_r),FUNC(cps_state::cps1_cps_b_w)).share(m_cps_b_regs);
 	map(0x800180,0x800187).w(FUNC(cps_state::cps1_soundlatch_w));  /* Sound command */
 	map(0x800188,0x80018f).w(FUNC(cps_state::cps1_soundlatch2_w));  /* Sound timer fade */
+	map(0x8001fe,0x8001ff).nopw();   // HBMAME
 	map(0x900000,0x92ffff).ram().w(FUNC(cps_state::cps1_gfxram_w)).share(m_gfxram);  /* SF2CE executes code from here */
 	map(0xf1c000,0xf1c001).r(FUNC(cps_state::cps1_in2_r));  /* Player 3 controls (later games) HBMAME */
 	map(0xff0000,0xffffff).ram().share(m_mainram);
@@ -13156,7 +13157,7 @@ ROM_END
 
 
 
-uint16_t cps_state::sf2rb_prot_r(offs_t offset)
+u16 cps_state::sf2rb_prot_r(offs_t offset)
 {
 	switch (offset)
 	{
@@ -13176,7 +13177,7 @@ void cps_state::init_sf2rb()
 
 	init_cps1();}
 
-uint16_t cps_state::sf2rb2_prot_r(offs_t offset)
+u16 cps_state::sf2rb2_prot_r(offs_t offset)
 {
 	switch (offset)
 	{
@@ -13229,12 +13230,12 @@ void cps_state::init_sf2rk()
 {
 	init_sf2hack();
 
-	uint8_t *gfx = memregion("gfx")->base();
+	u8 *gfx = memregion("gfx")->base();
 
 	// descramble the GFX ROMs
 	for (int i = 0; i < 0x400000; i++)
 	{
-		uint8_t x = gfx[i];
+		u8 x = gfx[i];
 		gfx[i] = bitswap(x, 0, 6 ,5, 4, 3, 2, 1, 7);
 	}
 
@@ -13242,12 +13243,12 @@ void cps_state::init_sf2rk()
 
 	for (int i = 0x480000; i < 0x600000; i++)
 	{
-		uint8_t x = gfx[i];
+		u8 x = gfx[i];
 		gfx[i] = bitswap(x, 0, 6 ,5, 4, 3, 2, 1, 7);
 	}
 }
 
-uint16_t cps_state::sf2dongb_prot_r(offs_t offset)
+u16 cps_state::sf2dongb_prot_r(offs_t offset)
 {
 	switch (offset)
 	{
@@ -13267,7 +13268,7 @@ void cps_state::init_sf2dongb()
 	init_cps1();
 }
 
-uint16_t cps_state::sf2ceblp_prot_r()
+u16 cps_state::sf2ceblp_prot_r()
 {
 	if (sf2ceblp_prot == 0x0)
 		return 0x1992;
@@ -13276,7 +13277,7 @@ uint16_t cps_state::sf2ceblp_prot_r()
 	return 0xffff;
 }
 
-void cps_state::sf2ceblp_prot_w(uint16_t data)
+void cps_state::sf2ceblp_prot_w(u16 data)
 {
 	sf2ceblp_prot = data;
 }
@@ -13293,8 +13294,8 @@ void cps_state::init_sf2ceblp()
 void cps_state::init_sf2m8()
 {
 	// unscramble gfx
-	uint8_t *grom = memregion("gfx")->base();
-	uint8_t *urom = memregion("user2")->base();
+	u8 *grom = memregion("gfx")->base();
+	u8 *urom = memregion("user2")->base();
 	int i = 0x480000, j = 0;
 
 	for (j = 0x20000; j < 0x80000; j+=2)
@@ -13312,10 +13313,10 @@ void cps_state::init_sf2m8()
 	init_cps1();
 }
 
-void cps_state::kabuki_setup(void (*decode)(uint8_t *src, uint8_t *dst))
+void cps_state::kabuki_setup(void (*decode)(u8 *src, u8 *dst))
 {
-	m_decrypt_kabuki = std::make_unique<uint8_t[]>(0x8000);
-	uint8_t *rom = memregion("audiocpu")->base();
+	m_decrypt_kabuki = std::make_unique<u8[]>(0x8000);
+	u8 *rom = memregion("audiocpu")->base();
 	decode(rom, m_decrypt_kabuki.get());
 	membank("decrypted")->set_base(m_decrypt_kabuki.get());
 }
@@ -13355,7 +13356,7 @@ void cps_state::init_pang3b()
 
 void cps_state::init_pang3()
 {
-	uint16_t *rom = (uint16_t *)memregion("maincpu")->base();
+	u16 *rom = (u16 *)memregion("maincpu")->base();
 	int A, src, dst;
 
 	for (A = 0x80000; A < 0x100000; A += 2)
@@ -13379,17 +13380,17 @@ void cps_state::init_pang3()
 
 void cps_state::init_cps1mult()
 {
-	uint8_t *rom = memregion("maincpu")->base();
+	u8 *rom = memregion("maincpu")->base();
 	int rom_size = memregion("maincpu")->bytes();
-	std::vector<uint8_t> buffer(rom_size);
+	std::vector<u8> buffer(rom_size);
 	memcpy(&buffer[0], rom, rom_size);
 
 	for (int i = 0; i < rom_size; i++)
 		rom[i] = buffer[bitswap<28>(i, 27, 26, 18, 23, 16, 17, 21, 24, 19, 25, 22, 20, 5, 6, 7, 8, 13, 15, 14, 9, 10, 12, 11, 1, 2, 3, 4, 0)];
 
-	uint8_t *gfxrom = memregion("gfx")->base();
+	u8 *gfxrom = memregion("gfx")->base();
 	rom_size = memregion("gfx")->bytes();
-	std::vector<uint8_t> gfxbuffer(rom_size);
+	std::vector<u8> gfxbuffer(rom_size);
 	memcpy(&gfxbuffer[0], gfxrom, rom_size);
 	for (int i = 0; i < rom_size; i++)
 		gfxrom[i] = gfxbuffer[bitswap<28>(i, 27, 1, 20, 21, 18, 19, 23, 25, 2, 26, 24, 22, 7, 8, 9, 10, 15, 17, 16, 11, 12, 14, 13, 3, 4, 5, 6, 0)]; // TODO: 25 and 26 to be verified
@@ -13405,7 +13406,7 @@ void cps_state::init_dinoeh()
 
 void cps_state::init_dinoz()
 {
-	uint16_t *rom = (uint16_t *)memregion("maincpu")->base();
+	u16 *rom = (u16 *)memregion("maincpu")->base();
 	rom[0xaaa82/2] = 0x4e71; // Patch out Q-Sound test
 	rom[0x1cfb4/2] = 0x4e71; // patch out invalid instruction
 	init_dinoeh();
@@ -13414,14 +13415,14 @@ void cps_state::init_dinoz()
 void cps_state::init_sf2h9()
 {
 	/* Patch out protection check */
-	uint16_t *rom = (uint16_t *)memregion("maincpu")->base();
+	u16 *rom = (u16 *)memregion("maincpu")->base();
 	rom[0xc0670/2] = 0x4e71;
 	init_cps1();
 }
 
 void cps_state::init_sf2h13()
 {
-	uint16_t *rom = (uint16_t *)memregion("maincpu")->base();
+	u16 *rom = (u16 *)memregion("maincpu")->base();
 
 	// Fix scroll
 	rom[0x1d22a/2] = 0x0120;
@@ -13450,7 +13451,7 @@ void cps_state::init_sf2h13()
 
 void cps_state::init_wofsjsb()
 {
-	uint8_t *mem8 = memregion("maincpu")->base();
+	u8 *mem8 = memregion("maincpu")->base();
 	mem8[0x06dc6] = 0x00;
 	mem8[0x06dc8] = 0x00;
 	mem8[0x06dcc] = 0x00;
@@ -13509,7 +13510,7 @@ void cps_state::init_wofsjsb()
 
 void cps_state::init_wofsjsa()
 {
-	uint8_t *mem8 = memregion("maincpu")->base();
+	u8 *mem8 = memregion("maincpu")->base();
 	// Protection
 	mem8[0xE7AD0] = 0x71;
 	mem8[0xE7AD1] = 0x4E;
@@ -13566,7 +13567,7 @@ Pang 3b4 - code accesso to $5762b0 and $57a2b0 (PIC)
 ; unused code [END]
 000360: jmp     $e0000.l         ; jmp $E0000
 */
-uint16_t cps_state::pang3b4_prot_r()
+u16 cps_state::pang3b4_prot_r()
 {
 	if ((m_pang3b4_prot & 0xff) <=7)
 		  return (m_pang3b4_prot & 0xff) + 0x20;  // Game level + extend
@@ -13575,7 +13576,7 @@ uint16_t cps_state::pang3b4_prot_r()
 	return 0xffff;
 }
 
-void cps_state::pang3b4_prot_w(uint16_t data)
+void cps_state::pang3b4_prot_w(u16 data)
 {
 	m_pang3b4_prot = data;
 }
@@ -13595,9 +13596,9 @@ void cps_state::init_pang3b4()
 }
 
 
-uint16_t cps_state::ganbare_ram_r(offs_t offset, uint16_t mem_mask)
+u16 cps_state::ganbare_ram_r(offs_t offset, u16 mem_mask)
 {
-	uint16_t result = 0xffff;
+	u16 result = 0xffff;
 
 	if (ACCESSING_BITS_0_7)
 		result = (result & ~0x00ff) | m_m48t35->read(offset);
@@ -13607,7 +13608,7 @@ uint16_t cps_state::ganbare_ram_r(offs_t offset, uint16_t mem_mask)
 	return result;
 }
 
-void cps_state::ganbare_ram_w(offs_t offset, uint16_t data, uint16_t mem_mask)
+void cps_state::ganbare_ram_w(offs_t offset, u16 data, u16 mem_mask)
 {
 	COMBINE_DATA(&m_mainram[offset]);
 
@@ -13623,7 +13624,7 @@ void cps_state::init_ganbare()
 	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0xff0000, 0xffffff, read16s_delegate(*this, FUNC(cps_state::ganbare_ram_r)), write16s_delegate(*this, FUNC(cps_state::ganbare_ram_w)));
 }
 
-uint16_t cps_state::dinohunt_sound_r()
+u16 cps_state::dinohunt_sound_r()
 {
 	/*TODO: understand what's really going on here. According to MT05805;
 	"I think that the values written are only qsound leftovers (after a lot of 0xFF values,
@@ -13641,7 +13642,7 @@ void cps_state::init_dinohunt()
 	init_cps1();
 }
 
-void cps_state::sf2m3_layer_w(offs_t offset, uint16_t data)
+void cps_state::sf2m3_layer_w(offs_t offset, u16 data)
 {
 	cps1_cps_b_w(0x0a,data);
 }
@@ -13654,7 +13655,7 @@ void cps_state::init_kodh()
 
 }
 
-void cps_state::sf2hfjb_layer_w(offs_t offset, uint16_t data)
+void cps_state::sf2hfjb_layer_w(offs_t offset, u16 data)
 {
 	if (offset == 0) 
 	{
@@ -13665,7 +13666,7 @@ void cps_state::sf2hfjb_layer_w(offs_t offset, uint16_t data)
 
 void cps_state::init_sf2hfjb()
 {
-	uint16_t *mem16 = (uint16_t *)memregion("maincpu")->base();
+	u16 *mem16 = (u16 *)memregion("maincpu")->base();
 
 	// Fix scroll
 	mem16[0x1d22a/2] = 0x0120;
@@ -13693,12 +13694,12 @@ void cps_state::init_sf2hfjb()
 	m_maincpu->space(AS_PROGRAM).install_write_handler(0x800124, 0x800125, write16sm_delegate(*this, FUNC(cps_state::sf2hfjb_layer_w)));
 }
 
-uint16_t cps_state::dinoh_r()
+u16 cps_state::dinoh_r()
 {
 	return 0xffff;
 }
 
-void cps_state::dinoh_sound_command_w(uint16_t data)
+void cps_state::dinoh_sound_command_w(u16 data)
 {
 	/* Pass the Sound Code to the Q-Sound Shared Ram */
 	m_qsound_sharedram1[0x0001] = data;
@@ -13715,7 +13716,7 @@ void cps_state::init_dinoh()
 
 void cps_state::init_dinohb()
 {
-	uint8_t *mem8 = memregion("maincpu")->base();
+	u8 *mem8 = memregion("maincpu")->base();
 	// Fix draw scroll
 //  mem8[0x006c2] = 0xC0;
 //  mem8[0x006c3] = 0xFF;
@@ -13797,7 +13798,7 @@ void cps_state::init_dinohb()
 
 void cps_state::init_wofsjb()
 {
-	uint8_t *mem8 = (uint8_t *)memregion("maincpu")->base();
+	u8 *mem8 = (u8 *)memregion("maincpu")->base();
 
 	// Patch Q sound protection? check
 	mem8[0x5A1A] = 0x00;
@@ -13876,7 +13877,7 @@ void cps_state::init_wofsjs()
 
 /**************************************************************************************************************/
 	
-void cps_state::varthb2_cps_a_w(offs_t offset, uint16_t data)
+void cps_state::varthb2_cps_a_w(offs_t offset, u16 data)
 {
 	// cps-a regs are updated as normal by original code,
 	// but bootleg code ignores them and uses these regions instead:

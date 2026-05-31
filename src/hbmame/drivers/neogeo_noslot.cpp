@@ -19436,21 +19436,21 @@ ROM_END
 // 539: Shadow Gangs demo by Shadow Gangs
 // bugs: screen goes black, sound stops after a few seconds
 ROM_START( sgz ) // demo
-	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "539.p1", 0x000000, 0x100000, CRC(825d0989) SHA1(0b58b061af47df7bfe402fd8207aa7d9f76aecda) )
-	ROM_LOAD16_WORD_SWAP( "539.p2", 0x100000, 0x100000, CRC(3d1f0314) SHA1(f3699d294145910fa75a2deee822f9ecd9a53150) )
+	ROM_REGION( 0x300000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "539.p1", 0x000000, 0x100000, CRC(d82b221c) SHA1(dd4d1845f4c79c463a79a0f1500698479cc0f5dc) )
+	ROM_LOAD16_WORD_SWAP( "539.p2", 0x100000, 0x200000, CRC(29d808db) SHA1(ae833f27c29de8d8d15c21058ecb5ed4d00495b5) )
 
-	NEO_SFIX_128K( "539.s1", CRC(2e4238d1) SHA1(f556cd9afcf53c3a1128cdaa639d49fb3abfa3ed) )
+	NEO_SFIX_128K( "539.s1", CRC(0129953c) SHA1(403e7c37ea34cc31d4195aef64b793d98cefb776) )
 
-	NEO_BIOS_AUDIO_128K( "539.m1", CRC(11c56b34) SHA1(5c5efc07c0dea8d2d36ba449e00839379b69d889) )
+	NEO_BIOS_AUDIO_512K( "539.m1", CRC(d8b119ee) SHA1(6e0b15ab7f92dbc41f2ad4644829f1fa5f9d95f7) )
 
-	ROM_REGION( 0x200000, "ymsnd:adpcma", 0 )
-	ROM_LOAD( "539.v1",   0x000000, 0x200000, CRC(8928bcf2) SHA1(aa139c5bfa79f12188794c373fdc91d6cae972de) )
-	// v2 included in the set is pgmdemo.m1, so entirely useless
+	ROM_REGION( 0x2000000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "539.v1",   0x0000000, 0x1000000, CRC(3feb9e9b) SHA1(60ca9ca731453094ce19d6edf3860dec319b39d4) )
+	ROM_LOAD( "539.v2",   0x1000000, 0x0200000, CRC(8d89877e) SHA1(7d76d48d64d7ac5411d714a4bb83f37e3e5b8df6) )
 
-	ROM_REGION( 0x400000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "539.c1",   0x0000000, 0x200000, CRC(7679fe24) SHA1(7ad065393103869c80caaac8b90ac324ef165128) )
-	ROM_LOAD16_BYTE( "539.c2",   0x0000001, 0x200000, CRC(5374cdad) SHA1(177f5a2b1e9c37b5997e7cd5175e80373a6ccdc9) )
+	ROM_REGION( 0x2000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "539.c1",   0x0000000, 0x1000000, CRC(389f2418) SHA1(934f0334f47a75953f8359dbe242c2e2252544b6) )
+	ROM_LOAD16_BYTE( "539.c2",   0x0000001, 0x1000000, CRC(0e80f762) SHA1(795cdc6a4d1f929823e96873924b2f2c645c8bb6) )
 ROM_END
 
 // 688 : Shaman King Demo by Vasily Familiya
@@ -21231,7 +21231,7 @@ GAME( 2025, pown,       neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_
 GAME( 2018, raroggame,  neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Vasily Familiya", "Ryurik - Poteryannaya Demo (HB)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
 GAME( 2018, samantha,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Vasily Familiya", "Everlasting Summer - Samantha Demo (HB)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
 GAME( 2012, santabll,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "M.Priewe", "SantaBall - Christmas Tennis Game (HB)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, sgz,        neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Shadow Gangs", "Shadow Gangs Zero Demo (HB)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, sgz,        neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Shadow Gangs", "Shadow Gangs Zero Demo (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, shaman24,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Vasily Familiya", "Shaman King Demo (HB)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
 GAME( 2025, shinobin,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Hoffman", "Shinobi - Neo Geo Conversion (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, seafight,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "kl3mousse", "Sea Fighter (HB)", MACHINE_SUPPORTS_SAVE )

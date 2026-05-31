@@ -182,10 +182,10 @@ public:
 	int m_in3_addr = 0;
 	int m_out2_addr = 0;
 	int m_bootleg_kludge = 0;
-	uint8_t m_scrollx1 = 0;
-	uint8_t m_scrollx2 = 0;
-	uint8_t m_scrollx3 = 0;
-	uint32_t m_bank_type[32]{};
+	u8 m_scrollx1 = 0;
+	u8 m_scrollx2 = 0;
+	u8 m_scrollx3 = 0;
+	u32 m_bank_type[32]{};
 
 	// CPS-A registers
 	static constexpr unsigned CPS1_OBJ_BASE        = 0x00 / 2;    // Base address of objects
@@ -215,45 +215,45 @@ public:
 	DECLARE_VIDEO_START(cps1);
 	DECLARE_VIDEO_START(cps);
 
-	uint16_t cps1_in1_r();
-	uint16_t cps1_in2_r();
-	uint16_t cps1_in3_r();
-	void cps1_snd_bankswitch_w(uint8_t data);
-	void cps1_soundlatch_w(offs_t offset, uint16_t data, uint16_t mem_mask = ~0);
-	void cps1_soundlatch2_w(offs_t offset, uint16_t data, uint16_t mem_mask = ~0);
-	void cpsq_coinctrl2_w(offs_t offset, uint16_t data, uint16_t mem_mask = ~0);
-	uint16_t qsound_rom_r(offs_t offset);
-	uint16_t qsound_sharedram2_r(offs_t offset);
-	void qsound_sharedram2_w(offs_t offset, uint16_t data, uint16_t mem_mask = ~0);
+	u16 cps1_in1_r();
+	u16 cps1_in2_r();
+	u16 cps1_in3_r();
+	void cps1_snd_bankswitch_w(u8 data);
+	void cps1_soundlatch_w(offs_t offset, u16 data, u16 mem_mask = ~0);
+	void cps1_soundlatch2_w(offs_t offset, u16 data, u16 mem_mask = ~0);
+	void cpsq_coinctrl2_w(offs_t offset, u16 data, u16 mem_mask = ~0);
+	u16 qsound_rom_r(offs_t offset);
+	u16 qsound_sharedram2_r(offs_t offset);
+	void qsound_sharedram2_w(offs_t offset, u16 data, u16 mem_mask = ~0);
 
-	uint16_t cps1_dsw_r(offs_t offset);
-	template <unsigned Which> uint16_t cps1_in_r()
+	u16 cps1_dsw_r(offs_t offset);
+	template <unsigned Which> u16 cps1_in_r()
 	{
 		const int in = m_io_in[Which]->read();
 		return (in << 8) | in;
 	}
-	void cps1_coinctrl_w(offs_t offset, uint16_t data, uint16_t mem_mask = ~0);
-	uint16_t qsound_sharedram1_r(offs_t offset);
-	void qsound_sharedram1_w(offs_t offset, uint16_t data, uint16_t mem_mask = ~0);
-	void cps1_cps_a_w(offs_t offset, uint16_t data, uint16_t mem_mask = ~0);
-	uint16_t cps1_cps_b_r(offs_t offset);
-	void cps1_cps_b_w(offs_t offset, uint16_t data, uint16_t mem_mask = ~0);
-	void cps1_gfxram_w(offs_t offset, uint16_t data, uint16_t mem_mask = ~0);
-	void cps1_oki_pin7_w(uint8_t data);
-	void qsound_banksw_w(uint8_t data);
-	uint16_t ganbare_ram_r(offs_t offset, uint16_t mem_mask = ~0);
-	void ganbare_ram_w(offs_t offset, uint16_t data, uint16_t mem_mask = ~0);
-	uint16_t cps1_hack_dsw_r(offs_t offset);
-	uint16_t sf2rb_prot_r(offs_t offset);
-	uint16_t sf2rb2_prot_r(offs_t offset);
-	uint16_t sf2dongb_prot_r(offs_t offset);
-	uint16_t sf2ceblp_prot_r();
-	void sf2ceblp_prot_w(uint16_t data);
-	void sf2m3_layer_w(offs_t offset, uint16_t data);
-	uint16_t dinohunt_sound_r();
-	void varthb2_cps_a_w(offs_t offset, uint16_t data);
-	uint16_t pang3b4_prot_r();
-	void pang3b4_prot_w(uint16_t data);
+	void cps1_coinctrl_w(offs_t offset, u16 data, u16 mem_mask = ~0);
+	u16 qsound_sharedram1_r(offs_t offset);
+	void qsound_sharedram1_w(offs_t offset, u16 data, u16 mem_mask = ~0);
+	void cps1_cps_a_w(offs_t offset, u16 data, u16 mem_mask = ~0);
+	u16 cps1_cps_b_r(offs_t offset);
+	void cps1_cps_b_w(offs_t offset, u16 data, u16 mem_mask = ~0);
+	void cps1_gfxram_w(offs_t offset, u16 data, u16 mem_mask = ~0);
+	void cps1_oki_pin7_w(u8 data);
+	void qsound_banksw_w(u8 data);
+	u16 ganbare_ram_r(offs_t offset, u16 mem_mask = ~0);
+	void ganbare_ram_w(offs_t offset, u16 data, u16 mem_mask = ~0);
+	u16 cps1_hack_dsw_r(offs_t offset);
+	u16 sf2rb_prot_r(offs_t offset);
+	u16 sf2rb2_prot_r(offs_t offset);
+	u16 sf2dongb_prot_r(offs_t offset);
+	u16 sf2ceblp_prot_r();
+	void sf2ceblp_prot_w(u16 data);
+	void sf2m3_layer_w(offs_t offset, u16 data);
+	u16 dinohunt_sound_r();
+	void varthb2_cps_a_w(offs_t offset, u16 data);
+	u16 pang3b4_prot_r();
+	void pang3b4_prot_w(u16 data);
 
 	TILEMAP_MAPPER_MEMBER(tilemap0_scan);
 	TILEMAP_MAPPER_MEMBER(tilemap1_scan);
@@ -264,41 +264,41 @@ public:
 
 	INTERRUPT_GEN_MEMBER(cps1_interrupt);
 
-	uint32_t screen_update_cps1(screen_device &screen, bitmap_ind16 &bitmap, const rectangle &cliprect);
+	u32 screen_update_cps1(screen_device &screen, bitmap_ind16 &bitmap, const rectangle &cliprect);
 	DECLARE_WRITE_LINE_MEMBER(screen_vblank_cps1);
 
 	/* memory pointers */
 	// cps1
 	bitmap_ind16 m_dummy_bitmap = 0;
-	optional_shared_ptr<uint16_t> m_mainram;
-	required_shared_ptr<uint16_t> m_gfxram;
-	required_shared_ptr<uint16_t> m_cps_a_regs;
-	required_shared_ptr<uint16_t> m_cps_b_regs;
-	uint16_t  *     m_scroll1 = nullptr;
-	uint16_t  *     m_scroll2 = nullptr;
-	uint16_t  *     m_scroll3 = nullptr;
-	uint16_t  *     m_obj = nullptr;
-	uint16_t  *     m_other = nullptr;
-	std::unique_ptr<uint16_t[]>  m_buffered_obj{};
-	optional_shared_ptr<uint8_t> m_qsound_sharedram1;
-	optional_shared_ptr<uint8_t> m_qsound_sharedram2;
+	optional_shared_ptr<u16 > m_mainram;
+	required_shared_ptr<u16 > m_gfxram;
+	required_shared_ptr<u16 > m_cps_a_regs;
+	required_shared_ptr<u16 > m_cps_b_regs;
+	u16  *     m_scroll1 = nullptr;
+	u16  *     m_scroll2 = nullptr;
+	u16  *     m_scroll3 = nullptr;
+	u16  *     m_obj = nullptr;
+	u16  *     m_other = nullptr;
+	std::unique_ptr<u16 []>  m_buffered_obj{};
+	optional_shared_ptr<u8> m_qsound_sharedram1;
+	optional_shared_ptr<u8> m_qsound_sharedram2;
 
 	optional_ioport m_io_in0;
 	optional_ioport m_io_in1;
 
 	/* capcom/cps1_v.cpp */
-	inline uint16_t  *cps1_base( int offset, int boundary );
+	inline u16  *cps1_base( int offset, int boundary );
 	void cps1_get_video_base();
 	int gfxrom_bank_mapper(int type, int code);
 	void cps1_update_transmasks();
-	void cps1_build_palette(const uint16_t * const palette_base);
+	void cps1_build_palette(const u16 * const palette_base);
 	void cps1_find_last_sprite();
 	void cps1_render_sprites(screen_device &screen, bitmap_ind16 &bitmap, const rectangle &cliprect);
 	void cps1_render_stars(screen_device &screen, bitmap_ind16 &bitmap, const rectangle &cliprect);
 	void cps1_render_layer(screen_device &screen, bitmap_ind16 &bitmap, const rectangle &cliprect, int layer, int primask);
 	void cps1_render_high_layer(screen_device &screen, bitmap_ind16 &bitmap, const rectangle &cliprect, int layer);
 
-	void kabuki_setup(void (*decode)(uint8_t *src, uint8_t *dst));
+	void kabuki_setup(void (*decode)(u8 *src, u8 *dst));
 
 	/* maps */
 	void main_map(address_map &map);
@@ -315,9 +315,9 @@ public:
 	void varthb3_map(address_map &map);
 
 	// game-specific
-	uint16_t sf2ceblp_prot = 0U;
-	uint16_t m_pang3b4_prot = 0;
-	std::unique_ptr<uint8_t[]> m_decrypt_kabuki{};
+	u16 sf2ceblp_prot = 0U;
+	u16 m_pang3b4_prot = 0;
+	std::unique_ptr<u8[]> m_decrypt_kabuki{};
 
 	/* video-related */
 	tilemap_t      *m_bg_tilemap[3]{};
@@ -352,7 +352,7 @@ public:
 	int          m_palette_align = 0;
 	int          m_palette_size = 0;
 	int          m_stars_rom_size = 0;
-	uint8_t      m_empty_tile[32*32]{};
+	u8           m_empty_tile[32*32]{};
 
 	/* devices */
 	required_device<m68000_base_device> m_maincpu;
@@ -362,7 +362,7 @@ public:
 	required_device<gfxdecode_device> m_gfxdecode;
 	required_device<screen_device> m_screen;
 	required_device<palette_device> m_palette;
-	optional_device_array<generic_latch_8_device, 2> m_soundlatch;	optional_shared_ptr<uint16_t > m_decrypted_opcodes;
+	optional_device_array<generic_latch_8_device, 2> m_soundlatch;	optional_shared_ptr<u16 > m_decrypted_opcodes;
 	optional_memory_region m_region_key;
 	optional_memory_region m_region_stars;
 
@@ -405,13 +405,13 @@ public:
 	void wofssj_map(address_map &map);
 	void wofsf2_map(address_map &map);
 
-	void daimakb_layer_w(offs_t offset, uint16_t data);
-	void sf2hfjb_layer_w(offs_t offset, uint16_t data);	
-	void dinoh_sound_command_w(uint16_t data);
-	void daimakb_palctrl_w(uint16_t data);
-	uint16_t wof_hack_dsw_r(offs_t offset);
-	uint16_t cps1_in0_r();
-	uint16_t dinoh_r();	
+	void daimakb_layer_w(offs_t offset, u16 data);
+	void sf2hfjb_layer_w(offs_t offset, u16 data);	
+	void dinoh_sound_command_w(u16 data);
+	void daimakb_palctrl_w(u16 data);
+	u16 wof_hack_dsw_r(offs_t offset);
+	u16 cps1_in0_r();
+	u16 dinoh_r();	
 
 };
 

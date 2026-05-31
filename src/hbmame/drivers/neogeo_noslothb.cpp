@@ -3783,8 +3783,8 @@ ROM_END
 
 ROM_START( kof98hc19 ) //kof98c2025
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "242_hc19.p1", 0x000000, 0x100000, CRC(d28506b9) SHA1(f40e78492382719b13777d3047f2bde476f38032) )
-	ROM_LOAD16_WORD_SWAP( "242_hc19.p2", 0x100000, 0x400000, CRC(5c150bbd) SHA1(9c38488cf2929c4f1e5997d0f38ae3a36fad557c) )
+	ROM_LOAD16_WORD_SWAP( "242_hc19.p1", 0x000000, 0x100000, CRC(e0f7a6a0) SHA1(0375d271efef16130fb3b56ead11f6096e5e481b) )
+	ROM_LOAD16_WORD_SWAP( "242_hc19.p2", 0x100000, 0x400000, CRC(abafb20a) SHA1(eab3b689c4220184a24ee4cce09b9179c6723d18) )
     KOF98_ESSENTIALPATCH_MODS_FILL
 
 	NEO_SFIX_128K( "242_hc20.s1", CRC(8e37c589) SHA1(44b9f1cd06cd029fcc39bf29724b03e021974c20) )
@@ -3869,8 +3869,8 @@ ROM_END
 
 ROM_START( kof98hc22 ) //kof98rjsb
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "242_hc22.p1", 0x000000, 0x100000, CRC(da78bad3) SHA1(e27d1253bb20f7a44bffcc77e87b607da03b7753) )
-	ROM_LOAD16_WORD_SWAP( "242_hc22.p2", 0x100000, 0x400000, CRC(c6a3ed4f) SHA1(55e54af3d83f8e2c0ad1b3edf7a67a64e0d13174) )
+	ROM_LOAD16_WORD_SWAP( "242_hc22.p1", 0x000000, 0x100000, CRC(e68e0dc8) SHA1(e295e9ee450ed0f24c251e7d39bdb6a9113a298c) )
+	ROM_LOAD16_WORD_SWAP( "242_hc22.p2", 0x100000, 0x400000, CRC(e8031410) SHA1(e3627219532b788cd5d8e561dc42663f43e0151b) )
     KOF98_ESSENTIALPATCH_MODS_FILL
 
 	NEO_SFIX_128K( "242.s1", CRC(7f7b4805) SHA1(80ee6e5d0ece9c34ebca54b043a7cb33f9ff6b92) )
@@ -3978,8 +3978,8 @@ ROM_END
 
 ROM_START( kof98hc26 ) //kof98tm
 	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "242_hc26.p1", 0x000000, 0x100000, CRC(74bf21d9) SHA1(e9f285dcffa502bd5f962be4d3aed50ce084e5c7) )
-	ROM_LOAD16_WORD_SWAP( "242_hc26.p2", 0x100000, 0x400000, CRC(fdd14d1a) SHA1(1150581185fc572c07b3a5b8d3161c9091a267ce) )
+	ROM_LOAD16_WORD_SWAP( "242_hc26.p1", 0x000000, 0x100000, CRC(08906c7a) SHA1(6105f82117bb3383ef669dd2fcc2f4d106a9c2df) )
+	ROM_LOAD16_WORD_SWAP( "242_hc26.p2", 0x100000, 0x400000, CRC(f9782349) SHA1(9b9e00ba7bf0093fe55be7aa1c512c925059ae35) )
     KOF98_ESSENTIALPATCH_MODS_FILL
 
 	NEO_SFIX_128K( "242.s1", CRC(7f7b4805) SHA1(80ee6e5d0ece9c34ebca54b043a7cb33f9ff6b92) )
@@ -4397,10 +4397,10 @@ ROM_START( kof2000hc01 ) //kof2000otc
 	ROM_LOAD16_BYTE( "257_hc01.c8", 0x3000001, 0x800000, CRC(d11c3b66) SHA1(c79bb675aaa4dfbdee70275a4cd37a5b4eb0d0da) )
 ROM_END
 
-ROM_START( kof2000hc02 ) //kof2000qmlw
+ROM_START( kof2000hc02 ) //kof2000qmlw - kof2000sp
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "257_hc02.p1", 0x000000, 0x100000, CRC(67bd4a1a) SHA1(ab98730d4cbdc59a49b44b0c271d7a307c18ab5e) )
-	ROM_LOAD16_WORD_SWAP( "257_hc02.p2", 0x100000, 0x500000, CRC(da57d16d) SHA1(be571865b0120ef96a3e5563658762a903a3683c) )
+	ROM_LOAD16_WORD_SWAP( "257_hc02.p1", 0x000000, 0x100000, CRC(0b3aca1b) SHA1(bc8fa7b759594680093cb133c305ad65bb638ad4) )
+	ROM_LOAD16_WORD_SWAP( "257_hc02.p2", 0x100000, 0x500000, CRC(006eceb5) SHA1(e4d04341d92c05d69eae10f9f1b2adfef0358e60) )
     KOF2000_ESSENTIALPATCH_MODS_FILL
 
 	NEO_SFIX_512K( "257d.s1", CRC(38901d4d) SHA1(c7684f66ab4ed577094da6ae143477c9df28d1fe) )
@@ -4423,8 +4423,8 @@ ROM_START( kof2000hc02 ) //kof2000qmlw
 	ROM_LOAD16_BYTE( "257d.c6", 0x2000001, 0x800000, CRC(8599cc5b) SHA1(9a05fc12273aebfbc4ac22e88b32ae9ecd269462) )
 	ROM_LOAD16_BYTE( "257_hc02.c7", 0x3000000, 0x800000, CRC(110f72a3) SHA1(7540aa2be692fbbcd887c8377ca6891d1ba1b6ed) )
 	ROM_LOAD16_BYTE( "257_hc02.c8", 0x3000001, 0x800000, CRC(4347f6af) SHA1(fc744d68e04905af1fa8d39d8772fba67e14777f) )
-	ROM_LOAD16_BYTE( "257_hc02.c9",  0x4000000, 0x800000, CRC(22cb5f26) SHA1(fc58060dd98f4a905bd8ad82e521566a734c1c30) )
-	ROM_LOAD16_BYTE( "257_hc02.c10", 0x4000001, 0x800000, CRC(6bf625a9) SHA1(381fd5940e35c557ea7c6b18e5780ca64fc41ecd) )
+	ROM_LOAD16_BYTE( "257_hc02.c9",  0x4000000, 0x800000, CRC(f9892e16) SHA1(12461c30bc5932fc5deddf9cbd92fd9def593321) )
+	ROM_LOAD16_BYTE( "257_hc02.c10", 0x4000001, 0x800000, CRC(595a47af) SHA1(75ea89fc789b9b473537dedbbd35ad7b51ca2edb) )
 ROM_END
 
 ROM_START( kof2000hc03 ) //kof2000bc
@@ -11171,14 +11171,14 @@ ROM_START( samsho2hc03 )
 	ROM_LOAD16_BYTE( "063.c8", 0xc00001, 0x200000, CRC(1ffc6dfa) SHA1(acea18aca76c072e0bac2a364fc96d49cfc86e77) )
 ROM_END
 
-ROM_START( samsho2hc04 ) //samsho2x2
+ROM_START( samsho2hc04 ) //samsho2x2 - samsho2pe 
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "063_hc04.p1", 0x000000, 0x100000, CRC(03bfaaaf) SHA1(89a16cde66423d648d6fa25f1c5c7dbfa2fee835) )
-	ROM_LOAD16_WORD_SWAP( "063_hc04.p2", 0x100000, 0x100000, CRC(a3a39ea4) SHA1(f9ad89d27beb2d4fc26f7dff935a5b0d84778ddc) )
+	ROM_LOAD16_WORD_SWAP( "063_hc04.p1", 0x000000, 0x100000, CRC(141bc590) SHA1(c8520a3cde0201a6e4b3ec59114b0de322f7c3e3) )
+	ROM_LOAD16_WORD_SWAP( "063_hc04.p2", 0x100000, 0x100000, CRC(8a0163d7) SHA1(ebc4e88d2ca1685fd9843a28e5fe015f18094959) )
     SAMSHO2_ESSENTIALPATCH_MODS_FILL
 
 	ROM_REGION( 0x020000, "gsc", ROMREGION_BE | ROMREGION_16BIT )
-	ROM_LOAD16_WORD_SWAP( "063_hc04.p3", 0x000000, 0x020000, CRC(82ce7ad7) SHA1(8125c627adfc6b343fe2f46337263db3ecc30a7d) )
+	ROM_LOAD16_WORD_SWAP( "063_hc04.p3", 0x000000, 0x020000, CRC(5a51a63c) SHA1(30ea9e2ace4060ca1aac81cf0883e5cd01cbafe6) )
 
 	NEO_SFIX_128K( "063.s1", CRC(64a5cd66) SHA1(12cdfb27bf9ccd5a8df6ddd4628ef7cf2c6d4964) )
 
@@ -12892,14 +12892,14 @@ GAME( 2016, kof98hc15,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,  
 GAME( 2024, kof98hc16,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Boss 2024-07-31)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, kof98hc17,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Easy Combo Wesker 2025-08-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, kof98hc18,        kof98,    gsc,             neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Plus Final 2019-09-10)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, kof98hc19,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Combo 2025 2026-03-29)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, kof98hc19,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Combo 2025 2026-05-16)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kof98hc20,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Combo 2020-03-28)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kof98hc21,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (BC Second Impact 2020-07-29)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, kof98hc22,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Weak Character Enhanced 2026-02-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, kof98hc22,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Weak Character Enhanced 2026-04-02)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, kof98hc23,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Simplified 2016-03-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, kof98hc24,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, kof98hc25,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Switchable Character)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, kof98hc26,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Home Edition 2026-03-03)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, kof98hc26,        kof98,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters '98 - The Slugfest / King of Fighters '98 - Dream Match Never Ends (Home Edition 2026-05-25)", MACHINE_SUPPORTS_SAVE )
 GAME( 2016, kof99hc01,        kof99,    neogeo_multiboot,neogeo, neogeo_state,    init_kof99,    ROT0, "Yashional",    "The King of Fighters '99 - Millennium Battle (Evolution Ultra Remix 2016-01-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, kof99hc02,        kof99,    neogeo_multiboot,neogeo, neogeo_state,    init_kof99,    ROT0, "Ice Flame Fantasy", "The King of Fighters '99 - Millennium Battle (Remix Pro v2.01 Final 2022-02-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, kof99hc03,        kof99,    neogeo_multiboot,neogeo, neogeo_state,    init_kof99,    ROT0, "GOTVG",        "The King of Fighters '99 - Millennium Battle (The Anniversary 2020-04-07)", MACHINE_SUPPORTS_SAVE )
@@ -12914,7 +12914,7 @@ GAME( 2007, kof99hc11,        kof99,    neogeo_multiboot,neogeo, neogeo_state,  
 GAME( 2025, kof99hc12,        kof99,    neogeo_multiboot,neogeo, neogeo_state,    init_kof99,    ROT0, "GOTVG",        "The King of Fighters '99 - Millennium Battle (Smooth And Refreshing 2025-03-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, kof99hc13,        kof99,    neogeo_multiboot,neogeo, neogeo_state,    init_kof99,    ROT0, "DDJ",          "The King of Fighters '99 - Millennium Battle (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 2026, kof2000hc01,      kof2000,  neogeo_multiboot,neogeo, neogeo_state,    init_kof2000,  ROT0, "GOTVG",        "The King of Fighters 2000 (OTC 2026-02-25)", MACHINE_SUPPORTS_SAVE )
-GAME( 2022, kof2000hc02,      kof2000,  neogeo_multiboot,neogeo, neogeo_state,    init_kof2000,  ROT0, "GOTVG",        "The King of Fighters 2000 (Chaos Of Demons 2025-08-17)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, kof2000hc02,      kof2000,  neogeo_multiboot,neogeo, neogeo_state,    init_kof2000,  ROT0, "GOTVG",        "The King of Fighters 2000 (Chaos Of Demons 2025-08-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, kof2000hc03,      kof2000,  neogeo_multiboot,neogeo, neogeo_state,    init_kof2000,  ROT0, "hack",         "The King of Fighters 2000 (Imitation BC 14 System 2021-02-24)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, kof2000hc04,      kof2000,  neogeo_multiboot,neogeo, neogeo_state,    init_kof2000,  ROT0, "GOTVG",        "The King of Fighters 2000 (Optimized 2013-09-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kof2000hc05,      kof2000,  neogeo_multiboot,neogeo, neogeo_state,    init_kof2000,  ROT0, "hack",         "The King of Fighters 2000 (Infinite Energy 2020-07-08)", MACHINE_SUPPORTS_SAVE )
@@ -13187,7 +13187,7 @@ GAME( 2003, samshohc03,       samsho,   neogeo_neobase,  neogeo, neogeo_state,  
 GAME( 1994, samsho2hc01,      samsho2,  neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, samsho2hc02,      samsho2,  gsc,             neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Special v1.1 Final)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, samsho2hc03,      samsho2,  neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, samsho2hc04,      samsho2,  gsc,             neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Perfect v2.4)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, samsho2hc04,      samsho2,  gsc,             neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Perfect v2.7)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, samsho2hc05,      samsho2,  neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Infinite Power 2023-04-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, samsho2hc06,      samsho2,  gsc,             neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Optimized 2020-09-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, samsho3hc01,      samsho3,  neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Samurai Shodown III / Samurai Spirits - Zankurou Musouken (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )

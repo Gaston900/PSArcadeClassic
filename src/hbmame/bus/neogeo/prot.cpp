@@ -2681,6 +2681,9 @@ void sbp_prot_device::sbp_install_protection(cpu_device* maincpu, u8* cpurom, u3
 		rom[0x2a6f8 / 2] = 0x4e71;
 		rom[0x2a6fa / 2] = 0x4e71;
 		rom[0x2a6fc / 2] = 0x4e71;
+
+	    // enable joystick inputs
+	    rom[0x3ff2d / 2] = 0x7001;
 	}
 }
 

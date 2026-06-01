@@ -32,11 +32,81 @@
 
 // MAME/MAMEUI headers
 #include "winui.h"
+//===================== 缘来是你 ====================>>>
 
-// 修改的 代码来源 (缘来是你)
-/*****************************/
-#include "winui_opts.h"
-/*****************************/
+#include "winui_opts.h"	//中文名称
+
+//出招表
+#include <unordered_map>
+
+static std::string convert_cmd_unicode(const std::string& line) {
+    static const std::unordered_map<std::string, std::string> arrow_map = {
+        {"_1", " ↙ "}, {"_2", " ↓ "}, {"_3", " ↘ "},
+        {"_4", " ← "}, {"_6", " → "},
+        {"_7", " ↖ "}, {"_8", " ↑ "}, {"_9", " ↗ "},
+    };
+
+    static const std::unordered_map<std::string, std::string> symbol_map = {
+        {"_+", " + "},
+    };
+    
+    static const std::unordered_map<std::string, std::string> letter_map = {
+        {"_A", " A "}, {"_B", " B "}, {"_C", " C "}, {"_D", " D "},
+        {"_E", " E "}, {"_F", " F "}, {"_G", " G "}, {"_H", " H "},
+        {"_I", " I "}, {"_J", " J "}, {"_K", " K "}, {"_L", " L "},
+        {"_M", " M "}, {"_N", " N "}, {"_O", " O "}, {"_P", " P "},
+        {"_Q", " Q "}, {"_R", " R "}, {"_S", " S "}, {"_T", " T "},
+        {"_U", " U "}, {"_V", " V "}, {"_W", " W "}, {"_X", " X "},
+        {"_Y", " Y "}, {"_Z", " Z "},
+        
+        {"_a", " a "}, {"_b", " b "}, {"_c", " c "}, {"_d", " d "},
+        {"_e", " e "}, {"_f", " f "}, {"_g", " g "}, {"_h", " h "},
+        {"_i", " i "}, {"_j", " j "}, {"_k", " k "}, {"_l", " l "},
+        {"_m", " m "}, {"_n", " n "}, {"_o", " o "}, {"_p", " p "},
+        {"_q", " q "}, {"_r", " r "}, {"_s", " s "}, {"_t", " t "},
+        {"_u", " u "}, {"_v", " v "}, {"_w", " w "}, {"_x", " x "},
+        {"_y", " y "}, {"_z", " z "},
+    };
+    
+    std::string result = line;
+    
+    for (const auto& pair : symbol_map) {
+        size_t pos = 0;
+        while ((pos = result.find(pair.first, pos)) != std::string::npos) {
+            result.replace(pos, pair.first.length(), pair.second);
+            pos += pair.second.length();
+        }
+    }
+    
+    for (const auto& pair : arrow_map) {
+        size_t pos = 0;
+        while ((pos = result.find(pair.first, pos)) != std::string::npos) {
+            result.replace(pos, pair.first.length(), pair.second);
+            pos += pair.second.length();
+        }
+    }
+    
+    for (const auto& pair : letter_map) {
+        size_t pos = 0;
+        while ((pos = result.find(pair.first, pos)) != std::string::npos) {
+            result.replace(pos, pair.first.length(), pair.second);
+            pos += pair.second.length();
+        }
+    }
+    
+    size_t pos = 0;
+    while ((pos = result.find("  ", pos)) != std::string::npos) {
+        result.replace(pos, 2, " ");
+    }
+    
+    pos = 0;
+    while ((pos = result.find('_', pos)) != std::string::npos) {
+        result.erase(pos, 1);
+    }
+    
+    return result;
+}
+//========================================================>>>
 
 /****************************************************************************
  *      struct definitions
@@ -383,8 +453,9 @@ static std::string load_datafile_text(std::ifstream &fp, std::string keycode, in
 
 			if (file_line.find(tag)==0)
 				continue;
-
-			readbuf.append(file_line).append("\n");
+//===================== 缘来是你 ====================>>>
+			readbuf.append(convert_cmd_unicode(file_line)).append("\n");	//出招表
+//==================================================>>>
 		}
 	}
 

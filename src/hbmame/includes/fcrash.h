@@ -22,6 +22,7 @@ public:
 		: cps_state(mconfig, type, tag)
 		, m_msm(*this, "msm%u", 1U)
 		, m_okibank(*this, "okibank")
+	    , m_dsw(*this, { "DSWA", "DSWB", "DSWC" })
 	{ }
 
 	void fcrash(machine_config &config);
@@ -110,6 +111,8 @@ protected:
 	optional_device_array<msm5205_device, 2> m_msm;
 
 	optional_memory_bank m_okibank;
+
+    optional_ioport_array<3> m_dsw;
 };
 
 class cps1bl_no_brgt : public fcrash_state

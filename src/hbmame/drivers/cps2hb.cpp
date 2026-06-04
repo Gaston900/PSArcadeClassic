@@ -312,7 +312,7 @@ void cps2_state::cps2turbo(machine_config &config)
 
 ROM_START( sfz3mix ) // 0.31
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD( "sfz3mix.03", 0x000000, 0x400000, CRC(94c8f969) SHA1(25c14dae5958723481e03dbddb7617ec481a55d5) ) // 03
+	ROM_LOAD( "sfz3mix.03", 0x000000, 0x600000, CRC(94c8f969) SHA1(25c14dae5958723481e03dbddb7617ec481a55d5) ) // 03
 
 	ROM_REGION( 0x4000000, "gfx", 0 )
 	ROM_LOAD( "sfz3mix.13m", 0x0000000, 0x2000000, CRC(59025f91) SHA1(9e8ebbbf909f74cd857a0876fc42087a243d1b23) ) // 13m

@@ -100,12 +100,16 @@ brightness circuity present on pcb?
 #include "includes/fcrash.h"
 
 #include "cpu/z80/z80.h"
+#include "cpu/m68000/m68000.h"
+#include "sound/msm5205.h"
+#include "sound/okim6295.h"
 #include "sound/ymopm.h"
 #include "sound/ymopn.h"
 #include "machine/eepromser.h"
 #include "speaker.h"
 
 
+#define CPS1_ROWSCROLL_OFFS  (0x20/2)    /* base of row scroll offsets in other RAM */
 #define CODE_SIZE            0x400000
 
 
@@ -777,7 +781,7 @@ void fcrash_state::sf2m1_map(address_map &map)
 	map(0x000000, 0x3fffff).rom();
 	map(0x800000, 0x800007).portr("IN1");            /* Player input ports */
 	map(0x800006, 0x800007).w(FUNC(fcrash_state::cps1_soundlatch_w));    /* Sound command */
-	map(0x800012, 0x800013).r(FUNC(fcrash_state::cps1_in_r<2>));            /* Buttons 4,5,6 for both players */
+	map(0x800012, 0x800013).r(FUNC(fcrash_state::cps1_in2_r));            /* Buttons 4,5,6 for both players */
 	map(0x800018, 0x80001f).r(FUNC(fcrash_state::cps1_dsw_r));            /* System input ports / Dip Switches */
 	map(0x800100, 0x80013f).w(FUNC(fcrash_state::cps1_cps_a_w)).share(m_cps_a_regs);  /* CPS-A custom */
 	map(0x800140, 0x80017f).rw(FUNC(fcrash_state::cps1_cps_b_r), FUNC(fcrash_state::cps1_cps_b_w)).share(m_cps_b_regs);

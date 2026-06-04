@@ -44,17 +44,20 @@ The bank_type occurs 8 times for the 8 possible combinations
 After that, the remainder of the file is binary zeroes.
 
 *****************************************************************************************************************************/
+
 #include "emu.h"
 #include "includes/cps1.h"
 
-/********************************************************************
+#define VERBOSE 0
 
-            Configuration table:
+/***************************************************************************
 
-********************************************************************/
+  Configuration table:
+
+***************************************************************************/
 #define WRITE_FILE 0
 
-/* Game specific data */
+// Game specific data
 
 #define GFXTYPE_SPRITES   (1<<0)
 #define GFXTYPE_SCROLL1   (1<<1)
@@ -65,7 +68,7 @@ After that, the remainder of the file is binary zeroes.
 
 #define __not_applicable__  -1,-1,-1,-1,-1,-1,-1
 
-/*                     CPSB ID    multiply protection      unknown      ctrl     priority masks   palctrl    layer enable masks  */
+//                     CPSB ID    multiply protection      unknown      ctrl     priority masks   palctrl    layer enable masks
 #define CPS_B_01      -1, 0x0000,          __not_applicable__,          0x26,{0x28,0x2a,0x2c,0x2e},0x30, {0x02,0x04,0x08,0x30,0x30}
 #define CPS_B_02     0x20,0x0002,          __not_applicable__,          0x2c,{0x2a,0x28,0x26,0x24},0x22, {0x02,0x04,0x08,0x00,0x00}
 #define CPS_B_03     0x24,0x0003,          __not_applicable__,          0x30,{0x2e,0x2c,0x2a,0x28},0x26, {0x20,0x10,0x08,0x00,0x00}
@@ -75,10 +78,9 @@ After that, the remainder of the file is binary zeroes.
 #define CPS_B_12     0x20,0x0402,          __not_applicable__,          0x2c,{0x2a,0x28,0x26,0x24},0x22, {0x02,0x04,0x08,0x00,0x00}
 #define CPS_B_13     0x2e,0x0403,          __not_applicable__,          0x22,{0x24,0x26,0x28,0x2a},0x2c, {0x20,0x02,0x04,0x00,0x00}
 #define CPS_B_14     0x1e,0x0404,          __not_applicable__,          0x12,{0x14,0x16,0x18,0x1a},0x1c, {0x08,0x20,0x10,0x00,0x00}
-#define CPS_B_15     0x0e,0x0405,          __not_applicable__,          0x02,{0x00,0x06,0x08,0x0a},0x0c, {0x04,0x02,0x20,0x00,0x00}
-//#define CPS_B_15     0x0e,0x0405,          __not_applicable__,          0x02,{0x04,0x06,0x08,0x0a},0x0c, {0x04,0x02,0x20,0x00,0x00}
+#define CPS_B_15     0x0e,0x0405,          __not_applicable__,          0x02,{0x04,0x06,0x08,0x0a},0x0c, {0x04,0x02,0x20,0x00,0x00}
 #define CPS_B_16     0x00,0x0406,          __not_applicable__,          0x0c,{0x0a,0x08,0x06,0x04},0x02, {0x10,0x0a,0x0a,0x00,0x00}
-#define CPS_B_17     0x08,0x0407,          __not_applicable__,          0x14,{0x12,0x10,0x0e,0x0c},0x0a, {0x08,0x14,0x02,0x00,0x00}   // the sf2 -> strider conversion needs 0x04 for the 2nd layer enable on one level, gfx confirmed to appear on the PCB, register at the time is 0x8e, so 0x10 is not set.
+#define CPS_B_17     0x08,0x0407,          __not_applicable__,          0x14,{0x12,0x10,0x0e,0x0c},0x0a, {0x08,0x14,0x02,0x00,0x00} // the sf2 -> strider conversion needs 0x04 for the 2nd layer enable on one level, gfx confirmed to appear on the PCB, register at the time is 0x8e, so 0x10 is not set.
 #define CPS_B_18     0x10,0x0408,          __not_applicable__,          0x1c,{0x1a,0x18,0x16,0x14},0x12, {0x10,0x08,0x02,0x00,0x00}
 #define CPS_B_21_DEF 0x32,  -1,   0x00,0x02,0x04,0x06, 0x08, -1,  -1,   0x26,{0x28,0x2a,0x2c,0x2e},0x30, {0x02,0x04,0x08,0x30,0x30} // pang3 sets layer enable to 0x26 on startup
 #define CPS_B_21_BT1 0x32,0x0800, 0x0e,0x0c,0x0a,0x08, 0x06,0x04,0x02,  0x28,{0x26,0x24,0x22,0x20},0x30, {0x20,0x04,0x08,0x12,0x12}
@@ -96,7 +98,7 @@ After that, the remainder of the file is binary zeroes.
 #define HACK_B_1      -1,   -1,    -1,  -1,  -1,  -1,   -1,  -1,  -1,   0x14,{0x12,0x10,0x0e,0x0c},0x0a, {0x0e,0x0e,0x0e,0x30,0x30}
 #define HACK_B_2      -1,   -1,   0x0e,0x0c,0x0a,0x08, 0x06,0x04,0x02,  0x28,{0x26,0x24,0x22,0x20},0x22, {0x20,0x04,0x08,0x12,0x12}
 #define HACK_B_3     0x20,0x0004,          __not_applicable__,          0x30,{0x26, -1, 0x28,0x32},0x2a, {0x02,0x04,0x08,0x00,0x00} // varthb2, writes to priority mask 2 have been patched out
-
+#define HACK_B_4      -1,   -1,            __not_applicable__,          0x28,{0x26,0x24,0x22,0x20},0x30, {0x40,0x10,0x02,0x00,0x00} // knightsb2
 // HBMAME extras
 
 #define HACK_H_2      -1,   -1,    -1,  -1,  -1,  -1,   -1,  -1,  -1,   0x20,{ -1,  -1,  -1,  -1 },0x2a, {0x02,0x02,0x02,0x00,0x00} // not used
@@ -126,9 +128,10 @@ static const struct gfx_range mapper_LWCHR_table[] =
 	// pin 12 and pin 14 are always enabled (except for stars)
 	// note that allowed codes go up to 0x1ffff but physical ROM is half that size
 
-	/* type            start    end      bank */
+	// type            start    end      bank
 	{ GFXTYPE_SPRITES, 0x00000, 0x07fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x00000, 0x1ffff, 0 },
+
 	{ GFXTYPE_STARS,   0x00000, 0x1ffff, 1 },
 	{ GFXTYPE_SCROLL2, 0x00000, 0x1ffff, 1 },
 	{ GFXTYPE_SCROLL3, 0x00000, 0x1ffff, 1 },
@@ -157,9 +160,10 @@ static const struct gfx_range mapper_LW621_table[] =
 	//
 	// note that allowed codes go up to 0x1ffff but physical ROM is half that size
 
-	/* type            start    end      bank */
+	// type            start    end      bank
 	{ GFXTYPE_SPRITES, 0x00000, 0x07fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x00000, 0x1ffff, 0 },
+
 	{ GFXTYPE_STARS,   0x00000, 0x1ffff, 1 },
 	{ GFXTYPE_SCROLL2, 0x00000, 0x1ffff, 1 },
 	{ GFXTYPE_SCROLL3, 0x00000, 0x1ffff, 1 },
@@ -182,9 +186,11 @@ static const struct gfx_range mapper_DM620_table[] =
 	// which would make it highly redundant, so I'm relying on the table
 	// to be scanned top to bottom and using a catch-all clause at the end.
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SCROLL3, 0x8000, 0xbfff, 1 },
+
 	{ GFXTYPE_SPRITES, 0x2000, 0x3fff, 2 },
+
 	{ GFXTYPE_STARS | GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x1ffff, 0 },
 	{ 0 }
 };
@@ -198,11 +204,14 @@ static const struct gfx_range mapper_DM22A_table[] =
 	// bank 2 = pin 14
 	// bank 3 = pin 12
 
-	/* type            start   end     bank */
+	// type            start   end       bank
 	{ GFXTYPE_SPRITES, 0x00000, 0x01fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x02000, 0x03fff, 0 },
+
 	{ GFXTYPE_SCROLL2, 0x04000, 0x07fff, 1 },
+
 	{ GFXTYPE_SCROLL3, 0x00000, 0x1ffff, 2 },
+
 	{ GFXTYPE_SPRITES, 0x02000, 0x03fff, 3 },
 	{ 0 }
 };
@@ -215,10 +224,11 @@ static const struct gfx_range mapper_DAM63B_table[] =
 	// bank1 = pin 17 (ROMs 5,7) & pin 16 (ROMs 6,8)
 	// pins 12,13,14,15 are always enabled
 
-	/* type            start   end     bank */
+	// type            start   end       bank
 	{ GFXTYPE_SPRITES, 0x00000, 0x01fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x02000, 0x02fff, 0 },
 	{ GFXTYPE_SCROLL2, 0x04000, 0x07fff, 0 },
+
 	{ GFXTYPE_SCROLL3, 0x00000, 0x1ffff, 1 },
 	{ GFXTYPE_SPRITES, 0x02000, 0x03fff, 1 },
 	{ 0 }
@@ -236,10 +246,11 @@ static const struct gfx_range mapper_ST24M1_table[] =
 	// bank 1 = pin 16 (ROMs 1,3,5,7)
 	// pin 12 and pin 14 are never enabled
 
-	/* type            start    end      bank */
+	// type            start    end      bank
 	{ GFXTYPE_STARS,   0x00000, 0x003ff, 0 },
 	{ GFXTYPE_SPRITES, 0x00000, 0x04fff, 0 },
 	{ GFXTYPE_SCROLL2, 0x04000, 0x07fff, 0 },
+
 	{ GFXTYPE_SCROLL3, 0x00000, 0x07fff, 1 },
 	{ GFXTYPE_SCROLL1, 0x07000, 0x07fff, 1 },
 	{ 0 }
@@ -254,12 +265,15 @@ static const struct gfx_range mapper_ST22B_table[] =
 	// bank 2 = pin 14 (ROMs 3,7,11,15,19,21,26,28)
 	// bank 3 = pin 12 (ROMS 4,8,12,16,20,22,27,29)
 
-	/* type            start    end      bank */
+	// type            start    end      bank
 	{ GFXTYPE_STARS,   0x00000, 0x1ffff, 0 },
 	{ GFXTYPE_SPRITES, 0x00000, 0x03fff, 0 },
+
 	{ GFXTYPE_SPRITES, 0x04000, 0x04fff, 1 },
 	{ GFXTYPE_SCROLL2, 0x04000, 0x07fff, 1 },
+
 	{ GFXTYPE_SCROLL3, 0x00000, 0x03fff, 2 },
+
 	{ GFXTYPE_SCROLL3, 0x04000, 0x07fff, 3 },
 	{ GFXTYPE_SCROLL1, 0x07000, 0x07fff, 3 },
 	{ 0 }
@@ -275,11 +289,14 @@ static const struct gfx_range mapper_TK22B_table[] =
 	// bank 2 = pin 14 (ROMs 3,7,11,15,19,21,26,28)
 	// bank 3 = pin 12 (ROMS 4,8,12,16,20,22,27,29)
 
-	/* type            start  end      bank */
+	// type            start  end      bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x3fff, 0 },
+
 	{ GFXTYPE_SPRITES, 0x4000, 0x5fff, 1 },
 	{ GFXTYPE_SCROLL1, 0x6000, 0x7fff, 1 },
+
 	{ GFXTYPE_SCROLL3, 0x0000, 0x3fff, 2 },
+
 	{ GFXTYPE_SCROLL2, 0x4000, 0x7fff, 3 },
 	{ 0 }
 };
@@ -296,9 +313,10 @@ static const struct gfx_range mapper_TK24B1_table[] =
 	// pin 12 = sprites 0000-3fff
 	// pin 14 = scroll1 6000-7fff, sprites 4000-5fff
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x5fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x6000, 0x7fff, 0 },
+
 	{ GFXTYPE_SCROLL2, 0x4000, 0x7fff, 1 },
 	{ GFXTYPE_SCROLL3, 0x0000, 0x3fff, 1 },
 	{ 0 }
@@ -316,10 +334,11 @@ static const struct gfx_range mapper_WL24B_table[] =
 	// bank 1 = pin 12 (ROMs 10,12,14,16,20,22,24,26)
 	// pin 14 and pin 19 are never enabled
 
-	/* type            start  end      bank */
+	// type            start  end      bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x4fff, 0 },
 	{ GFXTYPE_SCROLL3, 0x5000, 0x6fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x7000, 0x7fff, 0 },
+
 	{ GFXTYPE_SCROLL2, 0x0000, 0x3fff, 1 },
 	{ 0 }
 };
@@ -333,11 +352,13 @@ static const struct gfx_range mapper_WL22B_table[] =
 	// bank 2 = pin 14 (ROMs 3,7,11,15,19,21,26,28)
 	// pin 12 is never enabled
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x3fff, 0 },
+
 	{ GFXTYPE_SPRITES, 0x4000, 0x4fff, 1 },
 	{ GFXTYPE_SCROLL3, 0x5000, 0x6fff, 1 },
 	{ GFXTYPE_SCROLL1, 0x7000, 0x7fff, 1 },
+
 	{ GFXTYPE_SCROLL2, 0x0000, 0x3fff, 2 },
 	{ 0 }
 };
@@ -362,7 +383,7 @@ static const struct gfx_range mapper_S224B_table[] =
 	// 3 04c00 - 05fff
 	// pin 19 is never enabled
 
-	/* type            start  end      bank */
+	// type            start  end      bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x43ff, 0 },
 	{ GFXTYPE_SCROLL1, 0x4400, 0x4bff, 0 },
 	{ GFXTYPE_SCROLL3, 0x4c00, 0x5fff, 0 },
@@ -379,8 +400,9 @@ static const struct gfx_range mapper_S222B_table[] =
 	// pin 18 gives an alternate single bank mapping identical to S224B pin 16,
 	// todo: confirm what pin 18 connects to on 88622B-2/3 and 89625B-1 b-boards.
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x3fff, 0 },
+
 	{ GFXTYPE_SPRITES, 0x4000, 0x43ff, 1 },
 	{ GFXTYPE_SCROLL1, 0x4400, 0x4bff, 1 },
 	{ GFXTYPE_SCROLL3, 0x4c00, 0x5fff, 1 },
@@ -407,7 +429,7 @@ static const struct gfx_range mapper_YI24B_table[] =
 	// 2 4800-7fff
 	// pin 19 is never enabled
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x1fff, 0 },
 	{ GFXTYPE_SCROLL3, 0x2000, 0x3fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x4000, 0x47ff, 0 },
@@ -424,9 +446,10 @@ static const struct gfx_range mapper_YI22B_table[] =
 	// pin 18 gives an alternate single bank mapping identical to YI24B pin 16,
 	// todo: confirm what pin 18 connects to on 89625B-1 b-board.
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x1fff, 0 },
 	{ GFXTYPE_SCROLL3, 0x2000, 0x3fff, 0 },
+
 	{ GFXTYPE_SCROLL1, 0x4000, 0x47ff, 1 },
 	{ GFXTYPE_SCROLL2, 0x4800, 0x7fff, 1 },
 	{ 0 }
@@ -451,7 +474,7 @@ static const struct gfx_range mapper_AR24B_table[] =
 	// 3 6000-7fff
 	// pin 19 is never enabled
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x2fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x3000, 0x3fff, 0 },
 	{ GFXTYPE_SCROLL2, 0x4000, 0x5fff, 0 },
@@ -467,9 +490,10 @@ static const struct gfx_range mapper_AR22B_table[] =
 	// bank 1 = pin 16 (ROMs 2,6,10,14,18,25,33,39)
 	// pins 12 and 14 are tristated
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x2fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x3000, 0x3fff, 0 },
+
 	{ GFXTYPE_SCROLL2, 0x4000, 0x5fff, 1 },
 	{ GFXTYPE_SCROLL3, 0x6000, 0x7fff, 1 },
 	{ 0 }
@@ -490,6 +514,7 @@ static const struct gfx_range mapper_ARA63B_table[] =
 	{ 0 }
 };
 
+
 #define mapper_O224B    { 0x8000, 0x4000, 0, 0 }, mapper_O224B_table
 static const struct gfx_range mapper_O224B_table[] =
 {
@@ -505,11 +530,12 @@ static const struct gfx_range mapper_O224B_table[] =
 	// 3 04000 - 04bff
 	// 0 04c00 - 07fff
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SCROLL1, 0x0000, 0x0bff, 0 },
 	{ GFXTYPE_SCROLL2, 0x0c00, 0x3bff, 0 },
 	{ GFXTYPE_SCROLL3, 0x3c00, 0x4bff, 0 },
 	{ GFXTYPE_SPRITES, 0x4c00, 0x7fff, 0 },
+
 	{ GFXTYPE_SPRITES, 0x8000, 0xa7ff, 1 },
 	{ GFXTYPE_SCROLL2, 0xa800, 0xb7ff, 1 },
 	{ GFXTYPE_SCROLL3, 0xb800, 0xbfff, 1 },
@@ -531,7 +557,7 @@ static const struct gfx_range mapper_MS24B_table[] =
 	// 0 0000-3fff
 	// pin 19 is never enabled
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x3fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x4000, 0x4fff, 0 },
 	{ GFXTYPE_SCROLL2, 0x5000, 0x6fff, 0 },
@@ -547,8 +573,9 @@ static const struct gfx_range mapper_MS22B_table[] =
 	// bank 1 = pin 16 (ROMs 2,6,10,14,18,25,33,39)
 	// pin 12 and pin 14 are never enabled
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x3fff, 0 },
+
 	{ GFXTYPE_SCROLL1, 0x4000, 0x4fff, 1 },
 	{ GFXTYPE_SCROLL2, 0x5000, 0x6fff, 1 },
 	{ GFXTYPE_SCROLL3, 0x7000, 0x7fff, 1 },
@@ -568,7 +595,7 @@ static const struct gfx_range mapper_CK24B_table[] =
 	// pin 12 (ROMs 10,12,14,16,20,22,24,26) = sprites 0000-2fff, scroll1 3000-3fff
 	// pin 14 (ROMs 11,13,15,17,21,23,25,27) = scroll2 4000-6fff, scroll3 7000-7fff
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x2fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x3000, 0x3fff, 0 },
 	{ GFXTYPE_SCROLL2, 0x4000, 0x6fff, 0 },
@@ -586,9 +613,10 @@ static const struct gfx_range mapper_CK22B_table[] =
 	// pin 18 gives an alternate single bank mapping identical to CK24B pin 16,
 	// todo: confirm what pin 18 connects to on 89625B-1 b-board.
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x2fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x3000, 0x3fff, 0 },
+
 	{ GFXTYPE_SCROLL2, 0x4000, 0x6fff, 1 },
 	{ GFXTYPE_SCROLL3, 0x7000, 0x7fff, 1 },
 	{ 0 }
@@ -612,7 +640,7 @@ static const struct gfx_range mapper_NM24B_table[] =
 	// 3 06800 - 07fff
 	// pin 19 is never enabled
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x3fff, 0 },
 	{ GFXTYPE_SCROLL2, 0x0000, 0x3fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x4000, 0x47ff, 0 },
@@ -644,7 +672,7 @@ static const struct gfx_range mapper_CA24B_table[] =
 	// 2 5800-7fff
 	// pin 19 is never enabled (actually it is always enabled when PAL pin 1 is 1, purpose unknown)
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x2fff, 0 },
 	{ GFXTYPE_SCROLL2, 0x0000, 0x2fff, 0 },
 	{ GFXTYPE_SCROLL3, 0x3000, 0x4fff, 0 },
@@ -662,10 +690,11 @@ static const struct gfx_range mapper_CA22B_table[] =
 	// bank 1 = pin 16 (ROMs 2,6,10,14,18,25,33,39)
 	// pin 12 and pin 14 are never enabled
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x2fff, 0 },
 	{ GFXTYPE_SCROLL2, 0x0000, 0x2fff, 0 },
 	{ GFXTYPE_SCROLL3, 0x3000, 0x3fff, 0 },
+
 	{ GFXTYPE_SCROLL3, 0x4000, 0x4fff, 1 },
 	{ GFXTYPE_SCROLL1, 0x5000, 0x57ff, 1 },
 	{ GFXTYPE_SPRITES, 0x5800, 0x7fff, 1 },
@@ -682,9 +711,11 @@ static const struct gfx_range mapper_STF29_table[] =
 	// bank 1 = pin 14 (ROMs 14,15,16,17)
 	// bank 2 = pin 12 (ROMS 24,25,26,27)
 
-	/* type            start    end      bank */
+	// type            start    end      bank
 	{ GFXTYPE_SPRITES, 0x00000, 0x07fff, 0 },
+
 	{ GFXTYPE_SPRITES, 0x08000, 0x0ffff, 1 },
+
 	{ GFXTYPE_SPRITES, 0x10000, 0x11fff, 2 },
 	{ GFXTYPE_SCROLL3, 0x02000, 0x03fff, 2 },
 	{ GFXTYPE_SCROLL1, 0x04000, 0x04fff, 2 },
@@ -704,10 +735,11 @@ static const struct gfx_range mapper_RT24B_table[] =
 	// bank 1 = pin 19 (ROMs 2,4,6,8)
 	// pin 12 & pin 14 are never enabled
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x53ff, 0 },
 	{ GFXTYPE_SCROLL1, 0x5400, 0x6fff, 0 },
 	{ GFXTYPE_SCROLL3, 0x7000, 0x7fff, 0 },
+
 	{ GFXTYPE_SCROLL3, 0x0000, 0x3fff, 1 },
 	{ GFXTYPE_SCROLL2, 0x2800, 0x7fff, 1 },
 	{ GFXTYPE_SPRITES, 0x5400, 0x7fff, 1 },
@@ -723,13 +755,16 @@ static const struct gfx_range mapper_RT22B_table[] =
 	// bank 2 = pin 14 (ROMs 3,7,11,15,19,21,26,28)
 	// bank 3 = pin 12 (ROMS 4,8,12,16,20,22,27,29)
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x3fff, 0 },
+
 	{ GFXTYPE_SPRITES, 0x4000, 0x53ff, 1 },
 	{ GFXTYPE_SCROLL1, 0x5400, 0x6fff, 1 },
 	{ GFXTYPE_SCROLL3, 0x7000, 0x7fff, 1 },
+
 	{ GFXTYPE_SCROLL3, 0x0000, 0x3fff, 2 },
 	{ GFXTYPE_SCROLL2, 0x2800, 0x3fff, 2 },
+
 	{ GFXTYPE_SCROLL2, 0x4000, 0x7fff, 3 },
 	{ GFXTYPE_SPRITES, 0x5400, 0x7fff, 3 },
 	{ 0 }
@@ -747,8 +782,9 @@ static const struct gfx_range mapper_KD29B_table[] =
 	// bank 1 = pin 14 (ROMs 10,11,12,13)
 	// pin 12 is never enabled
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x7fff, 0 },
+
 	{ GFXTYPE_SPRITES, 0x8000, 0x8fff, 1 },
 	{ GFXTYPE_SCROLL2, 0x9000, 0xbfff, 1 },
 	{ GFXTYPE_SCROLL1, 0xc000, 0xd7ff, 1 },
@@ -765,11 +801,14 @@ static const struct gfx_range mapper_KD22B_table[] =
 	// bank 2 = pin 14 (ROMs 3,7,11,15,19,21,26,28)
 	// bank 3 = pin 12 (ROMS 4,8,12,16,20,22,27,29)
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x3fff, 0 },
+
 	{ GFXTYPE_SPRITES, 0x4000, 0x7fff, 1 },
+
 	{ GFXTYPE_SPRITES, 0x8000, 0x8fff, 2 },
 	{ GFXTYPE_SCROLL2, 0x9000, 0xbfff, 2 },
+
 	{ GFXTYPE_SCROLL1, 0xc000, 0xd7ff, 3 },
 	{ GFXTYPE_SCROLL3, 0xd800, 0xffff, 3 },
 	{ 0 }
@@ -784,9 +823,10 @@ static const struct gfx_range mapper_CC63B_table[] =
 	// bank1 = pin 17 (ROMs 5,7) & pin 16 (ROMs 6,8)
 	// pins 12,13,14,15 are always enabled
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x7fff, 0 },
 	{ GFXTYPE_SCROLL2, 0x0000, 0x7fff, 0 },
+
 	{ GFXTYPE_SPRITES, 0x8000, 0xffff, 1 },
 	{ GFXTYPE_SCROLL1, 0x8000, 0xffff, 1 },
 	{ GFXTYPE_SCROLL2, 0x8000, 0xffff, 1 },
@@ -803,9 +843,10 @@ static const struct gfx_range mapper_KR63B_table[] =
 	// bank1 = pin 17 (ROMs 5,7) & pin 16 (ROMs 6,8)
 	// pins 12,13,14,15 are always enabled
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x7fff, 0 },
 	{ GFXTYPE_SCROLL2, 0x0000, 0x7fff, 0 },
+
 	{ GFXTYPE_SCROLL1, 0x8000, 0x9fff, 1 },
 	{ GFXTYPE_SPRITES, 0x8000, 0xcfff, 1 },
 	{ GFXTYPE_SCROLL2, 0x8000, 0xcfff, 1 },
@@ -822,12 +863,15 @@ static const struct gfx_range mapper_KR22B_table[] =
 	// bank 2 = pin 14 (ROMs 3,7,11,15,19,21,26,28)
 	// bank 3 = pin 12 (ROMS 4,8,12,16,20,22,27,29)
 
-	/* type            start   end     bank */
+	// type                              start   end     bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL2, 0x0000, 0x3fff, 0 },
+
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL2, 0x4000, 0x7fff, 1 },
+
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL2, 0x8000, 0x87ff, 2 },
 	{ GFXTYPE_SCROLL1,                   0x8800, 0x97ff, 2 },
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL2, 0x9800, 0xbfff, 2 },
+
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL2, 0xc000, 0xcfff, 3 },
 	{ GFXTYPE_SCROLL3,                   0xd000, 0xffff, 3 },
 	{ 0 }
@@ -844,9 +888,11 @@ static const struct gfx_range mapper_S9263B_table[] =
 	// pins 12,13 are unused, however pin 13 does have logic which
 	// is fed back internally to form the final output for pins 14,15
 
-	/* type            start    end      bank */
+	// type            start    end      bank
 	{ GFXTYPE_SPRITES, 0x00000, 0x07fff, 0 },
+
 	{ GFXTYPE_SPRITES, 0x08000, 0x0ffff, 1 },
+
 	{ GFXTYPE_SPRITES, 0x10000, 0x11fff, 2 },
 	{ GFXTYPE_SCROLL3, 0x02000, 0x03fff, 2 },
 	{ GFXTYPE_SCROLL1, 0x04000, 0x04fff, 2 },
@@ -866,7 +912,7 @@ static const struct gfx_range mapper_VA22B_table[] =
 	// bank 1 = pin 16 (ROMs 2,6,10,14,18,25,33,39)
 	// pin 12 and pin 14 are never enabled
 
-	/* type                                                                  start    end      bank */
+	// type                                                                  start    end      bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x03fff, 0 },
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x04000, 0x07fff, 1 },
 	{ 0 }
@@ -879,7 +925,7 @@ static const struct gfx_range mapper_VA63B_table[] =
 	// bank0 = pin 19 (ROMs 1,3) & pin 18 (ROMs 2,4)
 	// pins 12,13,14,15,16,17 are never enabled
 
-	/* type                                                                  start    end      bank */
+	// type                                                                  start    end      bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x07fff, 0 },
 	{ 0 }
 };
@@ -893,7 +939,7 @@ static const struct gfx_range mapper_VA24B_table[] =
 	// pin 12 (ROMs 10,12,14,16,20,22,24,26) = sprites/scroll1/scroll2/scroll3 0000-3fff
 	// pin 14 (ROMs 11,13,15,17,21,23,25,27) = sprites/scroll1/scroll2/scroll3 4000-7fff
 
-	/* type                                                                  start    end      bank */
+	// type                                                                  start    end      bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x07fff, 0 },
 	{ 0 }
 };
@@ -907,8 +953,9 @@ static const struct gfx_range mapper_Q522B_table[] =
 	// bank 1 = pin 16 (ROMs 2,6,10,14,18,25,33,39)
 	// pin 12 and pin 14 are never enabled
 
-	/* type                              start    end      bank */
+	// type                              start    end      bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL2, 0x00000, 0x03fff, 0 },
+
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL2, 0x04000, 0x06fff, 1 },
 	{ GFXTYPE_SCROLL3,                   0x07000, 0x077ff, 1 },
 	{ GFXTYPE_SCROLL1,                   0x07800, 0x07fff, 1 },
@@ -927,7 +974,7 @@ static const struct gfx_range mapper_TK263B_table[] =
 	// bank1 = pin 17 (ROMs 5,7) & pin 16 (ROMs 6,8)
 	// pins 12,13,14,15 are always enabled
 
-	/* type                                                                  start    end      bank */
+	// type                                                                  start    end      bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x07fff, 0 },
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x08000, 0x0ffff, 1 },
 	{ 0 }
@@ -942,7 +989,7 @@ static const struct gfx_range mapper_CD63B_table[] =
 	// bank1 = pin 17 (ROMs 5,7) & pin 16 (ROMs 6,8)
 	// pins 12,13,14,15 are never enabled
 
-	/* type                                                                  start    end      bank */
+	// type                                                                  start    end      bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x07fff, 0 },
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x08000, 0x0ffff, 1 },
 	{ 0 }
@@ -957,7 +1004,7 @@ static const struct gfx_range mapper_PS63B_table[] =
 	// bank1 = pin 17 (ROMs 5,7) & pin 16 (ROMs 6,8)
 	// pins 12,13,14,15 are always enabled
 
-	/* type                                                                  start    end      bank */
+	// type                                                                  start    end      bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x07fff, 0 },
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x08000, 0x0ffff, 1 },
 	{ 0 }
@@ -973,7 +1020,7 @@ static const struct gfx_range mapper_MB63B_table[] =
 	// bank2 = pin 15 (ROMs 10,12) & pin 14 (ROMs 11,13)
 	// pins 12,13 are never enabled
 
-	/* type                                                                  start    end      bank */
+	// type                                                                  start    end      bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x07fff, 0 },
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x08000, 0x0ffff, 1 },
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x10000, 0x17fff, 2 },
@@ -987,7 +1034,7 @@ static const struct gfx_range mapper_QD22B_table[] =
 	// verified from PAL dump:
 	// bank 0 = pin 19
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x3fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x0000, 0x3fff, 0 },
 	{ GFXTYPE_SCROLL2, 0x0000, 0x3fff, 0 },
@@ -1003,7 +1050,7 @@ static const struct gfx_range mapper_QAD63B_table[] =
 	// bank0 = pin 19 (ROMs 1,3) & pin 18 (ROMs 2,4)
 	// pins 12,13,14,15,16,17 are always enabled
 
-	/* type                                                                  start    end      bank */
+	// type                                                                  start    end      bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x07fff, 0 },
 	{ 0 }
 };
@@ -1018,7 +1065,7 @@ static const struct gfx_range mapper_TN2292_table[] =
 	// bank 2 = pin 12 (ROMS 24,25,26,27)  these sockets are empty
 	// doesn't use a22-a20 to determine gfx type
 
-	/* type                                                                                  start    end      bank */
+	// type                                                                                  start    end      bank
 	{ GFXTYPE_STARS | GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x07fff, 0 },
 	{ GFXTYPE_STARS | GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x08000, 0x0ffff, 1 },
 	{ GFXTYPE_STARS | GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x10000, 0x17fff, 2 },
@@ -1026,16 +1073,36 @@ static const struct gfx_range mapper_TN2292_table[] =
 };
 
 
+// RCM63B, SFZ63B (megaman, sfzch) are equivalent, should be interchangeable on real PCBs without issue
+
 #define mapper_RCM63B   { 0x8000, 0x8000, 0x8000, 0x8000 }, mapper_RCM63B_table
 static const struct gfx_range mapper_RCM63B_table[] =
 {
 	// verified from PAL dump:
 	// bank0 = pin 19 (ROMs 1,3) & pin 18 (ROMs 2,4)
 	// bank1 = pin 17 (ROMs 5,7) & pin 16 (ROMs 6,8)
-	// bank0 = pin 15 (ROMs 10,12) & pin 14 (ROMs 11,13)
-	// bank1 = pin 13 (ROMs 14,16) & pin 12 (ROMs 15,17)
+	// bank2 = pin 15 (ROMs 10,12) & pin 14 (ROMs 11,13)
+	// bank3 = pin 13 (ROMs 14,16) & pin 12 (ROMs 15,17)
 
-	/* type                                                                  start    end      bank */
+	// type                                                                  start    end      bank
+	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x07fff, 0 },
+	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x08000, 0x0ffff, 1 },
+	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x10000, 0x17fff, 2 },
+	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x18000, 0x1ffff, 3 },
+	{ 0 }
+};
+
+
+#define mapper_SFZ63B   { 0x8000, 0x8000, 0x8000, 0x8000 }, mapper_SFZ63B_table
+static const struct gfx_range mapper_SFZ63B_table[] =
+{
+	// verified from PAL dump:
+	// bank0 = pin 19 (ROMs 1,3) & pin 18 (ROMs 2,4)
+	// bank1 = pin 17 (ROMs 5,7) & pin 16 (ROMs 6,8)
+	// bank2 = pin 15 (ROMs 10,12) & pin 14 (ROMs 11,13)
+	// bank3 = pin 13 (ROMs 14,16) & pin 12 (ROMs 15,17)
+
+	// type                                                                  start    end      bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x07fff, 0 },
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x08000, 0x0ffff, 1 },
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x10000, 0x17fff, 2 },
@@ -1052,9 +1119,10 @@ static const struct gfx_range mapper_GBPR2_table[] =
 	// bank1 = pin 17 (ROMs 5,7) & pin 16 (ROMs 6,8)
 	// pins 12,13,14,15 are never enabled
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x3fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x4000, 0x7fff, 0 },
+
 	{ GFXTYPE_SCROLL2, 0x8000, 0xbfff, 1 },
 	{ GFXTYPE_SCROLL3, 0xc000, 0xffff, 1 },
 	{ 0 }
@@ -1064,8 +1132,9 @@ static const struct gfx_range mapper_GBPR2_table[] =
 #define mapper_gulunpa   { 0x8000, 0, 0, 0 }, mapper_gulunpa_table
 static const struct gfx_range mapper_gulunpa_table[] =
 {
-	/* type                              start   end     bank */
 	// TODO: guesswork
+
+	// type                              start   end     bank
 	{ GFXTYPE_SCROLL1,                   0x0000, 0x7fff, 0 },
 	{ GFXTYPE_SCROLL3,                   0x4000, 0x5fff, 0 },
 	{ GFXTYPE_SCROLL2,                   0x2000, 0x3fff, 0 },
@@ -1074,11 +1143,12 @@ static const struct gfx_range mapper_gulunpa_table[] =
 };
 
 
-/* unverified, no dump */
 #define mapper_PKB10B   { 0x8000, 0, 0, 0 }, mapper_PKB10B_table
 static const struct gfx_range mapper_PKB10B_table[] =
 {
-	/* type                              start   end     bank */
+	// unverified, no dump
+
+	// type                              start   end     bank
 	{ GFXTYPE_SCROLL1,                   0x0000, 0x0fff, 0 },
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL2, 0x1000, 0x5fff, 0 },
 	{ GFXTYPE_SCROLL3,                   0x6000, 0x7fff, 0 },
@@ -1094,11 +1164,11 @@ static const struct gfx_range mapper_CP1B1F_table[] =
 	//       = pin 15 (ROMs 1,7 /oe)
 	//       = pin 13 (ROMs 1,7 a19)
 	// Unlike other games which switch between 2 pairs of roms to form the full 64-bit gfx bus,
-	//  this unique B board stores the 2x 32-bit halves in the same rom pair and switches between them with the a19 line.
+	// this unique B board stores the 2x 32-bit halves in the same rom pair and switches between them with the a19 line.
 	// An a20 line is available on pin 14 for 32MBit roms but is unused (this would be bank1 if used).
 	// pins 17,18,19 are rom /ce lines to other 3 pairs of unpopulated roms.
 
-	/* type                                                                  start   end     bank */
+	// type                                                                  start   end     bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x0000, 0xffff, 0 },
 	{ 0 }
 };
@@ -1115,7 +1185,7 @@ static const struct gfx_range mapper_CP1B1F_boot_table[] =
 	// An a19 line is available on pin 13 for 32MBit roms (pin 44 of the EPROM) but is unused.
 	// pin 14 is fixed high in 16Mbit mode and is driven by gfx_chnl (CPS B-21 pin 108) if 32Mbit mode is selected
 
-	/* type                                                                  start   end     bank */
+	// type                                                                  start   end       bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x07fff, 0 },
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x10000, 0x17fff, 0 },
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x08000, 0x0ffff, 1 },
@@ -1124,11 +1194,11 @@ static const struct gfx_range mapper_CP1B1F_boot_table[] =
 };
 
 
-/* unverified, no dump */
-#define mapper_sfzch    { 0x20000, 0, 0, 0 }, mapper_sfzch_table
-static const struct gfx_range mapper_sfzch_table[] =
+// varthb2, slampic2 bootlegs
+#define mapper_varthb2    { 0x20000, 0, 0, 0 }, mapper_varthb2_table
+static const struct gfx_range mapper_varthb2_table[] =
 {
-	/* type                                                                  start    end      bank */
+	// type                                                                  start    end      bank
 	{ GFXTYPE_SPRITES | GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x1ffff, 0 },
 	{ 0 }
 };
@@ -1139,12 +1209,12 @@ static const struct gfx_range mapper_sfzch_table[] =
   well behaved, I'll just assume that there is no strong checking of gfx type.
   (sprites are not listed here because they are addressed linearly by the CPS2
   sprite code)
- */
+*/
 #define mapper_cps2 { 0x20000, 0x20000, 0, 0 }, mapper_cps2_table
 static const struct gfx_range mapper_cps2_table[] =
 {
-	/* type                                                start    end      bank */
-	{ GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x1ffff, 1 },   // 20000-3ffff physical
+	// type                                                start    end      bank
+	{ GFXTYPE_SCROLL1 | GFXTYPE_SCROLL2 | GFXTYPE_SCROLL3, 0x00000, 0x1ffff, 1 }, // 20000-3ffff physical
 	{ 0 }
 };
 
@@ -1239,7 +1309,6 @@ pin 19  = B7;  Combinatorial output
 
 */
 
-
 #define mapper_KNM10B    { 0x8000, 0x8000, 0x8000, 0 }, mapper_KNM10B_table
 static const struct gfx_range mapper_KNM10B_table[] =
 {
@@ -1248,7 +1317,7 @@ static const struct gfx_range mapper_KNM10B_table[] =
 	// bank1 = pin 17 (ROMs 5,7) & pin 16 (ROMs 6,8)
 	// bank2 = pin 15 (ROMs 10,12) & pin 14 (ROMs 11,13)
 
-	/* type             start    end      bank */
+	// type             start    end      bank
 	{ GFXTYPE_SPRITES , 0x00000, 0x07fff, 0 },
 	{ GFXTYPE_SPRITES , 0x08000, 0x0ffff, 1 },
 	{ GFXTYPE_SPRITES , 0x10000, 0x10fff, 2 },
@@ -1258,19 +1327,17 @@ static const struct gfx_range mapper_KNM10B_table[] =
 	{ 0 }
 };
 
-
 // unknown part number, this is just based on where the gfx are in the ROM
 #define mapper_pokonyan   { 0x8000, 0x8000, 0x8000, 0 }, mapper_pokonyan_table
 static const struct gfx_range mapper_pokonyan_table[] =
 {
-	/* type            start    end      bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x2fff, 0 },
 	{ GFXTYPE_SCROLL1, 0x7000, 0x7fff, 0 },
 	{ GFXTYPE_SCROLL3, 0x3000, 0x3fff, 0 },
 	{ GFXTYPE_SCROLL2, 0x4000, 0x6fff, 0 },
 	{ 0 }
 };
-
 
 // pang3b4, PAL16V8@1A
 #define mapper_pang3b4   { 0x8000, 0x8000, 0, 0 }, mapper_pang3b4_table
@@ -1281,9 +1348,10 @@ static const struct gfx_range mapper_pang3b4_table[] =
 	// bank1 = pin 12 (ROMs 1,3,5,7,9,11,13,15)
 	// pins 13,15,16,17,18,19 are always enabled
 
-	/* type            start   end     bank */
+	// type            start   end     bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x7fff, 0 },
 	{ GFXTYPE_SCROLL2, 0x0000, 0x7fff, 0 },
+
 	{ GFXTYPE_SPRITES, 0x8000, 0xffff, 1 },
 	{ GFXTYPE_SCROLL1, 0x8000, 0xffff, 1 },
 	{ GFXTYPE_SCROLL2, 0x8000, 0xffff, 1 },
@@ -1319,7 +1387,7 @@ static const struct gfx_range mapper_frog_table[] =
 #define mapper_demo    { 0x8000, 0, 0, 0 }, mapper_demo_table
 static const struct gfx_range mapper_demo_table[] =
 {
-	/* type            start  end      bank */
+	// type            start  end      bank
 	{ GFXTYPE_SPRITES, 0x0000, 0x003f, 0 }, // moveable chaos
 	{ GFXTYPE_SCROLL1, 0x4400, 0x445f, 0 }, // text
 	{ GFXTYPE_SCROLL2, 0x0040, 0x00ff, 0 }, // logo, blue box, 10th
@@ -1328,10 +1396,10 @@ static const struct gfx_range mapper_demo_table[] =
 };
 #endif
 
-
+// a game without an entry here defaults to cps2 mapper (eg. some games in fcrash.cpp)
 static const struct CPS1config cps1_config_table[]=
 {
-	/* name         CPSB          gfx mapper   in2  in3  out2   kludge */
+	// name         CPSB          gfx mapper     in2  in3  out2  kludge
 #if 0
 	{"forgottn",    CPS_B_01,     mapper_LW621 },
 	{"forgottna",   CPS_B_01,     mapper_LW621 },
@@ -1373,13 +1441,14 @@ static const struct CPS1config cps1_config_table[]=
 	{"ffightj3",    CPS_B_03,     mapper_S222B },   // equivalent to S224B
 	{"ffightj4",    CPS_B_05,     mapper_S222B },   // equivalent to S224B
 	{"ffightjh",    CPS_B_01,     mapper_S224B },   // wrong, ffightjh hack doesn't even use the S222B PAL, since replaced with a GAL.
+	{"ffightae",    CPS_B_21_DEF, mapper_S224B,  0x36 },
 	{"1941",        CPS_B_05,     mapper_YI24B },
 	{"1941r1",      CPS_B_05,     mapper_YI24B },
 	{"1941u",       CPS_B_05,     mapper_YI24B },
 	{"1941j",       CPS_B_05,     mapper_YI22B },   // equivalent to YI24B
 	{"unsquad",     CPS_B_11,     mapper_AR24B },
 	{"area88",      CPS_B_11,     mapper_AR22B },   // equivalent to AR24B
-	{"area88r",     CPS_B_21_DEF, mapper_AR22B },   // wrong, this set uses ARA63B, still not dumped
+	{"area88r",     CPS_B_21_DEF, mapper_ARA63B },
 	{"mercs",       CPS_B_12,     mapper_O224B,  0x36, 0, 0x34 },
 	{"mercsu",      CPS_B_12,     mapper_O224B,  0x36, 0, 0x34 },
 	{"mercsur1",    CPS_B_12,     mapper_O224B,  0x36, 0, 0x34 },
@@ -1392,12 +1461,14 @@ static const struct CPS1config cps1_config_table[]=
 	{"chikij",      CPS_B_14,     mapper_CK22B },   // equivalent to CK24B
 	{"nemo",        CPS_B_15,     mapper_NM24B },
 	{"nemor1",      CPS_B_15,     mapper_NM24B },
-	{"nemoj",       CPS_B_15,     mapper_NM24B },   // wrong, this set uses NM22B, still not dumped
+	{"nemoj",       CPS_B_15,     mapper_NM24B },   // wrong, this set uses NM22B (dumped), specific mapper not implemented
+	{"nemoja",      CPS_B_15,     mapper_NM24B },   // wrong, this set uses NM22B (dumped), specific mapper not implemented
 	{"cawing",      CPS_B_16,     mapper_CA24B },
 	{"cawingr1",    CPS_B_16,     mapper_CA24B },
 	{"cawingu",     CPS_B_05,     mapper_CA22B },   // equivalent to CA24B
 	{"cawingur1",   CPS_B_16,     mapper_CA24B },
 	{"cawingj",     CPS_B_16,     mapper_CA22B },   // equivalent to CA24B
+	{"cawingjr",    CPS_B_21_DEF, mapper_ARA63B },  // yes, this PCB actually has a ARA63B PAL
 	{"cawingbl",    CPS_B_16,     mapper_CA22B },   // equivalent to CA24B
 	{"sf2",         CPS_B_11,     mapper_STF29,  0x36 },
 	{"sf2ea",       CPS_B_17,     mapper_STF29,  0x36 },
@@ -1434,14 +1505,15 @@ static const struct CPS1config cps1_config_table[]=
 	{"sf2qp2",      CPS_B_14,     mapper_STF29,  0x36 },
 	{"sf2thndr",    CPS_B_17,     mapper_STF29,  0x36 },
 	{"sf2thndr2",   CPS_B_17,     mapper_STF29,  0x36 },
+	{"mpumpkin",    CPS_B_21_DEF, mapper_SFZ63B },
 
-	/* from here onwards the CPS-B board has suicide battery and multiply protection */
-
+	// from here onwards the CPS-B board has suicide battery and multiply protection
 	{"3wonders",    CPS_B_21_BT1, mapper_RT24B },
 	{"3wondersr1",  CPS_B_21_BT1, mapper_RT24B },
 	{"3wondersu",   CPS_B_21_BT1, mapper_RT24B },
 	{"wonder3",     CPS_B_21_BT1, mapper_RT22B },   // equivalent to RT24B
 	{"3wondersb",   CPS_B_21_BT1, mapper_RT24B,  0x36, 0, 0, 0x88 }, // same as 3wonders except some registers are hard wired rather than written to
+	{"3wondersbi",  CPS_B_21_BT1, mapper_RT24B,  0x36, 0, 0, 0x88 }, // same as 3wonders except some registers are hard wired rather than written to
 	{"3wondersh",   HACK_B_2,     mapper_RT24B },  // one port is changed from 3wonders, and no protection
 	{"kod",         CPS_B_21_BT2, mapper_KD29B,  0x36, 0, 0x34 },
 	{"kodr1",       CPS_B_21_BT2, mapper_KD29B,  0x36, 0, 0x34 },
@@ -1449,7 +1521,7 @@ static const struct CPS1config cps1_config_table[]=
 	{"kodu",        CPS_B_21_BT2, mapper_KD29B,  0x36, 0, 0x34 },
 	{"kodj",        CPS_B_21_BT2, mapper_KD29B,  0x36, 0, 0x34 },
 	{"kodja",       CPS_B_21_BT2, mapper_KD22B,  0x36, 0, 0x34 },
-	{"kodb",        CPS_B_21_BT2, mapper_KD29B,  0x36, 0, 0x34 },   /* bootleg, doesn't use multiply protection */
+	{"kodb",        CPS_B_21_BT2, mapper_KD29B,  0x36, 0, 0x34 },   // bootleg, doesn't use multiply protection
 	{"captcomm",    CPS_B_21_BT3, mapper_CC63B,  0x36, 0x38, 0x34 },
 	{"captcommr1",  CPS_B_21_BT3, mapper_CC63B,  0x36, 0x38, 0x34 },
 	{"captcommu",   CPS_B_21_BT3, mapper_CC63B,  0x36, 0x38, 0x34 },
@@ -1461,12 +1533,13 @@ static const struct CPS1config cps1_config_table[]=
 	{"knightsu",    CPS_B_21_BT4, mapper_KR63B,  0x36, 0, 0x34 },
 	{"knightsj",    CPS_B_21_BT4, mapper_KR63B,  0x36, 0, 0x34 },
 	{"knightsja",   CPS_B_21_BT4, mapper_KR22B,  0x36, 0, 0x34 },
-	{"knightsb2",   CPS_B_21_BT4, mapper_KR63B,  0x36, 0, 0x34 },   // wrong, knightsb bootleg doesn't use the KR63B PAL
+	{"knightsb2",   HACK_B_4,     mapper_KR63B,  0x36, 0, 0x34, 0x40 },   // wrong, knightsb bootleg doesn't use the KR63B PAL
 	//{"knightsb",    CPS_B_21_BT4, mapper_KR63B,  0x36, 0, 0x34 },   // wrong, knightsb bootleg doesn't use the KR63B PAL
 	{"knightsb3",   CPS_B_21_BT4, mapper_KR63B },
 	{"pokonyan",    CPS_B_21_DEF, mapper_pokonyan, 0x36 },   // wrong, this set uses an unknown PAL, still not dumped
 	{"sf2ce",       CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2ceea",     CPS_B_21_DEF, mapper_S9263B, 0x36 },
+	{"sf2ceec",     CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2ceua",     CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2ceub",     CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2ceuc",     CPS_B_21_DEF, mapper_S9263B, 0x36 },
@@ -1479,6 +1552,7 @@ static const struct CPS1config cps1_config_table[]=
 	{"sf2rb2",      CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2rb3",      CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2red",      CPS_B_21_DEF, mapper_S9263B, 0x36 },
+	{"sf2reda",     CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2redp2",    CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2v004",     CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2acc",      CPS_B_21_DEF, mapper_S9263B, 0x36 },
@@ -1522,13 +1596,14 @@ static const struct CPS1config cps1_config_table[]=
 	{"sf2cems6c",   HACK_B_1,     mapper_S9263B, 0,    0, 0, 0x42 },
 	{"sf2re",       HACK_B_1,     mapper_S9263B, 0,    0, 0, 0x42 },
 	{"sf2mkot",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },
-	{"varth",       CPS_B_04,     mapper_VA24B },   /* CPSB test has been patched out (60=0008) register is also written to, possibly leftover from development */
-	{"varthb2",     HACK_B_3,     mapper_sfzch, 0, 0, 0, 0xC1 },  // unknown gal, other varth mappers don't work (game looks for sprites in >0x8000 unmapped region)
+	{"varth",       CPS_B_04,     mapper_VA24B },   // CPSB test has been patched out (60=0008) register is also written to, possibly leftover from development
+	{"varthb",      CPS_B_04,     mapper_VA63B, 0, 0, 0, 0x0f },
+	{"varthb2",     HACK_B_3,     mapper_varthb2, 0, 0, 0, 0xc1 },  // unknown gal, other varth mappers don't work (game looks for sprites in >0x8000 unmapped region)
 	{"varthb3",     CPS_B_04,     mapper_VA63B, 0, 0, 0, 0x0F }, // TODO: wrong
-	{"varthr1",     CPS_B_04,     mapper_VA24B },   /* CPSB test has been patched out (60=0008) register is also written to, possibly leftover from development */
-	{"varthu",      CPS_B_04,     mapper_VA63B },   /* CPSB test has been patched out (60=0008) register is also written to, possibly leftover from development */
-	{"varthj",      CPS_B_21_BT5, mapper_VA22B },   /* CPSB test has been patched out (72=0001) register is also written to, possibly leftover from development */
-	{"varthjr",     CPS_B_21_BT5, mapper_VA63B },   /* CPSB test has been patched out (72=0001) register is also written to, possibly leftover from development */
+	{"varthr1",     CPS_B_04,     mapper_VA24B },   // CPSB test has been patched out (60=0008) register is also written to, possibly leftover from development
+	{"varthu",      CPS_B_04,     mapper_VA63B },   // CPSB test has been patched out (60=0008) register is also written to, possibly leftover from development
+	{"varthj",      CPS_B_21_BT5, mapper_VA22B },   // CPSB test has been patched out (72=0001) register is also written to, possibly leftover from development
+	{"varthjr",     CPS_B_21_BT5, mapper_VA63B },   // CPSB test has been patched out (72=0001) register is also written to, possibly leftover from development
 	{"cworld2j",    CPS_B_21_BT6, mapper_Q522B,  0x36, 0, 0x34 },  // ports 36, 34 probably leftover input code from another game
 	{"cworld2ja",   CPS_B_21_DEF, mapper_Q522B },                  // wrong, this set uses Q529B, still not dumped     patched set, no battery, could be desuicided
 	{"cworld2jb",   CPS_B_21_BT6, mapper_Q522B,  0x36, 0, 0x34 },  // wrong, this set uses Q563B, still not dumped
@@ -1537,16 +1612,16 @@ static const struct CPS1config cps1_config_table[]=
 	{"wofa",        CPS_B_21_DEF, mapper_TK263B },  // patched set coming from a desuicided board?
 	{"wofu",        CPS_B_21_QS1, mapper_TK263B },
 	{"wofj",        CPS_B_21_QS1, mapper_TK263B },
-	{"wofhfh",      CPS_B_21_DEF, mapper_TK263B, 0x36 },    /* Chinese bootleg */
+	{"wofhfh",      CPS_B_21_DEF, mapper_TK263B, 0x36 },    // Chinese bootleg
 	{"wofpic",      CPS_B_21_DEF, mapper_TK263B, 0x36 },
 	{"wofr1bl",     CPS_B_21_DEF, mapper_TK263B, 0x36 },
-	{"dino",        CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
-	{"dinou",       CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
-	{"dinoj",       CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
-	{"dinoa",       CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
-	{"dinopic",     CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
-	{"dinopic2",    CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
-	{"dinohunt",    CPS_B_21_DEF, mapper_CD63B },   /* Chinese bootleg */
+	{"dino",        CPS_B_21_QS2, mapper_CD63B },   // layer enable never used
+	{"dinou",       CPS_B_21_QS2, mapper_CD63B },   // layer enable never used
+	{"dinoj",       CPS_B_21_QS2, mapper_CD63B },   // layer enable never used
+	{"dinoa",       CPS_B_21_QS2, mapper_CD63B },   // layer enable never used
+	{"dinopic",     CPS_B_21_QS2, mapper_CD63B },   // layer enable never used
+	{"dinopic2",    CPS_B_21_QS2, mapper_CD63B },   // layer enable never used
+	{"dinohunt",    CPS_B_21_DEF, mapper_CD63B },   // Chinese bootleg
 	{"punisher",    CPS_B_21_QS3, mapper_PS63B },
 	{"punisheru",   CPS_B_21_QS3, mapper_PS63B },
 	{"punisherh",   CPS_B_21_QS3, mapper_PS63B },
@@ -1554,147 +1629,56 @@ static const struct CPS1config cps1_config_table[]=
 	{"punipic",     CPS_B_21_QS3, mapper_PS63B },
 	{"punipic2",    CPS_B_21_QS3, mapper_PS63B },
 	{"punipic3",    CPS_B_21_QS3, mapper_PS63B },
-	{"punisherbz",  CPS_B_21_DEF, mapper_PS63B },   /* Chinese bootleg */
+	{"punisherbz",  CPS_B_21_DEF, mapper_PS63B },   // Chinese bootleg
 	{"slammast",    CPS_B_21_QS4, mapper_MB63B },
 	{"slammastu",   CPS_B_21_QS4, mapper_MB63B },
 	{"slampic",     CPS_B_21_QS4, mapper_MB63B },
-	{"slampic2",    CPS_B_21_QS4, mapper_sfzch },  // default cps2 mapper breaks scroll layers
+	{"slampic2",    CPS_B_21_QS4, mapper_varthb2 },  // default cps2 mapper breaks scroll layers
 	{"mbomberj",    CPS_B_21_QS4, mapper_MB63B },
 	{"mbombrd",     CPS_B_21_QS5, mapper_MB63B },
 	{"mbombrdj",    CPS_B_21_QS5, mapper_MB63B },
 	{"sf2hf",       CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2hfu",      CPS_B_21_DEF, mapper_S9263B, 0x36 },
 	{"sf2hfj",      CPS_B_21_DEF, mapper_S9263B, 0x36 },
-	{"qad",         CPS_B_21_BT7, mapper_QD22B,  0x36 },    /* TODO: layer enable (port 36 probably leftover input code from another game) */
-	{"qadjr",       CPS_B_21_DEF, mapper_QAD63B, 0x36, 0x38, 0x34 },    /* (ports 36, 38, 34 probably leftover input code from another game) */
-	{"qtono2j",     CPS_B_21_DEF, mapper_TN2292, 0x36, 0x38, 0x34 },    /* (ports 36, 38, 34 probably leftover input code from another game) */
+	{"qad",         CPS_B_21_BT7, mapper_QD22B,  0x36 },    // TODO: layer enable (port 36 probably leftover input code from another game)
+	{"qadjr",       CPS_B_21_DEF, mapper_QAD63B, 0x36, 0x38, 0x34 },    // (ports 36, 38, 34 probably leftover input code from another game)
+	{"qtono2j",     CPS_B_21_DEF, mapper_TN2292, 0x36, 0x38, 0x34 },    // (ports 36, 38, 34 probably leftover input code from another game)
 	{"megaman",     CPS_B_21_DEF, mapper_RCM63B },
 	{"megamana",    CPS_B_21_DEF, mapper_RCM63B },
 	{"rockmanj",    CPS_B_21_DEF, mapper_RCM63B },
 	{"pnickj",      CPS_B_21_DEF, mapper_PKB10B },   // PKB10B unverified, no dump
-	{"pang3",       CPS_B_21_DEF, mapper_CP1B1F },   /* EEPROM port is among the CPS registers (handled by DRIVER_INIT) */
-	{"pang3r1",     CPS_B_21_DEF, mapper_CP1B1F },   /* EEPROM port is among the CPS registers (handled by DRIVER_INIT) */
-	{"pang3j",      CPS_B_21_DEF, mapper_CP1B1F },   /* EEPROM port is among the CPS registers (handled by DRIVER_INIT) */
-	{"pang3b",      CPS_B_21_DEF, mapper_CP1B1F },   /* EEPROM port is among the CPS registers (handled by DRIVER_INIT) */
-	{"pang3b2",     CPS_B_21_DEF, mapper_CP1B1F },   /* EEPROM port is among the CPS registers (handled by DRIVER_INIT) */
-	{"pang3b3",     CPS_B_17,     mapper_CP1B1F },   /* EEPROM port is among the CPS registers (handled by DRIVER_INIT) */
+	{"pang3",       CPS_B_21_DEF, mapper_CP1B1F },   // EEPROM port is among the CPS registers (handled by DRIVER_INIT)
+	{"pang3r1",     CPS_B_21_DEF, mapper_CP1B1F },   // EEPROM port is among the CPS registers (handled by DRIVER_INIT)
+	{"pang3j",      CPS_B_21_DEF, mapper_CP1B1F },   // EEPROM port is among the CPS registers (handled by DRIVER_INIT)
+	{"pang3b",      CPS_B_21_DEF, mapper_CP1B1F },   // EEPROM port is among the CPS registers (handled by DRIVER_INIT)
+	{"pang3b2",     CPS_B_21_DEF, mapper_CP1B1F },   // EEPROM port is among the CPS registers (handled by DRIVER_INIT)
+	{"pang3b3",     CPS_B_17,     mapper_CP1B1F },   // EEPROM port is among the CPS registers (handled by DRIVER_INIT)
 	{"pang3b4",     CPS_B_21_DEF, mapper_pang3b4 },
-	{"pang3b5",     CPS_B_21_DEF, mapper_CP1B1F_boot },   /* EEPROM port is among the CPS registers (handled by DRIVER_INIT) */
+	{"pang3b5",     CPS_B_21_DEF, mapper_CP1B1F_boot },   // EEPROM port is among the CPS registers (handled by DRIVER_INIT)
 	{"ganbare",     CPS_B_21_DEF, mapper_GBPR2 },
+	{"pmonster",    CPS_B_21_DEF, mapper_GBPR2 },   // wrong, this set uses GBP63B, dumped but not reversed yet
 	{"gulunpa",     CPS_B_21_DEF, mapper_gulunpa }, // wrong
 
-	/* CPS Changer */
-
-	{"sfach",       CPS_B_21_DEF, mapper_sfzch },   // wrong, this set uses an unknown PAL, still not dumped
-	{"sfzbch",      CPS_B_21_DEF, mapper_sfzch },   // wrong, this set uses an unknown PAL, still not dumped
-	{"sfzch",       CPS_B_21_DEF, mapper_sfzch },   // wrong, this set uses an unknown PAL, still not dumped
+	// CPS Changer
+	{"sfach",       CPS_B_21_DEF, mapper_SFZ63B },  // SFZ63B found on mpumpkin, assumed to be from SFZ
+	{"sfzbch",      CPS_B_21_DEF, mapper_SFZ63B },
+	{"sfzch",       CPS_B_21_DEF, mapper_SFZ63B },
 	{"wofch",       CPS_B_21_DEF, mapper_TK263B },
 #endif
-	{"varthb",      CPS_B_04,     mapper_VA63B, 0, 0, 0, 0x0F },
 
-	/* CPS2 games */
-
+	// CPS2 games
 	{"cps2",        CPS_B_21_DEF, mapper_cps2 },
 
-	/* CPS1 board + extra support boards */
+	// CPS1 board + extra support boards
+	{"kenseim",     CPS_B_21_DEF, mapper_KNM10B },
 
-	{"kenseim",     CPS_B_21_DEF, mapper_KNM10B },  // wrong, need to convert equations from PAL
-
-// HBMAME
-	{"dinosf2",     CPS_B_21_QS2, mapper_CD63B },                           // nw
 #if 0
-	{"3wondersud",  CPS_B_21_DEF, mapper_RT24B },                           //works
-	{"captcommb2",  CPS_B_21_BT3, mapper_CC63B,  0x36, 0x38, 0x34 },        //works
-	{"captcommud",  CPS_B_21_DEF, mapper_CC63B,  0x36, 0x38, 0x34 },        //works
-	{"captcommc",   CPS_B_21_BT3, mapper_CC63B,  0x36, 0x38, 0x34 },        //works
-	{"captcommh",   CPS_B_21_BT3, mapper_CC63B,  0x36, 0x38, 0x34 },        //works
-	{"cps1demo",    CPS_B_04,     mapper_demo,  0, 0, 0, 0x80 },            //works
-	{"cps1frog",    CPS_B_04,     mapper_frog,  0, 0, 0, 0x80 },            //works
-	{"cps1test",    CPS_B_21_DEF, mapper_S9263B, 0x36 },                    //works
-	{"cps1testa",   CPS_B_21_DEF, mapper_RCM63B },                          //works
-	{"daimakb",     HACK_H_5,     mapper_DM22A },                           //works
-	{"dino08h2",    CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dino08h3",    CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dino08hp",    CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dinob",       CPS_B_21_QS2, mapper_CD63B, 0, 0, 0, 0x0F },            //works
-	{"dinobt",      CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dinobtpp",    CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dinocgba",    CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dinocgbb",    CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dinocgbc",    CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dinoeh",      CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dinoex",      CPS_B_21_DEF, mapper_CD63B },                           //works
-	{"dinoh",       CPS_B_21_DEF, mapper_CD63B, 0x36 },                     //works
-	{"dinoha",      CPS_B_21_DEF, mapper_CD63B, 0x36 },                     //works
-	{"dinohb",      CPS_B_21_QS2, mapper_CD63B, 0, 0, 0, 0x0F },            //works
-	{"dinohp",      CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dinohx",      CPS_B_21_DEF, mapper_CD63B, 0x36 },                     //works
-	{"dinojp",      CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dinorp",      CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dinoslice",   CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dinouphp",    CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"dinoz",       CPS_B_21_QS2, mapper_CD63B },                           //works
-	{"ffightb",     CPS_B_01,     mapper_S224B },                           //works
-	{"knight21",    CPS_B_21_BT4, mapper_KR63B, 0x36, 0, 0x34 },            //works
-	{"knightsb2",   HACK_H_6,     mapper_KR63B, 0x36, 0, 0x34, 0x44 },      //works
-	{"knightsh",    CPS_B_21_DEF, mapper_KR63B, 0x36, 0, 0x34 },            //works (intro screen is crap)
-	{"knightsha",   HACK_H_7,     mapper_KR63B, 0x36, 0, 0x34 },            //works
-	{"knightsjb",   CPS_B_21_DEF, mapper_KR63B, 0x36, 0, 0x34 },            //works
-	{"knightsro",   CPS_B_21_BT4, mapper_KR63B, 0x36, 0, 0x34 },            //works
-	{"knightud",    CPS_B_21_DEF, mapper_KR63B, 0x36, 0, 0x34 },            //works
-	{"kodh",        CPS_B_21_DEF, mapper_KD29B, 0x36, 0, 0x34 },            //works
-	{"kodsp",       CPS_B_21_BT2, mapper_KD29B, 0x36, 0, 0x34 },            //works
-	{"pnicku",      CPS_B_21_DEF, mapper_PKB10B },                          //works
-	{"punisherb",   CPS_B_21_QS3, mapper_PS63B, 0, 0, 0, 0x0E },            //works
-	{"punisherf",   CPS_B_21_QS3, mapper_PS63B },                           //works
-	{"punisherje1", CPS_B_21_QS3, mapper_PS63B },                           //works
-	{"punisherjh",  CPS_B_21_QS3, mapper_PS63B },                           //works
-	{"punisherjh1", CPS_B_21_QS3, mapper_PS63B },                           //works
-	{"punisherjha", CPS_B_21_QS3, mapper_PS63B },                           //works
-	{"punisherud1", CPS_B_21_DEF, mapper_PS63B },                           //works
-	{"punisherud2", CPS_B_21_DEF, mapper_PS63B },                           //works
-	{"sf2bhj",      CPS_B_12,     mapper_STF29,  0x36 },                    //works
-	{"sf2c",        CPS_B_13,     mapper_STF29,  0x36 },                    //works
-	{"sf2cebr",     CPS_B_21_DEF, mapper_S9263B, 0x36 },                    //works
-	{"sf2ced",      CPS_B_21_DEF, mapper_S9263B, 0x36 },                    //works
-	{"sf2ceda",     CPS_B_21_DEF, mapper_S9263B, 0x36 },                    //works
-	{"sf2ceh",      CPS_B_21_DEF, mapper_S9263B, 0x36 },                    //works
-	{"sf2cehk",     CPS_B_21_DEF, mapper_S9263B, 0x36 },                    //works
-	{"sf2cehp",     CPS_B_21_DEF, mapper_S9263B, 0x36 },                    //works
-	{"sf2cejem",    CPS_B_21_DEF, mapper_S9263B, 0x36 },                    //works
-	{"sf2koryuh",   CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2h9",       CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2h10",      CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2h11",      HACK_B_1,     mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2h12",      HACK_B_1,     mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2h13",      CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2pun",      CPS_B_21_DEF, mapper_S9263B, 0x36 },                    //works
-	{"sf2sl73a",    CPS_B_21_DEF, mapper_S9263B, 0x36 },                    //works
-	{"sf2th",       CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2tha",      CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2tlona",    CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2tlonb",    CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2tlonc",    CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2turyu",    CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2yyc3d5",   CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2yyc3g",    CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"sf2yyc6",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
-	{"slammastud",  CPS_B_21_DEF, mapper_MB63B },                           //works
-	{"stridergf",   CPS_B_01,     mapper_ST24M1 },                          //works
-	{"stridergh",   CPS_B_01,     mapper_ST24M1 },                          //works
-	{"tk2h5",       CPS_B_21_QS1, mapper_TK263B },                          // problem with chinese language roms
-	{"varthb",      CPS_B_04,     mapper_VA63B, 0, 0, 0, 0x0F },            //works
-	{"wofb",        CPS_B_21_DEF, mapper_TK263B },                          //works
-	{"wofes",       CPS_B_21_DEF, mapper_TK263B },                          //works
-	{"woffr",       CPS_B_21_DEF, mapper_sfzch },                           //works
-	{"wofr1h",      CPS_B_21_DEF, mapper_TK263B },                          //works
-	{"wofsf2",      CPS_B_21_QS1, mapper_TK263B, 0x36 },                    //works
-	{"wofud",       CPS_B_21_DEF, mapper_TK263B },                          //works
+	// CPS1 multi game bootleg
+	{"cps1mult",    CPS_B_21_DEF, mapper_CP1B1F }, // TODO: not correct for all games
 #endif
-	// HBMAME end
-	
+
     // NEOEX
-	{"captcommb2",  CPS_B_21_BT3, mapper_CC63B,  0x36, 0x38, 0x34 },        //works
+	{"captcommb2",  CPS_B_21_BT4, mapper_CC63B },  // junk around health bar with default cps2 mapper, uses BT4(knights) config
 	{"dinopic",     CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
 	{"dinopic2",    CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
 	{"dinopic3",    CPS_B_21_QS2, mapper_CD63B },   /* layer enable never used */
@@ -1719,21 +1703,48 @@ static const struct CPS1config cps1_config_table[]=
 	{"sf2mdta",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
 	{"sf2mdtb",     CPS_B_21_DEF, mapper_S9263B, 0x36, 0, 0, 0x41 },        //works
 	{"slampic",     CPS_B_21_QS4, mapper_MB63B },
-	{"slampic2",    CPS_B_21_QS4, mapper_sfzch },  // default cps2 mapper breaks scroll layers
+	{"slampic2",    CPS_B_21_QS4, mapper_varthb2 },  // default cps2 mapper breaks scroll layers
 	{"punipic",     CPS_B_21_QS3, mapper_PS63B },
 	{"punipic2",    CPS_B_21_QS3, mapper_PS63B },
 	{"punipic3",    CPS_B_21_QS3, mapper_PS63B },
-    {"varthb",      CPS_B_04,     mapper_VA63B, 0, 0, 0, 0x0F },            //works
+    {"varthb",      CPS_B_04,     mapper_VA63B, 0, 0, 0, 0x0f },            //works
 	{"wofpic",      CPS_B_21_DEF, mapper_TK263B, 0x36 },
     {"wofr1bl",     CPS_B_21_DEF, mapper_TK263B, 0x36 },
 
-	{nullptr}     /* End of table */
+	{nullptr}       // End of table
 };
 
-/* Offset of each palette entry */
-#define cps1_palette_entries (32*6)  /* Number colour schemes in palette */
 
-/* CPS1 VIDEO RENDERER */
+
+// Offset of each palette entry
+#define cps1_palette_entries    (32*6)      // Number colour schemes in palette
+
+
+// CPS-A registers
+#define CPS1_OBJ_BASE           (0x00/2)    // Base address of objects
+#define CPS1_SCROLL1_BASE       (0x02/2)    // Base address of scroll 1
+#define CPS1_SCROLL2_BASE       (0x04/2)    // Base address of scroll 2
+#define CPS1_SCROLL3_BASE       (0x06/2)    // Base address of scroll 3
+#define CPS1_OTHER_BASE         (0x08/2)    // Base address of other video
+#define CPS1_PALETTE_BASE       (0x0a/2)    // Base address of palette
+#define CPS1_SCROLL1_SCROLLX    (0x0c/2)    // Scroll 1 X
+#define CPS1_SCROLL1_SCROLLY    (0x0e/2)    // Scroll 1 Y
+#define CPS1_SCROLL2_SCROLLX    (0x10/2)    // Scroll 2 X
+#define CPS1_SCROLL2_SCROLLY    (0x12/2)    // Scroll 2 Y
+#define CPS1_SCROLL3_SCROLLX    (0x14/2)    // Scroll 3 X
+#define CPS1_SCROLL3_SCROLLY    (0x16/2)    // Scroll 3 Y
+#define CPS1_STARS1_SCROLLX     (0x18/2)    // Stars 1 X
+#define CPS1_STARS1_SCROLLY     (0x1a/2)    // Stars 1 Y
+#define CPS1_STARS2_SCROLLX     (0x1c/2)    // Stars 2 X
+#define CPS1_STARS2_SCROLLY     (0x1e/2)    // Stars 2 Y
+#define CPS1_ROWSCROLL_OFFS     (0x20/2)    // base of row scroll offsets in other RAM
+#define CPS1_VIDEOCONTROL       (0x22/2)    // flip screen, rowscroll enable
+
+
+/*
+CPS1 VIDEO RENDERER
+
+*/
 
 MACHINE_RESET_MEMBER(cps_state,cps)
 {
@@ -2937,7 +2948,7 @@ u32 cps_state::screen_update_cps1(screen_device &screen, bitmap_ind16 &bitmap, c
 	return 0;
 }
 
-WRITE_LINE_MEMBER(cps_state::screen_vblank_cps1)
+void cps_state::screen_vblank_cps1(int state)
 {
 	// rising edge
 	if (state)

@@ -34,12 +34,15 @@ knightsb3:       OK.
 #include "includes/fcrash.h"
 
 #include "cpu/z80/z80.h"
+#include "cpu/m68000/m68000.h"
+#include "sound/msm5205.h"
 #include "sound/ymopm.h"
 #include "speaker.h"
 
 
 namespace {
 
+#define CPS1_ROWSCROLL_OFFS  (0x20/2)    /* base of row scroll offsets in other RAM */
 #define CODE_SIZE            0x400000
 
 

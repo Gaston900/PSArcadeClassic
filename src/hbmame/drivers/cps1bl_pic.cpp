@@ -46,13 +46,16 @@ brightness circuity present on pcb?
 #include "emu.h"
 #include "includes/fcrash.h"
 
+#include "cpu/m68000/m68000.h"
 #include "cpu/pic16c5x/pic16c5x.h"
+#include "sound/okim6295.h"
 #include "machine/eepromser.h"
 #include "speaker.h"
 
 
 namespace {
 
+#define CPS1_ROWSCROLL_OFFS  (0x20/2)    /* base of row scroll offsets in other RAM */
 #define CODE_SIZE            0x400000
 
 
@@ -1676,7 +1679,7 @@ ROM_START( slampic )
 	ROM_REGION( 0x80000, "oki", 0 ) /* OKI6295 samples */
 	ROM_LOAD( "18.bin", 0x00000, 0x80000, CRC(73a0c11c) SHA1(a66e1a964313e21c4436200d36c598dcb277cd34) )
 
-	ROM_REGION( 0x20000, "audiorom_raw", 0 ) // not in the dump, but needed for protection
+	ROM_REGION( 0x20000, "user1", 0 ) // not in the dump, but needed for protection
 	ROM_LOAD( "mb_qa.5k", 0x00000, 0x20000, BAD_DUMP CRC(e21a03c4) SHA1(98c03fd2c9b6bf8a4fc25a4edca87fff7c3c3819) )
 
 	/* pld devices:

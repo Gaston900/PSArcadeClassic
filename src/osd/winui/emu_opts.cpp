@@ -242,7 +242,7 @@ void load_options(windows_options &opts, OPTIONS_TYPE opt_type, int game_num, bo
 		fname = GetIniDir() + PATH_SEPARATOR + "console.ini";
 	else
 	if (opt_type == OPTIONS_HORIZONTAL)
-		fname = GetIniDir() + PATH_SEPARATOR + "horizontal.ini";
+		fname = GetIniDir() + PATH_SEPARATOR + "horizont.ini";
 	else
 	if (opt_type == OPTIONS_RASTER)
 		fname = GetIniDir() + PATH_SEPARATOR + "raster.ini";
@@ -294,7 +294,7 @@ void save_options(windows_options &opts, OPTIONS_TYPE opt_type, int game_num)
 		fname = GetIniDir() + PATH_SEPARATOR + "console.ini";
 	else
 	if (opt_type == OPTIONS_HORIZONTAL)
-		fname = GetIniDir() + PATH_SEPARATOR + "horizontal.ini";
+		fname = GetIniDir() + PATH_SEPARATOR + "horizont.ini";
 	else
 	if (opt_type == OPTIONS_RASTER)
 		fname = GetIniDir() + PATH_SEPARATOR + "raster.ini";

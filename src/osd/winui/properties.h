@@ -19,7 +19,7 @@
 #define NUMGLSLFILTER 			std::size(g_ComboBoxGLSLFilter)
 #define NUMBGFXBACKEND			std::size(g_ComboBoxBGFXBackend)
 
-/* Called in winui.c to create the property page */
+/* Called in winui.cpp to create the property page */
 void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int folder_id, int game_num);
 intptr_t CALLBACK GamePropertiesDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
 

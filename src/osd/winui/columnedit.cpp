@@ -106,7 +106,7 @@ static intptr_t InternalColumnDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LP
 	{
 		case WM_INITDIALOG:
 			CenterWindow(hDlg);
-			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
+			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI));
 			SendMessage(hDlg, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrush = CreateSolidBrush(RGB(240, 240, 240));
 			hShown = GetDlgItem(hDlg, IDC_LISTSHOWCOLUMNS);

@@ -503,7 +503,7 @@ void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int fol
 	pshead.dwFlags = PSH_PROPSHEETPAGE | PSH_USEICONID | PSH_DEFAULT | PSH_NOCONTEXTHELP;
 	pshead.hInstance = hInst;
 	pshead.nStartPage = 0;
-	pshead.pszIcon = MAKEINTRESOURCE(IDI_MAMEUI_ICON);
+	pshead.pszIcon = MAKEINTRESOURCE(IDI_MAMEUI);
 	pshead.ppsp = pspage;
 
 	g_nFirstInitPropertySheet = 1;
@@ -2065,9 +2065,10 @@ static void ModifyPropertySheetForTreeSheet(HWND hPageDlg)
 	int nPageCount = TabCtrl_GetItemCount(hTabWnd);
 	HIMAGELIST hTreeList = ImageList_Create(32, 32, ILC_COLORDDB | ILC_MASK, nPageCount, 0);
 
+	// Assign icons to the left side of the main property sheet
 	for (int i = 0; i < nPageCount; i++)
 	{
-		HICON hIconList = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_DISPLAYSHEET + i));
+		HICON hIconList = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_PI_DISPLAY + i));
 		ImageList_AddIcon(hTreeList, hIconList);
 	}
 
@@ -2147,7 +2148,7 @@ intptr_t CALLBACK GamePropertiesDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, 
 
 			int index = lParam;
 			CenterWindow(hDlg);
-			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
+			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI));
 			SendMessage(hDlg, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrushDlg = CreateSolidBrush(RGB(240, 240, 240));
 //=========================== 缘来是你 ================ 中文列表 ================================>>>

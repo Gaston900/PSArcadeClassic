@@ -184,7 +184,7 @@ intptr_t CALLBACK AuditWindowProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lP
 		case WM_INITDIALOG:
 			hAudit = hDlg;
 			CenterWindow(hAudit);
-			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
+			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI));
 			SendMessage(hAudit, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrush = CreateSolidBrush(RGB(240, 240, 240));
 			hFont = CreateFont(-11, 0, 0, 0, 400, 0, 0, 0, 0, 3, 2, 1, 34, TEXT("Lucida Console"));
@@ -274,7 +274,7 @@ intptr_t CALLBACK GameAuditDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARA
 			memset(&details, 0, sizeof(details));
 			hAudit = hDlg;
 			CenterWindow(hAudit);
-			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
+			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI));
 			SendMessage(hAudit, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrush = CreateSolidBrush(RGB(240, 240, 240));
 			hFont = CreateFont(-11, 0, 0, 0, 400, 0, 0, 0, 0, 3, 2, 1, 34, TEXT("Lucida Console"));

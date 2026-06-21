@@ -1,11 +1,22 @@
 // license:BSD-3-Clause
 // For licensing and usage information, read docs/release/winui_license.txt
 
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST AND ICON
+//
+
+//1                       24      MOVEABLE PURE   "mame.man"
+
+//2                       ICON    DISCARDABLE     "mame.ico"
+
 #include "windows.h"
 #include "commctrl.h"
 #include "resource.h"
 #include "mamevers.rc"
 
+1                       RT_MANIFEST             "res\\mameui.manifest"
+2                       ICON                     "res\\arcadec.ico"
 /////////////////////////////////////////////////////////////////////////////
 //
 // Menu
@@ -110,7 +121,7 @@ BEGIN
         MENUITEM "Select random game\tAlt+R",              ID_CONTEXT_SELECT_RANDOM
         MENUITEM SEPARATOR
         MENUITEM "Custom filters\tCtrl+F",              ID_CONTEXT_FILTERS
-        MENUITEM "Customize fields\tCtrl+C",             ID_CUSTOMIZE_FIELDS
+        MENUITEM "Customise fields\tCtrl+C",             ID_CUSTOMIZE_FIELDS
         MENUITEM SEPARATOR
         MENUITEM "Audit all games",                      ID_FILE_AUDIT
         MENUITEM "Refresh games list\tF5",               ID_UPDATE_GAMELIST
@@ -131,9 +142,9 @@ BEGIN
 		MENUITEM SEPARATOR
 /*********************************************************************************************/
 //        MENUITEM "Online Manual\tF1",                      ID_HELP_CONTENTS
-        MENUITEM "Support Forum",                       ID_HELP_TROUBLE
+        MENUITEM "Support Forum\tF3",                       ID_HELP_TROUBLE
 //        MENUITEM SEPARATOR
-        MENUITEM "Mame release notes",              ID_HELP_WHATS_NEW
+//        MENUITEM "Mame release notes\tF6",              ID_HELP_WHATS_NEW
 //        MENUITEM SEPARATOR
 //        MENUITEM "MAME development site\tF7",             ID_MAME_HOMEPAGE
 //        MENUITEM "Frequently Asked Questions\tF8",         ID_MAME_FAQ
@@ -193,7 +204,7 @@ BEGIN
         MENUITEM "Sort ascending\tAlt+UP",               ID_SORT_ASCENDING
         MENUITEM "Sort descending\tAlt+DOWN",            ID_SORT_DESCENDING
         MENUITEM SEPARATOR
-        MENUITEM "Customize fields\tCtrl+C",              ID_CUSTOMIZE_FIELDS
+        MENUITEM "Customise fields\tCtrl+C",              ID_CUSTOMIZE_FIELDS
     END
 END
 
@@ -270,80 +281,101 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_MAMEUI_ICON         ICON                    "res\\arcadec.ico"
-IDI_WIN_ROMS            ICON                    "res\\win_roms.ico"
-IDI_WIN_NOROMS          ICON                    "res\\win_noro.ico"
-IDI_WIN_UNKNOWN         ICON                    "res\\win_unkn.ico"
-IDI_WIN_CLONE           ICON                    "res\\win_clone.ico"
-IDI_WIN_REDX            ICON                    "res\\win_redx.ico"
-IDI_WIN_IMPERFECT       ICON                    "res\\win_imp.ico"
-IDI_FOLDER_AVAILABLE    ICON                    "res\\foldavail.ico"
-IDI_FOLDER              ICON                    "res\\folder.ico"
-IDI_FOLDER_MANUFACTURER ICON                    "res\\foldmanu.ico"
-IDI_FOLDER_OPEN         ICON                    "res\\foldopen.ico"
-IDI_FOLDER_UNAVAILABLE  ICON                    "res\\foldunav.ico"
-IDI_FOLDER_HORIZONTAL   ICON                    "res\\horz.ico"
-IDI_FOLDER_VERTICAL     ICON                    "res\\vert.ico"
-IDI_MANUFACTURER        ICON                    "res\\manufact.ico"
-IDI_FOLDER_YEAR         ICON                    "res\\foldyear.ico"
-IDI_FOLDER_SOURCE       ICON                    "res\\foldsrc.ico"
-IDI_FOLDER_WORKING      ICON                    "res\\working.ico"
-IDI_FOLDER_NONWORKING   ICON                    "res\\nonwork.ico"
-IDI_YEAR                ICON                    "res\\year.ico"
-IDI_KEYBOARD            ICON                    "res\\keyboard.ico"
-IDI_JOYSTICK            ICON                    "res\\joystick.ico"
-IDI_CHIP                ICON                    "res\\chip.ico"
-IDI_BIOS                ICON                    "res\\bios.ico"
-IDI_SOUND               ICON                    "res\\sound.ico"
-IDI_SOURCE              ICON                    "res\\source.ico"
-IDI_FOLDER_HARDDISK     ICON                    "res\\harddisk.ico"
-IDI_DISPLAY             ICON                    "res\\display.ico"
-IDI_AUDIT_PASS          ICON                    "res\\audit_pass.ico"
-IDI_MISC                ICON                    "res\\misc.ico"
-IDI_VECTOR              ICON                    "res\\vector.ico"
-IDI_SCREEN              ICON                    "res\\screen.ico"
-IDI_ADVANCED            ICON                    "res\\advanced.ico"
+IDI_MAMEUI              ICON                    "res\\arcadec.ico"
+// Game status
+IDI_LV_BIOS             ICON                    "res\\lv-bios.ico"
+IDI_LV_CI               ICON                    "res\\lv-ci.ico"
+IDI_LV_CN               ICON                    "res\\lv-cn.ico"
+IDI_LV_CW               ICON                    "res\\lv-cw.ico"
+IDI_LV_CX               ICON                    "res\\lv-cx.ico"
+IDI_LV_PI               ICON                    "res\\lv-pi.ico"
+IDI_LV_PN               ICON                    "res\\lv-pn.ico"
+IDI_LV_PW               ICON                    "res\\lv-pw.ico"
+IDI_LV_PX               ICON                    "res\\lv-px.ico"
+IDI_LV_RN               ICON                    "res\\lv-rn.ico"
+IDI_LV_RU               ICON                    "res\\lv-ru.ico"
+// Property pages
+IDI_PR_ADVANCED         ICON                    "res\\pr-advan.ico"
+IDI_PR_AUDIT            ICON                    "res\\pr-audit.ico"
 IDI_AUDIT_FAIL          ICON                    "res\\audit_fail.ico"
-IDI_FOLDER_IMPERFECT    ICON                    "res\\foldimp.ico"
-IDI_FOLDER_CPU          ICON                    "res\\foldcsb.ico"
-IDI_FOLDER_SOUND        ICON                    "res\\foldsnd.ico" // 修改的 (加斯顿90) 
-IDI_FOLDER_BIOS         ICON                    "res\\foldbios.ico"
-IDI_FOLDER_DUMP         ICON                    "res\\folduni.ico" // 修改的 (加斯顿90)
+IDI_AUDIT_PASS          ICON                    "res\\audit_pass.ico"
+IDI_PR_CONTROLLER       ICON                    "res\\pr-cont.ico"
+IDI_PR_DEBUG            ICON                    "res\\pr-debug.ico"
+IDI_PR_DISPLAY          ICON                    "res\\pr-disp.ico"
+IDI_PR_JOYSTICK         ICON                    "res\\pr-joy.ico"
+IDI_PR_KEYBOARD         ICON                    "res\\pr-keyb.ico"
+IDI_PR_LUA              ICON                    "res\\pr-lua.ico"
+IDI_PR_MISC             ICON                    "res\\pr-misc.ico"
+IDI_PR_OPENGL           ICON                    "res\\pr-opengl.ico"
+IDI_PR_SCREEN           ICON                    "res\\pr-screen.ico"
+IDI_PR_SHADER           ICON                    "res\\pr-shader.ico"
+IDI_PR_SNAPSHOT         ICON                    "res\\pr-snap.ico"
+IDI_PR_SOUND            ICON                    "res\\pr-sound.ico"
+IDI_PR_VECTOR           ICON                    "res\\pr-vector.ico"
+// Property index - must be in order, top to bottom
+IDI_PI_DISPLAY          ICON                    "res\\pr-disp.ico"
+IDI_PI_ADVANCED         ICON                    "res\\pr-advan.ico"
+IDI_PI_SCREEN           ICON                    "res\\pr-screen.ico"
+IDI_PI_OPENGL           ICON                    "res\\pr-opengl.ico"
+IDI_PI_SHADER           ICON                    "res\\pr-shader.ico"
+IDI_PI_VECTOR           ICON                    "res\\pr-vector.ico"
+IDI_PI_SOUND            ICON                    "res\\pr-sound.ico"
+IDI_PI_INPUT            ICON                    "res\\pr-keyb.ico"
+IDI_PI_CONTROL          ICON                    "res\\pr-joy.ico"
+IDI_PI_MISC             ICON                    "res\\pr-misc.ico"
+IDI_PI_MISC2            ICON                    "res\\pr-debug.ico"
+IDI_PI_SNAP             ICON                    "res\\pr-snap.ico"
+// Tree folder parents
+IDI_FP_ALL              ICON                    "res\\fp-all.ico"
+IDI_FP_AVAIL            ICON                    "res\\fp-avail.ico"
+IDI_FP_BIOS             ICON                    "res\\fp-bios.ico"
+IDI_FP_CLONES           ICON                    "res\\fp-clone.ico"
+IDI_FP_CPU              ICON                    "res\\fp-cpu.ico"
+IDI_FP_CUSTOM           ICON                    "res\\custom.ico"
+IDI_FP_DEF              ICON                    "res\\fp-closed.ico"
+IDI_FP_DUMP             ICON                    "res\\fp-dump.ico"
+IDI_FP_FPS              ICON                    "res\\fp-fps.ico"
+IDI_FP_HARDDISK         ICON                    "res\\fp-hard.ico"
+IDI_FP_HORI             ICON                    "res\\fp-hori.ico"
+IDI_FP_IMP              ICON                    "res\\fp-imp.ico"
+IDI_FP_LIGHTGUN         ICON                    "res\\fp-lgun.ico"
+IDI_FP_MANU             ICON                    "res\\fp-manu.ico"
+IDI_FP_MECH             ICON                    "res\\fp-mech.ico"
+IDI_FP_MODIFIED         ICON                    "res\\fp-modi.ico"
+IDI_FP_MONITOR          ICON                    "res\\fp-monit.ico"
+IDI_FP_MOUSE            ICON                    "res\\fp-mouse.ico"
+IDI_FP_NONMECH          ICON                    "res\\fp-nmech.ico"
+IDI_FP_NW               ICON                    "res\\fp-nw.ico"
+IDI_FP_OPEN             ICON                    "res\\fp-open.ico"
+IDI_FP_PARENTS          ICON                    "res\\fp-parent.ico"
+IDI_FP_RASTER           ICON                    "res\\fp-raster.ico"
+IDI_FP_RESOL            ICON                    "res\\fp-resol.ico"
+IDI_FP_SAMPLES          ICON                    "res\\fp-sample.ico"
+IDI_FP_SAVESTATE        ICON                    "res\\fp-savest.ico"
+IDI_FP_SOUND            ICON                    "res\\fp-sound.ico"
+IDI_FP_SOURCE           ICON                    "res\\fp-source.ico"
+IDI_FP_STEREO           ICON                    "res\\fp-stereo.ico"
+IDI_FP_TRACKBALL        ICON                    "res\\fp-track.ico"
+IDI_FP_UNAVAIL          ICON                    "res\\fp-unav.ico"
+IDI_FP_VERT             ICON                    "res\\fp-vert.ico"
+IDI_FP_VECTOR           ICON                    "res\\fp-vector.ico"
+IDI_FP_YEAR             ICON                    "res\\fp-year.ico"
+IDI_FP_W                ICON                    "res\\fp-w.ico"
+// Tree folder children
+IDI_FC_BIOS             ICON                    "res\\fc-bios.ico"
+IDI_FC_CHIP             ICON                    "res\\fc-chip.ico"
+IDI_FC_CPU              ICON                    "res\\fc-lcpu.ico"
+IDI_FC_MANU             ICON                    "res\\fc-manu.ico"
+IDI_FC_MONITOR          ICON                    "res\\fc-monit.ico"
+IDI_FC_SOUND            ICON                    "res\\fc-sound.ico"
+IDI_FC_SOURCE           ICON                    "res\\fc-source.ico"
+IDI_FC_YEAR             ICON                    "res\\fc-year.ico"
+// Winui
 IDI_SYSTRAY             ICON                    "res\\arcadec.ico"
-IDI_DEBUG               ICON                    "res\\debug.ico"
-IDI_MONITOR             ICON                    "res\\monitor.ico"
-IDI_FOLDER_MECHANICAL   ICON                    "res\\mechanical.ico"
-IDI_FOLDER_ALLGAMES     ICON                    "res\\allgames.ico"
-IDI_FOLDER_CLONES       ICON                    "res\\foldclone.ico"
-IDI_FOLDER_ORIGINALS    ICON                    "res\\foldorig.ico"
-IDI_FOLDER_RASTER       ICON                    "res\\foldrast.ico"
-IDI_FOLDER_VECTOR       ICON                    "res\\foldvec.ico"
-IDI_FOLDER_SAMPLES      ICON                    "res\\foldsamp.ico"
-IDI_FOLDER_MONITOR      ICON                    "res\\multimon.ico"
-IDI_FOLDER_FPS          ICON                    "res\\foldfps.ico"
-IDI_FOLDER_RESOL        ICON                    "res\\foldres.ico"
-IDI_FOLDER_LIGHTGUN     ICON                    "res\\foldgun.ico"
-IDI_FOLDER_TRACKBALL    ICON                    "res\\foldball.ico"
-IDI_FOLDER_SAVESTATE    ICON                    "res\\savestate.ico"
-IDI_OPENGL              ICON                    "res\\opengl.ico"
-IDI_SHADER              ICON                    "res\\shader.ico"
-IDI_SNAPSHOT            ICON                    "res\\snapshot.ico"
-IDI_DISPLAYSHEET        ICON                    "res\\display.ico"
-IDI_ADVANCEDSHEET       ICON                    "res\\advanced.ico"
-IDI_SCREENSHEET         ICON                    "res\\screen.ico"
-IDI_OPENGLSHEET         ICON                    "res\\opengl.ico"
-IDI_SHADERSHEET         ICON                    "res\\shader.ico"
-IDI_VECTORSHEET         ICON                    "res\\vector.ico"
-IDI_SOUNDSHEET          ICON                    "res\\sound.ico"
-IDI_INPUTSHEET          ICON                    "res\\keyboard.ico"
-IDI_CONTROLSHEET        ICON                    "res\\joystick.ico"
-IDI_MISCSHEET           ICON                    "res\\misc.ico"
-IDI_MISC2SHEET          ICON                    "res\\debug.ico"
-IDI_SNAPSHEET           ICON                    "res\\snapshot.ico"
 // 修改的 代码来源 (加斯顿90)
 /****************************************************************************/
-IDI_FOLDER_CONSOLE      ICON                    "res\\fold_cons.ico"
-IDI_FOLDER_COLLECTION	ICON					"res\\fold_neo.ico"
+IDI_FP_CONSOLE          ICON                    "res\\fp-cons.ico"
+IDI_FP_COLLECTION	    ICON					"res\\fp-col.ico"
 /****************************************************************************/
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -468,7 +500,7 @@ STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFO
 CAPTION "Game audit"
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    ICON            IDI_MAMEUI_ICON,IDC_AUDIT_ICON,488,16,32,32
+    ICON            IDI_PR_AUDIT,IDC_AUDIT_ICON,488,16,32,32
     GROUPBOX        "Audit results",IDC_STATIC,6,4,508,40
     LTEXT           "ROM check:",IDC_STATIC,12,16,350,10
     LTEXT           "",IDC_PROP_ROMS,68,16,350,10
@@ -488,10 +520,10 @@ STYLE WS_CHILD | WS_DISABLED | WS_CAPTION | DS_SETFONT
 CAPTION "Display"
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    ICON            IDI_DISPLAY,IDC_STATIC,10,12,32,32
+    ICON            IDI_PR_DISPLAY,IDC_STATIC,10,12,32,32
     LTEXT           WC_STATIC,IDC_PROP_TITLE,42,10,168,30,SS_NOPREFIX
     CONTROL         "Run in a window",IDC_WINDOWED,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,40,80,10,0
-    CONTROL         "Start out maximized",IDC_MAXIMIZE,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,52,80,10,0
+    CONTROL         "Start out maximised",IDC_MAXIMIZE,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,52,80,10,0
     CONTROL         "Enforce aspect ratio",IDC_KEEPASPECT,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,64,80,10,0
     CONTROL         "Throttle",IDC_THROTTLE,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,76,80,10,0
 
@@ -614,7 +646,7 @@ STYLE WS_CHILD | WS_DISABLED | WS_CAPTION | DS_SETFONT
 CAPTION "OpenGL/BGFX"
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    ICON            IDI_OPENGL,IDC_STATIC,10,12,32,32
+    ICON            IDI_PR_OPENGL,IDC_STATIC,10,12,32,32
     LTEXT           WC_STATIC,IDC_PROP_TITLE,42,10,168,30,SS_NOPREFIX
     GROUPBOX        "Video mode",IDC_STATIC,4,40,102,28
     COMBOBOX        IDC_VIDEO_MODE,10,50,90,62,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP,0    
@@ -695,7 +727,7 @@ STYLE WS_CHILD | WS_DISABLED | WS_CAPTION | DS_SETFONT
 CAPTION "Sound/Vector"
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    ICON            IDI_VECTOR,IDC_STATIC,10,12,32,32
+    ICON            IDI_PR_VECTOR,IDC_STATIC,10,12,32,32
     LTEXT           WC_STATIC,IDC_PROP_TITLE,42,10,168,30,SS_NOPREFIX
     GROUPBOX        "Beam width minimum",IDC_BEAMTEXT,4,40,212,28
     CONTROL         "",IDC_BEAM_MIN,TRACKBAR_CLASS,TBS_AUTOTICKS | WS_TABSTOP,10,52,180,10,0
@@ -739,7 +771,7 @@ STYLE WS_CHILD | WS_DISABLED | WS_CAPTION | DS_SETFONT
 CAPTION "Controllers"
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    ICON            IDI_KEYBOARD,IDC_STATIC,10,12,32,32
+    ICON            IDI_PR_KEYBOARD,IDC_STATIC,10,12,32,32
     LTEXT           WC_STATIC,IDC_PROP_TITLE,42,10,168,30,SS_NOPREFIX
     CONTROL         "Enable mouse input",IDC_USE_MOUSE,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,40,88,10,0
     CONTROL         "Enable steadykey support",IDC_STEADYKEY,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,52,98,10,0
@@ -792,7 +824,7 @@ STYLE WS_CHILD | WS_DISABLED | WS_CAPTION | DS_SETFONT
 CAPTION "Miscellaneous"
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    ICON            IDI_MISC,IDC_STATIC,10,12,32,32
+    ICON            IDI_PR_MISC,IDC_STATIC,10,12,32,32
     LTEXT           WC_STATIC,IDC_PROP_TITLE,42,10,168,30,SS_NOPREFIX
     CONTROL         "Enable cheats",IDC_CHEAT,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,40,86,10,0
     CONTROL         "Enable internal debugger",IDC_DEBUG,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,10,52,96,10,0
@@ -918,10 +950,10 @@ CAPTION "Interface settings"
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     GROUPBOX        "Main window settings",IDC_STATIC,6,4,180,124
-    CONTROL         "Minimize window to system tray icon",IDC_DISABLE_TRAY_ICON,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,12,16,168,10
+    CONTROL         "Minimise window to system tray icon",IDC_DISABLE_TRAY_ICON,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,12,16,168,10
     CONTROL         "Allow game selection by joystick (needs restart)",IDC_JOY_GUI,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,12,30,168,10
     CONTROL         "Show confirmation dialog on exit",IDC_EXIT_DIALOG,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,12,44,168,10
-    CONTROL         "Use different icon for Not Working games",IDC_USE_BROKEN_ICON,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,12,58,168,10
+    CONTROL         "Use red icon for Not Working games",IDC_USE_BROKEN_ICON,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,12,58,168,10
     CONTROL         "Enable inheritable filters on folders",IDC_FILTER_INHERIT,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,12,72,168,10
     CONTROL         "Display NO ROMS games always as available",IDC_DISPLAY_NO_ROMS,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,12,86,168,10
     CONTROL         "Enable new faster Audit All Games method",IDC_ENABLE_FASTAUDIT,WC_BUTTON,BS_AUTOCHECKBOX | WS_TABSTOP,12,100,168,10
@@ -961,7 +993,7 @@ END
 
 IDD_COLUMNS DIALOGEX 0, 0, 302, 146
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | DS_MODALFRAME | DS_SETFONT
-CAPTION "Customize fields"
+CAPTION "Customise fields"
 FONT 9, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     LTEXT           "Available fields:",IDC_STATIC,6,4,80,10,SS_CENTERIMAGE
@@ -1166,10 +1198,3 @@ IDB_MAME_IPS            BITMAP                     "res\\mame.bmp"
 
 IDC_CURSOR_HSPLIT       CURSOR                  "res\\splith.cur"
 
-/////////////////////////////////////////////////////////////////////////////
-//
-// RT_MANIFEST AND ICON
-//
-
-1                       RT_MANIFEST             "res\\mameui.manifest"
-2                       ICON                    "res\\arcadec.ico"

@@ -58,6 +58,7 @@ static void DisableVisualStylesFilters(HWND hDlg);
 
 static HICON hIcon = NULL;
 static HBRUSH hBrush = NULL;
+static HBRUSH hBrushCol = NULL;
 static HFONT hFont = NULL;
 static HFONT hFontFX = NULL;
 static HDC hDC = NULL;
@@ -80,7 +81,7 @@ intptr_t CALLBACK ResetDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lP
 	{
 		case WM_INITDIALOG:
 			CenterWindow(hDlg);
-			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
+			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI));
 			SendMessage(hDlg, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrush = CreateSolidBrush(RGB(240, 240, 240));
 			DisableVisualStylesReset(hDlg);
@@ -194,24 +195,25 @@ static uintptr_t CALLBACK CCHookProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM
 	{
 		case WM_INITDIALOG:
 			CenterWindow(hDlg);
-			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
+			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI));
 			SendMessage(hDlg, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
-			hBrush = CreateSolidBrush(RGB(240, 240, 240));
+			hBrushCol = CreateSolidBrush(RGB(240, 240, 240));
 			winui_set_window_text_utf8(hDlg, "Choose a color");
 			break;
 
 		case WM_CTLCOLORDLG:
-			return (LRESULT) hBrush;	
+			return (LRESULT) hBrushCol;	
 
 		case WM_CTLCOLORSTATIC:
 		case WM_CTLCOLORBTN:
 			hDC = (HDC)wParam;
 			SetBkMode(hDC, TRANSPARENT);
-			return (LRESULT) hBrush;
+			SetTextColor(hDC, GetSysColor(COLOR_WINDOWTEXT));
+			return (LRESULT) hBrushCol;
 
 		case WM_DESTROY:
 			DestroyIcon(hIcon);
-			DeleteObject(hBrush);
+			DeleteObject(hBrushCol);
 			return true;
 	}
 
@@ -228,7 +230,7 @@ intptr_t CALLBACK InterfaceDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARA
 			char buffer[200];
 			int value = 0;
 			CenterWindow(hDlg);
-			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
+			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI));
 			SendMessage(hDlg, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrush = CreateSolidBrush(RGB(240, 240, 240));
 			DisableVisualStylesInterface(hDlg);
@@ -443,7 +445,7 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 		case WM_INITDIALOG:
 		{
 			CenterWindow(hDlg);
-			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
+			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI));
 			SendMessage(hDlg, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrush = CreateSolidBrush(RGB(240, 240, 240));
 			DisableVisualStylesFilters(hDlg);
@@ -458,7 +460,7 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 				winui_set_window_text_utf8(GetDlgItem(hDlg, IDC_FILTER_EDIT), g_FilterText);
 				Edit_SetSel(GetDlgItem(hDlg, IDC_FILTER_EDIT), 0, -1);
 				// Mask out non filter flags
-				dwFilters = folder->m_dwFlags & F_MASK;
+				dwFilters = folder->m_dwFlags & FI_MASK;
 				// Display current folder name in dialog titlebar
 				snprintf(tmp, std::size(tmp), "Filters for %s folder", folder->m_lpTitle);
 				winui_set_window_text_utf8(hDlg, tmp);
@@ -473,10 +475,10 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 						char strText[24];
 						/* Check the Parent Filters and inherit them on child,
 						* No need to promote all games to parent folder, works as is */
-						dwpFilters = lpParent->m_dwFlags & F_MASK;
+						dwpFilters = lpParent->m_dwFlags & FI_MASK;
 						/*Check all possible Filters if inherited solely from parent, e.g. not being set explicitly on our folder*/
 
-						if ((dwpFilters & F_CLONES) && !(dwFilters & F_CLONES))
+						if ((dwpFilters & FI_CLONES) && !(dwFilters & FI_CLONES))
 						{
 							/*Add a Specifier to the Checkbox to show it was inherited from the parent*/
 							winui_get_window_text_utf8(GetDlgItem(hDlg, IDC_FILTER_CLONES), strText, 20);
@@ -485,7 +487,7 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 							bShowExplanation = true;
 						}
 
-						if ((dwpFilters & F_NONWORKING) && !(dwFilters & F_NONWORKING))
+						if ((dwpFilters & FI_NW) && !(dwFilters & FI_NW))
 						{
 							/*Add a Specifier to the Checkbox to show it was inherited from the parent*/
 							winui_get_window_text_utf8(GetDlgItem(hDlg, IDC_FILTER_NONWORKING), strText, 20);
@@ -494,7 +496,7 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 							bShowExplanation = true;
 						}
 
-						if ((dwpFilters & F_UNAVAILABLE) && !(dwFilters & F_UNAVAILABLE))
+						if ((dwpFilters & FI_UNAVAIL) && !(dwFilters & FI_UNAVAIL))
 						{
 							/*Add a Specifier to the Checkbox to show it was inherited from the parent*/
 							winui_get_window_text_utf8(GetDlgItem(hDlg, IDC_FILTER_UNAVAILABLE), strText, 20);
@@ -503,7 +505,7 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 							bShowExplanation = true;
 						}
 
-						if ((dwpFilters & F_VECTOR) && !(dwFilters & F_VECTOR))
+						if ((dwpFilters & FI_VECTOR) && !(dwFilters & FI_VECTOR))
 						{
 							/*Add a Specifier to the Checkbox to show it was inherited from the parent*/
 							winui_get_window_text_utf8(GetDlgItem(hDlg, IDC_FILTER_VECTOR), strText, 20);
@@ -512,7 +514,7 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 							bShowExplanation = true;
 						}
 
-						if ((dwpFilters & F_RASTER) && !(dwFilters & F_RASTER))
+						if ((dwpFilters & FI_RASTER) && !(dwFilters & FI_RASTER))
 						{
 							/*Add a Specifier to the Checkbox to show it was inherited from the parent*/
 							winui_get_window_text_utf8(GetDlgItem(hDlg, IDC_FILTER_RASTER), strText, 20);
@@ -521,7 +523,7 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 							bShowExplanation = true;
 						}
 
-						if ((dwpFilters & F_ORIGINALS) && !(dwFilters & F_ORIGINALS))
+						if ((dwpFilters & FI_PARENTS) && !(dwFilters & FI_PARENTS))
 						{
 							/*Add a Specifier to the Checkbox to show it was inherited from the parent*/
 							winui_get_window_text_utf8(GetDlgItem(hDlg, IDC_FILTER_ORIGINALS), strText, 20);
@@ -530,7 +532,7 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 							bShowExplanation = true;
 						}
 
-						if ((dwpFilters & F_WORKING) && !(dwFilters & F_WORKING))
+						if ((dwpFilters & FI_W) && !(dwFilters & FI_W))
 						{
 							/*Add a Specifier to the Checkbox to show it was inherited from the parent*/
 							winui_get_window_text_utf8(GetDlgItem(hDlg, IDC_FILTER_WORKING), strText, 20);
@@ -539,7 +541,7 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 							bShowExplanation = true;
 						}
 
-						if ((dwpFilters & F_AVAILABLE) && !(dwFilters & F_AVAILABLE))
+						if ((dwpFilters & FI_AVAIL) && !(dwFilters & FI_AVAIL))
 						{
 							/*Add a Specifier to the Checkbox to show it was inherited from the parent*/
 							winui_get_window_text_utf8(GetDlgItem(hDlg, IDC_FILTER_AVAILABLE), strText, 20);
@@ -548,7 +550,7 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 							bShowExplanation = true;
 						}
 
-						if ((dwpFilters & F_HORIZONTAL) && !(dwFilters & F_HORIZONTAL))
+						if ((dwpFilters & FI_HORI) && !(dwFilters & FI_HORI))
 						{
 							/*Add a Specifier to the Checkbox to show it was inherited from the parent*/
 							winui_get_window_text_utf8(GetDlgItem(hDlg, IDC_FILTER_HORIZONTAL), strText, 20);
@@ -557,7 +559,7 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 							bShowExplanation = true;
 						}
 
-						if ((dwpFilters & F_VERTICAL) && !(dwFilters & F_VERTICAL))
+						if ((dwpFilters & FI_VERT) && !(dwFilters & FI_VERT))
 						{
 							/*Add a Specifier to the Checkbox to show it was inherited from the parent*/
 							winui_get_window_text_utf8(GetDlgItem(hDlg, IDC_FILTER_VERTICAL), strText, 20);
@@ -626,7 +628,7 @@ intptr_t CALLBACK FilterDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM l
 					// Mask out invalid filters
 					dwFilters = ValidateFilters(lpFilterRecord, dwFilters);
 					// Keep non filter flags
-					folder->m_dwFlags &= ~F_MASK;
+					folder->m_dwFlags &= ~FI_MASK;
 					// put in the set filters
 					folder->m_dwFlags |= dwFilters;
 					DestroyIcon(hIcon);
@@ -753,7 +755,7 @@ intptr_t CALLBACK AddCustomFileDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, L
 		case WM_INITDIALOG:
 		{
 			CenterWindow(hDlg);
-			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI_ICON));
+			hIcon = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(IDI_MAMEUI));
 			SendMessage(hDlg, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 			hBrush = CreateSolidBrush(RGB(240, 240, 240));
 
@@ -777,7 +779,7 @@ intptr_t CALLBACK AddCustomFileDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, L
 			// insert custom folders into our tree view
 			for (int i = 0; i < num_folders; i++)
 			{
-				if (folders[i]->m_dwFlags & F_CUSTOM)
+				if (folders[i]->m_dwFlags & FI_CUSTOM)
 				{
 					HTREEITEM hti;
 

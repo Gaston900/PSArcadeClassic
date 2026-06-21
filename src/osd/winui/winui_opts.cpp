@@ -2024,7 +2024,7 @@ DWORD GetFolderFlags(int folder_index)
 	LPTREEFOLDER lpFolder = GetFolder(folder_index);
 
 	if (lpFolder)
-		return lpFolder->m_dwFlags & F_MASK;
+		return lpFolder->m_dwFlags & FI_MASK;
 
 	return 0;
 }
@@ -2036,7 +2036,7 @@ static DWORD DecodeFolderFlags(const char *buf)
 	int shift = 0;
 	const char *ptr = buf;
 
-	while (*ptr && (1 << shift) & F_MASK)
+	while (*ptr && (1 << shift) & FI_MASK)
 	{
 		if (*ptr++ == '1')
 			flags |= (1 << shift);
@@ -2055,7 +2055,7 @@ static const char * EncodeFolderFlags(DWORD value)
 
 	memset(&buf, 0, sizeof(buf));
 
-	while ((1 << shift) & F_MASK) 
+	while ((1 << shift) & FI_MASK) 
 	{
 		buf[shift] = (value & (1 << shift)) ? '1' : '0';
 		shift++;
@@ -2133,7 +2133,7 @@ void LoadFolderFlags(void)
 			const char *value = opts.value(option_name.c_str());
 
 			if (value)
-				lpFolder->m_dwFlags |= DecodeFolderFlags(value) & F_MASK;
+				lpFolder->m_dwFlags |= DecodeFolderFlags(value) & FI_MASK;
 		}
 	}
 }
@@ -2159,7 +2159,7 @@ static void AddFolderFlags(winui_options &opts)
 	{
 		LPTREEFOLDER lpFolder = GetFolder(i);
 
-		if (lpFolder && (lpFolder->m_dwFlags & F_MASK) != 0)
+		if (lpFolder && (lpFolder->m_dwFlags & FI_MASK) != 0)
 		{
 			// Convert spaces and dashes to underscores or core will crash badly
 			strcpy(folder_name, lpFolder->m_lpTitle);

@@ -310,24 +310,24 @@ void cps2_state::cps2turbo(machine_config &config)
  *  ROM definitions
  *********************/
 
-ROM_START( sfz3mix ) // 0.31
+ROM_START( sfz3mix ) // 0.32
 	ROM_REGION( 0x600000, "maincpu", 0 )
-	ROM_LOAD( "sfz3mix.03", 0x000000, 0x600000, CRC(94c8f969) SHA1(25c14dae5958723481e03dbddb7617ec481a55d5) ) // 03
+	ROM_LOAD( "sfz3mix.p1", 0x000000, 0x600000, CRC(7a968da6) SHA1(5656ff21d6b23f8eab21e9d7e222461ceefed69e) ) // 03
 
 	ROM_REGION( 0x4000000, "gfx", 0 )
-	ROM_LOAD( "sfz3mix.13m", 0x0000000, 0x2000000, CRC(59025f91) SHA1(9e8ebbbf909f74cd857a0876fc42087a243d1b23) ) // 13m
-	ROM_LOAD( "sfz3mix.21m", 0x2000000, 0x2000000, CRC(914c7031) SHA1(7b7ce04e563ef23f6f9454f268a968b9114ac729) ) // 21m
+	ROM_LOAD( "sfz3mix.c1", 0x0000000, 0x2000000, CRC(5389b651) SHA1(6032a925a0f37773fb26a1800d568dde0ea3082e) ) // 13m
+	ROM_LOAD( "sfz3mix.c2", 0x2000000, 0x2000000, CRC(914c7031) SHA1(7b7ce04e563ef23f6f9454f268a968b9114ac729) ) // 21m
 
 	ROM_REGION( 0x80000, "audiocpu", 0 )
-	ROM_LOAD( "sfz3mix.01", 0x000000, 0x080000, CRC(52f98a5c) SHA1(5e1251b85d0bfb707b3e519aeb3a716893191a20) ) // 01
+	ROM_LOAD( "sfz3mix.m1", 0x000000, 0x080000, CRC(52f98a5c) SHA1(5e1251b85d0bfb707b3e519aeb3a716893191a20) ) // 01
 
 	ROM_REGION( 0x1000000, "qsound", 0 )
-	ROM_LOAD( "sfz3mix.11m",   0x000000, 0x1000000, CRC(395edce2) SHA1(0f6a4be84ed1e1a13319a480b41c1f35b36f35fc) ) // 11m
+	ROM_LOAD( "sfz3mix.q1",   0x000000, 0x1000000, CRC(395edce2) SHA1(0f6a4be84ed1e1a13319a480b41c1f35b36f35fc) ) // 11m
 ROM_END
 
 /*    YEAR  NAME          PARENT       MACHINE         INPUT                  INIT        MONITOR   COMPANY       FULLNAME FLAGS */
 // CPS2 Hack
-GAME( 2024, sfz3mix,    sfa3,         cps2turbo,    cps2_2p6b, cps2_state, init_sfz3mix,  ROT0,   "Zero800",     "Street Fighter Zero 3 (Turbo Mix 0.31)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, sfz3mix,    sfa3,         cps2turbo,    cps2_2p6b, cps2_state, init_sfz3mix,  ROT0,   "Zero800",     "Street Fighter Zero 3 (Turbo Mix 0.32)", MACHINE_SUPPORTS_SAVE )
 
 /******
   Hack
@@ -1161,18 +1161,18 @@ ROM_START( hsf2hc07 ) //hsf2pp
 	ROM_LOAD16_WORD_SWAP( "hs2.11m",   0x000000, 0x800000, CRC(0e15c359) SHA1(176108b0d76d821a849324680aba0cd04b5016c1) )
 ROM_END
 
-ROM_START( hsf2hc08 ) // v0.75 - press 9 to insert coin
+ROM_START( hsf2hc08 ) // v0.76 - press 9 to insert coin
 	ROM_REGION( CODE_SIZE, "maincpu", ROMREGION_ERASEFF )
-	ROM_LOAD16_WORD_SWAP( "hs2_hc08.03", 0x000000, 0x80000, CRC(09ea5a36) SHA1(c675b15e9fef8ca6f35e41427ef4e76256e9e2b4) )
-	ROM_LOAD16_WORD_SWAP( "hs2_hc08.04", 0x080000, 0x80000, CRC(1026450d) SHA1(5959ce6a68e9c96cf832edeefd2db8ef972453cc) )
-	ROM_LOAD16_WORD_SWAP( "hs2_hc08.05", 0x100000, 0x80000, CRC(8ca9aea2) SHA1(c8f97b77e80837bc98a5d111c98fc2923d1a3526) )
-	ROM_LOAD16_WORD_SWAP( "hs2_hc08.06", 0x180000, 0x80000, CRC(d98b2845) SHA1(280238f24f62c323e893f84aeb35db07c93fbfa0) )
+	ROM_LOAD16_WORD_SWAP( "hs2_hc08.03", 0x000000, 0x80000, CRC(15d842d7) SHA1(3612e66e48d3e9c06329bd0c59bcfcee9e5d68d1) ) // 03
+	ROM_LOAD16_WORD_SWAP( "hs2_hc08.04", 0x080000, 0x80000, CRC(c090a588) SHA1(77ad429492abedeb2326c1c294af3482b787ce0c) ) // 04
+	ROM_LOAD16_WORD_SWAP( "hs2_hc08.05", 0x100000, 0x80000, CRC(649b93b8) SHA1(e1b4c4f4f4989171680cb0929f204ec0782660fa) ) // 05
+	ROM_LOAD16_WORD_SWAP( "hs2_hc08.06", 0x180000, 0x80000, CRC(1415bd69) SHA1(67c07213dfdc3797fa0ae34d7e600d8c2910effd) ) // 06
 
 	ROM_REGION( 0x2000000, "gfx", 0 )
-	ROM_LOAD64_WORD( "hs2_hc08.13m",   0x0000000, 0x800000, CRC(3d879969) SHA1(aba1963adf3f62f9f9bc4d2c509eaf89e4ab7b71) )
-	ROM_LOAD64_WORD( "hs2_hc08.15m",   0x0000002, 0x800000, CRC(7a3e7cb8) SHA1(662ecc236e2d1325e4ab83d27a619be4afe2ceb7) )
-	ROM_LOAD64_WORD( "hs2_hc08.17m",   0x0000004, 0x800000, CRC(e70dfa71) SHA1(94bd758a7754bdd0e79d83e0be33a096229d8d03) )
-	ROM_LOAD64_WORD( "hs2_hc08.19m",   0x0000006, 0x800000, CRC(cd60ab90) SHA1(a15d32dfbd5950675e982f7fc9c4af3ac367ee7f) )
+	ROM_LOAD64_WORD( "hs2_hc08.13m",   0x0000000, 0x800000, CRC(08c39c6b) SHA1(945165e4bb99e53232005b3e08306d95ba78bb8a) ) // 13m
+	ROM_LOAD64_WORD( "hs2_hc08.15m",   0x0000002, 0x800000, CRC(d548d25b) SHA1(c36a39e73cf0cf95dc15cd273b86ae9ac6f5b4ce) ) // 15m
+	ROM_LOAD64_WORD( "hs2_hc08.17m",   0x0000004, 0x800000, CRC(1a3e09f0) SHA1(433b32fc7a2a397622bfa45bf04b0ea85918a97e) ) // 17m
+	ROM_LOAD64_WORD( "hs2_hc08.19m",   0x0000006, 0x800000, CRC(0c5b2173) SHA1(2ff843be4c4ad9b32e9f382136af50b5fbed1e4b) ) // 19m
 
 	ROM_REGION( QSOUND_SIZE, "audiocpu", 0 )
 	ROM_LOAD( "hs2_hc08.01",   0x00000, 0x08000, CRC(6ce233a7) SHA1(5ff00de2fa8f31e66c9518049828d532554cb316) )
@@ -1180,7 +1180,7 @@ ROM_START( hsf2hc08 ) // v0.75 - press 9 to insert coin
 	ROM_LOAD( "hs2_hc08.02",   0x28000, 0x20000, CRC(2d8794aa) SHA1(c634affdc2568020cce6af97b4fa79925d9943f3) )
 
 	ROM_REGION( 0x800000, "qsound", 0 )
-	ROM_LOAD16_WORD_SWAP( "hs2_hc08.11m",   0x000000, 0x800000, CRC(cd8b2d9f) SHA1(bc4965b1cb6c211cdcf29ab5988702abd82effbc) )
+	ROM_LOAD16_WORD_SWAP( "hs2_hc08.11m",   0x000000, 0x800000, CRC(a940d07c) SHA1(0d9ec67e362bea71ee71ae5e85468b8a81fd43fd) )
 ROM_END
 
 ROM_START( hsf2hc09 )
@@ -3082,7 +3082,7 @@ GAME( 2004, hsf2hc04,    hsf2,         cps2,         cps2_2p6b, cps2_state, init
 GAME( 2024, hsf2hc05,    hsf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Hyper Street Fighter II: The Anniversary Edition (Difficulty Fix)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, hsf2hc06,    hsf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Hyper Street Fighter II: The Anniversary Edition (30% Blood)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, hsf2hc07,    hsf2,         dead_cps2,    cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Hyper Street Fighter II: The Anniversary Edition (Plus Plus 2017-06-25)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, hsf2hc08,    hsf2,         dead_cps2,    cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Zero800",     "Street Fighter II': Prime (v0.75)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, hsf2hc08,    hsf2,         dead_cps2,    cps2_2p6b, cps2_state, init_cps2,     ROT0,   "Zero800",     "Street Fighter II': Prime (v0.76)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, hsf2hc09,    hsf2,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "DDJ",         "Hyper Street Fighter II: The Anniversary Edition (Level Plus)", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, mvschc01,    mvsc,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "DDJ",         "Marvel Vs. Capcom: Clash of Super Heroes (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, mvschc02,    mvsc,         cps2,         cps2_2p6b, cps2_state, init_cps2,     ROT0,   "hack",        "Marvel Vs. Capcom: Clash of Super Heroes (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )

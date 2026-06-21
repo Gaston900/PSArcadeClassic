@@ -460,6 +460,26 @@ ROM_START( breakrevhc04 )
 	ROM_LOAD16_BYTE( "245.c6", 0x1000001, 0x400000, CRC(d0337328) SHA1(dff86b75dc283bd4512557a5c64f16e6be6c16e4) )
 ROM_END
 
+ROM_START( crswd2blhc01 ) // crswd2blp
+	ROM_REGION( 0x200000, "maincpu", ROMREGION_BE|ROMREGION_16BIT )
+	ROM_LOAD16_WORD_SWAP( "054_hc01.p1", 0x100000, 0x100000, CRC(aa14d534) SHA1(1683a63e749d48d56f71c515c1aa12e93102ba9a) )
+	ROM_CONTINUE( 0x000000, 0x100000 )
+
+	NEO_SFIX_128K( "054.s1", CRC(22e02ddd) SHA1(ebd834affc763cc5854abf1c6c42f43f3f3755fd) )
+
+	NEO_BIOS_AUDIO_128K( "054_hc01.m1", CRC(53412b7a) SHA1(75031a28adf537c9f7c5370337cb4936df89f683) )
+
+	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "054_hc01.v1", 0x000000, 0x400000, CRC(72364102) SHA1(047d64e16c0a2ce4800454d1237a46fbc85c538c) )
+	ROM_LOAD( "054_hc01.v2", 0x400000, 0x400000, CRC(501d65cc) SHA1(a9c80ae8d0ff7fb9f7a10e2efe09a78146902376) )
+	ROM_LOAD( "054_hc01.v3", 0x800000, 0x400000, CRC(913be857) SHA1(f50cb3552730a363a2936d691ee0e93a1e56a9ac) )
+	ROM_LOAD( "054_hc01.v4", 0xc00000, 0x400000, CRC(278220ce) SHA1(0d4b1f1eafae89439f7c85839c97b033724fdb5e) )
+
+	ROM_REGION( 0x800000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "054.c1", 0x000000, 0x400000, CRC(8221b712) SHA1(7e68871f1bfc402ef27c8fa088c680cbd133f71a) )
+	ROM_LOAD16_BYTE( "054.c2", 0x000001, 0x400000, CRC(d6c6183d) SHA1(cc546ff063fae2c01c109fabcd5b2d29ec3299db) )
+ROM_END
+
 ROM_START( cyberliphc01 )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "010_hc01.p1", 0x000000, 0x080000, CRC(a8a8116f) SHA1(dca925304e007c4c55364fecb4611d503fcb070a) )
@@ -897,6 +917,25 @@ ROM_START( flipshothc01 )
 	ROM_LOAD16_BYTE( "247_hc01.c2",  0x000001, 0x200000, CRC(648cdd5d) SHA1(8a0aaf13e2539e48f9b0b18f8154aa50bf4bed2a) )
 ROM_END
 
+ROM_START( fr2hc01 ) // froman2bp
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "098_hc01.p1", 0x000000, 0x80000, CRC(e86a3e80) SHA1(4359534ae00d5913c5166a66a801e74fe0ef8144) )
+
+	NEO_SFIX_128K( "098.s1", CRC(0e6a7c73) SHA1(31b1194524dcc80ec4d63bac088b6fb4909f496c) )
+
+	NEO_BIOS_AUDIO_128K( "098_hc01.m1", CRC(bdbb0c2c) SHA1(ef7cc6ebe66fca66080fa6e369afe1514f931728) )
+
+	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "098_hc01.v1", 0x000000, 0x400000, CRC(208dfae9) SHA1(1952e0d68496f4cbe808a87284362fae5c67e67f) )
+	ROM_LOAD( "098_hc01.v2", 0x400000, 0x400000, CRC(ab9ca778) SHA1(f140c4e03d597217a79555d10b14bd46363b6b17) )
+	ROM_LOAD( "098_hc01.v3", 0x800000, 0x400000, CRC(b37b0e7b) SHA1(432da007c1951a4c33bc2df54f37eda705b0a233) )
+	ROM_LOAD( "098_hc01.v4", 0xc00000, 0x400000, CRC(cd7c9929) SHA1(9b2163c00a47aa1f77ba1011b9c005411bddcb88) )
+
+	ROM_REGION( 0x800000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "098.c1", 0x0000000, 0x400000, CRC(29148bf7) SHA1(75097fbe8877720afbcbe4dbe30bc600466d759f) )
+	ROM_LOAD16_BYTE( "098.c2", 0x0000001, 0x400000, CRC(226b1263) SHA1(dee6a4a0a727c1d8a6d298cb38ed1b9901992d5b) )
+ROM_END
+
 ROM_START( galaxyfghc01 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "078_hc01.p1", 0x100000, 0x100000, CRC(bbfffa22) SHA1(6bde48477f67241dce30107f84c38a8d0c34a81f) )
@@ -1176,6 +1215,34 @@ ROM_START( gpilotshc01 )
 	ROM_LOAD16_BYTE( "020.c2", 0x000001, 0x100000, CRC(5f4a925c) SHA1(71c5ef8141234daaa7025427a6c65e79766973a5) )
 	ROM_LOAD16_BYTE( "020.c3", 0x200000, 0x100000, CRC(d1e42fd0) SHA1(f0d476aebbdc2ce008f5f0783be86d295b24aa44) )
 	ROM_LOAD16_BYTE( "020.c4", 0x200001, 0x100000, CRC(edde439b) SHA1(79be7b10ecdab54c2f77062b8f5fda0e299fa982) )
+ROM_END
+
+ROM_START( irrmazehc01 ) // standard joystick
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "236_hc01.p1", 0x100000, 0x100000, CRC(7235a222) SHA1(2270e0d53646f957de569466cd49fab2983e5b71) )
+	ROM_CONTINUE( 0x000000, 0x100000 )
+
+	NEO_SFIX_128K( "236.s1", CRC(5d1ca640) SHA1(40a9668a1742a44597a07ce72273d17119815637) )
+
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
+	// special BIOS with trackball support, we only have one Irritating Maze bios and that's Asian
+	ROM_SYSTEM_BIOS( 0, "asia-sp1", "Asia MV1B 263" )
+	ROM_LOAD16_WORD_SWAP_BIOS( 0, "236-bios.sp1", 0x00000, 0x020000, CRC(853e6b96) SHA1(de369cb4a7df147b55168fa7aaf0b98c753b735e) )
+	ROM_SYSTEM_BIOS( 1, "japan", "Japan (hack?)" ) // from a 'refurbished' Japanese cabinet, had label of the arcade distributor rather than original sticker however, and looks like a hack of above Asia ROM
+	ROM_LOAD16_WORD_SWAP_BIOS( 1, "236-bios_japan_hack.sp1", 0x00000, 0x020000, CRC(02bf4426) SHA1(f4aa64bfe0b93e5df07b4fe2e0f638d91c7f2e71) )
+	// Universe BIOS 2.2 and later allow joystick play as a cheat
+	NEOGEO_UNIBIOS(2)
+	ROM_REGION( 0x30000, "audiocpu", 0 )
+	ROM_LOAD( "236.m1", 0x00000, 0x20000, CRC(880a1abd) SHA1(905afa157aba700e798243b842792e50729b19a0) )
+	ROM_RELOAD( 0x10000, 0x20000 )
+
+	ROM_REGION( 0x300000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "236.v1", 0x000000, 0x200000, CRC(5f89c3b4) SHA1(dc8fd561cf8dfdd41696dcf14ea8d2d0ac4eec4b) )
+	ROM_LOAD( "236.v2", 0x200000, 0x100000, CRC(72e3add7) SHA1(dc49f05274693255416d2e41ecc088027b798eb9) )
+
+	ROM_REGION( 0x0800000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "236.c1", 0x000000, 0x400000, CRC(c1d47902) SHA1(727001c34f979226fc8f581113ce2aaac4fc0d42) )
+	ROM_LOAD16_BYTE( "236.c2", 0x000001, 0x400000, CRC(e15f972e) SHA1(6a329559c57a67be73a6733513b59e9e6c8d61cc) )
 ROM_END
 
 ROM_START( kabukiklhc01 ) 
@@ -12249,22 +12316,22 @@ ROM_END
 
 ROM_START( turfmasthc02 ) // replace Australia with Scotland
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "200_hc02.p1", 0x100000, 0x100000, CRC(6361a52f) SHA1(0f7002cc8e9c2f170429e7d2d00a9dbfd20f2e16) )
+	ROM_LOAD16_WORD_SWAP( "200_hc02.p1", 0x100000, 0x100000, CRC(c1c9751c) SHA1(83e0b26688499a8e06b9df868b9a830bd14051e6) )
 	ROM_CONTINUE( 0x000000, 0x100000)
 
 	NEO_SFIX_128K( "200.s1", CRC(9a5402b2) SHA1(ae1a0b5450869d61b2bb23671c744d3dda8769c4) )
 
-	NEO_BIOS_AUDIO_128K( "200_hc02.m1", CRC(c6a6c686) SHA1(b7b9dff4575e5b17d6965aa52f4d32984937ad53) )
+	NEO_BIOS_AUDIO_128K( "200_hc02.m1", CRC(932b54e8) SHA1(f8f6082366f5214c140c7435d45e62ea4c0502e5) )
 
 	ROM_REGION( 0x800000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "200.v1", 0x000000, 0x200000, CRC(00fd48d2) SHA1(ddfee09328632e598fd51537b3ae8593219b2111) )
-	ROM_LOAD( "200_hc02.v2", 0x200000, 0x200000, CRC(caf341a8) SHA1(f0a3e83c300a6b09ac2cd61b6e639c06d1e9bf88) )
+	ROM_LOAD( "200_hc02.v2", 0x200000, 0x200000, CRC(8be97582) SHA1(db7c504c00503ed715e6c19d432f61d26128eebc) )
 	ROM_LOAD( "200.v3", 0x400000, 0x200000, CRC(7abca053) SHA1(e229bc0ea82a371d6ee8fd9fe442b0fd141d0a71) )
-	ROM_LOAD( "200.v4", 0x600000, 0x200000, CRC(6c7b4902) SHA1(d55e0f542d928a9a851133ff26763c8236cbbd4d) )
+	ROM_LOAD( "200_hc02.v4", 0x600000, 0x200000, CRC(e894954f) SHA1(438068d321c2ddee871f4bbf5aa07041320a05b6) )
 
 	ROM_REGION( 0x800000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "200_hc02.c1", 0x000000, 0x400000, CRC(5fccd812) SHA1(5311e7fb9f991db08451a645a9ba4ad5530efc5f) )
-	ROM_LOAD16_BYTE( "200_hc02.c2", 0x000001, 0x400000, CRC(5f589076) SHA1(a43de326c1059ea101b23e933a02edcf77eb66ac) )
+	ROM_LOAD16_BYTE( "200_hc02.c1", 0x000000, 0x400000, CRC(bb2a69a7) SHA1(cc886b2e07f2a6118928ecea446f4fb6690a28ce) )
+	ROM_LOAD16_BYTE( "200_hc02.c2", 0x000001, 0x400000, CRC(443e13c5) SHA1(d36926328405447ae8d93b4b4ac84215a1cd145f) )
 ROM_END
 
 ROM_START( twinsprihc01 )
@@ -12777,6 +12844,7 @@ GAME( 1998, breakrevhc01,     breakrev, neogeo_neobase,  neogeo, neogeo_state,  
 GAME( 2018, breakrevhc02,     breakrev, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Breakers Revenge (Extra Mode 2018)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, breakrevhc03,     breakrev, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Breakers Revenge (Infinite Energy 2024-12-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, breakrevhc04,     breakrev, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Breakers Revenge (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, crswd2blhc01,     crswd2bl, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Crossed Swords 2 (bootleg of CD version, Full CD Audio)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, cyberliphc01,     cyberlip, neogeo_cyberlip, neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Cyber-Lip (Change Weapon)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, doubledrhc01,     doubledr, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Double Dragon (Chinese Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 2009, doubledrhc02,     doubledr, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Double Dragon (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
@@ -12796,6 +12864,7 @@ GAME( 1995, fatfury3hc01,     fatfury3, neogeo_neobase,  neogeo, neogeo_state,  
 GAME( 1994, fightfevhc01,     fightfev, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Fight Fever (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, fightfevhc02,     fightfev, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Fight Fever (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, flipshothc01,     flipshot, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Flip Shot (Translation Korean)", MACHINE_SUPPORTS_SAVE )
+GAME( 1995, fr2hc01,          fr2,      neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Idol Mahjong Final Romance 2 (bootleg of CD version, Full CD Audio)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, galaxyfghc01,     galaxyfg, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "Yumeji",       "Galaxy Fight - Universal Warriors (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, galaxyfghc02,     galaxyfg, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "Yumeji",       "Galaxy Fight - Universal Warriors (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, garouhc01,        garou,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Garou - Mark of the Wolves (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
@@ -12807,6 +12876,7 @@ GAME( 1995, gowcaizrhc01,     gowcaizr, neogeo_neo304h,  neogeo, neogeo_state,  
 GAME( 2025, gowcaizrhc02,     gowcaizr, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "jlima",        "Voltage Fighter - Gowcaizer / Choujin Gakuen Gowcaizer (Eternal 2025-04-19)", MACHINE_SUPPORTS_SAVE)
 GAME( 1995, gowcaizrhc03,     gowcaizr, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Voltage Fighter - Gowcaizer / Choujin Gakuen Gowcaizer (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 2014, gpilotshc01,      gpilots,  neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Ghost Pilots (Infinite Bomb 2014-10-24)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, irrmazehc01,      irrmaze,  neogeo_neo304h,  irrmaze,neogeo_state,    init_neogeo,   ROT0, "hack",         "The Irritating Maze / Ultra Denryu Iraira Bou (Standard Joystick)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, kabukiklhc01,     kabukikl, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Far East of Eden - Kabuki Klash / Tengai Makyou - Shin Den (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, kabukiklhc02,     kabukikl, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Far East of Eden - Kabuki Klash / Tengai Makyou - Shin Den (Infinite Energy 2023-03-22)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, kabukiklhc03,     kabukikl, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Far East of Eden - Kabuki Klash / Tengai Makyou - Shin Den (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
@@ -13231,7 +13301,7 @@ GAME( 2024, svchc01,          svc,      neogeo_multiboot,neogeo, neogeo_state,  
 GAME( 2003, svchc02,          svc,      neogeo_multiboot,neogeo, neogeo_state,    init_svc,      ROT0, "DDJ",          "SNK vs. Capcom - SVC Chaos Super Plus (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, tophuntrhc01,     tophuntr, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Top Hunter - Roddy & Cathy (Korean Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, turfmasthc01,     turfmast, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "StiNKz",       "Neo Turf Masters / Big Tournament Golf (Course And Pin Randomiser v0.1)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, turfmasthc02,     turfmast, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "Deric Miller", "Neo Turf Masters / Big Tournament Golf (With Scotland course)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, turfmasthc02,     turfmast, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "Deric Miller", "Neo Turf Masters / Big Tournament Golf (With Scotland course v1.08)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, twinsprihc01,     twinspri, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Twinkle Star Sprites (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, viewpoinhc01,     viewpoin, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "Shyma.X",      "Viewpoint (French Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, viewpoinhc02,     viewpoin, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Viewpoint (Infinite Bomb)", MACHINE_SUPPORTS_SAVE )
@@ -13252,5 +13322,5 @@ GAME( 2023, whphc01,          whp,      neogeo_neobase,  neogeo, neogeo_state,  
 GAME( 1995, whphc02,          whp,      neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "World Heroes Perfect (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, whphc03,          whp,      neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "World Heroes Perfect (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, whphc04,          whp,      neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "World Heroes Perfect (Switchable Character)", MACHINE_SUPPORTS_SAVE )
-GAME( 2009, zintrckbhc01,     zintrckb, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Zintrick / Oshidashi Zentrix (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, zintrckbhc02,     zintrckb, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "pierpa86",     "ZinTricK / Oshidashi Zentrix (Music Tracks)", MACHINE_SUPPORTS_SAVE )
+GAME( 2009, zintrckbhc01,     zintrckb, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Zintrick / Oshidashi Zentrix (bootleg of CD version, Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, zintrckbhc02,     zintrckb, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "ZinTricK / Oshidashi Zentrix (bootleg of CD version, Full CD Audio)", MACHINE_SUPPORTS_SAVE )

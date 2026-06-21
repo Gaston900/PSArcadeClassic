@@ -164,6 +164,19 @@ ROM_START( ibarablkcs )
 	ROM_LOAD16_WORD_SWAP( "u24", 0x400000, 0x400000, CRC(d11ab6b6) SHA1(2132191cbe847e2560423e4545c969f21f8ff825) )
 ROM_END
 
+ROM_START( msmatsuri )
+	ROM_REGION( 0x400000, "maincpu", ROMREGION_ERASEFF)
+	ROM_LOAD16_WORD_SWAP("u4", 0x000000, 0x200000, CRC(6af99f0e) SHA1(e91b3a7c329a9ce66687b48a9f2e1a8ea7282cd5) ) // (2011/5/23 CAVEMATSURI VER1.5)
+	ROM_RELOAD(0x200000,0x200000)
+
+	ROM_REGION( 0x8400000, "game", ROMREGION_ERASEFF)
+	ROM_LOAD("u2", 0x000000, 0x8400000, CRC(fbc6f3c1) SHA1(9967c56121a2886261026665d9f64978f2cb4dda) )
+
+	ROM_REGION( 0x800000, "ymz770", ROMREGION_ERASEFF)
+	ROM_LOAD16_WORD_SWAP("u23", 0x000000, 0x400000, CRC(6dff634f) SHA1(781042316fae904657326189b3b46e49a46ba675) )
+	ROM_LOAD16_WORD_SWAP("u24", 0x400000, 0x400000, CRC(f228b801) SHA1(b9dd2a7462ccad4b20b8cd7eaefcdfd881dd413f) )
+ROM_END
+
 /*    YEAR  NAME         PARENT  MACHINE   INPUT   CLASS        INIT      MONITOR COMPANY         FULLNAME FLAGS */
 /* Cv1k Hack */
 GAME( 2010, akatana,     0,        cv1k_d, cv1k, cv1k_state, init_ddpdfk,   ROT0,   "Cave",       "Akai Katana (2010-08-13 MASTER VER.)", MACHINE_SUPPORTS_SAVE )
@@ -178,4 +191,5 @@ GAME( 2006, ibarablkcs,  ibarablk, cv1k,   cv1ks,cv1k_state, init_pinkswts, ROT2
 GAME( 2022, futari15bc,  futari15, cv1k,   cv1k, cv1k_state, init_pinkswts, ROT270, "ArcCabView", "Mushihime-Sama Futari Ver 1.5 (2006-12-08.MASTER VER. 1.54. BLK COLOR)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, futariblc,   futaribl, cv1k,   cv1k, cv1k_state, init_pinkswts, ROT270, "ArcCabView", "Mushihime-Sama Futari Black Label - Another Ver (2009-11-27 INTERNATIONAL BL - ORIG COLOR)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, futaribljc,  futaribl, cv1k,   cv1k, cv1k_state, init_pinkswts, ROT270, "ArcCabView", "Mushihime-Sama Futari Black Label (2007-12-11 BLACK LABEL VER - ORIG COLOR)", MACHINE_SUPPORTS_SAVE )
+GAME( 2011, msmatsuri,   0,        cv1k,   cv1k, cv1k_state, init_mushisam, ROT270, "Cave (AMI license)",   "Mushihime-Sama Matsuri (Japan, 2011-05-23 CAVEMATSURI VER1.5)", MACHINE_SUPPORTS_SAVE )
 

@@ -2051,7 +2051,7 @@ void CreateCOLLECTIONFolders(int parent_index)
 	int jj;
 	int nGames = GetNumGames();
 	LPTREEFOLDER lpFolder = treeFolders[parent_index];
-    LPTREEFOLDER lpCapcom, lpPGM, lpNanco, lpTaito, lpKonami, lpSega, lpMisc, lpMidway, lpToaplan, lpNintendo, lpDataEast, lpSeta;
+    LPTREEFOLDER lpCapcom, lpPGM, lpNanco, lpTaito, lpKonami, lpSega, lpMisc, lpMidway, lpToaplan, lpNeogeo, lpNintendo, lpDataEast, lpSeta;
 
 	// no games in top level folder
 	SetAllBits(lpFolder->m_lpGameBits,FALSE);
@@ -2066,6 +2066,7 @@ void CreateCOLLECTIONFolders(int parent_index)
 	lpMisc = NewFolder("Misc", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
     lpMidway = NewFolder("Midway", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
     lpToaplan = NewFolder("Toaplan", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+    lpNeogeo = NewFolder("Neogeo", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
     lpNintendo = NewFolder("Nintendo", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
     lpDataEast = NewFolder("DataEast", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
     lpSeta = NewFolder("Seta", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
@@ -2079,6 +2080,7 @@ void CreateCOLLECTIONFolders(int parent_index)
 	AddFolder(lpMisc);
 	AddFolder(lpMidway);
 	AddFolder(lpToaplan);
+	AddFolder(lpNeogeo);	
 	AddFolder(lpNintendo);
 	AddFolder(lpDataEast);	
 	AddFolder(lpSeta);	
@@ -2614,6 +2616,11 @@ void CreateCOLLECTIONFolders(int parent_index)
 		if (!strcmp("toaplan2.cpp", s))			AddGame(lpToaplan, jj);
 		if (!strcmp("twincobr.cpp", s))			AddGame(lpToaplan, jj);
 		if (!strcmp("wardner.cpp", s))			AddGame(lpToaplan, jj);
+
+        // Neogeo
+		if (!strcmp("neogeo_noslot.cpp", s))	AddGame(lpNeogeo, jj);
+		if (!strcmp("neogeo_noslothb.cpp", s))	AddGame(lpNeogeo, jj);
+		if (!strcmp("neogeo_noslotdd.cpp", s))	AddGame(lpNeogeo, jj);
 
         // Nintendo
 		if (!strcmp("cham24.cpp", s))			AddGame(lpNintendo, jj);

@@ -15684,17 +15684,21 @@ gmaster                         // Hartung Gamemaster
 gnat10                          // GNAT System 10
 
 @source:gng.cpp
-diamond                         // (c) 1989 KH Video (NOT A CAPCOM GAME but runs on GnG hardware)
 gng                             // 9/1985 (c) 1985
 gnga                            // 9/1985 (c) 1985
-gngbl                           // bootleg
-gngblita                        // bootleg
+gngb
 gngc                            // 9/1985 (c) 1985
-gngprot                         // Capcom/Romstar Proto
 gngt                            // 9/1985 (c) 1985
+gngprot                         // Capcom/Romstar Proto
+gngbl                           // bootleg
+gngbla
+gngblita                        // bootleg
 makaimur                        // 9/1985 (c) 1985
+makaimurb
+makaimurbbl
 makaimurc                       // 9/1985 (c) 1985
 makaimurg                       // 9/1985 (c) 1985
+diamrun
 
 @source:go2000.cpp
 go2000                          // (c) 2000 SA
@@ -16447,6 +16451,7 @@ gunsmokej                       // 11/1985 (c) 1985 (Japan)
 gunsmokeu                       // 11/1985 (c) 1985 + Romstar (US)
 gunsmokeua                      // 11/1985 (c) 1985 (US)
 gunsmokeub                      // 11/1985 (c) 1985 (US)
+gunsmokeuc                      //
 gunsmokeg                       //
 
 @source:gyruss.cpp
@@ -45981,6 +45986,7 @@ ibaracs                         // hack
 futari15bc                      // hack
 futariblc                       // hack
 futaribljc                      // hack
+msmatsuri                       // Parents
 
 @source:dbz.cpp
 dbz2hc01                        // hack
@@ -46074,6 +46080,7 @@ gaous                           // hack
 xeviblk                         // hack
 xevious5                        // hack
 xeviousp                        // hack
+hyxevious                       // hack
 
 @source:galaxian.cpp
 buglaxn                         // hack
@@ -46426,6 +46433,7 @@ breakrevhc01                    // hack
 breakrevhc02                    // hack
 breakrevhc03                    // hack
 breakrevhc04                    // hack
+crswd2blhc01                    // hack
 cyberliphc01                    // hack
 doubledrhc01                    // hack
 doubledrhc02                    // hack
@@ -46445,6 +46453,7 @@ fatfury3hc01                    // hack
 fightfevhc01                    // hack
 fightfevhc02                    // hack
 flipshothc01                    // hack
+fr2hc01                         // hack
 galaxyfghc01                    // hack
 galaxyfghc02                    // hack
 garouhc01                       // hack
@@ -46456,6 +46465,7 @@ gowcaizrhc01                    // hack
 gowcaizrhc02                    // hack
 gowcaizrhc03                    // hack
 gpilotshc01                     // hack
+irrmazehc01                     // hack
 kabukiklhc01                    // hack
 kabukiklhc02                    // hack
 kabukiklhc03                    // hack

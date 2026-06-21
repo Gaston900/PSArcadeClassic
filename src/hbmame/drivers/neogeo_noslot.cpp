@@ -8468,6 +8468,7 @@ ROM_START( irrmaze ) /* MVS ONLY RELEASE */
 	ROM_LOAD16_WORD_SWAP_BIOS( 1, "236-bios_japan_hack.sp1", 0x00000, 0x020000, CRC(02bf4426) SHA1(f4aa64bfe0b93e5df07b4fe2e0f638d91c7f2e71) )
 	// Universe BIOS 2.2 and later allow joystick play as a cheat
 	NEOGEO_UNIBIOS(2)
+
 	ROM_REGION( 0x30000, "audiocpu", 0 )
 	ROM_LOAD( "236.m1", 0x00000, 0x20000, CRC(880a1abd) SHA1(905afa157aba700e798243b842792e50729b19a0) )
 	ROM_RELOAD( 0x10000, 0x20000 )
@@ -17950,6 +17951,24 @@ ROM_START( beast )
 	ROM_LOAD16_BYTE( "601.c2", 0x000001, 0x80000, CRC(9f5b9cf6) SHA1(857595fc93bfec069c8b1cf647ab9feedce56f1f) )
 ROM_END
 
+// Blue and Red Fight the Robots by Kaiju Wasp (https://kaijuwasp.itch.io)
+ROM_START( blueandr )
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "519.p1", 0x000000, 0x100000, CRC(6e4f71aa) SHA1(04f6be53c276fbdd98ddb2831e508314dd57bfdd) )
+
+	NEO_SFIX_128K( "519.s1", CRC(0d0067f5) SHA1(ed77445e94d58ed83b27480c5e939ca2c0b6a90c) )
+
+	NEO_BIOS_AUDIO_256K( "519.m1", CRC(19f32974) SHA1(4c0c11ee493f8cc12f95ac4de312544f23faf762) )
+
+	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "519.v1", 0x000000, 0x040000, CRC(7d5535dd) SHA1(96180a18b3fecfc9583a7ae36bd1aa47eafad07e) )
+	ROM_LOAD( "519.v2", 0x040000, 0xb80000, CRC(d52a3036) SHA1(0e9d6ffd643b499d55201543b35af3762a88aba2) )
+
+	ROM_REGION( 0x100000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "519.c1", 0x000000, 0x40000, CRC(79b934a5) SHA1(b2b063b97a791a9ef88530c9e8c3a2530fc53ce6) )
+	ROM_LOAD16_BYTE( "519.c2", 0x000001, 0x40000, CRC(47647e8d) SHA1(f64dce9049813626abc98d999eb48aa099dba3f8) )
+ROM_END
+
 // 416 : Block Panic DX 250101 by Blastar
 ROM_START( bpanicdx )
 	ROM_REGION( 0x100000, "maincpu", 0 )
@@ -21124,7 +21143,7 @@ GAME( 1992, wh1d,       wh1,      neogeo_neobase,  neogeo, neogeo_state,   init_
 /* SNK CD conversion */
 GAME( 1991, 2020bbcd,   2020bb,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "CD_conv", "2020 Super Baseball (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
 GAME( 1990, columnsncd, columnsn, neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Jeff Kurtz", "Columns (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
-GAME( 1995, fr2cd,      fr2,      neogeo_neo304h,  neogeo, neogeo_state,   init_fr2cd,    ROT0, "Video Systems Co.", "Idol Mahjong Final Romance 2 (CD to MVS conversion)", MACHINE_SUPPORTS_SAVE )
+GAME( 1995, fr2cd,      fr2,      neogeo_neo304h,  neogeo, neogeo_state,   init_fr2cd,    ROT0, "Video Systems Co.", "Idol Mahjong Final Romance 2 (Neo-Geo, bootleg of CD to MVS version)", MACHINE_SUPPORTS_SAVE )
 GAME( 1991, gpilotcd,   gpilots,  neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "CD_conv", "Ghost Pilots (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
 //GAME( 1996, ironcladcd, ironclad, neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "CD_conv", "Choutetsu Brikin'ger / Iron Clad (CD to MVS Conversion)", MACHINE_NOT_WORKING | MACHINE_SUPPORTS_SAVE )
 GAME( 2007, joyjoycd,   joyjoy,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "CD_conv", "Puzzled / Joy Joy Kid (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
@@ -21137,7 +21156,7 @@ GAME( 1994, strhoopcd,  strhoop,  neogeo_neo304h,  neogeo, neogeo_state,   init_
 GAME( 1990, superspycd, superspy, neogeo_neobase,  neogeo, neogeo_state,   init_neogeo,   ROT0, "CD_conv", "The Super Spy (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
 GAME( 2007, tpgolfcd,   tpgolf,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "CD_conv", "Top Player's Golf (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
 GAME( 1991, trallycd,   trally,   neogeo_neobase,  neogeo, neogeo_state,   init_neogeo,   ROT0, "CD_conv", "Thrash Rally (CD to MVS Conversion)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
-GAME( 1996, zintrkcd,   zintrckb, neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "CD_conv", "Zintrick / Oshidashi Zentrix (CD to MVS Conversion)", MACHINE_SUPPORTS_SAVE )
+GAME( 1996, zintrkcd,   zintrckb, neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "CD_conv", "Zintrick / Oshidashi Zentrix  (bootleg of CD to MVS version)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR  NAME         PARENT       MACHINE      INPUT                      INIT      MONITOR COMPANY  */
 /* SNK HomeBrew */
@@ -21152,6 +21171,7 @@ GAME( 2017, badapple,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_
 GAME( 2025, baddudesn,  neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "La Casa De Ruivo / Neo Byte Force", "Bad Dudes vs Dragonninja Burger Demo (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, bbb2,       neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Pixelheart", "Bang Bang Busters 2 - Demo (HB) ", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, beast,      neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Jeff Kurtz", "Shadow of the Beast Demo (HB)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
+GAME( 2026, blueandr,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Kaiju Wasp", "Blue And Red - Fight The Robots! (HB, v1.6 NTSC)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, bpanicdx,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Blastar", "Block Panic DX (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, bonusstage, neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Totologic", "Bonus Stage (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, cabalng,    neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "iq132", "Cabal - Neo Geo Conversion (HB)", MACHINE_SUPPORTS_SAVE )
@@ -21169,7 +21189,7 @@ GAME( 2016, didemo,     neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_
 GAME( 2025, doubled1,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "La Casa De Ruivo / Neo Byte Force", "Double Dragon One Beta (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, flapchck,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Blastar", "Flappy Chicken (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2006, ffeast,     neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Rastersoft", "Neo Frog Feast (HB)", MACHINE_SUPPORTS_SAVE )
-GAME( 1995, fr2,        neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Video Systems Co.", "Idol Mahjong Final Romance 2 (HB)", MACHINE_SUPPORTS_SAVE )
+GAME( 1995, fr2,        neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Video Systems Co.", "Idol Mahjong Final Romance 2 (Neo-Geo, bootleg of CD version) (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, foodfn,     neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "iq132", "Food Fight - Neo Geo Conversion (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, galaxiann,  neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT270, "tcdev", "Galaxians Beta 2 (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, gladmort,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Pixelheart / ChipsOnSteroids", "Gladmort (HB)", MACHINE_SUPPORTS_SAVE )

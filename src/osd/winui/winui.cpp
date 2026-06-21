@@ -176,7 +176,7 @@ struct _play_options
 
 // 缘来是你
 //============= USE_CLIST ===============>>>
-#define TSVNAME "arcade.lst"
+#define TSVNAME "PSArcadeClassic+.lst"
 #define LINEBUF_SIZE  1024
 #define NUM_COLUMNS   3
 

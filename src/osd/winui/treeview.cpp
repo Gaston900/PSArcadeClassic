@@ -155,11 +155,12 @@ static const TREEICON treeIconNames[] =
 	{ IDI_FP_SAVESTATE,    "fp-savest" },
 	{ IDI_FP_SOUND,        "fp-sound" },
 	{ IDI_FP_SOURCE,       "fp-source" },
-									   
+		   
 // 修改的 代码来源 (加斯顿90)
 /**********************************************/
-	{ IDI_FP_CONSOLE,      "fold_console" },
-	{ IDI_FP_COLLECTION,   "fold_neogeo" },
+	{ IDI_FP_CONSOLE,      "fp-cons" },
+	{ IDI_FP_COLLECTION,   "fp-col" },
+	{ IDI_FOLDER,          "fp_folder" },
 /**********************************************/
 	{ IDI_FP_STEREO,       "fp-stereo" },
 	{ IDI_FP_TRACKBALL,    "fp-track" },

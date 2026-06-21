@@ -12864,7 +12864,7 @@ GAME( 1995, fatfury3hc01,     fatfury3, neogeo_neobase,  neogeo, neogeo_state,  
 GAME( 1994, fightfevhc01,     fightfev, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Fight Fever (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, fightfevhc02,     fightfev, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Fight Fever (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, flipshothc01,     flipshot, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Flip Shot (Translation Korean)", MACHINE_SUPPORTS_SAVE )
-GAME( 1995, fr2hc01,          fr2,      neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Idol Mahjong Final Romance 2 (bootleg of CD version, Full CD Audio)", MACHINE_SUPPORTS_SAVE )
+GAME( 1995, fr2hc01,          fr2,      neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Idol Mahjong Final Romance 2 (Neo-Geo, bootleg of CD version, Full CD Audio)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, galaxyfghc01,     galaxyfg, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "Yumeji",       "Galaxy Fight - Universal Warriors (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, galaxyfghc02,     galaxyfg, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "Yumeji",       "Galaxy Fight - Universal Warriors (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 1999, garouhc01,        garou,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Garou - Mark of the Wolves (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )

@@ -1,5 +1,6 @@
 // license:BSD-3-Clause
 // For licensing and usage information, read docs/release/winui_license.txt
+
 #define ID_TOOLBAR_EDIT                 92
 #define IDI_MAMEUI                      100
 #define IDD_MAIN                        101

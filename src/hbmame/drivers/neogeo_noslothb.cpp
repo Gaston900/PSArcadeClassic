@@ -1458,32 +1458,6 @@ ROM_START( kizunahc03 )
 	ROM_LOAD16_BYTE( "059.c8", 0x1800001, 0x200000, CRC(484ce3ba) SHA1(4f21ed20ce6e2b67e2b079404599310c94f591ff) )
 ROM_END
 
-ROM_START( kof2k4sehc01 )
-	ROM_REGION( 0x500000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "365.p1", 0x000000, 0x080000, CRC(21a84084) SHA1(973e8a0bffa0e1f055803f663f81a8e03701802d) )
-	ROM_LOAD16_WORD_SWAP( "365.p2", 0x080000, 0x080000, CRC(febb484e) SHA1(4b1838795b84f22d578ad043641df0a7bf7d9774) )
-	ROM_LOAD16_WORD_SWAP( "365_hc01.p3", 0x100000, 0x400000, CRC(ed992d3d) SHA1(15d40f3c57bb52a412f6e56c957aef6481c6a4c5) )
-    KOF2002_ESSENTIALPATCH_MODS_FILL
-
-	NEO_SFIX_128K( "365.s1", CRC(a3c9b2d8) SHA1(1472d2cbd7bb73e84824ecf773924007e6117e77) )
-
-	NEO_BIOS_AUDIO_128K( "5008.m1", CRC(5a47d9ad) SHA1(0197737934653acc6c97221660d789e9914f3578) )
-
-	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
-	ROM_LOAD( "365.v1", 0x000000, 0x800000, CRC(e4ddfb3f) SHA1(eb8220ab01c16cf9244b7f3f9912bec0db561b85) )
-	ROM_LOAD( "365.v2", 0x800000, 0x800000, CRC(b887d287) SHA1(f593a5722df6f6fac023d189a739a117e976bb2f) )
-
-	ROM_REGION( 0x4000000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "365.c1", 0x0000000, 0x800000, CRC(7a050288) SHA1(55a20c5b01e11a859f096af3f8e09986025d288f) )
-	ROM_LOAD16_BYTE( "365.c2", 0x0000001, 0x800000, CRC(e924afcf) SHA1(651e974f7339d2cdcfa58c5398013197a0525b77) )
-	ROM_LOAD16_BYTE( "265d.c3", 0x1000000, 0x800000, CRC(959fad0b) SHA1(63ab83ddc5f688dc8165a7ff8d262df3fcd942a2) )
-	ROM_LOAD16_BYTE( "265d.c4", 0x1000001, 0x800000, CRC(efe6a468) SHA1(2a414285e48aa948b5b0d4a9333bab083b5fb853) )
-	ROM_LOAD16_BYTE( "265d.c5", 0x2000000, 0x800000, CRC(74bba7c6) SHA1(e01adc7a4633bc0951b9b4f09abc07d728e9a2d9) )
-	ROM_LOAD16_BYTE( "265d.c6", 0x2000001, 0x800000, CRC(e20d2216) SHA1(5d28eea7b581e780b78f391a8179f1678ee0d9a5) )
-	ROM_LOAD16_BYTE( "365.c7", 0x3000000, 0x800000, CRC(fa705b2b) SHA1(f314c66876589601806352484dd8e45bc41be692) )
-	ROM_LOAD16_BYTE( "365.c8", 0x3000001, 0x800000, CRC(2c912ff9) SHA1(b624a625ea3e221808b7ea43fb0b1a51d8c1853e) )
-ROM_END
-
 ROM_START( kof10thhc01 ) //kof10thuo
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "5007_hc01.p1", 0x000000, 0x800000, CRC(5c261d57) SHA1(0e886ff9241d641c2445800031749f65ba13d654) )
@@ -12886,7 +12860,6 @@ GAME( 1994, karnovrhc03,      karnovr,  neogeo_neo304h,  neogeo, neogeo_state,  
 GAME( 2018, kizunahc01,       kizuna,   neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Kizuna Encounter - Super Tag Battle / Fu'un Super Tag Battle (Infinite Energy 2018-06-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, kizunahc02,       kizuna,   neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Kizuna Encounter - Super Tag Battle / Fu'un Super Tag Battle (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE ) // Press the Start button
 GAME( 1996, kizunahc03,       kizuna,   neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Kizuna Encounter - Super Tag Battle / Fu'un Super Tag Battle (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
-GAME( 2004, kof2k4sehc01,     kof2k4se, neogeo_multiboot,neogeo, neogeo_state,    init_kof2k4se, ROT0, "DDJ",          "The King of Fighters Special Edition 2004 (Easy Special Attacks) (bootleg of The King of Fighters 2002, Set 1)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, kof10thhc01,      kof2002,  neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters 10th Anniversary 2005 Unique (Optimized 2020-10-25) (bootleg of The King of Fighters 2002)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, kof10thhc02,      kof2002,  neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters 10th Anniversary 2005 Unique (Optimized 2023 2025-03-28) (bootleg of The King of Fighters 2002)", MACHINE_SUPPORTS_SAVE )
 GAME( 2015, kof94hc01,        kof94,    neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "The King of Fighters '94 (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE ) //2015-03-31

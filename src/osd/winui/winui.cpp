@@ -722,12 +722,14 @@ public:
 
 //		else
 //			chain_output(channel, msg, args);   // goes down the black hole
+#ifdef LOGSAVE
 		// LOG all messages
 		FILE *pFile;
 		pFile = fopen("winui.log", "a");
 		fputs(buffer, pFile);
 		fflush(pFile);
 		fclose (pFile);
+#endif
 	}
 };
 

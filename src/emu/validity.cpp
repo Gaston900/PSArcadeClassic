@@ -2176,7 +2176,7 @@ void validity_checker::validate_roms(device_t &root)
 			}
 
 			// for any non-region ending entries, make sure they don't extend past the end
-			if (!ROMENTRY_ISREGIONEND(romp) && current_length > 0 && !ROMENTRY_ISIGNORE(romp)) // MESSUI
+			if (!ROMENTRY_ISREGIONEND(romp) && current_length > 0)
 			{
 				items_since_region++;
 				if (!ROMENTRY_ISIGNORE(romp) && (ROM_GETOFFSET(romp) + ROM_GETLENGTH(romp) > current_length))

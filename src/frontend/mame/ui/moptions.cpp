@@ -64,6 +64,7 @@ const options_entry ui_options::s_option_entries[] =
 	{ OPTION_INFOS_SIZE "(0.20-1.00)",      "0.75",         core_options::option_type::FLOAT,       "UI right panel infos text size (0.20 - 1.00)" },
 	{ OPTION_FONT_ROWS "(25-40)",           "30",           core_options::option_type::INTEGER,     "UI font lines per screen (25 - 40)" },
 	{ OPTION_HIDE_PANELS "(0-3)",           "0",            core_options::option_type::INTEGER,     "UI hide left/right panel in main view (0 = Show all, 1 = hide left, 2 = hide right, 3 = hide both" },
+	// MAMEFX colours changed
 	{ OPTION_UI_BORDER_COLOR,               "ffb41010",     core_options::option_type::STRING,      "UI border color (ARGB)" }, // 修改的 (加斯顿90)
 	{ OPTION_UI_BACKGROUND_COLOR,           "ef161616",     core_options::option_type::STRING,      "UI background color (ARGB)" }, // 修改的 (加斯顿90)
 	{ OPTION_UI_CLONE_COLOR,                "ffc6c6c6",     core_options::option_type::STRING,      "UI clone color (ARGB)" }, // 修改的 (加斯顿90)

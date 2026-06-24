@@ -72,7 +72,7 @@ public:
 			util::stream_format(buffer, args);
 			win_message_box_utf8(!osd_common_t::s_window_list.empty() ?
 				std::static_pointer_cast<win_window_info>(osd_common_t::s_window_list.front())->platform_window() :
-					nullptr, buffer.str().c_str(), "ARCADE", MB_OK);
+					nullptr, buffer.str().c_str(), emulator_info::get_appname(), MB_OK);
 		}
 		else
 		{

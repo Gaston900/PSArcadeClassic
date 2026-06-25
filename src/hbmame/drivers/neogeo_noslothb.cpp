@@ -11214,12 +11214,12 @@ ROM_END
 
 ROM_START( samsho2hc04 ) //samsho2x2 - samsho2pe 
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "063_hc04.p1", 0x000000, 0x100000, CRC(141bc590) SHA1(c8520a3cde0201a6e4b3ec59114b0de322f7c3e3) )
-	ROM_LOAD16_WORD_SWAP( "063_hc04.p2", 0x100000, 0x100000, CRC(8a0163d7) SHA1(ebc4e88d2ca1685fd9843a28e5fe015f18094959) )
+	ROM_LOAD16_WORD_SWAP( "063_hc04.p1", 0x000000, 0x100000, CRC(c578dcb1) SHA1(5f5a4fbd501db7035c25d35653a078ae8aca4b24) )
+	ROM_LOAD16_WORD_SWAP( "063_hc04.p2", 0x100000, 0x100000, CRC(01cded84) SHA1(c425de9af204fd15aa25c586b60427d96706c444) )
     SAMSHO2_ESSENTIALPATCH_MODS_FILL
 
 	ROM_REGION( 0x020000, "gsc", ROMREGION_BE | ROMREGION_16BIT )
-	ROM_LOAD16_WORD_SWAP( "063_hc04.p3", 0x000000, 0x020000, CRC(5a51a63c) SHA1(30ea9e2ace4060ca1aac81cf0883e5cd01cbafe6) )
+	ROM_LOAD16_WORD_SWAP( "063_hc04.p3", 0x000000, 0x020000, CRC(9f2e0244) SHA1(0147e3768d94b2ddd4141a4381e208f637efce28) )
 
 	NEO_SFIX_128K( "063.s1", CRC(64a5cd66) SHA1(12cdfb27bf9ccd5a8df6ddd4628ef7cf2c6d4964) )
 
@@ -13230,7 +13230,7 @@ GAME( 2003, samshohc03,       samsho,   neogeo_neobase,  neogeo, neogeo_state,  
 GAME( 1994, samsho2hc01,      samsho2,  neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, samsho2hc02,      samsho2,  gsc,             neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Special v1.1 Final)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, samsho2hc03,      samsho2,  neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, samsho2hc04,      samsho2,  gsc,             neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Perfect v2.7)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, samsho2hc04,      samsho2,  gsc,             neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Perfect v2.8)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, samsho2hc05,      samsho2,  neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Infinite Power 2023-04-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, samsho2hc06,      samsho2,  gsc,             neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Optimized 2020-09-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, samsho3hc01,      samsho3,  neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Samurai Shodown III / Samurai Spirits - Zankurou Musouken (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )

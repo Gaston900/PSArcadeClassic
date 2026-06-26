@@ -6372,6 +6372,9 @@ static intptr_t CALLBACK StartupProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM
 		{
 			int imgWidth = (int)(461 * g_fDpiScale);
 			int imgHeight = (int)(136 * g_fDpiScale);
+			/* Original image size. If this does not display correctly, please use the code below */
+			//int imgWidth = (int)(461 * g_fDpiScale);
+			//int imgHeight = (int)(136 * g_fDpiScale);
 			
 			HBITMAP hBmp = (HBITMAP)LoadImage(GetModuleHandle(NULL), MAKEINTRESOURCE(IDB_SPLASH), IMAGE_BITMAP, imgWidth, imgHeight, LR_CREATEDIBSECTION);
 			SendMessage(GetDlgItem(hDlg, IDC_SPLASH), STM_SETIMAGE, IMAGE_BITMAP, (LPARAM)hBmp);
@@ -7024,7 +7027,10 @@ static void ExportGameToXML(FILE* f, int game_index)
 
 static void ExportFullXML(int mode, HWND hWndList)
 {
-    wchar_t wfilename[MAX_PATH] = L"mame.xml";
+    wchar_t wfilename[MAX_PATH] = L"PSArcadeClassic+.xml";
+    wchar_t szCurDir[MAX_PATH];
+    
+    GetCurrentDirectory(MAX_PATH, szCurDir);
     
     OPENFILENAME ofn = {0};
     ofn.lStructSize = sizeof(ofn);
@@ -7036,16 +7042,24 @@ static void ExportFullXML(int mode, HWND hWndList)
     ofn.Flags = OFN_OVERWRITEPROMPT;
     
     if (!GetSaveFileName(&ofn))
+    {
+        SetCurrentDirectory(szCurDir);
         return;
+    }
     
     char* utf8_filename = win_utf8_from_wstring(wfilename);
-    if (!utf8_filename) return;
+    if (!utf8_filename)
+    {
+        SetCurrentDirectory(szCurDir);
+        return;
+    }
     
     FILE* f = fopen(utf8_filename, "w");
     if (!f)
     {
         ErrorMessageBox("Unable to create file: %s", utf8_filename);
         free(utf8_filename);
+        SetCurrentDirectory(szCurDir);
         return;
     }
     
@@ -7116,6 +7130,8 @@ static void ExportFullXML(int mode, HWND hWndList)
     
     fprintf(f, "</datafile>\n");
     fclose(f);
+    
+    SetCurrentDirectory(szCurDir);
     
     char msg[256];
     snprintf(msg, sizeof(msg), "%d games have been exported to:\n%s", exported, utf8_filename);

@@ -245,6 +245,7 @@ project ("osd_" .. _OPTIONS["osd"])
 		MAME_DIR .. "src/osd/winui/dxdecode.cpp",
 --		MAME_DIR .. "src/osd/winui/emu_opts.cpp",
 		MAME_DIR .. "src/osd/winui/main.cpp",
+		MAME_DIR .. "src/osd/winui/mui_plug.cpp",
 		MAME_DIR .. "src/osd/winui/picker.cpp",
 		MAME_DIR .. "src/osd/winui/picker.h",
 		MAME_DIR .. "src/osd/winui/properties.cpp",

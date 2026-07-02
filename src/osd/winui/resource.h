@@ -1,6 +1,5 @@
 // license:BSD-3-Clause
 // For licensing and usage information, read docs/release/winui_license.txt
-
 #define ID_TOOLBAR_EDIT                 92
 #define IDI_MAMEUI                      100
 #define IDD_MAIN                        101
@@ -502,10 +501,10 @@
 #define IDC_BOOTDELAY                   1383
 #define IDC_BOOTDELAYDISP               1384
 #define IDC_LOGERROR                    1385
-#define IDC_PLUGINS                     1386
-#define IDC_PLUGIN                      1387
-#define IDC_SELECT_PLUGIN               1388
-#define IDC_RESET_PLUGIN                1389
+#define IDC_PLUGIN_ENABLE               1386
+#define IDC_PLUGIN_LIST                 1387
+#define IDC_PLUGIN_SELECT               1388
+#define IDC_PLUGIN_RESET                1389
 #define IDC_BGFX_CHAINS                 1390
 #define IDC_SELECT_BGFX                 1391
 #define IDC_RESET_BGFX                  1392

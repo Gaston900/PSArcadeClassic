@@ -618,7 +618,7 @@ ROM_START( pwrinst2hc01 )
 	ROM_LOAD( "g02.u56", 0x240000, 0x200000, CRC(9ff50dda) SHA1(1121685e387c20e228032f2b0f5cbb606376fc15) )
 ROM_END
 
-ROM_START( sailormnhc01 ) //sailormnt
+ROM_START( sailormnhc01 ) //sailormnt - sailmnopt
 	ROM_REGION( 0x400000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "bpsm945_hc01.u45", 0x000000, 0x080000, CRC(0e7f4981) SHA1(45b35b59c1cacc146f64c3233f3bb788d98863f0) )
 	ROM_LOAD16_WORD_SWAP( "bpsm.u46",     0x200000, 0x200000, CRC(32084e80) SHA1(0ac503190d95009620b5ad7e7e0e63324f6fa4eb) )
@@ -747,9 +747,9 @@ ROM_START( sailormnhc03 ) //sailormnffj
 	ROM_LOAD16_WORD( "sailormn_japan.nv", 0x0000, 0x0080, CRC(ea03c30a) SHA1(2afc71f932674e34fc4491db0e2027e0371569fc) )
 ROM_END
 
-ROM_START( sailormnhc04 ) //sailormnhydg
+ROM_START( sailormnhc04 ) //sailormnhydg - sailmnhy
 	ROM_REGION( 0x400000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "bpsm945_hc04.u45", 0x000000, 0x080000, CRC(ce0dfc34) SHA1(836d0a547123af7747f2812cb120b63b152059e5) )
+	ROM_LOAD16_WORD_SWAP( "bpsm945_hc04.u45", 0x000000, 0x080000, CRC(bac65b30) SHA1(2a8192810ad9f728497c9926548c57f0110a9062) )
 	ROM_LOAD16_WORD_SWAP( "bpsm.u46",     0x200000, 0x200000, CRC(32084e80) SHA1(0ac503190d95009620b5ad7e7e0e63324f6fa4eb) )
 
 	ROM_REGION( 0x80000, "audiocpu", 0 )
@@ -789,9 +789,9 @@ ROM_START( sailormnhc04 ) //sailormnhydg
 	ROM_LOAD16_WORD( "sailormn_europe.nv", 0x0000, 0x0080, CRC(59a7dc50) SHA1(6b116bdfbde42192b01678cb0b9bab0f2e56fd28) )
 ROM_END
 
-ROM_START( sailormnhc05 ) //sailormnxy
+ROM_START( sailormnhc05 ) //sailormnxy - sailmnxy
 	ROM_REGION( 0x400000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "bpsm945_hc05.u45", 0x000000, 0x080000, CRC(00fff8e9) SHA1(faf819054a2a30ded3fb1eaa2da217a7fcbe1a56) )
+	ROM_LOAD16_WORD_SWAP( "bpsm945_hc05.u45", 0x000000, 0x080000, CRC(b959c5ff) SHA1(27dc7c9552c089333578d36f984e7a4e1f2ca63c) )
 	ROM_LOAD16_WORD_SWAP( "bpsm.u46",     0x200000, 0x200000, CRC(32084e80) SHA1(0ac503190d95009620b5ad7e7e0e63324f6fa4eb) )
 
 	ROM_REGION( 0x80000, "audiocpu", 0 )
@@ -915,9 +915,9 @@ ROM_START( sailormnhc07 ) //sailormnsl
 	ROM_LOAD16_WORD( "sailormn_europe.nv", 0x0000, 0x0080, CRC(59a7dc50) SHA1(6b116bdfbde42192b01678cb0b9bab0f2e56fd28) )
 ROM_END
 
-ROM_START( sailormnhc08 ) //sailormnygcs
+ROM_START( sailormnhc08 ) //sailormnygcs - sailmnyg
 	ROM_REGION( 0x400000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "bpsm945_hc08.u45", 0x000000, 0x080000, CRC(d61d64ba) SHA1(b6af75ca31bc9cca329be39646cc49394398607c) )
+	ROM_LOAD16_WORD_SWAP( "bpsm945_hc08.u45", 0x000000, 0x080000, CRC(95752342) SHA1(7d9abdd570c17d24dd1086b2950a10851613f162) )
 	ROM_LOAD16_WORD_SWAP( "bpsm.u46",     0x200000, 0x200000, CRC(32084e80) SHA1(0ac503190d95009620b5ad7e7e0e63324f6fa4eb) )
 
 	ROM_REGION( 0x80000, "audiocpu", 0 )
@@ -957,9 +957,9 @@ ROM_START( sailormnhc08 ) //sailormnygcs
 	ROM_LOAD16_WORD( "sailormn_europe.nv", 0x0000, 0x0080, CRC(59a7dc50) SHA1(6b116bdfbde42192b01678cb0b9bab0f2e56fd28) )
 ROM_END
 
-ROM_START( sailormnhc09 ) //sailormnwx
+ROM_START( sailormnhc09 ) //sailormnwx – sailmnwx
 	ROM_REGION( 0x400000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "bpsm945_hc09.u45", 0x000000, 0x080000, CRC(99216224) SHA1(bd948ed2b6c9c4429f60bfbe9a8a12d2c876a88c) )
+	ROM_LOAD16_WORD_SWAP( "bpsm945_hc09.u45", 0x000000, 0x080000, CRC(0739857e) SHA1(d7ad32df0bec99dbac8654970cf904d7849e2c24) )
 	ROM_LOAD16_WORD_SWAP( "bpsm.u46",     0x200000, 0x200000, CRC(32084e80) SHA1(0ac503190d95009620b5ad7e7e0e63324f6fa4eb) )
 
 	ROM_REGION( 0x80000, "audiocpu", 0 )
@@ -999,9 +999,9 @@ ROM_START( sailormnhc09 ) //sailormnwx
 	ROM_LOAD16_WORD( "sailormn_europe.nv", 0x0000, 0x0080, CRC(59a7dc50) SHA1(6b116bdfbde42192b01678cb0b9bab0f2e56fd28) )
 ROM_END
 
-ROM_START( sailormnhc10 ) //sailormnwxdf
+ROM_START( sailormnhc10 ) //sailormnwxdf - sailmndf
 	ROM_REGION( 0x400000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "bpsm945_hc10.u45", 0x000000, 0x080000, CRC(927e7135) SHA1(66ba96aff2f92a78e814360750c605dd26cea5c6) )
+	ROM_LOAD16_WORD_SWAP( "bpsm945_hc10.u45", 0x000000, 0x080000, CRC(b5289dc7) SHA1(88b04f2eae549e4b746bf20993ec98f02a95513f) )
 	ROM_LOAD16_WORD_SWAP( "bpsm.u46",     0x200000, 0x200000, CRC(32084e80) SHA1(0ac503190d95009620b5ad7e7e0e63324f6fa4eb) )
 
 	ROM_REGION( 0x80000, "audiocpu", 0 )
@@ -1041,9 +1041,9 @@ ROM_START( sailormnhc10 ) //sailormnwxdf
 	ROM_LOAD16_WORD( "sailormn_europe.nv", 0x0000, 0x0080, CRC(59a7dc50) SHA1(6b116bdfbde42192b01678cb0b9bab0f2e56fd28) )
 ROM_END
 
-ROM_START( sailormnhc11 ) //sailormnxys
+ROM_START( sailormnhc11 ) //sailormnxys - sailmnxys
 	ROM_REGION( 0x400000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "bpsm945_hc11.u45", 0x000000, 0x080000, CRC(cd6c115d) SHA1(17802dfc917c24120ef127663562041fc822e397) )
+	ROM_LOAD16_WORD_SWAP( "bpsm945_hc11.u45", 0x000000, 0x080000, CRC(aecffa50) SHA1(ba0d89242cd330c92a8381c6186293e2425eb8b8) )
 	ROM_LOAD16_WORD_SWAP( "bpsm.u46",     0x200000, 0x200000, CRC(32084e80) SHA1(0ac503190d95009620b5ad7e7e0e63324f6fa4eb) )
 
 	ROM_REGION( 0x80000, "audiocpu", 0 )
@@ -1083,9 +1083,9 @@ ROM_START( sailormnhc11 ) //sailormnxys
 	ROM_LOAD16_WORD( "sailormn_europe.nv", 0x0000, 0x0080, CRC(59a7dc50) SHA1(6b116bdfbde42192b01678cb0b9bab0f2e56fd28) )
 ROM_END
 
-ROM_START( sailormnhc12 ) //sailormnxyhx
+ROM_START( sailormnhc12 ) //sailormnxyhx - sailmnhx
 	ROM_REGION( 0x400000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "bpsm945_hc12.u45", 0x000000, 0x080000, CRC(277afa36) SHA1(ab7f6089b4ce66d997c37e670be2194bc950b17a) )
+	ROM_LOAD16_WORD_SWAP( "bpsm945_hc12.u45", 0x000000, 0x080000, CRC(a8a7c786) SHA1(e47eeed5b5089f35af18e1928c17c620a1d43399) )
 	ROM_LOAD16_WORD_SWAP( "bpsm.u46",     0x200000, 0x200000, CRC(32084e80) SHA1(0ac503190d95009620b5ad7e7e0e63324f6fa4eb) )
 
 	ROM_REGION( 0x80000, "audiocpu", 0 )
@@ -1125,9 +1125,9 @@ ROM_START( sailormnhc12 ) //sailormnxyhx
 	ROM_LOAD16_WORD( "sailormn_europe.nv", 0x0000, 0x0080, CRC(59a7dc50) SHA1(6b116bdfbde42192b01678cb0b9bab0f2e56fd28) )
 ROM_END
 
-ROM_START( sailormnhc13 ) //sailormnyhsp
+ROM_START( sailormnhc13 ) //sailormnyhsp - sailmnyh
 	ROM_REGION( 0x400000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "bpsm945_hc13.u45", 0x000000, 0x080000, CRC(64ebcb6b) SHA1(1385f450e150aa5bafbefc68c87dc78f9680f429) )
+	ROM_LOAD16_WORD_SWAP( "bpsm945_hc13.u45", 0x000000, 0x080000, CRC(a7f16fd8) SHA1(17430103de056b9a79ba42b2f428573a82dcfe92) )
 	ROM_LOAD16_WORD_SWAP( "bpsm.u46",     0x200000, 0x200000, CRC(32084e80) SHA1(0ac503190d95009620b5ad7e7e0e63324f6fa4eb) )
 
 	ROM_REGION( 0x80000, "audiocpu", 0 )
@@ -1167,9 +1167,9 @@ ROM_START( sailormnhc13 ) //sailormnyhsp
 	ROM_LOAD16_WORD( "sailormn_europe.nv", 0x0000, 0x0080, CRC(59a7dc50) SHA1(6b116bdfbde42192b01678cb0b9bab0f2e56fd28) )
 ROM_END
 
-ROM_START( sailormnhc14 ) //sailormnyhzy
+ROM_START( sailormnhc14 ) //sailormnyhzy - sailmnzy
 	ROM_REGION( 0x400000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "bpsm945_hc14.u45", 0x000000, 0x080000, CRC(d56ca7e3) SHA1(1654739140d8308c916ab8dbb46bee691d811d2b) )
+	ROM_LOAD16_WORD_SWAP( "bpsm945_hc14.u45", 0x000000, 0x080000, CRC(39d11c5a) SHA1(5c2190faa9be1d9e4fc2c7a1eb528f835b3e4e11) )
 	ROM_LOAD16_WORD_SWAP( "bpsm.u46",     0x200000, 0x200000, CRC(32084e80) SHA1(0ac503190d95009620b5ad7e7e0e63324f6fa4eb) )
 
 	ROM_REGION( 0x80000, "audiocpu", 0 )
@@ -1256,15 +1256,15 @@ GAME( 2018, pwrinst2hc01,   pwrinst2,       pwrinst2,         metmqstr, cave_sta
 GAME( 2018, sailormnhc01,   sailormn,       sailormn,         cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Optimised 2018-04-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, sailormnhc02,   sailormn,       sailormn,         cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Serena Tsukino 2021-03-22)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, sailormnhc03,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Fighting For Justice 2022-06-02)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, sailormnhc04,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Black Moon Empire 2024-05-04)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, sailormnhc05,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (New Moon 2024-01-04)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, sailormnhc04,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Black Moon Empire 2026-03-18)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, sailormnhc05,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (New Moon 2026-03-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, sailormnhc06,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Korea-France Hybrid 2023-12-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, sailormnhc07,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (10-Lo 2024-03-13)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, sailormnhc08,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Moonlight Legend 2025-04-18)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, sailormnhc09,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Infinite 2025-04-20)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, sailormnhc10,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Infinite Peak 2025-04-20)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, sailormnhc11,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (New Moon Super 2025-04-17)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, sailormnhc12,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (New Moon Fantasy 2025-04-18)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, sailormnhc13,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Eternal Poem 2025-04-19)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, sailormnhc14,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Eternal End 2025-04-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, sailormnhc08,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Moonlight Legend 2026-03-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, sailormnhc09,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Infinite 2026-03-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, sailormnhc10,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Infinite Peak 2026-03-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, sailormnhc11,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (New Moon Super 2026-03-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, sailormnhc12,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Crescent Fantasy 2026-03-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, sailormnhc13,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Eternal Poem 2026-03-19)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, sailormnhc14,   sailormn,       sailormn_2XCLOCK, cave,     cave_state, init_sailormn,  ROT0,   "GOTVG",      "Pretty Soldier Sailor Moon (Eternal End 2026-03-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2009, theroeshc01,    theroes,        gaia,             theroes,  cave_state, init_gaia,      ROT0,   "hack",       "Thunder Heroes (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )

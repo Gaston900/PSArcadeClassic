@@ -2536,9 +2536,17 @@ static intptr_t CALLBACK GameOptionsDialogProc(HWND hDlg, UINT uMsg, WPARAM wPar
 
 				case PSN_APPLY:
 					// Process plugins, stop stupid compile error
+					// Vector.ini etc are always blanked out, not saved.
 					{
 						std::string plugin, noplugin;
-						std::tie(plugin, noplugin) = mui_plugin_options().split_into_lists(m_CurrentOpts, g_nGame, plugin_chosen);
+						if (g_nGame < 0)
+						{
+							if (g_nPropertyMode == OPTIONS_GLOBAL)
+								std::tie(plugin, noplugin) = mui_plugin_options().split_into_lists(m_CurrentOpts, -1, plugin_chosen);
+						}
+						else
+							std::tie(plugin, noplugin) = mui_plugin_options().split_into_lists(m_CurrentOpts, g_nGame, plugin_chosen);
+
 						m_CurrentOpts.set_value(OPTION_PLUGIN, plugin, OPTION_PRIORITY_CMDLINE);
 						m_CurrentOpts.set_value(OPTION_NO_PLUGIN, noplugin, OPTION_PRIORITY_CMDLINE);
 					}

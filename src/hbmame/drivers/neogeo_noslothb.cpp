@@ -12778,20 +12778,20 @@ ROM_START( zintrckbhc01 )
 	ROM_LOAD16_BYTE( "028.c2", 0x000001, 0x200000, CRC(844ed4b3) SHA1(fb7cd057bdc6cbe8b78097dd124118bae7402256) )
 ROM_END
 
-ROM_START( zintrckbhc02 ) // zintrckb v3
+ROM_START( zintrckbhc02 ) // zintrckbp
 	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "028_hc02.p1", 0x000000, 0x100000, CRC(654342e6) SHA1(3755b0c6d263b8d4da3cb2ee7dd2a9984f418066) )
+	ROM_LOAD16_WORD_SWAP( "028_hc02.p1", 0x000000, 0x100000, CRC(23074a8d) SHA1(38ceb4b532ff98edfacf7f8bb395ea265232c082) )
     ZINTRCKB_ESSENTIALPATCH_MODS_FILL
 
 	NEO_SFIX_128K( "028_hc02.s1", CRC(56d16afa) SHA1(6e1f960a781f5ef1f858c51507fe573bead8ea66) )
 
-	NEO_BIOS_AUDIO_128K( "028_hc02.m1", CRC(a1c68361) SHA1(d0906ca2035b3a41567cb3fdaa323241ba0798b7) )
+	NEO_BIOS_AUDIO_128K( "028_hc02.m1", CRC(6d5b66cf) SHA1(950a7c2fbbcb911ca9e7ce4778d88d550ada86ce) )
 
 	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
-	ROM_LOAD( "028_hc02.v1", 0x000000, 0x400000, CRC(cd257055) SHA1(5361ce6f4943f6ea34a209ec15743292f05fcd7e) )
-	ROM_LOAD( "028_hc02.v2", 0x400000, 0x400000, CRC(5d8f89ab) SHA1(16f6308e4a1473bf5d25b1b1419b9b71a95ec029) )
-	ROM_LOAD( "028_hc02.v3", 0x800000, 0x400000, CRC(4626b4ff) SHA1(a3abe7a60e937a5df9cd24d418f9cfabcf9e7e48) )
-	ROM_LOAD( "028_hc02.v4", 0xc00000, 0x400000, CRC(48666336) SHA1(391f6782b3e833e16667005161cb520562b3c5dc) )
+	ROM_LOAD( "028_hc02.v1", 0x000000, 0x400000, CRC(ca4c57e1) SHA1(6eab32da77d7f336ee00895f28e12312b7d33f29) )
+	ROM_LOAD( "028_hc02.v2", 0x400000, 0x400000, CRC(c4c82a19) SHA1(eb9c8e32755084993ce727fc86b610b55f52a13e) )
+	ROM_LOAD( "028_hc02.v3", 0x800000, 0x400000, CRC(b3fad4c1) SHA1(d149479ad2eb9e8d160bb30efabc327f5401bd13) )
+	ROM_LOAD( "028_hc02.v4", 0xc00000, 0x400000, CRC(4e77adac) SHA1(b494d17492e4e11fd35cda6ea04c160ff3fc66eb) )
 
 	ROM_REGION( 0x400000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "028.c1", 0x000000, 0x200000, CRC(76aee189) SHA1(ad6929804c5b9a59aa609e6baebc6aa37e858a47) )
@@ -13230,7 +13230,7 @@ GAME( 2003, samshohc03,       samsho,   neogeo_neobase,  neogeo, neogeo_state,  
 GAME( 1994, samsho2hc01,      samsho2,  neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, samsho2hc02,      samsho2,  gsc,             neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Special v1.1 Final)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, samsho2hc03,      samsho2,  neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, samsho2hc04,      samsho2,  gsc,             neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Perfect v2.9)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, samsho2hc04,      samsho2,  gsc,             neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Perfect v2.8)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, samsho2hc05,      samsho2,  neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Infinite Power 2023-04-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, samsho2hc06,      samsho2,  gsc,             neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Samurai Shodown II / Shin Samurai Spirits - Haohmaru Jigokuhen (Optimized 2020-09-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, samsho3hc01,      samsho3,  neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Samurai Shodown III / Samurai Spirits - Zankurou Musouken (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )

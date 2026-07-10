@@ -8,8 +8,8 @@
 
 ROM_START( grdianshc01 ) //grdianssy
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "u2_hc01.bin", 0x000000, 0x080000, CRC(481238ab) SHA1(12788def651b71e6d3495bb79d5150056aaf3b0e) )
-	ROM_LOAD16_BYTE( "u3_hc01.bin", 0x000001, 0x080000, CRC(a76dbf18) SHA1(7428f9cb551ccee40c789d2a715754f92af4028d) )
+	ROM_LOAD16_BYTE( "u2_hc01.bin", 0x000000, 0x080000, CRC(7ae8c6cc) SHA1(c4138d6478b9dec018c96bb35752b09f7600e465) )
+	ROM_LOAD16_BYTE( "u3_hc01.bin", 0x000001, 0x080000, CRC(cdb370bb) SHA1(20cfb0bb61bc9aa241035fc1f5aae5e2b1999202) )
 	ROM_LOAD16_BYTE( "u4.bin", 0x100000, 0x080000, CRC(bb52447b) SHA1(61433f683210ab2bc2cf1cc4b5b7a39cc5b6493d) )
 	ROM_LOAD16_BYTE( "u5.bin", 0x100001, 0x080000, CRC(9c164a3b) SHA1(6d688c7af9e7e8e8d54b2e4dfbf41f59c79242eb) )
 
@@ -58,8 +58,8 @@ ROM_END
 
 ROM_START( grdianshc03 ) //grdianslbs
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "u2_hc03.bin", 0x000000, 0x080000, CRC(e40763c2) SHA1(7ceb8c3e7ab47f3c6cc0b111abe9c50b133d5eee) )
-	ROM_LOAD16_BYTE( "u3_hc03.bin", 0x000001, 0x080000, CRC(1ea83c99) SHA1(390c34c6955f008819cd94e83f25b5ac2def8648) )
+	ROM_LOAD16_BYTE( "u2_hc03.bin", 0x000000, 0x080000, CRC(247e8525) SHA1(4d6c2225425200f7969804fce3142a94ced624a3) )
+	ROM_LOAD16_BYTE( "u3_hc03.bin", 0x000001, 0x080000, CRC(f1dab3f4) SHA1(d303f35b111045a78d78d0fc5c09872238ec42ca) )
 	ROM_LOAD16_BYTE( "u4.bin", 0x100000, 0x080000, CRC(bb52447b) SHA1(61433f683210ab2bc2cf1cc4b5b7a39cc5b6493d) )
 	ROM_LOAD16_BYTE( "u5.bin", 0x100001, 0x080000, CRC(9c164a3b) SHA1(6d688c7af9e7e8e8d54b2e4dfbf41f59c79242eb) )
 
@@ -183,10 +183,10 @@ ROM_END
 
 /*    YEAR     NAME         PARENT          MACHINE    INPUT                      INIT      MONITOR   COMPANY     FULLNAME FLAGS */
 /* Seta2 Hack */
-GAME( 2025, grdianshc01,   grdians,        grdians,  grdians,  seta2_state,    empty_init,    ROT0,   "GOTVG",    "Guardians (Evil 2025-03-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, grdianshc01,   grdians,        grdians,  grdians,  seta2_state,    empty_init,    ROT0,   "GOTVG",    "Guardians (Evil 2026-05-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, grdianshc02,   grdians,        grdians,  grdians,  seta2_state,    empty_init,    ROT0,   "GOTVG",    "Guardians (Pro 2024-12-11)", MACHINE_SUPPORTS_SAVE )
-GAME( 2024, grdianshc03,   grdians,        grdians,  grdians,  seta2_state,    empty_init,    ROT0,   "GOTVG",    "Guardians (LBS 2024-10-11)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, grdianshc03,   grdians,        grdians,  grdians,  seta2_state,    empty_init,    ROT0,   "GOTVG",    "Guardians (LBS 2026-04-29)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, grdianshc04,   grdians,        grdians,  grdians,  seta2_state,    empty_init,    ROT0,   "GOTVG",    "Guardians (LBS Super 2021-04-19)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, grdianshc05,   grdians,        grdians,  grdians,  seta2_state,    empty_init,    ROT0,   "GOTVG",    "Guardians (Plus 2023-10-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, grdianshc06,   grdians,        grdians,  grdians,  seta2_state,    empty_init,    ROT0,   "GOTVG",    "Guardians (Reverie 2022-06-06)", MACHINE_SUPPORTS_SAVE )
-GAME( 1995, grdianshc07,   grdians,        grdians,  grdians,  seta2_state,    empty_init,    ROT0,   "GOTVG",    "Guardians (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
+GAME( 1995, grdianshc07,   grdians,        grdians,  grdians,  seta2_state,    empty_init,    ROT0,   "hack",     "Guardians (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )

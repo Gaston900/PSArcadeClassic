@@ -84,8 +84,8 @@ ROM_START( zeroteamhc03 ) //zeroteamasj
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD32_BYTE("seibu__1.u024_hc03.5k", 0x000000, 0x40000, CRC(b0cdd2eb) SHA1(c350c95679e5effa6d76296fdcf9611335014d2a) )
 	ROM_LOAD32_BYTE("seibu__3.u023_hc03.6k", 0x000002, 0x40000, CRC(84219681) SHA1(73fa778166b22f2fe22f1d57e8b78fc8686bdf12) )
-	ROM_LOAD32_BYTE("seibu__2.u025_hc03.6l", 0x000001, 0x40000, CRC(a1ad2774) SHA1(4d517d5e7ff4c01268ade6dc5fc0b4319e4e3e5a) )
-	ROM_LOAD32_BYTE("seibu__4.u026_hc03.5l", 0x000003, 0x40000, CRC(f004394c) SHA1(a8d09f4cdc1aba572885d9610098f5ad2f1ccfd7) )
+	ROM_LOAD32_BYTE("seibu__2.u025_hc03.6l", 0x000001, 0x40000, CRC(19cbcded) SHA1(6f995559333455cf9c3c417e17019bff907beaa8) )
+	ROM_LOAD32_BYTE("seibu__4.u026_hc03.5l", 0x000003, 0x40000, CRC(670e799f) SHA1(cc493a62f5b8c46587ebde3029b661bf470e0247) )
 
 	ROM_REGION( 0x40000, "user2", 0 )
 	ROM_LOAD( "copx-d2.u0313.6n",   0x00000, 0x40000, CRC(a6732ff9) SHA1(c4856ec77869d9098da24b1bb3d7d58bb74b4cda) )
@@ -119,10 +119,10 @@ ROM_END
 
 ROM_START( zeroteamhc04 ) //zeroteamasb
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD32_BYTE("seibu__1.u024_hc04.5k", 0x000000, 0x40000, CRC(94ed5fe3) SHA1(7c44f3b8784c261cfc7d200c664ad71d5281986c) )
-	ROM_LOAD32_BYTE("seibu__3.u023_hc04.6k", 0x000002, 0x40000, CRC(6be29a19) SHA1(737a5ba463525f96a34565049ff606f8d353eb5c) )
-	ROM_LOAD32_BYTE("seibu__2.u025_hc04.6l", 0x000001, 0x40000, CRC(ce37c337) SHA1(f9ca0b96dde0950c41636c2d9c0bb57afd1ee0a1) )
-	ROM_LOAD32_BYTE("seibu__4.u026_hc04.5l", 0x000003, 0x40000, CRC(ee9bedf2) SHA1(e56bb1c178dc35b4b8f875dbd56a0241ac1ebaed) )
+	ROM_LOAD32_BYTE("seibu__1.u024_hc04.5k", 0x000000, 0x40000, CRC(8ea6581c) SHA1(c5d7ddb39668536fb6e8c82dfc125751fad3e477) )
+	ROM_LOAD32_BYTE("seibu__3.u023_hc04.6k", 0x000002, 0x40000, CRC(e731ce09) SHA1(1d1c3f58ef2d6d62dd7d5a09a950190f686ccb35) )
+	ROM_LOAD32_BYTE("seibu__2.u025_hc04.6l", 0x000001, 0x40000, CRC(830efb41) SHA1(a4ecaf57bc14fe8e79c795a512dbb09c4efcc387) )
+	ROM_LOAD32_BYTE("seibu__4.u026_hc04.5l", 0x000003, 0x40000, CRC(63f5ca01) SHA1(39b52a74f0e69401bd5bfa7a72a5b036d94bc090) )
 
 	ROM_REGION( 0x40000, "user2", 0 )
 	ROM_LOAD( "copx-d2.u0313.6n",   0x00000, 0x40000, CRC(a6732ff9) SHA1(c4856ec77869d9098da24b1bb3d7d58bb74b4cda) )
@@ -230,10 +230,10 @@ ROM_END
 
 ROM_START( zeroteamhc07 ) //zeroteamys
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD32_BYTE("seibu__1.u024_hc07.5k", 0x000000, 0x40000, CRC(62016fba) SHA1(5f6a63cb253e633760189041718e4de1df70f90e) )
-	ROM_LOAD32_BYTE("seibu__3.u023_hc07.6k", 0x000002, 0x40000, CRC(19d640ca) SHA1(b6a9de949cc78714b5a88ae0269fbe68f93d4166) )
-	ROM_LOAD32_BYTE("seibu__2.u025_hc07.6l", 0x000001, 0x40000, CRC(ae8b7441) SHA1(934e3648b649f8b04ef94a8c9ad651c25d88d1c2) )
-	ROM_LOAD32_BYTE("seibu__4.u026_hc07.5l", 0x000003, 0x40000, CRC(ef408dbc) SHA1(40056d12f20fdc81b65b7ac421662b8647e798e2) )
+	ROM_LOAD32_BYTE("seibu__1.u024_hc07.5k", 0x000000, 0x40000, CRC(53724858) SHA1(74356e5923ee30bfc0515d2387694227f6cbd205) )
+	ROM_LOAD32_BYTE("seibu__3.u023_hc07.6k", 0x000002, 0x40000, CRC(1ab6ce75) SHA1(c1ed8aa922806f1ff9b2e8d9c9ce068aa8b50de5) )
+	ROM_LOAD32_BYTE("seibu__2.u025_hc07.6l", 0x000001, 0x40000, CRC(a6ec139e) SHA1(76e431089abfadca9a0ca9e92b226ae83bff7776) )
+	ROM_LOAD32_BYTE("seibu__4.u026_hc07.5l", 0x000003, 0x40000, CRC(b298630a) SHA1(9ae5e9f06bf8ed4867b85e239923558c032af985) )
 
 	ROM_REGION( 0x40000, "user2", 0 )
 	ROM_LOAD( "copx-d2.u0313.6n",   0x00000, 0x40000, CRC(a6732ff9) SHA1(c4856ec77869d9098da24b1bb3d7d58bb74b4cda) )
@@ -304,10 +304,10 @@ ROM_END
 
 ROM_START( zeroteamhc09 ) //zeroteamym
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD32_BYTE("seibu__1.u024_hc09.5k", 0x000000, 0x40000, CRC(7ed080fe) SHA1(82b36e97b5f50480bc49dec5462f0213e72b46b6) )
-	ROM_LOAD32_BYTE("seibu__3.u023_hc09.6k", 0x000002, 0x40000, CRC(6eb48374) SHA1(7dc81365888dcb2e778eabdd6c52bdb81cd07d86) )
-	ROM_LOAD32_BYTE("seibu__2.u025_hc09.6l", 0x000001, 0x40000, CRC(d83e0529) SHA1(3049cc0fbe5f3af70d97814cc7f98ada4763de84) )
-	ROM_LOAD32_BYTE("seibu__4.u026_hc09.5l", 0x000003, 0x40000, CRC(795c76f4) SHA1(4057ce5dd6ce29d04ea418f40be552cc5c188182) )
+	ROM_LOAD32_BYTE("seibu__1.u024_hc09.5k", 0x000000, 0x40000, CRC(07a9b9c8) SHA1(0fbcb987a8c5a51a6826debaf4770fa83b6c7a9f) )
+	ROM_LOAD32_BYTE("seibu__3.u023_hc09.6k", 0x000002, 0x40000, CRC(805e8852) SHA1(8b343bf84dba9aabb9c6433da92a1a0a152f1921) )
+	ROM_LOAD32_BYTE("seibu__2.u025_hc09.6l", 0x000001, 0x40000, CRC(1350f280) SHA1(d4fbf5027754a093dfa98e09a3e35ccf95ea3c7b) )
+	ROM_LOAD32_BYTE("seibu__4.u026_hc09.5l", 0x000003, 0x40000, CRC(162afa72) SHA1(6c269a27791f8a810293dd393663f7cffd94f36b) )
 
 	ROM_REGION( 0x40000, "user2", 0 )
 	ROM_LOAD( "copx-d2.u0313.6n",   0x00000, 0x40000, CRC(a6732ff9) SHA1(c4856ec77869d9098da24b1bb3d7d58bb74b4cda) )
@@ -526,10 +526,10 @@ ROM_END
 
 ROM_START( zeroteamhc15 ) //zeroteammm
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD32_BYTE("seibu__1.u024_hc15.5k", 0x000000, 0x40000, CRC(44089dec) SHA1(f4ee3ec850d5cad73dafea610518950f50d06542) )
-	ROM_LOAD32_BYTE("seibu__3.u023_hc15.6k", 0x000002, 0x40000, CRC(21184ee3) SHA1(c3c1722c44cc81ba3ea0a1015e23dcc7073fca38) )
-	ROM_LOAD32_BYTE("seibu__2.u025_hc15.6l", 0x000001, 0x40000, CRC(5b0f7895) SHA1(d04ff3864ea598b1cb08106e299fdc7180fb27be) )
-	ROM_LOAD32_BYTE("seibu__4.u026_hc15.5l", 0x000003, 0x40000, CRC(6c66bbd0) SHA1(b58dbefba3dbe55c091ef1153c6982e0d66a9869) )
+	ROM_LOAD32_BYTE("seibu__1.u024_hc15.5k", 0x000000, 0x40000, CRC(d5e341f1) SHA1(071d50356d2a9103a116e4f10fd29993929fb355) )
+	ROM_LOAD32_BYTE("seibu__3.u023_hc15.6k", 0x000002, 0x40000, CRC(560743a2) SHA1(6c59a31fdee5e2ac9b6ed451acbbd226deb7cc33) )
+	ROM_LOAD32_BYTE("seibu__2.u025_hc15.6l", 0x000001, 0x40000, CRC(f2e865f5) SHA1(ad07e57fc8f3a2ec70af5e0e0b377cb9361750da) )
+	ROM_LOAD32_BYTE("seibu__4.u026_hc15.5l", 0x000003, 0x40000, CRC(e3dcd6ab) SHA1(04c8488032f2eb897fe5b264fa2dd79be126e7a0) )
 
 	ROM_REGION( 0x40000, "user2", 0 )
 	ROM_LOAD( "copx-d2.u0313.6n",   0x00000, 0x40000, CRC(a6732ff9) SHA1(c4856ec77869d9098da24b1bb3d7d58bb74b4cda) )
@@ -563,10 +563,10 @@ ROM_END
 
 ROM_START( zeroteamhc16 ) //zeroteagbym
 	ROM_REGION( 0x200000, "maincpu", 0 )
-	ROM_LOAD32_BYTE("seibu__1.u024_hc16.5k", 0x000000, 0x40000, CRC(fe33c896) SHA1(4fb2f1fd2c6736a26196989d9fdc20ba44990380) )
-	ROM_LOAD32_BYTE("seibu__3.u023_hc16.6k", 0x000002, 0x40000, CRC(19a0696a) SHA1(9fbf2643d80862f2dde3d955e25160e025d7637c) )
-	ROM_LOAD32_BYTE("seibu__2.u025_hc16.6l", 0x000001, 0x40000, CRC(2e868e2e) SHA1(6dfa2a328740c045cf89ea4283c5e891d8e34cd4) )
-	ROM_LOAD32_BYTE("seibu__4.u026_hc16.5l", 0x000003, 0x40000, CRC(4e8083dc) SHA1(02cd40ff9d3c3437924c1e50204a3e8fd3dcc2c3) )
+	ROM_LOAD32_BYTE("seibu__1.u024_hc16.5k", 0x000000, 0x40000, CRC(00141dda) SHA1(267148ba7ba2c3a5f57ef79ca781f4aca6bc603f) )
+	ROM_LOAD32_BYTE("seibu__3.u023_hc16.6k", 0x000002, 0x40000, CRC(6d3cde18) SHA1(22d45ef454817bca36dff57c74743a2b9de0f10b) )
+	ROM_LOAD32_BYTE("seibu__2.u025_hc16.6l", 0x000001, 0x40000, CRC(2592a747) SHA1(22e8d1fc93eb0c343e0c12ffb02e4190c3cf1f7c) )
+	ROM_LOAD32_BYTE("seibu__4.u026_hc16.5l", 0x000003, 0x40000, CRC(8a23caca) SHA1(599307bfe74313c11b760bfc3dd376f72fe8febc) )
 
 	ROM_REGION( 0x40000, "user2", 0 )
 	ROM_LOAD( "copx-d2.u0313.6n",   0x00000, 0x40000, CRC(a6732ff9) SHA1(c4856ec77869d9098da24b1bb3d7d58bb74b4cda) )
@@ -602,17 +602,17 @@ ROM_END
 /* Raiden2 Hack */
 GAME( 2022, zeroteamhc01,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Plus 2022-07-11)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, zeroteamhc02,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Oil 2025-06-01)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, zeroteamhc03,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Random 2026-02-14)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, zeroteamhc04,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (On-Time 2026-02-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, zeroteamhc03,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Random 2026-06-22)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, zeroteamhc04,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (On-Time 2026-06-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, zeroteamhc05,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (1v4 2018-02-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, zeroteamhc06,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Camper 2025-04-17)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, zeroteamhc07,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (God 2021-02-07)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, zeroteamhc07,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (God 2026-06-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, zeroteamhc08,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (God of War 2021-06-10)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, zeroteamhc09,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Devil 2026-03-08)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, zeroteamhc09,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Devil 2026-04-02)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, zeroteamhc10,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Infinite Cannon 2022-02-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, zeroteamhc11,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Question Mark 2025-04-13)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, zeroteamhc12,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Providence 2024-11-30)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, zeroteamhc13,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Warriors 2018-09-20)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, zeroteamhc14,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Nightmare 2018-10-22)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, zeroteamhc15,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Incubus 2026-03-06)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, zeroteamhc16,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Yan Modified 2026-03-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, zeroteamhc15,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Incubus 2026-06-30)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, zeroteamhc16,     zeroteam,         zeroteam,         zeroteam, raiden2_state, init_zeroteam,      ROT0,  "GOTVG",       "Zero Team USA (Yan Modified 2026-04-08)", MACHINE_SUPPORTS_SAVE )

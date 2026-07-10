@@ -272,8 +272,8 @@ ROM_START( umk3hc05 ) //umk3uk
 	ROM_LOAD16_BYTE( "l1_mortal_kombat_3_u5_music_spch.u5",  0x600000, 0x100000, CRC(3b98a09f) SHA1(edf1d02a56dcf3349e6b4bb4097acfe7592305f4) )
 
 	ROM_REGION16_LE( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "l1.2_mortal_kombat_3_u54_ultimate_hc05.u54", 0x00000, 0x80000, CRC(7100fcdb) SHA1(7976447300d0185e21036f8f90808e6d24851f4f) )
-	ROM_LOAD16_BYTE( "l1.2_mortal_kombat_3_u63_ultimate_hc05.u63", 0x00001, 0x80000, CRC(cc1f15cf) SHA1(439192422e594c064ede69de708196633f39c33a) )
+	ROM_LOAD16_BYTE( "l1.2_mortal_kombat_3_u54_ultimate_hc05.u54", 0x00000, 0x80000, CRC(49a2bb4e) SHA1(00d9a253c9d96ea1cca2997b3e45c61f7f028a7f) )
+	ROM_LOAD16_BYTE( "l1.2_mortal_kombat_3_u63_ultimate_hc05.u63", 0x00001, 0x80000, CRC(024eb404) SHA1(7abadb168ef9f4ed6bd329319218fc6f7169363f) )
 
 	ROM_REGION( 0x1009, "serial_security:pic", 0 )
 	ROM_LOAD( "463_mk3_ultimate.u64",  0x0000, 0x1009, CRC(4f425218) SHA1(7f26045ed2c9ca94fadcb673ce10f28208aa720e) )
@@ -318,8 +318,8 @@ ROM_START( umk3hc06 ) //umk3uk2
 	ROM_LOAD16_BYTE( "l1_mortal_kombat_3_u5_music_spch.u5",  0x600000, 0x100000, CRC(3b98a09f) SHA1(edf1d02a56dcf3349e6b4bb4097acfe7592305f4) )
 
 	ROM_REGION16_LE( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "l1.2_mortal_kombat_3_u54_ultimate_hc06.u54", 0x00000, 0x80000, CRC(7100fcdb) SHA1(7976447300d0185e21036f8f90808e6d24851f4f) )
-	ROM_LOAD16_BYTE( "l1.2_mortal_kombat_3_u63_ultimate_hc06.u63", 0x00001, 0x80000, CRC(cc1f15cf) SHA1(439192422e594c064ede69de708196633f39c33a) )
+	ROM_LOAD16_BYTE( "l1.2_mortal_kombat_3_u54_ultimate_hc06.u54", 0x00000, 0x80000, CRC(49a2bb4e) SHA1(00d9a253c9d96ea1cca2997b3e45c61f7f028a7f) )
+	ROM_LOAD16_BYTE( "l1.2_mortal_kombat_3_u63_ultimate_hc06.u63", 0x00001, 0x80000, CRC(024eb404) SHA1(7abadb168ef9f4ed6bd329319218fc6f7169363f) )
 
 	ROM_REGION( 0x1009, "serial_security:pic", 0 )
 	ROM_LOAD( "463_mk3_ultimate.u64",  0x0000, 0x1009, CRC(4f425218) SHA1(7f26045ed2c9ca94fadcb673ce10f28208aa720e) )
@@ -456,8 +456,8 @@ ROM_START( umk3hc09 ) //umk3wk
 	ROM_LOAD16_BYTE( "l1_mortal_kombat_3_u5_music_spch.u5",  0x600000, 0x100000, CRC(3b98a09f) SHA1(edf1d02a56dcf3349e6b4bb4097acfe7592305f4) )
 
 	ROM_REGION16_LE( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "l1.2_mortal_kombat_3_u54_ultimate_hc09.u54", 0x00000, 0x80000, CRC(c7c04a47) SHA1(2892c511526e5dbb13fdd9317176d390cf54c6ee) )
-	ROM_LOAD16_BYTE( "l1.2_mortal_kombat_3_u63_ultimate_hc09.u63", 0x00001, 0x80000, CRC(7a6dae54) SHA1(1c878a7722c8080cc8e5ec2a9b5fdef5e04623a3) )
+	ROM_LOAD16_BYTE( "l1.2_mortal_kombat_3_u54_ultimate_hc09.u54", 0x00000, 0x80000, CRC(1b93d760) SHA1(2f021b3002289ca50a163d458e88c14005eb293b) )
+	ROM_LOAD16_BYTE( "l1.2_mortal_kombat_3_u63_ultimate_hc09.u63", 0x00001, 0x80000, CRC(85846861) SHA1(d20d5a08bbc7e60322f431957c7e1a5ce792eaee) )
 
 	ROM_REGION( 0x1009, "serial_security:pic", 0 )
 	ROM_LOAD( "463_mk3_ultimate.u64",  0x0000, 0x1009, CRC(4f425218) SHA1(7f26045ed2c9ca94fadcb673ce10f28208aa720e) )
@@ -531,14 +531,14 @@ ROM_END
 /* Midwunit Hack */
 GAME( 2026, mkhc05,         mk,        wunit_picsim, mk3,      midwunit_state, empty_init,    ROT0, "Asure",    "Mortal Kombat (rev 5.5, 2026-03-16) (Ported From Midtunit)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, mk2hc06,        mk2,       wunit_picsim, mk3,      midwunit_state, empty_init,    ROT0, "Asure",    "Mortal Kombat 2 (rev 3.2W, 2025-09-05) (Ported From Midtunit)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mk3hc01,        mk3,       wunit_picsim, mk3,      midwunit_state, init_mk3,      ROT0, "hack",     "Mortal Kombat 3 (Revision 2.1 Kaillera Friendly SP4 2021-08-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, mk3hc01,        mk3,       wunit_picsim, mk3,      midwunit_state, init_mk3,      ROT0, "hack",     "Mortal Kombat 3 (Revision 2.1 Kaillera Friendly SP4 2026-07-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2010, umk3hc01,       umk3,      wunit_picemu, mk3,      midwunit_state, init_umk3,     ROT0, "hack",     "Ultimate Mortal Kombat 3 (Juggernauts v1.0)", MACHINE_SUPPORTS_SAVE )
 GAME( 2009, umk3hc02,       umk3,      wunit_picemu, mk3,      midwunit_state, init_umk3,     ROT0, "hack",     "Ultimate Mortal Kombat 3 (Zeus)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, umk3hc03,       umk3,      wunit_picemu, mk3,      midwunit_state, init_umk3,     ROT0, "hack",     "Ultimate Mortal Kombat 3 (Tournament Public Beta Revision 2.0.042)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, umk3hc04,       umk3,      wunit_picemu, mk3,      midwunit_state, init_umk3,     ROT0, "hack",     "Ultimate Mortal Kombat 3 (Revision 1.3 - Final Public Beta)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, umk3hc05,       umk3,      wunit_picemu, mk3,      midwunit_state, init_umk3,     ROT0, "hack",     "Ultimate Mortal Kombat 3 (UK 2025-12-02)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, umk3hc06,       umk3,      wunit_picemu, mk3,      midwunit_state, init_umk3,     ROT0, "hack",     "Ultimate Mortal Kombat 3 (UK 2 2025-12-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, umk3hc05,       umk3,      wunit_picemu, mk3,      midwunit_state, init_umk3,     ROT0, "hack",     "Ultimate Mortal Kombat 3 (UK 2026-07-09)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, umk3hc06,       umk3,      wunit_picemu, mk3,      midwunit_state, init_umk3,     ROT0, "hack",     "Ultimate Mortal Kombat 3 (UK 2 2026-07-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, umk3hc07,       umk3,      wunit_picemu, mk3,      midwunit_state, init_umk3,     ROT0, "hack",     "Ultimate Mortal Kombat 3 (Ultimate Cup 2020-12-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, umk3hc08,       umk3,      wunit_picsim, mk3,      midwunit_state, init_mk3,      ROT0, "hack",     "Ultimate Mortal Kombat 3 Plus (Beta II 2022-03-07)", MACHINE_SUPPORTS_SAVE )
-GAME( 2025, umk3hc09,       umk3,      wunit_picemu, mk3,      midwunit_state, init_umk3,     ROT0, "hack",     "Ultimate Mortal Kombat 3 (WaveNet 2025-12-02)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, umk3hc09,       umk3,      wunit_picemu, mk3,      midwunit_state, init_umk3,     ROT0, "hack",     "Ultimate Mortal Kombat 3 (WaveNet 2026-07-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, wwfmaniahc01,   wwfmania,  wunit_picsim, wwfmania, midwunit_state, init_wwfmania, ROT0, "hack",     "WWF: Wrestlemania (Acid Clown SP2 2020-12-03)", MACHINE_SUPPORTS_SAVE )

@@ -256,8 +256,8 @@ ROM_START( mk2hc04 ) //mk2k
 	ROM_RELOAD(                0xb00000, 0x80000 )
 
 	ROM_REGION16_LE( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "uj12_hc04.131", 0x00000, 0x80000, CRC(a755a400) SHA1(0c5ca8885369897f08a81f0b9e49f05919e3efcf) )
-	ROM_LOAD16_BYTE( "ug12_hc04.131", 0x00001, 0x80000, CRC(d1fef398) SHA1(10aa6bf25f89327207697b968d9f57d2c6127328) )
+	ROM_LOAD16_BYTE( "uj12_hc04.131", 0x00000, 0x80000, CRC(905112f2) SHA1(a809c05feaa14615e42bb100223b533746311687) )
+	ROM_LOAD16_BYTE( "ug12_hc04.131", 0x00001, 0x80000, CRC(6bb12278) SHA1(d75b8a1185052aff75ed18af144a8685ded134d3) )
 
 	ROM_REGION( 0xc00000, "gfxrom", 0 )
 	ROM_LOAD32_BYTE( "l1_mortal_kombat_ii_game_rom_ug14.ug14", 0x000000, 0x100000, CRC(01e73af6) SHA1(6598cfd704cc92a7f358a0e1f1c973ab79dcc493) )
@@ -321,5 +321,5 @@ GAME( 2020, mkhc04,           mk,               tunit_adpcm,      mk,       midt
 GAME( 2007, mk2hc01,          mk2,              tunit_dcs,        mk2,      midtunit_state, init_mk2,      ROT0, "hack",       "Mortal Kombat II (French Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, mk2hc02,          mk2,              tunit_dcs,        mk2,      midtunit_state, init_mk2,      ROT0, "hack",       "Mortal Kombat II Plus (Beta II 2.8.5 2018-12-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, mk2hc03,          mk2,              tunit_dcs,        mk2,      midtunit_state, init_mk2,      ROT0, "hack",       "Ultimate Mortal Kombat II (Tournament Edition r5.0.053)", MACHINE_SUPPORTS_SAVE )
-GAME( 2021, mk2hc04,          mk2,              tunit_dcs,        mk2,      midtunit_state, init_mk2,      ROT0, "hack",       "Mortal Kombat II (Kaillera Friendly SP4 2021-08-05)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, mk2hc04,          mk2,              tunit_dcs,        mk2,      midtunit_state, init_mk2,      ROT0, "hack",       "Mortal Kombat II (Kaillera Friendly SP4 2026-07-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, mk2hc05,          mk2,              tunit_dcs,        mk2,      midtunit_state, init_mk2,      ROT0, "hack",       "Ultimate Mortal Kombat II (Tournament Edition r5.0.053 SP3 2020-12-03)", MACHINE_SUPPORTS_SAVE )

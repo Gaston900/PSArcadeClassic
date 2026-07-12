@@ -45944,7 +45944,9 @@ spf2thc01                       // hack
 spf2thc02                       // hack
 spf2xhc01                       // hack
 spf2xhc02                       // hack
+vhunt2hc01                      // hack
 vsavhc01                        // hack
+vsav2hc01                       // hack
 xmcotahc01                      // hack
 xmcotahc02                      // hack
 xmcotahc03                      // hack
@@ -46876,6 +46878,7 @@ savagerehc03                    // hack
 sdodgebhc01                     // hack
 sdodgebhc02                     // hack
 sdodgebhc03                     // hack
+sengoku2hc01                    // hack
 sengoku3hc01                    // hack
 sengoku3hc02                    // hack
 sengoku3hc03                    // hack

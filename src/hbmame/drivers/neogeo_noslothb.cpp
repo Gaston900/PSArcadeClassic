@@ -11917,6 +11917,27 @@ ROM_START( sdodgebhc03 )
 	ROM_LOAD16_BYTE( "208.c4", 0x0800001, 0x200000, CRC(c7165f19) SHA1(221f03de893dca0e5305fa17aa94f96c67713818) )
 ROM_END
 
+ROM_START( sengoku2hc01 ) //sengoku2rb
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "040_hc01.p1", 0x000000, 0x100000, CRC(b26122f7) SHA1(e32e9a8a4321fb076d78788dea3b124d64b70085) )
+
+	NEO_SFIX_128K( "040.s1", CRC(cd9802a3) SHA1(f685d4638f4f68e7e3f101c0c39128454536721b) )
+
+	NEO_BIOS_AUDIO_128K( "040.m1", CRC(d4de4bca) SHA1(ecf604d06f01d40b04e285facef66a6ae2d35661) )
+
+	ROM_REGION( 0x300000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "040.v1", 0x000000, 0x200000, CRC(71cb4b5d) SHA1(56d9aca1d476c19c7d0f707176a8fed53e0189b7) )
+	ROM_LOAD( "040.v2", 0x200000, 0x100000, CRC(c5cece01) SHA1(923a3377dac1919e8c3d9ab316902250caa4785f) )
+
+	ROM_REGION( 0x600000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "040_hc01.c1", 0x000000, 0x100000, CRC(137b21f9) SHA1(d5b9255630b68939f3ed4e8165443d894e4cbb15) )
+	ROM_CONTINUE( 0x400000, 0x100000 )
+	ROM_LOAD16_BYTE( "040_hc01.c2", 0x000001, 0x100000, CRC(4ad35858) SHA1(faaccaab39ef9c50b1e56475ef3c9bbc24678a3e) )
+	ROM_CONTINUE( 0x400001, 0x100000 )
+	ROM_LOAD16_BYTE( "040_hc01.c3", 0x200000, 0x080000, CRC(2d59c0f4) SHA1(4fa46b8e83c00408e36d873760967a8013053d51) )
+	ROM_LOAD16_BYTE( "040_hc01.c4", 0x200001, 0x080000, CRC(9aad51a1) SHA1(afe451d3e4fe099a3d4b17e6649128d275f86df8) )
+ROM_END
+
 ROM_START( sengoku3hc01 )
 	ROM_REGION( 0x200000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "261_hc01.p1", 0x100000, 0x100000, CRC(abfda8b0) SHA1(5ab5850325418f9ba68fe701154347dc1343a294) )
@@ -13301,6 +13322,7 @@ GAME( 2018, savagerehc03,     savagere, neogeo_neo304h,  neogeo, neogeo_state,  
 GAME( 1996, sdodgebhc01,      sdodgeb,  neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Super Dodge Ball / Kunio no Nekketsu Toukyuu Densetsu (Infinite Energy)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, sdodgebhc02,      sdodgeb,  neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Super Dodge Ball / Kunio no Nekketsu Toukyuu Densetsu (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1996, sdodgebhc03,      sdodgeb,  neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Super Dodge Ball / Kunio no Nekketsu Toukyuu Densetsu (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, sengoku2hc01,     sengoku2, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Sengoku 2 / Sengoku Denshou 2 (Red Blood)", MACHINE_SUPPORTS_SAVE )
 GAME( 2001, sengoku3hc01,     sengoku3, neogeo_multiboot,neogeo, neogeo_state,    init_sengoku3, ROT0, "DDJ",          "Sengoku 3 / Sengoku Densho 2001 (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 2001, sengoku3hc02,     sengoku3, neogeo_multiboot,neogeo, neogeo_state,    init_sengoku3, ROT0, "DDJ",          "Sengoku 3 / Sengoku Densho 2001 (Always Have Super Move)", MACHINE_SUPPORTS_SAVE )
 GAME( 2001, sengoku3hc03,     sengoku3, neogeo_multiboot,neogeo, neogeo_state,    init_sengoku3, ROT0, "hack",         "Sengoku 3 / Sengoku Densho 2001 (Unlock All Stages And Hidden Character)", MACHINE_SUPPORTS_SAVE )

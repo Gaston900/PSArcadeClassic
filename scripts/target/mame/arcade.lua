@@ -3281,7 +3281,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/ddealer.cpp",
 	MAME_DIR .. "src/mame/drivers/jalmah.cpp",
 	MAME_DIR .. "src/mame/drivers/macrossp.cpp",
-	MAME_DIR .. "src/mame/drivers/nmk16.cpp",
+	MAME_DIR .. "src/hbmame/drivers/nmk16.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/nmk16.h",
 	MAME_DIR .. "src/mame/machine/nmk004.cpp",
 --	MAME_DIR .. "src/mame/machine/nmk004.h",

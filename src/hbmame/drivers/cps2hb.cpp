@@ -3059,7 +3059,7 @@ GAME( 1996, 19xxhc02,    19xx,         cps2,         cps2_2p2b, cps2_state, init
 GAME( 2014, 1944hc01,    1944,         cps2,         cps2_2p2b, cps2_state, init_cps2,     ROT0,   "DDJ",         "1944: The Loop Master (Infinite Power 2014-11-04)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, avsphc01,    avsp,         cps2,         cps2_3p3b, cps2_state, init_cps2,     ROT0,   "hack",        "Alien vs. Predator (Korean Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, avsphc02,    avsp,         cps2,         cps2_3p3b, cps2_state, init_cps2,     ROT0,   "GOTVG",       "Alien vs. Predator (Enhanced 2018-02-27)", MACHINE_SUPPORTS_SAVE )
-GAME( 2019, batcirhc01,  batcir,       dead_cps2,    cps2_4p2b, cps2_state, init_cps2,     ROT0,   "hack",        "Battle Circuit (Evolution 2019-10-21)", MACHINE_SUPPORTS_SAVE )
+GAME( 2019, batcirhc01,  batcir,       dead_cps2,    cps2_4p2b, cps2_state, init_cps2,     ROT0,   "GOTVG",       "Battle Circuit (Evolution 2019-10-21)", MACHINE_SUPPORTS_SAVE )
 GAME( 1997, csclubhc01,  csclub,       cps2,         cps2_2p3b, cps2_state, init_cps2,     ROT0,   "hack",        "Capcom Sports Club (Korean Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, cybotshc01,  cybots,       cps2,         cybots,    cps2_state, init_cps2,     ROT0,   "hack",        "Cyberbots: Fullmetal Madness (Panic AM Modified 2022-01-23)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, cybotshc02,  cybots,       cps2,         cybots,    cps2_state, init_cps2,     ROT0,   "DDJ",         "Cyberbots: Fullmetal Madness (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )

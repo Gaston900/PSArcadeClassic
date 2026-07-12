@@ -164,6 +164,34 @@ ROM_START( viostormhc03 ) //viostormxtjc
 	ROM_LOAD( "viostormeb.nv", 0x0000, 0x080, CRC(28b5fe49) SHA1(0ef51ae4b012a7d680543747fd4b6dd9dfb5f560) )
 ROM_END
 
+ROM_START( viostormhc04 ) //viostormplus
+	ROM_REGION( 0x200000, "maincpu", 0)
+	ROM_LOAD16_BYTE( "168eab01_hc04.15h", 0x000001, 0x80000, CRC(e19f6624) SHA1(1cd7860557d34cf6bc3aa9eaeffc0f08c21f18e5) )
+	ROM_LOAD16_BYTE( "168eab02_hc04.15f", 0x000000, 0x80000, CRC(ee5e3aa4) SHA1(768016675cb0c67034e8cbf668a1eb6476d83512) )
+
+	ROM_REGION( 0x40000, "soundcpu", 0 )
+	ROM_LOAD("168a05.7c", 0x00000, 0x20000, CRC(507fb3eb) SHA1(a4f676e3caaafe86918c76ded08d0c202969adf6) )
+	ROM_RELOAD(           0x20000, 0x20000 )
+
+	ROM_REGION( 0x600000, "k056832", ROMREGION_ERASE00)
+	ROM_LOADTILE_WORD( "168a09.1h", 0x000000, 2*1024*1024, CRC(1b34a881) SHA1(5de20f7ee7f90d4f6dea349ca5000bfcf74253b1) )
+	ROM_LOADTILE_WORD( "168a08.1k", 0x000002, 2*1024*1024, CRC(db0ce743) SHA1(dfe24a1e3e72da188a92668928e79afd6c5d22ee) )
+
+	ROM_REGION( 0x800000, "k055673", ROMREGION_ERASE00)
+	ROM_LOAD64_WORD( "168a10.22k", 0x000000, 2*1024*1024, CRC(bd2bbdea) SHA1(54faf2ded16e66d675bbbec4ebd42b4708edfaef) )
+	ROM_LOAD64_WORD( "168a11.19k", 0x000002, 2*1024*1024, CRC(7a57c9e7) SHA1(8763c310f7b515aef52d4e007bc949e8803690f4) )
+	ROM_LOAD64_WORD( "168a12.20k", 0x000004, 2*1024*1024, CRC(b6b1c4ef) SHA1(064ab4db884c8f98ab9e631b7034996d4b92ab7b) )
+	ROM_LOAD64_WORD( "168a13.17k", 0x000006, 2*1024*1024, CRC(cdec3650) SHA1(949bc06bb38a2d5315ee4f6db19e043655b90e6e) )
+
+	ROM_REGION( 0x40000, "gfx3", ROMREGION_ERASE00)
+
+	ROM_REGION( 0x400000, "k054539", 0)
+	ROM_LOAD( "168a06.1c", 0x000000, 2*1024*1024, CRC(25404fd7) SHA1(282cf523728b38d0bf14d765dd7257aa1fb2af39) )
+	ROM_LOAD( "168a07.1e", 0x200000, 2*1024*1024, CRC(fdbbf8cc) SHA1(a8adf72a25fe2b9c4c338350d02c92deb5f8c8e9) )
+
+	ROM_REGION( 0x80, "eeprom", 0 )
+	ROM_LOAD( "viostormu.nv", 0x0000, 0x080, CRC(797042a1) SHA1(f33eb8b1b21f3d41372694fa6297bc2cc802c2eb) )
+ROM_END
 
 /*    YEAR  NAME          PARENT       MACHINE     INPUT                      INIT   MONITOR   COMPANY       FULLNAME FLAGS */
 /* Mystwarr Hack */
@@ -172,3 +200,4 @@ GAME( 1993, mmaulershc01,  mmaulers,   dadandrn, dadandrn, mystwarr_state, empty
 GAME( 2018, viostormhc01,  viostorm,   viostorm, viostorm, mystwarr_state, empty_init, ROT0,   "GOTVG",      "Violent Storm (1V3 2018-05-07)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, viostormhc02,  viostorm,   viostorm, viostorm, mystwarr_state, empty_init, ROT0,   "GOTVG",      "Violent Storm (Enhanced Prosperity 2021-01-27)", MACHINE_SUPPORTS_SAVE )
 GAME( 2018, viostormhc03,  viostorm,   viostorm, viostorm, mystwarr_state, empty_init, ROT0,   "hack",       "Violent Storm (Increased Health 2018-08-13)", MACHINE_SUPPORTS_SAVE )
+GAME( 2018, viostormhc04,  viostorm,   viostorm, viostorm, mystwarr_state, empty_init, ROT0,   "GOTVG",      "Violent Storm (Enhanced 2018-04-16)", MACHINE_SUPPORTS_SAVE )

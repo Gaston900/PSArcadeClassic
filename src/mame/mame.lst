@@ -46276,6 +46276,7 @@ mmaulershc01                    // hack
 viostormhc01                    // hack
 viostormhc02                    // hack
 viostormhc03                    // hack
+viostormhc04                    // hack
 
 @source:namcona1.cpp
 knckheadhc01                    // hack
@@ -46888,6 +46889,7 @@ sonicwi2hc01                    // hack
 sonicwi3hc01                    // hack
 sonicwi3hc02                    // hack
 spinmasthc01                    // hack
+strhoophc01                     // hack
 svchc01                         // hack
 svchc02                         // hack
 tophuntrhc01                    // hack
@@ -46915,6 +46917,9 @@ whphc03                         // hack
 whphc04                         // hack
 zintrckbhc01                    // hack
 zintrckbhc02                    // hack
+
+@source:nmk16.cpp
+vandykehc01                     // hack
 
 @source:pacland.cpp
 paclandhc01                     // hack

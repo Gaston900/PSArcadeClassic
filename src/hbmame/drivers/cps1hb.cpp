@@ -4584,14 +4584,14 @@ ROM_START( sk3hc01 ) //Wofchdx
 	ROM_LOAD ( "wofch.key", 0x00, 0x80, CRC(23f2d0bb) SHA1(48ba9300bc2136e9583754a51d5ab2532eca85c6) )
 ROM_END
 
-ROM_START( varthhc01 )
+ROM_START( varthhc01 ) //varthjq
 	ROM_REGION( CODE_SIZE, "maincpu", 0 )
-	ROM_LOAD16_BYTE( "vae_30a_hc01.11f", 0x00000, 0x20000, CRC(214e4065) SHA1(2a6db38009a58baf10f2c297f585312852668267) )
-	ROM_LOAD16_BYTE( "vae_35a_hc01.11h", 0x00001, 0x20000, CRC(2cdbcb3f) SHA1(39f3429bf70e36b640f1a70748c1779020bd2fc1) )
+	ROM_LOAD16_BYTE( "vae_30b_hc01.11f", 0x00000, 0x20000, CRC(24529254) SHA1(e0e640c1e3a4d7fc7127e8432938e1effb439251) )
+	ROM_LOAD16_BYTE( "vae_35b_hc01.11h", 0x00001, 0x20000, CRC(e762d528) SHA1(d3e907a15883473694f1431a5ceb74d90d680db1) )
 	ROM_LOAD16_BYTE( "vae_31b.12f", 0x40000, 0x20000, CRC(1749a71c) SHA1(bd9bfd5bbe2d426c94df755c977faa92a28f16ab) )
 	ROM_LOAD16_BYTE( "vae_36b.12h", 0x40001, 0x20000, CRC(5f2e2450) SHA1(676e8d96406d81ceadd4a0a69959cdcb6d5d9ac8) )
-	ROM_LOAD16_BYTE( "vae_28b.9f",  0x80000, 0x20000, CRC(e524ca50) SHA1(487d5ddabe852872f331362034c4fa16e0926e3d) )
-	ROM_LOAD16_BYTE( "vae_33b.9h",  0x80001, 0x20000, CRC(c0bbf8c9) SHA1(447540b856776770af8022a291d46612c1bb5909) )
+	ROM_LOAD16_BYTE( "vae_28b_hc01.9f",  0x80000, 0x20000, CRC(e524ca50) SHA1(6b6a95bee85da5d1cebc7f0df9df514ab814212d) )
+	ROM_LOAD16_BYTE( "vae_33b_hc01.9h",  0x80001, 0x20000, CRC(c0bbf8c9) SHA1(3affe439c92be60fa3387e0f51a6e08e31347b0c) )
 	ROM_LOAD16_BYTE( "vae_29b.10f", 0xc0000, 0x20000, CRC(6640996a) SHA1(3ed7bd947dc8224435680dedf4955ed6041c6028) )
 	ROM_LOAD16_BYTE( "vae_34b.10h", 0xc0001, 0x20000, CRC(fa59be8a) SHA1(86a3d3a7126c021e2ca8ac20238695396367e098) )
 
@@ -4867,7 +4867,7 @@ GAME( 2019, tk2chc01,     wofch,    qsound,         wofch,    cps_state,   init_
 GAME( 2019, tk2chc02,     wofch,    qsound,         wofch,    cps_state,   init_wof,      ROT0,   "GOTVG",     "Tenchi wo Kurau II: Sekiheki no Tatakai (Dinosaur Carrying Plus 2019-07-08)", MACHINE_SUPPORTS_SAVE )
 GAME( 2013, sk2hc01,      wof,      qsound,         wof,      cps_state,   init_wof,      ROT0,   "hack",      "Sangokushi II (Chinese Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 2010, sk3hc01,      wofch,    qsound,         wofch,    cps_state,   init_wof,      ROT0,   "hack",      "Sangokushi III Gaiden: Kakou-On's Revenge DX", MACHINE_SUPPORTS_SAVE )
-GAME( 1992, varthhc01,    varth,    cps1_12MHz,     varth,    cps_state,   init_cps1,     ROT270, "hack",      "Varth: Operation Thunderstorm (Infinite Power)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, varthhc01,    varth,    cps1_12MHz,     varth,    cps_state,   init_cps1,     ROT270, "GOTVG",     "Varth: Operation Thunderstorm (Infinite Power 2023-06-09)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, willowhc01,   willow,   cps1_10MHz,     willow,   cps_state,   init_cps1,     ROT0,   "hack",      "Willow (Portuguese Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 1992, wofhc01,      wof,      wofsf2,         wof,      cps_state,   init_cps1,     ROT0,   "hack",      "Warriors of Fate (SF2 For Conversion)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, wofhc02,      wof,      qsound,         wof,      cps_state,   init_wof,      ROT0,   "hack",      "Warriors of Fate (French Translation)", MACHINE_SUPPORTS_SAVE )

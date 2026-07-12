@@ -12208,6 +12208,25 @@ ROM_START( spinmasthc01 )
 	ROM_LOAD16_BYTE( "062.c8", 0x600001, 0x100000, CRC(8d7be933) SHA1(e7097cfa26a959f90721e2e8368ceb47ea9db661) )
 ROM_END
 
+ROM_START( strhoophc01 ) //strhoopjq
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "079_hc01.p1", 0x000000, 0x100000, CRC(8fdf1dc7) SHA1(df0c3548291e2e177c3a372ce6c329296d5316b1) )
+
+	NEO_SFIX_128K( "079.s1", CRC(3ac06665) SHA1(ba9ab51eb95c3568304377ef6d7b5f32e8fbcde1) )
+
+	NEO_BIOS_AUDIO_128K( "079.m1", CRC(bee3455a) SHA1(fd5345d9847982085a9b364fff542580889bf02f) )
+
+	ROM_REGION( 0x300000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "079.v1", 0x000000, 0x200000, CRC(718a2400) SHA1(cefc5d0b302bd4a87ab1fa244ade4482c23c6806) )
+	ROM_LOAD( "079.v2", 0x200000, 0x100000, CRC(720774eb) SHA1(e4926f01322d0a15e700fb150b368152f2091146) )
+
+	ROM_REGION( 0x800000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "079.c1", 0x000000, 0x200000, CRC(0581c72a) SHA1(453f7a8474195a1120da5fa24337d79674563d9e) )
+	ROM_LOAD16_BYTE( "079.c2", 0x000001, 0x200000, CRC(5b9b8fb6) SHA1(362aa0de0d2cf9aa03758363ffb1e15e046a3930) )
+	ROM_LOAD16_BYTE( "079.c3", 0x400000, 0x200000, CRC(cd65bb62) SHA1(6f47d77d61d4289bcee82df7c4efa5346a6e4c80) )
+	ROM_LOAD16_BYTE( "079.c4", 0x400001, 0x200000, CRC(a4c90213) SHA1(1b9f7b5f31acd6df2bdab81b849f32c13aa1b884) )
+ROM_END
+
 ROM_START( svchc01 ) //svcjq
 	ROM_REGION( 0x800000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "269_hc01.p1", 0x000000, 0x400000, CRC(e0cbed51) SHA1(09f6be5ff55aaa79efe8bb3fe341ffbe2570186b) )
@@ -13295,6 +13314,7 @@ GAME( 2022, sonicwi2hc01,     sonicwi2, neogeo_neobase,  neogeo, neogeo_state,  
 GAME( 2022, sonicwi3hc01,     sonicwi3, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Aero Fighters 3 / Sonic Wings 3 (Infinite Power 2022-08-06)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, sonicwi3hc02,     sonicwi3, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Aero Fighters 3 / Sonic Wings 3 (Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
 GAME( 1993, spinmasthc01,     spinmast, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Spin Master / Miracle Adventure (Infinite Bomb)", MACHINE_SUPPORTS_SAVE )
+GAME( 2023, strhoophc01,      strhoop,  neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Street Hoop / Street Slam / Dunk Dream (Infinite Energy 2023-08-15)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, svchc01,          svc,      neogeo_multiboot,neogeo, neogeo_state,    init_svcsplus, ROT0, "GOTVG",        "SNK vs. Capcom - SVC Chaos Super Plus (Infinite Energy 2024-06-10)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, svchc02,          svc,      neogeo_multiboot,neogeo, neogeo_state,    init_svc,      ROT0, "DDJ",          "SNK vs. Capcom - SVC Chaos Super Plus (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 1994, tophuntrhc01,     tophuntr, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Top Hunter - Roddy & Cathy (Korean Translation)", MACHINE_SUPPORTS_SAVE )

@@ -13363,4 +13363,4 @@ GAME( 1995, whphc02,          whp,      neogeo_neobase,  neogeo, neogeo_state,  
 GAME( 1995, whphc03,          whp,      neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "World Heroes Perfect (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
 GAME( 1995, whphc04,          whp,      neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "World Heroes Perfect (Switchable Character)", MACHINE_SUPPORTS_SAVE )
 GAME( 2009, zintrckbhc01,     zintrckb, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Zintrick / Oshidashi Zentrix (bootleg of CD version, Enable Hidden Characters)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, zintrckbhc02,     zintrckb, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "ZinTricK / Oshidashi Zentrix (bootleg of CD version, Full CD Audio)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, zintrckbhc02,     zintrckb, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Zintrick / Oshidashi Zentrix (bootleg of CD version, Full CD Audio)", MACHINE_SUPPORTS_SAVE )

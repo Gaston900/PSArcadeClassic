@@ -11658,8 +11658,14 @@ ROM_START( ms5pcb ) /* Encrypted Set, JAMMA PCB */
     MSLUG5_ESSENTIALPATCH_MODS_FILL
 
 	NEO_SFIX_MT_128K
-	
-	NEO_JAPAN_MVS_BIOS_BOOT_AUDIO_ENCRYPTED_512K( "268.m1", CRC(4a5a6e0e) SHA1(df0f660f2465e1db7be5adfcaf5e88ad61a74a42) )
+
+	ROM_REGION16_BE( 0x80000, "mainbios", 0 )
+	/* this contains both an ASIA and JAPAN bios, HARDDIP3 on the PCB selects which to use */
+	ROM_LOAD16_WORD_SWAP( "sp-4x.sp1", 0x00000, 0x80000, CRC(b4590283) SHA1(47047ed5b6062babc0a0bebcc30e4b3f021e115a) )
+
+	ROM_REGION( 0x80000, "audiocrypt", 0 )
+	ROM_LOAD( "268.m1", 0x00000, 0x80000, CRC(4a5a6e0e) SHA1(df0f660f2465e1db7be5adfcaf5e88ad61a74a42) )
+	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF )
 
 	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "268c.v1", 0x000000, 0x1000000, CRC(8458afe5) SHA1(62b4c6e7db763e9ff2697bbcdb43dc5a56b48c68) )
@@ -13344,6 +13350,7 @@ ROM_START( kf2k3pcd )
 	ROM_Y_ZOOM
 
 	ROM_REGION( 0x100000, "fixed", ROMREGION_ERASE00 )
+
 	ROM_REGION( 0x20000, "fixedbios", 0 )
 	ROM_LOAD( "sfix.sfix", 0x000000, 0x20000, CRC(c2ea0cfd) SHA1(fd4a618cdcdbf849374f0a50dd8efe9dbab706c3) )
 
@@ -14106,8 +14113,14 @@ ROM_START( ms5pcbd )
 	
 	NEO_SFIX_MT_512K
 
-	NEO_JAPAN_MVS_BIOS_BOOT_AUDIO_ENCRYPTED_512K( "268.m1", CRC(4a5a6e0e) SHA1(df0f660f2465e1db7be5adfcaf5e88ad61a74a42) )
-	
+	ROM_REGION16_BE( 0x80000, "mainbios", 0 )
+	/* this contains both an ASIA and JAPAN bios, HARDDIP3 on the PCB selects which to use */
+	ROM_LOAD16_WORD_SWAP( "sp-4x.sp1", 0x00000, 0x80000, CRC(b4590283) SHA1(47047ed5b6062babc0a0bebcc30e4b3f021e115a) )
+
+	ROM_REGION( 0x90000, "audiocpu", 0 )
+	ROM_LOAD( "268d.m1", 0x00000, 0x80000, CRC(39f3cbba) SHA1(56f9ba6a1ecfc28733b7b88c9796415cba0461f2) )
+	ROM_RELOAD(     0x10000, 0x80000 )
+
 	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
     ROM_LOAD( "268pcbd.v1", 0x000000, 0x1000000, CRC(4182838b) SHA1(03e58b6709db467e92397b26b84658f5adb0ff92) )
 
@@ -15184,9 +15197,9 @@ ROM_START( svcpcbd )
 	/* this contains both an ASIA and JAPAN bios, HARDDIP3 on the PCB selects which to use */
 	ROM_LOAD16_WORD_SWAP( "sp-4x.sp1", 0x00000, 0x80000, CRC(b4590283) SHA1(47047ed5b6062babc0a0bebcc30e4b3f021e115a) )
 
-	ROM_REGION( 0x80000, "audiocrypt", 0 )
-	ROM_LOAD( "269.m1", 0x00000, 0x80000, CRC(f6819d00) SHA1(d3bbe09df502464f104e53501708ac6e2c1832c6) )
-	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF )
+	ROM_REGION( 0x90000, "audiocpu", 0 )
+	ROM_LOAD( "269pcbd.m1", 0x00000, 0x80000, CRC(7b7bf462) SHA1(7466a6962de5242f71b9c52d7bd21a9832115e11) )
+	ROM_RELOAD(     0x10000, 0x80000 )
 
 	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "269pcbd.v1", 0x000000, 0x800000, CRC(ff64cd56) SHA1(e2754c554ed5ca14c2020c5d931021d5ac82660c) )
@@ -20984,7 +20997,7 @@ GAME( 2003, kof2k3d,    kof2003,  neogeo_multiboot,neogeo, neogeo_state,   init_
 GAME( 2003, kf2k3bd,    kof2003,  neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 2003 (bootleg, Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, kof2k3hd,   kof2003,  neogeo_multiboot,neogeo, neogeo_state,   init_kof2003h, ROT0, "SNK Playmore", "The King of Fighters 2003 (NGH-2710) (Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, kof2k3nd,   kof2003,  neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK Playmore", "The King of Fighters 2003 (Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, kf2k3pcd,   kf2k3pcb, neogeo_multiboot,neogeo, neogeo_state,   init_kof2k3pcd,ROT0, "SNK Playmore", "The King of Fighters 2003 (Japan, JAMMA PCB / Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, kf2k3pcd,   kf2k3pcb, neogeo_multiboot,neogeo, neogeo_state,   init_kf2k3pcd, ROT0, "SNK Playmore", "The King of Fighters 2003 (Japan, JAMMA PCB / Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, kf2k3pd,    kof2003,  neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 2004 Plus / Hero (bootleg of The King of Fighters 2003, Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, kf2k3upd,   kof2003,  neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "The King of Fighters 2004 Ultra Plus (bootleg of The King of Fighters 2003, Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
 GAME( 1997, kogd,       kof97,    neogeo_kog,      neogeo, neogeo_state,   init_kogd,     ROT0, "bootleg", "King of Gladiator (bootleg of The King of Fighters '97 / Fully Decrypted)", MACHINE_SUPPORTS_SAVE )
@@ -21056,7 +21069,7 @@ GAME( 2003, svcnd,      svc,      neogeo_multiboot,neogeo, neogeo_state,   init_
 GAME( 2003, svcbp,      svc,      neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Plus (bootleg, set 3)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, svcplusp,   svc,      neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Plus (bootleg, set 1) (Predecrypted S & P)", MACHINE_SUPPORTS_SAVE )
 GAME( 2003, svcsplusp,  svc,      neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "bootleg", "SNK vs. Capcom - SVC Chaos Super Plus (bootleg) (Predecrypted S & P)", MACHINE_SUPPORTS_SAVE )
-GAME( 2003, svcpcbd,    svcpcb,   neogeo_multiboot,dualbios, neogeo_state, init_svc,      ROT0, "SNK Playmore", "SNK vs. Capcom - SVC Chaos (JAMMA PCB, NEO-MVH MVO PCB, Decrypted C)", MACHINE_SUPPORTS_SAVE )
+GAME( 2003, svcpcbd,    svcpcb,   neogeo_multiboot,dualbios, neogeo_state, init_svc,      ROT0, "Playmore / Capcom", "SNK vs. Capcom - SVC Chaos (JAMMA PCB, NEO-MVH MVO PCB, Decrypted C)", MACHINE_SUPPORTS_SAVE )
 GAME( 2001, zupapad,    zupapa,   neogeo_neo288h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "SNK", "Zupapa! (Decrypted C)", MACHINE_SUPPORTS_SAVE )
 
 /*    YEAR  NAME         PARENT       MACHINE      INPUT                      INIT      MONITOR COMPANY  */

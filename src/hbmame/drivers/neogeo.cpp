@@ -3271,7 +3271,7 @@ void neogeo_state::init_kf2k2plc()
 	m_bootleg_prot->neogeo_bootleg_sx_decrypt(fix_region, fix_region_size, 2);
 }
 
-void neogeo_state::init_kof2k3pcd() // decrypted C & decrypted Bios
+void neogeo_state::init_kf2k3pcd() // decrypted C & decrypted Bios
 {
 	init_neogeo();
 	m_sprgen->m_fixed_layer_bank_type = 2;
@@ -3285,6 +3285,21 @@ void neogeo_state::init_kof2k3pcd() // decrypted C & decrypted Bios
 		rom[i] = bitswap<8>(rom[i], 5, 6, 1, 4, 3, 0, 7, 2);
 
 	m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 5);
+	m_sma_prot->kf2k3pcb_decrypt_s1data(spr_region, spr_region_size, fix_region, fix_region_size);
+	m_maincpu->space(AS_PROGRAM).install_rom(0xc00000, 0xc7ffff, 0x080000, memregion("mainbios")->base());  // 512k bios
+}
+
+void neogeo_state::init_kf2k3pcnd() // Full decrypted & decrypted Bios
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 2;
+	m_pvc_prot->install_pvc_protection(m_maincpu, m_banked_cart);
+
+	// Extra m1 decryption
+	uint8_t* rom = memregion("audiocpu")->base();
+	for (int i = 0; i < 0x90000; i++)
+		rom[i] = bitswap<8>(rom[i], 5, 6, 1, 4, 3, 0, 7, 2);
+
 	m_sma_prot->kf2k3pcb_decrypt_s1data(spr_region, spr_region_size, fix_region, fix_region_size);
 	m_maincpu->space(AS_PROGRAM).install_rom(0xc00000, 0xc7ffff, 0x080000, memregion("mainbios")->base());  // 512k bios
 }
@@ -3477,6 +3492,22 @@ void neogeo_state::init_kf2k3upldd()
 	init_neogeo();
     m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
 	m_bootleg_prot->kf2k3bl_install_protection(m_maincpu, m_banked_cart, cpuregion, cpuregion_size);
+}
+
+void neogeo_state::init_kf2k3pcbdd()
+{
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 2;
+	m_pvc_prot->install_pvc_protection(m_maincpu, m_banked_cart); 
+	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
+
+	// Extra m1 decryption
+	uint8_t* rom = memregion("audiocpu")->base();
+	for (int i = 0; i < 0x90000; i++)
+		rom[i] = bitswap<8>(rom[i], 5, 6, 1, 4, 3, 0, 7, 2);
+
+	m_sma_prot->kf2k3pcb_decrypt_s1data(spr_region, spr_region_size, fix_region, fix_region_size);
+	m_maincpu->space(AS_PROGRAM).install_rom(0xc00000, 0xc7ffff, 0x080000, memregion("mainbios")->base());  // 512k bios
 }
 
 void neogeo_state::init_kof98dd()

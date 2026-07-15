@@ -17875,6 +17875,27 @@ ROM_START( abyssal )
 	ROM_LOAD16_BYTE( "498a.c2", 0x0000001, 0x200000, CRC(bbdacc24) SHA1(39025e7f593cc7f464e9f0403feab69ddbd371c8) )
 ROM_END
 
+// 204 : ADK World (many "official" lists show game number 91, but it's 204 inside the files)
+ROM_START( adkw )
+	ROM_REGION( 0x200000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "204.p1", 0x100000, 0x100000, CRC(9d10383a) SHA1(4743d9c806004d242a5949a3f70e42711af54096) )
+	ROM_CONTINUE(0x000000, 0x100000)
+
+	NEO_SFIX_128K( "204.s1", CRC(219b6f40) SHA1(a771872489c8b6d4011e412362366d30ed363e22) )
+
+	NEO_BIOS_AUDIO_128K( "204.m1", CRC(a7bf83b2) SHA1(50e794135a2a6f02704b1e41635aa0923a5299c0) )
+
+	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "204.v1", 0x000000, 0x400000, CRC(a456c548) SHA1(89289c886b76ff5032d9132dca3c412c56642972) )
+	ROM_LOAD( "204.v2", 0x400000, 0x400000, CRC(0061e2ee) SHA1(67fbabc7f59978bace709fce83565fe792d85aa6) )
+	ROM_LOAD( "204.v3", 0x800000, 0x400000, CRC(62bb3457) SHA1(20f72ae57ad560a24d975e4eed918d43e431739f) )
+	ROM_LOAD( "204.v4", 0xc00000, 0x400000, CRC(212994c4) SHA1(051fd0d78a858101e8975a3be04e649e7bb24593) )
+
+	ROM_REGION( 0x1000000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "204.c1", 0x0000000, 0x800000, CRC(e72150ba) SHA1(1e15ad7ee5fa1ab9126f55c714e070ba9d8c9d89) )
+	ROM_LOAD16_BYTE( "204.c2", 0x0000001, 0x800000, CRC(5fab1784) SHA1(37e330c76744844a1257f219e8135a8fd308fd74) )
+ROM_END
+
 // 501: Soldier Girl Amazon (port by iq_132)
 ROM_START( amazonn )
 	ROM_REGION( 0x100000, "maincpu", 0 )
@@ -18346,6 +18367,26 @@ ROM_START( gladmort )
 	ROM_REGION( 0x2800000, "sprites", 0 )
 	ROM_LOAD16_BYTE( "503.c1",   0x0000000, 0x1400000, CRC(c7d367cc) SHA1(91a5241ba793c367e06341c951e9fb43726d0944) )
 	ROM_LOAD16_BYTE( "503.c2",   0x0000001, 0x1400000, CRC(2c39b98e) SHA1(da26d5073fe483650cbcacf595b4410e4f5f4787) )
+ROM_END
+
+// 503 : gladmortcm by Pixelheart/ChipsOnSteroids
+ROM_START( gladmortcm )
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "503a.p1", 0x000000, 0x100000, CRC(2e6f89a1) SHA1(b7c917470884f8b405e5fd9877162a2b2a952fb5) )
+
+	NEO_SFIX_128K( "503.s1", CRC(c96154b9) SHA1(c95251dc566d4649496b7785c8e4cddd0aa67d7f) )
+
+	NEO_BIOS_AUDIO_64K( "503.m1", CRC(fbccedbd) SHA1(61e7f745d24c4ec3598cbf3cefc603f7deb21497) )
+
+	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "503.v1",   0x000000, 0x400000, CRC(4c0efb20) SHA1(80424564a8cd19bbe7e3f8003129585174cc9367) )
+	ROM_LOAD( "503.v2",   0x400000, 0x400000, CRC(dbd083f5) SHA1(c76980473550fda0ece72fa87104ea79a6a8024e) )
+	ROM_LOAD( "503.v3",   0x800000, 0x400000, CRC(2f5c4eeb) SHA1(4ed687bde1d3b549581270e90832d90a46101df0) )
+	ROM_LOAD( "503.v4",   0xc00000, 0x400000, CRC(12e01947) SHA1(b8147e584712d77c47e97c7a4790807536a22a86) )
+
+	ROM_REGION( 0x2800000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "503a.c1",   0x0000000, 0x1400000, CRC(f165c08e) SHA1(71792ee83037a1892317991e24578eb4846608b2) )
+	ROM_LOAD16_BYTE( "503a.c2",   0x0000001, 0x1400000, CRC(47688aa8) SHA1(4295eaf0d085fc67fdc3e65cba2a0418c03c3016) )
 ROM_END
 
 // 098 : Idol Mahjong Final Romance 2
@@ -21179,6 +21220,7 @@ GAME( 2023, 68kng,      neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_
 GAME( 2023, 240ptest,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Dasutin/Artemio", "240p Test Suite (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, 4play,      neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Ichikyu Wai Wai/EKORZ", "4 Player Input Test (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, abyssal,    neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Kako Eimon", "Abyssal Infants (HB)", MACHINE_SUPPORTS_SAVE )
+GAME( 1995, adkw,       neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "ADK", "ADK World - Neo CD conversion (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, amazonn,    neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT270, "iq132", "Soldier Girl Amazon - Neo Geo Conversion (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2017, badapple,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "HP Man", "Bad Apple Tech - Demo (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, baddudesn,  neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "La Casa De Ruivo / Neo Byte Force", "Bad Dudes vs Dragonninja Burger Demo (HB)", MACHINE_SUPPORTS_SAVE )
@@ -21206,6 +21248,7 @@ GAME( 1995, fr2,        neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_
 GAME( 2025, foodfn,     neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "iq132", "Food Fight - Neo Geo Conversion (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2023, galaxiann,  neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT270, "tcdev", "Galaxians Beta 2 (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, gladmort,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Pixelheart / ChipsOnSteroids", "Gladmort (HB)", MACHINE_SUPPORTS_SAVE )
+GAME( 2025, gladmortcm, gladmort, neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Pixelheart / ChipsOnSteroids", "Gladmort - Caravan Mode (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, goldaxen,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Hoffman", "Golden Axe - Neo Geo Conversion (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2019, grime,      neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "ChibiAkumas", "Grime 68000 (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, gxg,        neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Vasily Familiya", "Casanova She And She Demo (HB)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )

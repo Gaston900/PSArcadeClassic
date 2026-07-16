@@ -18824,6 +18824,22 @@ ROM_START( knacki )
 	ROM_LOAD16_BYTE( "658.c2", 0x000001, 0x100000, CRC(0deccb3d) SHA1(ee9d1e5d3efcea0545a6dae8cd28b913e6f106b6) )
 	ROM_CONTINUE( 0x400001, 0x100000 )
 ROM_END
+// 520: Midnight Wanderers 2-level demo by DomKid
+ROM_START( midnight )
+	ROM_REGION( 0x100000, "maincpu", 0 )
+	ROM_LOAD16_WORD_SWAP( "520.p1", 0x000000, 0x080000, CRC(92fdb042) SHA1(535c6568fab3fca2b4c64a95d24eb5d3d9162902) )
+
+	NEO_SFIX_128K( "520.s1", CRC(6f97ae2e) SHA1(c25b5dc98b7eb9759698fea7be69a9e4937b9ef4) )
+
+	NEO_BIOS_AUDIO_256K( "520.m1", CRC(64f774ea) SHA1(49df9ac5877dcb26f08c277027e484d0f89b51c7) )
+
+	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
+	ROM_LOAD( "520.v1", 0x000000, 0xa40000, CRC(f9506ce5) SHA1(0074040fbe6211fd9bd6dd13041c226fc24f7fc5) )
+
+	ROM_REGION( 0x1c0000, "sprites", 0 )
+	ROM_LOAD16_BYTE( "520.c1", 0x000000, 0xe0000, CRC(d3a28f25) SHA1(69f6cd1c2e17df466096095d1fad0f4cfc4c0713) )
+	ROM_LOAD16_BYTE( "520.c2", 0x000001, 0xe0000, CRC(99a44023) SHA1(cae2ecc5a2d0742594a3cdf9462861e9c2f2c1eb) )
+ROM_END
 
 // 612: Neo Driftout Tech Demo
 // No sound.
@@ -18843,6 +18859,7 @@ ROM_START( ndo_a_td )
 	ROM_LOAD16_BYTE( "612.c1", 0x000000, 0x080000, CRC(3913d0d5) SHA1(c1bb4d336676828c5754f763bc75d310aed6d73f) )
 	ROM_LOAD16_BYTE( "612.c2", 0x000001, 0x080000, CRC(0a70ac8e) SHA1(b7371609001ff73907bee49f1e9944fdd269eaab) )
 ROM_END
+
 
 // 607 : Neo 2500 demo by Blaster (c) 2004
 // No sound
@@ -21270,6 +21287,7 @@ GAME( 2005, ltorb,      neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_
 GAME( 2022, mslug3x,    neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "CB, Willnie", "Metal Slug - Mothership Armageddon Easter Egg Final Release (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, nblktiger,  neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "OzzyOuzo", "Neo Black Tiger Demo (HB)", MACHINE_IS_INCOMPLETE | MACHINE_SUPPORTS_SAVE )
 GAME( 2009, knacki,     neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Furrtek", "Knacki Balls (HB)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, midnight,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "DomKid", "Midnight Wanderers: Quest for the Chariot (HB, Demo)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, ndo_a_td,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Blastar", "Neo Driftout Tech Demo (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2004, neo2500,    neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Blastar", "Neo 2500 Demo (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, neo2048,    neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Nicole Branagan", "Neo 2048 (HB)", MACHINE_SUPPORTS_SAVE )

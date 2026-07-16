@@ -18824,6 +18824,7 @@ ROM_START( knacki )
 	ROM_LOAD16_BYTE( "658.c2", 0x000001, 0x100000, CRC(0deccb3d) SHA1(ee9d1e5d3efcea0545a6dae8cd28b913e6f106b6) )
 	ROM_CONTINUE( 0x400001, 0x100000 )
 ROM_END
+
 // 520: Midnight Wanderers 2-level demo by DomKid
 ROM_START( midnight )
 	ROM_REGION( 0x100000, "maincpu", 0 )

@@ -3,6 +3,7 @@
 // IPS 实现代码由 eziochiu 添加
 
 #include "winui.h"
+#include "mui_plug.h"
 #include <fstream>
 
 //=================================== 缘来是你 ========================================>>>
@@ -1518,6 +1519,11 @@ static void Win32UI_init(void)
 	ShowWindow(hMain, GetWindowState());
 	SetActiveWindow(hMain);
 	SetForegroundWindow(hMain);
+
+	// Create default plugin.ini if it doesn't already exist
+	windows_options o;
+	mui_plugin_options().init_plug(o);
+
 	SetFocus(hWndList);
 
 	if (GetCycleScreenshot() > 0)

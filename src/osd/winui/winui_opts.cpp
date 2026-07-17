@@ -967,9 +967,22 @@ void SetSampleDirs(const char* paths)
 	core_opts.set_value(OPTION_SAMPLEPATH, paths, OPTION_PRIORITY_CMDLINE);
 }
 
-const char * GetIniDir(void)
+const char * GetIniDir_c(void)
 {
 	return core_opts.value(OPTION_INIPATH);
+}
+
+std::string GetIniDir(void)
+{
+	std::string str = core_opts.value(OPTION_INIPATH);
+	std::size_t found = str.find_first_of(";");
+	if (found == 0)
+		return "ini";
+	else
+	if (found == std::string::npos)
+		return str;
+	else
+		return str.substr(0, found);
 }
 
 void SetIniDir(const char *path)
@@ -1908,10 +1921,10 @@ static void LoadOptionsAndInterface(void)
 	//std::string filename = std::string(DEFAULT_INI_FILENAME).append(".ini");
 	//LoadOptionsStartup(core_opts, filename);
 	// parse the real MAME.INI, create it if it doesn't exist
-	std::string filename = std::string(GetIniDir()).append(PATH_SEPARATOR).append(DEFAULT_INI_FILENAME).append(".ini");
+	std::string filename = GetIniDir().append(PATH_SEPARATOR).append(DEFAULT_INI_FILENAME).append(".ini");
 	LoadOptionsStartup(core_opts, filename);
 	// parse UI.INI
-	std::string uiname = std::string(GetIniDir()).append(PATH_SEPARATOR).append(INTERNAL_UI_INI_FILENAME).append(".ini");
+	std::string uiname = GetIniDir().append(PATH_SEPARATOR).append(INTERNAL_UI_INI_FILENAME).append(".ini");
 	LoadInternalUIFile(ui_opts, uiname);
 }
 
@@ -2139,7 +2152,7 @@ void SaveInterface(void)
 
 void SaveInternalUI(void)
 {
-	std::string filename = std::string(GetIniDir()).append(PATH_SEPARATOR).append(INTERNAL_UI_INI_FILENAME).append(".ini");
+	std::string filename = GetIniDir().append(PATH_SEPARATOR).append(INTERNAL_UI_INI_FILENAME).append(".ini");
 	SaveInternalUIFile(ui_opts, filename);
 }
 
@@ -2183,13 +2196,13 @@ void ResetAllGameOptions(void)
 
 	for (int i = 0; i < driver_list::total(); i++)
 	{
-		std::string filename = std::string(GetIniDir()).append(PATH_SEPARATOR).append(GetDriverGameName(i)).append(".ini");
+		std::string filename = GetIniDir().append(PATH_SEPARATOR).append(GetDriverGameName(i)).append(".ini");
 		osd_file::remove(filename);
 	}
 
     /* Easiest to just open the ini/source folder if it exists,
 	then remove all the files in it that end in ini. */
-	std::string pathname = std::string(GetIniDir()).append(PATH_SEPARATOR).append("source");
+	std::string pathname = GetIniDir().append(PATH_SEPARATOR).append("source");
 	std::string match = std::string(pathname.c_str()).append(PATH_SEPARATOR).append("*.ini");
 
 	if ((hFindFile = winui_find_first_file_utf8(match.c_str(), &FindFileData)) != INVALID_HANDLE_VALUE)
@@ -2215,7 +2228,7 @@ void ResetAllGameOptions(void)
 static void ParseIniFile(windows_options &opts, const char *name)
 {
 	/* open the file; if we fail, that's ok */
-	std::string fname = std::string(GetIniDir()).append(PATH_SEPARATOR).append(name).append(".ini");
+	std::string fname = GetIniDir().append(PATH_SEPARATOR).append(name).append(".ini");
 	LoadOptionsFile(opts, fname);
 	SetDirectories(opts);
 }
@@ -2349,7 +2362,7 @@ void SaveOptions(OPTIONS_TYPE opt_type, windows_options &opts, int game_num)
 
 	if (!filename.empty())
 	{
-		std::string filepath = std::string(GetIniDir()).append(PATH_SEPARATOR).append(filename.c_str()).append(".ini");
+		std::string filepath = GetIniDir().append(PATH_SEPARATOR).append(filename.c_str()).append(".ini");
 		SetDirectories(opts);
 		SaveOptionsFile(opts, filepath);
 	}

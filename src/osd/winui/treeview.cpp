@@ -1882,20 +1882,20 @@ static bool TryRenameCustomFolderIni(LPTREEFOLDER lpFolder, const char *old_name
 
 		if(lpParent)
 		{
-			snprintf(filename, std::size(filename), "%s\\%s\\%s.ini", GetIniDir(), lpParent->m_lpTitle, old_name);
-			snprintf(new_filename, std::size(new_filename), "%s\\%s\\%s.ini", GetIniDir(), lpParent->m_lpTitle, new_name);
+			snprintf(filename, std::size(filename), "%s\\%s\\%s.ini", GetIniDir_c(), lpParent->m_lpTitle, old_name);
+			snprintf(new_filename, std::size(new_filename), "%s\\%s\\%s.ini", GetIniDir_c(), lpParent->m_lpTitle, new_name);
 			winui_move_file_utf8(filename, new_filename);
 		}
 	}
 	else
 	{
 		//Rename the File, if it exists
-		snprintf(filename, std::size(filename), "%s\\%s.ini", GetIniDir(), old_name);
-		snprintf(new_filename, std::size(new_filename), "%s\\%s.ini", GetIniDir(), new_name);
+		snprintf(filename, std::size(filename), "%s\\%s.ini", GetIniDir_c(), old_name);
+		snprintf(new_filename, std::size(new_filename), "%s\\%s.ini", GetIniDir_c(), new_name);
 		winui_move_file_utf8(filename, new_filename);
 		//Rename the Directory, if it exists
-		snprintf(filename, std::size(filename), "%s\\%s", GetIniDir(), old_name);
-		snprintf(new_filename, std::size(new_filename), "%s\\%s", GetIniDir(), new_name);
+		snprintf(filename, std::size(filename), "%s\\%s", GetIniDir_c(), old_name);
+		snprintf(new_filename, std::size(new_filename), "%s\\%s", GetIniDir_c(), new_name);
 		winui_move_file_utf8(filename, new_filename);
 	}
 

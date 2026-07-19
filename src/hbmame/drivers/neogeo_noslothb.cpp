@@ -460,24 +460,24 @@ ROM_START( breakrevhc04 )
 	ROM_LOAD16_BYTE( "245.c6", 0x1000001, 0x400000, CRC(d0337328) SHA1(dff86b75dc283bd4512557a5c64f16e6be6c16e4) )
 ROM_END
 
-ROM_START( crswd2blhc01 ) // crswd2blp
+ROM_START( crswd2blhc01 ) // crswd2blpx
 	ROM_REGION( 0x200000, "maincpu", ROMREGION_BE|ROMREGION_16BIT )
-	ROM_LOAD16_WORD_SWAP( "054_hc01.p1", 0x100000, 0x100000, CRC(aa14d534) SHA1(1683a63e749d48d56f71c515c1aa12e93102ba9a) )
+	ROM_LOAD16_WORD_SWAP( "054_hc01.p1", 0x100000, 0x100000, CRC(3e77a96f) SHA1(3876f5e0fa6f6c0381586ce4a9761e09e11aa1cb) )
 	ROM_CONTINUE( 0x000000, 0x100000 )
 
-	NEO_SFIX_128K( "054.s1", CRC(22e02ddd) SHA1(ebd834affc763cc5854abf1c6c42f43f3f3755fd) )
+	NEO_SFIX_128K( "054_hc01.s1", CRC(7ddb9c7e) SHA1(c7ca63f1ff9edb2f71d13cc14d6a426b85182228) )
 
-	NEO_BIOS_AUDIO_128K( "054_hc01.m1", CRC(53412b7a) SHA1(75031a28adf537c9f7c5370337cb4936df89f683) )
+	NEO_BIOS_AUDIO_128K( "054_hc01.m1", CRC(f8fda0dd) SHA1(097a63faede03ebe3f548cd8fbf4362c3897e31e) )
 
 	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
-	ROM_LOAD( "054_hc01.v1", 0x000000, 0x400000, CRC(72364102) SHA1(047d64e16c0a2ce4800454d1237a46fbc85c538c) )
-	ROM_LOAD( "054_hc01.v2", 0x400000, 0x400000, CRC(501d65cc) SHA1(a9c80ae8d0ff7fb9f7a10e2efe09a78146902376) )
-	ROM_LOAD( "054_hc01.v3", 0x800000, 0x400000, CRC(913be857) SHA1(f50cb3552730a363a2936d691ee0e93a1e56a9ac) )
-	ROM_LOAD( "054_hc01.v4", 0xc00000, 0x400000, CRC(278220ce) SHA1(0d4b1f1eafae89439f7c85839c97b033724fdb5e) )
+	ROM_LOAD( "054_hc01.v1", 0x000000, 0x400000, CRC(e2592de1) SHA1(7f5c05a507ca4d2484834ef28378c302e0e11364) )
+	ROM_LOAD( "054_hc01.v2", 0x400000, 0x400000, CRC(a6c27244) SHA1(5feb37d7af1827a05740182d414ab71c3b385149) )
+	ROM_LOAD( "054_hc01.v3", 0x800000, 0x400000, CRC(de506a5b) SHA1(2151f6805bfe3e633f6196c2730451ed68db0f63) )
+	ROM_LOAD( "054_hc01.v4", 0xc00000, 0x400000, CRC(d3aa8645) SHA1(eac7afb8ce6003cf249e800d7d92d5f6b02fca25) )
 
 	ROM_REGION( 0x800000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "054.c1", 0x000000, 0x400000, CRC(8221b712) SHA1(7e68871f1bfc402ef27c8fa088c680cbd133f71a) )
-	ROM_LOAD16_BYTE( "054.c2", 0x000001, 0x400000, CRC(d6c6183d) SHA1(cc546ff063fae2c01c109fabcd5b2d29ec3299db) )
+	ROM_LOAD16_BYTE( "054_hc01.c1", 0x000000, 0x400000, CRC(8404780c) SHA1(30a1e7249f01cd9dade96773ca17d584f5b4374d) )
+	ROM_LOAD16_BYTE( "054_hc01.c2", 0x000001, 0x400000, CRC(d8016890) SHA1(a3d38f9e6bbed588363c7bd598511570f9c392b5) )
 ROM_END
 
 ROM_START( cyberliphc01 )
@@ -12882,7 +12882,7 @@ GAME( 1998, breakrevhc01,     breakrev, neogeo_neobase,  neogeo, neogeo_state,  
 GAME( 2018, breakrevhc02,     breakrev, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Breakers Revenge (Extra Mode 2018)", MACHINE_SUPPORTS_SAVE )
 GAME( 2024, breakrevhc03,     breakrev, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "GOTVG",        "Breakers Revenge (Infinite Energy 2024-12-01)", MACHINE_SUPPORTS_SAVE )
 GAME( 1998, breakrevhc04,     breakrev, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Breakers Revenge (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )
-GAME( 2026, crswd2blhc01,     crswd2bl, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Crossed Swords 2 (bootleg of CD version, Full CD Audio)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, crswd2blhc01,     crswd2bl, neogeo_neo304h,  neogeo, neogeo_state,    init_neogeo,   ROT0, "pierpa86",     "Crossed Swords 2 (bootleg of CD version, Full CD Audio)", MACHINE_SUPPORTS_SAVE )
 GAME( 2022, cyberliphc01,     cyberlip, neogeo_cyberlip, neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Cyber-Lip (Change Weapon)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, doubledrhc01,     doubledr, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "hack",         "Double Dragon (Chinese Translation)", MACHINE_SUPPORTS_SAVE )
 GAME( 2009, doubledrhc02,     doubledr, neogeo_neobase,  neogeo, neogeo_state,    init_neogeo,   ROT0, "DDJ",          "Double Dragon (Easy Special Attacks)", MACHINE_SUPPORTS_SAVE )

@@ -47,6 +47,14 @@
 #include "includes/pgm.h"
 #include "machine/pgmprot_igs027a_type3.h"
 
+#define LOG_PROT    (1U << 1)
+#define LOG_ALL     (LOG_PROT)
+
+#define VERBOSE (0)
+#include "logmacro.h"
+
+#define LOGPROT(...) LOGMASKED(LOG_PROT, __VA_ARGS__)
+
 void pgm_arm_type3_state::svg_arm7_ram_sel_w(u32 data)
 {
 //  printf("svg_arm7_ram_sel_w %08x\n", data);
@@ -76,7 +84,7 @@ u16 pgm_arm_type3_state::svg_m68k_ram_r(offs_t offset)
 }
 
 //缘来是你
-/*****************************************************************************/
+/************************************ mamep ********************************/
 u16 pgm_arm_type3_state::dmnfrnt_m68k_ram_r(offs_t offset)
 {
 	int ram_sel = (m_svg_ram_sel & 1) ^ 1;
@@ -106,31 +114,27 @@ void pgm_arm_type3_state::svg_68k_nmi_w(u16 data)
 
 void pgm_arm_type3_state::svg_latch_68k_w(offs_t offset, u16 data, u16 mem_mask)
 {
-	if (PGMARM7LOGERROR)
-		logerror("M68K: Latch write: %04x (%04x) %s\n", data & 0x0000ffff, mem_mask, machine().describe_context());
+	LOGPROT("M68K: Latch write: %04x (%04x) %s\n", data & 0x0000ffff, mem_mask, machine().describe_context());
 	COMBINE_DATA(&m_svg_latchdata_68k_w);
 }
 
 
 u16 pgm_arm_type3_state::svg_latch_68k_r(offs_t offset, u16 mem_mask)
 {
-	if (PGMARM7LOGERROR)
-		logerror("M68K: Latch read: %04x (%04x) %s\n", m_svg_latchdata_arm_w & 0x0000ffff, mem_mask, machine().describe_context());
+	LOGPROT("M68K: Latch read: %04x (%04x) %s\n", m_svg_latchdata_arm_w & 0x0000ffff, mem_mask, machine().describe_context());
 	return m_svg_latchdata_arm_w;
 }
 
 
 u32 pgm_arm_type3_state::svg_latch_arm_r(offs_t offset, u32 mem_mask)
 {
-	if (PGMARM7LOGERROR)
-		logerror("ARM7: Latch read: %08x (%08x) %s\n", m_svg_latchdata_68k_w, mem_mask, machine().describe_context());
+	LOGPROT("ARM7: Latch read: %08x (%08x) %s\n", m_svg_latchdata_68k_w, mem_mask, machine().describe_context());
 	return m_svg_latchdata_68k_w;
 }
 
 void pgm_arm_type3_state::svg_latch_arm_w(offs_t offset, u32 data, u32 mem_mask)
 {
-	if (PGMARM7LOGERROR)
-		logerror("ARM7: Latch write: %08x (%08x) %s\n", data, mem_mask, machine().describe_context());
+	LOGPROT("ARM7: Latch write: %08x (%08x) %s\n", data, mem_mask, machine().describe_context());
 
 	COMBINE_DATA(&m_svg_latchdata_arm_w);
 }
@@ -149,7 +153,7 @@ void pgm_arm_type3_state::svg_68k_mem(address_map &map)
 }
 
 //缘来是你 
-/*****************************************************************************************************************************************************************/
+/************************************************* mamep *******************************************************************/
 void pgm_arm_type3_state::dmnfrnt_68k_mem(address_map &map)
 {
 	pgm_mem(map);
@@ -159,7 +163,7 @@ void pgm_arm_type3_state::dmnfrnt_68k_mem(address_map &map)
 	map(0x5c0000, 0x5c0001).rw(FUNC(pgm_arm_type3_state::svg_68k_nmi_r), FUNC(pgm_arm_type3_state::svg_68k_nmi_w));      /* ARM7 FIQ */
 	map(0x5c0300, 0x5c0301).rw(FUNC(pgm_arm_type3_state::svg_latch_68k_r), FUNC(pgm_arm_type3_state::svg_latch_68k_w)); /* ARM7 Latch */
 }
-/*****************************************************************************************************************************************************************/
+/****************************************************************************************************************************/
 
 void pgm_arm_type3_state::_55857G_arm7_map(address_map &map)
 {
@@ -183,6 +187,7 @@ void pgm_arm_type3_state::machine_reset()
 	if (!strcmp(machine().system().name, "theglad")) base = 0x3316;
 	if (!strcmp(machine().system().name, "theglad100")) base = 0x3316;
 	if (!strcmp(machine().system().name, "theglad101")) base = 0x3316;
+	if (!strcmp(machine().system().name, "theglad104")) base = 0x3316;
 	if (!strcmp(machine().system().name, "thegladpcb")) base = 0x3316;	//缘来是你
 	if (!strcmp(machine().system().name, "happy6")) base = 0x3586;
 	if (!strcmp(machine().system().name, "happy6101")) base = 0x3586;
@@ -247,7 +252,7 @@ void pgm_arm_type3_state::pgm_arm_type3_33_8688m(machine_config &config) // ARM7
 }
 
 //缘来是你
-/*****************************************************************************/
+/********************************** mamep ***********************************/
 void pgm_arm_type3_state::pgm_arm_type3_dmnfrnt(machine_config &config)
 {
 	pgm_arm_type3(config);

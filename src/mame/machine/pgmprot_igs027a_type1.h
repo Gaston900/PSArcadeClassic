@@ -151,7 +151,6 @@ private:
 	void cavepgm_mem(address_map &map);
 	void kov_map(address_map &map);
 	void kov_sim_map(address_map &map);
-	//void kov_sim_map_hsqj(address_map &map) ATTR_COLD;	//缘来是你
 };
 
 INPUT_PORTS_EXTERN( sango );

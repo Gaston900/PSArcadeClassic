@@ -151,8 +151,8 @@ static const u8 m_olds_source_data[8][0xec] = // table addresses $2951CA
 		0xd6, 0x44, 0x43, 0x8d, 0x73, 0x0e, 0x71, 0x48, 0xd3, 0x82, 0x40, 0xda
 	}
 };
-//缘来是你 MAMEPLUS 通天河死机
-/*****************************************************************************/
+//缘来是你
+/********************************** MAMEPLUS *********************************/
 u16 pgm_028_025_state::olds_prot_swap_r(offs_t offset)
 {
 	if (m_maincpu->pc() < 0x100000)	//bios
@@ -171,8 +171,8 @@ void pgm_028_025_state::machine_reset()
 	m_igs025->m_kb_region = region;
 	m_igs025->m_kb_game_id = 0x00900000 | region;
 	
-//缘来是你 MAMEPLUS 通天河死机
-/*****************************************************************************/	
+//缘来是你 
+/********************************** MAMEPLUS *********************************/	
 	u16 *mem16 = (u16 *)(memregion(":user2")->base());
 	int i;
 
@@ -197,8 +197,8 @@ void pgm_028_025_state::init_olds()
 {
 	pgm_basic_init();
 
-//缘来是你 MAMEPLUS 通天河死机
-/**************************************************************************************************************************************************************************************************************************/
+//缘来是你
+/******************************************************************* MAMEPLUS *********************************************************************************************************************************************/
 //	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0xdcb400, 0xdcb403, read16sm_delegate(*m_igs025, FUNC(igs025_device::killbld_igs025_prot_r)), write16sm_delegate(*m_igs025, FUNC(igs025_device::olds_w)));
 	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0xdcb400, 0xdcb403, read16sm_delegate(*m_igs025, FUNC(igs025_device::olds_r)), write16sm_delegate(*m_igs025, FUNC(igs025_device::olds_w)));//修正
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x8178f4, 0x8178f5, read16sm_delegate(*this, FUNC(pgm_028_025_state::olds_prot_swap_r)));//修正																																 
@@ -265,6 +265,7 @@ INPUT_PORTS_START( olds )
 /***********************************************************************************************************************************************************************************************/
 
 	PORT_MODIFY("Region")   /* Region - supplied by protection device */
+	PORT_BIT(      0xfff0, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_CONFNAME( 0x000f, 0x0006, DEF_STR( Region ) )
 	/* includes the following regions:
 	1 = taiwan, 2 = china, 3 = japan (title = orlegend special),

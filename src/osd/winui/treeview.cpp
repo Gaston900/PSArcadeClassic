@@ -2090,7 +2090,7 @@ void CreateCOLLECTIONFolders(int parent_index)
 
 	// create our two subfolders
     lpCapcom = NewFolder("Capcom", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
-	lpPGM = NewFolder("PGM", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
+	lpPGM = NewFolder("IGS", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
     lpNanco = NewFolder("Nanco", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
 	lpTaito = NewFolder("Taito", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));
 	lpKonami = NewFolder("Konami", next_folder_id++, parent_index, IDI_FOLDER, GetFolderFlags(numFolders));

@@ -62,6 +62,13 @@
 
 #include "screen.h"
 
+#define LOG_PROT    (1U << 1)
+#define LOG_ALL     (LOG_PROT)
+
+#define VERBOSE (0)
+#include "logmacro.h"
+
+#define LOGPROT(...) LOGMASKED(LOG_PROT, __VA_ARGS__)
 
 /**************************** EMULATION *******************************/
 /* used by photoy2k, kovsh */
@@ -100,8 +107,7 @@ u16 pgm_arm_type1_state::arm7_type1_ram_r(offs_t offset, u16 mem_mask)
 {
 	const u16 *share16 = reinterpret_cast<u16 *>(m_arm7_shareram.target());
 
-	if (PGMARM7LOGERROR)
-		logerror("M68K: ARM7 Shared RAM Read: %04x = %04x (%08x) %s\n", BYTE_XOR_LE(offset), share16[BYTE_XOR_LE(offset)], mem_mask, machine().describe_context());
+	LOGPROT("M68K: ARM7 Shared RAM Read: %04x = %04x (%08x) %s\n", BYTE_XOR_LE(offset), share16[BYTE_XOR_LE(offset)], mem_mask, machine().describe_context());
 	return share16[BYTE_XOR_LE(offset << 1)];
 }
 
@@ -109,8 +115,7 @@ void pgm_arm_type1_state::arm7_type1_ram_w(offs_t offset, u16 data, u16 mem_mask
 {
 	u16 *share16 = reinterpret_cast<u16 *>(m_arm7_shareram.target());
 
-	if (PGMARM7LOGERROR)
-		logerror("M68K: ARM7 Shared RAM Write: %04x = %04x (%04x) %s\n", BYTE_XOR_LE(offset), data, mem_mask, machine().describe_context());
+	LOGPROT("M68K: ARM7 Shared RAM Write: %04x = %04x (%04x) %s\n", BYTE_XOR_LE(offset), data, mem_mask, machine().describe_context());
 	COMBINE_DATA(&share16[BYTE_XOR_LE(offset << 1)]);
 }
 
@@ -130,15 +135,13 @@ u32 pgm_arm_type1_state::arm7_type1_exrom_r()
 
 u32 pgm_arm_type1_state::arm7_type1_shareram_r(offs_t offset, u32 mem_mask)
 {
-	if (PGMARM7LOGERROR)
-		logerror("ARM7: ARM7 Shared RAM Read: %04x = %08x (%08x) %s\n", offset << 2, m_arm7_shareram[offset], mem_mask, machine().describe_context());
+	LOGPROT("ARM7: ARM7 Shared RAM Read: %04x = %08x (%08x) %s\n", offset << 2, m_arm7_shareram[offset], mem_mask, machine().describe_context());
 	return m_arm7_shareram[offset];
 }
 
 void pgm_arm_type1_state::arm7_type1_shareram_w(offs_t offset, u32 data, u32 mem_mask)
 {
-	if (PGMARM7LOGERROR)
-		logerror("ARM7: ARM7 Shared RAM Write: %04x = %08x (%08x) %s\n", offset << 2, data, mem_mask, machine().describe_context());
+	LOGPROT("ARM7: ARM7 Shared RAM Write: %04x = %08x (%08x) %s\n", offset << 2, data, mem_mask, machine().describe_context());
 	COMBINE_DATA(&m_arm7_shareram[offset]);
 }
 
@@ -726,7 +729,7 @@ void pgm_arm_type1_state::init_kovshp()
 {
 	pgm_basic_init();
 	// MAMEFX - code from ArcCabView 0.248, thanks to the author - added 2022-11-18
-	u16 *src16 = (u16 *)(memregion("prot")->base());
+	u16 *src16 = (u16*)memregion("prot")->base();
 	src16[0x2892/2] = 0x0101;
 	src16[0x289e/2] = 0x0107;
 	src16[0x28a4/2] = 0x0108;
@@ -736,13 +739,15 @@ void pgm_arm_type1_state::init_kovshp()
 	src16[0x2c92/2] = 0x400f;
 	src16[0x2ce0/2] = 0x6c1e;
 	src16[0x2ce2/2] = 0x0048;
-	u8 *src = memregion("prot")->base();
-	for (u32 i = 0x2ce8; i < 0x2e48; i+=8) // fix z80 data offsets (offset - 0x09'e0'00)
+
+	u8 *src8 = memregion("prot")->base();
+	for (u32 i = 0x2ce8; i < 0x2e48; i+=8)
 	{
-		u16 d = (src[i+4] << 8) + src[i+7] - 0x09e0;
-		src[i+4] = d >> 8;
-		src[i+7] = d & 0xff;
+		u16 t = (src8[i+4] << 8) + src8[i+7] - 0x9e0;
+		src8[i+4] = t >> 8;
+		src8[i+7] = t;
 	}
+
 	// MAMEFX end
 	pgm_kovshp_decrypt(machine());
 	arm7_type1_latch_init();
@@ -758,7 +763,7 @@ void pgm_arm_type1_state::init_kovshxas()
 	pgm_basic_init();
 
 	// MAMEFX - code from ArcCabView 0.248, thanks to the author - added 2022-11-18
-	u16 *src16 = (u16 *)(memregion("prot")->base());
+	u16 *src16 = (u16*)memregion("prot")->base();
 	src16[0x2892/2] = 0x0101;
 	src16[0x289e/2] = 0x0107;
 	src16[0x28a4/2] = 0x0108;
@@ -768,12 +773,12 @@ void pgm_arm_type1_state::init_kovshxas()
 	src16[0x2c92/2] = 0x400f;
 	src16[0x2ce0/2] = 0x6c1e;
 	src16[0x2ce2/2] = 0x0048;
-	u8 *src = memregion("prot")->base();
-	for (u32 i = 0x2ce8; i < 0x2e48; i+=8) // fix z80 data offsets (offset - 0x09'e0'00)
+	u8 *src8 = memregion("prot")->base();
+	for (u32 i = 0x2ce8; i < 0x2e48; i+=8)
 	{
-		u16 d = (src[i+4] << 8) + src[i+7] - 0x09e0;
-		src[i+4] = d >> 8;
-		src[i+7] = d & 0xff;
+		u16 t = (src8[i+4] << 8) + src8[i+7] - 0x9e0;
+		src8[i+4] = t >> 8;
+		src8[i+7] = t;
 	}
 	// MAMEFX end
 //  pgm_kovshp_decrypt(machine());
@@ -782,8 +787,8 @@ void pgm_arm_type1_state::init_kovshxas()
 	m_maincpu->space(AS_PROGRAM).install_write_handler(0x500000, 0x500005, write16sm_delegate(*this, FUNC(pgm_arm_type1_state::kovshp_asic27a_write_word)));
 }
 
-/* 缘来是你 */
-/***************************************************************************************************************************************************************/
+// 缘来是你
+/************************************************ mamep *********************************************/
 void pgm_arm_type1_state::init_kovassga()
 {
 	pgm_basic_init();
@@ -793,7 +798,7 @@ void pgm_arm_type1_state::init_kovassga()
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0008, 0x4f0009, read16smo_delegate(*this, FUNC(pgm_arm_type1_state::kovsh_fake_region_r)));
 	m_maincpu->space(AS_PROGRAM).install_write_handler(0x500000, 0x500005, write16sm_delegate(*this, FUNC(pgm_arm_type1_state::kovshp_asic27a_write_word)));
 }
-/****************************************************************************************************************************************************************/
+/*******************************************************************************************************/
 
 void pgm_arm_type1_state::pgm_decode_kovlsqh2_tiles()
 {
@@ -865,8 +870,8 @@ void pgm_arm_type1_state::pgm_decode_kovqhsgs2_program()
 	memcpy( src, &dst[0], 0x400000 );
 }
 
-/* 缘来是你 */
-/***********************************************************************************************************************************/
+// 缘来是你
+/********************************************************** mamep **************************************/
 void pgm_arm_type1_state::pgm_decode_kovassg_program()
 {
 	//int i;
@@ -882,7 +887,7 @@ void pgm_arm_type1_state::pgm_decode_kovassg_program()
 
 	memcpy( src, &dst[0], 0x400000 );
 }
-/***********************************************************************************************************************************/
+/**********************************************************************************************************/
 
 void pgm_arm_type1_state::init_kovlsqh2()
 {
@@ -926,8 +931,8 @@ void pgm_arm_type1_state::init_kovqhsgs()
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0008, 0x4f0009, read16smo_delegate(*this, FUNC(pgm_arm_type1_state::kovsh_fake_region_r)));
 }
 
-/* 缘来是你 */
-/**********************************************************************************************************************************************************/
+// 缘来是你
+/************************************************ mamep **********************************************************/
 void pgm_arm_type1_state::init_kovassg()
 {
 	pgm_decode_kovassg_program();
@@ -948,7 +953,7 @@ void pgm_arm_type1_state::init_kovassg()
 	/* we only have a china internal ROM dumped for now.. allow region to be changed for debugging (to ensure all alt titles / regions can be seen) */
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0008, 0x4f0009, read16smo_delegate(*this, FUNC(pgm_arm_type1_state::kovsh_fake_region_r)));
 }
-/**********************************************************************************************************************************************************/
+/********************************************************************************************************************/
 
 /*
  in Ketsui (ket) @ 000A719C (move.w)
@@ -2807,8 +2812,8 @@ void pgm_arm_type1_state::init_kov()
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0000, 0x4f003f, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_protram_r)));
 }
 
-/* 缘来是你 */
-/***********************************************************************************************************************************/
+// 缘来是你
+/**************************************************** mamep **********************************************************/
 void pgm_arm_type1_state::init_kovplus()
 {
 	pgm_basic_init();
@@ -2823,7 +2828,7 @@ void pgm_arm_type1_state::init_kovplus()
 	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0x500000, 0x500005, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_r)), write16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_w)));
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0000, 0x4f003f, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_protram_r)));
 }
-/***********************************************************************************************************************************/
+/************************************************************************************************************************/
 
 void pgm_arm_type1_state::init_kovboot()
 {
@@ -2839,24 +2844,6 @@ void pgm_arm_type1_state::init_kovboot()
 	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0x500000, 0x500005, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_r)), write16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_w)));
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0000, 0x4f003f, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_protram_r)));
 }
-
-/*缘来是你*/
-#if 0
-void pgm_arm_type1_state::init_kovhsqj()
-{
-	pgm_basic_init();
-	pgm_kov_decrypt(machine());
-	arm7_type1_latch_init();
-	m_curslots = 0;
-	m_kov_c0_value = 0;
-	m_kov_cb_value = 0;
-	m_kov_fe_value = 0;
-	arm_sim_handler = &pgm_arm_type1_state::command_handler_kov;
-	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0x500000, 0x500005, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_r)), write16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_w)));
-	m_maincpu->space(AS_PROGRAM).install_read_handler(0x4f0000, 0x4f003f, read16sm_delegate(*this, FUNC(pgm_arm_type1_state::arm7_type1_sim_protram_r)));
-	m_hack_sprites_buffers = true;
-}
-#endif
 
 void pgm_arm_type1_state::init_oldsplus()
 {
@@ -2971,6 +2958,7 @@ INPUT_PORTS_START( sango )
 /***********************************************************************************************************************************************************************************************/
 
 	PORT_MODIFY("Region")   /* Region - supplied by protection device */
+	PORT_BIT(      0xfff0, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_CONFNAME( 0x000f, 0x0005, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, DEF_STR( China ) )
 	PORT_CONFSETTING(      0x0001, DEF_STR( Taiwan ) )
@@ -2984,6 +2972,7 @@ INPUT_PORTS_START( sango_ch )
 	PORT_INCLUDE ( pgm )
 
 	PORT_MODIFY("Region")   /* Region - supplied by protection device */
+	PORT_BIT(      0xfff0, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_CONFNAME( 0x000f, 0x0000, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, DEF_STR( China ) )
 	PORT_CONFSETTING(      0x0001, DEF_STR( Taiwan ) )
@@ -2996,7 +2985,7 @@ INPUT_PORTS_END
 
 INPUT_PORTS_START( oldsplus )
 	PORT_INCLUDE ( pgm )
-
+	
 // 缘来是你 组合键代码来源 (EKMAME) 
 /***********************************************************************************************************************************************************************************************/
 	PORT_MODIFY("P1P2")
@@ -3024,6 +3013,7 @@ INPUT_PORTS_START( oldsplus )
 /***********************************************************************************************************************************************************************************************/
 
 	PORT_MODIFY("Region")   /* Region - supplied by protection device */
+	PORT_BIT(      0xfff0, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_CONFNAME( 0x000f, 0x0001, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0001, DEF_STR( China ) )
 	PORT_CONFSETTING(      0x0002, DEF_STR( Japan ) )
@@ -3037,6 +3027,7 @@ INPUT_PORTS_START( pstar )
 	PORT_INCLUDE ( pgm )
 
 	PORT_MODIFY("Region")   /* Region - supplied by protection device */
+	PORT_BIT(      0xfff0, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_CONFNAME( 0x000f, 0x0005, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, DEF_STR( China ) )
 	PORT_CONFSETTING(      0x0001, DEF_STR( Taiwan ) )
@@ -3050,6 +3041,7 @@ INPUT_PORTS_START( py2k2 )
 	PORT_INCLUDE ( pgm )
 
 	PORT_MODIFY("Region")   /* Region - supplied by protection device */
+	PORT_BIT(      0xfff0, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_CONFNAME( 0x000f, 0x0003, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, DEF_STR( Taiwan ) )
 	PORT_CONFSETTING(      0x0001, DEF_STR( China ) )
@@ -3064,6 +3056,7 @@ INPUT_PORTS_START( pgm3in1 )
 	PORT_INCLUDE ( pgm )
 
 	PORT_MODIFY("Region")   /* Region - supplied by protection device */
+	PORT_BIT(      0xfff0, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_CONFNAME( 0x000f, 0x0003, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, DEF_STR( China ) )
 	PORT_CONFSETTING(      0x0001, DEF_STR( Taiwan ) )
@@ -3076,6 +3069,7 @@ INPUT_PORTS_START( puzzli2 )
 	PORT_INCLUDE ( pgm )
 
 	PORT_MODIFY("Region")   /* Region - supplied by protection device */
+	PORT_BIT(      0xfff0, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_CONFNAME( 0x000f, 0x0005, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, DEF_STR( Taiwan ) )
 	PORT_CONFSETTING(      0x0001, DEF_STR( China ) )

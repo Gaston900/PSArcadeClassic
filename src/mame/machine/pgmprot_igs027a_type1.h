@@ -42,6 +42,8 @@ public:
 	void pgm_arm_type1_sim(machine_config &config);
 	void pgm_arm_type1_cave(machine_config &config);
 	void pgm_arm_type1(machine_config &config);
+	void pgm_arm_type1_2XCLOCK(machine_config &config);
+	void pgm_arm_type1_sim_2XCLOCK(machine_config &config);
 
 protected:
 	virtual void machine_start() override;

@@ -225,6 +225,27 @@ void pgm_arm_type1_state::pgm_arm_type1_cave(machine_config &config)
 	m_maincpu->set_addrmap(AS_PROGRAM, &pgm_arm_type1_state::cavepgm_mem);
 }
 
+void pgm_arm_type1_state::pgm_arm_type1_2XCLOCK(machine_config &config) // ARM7 Shared motherboard XTAL
+{
+	pgmbase(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &pgm_arm_type1_state::kov_map);
+
+	/* protection CPU */
+	ARM7(config, m_prot, 20000000);   // 55857E?
+
+	m_maincpu->set_clock(36_MHz_XTAL);
+	m_prot->set_addrmap(AS_PROGRAM, &pgm_arm_type1_state::_55857E_arm7_map);
+}
+
+void pgm_arm_type1_state::pgm_arm_type1_sim_2XCLOCK(machine_config &config) // When simulated
+{
+	pgm_arm_type1_2XCLOCK(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &pgm_arm_type1_state::kov_sim_map);
+
+	/* protection CPU */
+	m_prot->set_disable();
+}
+
 void pgm_arm_type1_state::arm7_type1_latch_init()
 {
 	m_arm_type1_latch_arm_w = 0;

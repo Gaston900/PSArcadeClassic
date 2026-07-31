@@ -218,7 +218,7 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_CONFIRM_QUIT,                               "0",         core_options::option_type::BOOLEAN,    "ask for confirmation before exiting" },
 	{ OPTION_UI_MOUSE,                                   "1",         core_options::option_type::BOOLEAN,    "display UI mouse cursor" },
 	{ OPTION_LANGUAGE ";lang",                           "English",   core_options::option_type::STRING,     "set UI display language" },
-	{ OPTION_NVRAM_SAVE ";nvwrite",                      "0",         core_options::option_type::BOOLEAN,    "save NVRAM data on exit" }, // 修改的 (加斯顿90)
+	{ OPTION_NVRAM_SAVE ";nvwrite",                      "1",         core_options::option_type::BOOLEAN,    "save NVRAM data on exit" },
 
 // 修改的 代码来源 (缘来是你)
 /*******************************************************************************************************************************************************************/

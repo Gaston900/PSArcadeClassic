@@ -17988,19 +17988,18 @@ ROM_END
 // Blue and Red Fight the Robots by Kaiju Wasp (https://kaijuwasp.itch.io)
 ROM_START( blueandr )
 	ROM_REGION( 0x100000, "maincpu", 0 )
-	ROM_LOAD16_WORD_SWAP( "519.p1", 0x000000, 0x100000, CRC(6e4f71aa) SHA1(04f6be53c276fbdd98ddb2831e508314dd57bfdd) )
+	ROM_LOAD16_WORD_SWAP( "519.p1", 0x000000, 0x100000, CRC(39755597) SHA1(12cefd1e68560ea096bcd826e7fa558475dad13c) )
 
 	NEO_SFIX_128K( "519.s1", CRC(0d0067f5) SHA1(ed77445e94d58ed83b27480c5e939ca2c0b6a90c) )
 
-	NEO_BIOS_AUDIO_256K( "519.m1", CRC(19f32974) SHA1(4c0c11ee493f8cc12f95ac4de312544f23faf762) )
+	NEO_BIOS_AUDIO_256K( "519.m1", CRC(170e7948) SHA1(824e83b15adc26be346235f29848ac7582c9bd1f) )
 
 	ROM_REGION( 0x1000000, "ymsnd:adpcma", 0 )
-	ROM_LOAD( "519.v1", 0x000000, 0x040000, CRC(7d5535dd) SHA1(96180a18b3fecfc9583a7ae36bd1aa47eafad07e) )
-	ROM_LOAD( "519.v2", 0x040000, 0xb80000, CRC(d52a3036) SHA1(0e9d6ffd643b499d55201543b35af3762a88aba2) )
+	ROM_LOAD( "519.v1", 0x000000, 0xb80000, CRC(4aa33827) SHA1(2935649e4e87f6f66b8d13802ad5ea751c58ce8b) )
 
 	ROM_REGION( 0x100000, "sprites", 0 )
-	ROM_LOAD16_BYTE( "519.c1", 0x000000, 0x40000, CRC(79b934a5) SHA1(b2b063b97a791a9ef88530c9e8c3a2530fc53ce6) )
-	ROM_LOAD16_BYTE( "519.c2", 0x000001, 0x40000, CRC(47647e8d) SHA1(f64dce9049813626abc98d999eb48aa099dba3f8) )
+	ROM_LOAD16_BYTE( "519.c1", 0x000000, 0x40000, CRC(c4dada7c) SHA1(6e45be91a9e24dc7153b1052522b243be817d3b8) )
+	ROM_LOAD16_BYTE( "519.c2", 0x000001, 0x40000, CRC(76edd8a9) SHA1(3bf89afdabd3fabbca240548f150b37d60f19cc3) )
 ROM_END
 
 // 416 : Block Panic DX 250101 by Blastar
@@ -18592,11 +18591,18 @@ ROM_END
 ROM_START( jumpnrund )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD16_WORD_SWAP( "412.p1", 0x000000, 0x080000, CRC(924f0e82) SHA1(6934e1f1ed5e54b25bff139fa57679958b0a0e4f) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "412.s1", CRC(409a9f52) SHA1(23874ebee8698b240c18041eacad875237a5c585) )
 
-	NEO_BIOS_AUDIO_64K( "412.m1", CRC(30094ef9) SHA1(1f2b2caa7155e8b4bc9c90641d664c9d1fe2061b) )
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
+	ROM_LOAD16_WORD_SWAP( "console_mode.rom",  0x00000, 0x20000, CRC(baaf4a6e) SHA1(ac047989cc341183bc6c89a2fc1904db9c93c534) )
+
+	ROM_REGION( 0x20000, "audiobios", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_REGION( 0x30000, "audiocpu", 0 )
+	ROM_LOAD( "412.m1", 0x00000, 0x10000, CRC(30094ef9) SHA1(1f2b2caa7155e8b4bc9c90641d664c9d1fe2061b) )
+	ROM_RELOAD(     0x10000, 0x10000 )
 
 	ROM_REGION( 0x80000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "412.v11",  0x000000, 0x080000, CRC(01a1a847) SHA1(6f82532101e19d9a60a495d562b4ef0836b10124) )
@@ -19551,11 +19557,18 @@ ROM_END
 ROM_START( shaman24 )
 	ROM_REGION( 0x100000, "maincpu", 0 )
 	ROM_LOAD( "688h.p1", 0x000000, 0x06a54f, CRC(115d4bee) SHA1(eed58c87d90bed0a75cc15f1d0975e2192ba04ba) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "684.s1", CRC(b7070d6f) SHA1(546934c53d854347e4812bbfb014d3c58284da73) )
 
-	NEO_BIOS_AUDIO_64K( "688h.m1", CRC(36d60aba) SHA1(01befcf0cb92b9d66c745d9aae6553ea4336ad02) )
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
+	ROM_LOAD16_WORD_SWAP( "console_mode.rom",  0x00000, 0x20000, CRC(baaf4a6e) SHA1(ac047989cc341183bc6c89a2fc1904db9c93c534) )
+
+	ROM_REGION( 0x20000, "audiobios", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_REGION( 0x30000, "audiocpu", 0 )
+	ROM_LOAD( "688h.m1", 0x00000, 0x10000, CRC(36d60aba) SHA1(01befcf0cb92b9d66c745d9aae6553ea4336ad02) )
+	ROM_RELOAD(     0x10000, 0x10000 )
 
 	ROM_REGION( 0x800000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "688h.v1", 0x000000, 0x800000, CRC(664d4093) SHA1(bee80981066d876c0eeb0e069eee0273d8abdb65) )
@@ -19898,11 +19911,18 @@ ROM_END
 ROM_START( xeviousng )
 	ROM_REGION( 0x100000, "maincpu", ROMREGION_ERASEFF )
 	ROM_LOAD16_WORD_SWAP( "420.p1", 0x000000, 0x100000, CRC(11dff034) SHA1(ac8ebbdc96f4d2f74d1c820c1536ca1ccdc936b6) )
-    ROM_DEFAULT_BIOS("console_mode")
 
 	NEO_SFIX_128K( "420.s1", CRC(f41d121a) SHA1(ad30e7fde4c7e7ad7e4c32d14bf1df3b3089eaa8) )
 
-	NEO_BIOS_AUDIO_64K( "420.m1", CRC(6f31c601) SHA1(9b89e7d205ee497f7b495e93328cf35eab6e56b2) )
+	ROM_REGION16_BE( 0x20000, "mainbios", 0 )
+	ROM_LOAD16_WORD_SWAP( "console_mode.rom",  0x00000, 0x20000, CRC(baaf4a6e) SHA1(ac047989cc341183bc6c89a2fc1904db9c93c534) )
+
+	ROM_REGION( 0x20000, "audiobios", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_REGION( 0x30000, "audiocpu", 0 )
+	ROM_LOAD( "420.m1", 0x00000, 0x10000, CRC(6f31c601) SHA1(9b89e7d205ee497f7b495e93328cf35eab6e56b2) )
+	ROM_RELOAD(     0x10000, 0x10000 )
 
 	ROM_REGION( 0x100000, "ymsnd:adpcma", 0 )
 	ROM_LOAD( "420.v1", 0x000000, 0x100000, CRC(37ef6dc5) SHA1(3d50197e22d8727a8395564b8645ed1e0e2a5d26) )
@@ -21244,7 +21264,7 @@ GAME( 2017, badapple,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_
 GAME( 2025, baddudesn,  neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "La Casa De Ruivo / Neo Byte Force", "Bad Dudes vs Dragonninja Burger Demo (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, bbb2,       neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Pixelheart", "Bang Bang Busters 2 - Demo (HB) ", MACHINE_SUPPORTS_SAVE )
 GAME( 2002, beast,      neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Jeff Kurtz", "Shadow of the Beast Demo (HB)", MACHINE_IMPERFECT_GRAPHICS | MACHINE_SUPPORTS_SAVE )
-GAME( 2026, blueandr,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Kaiju Wasp", "Blue And Red - Fight The Robots! (HB, v1.6 NTSC)", MACHINE_SUPPORTS_SAVE )
+GAME( 2026, blueandr,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Kaiju Wasp", "Blue And Red - Fight The Robots! (HB, v1.7 NTSC)", MACHINE_SUPPORTS_SAVE )
 GAME( 2025, bpanicdx,   neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Blastar", "Block Panic DX (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2020, bonusstage, neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "Totologic", "Bonus Stage (HB)", MACHINE_SUPPORTS_SAVE )
 GAME( 2021, cabalng,    neogeo,   neogeo_neo304h,  neogeo, neogeo_state,   init_neogeo,   ROT0, "iq132", "Cabal - Neo Geo Conversion (HB)", MACHINE_SUPPORTS_SAVE )

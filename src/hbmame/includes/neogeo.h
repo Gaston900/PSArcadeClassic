@@ -523,15 +523,7 @@ INPUT_PORTS_EXTERN(dualbios);
 */
 
 #define ROM_LOAD16_WORD_SWAP_BIOS(bios,name,offset,length,hash) \
-	ROMX_LOAD(name, offset, length, hash, ROM_GROUPWORD | ROM_REVERSE | ROM_BIOS(bios))
-
-#define NEOGEO_BIOS \
-	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \
-	ROM_SYSTEM_BIOS( 0, "arcade_mode", "Arcade Mode MVS" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 0, "arcade mode.rom",  0x00000, 0x020000, CRC(14399496) SHA1(df8532f3ab77b3dd20236247e9bc4734bf7c2bd5) ) \
-	ROM_SYSTEM_BIOS( 1, "console_mode", "Consola Mode AES" ) \
-	ROM_LOAD16_WORD_SWAP_BIOS( 1, "console mode.rom", 0x00000, 0x020000, CRC(baaf4a6e) SHA1(ac047989cc341183bc6c89a2fc1904db9c93c534) ) \
-	ROM_DEFAULT_BIOS("arcade_mode")
+		ROMX_LOAD(name, offset, length, hash, ROM_GROUPWORD | ROM_REVERSE | ROM_BIOS(bios))
 
 #define NEOGEO_UNIBIOS(x) \
 	ROM_SYSTEM_BIOS( x+ 0, "unibios40", "Universe Bios (Hack, Ver. 4.0)" ) \
@@ -566,7 +558,7 @@ INPUT_PORTS_EXTERN(dualbios);
 	ROM_SYSTEM_BIOS( x+14, "unibios10", "Universe Bios (Hack, Ver. 1.0)" ) \
 	ROM_LOAD16_WORD_SWAP_BIOS( x+14, "uni-bios_1_0.rom",  0x00000, 0x020000, CRC(0ce453a0) SHA1(3b4c0cd26c176fc6b26c3a2f95143dd478f6abf9) ) /* Universe Bios v1.0 (hack) */
 
-#define MULTIMVS_BIOS \
+#define NEOGEO_BIOS \
 	ROM_REGION16_BE( 0x80000, "mainbios", 0 ) \
 	ROMX_LOAD( "sp-s2.sp1", 0x00000, 0x020000, CRC(9036d879) SHA1(4f5ed7105b7128794654ce82b51723e16e389543), ROM_GROUPWORD | ROM_REVERSE ) \
 	ROM_SYSTEM_BIOS( 0, "euro", "Europe MVS (Ver. 2)" ) \
@@ -707,87 +699,3 @@ INPUT_PORTS_EXTERN(dualbios);
 
 #define NEO_SFIX_512K(name, hash) \
 	NEO_SFIX( 0x80000, name, hash )
-
-#define NEO_EUROPE_MVS_BIOS_AUDIO_ENCRYPTED(size, name, hash) \
-	ROM_REGION16_BE( 0x20000, "mainbios", 0 ) \
-	ROM_LOAD16_WORD_SWAP("sp-s2.sp1",  0x00000, 0x20000, CRC(9b1a7cbe) SHA1(1695d3c488961a0f3667bd9b94ff678fd7c56d76) ) \
-	ROM_REGION( 0x20000, "audiobios", 0 ) \
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
-	ROM_REGION( 0x90000, "audiocpu", ROMREGION_ERASEFF ) \
-	ROM_REGION( 0x80000, "audiocrypt", 0 ) \
-	ROM_LOAD( name, 0x00000, size, hash )
-
-#define NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_ENCRYPTED_64K(name, hash) \
-	NEO_EUROPE_MVS_BIOS_AUDIO_ENCRYPTED(0x10000, name, hash)
-
-#define NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_ENCRYPTED_128K(name, hash) \
-	NEO_EUROPE_MVS_BIOS_AUDIO_ENCRYPTED(0x20000, name, hash)
-
-#define NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_ENCRYPTED_256K(name, hash) \
-	NEO_EUROPE_MVS_BIOS_AUDIO_ENCRYPTED(0x40000, name, hash)
-
-#define NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_ENCRYPTED_512K(name, hash) \
-	NEO_EUROPE_MVS_BIOS_AUDIO_ENCRYPTED(0x80000, name, hash)
-
-#define NEO_EUROPE_MVS_BIOS_AUDIO(size, name, hash) \
-	ROM_REGION16_BE( 0x20000, "mainbios", 0 ) \
-	ROM_LOAD16_WORD_SWAP("sp-s2.sp1",  0x00000, 0x20000, CRC(9b1a7cbe) SHA1(1695d3c488961a0f3667bd9b94ff678fd7c56d76) ) \
-	ROM_REGION( 0x20000, "audiobios", 0 ) \
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
-	ROM_REGION( size+0x10000, "audiocpu", 0 ) \
-	ROM_LOAD( name, 0x00000, size, hash ) \
-	ROM_RELOAD(     0x10000, size )
-
-#define NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_64K(name, hash) \
-	NEO_EUROPE_MVS_BIOS_AUDIO(0x10000, name, hash)
-
-#define NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_128K(name, hash) \
-	NEO_EUROPE_MVS_BIOS_AUDIO(0x20000, name, hash)
-
-#define NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_256K(name, hash) \
-	NEO_EUROPE_MVS_BIOS_AUDIO(0x40000, name, hash)
-
-#define NEO_EUROPE_MVS_BIOS_BOOT_AUDIO_512K(name, hash) \
-	NEO_EUROPE_MVS_BIOS_AUDIO(0x80000, name, hash)
-
-#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_BOOT_AUDIO(size, name, hash) \
-	ROM_REGION16_BE( 0x20000, "mainbios", 0 ) \
-	ROM_LOAD16_WORD_SWAP("sp-1.sp1",  0x00000, 0x20000, CRC(98f34e99) SHA1(ff63c492d11d0f26533d6e73d331e15152e62cc7) ) \
-	ROM_REGION( 0x20000, "audiobios", 0 ) \
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
-	ROM_REGION( size+0x10000, "audiocpu", 0 ) \
-	ROM_LOAD( name, 0x00000, size, hash ) \
-	ROM_RELOAD(     0x10000, size )
-
-#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_BOOT_AUDIO_64K(name, hash) \
-	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_BOOT_AUDIO(0x10000, name, hash)
-
-#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_BOOT_AUDIO_128K(name, hash) \
-	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_BOOT_AUDIO(0x20000, name, hash)
-
-#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_BOOT_AUDIO_256K(name, hash) \
-	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_BOOT_AUDIO(0x40000, name, hash)
-
-#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_BOOT_AUDIO_512K(name, hash) \
-	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_BOOT_AUDIO(0x80000, name, hash)
-
-#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO(size, name, hash) \
-	ROM_REGION16_BE( 0x20000, "mainbios", 0 ) \
-	ROM_LOAD16_WORD_SWAP("sp-1.sp1",  0x00000, 0x20000, CRC(98f34e99) SHA1(ff63c492d11d0f26533d6e73d331e15152e62cc7) ) \
-	ROM_REGION( 0x20000, "audiobios", 0 ) \
-	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) ) \
-	ROM_REGION( size+0x10000, "audiocpu", 0 ) \
-	ROM_LOAD( name, 0x00000, size, hash ) \
-	ROM_RELOAD(     0x10000, size )
-
-#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_64K(name, hash) \
-	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO(0x10000, name, hash)
-
-#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_128K(name, hash) \
-	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO(0x20000, name, hash)
-
-#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_256K(name, hash) \
-	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO(0x40000, name, hash)
-
-#define NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO_512K(name, hash) \
-	NEO_MSLUG_FOREVER_BIOS_FIX_COIN_AUDIO(0x80000, name, hash)

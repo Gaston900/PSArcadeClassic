@@ -232,8 +232,7 @@ void mame_ui_manager::init()
 //========== 作者：blubber =========>>>
 // Register slider configuration for persistence
 
-	machine().configuration().config_register(
-			"sliders",
+	machine().configuration().config_register("sliders",
 			configuration_manager::load_delegate(&mame_ui_manager::sliders_load, this),
 			configuration_manager::save_delegate(&mame_ui_manager::sliders_save, this)); // Slider save
 //====================================>>>
@@ -1637,8 +1636,7 @@ std::vector<ui::menu_item> mame_ui_manager::slider_init(running_machine &machine
 
 //缘来是你摘抄自 blubber
 //===========应用已保存滑块值 ========>>>	
-sliders_apply();
-return items;
+	sliders_apply();
 //==================================>>>
 	return items;
 }
@@ -2271,7 +2269,6 @@ void ui_colors::refresh(const ui_options &options)
 //-------------------------------------------------
 //  sliders_load - load slider values from config
 //-------------------------------------------------
-
 // Slider save
 void mame_ui_manager::sliders_load(config_type cfg_type, config_level cfg_level, util::xml::data_node const *parentnode)
 {
@@ -2289,11 +2286,9 @@ void mame_ui_manager::sliders_load(config_type cfg_type, config_level cfg_level,
 	}
 }
 
-
 //-------------------------------------------------
 //  sliders_apply - apply saved slider values
 //-------------------------------------------------
-
 void mame_ui_manager::sliders_apply(void)
 {
 	for (auto &slider : m_sliders)
@@ -2309,7 +2304,6 @@ void mame_ui_manager::sliders_apply(void)
 		}
 	}
 }
-
 
 //-------------------------------------------------
 //  sliders_save - save slider values to config

@@ -268,6 +268,17 @@ project ("osd_" .. _OPTIONS["osd"])
 		MAME_DIR .. "src/osd/winui/winui_util.cpp",
 		MAME_DIR .. "src/osd/winui/winui_util.h",
 		MAME_DIR .. "src/osd/winui/winui_main.cpp",
+		MAME_DIR .. "src/osd/scale/scale.cpp",
+		MAME_DIR .. "src/osd/scale/2xpm.cpp",
+		MAME_DIR .. "src/osd/scale/2xsai.cpp",
+		MAME_DIR .. "src/osd/scale/hq2x.cpp",
+		MAME_DIR .. "src/osd/scale/hq3x.cpp",
+		MAME_DIR .. "src/osd/scale/scale2x.cpp",
+		MAME_DIR .. "src/osd/scale/scale3x.cpp",
+		MAME_DIR .. "src/osd/scale/scanline.cpp",
+		MAME_DIR .. "src/osd/scale/snes9x_render.cpp",
+		MAME_DIR .. "src/osd/scale/vba_hq2x.cpp",
+		MAME_DIR .. "src/osd/scale/xbrz.cpp",
 	}
 
 

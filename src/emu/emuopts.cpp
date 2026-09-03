@@ -138,6 +138,9 @@ const options_entry emu_options::s_option_entries[] =
 	{ OPTION_PAUSE_BRIGHTNESS "(0.0-1.0)",               "0.65",      core_options::option_type::FLOAT,      "amount to scale the screen brightness when paused" },
 	{ OPTION_EFFECT,                                     "none",      core_options::option_type::STRING,     "name of a PNG file to use for visual effects, or 'none'" },
 	{ OPTION_WIDESTRETCH,                                "0",         core_options::option_type::BOOLEAN,    "enable D3D wide floating point stretching" },  // MAMEFX
+//==================== USE_SCALE_EFFECTS ========================>>>
+	{ OPTION_SCALE_EFFECT,								 "none",	  core_options::option_type::STRING,	 "image enhancement effect" },
+//===============================================================>>>
 
 	// vector options
 	{ nullptr,                                           nullptr,     core_options::option_type::HEADER,     "CORE VECTOR OPTIONS" },

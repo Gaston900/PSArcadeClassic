@@ -7,9 +7,18 @@
     Internal MAME menus for the user interface.
 
 *********************************************************************/
+//===== USE_SCALE_EFFECTS =====>>>
+#include <windows.h>
+#include <mmsystem.h>
+#undef interface
+//=============================>>>
 
 #include "emu.h"
 #include "ui/miscmenu.h"
+
+//===== USE_SCALE_EFFECTS =====>>>
+#include "screen.h"
+//=============================>>>
 
 #include "ui/inifile.h"
 #include "ui/selector.h"
@@ -29,6 +38,10 @@
 #include "uiinput.h"
 
 #include "corestr.h"
+
+//======= USE_SCALE_EFFECTS =======>>>
+#include "scale/osdscale.h"
+//=================================>>>
 
 //============ 缘来是你 ============>>>			
 #include <vector>
@@ -1374,5 +1387,66 @@ void menu_plugins_configure::populate(float &customtop, float &custombottom)
 		item_append(_("No plugins found"), FLAG_DISABLE, nullptr);
 	item_append(menu_item_type::SEPARATOR);
 }
+
+//======================== USE_SCALE_EFFECTS ============================>>>
+#define SCALE_ITEM_NONE 0
+/*-------------------------------------------------
+	menu_scale_effect - handle the scale effect
+	settings menu
+-------------------------------------------------*/
+
+// 1. Constructor moderno utilizando render_target obligatoriamente
+menu_scale_effect::menu_scale_effect(mame_ui_manager &mui, render_container &container) 
+	: menu(mui, container)
+{
+}
+
+menu_scale_effect::~menu_scale_effect()
+{
+}
+
+void menu_scale_effect::populate(float &customtop, float &custombottom)
+{
+	int scaler;
+	
+	item_append(_("None"), "", 0, (void *)(uintptr_t)SCALE_ITEM_NONE);
+
+	for (scaler = 1; ; scaler++)
+	{
+		const char *desc = scale_desc(scaler);
+		if (desc == nullptr)
+			break;
+
+		item_append(desc, "", 0, (void *)(uintptr_t)(SCALE_ITEM_NONE + scaler));
+	}
+}
+
+void menu_scale_effect::handle(event const *ev)
+{
+	if (ev && ev->iptkey == IPT_UI_SELECT && ev->itemref != nullptr)
+	{
+		uintptr_t selected_effect = uintptr_t(ev->itemref);
+		
+		if (selected_effect >= SCALE_ITEM_NONE)
+		{
+			screen_device *screen = screen_device_enumerator(machine().root_device()).first();
+			if (screen != nullptr)
+			{
+				screen->video_exit_scale_effect();
+				scale_decode(scale_name(selected_effect - SCALE_ITEM_NONE));
+				screen->video_init_scale_effect();
+				
+				machine().video().frame_update();
+				
+				osd_printf_verbose("scale effect: %s\n", scale_name(selected_effect - SCALE_ITEM_NONE));
+				
+				reset(reset_options::REMEMBER_REF);
+			}
+		}
+	}
+}
+
+#undef SCALE_ITEM_NONE
+//=======================================================================>>>
 
 } // namespace ui

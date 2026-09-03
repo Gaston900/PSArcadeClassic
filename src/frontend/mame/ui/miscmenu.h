@@ -217,6 +217,18 @@ public:
 };
 /****************************************************************************/
 
+class menu_scale_effect : public menu 
+{
+public:
+	menu_scale_effect(mame_ui_manager &mui, render_container &container);
+	virtual ~menu_scale_effect() override;
+
+private:
+	virtual void populate(float &customtop, float &custombottom) override;
+	virtual void handle(event const *ev) override;
+};
+//====================================================================>>>
+
 } // namespace ui
 
 #endif // MAME_FRONTEND_UI_MISCMENU_H

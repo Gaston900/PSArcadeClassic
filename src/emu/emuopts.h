@@ -117,6 +117,9 @@
 #define OPTION_PAUSE_BRIGHTNESS     "pause_brightness"
 #define OPTION_EFFECT               "effect"
 #define OPTION_WIDESTRETCH          "widestretch"
+//==================== USE_SCALE_EFFECTS ========================>>>
+#define OPTION_SCALE_EFFECT         "scale_effect"
+//===============================================================>>>
 
 // core vector options
 #define OPTION_BEAM_WIDTH_MIN       "beam_width_min"

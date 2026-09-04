@@ -715,6 +715,12 @@ void mame_ui_manager::update_and_render(render_container &container)
 	// cancel takes us back to the ingame handler
 	if (m_handler_param == UI_HANDLER_CANCEL)
 	{
+//================= EKMAME =================>>>
+		if (machine().paused())
+		{
+			machine().resume();
+		}
+//==========================================>>>
 		set_handler(ui_callback_type::GENERAL, handler_callback_func(&mame_ui_manager::handler_ingame, this));
 	}
 }
@@ -1310,6 +1316,10 @@ uint32_t mame_ui_manager::handler_ingame(render_container &container)
 	// turn on menus if requested
 	if (machine().ui_input().pressed(IPT_UI_CONFIGURE))
 	{
+//=============== EKMAME ===============>>>
+		if (!is_paused)
+			machine().pause();
+//======================================>>>
 		show_menu();
 		return 0;
 	}

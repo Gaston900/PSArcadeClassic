@@ -11,10 +11,9 @@
 #include "emu.h"
 #include "ui/cheatopt.h"
 
-// 修改的 代码来源 (EKMAME)
-/************************/
+//======= EKMAME =======>>>
 #include "ui/miscmenu.h"
-/************************/
+//======================>>>
 
 #include "ui/ui.h"
 
@@ -25,12 +24,14 @@
 namespace ui {
 
 // itemrefs for key menu items
-#define ITEMREF_CHEATS_SET_ALL              ((void *) 0x0001)
-#define ITEMREF_CHEATS_RESET_ALL            ((void *) 0x0002)
-#define ITEMREF_CHEATS_RELOAD_ALL           ((void *) 0x0003)
-#define ITEMREF_CHEATS_AUTOFIRE_SETTINGS    ((void *) 0x0004)
-#define ITEMREF_CHEATS_FIRST_ITEM           ((void *) 0x0005)
+#define ITEMREF_CHEATS_RESET_ALL            ((void *) 0x0001)
+#define ITEMREF_CHEATS_RELOAD_ALL           ((void *) 0x0002)
+#define ITEMREF_CHEATS_FIRST_ITEM           ((void *) 0x0003)
 
+//========================== EKMAME ==============================>>>
+#define ITEMREF_CHEATS_SET_ALL              ((void *)"setall")
+#define ITEMREF_CHEATS_AUTOFIRE_SETTINGS    ((void *)"autofire")
+//================================================================>>>
 
 /*-------------------------------------------------
     menu_cheat - handle the cheat menu
@@ -54,8 +55,7 @@ void menu_cheat::handle(event const *ev)
 					changed = true;
 		}
 
-// 修改的 代码来源 (EKMAME)
-/****************************************************************************************/
+//================================ EKMAME ====================================>>>
 		else if ((ev->itemref == ITEMREF_CHEATS_SET_ALL)&& ev->iptkey == IPT_UI_SELECT)
 		{
 			for (auto &curcheat : mame_machine_manager::instance()->cheat().entries())
@@ -64,9 +64,12 @@ void menu_cheat::handle(event const *ev)
 					changed = true;				
 			}
 		}
-/****************************************************************************************/
-		else if (ev->itemref >= ITEMREF_CHEATS_FIRST_ITEM)
-		{
+	else if (ev->itemref != ITEMREF_CHEATS_SET_ALL && 
+	         ev->itemref != ITEMREF_CHEATS_AUTOFIRE_SETTINGS && 
+	         ev->itemref >= ITEMREF_CHEATS_FIRST_ITEM)
+
+//============================================================================>>>
+{
 			// handle individual cheats
 			cheat_entry *curcheat = reinterpret_cast<cheat_entry *>(ev->itemref);
 			const char *string;
@@ -114,14 +117,13 @@ void menu_cheat::handle(event const *ev)
 			machine().popmessage(_("All cheats reloaded"));
 		}
 
-// 修改的 代码来源 (EKMAME)
-/***********************************************************************************************/
+//================================ EKMAME ====================================>>>
 		/* handle autofire menu */
 		if (ev->itemref == ITEMREF_CHEATS_AUTOFIRE_SETTINGS && ev->iptkey == IPT_UI_SELECT)
 		{
 			menu::stack_push<menu_autofire>(ui(), container());
 		}
-/***********************************************************************************************/
+//============================================================================>>>
 
 		// if things changed, update
 		if (changed)
@@ -145,14 +147,13 @@ void menu_cheat::populate(float &customtop, float &custombottom)
 	std::string text;
 	std::string subtext;
 
-// 修改的 代码来源 (EKMAME)
-/****************************************************************************************/
+//================================ EKMAME ====================================>>>
 	// add the autofire menu
 	item_append(_("Autofire Settings"), "", 0, (void *)ITEMREF_CHEATS_AUTOFIRE_SETTINGS);
-/****************************************************************************************/
 
 	/* add a separator */
 	item_append(menu_item_type::SEPARATOR);
+//============================================================================>>>
 
 	// add cheats
 	if (!mame_machine_manager::instance()->cheat().entries().empty()) {
@@ -169,11 +170,10 @@ void menu_cheat::populate(float &customtop, float &custombottom)
 		/* add a separator */
 		item_append(menu_item_type::SEPARATOR);
 
-// 修改的 代码来源 (EKMAME)
-/*************************************************************************/
+//================================ EKMAME ====================================>>>
 		/* add a set all option */
 		item_append(_("Set All"), "", 0, (void *)ITEMREF_CHEATS_SET_ALL);
-/*************************************************************************/
+//============================================================================>>>
 
 		/* add a reset all option */
 		item_append(_("Reset All"), 0, (void *)ITEMREF_CHEATS_RESET_ALL);

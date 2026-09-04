@@ -30,9 +30,6 @@
 #include "strconv.h"
 
 #include "modules/monitor/monitor_common.h"
-//======= USE_SCALE_EFFECTS =======>>>
-#include "scale/osdscale.h"
-//=================================>>>
 
 #include "modules/render/drawbgfx.h"
 #include "modules/render/drawnone.h"
@@ -82,9 +79,6 @@
 
 static DWORD main_threadid;
 
-//======= USE_SCALE_EFFECTS =======>>>
-int win_scale_res_changed;
-//=================================>>>
 
 
 //============================================================
@@ -810,14 +804,6 @@ void win_window_info::update()
 				SendMessage(platform_window(), WM_USER_SET_MAXSIZE, 0, 0);
 		}
 	}
-
-//==================== USE_SCALE_EFFECTS ========================>>>
-	if (win_scale_res_changed)
-	{
-		if (!m_fullscreen && !m_ismaximized)
-			SendMessage(platform_window(), WM_USER_SET_MINSIZE, 0, 0);
-	}
-//===============================================================>>>
 
 	// if we're visible and running and not in the middle of a resize, draw
 	if (platform_window() != nullptr && target() != nullptr && has_renderer())
@@ -1583,14 +1569,6 @@ osd_dim win_window_info::get_min_bounds(int constrain)
 
 	// get the minimum target size
 	target()->compute_minimum_size(minwidth, minheight);
-
-//============ USE_SCALE_EFFECTS ============>>>
-	if (win_scale_res_changed)
-	{
-		minwidth *= scale_effect.xsize;
-		minheight *= scale_effect.ysize;
-	}
-//===========================================>>>
 
 	// check if visible area is bigger
 	int32_t viswidth, visheight;

@@ -126,7 +126,7 @@ void igs025_device::killbld_igs025_prot_w(offs_t offset, uint16_t data)
 			case 0x26:
 			case 0x27:
 				m_kb_ptr++;
-				killbld_protection_calculate_hold(m_kb_cmd & 0x0f, data & 0xff);//缘来是你 删除
+				killbld_protection_calculate_hold(m_kb_cmd & 0x0f, data & 0xff);
 			break;
 
 		//  default:

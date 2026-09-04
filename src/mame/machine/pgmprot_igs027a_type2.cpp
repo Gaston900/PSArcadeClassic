@@ -36,51 +36,49 @@
 #include "includes/pgm.h"
 #include "machine/pgmprot_igs027a_type2.h"
 
-#define LOG_PROT    (1U << 1)
-#define LOG_ALL     (LOG_PROT)
-
-#define VERBOSE (0)
-#include "logmacro.h"
-
-#define LOGPROT(...) LOGMASKED(LOG_PROT, __VA_ARGS__)
-
 u32 pgm_arm_type2_state::arm7_latch_arm_r(offs_t offset, u32 mem_mask)
 {
 	if (!machine().side_effects_disabled())
 		m_prot->set_input_line(ARM7_FIRQ_LINE, CLEAR_LINE ); // guess
 
-	LOGPROT("%s ARM7: Latch read: %08x (%08x)\n", machine().describe_context(), m_kov2_latchdata_68k_w, mem_mask);
+	if (PGMARM7LOGERROR)
+		logerror("%s ARM7: Latch read: %08x (%08x)\n", machine().describe_context(), m_kov2_latchdata_68k_w, mem_mask);
 	return m_kov2_latchdata_68k_w;
 }
 
 void pgm_arm_type2_state::arm7_latch_arm_w(offs_t offset, u32 data, u32 mem_mask)
 {
-	LOGPROT("%s ARM7: Latch write: %08x (%08x)\n", machine().describe_context(), data, mem_mask);
+	if (PGMARM7LOGERROR)
+		logerror("%s ARM7: Latch write: %08x (%08x)\n", machine().describe_context(), data, mem_mask);
 
 	COMBINE_DATA(&m_kov2_latchdata_arm_w);
 }
 
 u32 pgm_arm_type2_state::arm7_shareram_r(offs_t offset, u32 mem_mask)
 {
-	LOGPROT("%s ARM7: ARM7 Shared RAM Read: %04x = %08x (%08x)\n", machine().describe_context(), offset << 2, m_arm7_shareram[offset], mem_mask);
+	if (PGMARM7LOGERROR)
+		logerror("%s ARM7: ARM7 Shared RAM Read: %04x = %08x (%08x)\n", machine().describe_context(), offset << 2, m_arm7_shareram[offset], mem_mask);
 	return m_arm7_shareram[offset];
 }
 
 void pgm_arm_type2_state::arm7_shareram_w(offs_t offset, u32 data, u32 mem_mask)
 {
-	LOGPROT("%s ARM7: ARM7 Shared RAM Write: %04x = %08x (%08x)\n", machine().describe_context(), offset << 2, data, mem_mask);
+	if (PGMARM7LOGERROR)
+		logerror("%s ARM7: ARM7 Shared RAM Write: %04x = %08x (%08x)\n", machine().describe_context(), offset << 2, data, mem_mask);
 	COMBINE_DATA(&m_arm7_shareram[offset]);
 }
 
 u16 pgm_arm_type2_state::arm7_latch_68k_r(offs_t offset, u16 mem_mask)
 {
-	LOGPROT("%s M68K: Latch read: %04x (%04x)\n", machine().describe_context(), m_kov2_latchdata_arm_w & 0x0000ffff, mem_mask);
+	if (PGMARM7LOGERROR)
+		logerror("%s M68K: Latch read: %04x (%04x)\n", machine().describe_context(), m_kov2_latchdata_arm_w & 0x0000ffff, mem_mask);
 	return m_kov2_latchdata_arm_w;
 }
 
 void pgm_arm_type2_state::arm7_latch_68k_w(offs_t offset, u16 data, u16 mem_mask)
 {
-	LOGPROT("%s M68K: Latch write: %04x (%04x)\n", machine().describe_context(), data & 0x0000ffff, mem_mask);
+	if (PGMARM7LOGERROR)
+		logerror("%s M68K: Latch write: %04x (%04x)\n", machine().describe_context(), data & 0x0000ffff, mem_mask);
 	COMBINE_DATA(&m_kov2_latchdata_68k_w);
 
 	m_prot->set_input_line(ARM7_FIRQ_LINE, ASSERT_LINE ); // guess
@@ -90,7 +88,8 @@ u16 pgm_arm_type2_state::arm7_ram_r(offs_t offset, u16 mem_mask)
 {
 	const u16 *share16 = reinterpret_cast<u16 *>(m_arm7_shareram.target());
 
-	LOGPROT("%s M68K: ARM7 Shared RAM Read: %04x = %04x (%08x)\n", machine().describe_context(), BYTE_XOR_LE(offset), share16[BYTE_XOR_LE(offset)], mem_mask);
+	if (PGMARM7LOGERROR)
+		logerror("%s M68K: ARM7 Shared RAM Read: %04x = %04x (%08x)\n", machine().describe_context(), BYTE_XOR_LE(offset), share16[BYTE_XOR_LE(offset)], mem_mask);
 	return share16[BYTE_XOR_LE(offset)];
 }
 
@@ -98,7 +97,8 @@ void pgm_arm_type2_state::arm7_ram_w(offs_t offset, u16 data, u16 mem_mask)
 {
 	u16 *share16 = reinterpret_cast<u16 *>(m_arm7_shareram.target());
 
-	LOGPROT("%s M68K: ARM7 Shared RAM Write: %04x = %04x (%04x)\n", machine().describe_context(), BYTE_XOR_LE(offset), data, mem_mask);
+	if (PGMARM7LOGERROR)
+		logerror("%s M68K: ARM7 Shared RAM Write: %04x = %04x (%04x)\n", machine().describe_context(), BYTE_XOR_LE(offset), data, mem_mask);
 	COMBINE_DATA(&share16[BYTE_XOR_LE(offset)]);
 }
 
@@ -289,8 +289,6 @@ void pgm_arm_type2_state::init_dwpc101j()
 INPUT_PORTS_START( kov2 )
 	PORT_INCLUDE ( pgm )
 
-// 修改的 代码来源 (EKMAME) 
-/***********************************************************************************************************************************************************************************************/
 	PORT_MODIFY("P1P2")
 	PORT_BIT( 0x0001, IP_ACTIVE_LOW, IPT_START1 )
 	PORT_BIT( 0x0002, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(1)
@@ -300,8 +298,8 @@ INPUT_PORTS_START( kov2 )
 	PORT_BIT( 0x0020, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(1) PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0020)
 	PORT_BIT( 0x0040, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(1) PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0040)
 	PORT_BIT( 0x0080, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(1) PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0080)
-	PORT_BIT( 0x0060, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(1) PORT_NAME("P1 Button Combokey (Button Ⓐ + Button Ⓑ)") PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0060)	
-	PORT_BIT( 0x00C0, IP_ACTIVE_LOW, IPT_BUTTON_BC ) PORT_PLAYER(1) PORT_NAME("P1 Button Combokey (Button Ⓑ + Button Ⓒ)") PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x00C0)	
+	PORT_BIT( 0x0060, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(1) PORT_NAME("@P1 P1 Button Combokey (Button 1 @Button1 + Button 2 @Button2)") PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0060)	
+	PORT_BIT( 0x00C0, IP_ACTIVE_LOW, IPT_BUTTON_BC ) PORT_PLAYER(1) PORT_NAME("@P1 P1 Button Combokey (Button 2 @Button2 + Button 3 @Button3)") PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x00C0)	
 
 	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_START2 )
 	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(2)
@@ -311,9 +309,8 @@ INPUT_PORTS_START( kov2 )
 	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x2000)
 	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x4000)
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x8000)
-	PORT_BIT( 0x6000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button Ⓐ + Button Ⓑ)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x6000)	
-	PORT_BIT( 0xC000, IP_ACTIVE_LOW, IPT_BUTTON_BC ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button Ⓑ + Button Ⓒ)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0xC000)	
-/***********************************************************************************************************************************************************************************************/
+	PORT_BIT( 0x6000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(2) PORT_NAME("@P2 P2 Button Combokey (Button 1 @Button1 + Button 2 @Button2)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x6000)	
+	PORT_BIT( 0xC000, IP_ACTIVE_LOW, IPT_BUTTON_BC ) PORT_PLAYER(2) PORT_NAME("@P2 P2 Button Combokey (Button 2 @Button2 + Button 3 @Button3)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0xC000)	
 
 	PORT_START("RegionHack")    /* Region - actually supplied by protection device */
 	PORT_CONFNAME( 0x00ff, 0x00ff, DEF_STR( Region ) )
@@ -346,7 +343,6 @@ INPUT_PORTS_START( dw2001 )
 	PORT_INCLUDE ( pgm )
 
 	PORT_MODIFY("Region")   /* Region - supplied by protection device */
-	PORT_BIT(      0xfff0, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_CONFNAME( 0x000f, 0x0005, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, DEF_STR( China ) )
 	PORT_CONFSETTING(      0x0001, DEF_STR( Taiwan ) )

@@ -151,8 +151,8 @@ static const u8 m_olds_source_data[8][0xec] = // table addresses $2951CA
 		0xd6, 0x44, 0x43, 0x8d, 0x73, 0x0e, 0x71, 0x48, 0xd3, 0x82, 0x40, 0xda
 	}
 };
-//缘来是你
-/********************************** MAMEPLUS *********************************/
+//缘来是你 MAMEPLUS 通天河死机
+/*****************************************************************************/
 u16 pgm_028_025_state::olds_prot_swap_r(offs_t offset)
 {
 	if (m_maincpu->pc() < 0x100000)	//bios
@@ -171,8 +171,8 @@ void pgm_028_025_state::machine_reset()
 	m_igs025->m_kb_region = region;
 	m_igs025->m_kb_game_id = 0x00900000 | region;
 	
-//缘来是你 
-/********************************** MAMEPLUS *********************************/	
+//缘来是你 MAMEPLUS 通天河死机
+/*****************************************************************************/	
 	u16 *mem16 = (u16 *)(memregion(":user2")->base());
 	int i;
 
@@ -197,8 +197,8 @@ void pgm_028_025_state::init_olds()
 {
 	pgm_basic_init();
 
-//缘来是你
-/******************************************************************* MAMEPLUS *********************************************************************************************************************************************/
+//缘来是你 MAMEPLUS 通天河死机
+/**************************************************************************************************************************************************************************************************************************/
 //	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0xdcb400, 0xdcb403, read16sm_delegate(*m_igs025, FUNC(igs025_device::killbld_igs025_prot_r)), write16sm_delegate(*m_igs025, FUNC(igs025_device::olds_w)));
 	m_maincpu->space(AS_PROGRAM).install_readwrite_handler(0xdcb400, 0xdcb403, read16sm_delegate(*m_igs025, FUNC(igs025_device::olds_r)), write16sm_delegate(*m_igs025, FUNC(igs025_device::olds_w)));//修正
 	m_maincpu->space(AS_PROGRAM).install_read_handler(0x8178f4, 0x8178f5, read16sm_delegate(*this, FUNC(pgm_028_025_state::olds_prot_swap_r)));//修正																																 
@@ -249,8 +249,8 @@ INPUT_PORTS_START( olds )
 	PORT_BIT( 0x0020, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(1) PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0020)
 	PORT_BIT( 0x0040, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(1) PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0040)
 	PORT_BIT( 0x0080, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(1) PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0080)
-	PORT_BIT( 0x0060, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(1) PORT_NAME("P1 Button Combokey (Button Ⓐ + Button Ⓑ)") PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0060)	
-	PORT_BIT( 0x00E0, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(1) PORT_NAME("P1 Button Combokey (Button Ⓐ + Button Ⓑ + Button Ⓒ)") PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x00E0)	
+	PORT_BIT( 0x0060, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(1) PORT_NAME("@P1 P1 Button Combokey (Button 1 @Button1 + Button 2 @Button2)") PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0060)	
+	PORT_BIT( 0x00E0, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(1) PORT_NAME("@P1 P1 Button Combokey (Button 1 @Button1 + Button 2 @Button2 + Button 3 @Button3)") PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x00E0)	
 
 	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_START2 )
 	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(2)
@@ -260,12 +260,11 @@ INPUT_PORTS_START( olds )
 	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x2000)
 	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x4000)
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x8000)
-	PORT_BIT( 0x6000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button Ⓐ + Button Ⓑ)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x6000)	
-	PORT_BIT( 0xE000, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button Ⓐ + Button Ⓑ + Button Ⓒ)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0xE000)	
+	PORT_BIT( 0x6000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(2) PORT_NAME("@P2 P2 Button Combokey (Button 1 @Button1 + Button 2 @Button2)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x6000)	
+	PORT_BIT( 0xE000, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(2) PORT_NAME("@P2 P2 Button Combokey (Button 1 @Button1 + Button 2 @Button2 + Button 3 @Button3)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0xE000)	
 /***********************************************************************************************************************************************************************************************/
 
 	PORT_MODIFY("Region")   /* Region - supplied by protection device */
-	PORT_BIT(      0xfff0, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_CONFNAME( 0x000f, 0x0006, DEF_STR( Region ) )
 	/* includes the following regions:
 	1 = taiwan, 2 = china, 3 = japan (title = orlegend special),

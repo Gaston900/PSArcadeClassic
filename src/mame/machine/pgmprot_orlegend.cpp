@@ -275,8 +275,8 @@ INPUT_PORTS_START( orlegend )
 	PORT_BIT( 0x0020, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(1) PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0020)
 	PORT_BIT( 0x0040, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(1) PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0040)
 	PORT_BIT( 0x0080, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(1) PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0080)
-	PORT_BIT( 0x0060, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(1) PORT_NAME("P1 Button Combokey (Button Ⓐ + Button Ⓑ)") PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0060)	
-	PORT_BIT( 0x00E0, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(1) PORT_NAME("P1 Button Combokey (Button Ⓐ + Button Ⓑ + Button Ⓒ)") PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x00E0)	
+	PORT_BIT( 0x0060, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(1) PORT_NAME("@P1 P1 Button Combokey (Button 1 @Button1 + Button 2 @Button2)") PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x0060)	
+	PORT_BIT( 0x00E0, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(1) PORT_NAME("@P1 P1 Button Combokey (Button 1 @Button1 + Button 2 @Button2 + Button 3 @Button3)") PORT_CONDITION("P1P2", 0x00F0, NOTEQUALS, 0x00E0)	
 
 	PORT_BIT( 0x0100, IP_ACTIVE_LOW, IPT_START2 )
 	PORT_BIT( 0x0200, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(2)
@@ -286,12 +286,11 @@ INPUT_PORTS_START( orlegend )
 	PORT_BIT( 0x2000, IP_ACTIVE_LOW, IPT_BUTTON1 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x2000)
 	PORT_BIT( 0x4000, IP_ACTIVE_LOW, IPT_BUTTON2 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x4000)
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x8000)
-	PORT_BIT( 0x6000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button Ⓐ + Button Ⓑ)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x6000)	
-	PORT_BIT( 0xE000, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(2) PORT_NAME("P2 Button Combokey (Button Ⓐ + Button Ⓑ + Button Ⓒ)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0xE000)	
+	PORT_BIT( 0x6000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(2) PORT_NAME("@P2 P2 Button Combokey (Button 1 @Button1 + Button 2 @Button2)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x6000)	
+	PORT_BIT( 0xE000, IP_ACTIVE_LOW, IPT_BUTTON_ABC ) PORT_PLAYER(2) PORT_NAME("@P2 P2 Button Combokey (Button 1 @Button1 + Button 2 @Button2 + Button 3 @Button3)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0xE000)	
 /***********************************************************************************************************************************************************************************************/
 
 	PORT_MODIFY("Region")
-	PORT_BIT(     0xfff8, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_DIPNAME( 0x0007,  0x0001, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, DEF_STR( Taiwan ) )
 	PORT_CONFSETTING(      0x0001, DEF_STR( China ) )
@@ -305,7 +304,6 @@ INPUT_PORTS_START( orld112c )
 	PORT_INCLUDE ( pgm )
 
 	PORT_MODIFY("Region")
-	PORT_BIT(     0xfff8, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_DIPNAME( 0x0007,  0x0001, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, DEF_STR( Taiwan ) )
 	PORT_CONFSETTING(      0x0001, DEF_STR( China ) )
@@ -319,7 +317,6 @@ INPUT_PORTS_START( orld111c )
 	PORT_INCLUDE ( pgm )
 
 	PORT_MODIFY("Region")
-	PORT_BIT(     0xfffc, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_DIPNAME( 0x0003,  0x0002, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, DEF_STR( Hong_Kong ) )
 	PORT_CONFSETTING(      0x0001, "Hong Kong (duplicate)" ) // again?
@@ -331,7 +328,6 @@ INPUT_PORTS_START( orld111t )
 	PORT_INCLUDE ( pgm )
 
 	PORT_MODIFY("Region")
-	PORT_BIT(     0xfff8, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_DIPNAME( 0x0007,  0x0000, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, DEF_STR( Taiwan ) )
 	PORT_CONFSETTING(      0x0001, DEF_STR( China ) )
@@ -345,7 +341,6 @@ INPUT_PORTS_START( orlegendk )
 	PORT_INCLUDE ( pgm )
 
 	PORT_MODIFY("Region")
-	PORT_BIT(     0xfff8, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_DIPNAME( 0x0007,  0x0003, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, DEF_STR( Taiwan ) )
 	PORT_CONFSETTING(      0x0001, DEF_STR( China ) )
@@ -359,7 +354,6 @@ INPUT_PORTS_START( orlegendt )
 	PORT_INCLUDE ( pgm )
 
 	PORT_MODIFY("Region")
-	PORT_BIT(     0xfff8, IP_ACTIVE_HIGH, IPT_UNUSED )
 	PORT_DIPNAME( 0x0007, 0x0004, DEF_STR( Region ) )
 	PORT_CONFSETTING(      0x0000, "Invalid 00?" )
 	PORT_CONFSETTING(      0x0001, "Invalid 01?" )
@@ -386,52 +380,3 @@ void pgm_asic3_state::pgm_asic3(machine_config &config)
 {
 	pgmbase(config);
 }
-
-/*********************************************************************************************************/	
-
-/******************************************* 原代码 *********************
-INPUT_PORTS_START( orlegend )
-	PORT_INCLUDE ( pgm )
-
-	PORT_MODIFY("Region")
-	PORT_BIT(     0xfffc, IP_ACTIVE_HIGH, IPT_UNUSED )
-	PORT_DIPNAME( 0x0003, 0x0000, DEF_STR( Region ) )
-	PORT_CONFSETTING(      0x0000, DEF_STR( World ) )
-	PORT_CONFSETTING(      0x0001, "World (duplicate)" ) // again?
-	PORT_CONFSETTING(      0x0002, DEF_STR( Korea ) )
-	PORT_CONFSETTING(      0x0003, DEF_STR( China ) )
-INPUT_PORTS_END
-
-INPUT_PORTS_START( orlegendt )
-	PORT_INCLUDE ( pgm )
-
-	PORT_MODIFY("Region")
-	PORT_BIT(     0xfff8, IP_ACTIVE_HIGH, IPT_UNUSED )
-	PORT_DIPNAME( 0x0007, 0x0004, DEF_STR( Region ) )
-	PORT_CONFSETTING(      0x0000, "Invalid 00?" )
-	PORT_CONFSETTING(      0x0001, "Invalid 01?" )
-	PORT_CONFSETTING(      0x0002, "Invalid 02?" )
-	PORT_CONFSETTING(      0x0003, "Invalid 03?" )
-	PORT_CONFSETTING(      0x0004, DEF_STR( Taiwan ) )
-INPUT_PORTS_END
-
-
-INPUT_PORTS_START( orlegendk )
-	PORT_INCLUDE ( pgm )
-
-	PORT_MODIFY("Region")
-	PORT_BIT(     0xfff8, IP_ACTIVE_HIGH, IPT_UNUSED )
-	PORT_DIPNAME( 0x0007, 0x0002, DEF_STR( Region ) )
-	PORT_CONFSETTING(      0x0000, "Invalid 00?" )
-	PORT_CONFSETTING(      0x0001, "Invalid 01?" )
-	PORT_CONFSETTING(      0x0002, DEF_STR( Korea ) )
-	PORT_CONFSETTING(      0x0003, "Invalid 03?" )
-	PORT_CONFSETTING(      0x0004, "Invalid 04?" )
-INPUT_PORTS_END
-
-
-void pgm_asic3_state::pgm_asic3(machine_config &config)
-{
-	pgmbase(config);
-}
-******************************************************************************/

@@ -10,15 +10,12 @@ public:
 	}
 
 	void init_orlegend();
-//缘来是你
-//========== mamep ============>>>
-	void init_orld112c();
-	void init_orld111c();
-	void init_orld111t();
+	void init_orld112c();     	//缘来是你
+	void init_orld111c();     	//缘来是你
+	void init_orld111t();     	//缘来是你
 	void init_orlegendk();    	
 
-	void pgm_asic3_reset();	
-//=============================>>>	
+	void pgm_asic3_reset();	//缘来是你
 	void pgm_asic3(machine_config &config);
 
 private:
@@ -37,9 +34,7 @@ private:
 INPUT_PORTS_EXTERN( orlegend );
 INPUT_PORTS_EXTERN( orlegendt );
 INPUT_PORTS_EXTERN( orlegendk );
-//缘来是你
-//========== mamep ============>>>
+//缘来是你 增加
 INPUT_PORTS_EXTERN( orld112c );
 INPUT_PORTS_EXTERN( orld111c );
 INPUT_PORTS_EXTERN( orld111t );
-//=============================>>>

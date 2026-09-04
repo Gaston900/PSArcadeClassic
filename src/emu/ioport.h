@@ -415,6 +415,10 @@ enum ioport_type
 		IPT_UI_EXPORT,
 		IPT_UI_AUDIT,
 
+//========= EKMAME =========>>>
+        IPT_UI_CLEAR_FILTER,
+//==========================>>>
+
 		// additional OSD-specified UI port types (up to 16)
 		IPT_OSD_1,
 		IPT_OSD_2,

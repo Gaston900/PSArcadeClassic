@@ -25,6 +25,10 @@
 #include "ui/systemlist.h"
 #include "ui/viewgfx.h"
 
+//========= EKMAME =========>>>
+#include "ui/miscmenu.h"
+//==========================>>>
+
 #include "imagedev/cassette.h"
 #include "machine/laserdsc.h"
 #include "video/vector.h"
@@ -48,6 +52,15 @@
 #include <functional>
 #include <type_traits>
 
+//=================== EKMAME ==================>>>
+struct scale_effect_t {
+	int effect;
+	int xsize;
+	int ysize;
+};
+extern scale_effect_t scale_effect;
+extern void scale_decode(const char *name);
+//=============================================>>>
 
 /***************************************************************************
     CONSTANTS
@@ -119,7 +132,6 @@ std::string mame_ui_manager::messagebox_poptext;
 
 // slider info
 std::vector<ui::menu_item> mame_ui_manager::slider_list;
-
 
 /***************************************************************************
     CORE IMPLEMENTATION
@@ -867,12 +879,6 @@ void mame_ui_manager::draw_text_full(
 		*totalheight = layout.actual_height();
 }
 
-
-//-------------------------------------------------
-//  draw_text_box - draw a multiline text
-//  message with a box around it
-//-------------------------------------------------
-
 void mame_ui_manager::draw_text_box(render_container &container, std::string_view text, ui::text_layout::text_justify justify, float xpos, float ypos, rgb_t backcolor)
 {
 	// cap the maximum width
@@ -1393,6 +1399,26 @@ uint32_t mame_ui_manager::handler_ingame(render_container &container)
 	// handle a toggle cheats request
 	if (machine().ui_input().pressed(IPT_UI_TOGGLE_CHEAT))
 		mame_machine_manager::instance()->cheat().set_enable(!mame_machine_manager::instance()->cheat().enabled());
+
+//==================== EKMAME ========================>>>
+	if (machine().ui_input().pressed(IPT_UI_CLEAR_FILTER))
+	{
+		screen_device *screen = screen_device_enumerator(machine().root_device()).first();
+		if (screen != nullptr)
+		{
+			screen->video_exit_scale_effect();
+			
+			scale_effect.effect = 0;
+			scale_effect.xsize = 1;
+			scale_effect.ysize = 1;
+			
+			screen->video_init_scale_effect();
+			machine().video().frame_update(true);
+			popup_time(2, "%s", "Image Enhancement: NONE (Pixel-Art Restored)");
+			return 0;
+		}
+	}
+//====================================================>>>
 
 	// toggle MNG recording
 	if (machine().ui_input().pressed(IPT_UI_RECORD_MNG))

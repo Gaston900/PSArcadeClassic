@@ -23,6 +23,10 @@
 void InitPropertyPage(HINSTANCE hInst, HWND hWnd, OPTIONS_TYPE opt_type, int folder_id, int game_num);
 intptr_t CALLBACK GamePropertiesDialogProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
+//============ USE_SCALE_EFFECTS ============>>>
+#define NUMSCALEEFFECTS			18
+//===========================================>>>
+
 // 修改的 (Eziochiu)
 /****************************************************************/
 /* Called to show the standalone IPS dialog */

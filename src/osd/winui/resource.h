@@ -528,11 +528,15 @@
 #define IDC_60FPS                      	1411
 //============= 缘来是你 ==========>>>
 
+//============ USE_SCALE_EFFECTS ============>>>
+#define IDC_SCALEEFFECT                 1412
+//===========================================>>>
+
 // 修改的 代码来源 (加斯顿90)
 /********************************************/
-#define IDC_SICKFA                      1412
-#define IDC_SICKFB                      1413
-#define IDC_SICKFC                      1414
+#define IDC_SICKFA                      1413
+#define IDC_SICKFB                      1414
+#define IDC_SICKFC                      1415
 /********************************************/
 
 #define ID_CONTEXT_SHOW_FOLDER_START    39000

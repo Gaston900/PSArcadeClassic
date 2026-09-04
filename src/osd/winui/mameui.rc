@@ -636,10 +636,6 @@ BEGIN
 
     PUSHBUTTON      "Reset",IDC_PROP_RESET,4,292,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,282,98,14,0,0
-
-//==================== 缘来是你 ========================>>>
-//	CONTROL         IDB_SNAPSHOT, IDC_STATIC, "Static", SS_BITMAP, 285, 75, 60, 115
-//======================================================>>>
 END
 
 IDD_PROP_OPENGL DIALOGEX 0, 0, 400, 310
@@ -666,7 +662,12 @@ BEGIN
     EDITTEXT        IDC_MAME_SHADER0,180,50,90,14,ES_LEFT | WS_BORDER
     PUSHBUTTON      "Select",IDC_SELECT_SHADER0,180,68,40,14,0,0
     PUSHBUTTON      "Reset",IDC_RESET_SHADER0,220,68,40,14,0,0
-    
+
+//==================== USE_SCALE_EFFECTS ========================>>>
+    GROUPBOX 	    "Image Enhancement",IDC_STATIC,4,240,124,29
+    COMBOBOX        IDC_SCALEEFFECT,10,252,112,200,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP,0
+//===============================================================>>>
+   
     GROUPBOX        "Screen shader 0",IDC_STATIC,280,40,102,48
     EDITTEXT        IDC_SCREEN_SHADER0,290,50,90,14,ES_LEFT | WS_BORDER
     PUSHBUTTON      "Select",IDC_SELECT_SCR_SHADER0,290,68,40,14,0,0
@@ -717,10 +718,6 @@ BEGIN
     COMBOBOX        IDC_BGFX_BACKEND,10,219,92,10,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP,0
 	PUSHBUTTON      "Reset",IDC_PROP_RESET,4,292,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,282,98,14,0,0
-
-//==================== 缘来是你 ========================>>>
-//	CONTROL         IDB_SNAPSHOT, IDC_STATIC, "Static", SS_BITMAP, 285, 75, 60, 115
-//======================================================>>>
 END
 
 IDD_PROP_VECTOR DIALOGEX 0, 0, 220, 280
@@ -761,10 +758,6 @@ BEGIN
     
     PUSHBUTTON      "Reset",IDC_PROP_RESET,4,282,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,282,98,14,0,0
-
-//==================== 缘来是你 ========================>>>
-//	CONTROL         IDB_SNAPSHOT, IDC_STATIC, "Static", SS_BITMAP, 285, 75, 60, 115
-//======================================================>>>
 END
 
 IDD_PROP_INPUT DIALOGEX 0, 0, 220, 280
@@ -814,10 +807,6 @@ BEGIN
 
     PUSHBUTTON      "Reset",IDC_PROP_RESET,4,292,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,292,98,14,0,0
-
-//==================== 缘来是你 ========================>>>
-//	CONTROL         IDB_SNAPSHOT, IDC_STATIC, "Static", SS_BITMAP, 285, 75, 60, 115
-//======================================================>>>
 END
 
 IDD_PROP_MISC DIALOGEX 0, 0, 220, 280
@@ -897,10 +886,6 @@ BEGIN
 
     PUSHBUTTON      "Reset",IDC_PROP_RESET,4,294,98,14,0,0
     PUSHBUTTON      "Restore default options",IDC_USE_DEFAULT,118,294,98,14,0,0
-
-//==================== 缘来是你 ========================>>>
-//	CONTROL         IDB_SNAPSHOT, IDC_STATIC, "Static", SS_BITMAP, 285, 75, 60, 115
-//======================================================>>>
 END
 /****************************************************************************************************************************/
 

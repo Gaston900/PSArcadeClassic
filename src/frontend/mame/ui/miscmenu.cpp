@@ -43,7 +43,7 @@
 #include "scale/osdscale.h"
 //=================================>>>
 
-//============ 缘来是你 ============>>>			
+//============ 缘来是你 ============>>>
 #include <vector>
 //=================================>>>
 
@@ -52,6 +52,9 @@
 #include <fstream>
 #include <iterator>
 
+//============ EKMAME ============>>>
+#include "rendfont.h"
+//=================================>>>
 
 namespace ui {
 
@@ -733,7 +736,14 @@ void menu_autofire::populate(float &customtop, float &custombottom)
 					case 1:	subtext.assign("On");	break;
 					case 2:	subtext.assign("Toggle");	break;
 				}
-        item_append(btn.name, subtext, FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(btn.field));
+
+//========================== EKMAME ==============================>>>
+        char button_name_buf[1024];
+        std::snprintf(button_name_buf, sizeof(button_name_buf), "%s", btn.name.c_str());
+        convert_command_glyphs(button_name_buf, std::size(button_name_buf));
+
+        item_append(button_name_buf, subtext, FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(btn.field));
+//================================================================>>>
 	}
 
 	/* add autofire delay items */
@@ -890,7 +900,13 @@ void menu_custom_setting::populate(float &customtop, float &custombottom)
 					case 1:	subtext.assign("On");	break;
 					case 2:	subtext.assign("Toggle");	break;
 				}
-        item_append(btn.name, subtext, FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(btn.field));
+//========================== EKMAME ==============================>>>
+        char custom_name_buf[1024];
+        std::snprintf(custom_name_buf, sizeof(custom_name_buf), "%s", btn.name.c_str());
+        convert_command_glyphs(custom_name_buf, std::size(custom_name_buf));
+
+        item_append(custom_name_buf, subtext, FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(btn.field));
+//================================================================>>>
 	}
 
 	/* add autofire delay items */
@@ -1013,8 +1029,13 @@ void menu_custom_button::populate(float &customtop, float &custombottom)
 				}
 				if (subtext.empty())
 					subtext.assign(" ");
-				item_append(name, subtext, 0, (void *)&machine().ioport().m_custom_button[player][type]);
+//========================== EKMAME ==============================>>>
+				char custom_btn_buf[1024];
+				std::snprintf(custom_btn_buf, sizeof(custom_btn_buf), "%s", name.c_str());
+				convert_command_glyphs(custom_btn_buf, std::size(custom_btn_buf));
 
+				item_append(custom_btn_buf, subtext, 0, (void *)&machine().ioport().m_custom_button[player][type]);
+//================================================================>>>
 				menu_items++;
 			}
 		}
@@ -1395,7 +1416,6 @@ void menu_plugins_configure::populate(float &customtop, float &custombottom)
 	settings menu
 -------------------------------------------------*/
 
-// 1. Constructor moderno utilizando render_target obligatoriamente
 menu_scale_effect::menu_scale_effect(mame_ui_manager &mui, render_container &container) 
 	: menu(mui, container)
 {
@@ -1436,8 +1456,8 @@ void menu_scale_effect::handle(event const *ev)
 				scale_decode(scale_name(selected_effect - SCALE_ITEM_NONE));
 				screen->video_init_scale_effect();
 				
-				machine().video().frame_update();
-				
+				machine().video().frame_update(false);
+
 				osd_printf_verbose("scale effect: %s\n", scale_name(selected_effect - SCALE_ITEM_NONE));
 				
 				reset(reset_options::REMEMBER_REF);

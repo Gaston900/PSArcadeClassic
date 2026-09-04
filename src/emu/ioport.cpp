@@ -96,6 +96,11 @@
 #include "fileio.h"
 #include "xmlfile.h"
 #include "profiler.h"
+
+//======= EKMAME =======>>>
+#include "rendfont.h"
+//======================>>>
+
 #include "ui/uimain.h"
 #include "inputdev.h"
 #include "natkeyboard.h"
@@ -332,10 +337,14 @@ std::string substitute_player(std::string_view name, u8 player)
 		case '%':
 			result.append(name.substr(0, found + 1));
 			break;
+//==================== EKMAME ========================>>>
+#if 0
 		case 'p':
 			result.append(name.substr(0, found));
 			result.append(util::string_format(_("input-name", "P%1$u"), player + 1));
 			break;
+#endif
+//====================================================>>>
 		default:
 			result.append(name.substr(0, found + 2));
 		}

@@ -306,14 +306,39 @@ int scale_exit(void)
 //============================================================
 //	x86_get_features
 //============================================================
-static uint32_t x86_get_features(void)
+#ifndef PTR64
+static UINT32 x86_get_features(void)
 {
-    // Forzamos el flag de compatibilidad MMX (1 << 23) de forma directa.
-    // Todas las CPUs de 64 bits del mundo soportan MMX, por lo que este chequeo por ensamblador es obsoleto.
-    uint32_t features = (1 << 23); 
-    return features;
+	UINT32 features = 0;
+#ifdef _MSC_VER
+	__asm
+	{
+		mov eax, 1
+		xor ebx, ebx
+		xor ecx, ecx
+		xor edx, edx
+		__asm _emit 0Fh __asm _emit 0A2h	// cpuid
+		mov features, edx
+	}
+#else /* !_MSC_VER */
+	__asm__
+	(
+		"pushl %%ebx         ; "
+		"movl $1,%%eax       ; "
+		"xorl %%ebx,%%ebx    ; "
+		"xorl %%ecx,%%ecx    ; "
+		"xorl %%edx,%%edx    ; "
+		"cpuid               ; "
+		"movl %%edx,%0       ; "
+		"popl %%ebx          ; "
+	: "=&a" (features)		/* result has to go in eax */
+	: 				/* no inputs */
+	: "%ecx", "%edx"	/* clobbers ebx, ecx and edx */
+	);
+#endif /* MSC_VER */
+	return features;
 }
-
+#endif /* PTR64 */
 
 //============================================================
 //	scale_init

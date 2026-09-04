@@ -20,7 +20,6 @@
 #include <utility>
 #include <vector>
 
-
 struct ui_system_info;
 
 
@@ -178,8 +177,7 @@ protected:
 	virtual void handle(event const *ev) override;
 };
 
-// 修改的 代码来源 (EKMAME)
-/****************************************************************************/
+//============================ EKMAME ================================>>>
 //-------------------------------------------------
 //  Autofire menu
 //-------------------------------------------------
@@ -215,7 +213,6 @@ public:
 	virtual void populate(float &customtop, float &custombottom) override;
 	virtual void handle(event const *ev) override;
 };
-/****************************************************************************/
 
 class menu_scale_effect : public menu 
 {

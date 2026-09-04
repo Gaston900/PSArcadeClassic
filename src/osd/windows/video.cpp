@@ -20,6 +20,10 @@
 #include "window.h"
 #include "strconv.h"
 
+//======= USE_SCALE_EFFECTS =======>>>
+#include "scale/osdscale.h"
+//=================================>>>
+
 #include "modules/monitor/monitor_module.h"
 #include "modules/osdwindow.h"
 
@@ -34,6 +38,14 @@
 
 osd_video_config video_config;
 
+//============================================================
+//  LOCAL VARIABLES
+//============================================================
+
+//======= USE_SCALE_EFFECTS =======>>>
+static int cur_scale_xsize;
+static int cur_scale_ysize;
+//=================================>>>
 
 //============================================================
 //  PROTOTYPES
@@ -90,6 +102,17 @@ void windows_osd_interface::update(bool skip_redraw)
 	// if we're not skipping this redraw, update all windows
 	if (!skip_redraw)
 	{
+//==================== USE_SCALE_EFFECTS ========================>>>
+		extern int win_scale_res_changed;
+		win_scale_res_changed = 0;
+
+		if (scale_effect.xsize != cur_scale_xsize || scale_effect.ysize != cur_scale_ysize)
+		{
+			win_scale_res_changed = 1;
+			cur_scale_xsize = scale_effect.xsize;
+			cur_scale_ysize = scale_effect.ysize;
+		}
+//===============================================================>>>
 //      profiler_mark(PROFILER_BLIT);
 		for (const auto &window : osd_common_t::s_window_list)
 			window->update();
@@ -146,6 +169,17 @@ void windows_osd_interface::check_osd_inputs()
 void windows_osd_interface::extract_video_config()
 {
 	const char *stemp;
+//==================== USE_SCALE_EFFECTS ========================>>>
+	stemp = options().value(OPTION_SCALE_EFFECT);
+
+	if (stemp)
+	{
+		scale_decode(stemp);
+
+		if (scale_effect.effect)
+			osd_printf_verbose("Using %s scale effect\n", scale_name(scale_effect.effect));
+	}
+//===============================================================>>>
 
 	// global options: extract the data
 	video_config.windowed      = options().window();

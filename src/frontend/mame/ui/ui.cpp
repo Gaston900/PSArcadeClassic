@@ -27,6 +27,7 @@
 
 //========= EKMAME =========>>>
 #include "ui/miscmenu.h"
+#include "ui/cheatopt.h"
 //==========================>>>
 
 #include "imagedev/cassette.h"
@@ -1411,6 +1412,17 @@ uint32_t mame_ui_manager::handler_ingame(render_container &container)
 		mame_machine_manager::instance()->cheat().set_enable(!mame_machine_manager::instance()->cheat().enabled());
 
 //==================== EKMAME ========================>>>
+	if (machine().ui_input().pressed(IPT_UI_TOGGLE_CHEAT_CONFIG))
+	{
+		if (!is_paused)
+			machine().pause();
+
+		menu_reset();		
+		show_menu();
+		ui::menu::stack_push<ui::menu_cheat>(*this, container);
+		return 0;
+	}
+
 	if (machine().ui_input().pressed(IPT_UI_CLEAR_FILTER))
 	{
 		screen_device *screen = screen_device_enumerator(machine().root_device()).first();

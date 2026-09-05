@@ -924,8 +924,8 @@ namespace {
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_ON_SCREEN_DISPLAY, N_p("input-name", "On Screen Display"),      input_seq(KEYCODE_TILDE, input_seq::not_code, KEYCODE_LSHIFT, input_seq::not_code, KEYCODE_RSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_DEBUG_BREAK,       N_p("input-name", "Break in Debugger"),      input_seq(KEYCODE_TILDE, input_seq::not_code, KEYCODE_LSHIFT, input_seq::not_code, KEYCODE_RSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_CONFIGURE,         N_p("input-name", "Config Menu"),            input_seq(KEYCODE_TAB) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_PAUSE,             N_p("input-name", "Pause"),                  input_seq(KEYCODE_P, input_seq::not_code, KEYCODE_LSHIFT, input_seq::not_code, KEYCODE_RSHIFT) ) \
-		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_PAUSE_SINGLE,      N_p("input-name", "Pause - Single Step"),    input_seq(KEYCODE_P, KEYCODE_LSHIFT, input_seq::or_code, KEYCODE_P, KEYCODE_RSHIFT) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_PAUSE,             N_p("input-name", "Pause"),                  input_seq(KEYCODE_F5, input_seq::not_code, KEYCODE_LSHIFT, input_seq::not_code, KEYCODE_RSHIFT) ) \
+		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_PAUSE_SINGLE,      N_p("input-name", "Pause - Single Step"),    input_seq(KEYCODE_F5, KEYCODE_LSHIFT, input_seq::or_code, KEYCODE_F5, KEYCODE_RSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_REWIND_SINGLE,     N_p("input-name", "Rewind - Single Step"),   input_seq(KEYCODE_TILDE, KEYCODE_LSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_RESET_MACHINE,     N_p("input-name", "Reset Machine"),          input_seq(KEYCODE_F3, KEYCODE_LSHIFT, input_seq::or_code, KEYCODE_F3, KEYCODE_RSHIFT) ) \
 		INPUT_PORT_DIGITAL_TYPE( 0, UI,       UI_SOFT_RESET,        N_p("input-name", "Soft Reset"),             input_seq(KEYCODE_9) ) \

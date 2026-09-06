@@ -1439,6 +1439,26 @@ void menu_scale_effect::populate(float &customtop, float &custombottom)
 
 		item_append(desc, "", 0, (void *)(uintptr_t)(SCALE_ITEM_NONE + scaler));
 	}
+	custombottom = ui().get_line_height() * 4.0f;
+}
+
+void menu_scale_effect::custom_render(void *selectedref, float top, float bottom, float x1, float y1, float x2, float y2)
+{
+	if (selected_index() == 0)
+	{
+		const char *aviso_text = _("Press The P key To Clean Filter");
+
+		float posicion_y_cartel = top - ui().get_line_height() * 1.0f - ui().box_tb_border() * 2.0f;
+
+		ui().draw_text_box(
+			container(), 
+			aviso_text, 
+			ui::text_layout::text_justify::CENTER, 
+			0.5f, 
+			posicion_y_cartel, 
+			ui().colors().background_color()
+		);
+	}
 }
 
 void menu_scale_effect::handle(event const *ev)

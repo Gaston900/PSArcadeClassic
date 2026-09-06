@@ -223,6 +223,9 @@ public:
 private:
 	virtual void populate(float &customtop, float &custombottom) override;
 	virtual void handle(event const *ev) override;
+
+	virtual void custom_render(void *selectedref, float top, float bottom, float x, float y, float x2, float y2) override;
+
 };
 //====================================================================>>>
 

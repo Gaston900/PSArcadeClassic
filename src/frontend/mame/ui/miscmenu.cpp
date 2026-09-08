@@ -1449,15 +1449,16 @@ void menu_scale_effect::custom_render(void *selectedref, float top, float bottom
 		const char *aviso_text = _("Press The P key To Clean Filter");
 
 		float posicion_y_cartel = top - ui().get_line_height() * 1.0f - ui().box_tb_border() * 2.0f;
+		float maximum_width = 1.0f - ui().box_lr_border() * 2;
+		ui::text_layout layout = ui().create_layout(container(), maximum_width, ui::text_layout::text_justify::CENTER, ui::text_layout::word_wrapping::WORD);
+		layout.add_text(aviso_text, ui::text_layout::text_justify::CENTER, rgb_t(255, 255, 255));
 
 		ui().draw_text_box(
-			container(), 
-			aviso_text, 
-			ui::text_layout::text_justify::CENTER, 
-			0.5f, 
-			posicion_y_cartel, 
-			ui().colors().background_color()
-		);
+				container(),
+				layout,
+				0.5f,
+				posicion_y_cartel,
+				ui().colors().background_color());
 	}
 }
 

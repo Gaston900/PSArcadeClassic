@@ -689,11 +689,38 @@ void mame_ui_manager::update_and_render(render_container &container)
 	// call the current UI handler
 	m_handler_param = m_handler_callback(container);
 
+// 修改的 代码来源 (加斯顿90)
+//==============================================================================================================>>>
 	// display any popup messages
 	if (osd_ticks() < m_popup_text_end)
-		draw_text_box(container, messagebox_poptext, ui::text_layout::text_justify::CENTER, 0.5f, 0.9f, colors().background_color());
+	{
+		float string_width = get_string_width(messagebox_poptext);
+		float line_height = get_line_height();
+		float lr_border = box_lr_border() * machine().render().ui_aspect(&container);
+
+		ui::text_layout popup_layout = create_layout(container, string_width + (lr_border * 2.0f), ui::text_layout::text_justify::CENTER, ui::text_layout::word_wrapping::TRUNCATE);
+		popup_layout.add_text(messagebox_poptext, ui::text_layout::text_justify::CENTER, rgb_t(255, 255, 255));
+
+		float x_box_left   = 0.5f - (string_width / 2.0f) - (lr_border * 2.0f);
+		float y_box_top    = 0.9f - (line_height / 2.0f) - box_tb_border();
+		float x_box_right  = 0.5f + (string_width / 2.0f) + (lr_border * 2.0f);
+		float y_box_bottom = 0.9f + (line_height / 2.0f) + box_tb_border();
+
+		draw_outlined_box(
+				container,
+				x_box_left, y_box_top,
+				x_box_right, y_box_bottom,
+				colors().background_color());
+
+		float draw_x = 0.5f - (string_width / 2.0f) - 0.005f;
+		float draw_y = 0.9f - (line_height / 2.0f);
+		popup_layout.emit(container, draw_x, draw_y);
+	}
 	else
+	{
 		m_popup_text_end = 0;
+	}
+//==============================================================================================================>>>
 
 	// display the internal mouse cursor
 	if (m_mouse_show || (is_menu_active() && machine().options().ui_mouse()))

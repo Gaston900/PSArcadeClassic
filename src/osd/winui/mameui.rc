@@ -383,7 +383,7 @@ IDI_FOLDER		        ICON		            "res\\fl_folder.ico"
 // Dialog
 //
 
-IDD_STARTUP DIALOGEX 0, 0, 256, 86
+IDD_STARTUP DIALOGEX 0, 0, 263, 86
 STYLE WS_POPUP | WS_VISIBLE | WS_BORDER | DS_CENTER | DS_SETFOREGROUND | DS_SETFONT
 EXSTYLE WS_EX_TOOLWINDOW
 FONT 10, "Tahoma"
@@ -416,7 +416,7 @@ END
 /*****************************************************************************************************************************/
 IDD_ABOUT DIALOGEX 0, 0, 320, 228
 STYLE WS_POPUP | WS_VISIBLE | WS_BORDER | DS_SETFONT
-FONT 8, "Tahoma"
+FONT 9, "Tahoma"
 BEGIN
     RTEXT            "",IDC_BUILD,6,4,308,10
     LTEXT            "",IDC_BUILDVER,6,4,120,10

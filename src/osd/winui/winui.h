@@ -147,6 +147,19 @@
 #define NUM_TOOLBUTTONS     std::size(tbb)
 #define NUM_TOOLTIPS		(16) // 修改的 代码来源 (EKMAME)
 
+// 修改的 代码来源 (加斯顿90)
+//=============================================================>>>
+#ifndef TVS_EX_AUTOHIDEBUTTONS
+#define TVS_EX_AUTOHIDEBUTTONS       0x0002
+#endif
+#ifndef TVS_EX_FADEINOUTEXPANDOS
+#define TVS_EX_FADEINOUTEXPANDOS     0x0040
+#endif
+#ifndef TVM_SETEXTENDEDSTYLE
+#define TVM_SETEXTENDEDSTYLE         (TV_FIRST + 44)
+#endif
+//=============================================================>>>
+
 enum
 {
 	TAB_PICKER = 0,

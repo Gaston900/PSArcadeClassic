@@ -900,6 +900,7 @@ void menu_custom_setting::populate(float &customtop, float &custombottom)
 					case 1:	subtext.assign("On");	break;
 					case 2:	subtext.assign("Toggle");	break;
 				}
+	
 //========================== EKMAME ==============================>>>
         char custom_name_buf[1024];
         std::snprintf(custom_name_buf, sizeof(custom_name_buf), "%s", btn.name.c_str());

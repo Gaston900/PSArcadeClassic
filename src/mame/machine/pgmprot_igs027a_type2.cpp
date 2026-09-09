@@ -289,6 +289,8 @@ void pgm_arm_type2_state::init_dwpc101j()
 INPUT_PORTS_START( kov2 )
 	PORT_INCLUDE ( pgm )
 
+// 修改的 代码来源 (EKMAME) 
+/***********************************************************************************************************************************************************************************************/
 	PORT_MODIFY("P1P2")
 	PORT_BIT( 0x0001, IP_ACTIVE_LOW, IPT_START1 )
 	PORT_BIT( 0x0002, IP_ACTIVE_LOW, IPT_JOYSTICK_UP ) PORT_PLAYER(1)
@@ -311,6 +313,7 @@ INPUT_PORTS_START( kov2 )
 	PORT_BIT( 0x8000, IP_ACTIVE_LOW, IPT_BUTTON3 ) PORT_PLAYER(2) PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x8000)
 	PORT_BIT( 0x6000, IP_ACTIVE_LOW, IPT_BUTTON_AB ) PORT_PLAYER(2) PORT_NAME("@P2 P2 Button Combokey (Button 1 @Button1 + Button 2 @Button2)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0x6000)	
 	PORT_BIT( 0xC000, IP_ACTIVE_LOW, IPT_BUTTON_BC ) PORT_PLAYER(2) PORT_NAME("@P2 P2 Button Combokey (Button 2 @Button2 + Button 3 @Button3)") PORT_CONDITION("P1P2", 0xF000, NOTEQUALS, 0xC000)	
+/***********************************************************************************************************************************************************************************************/
 
 	PORT_START("RegionHack")    /* Region - actually supplied by protection device */
 	PORT_CONFNAME( 0x00ff, 0x00ff, DEF_STR( Region ) )

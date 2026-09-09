@@ -801,7 +801,7 @@ miconkit.cpp
 micro3d.cpp
 //microdar.cpp     // mechanical
 //micropin.cpp     // pinball
-//midas.cpp        // not working (An incompatible with the neogeo of a is generated ARCADE with that of HBMAME.)
+midas.cpp
 //midqslvr.cpp     // black screen, most use chd
 midtunit.cpp
 midvunit.cpp
@@ -908,6 +908,7 @@ nbmj8991.cpp
 nbmj9195.cpp
 nemesis.cpp
 neogeo.cpp
+neogeocd.cpp
 //neomania.cpp                         // skel
 //neopcb.cpp
 //neoprint.cpp    // gets stuck on some screen

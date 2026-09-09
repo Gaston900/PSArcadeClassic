@@ -18,20 +18,20 @@
 //**************************************************************************
 
 #define MCFG_NEOGEO_MEMCARD_ADD(_tag) \
-	MCFG_DEVICE_ADD(_tag, NG_MEMCARD, 0)
+	MCFG_DEVICE_ADD(_tag, NGHB_MEMCARD, 0)
 
 /***************************************************************************
     FUNCTION PROTOTYPES
 ***************************************************************************/
 #include "imagedev/memcard.h"
 
-// ======================> ng_memcard_device
+// ======================> nghb_memcard_device
 
-class ng_memcard_device :  public device_t, public device_memcard_image_interface
+class nghb_memcard_device :  public device_t, public device_memcard_image_interface
 {
 public:
 	// construction/destruction
-	ng_memcard_device(const machine_config &mconfig, const char *tag, device_t *owner, u32 clock = 0);
+	nghb_memcard_device(const machine_config &mconfig, const char *tag, device_t *owner, u32 clock = 0);
 
 	virtual bool is_reset_on_load() const noexcept override { return false; }
 	virtual const char *file_extensions() const noexcept override { return "neo"; }
@@ -54,7 +54,7 @@ private:
 
 
 // device type definition
-DECLARE_DEVICE_TYPE(NG_MEMCARD, ng_memcard_device)
+DECLARE_DEVICE_TYPE(NGHB_MEMCARD, nghb_memcard_device)
 
 
 #endif  /* __NG_MEMCARD_H__ */

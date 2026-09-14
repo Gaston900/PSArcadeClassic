@@ -429,7 +429,7 @@ BEGIN
     CTEXT           "Thank you for your valuable contribution; it was fundamental in helping",IDC_SICKFA,6,166,310,10
     CTEXT           "us achieve a limitless project. We could never have finished without your",IDC_SICKFB,6,178,310,10 
     CTEXT           "help: Robert, GXB, Remikare, Dirstac, GSC2007 and Eziochiu.",IDC_SICKFC,6,190,310,10 
-    DEFPUSHBUTTON   "OK",IDOK,140,208,30,14
+    DEFPUSHBUTTON   "OK",IDOK,145,208,30,14
 END
 /*****************************************************************************************************************************/
 

@@ -242,16 +242,18 @@ if (STANDALONE~=true) then
 				{ "$(OBJDIR)/".._subtarget ..".res" ,  GEN_DIR  .. "resource/" .. rctarget .. "vers.rc", true  },
 			}
 		else
+-- 修改的 代码来源 (加斯顿90)
+--===========================================================================================================>>>
 			rctarget = "mame"
 			files {
-				MAME_DIR .. "scripts/resources/windows/mame/mame.rc",
+				MAME_DIR .. "scripts/resources/windows/psarcadec+/psarcadec+.rc",
 			}
 			dependency {
-				{ "$(OBJDIR)/mame.res" ,  GEN_DIR  .. "resource/" .. rctarget .. "vers.rc", true  },
+				{ "$(OBJDIR)/psarcadec+.res" ,  GEN_DIR  .. "resource/" .. rctarget .. "vers.rc", true  },
 			}
 		end
 	end
-
+--===========================================================================================================>>>
 	local mainfile = MAME_DIR .. "src/".._target .."/" .. _subtarget ..".cpp"
 	if not os.isfile(mainfile) then
 		mainfile = MAME_DIR .. "src/".._target .."/" .. _target ..".cpp"

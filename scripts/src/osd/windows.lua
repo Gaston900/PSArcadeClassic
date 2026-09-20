@@ -1,52 +1,26 @@
 -- license:BSD-3-Clause
--- copyright-holders:MAMEdev Team, Mamesick
+-- copyright-holders:MAMEdev Team
 
 ---------------------------------------------------------------------------
 --
---   winui.lua
+--   windows.lua
 --
---   Rules for the building for Windows with GUI
+--   Rules for the building for Windows
 --
 ---------------------------------------------------------------------------
 
 dofile("modules.lua")
 
-premake.make.linkoptions_after = false;
-_OPTIONS["STRIP_SYMBOLS"] = "1"
 
 function maintargetosdoptions(_target,_subtarget)
-	kind "WindowedApp"
-
 	osdmodulestargetconf()
 
 	configuration { "mingw*" }
-		linkoptions {
-			"-municode",
-			"-lmingw32",
-			"-Wl,--allow-multiple-definition",
-		}
 		links {
 			"mingw32",
 		}
 
-	configuration { "x64", "Release" }
-		targetname "PSArcadeClassic+"
-
-	configuration { "x32", "Release" }
-		targetname "PSArcadeClassic+_32x"
-
 	configuration { }
-
-	if _OPTIONS["DIRECTINPUT"] == "8" then
-		links {
-			"dinput8",
-		}
-	else
-		links {
-			"dinput",
-		}
-	end
-
 
 	if _OPTIONS["USE_SDL"] == "1" then
 		links {
@@ -57,37 +31,14 @@ function maintargetosdoptions(_target,_subtarget)
 	links {
 		"comctl32",
 		"comdlg32",
-		"psapi",
+		"dinput8",
 		"ole32",
-		"shell32",
-		"uxtheme",
-		"uuid",
+		"psapi",
 		"shlwapi",
-		"gdiplus", -- 修改的 (Eziochiu)
-	}
-
-	override_resources = true;
-
-	files {
-		MAME_DIR .. "src/osd/winui/mameui.rc",
-	}
-	dependency {
-		{ "$(OBJDIR)/mameui.res" ,  GEN_DIR  .. "/resource/" .. "mamevers.rc", true  },
+		"uuid",
 	}
 end
 
-newoption {
-	trigger = "DIRECTINPUT",
-	description = "Minimum DirectInput version to support",
-	allowed = {
-		{ "7",  "Support DirectInput 7 or later"  },
-		{ "8",  "Support DirectInput 8 or later"  },
-	},
-}
-
-if not _OPTIONS["DIRECTINPUT"] then
-	_OPTIONS["DIRECTINPUT"] = "8"
-end
 
 newoption {
 	trigger = "USE_SDL",
@@ -151,17 +102,8 @@ project ("osd_" .. _OPTIONS["osd"])
 
 	defines {
 		"DIRECT3D_VERSION=0x0900",
+		"DIRECTINPUT_VERSION=0x0800",
 	}
-
-	if _OPTIONS["DIRECTINPUT"] == "8" then
-		defines {
-			"DIRECTINPUT_VERSION=0x0800",
-		}
-	else
-		defines {
-			"DIRECTINPUT_VERSION=0x0700",
-		}
-	end
 
 	includedirs {
 		MAME_DIR .. "src/emu",
@@ -171,13 +113,18 @@ project ("osd_" .. _OPTIONS["osd"])
 		MAME_DIR .. "src/lib/util",
 		MAME_DIR .. "src/osd/modules/file",
 		MAME_DIR .. "src/osd/modules/render",
-		MAME_DIR .. "src/frontend/mame",
 		MAME_DIR .. "3rdparty",
 	}
 
 	includedirs {
 		MAME_DIR .. "src/osd/windows",
 	}
+
+	if _OPTIONS["gcc"]~=nil and string.find(_OPTIONS["gcc"], "clang") then
+		buildoptions_cpp {
+			"-Wno-ignored-attributes",-- many instances in ImGui
+		}
+	end
 
 	files {
 		MAME_DIR .. "src/osd/modules/render/d3d/d3dhlsl.cpp",
@@ -215,10 +162,10 @@ project ("osd_" .. _OPTIONS["osd"])
 		MAME_DIR .. "src/osd/modules/debugger/win/disasmwininfo.h",
 		MAME_DIR .. "src/osd/modules/debugger/win/editwininfo.cpp",
 		MAME_DIR .. "src/osd/modules/debugger/win/editwininfo.h",
-		MAME_DIR .. "src/osd/modules/debugger/win/logviewinfo.cpp",
-		MAME_DIR .. "src/osd/modules/debugger/win/logviewinfo.h",
 		MAME_DIR .. "src/osd/modules/debugger/win/logwininfo.cpp",
 		MAME_DIR .. "src/osd/modules/debugger/win/logwininfo.h",
+		MAME_DIR .. "src/osd/modules/debugger/win/logviewinfo.cpp",
+		MAME_DIR .. "src/osd/modules/debugger/win/logviewinfo.h",
 		MAME_DIR .. "src/osd/modules/debugger/win/memoryviewinfo.cpp",
 		MAME_DIR .. "src/osd/modules/debugger/win/memoryviewinfo.h",
 		MAME_DIR .. "src/osd/modules/debugger/win/memorywininfo.cpp",
@@ -228,46 +175,6 @@ project ("osd_" .. _OPTIONS["osd"])
 		MAME_DIR .. "src/osd/modules/debugger/win/uimetrics.cpp",
 		MAME_DIR .. "src/osd/modules/debugger/win/uimetrics.h",
 		MAME_DIR .. "src/osd/modules/debugger/win/debugwin.h",
-		MAME_DIR .. "src/osd/winui/bitmask.cpp",
-		MAME_DIR .. "src/osd/winui/bitmask.h",
-		MAME_DIR .. "src/osd/winui/columnedit.cpp",
-		MAME_DIR .. "src/osd/winui/columnedit.h",
-		MAME_DIR .. "src/osd/winui/datafile.cpp",
-		MAME_DIR .. "src/osd/winui/datafile.h",
-		MAME_DIR .. "src/osd/winui/datamap.cpp",
-		MAME_DIR .. "src/osd/winui/datamap.h",
-		MAME_DIR .. "src/osd/winui/dialogs.cpp",
-		MAME_DIR .. "src/osd/winui/dialogs.h",
-		MAME_DIR .. "src/osd/winui/dinputjoy.cpp",
-		MAME_DIR .. "src/osd/winui/dinputjoy.h",
-		MAME_DIR .. "src/osd/winui/directories.cpp",
-		MAME_DIR .. "src/osd/winui/directories.h",
-		MAME_DIR .. "src/osd/winui/dxdecode.cpp",
---		MAME_DIR .. "src/osd/winui/emu_opts.cpp",
-		MAME_DIR .. "src/osd/winui/main.cpp",
-		MAME_DIR .. "src/osd/winui/mui_plug.cpp",
-		MAME_DIR .. "src/osd/winui/picker.cpp",
-		MAME_DIR .. "src/osd/winui/picker.h",
-		MAME_DIR .. "src/osd/winui/properties.cpp",
-		MAME_DIR .. "src/osd/winui/properties.h",
-		MAME_DIR .. "src/osd/winui/resource.h",
-		MAME_DIR .. "src/osd/winui/screenshot.cpp",
-		MAME_DIR .. "src/osd/winui/screenshot.h",
-		MAME_DIR .. "src/osd/winui/splitters.cpp",
-		MAME_DIR .. "src/osd/winui/splitters.h",
-		MAME_DIR .. "src/osd/winui/tabview.cpp",
-		MAME_DIR .. "src/osd/winui/tabview.h",
-		MAME_DIR .. "src/osd/winui/treeview.cpp",
-		MAME_DIR .. "src/osd/winui/treeview.h",
-		MAME_DIR .. "src/osd/winui/winui.cpp",
-		MAME_DIR .. "src/osd/winui/winui.h",
-		MAME_DIR .. "src/osd/winui/winui_audit.cpp",
-		MAME_DIR .. "src/osd/winui/winui_audit.h",
-		MAME_DIR .. "src/osd/winui/winui_opts.cpp",
-		MAME_DIR .. "src/osd/winui/winui_opts.h",
-		MAME_DIR .. "src/osd/winui/winui_util.cpp",
-		MAME_DIR .. "src/osd/winui/winui_util.h",
-		MAME_DIR .. "src/osd/winui/winui_main.cpp",
 		MAME_DIR .. "src/osd/scale/scale.cpp", -- 修改的 (EKMAME)
 		MAME_DIR .. "src/osd/scale/2xpm.cpp", -- 修改的 (EKMAME)
 		MAME_DIR .. "src/osd/scale/2xsai.cpp", -- 修改的 (EKMAME)
@@ -312,6 +219,7 @@ project ("ocore_" .. _OPTIONS["osd"])
 		MAME_DIR .. "src/osd/eigccppc.h",
 		MAME_DIR .. "src/osd/eigccx86.h",
 		MAME_DIR .. "src/osd/eivc.h",
+		MAME_DIR .. "src/osd/eivcarm.h",
 		MAME_DIR .. "src/osd/eivcx86.h",
 		MAME_DIR .. "src/osd/eminline.h",
 		MAME_DIR .. "src/osd/osdcomm.h",
@@ -334,7 +242,7 @@ project ("ocore_" .. _OPTIONS["osd"])
 		MAME_DIR .. "src/osd/modules/file/winsocket.cpp",
 		MAME_DIR .. "src/osd/modules/lib/osdlib_win32.cpp",
 	}
-	
+
 
 
 --------------------------------------------------

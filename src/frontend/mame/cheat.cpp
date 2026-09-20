@@ -73,10 +73,6 @@
 
 ***************************************************************************/
 
-//============ 缘来是你 =============>>>
-#define MAME_UI
-//==================================>>>
-
 #include "emu.h"
 #include "cheat.h"
 
@@ -87,6 +83,11 @@
 #include "corestr.h"
 #include "emuopts.h"
 #include "fileio.h"
+
+// 修改的 代码来源 (加斯顿90)
+//=======================>>>
+#include "drivenum.h"
+//=======================>>>
 
 #include <cstring>
 #include <iterator>
@@ -104,11 +105,6 @@ bool cheat_manager::m_translation_enabled = false;
 std::unordered_map<std::string, std::string> cheat_manager::m_translation_map;
 std::set<std::string> cheat_manager::m_new_missing;
 
-//作弊引用UI版
-#ifdef MAME_UI
-extern const char *funcGetParentName(const char *name);
-#endif
-
 //==================================>>>
 
 //**************************************************************************
@@ -117,6 +113,7 @@ extern const char *funcGetParentName(const char *name);
 
 // turn this on to enable removing duplicate cheats; not sure if we should
 #define REMOVE_DUPLICATE_CHEATS 0
+
 
 
 //**************************************************************************
@@ -492,10 +489,17 @@ cheat_script::script_entry::script_entry(
 			validate_format(filename, entrynode.line);
 		}
 	}
+
 	catch (expression_error const &err)
 	{
+// 修改的 代码来源 (加斯顿90)
+//===========================================================================================================>>>
+#if 0 //DISABLE_CHEAT
 		throw emu_fatalerror("%s.xml(%d): error parsing cheat expression \"%s\" (%s)\n", filename, entrynode.line, expression, err.code_string());
+#endif //DISABLE_CHEAT
+//===========================================================================================================>>>
 	}
+
 }
 
 
@@ -882,28 +886,6 @@ bool cheat_entry::select_default_state()
 	return changed;
 }
 
-// 修改的 代码来源 (EKMAME)
-/**********************************************************************/
-// UI作弊引用
-#ifdef MAME_UI
-bool cheat_entry::select_all_set_state()
-{
-	bool changed(false);
-
-	if (is_oneshot())
-	{
-		// if we're a oneshot cheat, there is no default state
-	}
-	else
-	{
-		// all other types switch to the "off" state
-		changed = set_state(SCRIPT_STATE_ON);
-	}
-
-	return changed;
-}
-#endif
-/**********************************************************************/
 
 //-------------------------------------------------
 //  select_previous_state - select the previous
@@ -1053,7 +1035,6 @@ void cheat_entry::menu_text(std::string &description, std::string &state, uint32
 		else
 		{
 			state = m_parameter->text();
-
 			flags = ui::menu::FLAG_LEFT_ARROW;
 			if (!m_parameter->is_maximum())
 				flags |= ui::menu::FLAG_RIGHT_ARROW;
@@ -1296,28 +1277,32 @@ void cheat_manager::reload()
 		}
 	}
 
-//============= 缘来是你 ===== EKMAME 作弊引用 ==================>>>
-	// if we haven't found the cheats yet, load by basename
+// 修改的 代码来源 (加斯顿90)
+//===========================================================================================================>>>
 	if (m_cheatlist.empty())
 	{
-		//const char *parentname = GetParentName(machine().basename());
-		//if(parentname !=NULL)
-		//	machine().popmessage(parentname);
-		
 		load_cheats(machine().basename());
-		// EKMAME 开始
-		// 对于克隆 ROM，若其自身没有作弊码，则会执行读取父 ROM 作弊码的处理。
-		if(m_cheatlist.size()==0) 
-		{
-			const char *parentname = funcGetParentName(machine().basename().c_str());
-			if(parentname !=NULL)
-				load_cheats(parentname);
 
-			//machine().popmessage("No Cheat");
+		if (m_cheatlist.empty())
+		{
+			int const sys_index = driver_list::find(machine().options().system_name());
+			if (sys_index >= 0)
+			{
+				const game_driver &current_drv = driver_list::driver(sys_index);
+				
+				if (current_drv.parent && current_drv.parent[0] != '\0')
+				{
+					int const parent_index = driver_list::find(current_drv.parent);
+					if (parent_index >= 0)
+					{
+						const char *parent_basename = driver_list::driver(parent_index).name;
+						load_cheats(parent_basename);
+					}
+				}
+			}
 		}
-		// EKMAME 结束
 	}
-//===============================================================>>>
+//===========================================================================================================>>>
 
 	// temporary: save the file back out as output.xml for comparison
 	if (m_cheatlist.size() != 0)

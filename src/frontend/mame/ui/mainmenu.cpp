@@ -127,6 +127,11 @@ void menu_main::menu_activated()
 
 void menu_main::populate(float &customtop, float &custombottom)
 {
+// 修改的 代码来源 (加斯顿90)
+// =================================================>>>
+	customtop = ui().get_line_height() * 1.9f;
+// =================================================>>>
+
 	m_phase = machine().phase();
 
 	item_append(_("menu-main", "Input Settings"), 0, (void *)INPUT_OPTIONS);
@@ -228,7 +233,7 @@ void menu_main::populate(float &customtop, float &custombottom)
 
 //	item_append(menu_item_type::SEPARATOR);
 
-    item_append(_("menu-main", "Quit from System"), 0, (void *)QUIT_GAME);
+    item_append(_("menu-main", "Quit From System"), 0, (void *)QUIT_GAME);
 
 	if (machine_phase::INIT == m_phase)
 	{
@@ -400,4 +405,51 @@ void menu_main::handle(event const *ev)
 	}
 }
 
+// 修改的 代码来源 (加斯顿90)
+//===========================================================================================================>>>
+void menu_main::custom_render(void *selectedref, float top, float bottom, float x1, float y1, float x2, float y2)
+{
+	rgb_t const background_color = rgb_t(0xff, 0x12, 0x3A, 0xA5);
+
+	float const text_size_scale = 1.25f; 
+
+	rgb_t const border_color    = ui().colors().border_color();
+	rgb_t const font_color      = ui().colors().text_color();
+
+    float const top_box_lid = y1 - top + (ui().get_line_height() * 0.1f);
+	float const upper_box_floor  = y1; 
+	
+	float const line_thickness = 1.0f / container().manager().ui_target().width();
+
+	float const x1_adjusted = x1 - line_thickness;
+	float const x2_adjusted = x2 + line_thickness;
+
+	container().add_quad(x1_adjusted, top_box_lid, x2_adjusted, upper_box_floor, background_color, nullptr, PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA));
+
+	container().add_line(x1_adjusted, top_box_lid, x1_adjusted, upper_box_floor, line_thickness, border_color, PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA)); 
+	container().add_line(x2_adjusted, top_box_lid, x2_adjusted, upper_box_floor, line_thickness, border_color, PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA)); 
+	container().add_line(x1_adjusted, top_box_lid, x2_adjusted, top_box_lid,     line_thickness, border_color, PRIMFLAG_BLENDMODE(BLENDMODE_ALPHA)); 
+
+	float const line_height = ui().get_line_height() * text_size_scale;
+	float const central_living = (top_box_lid + upper_box_floor) * 0.5f;
+
+	float const positionxy = central_living - (line_height * 0.4f) - (ui().box_tb_border() * 0.45f);
+
+	ui().draw_text_full(
+		container(),
+		"PSARCADE CLASSIC+",
+		x1_adjusted,
+		positionxy,
+		x2_adjusted - x1_adjusted,
+		ui::text_layout::text_justify::CENTER,
+		ui::text_layout::word_wrapping::WORD,
+		mame_ui_manager::NORMAL,              
+		font_color,
+		ui().colors().text_bg_color(),
+		nullptr,
+		nullptr,
+		1.25f
+	);
+}
+//===========================================================================================================>>>
 } // namespace ui

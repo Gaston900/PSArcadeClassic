@@ -1276,15 +1276,58 @@ void ResizePickerControls(HWND hWnd)
 	if (bShowTabCtrl)
 	{
 		MoveWindow(GetDlgItem(hWnd, IDC_SSTAB), nListWidth + 2, rect.top + 3, nScreenShotWidth - 4, (rect.bottom - rect.top) - 7, doSSControls);
-		rect.top += 21;
+
+// 修改的 代码来源 (加斯顿90)
+//===========================================================================================================>>>
+//DPI
+		rect.top += (int)(24 * g_fDpiScale); 
 	}
 	else
 		MoveWindow(GetDlgItem(hWnd, IDC_SSBORDER), nListWidth + 2, rect.top + 3, nScreenShotWidth - 6, (rect.bottom - rect.top) - 8, doSSControls);
 
-	/* resize the Screen shot frame */
 	MoveWindow(GetDlgItem(hWnd, IDC_SSFRAME), nListWidth + 3, rect.top + 4, nScreenShotWidth - 8, (rect.bottom - rect.top) - 10, doSSControls);
+
+	if (hSearchWnd != NULL)
+	{
+		int nDpiSearchWidth = 0;
+		int nDpiSearchHeight = 0; 
+		int nDpiSearchPosY = 0;   
+		int nDpiSearchPosX = 0;
+
+		int nHardwareResolutionHeight = GetSystemMetrics(SM_CYSCREEN);
+
+		if (g_fDpiScale <= 1.26f)
+		{
+			if (nHardwareResolutionHeight <= 1080)
+			{
+				nDpiSearchWidth = 200;
+				nDpiSearchPosX = 696;
+				nDpiSearchHeight = 21;
+				nDpiSearchPosY = 9;
+			}
+			else
+			{
+				nDpiSearchWidth = 210;
+				nDpiSearchPosX = 696;
+				nDpiSearchHeight = 25;
+				nDpiSearchPosY = 6;
+			}
+		}
+		else
+		{
+			nDpiSearchWidth = (int)(177 * g_fDpiScale);
+			nDpiSearchHeight = (int)(24 * g_fDpiScale);
+			nDpiSearchPosX = (int)(465 * g_fDpiScale);
+			nDpiSearchPosY = (int)(1 * g_fDpiScale);
+		}
+
+		MoveWindow(hSearchWnd, nDpiSearchPosX, nDpiSearchPosY, nDpiSearchWidth, nDpiSearchHeight, TRUE);
+	}
+//===========================================================================================================>>>
+
 	/* The screen shot controls */
 	GetClientRect(GetDlgItem(hWnd, IDC_SSFRAME), &frameRect);
+
 	/* Text control - game history */
 	sRect.left = nListWidth + 12;
 	sRect.right = sRect.left + (nScreenShotWidth - 26);
@@ -1314,23 +1357,6 @@ int GetMinimumScreenShotWindowWidth(void)
 	GetObject(hMissing_bitmap, sizeof(BITMAP), &bmp);
 	return bmp.bmWidth + 6; 	// 6 is for a little breathing room
 }
-
-// 修改的 代码来源 (EKMAME)
-/****************************************************************************************/
-const char *funcGetParentName(const char *name)
-{
-	int index = GetGameNameIndex(name);// get current game index
-	int parentindex = GetParentIndex(&driver_list::driver(index));
-
-	if( parentindex >= 0)
-	{
-		const char *parentname =  GetDriverGameName(parentindex);
-		return parentname;
-	}
-
-	return NULL;
-}
-/****************************************************************************************/
 
 int GetParentIndex(const game_driver *driver)
 {
@@ -2736,12 +2762,26 @@ static void UpdateStatusBar(void)
 	GetClientRect(hMain, &rectDlg);
 	int nTotalWidth = rectDlg.right - rectDlg.left;
 
-	widths[5] = (int)(140 * g_fDpiScale); // Panel de MAMEUINAME
-	widths[4] = (int)(90 * g_fDpiScale);  // Panel del Contador de Juegos (Incrementado para respiro)
-	widths[3] = (int)(180 * g_fDpiScale); // Panel de Información de Pantalla (Hz)
-	widths[2] = (int)(150 * g_fDpiScale); // Panel de Estado (Working)
-	widths[1] = (int)(120 * g_fDpiScale); // Panel del Nombre de ROM Corto
-	widths[0] = -1;                       // El primer panel ocupa el resto izquierdo de forma automática
+	int nStatusBarMetricsHeight = GetSystemMetrics(SM_CYSCREEN);
+
+	if (nStatusBarMetricsHeight >= 1080)
+	{
+		widths[5] = (int)(145 * g_fDpiScale);
+		widths[4] = (int)(95 * g_fDpiScale);
+		widths[3] = (int)(180 * g_fDpiScale);
+		widths[2] = (int)(150 * g_fDpiScale);
+		widths[1] = (int)(120 * g_fDpiScale);
+	}
+	else
+	{
+		widths[5] = (int)(130 * g_fDpiScale); 
+		widths[4] = (int)(80 * g_fDpiScale);  
+		widths[3] = (int)(160 * g_fDpiScale); 
+		widths[2] = (int)(120 * g_fDpiScale); 
+		widths[1] = (int)(100 * g_fDpiScale); 
+	}
+
+	widths[0] = -1;
 
 	widths[0] = nTotalWidth - (widths[1] + widths[2] + widths[3] + widths[4] + widths[5]);
 	widths[1] += widths[0];
@@ -2765,15 +2805,28 @@ static void ResetFonts(void)
 		int refDpi = 96; // 参考 DPI
 		GetGuiFont(&font);
 
+// 修改的 代码来源 (加斯顿90)
+//========================================================================================================>>>
+//DPI
+		int nHardwareMetricsHeight = GetSystemMetrics(SM_CYSCREEN);
 		int nCalculatedPoints = (int)(8 * g_fDpiScale);
-		if (nCalculatedPoints < 9)
+		
+		if (nHardwareMetricsHeight <= 1080)
 		{
-			g_guiPointSize = 9;
+			g_guiPointSize = 8;
 		}
 		else
 		{
-			g_guiPointSize = nCalculatedPoints;
+			if (nCalculatedPoints < 9)
+			{
+				g_guiPointSize = 9;
+			}
+			else
+			{
+				g_guiPointSize = nCalculatedPoints;
+			}
 		}
+//========================================================================================================>>>
 		
 		GetListFont(&font);
 		g_listPointSize = MulDiv(-font.lfHeight, 72, refDpi);
@@ -2790,7 +2843,7 @@ static void ResetFonts(void)
     int nScreenHeight = GetSystemMetrics(SM_CYSCREEN);
 	float fFontMultiplier = 1.25f;
 
-	if (nScreenHeight <= 768)
+	if (nScreenHeight <= 1080)
 	{
 		fFontMultiplier = 1.10f;
 	}
@@ -2809,7 +2862,7 @@ static void ResetFonts(void)
 //DPI
 	if (g_listPointSize == 10)
 	{
-		if (nScreenHeight <= 768)
+		if (nScreenHeight <= 1080)
 		{
 			listHeight = -11;
 		}
@@ -2821,7 +2874,7 @@ static void ResetFonts(void)
 
 	if (g_treePointSize == 10)
 	{
-		if (nScreenHeight <= 768)
+		if (nScreenHeight <= 1080)
 		{
 			treeHeight = -11;
 		}
@@ -2833,7 +2886,7 @@ static void ResetFonts(void)
 
 	if (g_histPointSize == 10)
 	{
-		if (nScreenHeight <= 768)
+		if (nScreenHeight <= 1080)
 		{
 			histHeight = -11;
 		}
@@ -2871,6 +2924,7 @@ static void ResetFonts(void)
 		SetWindowFont(hTabCtrl, hFontGui, TRUE);
 		SetWindowFont(hStatusBar, hFontGui, TRUE);
 	}
+
 	if (hFontList)
 		SetWindowFont(hWndList, hFontList, TRUE);
 	if (hFontHist)
@@ -2974,9 +3028,9 @@ static void InitListTree(void)
 			GetTreeFont(&init_tree_font);
 			int nCheckBootPoints = MulDiv(-init_tree_font.lfHeight, 72, 96);
 
-			if (nCheckBootPoints <= 8)
+			if (nCheckBootPoints <= 10)
 			{
-				if (nTargetScreenHeight <= 768)
+				if (nTargetScreenHeight <= 1080)
 				{
 					nNewRowHeight = 16;
 				}
@@ -2987,7 +3041,7 @@ static void InitListTree(void)
 				if (nFontPixelHeight <= 0) nFontPixelHeight = 11;
 				
 				nNewRowHeight = nFontPixelHeight + 16;
-				if (nTargetScreenHeight <= 768)
+				if (nTargetScreenHeight <= 1080)
 				{
 					nNewRowHeight = nFontPixelHeight + 10;
 				}
@@ -3590,7 +3644,7 @@ static void PickListFont(void)
 
 			if (g_listPointSize == 10)
 			{
-				if (nTargetScreenHeight <= 768)
+				if (nTargetScreenHeight <= 1080)
 				{
 					nNewRowHeight = 16;
 				}
@@ -3598,7 +3652,7 @@ static void PickListFont(void)
 			else
 			{
 				nNewRowHeight = (int)(g_listPointSize * g_fDpiScale) + 16;
-				if (nTargetScreenHeight <= 768)
+				if (nTargetScreenHeight <= 1080)
 				{
 					nNewRowHeight = (int)(g_listPointSize * g_fDpiScale) + 10;
 				}
@@ -3656,7 +3710,7 @@ static void PickHistoryFont(void)
 
 			if (g_histPointSize == 10)
 			{
-				if (nTargetScreenHeight <= 768)
+				if (nTargetScreenHeight <= 1080)
 				{
 					nNewRowHeight = 16;
 				}
@@ -3664,7 +3718,7 @@ static void PickHistoryFont(void)
 			else
 			{
 				nNewRowHeight = (int)(g_histPointSize * g_fDpiScale) + 16;
-				if (nTargetScreenHeight <= 768)
+				if (nTargetScreenHeight <= 1080)
 				{
 					nNewRowHeight = (int)(g_histPointSize * g_fDpiScale) + 10;
 				}
@@ -3719,7 +3773,7 @@ static void PickFoldersFont(void)
 
 			if (g_treePointSize == 10)
 			{
-				if (nTargetScreenHeight <= 768)
+				if (nTargetScreenHeight <= 1080)
 				{
 					nNewRowHeight = 16;
 				}
@@ -3727,7 +3781,7 @@ static void PickFoldersFont(void)
 			else
 			{
 				nNewRowHeight = (int)(g_treePointSize * g_fDpiScale) + 16;
-				if (nTargetScreenHeight <= 768)
+				if (nTargetScreenHeight <= 1080)
 				{
 					nNewRowHeight = (int)(g_treePointSize * g_fDpiScale) + 10;
 				}
@@ -5163,18 +5217,16 @@ static void CreateIcons(void)
 	while(g_iconData[icon_count].icon_name)
 		icon_count++;
 
-
 // 修改的 代码来源 (加斯顿90)
 //==================================================================================================>>>
-//DPI																									   
+//DPI
 	dwStyle = GetWindowLong(hWndList,GWL_STYLE);
 	SetWindowLong(hWndList,GWL_STYLE,(dwStyle & ~LVS_TYPEMASK) | LVS_ICON);
-
-
+	
 	int nDpiSmallSize = (int)(dwSmallIconSize * g_fDpiScale);
 	int nScreenHeight = GetSystemMetrics(SM_CYSCREEN);
 
-	if (nScreenHeight <= 768)
+	if (nScreenHeight <= 1080)
 	{
 		if (nDpiSmallSize > 20) nDpiSmallSize = 20;
 	}

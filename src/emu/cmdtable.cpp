@@ -9,21 +9,25 @@
 
 *********************************************************************/
 
-#define BUTTON_COLOR_RED        rgb_t(255,64,64)
-#define BUTTON_COLOR_YELLOW     rgb_t(255,238,0)
-#define BUTTON_COLOR_GREEN      rgb_t(0,255,64)
-#define BUTTON_COLOR_BLUE       rgb_t(0,170,255)
-#define BUTTON_COLOR_PURPLE     rgb_t(170,0,255)
-#define BUTTON_COLOR_PINK       rgb_t(255,0,170)
-#define BUTTON_COLOR_AQUA       rgb_t(0,255,204)
-#define BUTTON_COLOR_SILVER     rgb_t(255,0,255)
-#define BUTTON_COLOR_NAVY       rgb_t(255,160,0)
-#define BUTTON_COLOR_LIME       rgb_t(190,190,190)
+#define BUTTON_COLOR_RED             rgb_t(255,64,64)
+#define BUTTON_COLOR_YELLOW          rgb_t(255,238,0)
+#define BUTTON_COLOR_GREEN           rgb_t(0,255,64)
+#define BUTTON_COLOR_BLUE            rgb_t(0,170,255)
+#define BUTTON_COLOR_PURPLE          rgb_t(170,0,255)
+#define BUTTON_COLOR_PINK            rgb_t(255,0,170)
+#define BUTTON_COLOR_AQUA            rgb_t(0,255,204)
+#define BUTTON_COLOR_SILVER          rgb_t(255,0,255)
+#define BUTTON_COLOR_NAVY            rgb_t(255,160,0)
+#define BUTTON_COLOR_LIME            rgb_t(190,190,190)
+#define BUTTON_COLOR_CAPCOM_BLUE     rgb_t(0,50,255)
+#define BUTTON_COLOR_NEOGEO_ORANGE   rgb_t(255,110,0)
+#define BUTTON_COLOR_OLIVE_GREEN     rgb_t(120,200,0)
+#define BUTTON_COLOR_DARK_PURPLE     rgb_t(110,0,180)
 
-#define BUTTON_COLOR_BASIC  	BUTTON_COLOR_YELLOW
+#define BUTTON_COLOR_BASIC  	     BUTTON_COLOR_YELLOW
 
 #ifndef COLOR_BUTTONS
-#define COLOR_BUTTONS 150
+#define COLOR_BUTTONS 200
 #endif
 
 #ifndef COMMAND_UNICODE
@@ -122,5 +126,66 @@ struct rgb_t color_table[COLOR_BUTTONS] =
 	BUTTON_COLOR_PINK,      // 5 Player Lever
 	BUTTON_COLOR_PURPLE,    // 6 Player Lever
 	BUTTON_COLOR_AQUA,      // 7 Player Lever
-	BUTTON_COLOR_SILVER     // 8 Player Lever
+	BUTTON_COLOR_SILVER,    // 8 Player Lever     
+	0,                      // 89
+	BUTTON_COLOR_RED,       // 90  --> Arrow
+	BUTTON_COLOR_YELLOW,    // 91  ==> Continue Arrow
+	BUTTON_COLOR_BASIC,     // 92  Charge DIR_1
+	BUTTON_COLOR_BASIC,     // 93  Charge DIR_2
+	BUTTON_COLOR_BASIC,     // 94  Charge DIR_3
+	BUTTON_COLOR_BASIC,     // 95  Charge DIR_4
+	BUTTON_COLOR_BASIC,     // 96  Charge DIR_6
+	BUTTON_COLOR_BASIC,     // 97  Charge DIR_7
+	BUTTON_COLOR_BASIC,     // 98  Charge DIR_8
+	BUTTON_COLOR_BASIC,     // 99  Charge DIR_9
+	BUTTON_COLOR_GREEN,     // 100 hcb Half Circle Back
+	BUTTON_COLOR_BLUE,      // 101 huf Half Circle Front
+	BUTTON_COLOR_PINK,      // 102 hcf Half Circle Front
+	BUTTON_COLOR_PURPLE,    // 103 hub Half Circle Back Up
+	BUTTON_COLOR_AQUA,      // 104 qfd 1/4 Cir For 2 Down
+	BUTTON_COLOR_SILVER,    // 105 qdb 1/4 Cir Down 2 Back
+	BUTTON_COLOR_NAVY,      // 106 qbu 1/4 Cir Back 2 Up
+	BUTTON_COLOR_LIME,      // 107 quf 1/4 Cir Up 2 For
+	BUTTON_COLOR_RED,       // 108 qbd 1/4 Cir Back 2 Down
+	BUTTON_COLOR_YELLOW,    // 109 qdf 1/4 Cir Down 2 For
+	BUTTON_COLOR_GREEN,     // 110 qfu 1/4 Cir For 2 Up
+	BUTTON_COLOR_BLUE,      // 111 qub 1/4 Cir Up 2 Back
+	BUTTON_COLOR_RED,       // 112 fdf Full Clock Forward
+	BUTTON_COLOR_YELLOW,    // 113 fub Full Clock Back
+	BUTTON_COLOR_GREEN,     // 114 fuf Full Count Forward
+	BUTTON_COLOR_BLUE,      // 115 fdb Full Count Back
+	BUTTON_COLOR_PINK,      // 116 xff 2x Forward
+	BUTTON_COLOR_PURPLE,    // 117 xbb 2x Back
+	BUTTON_COLOR_AQUA,      // 118 dsf Dragon Screw Forward
+	BUTTON_COLOR_SILVER,    // 119 dsb Dragon Screw Back
+	0,                      // 120 (dummy)
+	BUTTON_COLOR_AQUA,          // 121 AIR
+	BUTTON_COLOR_NEOGEO_ORANGE, // 122 DIR
+	BUTTON_COLOR_RED,           // 123 MAX
+	BUTTON_COLOR_GREEN,         // 124 TAP
+	BUTTON_COLOR_YELLOW,        // 125 jump
+	BUTTON_COLOR_AQUA,          // 126 hold
+	BUTTON_COLOR_BLUE,          // 127 air
+	BUTTON_COLOR_PINK,          // 128 sit
+	BUTTON_COLOR_PURPLE,        // 129 close
+	BUTTON_COLOR_AQUA,          // 130 away
+	BUTTON_COLOR_SILVER,        // 131 charge
+	BUTTON_COLOR_OLIVE_GREEN,   // 132 tap
+	BUTTON_COLOR_LIME,          // 133 button
+	0,                          // 134 dummy
+	BUTTON_COLOR_LIME,          // 135 Small Dot
+	BUTTON_COLOR_AQUA,          // 136 Double Ball
+	BUTTON_COLOR_GREEN,         // 137 Single Ball
+	BUTTON_COLOR_YELLOW,        // 138 Círculo (○ / ●)
+	BUTTON_COLOR_PINK,          // 139 Star Regular
+	BUTTON_COLOR_PINK,          // 140 Estrella (★ / ☆)
+	BUTTON_COLOR_NEOGEO_ORANGE, // 141 Triangle
+	BUTTON_COLOR_NEOGEO_ORANGE, // 142 Solid Triangle
+	BUTTON_COLOR_DARK_PURPLE,   // 143 Double Square
+	BUTTON_COLOR_CAPCOM_BLUE,   // 144 Single Square
+	BUTTON_COLOR_CAPCOM_BLUE,   // 145 Cuadrado (□ / ■)
+	BUTTON_COLOR_RED,           // 146 Down Triangle
+	BUTTON_COLOR_RED,           // 147 Solid Down Triangle
+	BUTTON_COLOR_SILVER,        // 148 Diamond
+	BUTTON_COLOR_SILVER,        // 149 Solid Diamond
 };

@@ -292,6 +292,56 @@ int main_(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
+// 修改的 代码来源 (加斯顿90)
+//=======================================================================>>>
+	// A semi-automatic folder is created.
+	CreateDirectoryA(".\\config", nullptr);
+	CreateDirectoryA(".\\support", nullptr);
+	CreateDirectoryA(".\\roms", nullptr);
+
+    // Semi-automatic Subfolder is created
+	CreateDirectoryA(".\\config\\bgfx", nullptr);
+	CreateDirectoryA(".\\config\\cfg", nullptr);
+	CreateDirectoryA(".\\config\\diff", nullptr);
+	CreateDirectoryA(".\\config\\docs", nullptr);
+	CreateDirectoryA(".\\config\\folders", nullptr);
+	CreateDirectoryA(".\\config\\glsl", nullptr);
+	CreateDirectoryA(".\\config\\hash", nullptr);
+	CreateDirectoryA(".\\config\\hlsl", nullptr);
+	CreateDirectoryA(".\\config\\language", nullptr);
+	CreateDirectoryA(".\\config\\nvram", nullptr);
+	CreateDirectoryA(".\\config\\plugins", nullptr);
+	CreateDirectoryA(".\\config\\share", nullptr);
+	CreateDirectoryA(".\\config\\sta", nullptr);
+	CreateDirectoryA(".\\config\\ui", nullptr);
+	CreateDirectoryA(".\\support\\artpreview", nullptr);
+	CreateDirectoryA(".\\support\\artwork", nullptr);
+	CreateDirectoryA(".\\support\\bosses", nullptr);
+	CreateDirectoryA(".\\support\\cabinets", nullptr);
+	CreateDirectoryA(".\\support\\cheat", nullptr);
+	CreateDirectoryA(".\\support\\cpanel", nullptr);
+	CreateDirectoryA(".\\support\\ctrlr", nullptr);
+	CreateDirectoryA(".\\support\\dats", nullptr);
+	CreateDirectoryA(".\\support\\ends", nullptr);
+	CreateDirectoryA(".\\support\\flyers", nullptr);
+	CreateDirectoryA(".\\support\\gameover", nullptr);
+	CreateDirectoryA(".\\support\\history", nullptr);
+	CreateDirectoryA(".\\support\\howto", nullptr);
+	CreateDirectoryA(".\\support\\icons", nullptr);
+	CreateDirectoryA(".\\support\\ips", nullptr);
+	CreateDirectoryA(".\\support\\logo", nullptr);
+	CreateDirectoryA(".\\support\\manuals", nullptr);
+	CreateDirectoryA(".\\support\\marquees", nullptr);
+	CreateDirectoryA(".\\support\\pcb", nullptr);
+	CreateDirectoryA(".\\support\\samples", nullptr);
+	CreateDirectoryA(".\\support\\scores", nullptr);
+	CreateDirectoryA(".\\support\\select", nullptr);
+	CreateDirectoryA(".\\support\\snap", nullptr);
+	CreateDirectoryA(".\\support\\titles", nullptr);
+	CreateDirectoryA(".\\support\\versus", nullptr);
+	CreateDirectoryA(".\\support\\video", nullptr);
+//=======================================================================>>>
+
 	std::setlocale(LC_ALL, "");
 	std::vector<std::string> args = osd_get_command_line(argc, argv);
 

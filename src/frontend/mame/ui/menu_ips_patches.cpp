@@ -235,15 +235,31 @@ void menu_ips_patches::populate(float &customtop, float &custombottom)
 {
     int enabled_count = std::count(m_patch_enabled.begin(), m_patch_enabled.end(), true);
     std::string header = string_format("IPS Manager (%d Enabled)", enabled_count);
-    item_append(header, FLAG_DISABLE, nullptr);
-
-    for (size_t i = 0; i < m_patches.size(); i++)
+    item_append(header, FLAG_DISABLE | FLAG_UI_HEADING, nullptr);
+		
+    if (m_patches.empty())
     {
-        item_append_on_off(m_patches[i].display_name, m_patch_enabled[i], FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(uintptr_t)(i + 1));
+        item_append("", FLAG_DISABLE, nullptr);
+        item_append(_("IPS file is not found"), FLAG_DISABLE, nullptr);
+        item_append("", FLAG_DISABLE, nullptr);
+    }
+    else
+    {
+        for (size_t i = 0; i < m_patches.size(); i++)
+        {
+            item_append_on_off(m_patches[i].display_name, m_patch_enabled[i], FLAG_LEFT_ARROW | FLAG_RIGHT_ARROW, (void *)(uintptr_t)(i + 1)); // [8]
+        }
     }
 
-    if (m_need_reset)
-        item_append("Modification requires reloading the game", FLAG_DISABLE, nullptr);
+//    if (m_need_reset)
+//    {
+        item_append(menu_item_type::SEPARATOR);
+        item_append("Modification requires reloading the game.", FLAG_DISABLE, nullptr);
+        item_append(menu_item_type::SEPARATOR);
+        
+        item_append(_("Reset System"), "", 0, (void *)(uintptr_t)ITEM_RESET_SYSTEM);
+//    }
+
 }
 
 void menu_ips_patches::update_ips_option()
@@ -262,31 +278,33 @@ void menu_ips_patches::update_ips_option()
 
 void menu_ips_patches::handle(event const *ev)
 {
-    if (ev && ev->itemref != nullptr)
-    {
-        size_t index = (uintptr_t)ev->itemref - 1;
-        if (index < m_patches.size())
-        {
-            if (ev->iptkey == IPT_UI_LEFT || ev->iptkey == IPT_UI_RIGHT)
-            {
-                bool new_state = (ev->iptkey == IPT_UI_RIGHT); 
-                if (m_patch_enabled[index] != new_state)
-                {
-                    m_patch_enabled[index] = new_state;
-                    m_need_reset = true;
-                    update_ips_option();
-                    reset(reset_options::REMEMBER_REF);
-                }
-            }
-        }
-    }
-// Automatically restarts after changing settings
-// I have tried both soft and hard restarts, but neither worked
-// Leaving this code here in the hope that someone can fix it
-    else if (ev && ev->iptkey == IPT_UI_CANCEL && m_need_reset)
-    {
-        machine().schedule_hard_reset();
-    }
+	if (ev && ev->itemref != nullptr)
+	{
+		uintptr_t item_id = (uintptr_t)ev->itemref;
+
+		if (ev->iptkey == IPT_UI_SELECT)
+		{
+			stack_reset();
+			machine().schedule_hard_reset();
+		}
+
+		size_t index = item_id - 1;
+		if (index < m_patches.size())
+		{
+			if (ev->iptkey == IPT_UI_LEFT || ev->iptkey == IPT_UI_RIGHT)
+			{
+				bool new_state = (ev->iptkey == IPT_UI_RIGHT);
+				if (m_patch_enabled[index] != new_state)
+				{
+					m_patch_enabled[index] = new_state;
+					m_need_reset = true;
+					update_ips_option();
+					reset(reset_options::REMEMBER_REF);
+				}
+			}
+		}
+	}
+
 }
 
 } // namespace ui

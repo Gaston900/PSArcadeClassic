@@ -228,7 +228,7 @@ void menu_dats_view::custom_render(void *selectedref, float top, float bottom, f
         {
             std::string shortname = current_driver->name;
 			// 本地游戏列表路径
-            std::ifstream file("arcade.lst");
+            std::ifstream file("PSArcadeClassic+.lst");
 
             if (file.is_open())
             {

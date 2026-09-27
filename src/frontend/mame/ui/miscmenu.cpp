@@ -1411,7 +1411,6 @@ void menu_plugins_configure::populate(float &customtop, float &custombottom)
 }
 
 //======================== USE_SCALE_EFFECTS ============================>>>
-#define SCALE_ITEM_NONE 0
 /*-------------------------------------------------
 	menu_scale_effect - handle the scale effect
 	settings menu
@@ -1429,8 +1428,6 @@ menu_scale_effect::~menu_scale_effect()
 void menu_scale_effect::populate(float &customtop, float &custombottom)
 {
 	int scaler;
-	
-	item_append(_("None"), "", 0, (void *)(uintptr_t)SCALE_ITEM_NONE);
 
 	for (scaler = 1; ; scaler++)
 	{
@@ -1438,9 +1435,10 @@ void menu_scale_effect::populate(float &customtop, float &custombottom)
 		if (desc == nullptr)
 			break;
 
-		item_append(desc, "", 0, (void *)(uintptr_t)(SCALE_ITEM_NONE + scaler));
+		item_append(desc, "", 0, (void *)(uintptr_t)(scaler));
 	}
-	custombottom = ui().get_line_height() * 4.0f;
+	customtop = 0.0f;
+	custombottom = 0.0f;
 }
 
 void menu_scale_effect::custom_render(void *selectedref, float top, float bottom, float x1, float y1, float x2, float y2)
@@ -1469,18 +1467,18 @@ void menu_scale_effect::handle(event const *ev)
 	{
 		uintptr_t selected_effect = uintptr_t(ev->itemref);
 		
-		if (selected_effect >= SCALE_ITEM_NONE)
+		if (selected_effect >= 1)
 		{
 			screen_device *screen = screen_device_enumerator(machine().root_device()).first();
 			if (screen != nullptr)
 			{
 				screen->video_exit_scale_effect();
-				scale_decode(scale_name(selected_effect - SCALE_ITEM_NONE));
+				scale_decode(scale_name(selected_effect));
 				screen->video_init_scale_effect();
-				
-				machine().video().frame_update(false);
 
-				osd_printf_verbose("scale effect: %s\n", scale_name(selected_effect - SCALE_ITEM_NONE));
+				machine().video().frame_update(selected_effect == 1);
+				
+				osd_printf_verbose("scale effect: %s\n", scale_name(selected_effect));
 				
 				reset(reset_options::REMEMBER_REF);
 			}
@@ -1488,7 +1486,6 @@ void menu_scale_effect::handle(event const *ev)
 	}
 }
 
-#undef SCALE_ITEM_NONE
 //=======================================================================>>>
 
 } // namespace ui

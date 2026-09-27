@@ -49,7 +49,7 @@ static std::unordered_map<std::string, std::string> load_chinese_name_map()
 {
     std::unordered_map<std::string, std::string> name_map;
     // 当前语言列表文件路径
-    std::string filename = "arcade.lst";
+    std::string filename = "PSArcadeClassic+.lst";
     std::ifstream infile(filename);
     if (!infile.is_open())
         return name_map;

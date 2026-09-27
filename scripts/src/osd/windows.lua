@@ -186,6 +186,7 @@ project ("osd_" .. _OPTIONS["osd"])
 		MAME_DIR .. "src/osd/scale/snes9x_render.cpp", -- 修改的 (EKMAME)
 		MAME_DIR .. "src/osd/scale/vba_hq2x.cpp", -- 修改的 (EKMAME)
 		MAME_DIR .. "src/osd/scale/xbrz.cpp", -- 修改的 (EKMAME)
+		MAME_DIR .. "src/osd/scale/none.cpp", -- 修改的 (EKMAME)
 	}
 
 

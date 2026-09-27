@@ -22,7 +22,8 @@
 // defines
 enum
 {
-	SCALE_EFFECT_NONE = 0,
+	SCALE_EFFECT_DISABLED = 0,
+	SCALE_EFFECT_NONE,
 	SCALE_EFFECT_SCANLINESTV,
 	SCALE_EFFECT_EPXB,
 	SCALE_EFFECT_EPXC,
@@ -80,6 +81,7 @@ static int previous_height[MAX_SCALE_BANK];
 
 static const char *str_name[] =
 {
+	"disable",
 	"none",
 	"scanlinestv",
 	"epxb",
@@ -103,6 +105,7 @@ static const char *str_name[] =
 
 static const char *str_desc[] =
 {
+	"Disable",
 	"None",
 	"Scanlines TV",
 	"EPX-B",
@@ -129,6 +132,9 @@ static const char *str_desc[] =
 //============================================================
 //	prototypes
 //============================================================
+
+extern void scale_none_16(uint8_t *src, uint8_t *dst, int src_pitch, int dst_pitch, int width, int height);
+extern void scale_none_32(uint8_t *src, uint8_t *dst, int src_pitch, int dst_pitch, int width, int height);
 
 // functions from scale2x
 static int scale_perform_scale2x(uint8_t *src, uint8_t *dst, int src_pitch, int dst_pitch, int width, int height, int depth, int bank);
@@ -356,15 +362,22 @@ int scale_init(void)
 	scale_exit();
 
 	scale_effect.xsize = scale_effect.ysize = 1;
-	sprintf(name, "none");
+	sprintf(name, "disable");
 	scale_effect.name = name;
 
 	switch (scale_effect.effect)
 	{
-		case SCALE_EFFECT_NONE:
+		case SCALE_EFFECT_DISABLED:
 		{
 			break;
 		}
+
+	    case SCALE_EFFECT_NONE:
+	    {
+		    sprintf(name, "None");
+		    scale_effect.xsize = scale_effect.ysize = 1;
+		    break;
+	    }
 
 		case SCALE_EFFECT_SCANLINESTV:
 		{
@@ -468,9 +481,10 @@ int scale_check(int depth)
 {
 	switch (scale_effect.effect)
 	{
-		case SCALE_EFFECT_NONE:
+		case SCALE_EFFECT_DISABLED:
 			return 0;
 
+        case SCALE_EFFECT_NONE:
 		case SCALE_EFFECT_SCALE2X:
 		case SCALE_EFFECT_SCALE3X:
 			if (depth == 15 || depth == 16 || depth == 32)
@@ -557,9 +571,18 @@ int scale_perform_scale(uint8_t *src, uint8_t *dst, int src_pitch, int dst_pitch
 {
 	switch (scale_effect.effect)
 	{
-		case SCALE_EFFECT_NONE:
+		case SCALE_EFFECT_DISABLED:
 			return 0;
-		
+
+		case SCALE_EFFECT_NONE:
+		{
+			if (depth == 32)
+				scale_none_32(src, dst, src_pitch, dst_pitch, width, height);
+			else
+				scale_none_16(src, dst, src_pitch, dst_pitch, width, height);
+			return 0;
+		}
+
 		case SCALE_EFFECT_SCANLINESTV:
 			ScanlinesTV((unsigned char*)src, (unsigned int)src_pitch, NULL, (unsigned char*)dst, (unsigned int)dst_pitch, width, height);
 			return 0;

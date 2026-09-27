@@ -311,7 +311,7 @@ dassault.cpp                           //
 dblcrown.cpp                           // poker
 dblewing.cpp                           //
 dbz.cpp                                //
-//dc_atomiswave.cpp                    // It cannot exceed more than 24 FPS
+dc_atomiswave.cpp                      // It cannot exceed more than 24 FPS
 dcheese.cpp                            //
 dcon.cpp                               //
 dday.cpp                               //

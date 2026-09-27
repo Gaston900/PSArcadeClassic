@@ -1298,8 +1298,6 @@ void ResizePickerControls(HWND hWnd)
 	MoveWindow(GetDlgItem(hWnd, IDC_SSFRAME), nListWidth + 3, rect.top + 4, nScreenShotWidth - 8, (rect.bottom - rect.top) - 10, doSSControls);
 	/* The screen shot controls */
 	GetClientRect(GetDlgItem(hWnd, IDC_SSFRAME), &frameRect);
-	/* The screen shot controls */
-	GetClientRect(GetDlgItem(hWnd, IDC_SSFRAME), &frameRect);
 
 	/* Text control - game history */
 	sRect.left = nListWidth + 12;
@@ -2662,7 +2660,7 @@ static void InitToolbar(void)
 	int iPosY = (nToolbarHeight - iHeight) / 2;
 	if (iPosY < 2) iPosY = 2;
 
-	hSearchWnd = CreateWindowEx(0, WC_EDIT, TEXT(SEARCH_PROMPT), ES_LEFT | WS_CHILD | WS_CLIPSIBLINGS | WS_BORDER | WS_VISIBLE, iPosX, iPosY, nSearchWidth, iHeight, hToolBar, (HMENU)ID_TOOLBAR_EDIT, hInst, NULL ); //
+	hSearchWnd = CreateWindowEx(0, WC_EDIT, TEXT(SEARCH_PROMPT), ES_LEFT | WS_CHILD | WS_CLIPSIBLINGS | WS_BORDER | WS_VISIBLE, iPosX, iPosY, nSearchWidth, iHeight, hToolBar, (HMENU)ID_TOOLBAR_EDIT, hInst, NULL );
 	
 	if (hSearchWnd != NULL)
 	{
@@ -2682,7 +2680,7 @@ static void InitToolbar(void)
 		int nRightMargin = 4;
 		SendMessage(hSearchWnd, EM_SETMARGINS, EC_LEFTMARGIN | EC_RIGHTMARGIN, MAKELPARAM(nLeftMargin, nRightMargin)); //
 	}
-// ======================================================================================================>>>
+//==========================================================================================================>>>
 }
 
 static void InitTabView(void)

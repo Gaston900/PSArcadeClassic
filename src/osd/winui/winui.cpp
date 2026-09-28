@@ -611,8 +611,6 @@ static ResizeItem main_resize_items[] =
 
 static Resize main_resize = { {0, 0, 0, 0}, main_resize_items };
 
-/* last directory for common file dialogs */
-static wchar_t last_directory[MAX_PATH] = TEXT(".");
 /* Last directory for Save Game or ROMs List dialogs */
 static wchar_t list_directory[MAX_PATH] = TEXT(".");
 static bool g_listview_dragging = false;
@@ -4869,6 +4867,8 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			return true;
 		}
 
+// 修改的 代码来源 (加斯顿90)
+//==========================================================================================================>>>
 		case ID_VIEW_ZIP:
 		{
 			// This will iterate through the rom path and stop at the first find
@@ -4877,12 +4877,16 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			TCHAR* t_s = NULL;
 			strcpy(path, GetRomDirs());
 			int nGame = Picker_GetSelectedItem(hWndList);
+			
 			if (nGame >= 0)
 			{
+				const char* szCloneName = GetDriverGameName(nGame);
+				const char* szParentName = driver_list::driver(nGame).parent;
+				
 				char* dir_one = strtok(path, ";");
 				while (dir_one && !found)
 				{
-					snprintf(viewzip, std::size(viewzip), "%s\\%s.zip", dir_one, GetDriverGameName(nGame));
+					snprintf(viewzip, std::size(viewzip), "%s\\%s.zip", dir_one, szCloneName);
 					t_s = win_wstring_from_utf8(viewzip);
 					if (t_s)
 					{
@@ -4891,19 +4895,70 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 							found = true;
 							ShellExecuteCommon(hMain, viewzip);
 						}
+						free(t_s); t_s = NULL;
 					}
+
+					if (!found)
+					{
+						snprintf(viewzip, std::size(viewzip), "%s\\%s.7z", dir_one, szCloneName);
+						t_s = win_wstring_from_utf8(viewzip);
+						if (t_s)
+						{
+							if (PathFileExists(t_s))
+							{
+								found = true;
+								ShellExecuteCommon(hMain, viewzip);
+							}
+							free(t_s); t_s = NULL;
+						}
+					}
+
+					if (!found && szParentName && *szParentName && strcmp(szParentName, "0") != 0)
+					{
+						snprintf(viewzip, std::size(viewzip), "%s\\%s.zip", dir_one, szParentName);
+						t_s = win_wstring_from_utf8(viewzip);
+						if (t_s)
+						{
+							if (PathFileExists(t_s))
+							{
+								found = true;
+								ShellExecuteCommon(hMain, viewzip);
+							}
+							free(t_s); t_s = NULL;
+						}
+					}
+
+					if (!found && szParentName && *szParentName && strcmp(szParentName, "0") != 0)
+					{
+						snprintf(viewzip, std::size(viewzip), "%s\\%s.7z", dir_one, szParentName);
+						t_s = win_wstring_from_utf8(viewzip);
+						if (t_s)
+						{
+							if (PathFileExists(t_s))
+							{
+								found = true;
+								ShellExecuteCommon(hMain, viewzip);
+							}
+							free(t_s); t_s = NULL;
+						}
+					}
+					
 					dir_one = strtok(NULL, ";");
 				}
-				if (t_s)
-					free(t_s);
 
-				if (!found)    //zip file not found
-					ErrorMessageBox("Can't find %s.zip in the ROMS PATH: %s", GetDriverGameName(nGame), GetRomDirs());
+				if (!found)
+				{
+					if (szParentName && *szParentName && strcmp(szParentName, "0") != 0)
+						ErrorMessageBox("Can't find ROM file:\n%s.zip/7z or Parent %s.zip/7z\nin PATH: %s", szCloneName, szParentName, GetRomDirs());
+					else
+						ErrorMessageBox("Can't find Parent ROM file:\n%s.zip or %s.7z in PATH: %s", szCloneName, szCloneName, GetRomDirs());
+				}
 			}
 
 			SetFocus(hWndList);
 			return true;
 		}
+//==========================================================================================================>>>
 
 		case ID_VIDEO_SNAP:
 		{
@@ -5589,177 +5644,216 @@ static uintptr_t CALLBACK OFNHookProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARA
 
 	return false;
 }
+// 修改的 代码来源 (加斯顿90)
+//==========================================================================================================>>>
+#include <shobjidl.h>
 
 bool CommonFileDialog(common_file_dialog_proc cfd, char *filename, int filetype, bool saving)
 {
 	bool success = false;
-	OPENFILENAME of;
 	const char *path = NULL;
-	wchar_t t_filename_buffer[MAX_PATH];
+	const wchar_t *lpstrFilterName = L"All Files (*.*)";
+	const wchar_t *lpstrFilterSpec = L"*.*";
+	const wchar_t *lpstrTitle = L"Select File";
+	const wchar_t *lpstrDefExt = L"";
 	wchar_t fCurDir[MAX_PATH];
-
-	// convert the filename to UTF-8 and copy into buffer
-	wchar_t *t_filename = win_wstring_from_utf8(filename);
-
-	if (t_filename != NULL)
-	{
-		_sntprintf(t_filename_buffer, std::size(t_filename_buffer), TEXT("%s"), t_filename);
-		free(t_filename);
-	}
 
 	if (GetCurrentDirectory(MAX_PATH, fCurDir) > MAX_PATH)
 		fCurDir[0] = 0;
-
-	of.lStructSize = sizeof(OPENFILENAME);
-	of.hwndOwner = hMain;
-	of.hInstance = NULL;
-	of.lpstrCustomFilter = NULL;
-	of.nMaxCustFilter = 0;
-	of.nFilterIndex = 1;
-	of.lpstrFile = t_filename_buffer;
-	of.nMaxFile = std::size(t_filename_buffer);
-	of.lpstrFileTitle = NULL;
-	of.nMaxFileTitle = 0;
-	of.Flags  = OFN_EXPLORER | OFN_PATHMUSTEXIST | OFN_HIDEREADONLY | OFN_ENABLEHOOK;
-	of.nFileOffset = 0;
-	of.nFileExtension = 0;
-	of.lCustData = 0;
-	of.lpfnHook = &OFNHookProc;
-	of.lpTemplateName = NULL;
 
 	switch (filetype)
 	{
 		case FILETYPE_INPUT_FILES :
 			path = GetInpDir();
-			of.lpstrInitialDir = win_wstring_from_utf8(path);
-			of.lpstrFilter = TEXT("inputs (*.inp,*.zip)\0*.inp;*.zip\0");
-			of.lpstrDefExt = TEXT("inp");
-
-			if (!saving)
-				of.lpstrTitle  = TEXT("Select an INP playback file");
-			else
-				of.lpstrTitle  = TEXT("Enter a name for the INP playback file");
-
+			lpstrFilterName = L"inputs (*.inp,*.zip)";
+			lpstrFilterSpec = L"*.inp;*.zip";
+			lpstrDefExt = L"inp";
+			lpstrTitle = saving ? L"Enter a name for the INP playback file" : L"Select an INP playback file";
 			break;
 
 		case FILETYPE_SAVESTATE_FILES :
 			path = GetStateDir();
-			of.lpstrInitialDir = win_wstring_from_utf8(path);
-			of.lpstrFilter = TEXT("savestates (*.sta)\0*.sta;\0");
-			of.lpstrDefExt = TEXT("sta");
-			of.lpstrTitle  = TEXT("Select a STA savestate file");
+			lpstrFilterName = L"savestates (*.sta)";
+			lpstrFilterSpec = L"*.sta";
+			lpstrDefExt = L"sta";
+			lpstrTitle = L"Select a STA savestate file";
 			break;
 
 		case FILETYPE_WAVE_FILES :
 			path = GetAudioDir();
-			of.lpstrInitialDir = win_wstring_from_utf8(path);
-			of.lpstrFilter = TEXT("sounds (*.wav)\0*.wav;\0");
-			of.lpstrDefExt = TEXT("wav");
-
-			if (!saving)
-				of.lpstrTitle  = TEXT("Select a WAV audio file");
-			else
-				of.lpstrTitle  = TEXT("Enter a name for the WAV audio file");
-
+			lpstrFilterName = L"sounds (*.wav)";
+			lpstrFilterSpec = L"*.wav";
+			lpstrDefExt = L"wav";
+			lpstrTitle = saving ? L"Enter a name for the WAV audio file" : L"Select a WAV audio file"; //
 			break;
 
 		case FILETYPE_MNG_FILES :
 			path = GetVideoDir();
-			of.lpstrInitialDir = win_wstring_from_utf8(path);
-			of.lpstrFilter = TEXT("videos (*.mng)\0*.mng;\0");
-			of.lpstrDefExt = TEXT("mng");
-
-			if (!saving)
-				of.lpstrTitle  = TEXT("Select a MNG image file");
-			else
-				of.lpstrTitle  = TEXT("Enter a name for the MNG image file");
-
+			lpstrFilterName = L"videos (*.mng)";
+			lpstrFilterSpec = L"*.mng";
+			lpstrDefExt = L"mng";
+			lpstrTitle = saving ? L"Enter a name for the MNG image file" : L"Select a MNG image file";
 			break;
 
 		case FILETYPE_AVI_FILES :
-			path = GetVideoDir();
-			of.lpstrInitialDir = win_wstring_from_utf8(path);
-			of.lpstrFilter = TEXT("videos (*.avi)\0*.avi;\0");
-			of.lpstrDefExt = TEXT("avi");
-
-			if (!saving)
-				of.lpstrTitle  = TEXT("Select an AVI video file");
-			else
-				of.lpstrTitle  = TEXT("Enter a name for the AVI video file");
-
+			path = GetVideoDir(); //
+			lpstrFilterName = L"videos (*.avi)";
+			lpstrFilterSpec = L"*.avi";
+			lpstrDefExt = L"avi";
+			lpstrTitle = saving ? L"Enter a name for the AVI video file" : L"Select an AVI video file";
 			break;
 
 		case FILETYPE_EFFECT_FILES :
-		{
-			path = GetArtDir();
-			char t[strlen(path)+1];
-			strcpy(t, path);
-			strtok(t, ";");
-			of.lpstrInitialDir = win_wstring_from_utf8(t);
-			of.lpstrFilter = TEXT("effects (*.png)\0*.png;\0");
-			of.lpstrDefExt = TEXT("png");
-			of.lpstrTitle  = TEXT("Select an overlay PNG effect file");
+			path = GetArtDir(); //
+			lpstrFilterName = L"effects (*.png)";
+			lpstrFilterSpec = L"*.png";
+			lpstrDefExt = L"png";
+			lpstrTitle = L"Select an overlay PNG effect file";
 			break;
-		}
 
 		case FILETYPE_SHADER_FILES :
-			path = GetHLSLDir();   // GLSL shaders are kept in HLSL folder
-			of.lpstrInitialDir = win_wstring_from_utf8(path);
-			of.lpstrFilter = TEXT("shaders (*.vsh)\0*.vsh;\0");
-			of.lpstrDefExt = TEXT("vsh");
-			of.lpstrTitle  = TEXT("Select a GLSL shader file");
+			path = GetHLSLDir();
+			lpstrFilterName = L"shaders (*.vsh)";
+			lpstrFilterSpec = L"*.vsh";
+			lpstrDefExt = L"vsh";
+			lpstrTitle = L"Select a GLSL shader file";
 			break;
 
 		case FILETYPE_CHEAT_FILES :
-		{
-			path = GetCheatDir();
-			char t[strlen(path)+1];
-			strcpy(t, path);
-			strtok(t, ";");
-			of.lpstrInitialDir = win_wstring_from_utf8(t);
-			of.lpstrFilter = TEXT("cheats (*.7z,*.zip)\0*.7z;*.zip;\0");
-			of.lpstrDefExt = TEXT("7z");
-			of.lpstrTitle  = TEXT("Select a cheats archive file");
+			path = GetCheatDir(); //
+			lpstrFilterName = L"cheats (*.7z,*.zip)";
+			lpstrFilterSpec = L"*.7z;*.zip";
+			lpstrDefExt = L"7z";
+			lpstrTitle = L"Select a cheats archive file";
 			break;
-		}
 
 		case FILETYPE_BGFX_FILES :
-			char temp[MAX_PATH];
-			snprintf(temp, std::size(temp), "%s\\chains", GetBGFXDir());
-			of.lpstrInitialDir = win_wstring_from_utf8(temp);
-			of.lpstrFilter = TEXT("chains (*.json)\0*.json;\0");
-			of.lpstrDefExt = TEXT("json");
-			of.lpstrTitle  = TEXT("Select a BGFX chain file");
+//			static wchar_t temp_bgfx[MAX_PATH]; //
+			snprintf(filename, MAX_PATH, "%s\\chains", GetBGFXDir());
+			path = filename;
+			lpstrFilterName = L"chains (*.json)";
+			lpstrFilterSpec = L"*.json";
+			lpstrDefExt = L"json";
+			lpstrTitle = L"Select a BGFX chain file";
 			break;
 
 		case FILETYPE_LUASCRIPT_FILES :
-			of.lpstrInitialDir = last_directory;
-			of.lpstrFilter = TEXT("scripts (*.lua)\0*.lua;\0");
-			of.lpstrDefExt = TEXT("lua");
-			of.lpstrTitle  = TEXT("Select a LUA script file");
+			path = ""; //
+			lpstrFilterName = L"scripts (*.lua)";
+			lpstrFilterSpec = L"*.lua";
+			lpstrDefExt = L"lua";
+			lpstrTitle = L"Select a LUA script file";
 			break;
 	}
 
-	success = cfd(&of);
-
-	if (success)
+	HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
+	
+	if (saving)
 	{
-		GetCurrentDirectory(MAX_PATH, last_directory);
+		IFileSaveDialog *pSaveDlg = nullptr;
+		hr = CoCreateInstance(CLSID_FileSaveDialog, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&pSaveDlg));
+		if (SUCCEEDED(hr))
+		{
+			COMDLG_FILTERSPEC fileFilter = { lpstrFilterName, lpstrFilterSpec };
+			pSaveDlg->SetFileTypes(1, &fileFilter);
+			pSaveDlg->SetTitle(lpstrTitle);
+			pSaveDlg->SetDefaultExtension(lpstrDefExt);
 
-		if (fCurDir[0] != 0)
-			SetCurrentDirectory(fCurDir);
+			if (path && *path)
+			{
+				wchar_t *t_path = win_wstring_from_utf8(path);
+				IShellItem *pFolderItem = nullptr;
+				if (SUCCEEDED(SHCreateItemFromParsingName(t_path, NULL, IID_PPV_ARGS(&pFolderItem))))
+				{
+					pSaveDlg->SetFolder(pFolderItem);
+					pFolderItem->Release();
+				}
+				free(t_path);
+			}
+
+			if (filename && *filename)
+			{
+				wchar_t *t_rom_name = win_wstring_from_utf8(filename);
+				if (t_rom_name != nullptr)
+				{
+					pSaveDlg->SetFileName(t_rom_name);
+					free(t_rom_name);
+				}
+			}
+
+			hr = pSaveDlg->Show(hMain);
+			if (SUCCEEDED(hr))
+			{
+				IShellItem *pItem = nullptr;
+				if (SUCCEEDED(pSaveDlg->GetResult(&pItem)))
+				{
+					PWSTR pszPath = nullptr;
+					if (SUCCEEDED(pItem->GetDisplayName(SIGDN_FILESYSPATH, &pszPath)))
+					{
+						char *utf8_path = win_utf8_from_wstring(pszPath);
+						snprintf(filename, MAX_PATH, "%s", utf8_path);
+						free(utf8_path);
+						CoTaskMemFree(pszPath);
+						success = true;
+					}
+					pItem->Release();
+				}
+			}
+			pSaveDlg->Release();
+		}
+	}
+	else
+	{
+		IFileOpenDialog *pOpenDlg = nullptr;
+		hr = CoCreateInstance(CLSID_FileOpenDialog, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&pOpenDlg));
+		if (SUCCEEDED(hr))
+		{
+			COMDLG_FILTERSPEC fileFilter = { lpstrFilterName, lpstrFilterSpec };
+			pOpenDlg->SetFileTypes(1, &fileFilter);
+			pOpenDlg->SetTitle(lpstrTitle);
+
+			if (path && *path)
+			{
+				wchar_t *t_path = win_wstring_from_utf8(path);
+				IShellItem *pFolderItem = nullptr;
+				if (SUCCEEDED(SHCreateItemFromParsingName(t_path, NULL, IID_PPV_ARGS(&pFolderItem))))
+				{
+					pOpenDlg->SetFolder(pFolderItem);
+					pFolderItem->Release();
+				}
+				free(t_path);
+			}
+
+			hr = pOpenDlg->Show(hMain);
+			if (SUCCEEDED(hr))
+			{
+				IShellItem *pItem = nullptr;
+				if (SUCCEEDED(pOpenDlg->GetResult(&pItem)))
+				{
+					PWSTR pszPath = nullptr;
+					if (SUCCEEDED(pItem->GetDisplayName(SIGDN_FILESYSPATH, &pszPath)))
+					{
+						char *utf8_path = win_utf8_from_wstring(pszPath);
+						snprintf(filename, MAX_PATH, "%s", utf8_path);
+						free(utf8_path);
+						CoTaskMemFree(pszPath);
+						success = true;
+					}
+					pItem->Release();
+				}
+			}
+			pOpenDlg->Release();
+		}
 	}
 
-	char *utf8_filename = win_utf8_from_wstring(t_filename_buffer);
+	CoUninitialize();
 
-	if (utf8_filename != NULL)
-	{
-		snprintf(filename, MAX_PATH, "%s", utf8_filename);
-		free(utf8_filename);
-	}
+	if (fCurDir[0] != 0)
+		SetCurrentDirectory(fCurDir);
 
 	return success;
 }
+//==========================================================================================================>>>
 
 void SetStatusBarText(int part_index, const char *message)
 {

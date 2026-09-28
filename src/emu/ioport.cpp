@@ -1794,16 +1794,55 @@ void ioport_port::write(ioport_value data, ioport_value mem_mask)
 //-------------------------------------------------
 //  frame_update - once/frame update
 //-------------------------------------------------
+// 修改的 代码来源 (加斯顿90)
+// =========================================================================================================>>>
+int g_InsertGlobalConfiguration = 0;
 
 void ioport_port::frame_update()
 {
-	// start with 0 values for the digital bits
 	m_live->digital = 0;
 
-	// now loop back and modify based on the inputs
 	for (ioport_field &field : m_fieldlist)
 		field.frame_update(m_live->digital);
+
+	if (g_InsertGlobalConfiguration == 1)
+	{
+		for (ioport_field &field : m_fieldlist)
+		{
+			if (field.type() == IPT_COIN1 || field.type() == IPT_COIN2 || 
+				field.type() == IPT_COIN3 || field.type() == IPT_COIN4)
+			{
+				m_live->digital |= field.mask();
+			}
+		}
+	}
+
+	if (g_InsertGlobalConfiguration == 99)
+	{
+		for (ioport_field &field : m_fieldlist)
+		{
+			if (field.type() == IPT_SERVICE  || field.type() == IPT_SERVICE1 || 
+				field.type() == IPT_SERVICE2 || field.type() == IPT_SERVICE3 || 
+				field.type() == IPT_SERVICE4)
+			{
+				m_live->digital |= field.mask();
+			}
+		}
+	}
+
+	if (g_InsertGlobalConfiguration > 0 && this == machine().ioport().ports().begin()->second.get())
+	{
+		static int nPersistenceFrameCounterNeoEX = 0;
+		nPersistenceFrameCounterNeoEX++;
+		
+		if (nPersistenceFrameCounterNeoEX >= 3)
+		{
+			g_InsertGlobalConfiguration = 0;
+			nPersistenceFrameCounterNeoEX = 0;
+		}
+	}
 }
+// =========================================================================================================>>>
 
 
 //-------------------------------------------------

@@ -1,7 +1,7 @@
 // license:BSD-3-Clause
 // copyright-holders:Bryan McPhail,Ernesto Corvi,Andrew Prime,Zsolt Vasvari
 // thanks-to:Fuzz
-// Thank you very much for updating the driver: Gaston90
+// Updating the driver: Gaston90
 /***************************************************************************
 
     Neo-Geo hardware
@@ -689,6 +689,236 @@ void neogeo_state::machine_start()
 	m_sprgen->set_screen(m_screen);
 }
 
+void neogeo_neosd::machine_start()
+{
+	neogeo_state::machine_start();
+
+	boot_command_nds();
+}
+
+void neogeo_neosd::boot_command_nds()
+{
+    // Buscamos si la región principal tiene datos cargados
+    u8 *rom_base = memregion("maincpu")->base();
+    u32 rom_size = memregion("maincpu")->bytes();
+
+    // Validar tamaño mínimo de seguridad y firma "NEO"
+    if (rom_size < 0x1000 || rom_base[0] != 'N' || rom_base[1] != 'E' || rom_base[2] != 'O')
+    {
+        return; // No es un archivo unificado .neo, continuar con la carga estándar de MAME
+    }
+
+    // --- LEER CABECERA DE 4096 BYTES (0x1000) ---
+    u32 psize  = rom_base[4]  + rom_base[5]*0x100  + rom_base[6]*0x10000  + rom_base[7]*0x1000000;
+    u32 ssize  = rom_base[8]  + rom_base[9]*0x100  + rom_base[10]*0x10000 + rom_base[11]*0x1000000;
+    u32 msize  = rom_base[12] + rom_base[13]*0x100 + rom_base[14]*0x10000 + rom_base[15]*0x1000000;
+    u32 vsize  = rom_base[16] + rom_base[17]*0x100 + rom_base[18]*0x10000 + rom_base[19]*0x1000000;
+    u32 v2size = rom_base[20] + rom_base[21]*0x100 + rom_base[22]*0x10000 + rom_base[23]*0x1000000;
+    u32 csize  = rom_base[24] + rom_base[25]*0x100 + rom_base[26]*0x10000 + rom_base[27]*0x1000000;
+
+    // Reservar un búfer temporal para mover el archivo completo de la memoria RAM
+    std::vector<u8> temp_buffer(rom_base, rom_base + rom_size);
+
+    // Ajustar el offset inicial de datos (pasando la cabecera)
+    u32 offset = 0x1000;
+
+    // --- REASIGNACIÓN DINÁMICA DE REGIONES ---
+    // P1 (Main CPU) - Sobrescribimos el inicio de la misma región "maincpu" con los bytes correctos
+    if (psize) {
+        std::copy(&temp_buffer[offset], &temp_buffer[offset + psize], &rom_base[0]);
+        offset += psize;
+    }
+
+    // S1 (Fixed Text Layer)
+    if (ssize && memregion("fixed")) {
+        std::copy(&temp_buffer[offset], &temp_buffer[offset + ssize], memregion("fixed")->base());
+        offset += ssize;
+    }
+
+    // M1 (Audio CPU)
+    if (msize && memregion("audiocpu")) {
+        u8 *audio = memregion("audiocpu")->base();
+        std::copy(&temp_buffer[offset], &temp_buffer[offset + msize], &audio[0x10000]);
+        std::copy(&audio[0x10000], &audio[0x1ffff], &audio[0]); // Espejo clásico de Neo-Geo
+        offset += msize;
+    }
+
+    // V1 (ADPCMA)
+    if (vsize && memregion("ymsnd:adpcma")) {
+        std::copy(&temp_buffer[offset], &temp_buffer[offset + vsize], memregion("ymsnd:adpcma")->base());
+        if (memregion("ymsnd:adpcmb")) {
+            std::copy(memregion("ymsnd:adpcma")->base(), memregion("ymsnd:adpcma")->base() + vsize, memregion("ymsnd:adpcmb")->base());
+        }
+        offset += vsize;
+    }
+
+    // V2 (ADPCMB)
+    if (v2size && memregion("ymsnd:adpcmb")) {
+        std::copy(&temp_buffer[offset], &temp_buffer[offset + v2size], memregion("ymsnd:adpcmb")->base());
+        offset += v2size;
+    }
+
+    // C1 (Sprites)
+    if (csize && memregion("sprites")) {
+        std::copy(&temp_buffer[offset], &temp_buffer[offset + csize], memregion("sprites")->base());
+    }
+
+    // 5. Reinicializar los punteros internos de video de MAME con los tamaños reales del archivo .neo
+    if (m_sprgen) {
+	m_sprgen->set_sprite_region(m_region_sprites->base(), csize);
+	m_sprgen->set_fixed_regions(m_region_fixed->base(), ssize, m_region_fixedbios);
+	m_sprgen->optimize_sprite_data();
+
+        // Corrección dinámica de la capa de texto fija (bancos de 512k)
+        if (ssize > 0x20000) {
+            u16 game = rom_base[0x109] * 256 + rom_base[0x108];
+            if ((game == 0x257) || (game == 0x266) || (game == 0x269) || (game == 0x271))
+                m_sprgen->m_fixed_layer_bank_type = 2;
+            else
+                m_sprgen->m_fixed_layer_bank_type = 1;
+        }
+    }
+}
+
+void neogeo_gngeo::machine_start()
+{
+	neogeo_state::machine_start();
+
+	boot_command_ngo();
+}
+
+void neogeo_gngeo::boot_command_ngo()
+{
+    if (!memregion("maincpu")) return;
+    u8 *rom_base = memregion("maincpu")->base();
+    u32 rom_size = memregion("maincpu")->bytes();
+
+    if (rom_size < 0x60000) return; 
+
+    u8 *fix_ptr    = memregion("fixed") ? memregion("fixed")->base() : nullptr;
+    u8 *sprite_ptr = memregion("sprites") ? memregion("sprites")->base() : nullptr;
+
+    // CORRECCIÓN: Comprobar la firma mágica Y verificar que NO haya sido procesado en esta sesión de emulación
+    if (!m_gno_parsed && 
+        rom_base[0] == 'g' && rom_base[1] == 'n' && rom_base[2] == 'o' && rom_base[3] == 'd' &&
+        rom_base[4] == 'm' && rom_base[5] == 'p' && rom_base[6] == 'v' && rom_base[7] == '1')
+    {
+//        osd_printf_verbose("HBMAME: Procesando contenedor GNO por primera vez...\n");
+
+        std::vector<u8> temp_gno(rom_base, rom_base + rom_size);
+        u8 num_regions = temp_gno[20];
+        u32 offset = 21; 
+        
+        m_gno_csize = 0;
+        m_gno_ssize = 0;
+
+        for (u8 r = 0; r < num_regions; r++)
+        {
+            if (offset + 6 > rom_size) break;
+
+            u32 region_size = temp_gno[offset] | (temp_gno[offset+1] << 8) | (temp_gno[offset+2] << 16) | (temp_gno[offset+3] << 24);
+            u8 region_code  = temp_gno[offset+4];
+            offset += 6; 
+
+            if (offset + region_size > rom_size)
+            {
+                region_size = rom_size - offset;
+            }
+
+            const u8 *src_ptr = &temp_gno[offset];
+
+            switch (region_code)
+            {
+                case 1: // AUDIO Z80
+                    if (memory_region *aud_reg = memregion("audiocpu"))
+                    {
+                        u8 *dst = aud_reg->base();
+                        u32 max_size = aud_reg->bytes();
+                        if (region_size <= (max_size - 0x10000))
+                        {
+                            std::copy(src_ptr, src_ptr + region_size, &dst[0x10000]);
+                            std::copy(&dst[0x10000], &dst[0x1ffff], &dst[0]);
+                        }
+                    }
+                    break;
+
+                case 3: // ADPCMA
+                    if (memory_region *adp_reg = memregion("ymsnd:adpcma"))
+                        if (region_size <= adp_reg->bytes())
+                            std::copy(src_ptr, src_ptr + region_size, adp_reg->base());
+                    break;
+
+                case 4: // ADPCMB
+                    if (memory_region *adp_reg = memregion("ymsnd:adpcmb"))
+                        if (region_size <= adp_reg->bytes())
+                            std::copy(src_ptr, src_ptr + region_size, adp_reg->base());
+                    break;
+
+                case 6: // FIX
+                    if (fix_ptr && region_size <= memregion("fixed")->bytes())
+                    {
+                        std::copy(src_ptr, src_ptr + region_size, fix_ptr);
+                        m_gno_ssize = region_size;
+                    }
+                    break;
+
+                case 8: // CPU Principal (68000)
+                    if (region_size <= rom_size)
+                        std::copy(src_ptr, src_ptr + region_size, rom_base);
+                    break;
+
+                case 9: // SPRITES (GFX)
+                    if (sprite_ptr && region_size <= memregion("sprites")->bytes())
+                    {
+                        std::copy(src_ptr, src_ptr + region_size, sprite_ptr);
+                        m_gno_csize = region_size;
+                        for (u32 i = 0; i < m_gno_csize; i += 2)
+                        {
+                            std::swap(sprite_ptr[i], sprite_ptr[i+1]);
+                        }                    
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+            offset += region_size;
+        }
+
+        // CORRECCIÓN CRÍTICA ANTIBUCLE: Ya no modificamos rom_base.
+        // Activamos la variable lógica para que el emulador sepa que ya terminamos.
+        m_gno_parsed = true;
+
+        // Forzar reset completo para establecer la paleta limpia azul sin corromper el 68000
+        machine().schedule_hard_reset();
+        return;
+    }
+
+    // APLICACIÓN GRÁFICA CONTINUA (Se ejecuta siempre tras el reset)
+    if (m_gno_csize > 0 && sprite_ptr)
+    {
+        m_sprgen->set_sprite_region(sprite_ptr, m_gno_csize);
+    }
+    
+    if (m_gno_ssize > 0 && fix_ptr)
+    {
+        m_sprgen->set_fixed_regions(fix_ptr, m_gno_ssize, m_region_fixedbios);
+    }
+    
+    if (m_sprgen)
+    {
+        m_sprgen->optimize_sprite_data();
+
+        if (m_gno_ssize > 0x20000)
+        {
+            u16 game = rom_base[0x109] * 256 + rom_base[0x108]; 
+            if ((game == 0x257) || (game == 0x266) || (game == 0x269) || (game == 0x271))
+                m_sprgen->m_fixed_layer_bank_type = 2;
+            else
+                m_sprgen->m_fixed_layer_bank_type = 1;
+        }
+    }
+}
 
 
 /*************************************
@@ -1081,7 +1311,7 @@ void neogeo_state::neoclock_noslot(machine_config &config)
 void neogeo_state::gsc2007_map(address_map &map)
 {
 	main_map_noslot(map);
-	map(0x900000,0x9fffff).rom().region("gsc", 0);  // extra rom
+	map(0x900000,0x9fffff).rom().region("gsc", 0);
 }
 
 void neogeo_state::gsc2007(machine_config &config)
@@ -1093,7 +1323,7 @@ void neogeo_state::gsc2007(machine_config &config)
 void neogeo_state::gsc_map(address_map &map)
 {
 	main_map_noslot(map);
-	map(0x900000,0x91ffff).rom().region("gsc", 0);  // extra rom
+	map(0x900000,0x91ffff).rom().region("gsc", 0);
 }
 
 void neogeo_state::gsc(machine_config &config)
@@ -1112,6 +1342,285 @@ void neogeo_state::neogeo_68kram(machine_config &config)
 {
 	neoclock_noslot(config);
 	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::neogeo_68kram_map);
+}
+
+void neogeo_state::mv1_fixed(machine_config &config)
+{
+	neogeo_arcade(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
+
+	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
+
+	NEOGEO_CONTROL_PORT(config, "ctrl1", neogeo_arc_pin15, nullptr, true);
+	NEOGEO_CONTROL_PORT(config, "ctrl2", neogeo_arc_pin15, nullptr, true);
+}
+
+void neogeo_state::neogeo_neobase(machine_config &config)
+{
+	mv1_fixed(config);
+}
+
+void neogeo_state::neogeo_neo288h(machine_config &config)
+{
+	mv1_fixed(config);
+	m_screen->set_visarea(NEOGEO_HBEND+16, NEOGEO_HBSTART-16-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
+}
+
+void neogeo_state::neogeo_neo304h(machine_config &config)
+{
+	mv1_fixed(config);
+	m_screen->set_visarea(NEOGEO_HBEND+8, NEOGEO_HBSTART-8-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
+}
+
+void neogeo_state::neogeo_cyberlip(machine_config &config)
+{
+	mv1_fixed(config);
+	m_screen->set_visarea(NEOGEO_HBEND, NEOGEO_HBSTART-16-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
+}
+
+void neogeo_state::neogeo_multiboot(machine_config &config)
+{
+	neogeo_arcade(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
+
+	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
+
+	NEOGEO_CONTROL_PORT(config, "ctrl1", neogeo_arc_pin15, nullptr, true);
+	NEOGEO_CONTROL_PORT(config, "ctrl2", neogeo_arc_pin15, nullptr, true);
+
+	m_screen->set_visarea(NEOGEO_HBEND+8, NEOGEO_HBSTART-8-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
+
+	MSLUGX_PROT(config, "mslugx_prot");
+	SMA_PROT(config, "sma_prot");
+	CMC_PROT(config, "cmc_prot");
+	PCM2_PROT(config, "pcm2_prot");
+	PVC_PROT(config, "pvc_prot");
+	NGBOOTLEG_PROT(config, "bootleg_prot");
+	KOF2002_PROT(config, "kof2002_prot");
+	FATFURY2_PROT(config, "fatfury2_prot");
+	KOF98_PROT(config, "kof98_prot");
+	SBP_PROT(config, "sbp_prot");
+}
+
+void neogeo_state::neogeo_popbounc(machine_config &config)
+{
+	mv1_fixed(config);
+	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, "dial", true);
+
+	m_screen->set_visarea(NEOGEO_HBEND+8, NEOGEO_HBSTART-8-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
+}
+
+void neogeo_state::neogeo_zupapa(machine_config &config)
+{
+	neogeo_arcade(config);
+	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
+
+	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
+
+	NEOGEO_CONTROL_PORT(config, "ctrl1", neogeo_arc_pin15, nullptr, true);
+	NEOGEO_CONTROL_PORT(config, "ctrl2", neogeo_arc_pin15, nullptr, true);
+
+	m_screen->set_visarea(NEOGEO_HBEND+16, NEOGEO_HBSTART-16-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
+
+	CMC_PROT(config, "cmc_prot");
+}
+
+/*************************************
+ *
+ *  Game-specific quickload
+ *
+ *************************************/
+
+void neogeo_state::nggno(machine_config &config)
+{
+    mvs(config);
+    m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
+
+    // quickload
+    quickload_image_device &quickload(QUICKLOAD(config, "quickload", "gno", attotime::from_seconds(1)));
+    quickload.set_load_callback(FUNC(neogeo_state::gno_q_cb));
+    quickload.set_interface("gno_quik");
+    SOFTWARE_LIST(config, "quik_list").set_original("gno_quik");
+}
+
+// Problems:
+// - Protected sets either won't load, or get address error
+// - Need to find out what "c-usage" and "s-usage" are for: (regions 10 and 11).
+// - Gfx are broken; need to unscramble FIX and SPR
+QUICKLOAD_LOAD_MEMBER(neogeo_state::gno_q_cb)
+{
+	if (image.length() < 0x60000)
+	{
+		image.seterror(image_error::INVALIDIMAGE, "File too short");
+		printf("File too short\n");
+		image.message("File too short");
+		return image_init_result::FAIL;
+	}
+
+	// main header
+	// 8 bytes = "gnodmpv1"
+	// 8 bytes = game name (we don't use)
+	// 4 bytes = flags (we don't use)
+	// 1 byte  = number of regions
+	u8 header[21];
+	image.fread( &header, 21);
+
+	if ((header[0] == 'g') && (header[1] == 'n') && (header[2] == 'o') && (header[3] == 'd')
+		&& (header[4] == 'm') && (header[5] == 'p') && (header[6] == 'v') && (header[7] == '1'))
+	{
+	}
+	else
+	{
+		image.seterror(image_error::INVALIDIMAGE, "GNO header missing");
+		printf("GNO header missing\n");
+		image.message("GNO header missing");
+		return image_init_result::FAIL;
+	}
+
+	u32 region_size = 0, csize = 0, ssize = 0, ym2_region_size = 0, offset = 21;
+
+	for (uint8_t regions = 0; regions < header[20]; regions++)
+	{
+		// Get a region header
+		// 4 bytes = size
+		// 1 byte  = region code
+		// 1 byte  = type (we don't use, 00 assumed)
+		// size bytes = data
+		u8 region_code = 0, region_type = 0;
+		image.fread( &region_size, 4);
+		image.fread( &region_code, 1);
+		image.fread( &region_type, 1);
+		offset += 6;
+		// choose region, check size, and write to it
+		printf ("region code = %d with size %d at offset %08X\n",region_code,region_size,offset);
+		offset += region_size;
+		switch (region_code)
+		{
+			case 1:
+				if (region_size > (audio_region_size - 0x10000))
+				{
+					image.seterror(image_error::INVALIDIMAGE, "AUDIO region in GNO file is larger than supported");
+					printf("AUDIO region (%08X) in GNO file is larger than supported\n",region_size);
+					image.message("AUDIO region in GNO file is larger than supported");
+					return image_init_result::FAIL;
+				}
+				else
+				{
+					image.fread(&audiocpu_region[0x10000], region_size);
+					std::copy(&audiocpu_region[0x10000], &audiocpu_region[0x1ffff], &audiocpu_region[0]);
+				}
+				break;
+
+			case 3:
+				if (region_size > ym_region_size)
+				{
+					image.seterror(image_error::INVALIDIMAGE, "ADPCMA region in GNO file is larger than supported");
+					printf("ADPCMA size requested (%08X) is greater than available (%08X)\n",region_size,ym_region_size);
+					image.message("ADPCMA region in GNO file is larger than supported");
+					return image_init_result::FAIL;
+				}
+				else
+				{
+					image.fread(&ym_region[0], region_size);
+					std::copy(&ym_region[0], &ym_region[region_size-1], &memregion("ymsnd:adpcmb")->base()[0]); // fix totc,rotd
+				}
+				break;
+
+			case 4:
+				ym2_region_size = memregion("ymsnd:adpcmb")->bytes();
+				if ((region_size > ym2_region_size) || (ym_region_size > ym2_region_size))
+				{
+					image.seterror(image_error::INVALIDIMAGE, "ADPCMB region in GNO file is larger than supported");
+					printf("ADPCMB size requested (%08X) is greater than available (%08X)\n",region_size,ym2_region_size);
+					image.message("ADPCMB region in GNO file is larger than supported");
+					return image_init_result::FAIL;
+				}
+				else
+				{
+					image.fread(&memregion("ymsnd:adpcmb")->base()[0],region_size);
+				}
+				break;
+
+			case 6:
+				if (region_size > fix_region_size)
+				{
+					image.seterror(image_error::INVALIDIMAGE, "FIX region in GNO file is larger than supported");
+					printf("FIX size requested (%08X) is greater than available (%08X)\n",region_size,fix_region_size);
+					image.message("FIX region in GNO file is larger than supported");
+					return image_init_result::FAIL;
+				}
+				else
+				{
+					image.fread(&fix_region[0],region_size);
+					ssize = region_size;
+				}
+				break;
+
+			case 8:
+				if (region_size > cpuregion_size)
+				{
+					image.seterror(image_error::INVALIDIMAGE, "CPU region in GNO file is larger than supported");
+					printf("CPU size requested (%08X) is greater than available (%08X)\n",region_size,cpuregion_size);
+					image.message("CPU region in GNO file is larger than supported");
+					return image_init_result::FAIL;
+				}
+				else
+				{
+					image.fread(&cpuregion[0],region_size);
+				}
+				break;
+
+			case 9:
+				if (region_size > spr_region_size)
+				{
+					image.seterror(image_error::INVALIDIMAGE, "SPR region in GNO file is larger than supported");
+					printf("SPR size requested (%08X) is greater than available (%08X)\n",region_size,spr_region_size);
+					image.message("SPR region in GNO file is larger than supported");
+					return image_init_result::FAIL;
+				}
+				else
+				{
+					image.fread(&spr_region[0],region_size);
+					csize = region_size;
+				}
+				break;
+
+			default:
+				// Unsupported regions:
+				// 0  - audio bios (not used)
+				// 2  - audio encrypted (not used)
+				// 5  - fix bios (not used)
+				// 7  - 68k bios (not used)
+				// 10 - C(SPR) usage
+				// 11 - S(FIX) usage
+				printf("...ignored\n");
+				// jump past this region, point to next one
+				image.fseek(region_size, SEEK_CUR);
+		}
+	}
+
+	// Prepare the system
+	printf("Ready to start\n");fflush(stdout);
+	init_neogeo();
+	m_sprgen->set_sprite_region(m_region_sprites->base(), csize); // fix wh2
+	m_sprgen->set_fixed_regions(m_region_fixed->base(), ssize, m_region_fixedbios);
+	m_sprgen->optimize_sprite_data(); // fix sprites
+
+	// Fix the 512k text with horrible game-specific stuff
+	if (ssize > 0x20000)
+	{
+		u16 game = cpuregion[0x109] * 256 + cpuregion[0x108];
+		// identify kof2000, matrim, svc, kof2003
+		if ((game == 0x257) || (game == 0x266) || (game == 0x269) || (game == 0x271))
+			m_sprgen->m_fixed_layer_bank_type = 2;
+		else
+			m_sprgen->m_fixed_layer_bank_type = 1;
+	}
+
+	m_audiocpu->reset();
+	machine_reset();
+
+	return image_init_result::PASS;
 }
 
 void neogeo_state::neosd(machine_config &config)
@@ -1383,87 +1892,6 @@ QUICKLOAD_LOAD_MEMBER(neogeo_state::mvs_q_cb)
 	machine_reset();
 
 	return image_init_result::PASS;
-}
-
-void neogeo_state::mv1_fixed(machine_config &config)
-{
-	neogeo_arcade(config);
-	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
-
-	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
-
-	NEOGEO_CONTROL_PORT(config, m_ctrl1, neogeo_arc_pin15, nullptr, true);
-	NEOGEO_CONTROL_PORT(config, m_ctrl2, neogeo_arc_pin15, nullptr, true);
-}
-
-void neogeo_state::neogeo_neobase(machine_config &config)
-{
-	mv1_fixed(config);
-}
-
-void neogeo_state::neogeo_neo288h(machine_config &config)
-{
-	mv1_fixed(config);
-	m_screen->set_visarea(NEOGEO_HBEND+16, NEOGEO_HBSTART-16-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
-}
-
-void neogeo_state::neogeo_neo304h(machine_config &config)
-{
-	mv1_fixed(config);
-	m_screen->set_visarea(NEOGEO_HBEND+8, NEOGEO_HBSTART-8-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
-}
-
-void neogeo_state::neogeo_cyberlip(machine_config &config)
-{
-	mv1_fixed(config);
-	m_screen->set_visarea(NEOGEO_HBEND, NEOGEO_HBSTART-16-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
-}
-
-void neogeo_state::neogeo_multiboot(machine_config &config)
-{
-	neogeo_arcade(config);
-	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
-
-	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
-
-	NEOGEO_CONTROL_PORT(config, m_ctrl1, neogeo_arc_pin15, nullptr, true);
-	NEOGEO_CONTROL_PORT(config, m_ctrl2, neogeo_arc_pin15, nullptr, true);
-
-	m_screen->set_visarea(NEOGEO_HBEND+8, NEOGEO_HBSTART-8-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
-
-	MSLUGX_PROT(config, "mslugx_prot");
-	SMA_PROT(config, "sma_prot");
-	CMC_PROT(config, "cmc_prot");
-	PCM2_PROT(config, "pcm2_prot");
-	PVC_PROT(config, "pvc_prot");
-	NGBOOTLEG_PROT(config, "bootleg_prot");
-	KOF2002_PROT(config, "kof2002_prot");
-	FATFURY2_PROT(config, "fatfury2_prot");
-	KOF98_PROT(config, "kof98_prot");
-	SBP_PROT(config, "sbp_prot");
-}
-
-void neogeo_state::neogeo_popbounc(machine_config &config)
-{
-	mv1_fixed(config);
-	NEOGEO_CTRL_EDGE_CONNECTOR(config.replace(), m_edge, neogeo_arc_edge_fixed, "dial", true);
-
-	m_screen->set_visarea(NEOGEO_HBEND+8, NEOGEO_HBSTART-8-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
-}
-
-void neogeo_state::neogeo_zupapa(machine_config &config)
-{
-	neogeo_arcade(config);
-	m_maincpu->set_addrmap(AS_PROGRAM, &neogeo_state::main_map_noslot);
-
-	NEOGEO_CTRL_EDGE_CONNECTOR(config, m_edge, neogeo_arc_edge, "joy", true);
-
-	NEOGEO_CONTROL_PORT(config, m_ctrl1, neogeo_arc_pin15, nullptr, true);
-	NEOGEO_CONTROL_PORT(config, m_ctrl2, neogeo_arc_pin15, nullptr, true);
-
-	m_screen->set_visarea(NEOGEO_HBEND+16, NEOGEO_HBSTART-16-1, NEOGEO_VBEND, NEOGEO_VBSTART-1);
-
-	CMC_PROT(config, "cmc_prot");
 }
 
 /*********************************************** non-carts */
@@ -1980,7 +2408,8 @@ void neogeo_state::init_mslug3()
 
 void neogeo_state::init_mslug3d()
 {
-	init_mslug3();
+	init_neogeo();
+	m_sprgen->m_fixed_layer_bank_type = 1;
 	m_sma_prot->mslug3_install_protection(m_maincpu,m_banked_cart);
 }
 
@@ -2241,18 +2670,42 @@ void neogeo_state::init_kof2001()
 void neogeo_state::init_rotd()
 {
 	init_neogeo();
-	m_pcm2_prot->neo_pcm2_snk_1999(ym_region, ym_region_size, 16);
-	m_sprgen->m_fixed_layer_bank_type = 1;
-	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
-	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, ROTD_GFX_KEY);
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-}
+	m_sprgen->m_fixed_layer_bank_type = 1; // for those sets with 512k of s1
 
-void neogeo_state::init_rotdnd()
-{
-	init_neogeo();
-	m_sprgen->m_fixed_layer_bank_type = 1;
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	// decrypt m1 if needed
+	if (memregion("audiocrypt"))
+	    m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
+
+	// decrypt v roms if needed
+	u8 *ram = memregion("ymsnd:adpcma")->base();
+	if (ram[0x60] != 0x3D)
+	{
+		//printf("ym=%X\n",ram[0x60]);
+    	m_pcm2_prot->neo_pcm2_snk_1999(ym_region, ym_region_size, 16);
+	}
+
+	ram = memregion("sprites")->base();
+	if (ram[0] != 0)
+	{
+		//printf("Sprites=%X\n",ram[0]);
+    	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, ROTD_GFX_KEY);
+	}
+
+	// if no s rom, copy info from end of c roms
+	ram = memregion("fixed")->base();
+	if (ram)
+	{
+		// REGLA ABSOLUTA: Si detecta el 0xBB de tu hack, se salta TODO de inmediato.
+		if (ram[0x100] == 0xBB)
+		{
+			m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+		}
+		// Si no es el hack, revisa si es el original (0x00) para desencriptarlo.
+		else if (ram[0x100] == 0x00)
+		{
+			m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+		}
+	}
 }
 
 void neogeo_state::init_pnyaa()
@@ -2266,7 +2719,7 @@ void neogeo_state::init_pnyaa()
 
 	// decrypt v roms if needed
 	u8 *ram = memregion("ymsnd:adpcma")->base();
-	if (ram[0x20] != 0x99)
+	if (ram[0x100] != 0xB0)
 	{
 		//printf("ym=%X\n",ram[0x60]);
 		m_pcm2_prot->neo_pcm2_snk_1999(ym_region, ym_region_size, 4);
@@ -2337,12 +2790,43 @@ void neogeo_state::init_kof2002()
 void neogeo_state::init_matrim()
 {
 	init_neogeo();
-	m_kof2002_prot->matrim_decrypt_68k(cpuregion, cpuregion_size);
-	m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 1);
 	m_sprgen->m_fixed_layer_bank_type = 2;
-	m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
-	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MATRIM_GFX_KEY);
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+
+	// decrypt p roms if needed
+	u8 *ram = memregion("maincpu")->base();
+	if (ram[0x100002] != 0xFF)
+	{
+		//printf("Maincpu=%X\n",ram[0x100]);fflush(stdout);
+		m_kof2002_prot->matrim_decrypt_68k(cpuregion, cpuregion_size);
+	}
+
+	// decrypt m1 if needed
+	if (memregion("audiocrypt"))
+		m_cmc_prot->neogeo_cmc50_m1_decrypt(audiocrypt_region, audiocrypt_region_size, audiocpu_region,audio_region_size);
+
+	// decrypt v roms if needed
+	ram = memregion("ymsnd:adpcma")->base();
+	if (ram[0x100] != 0x28)
+	{
+		//printf("ym=%X\n",ram[0x60]);
+		m_pcm2_prot->neo_pcm2_swap(ym_region, ym_region_size, 1);
+	}
+
+	// decrypt c roms if needed
+	ram = memregion("sprites")->base();
+	if (ram[0] != 0)
+	{
+		//printf("Sprites=%X\n",ram[0]);
+		m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MATRIM_GFX_KEY);
+	}
+
+	// if no s rom, copy info from end of c roms
+	ram = memregion("fixed")->base();
+	if (ram[0x100] == 0)
+	{
+		//printf("Fixed1=%X\n",ram[0x100]);
+		m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
+	}
 }
 
 void neogeo_state::init_samsho5()
@@ -2497,7 +2981,7 @@ void neogeo_state::init_mslug5()
 
 void neogeo_state::init_mslug5d()
 {
-	init_mslug5();
+	init_neogeo();
 	m_pvc_prot->install_pvc_protection(m_maincpu, m_banked_cart);
 }
 
@@ -2978,7 +3462,7 @@ void neogeo_state::init_ms5plus()
 
 	// decrypt p roms if needed
 	u8 *ram = memregion("maincpu")->base();
-	if (ram[0x100] != 0x25)
+	if (ram[0x100] != 0x45)
 	{
 		//printf("Maincpu=%X\n",ram[0x100]);fflush(stdout);
 		m_bootleg_prot->install_ms5plus_protection(m_maincpu,m_banked_cart);
@@ -3063,7 +3547,6 @@ void neogeo_state::init_kf2k3upl()
 void neogeo_state::init_kf2k3upld()
 {
 	init_neogeo();
-//	m_bootleg_prot->kf2k3upl_px_decrypt(cpuregion, cpuregion_size);
 	m_bootleg_prot->kf2k3bl_install_protection(m_maincpu, m_banked_cart, cpuregion, cpuregion_size);
 }
 
@@ -3311,14 +3794,6 @@ void neogeo_state::init_matrima()
 	m_cmc_prot->cmc50_neogeo_gfx_decrypt(spr_region, spr_region_size, MATRIM_GFX_KEY);
 }
 
-void neogeo_state::init_matrimd()
-{
-	init_neogeo();
-	m_sprgen->m_fixed_layer_bank_type = 2;
-	m_kof2002_prot->matrim_decrypt_68k(cpuregion, cpuregion_size);
-	m_cmc_prot->neogeo_sfix_decrypt(spr_region, spr_region_size, fix_region, fix_region_size);
-}
-
 void neogeo_state::init_matrimnd()
 {
 	init_neogeo();
@@ -3423,22 +3898,7 @@ void neogeo_state::init_darksoft()
 	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
 }
 
-void neogeo_state::init_ct2k3sadd()
-{
-	init_neogeo();
-	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
-	m_bootleg_prot->decrypt_ct2k3sa(spr_region, spr_region_size, audiocpu_region,audio_region_size);
-	m_bootleg_prot->patch_ct2k3sa(cpuregion, cpuregion_size);
-}
-
 void neogeo_state::init_ct2k3spdd()
-{
-	init_neogeo();
-	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
-	m_bootleg_prot->patch_cthd2003(m_maincpu,m_banked_cart, cpuregion, cpuregion_size);
-}
-
-void neogeo_state::init_cthd2003dd()
 {
 	init_neogeo();
 	m_bootleg_prot->neogeo_darksoft_cx_decrypt(spr_region, spr_region_size);
@@ -3608,6 +4068,14 @@ void neogeo_state::init_vlinerdd()
 	m_maincpu->space(AS_PROGRAM).install_read_port(0x2c0000, 0x2c0001, "IN6");
 }
 
+/*********************************************** Darksoft */
+
+void neogeo_state::init_gngeo()
+{
+	init_neogeo();
+	m_bootleg_prot->neogeo_gngeo_cx_decrypt(spr_region, spr_region_size);
+}
+
 /*********************************************** non-carts */
 
 void neogeo_state::install_banked_bios()
@@ -3645,6 +4113,31 @@ ROM_START( neogeo )
 	ROM_REGION( 0x100000, "sprites", ROMREGION_ERASEFF )
 ROM_END
 
+ROM_START( nggno )
+	NEOGEO_BIOS
+
+	ROM_REGION( 0x900000, "maincpu", ROMREGION_ERASEFF )
+
+	ROM_REGION( 0x20000, "audiobios", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_REGION( 0x90000, "audiocpu", 0 )
+	ROM_LOAD( "sm1.sm1", 0x00000, 0x20000, CRC(94416d67) SHA1(42f9d7ddd6c0931fd64226a60dc73602b2819dcf) )
+
+	ROM_Y_ZOOM
+
+	ROM_REGION( 0x80000, "fixed", ROMREGION_ERASEFF )
+
+	ROM_REGION( 0x20000, "fixedbios", 0 )
+	ROM_LOAD( "sfix.sfix", 0x000000, 0x20000, CRC(c2ea0cfd) SHA1(fd4a618cdcdbf849374f0a50dd8efe9dbab706c3) )
+
+	ROM_REGION( 0x1000000, "ymsnd:adpcma", ROMREGION_ERASEFF )
+
+	ROM_REGION( 0x1000000, "ymsnd:adpcmb", ROMREGION_ERASEFF )
+
+	ROM_REGION( 0x4000000, "sprites", ROMREGION_ERASEFF )
+ROM_END
+
 ROM_START( neosd )
 	NEOGEO_BIOS
 
@@ -3667,7 +4160,7 @@ ROM_START( neosd )
 
 	ROM_REGION( 0x2000000, "ymsnd:adpcmb", ROMREGION_ERASEFF )
 
-	ROM_REGION( 0x4000000, "sprites", ROMREGION_ERASEFF )
+	ROM_REGION( 0x8000000, "sprites", ROMREGION_ERASEFF )
 ROM_END
 
 ROM_START( multimvs )
@@ -3697,5 +4190,6 @@ ROM_END
 
 /*    YEAR  NAME         PARENT    MACHINE      INPUT           CLASS         INIT    */
 GAME( 1990, neogeo,      0,        mvs,         neogeo_6slot,   neogeo_state, init_neogeo,  ROT0, "SNK", "Neo-Geo", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
+GAME( 1990, nggno,       neogeo,   nggno,       neogeo,         neogeo_state, empty_init,   ROT0, "SNK", "Neo-Geo .gno Support", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
 GAME( 1990, neosd,       neogeo,   neosd,       neogeo,         neogeo_state, empty_init,   ROT0, "SNK", "Neo-Geo SD .neo Support", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )
 GAME( 1990, multimvs,    neogeo,   multimvs,    neogeo,         neogeo_state, empty_init,   ROT0, "SNK", "Neo-Geo MultiMVS Support", MACHINE_IS_BIOS_ROOT | MACHINE_SUPPORTS_SAVE )

@@ -1563,7 +1563,7 @@ files {
 	MAME_DIR .. "src/mame/drivers/supduck.cpp",
 	MAME_DIR .. "src/mame/video/tigeroad_spr.cpp",
 --	MAME_DIR .. "src/mame/video/tigeroad_spr.h",
-	MAME_DIR .. "src/hbmame/drivers/blktiger.cpp", --HBMAME
+	MAME_DIR .. "src/hbmame/drivers/blktigerhb.cpp", --HBMAME
 	MAME_DIR .. "src/mame/drivers/blktiger_ms.cpp",
 	MAME_DIR .. "src/mame/drivers/cbasebal.cpp",
 	MAME_DIR .. "src/mame/drivers/commando.cpp",
@@ -1581,7 +1581,7 @@ files {
 	MAME_DIR .. "src/mame/audio/cps3.cpp",
 --	MAME_DIR .. "src/mame/audio/cps3.h",
 	MAME_DIR .. "src/mame/drivers/egghunt.cpp",
-	MAME_DIR .. "src/mame/drivers/exedexes.cpp",
+	MAME_DIR .. "src/hbmame/drivers/exedexeshc.cpp", --HBMAME
 --	MAME_DIR .. "src/mame/includes/exedexes.h",
 	MAME_DIR .. "src/mame/video/exedexes.cpp",
 	MAME_DIR .. "src/hbmame/drivers/fcrash.cpp", --HBMAME

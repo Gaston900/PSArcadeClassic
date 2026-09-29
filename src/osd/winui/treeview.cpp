@@ -2135,15 +2135,16 @@ void CreateCOLLECTIONFolders(int parent_index)
 		if (!strcmp("cbasebal.cpp", s))		    AddGame(lpCapcom, jj);
 		if (!strcmp("commando.cpp", s))			AddGame(lpCapcom, jj);
 		if (!strcmp("cps1.cpp", s))			    AddGame(lpCapcom, jj);
-		if (!strcmp("cps1hb.cpp", s))			AddGame(lpCapcom, jj);
+		if (!strcmp("cps1hc.cpp", s))			AddGame(lpCapcom, jj);
 		if (!strcmp("cps1bl_5205.cpp", s))	    AddGame(lpCapcom, jj);
 		if (!strcmp("cps1bl_pic.cpp", s))	    AddGame(lpCapcom, jj);
 		if (!strcmp("kenseim.cpp", s))			AddGame(lpCapcom, jj);
 		if (!strcmp("cps2.cpp", s))		        AddGame(lpCapcom, jj);
-		if (!strcmp("cps2hb.cpp", s))			AddGame(lpCapcom, jj);
+		if (!strcmp("cps2hc.cpp", s))			AddGame(lpCapcom, jj);
 		if (!strcmp("cps3.cpp", s))			    AddGame(lpCapcom, jj);
 		if (!strcmp("egghunt.cpp", s))			AddGame(lpCapcom, jj);
 		if (!strcmp("exedexes.cpp", s))			AddGame(lpCapcom, jj);
+		if (!strcmp("exedexeshc.cpp", s))		AddGame(lpCapcom, jj);
 		if (!strcmp("fcrash.cpp", s))		    AddGame(lpCapcom, jj);
 		if (!strcmp("gng.cpp", s))			    AddGame(lpCapcom, jj);
 		if (!strcmp("gunsmoke.cpp", s))		    AddGame(lpCapcom, jj);

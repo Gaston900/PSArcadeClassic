@@ -163,6 +163,7 @@ public:
 	void init_sf2ceblp();
 	void init_sf2m8();
 	void init_dinohunt();
+	void init_sf2ceuab6();
 
 	DECLARE_MACHINE_START(common);
 	DECLARE_MACHINE_START(cps1);
@@ -176,6 +177,7 @@ public:
 	u16 cps1_in1_r();
 	u16 cps1_in2_r();
 	u16 cps1_in3_r();
+
 	void cps1_coinctrl_w(offs_t offset, u16 data, u16 mem_mask = ~0);
 	void cpsq_coinctrl2_w(offs_t offset, u16 data, u16 mem_mask = ~0);
 	void cps1_cps_a_w(offs_t offset, u16 data, u16 mem_mask = ~0);
@@ -377,6 +379,16 @@ public:
 	u8 m_scrollx2 = 0;
 	u8 m_scrollx3 = 0;
 	u32 m_bank_type[32]{};
+
+	/* video config */
+	int32_t m_layer_scroll1x_offset = 0;
+	int32_t m_layer_scroll2x_offset = 0;
+	int32_t m_layer_scroll3x_offset = 0;
+	int32_t m_sprite_base = 0;
+	int32_t m_sprite_list_end_marker = 0;
+	int32_t m_sprite_x_offset = 0;
+	std::unique_ptr<uint16_t[]> m_bootleg_sprite_ram;
+	std::unique_ptr<uint16_t[]> m_bootleg_work_ram;
 };
 
 

@@ -1,7 +1,6 @@
 // license:BSD-3-Clause
 // copyright-holders:Bryan McPhail,Ernesto Corvi,Andrew Prime,Zsolt Vasvari
 // thanks-to:Fuzz
-// Thank you very much for updating the driver: Gaston90
 /*************************************************************************
 
     Neo-Geo hardware
@@ -102,6 +101,7 @@ public:
 	void neogeo_68kram(machine_config &config);
     void multimvs(machine_config &config);
 	void neosd(machine_config &config);
+	void nggno(machine_config &config);
 	void mv1_fixed(machine_config &config);
 	void neogeo_neobase(machine_config &config);
 	void neogeo_neo288h(machine_config &config);
@@ -171,7 +171,6 @@ public:
 	void init_matrim();
 	void init_matrima();
 	void init_matrimbl();
-	void init_matrimd();
 	void init_matrimnd();
 	void init_ms5pcb();
 	void init_ms5plus();
@@ -190,7 +189,6 @@ public:
 	void init_pnyaa();
 	void init_preisle2();
 	void init_rotd();
-	void init_rotdnd();
 	void init_s1945p();
 	void init_samsh5sp();
 	void init_samsho5();
@@ -214,9 +212,7 @@ public:
 
 	// Fixed MVS/AES Decrypted Darksoft Software Configurations
 	void init_darksoft();
-	void init_ct2k3sadd();
 	void init_ct2k3spdd();
-	void init_cthd2003dd();
 	void init_fatfury2dd();
 	void init_garoudd();
 	void init_garouhdd();
@@ -236,6 +232,9 @@ public:
 	void init_svcdd();
 	void init_vlinerdd();
 
+	// Fixed MVS/AES GnGeo Software Configurations
+	void init_gngeo();
+
 	DECLARE_CUSTOM_INPUT_MEMBER(get_memcard_status);
 	DECLARE_CUSTOM_INPUT_MEMBER(get_audio_result);
 	DECLARE_CUSTOM_INPUT_MEMBER(kizuna4p_start_r);
@@ -248,6 +247,7 @@ public:
 	required_device<cpu_device> m_maincpu;
 
 private:
+
 	u32 mvs_open7z(std::string zip_name, std::string filename, uint8_t *region_name, u32 region_size);
 	void io_control_w(offs_t offset, u8 data);
 	u16 memcard_r(offs_t offset);
@@ -272,7 +272,7 @@ private:
 	TIMER_CALLBACK_MEMBER(vblank_interrupt_callback);
     DECLARE_QUICKLOAD_LOAD_MEMBER(mvs_q_cb);
 	DECLARE_QUICKLOAD_LOAD_MEMBER(neo_q_cb);
-
+	DECLARE_QUICKLOAD_LOAD_MEMBER(gno_q_cb);
 	u32 screen_update_neogeo(screen_device &screen, bitmap_rgb32 &bitmap, const rectangle &cliprect);
 
 	void neogeo_main_map(address_map &map);
@@ -365,7 +365,7 @@ private:
 	optional_memory_region m_region_fixedbios;
 	optional_memory_bank   m_bank_audio_main; // optional because of neocd
 	optional_device<upd4990a_device> m_upd4990a;
-	optional_shared_ptr<u16 > m_save_ram;
+	optional_shared_ptr<u16> m_save_ram;
 	required_device<screen_device> m_screen;
 	optional_device<palette_device> m_palette;
 	optional_device<nghb_memcard_device> m_memcard;
@@ -393,6 +393,56 @@ private:
 	memory_bank_creator m_bios_bank;
 	std::unique_ptr<uint16_t[]> m_extra_ram;
 };
+
+class neogeo_neosd : public neogeo_state
+{
+public:
+	neogeo_neosd(const machine_config &mconfig, device_type type, const char *tag)
+		: neogeo_state(mconfig, type, tag)
+	    , m_region_fixed(*this, "fixed")
+		, m_region_fixedbios(*this, "fixedbios")
+	    , m_region_sprites(*this, "sprites")
+		, m_sprgen(*this, "spritegen")
+	{ }
+
+	void boot_command_nds();
+	virtual void machine_start() override;
+
+private:
+	required_memory_region m_region_fixed;
+	optional_memory_region m_region_fixedbios;
+	required_memory_region m_region_sprites;
+
+    required_device<neosprite_device> m_sprgen;
+};
+
+class neogeo_gngeo : public neogeo_state
+{
+
+public:
+	neogeo_gngeo(const machine_config &mconfig, device_type type, const char *tag)
+		: neogeo_state(mconfig, type, tag)
+	    , m_region_fixed(*this, "fixed")
+		, m_region_fixedbios(*this, "fixedbios")
+	    , m_region_sprites(*this, "sprites")
+		, m_sprgen(*this, "spritegen")
+	{ }
+
+	void boot_command_ngo();
+	virtual void machine_start() override;
+
+private:
+	required_memory_region m_region_fixed;
+	optional_memory_region m_region_fixedbios;
+	required_memory_region m_region_sprites;
+
+    required_device<neosprite_device> m_sprgen;
+
+    u32 m_gno_csize = 0;
+	u32 m_gno_ssize = 0;
+    bool m_gno_parsed = false;
+};
+
 
 /********
   HBMAME

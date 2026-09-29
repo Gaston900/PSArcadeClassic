@@ -10912,685 +10912,720 @@ cowtippa                        //
 cp1                             //
 
 @source:cps1.cpp
-cps1mult                        //
-1941                            // 27/02/1990 (c) 1990 (World)
-1941j                           // 2/1990 (c) 1990 (Japan)
-1941r1                          // 2/1990 (c) 1990 (World)
-1941u                           // 27/02/1990 (c) 1990 (USA)
-3wonders                        // 20/05/1991 (c) 1991 (World)
-3wondersb                       // bootleg
-3wondersh                       // hack
-3wondersr1                      // 13/05/1991 (c) 1991 (World)
-3wondersu                       // 20/05/1991 (c) 1991 (USA)
-area88                          // 8/1989 (c) 1989 (Japan)
-area88r                         // 8/1989 (c) 1989 (Japan)
-captcomm                        // 02/12/1991 (c) 1991 (World)
-captcommb                       // bootleg
-captcommj                       // 02/12/1991 (c) 1991 (Japan)
-captcommjr1                     // 28/09/1991 (c) 1991 (Japan)
-captcommr1                      // 14/10/1991 (c) 1991 (World)
-captcommu                       // 28/09/1991 (c) 1991 (USA)
-cawing                          // 12/10/1990 (c) 1990 (World)
+1941
+1941j
+1941r1
+1941u
+3wonders
+3wondersb
+3wondersbi
+3wondersh
+3wondersr1
+3wondersu
+area88
+area88r
+captcomm
+captcommb
+captcommj
+captcommjr1
+captcommr1
+captcommu
+cawing
+cawingj
 cawingjr
-cawingj                         // 12/10/1990 (c) 1990 (Japan)
-cawingr1                        // 09/10/1990 (c) 1990 (World)
-cawingu                         // 30/11/1990 (c) 1990 (USA)
-cawingur1                       // 12/10/1990 (c) 1990 (USA)
-chikij                          // 19/06/1990 (c) 1990 (Japan)
-cworld2j                        // 11/06/1992 (c) 1992 (Japan)
-cworld2ja                       // 11/06/1992 (c) 1992 (Japan)
-cworld2jb                       // 11/06/1992 (c) 1992 (Japan)
-daimakai                        // 12/1988 (c) 1988 (Japan)
-daimakair                       // 12/1988 (c) 1988 (Japan)
-dino                            // 01/02/1993 (c) 1993 (World) (CPS1 + QSound)
-dinohunt                        // bootleg
-dinoa                           // 23/02/1993 (c) 1993 (Asia TW) (CPS1 + QSound)
-dinoj                           // 01/02/1993 (c) 1993 (Japan) (CPS1 + QSound)
-dinou                           // 01/02/1993 (c) 1993 (USA) (CPS1 + QSound)
-dynwar                          // 4/1989 (c) 1989 (USA)
-dynwara                         // 4/1989 (c) 1989 (USA)
-dynwarj                         // 4/1989 (c) 1989 (Japan)
-dynwarjr                        // 4/1989 (c) 1989 (Japan)
-ffight                          // 12/1989 (c) 1989 (World)
-ffighta                         // 12/1989 (c) 1989 (World)
-ffightae                        // hack
-ffightj                         // 12/1989 (c) 1989 (Japan)
-ffightj1                        // 12/01/1990 (c) 1989 (Japan)
-ffightj2                        // 05/03/1990 (c) 1989 (Japan)
-ffightj3                        // 05/04/1990 (c) 1989 (Japan)
-ffightj4                        // 13/06/1990 (c) 1989 (Japan)
-ffightjh                        // hack
-ffightu                         // 12/1989 (c) 1989 (USA)
-ffightu1                        // 12/1989 (c) 1989 (USA)
-ffightua                        // 12/01/1990 (c) 1989 (USA)
-ffightub                        // 24/04/1990 (c) 1989 (USA)
-ffightuc                        // 12/06/1990 (c) 1989 (USA)
-forgottn                        // 7/1988 (c) 1988 (World)
-forgottna                       // 7/1988 (c) 1988 (World)
-forgottnj                       // 7/1988 (c) 1988 (Japan)
-forgottnu                       // 7/1988 (c) 1988 (USA)
-forgottnua                      // 7/1988 (c) 1988 (USA)
-forgottnuc                      // 7/1988 (c) 1988 (USA)
-forgottnue                      // 7/1988 (c) 1988 (USA)
-forgottnuaa                     // 7/1988 (c) 1988 (USA)
-ganbare                         // 11/04/2000 (c) 2000 (Japan)
-ghouls                          // 12/1988 (c) 1988 (World)
-ghoulsu                         // 12/1988 (c) 1988 (USA)
-gulunpa                         //
-mpumpkin                        // 12/07/1996 (c) 1996 (Japan)
-knights                         // 27/11/1991 (c) 1991 (World)
-knightsb2                       // bootleg
-knightsj                        // 27/11/1991 (c) 1991 (Japan)
-knightsja                       // 27/11/1991 (c) 1991 (Japan)
-knightsu                        // 27/11/1991 (c) 1991 (USA)
-kod                             // 05/08/1991 (c) 1991 (World)
-kodj                            // 05/08/1991 (c) 1991 (Japan)
-kodja                           // 05/08/1991 (c) 1991 (Japan)
-kodr1                           // 11/07/1991 (c) 1991 (World)
-kodr2                           // 31/07/1991 (c) 1991 (World)
-kodu                            // 10/09/1991 (c) 1991 (USA)
-lostwrld                        // 7/1988 (c) 1988 (Japan)
-lostwrldo                       // 7/1988 (c) 1988 (Japan)
-mbomberj                        // 13/07/1993 (c) 1993 (Japan) (CPS1 + QSound)
-mbombrd                         // 06/12/1993 (c) 1993 (World) (CPS1 + QSound)
-mbombrdj                        // 06/12/1993 (c) 1993 (Japan) (CPS1 + QSound)
-megaman                         // 06/10/1995 (c) 1995 (USA)
-megamana                        // 06/10/1995 (c) 1995 (Asia)
-mercs                           // 02/03/1990 (c) 1990 (World)
-mercsj                          // 02/03/1990 (c) 1990 (Japan)
-mercsu                          // 08/06/1990 (c) 1990 (USA)
-mercsur1                        // 02/03/1990 (c) 1990 (USA)
-msword                          // 25/07/1990 (c) 1990 (World)
-mswordj                         // 23/06/1990 (c) 1990 (Japan)
-mswordr1                        // 23/06/1990 (c) 1990 (World)
-mswordu                         // 25/07/1990 (c) 1990 (USA)
-mtwins                          // 19/06/1990 (c) 1990 (World)
-nemo                            // 30/11/1990 (c) 1990 (World)
-nemoj                           // 20/11/1990 (c) 1990 (Japan)
-nemor1                          // 09/11/1990 (c) 1990 (World)
-pang3                           // 01/06/1995 (c) 1995 Mitchell (Euro) not listed on Capcom's site
-pang3b                          // bootleg
-pang3b2                         // bootleg
-pang3b3                         // bootleg
-pang3j                          // 11/05/1995 (c) 1995 Mitchell (Japan) not listed on Capcom's site
-pang3r1                         // 11/05/1995 (c) 1995 Mitchell (Euro) not listed on Capcom's site
-pang3b4                         // bootleg
-pang3b5                         // bootleg
-pnickj                          // 08/06/1994 (c) 1994 Compile + Capcom license (Japan) not listed on Capcom's site
-punisher                        // 22/04/1993 (c) 1993 (World) (CPS1 + QSound)
-punisherbz                      // bootleg
-punisherh                       // 22/04/1993 (c) 1993 (Hispanic) (CPS1 + QSound)
-punisherj                       // 22/04/1993 (c) 1993 (Japan) (CPS1 + QSound)
-punisheru                       // 22/04/1993 (c) 1993 (USA) (CPS1 + QSound)
-qad                             // 01/07/1992 (c) 1992 (USA)
-qadjr                           // 21/09/1994 (c) 1994 (Japan)
-qtono2j                         // 23/01/1995 (c) 1995 (Japan)
-rockmanj                        // 22/09/1995 (c) 1995 (Japan)
+cawingr1
+cawingu
+cawingur1
+chikij
+cps1mult
+cworld2j
+cworld2ja
+cworld2jb
+daimakai
+daimakair
+dino
+dinohunt
+dinoa
+dinoj
+dinou
+dynwar
+dynwara
+dynwarj
+dynwarjr
+ffight
+ffighta
+ffightae
+ffightj
+ffightj1
+ffightj2
+ffightj3
+ffightj4
+ffightjh
+ffightu
+ffightu1
+ffightua
+ffightub
+ffightuc
+forgottn
+forgottna
+forgottnj
+forgottnu
+forgottnua
+forgottnuc
+forgottnue
+forgottnuaa
+ganbare
+ghouls
+ghoulsu
+gulunpa
+knights
+knightsb2
+knightsj
+knightsja
+knightsu
+kod
+kodj
+kodja
+kodr1
+kodr2
+kodu
+lostwrld
+lostwrldo
+mbomberj
+mbombrd
+mbombrdj
+megaman
+megamana
+mercs
+mercsj
+mercsu
+mercsur1
+mpumpkin
+msword
+mswordj
+mswordr1
+mswordu
+mtwins
+nemo
+nemoj
+nemoja
+nemor1
+pang3
+pang3b
+pang3b2
+pang3b3
+pang3j
+pang3r1
+pang3b4
+pang3b5
+pmonster
+pnickj
+punisher
+punisherbz
+punisherh
+punisherj
+punisheru
+qad
+qadjr
+qtono2j
+rockmanj
 pokonyan
-sf2                             // 22/05/1991 (c) 1991 (World)
-sf2acc                          // hack
-sf2acca                         // hack
-sf2accp2                        // hack
-sf2amf                          // bootleg (Deactivated)
-sf2amf2                         // bootleg
-sf2amf3                         // bootleg
-sf2bhh                          // hack
-sf2ce                           // 13/05/1992 (c) 1992 (World)
-sf2ceblp                        // hack
-sf2cebltw                       // hack
-sf2ceea                         // 13/03/1992 (c) 1992 (World)
-sf2ceec                         // 03/08/1992 (c) 1992 (World)
-sf2ceja                         // 22/03/1992 (c) 1992 (Japan)
-sf2cejb                         // 13/05/1992 (c) 1992 (Japan)
-sf2cejc                         // 03/08/1992 (c) 1992 (Japan)
-sf2cet                          // 13/03/1992 (c) 1992 (Taiwan)
-sf2ceupl                        // 03/08/1992 (c) 1992 (Japan)
-sf2ceua                         // 13/03/1992 (c) 1992 (USA)
-sf2ceub                         // 13/05/1992 (c) 1992 (USA)
-sf2ceuc                         // 03/08/1992 (c) 1992 (USA)
-sf2dkot2                        // hack
-sf2dongb                        // hack
-sf2ea                           // 04/02/1991 (c) 1991 (World)
-sf2eb                           // 14/02/1991 (c) 1991 (World)
-sf2ebbl                         // 14/02/1991 (c) 1991 (World, bootleg)
-sf2ebbl2                        // 14/02/1991 (c) 1991 (World, bootleg)
-sf2ebbl3                        // 14/02/1991 (c) 1991 (World, bootleg)
-sf2ed                           // 18/03/1991 (c) 1991 (World)
-sf2ee                           // 28/02/1991 (c) 1991 (World)
-sf2ef                           // 11/04/1991 (c) 1991 (World)
-sf2em                           // 29/01/1991 (c) 1991 (World)
-sf2en                           // 04/02/1991 (c) 1991 (World, conversion)
-sf2hf                           // 09/12/1992 (c) 1992 (World)
-sf2hfj                          // 09/12/1992 (c) 1992 (Japan)
-sf2hfu                          // 09/12/1992 (c) 1992 (USA)
-sf2j                            // 10/12/1991 (c) 1991 (Japan, CPS-B-13)
-sf2j17                          // 10/12/1991 (c) 1991 (Japan, CPS-B-17)
-sf2ja                           // 14/02/1991 (c) 1991 (Japan)
-sf2jc                           // 06/03/1991 (c) 1991 (Japan)
-sf2jf                           // 11/04/1991 (c) 1991 (Japan)
-sf2jh                           // 22/05/1991 (c) 1991 (Japan)
-sf2jl                           // 12/03/1992 (c) 1991 (Japan)
-sf2koryu                        // hack
-sf2level                        // hack
-sf2ceuab8                       // bootleg
-sf2mega                         // hack
-sf2ceuabl                       // hack
-sf2rb4                          // hack
-sf2amf9                         // hack
-sf2koryu3                       // hack
-sf2amf4                         // hack
-sf2ceuab2                       // bootleg
-sf2mkot                         // hack
-sf2qp1                          // hack
-sf2qp2                          // hack
-sf2rb                           // hack
-sf2rb2                          // hack
-sf2rb3                          // hack
-sf2re                           // bootleg
-sf2red                          // hack
-sf2reda                         // bootleg
-sf2redp2                        // hack
-sf2rk                           // bootleg
-sf2rules                        // bootleg
-sf2stt                          // bootleg (Deactivated)
-sf2thndr                        // hack
-sf2thndr2                       // bootleg
-sf2ua                           // 06/02/1991 (c) 1991 (USA)
-sf2ub                           // 14/02/1991 (c) 1991 (USA)
-sf2uc                           // 06/03/1991 (c) 1991 (USA)
-sf2ud                           // 18/03/1991 (c) 1991 (USA)
-sf2ue                           // 28/02/1991 (c) 1991 (USA)
-sf2uf                           // 11/04/1991 (c) 1991 (USA)
-sf2ug                           // 22/05/1991 (c) 1991 (USA, Rev. G)
-sf2uh                           // 22/05/1991 (c) 1991 (USA, Rev. H)
-sf2ui                           // 22/05/1991 (c) 1991 (USA, Rev. I)
-sf2uk                           // 01/11/1991 (c) 1991 (USA)
-sf2um                           // 12/03/1992 (c) 1991 (USA)
-sf2v004                         // hack
-sf2yyc                          // hack
-sf2ceds6                        // bootleg
-sf2cems6a                       // bootleg
-sf2cems6b                       // bootleg
-sf2cems6c                       // bootleg
-sfach                           // CPS Changer (Street Fighter Alpha)
-sfzbch                          // CPS Changer (Street Fighter ZERO Brazil)
-sfzch                           // CPS Changer (Street Fighter ZERO)
-slammast                        // 13/07/1993 (c) 1993 (World) (CPS1 + QSound)
-slammastu                       // 13/07/1993 (c) 1993 (USA) (CPS1 + QSound)
-strider                         // 3/1989 (c) 1989 (not explicitly stated but should be USA)
-striderj                        // 3/1989 (c) 1989 (Japan)
-striderjr                       // 3/1989 (c) 1989 (Japan)
-striderua                       // 3/1989 (c) 1989 (not explicitly stated but should be USA)
-strideruc                       // conversion
-unsquad                         // 8/1989 (c) 1989 (USA)
-varth                           // 14/07/1992 (c) 1992 (World)
-varthb2                         // bootleg
-varthj                          // 14/07/1992 (c) 1992 (Japan)
-varthjr                         // 14/07/1992 (c) 1992 (Japan)
-varthr1                         // 12/06/1992 (c) 1992 (World)
-varthu                          // 12/06/1992 (c) 1992 (USA)
-willow                          // 6/1989 (c) 1989 (World)
-willowj                         // 6/1989 (c) 1989 (Japan)
-willowu                         // 6/1989 (c) 1989 (USA)
-willowuo                        // 6/1989 (c) 1989 (USA)
-wof                             // 31/10/1992 (c) 1992 (World) (CPS1 + QSound)
-wofa                            // 05/10/1992 (c) 1992 (Asia)  (CPS1 + QSound)
-wofch                           // CPS Changer (Tenchi Wo Kurau II)
-wofhfh                          // bootleg
-wofj                            // 31/10/1992 (c) 1992 (Japan) (CPS1 + QSound)
-wofr1                           // 02/10/1992 (c) 1992 (World) (CPS1 + QSound)
-wofu                            // 31/10/1992 (c) 1992 (USA) (CPS1 + QSound)
-wonder3                         // 20/05/1991 (c) 1991 (Japan)
+sf2
+sf2acc
+sf2acca
+sf2accp2
+sf2amf
+sf2amf2
+sf2amf3
+sf2bhh
+sf2ce
+sf2ceblp
+sf2cebltw
+sf2ceea
+sf2ceec
+sf2ceja
+sf2cejb
+sf2cejc
+sf2cet
+sf2ceupl
+sf2ceua
+sf2ceub
+sf2ceuc
+sf2dkot2
+sf2dongb
+sf2ea
+sf2eb
+sf2ebbl
+sf2ebbl2
+sf2ebbl3
+sf2ed
+sf2ee
+sf2ef
+sf2em
+sf2en
+sf2hf
+sf2hfj
+sf2hfu
+sf2j
+sf2j17
+sf2ja
+sf2jc
+sf2jf
+sf2jh
+sf2jl
+sf2koryu
+sf2level
+sf2ceuab8
+sf2ceuab2
+sf2amf4
+sf2koryu3
+sf2amf9
+sf2rb4
+sf2ceuabl
+sf2mega
+sf2mkot
+sf2qp1
+sf2qp2
+sf2rb
+sf2rb2
+sf2rb3
+sf2re
+sf2red
+sf2reda
+sf2redp2
+sf2rk
+sf2rules
+sf2stt
+sf2thndr
+sf2thndr2
+sf2ua
+sf2ub
+sf2uc
+sf2ud
+sf2ue
+sf2uf
+sf2ug
+sf2uh
+sf2ui
+sf2uk
+sf2um
+sf2v004
+sf2yyc
+sf2ceds6
+sf2cems6a
+sf2cems6b
+sf2cems6c
+sfach
+sfzbch
+sfzch
+slammast
+slammastu
+strider
+striderj
+striderjr
+striderua
+strideruc
+unsquad
+varth
+varthb2
+varthb3
+varthj
+varthjr
+varthr1
+varthu
+willow
+willowj
+willowu
+willowuo
+wof
+wofa
+wofch
+wofhfh
+wofj
+wofr1
+wofu
+wonder3
 
 @source:cps1.cpp
-3wondrud	                    // Bootleg
-3wondersha	                    // Bootleg
-captcoud	                    // Bootleg
-daimakaib	                    // Bootleg
-dinoh	                        // Bootleg
-dinoha	                        // Bootleg
-dinotpic	                    // Bootleg
-dinohc	                        // Bootleg
-dinopic5	                    // Bootleg
-dinod	                        // Bootleg
-dikd	                        // Bootleg
-cawingh                         // Bootleg
-kodh                            // Bootleg
-kodda                           // Bootleg
-knightsh                        // Bootleg
-knightsh2                       // Bootleg
-knightsb5                       // Bootleg
-pnicku	                        // Bootleg
-punisherud1	                    // Bootleg
-punisherud2	                    // Bootleg
-sf2ceuab3                       // bootleg
-sf2ceuab4                       // bootleg
-//sf2ceuab5                     // bootleg
-//sf2ceuab6                       // bootleg
-//sf2ceuab7                       // bootleg
-//sf2ceuab9                       // bootleg
-sf2cejabl	                    // Bootleg
-sf2rb5	                        // Bootleg
-sf2rb6	                        // Bootleg
-pang3r1a                        // Capcom
-pang3b6	                        // Bootleg
-pang3b7	                        // Bootleg
-sf2mega2	                    // Bootleg
-sf2amf5	                        // Bootleg
-sf2amf6	                        // Bootleg
-sf2amf7	                        // Bootleg
-sf2amf8	                        // Bootleg
-sf2amf11                        // Bootleg
-sf2amf12	                    // Bootleg
-sf2amf13	                    // Bootleg
-sf2amf14	                    // Bootleg
-sf2tlona	                    // Bootleg
-sf2tlonb	                    // Bootleg
-sf2tlonc	                    // Bootleg
-sf2red2	                        // Bootleg
-sf2v0042	                    // Bootleg
-sf2v0043	                    // Bootleg
-sf2yyc2	                        // Bootleg
-sf2cejab2	                    // Bootleg
-sf2sl73a                        // Bootleg
-sf2koryu2                       // Bootleg
-sf2koryua	                    // Bootleg
-sf2tlona2	                    // Bootleg
-sf2tlonb2	                    // Bootleg
-sf2tlonc2	                    // Bootleg
-sf2ceucbl                       // bootleg
-sf2rk2                          // bootleg
-sf2b3                           // Bootleg
-sf2b4                           // Bootleg
-sf2ebbl4                        // bootleg
-sf2mkot2                        // Bootleg
-sf2ly                           // Capcom
-sf2hfjb	                        // Bootleg
-sf2hfjb2                        // Bootleg
-//sf2hfub                         // Bootleg (It has a graphics problem)
-slammastud	                    // Bootleg
-wofah	                        // Bootleg
-wofaha	                        // Bootleg
-wofahb	                        // Bootleg
-wofsjs	                        // Bootleg
-wofsjsa	                        // Bootleg
-//wofsjsb	                        // Bootleg
-wofssj	                        // Bootleg
-wofssja	                        // Bootleg
-wofsj	                        // Bootleg
-wofsja	                        // Bootleg
-wofsjb	                        // Bootleg
-wofjd	                        // Bootleg
-wofud	                        // Bootleg
+3wondrud
+3wondersha
+captcoud
+cawingh
+daimakaib
+dinoh
+dinoha
+dinotpic
+dinohc
+dinopic5
+dinod
+dikd
+ghoulsmaiden
+ghoulsknight
+ghoulsumaiden
+ghoulsuknight
+kodh
+kodda
+knightsh
+knightsh2
+knightsb5
+daimakaimaiden
+daimakaiknight
+pnicku
+punisherud1
+punisherud2
+sf2ceuab3
+sf2ceuab4
+sf2ceuab5
+sf2ceuab6
+sf2ceuab7
+sf2ceuab9
+sf2cejabl
+sf2rb5
+sf2rb6
+pang3r1a
+pang3b6
+pang3b7
+sf2mega2
+sf2amf5
+sf2amf6
+sf2amf7
+sf2amf8
+//sf2amf10
+sf2amf11
+sf2amf12
+sf2amf13
+sf2amf14
+sf2tlona
+sf2tlonb
+sf2tlonc
+sf2red2
+sf2v0042
+sf2v0043
+sf2yyc2
+sf2cejab2
+sf2sl73a
+sf2koryu2
+sf2koryua
+sf2tlona2
+sf2tlonb2
+sf2tlonc2
+sf2ceucbl
+sf2rk2
+sf2b3
+sf2b4
+sf2ebbl4
+sf2mkot2
+sf2ly
+sf2hfjb
+sf2hfjb2
+//sf2hfub
+slammastud
+wofah
+wofaha
+wofahb
+wofsjs
+wofsjsa
+//wofsjsb
+wofssj
+wofssja
+wofsj
+wofsja
+wofsjb
+wofjd
+wofud
 
 @source:cps1.cpp
-cps1demo                        // HomeBrew
-cps1frog                        // HomeBrew
-cps1tests                       // HomeBrew
-cps1testm                       // HomeBrew
+ffightjd
+ffightud
+
+@source:cps1.cpp
+cps1demo
+cps1frog
+cps1tests
+cps1testm
 
 @source:cps1bl_5205.cpp
-captcommb2                      // bootleg
-//captcommb3                      // bootleg
-knightsb                        // bootleg
-knightsb3                       // bootleg
-knightsb4                       // bootleg
-sf2b                            // bootleg
-sf2b2                           // bootleg
-sf2b5                           // bootleg
-sf2ceb                          // bootleg
-sf2ceb2                         // bootleg
-sf2ceb3                         // bootleg
-sf2ceb4                         // bootleg
-sf2ceb5                         // bootleg
-sf2mdt                          // bootleg
-sf2mdta                         // bootleg
-sf2mdtb                         // bootleg
+captcommb2
+//captcommb3
+knightsb
+knightsb3
+knightsb4
+sf2b
+sf2b2
+sf2b5
+sf2ceb
+sf2ceb2
+sf2ceb3
+sf2ceb4
+sf2ceb5
+sf2mdt
+sf2mdta
+sf2mdtb
+sf2mdtc
 
 @source:cps1bl_pic.cpp
-dinopic                         // bootleg
-dinopic2                        // bootleg
-dinopic3                        // bootleg
-dinopic4                        // bootleg
-jurassic99                      // bootleg
-punipic                         // bootleg
-punipic2                        // bootleg
-punipic3                        // bootleg
-slampic                         // bootleg
-slampic2                        // bootleg
-wofpic                          // bootleg
+dinopic
+dinopic2
+dinopic3
+dinopic4
+jurassic99
+punipic
+punipic2
+punipic3
+slampic
+slampic2
+wofpic
 
 @source:cps2.cpp
-1944                            // 20/06/2000 (c) 2000 Eighting/Raizing (Euro)
-1944d                           //
-1944j                           // 20/06/2000 (c) 2000 Eighting/Raizing (Japan)
-1944u                           // 20/06/2000 (c) 2000 Eighting/Raizing (USA)
-1944n                           // 20/06/2000 (c) 2000 Eighting/Raizing (Euro)
-19xx                            // 04/01/1996 (c) 1996 (Euro)
-19xxu                           // 07/12/1995 (c) 1996 (USA)
-19xxa                           // 04/01/1996 (c) 1996 (Asia)
-19xxar1                         // 07/12/1995 (c) 1996 (Asia)
-19xxb                           // 18/12/1995 (c) 1996 (Brazil)
-19xxd                           //
-19xxh                           // 18/12/1995 (c) 1996 (Hispanic)
-19xxj                           // 04/01/1996 (c) 1996 (Japan)
-19xxjr1                         // 25/12/1995 (c) 1996 (Japan)
-19xxjr2                         // 07/12/1995 (c) 1996 (Japan)
-armwar                          // 24/10/1994 (c) 1994 (Euro)
-armwar1d                        //
-armwara                         // 24/10/1994 (c) 1994 (Asia)
-armwarar1                       // 20/09/1994 (c) 1994 (Asia)
-armwarb                         // 24/10/1994 (c) 1994 (Brazil)
-armwarr1                        // 11/10/1994 (c) 1994 (Euro)
-armwaru                         // 24/10/1994 (c) 1994 (USA)
-armwaru1                        // 20/09/1994 (c) 1994 (USA)
-avsp                            // 20/05/1994 (c) 1994 (Euro)
-avspa                           // 20/05/1994 (c) 1994 (Asia)
-avspd                           //
-avsph                           // 20/05/1994 (c) 1994 (Hispanic)
-avspj                           // 20/05/1994 (c) 1994 (Japan)
-avspu                           // 20/05/1994 (c) 1994 (USA)
-avspud                          //
-avspn                           // 20/05/1994 (c) 1994 (Euro)
-batcir                          // 19/03/1997 (c) 1997 (Euro)
-batcira                         // 19/03/1997 (c) 1997 (Asia)
-batcird                         //
-batcirj                         // 19/03/1997 (c) 1997 (Japan)
-choko                           // 20/08/2001 (c) 2001 Mitchell (Japan)
-chokop                          //
-csclub                          // 17/10/1997 (c) 1997 (Euro)
-csclub1                         // 22/07/1997 (c) 1997 (Euro)
-csclub1d                        //
-cscluba                         // 22/07/1997 (c) 1997 (Asia)
-csclubh                         // 22/07/1997 (c) 1997 (Hispanic)
-csclubj                         // 22/07/1997 (c) 1997 (Japan)
-csclubjy                        // 22/07/1997 (c) 1997 (Japan)
-cybots                          // 24/04/1995 (c) 1995 (Euro)
-cybotsj                         // 20/04/1995 (c) 1995 (Japan)
-cybotsjd                        //
-cybotsu                         // 24/04/1995 (c) 1995 (USA)
-cybotsud                        //
-ddsom                           // 19/06/1996 (c) 1996 (Euro)
-ddsoma                          // 19/06/1996 (c) 1996 (Asia)
-ddsomar1                        // 08/02/1996 (c) 1996 (Asia)
-ddsomb                          // 23/02/1996 (c) 1996 (Brazil)
-ddsomh                          // 23/02/1996 (c) 1996 (Hispanic)
-ddsomj                          // 19/06/1996 (c) 1996 (Japan)
-ddsomjr1                        // 06/02/1996 (c) 1996 (Japan)
-ddsomjr2                        // 23/02/1996 (c) 1996 (Japan)
-ddsomr1                         // 23/02/1996 (c) 1996 (Euro)
-ddsomr2                         // 09/02/1996 (c) 1996 (Euro)
-ddsomr3                         // 08/02/1996 (c) 1996 (Euro)
-ddsomu                          // 19/06/1996 (c) 1996 (USA)
-ddsomud                         //
-ddsomur1                        // 09/02/1996 (c) 1996 (USA)
-ddtod                           // 12/04/1994 (c) 1993 (Euro)
-ddtoda                          // 12/04/1994 (c) 1993 (Asia)
-ddtodar1                        // 13/01/1994 (c) 1993 (Asia)
-ddtodd                          //
-ddtodh                          // 12/04/1994 (c) 1993 (Hispanic)
-ddtodhr1                        // 25/01/1994 (c) 1993 (Hispanic)
-ddtodhr2                        // 13/01/1994 (c) 1993 (Hispanic)
-ddtodj                          // 12/04/1994 (c) 1993 (Japan)
-ddtodjr1                        // 25/01/1994 (c) 1993 (Japan)
-ddtodjr2                        // 13/01/1994 (c) 1993 (Japan)
-ddtodr1                         // 13/01/1994 (c) 1993 (Euro)
-ddtodu                          // 25/01/1994 (c) 1993 (USA)
-ddtodur1                        // 13/01/1994 (c) 1993 (USA)
-dimahoo                         // 21/01/2000 (c) 2000 Eighting/Raizing (USA)
-dimahoou                        // 21/01/2000 (c) 2000 Eighting/Raizing (USA)
-dimahoud                        //
-dstlk                           // 05/07/1994 (c) 1994 (Euro)
-dstlka                          // 05/07/1994 (c) 1994 (Asia)
-dstlkh                          // 18/08/1994 (c) 1994 (Hispanic)
-dstlkb                          //
-dstlku                          // 18/08/1994 (c) 1994 (USA)
-dstlku1d                        //
-dstlkur1                        // 05/07/1994 (c) 1994 (USA)
-ecofghtr                        // 03/12/1993 (c) 1994 (World)
-ecofghtra                       // 03/12/1993 (c) 1994 (Asia)
-ecofghtrd                       //
-ecofghtrh                       // 03/12/1993 (c) 1994 (Hispanic)
-ecofghtru                       // 15/02/1994 (c) 1994 (USA)
-ecofghtru1                      // 03/12/1993 (c) 1994 (USA)
-gigaman2                        // bootleg
-gigawing                        // 22/02/1999 (c) 1999 Takumi (USA)
-gigawinga                       // 22/02/1999 (c) 1999 Takumi (Asia)
-gigawingb                       // 22/02/1999 (c) 1999 Takumi (Brazil)
-gigawingd                       //
-gigawingh                       // 22/02/1999 (c) 1999 Takumi (Hispanic)
-gigawingj                       // 23/02/1999 (c) 1999 Takumi (Japan)
-gigawingjd                      //
-gmahou                          // 21/01/2000 (c) 2000 Eighting/Raizing (Japan)
-hsf2                            // 02/02/2004 (c) 2003, 2004 (USA)
-hsf2a                           // 02/02/2004 (c) 2003, 2004 (Asia)
-hsf2d                           //
-hsf2j                           // 02/02/2004 (c) 2003, 2004 (Japan)
-hsf2j1                          // 22/12/2003 (c) 2003, 2004 (Japan)
-hsf2j2                          //
-jyangoku                        // 27/05/1999 (c) 1999 (Japan)
-megaman2                        // 08/07/1996 (c) 1996 (USA)
-megaman2a                       // 08/07/1996 (c) 1996 (Asia)
-megaman2h                       // 12/07/1996 (c) 1996 (Hispanic)
-megamn2d                        //
-mmancp2u                        // 06/10/1995 (c) 1995 (USA)
-mmancp2ur1                      // 26/09/1995 (c) 1995 (USA)
-mmancp2ur2                      // 25/09/1995 (c) 1995 (USA)
-mmatrix                         // 12/04/2000 (c) 2000 Takumi (USA)
-mmatrixa                        // 12/04/2000 (c) 2000 Takumi (Asia)
-mmatrixd                        //
-mmatrixj                        // 12/04/2000 (c) 2000 Takumi (Japan)
-mpang                           // 10/10/2000 (c) 2000 Mitchell (Euro)
-mpangj                          // 11/10/2000 (c) 2000 Mitchell (Japan)
-mpangr1                         // 25/09/2000 (c) 2000 Mitchell (Euro)
-mpangu                          // 10/10/2000 (c) 2000 Mitchell (USA)
-mpanga                          // 10/10/2000 (c) 2000 Mitchell (Asia)
-mpangjd                         //
-msh                             // 24/10/1995 (c) 1995 (Euro)
-msha                            // 24/10/1995 (c) 1995 (Asia)
-mshb                            // 17/11/1995 (c) 1995 (Brazil)
-mshbr1                          // 24/10/1995 (c) 1995 (Brazil)
-mshh                            // 17/11/1995 (c) 1995 (Hispanic)
-mshj                            // 17/11/1995 (c) 1995 (Japan)
-mshjr1                          // 24/10/1995 (c) 1995 (Japan)
-mshu                            // 24/10/1995 (c) 1995 (USA)
-mshud                           //
-mshvsf                          // 25/06/1997 (c) 1997 (Euro)
-mshvsfa                         // 25/06/1997 (c) 1997 (Asia)
-mshvsfa1                        // 20/06/1997 (c) 1997 (Asia)
-mshvsfb                         // 27/08/1997 (c) 1997 (Brazil)
-mshvsfb1                        // 25/06/1997 (c) 1997 (Brazil)
-mshvsfh                         // 25/06/1997 (c) 1997 (Hispanic)
-mshvsfj                         // 07/07/1997 (c) 1997 (Japan)
-mshvsfj1                        // 02/07/1997 (c) 1997 (Japan)
-mshvsfj2                        // 25/06/1997 (c) 1997 (Japan)
-mshvsfu                         // 27/08/1997 (c) 1997 (USA)
-mshvsfu1                        // 25/06/1997 (c) 1997 (USA)
-mshvsfu1d                       //
-mvsc                            // 23/01/1998 (c) 1998 (Euro)
-mvsca                           // 23/01/1998 (c) 1998 (Asia)
-mvscar1                         // 12/01/1998 (c) 1998 (Asia)
-mvscb                           // 23/01/1998 (c) 1998 (Brazil)
-mvsch                           // 23/01/1998 (c) 1998 (Hispanic)
-mvscj                           // 23/01/1998 (c) 1998 (Japan)
-mvscjr1                         // 12/01/1998 (c) 1998 (Japan)
-mvscjsing                       // 23/01/1998 (c) 1998 (Japan) - Single PCB
-mvscr1                          // 12/01/1998 (c) 1998 (Euro)
-mvscu                           // 23/01/1998 (c) 1998 (USA)
-mvscud                          //
-mvscur1                         // 23/01/1998 (c) 1998 (USA)
-nwarr                           // 16/03/1995 (c) 1995 (Euro)
-nwarra                          // 02/03/1995 (c) 1995 (Asia)
-nwarrb                          // 03/04/1995 (c) 1995 (Brazil)
-nwarrh                          // 03/04/1995 (c) 1995 (Hispanic)
-nwarru                          // 06/04/1995 (c) 1995 (USA)
-nwarrud                         //
-pfghtj                          // 04/09/1997 (c) 1997 (Japan)
-pgear                           // 24/10/1994 (c) 1994 (Japan)
-pgearr1                         // 16/09/1994 (c) 1994 (Japan)
-progear                         // 17/01/2001 (c) 2001 Cave (USA)
-progeara                        // 17/01/2001 (c) 2001 Cave (Asia)
-progearj                        // 17/01/2001 (c) 2001 Cave (Japan)
-progearjbl                      //
-progearjd                       //
-progearud                       //
-pzloop2                         // 02/03/2001 (c) 2001 Mitchell (Euro)
-pzloop2j                        // 26/02/2001 (c) 2001 Mitchell (Japan)
-pzloop2jd                       //
-pzloop2jr1                      // 05/02/2001 (c) 2001 Mitchell (Japan)
-pzloop2jp                       //
-qndream                         // 26/08/1996 (c) 1996 (Japan)
-ringdest                        // 02/09/1994 (c) 1994 (Euro)
-ringdesta                       // 31/08/1994 (c) 1994 (Asia)
-ringdestb                       // 02/09/1994 (c) 1994 (Brazil) - factory region hack?
-ringdesth                       // 02/09/1994 (c) 1994 (Hispanic)
-ringdstd                        //
-rmancp2j                        // 22/09/1995 (c) 1995 (Japan)
-rockman2j                       // 08/07/1996 (c) 1996 (Japan)
-sfa                             // 27/07/1995 (c) 1995 (Euro)
-sfa2                            // 06/03/1996 (c) 1996 (Euro)
-sfa2u                           // 30/04/1996 (c) 1996 (USA)
-sfa2ur1                         // 06/03/1996 (c) 1996 (USA)
-sfa3                            // 04/09/1998 (c) 1998 (USA)
-sfa3b                           // 29/06/1998 (c) 1998 (Brazil)
-sfa3h                           // 04/09/1998 (c) 1998 (Hispanic)
-sfa3hr1                         // 29/06/1998 (c) 1998 (Hispanic)
-sfa3u                           // 04/09/1998 (c) 1998 (USA)
-sfa3ud                          //
-sfa3ur1                         // 29/06/1998 (c) 1998 (USA)
-sfa3us                          // 16/06/1998 (c) 1998 (USA)
-sfad                            //
-sfar1                           // 18/07/1995 (c) 1995 (Euro)
-sfar2                           // 27/06/1995 (c) 1995 (Euro)
-sfar3                           // 05/06/1995 (c) 1995 (Euro)
-sfau                            // 27/06/1995 (c) 1995 (USA)
-sfaud                           //
-sfz2a                           // 27/02/1996 (c) 1996 (Asia)
-sfz2ad                          //
-sfz2al                          // 26/08/1996 (c) 1996 (Asia)
-sfz2alr1                        // 05/08/1996 (c) 1996 (Asia)
-sfz2alb                         // 13/08/1996 (c) 1996 (Brazil)
-sfz2ald                         //
-sfz2alh                         // 13/08/1996 (c) 1996 (Hispanic)
-sfz2alj                         // 05/08/1996 (c) 1996 (Japan)
-sfz2b                           // 31/05/1996 (c) 1996 (Brazil)
-sfz2br1                         // 04/03/1996 (c) 1996 (Brazil)
-sfz2h                           // 04/03/1996 (c) 1996 (Hispanic)
-sfz2j                           // 30/04/1996 (c) 1996 (Japan)
-sfz2jd                          //
-sfz2jr1                         // 27/02/1996 (c) 1996 (Japan)
-sfz2n                           // 29/02/1996 (c) 1996 (Oceania)
-sfz3a                           // 04/09/1998 (c) 1998 (Asia)
-sfz3ar1                         // 01/07/1998 (c) 1998 (Asia)
-sfz3j                           // 04/09/1998 (c) 1998 (Japan)
-sfz3jr1                         // 27/07/1998 (c) 1998 (Japan)
-sfz3jr2                         // 29/06/1998 (c) 1998 (Japan)
-sfz3jr2d                        //
-sfza                            // 27/06/1995 (c) 1995 (Asia)
-sfzar1                          // 05/06/1995 (c) 1995 (Asia)
-sfzb                            // 09/11/1995 (c) 1995 (Brazil)
-sfzbr1                          // 27/07/1995 (c) 1995 (Brazil)
-sfzh                            // 18/07/1995 (c) 1995 (Hispanic)
-sfzhr1                          // 27/06/1995 (c) 1995 (Hispanic)
-sfzj                            // 27/07/1995 (c) 1995 (Japan)
-sfzjr1                          // 27/06/1995 (c) 1995 (Japan)
-sfzjr2                          // 05/06/1995 (c) 1995 (Japan)
-sgemf                           // 04/09/1997 (c) 1997 (USA)
-sgemfa                          // 04/09/1997 (c) 1997 (Asia)
-sgemfd                          //
-sgemfh                          // 04/09/1997 (c) 1997 (Hispanic)
-smbomb                          // 31/08/1994 (c) 1994 (Japan)
-smbombr1                        // 08/08/1994 (c) 1994 (Japan)
-spf2t                           // 29/05/1996 (c) 1996 (Europe)
-spf2ta                          // 29/05/1996 (c) 1996 (Asia)
-spf2td                          //
-spf2th                          // 31/05/1996 (c) 1996 (Hispanic)
-spf2tu                          // 20/06/1996 (c) 1996 (USA)
-spf2xj                          // 31/05/1996 (c) 1996 (Japan)
-spf2xjd                         //
-ssf2                            // 05/10/1993 (c) 1993 (World)
-ssf2a                           // 05/10/1993 (c) 1993 (Asia)
-ssf2ar1                         // 14/09/1993 (c) 1993 (Asia)
-ssf2h                           // 11/09/1993 (c) 1993 (Hispanic)
-ssf2j                           // 05/10/1993 (c) 1993 (Japan)
-ssf2jr1                         // 11/09/1993 (c) 1993 (Japan)
-ssf2jr2                         // 10/09/1993 (c) 1993 (Japan)
-ssf2r1                          // 11/09/1993 (c) 1993 (World)
-ssf2r1d                         //
-ssf2t                           // 23/02/1994 (c) 1994 (World)
-ssf2td                          //
-ssf2ta                          // 23/02/1994 (c) 1994 (Asia)
-ssf2tad                         //
-ssf2tb                          // 19/11/1993 (c) 1993 (World)
-ssf2tba                         // 05/10/1993 (c) 1993 (Asia)
-ssf2tbd                         //
-ssf2tbh                         // 05/10/1993 (c) 1993 (Hispanic)
-ssf2tbj                         // 05/10/1993 (c) 1993 (Japan)
-ssf2tbj1                        // 11/09/1993 (c) 1993 (Japan)
-ssf2tbr1                        // 11/09/1993 (c) 1993 (World)
-ssf2tbu                         // 11/09/1993 (c) 1993 (USA)
-ssf2th                          // 23/02/1994 (c) 1994 (Hispanic)
-ssf2tu                          // 23/03/1994 (c) 1994 (USA)
-ssf2tur1                        // 23/02/1994 (c) 1994 (USA)
-ssf2u                           // 11/09/1993 (c) 1993 (USA)
-ssf2ud                          //
-ssf2us2                         // bootleg of 11/09/1993 (c) 1993 (USA)
-ssf2xj                          // 11/03/1994 (c) 1994 (Japan)
-ssf2xjr1                        // 23/02/1994 (c) 1994 (Japan)
-ssf2xjr1d                       //
-ssf2xjr1r                       // 23/02/1994 (c) 1994 (Japan)
-uecology                        // 03/12/1993 (c) 1994 (Japan)
-vampj                           // 05/07/1994 (c) 1994 (Japan)
-vampja                          // 05/07/1994 (c) 1994 (Japan)
-vampjr1                         // 30/06/1994 (c) 1994 (Japan)
-vhunt2                          // 29/09/1997 (c) 1997 (Japan)
-vhunt2d                         //
-vhunt2r1                        // 13/09/1997 (c) 1997 (Japan)
-vhuntj                          // 02/03/1995 (c) 1995 (Japan)
-vhuntjr1                        // 07/03/1995 (c) 1995 (Japan)
-vhuntjr1s                       // 07/03/1995 (c) 1995 (Japan)
-vhuntjr2                        // 02/03/1995 (c) 1995 (Japan)
-vsav                            // 19/05/1997 (c) 1997 (Euro)
-vsav2                           // 13/09/1997 (c) 1997 (Japan)
-vsav2d                          //
-vsava                           // 19/05/1997 (c) 1997 (Asia)
-vsavb                           // 19/05/1997 (c) 1997 (Brazil)
-vsavd                           //
-vsavh                           // 19/05/1997 (c) 1997 (Hispanic)
-vsavj                           // 19/05/1997 (c) 1997 (Japan)
-vsavu                           // 19/05/1997 (c) 1997 (USA)
-xmcota                          // 31/03/1995 (c) 1994 (Euro)
-xmcotaa                         // 05/01/1995 (c) 1994 (Asia)
-xmcotaar1                       // 19/12/1994 (c) 1994 (Asia)
-xmcotaar2                       // 17/12/1994 (c) 1994 (Asia)
-xmcotab                         // 31/03/1995 (c) 1995 (Brazil)
-xmcotah                         // 31/03/1995 (c) 1994 (Hispanic)
-xmcotahr1                       // 05/01/1995 (c) 1994 (Hispanic)
-xmcotaj                         // 05/01/1995 (c) 1994 (Japan)
-xmcotaj1                        // 22/12/1994 (c) 1994 (Japan)
-xmcotaj2                        // 19/12/1994 (c) 1994 (Japan)
-xmcotaj3                        // 17/12/1994 (c) 1994 (Japan)
-xmcotajr                        // 08/12/1994 (c) 1994 (Japan Rent)
-xmcotar1                        // 05/01/1995 (c) 1994 (Euro)
-xmcotar1d                       //
-xmcotau                         // 05/01/1995 (c) 1994 (USA)
-xmvsf                           // 04/10/1996 (c) 1996 (Euro)
-xmvsfa                          // 23/10/1996 (c) 1996 (Asia)
-xmvsfar1                        // 04/10/1996 (c) 1996 (Asia)
-xmvsfar2                        // 19/09/1996 (c) 1996 (Asia)
-xmvsfar3                        // 10/09/1996 (c) 1996 (Asia)
-xmvsfb                          // 23/10/1996 (c) 1996 (Brazil)
-xmvsfh                          // 04/10/1996 (c) 1996 (Hispanic)
-xmvsfj                          // 23/10/1996 (c) 1996 (Japan)
-xmvsfjr1                        // 04/10/1996 (c) 1996 (Japan)
-xmvsfjr2                        // 10/09/1996 (c) 1996 (Japan)
-xmvsfjr3                        // 09/09/1996 (c) 1996 (Japan)
-xmvsfjr4                        //
-xmvsfr1                         // 10/09/1996 (c) 1996 (Euro)
-xmvsfu                          // 23/10/1996 (c) 1996 (USA)
-xmvsfu1d                        //
-xmvsfur1                        // 04/10/1996 (c) 1996 (USA)
-xmvsfur2                        // 10/09/1996 (c) 1996 (USA)
+1944
+1944d
+1944j
+1944u
+1944n
+19xx
+19xxu
+19xxa
+19xxar1
+19xxb
+19xxd
+19xxh
+19xxj
+19xxjr1
+19xxjr2
+armwar
+armwar1d
+armwara
+armwarar1
+armwarb
+armwarr1
+armwaru
+armwaru1
+avsp
+avspa
+avspd
+avsph
+avspj
+avspu
+avspud
+avspn
+batcir
+batcira
+batcird
+batcirj
+choko
+chokop
+csclub
+csclub1
+csclub1d
+cscluba
+csclubh
+csclubj
+csclubjy
+cybots
+cybotsj
+cybotsjd
+cybotsu
+cybotsud
+ddsom
+ddsoma
+ddsomar1
+ddsomb
+ddsomh
+ddsomj
+ddsomjr1
+ddsomjr2
+ddsomr1
+ddsomr2
+ddsomr3
+ddsomu
+ddsomud
+ddsomur1
+ddtod
+ddtoda
+ddtodar1
+ddtodd
+ddtodh
+ddtodhr1
+ddtodhr2
+ddtodj
+ddtodjr1
+ddtodjr2
+ddtodr1
+ddtodu
+ddtodur1
+dimahoo
+dimahoou
+dimahoud
+dstlk
+dstlka
+dstlkb
+dstlkh
+dstlku
+dstlku1d
+dstlkur1
+ecofghtr
+ecofghtra
+ecofghtrd
+ecofghtrh
+ecofghtru
+ecofghtru1
+gigaman2
+gigawing
+gigawinga
+gigawingb
+gigawingd
+gigawingh
+gigawingj
+gigawingjd
+gmahou
+hsf2
+hsf2a
+hsf2d
+hsf2j
+hsf2j1
+hsf2j2
+jyangoku
+megaman2
+megaman2a
+megaman2h
+megamn2d
+mmancp2u
+mmancp2ur1
+mmancp2ur2
+mmatrix
+mmatrixa
+mmatrixd
+mmatrixj
+mpang
+mpangj
+mpangr1
+mpangu
+mpanga
+mpangjd
+msh
+msha
+mshb
+mshbr1
+mshh
+mshj
+mshjr1
+mshu
+mshud
+mshvsf
+mshvsfa
+mshvsfa1
+mshvsfb
+mshvsfb1
+mshvsfh
+mshvsfj
+mshvsfj1
+mshvsfj2
+mshvsfu
+mshvsfu1
+mshvsfu1d
+mvsc
+mvsca
+mvscar1
+mvscb
+mvsch
+mvscj
+mvscjr1
+mvscjsing
+mvscr1
+mvscu
+mvscud
+mvscur1
+nwarr
+nwarra
+nwarrb
+nwarrh
+nwarru
+nwarrud
+pfghtj
+pgear
+pgearr1
+progear
+progeara
+progearj
+progearjbl
+progearjd
+progearud
+pzloop2
+pzloop2j
+pzloop2jd
+pzloop2jp
+pzloop2jr1
+qndream
+ringdest
+ringdesta
+ringdestb
+ringdesth
+ringdstd
+rmancp2j
+rockman2j
+sfa
+sfa2
+sfa2u
+sfa2ur1
+sfa3
+sfa3b
+sfa3h
+sfa3hr1
+sfa3u
+sfa3ud
+sfa3ur1
+sfa3us
+sfad
+sfar1
+sfar2
+sfar3
+sfau
+sfaud
+sfz2a
+sfz2ad
+sfz2al
+sfz2alr1
+sfz2alb
+sfz2ald
+sfz2alh
+sfz2alj
+sfz2b
+sfz2br1
+sfz2h
+sfz2j
+sfz2jd
+sfz2jr1
+sfz2n
+sfz3a
+sfz3ar1
+sfz3j
+sfz3jr1
+sfz3jr2
+sfz3jr2d
+sfza
+sfzar1
+sfzb
+sfzbr1
+sfzh
+sfzhr1
+sfzj
+sfzjr1
+sfzjr2
+sgemf
+sgemfa
+sgemfd
+sgemfh
+smbomb
+smbombr1
+spf2t
+spf2ta
+spf2td
+spf2th
+spf2tu
+spf2xj
+spf2xjd
+ssf2
+ssf2a
+ssf2ar1
+ssf2h
+ssf2j
+ssf2jr1
+ssf2jr2
+ssf2r1
+ssf2r1d
+ssf2t
+ssf2td
+ssf2ta
+ssf2tad
+ssf2tb
+ssf2tba
+ssf2tbd
+ssf2tbh
+ssf2tbj
+ssf2tbj1
+ssf2tbr1
+ssf2tbu
+ssf2th
+ssf2tu
+ssf2tur1
+ssf2u
+ssf2ud
+ssf2us2
+ssf2xj
+ssf2xjr1
+ssf2xjr1d
+ssf2xjr1r
+uecology
+vampj
+vampja
+vampjr1
+vhunt2
+vhunt2d
+vhunt2r1
+vhuntj
+vhuntjr1
+vhuntjr1s
+vhuntjr2
+vsav
+vsav2
+vsav2d
+vsava
+vsavb
+vsavd
+vsavh
+vsavj
+vsavu
+xmcota
+xmcotaa
+xmcotaar1
+xmcotaar2
+xmcotab
+xmcotah
+xmcotahr1
+xmcotaj
+xmcotaj1
+xmcotaj2
+xmcotaj3
+xmcotajr
+xmcotar1
+xmcotar1d
+xmcotau
+xmvsf
+xmvsfa
+xmvsfar1
+xmvsfar2
+xmvsfar3
+xmvsfb
+xmvsfh
+xmvsfj
+xmvsfjr1
+xmvsfjr2
+xmvsfjr3
+xmvsfjr4
+xmvsfr1
+xmvsfu
+xmvsfu1d
+xmvsfur1
+xmvsfur2
+
+@source:cps2.cpp
+ssf2tgmc
+ssf2tuc
+ssf2xuc
+mshvsfru
+mshvsfrj
+mshvsfex
+mshvsfej
+sfz2alr
+sfa2d
+sfa2g
+sfz2d
+sfz2da
+vhunt2te
+vsav2te
+
+@source:cps2.cpp
+suicide
 
 @source:cps3.cpp
 cps3boot                        // bootleg
@@ -33059,1071 +33094,1323 @@ twinbee                         // GX412 (c) 1985
 twinbeeb                        // Bubble System
 
 @source:neogeo.cpp
-neogeo                          // MVS
-neosd                           // NDS (.neo support)
-multimvs                        // Multimvs support
-2020bb                          // 0030 (c) 1991 SNK / Pallas
-2020bba                         // 0030 (c) 1991 SNK / Pallas
-2020bbh                         // 0030 (c) 1991 SNK / Pallas
-3countb                         // 0043 (c) 1993 SNK
-alpham2                         // 0007 (c) 1991 SNK
-alpham2p                        // 0007 (c) 1991 SNK (prototype)
-androdun                        // 0049 (c) 1992 Visco
-aodk                            // 0074 (c) 1994 ADK / SNK
-aof                             // 0044 (c) 1992 SNK
-aof2                            // 0056 (c) 1994 SNK
-aof2a                           // 0056 (c) 1994 SNK
-aof3                            // 0096 (c) 1996 SNK
-aof3k                           // 0196 Censored Korean release of aof3
-b2b                             // 0071 (c) 2000 Visco (released by NCI in 2010)
-bakatono                        // 0036 (c) 1991 Monolith Corp.
-bangbead                        // 0259 (c) 2000 Visco
-bjourney                        // 0022 (c) 1990 Alpha Denshi Co.
-bjourneyh                       //
-blazstar                        // 0239 (c) 1998 Yumekobo
-breakers                        // 0230 (c) 1996 Visco
-breakrev                        // 0245 (c) 1998 Visco
-bstars                          // 0002 (c) 1990 SNK
-bstars2                         // 0041 (c) 1992 SNK
-bstarsh                         // 0002 (c) 1990 SNK
-burningf                        // 0018 (c) 1991 SNK
-burningfh                       // 0018 (c) 1991 SNK
-burningfp                       // 0018 (c) 1991 SNK (prototype)
-burningfpa                      // 0018 (c) 1991 SNK (prototype)
-burningfpb                      // 0018 (c) 1991 SNK (prototype)
-crswd2bl                        // 0054 bootleg made from CD version
-crsword                         // 0037 (c) 1991 Alpha Denshi Co.
-ct2k3sa                         // bootleg of kof2001
-ct2k3sp                         // bootleg of kof2001
-cthd2003                        // bootleg of kof2001
-ctomaday                        // 0249 (c) 1999 Visco
-cyberlip                        // 0010 (c) 1990 SNK
-diggerma                        // No Game ID (unlicensed), (c) 2000 Kyle Hodgetts, prototype
-doubledr                        // 0082 (c) 1995 Technos
-dragonsh                        // same ID as gowcaizr, dev board
-eightman                        // 0025 (c) 1991 SNK / Pallas
-fatfursp                        // 0058 (c) 1993 SNK
-fatfurspa                       // 0058 (c) 1993 SNK
-fatfury1                        // 0033 (c) 1991 SNK
-fatfury2                        // 0047 (c) 1992 SNK
-fatfury2a                       // 0047 (c) 1992 SNK
-fatfury3                        // 0069 (c) 1995 SNK
-fatfury3a                       // 0069 (c) 1995 SNK
-fbfrenzy                        // 0034 (c) 1992 SNK
-fightfev                        // 0060 (c) 1994 Viccom
-fightfeva                       // 0060 (c) 1994 Viccom
-flipshot                        // 0247 (c) 1998 Visco
-froman2b                        // 098 hack - this is not a genuine MVS cart, its a bootleg made from the CD version
-fswords                         // 0187 Korean hack of samsho3
-galaxyfg                        // 0078 (c) 1995 Sunsoft
-ganryu                          // 0252 (c) 1999 Visco
-garou                           // 0253 (c) 1999 SNK
-garoubl                         // bootleg
-garouh                          // 0253 (c) 1999 SNK
-garouha                         // 0253 (c) 1999 SNK
-garoup                          // 0253 (c) 1999 SNK
-ghostlop                        // 0228 GhostLop (prototype) 1996? Data East
-goalx3                          // 0209 (c) 1995 Visco
-gowcaizr                        // 0094 (c) 1995 Technos
-gpilots                         // 0020 (c) 1991 SNK
-gpilotsh                        // 0020 (c) 1991 SNK
-gpilotsp                        // prototype
-gururin                         // 0067 (c) 1994 Face
-ironclad                        // 0220 (c) 1996 Saurus - Choutetsu Brikin'ger - Iron clad (protoype)
-ironclado                       // 0220 (c) 1996 Saurus - Choutetsu Brikin'ger - Iron clad (protoype, older)
-irrmaze                         // 0236 (c) 1997 SNK / Saurus
-janshin                         // 0048 (c) 1994 Aicom
-jockeygp                        //
-jockeygpa                       //
-joyjoy                          // 0021 (c) 1990 SNK
-kabukikl                        // 0092 (c) 1995 Hudson
-karnovr                         // 0066 (c) 1994 Data East Corporation
-kf10thep                        // bootleg of kof2002
-kf2k3pcb                        //
-kf2k2mp                         // bootleg
-kf2k2mp2                        // bootleg
-kf2k2pla                        // bootleg
-kf2k2pls                        // bootleg
-kf2k3bl                         // bootleg
-kf2k3bla                        // bootleg
-kf2k3pl                         // bootleg
-kf2k3upl                        // bootleg
-kf2k5uni                        // bootleg of kof2002
-kizuna                          // 0216 (c) 1996 SNK
-kizuna4p                        // 0216 (c) 1996 SNK - same cartridge as kizuna, needs extension board and a compatible MVS to enable 4p mode
-kof10th                         // bootleg of kof2002
-kof2000                         // 0257 (c) 2000 SNK
-kof2000n                        // 0257 (c) 2000 SNK
-kof2001                         // 0262 (c) 2001 Eolith / SNK
-kof2001h                        // 0262 (c) 2001 Eolith / SNK
-kof2002                         // 0265 (c) 2002 Eolith / Playmore
-kof2002b                        // bootleg
-kof2003                         // 0271 (c) 2003 Playmore
-kof2003h                        // 0271 (c) 2003 Playmore
-kof2k4se                        // bootleg of kof2002
-kof94                           // 0055 (c) 1994 SNK
-kof95                           // 0084 (c) 1995 SNK
-kof95a                          // 0084 (c) 1995 SNK, alternate board
-kof95h                          // 0084 (c) 1995 SNK
-kof96                           // 0214 (c) 1996 SNK
-kof96a                          // 0214 (c) 1996 SNK
-kof96h                          // 0214 (c) 1996 SNK
-kof97                           // 0232 (c) 1997 SNK
-kof97h                          // 0232 (c) 1997 SNK
-kof97k                          // 0232 (c) 1997 SNK
-kof97oro                        // bootleg of kof97
-kof97pls                        // bootleg of kof97
-kof98                           // 0242 (c) 1998 SNK
-kof98a                          // 0242 (c) 1998 SNK, alternate board
-kof98h                          // 0242 (c) 1998 SNK
-kof98k                          // 0242 (c) 1998 SNK
-kof98ka                         // 0242 (c) 1998 SNK
-kof99                           // 0251 (c) 1999 SNK
-kof99e                          // 0251 (c) 1999 SNK
-kof99h                          // 0251 (c) 1999 SNK
-kof99k                          // 0152 (c) 1999 SNK
-kof99ka                         // 0152 (c) 1999 SNK
-kof99p                          // 0251 (c) 1999 SNK
-kog                             // bootleg of kof97
-kogplus                         // bootleg of kof97
-kotm                            // 0016 (c) 1991 SNK
-kotm2                           // 0039 (c) 1992 SNK
-kotm2a                          // 0039 (c) 1992 SNK
-kotm2p                          // 0039 (c) 1992 SNK (prototype)
-kotmh                           // 0016 (c) 1991 SNK
-lans2004                        // bootleg of shocktr2
-lastblad                        // 0234 (c) 1997 SNK
-lastblada                       // 0234 (c) 1997 SNK
-lastbladh                       // 0234 (c) 1997 SNK
-lastbld2                        // 0243 (c) 1998 SNK
-lasthope                        //
-lastsold                        // 0196 Censored Korean release of lastblad
-lbowling                        // 0019 (c) 1990 SNK
-legendos                        // 0029 (c) 1991 SNK
-lresort                         // 0024 (c) 1992 SNK
-lresortp                        // prototype
-magdrop2                        // 0221 (c) 1996 Data East Corporation
-magdrop3                        // 0233 (c) 1997 Data East Corporation
-maglord                         // 0005 (c) 1990 Alpha Denshi Co.
-maglordh                        // 0005 (c) 1990 Alpha Denshi Co.
-mahretsu                        // 0004 (c) 1990 SNK
-marukodq                        // 0206 (c) 1995 Takara
-matrim                          // 0266 (c) 2003 Atlus
-matrimbl                        // bootleg
-miexchng                        // 0231 (c) 1997 Face
-minasan                         // 0027 (c) 1990 Monolith Corp.
-moshougi                        // 0203 (c) 1995 ADK / SNK
-ms5pcb                          // SNK Playmore
-ms4plus                         // Bootleg
-ms5plus                         // Bootleg
-mslug                           // Nazca
-mslug2                          // SNK
-mslug3                          // SNK
-mslug3a                         // SNK
-mslug3h                         // SNK
-mslug3b6                        // Bootleg
-mslug4                          // Mega / Playmore
-mslug4h                         // Mega / Playmore
-mslug5                          // SNK Playmore
-mslug5h                         // SNK Playmore
-mslug5b1                        // Neogeo
-mslugx                          // SNK
-mutnat                          // 0014 (c) 1992 SNK
-nam1975                         // 0001 (c) 1990 SNK
-ncombat                         // 0009 (c) 1990 Alpha Denshi Co.
-ncombath                        // 0009 (c) 1990 Alpha Denshi Co.
-ncommand                        // 0050 (c) 1992 Alpha Denshi Co.
-neobombe                        // 0093 (c) 1997 Hudson
-neocup98                        // 0244 (c) 1998 SNK
-neodrift                        // 0213 (c) 1996 Visco
-neomrdo                         // 0207 (c) 1996 Visco
-ninjamas                        // 0217 (c) 1996 ADK / SNK
-nitd                            // 0260 (c) 2000 Eleven / Gavaking
-nitdbl                          // bootleg
-overtop                         // 0212 (c) 1996 ADK
-panicbom                        // 0073 (c) 1994 Eighting / Hudson
-pbobbl2n                        // 0248 (c) 1999 Taito (SNK license)
-pbobblen                        // 0083 (c) 1994 Taito
-pbobblenb                       // bootleg
-pgoal                           // 0219 (c) 1996 Saurus
-pnyaa                           // 0267 (c) 2003 Aiky / Taito
-pnyaaa                          // 0267 (c) 2003 Aiky / Taito
-popbounc                        // 0237 (c) 1997 Video System Co.
-preisle2                        // 0255 (c) 1999 Yumekobo
-pspikes2                        // 0068 (c) 1994 Video System Co.
-pulstar                         // 0089 (c) 1995 Aicom
-pulstara                        // 0089 (c) 1995 Aicom
-puzzldpr                        // 0235 (c) 1997 Taito (Visco license)
-puzzledp                        // 0202 (c) 1995 Taito (Visco license)
-quizdai2                        // 0042 (c) 1992 SNK
-quizdais                        // 0023 (c) 1991 SNK
-quizdaisk                       // 0123 (c) 1991 SNK
-quizkof                         // 0080 (c) 1995 Saurus
-quizkofk                        // 0080 (c) 1995 Saurus
-ragnagrd                        // 0218 (c) 1996 Saurus
-rbff1                           // 0095 (c) 1995 SNK
-rbff1a                          // 0095 (c) 1995 SNK
-rbff1k                          // 0095 (c) 1995 SNK
-rbff1ka                         // 0095 (c) 1995 SNK
-rbff2                           // 0240 (c) 1998 SNK
-rbff2h                          // 0240 (c) 1998 SNK
-rbff2k                          // 0140 Censored Korean release of rbff2
-rbffspec                        // 0223 (c) 1996 SNK
-rbffspeck                       // 0124 (c) 1996 SNK
-ridhero                         // 0006 (c) 1990 SNK
-ridheroh                        // 0006 (c) 1990 SNK
-roboarmy                        // 0032 (c) 1991 SNK
-roboarmya                       // 0032 (c) 1991 SNK
-rotd                            // 0264 (c) 2002 Evoga
-rotdh                           // 0264 (c) 2002 Evoga
-s1945p                          // 0254 (c) 1999 Psikyo
-samsh5sp                        // 0272 (c) 2004 Playmore
-samsh5sph                       // 0272 (c) 2004 Playmore
-samsh5spho                      // 0272 (c) 2004 Playmore
-samsho                          // 0045 (c) 1993 SNK
-samshoh                         // 0045 (c) 1993 SNK
-samshoa                         //
-samsho2                         // 0063 (c) 1994 SNK
-samsho2k                        // 0063 (c) 1994 SNK (Korean hack)
-samsho2ka                       // 0063 (c) 1994 SNK (Korean hack)
-samsho3                         // 0087 (c) 1995 SNK
-samsho3h                        // 0087 (c) 1995 SNK
-samsho4                         // 0222 (c) 1996 SNK
-samsho4k                        // Censored Korean release of samsho4
-samsho5                         // 0270 (c) 2003 Playmore
-samsho5a                        // 0270 (c) 2003 Playmore
-samsho5h                        // 0270 (c) 2003 Playmore
-samsho5b                        // bootleg
-savagere                        // 0059 (c) 1995 SNK
-sbp                             // (c)2004 Vektorlogik
-sdodgeb                         // 0208 (c) 1996 Technos
-sengoku                         // 0017 (c) 1991 SNK
-sengokuh                        // 0017 (c) 1991 SNK
-sengoku2                        // 0040 (c) 1993 SNK
-sengoku3                        // 0261 (c) 2001 Noise Factory / SNK
-sengoku3a                       //
-shocktr2                        // 0246 (c) 1998 Saurus
-shocktro                        // 0238 (c) 1997 Saurus
-shocktroa                       // 0238 (c) 1997 Saurus
-socbrawl                        // 0031 (c) 1991 SNK
-socbrawlh                       // 0031 (c) 1991 SNK
-sonicwi2                        // 0075 (c) 1994 Video System Co.
-sonicwi3                        // 0097 (c) 1995 Video System Co.
-spinmast                        // 0062 (c) 1993 Data East Corporation
-ssideki                         // 0052 (c) 1992 SNK
-ssideki2                        // 0061 (c) 1994 SNK
-ssideki3                        // 0081 (c) 1995 SNK
-ssideki4                        // 0215 (c) 1996 SNK
-stakwin                         // 0088 (c) 1995 Saurus
-stakwindev                      // prototype
-stakwin2                        // 0227 (c) 1996 Saurus
-strhoop                         // 0079 (c) 1994 Data East Corporation
-superspy                        // 0011 (c) 1990 SNK
-svcpcb                          // 0269 (c) 2003 Playmore / Capcom - JAMMA PCB
-svcpcba                         // 0269 (c) 2003 Playmore / Capcom - JAMMA PCB
-svc                             // 0269 (c) 2003 Playmore / Capcom
-svcboot                         // bootleg
-svcplus                         // bootleg
-svcplusa                        // bootleg
-svcsplus                        // bootleg
-tophuntr                        // 0046 (c) 1994 SNK
-tophuntrh                       // 0046 (c) 1994 SNK
-tpgolf                          // 0003 (c) 1990 SNK
-trally                          // 0038 (c) 1991 Alpha Denshi Co.
-turfmast                        // 0200 (c) 1996 Nazca
-twinspri                        // 0224 (c) 1996 ADK
-twsoc96                         // 0086 (c) 1996 Tecmo
-viewpoin                        // 0051 (c) 1992 Sammy
-viewpoinp                       //
-vliner                          //
-vliner7e                        //
-vliner6e                        //
-vliner54                        //
-vliner53                        //
-wakuwak7                        // 0225 (c) 1996 Sunsoft
-wh1                             // 0053 (c) 1992 Alpha Denshi Co.
-wh1h                            // 0053 (c) 1992 Alpha Denshi Co.
-wh1ha                           // 0053 (c) 1992 Alpha Denshi Co.
-wh2                             // 0057 (c) 1993 ADK
-wh2h                            //
-wh2j                            // 0064 (c) 1994 ADK / SNK
-wh2ja                           // 0064 (c) 1994 ADK / SNK
-whp                             // 0090 (c) 1995 ADK / SNK
-wjammers                        // 0065 (c) 1994 Data East Corporation
-zedblade                        // 0076 (c) 1994 NMK
-zintrckb                        // 0211 hack - this is not a genuine MVS proto, its a bootleg made from the CD version
-zupapa                          // 0070 Zupapa - released in 2001, 1994 prototype probably exists
+neogeo
+//nggno
+neosd
+multimvs
+2020bb
+2020bba
+2020bbh
+3countb
+alpham2
+alpham2p
+androdun
+aodk
+aof
+aof2
+aof2a
+aof3
+aof3k
+b2b
+bakatono
+bangbead
+bjourney
+bjourneyh
+blazstar
+breakers
+breakrev
+bstars
+bstars2
+bstarsh
+burningf
+burningfh
+burningfp
+burningfpa
+burningfpb
+crswd2bl
+crsword
+ct2k3sa
+ct2k3sp
+cthd2003
+ctomaday
+cyberlip
+diggerma
+doubledr
+dragonsh
+eightman
+fatfursp
+fatfurspa
+fatfury1
+fatfury2
+fatfury2a
+fatfury3
+fatfury3a
+fbfrenzy
+fightfev
+fightfeva
+flipshot
+froman2b
+fswords
+galaxyfg
+ganryu
+garou
+garoubl
+garouh
+garouha
+garoup
+ghostlop
+goalx3
+gowcaizr
+gpilots
+gpilotsh
+gpilotsp
+gururin
+ironclad
+ironclado
+irrmaze
+janshin
+jockeygp
+jockeygpa
+joyjoy
+kabukikl
+karnovr
+kf10thep
+kf2k3pcb
+kf2k2mp
+kf2k2mp2
+kf2k2pla
+kf2k2pls
+kf2k3bl
+kf2k3bla
+kf2k3pl
+kf2k3upl
+kf2k5uni
+kizuna
+kizuna4p
+kof10th
+kof2000
+kof2000n
+kof2001
+kof2001h
+kof2002
+kof2002b
+kof2003
+kof2003h
+kof2k4se
+kof94
+kof95
+kof95a
+kof95h
+kof96
+kof96a
+kof96h
+kof97
+kof97h
+kof97k
+kof97oro
+kof97pls
+kof98
+kof98a
+kof98h
+kof98k
+kof98ka
+kof99
+kof99e
+kof99h
+kof99k
+kof99ka
+kof99p
+kog
+kogplus
+kotm
+kotm2
+kotm2a
+kotm2p
+kotmh
+lans2004
+lastblad
+lastblada
+lastbladh
+lastbld2
+lasthope
+lastsold
+lbowling
+legendos
+lresort
+lresortp
+magdrop2
+magdrop3
+maglord
+maglordh
+mahretsu
+marukodq
+matrim
+matrimbl
+miexchng
+minasan
+moshougi
+ms5pcb
+ms4plus
+ms5plus
+mslug
+mslug2
+mslug3
+mslug3a
+mslug3b6
+mslug3h
+mslug4
+mslug4h
+mslug5
+mslug5b1
+mslug5h
+mslugx
+mutnat
+nam1975
+ncombat
+ncombath
+ncommand
+neobombe
+neocup98
+neodrift
+neomrdo
+ninjamas
+nitd
+nitdbl
+overtop
+panicbom
+pbobbl2n
+pbobblen
+pbobblenb
+pgoal
+pnyaa
+pnyaaa
+popbounc
+preisle2
+pspikes2
+pulstar
+pulstara
+puzzldpr
+puzzledp
+quizdai2
+quizdais
+quizdaisk
+quizkof
+quizkofk
+ragnagrd
+rbff1
+rbff1a
+rbff1k
+rbff1ka
+rbff2
+rbff2h
+rbff2k
+rbffspec
+rbffspeck
+ridhero
+ridheroh
+roboarmy
+roboarmya
+rotd
+rotdh
+s1945p
+samsh5sp
+samsh5sph
+samsh5spho
+samsho
+samshoh
+samshoa
+samsho2
+samsho2k
+samsho2ka
+samsho3
+samsho3h
+samsho4
+samsho4k
+samsho5
+samsho5a
+samsho5b
+samsho5h
+savagere
+sbp
+sdodgeb
+sengoku
+sengokuh
+sengoku2
+sengoku3
+sengoku3a
+shocktr2
+shocktro
+shocktroa
+socbrawl
+socbrawlh
+sonicwi2
+sonicwi3
+spinmast
+ssideki
+ssideki2
+ssideki3
+ssideki4
+stakwin
+stakwindev
+stakwin2
+strhoop
+superspy
+svcpcb
+svcpcba
+svc
+svcboot
+svcplus
+svcplusa
+svcsplus
+tophuntr
+tophuntrh
+tpgolf
+trally
+turfmast
+twinspri
+twsoc96
+viewpoin
+viewpoinp
+vliner
+vliner7e
+vliner6e
+vliner54
+vliner53
+wakuwak7
+wh1
+wh1h
+wh1ha
+wh2
+wh2h
+wh2j
+wh2ja
+whp
+wjammers
+zedblade
+zintrckb
+zupapa
 
 @source:neogeo.cpp
-bangbedd                        // Decrypted / Bootleg
-cthd2k3d                        // Decrypted / Bootleg
-cthd2k3da                       // Decrypted / Bootleg
-cthd2k3a                        // Decrypted / Bootleg
-ct2k3spd                        // Decrypted / Bootleg
-ganryud                         // Decrypted / Bootleg
-garoud                          // Decrypted / Bootleg
-garouhd                         // Decrypted / Bootleg
-jockygpd                        // Decrypted / Bootleg
-kof96ep                         // Decrypted / Bootleg
-kof97pla                        // Decrypted / Bootleg
-kof97orod                       // Decrypted / Bootleg
-kof99d                          // Decrypted / Bootleg
-kof99kd                         // Decrypted / Bootleg
-kof2kd                          // Decrypted / Bootleg
-kof2knd                         // Decrypted / Bootleg
-kof2k1d                         // Decrypted / Bootleg
-kof2k1hd                        // Decrypted / Bootleg
-kf2k1bh                         // Decrypted / Bootleg
-kf2k1pls                        // Decrypted / Bootleg
-kf2k1plse                       // Encrypted / Bootleg
-kf2k1plsd                       // Decrypted / Bootleg
-kf2k1pla                        // Decrypted / Bootleg
-kf2k1plae                       // Encrypted / Bootleg
-kf2k1plad                       // Decrypted / Bootleg
-kf2k1plap                       // Predecrypted / Bootleg
-kof2k2d                         // Decrypted / Bootleg
-kof2k2nd                        // Decrypted / Bootleg
-kf2k2plae                       // Encrypted / Bootleg
-kf2k2plad                       // Decrypted / Bootleg
-kf2k2plap                       // Predecrypted / Bootleg
-kf2k2plbe                       // Encrypted / Bootleg
-kf2k2plbd                       // Decrypted / Bootleg
-kf2k2plbp                       // Predecrypted / Bootleg
-kf2k2plc                        // Decrypted / Bootleg
-kf2k2plce                       // Encrypted / Bootleg
-kf2k2plcd                       // Decrypted / Bootleg
-kf2k2pld                        // Decrypted / Bootleg
-kf2k2plde                       // Encrypted / Bootleg
-kf2k2pldd                       // Decrypted / Bootleg
-kf2k2ple                        // Decrypted / Bootleg
-kf2k2plee                       // Encrypted / Bootleg
-kf2k2pled                       // Decrypted / Bootleg
-kf2k2plep                       // Predecrypted / Bootleg
-kf2k2mpl                        // Decrypted / Bootleg
-kf2k2mpp                        // Predecrypted / Bootleg
-kf2k2mpe                        // Encrypted / Bootleg
-kf2k2mpd                        // Decrypted / Bootleg
-kf2k2mp2e                       // Encrypted / Bootleg
-kf2k2mp2d                       // Decrypted / Bootleg
-kf2k2mp2p                       // Predecrypted / Bootleg
-kof2k3d                         // Decrypted / Bootleg
-kf2k3bd                         // Decrypted / Bootleg
-kof2k3hd                        // Decrypted / Bootleg
-kof2k3nd                        // Decrypted / Bootleg
-kf2k3pcd                        // Decrypted / Bootleg
-kf2k3pd                         // Decrypted / Bootleg
-kf2k3upd                        // Decrypted / Bootleg
-kogd                            // Decrypted / Bootleg
-kogplusd                        // Decrypted / Bootleg
-kof10thd                        // Decrypted / Bootleg
-kf10thepp                       // Predecrypted / Bootleg
-kof10thu                        // Decrypted / Bootleg
-kf2k5unid                       // Decrypted / Bootleg
-kofse2k4                        // Decrypted / Bootleg
-kofse2k4e                       // Encrypted / Bootleg
-kofse2k4d                       // Decrypted / Bootleg
-kofse2k4p                       // Predecrypted / Bootleg
-kf2k4pls                        // Decrypted / Bootleg
-kf2k4plse                       // Encrypted / Bootleg
-kf2k4plsd                       // Decrypted / Bootleg
-kf2k4plsp                       // Predecrypted / Bootleg
-lans2k4d                        // Decrypted / Bootleg
-matrimd                         // Decrypted / Bootleg
-matrimbd                        // Decrypted / Bootleg
-msboot                          // Bootleg
-ms3b6boot                       // Bootleg
-ms4boot                         // Bootleg
-ms5boot                         // Bootleg
-ms5pcbd                         // SNK Playmore
-ms4pluse                        // Bootleg
-ms4plusd                        // Bootleg
-ms5pluse                        // Bootleg
-ms5plusd                        // Bootleg
-ms5plusnd                       // Bootleg
-mslug2t                         // Bootleg
-mslug3d                         // SNK
-mslug3hd                        // SNK
-mslug3b6d                       // Bootleg
-mslug3b6e                       // Bootleg
-mslug4d                         // Mega / Playmore
-mslug4hd                        // Mega / Playmore
-mslug4nd                        // Mega / Playmore
-mslug5d                         // SNK Playmore
-mslug5hd                        // SNK Playmore
-mslug5nd                        // SNK Playmore
-mslug5b2                        // Bootleg
-mslug5b3                        // Bootleg
-mslug5b4                        // Bootleg
-mslug5b5                        // Bootleg
-mslug5b6                        // Bootleg
-mslug5b7                        // Bootleg
-mslug5b8                        // Bootleg
-mslugxb                         // Bootleg
-nitdd                           // Decrypted / Bootleg
-pbobblendx                      // Decrypted / Bootleg
-pnyaad                          // Decrypted / Bootleg
-preisl2d                        // Decrypted / Bootleg
-rotdd                           // Decrypted / Bootleg
-rotdhd                          // Decrypted / Bootleg
-s1945pd                         // Decrypted / Bootleg
-samsho3en                       // Decrypted / Bootleg
-samsh5bd                        // Decrypted / Bootleg
-samsh5d                         // Decrypted / Bootleg
-samsh5hd                        // Decrypted / Bootleg
-samsh5nd                        // Decrypted / Bootleg
-sams5spd                        // Decrypted / Bootleg
-sams5sod                        // Decrypted / Bootleg
-sams5shd                        // Decrypted / Bootleg
-sams5sond                       // Decrypted / Bootleg
-sams5shnd                       // Decrypted / Bootleg
-sengok3d                        // Decrypted / Bootleg
-svcd                            // Decrypted / Bootleg
-svcnd                           // Decrypted / Bootleg
-svcbp                           // Decrypted / Bootleg
-svcplusp                        // Predecrypted / Bootleg
-svcsplusp                       // Predecrypted / Bootleg
-svcpcbd                         // Decrypted / Bootleg
-zupapad                         // Decrypted / Bootleg
+bangbedd
+cthd2k3d
+cthd2k3da
+cthd2k3a
+ct2k3spd
+ganryud
+garoud
+garouhd
+jockygpd
+kof96ep
+kof97pla
+kof97orod
+kof99d
+kof99kd
+kof2kd
+kof2knd
+kof2k1d
+kof2k1hd
+kf2k1bh
+kf2k1pls
+kf2k1plse
+kf2k1plsd
+kf2k1pla
+kf2k1plae
+kf2k1plad
+kf2k1plap
+kof2k2d
+kof2k2nd
+kf2k2plae
+kf2k2plad
+kf2k2plap
+kf2k2plbe
+kf2k2plbd
+kf2k2plbp
+kf2k2plc
+kf2k2plce
+kf2k2plcd
+kf2k2pld
+kf2k2plde
+kf2k2pldd
+kf2k2ple
+kf2k2plee
+kf2k2pled
+kf2k2plep
+kf2k2mpl
+kf2k2mpp
+kf2k2mpe
+kf2k2mpd
+kf2k2mp2e
+kf2k2mp2d
+kf2k2mp2p
+kof2k3d
+kf2k3bd
+kof2k3hd
+kof2k3nd
+kf2k3pcd
+kf2k3pd
+kf2k3upd
+kogd
+kogplusd
+kof10thd
+kf10thepp
+kof10thu
+kf2k5unid
+kofse2k4
+kofse2k4e
+kofse2k4d
+kofse2k4p
+kf2k4pls
+kf2k4plse
+kf2k4plsd
+kf2k4plsp
+lans2k4d
+matrimd
+matrimbd
+msboot
+ms3b6boot
+ms4boot
+ms5boot
+ms5pcbd
+ms4pluse
+ms4plusd
+ms5pluse
+ms5plusd
+ms5plusnd
+mslug2t
+mslug3d
+mslug3hd
+mslug3b6d
+mslug3b6e
+mslug4d
+mslug4hd
+mslug4nd
+mslug5d
+mslug5hd
+mslug5nd
+mslug5b2
+mslug5b3
+mslug5b4
+mslug5b5
+mslug5b6
+mslug5b7
+mslug5b8
+mslugxb
+nitdd
+pbobblendx
+pnyaad
+preisl2d
+rotdd
+rotdhd
+s1945pd
+samsho3en
+samsh5bd
+samsh5d
+samsh5hd
+samsh5nd
+sams5spd
+sams5sod
+sams5shd
+sams5sond
+sams5shnd
+sengok3d
+svcd
+svcnd
+svcbp
+svcplusp
+svcsplusp
+svcpcbd
+zupapad
 
 @source:neogeo.cpp
-2020bbe                         // Earlier
-3countbe                        // Earlier
-androdune                       // Earlier
-aof3e                           // Earlier
-bangbeade                       // Earlier
-blazstre                        // Earlier
-fatfury3e                       // Earlier
-goalx3e                         // Earlier
-kabukikle                       // Earlier
-lastbladhe                      // Earlier
-kizunae                         // Earlier
-kof95e                          // Earlier
-kotm2e                          // Earlier
-magdrp3e                        // Earlier
-miexchnge                       // Earlier
-msluge                          // Earlier
-mslug4e                         // Earlier
-mslug5e                         // Earlier
-neobombee                       // Earlier
-neodrifte                       // Earlier
-ninjamse                        // Earlier
-pulstare                        // Earlier
-ragnagrde                       // Earlier
-rbffspece                       // Earlier
-pgoale                          // Earlier
-roboarme                        // Earlier
-panicbome                       // Earlier
-rbff1e                          // Earlier
-samsho3e                        // Earlier
-samsho4e                        // Earlier
-strhoope                        // Earlier
-sengoku2e                       // Earlier
-shocktrae                       // Earlier
-sonicw3e                        // Earlier
-ssidek4e                        // Earlier
-turfmste                        // Earlier
-twinspre                        // Earlier
-tws96e                          // Earlier
-wakuwk7e                        // Earlier
-wh1e                            // Earlier
-whpe                            // Earlier
-wjammere                        // Earlier
+2020bbe
+3countbe
+androdune
+aof3e
+bangbeade
+blazstre
+fatfury3e
+goalx3e
+kabukikle
+lastbladhe
+kizunae
+kof95e
+kotm2e
+magdrp3e
+miexchnge
+msluge
+mslug4e
+mslug5e
+neobombee
+neodrifte
+ninjamse
+pulstare
+ragnagrde
+rbffspece
+pgoale
+roboarme
+panicbome
+rbff1e
+samsho3e
+samsho4e
+strhoope
+sengoku2e
+shocktrae
+sonicw3e
+ssidek4e
+turfmste
+twinspre
+tws96e
+wakuwk7e
+wh1e
+whpe
+wjammere
 
 @source:neogeo.cpp
-3countbd                        // Multi Game Doctor 2
-2020bbd                         // Multi Game Doctor 2
-alpham2d                        // Multi Game Doctor 2
-androdund                       // Multi Game Doctor 2
-aofd                            // Multi Game Doctor 2
-bstarsd                         // Multi Game Doctor 2
-burningfd                       // Multi Game Doctor 2
-crswordd                        // Multi Game Doctor 2
-cyberlipd                       // Multi Game Doctor 2
-eightmand                       // Multi Game Doctor 2
-fatfury1d                       // Multi Game Doctor 2
-fbfrenzyd                       // Multi Game Doctor 2
-gpilotsd                        // Multi Game Doctor 2
-joyjoyd                         // Multi Game Doctor 2
-kotmd                           // Multi Game Doctor 2
-lbowlingd                       // Multi Game Doctor 2
-lresortd                        // Multi Game Doctor 2
-maglordd                        // Multi Game Doctor 2
-mutnatd                         // Multi Game Doctor 2
-ncombatd                        // Multi Game Doctor 2
-ncommandd                       // Multi Game Doctor 2
-ridherod                        // Multi Game Doctor 2
-roboarmyd                       // Multi Game Doctor 2
-sengokud                        // Multi Game Doctor 2
-sengoku2d                       // Multi Game Doctor 2
-socbrawld                       // Multi Game Doctor 2
-superspyd                       // Multi Game Doctor 2
-tpgolfd                         // Multi Game Doctor 2
-trallyd                         // Multi Game Doctor 2
-wh1d                            // Multi Game Doctor 2
+3countbd
+2020bbd
+alpham2d
+androdund
+aofd
+bstarsd
+burningfd
+crswordd
+cyberlipd
+eightmand
+fatfury1d
+fbfrenzyd
+gpilotsd
+joyjoyd
+kotmd
+lbowlingd
+lresortd
+maglordd
+mutnatd
+ncombatd
+ncommandd
+ridherod
+roboarmyd
+sengokud
+sengoku2d
+socbrawld
+superspyd
+tpgolfd
+trallyd
+wh1d
 
 @source:neogeo.cpp
-2020bbcd                        // CD conversion
-columnsncd                      // CD conversion
-fr2cd                           // CD conversion
-gpilotcd                        // CD conversion
-joyjoycd                        // CD conversion
-lbowlingcd                      // CD conversion
-pbobblencd                      // CD conversion
-sengokucd                       // CD conversion
-ssidekicd                       // CD conversion
-strhoopcd                       // CD conversion
-superspycd                      // CD conversion
-tpgolfcd                        // CD conversion
-trallycd                        // CD conversion
-zintrkcd                        // CD conversion
+2020bbcd
+columnsncd
+fr2cd
+gpilotcd
+joyjoycd
+lbowlingcd
+pbobblencd
+sengokucd
+ssidekicd
+strhoopcd
+superspycd
+tpgolfcd
+trallycd
+zintrkcd
 
 @source:neogeo.cpp
-3countbdd                       // Decrypted Darksoft
-2020bbdd                        // Decrypted Darksoft
-2020bbadd                       // Decrypted Darksoft
-2020bbhdd                       // Decrypted Darksoft
-alpham2dd                       // Decrypted Darksoft
-alpham2pdd                      // Decrypted Darksoft
-androdundd                      // Decrypted Darksoft
-aodkdd                          // Decrypted Darksoft
-aofdd                           // Decrypted Darksoft
-aof2dd                          // Decrypted Darksoft
-aof2add                         // Decrypted Darksoft
-aof3dd                          // Decrypted Darksoft
-aof3kdd                         // Decrypted Darksoft
-b2bdd                           // Decrypted Darksoft
-bakatonodd                      // Decrypted Darksoft
-bangbeadd                       // Decrypted Darksoft
-bjourneydd                      // Decrypted Darksoft
-bjourneyhdd                     // Decrypted Darksoft
-blazstardd                      // Decrypted Darksoft
-breakersdd                      // Decrypted Darksoft
-breakrevdd                      // Decrypted Darksoft
-bstarsdd                        // Decrypted Darksoft
-bstarshdd                       // Decrypted Darksoft
-bstars2dd                       // Decrypted Darksoft
-burningfdd                      // Decrypted Darksoft
-burningfhdd                     // Decrypted Darksoft
-burningfpdd                     // Decrypted Darksoft
-burningfpadd                    // Decrypted Darksoft
-crswd2bldd                      // Decrypted Darksoft
-crsworddd                       // Decrypted Darksoft
-ct2k3sadd                       // Decrypted Darksoft
-ct2k3spdd                       // Decrypted Darksoft
-cthd2003dd                      // Decrypted Darksoft
-ctomadaydd                      // Decrypted Darksoft
-cyberlipdd                      // Decrypted Darksoft
-diggermadd                      // Decrypted Darksoft
-doubledrdd                      // Decrypted Darksoft
-dragonshdd                      // Decrypted Darksoft
-eightmandd                      // Decrypted Darksoft
-fatfurspdd                      // Decrypted Darksoft
-fatfurspadd                     // Decrypted Darksoft
-fatfury1dd                      // Decrypted Darksoft
-fatfury2dd                      // Decrypted Darksoft
-fatfury3dd                      // Decrypted Darksoft
-fbfrenzydd                      // Decrypted Darksoft
-fightfevdd                      // Decrypted Darksoft
-fightfevadd                     // Decrypted Darksoft
-flipshotdd                      // Decrypted Darksoft
-froman2bdd                      // Decrypted Darksoft
-fswordsdd                       // Decrypted Darksoft
-galaxyfgdd                      // Decrypted Darksoft
-ganryudd                        // Decrypted Darksoft
-garoudd                         // Decrypted Darksoft
-garoubldd                       // Decrypted Darksoft
-garouhdd                        // Decrypted Darksoft
-garouhadd                       // Decrypted Darksoft
-garoupdd                        // Decrypted Darksoft
-ghostlopdd                      // Decrypted Darksoft
-goalx3dd                        // Decrypted Darksoft
-gowcaizrdd                      // Decrypted Darksoft
-gpilotsdd                       // Decrypted Darksoft
-gpilotshdd                      // Decrypted Darksoft
-gururindd                       // Decrypted Darksoft
-ironcladd                       // Decrypted Darksoft
-ironcladod                      // Decrypted Darksoft
-irrmazedd                       // Decrypted Darksoft
-janshindd                       // Decrypted Darksoft
-jockeygpdd                      // Decrypted Darksoft
-jockeygpadd                     // Decrypted Darksoft
-joyjoydd                        // Decrypted Darksoft
-kabukikldd                      // Decrypted Darksoft
-karnovrdd                       // Decrypted Darksoft
-kf2k2mpdd                       // Decrypted Darksoft
-kf2k2mp2dd                      // Decrypted Darksoft
-kf2k2plsdd                      // Decrypted Darksoft
-kf2k2pladd                      // Decrypted Darksoft
-kf2k3bldd                       // Decrypted Darksoft
-kf2k3bladd                      // Decrypted Darksoft
-kf2k3upldd                      // Decrypted Darksoft
-kf2k3pldd                       // Decrypted Darksoft
-kf2k3pcbdd                      // Decrypted Darksoft
-kizunadd                        // Decrypted Darksoft
-kof2000dd                       // Decrypted Darksoft
-kof2000ndd                      // Decrypted Darksoft
-kof2001dd                       // Decrypted Darksoft
-kof2001hdd                      // Decrypted Darksoft
-kof2002dd                       // Decrypted Darksoft
-kof2002bdd                      // Decrypted Darksoft
-kof2003dd                       // Decrypted Darksoft
-kof2003hdd                      // Decrypted Darksoft
-kof10thdd                       // Decrypted Darksoft
-kf10thepdd                      // Decrypted Darksoft
-kf2k5unidd                      // Decrypted Darksoft
-kof2k4sedd                      // Decrypted Darksoft
-kof94dd                         // Decrypted Darksoft
-kof95dd                         // Decrypted Darksoft
-kof95hdd                        // Decrypted Darksoft
-kof96dd                         // Decrypted Darksoft
-kof96hdd                        // Decrypted Darksoft
-kof97dd                         // Decrypted Darksoft
-kof97hdd                        // Decrypted Darksoft
-kof97kdd                        // Decrypted Darksoft
-kof97plsdd                      // Decrypted Darksoft
-kof97orodd                      // Decrypted Darksoft
-kof98dd                         // Decrypted Darksoft
-kof98hdd                        // Decrypted Darksoft
-kof98kdd                        // Decrypted Darksoft
-kof98kadd                       // Decrypted Darksoft
-kof99dd                         // Decrypted Darksoft
-kof99edd                        // Decrypted Darksoft
-kof99hdd                        // Decrypted Darksoft
-kof99kdd                        // Decrypted Darksoft
-kof99kadd                       // Decrypted Darksoft
-kof99pdd                        // Decrypted Darksoft
-kogdd                           // Decrypted Darksoft
-kotmdd                          // Decrypted Darksoft
-kotmhdd                         // Decrypted Darksoft
-kotm2dd                         // Decrypted Darksoft
-kotm2add                        // Decrypted Darksoft
-kotm2pdd                        // Decrypted Darksoft
-lans2004dd                      // Decrypted Darksoft
-lastbladdd                      // Decrypted Darksoft
-lastbladhdd                     // Decrypted Darksoft
-lastsoldd                       // Decrypted Darksoft
-lasthopedd                      // Decrypted Darksoft
-lastbld2dd                      // Decrypted Darksoft
-lbowlingdd                      // Decrypted Darksoft
-legendosdd                      // Decrypted Darksoft
-lresortdd                       // Decrypted Darksoft
-lresortpdd                      // Decrypted Darksoft
-magdrop2dd                      // Decrypted Darksoft
-magdrop3dd                      // Decrypted Darksoft
-maglorddd                       // Decrypted Darksoft
-maglordhdd                      // Decrypted Darksoft
-mahretsudd                      // Decrypted Darksoft
-marukodqdd                      // Decrypted Darksoft
-matrimdd                        // Decrypted Darksoft
-miexchngdd                      // Decrypted Darksoft
-minasandd                       // Decrypted Darksoft
-moshougidd                      // Decrypted Darksoft
-ms5pcbdd                        // Decrypted Darksoft
-ms4plusdd                       // Decrypted Darksoft
-ms5plusdd                       // Decrypted Darksoft
-mslugdd                         // Decrypted Darksoft
-mslug2dd                        // Decrypted Darksoft
-mslug2tdd                       // Decrypted Darksoft
-mslug3dd                        // Decrypted Darksoft
-mslug3hdd                       // Decrypted Darksoft
-mslug3b6dd                      // Decrypted Darksoft
-mslug4dd                        // Decrypted Darksoft
-mslug4hdd                       // Decrypted Darksoft
-mslug5dd                        // Decrypted Darksoft
-mslug5hdd                       // Decrypted Darksoft
-mslugxdd                        // Decrypted Darksoft
-mutnatdd                        // Decrypted Darksoft
-nam1975dd                       // Decrypted Darksoft
-ncombatdd                       // Decrypted Darksoft
-ncombathdd                      // Decrypted Darksoft
-ncommanddd                      // Decrypted Darksoft
-neobombedd                      // Decrypted Darksoft
-neocup98dd                      // Decrypted Darksoft
-neodriftdd                      // Decrypted Darksoft
-neomrdodd                       // Decrypted Darksoft
-ninjamasdd                      // Decrypted Darksoft
-nitddd                          // Decrypted Darksoft
-nitdbldd                        // Decrypted Darksoft
-overtopdd                       // Decrypted Darksoft
-panicbomdd                      // Decrypted Darksoft
-pbobbl2ndd                      // Decrypted Darksoft
-pbobblendd                      // Decrypted Darksoft
-pbobblenbdd                     // Decrypted Darksoft
-pgoaldd                         // Decrypted Darksoft
-pnyaadd                         // Decrypted Darksoft
-pnyaaadd                        // Decrypted Darksoft
-popbouncdd                      // Decrypted Darksoft
-preisle2dd                      // Decrypted Darksoft
-pspikes2dd                      // Decrypted Darksoft
-pulstardd                       // Decrypted Darksoft
-puzzldprdd                      // Decrypted Darksoft
-puzzledpdd                      // Decrypted Darksoft
-quizdai2dd                      // Decrypted Darksoft
-quizdaisdd                      // Decrypted Darksoft
-quizdaiskdd                     // Decrypted Darksoft
-quizkofdd                       // Decrypted Darksoft
-quizkofkdd                      // Decrypted Darksoft
-ragnagrdd                       // Decrypted Darksoft
-rbff1dd                         // Decrypted Darksoft
-rbff1add                        // Decrypted Darksoft
-rbff1kdd                        // Decrypted Darksoft
-rbff2dd                         // Decrypted Darksoft
-rbff2hdd                        // Decrypted Darksoft
-rbff2kdd                        // Decrypted Darksoft
-rbffspecdd                      // Decrypted Darksoft
-rbffspeckdd                     // Decrypted Darksoft
-ridherodd                       // Decrypted Darksoft
-ridherohdd                      // Decrypted Darksoft
-roboarmydd                      // Decrypted Darksoft
-roboarmyadd                     // Decrypted Darksoft
-rotddd                          // Decrypted Darksoft
-rotdhdd                         // Decrypted Darksoft
-s1945pdd                        // Decrypted Darksoft
-samsh5spdd                      // Decrypted Darksoft
-samsh5sphdd                     // Decrypted Darksoft
-samsh5sphodd                    // Decrypted Darksoft
-samshodd                        // Decrypted Darksoft
-samshohdd                       // Decrypted Darksoft
-samsho2dd                       // Decrypted Darksoft
-samsho2kdd                      // Decrypted Darksoft
-samsho2kadd                     // Decrypted Darksoft
-samsho3dd                       // Decrypted Darksoft
-samsho3hdd                      // Decrypted Darksoft
-samsho4dd                       // Decrypted Darksoft
-samsho4kdd                      // Decrypted Darksoft
-samsho5dd                       // Decrypted Darksoft
-samsho5hdd                      // Decrypted Darksoft
-samsho5bdd                      // Decrypted Darksoft
-savageredd                      // Decrypted Darksoft
-sbpdd                           // Decrypted Darksoft
-sdodgebdd                       // Decrypted Darksoft
-sengokudd                       // Decrypted Darksoft
-sengokuhdd                      // Decrypted Darksoft
-sengoku2dd                      // Decrypted Darksoft
-sengoku3dd                      // Decrypted Darksoft
-sengoku3add                     // Decrypted Darksoft
-shocktr2dd                      // Decrypted Darksoft
-shocktrodd                      // Decrypted Darksoft
-shocktroadd                     // Decrypted Darksoft
-socbrawldd                      // Decrypted Darksoft
-socbrawlhdd                     // Decrypted Darksoft
-sonicwi2dd                      // Decrypted Darksoft
-sonicwi3dd                      // Decrypted Darksoft
-spinmastdd                      // Decrypted Darksoft
-ssidekidd                       // Decrypted Darksoft
-ssideki2dd                      // Decrypted Darksoft
-ssideki3dd                      // Decrypted Darksoft
-ssideki4dd                      // Decrypted Darksoft
-stakwindd                       // Decrypted Darksoft
-stakwin2dd                      // Decrypted Darksoft
-strhoopdd                       // Decrypted Darksoft
-superspydd                      // Decrypted Darksoft
-svcdd                           // Decrypted Darksoft
-svcbootdd                       // Decrypted Darksoft
-svcplusdd                       // Decrypted Darksoft
-svcplusadd                      // Decrypted Darksoft
-svcsplusdd                      // Decrypted Darksoft
-svcpcbdd                        // Decrypted Darksoft
-svcpcbadd                       // Decrypted Darksoft
-tophuntrdd                      // Decrypted Darksoft
-tophuntrhdd                     // Decrypted Darksoft
-tpgolfdd                        // Decrypted Darksoft
-trallydd                        // Decrypted Darksoft
-turfmastdd                      // Decrypted Darksoft
-twinspridd                      // Decrypted Darksoft
-twsoc96dd                       // Decrypted Darksoft
-viewpoindd                      // Decrypted Darksoft
-vlinerdd                        // Decrypted Darksoft
-vliner7edd                      // Decrypted Darksoft
-vliner6edd                      // Decrypted Darksoft
-vliner54dd                      // Decrypted Darksoft
-vliner53dd                      // Decrypted Darksoft
-wakuwak7dd                      // Decrypted Darksoft
-wh1dd                           // Decrypted Darksoft
-wh1hdd                          // Decrypted Darksoft
-wh1hadd                         // Decrypted Darksoft
-wh2dd                           // Decrypted Darksoft
-wh2hdd                          // Decrypted Darksoft
-wh2jdd                          // Decrypted Darksoft
-whpdd                           // Decrypted Darksoft
-wjammersdd                      // Decrypted Darksoft
-zedbladedd                      // Decrypted Darksoft
-zintrckbdd                      // Decrypted Darksoft
-zupapadd                        // Decrypted Darksoft
+3countbdd
+2020bbdd
+2020bbadd
+2020bbhdd
+alpham2dd
+alpham2pdd
+androdundd
+aodkdd
+aofdd
+aof2dd
+aof2add
+aof3dd
+aof3kdd
+b2bdd
+bakatonodd
+bangbeadd
+bjourneydd
+bjourneyhdd
+blazstardd
+breakersdd
+breakrevdd
+bstarsdd
+bstarshdd
+bstars2dd
+burningfdd
+burningfhdd
+burningfpdd
+burningfpadd
+crswd2bldd
+crsworddd
+ct2k3sadd
+ct2k3spdd
+cthd2003dd
+ctomadaydd
+cyberlipdd
+diggermadd
+doubledrdd
+dragonshdd
+eightmandd
+fatfurspdd
+fatfurspadd
+fatfury1dd
+fatfury2dd
+fatfury3dd
+fbfrenzydd
+fightfevdd
+fightfevadd
+flipshotdd
+froman2bdd
+fswordsdd
+galaxyfgdd
+ganryudd
+garoudd
+garoubldd
+garouhdd
+garouhadd
+garoupdd
+ghostlopdd
+goalx3dd
+gowcaizrdd
+gpilotsdd
+gpilotshdd
+gururindd
+ironcladd
+ironcladod
+irrmazedd
+janshindd
+jockeygpdd
+jockeygpadd
+joyjoydd
+kabukikldd
+karnovrdd
+kf2k2mpdd
+kf2k2mp2dd
+kf2k2plsdd
+kf2k2pladd
+kf2k3bldd
+kf2k3bladd
+kf2k3upldd
+kf2k3pldd
+kf2k3pcbdd
+kizunadd
+kof2000dd
+kof2000ndd
+kof2001dd
+kof2001hdd
+kof2002dd
+kof2002bdd
+kof2003dd
+kof2003hdd
+kof10thdd
+kf10thepdd
+kf2k5unidd
+kof2k4sedd
+kof94dd
+kof95dd
+kof95hdd
+kof96dd
+kof96hdd
+kof97dd
+kof97hdd
+kof97kdd
+kof97plsdd
+kof97orodd
+kof98dd
+kof98hdd
+kof98kdd
+kof98kadd
+kof99dd
+kof99edd
+kof99hdd
+kof99kdd
+kof99kadd
+kof99pdd
+kogdd
+kotmdd
+kotmhdd
+kotm2dd
+kotm2add
+kotm2pdd
+lans2004dd
+lastbladdd
+lastbladhdd
+lastsoldd
+lasthopedd
+lastbld2dd
+lbowlingdd
+legendosdd
+lresortdd
+lresortpdd
+magdrop2dd
+magdrop3dd
+maglorddd
+maglordhdd
+mahretsudd
+marukodqdd
+matrimdd
+miexchngdd
+minasandd
+moshougidd
+ms5pcbdd
+ms4plusdd
+ms5plusdd
+mslugdd
+mslug2dd
+mslug2tdd
+mslug3dd
+mslug3hdd
+mslug3b6dd
+mslug4dd
+mslug4hdd
+mslug5dd
+mslug5hdd
+mslugxdd
+mutnatdd
+nam1975dd
+ncombatdd
+ncombathdd
+ncommanddd
+neobombedd
+neocup98dd
+neodriftdd
+neomrdodd
+ninjamasdd
+nitddd
+nitdbldd
+overtopdd
+panicbomdd
+pbobbl2ndd
+pbobblendd
+pbobblenbdd
+pgoaldd
+pnyaadd
+pnyaaadd
+popbouncdd
+preisle2dd
+pspikes2dd
+pulstardd
+puzzldprdd
+puzzledpdd
+quizdai2dd
+quizdaisdd
+quizdaiskdd
+quizkofdd
+quizkofkdd
+ragnagrdd
+rbff1dd
+rbff1add
+rbff1kdd
+rbff2dd
+rbff2hdd
+rbff2kdd
+rbffspecdd
+rbffspeckdd
+ridherodd
+ridherohdd
+roboarmydd
+roboarmyadd
+rotddd
+rotdhdd
+s1945pdd
+samsh5spdd
+samsh5sphdd
+samsh5sphodd
+samshodd
+samshohdd
+samsho2dd
+samsho2kdd
+samsho2kadd
+samsho3dd
+samsho3hdd
+samsho4dd
+samsho4kdd
+samsho5dd
+samsho5hdd
+samsho5bdd
+savageredd
+sbpdd
+sdodgebdd
+sengokudd
+sengokuhdd
+sengoku2dd
+sengoku3dd
+sengoku3add
+shocktr2dd
+shocktrodd
+shocktroadd
+socbrawldd
+socbrawlhdd
+sonicwi2dd
+sonicwi3dd
+spinmastdd
+ssidekidd
+ssideki2dd
+ssideki3dd
+ssideki4dd
+stakwindd
+stakwin2dd
+strhoopdd
+superspydd
+svcdd
+svcbootdd
+svcplusdd
+svcplusadd
+svcsplusdd
+svcpcbdd
+svcpcbadd
+tophuntrdd
+tophuntrhdd
+tpgolfdd
+trallydd
+turfmastdd
+twinspridd
+twsoc96dd
+viewpoindd
+vlinerdd
+vliner7edd
+vliner6edd
+vliner54dd
+vliner53dd
+wakuwak7dd
+wh1dd
+wh1hdd
+wh1hadd
+wh2dd
+wh2hdd
+wh2jdd
+whpdd
+wjammersdd
+zedbladedd
+zintrckbdd
+zupapadd
 
 @source:neogeo.cpp
-3countbnds                      // NEO SD
-2020bbnds                       // NEO SD
-2020bbands                      // NEO SD
-2020bbhnds                      // NEO SD
-alpham2nds                      // NEO SD
-alpham2pnds                     // NEO SD
-androdunnds                     // NEO SD
-aodknds                         // NEO SD
-aofnds                          // NEO SD
-aof2nds                         // NEO SD
-aof2ands                        // NEO SD
-aof3nds                         // NEO SD
-aof3knds                        // NEO SD
-b2bnds                          // NEO SD
-bakatononds                     // NEO SD
-bangbeadnds                     // NEO SD
-bjourneynds                     // NEO SD
-bjourneyhnds                    // NEO SD
-blazstarnds                     // NEO SD
-breakersnds                     // NEO SD
-breakrevnds                     // NEO SD
-bstarsnds                       // NEO SD
-bstarshnds                      // NEO SD
-bstars2nds                      // NEO SD
-burningfnds                     // NEO SD
-burningfhnds                    // NEO SD
-burningfpnds                    // NEO SD
-burningfpands                   // NEO SD
-crswd2blnds                     // NEO SD
-crswordnds                      // NEO SD
-ct2k3sands                      // NEO SD
-ct2k3spnds                      // NEO SD
-cthd2003nds                     // NEO SD
-ctomadaynds                     // NEO SD
-cyberlipnds                     // NEO SD
-diggermands                     // NEO SD
-doubledrnds                     // NEO SD
-dragonshnds                     // NEO SD
-eightmannds                     // NEO SD
-fatfurspnds                     // NEO SD
-fatfurspands                    // NEO SD
-fatfury1nds                     // NEO SD
-fatfury2nds                     // NEO SD
-fatfury3nds                     // NEO SD
-fbfrenzynds                     // NEO SD
-fightfevnds                     // NEO SD
-fightfevands                    // NEO SD
-flipshotnds                     // NEO SD
-froman2bnds                     // NEO SD
-fswordsnds                      // NEO SD
-galaxyfgnds                     // NEO SD
-ganryunds                       // NEO SD
-garounds                        // NEO SD
-garoublnds                      // NEO SD
-garouhnds                       // NEO SD
-garouhands                      // NEO SD
-garoupnds                       // NEO SD
-ghostlopnds                     // NEO SD
-goalx3nds                       // NEO SD
-gowcaizrnds                     // NEO SD
-gpilotsnds                      // NEO SD
-gpilotshnds                     // NEO SD
-gururinnds                      // NEO SD
-ironcladnds                     // NEO SD
-ironcladonds                    // NEO SD
-irrmazends                      // NEO SD
-janshinnds                      // NEO SD
-jockeygpnds                     // NEO SD
-jockeygpands                    // NEO SD
-joyjoynds                       // NEO SD
-kabukiklnds                     // NEO SD
-karnovrnds                      // NEO SD
-kf2k2mpnds                      // NEO SD
-kf2k2mp2nds                     // NEO SD
-kf2k2plsnds                     // NEO SD
-kf2k2plands                     // NEO SD
-kf2k3blnds                      // NEO SD
-kf2k3blands                     // NEO SD
-kf2k3uplnds                     // NEO SD
-kf2k3plnds                      // NEO SD
-kf2k3pcbnds                     // NEO SD
-kizunands                       // NEO SD
-kof2000nds                      // NEO SD
-kof2000nnds                     // NEO SD
-kof2001nds                      // NEO SD
-kof2001hnds                     // NEO SD
-kof2002nds                      // NEO SD
-kof2002bnds                     // NEO SD
-kof2003nds                      // NEO SD
-kof2003hnds                     // NEO SD
-kof10thnds                      // NEO SD
-kf10thepnds                     // NEO SD
-kf2k5uninds                     // NEO SD
-kof2k4sends                     // NEO SD
-kof94nds                        // NEO SD
-kof95nds                        // NEO SD
-kof95hnds                       // NEO SD
-kof96nds                        // NEO SD
-kof96hnds                       // NEO SD
-kof97nds                        // NEO SD
-kof97hnds                       // NEO SD
-kof97knds                       // NEO SD
-kof97plsnds                     // NEO SD
-kof97oronds                     // NEO SD
-kof98nds                        // NEO SD
-kof98hnds                       // NEO SD
-kof98knds                       // NEO SD
-kof98kands                      // NEO SD
-kof99nds                        // NEO SD
-kof99ends                       // NEO SD
-kof99hnds                       // NEO SD
-kof99knds                       // NEO SD
-kof99kands                      // NEO SD
-kof99pnds                       // NEO SD
-kognds                          // NEO SD
-kotmnds                         // NEO SD
-kotmhnds                        // NEO SD
-kotm2nds                        // NEO SD
-kotm2ands                       // NEO SD
-kotm2pnds                       // NEO SD
-lans2004nds                     // NEO SD
-lastbladnds                     // NEO SD
-lastbladhnds                    // NEO SD
-lastsolnds                      // NEO SD
-lasthopends                     // NEO SD
-lastbld2nds                     // NEO SD
-lbowlingnds                     // NEO SD
-legendosnds                     // NEO SD
-lresortnds                      // NEO SD
-lresortpnds                     // NEO SD
-magdrop2nds                     // NEO SD
-magdrop3nds                     // NEO SD
-maglordnds                      // NEO SD
-maglordhnds                     // NEO SD
-mahretsunds                     // NEO SD
-marukodqnds                     // NEO SD
-matrimnds                       // NEO SD
-miexchngnds                     // NEO SD
-minasannds                      // NEO SD
-moshouginds                     // NEO SD
-ms4plusnsd                      // NEO SD
-ms5plusnsd                      // NEO SD
-ms5pcbdnsd                      // NEO SD
-mslugnsd                        // NEO SD
-mslug2nsd                       // NEO SD
-mslug2tnsd                      // NEO SD
-mslug3nsd                       // NEO SD
-mslug3hnsd                      // NEO SD
-mslug3b6nsd                     // NEO SD
-mslug4nsd                       // NEO SD
-mslug4hnsd                      // NEO SD
-mslug5nsd                       // NEO SD
-mslug5hnsd                      // NEO SD
-mslugxnsd                       // NEO SD
-mutnatnds                       // NEO SD
-nam1975nds                      // NEO SD
-ncombatnds                      // NEO SD
-ncombathnds                     // NEO SD
-ncommandnds                     // NEO SD
-neobombends                     // NEO SD
-neocup98nds                     // NEO SD
-neodriftnds                     // NEO SD
-neomrdonds                      // NEO SD
-ninjamasnds                     // NEO SD
-nitdnds                         // NEO SD
-nitdblnds                       // NEO SD
-overtopnds                      // NEO SD
-panicbomnds                     // NEO SD
-pbobbl2nnds                     // NEO SD
-pbobblennds                     // NEO SD
-pbobblenbnds                    // NEO SD
-pgoalnds                        // NEO SD
-pnyaands                        // NEO SD
-pnyaaands                       // NEO SD
-popbouncnds                     // NEO SD
-preisle2nds                     // NEO SD
-pspikes2nds                     // NEO SD
-pulstarnds                      // NEO SD
-puzzldprnds                     // NEO SD
-puzzledpnds                     // NEO SD
-quizdai2nds                     // NEO SD
-quizdaisnds                     // NEO SD
-quizdaisknds                    // NEO SD
-quizkofnds                      // NEO SD
-quizkofknds                     // NEO SD
-ragnagrnds                      // NEO SD
-rbff1nds                        // NEO SD
-rbff1ands                       // NEO SD
-rbff1knds                       // NEO SD
-rbff2nds                        // NEO SD
-rbff2hnds                       // NEO SD
-rbff2knds                       // NEO SD
-rbffspecnds                     // NEO SD
-rbffspecknds                    // NEO SD
-ridheronds                      // NEO SD
-ridherohnds                     // NEO SD
-roboarmynds                     // NEO SD
-roboarmyands                    // NEO SD
-rotdnds                         // NEO SD
-rotdhnds                        // NEO SD
-s1945pnds                       // NEO SD
-samsh5spnds                     // NEO SD
-samsh5sphnds                    // NEO SD
-samsh5sphonds                   // NEO SD
-samshonds                       // NEO SD
-samshohnds                      // NEO SD
-samsho2nds                      // NEO SD
-samsho2knds                     // NEO SD
-samsho2kands                    // NEO SD
-samsho3nds                      // NEO SD
-samsho3hnds                     // NEO SD
-samsho4nds                      // NEO SD
-samsho4knds                     // NEO SD
-samsho5nds                      // NEO SD
-samsho5hnds                     // NEO SD
-samsho5bnds                     // NEO SD
-savagerends                     // NEO SD
-sbpnds                          // NEO SD
-sdodgebnds                      // NEO SD
-sengokunds                      // NEO SD
-sengokuhnds                     // NEO SD
-sengoku2nds                     // NEO SD
-sengoku3nds                     // NEO SD
-sengoku3ands                    // NEO SD
-shocktr2nds                     // NEO SD
-shocktronds                     // NEO SD
-shocktroands                    // NEO SD
-socbrawlnds                     // NEO SD
-socbrawlhnds                    // NEO SD
-sonicwi2nds                     // NEO SD
-sonicwi3nds                     // NEO SD
-spinmastnds                     // NEO SD
-ssidekinds                      // NEO SD
-ssideki2nds                     // NEO SD
-ssideki3nds                     // NEO SD
-ssideki4nds                     // NEO SD
-stakwinnds                      // NEO SD
-stakwin2nds                     // NEO SD
-strhoopnds                      // NEO SD
-superspynds                     // NEO SD
-svcnds                          // NEO SD
-svcbootnds                      // NEO SD
-svcplusnds                      // NEO SD
-svcplusands                     // NEO SD
-svcsplusnds                     // NEO SD
-svcpcbnds                       // NEO SD
-svcpcbands                      // NEO SD
-tophuntrnds                     // NEO SD
-tophuntrhnds                    // NEO SD
-tpgolfnds                       // NEO SD
-trallynds                       // NEO SD
-turfmastnds                     // NEO SD
-twinsprinds                     // NEO SD
-twsoc96nds                      // NEO SD
-viewpoinnds                     // NEO SD
-vlinernds                       // NEO SD
-vliner7ends                     // NEO SD
-vliner6ends                     // NEO SD
-vliner54nds                     // NEO SD
-vliner53nds                     // NEO SD
-wakuwak7nds                     // NEO SD
-wh1nds                          // NEO SD
-wh1hnds                         // NEO SD
-wh1hands                        // NEO SD
-wh2nds                          // NEO SD
-wh2hnds                         // NEO SD
-wh2jnds                         // NEO SD
-whpnds                          // NEO SD
-wjammersnds                     // NEO SD
-zedbladends                     // NEO SD
-zintrckbnds                     // NEO SD
-zupapands                       // NEO SD
+3countbnds
+2020bbnds
+2020bbands
+2020bbhnds
+alpham2nds
+alpham2pnds
+androdunnds
+aodknds
+aofnds
+aof2nds
+aof2ands
+aof3nds
+aof3knds
+b2bnds
+bakatononds
+bangbeadnds
+bjourneynds
+bjourneyhnds
+blazstarnds
+breakersnds
+breakrevnds
+bstarsnds
+bstarshnds
+bstars2nds
+burningfnds
+burningfhnds
+burningfpnds
+burningfpands
+crswd2blnds
+crswordnds
+ct2k3sands
+ct2k3spnds
+cthd2003nds
+ctomadaynds
+cyberlipnds
+diggermands
+doubledrnds
+dragonshnds
+eightmannds
+fatfurspnds
+fatfurspands
+fatfury1nds
+fatfury2nds
+fatfury3nds
+fbfrenzynds
+fightfevnds
+fightfevands
+flipshotnds
+froman2bnds
+fswordsnds
+galaxyfgnds
+ganryunds
+garounds
+garoublnds
+garouhnds
+garouhands
+garoupnds
+ghostlopnds
+goalx3nds
+gowcaizrnds
+gpilotsnds
+gpilotshnds
+gururinnds
+ironcladnds
+ironcladonds
+irrmazends
+janshinnds
+jockeygpnds
+jockeygpands
+joyjoynds
+kabukiklnds
+karnovrnds
+kf2k2mpnds
+kf2k2mp2nds
+kf2k2plsnds
+kf2k2plands
+kf2k3blnds
+kf2k3blands
+kf2k3uplnds
+kf2k3plnds
+kf2k3pcbnds
+kizunands
+kof2000nds
+kof2000nnds
+kof2001nds
+kof2001hnds
+kof2002nds
+kof2002bnds
+kof2003nds
+kof2003hnds
+kof10thnds
+kf10thepnds
+kf2k5uninds
+kof2k4sends
+kof94nds
+kof95nds
+kof95hnds
+kof96nds
+kof96hnds
+kof97nds
+kof97hnds
+kof97knds
+kof97plsnds
+kof97oronds
+kof98nds
+kof98hnds
+kof98knds
+kof98kands
+kof99nds
+kof99ends
+kof99hnds
+kof99knds
+kof99kands
+kof99pnds
+kognds
+kotmnds
+kotmhnds
+kotm2nds
+kotm2ands
+kotm2pnds
+lans2004nds
+lastbladnds
+lastbladhnds
+lastsolnds
+lasthopends
+lastbld2nds
+lbowlingnds
+legendosnds
+lresortnds
+lresortpnds
+magdrop2nds
+magdrop3nds
+maglordnds
+maglordhnds
+mahretsunds
+marukodqnds
+matrimnds
+miexchngnds
+minasannds
+moshouginds
+ms4plusnsd
+ms5plusnsd
+ms5pcbdnsd
+mslugnsd
+mslug2nsd
+mslug2tnsd
+mslug3nsd
+mslug3hnsd
+mslug3b6nsd
+mslug4nsd
+mslug4hnsd
+mslug5nsd
+mslug5hnsd
+mslugxnsd
+mutnatnds
+nam1975nds
+ncombatnds
+ncombathnds
+ncommandnds
+neobombends
+neocup98nds
+neodriftnds
+neomrdonds
+ninjamasnds
+nitdnds
+nitdblnds
+overtopnds
+panicbomnds
+pbobbl2nnds
+pbobblennds
+pbobblenbnds
+pgoalnds
+pnyaands
+pnyaaands
+popbouncnds
+preisle2nds
+pspikes2nds
+pulstarnds
+puzzldprnds
+puzzledpnds
+quizdai2nds
+quizdaisnds
+quizdaisknds
+quizkofnds
+quizkofknds
+ragnagrnds
+rbff1nds
+rbff1ands
+rbff1knds
+rbff2nds
+rbff2hnds
+rbff2knds
+rbffspecnds
+rbffspecknds
+ridheronds
+ridherohnds
+roboarmynds
+roboarmyands
+rotdnds
+rotdhnds
+s1945pnds
+samsh5spnds
+samsh5sphnds
+samsh5sphonds
+samshonds
+samshohnds
+samsho2nds
+samsho2knds
+samsho2kands
+samsho3nds
+samsho3hnds
+samsho4nds
+samsho4knds
+samsho5nds
+samsho5hnds
+samsho5bnds
+savagerends
+sbpnds
+sdodgebnds
+sengokunds
+sengokuhnds
+sengoku2nds
+sengoku3nds
+sengoku3ands
+shocktr2nds
+shocktronds
+shocktroands
+socbrawlnds
+socbrawlhnds
+sonicwi2nds
+sonicwi3nds
+spinmastnds
+ssidekinds
+ssideki2nds
+ssideki3nds
+ssideki4nds
+stakwinnds
+stakwin2nds
+strhoopnds
+superspynds
+svcnds
+svcbootnds
+svcplusnds
+svcplusands
+svcsplusnds
+svcpcbnds
+svcpcbands
+tophuntrnds
+tophuntrhnds
+tpgolfnds
+trallynds
+turfmastnds
+twinsprinds
+twsoc96nds
+viewpoinnds
+vlinernds
+vliner7ends
+vliner6ends
+vliner54nds
+vliner53nds
+wakuwak7nds
+wh1nds
+wh1hnds
+wh1hands
+wh2nds
+wh2hnds
+wh2jnds
+whpnds
+wjammersnds
+zedbladends
+zintrckbnds
+zupapands
+
+@source:neogeo.cpp
+//3countbgno
+//2020bbgno
+//2020bbagno
+//2020bbhgno
+//alpham2gno
+//androdungno
+//aodkgno
+//aofgno
+//aof2gno
+//aof2agno
+//aof3gno
+//aof3kgno
+//b2bgno
+//bakatonogno
+//bangbeadgno
+//bjourneygno
+//bjourneyhgno
+//blazstargno
+//breakersgno
+//breakrevgno
+//bstarsgno
+//bstarshgno
+//bstars2gno
+//burningfgno
+//burningfhgno
+//crswordgno
+//ct2k3sagno
+//ct2k3spgno
+//cthd2003gno
+//ctomadaygno
+//cyberlipgno
+//diggermagno
+//doubledrgno
+//eightmangno
+//fatfurspgno
+//fatfurspagno
+//fatfury1gno
+//fatfury3gno
+//fbfrenzygno
+//fightfevgno
+//fightfevagno
+//flipshotgno
+//fswordsgno
+//galaxyfggno
+//ganryugno
+//garougno
+//garoublgno
+//garouhgno
+//garouhagno
+//garoupgno
+//ghostlopgno
+//goalx3gno
+//gowcaizrgno
+//gpilotsgno
+//gpilotshgno
+//gururingno
+//irrmazegno
+//janshingno
+//jockeygpgno
+//jockeygpagno
+//joyjoygno
+//kabukiklgno
+//karnovrgno
+//kf2k2mpgno
+//kf2k2mp2gno
+//kf2k2plsgno
+//kf2k2plagno
+//kf2k3blgno
+//kf2k3blagno
+//kf2k3uplgno
+//kf2k3plgno
+//kizunagno
+//kof2000gno
+//kof2000ngno
+//kof2001gno
+//kof2001hgno
+//kof2002gno
+//kof2002bgno
+//kof2003gno
+//kof2003hgno
+//kof10thgno
+//kf10thepgno
+//kf2k5unigno
+//kof2k4segno
+//kof95gno
+//kof95hgno
+//kof96gno
+//kof96hgno
+//kof97gno
+//kof97hgno
+//kof97kgno
+//kof97plsgno
+//kof98gno
+//kof98hgno
+//kof98kgno
+//kof98kagno
+//kof99gno
+//kof99egno
+//kof99hgno
+//kof99kgno
+//kof99kagno
+//kof99pgno
+//koggno
+//kotmgno
+//kotmhgno
+//kotm2gno
+//kotm2agno
+//lans2004gno
+//lastbladgno
+//lastbladhgno
+//lastsolgno
+//lastbld2gno
+//lbowlinggno
+//legendosgno
+//lresortgno
+//magdrop2gno
+//magdrop3gno
+//maglordgno
+//maglordhgno
+//mahretsugno
+//marukodqgno
+//matrimgno
+//miexchnggno
+//ms4plusgno
+//ms5plusgno
+//msluggno
+//mslug2gno
+//mslug2tgno
+//mslug3gno
+//mslug3hgno
+//mslug3b6gno
+//mslug4gno
+//mslug4hgno
+//mslug5gno
+//mslug5hgno
+//mslugxgno
+//minasangno
+//moshougigno
+//mutnatgno
+//nam1975gno
+//ncombatgno
+//ncombathgno
+//ncommandgno
+//neobombegno
+//neocup98gno
+//neodriftgno
+//neomrdogno
+//ninjamasgno
+//nitdgno
+//nitdblgno
+//overtopgno
+//panicbomgno
+//pbobbl2ngno
+//pbobblengno
+//pbobblenbgno
+//pgoalgno
+//pnyaagno
+//pnyaaagno
+//popbouncgno
+//preisle2gno
+//pspikes2gno
+//pulstargno
+//puzzldprgno
+//puzzledpgno
+//quizdai2gno
+//quizdaisgno
+//quizkofgno
+//ragnagrgno
+//rbff1gno
+//rbff1agno
+//rbff1kgno
+//rbff2gno
+//rbff2hgno
+//rbff2kgno
+//rbffspecgno
+//rbffspeckgno
+//ridherogno
+//ridherohgno
+//roboarmygno
+//roboarmyagno
+//rotdgno
+//rotdhgno
+//s1945pgno
+//samsh5spgno
+//samsh5sphgno
+//samsh5sphogno
+//samshogno
+//samshohgno
+//samsho2gno
+//samsho3gno
+//samsho3hgno
+//samsho4gno
+//samsho5gno
+//samsho5hgno
+//samsho5bgno
+//savageregno
+//sdodgebgno
+//sengokugno
+//sengokuhgno
+//sengoku2gno
+//sengoku3gno
+//sengoku3agno
+//shocktr2gno
+//shocktrogno
+//shocktroagno
+//socbrawlgno
+//socbrawlhgno
+//sonicwi2gno
+//sonicwi3gno
+//spinmastgno
+//ssidekigno
+//ssideki2gno
+//ssideki3gno
+//ssideki4gno
+//stakwingno
+//stakwin2gno
+//strhoopgno
+//superspygno
+//svcgno
+//svcbootgno
+//svcplusgno
+//svcplusagno
+//svcsplusgno
+//svcpcbagno
+//tophuntrgno
+//tophuntrhgno
+//tpgolfgno
+//trallygno
+//turfmastgno
+//twinsprigno
+//twsoc96gno
+//viewpoingno
+//vlinergno
+//vliner7egno
+//vliner6egno
+//vliner54gno
+//vliner53gno
+//wakuwak7gno
+//wh1gno
+//wh1hgno
+//wh1hagno
+//wh2gno
+//wh2hgno
+//wh2jgno
+//whpgno
+//wjammersgno
+//zedbladegno
+//zintrckbgno
+//zupapagno
 
 @source:neomania.cpp
 neomania                        // bootleg
@@ -45715,250 +46002,246 @@ bbugtest1                       // HomeBrew
 contrahc01                      // hack
 
 @source:cps1.cpp
-3wondershc01                    // hack
-3wondershc02                    // hack
-area88hc01                      // hack
-captcommhc01                    // hack
-captcommhc02                    // hack
-captcommhc03                    // hack
-captcommhc04                    // hack
-captcommhc05                    // hack
-captcommhc06                    // hack
-captcommhc07                    // hack
-captcommhc08                    // hack
-captcommhc09                    // hack
-captcommhc10                    // hack
-captcommhc11                    // hack
-captcommhc12                    // hack
-captcommhc13                    // hack
-captcommhc14                    // hack
-captcommhc15                    // hack
-captcommhc16                    // hack
-captcommhc17                    // hack
-captcommhc18                    // hack
-captcommhc19                    // hack
-daimakaihc01                    // hack
-dinohc01                        // hack
-dinohc02                        // hack
-dinohc03                        // hack
-dinohc04                        // hack
-dinohc05                        // hack
-dinohc06                        // hack
-dinohc07                        // hack
-dinohc08                        // hack
-dinohc09                        // hack
-dinohc10                        // hack
-dinohc11                        // hack
-dinohc12                        // hack
-dinohc13                        // hack
-dinohc14                        // hack
-dinohc15                        // hack
-dinohc16                        // hack
-dinohc17                        // hack
-dinohc18                        // hack
-dinohc19                        // hack
-dinohc20                        // hack
-dinohc21                        // hack
-dinohc22                        // hack
-dinohc23                        // hack
-dinohc24                        // hack
-dinohc25                        // hack
-dinohc26                        // hack
-dinohc27                        // hack
-dinohc28                        // hack
-dinohc29                        // hack
-dinohc30                        // hack
-forgottnhc01                    // hack
-ffighthc01                      // hack
-ffighthc02                      // hack
-ffighthc03                      // hack
-ffighthc04                      // hack
-ffighthc05                      // hack
-ffighthc06                      // hack
-ghoulshc01                      // hack
-ghoulshc02                      // hack
-kodhc01                         // hack
-kodhc02                         // hack
-kodhc03                         // hack
-kodhc04                         // hack
-kodhc05                         // hack
-kodhc06                         // hack
-kodhc07                         // hack
-kodhc08                         // hack
-knightshc01                     // hack
-knightshc02                     // hack
-knightshc03                     // hack
-knightshc04                     // hack
-knightshc05                     // hack
-knightshc06                     // hack
-mercshc01                       // hack
-mercshc02                       // hack
-punisherhc01                    // hack
-punisherhc02                    // hack
-punisherhc03                    // hack
-punisherhc04                    // hack
-punisherhc05                    // hack
-punisherhc06                    // hack
-punisherhc07                    // hack
-punisherhc08                    // hack
-punisherhc09                    // hack
-rockmanjhc01                    // hack
-sf2cehc01                       // hack
-sf2cehc02                       // hack
-sf2cehc03                       // hack
-sf2cehc04                       // hack
-sf2cehc05                       // hack
-sf2cehc06                       // hack
-sf2cehc07                       // hack
-sf2cehc08                       // hack
-sf2cehc09                       // hack
-sf2cehc10                       // hack
-sf2cehc11                       // hack
-sf2cehc12                       // hack
-sf2cehc13                       // hack
-sf2cehc14                       // hack
-sf2cehc15                       // hack
-sf2cehc16                       // hack
-sf2cehc17                       // hack
-sf2cehc18                       // hack
-sf2cehc19                       // hack
-sf2cehc20                       // hack
-sf2cehc21                       // hack
-sf2hc01                         // hack
-sf2hc02                         // hack
-sf2hc03                         // hack
-sf2hc04                         // hack
-sf2hfhc01                       // hack
-sf2hfhc02                       // hack
-sfzchhc01                       // hack
-striderhc01                     // hack
-striderhc02                     // hack
-striderhc03                     // hack
-tk2hc01                         // hack
-tk2hc02                         // hack
-tk2hc03                         // hack
-tk2hc04                         // hack
-tk2hc05                         // hack
-tk2hc06                         // hack
-tk2hc07                         // hack
-tk2hc08                         // hack
-tk2hc09                         // hack
-tk2hc10                         // hack
-tk2hc11                         // hack
-tk2hc12                         // hack
-tk2hc13                         // hack
-tk2hc14                         // hack
-tk2hc15                         // hack
-tk2hc16                         // hack
-tk2hc17                         // hack
-tk2hc18                         // hack
-tk2hc19                         // hack
-tk2hc20                         // hack
-tk2hc21                         // hack
-tk2hc22                         // hack
-tk2hc23                         // hack
-tk2chc01                        // hack
-tk2chc02                        // hack
-sk2hc01                         // hack
-sk3hc01                         // hack
-varthhc01                       // hack
-willowhc01                      // hack
-wofhc01                         // hack
-wofhc02                         // hack
+3wondershc01
+3wondershc02
+area88hc01
+captcommhc01
+captcommhc02
+captcommhc03
+captcommhc04
+captcommhc05
+captcommhc06
+captcommhc07
+captcommhc08
+captcommhc09
+captcommhc10
+captcommhc11
+captcommhc12
+captcommhc13
+captcommhc14
+captcommhc15
+captcommhc16
+captcommhc17
+captcommhc18
+captcommhc19
+daimakaihc01
+dinohc01
+dinohc02
+dinohc03
+dinohc04
+dinohc05
+dinohc06
+dinohc07
+dinohc08
+dinohc09
+dinohc10
+dinohc11
+dinohc12
+dinohc13
+dinohc14
+dinohc15
+dinohc16
+dinohc17
+dinohc18
+dinohc19
+dinohc20
+dinohc21
+dinohc22
+dinohc23
+dinohc24
+dinohc25
+dinohc26
+dinohc27
+dinohc28
+dinohc29
+dinohc30
+forgottnhc01
+ffighthc01
+ffighthc02
+ffighthc03
+ffighthc04
+ffighthc05
+ffighthc06
+ghoulshc01
+ghoulshc02
+kodhc01
+kodhc02
+kodhc03
+kodhc04
+kodhc05
+kodhc06
+kodhc07
+kodhc08
+knightshc01
+knightshc02
+knightshc03
+knightshc04
+knightshc05
+knightshc06
+mercshc01
+mercshc02
+punisherhc01
+punisherhc02
+punisherhc03
+punisherhc04
+punisherhc05
+punisherhc06
+punisherhc07
+punisherhc08
+punisherhc09
+rockmanjhc01
+sf2cehc01
+sf2cehc02
+sf2cehc03
+sf2cehc04
+sf2cehc05
+sf2cehc06
+sf2cehc07
+sf2cehc08
+sf2cehc09
+sf2cehc10
+sf2cehc11
+sf2cehc12
+sf2cehc13
+sf2cehc14
+sf2cehc15
+sf2cehc16
+sf2cehc17
+sf2cehc18
+sf2cehc19
+sf2cehc20
+sf2cehc21
+sf2hc01
+sf2hc02
+sf2hc03
+sf2hc04
+sf2hfhc01
+sf2hfhc02
+sfzchhc01
+striderhc01
+striderhc02
+striderhc03
+tk2hc01
+tk2hc02
+tk2hc03
+tk2hc04
+tk2hc05
+tk2hc06
+tk2hc07
+tk2hc08
+tk2hc09
+tk2hc10
+tk2hc11
+tk2hc12
+tk2hc13
+tk2hc14
+tk2hc15
+tk2hc16
+tk2hc17
+tk2hc18
+tk2hc19
+tk2hc20
+tk2hc21
+tk2hc22
+tk2hc23
+tk2chc01
+tk2chc02
+sk2hc01
+sk3hc01
+varthhc01
+willowhc01
+wofhc01
+wofhc02
 
 @source:cps2.cpp
-19xxhc01                        // hack
-19xxhc02                        // hack
-1944hc01                        // hack
-avsphc01                        // hack
-avsphc02                        // hack
-batcirhc01                      // hack
-csclubhc01                      // hack
-cybotshc01                      // hack
-cybotshc02                      // hack
-ddsomhc01                       // hack
-ddsomhc02                       // hack
-ddsomhc03                       // hack
-ddsomhc04                       // hack
-ddsomhc05                       // hack
-ddtodhc01                       // hack
-ddtodhc02                       // hack
-dstlkhc01                       // hack
-dstlkhc02                       // hack
-ffightaec2                      // hack
-ffightaec2ds                    // hack
-gigawinghc01                    // hack
-hsf2hc01                        // hack
-hsf2hc02                        // hack
-hsf2hc03                        // hack
-hsf2hc04                        // hack
-hsf2hc05                        // hack
-hsf2hc06                        // hack
-hsf2hc07                        // hack
-hsf2hc08                        // hack
-hsf2hc09                        // hack
-mvschc01                        // hack
-mvschc02                        // hack
-mvschc03                        // hack
-mvschc04                        // hack
-mshhc01                         // hack
-mshhc02                         // hack
-mshvsfhc01                      // hack
-mshvsfhc02                      // hack
-mshvsfhc03                      // hack
-mshvsfhc04                      // hack
-pfghthc01                       // hack
-pfghthc02                       // hack
-progearhc01                     // hack
-progearhc02                     // hack
-rmancp2hc01                     // hack
-ringdesthc01                    // hack
-rockman2hc01                    // hack
-sfahc01                         // hack
-sfahc02                         // hack
-sfahc03                         // hack
-sfahc04                         // hack
-sfa2hc01                        // hack
-sfa2hc02                        // hack
-sfa2hc03                        // hack
-sfa2hc04                        // hack
-sfa2hc05                        // hack
-sfa3hc01                        // hack
-sfa3hc02                        // hack
-sfa3hc03                        // hack
-sfa3hc04                        // hack
-sfa3hc05                        // hack
-sfa3hc06                        // hack
-sfa3hc07                        // hack
-sfz2alhc01                      // hack
-sfz2alhc02                      // hack
-sfz2alhc03                      // hack
-sfz2alhc04                      // hack
-sfz2alhc05                      // hack
-sfz2alhc06                      // hack
-ssf2thc01                       // hack
-ssf2thc02                       // hack
-ssf2thc03                       // hack
-ssf2thc04                       // hack
-ssf2thc05                       // hack
-ssf2xhc01                       // hack
-ssf2hc01                        // hack
-spf2thc01                       // hack
-spf2thc02                       // hack
-spf2xhc01                       // hack
-spf2xhc02                       // hack
-vhunt2hc01                      // hack
-vsavhc01                        // hack
-vsav2hc01                       // hack
-xmcotahc01                      // hack
-xmcotahc02                      // hack
-xmcotahc03                      // hack
-xmvsfhc01                       // hack
-xmvsfhc02                       // hack
-xmvsfhc03                       // hack
-
-@source:cps2.cpp
-suicide                         // HomeBrew
+19xxhc01
+19xxhc02
+1944hc01
+avsphc01
+avsphc02
+batcirhc01
+csclubhc01
+cybotshc01
+cybotshc02
+ddsomhc01
+ddsomhc02
+ddsomhc03
+ddsomhc04
+ddsomhc05
+ddtodhc01
+ddtodhc02
+dstlkhc01
+dstlkhc02
+ffightaec2
+ffightaec2ds
+gigawinghc01
+gigawinghc02
+hsf2hc01
+hsf2hc02
+hsf2hc03
+hsf2hc04
+hsf2hc05
+hsf2hc06
+hsf2hc07
+hsf2hc08
+mmatrixhc01
+mvschc01
+mvschc02
+mvschc03
+mvschc04
+mshhc01
+mshhc02
+mshvsfhc01
+mshvsfhc02
+mshvsfhc03
+mshvsfhc04
+pfghthc01
+pfghthc02
+progearhc01
+progearhc02
+rmancp2hc01
+ringdesthc01
+rockman2hc01
+sfahc01
+sfahc02
+sfahc03
+sfahc04
+sfa2hc01
+sfa2hc02
+sfa2hc03
+sfa2hc04
+sfa2hc05
+sfa3hc01
+sfa3hc02
+sfa3hc03
+sfa3hc04
+sfa3hc05
+sfa3hc06
+sfa3hc07
+sfz2alhc01
+sfz2alhc02
+sfz2alhc03
+sfz2alhc04
+sfz2alhc05
+sfz2alhc06
+ssf2thc01
+ssf2thc02
+ssf2thc03
+ssf2thc04
+ssf2thc05
+ssf2xhc01
+ssf2hc01
+spf2thc01
+spf2thc02
+spf2xhc01
+spf2xhc02
+vsavhc01
+xmcotahc01
+xmcotahc02
+xmcotahc03
+xmvsfhc01
+xmvsfhc02
+xmvsfhc03
 
 @source:cps2.cpp
 sfz3mix                         // hack
@@ -46061,6 +46344,9 @@ mineswp                         // HomeBrew
 targtest                        // HomeBrew
 spectest                        // HomeBrew
 teetertfp                       // HomeBrew
+
+@source:exedexes.cpp
+exedexeshc01
 
 @source:exerion.cpp
 exerionhc01                     // hack
@@ -46302,637 +46588,634 @@ roishtarhc01                    // hack
 salamandhc01                    // hack
 
 @source:neogeo.cpp
-19yy                            // HomeBrew
-19yyo                           // HomeBrew
-68kng                           // HomeBrew
-240ptest                        // HomeBrew
-4play                           // HomeBrew
-abyssal                         // HomeBrew
-adkw                            // HomeBrew
-amazonn                         // HomeBrew
-badapple                        // HomeBrew
-baddudesn                       // HomeBrew
-bbb2                            // HomeBrew
-beast                           // HomeBrew
-blueandr                        // HomeBrew
-bpanicdx                        // HomeBrew
-bonusstage                      // HomeBrew
-cabalng                         // HomeBrew
-cakefght                        // HomeBrew
-caravan                         // HomeBrew
-cbarrel                         // HomeBrew
-chelnovn                        // HomeBrew
-cnbe                            // HomeBrew
-cnbe2018                        // HomeBrew
-cphd                            // HomeBrew
-columnsn                        // HomeBrew
-cyborg                          // HomeBrew
-ddsprdmo                        // HomeBrew
-didemo                          // HomeBrew
-doubled1                        // HomeBrew
-flapchck                        // HomeBrew
-ffeast                          // HomeBrew
-fr2                             // HomeBrew
-foodfn                          // HomeBrew
-galaxiann                       // HomeBrew
-gladmort                        // HomeBrew
-gladmortcm                      // HomeBrew
-goldaxen                        // HomeBrew
-grime                           // HomeBrew
-gxg                             // HomeBrew
-halozero                        // HomeBrew
-horekidb3                       // HomeBrew
-hypernoid                       // HomeBrew
-igla                            // HomeBrew
-inthehunt                       // HomeBrew
-iocero                          // HomeBrew
-jumpnrund                       // HomeBrew
-jurl                            // HomeBrew
-karnovn                         // HomeBrew
-knightsch                       // HomeBrew
-lernit                          // HomeBrew
-lhcdb                           // HomeBrew
-looptris                        // HomeBrew
-looptrsp                        // HomeBrew
-ltorb                           // HomeBrew
-mslug3x                         // HomeBrew
-nblktiger                       // HomeBrew
-knacki                          // HomeBrew
-midnight                        // HomeBrew
-ndo_a_td                        // HomeBrew
-neo2500                         // HomeBrew
-neo2048                         // HomeBrew
-neopang                         // HomeBrew
-neo3d                           // HomeBrew
-neocstlv                        // HomeBrew
-neodemo                         // HomeBrew
-neofight                        // HomeBrew
-neogal1                         // HomeBrew
-neogal1t                        // HomeBrew
-neonopon                        // HomeBrew
-neopl                           // HomeBrew
-neopong                         // HomeBrew
-neoponga                        // HomeBrew
-neoromjb                        // HomeBrew
-neotest                         // HomeBrew
-neothund                        // HomeBrew
-neotris                         // HomeBrew
-ngcdtdd0                        // HomeBrew
-ng4ptest                        // HomeBrew
-ng4psyschk                      // HomeBrew
-ngem2k                          // HomeBrew
-ngftdemo                        // HomeBrew
-ngmontst                        // HomeBrew
-ngtd2                           // HomeBrew
-ngtetris                        // HomeBrew
-ngym2610                        // HomeBrew
-nsmbd                           // HomeBrew
-nsmb                            // HomeBrew
-nyan                            // HomeBrew
-pcmademo                        // HomeBrew
-pcmbdemo                        // HomeBrew
-poknight                        // HomeBrew
-pown                            // HomeBrew
-raroggame                       // HomeBrew
-samantha                        // HomeBrew
-santabll                        // HomeBrew
-sgz                             // HomeBrew
-shaman24                        // HomeBrew
-shinobin                        // HomeBrew
-seafight                        // HomeBrew
-snddemo                         // HomeBrew
-spkick                          // HomeBrew
-spriteex                        // HomeBrew
-syscheck                        // HomeBrew
-teot                            // HomeBrew
-timesup                         // HomeBrew
-timesupd                        // HomeBrew
-totc                            // HomeBrew
-twister                         // HomeBrew
-vaporous                        // HomeBrew
-violentv                        // HomeBrew
-vlad2000                        // HomeBrew
-wrldracr                        // HomeBrew
-ww2demo                         // HomeBrew
-yoyoshkn                        // HomeBrew
-xeviousng                       // HomeBrew
-xeno                            // HomeBrew
-xmas2017                        // HomeBrew
-zetsuxeving                     // HomeBrew
+19yy
+19yyo
+68kng
+240ptest
+4play
+abyssal
+adkw
+amazonn
+badapple
+baddudesn
+bbb2
+beast
+blueandr
+bpanicdx
+bonusstage
+cabalng
+cakefght
+caravan
+cbarrel
+chelnovn
+cnbe
+cnbe2018
+cphd
+columnsn
+cyborg
+ddsprdmo
+didemo
+doomgeo
+doubled1
+flapchck
+ffeast
+foodfight
+freedoom
+galaxiann
+gladmort
+gladmortcm
+goldaxen
+grime
+gxg
+halozero
+horekidb3
+hypernoid
+igla
+inthehunt
+iocero
+jumpnrund
+jurl
+karnovn
+knightsch
+lernit
+lhcdb
+looptris
+looptrsp
+ltorb
+mslug3x
+nblktiger
+knacki
+midnight
+ndo_a_td
+neo2500
+neo2048
+neopang
+neo3d
+neocstlv
+neodemo
+neofight
+neogal1
+neogal1t
+neonopon
+neopl
+neopong
+neoponga
+neoromjb
+neotest
+neothund
+neotris
+ngcdtdd0
+ng4ptest
+ng4psyschk
+ngem2k
+ngftdemo
+ngmontst
+ngtd2
+ngtetris
+ngym2610
+nsmbd
+nsmb
+nyan
+pcmademo
+pcmbdemo
+poknight
+pown
+raroggame
+rickdangdx
+samantha
+santabll
+smbn
+sgz
+shaman24
+shinobin
+seafight
+snddemo
+spkick
+spriteex
+syscheck
+teot
+timesup
+timesupd
+totc
+twister
+vaporous
+violentv
+vlad2000
+wrldracr
+ww2demo
+yoyoshkn
+xeviousng
+xeno
+xmas2017
+zetsuxeving
 
 @source:neogeo.cpp
-akiradmo                        // Intro Demo Music
-cndi                            // Intro Demo Music
-dti                             // Intro Demo Music
-dwi                             // Intro Demo Music
-dwia                            // Intro Demo Music
-gbi                             // Intro Demo Music
-rci                             // Intro Demo Music
-smi                             // Intro Demo Music
-tmnti                           // Intro Demo Music
-tmntia                          // Intro Demo Music
+akiradmo
+cndi
+dti
+dwi
+dwia
+gbi
+rci
+smi
+tmnti
+tmntia
 
 @source:neogeo.cpp
-androdunhc01                    // hack
-aofhc01                         // hack
-aofhc02                         // hack
-aofhc03                         // hack
-aofhc04                         // hack
-aofhc05                         // hack
-aof2hc01                        // hack
-aof2hc02                        // hack
-aof2hc03                        // hack
-aof3hc01                        // hack
-aof3hc02                        // hack
-aodkhc01                        // hack
-blazstarhc01                    // hack
-breakershc01                    // hack
-breakrevhc01                    // hack
-breakrevhc02                    // hack
-breakrevhc03                    // hack
-breakrevhc04                    // hack
-crswd2blhc01                    // hack
-cyberliphc01                    // hack
-doubledrhc01                    // hack
-doubledrhc02                    // hack
-doubledrhc03                    // hack
-doubledrhc04                    // hack
-doubledrhc05                    // hack
-doubledrhc06                    // hack
-doubledrhc07                    // hack
-doubledrhc08                    // hack
-eightmanhc01                    // hack
-fatfursphc01                    // hack
-fatfursphc02                    // hack
-fatfury1hc01                    // hack
-fatfury2hc01                    // hack
-fatfury2hc02                    // hack
-fatfury3hc01                    // hack
-fightfevhc01                    // hack
-fightfevhc02                    // hack
-flipshothc01                    // hack
-fr2hc01                         // hack
-galaxyfghc01                    // hack
-galaxyfghc02                    // hack
-garouhc01                       // hack
-garouhc02                       // hack
-garouhc03                       // hack
-garouhc04                       // hack
-ganryuhc01                      // hack
-gowcaizrhc01                    // hack
-gowcaizrhc02                    // hack
-gowcaizrhc03                    // hack
-gpilotshc01                     // hack
-irrmazehc01                     // hack
-kabukiklhc01                    // hack
-kabukiklhc02                    // hack
-kabukiklhc03                    // hack
-karnovrhc01                     // hack
-karnovrhc02                     // hack
-karnovrhc03                     // hack
-kizunahc01                      // hack
-kizunahc02                      // hack
-kizunahc03                      // hack
-kof10thhc01                     // hack
-kof10thhc02                     // hack
-kof94hc01                       // hack
-kof94hc02                       // hack
-kof94hc03                       // hack
-kof94hc04                       // hack
-kof94hc05                       // hack
-kof94hc06                       // hack
-kof94hc07                       // hack
-kof94hc08                       // hack
-kof95hc01                       // hack
-kof95hc02                       // hack
-kof95hc03                       // hack
-kof95hc04                       // hack
-kof95hc05                       // hack
-kof95hc06                       // hack
-kof96hc01                       // hack
-kof96hc02                       // hack
-kof96hc03                       // hack
-kof96hc04                       // hack
-kof96hc05                       // hack
-kof96hc06                       // hack
-kof96hc07                       // hack
-kof96hc08                       // hack
-kof96hc09                       // hack
-kof97hc01                       // hack
-kof97hc02                       // hack
-kof97hc03                       // hack
-kof97hc04                       // hack
-kof97hc05                       // hack
-kof97hc06                       // hack
-kof97hc07                       // hack
-kof97hc08                       // hack
-kof97hc09                       // hack
-kof97hc10                       // hack
-kof97hc11                       // hack
-kof97hc12                       // hack
-kof97hc13                       // hack
-kof97hc14                       // hack
-kof97hc15                       // hack
-kof97hc16                       // hack
-kof97hc17                       // hack
-kof97hc18                       // hack
-kof97hc19                       // hack
-kof97hc20                       // hack
-kof97hc21                       // hack
-kof97hc22                       // hack
-kof97hc23                       // hack
-kof97hc24                       // hack
-kof97hc25                       // hack
-kof97hc26                       // hack
-kof97hc27                       // hack
-kof97hc28                       // hack
-kof97hc29                       // hack
-kof97hc30                       // hack
-kof97hc31                       // hack
-kof97hc32                       // hack
-kof97hc33                       // hack
-kof98hc01                       // hack
-kof98hc02                       // hack
-kof98hc03                       // hack
-kof98hc04                       // hack
-kof98hc05                       // hack
-kof98hc06                       // hack
-kof98hc07                       // hack
-kof98hc08                       // hack
-kof98hc09                       // hack
-kof98hc10                       // hack
-kof98hc11                       // hack
-kof98hc12                       // hack
-kof98hc13                       // hack
-kof98hc14                       // hack
-kof98hc15                       // hack
-kof98hc16                       // hack
-kof98hc17                       // hack
-kof98hc18                       // hack
-kof98hc19                       // hack
-kof98hc20                       // hack
-kof98hc21                       // hack
-kof98hc22                       // hack
-kof98hc23                       // hack
-kof98hc24                       // hack
-kof98hc25                       // hack
-kof98hc26                       // hack
-kof99hc01                       // hack
-kof99hc02                       // hack
-kof99hc03                       // hack
-kof99hc04                       // hack
-kof99hc05                       // hack
-kof99hc06                       // hack
-kof99hc07                       // hack
-kof99hc08                       // hack
-kof99hc09                       // hack
-kof99hc10                       // hack
-kof99hc11                       // hack
-kof99hc12                       // hack
-kof99hc13                       // hack
-kof2000hc01                     // hack
-kof2000hc02                     // hack
-kof2000hc03                     // hack
-kof2000hc04                     // hack
-kof2000hc05                     // hack
-kof2000hc06                     // hack
-kof2000hc07                     // hack
-kof2000hc08                     // hack
-kof2000hc09                     // hack
-kof2000hc10                     // hack
-kof2001hc01                     // hack
-kof2001hc02                     // hack
-kof2001hc03                     // hack
-kof2001hc04                     // hack
-kof2001hc05                     // hack
-kof2001hc06                     // hack
-kof2002hc01                     // hack
-kof2002hc02                     // hack
-kof2002hc03                     // hack
-kof2002hc04                     // hack
-kof2002hc05                     // hack
-kof2002hc06                     // hack
-kof2002hc07                     // hack
-kof2002hc08                     // hack
-kof2002hc09                     // hack
-kof2002hc10                     // hack
-kof2002hc11                     // hack
-kof2002hc12                     // hack
-kof2002hc13                     // hack
-kof2002hc14                     // hack
-kof2002hc15                     // hack
-kof2002hc16                     // hack
-kof2002hc17                     // hack
-kof2002hc18                     // hack
-kof2002hc19                     // hack
-kof2002hc20                     // hack
-kof2002hc21                     // hack
-kof2002hc22                     // hack
-kof2002hc23                     // hack
-kof2002hc24                     // hack
-kof2003hc01                     // hack
-kof2003hc02                     // hack
-kof2003hc03                     // hack
-kof2003hc04                     // hack
-kof2003hc05                     // hack
-lans2004hc01                    // hack
-lastbladhc01                    // hack
-lastbladhc02                    // hack
-lastbladhc03                    // hack
-lastbladhc04                    // hack
-lastbladhc05                    // hack
-lastbladhc06                    // hack
-lastbladhc07                    // hack
-lastbld2hc01                    // hack
-lastbld2hc02                    // hack
-lastbld2hc03                    // hack
-lastbld2hc04                    // hack
-lastbld2hc05                    // hack
-lastbld2hc06                    // hack
-lastbld2hc07                    // hack
-lastbld2hc08                    // hack
-lastbld2hc09                    // hack
-magdrop3hc01                    // hack
-magdrop3hc02                    // hack
-magdrop3hc03                    // hack
-maglordhc01                     // hack
-maglordhc02                     // hack
-matrimhc01                      // hack  
-matrimhc02                      // hack
-matrimhc03                      // hack
-miexchnghc01                    // hack
-mslughc01                       // hack
-mslughc02                       // hack
-mslughc03                       // hack
-mslughc04                       // hack
-mslughc05                       // hack
-mslughc06                       // hack
-mslughc07                       // hack
-mslughc08                       // hack
-mslughc09                       // hack
-mslughc10                       // hack
-mslughc11                       // hack
-mslughc12                       // hack
-mslughc13                       // hack
-mslughc14                       // hack
-mslughc15                       // hack
-mslughc16                       // hack
-mslug2hc01                      // hack
-mslug2hc02                      // hack
-mslug2hc03                      // hack
-mslug2hc04                      // hack
-mslug2hc05                      // hack
-mslug2hc06                      // hack
-mslug2hc07                      // hack
-mslug2hc08                      // hack
-mslug2hc09                      // hack
-mslug2hc10                      // hack
-mslug2hc11                      // hack
-mslug2hc12                      // hack
-mslug2hc13                      // hack
-mslug2hc14                      // hack
-mslug2hc15                      // hack
-mslug2hc16                      // hack
-mslug2hc17                      // hack
-mslug2hc18                      // hack
-mslug2hc19                      // hack
-mslug2hc20                      // hack
-mslug3hc01                      // hack
-mslug3hc02                      // hack
-mslug3hc03                      // hack
-mslug3hc04                      // hack
-mslug3hc05                      // hack
-mslug3hc06                      // hack
-mslug3hc07                      // hack
-mslug3hc08                      // hack
-mslug3hc09                      // hack
-mslug3hc10                      // hack
-mslug3hc11                      // hack
-mslug3hc12                      // hack
-mslug3hc13                      // hack
-mslug3hc14                      // hack
-mslug3hc15                      // hack
-mslug3hc16                      // hack
-mslug3hc17                      // hack
-mslug3hc18                      // hack
-mslug3hc19                      // hack
-mslug3hc20                      // hack
-mslug3hc21                      // hack
-mslug3hc22                      // hack
-mslug3hc23                      // hack
-mslug3hc24                      // hack
-mslug3hc25                      // hack
-mslug3hc26                      // hack
-mslug3hc27                      // hack
-mslug3hc28                      // hack
-mslug3hc29                      // hack
-mslug3hc30                      // hack
-mslug3hc31                      // hack
-mslug3hc32                      // hack
-mslug3hc33                      // hack
-mslug3hc34                      // hack
-mslug3hc35                      // hack
-mslug3hc36                      // hack
-mslug3hc37                      // hack
-mslug3hc38                      // hack
-mslug3hc39                      // hack
-mslug3hc40                      // hack
-mslug3hc41                      // hack
-mslug4hc01                      // hack
-mslug4hc02                      // hack
-mslug4hc03                      // hack
-mslug4hc04                      // hack
-mslug4hc05                      // hack
-mslug4hc06                      // hack
-mslug4hc07                      // hack
-mslug4hc08                      // hack
-mslug4hc09                      // hack
-mslug4hc10                      // hack
-mslug4hc11                      // hack
-mslug4hc12                      // hack
-mslug4hc13                      // hack
-mslug4hc14                      // hack
-mslug4hc15                      // hack
-mslug4hc16                      // hack
-mslug4hc17                      // hack
-mslug4hc18                      // hack
-mslug4hc19                      // hack
-mslug4hc20                      // hack
-mslug4hc21                      // hack
-mslug4hc22                      // hack
-mslug4hc23                      // hack
-mslug4hc24                      // hack
-mslug4hc25                      // hack
-mslug4hc26                      // hack
-mslug5hc01                      // hack
-mslug5hc02                      // hack
-mslug5hc03                      // hack
-mslug5hc04                      // hack
-mslug5hc05                      // hack
-mslug5hc06                      // hack
-mslug5hc07                      // hack
-mslug5hc08                      // hack
-mslug5hc09                      // hack
-mslug5hc10                      // hack
-mslug5hc11                      // hack
-mslug5hc12                      // hack
-mslug5hc13                      // hack
-mslug5hc14                      // hack
-mslug5hc15                      // hack
-mslug5hc16                      // hack
-mslug5hc17                      // hack
-mslug5hc18                      // hack
-mslug5hc19                      // hack
-mslug5hc20                      // hack
-mslug5hc21                      // hack
-mslug5hc22                      // hack
-mslug5hc23                      // hack
-mslug5hc24                      // hack
-mslug5hc25                      // hack
-mslug5hc26                      // hack
-mslug5hc27                      // hack
-mslug5hc28                      // hack
-mslug5hc29                      // hack
-mslug5hc30                      // hack
-mslug5hc31                      // hack
-mslugxhc01                      // hack
-mslugxhc02                      // hack
-mslugxhc03                      // hack
-mslugxhc04                      // hack
-mslugxhc05                      // hack
-mslugxhc06                      // hack
-mslugxhc07                      // hack
-mslugxhc08                      // hack
-mslugxhc09                      // hack
-mslugxhc10                      // hack
-mslugxhc11                      // hack
-mslugxhc12                      // hack
-mslugxhc13                      // hack
-mslugxhc14                      // hack
-mslugxhc15                      // hack
-mslugxhc16                      // hack
-mslugxhc17                      // hack
-mslugxhc18                      // hack
-mslugxhc19                      // hack
-mslugxhc20                      // hack
-mslugxhc21                      // hack
-mslugxhc22                      // hack
-mslugxhc23                      // hack
-mslugxhc24                      // hack
-mslugxhc25                      // hack
-mslugxhc26                      // hack
-mslugxhc27                      // hack
-mslugxhc28                      // hack
-mslugxhc29                      // hack
-mslugxhc30                      // hack
-mslugxhc31                      // hack
-mslugxhc32                      // hack
-mslugxhc33                      // hack
-mslugxhc34                      // hack
-mslugxhc35                      // hack
-mslugxhc36                      // hack
-mslugxhc37                      // hack
-mutnathc01                      // hack
-nam1975hc01                     // hack
-neocup98hc01                    // hack
-ninjamashc01                    // hack
-ninjamashc02                    // hack
-ninjamashc03                    // hack
-nitdhc01                        // hack
-nitdhc02                        // hack
-pbobblenhc01                    // hack
-pbobblenhc02                    // hack
-pbobblenhc03                    // hack
-puzzledphc01                    // hack
-puzzldprhc01                    // hack
-ragnagrdhc01                    // hack
-ragnagrdhc02                    // hack
-rbffspechc01                    // hack
-rbff1hc01                       // hack
-rbff2hc01                       // hack
-rotdhc01                        // hack
-rotdhc02                        // hack
-rotdhc03                        // hack
-rotdhc04                        // hack
-s1945phc01                      // hack
-s1945phc02                      // hack
-s1945phc03                      // hack
-s1945phc04                      // hack
-samshohc01                      // hack
-samshohc02                      // hack
-samshohc03                      // hack
-samsho2hc01                     // hack
-samsho2hc02                     // hack
-samsho2hc03                     // hack
-samsho2hc04                     // hack
-samsho2hc05                     // hack
-samsho2hc06                     // hack
-samsho3hc01                     // hack
-samsho3hc02                     // hack
-samsho4hc01                     // hack
-samsho4hc02                     // hack
-samsho4hc03                     // hack
-samsho4hc04                     // hack
-samsho4hc05                     // hack
-samsho4hc06                     // hack
-samsho5hc01                     // hack
-samsho5hc02                     // hack
-samsho5hc03                     // hack
-samsho5hc04                     // hack
-samsho5hc05                     // hack
-samsh5sphc01                    // hack
-samsh5sphc02                    // hack
-samsh5sphc03                    // hack
-samsh5sphc04                    // hack
-samsh5sphc05                    // hack
-savagerehc01                    // hack
-savagerehc02                    // hack
-savagerehc03                    // hack
-sdodgebhc01                     // hack
-sdodgebhc02                     // hack
-sdodgebhc03                     // hack
-sengoku2hc01                    // hack
-sengoku3hc01                    // hack
-sengoku3hc02                    // hack
-sengoku3hc03                    // hack
-sengoku3hc04                    // hack
-sengoku3hc05                    // hack
-sengoku3hc06                    // hack
-sengoku3hc07                    // hack
-shocktrohc01                    // hack
-shocktr2hc01                    // hack
-sonicwi2hc01                    // hack
-sonicwi3hc01                    // hack
-sonicwi3hc02                    // hack
-spinmasthc01                    // hack
-strhoophc01                     // hack
-svchc01                         // hack
-svchc02                         // hack
-tophuntrhc01                    // hack
-turfmasthc01                    // hack
-turfmasthc02                    // hack
-twinsprihc01                    // hack
-viewpoinhc01                    // hack
-viewpoinhc02                    // hack
-wakuwak7hc01                    // hack
-wakuwak7hc02                    // hack
-wakuwak7hc03                    // hack
-wjammershc01                    // hack
-wjammershc02                    // hack
-wjammershc03                    // hack
-wh1hc01                         // hack
-wh1hc02                         // hack
-wh2hc01                         // hack
-wh2hc02                         // hack
-wh2hc03                         // hack
-wh2jhc01                        // hack
-wh2jhc02                        // hack
-whphc01                         // hack
-whphc02                         // hack
-whphc03                         // hack
-whphc04                         // hack
-zintrckbhc01                    // hack
-zintrckbhc02                    // hack
+androdunhc01
+aofhc01
+aofhc02
+aofhc03
+aofhc04
+aofhc05
+aof2hc01
+aof2hc02
+aof2hc03
+aof3hc01
+aof3hc02
+aodkhc01
+blazstarhc01
+breakershc01
+breakrevhc01
+breakrevhc02
+breakrevhc03
+breakrevhc04
+crswd2blhc01
+cyberliphc01
+doubledrhc01
+doubledrhc02
+doubledrhc03
+doubledrhc04
+doubledrhc05
+doubledrhc06
+doubledrhc07
+doubledrhc08
+eightmanhc01
+fatfursphc01
+fatfursphc02
+fatfury1hc01
+fatfury2hc01
+fatfury2hc02
+fatfury3hc01
+fightfevhc01
+fightfevhc02
+flipshothc01
+froman2bhc01
+galaxyfghc01
+galaxyfghc02
+garouhc01
+garouhc02
+garouhc03
+garouhc04
+ganryuhc01
+gowcaizrhc01
+gowcaizrhc02
+gowcaizrhc03
+gpilotshc01
+irrmazehc01
+kabukiklhc01
+kabukiklhc02
+kabukiklhc03
+karnovrhc01
+karnovrhc02
+karnovrhc03
+kizunahc01
+kizunahc02
+kizunahc03
+kof10thhc01
+kof10thhc02
+kof94hc01
+kof94hc02
+kof94hc03
+kof94hc04
+kof94hc05
+kof94hc06
+kof94hc07
+kof94hc08
+kof95hc01
+kof95hc02
+kof95hc03
+kof95hc04
+kof95hc05
+kof95hc06
+kof96hc01
+kof96hc02
+kof96hc03
+kof96hc04
+kof96hc05
+kof96hc06
+kof96hc07
+kof96hc08
+kof96hc09
+kof97hc01
+kof97hc02
+kof97hc03
+kof97hc04
+kof97hc05
+kof97hc06
+kof97hc07
+kof97hc08
+kof97hc09
+kof97hc10
+kof97hc11
+kof97hc12
+kof97hc13
+kof97hc14
+kof97hc15
+kof97hc16
+kof97hc17
+kof97hc18
+kof97hc19
+kof97hc20
+kof97hc21
+kof97hc22
+kof97hc23
+kof97hc24
+kof97hc25
+kof97hc26
+kof97hc27
+kof97hc28
+kof97hc29
+kof97hc30
+kof97hc31
+kof97hc32
+kof97hc33
+kof98hc01
+kof98hc02
+kof98hc03
+kof98hc04
+kof98hc05
+kof98hc06
+kof98hc07
+kof98hc08
+kof98hc09
+kof98hc10
+kof98hc11
+kof98hc12
+kof98hc13
+kof98hc14
+kof98hc15
+kof98hc16
+kof98hc17
+kof98hc18
+kof98hc19
+kof98hc20
+kof98hc21
+kof98hc22
+kof98hc23
+kof98hc24
+kof98hc25
+kof98hc26
+kof99hc01
+kof99hc02
+kof99hc03
+kof99hc04
+kof99hc05
+kof99hc06
+kof99hc07
+kof99hc08
+kof99hc09
+kof99hc10
+kof99hc11
+kof99hc12
+kof99hc13
+kof2000hc01
+kof2000hc02
+kof2000hc03
+kof2000hc04
+kof2000hc05
+kof2000hc06
+kof2000hc07
+kof2000hc08
+kof2000hc09
+kof2000hc10
+kof2001hc01
+kof2001hc02
+kof2001hc03
+kof2001hc04
+kof2001hc05
+kof2001hc06
+kof2002hc01
+kof2002hc02
+kof2002hc03
+kof2002hc04
+kof2002hc05
+kof2002hc06
+kof2002hc07
+kof2002hc08
+kof2002hc09
+kof2002hc10
+kof2002hc11
+kof2002hc12
+kof2002hc13
+kof2002hc14
+kof2002hc15
+kof2002hc16
+kof2002hc17
+kof2002hc18
+kof2002hc19
+kof2002hc20
+kof2002hc21
+kof2002hc22
+kof2002hc23
+kof2002hc24
+kof2003hc01
+kof2003hc02
+kof2003hc03
+kof2003hc04
+kof2003hc05
+lans2004hc01
+lastbladhc01
+lastbladhc02
+lastbladhc03
+lastbladhc04
+lastbladhc05
+lastbladhc06
+lastbld2hc01
+lastbld2hc02
+lastbld2hc03
+lastbld2hc04
+lastbld2hc05
+lastbld2hc06
+lastbld2hc07
+lastbld2hc08
+lasthopehc01
+magdrop3hc01
+magdrop3hc02
+magdrop3hc03
+maglordhc01
+maglordhc02
+matrimhc01
+matrimhc02
+matrimhc03
+miexchnghc01
+mslughc01
+mslughc02
+mslughc03
+mslughc04
+mslughc05
+mslughc06
+mslughc07
+mslughc08
+mslughc09
+mslughc10
+mslughc11
+mslughc12
+mslughc13
+mslughc14
+mslughc15
+mslughc16
+mslug2hc01
+mslug2hc02
+mslug2hc03
+mslug2hc04
+mslug2hc05
+mslug2hc06
+mslug2hc07
+mslug2hc08
+mslug2hc09
+mslug2hc10
+mslug2hc11
+mslug2hc12
+mslug2hc13
+mslug2hc14
+mslug2hc15
+mslug2hc16
+mslug2hc17
+mslug2hc18
+mslug2hc19
+mslug3hc01
+mslug3hc02
+mslug3hc03
+mslug3hc04
+mslug3hc05
+mslug3hc06
+mslug3hc07
+mslug3hc08
+mslug3hc09
+mslug3hc10
+mslug3hc11
+mslug3hc12
+mslug3hc13
+mslug3hc14
+mslug3hc15
+mslug3hc16
+mslug3hc17
+mslug3hc18
+mslug3hc19
+mslug3hc20
+mslug3hc21
+mslug3hc22
+mslug3hc23
+mslug3hc24
+mslug3hc25
+mslug3hc26
+mslug3hc27
+mslug3hc28
+mslug3hc29
+mslug3hc30
+mslug3hc31
+mslug3hc32
+mslug3hc33
+mslug3hc34
+mslug3hc35
+mslug3hc36
+mslug3hc37
+mslug3hc38
+mslug3hc39
+mslug3hc40
+mslug3hc41
+mslug4hc01
+mslug4hc02
+mslug4hc03
+mslug4hc04
+mslug4hc05
+mslug4hc06
+mslug4hc07
+mslug4hc08
+mslug4hc09
+mslug4hc10
+mslug4hc11
+mslug4hc12
+mslug4hc13
+mslug4hc14
+mslug4hc15
+mslug4hc16
+mslug4hc17
+mslug4hc18
+mslug4hc19
+mslug4hc20
+mslug4hc21
+mslug4hc22
+mslug4hc23
+mslug4hc24
+mslug4hc25
+mslug4hc26
+mslug5hc01
+mslug5hc02
+mslug5hc03
+mslug5hc04
+mslug5hc05
+mslug5hc06
+mslug5hc07
+mslug5hc08
+mslug5hc09
+mslug5hc10
+mslug5hc11
+mslug5hc12
+mslug5hc13
+mslug5hc14
+mslug5hc15
+mslug5hc16
+mslug5hc17
+mslug5hc18
+mslug5hc19
+mslug5hc20
+mslug5hc21
+mslug5hc22
+mslug5hc23
+mslug5hc24
+mslug5hc25
+mslug5hc26
+mslug5hc27
+mslug5hc28
+mslug5hc29
+mslug5hc30
+mslug5hc31
+mslugxhc01
+mslugxhc02
+mslugxhc03
+mslugxhc04
+mslugxhc05
+mslugxhc06
+mslugxhc07
+mslugxhc08
+mslugxhc09
+mslugxhc10
+mslugxhc11
+mslugxhc12
+mslugxhc13
+mslugxhc14
+mslugxhc15
+mslugxhc16
+mslugxhc17
+mslugxhc18
+mslugxhc19
+mslugxhc20
+mslugxhc21
+mslugxhc22
+mslugxhc23
+mslugxhc24
+mslugxhc25
+mslugxhc26
+mslugxhc27
+mslugxhc28
+mslugxhc29
+mslugxhc30
+mslugxhc31
+mslugxhc32
+mslugxhc33
+mslugxhc34
+mslugxhc35
+mslugxhc36
+mutnathc01
+nam1975hc01
+neocup98hc01
+ninjamashc01
+ninjamashc02
+ninjamashc03
+nitdhc01
+nitdhc02
+pbobblenhc01
+pbobblenhc02
+pbobblenhc03
+puzzledphc01
+puzzldprhc01
+ragnagrdhc01
+ragnagrdhc02
+rbffspechc01
+rbff1hc01
+rbff2hc01
+rotdhc01
+rotdhc02
+rotdhc03
+rotdhc04
+s1945phc01
+s1945phc02
+s1945phc03
+s1945phc04
+samshohc01
+samshohc02
+samshohc03
+samsho2hc01
+samsho2hc02
+samsho2hc03
+samsho2hc04
+samsho2hc05
+samsho2hc06
+samsho3hc01
+samsho3hc02
+samsho4hc01
+samsho4hc02
+samsho4hc03
+samsho4hc04
+samsho4hc05
+samsho5hc01
+samsho5hc02
+samsho5hc03
+samsho5hc04
+samsh5sphc01
+samsh5sphc02
+samsh5sphc03
+samsh5sphc04
+savagerehc01
+savagerehc02
+savagerehc03
+sdodgebhc01
+sdodgebhc02
+sdodgebhc03
+sengoku2hc01
+sengoku3hc01
+sengoku3hc02
+sengoku3hc03
+sengoku3hc04
+sengoku3hc05
+sengoku3hc06
+shocktrohc01
+shocktr2hc01
+sonicwi2hc01
+sonicwi3hc01
+sonicwi3hc02
+spinmasthc01
+strhoophc01
+svchc01
+svchc02
+tophuntrhc01
+turfmasthc01
+turfmasthc02
+twinsprihc01
+viewpoinhc01
+viewpoinhc02
+wakuwak7hc01
+wakuwak7hc02
+wakuwak7hc03
+wjammershc01
+wjammershc02
+wjammershc03
+wjammershc04
+wh1hc01
+wh1hc02
+wh2hc01
+wh2hc02
+wh2hc03
+wh2jhc01
+wh2jhc02
+whphc01
+whphc02
+whphc03
+whphc04
+zintrckbhc01
+zintrckbhc02
 
 @source:nmk16.cpp
 vandykehc01                     // hack

@@ -899,7 +899,7 @@ namcos21_de.cpp
 namcos22.cpp
 namcos23.cpp       // check
 namcos86.cpp
-//naomi.cpp        //It cannot exceed more than 24 FPS
+naomi.cpp        //It cannot exceed more than 24 FPS
 naughtyb.cpp
 nbmj8688.cpp
 nbmj8891.cpp

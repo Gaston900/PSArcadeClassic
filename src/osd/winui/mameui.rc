@@ -190,6 +190,13 @@ BEGIN
 //        MENUITEM "Delete game settings",                  ID_RC_CLEAN
         MENUITEM "Listen to music with M1FX\tAlt+M",      ID_PLAY_M1
         MENUITEM SEPARATOR
+
+// 修改的 代码来源 (加斯顿90)
+//==================================================================================================>>>
+        MENUITEM "Cleaning of NVRAM and Cfg files",       ID_CONTEXT_CLEAN_SINGLE_NVRAM_CFG
+        MENUITEM "Complete cleanup of all NVRAM and Cfg files", ID_CONTEXT_CLEAN_ALL_NVRAM_CFG
+        MENUITEM SEPARATOR
+//==================================================================================================>>>
         MENUITEM "Properties\tAlt+G",                     ID_GAME_PROPERTIES
         MENUITEM "Properties for driver\tAlt+D",          ID_FOLDER_SOURCEPROPERTIES
         MENUITEM SEPARATOR
@@ -1171,12 +1178,19 @@ IDB_RENAME                BITMAP                    "res\\rename.bmp"
 IDB_RESET                BITMAP                    "res\\reset.bmp"
 // 修改的 代码来源 (EKMAME)
 /****************************************************************************/
-IDB_KLIST				 BITMAP					   "res\\klist.bmp"
+IDB_KLIST				 BITMAP					    "res\\klist.bmp"
 /****************************************************************************/
 // 修改的 (Eziochiu)
 /****************************************************************************/
-IDB_MAME_IPS            BITMAP                     "res\\mame.bmp"
+IDB_MAME_IPS             BITMAP                     "res\\mame.bmp"
 /****************************************************************************/
+
+// 修改的 代码来源 (加斯顿90)
+//===========================================================================>>>
+IDB_CLEANSINGLE          BITMAP                     "res\\cleansingle.bmp"
+IDB_CLEANALL             BITMAP                     "res\\cleanall.bmp"
+IDB_CONTEXT              BITMAP                     "res\\context.bmp"
+//===========================================================================>>>
 /////////////////////////////////////////////////////////////////////////////
 //
 // Cursor

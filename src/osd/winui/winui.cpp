@@ -449,6 +449,14 @@ static HBITMAP hFilters	= NULL;
 static HBITMAP hRemove = NULL;
 static HBITMAP hRename = NULL;
 static HBITMAP hReset = NULL;
+
+// 修改的 代码来源 (加斯顿90)
+//==================================>>>
+static HBITMAP hCleanSingle = NULL;
+static HBITMAP hCleanAll = NULL;
+static HBITMAP hConText = NULL;
+//==================================>>>
+
 // 修改的 代码来源 (EKMAME)
 /*****************************/
 static HBITMAP hklist = NULL;
@@ -1649,6 +1657,13 @@ static void Win32UI_exit(void)
 	DeleteBitmap(hRemove);
 	DeleteBitmap(hRename);
 	DeleteBitmap(hReset);
+
+// 修改的 代码来源 (加斯顿90)
+//=================================>>>
+	DeleteBitmap(hCleanSingle);
+	DeleteBitmap(hCleanAll);
+	DeleteBitmap(hConText);
+//=================================>>>
 	DeleteBitmap(hMissing_bitmap);
 
 // 修改的 代码来源 (EKMAME)
@@ -2538,6 +2553,16 @@ static void InitMenuIcons(void)
 	hRename = CreateBitmapTransparent(hTemp);
 	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_RESET));
 	hReset = CreateBitmapTransparent(hTemp);
+
+// 修改的 代码来源 (加斯顿90)
+//===================================================================>>>
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_CLEANSINGLE));
+	hCleanSingle = CreateBitmapTransparent(hTemp);
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_CLEANALL));
+	hCleanAll = CreateBitmapTransparent(hTemp);
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_CONTEXT));
+	hConText = CreateBitmapTransparent(hTemp);
+//===================================================================>>>
 
 //============================== 缘来是你 ============================>>>
 	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_KLIST));
@@ -4583,6 +4608,143 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			return true;
 			}
 //==========================================================>>>
+
+// 修改的 代码来源 (加斯顿90)
+//==================================================================================================>>>
+		case ID_CONTEXT_CLEAN_SINGLE_NVRAM_CFG:
+		{
+			int nGameIdx = Picker_GetSelectedItem(hWndList); //
+			if (nGameIdx < 0) break;
+
+			const char* szRomTargetName = GetDriverGameName(nGameIdx); //
+			char szSingleCfgPath[MAX_PATH];
+			char szSingleNvramPath[MAX_PATH];
+			char szSingleConfirmMsg[512];
+
+			snprintf(szSingleCfgPath, sizeof(szSingleCfgPath), ".\\config\\cfg\\%s.cfg", szRomTargetName);
+			snprintf(szSingleNvramPath, sizeof(szSingleNvramPath), ".\\config\\nvram\\%s", szRomTargetName);
+
+			snprintf(szSingleConfirmMsg, sizeof(szSingleConfirmMsg), 
+				"Are you sure you want to delete the NVRAM and CFG files for this game?\n\nGame: %s\nCFG: %s\nNVRAM: %s", 
+				GetGameChineseDescription(szRomTargetName), szSingleCfgPath, szSingleNvramPath);
+
+			if (winui_message_box_utf8(hWnd, szSingleConfirmMsg, MAMEUINAME, MB_ICONQUESTION | MB_YESNO) != IDYES)
+				break;
+
+			if (GetFileAttributesA(szSingleCfgPath) != INVALID_FILE_ATTRIBUTES)
+			{
+				DeleteFileA(szSingleCfgPath);
+			}
+
+			DWORD dwNvramAttr = GetFileAttributesA(szSingleNvramPath);
+			if (dwNvramAttr != INVALID_FILE_ATTRIBUTES)
+			{
+				if (dwNvramAttr & FILE_ATTRIBUTE_DIRECTORY)
+				{
+					char szDoubleNullNvramDir[MAX_PATH + 2] = {0};
+					strcpy(szDoubleNullNvramDir, szSingleNvramPath);
+					szDoubleNullNvramDir[strlen(szSingleNvramPath) + 1] = 0;
+
+					SHFILEOPSTRUCTA shfoDir = {0};
+					shfoDir.hwnd = hWnd;
+					shfoDir.wFunc = FO_DELETE;
+					shfoDir.pFrom = szDoubleNullNvramDir;
+					shfoDir.fFlags = FOF_ALLOWUNDO | FOF_NOCONFIRMATION | FOF_SILENT;
+					SHFileOperationA(&shfoDir);
+				}
+				else
+				{
+					DeleteFileA(szSingleNvramPath);
+				}
+			}
+
+			winui_message_box_utf8(hWnd, "NVRAM and CFG files successfully cleared!", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
+			SetFocus(hWndList);
+			return true;
+		}
+
+		case ID_CONTEXT_CLEAN_ALL_NVRAM_CFG:
+		{
+			char szAllConfirmMsg[512];
+			snprintf(szAllConfirmMsg, sizeof(szAllConfirmMsg), 
+				"Are you sure you want to clear ALL files inside NVRAM and CFG folders?\n\nThis will reset configurations for all games. This operation is irreversible!");
+
+			if (winui_message_box_utf8(hWnd, szAllConfirmMsg, MAMEUINAME, MB_ICONWARNING | MB_YESNO) != IDYES)
+				break;
+
+			bool bKeepDefaultCfg = true;
+			char szDefaultCfgCheckPath[MAX_PATH] = ".\\config\\cfg\\default.cfg";
+
+			if (GetFileAttributesA(szDefaultCfgCheckPath) != INVALID_FILE_ATTRIBUTES)
+			{
+				int nPromptDefaultAns = winui_message_box_utf8(hWnd, 
+					"ATTENTION:\nA 'default.cfg' file was found (Global button mapping for your PC).\n\nDo you ALSO want to delete it and reset all universal controller mappings?", 
+					MAMEUINAME, MB_ICONEXCLAMATION | MB_YESNOCANCEL);
+
+				if (nPromptDefaultAns == IDCANCEL) break;
+				if (nPromptDefaultAns == IDYES) bKeepDefaultCfg = false;
+			}
+
+			WIN32_FIND_DATAA fdaCfg;
+			HANDLE hFindCfg = FindFirstFileA(".\\config\\cfg\\*", &fdaCfg);
+			if (hFindCfg != INVALID_HANDLE_VALUE)
+			{
+				do
+				{
+					if (strcmp(fdaCfg.cFileName, ".") != 0 && strcmp(fdaCfg.cFileName, "..") != 0)
+					{
+						char szFileToDelete[MAX_PATH];
+						snprintf(szFileToDelete, sizeof(szFileToDelete), ".\\config\\cfg\\%s", fdaCfg.cFileName);
+
+						if (_stricmp(fdaCfg.cFileName, "default.cfg") == 0 && bKeepDefaultCfg)
+						{
+							continue; 
+						}
+
+						DeleteFileA(szFileToDelete);
+					}
+				} while (FindNextFileA(hFindCfg, &fdaCfg));
+				FindClose(hFindCfg);
+			}
+
+			WIN32_FIND_DATAA fdaNvram;
+			HANDLE hFindNvram = FindFirstFileA(".\\config\\nvram\\*", &fdaNvram);
+			if (hFindNvram != INVALID_HANDLE_VALUE)
+			{
+				do
+				{
+					if (strcmp(fdaNvram.cFileName, ".") != 0 && strcmp(fdaNvram.cFileName, "..") != 0)
+					{
+						char szPathToRemove[MAX_PATH];
+						snprintf(szPathToRemove, sizeof(szPathToRemove), ".\\config\\nvram\\%s", fdaNvram.cFileName);
+
+						if (fdaNvram.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+						{
+							char szDoubleNullDir[MAX_PATH + 2] = {0};
+							strcpy(szDoubleNullDir, szPathToRemove);
+							szDoubleNullDir[strlen(szPathToRemove) + 1] = 0;
+
+							SHFILEOPSTRUCTA shfoMasiva = {0};
+							shfoMasiva.hwnd = hWnd;
+							shfoMasiva.wFunc = FO_DELETE;
+							shfoMasiva.pFrom = szDoubleNullDir;
+							shfoMasiva.fFlags = FOF_ALLOWUNDO | FOF_NOCONFIRMATION | FOF_SILENT;
+							SHFileOperationA(&shfoMasiva);
+						}
+						else
+						{
+							DeleteFileA(szPathToRemove);
+						}
+					}
+				} while (FindNextFileA(hFindNvram, &fdaNvram));
+				FindClose(hFindNvram);
+			}
+
+			winui_message_box_utf8(hWnd, "Global NVRAM and CFG cleanup completed successfully!", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
+			SetFocus(hWndList);
+			return true;
+		}
+//==================================================================================================>>>
 
 		case ID_GAME_INFO:
 			(void)DialogBoxParam(GetModuleHandle(NULL), MAKEINTRESOURCE(IDD_GAME_INFO), hMain, GamePropertiesDialogProc, Picker_GetSelectedItem(hWndList));
@@ -6680,7 +6842,7 @@ void InitBodyContextMenu(HMENU hBodyContextMenu)
 	SetMenuItemBitmaps(hBodyContextMenu, ID_PLAY_IPS, MF_BYCOMMAND, hFolders, hFolders);	// IPS
 	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_DELETE_ROM, MF_BYCOMMAND, hRemove, hRemove);	//删除 ROMs
 	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_BATCH_DELETE_MODE, MF_BYCOMMAND, hDescription, hDescription);  // 批量删除模式
-	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_DELETE_SELECTED_ROMS, MF_BYCOMMAND, hRemove, hRemove);	//批量删除 ROMs
+	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_DELETE_SELECTED_ROMS, MF_BYCOMMAND, hConText, hConText);	//批量删除 ROMs
 	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_SELECT_ALL, MF_BYCOMMAND, hFields, hFields);	//全选
     SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_SELECT_NONE, MF_BYCOMMAND, hReset, hReset);		//全部取消
 //==========================================================================================================>>>	
@@ -6695,6 +6857,12 @@ void InitBodyContextMenu(HMENU hBodyContextMenu)
 	SetMenuItemBitmaps(hBodyContextMenu, ID_FOLDER_SOURCEPROPERTIES, MF_BYCOMMAND, hDriver, hDriver);
 	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_RESET_PLAYCOUNT, MF_BYCOMMAND, hCount, hCount);
 	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_RESET_PLAYTIME, MF_BYCOMMAND, hTime, hTime);
+
+// 修改的 代码来源 (加斯顿90)
+//==========================================================================================================>>>
+	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_CLEAN_SINGLE_NVRAM_CFG, MF_BYCOMMAND, hCleanSingle, hCleanSingle);
+	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_CLEAN_ALL_NVRAM_CFG, MF_BYCOMMAND, hCleanAll, hCleanAll);
+//==========================================================================================================>>>
 	SetMenuItemBitmaps(hBodyContextMenu, ID_FILE_PLAY_RECORD, MF_BYCOMMAND, hRecinput, hRecinput);
 	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_REMOVE_CUSTOM, MF_BYCOMMAND, hRemove, hRemove);
 	SetMenuItemBitmaps(hBodyContextMenu, ID_FILE_LOADSTATE, MF_BYCOMMAND, hSavestate, hSavestate);

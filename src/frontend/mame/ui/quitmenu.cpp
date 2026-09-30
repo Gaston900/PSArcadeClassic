@@ -56,7 +56,7 @@ menu_confirm_quit::~menu_confirm_quit()
 
 void menu_confirm_quit::populate(float &customtop, float &custombottom)
 {
-	item_append(_("menu-quit", "Menu"), FLAG_UI_HEADING | FLAG_DISABLE, nullptr);
+	item_append(_("menu-quit", "Developer Tools"), FLAG_UI_HEADING | FLAG_DISABLE, nullptr);
 
 	item_append(_("menu-quit", "Insert Coin"), 0, (void *)(uintptr_t)ITEM_INSERT_COIN);
 	item_append(_("menu-quit", "Load State"), 0, (void *)(uintptr_t)ITEM_LOAD_STATE);

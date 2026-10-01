@@ -170,11 +170,10 @@ BEGIN
 // 修改的 代码来源 (缘来是你)
 /*********************************************************************************************/
 	    MENUITEM SEPARATOR
-        MENUITEM "Delete ROM file\tDel",                         ID_CONTEXT_DELETE_ROM
-	    MENUITEM "Batch delete mode\tCtrl+Alt+D",                   ID_CONTEXT_BATCH_DELETE_MODE
-	    MENUITEM "Delete the selected ROM file\tDel",                   ID_CONTEXT_DELETE_SELECTED_ROMS
-        MENUITEM SEPARATOR
-        MENUITEM "Select All\tCtrl+A",                     ID_CONTEXT_SELECT_ALL
+        MENUITEM "Delete ROM file\tDel",                  ID_CONTEXT_DELETE_ROM
+	    MENUITEM "Delete the selected ROM file\tDel",     ID_CONTEXT_DELETE_SELECTED_ROMS
+	    MENUITEM "Batch delete mode\tCtrl+Alt+D",         ID_CONTEXT_BATCH_DELETE_MODE    
+        MENUITEM "Select All\tCtrl+A",                    ID_CONTEXT_SELECT_ALL
         MENUITEM "Cancel all\tCtrl+Z",                    ID_CONTEXT_SELECT_NONE
         MENUITEM SEPARATOR
 /*********************************************************************************************/
@@ -406,7 +405,6 @@ EXSTYLE WS_EX_CONTROLPARENT
 CAPTION "MAMEUI - overwritten at runtime"
 CLASS "MainClass"
 FONT 9, "Tahoma"
-
 BEGIN
     CONTROL         "",IDC_DIVIDER,WC_STATIC,SS_ETCHEDHORZ,0,0,364,1
     CONTROL         "",IDC_TREE,WC_TREEVIEW,TVS_HASBUTTONS | TVS_TRACKSELECT | TVS_LINESATROOT | TVS_EDITLABELS | TVS_FULLROWSELECT | TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,5,28,48,172
@@ -709,7 +707,6 @@ BEGIN
     EDITTEXT        IDC_SCREEN_SHADER3,290,206,90,14,ES_LEFT | WS_BORDER
     PUSHBUTTON      "Select",IDC_SELECT_SCR_SHADER3,290,224,40,14,0,0
     PUSHBUTTON      "Reset",IDC_RESET_SCR_SHADER3,330,224,40,14,0,0
-
 
     GROUPBOX        "Effect",IDC_STATIC,170,253,102,48
     EDITTEXT        IDC_EFFECT,180,263,90,14,ES_LEFT | WS_BORDER

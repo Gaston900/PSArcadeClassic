@@ -60,7 +60,7 @@ void menu_confirm_quit::populate(float &customtop, float &custombottom)
 
 	item_append(_("menu-quit", "Insert Coin"), 0, (void *)(uintptr_t)ITEM_INSERT_COIN);
 	item_append(_("menu-quit", "Load State"), 0, (void *)(uintptr_t)ITEM_LOAD_STATE);
-	item_append(_("menu-quit", "Save State"), 0, (void *)(uintptr_t)ITEM_SAVE_STATE);	
+	item_append(_("menu-quit", "Save State"), 0, (void *)(uintptr_t)ITEM_SAVE_STATE);
 	item_append(_("menu-quit", "Save Snapshot"), 0, (void *)(uintptr_t)ITEM_SAVE_SNAPSHOT);
 	item_append(_("menu-quit", "Record AVI"), 0, (void *)(uintptr_t)ITEM_RECORD_AVI);
 	item_append(_("menu-quit", "Show FPS"), 0, (void *)(uintptr_t)ITEM_SHOW_FPS);

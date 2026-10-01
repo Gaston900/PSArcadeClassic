@@ -192,8 +192,8 @@ BEGIN
 
 // 修改的 代码来源 (加斯顿90)
 //==================================================================================================>>>
-        MENUITEM "Cleaning of NVRAM and CfG files",       ID_CONTEXT_CLEAN_SINGLE_NVRAM_CFG
-        MENUITEM "Complete cleanup of all NVRAM and CfG files", ID_CONTEXT_CLEAN_ALL_NVRAM_CFG
+        MENUITEM "Cleaning of NVRAM and CFG files",       ID_CONTEXT_CLEAN_SINGLE_NVRAM_CFG
+        MENUITEM "Complete cleanup of all NVRAM and CFG files", ID_CONTEXT_CLEAN_ALL_NVRAM_CFG
         MENUITEM SEPARATOR
 //==================================================================================================>>>
         MENUITEM "Properties\tAlt+G",                     ID_GAME_PROPERTIES

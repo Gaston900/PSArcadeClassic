@@ -4613,20 +4613,22 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 //==================================================================================================>>>
 		case ID_CONTEXT_CLEAN_SINGLE_NVRAM_CFG:
 		{
-			int nGameIdx = Picker_GetSelectedItem(hWndList); //
+			int nGameIdx = Picker_GetSelectedItem(hWndList);
 			if (nGameIdx < 0) break;
 
-			const char* szRomTargetName = GetDriverGameName(nGameIdx); //
+			const char* szRomTargetName = GetDriverGameName(nGameIdx);
 			char szSingleCfgPath[MAX_PATH];
 			char szSingleNvramPath[MAX_PATH];
-			char szSingleConfirmMsg[512];
+			char szSingleStaPath[MAX_PATH];
+			char szSingleConfirmMsg[1024];
 
 			snprintf(szSingleCfgPath, sizeof(szSingleCfgPath), ".\\config\\cfg\\%s.cfg", szRomTargetName);
 			snprintf(szSingleNvramPath, sizeof(szSingleNvramPath), ".\\config\\nvram\\%s", szRomTargetName);
+			snprintf(szSingleStaPath, sizeof(szSingleStaPath), ".\\config\\sta\\%s", szRomTargetName);
 
 			snprintf(szSingleConfirmMsg, sizeof(szSingleConfirmMsg), 
-				"Are you sure you want to delete the NVRAM and CFG files for this game?\n\nGame: %s\nCFG: %s\nNVRAM: %s", 
-				GetGameChineseDescription(szRomTargetName), szSingleCfgPath, szSingleNvramPath);
+				"Are you sure you want to delete the NVRAM, CFG and Savestate files for this game?\n\nGame: %s\nCFG: %s\nNVRAM Directory: %s\nSavestate Directory: %s", 
+				GetGameChineseDescription(szRomTargetName), szSingleCfgPath, szSingleNvramPath, szSingleStaPath);
 
 			if (winui_message_box_utf8(hWnd, szSingleConfirmMsg, MAMEUINAME, MB_ICONQUESTION | MB_YESNO) != IDYES)
 				break;
@@ -4634,6 +4636,28 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 			if (GetFileAttributesA(szSingleCfgPath) != INVALID_FILE_ATTRIBUTES)
 			{
 				DeleteFileA(szSingleCfgPath);
+			}
+
+			DWORD dwStaAttr = GetFileAttributesA(szSingleStaPath);
+			if (dwStaAttr != INVALID_FILE_ATTRIBUTES)
+			{
+				if (dwStaAttr & FILE_ATTRIBUTE_DIRECTORY)
+				{
+					char szDoubleNullStaDir[MAX_PATH + 2] = {0};
+					strcpy(szDoubleNullStaDir, szSingleStaPath);
+					szDoubleNullStaDir[strlen(szSingleStaPath) + 1] = 0;
+
+					SHFILEOPSTRUCTA shfoStaDir = {0};
+					shfoStaDir.hwnd = hWnd;
+					shfoStaDir.wFunc = FO_DELETE;
+					shfoStaDir.pFrom = szDoubleNullStaDir;
+					shfoStaDir.fFlags = FOF_ALLOWUNDO | FOF_NOCONFIRMATION | FOF_SILENT;
+					SHFileOperationA(&shfoStaDir);
+				}
+				else
+				{
+					DeleteFileA(szSingleStaPath);
+				}
 			}
 
 			DWORD dwNvramAttr = GetFileAttributesA(szSingleNvramPath);
@@ -4658,7 +4682,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 				}
 			}
 
-			winui_message_box_utf8(hWnd, "NVRAM and CFG files successfully cleared!", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
+			winui_message_box_utf8(hWnd, "NVRAM, CFG and Savestate Directory successfully cleared!", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
 			SetFocus(hWndList);
 			return true;
 		}
@@ -4667,7 +4691,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 		{
 			char szAllConfirmMsg[512];
 			snprintf(szAllConfirmMsg, sizeof(szAllConfirmMsg), 
-				"Are you sure you want to clear ALL files inside NVRAM and CFG folders?\n\nThis will reset configurations for all games. This operation is irreversible!");
+				"Are you sure you want to clear ALL files and folders inside NVRAM, CFG and STA?\n\nThis will reset configurations and delete ALL save games for ALL games. Irreversible!");
 
 			if (winui_message_box_utf8(hWnd, szAllConfirmMsg, MAMEUINAME, MB_ICONWARNING | MB_YESNO) != IDYES)
 				break;
@@ -4698,13 +4722,46 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 
 						if (_stricmp(fdaCfg.cFileName, "default.cfg") == 0 && bKeepDefaultCfg)
 						{
-							continue; 
+							continue;
 						}
 
 						DeleteFileA(szFileToDelete);
 					}
 				} while (FindNextFileA(hFindCfg, &fdaCfg));
 				FindClose(hFindCfg);
+			}
+
+			WIN32_FIND_DATAA fdaSta;
+			HANDLE hFindSta = FindFirstFileA(".\\config\\sta\\*", &fdaSta);
+			if (hFindSta != INVALID_HANDLE_VALUE)
+			{
+				do
+				{
+					if (strcmp(fdaSta.cFileName, ".") != 0 && strcmp(fdaSta.cFileName, "..") != 0)
+					{
+						char szStaPathToRemove[MAX_PATH];
+						snprintf(szStaPathToRemove, sizeof(szStaPathToRemove), ".\\config\\sta\\%s", fdaSta.cFileName);
+
+						if (fdaSta.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+						{
+							char szDoubleNullStaDir[MAX_PATH + 2] = {0};
+							strcpy(szDoubleNullStaDir, szStaPathToRemove);
+							szDoubleNullStaDir[strlen(szStaPathToRemove) + 1] = 0;
+
+							SHFILEOPSTRUCTA shfoStaMasiva = {0};
+							shfoStaMasiva.hwnd = hWnd;
+							shfoStaMasiva.wFunc = FO_DELETE;
+							shfoStaMasiva.pFrom = szDoubleNullStaDir;
+							shfoStaMasiva.fFlags = FOF_ALLOWUNDO | FOF_NOCONFIRMATION | FOF_SILENT;
+							SHFileOperationA(&shfoStaMasiva);
+						}
+						else
+						{
+							DeleteFileA(szStaPathToRemove);
+						}
+					}
+				} while (FindNextFileA(hFindSta, &fdaSta));
+				FindClose(hFindSta);
 			}
 
 			WIN32_FIND_DATAA fdaNvram;
@@ -4740,7 +4797,7 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 				FindClose(hFindNvram);
 			}
 
-			winui_message_box_utf8(hWnd, "Global NVRAM and CFG cleanup completed successfully!", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
+			winui_message_box_utf8(hWnd, "Global NVRAM, CFG and ALL Savestate Folders cleaned up successfully!", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
 			SetFocus(hWndList);
 			return true;
 		}

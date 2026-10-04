@@ -7,13 +7,9 @@ This project is focused on merging two emulator systems [ARCADE64](https://arcad
 
 I am only supporting the operating systems 64x bits, Windows 7, Windows 8, Windows 10 and Windows 11.
 
-All source code used to create the base system:
+All source code used to create the base system, extracted from the GitHub repository:
 
-The GitHub container: Robert [[HBMAME](https://github.com/Robbbert/hbmame)]
-
-The GitHub container: Dirstac [[Arcade Extended](https://github.com/Dirstac/ArcadeUI-CHS)]
-
-The GitHub container: Kaze [[EKMAME](https://github.com/WOOSEOK99/EKMAME)]
+Robert [[HBMAME](https://github.com/Robbbert/hbmame)], Dirstac [[Arcade Extended](https://github.com/Dirstac/ArcadeUI-CHS)] and Kaze [[EKMAME](https://github.com/WOOSEOK99/EKMAME)]
 
 How to compile
 --------------

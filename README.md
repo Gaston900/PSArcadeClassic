@@ -7,17 +7,25 @@ This project is focused on merging two emulator systems [ARCADE64](https://arcad
 
 I am only supporting the operating systems 64x bits, Windows 7, Windows 8, Windows 10 and Windows 11.
 
+All source code used to create the base system:
+
+Robert [[HBMAME](https://github.com/Robbbert/hbmame)]
+
+Dirstac [[Arcade Extended](https://github.com/Dirstac/ArcadeUI-CHS)]
+
+Kaze [[EKMAME](https://github.com/WOOSEOK99/EKMAME)]
+
 How to compile
 --------------
 
-In order to compile this version we will need the source code, for this we will place it in the folder docs/Source Code[HBMame]/hbmame-tag245.7z.001, once located we will begin to unzip the files it will take a few minutes, once unzipped we will have a folder with the name hbmame-tag245.7z, we will rename it to “src”. Now we will get the latest source code from this Github container once downloaded we will start to unzip and once finished unzipping we will select the files that we had left in the folder “3rdparty, scripts, src and makefile” we will copy them into the src folder, the system will ask us to replace it we will say yes.
+In order to compile this version we will need the source code, for this we will place it in the folder docs/Source Code[HBMame]/hbmame-tag245.7z.001, once located we will begin to unzip the files it will take a few minutes, once unzipped we will have a folder with the name hbmame-tag245.7z, we will rename it to “src”. Now we will get the latest source code from this Github container once downloaded we will start to unzip and once finished unzipping we will select the files that we had left in the folder “3rdparty, scripts, src and makefile” folders, then copy them into the "src" folder. When the system asks to confirm file replacement, accept the operation.
+
+The version used is msys64 15.0.2; if you do not have it, you can find it in the folder “docs / Build Tools / msys64-15.0.2.7z.001”.
 
 And we will apply this command to start the compilation:
 ```
 make PTR64=1 SUBTARGET=arcade OSD=winui NOWERROR=1 STRIP_SYMBOLS=1
 ```
-
-The compilation [TOOL](https://github.com/mamedev/buildtools/releases) is suggested to be version 7.0 msys64 (Jan 11, 2022).
 
 Open Source Software Projects
 ------------------------------

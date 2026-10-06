@@ -9,7 +9,7 @@ I am only supporting the operating systems 64x bits, Windows 7, Windows 8, Windo
 
 All source code used to create the base system, extracted from the GitHub repository:
 
-Robert [[HBMAME](https://github.com/Robbbert/hbmame)], Dirstac [[Arcade Extended](https://github.com/Dirstac/ArcadeUI-CHS)] and Kaze [[EKMAME](https://github.com/WOOSEOK99/EKMAME)]
+Robert [[HBMAME](https://github.com/Robbbert/hbmame)], Dirstac [[Arcade Extended](https://github.com/Dirstac/ArcadeUI-CHS)], Kaze [[EKMAME](https://github.com/WOOSEOK99/EKMAME)] and Chamcham [[MSLUG6](https://github.com/Zansword/MAME-0.243)]
 
 How to compile
 --------------

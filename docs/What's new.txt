@@ -7,6 +7,23 @@
   .chd, so that we can leave roms sets much lighter for our hard drive.
 ===============================================================================================================================
 
+2026-10-06 Ver. 2.8
+---------------
+
+- Added support for Image Enhancement.
+- A feature was implemented so that the game now pauses when I open the menu.
+- Added icons/indicators appearing to the left and right of controller buttons for players 1 through 10, as well as for Autofire and button customization.
+- Added support for the command.dat file, adapting all displayed icons/indicators accordingly.
+- Added a dialog box to disable the image enhancement filter when the "P" key is pressed.
+- Added a keyboard shortcut for the cheat menu.
+- Added UI support with DPI scaling for 1920x1200 and 1080p resolutions.
+- Rebuilt the IPS manager text box and implemented a system reset button for use when an IPS patch is selected.
+- Rebuilt the "Quit Game" option to create a developer toolkit option that includes: Insert Coin, Load State, Save State, Save Snapshot, Record AVI, Show FPS, Show Speed, Debug Mode, and Reset System.
+- Added a semi-automatic process for creating emulator folders and subfolders.
+- Added options to delete NVRAM, CFG, and STA files (via the UI).
+- The Naomi and Atomiswave system games have been restored, thanks to user Chamcham for successfully getting Metal Slug 6 to work in MAME.
+
+
 2026-03-31 Ver. 2.6
 ---------------
 The project has reboot, a complete cleanup.

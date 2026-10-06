@@ -1187,6 +1187,15 @@ IDB_MAME_IPS             BITMAP                     "res\\mame.bmp"
 IDB_CLEANSINGLE          BITMAP                     "res\\cleansingle.bmp"
 IDB_CLEANALL             BITMAP                     "res\\cleanall.bmp"
 IDB_CONTEXT              BITMAP                     "res\\context.bmp"
+IDB_BATCH_DELETE         BITMAP                     "res\\batchdelete.bmp"
+IDB_SELECT_ALL           BITMAP                     "res\\selectall.bmp"
+IDB_SELECT_NONE          BITMAP                     "res\\selectnone.bmp"
+IDB_DELETE_ROM           BITMAP                     "res\\deleterom.bmp"
+IDB_EXP_ALL              BITMAP                     "res\\exp_all.bmp"
+IDB_EXP_COMPLETE         BITMAP                     "res\\exp_complete.bmp"
+IDB_EXP_MISSING          BITMAP                     "res\\exp_missing.bmp"
+IDB_EXP_CURRENT          BITMAP                     "res\\exp_current.bmp"
+IDB_IPS_MENU             BITMAP                     "res\\ipsmenu.bmp" 
 //===========================================================================>>>
 /////////////////////////////////////////////////////////////////////////////
 //

@@ -455,6 +455,15 @@ static HBITMAP hReset = NULL;
 static HBITMAP hCleanSingle = NULL;
 static HBITMAP hCleanAll = NULL;
 static HBITMAP hConText = NULL;
+static HBITMAP hBatchDelete = NULL;
+static HBITMAP hSelectAll = NULL;
+static HBITMAP hSelectNone = NULL;
+static HBITMAP hDeleteRomExclusive = NULL;
+static HBITMAP hExpAll = NULL;
+static HBITMAP hExpComplete = NULL;
+static HBITMAP hExpMissing = NULL;
+static HBITMAP hExpCurrent = NULL;
+static HBITMAP hIpsMenuExclusive = NULL;
 //==================================>>>
 
 // 修改的 代码来源 (EKMAME)
@@ -1663,6 +1672,15 @@ static void Win32UI_exit(void)
 	DeleteBitmap(hCleanSingle);
 	DeleteBitmap(hCleanAll);
 	DeleteBitmap(hConText);
+	DeleteBitmap(hBatchDelete);
+	DeleteBitmap(hSelectAll);
+	DeleteBitmap(hSelectNone);
+	DeleteBitmap(hDeleteRomExclusive);
+	DeleteBitmap(hExpAll);
+	DeleteBitmap(hExpComplete);
+	DeleteBitmap(hExpMissing);
+	DeleteBitmap(hExpCurrent);
+    DeleteBitmap(hIpsMenuExclusive);
 //=================================>>>
 	DeleteBitmap(hMissing_bitmap);
 
@@ -2562,6 +2580,24 @@ static void InitMenuIcons(void)
 	hCleanAll = CreateBitmapTransparent(hTemp);
 	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_CONTEXT));
 	hConText = CreateBitmapTransparent(hTemp);
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BATCH_DELETE));
+	hBatchDelete = CreateBitmapTransparent(hTemp);
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_SELECT_ALL));
+	hSelectAll = CreateBitmapTransparent(hTemp);
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_SELECT_NONE));
+	hSelectNone = CreateBitmapTransparent(hTemp);
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_DELETE_ROM));
+	hDeleteRomExclusive = CreateBitmapTransparent(hTemp);
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_EXP_ALL));
+	hExpAll = CreateBitmapTransparent(hTemp);
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_EXP_COMPLETE));
+	hExpComplete = CreateBitmapTransparent(hTemp);
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_EXP_MISSING));
+	hExpMissing = CreateBitmapTransparent(hTemp);
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_EXP_CURRENT));
+	hExpCurrent = CreateBitmapTransparent(hTemp);
+	hTemp = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_IPS_MENU));
+	hIpsMenuExclusive = CreateBitmapTransparent(hTemp);
 //===================================================================>>>
 
 //============================== 缘来是你 ============================>>>
@@ -4731,71 +4767,29 @@ static bool MameCommand(HWND hWnd, int id, HWND hWndCtl, UINT codeNotify)
 				FindClose(hFindCfg);
 			}
 
-			WIN32_FIND_DATAA fdaSta;
-			HANDLE hFindSta = FindFirstFileA(".\\config\\sta\\*", &fdaSta);
-			if (hFindSta != INVALID_HANDLE_VALUE)
-			{
-				do
-				{
-					if (strcmp(fdaSta.cFileName, ".") != 0 && strcmp(fdaSta.cFileName, "..") != 0)
-					{
-						char szStaPathToRemove[MAX_PATH];
-						snprintf(szStaPathToRemove, sizeof(szStaPathToRemove), ".\\config\\sta\\%s", fdaSta.cFileName);
+			char szMasterStaDir[MAX_PATH + 2] = ".\\config\\sta";
+			szMasterStaDir[strlen(szMasterStaDir) + 1] = 0;
 
-						if (fdaSta.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
-						{
-							char szDoubleNullStaDir[MAX_PATH + 2] = {0};
-							strcpy(szDoubleNullStaDir, szStaPathToRemove);
-							szDoubleNullStaDir[strlen(szStaPathToRemove) + 1] = 0;
+			SHFILEOPSTRUCTA shfoStaMaster = {0};
+			shfoStaMaster.hwnd = hWnd;
+			shfoStaMaster.wFunc = FO_DELETE;
+			shfoStaMaster.pFrom = szMasterStaDir;
+			shfoStaMaster.fFlags = FOF_NOCONFIRMATION | FOF_SILENT | FOF_NOERRORUI;
+			SHFileOperationA(&shfoStaMaster);
+			
+			CreateDirectoryA(".\\config\\sta", nullptr); 
 
-							SHFILEOPSTRUCTA shfoStaMasiva = {0};
-							shfoStaMasiva.hwnd = hWnd;
-							shfoStaMasiva.wFunc = FO_DELETE;
-							shfoStaMasiva.pFrom = szDoubleNullStaDir;
-							shfoStaMasiva.fFlags = FOF_ALLOWUNDO | FOF_NOCONFIRMATION | FOF_SILENT;
-							SHFileOperationA(&shfoStaMasiva);
-						}
-						else
-						{
-							DeleteFileA(szStaPathToRemove);
-						}
-					}
-				} while (FindNextFileA(hFindSta, &fdaSta));
-				FindClose(hFindSta);
-			}
+			char szMasterNvramDir[MAX_PATH + 2] = ".\\config\\nvram";
+			szMasterNvramDir[strlen(szMasterNvramDir) + 1] = 0;
 
-			WIN32_FIND_DATAA fdaNvram;
-			HANDLE hFindNvram = FindFirstFileA(".\\config\\nvram\\*", &fdaNvram);
-			if (hFindNvram != INVALID_HANDLE_VALUE)
-			{
-				do
-				{
-					if (strcmp(fdaNvram.cFileName, ".") != 0 && strcmp(fdaNvram.cFileName, "..") != 0)
-					{
-						char szPathToRemove[MAX_PATH];
-						snprintf(szPathToRemove, sizeof(szPathToRemove), ".\\config\\nvram\\%s", fdaNvram.cFileName);
-
-						if (fdaNvram.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
-						{
-							char szDoubleNullDir[MAX_PATH + 2] = {0};
-							strcpy(szDoubleNullDir, szPathToRemove);
-							szDoubleNullDir[strlen(szPathToRemove) + 1] = 0;
-
-							SHFILEOPSTRUCTA shfoMasiva = {0};
-							shfoMasiva.hwnd = hWnd;
-							shfoMasiva.wFunc = FO_DELETE;
-							shfoMasiva.pFrom = szDoubleNullDir;
-							shfoMasiva.fFlags = FOF_ALLOWUNDO | FOF_NOCONFIRMATION | FOF_SILENT;
-							SHFileOperationA(&shfoMasiva);
-						}
-						else
-						{
-							DeleteFileA(szPathToRemove);
-						}
-					}
-				} while (FindNextFileA(hFindNvram, &fdaNvram));
-				FindClose(hFindNvram);
-			}
+			SHFILEOPSTRUCTA shfoNvramMaster = {0};
+			shfoNvramMaster.hwnd = hWnd;
+			shfoNvramMaster.wFunc = FO_DELETE;
+			shfoNvramMaster.pFrom = szMasterNvramDir;
+			shfoNvramMaster.fFlags = FOF_NOCONFIRMATION | FOF_SILENT | FOF_NOERRORUI;
+			SHFileOperationA(&shfoNvramMaster);
+			
+			CreateDirectoryA(".\\config\\nvram", nullptr);
 
 			winui_message_box_utf8(hWnd, "Global NVRAM, CFG and ALL Savestate Folders cleaned up successfully!", MAMEUINAME, MB_ICONINFORMATION | MB_OK);
 			SetFocus(hWndList);
@@ -6756,10 +6750,10 @@ void InitMainMenu(HMENU hMainMenu)
 
 //缘来是你
 //================================= 导出 XML 菜单图标 ===========================>>>
-	SetMenuItemBitmaps(hMainMenu, ID_TOOLS_EXPORT_ALL, MF_BYCOMMAND, hSaveList, hSaveList);
-	SetMenuItemBitmaps(hMainMenu, ID_TOOLS_EXPORT_COMPLETE, MF_BYCOMMAND, hSaveRoms, hSaveRoms);
-	SetMenuItemBitmaps(hMainMenu, ID_TOOLS_EXPORT_MISSING, MF_BYCOMMAND, hRecinput, hRecinput);
-	SetMenuItemBitmaps(hMainMenu, ID_TOOLS_EXPORT_CURRENT, MF_BYCOMMAND, hSavestate, hSavestate);
+	SetMenuItemBitmaps(hMainMenu, ID_TOOLS_EXPORT_ALL, MF_BYCOMMAND, hExpAll, hExpAll);
+	SetMenuItemBitmaps(hMainMenu, ID_TOOLS_EXPORT_COMPLETE, MF_BYCOMMAND, hExpComplete, hExpComplete);
+	SetMenuItemBitmaps(hMainMenu, ID_TOOLS_EXPORT_MISSING, MF_BYCOMMAND, hExpMissing, hExpMissing);
+	SetMenuItemBitmaps(hMainMenu, ID_TOOLS_EXPORT_CURRENT, MF_BYCOMMAND, hExpCurrent, hExpCurrent);
 //================================================================================>>>
 
 	SetMenuItemBitmaps(hMainMenu, ID_FILE_PLAY_BACK, MF_BYCOMMAND, hPlayback, hPlayback);
@@ -6896,12 +6890,12 @@ void InitBodyContextMenu(HMENU hBodyContextMenu)
 	SetMenuItemBitmaps(hBodyContextMenu, ID_FILE_PLAY, MF_BYCOMMAND, hPlay, hPlay);
 
 //================================================ 缘来是你 ===============================================>>>																		
-	SetMenuItemBitmaps(hBodyContextMenu, ID_PLAY_IPS, MF_BYCOMMAND, hFolders, hFolders);	// IPS
-	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_DELETE_ROM, MF_BYCOMMAND, hRemove, hRemove);	//删除 ROMs
-	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_BATCH_DELETE_MODE, MF_BYCOMMAND, hDescription, hDescription);  // 批量删除模式
+	SetMenuItemBitmaps(hBodyContextMenu, ID_PLAY_IPS, MF_BYCOMMAND, hIpsMenuExclusive, hIpsMenuExclusive);	// IPS
+	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_DELETE_ROM, MF_BYCOMMAND, hDeleteRomExclusive, hDeleteRomExclusive);	//删除 ROMs
+	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_BATCH_DELETE_MODE, MF_BYCOMMAND, hBatchDelete, hBatchDelete);  // 批量删除模式
 	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_DELETE_SELECTED_ROMS, MF_BYCOMMAND, hConText, hConText);	//批量删除 ROMs
-	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_SELECT_ALL, MF_BYCOMMAND, hFields, hFields);	//全选
-    SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_SELECT_NONE, MF_BYCOMMAND, hReset, hReset);		//全部取消
+	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_SELECT_ALL, MF_BYCOMMAND, hSelectAll, hSelectAll);	//全选
+	SetMenuItemBitmaps(hBodyContextMenu, ID_CONTEXT_SELECT_NONE, MF_BYCOMMAND, hSelectNone, hSelectNone);	
 //==========================================================================================================>>>	
 	SetMenuItemBitmaps(hBodyContextMenu, ID_VIDEO_SNAP, MF_BYCOMMAND, hVideo, hVideo);
 	SetMenuItemBitmaps(hBodyContextMenu, ID_PLAY_M1, MF_BYCOMMAND, hPlayM1, hPlayM1);
